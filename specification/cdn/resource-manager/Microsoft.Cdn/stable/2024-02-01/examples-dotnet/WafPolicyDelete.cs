@@ -26,4 +26,4 @@ CdnWebApplicationFirewallPolicyResource cdnWebApplicationFirewallPolicy = client
 // invoke the operation
 await cdnWebApplicationFirewallPolicy.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

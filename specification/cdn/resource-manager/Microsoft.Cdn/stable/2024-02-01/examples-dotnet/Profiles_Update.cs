@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
@@ -26,11 +26,11 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-ProfilePatch patch = new ProfilePatch()
+ProfilePatch patch = new ProfilePatch
 {
     Tags =
     {
-    ["additionalProperties"] = "Tag1",
+    ["additionalProperties"] = "Tag1"
     },
 };
 ArmOperation<ProfileResource> lro = await profile.UpdateAsync(WaitUntil.Completed, patch);

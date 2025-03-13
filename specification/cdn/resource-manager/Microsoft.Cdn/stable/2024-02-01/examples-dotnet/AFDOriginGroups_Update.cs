@@ -25,15 +25,15 @@ ResourceIdentifier frontDoorOriginGroupResourceId = FrontDoorOriginGroupResource
 FrontDoorOriginGroupResource frontDoorOriginGroup = client.GetFrontDoorOriginGroupResource(frontDoorOriginGroupResourceId);
 
 // invoke the operation
-FrontDoorOriginGroupPatch patch = new FrontDoorOriginGroupPatch()
+FrontDoorOriginGroupPatch patch = new FrontDoorOriginGroupPatch
 {
-    LoadBalancingSettings = new LoadBalancingSettings()
+    LoadBalancingSettings = new LoadBalancingSettings
     {
         SampleSize = 3,
         SuccessfulSamplesRequired = 3,
         AdditionalLatencyInMilliseconds = 1000,
     },
-    HealthProbeSettings = new HealthProbeSettings()
+    HealthProbeSettings = new HealthProbeSettings
     {
         ProbePath = "/path2",
         ProbeRequestType = HealthProbeRequestType.NotSet,

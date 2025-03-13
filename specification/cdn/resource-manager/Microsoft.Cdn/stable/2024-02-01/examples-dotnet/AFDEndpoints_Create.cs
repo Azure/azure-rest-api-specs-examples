@@ -27,7 +27,7 @@ FrontDoorEndpointCollection collection = profile.GetFrontDoorEndpoints();
 
 // invoke the operation
 string endpointName = "endpoint1";
-FrontDoorEndpointData data = new FrontDoorEndpointData(new AzureLocation("placeholder"));
+FrontDoorEndpointData data = new FrontDoorEndpointData(default);
 ArmOperation<FrontDoorEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 FrontDoorEndpointResource result = lro.Value;
 

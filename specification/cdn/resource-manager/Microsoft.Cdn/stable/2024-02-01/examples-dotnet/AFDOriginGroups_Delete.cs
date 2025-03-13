@@ -27,4 +27,4 @@ FrontDoorOriginGroupResource frontDoorOriginGroup = client.GetFrontDoorOriginGro
 // invoke the operation
 await frontDoorOriginGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

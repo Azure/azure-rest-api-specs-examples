@@ -29,9 +29,9 @@ FrontDoorSecretCollection collection = profile.GetFrontDoorSecrets();
 
 // invoke the operation
 string secretName = "secret1";
-FrontDoorSecretData data = new FrontDoorSecretData()
+FrontDoorSecretData data = new FrontDoorSecretData
 {
-    Properties = new CustomerCertificateProperties(new WritableSubResource()
+    Properties = new CustomerCertificateProperties(new WritableSubResource
     {
         Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/secrets/certificatename"),
     })

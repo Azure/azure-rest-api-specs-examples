@@ -28,4 +28,4 @@ FrontDoorOriginResource frontDoorOrigin = client.GetFrontDoorOriginResource(fron
 // invoke the operation
 await frontDoorOrigin.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ FrontDoorCustomDomainResource frontDoorCustomDomain = client.GetFrontDoorCustomD
 // invoke the operation
 await frontDoorCustomDomain.RefreshValidationTokenAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

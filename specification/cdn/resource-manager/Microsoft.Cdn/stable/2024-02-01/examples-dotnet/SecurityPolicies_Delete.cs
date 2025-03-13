@@ -27,4 +27,4 @@ FrontDoorSecurityPolicyResource frontDoorSecurityPolicy = client.GetFrontDoorSec
 // invoke the operation
 await frontDoorSecurityPolicy.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ProfileCollection collection = resourceGroupResource.GetProfiles();
 
 // invoke the operation
 string profileName = "profile1";
-ProfileData data = new ProfileData(new AzureLocation("global"), new CdnSku()
+ProfileData data = new ProfileData(new AzureLocation("global"), new CdnSku
 {
     Name = CdnSkuName.PremiumAzureFrontDoor,
 });

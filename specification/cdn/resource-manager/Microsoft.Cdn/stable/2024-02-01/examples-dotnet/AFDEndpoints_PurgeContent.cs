@@ -25,16 +25,10 @@ ResourceIdentifier frontDoorEndpointResourceId = FrontDoorEndpointResource.Creat
 FrontDoorEndpointResource frontDoorEndpoint = client.GetFrontDoorEndpointResource(frontDoorEndpointResourceId);
 
 // invoke the operation
-FrontDoorPurgeContent content = new FrontDoorPurgeContent(new string[]
+FrontDoorPurgeContent content = new FrontDoorPurgeContent(new string[] { "/folder1" })
 {
-"/folder1"
-})
-{
-    Domains =
-    {
-    "endpoint1-abcdefghijklmnop.z01.azurefd.net"
-    },
+    Domains = { "endpoint1-abcdefghijklmnop.z01.azurefd.net" },
 };
 await frontDoorEndpoint.PurgeContentAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

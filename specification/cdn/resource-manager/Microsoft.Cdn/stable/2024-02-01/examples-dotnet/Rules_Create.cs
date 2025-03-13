@@ -29,27 +29,18 @@ FrontDoorRuleCollection collection = frontDoorRuleSet.GetFrontDoorRules();
 
 // invoke the operation
 string ruleName = "rule1";
-FrontDoorRuleData data = new FrontDoorRuleData()
+FrontDoorRuleData data = new FrontDoorRuleData
 {
     Order = 1,
-    Conditions =
-    {
-    new DeliveryRuleRequestMethodCondition(new RequestMethodMatchCondition(RequestMethodMatchConditionType.RequestMethodCondition,RequestMethodOperator.Equal)
+    Conditions = {new DeliveryRuleRequestMethodCondition(new RequestMethodMatchCondition(RequestMethodMatchConditionType.RequestMethodCondition, RequestMethodOperator.Equal)
     {
     NegateCondition = false,
-    MatchValues =
-    {
-    RequestMethodMatchConditionMatchValue.Get
-    },
-    })
-    },
-    Actions =
-    {
-    new DeliveryRuleResponseHeaderAction(new HeaderActionProperties(HeaderActionType.HeaderAction,HeaderAction.Overwrite,"X-CDN")
+    MatchValues = {RequestMethodMatchConditionMatchValue.Get},
+    })},
+    Actions = {new DeliveryRuleResponseHeaderAction(new HeaderActionProperties(HeaderActionType.HeaderAction, HeaderAction.Overwrite, "X-CDN")
     {
     Value = "MSFT",
-    })
-    },
+    })},
 };
 ArmOperation<FrontDoorRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 FrontDoorRuleResource result = lro.Value;

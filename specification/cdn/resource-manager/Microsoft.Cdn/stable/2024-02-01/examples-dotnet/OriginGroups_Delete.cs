@@ -29,4 +29,4 @@ CdnOriginGroupResource cdnOriginGroup = client.GetCdnOriginGroupResource(cdnOrig
 // invoke the operation
 await cdnOriginGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

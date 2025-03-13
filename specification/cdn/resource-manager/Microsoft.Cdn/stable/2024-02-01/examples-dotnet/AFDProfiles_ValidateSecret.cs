@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
@@ -26,7 +26,7 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-ValidateSecretContent content = new ValidateSecretContent(SecretType.CustomerCertificate, new WritableSubResource()
+ValidateSecretContent content = new ValidateSecretContent(SecretType.CustomerCertificate, new WritableSubResource
 {
     Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/certificate/certName"),
 });

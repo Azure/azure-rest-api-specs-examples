@@ -30,4 +30,4 @@ await foreach (FrontDoorUsage item in frontDoorRuleSet.GetResourceUsagesAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

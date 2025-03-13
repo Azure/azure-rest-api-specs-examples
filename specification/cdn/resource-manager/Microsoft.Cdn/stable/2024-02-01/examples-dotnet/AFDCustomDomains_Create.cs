@@ -28,7 +28,7 @@ FrontDoorCustomDomainCollection collection = profile.GetFrontDoorCustomDomains()
 
 // invoke the operation
 string customDomainName = "domain1";
-FrontDoorCustomDomainData data = new FrontDoorCustomDomainData()
+FrontDoorCustomDomainData data = new FrontDoorCustomDomainData
 {
     TlsSettings = new FrontDoorCustomDomainHttpsContent(FrontDoorCertificateType.ManagedCertificate)
     {

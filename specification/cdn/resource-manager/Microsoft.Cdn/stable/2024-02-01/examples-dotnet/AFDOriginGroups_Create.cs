@@ -28,15 +28,15 @@ FrontDoorOriginGroupCollection collection = profile.GetFrontDoorOriginGroups();
 
 // invoke the operation
 string originGroupName = "origingroup1";
-FrontDoorOriginGroupData data = new FrontDoorOriginGroupData()
+FrontDoorOriginGroupData data = new FrontDoorOriginGroupData
 {
-    LoadBalancingSettings = new LoadBalancingSettings()
+    LoadBalancingSettings = new LoadBalancingSettings
     {
         SampleSize = 3,
         SuccessfulSamplesRequired = 3,
         AdditionalLatencyInMilliseconds = 1000,
     },
-    HealthProbeSettings = new HealthProbeSettings()
+    HealthProbeSettings = new HealthProbeSettings
     {
         ProbePath = "/path2",
         ProbeRequestType = HealthProbeRequestType.NotSet,

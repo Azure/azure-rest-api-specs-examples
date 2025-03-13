@@ -28,101 +28,73 @@ CdnWebApplicationFirewallPolicyCollection collection = resourceGroupResource.Get
 
 // invoke the operation
 string policyName = "MicrosoftCdnWafPolicy";
-CdnWebApplicationFirewallPolicyData data = new CdnWebApplicationFirewallPolicyData(new AzureLocation("WestUs"), new CdnSku()
+CdnWebApplicationFirewallPolicyData data = new CdnWebApplicationFirewallPolicyData(new AzureLocation("WestUs"), new CdnSku
 {
     Name = CdnSkuName.StandardMicrosoft,
 })
 {
-    PolicySettings = new WafPolicySettings()
+    PolicySettings = new WafPolicySettings
     {
         DefaultRedirectUri = new Uri("http://www.bing.com"),
         DefaultCustomBlockResponseStatusCode = PolicySettingsDefaultCustomBlockResponseStatusCode.TwoHundred,
-        DefaultCustomBlockResponseBody = BinaryData.FromString("\"PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==\""),
+        DefaultCustomBlockResponseBody = BinaryData.FromObjectAsJson("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="),
     },
-    RateLimitRules =
+    RateLimitRules = {new RateLimitRule(
+        "RateLimitRule1",
+        1,
+        new CustomRuleMatchCondition[]
     {
-    new RateLimitRule("RateLimitRule1",1,new CustomRuleMatchCondition[]
-    {
-    new CustomRuleMatchCondition(WafMatchVariable.RemoteAddr,MatchOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24","10.0.0.0/24"
-    })
+    new CustomRuleMatchCondition(WafMatchVariable.RemoteAddr, MatchOperator.IPMatch, new string[]{"192.168.1.0/24", "10.0.0.0/24"})
     {
     Selector = null,
     NegateCondition = false,
-    Transforms =
-    {
-    },
+    Transforms = {},
     }
-    },OverrideActionType.Block,1000,0)
+    },
+        OverrideActionType.Block,
+        1000,
+        0)
     {
     EnabledState = CustomRuleEnabledState.Enabled,
-    }
-    },
-    CustomRules =
+    }},
+    CustomRules = {new CustomRule("CustomRule1", 2, new CustomRuleMatchCondition[]
     {
-    new CustomRule("CustomRule1",2,new CustomRuleMatchCondition[]
-    {
-    new CustomRuleMatchCondition(WafMatchVariable.RemoteAddr,MatchOperator.GeoMatch,new string[]
-    {
-    "CH"
-    })
+    new CustomRuleMatchCondition(WafMatchVariable.RemoteAddr, MatchOperator.GeoMatch, new string[]{"CH"})
     {
     Selector = null,
     NegateCondition = false,
-    Transforms =
-    {
+    Transforms = {},
     },
-    },new CustomRuleMatchCondition(WafMatchVariable.RequestHeader,MatchOperator.Contains,new string[]
-    {
-    "windows"
-    })
+    new CustomRuleMatchCondition(WafMatchVariable.RequestHeader, MatchOperator.Contains, new string[]{"windows"})
     {
     Selector = "UserAgent",
     NegateCondition = false,
-    Transforms =
-    {
+    Transforms = {},
     },
-    },new CustomRuleMatchCondition(WafMatchVariable.QueryString,MatchOperator.Contains,new string[]
-    {
-    "<?php","?>"
-    })
+    new CustomRuleMatchCondition(WafMatchVariable.QueryString, MatchOperator.Contains, new string[]{"<?php", "?>"})
     {
     Selector = "search",
     NegateCondition = false,
-    Transforms =
-    {
-    TransformType.UriDecode,TransformType.Lowercase
-    },
+    Transforms = {TransformType.UriDecode, TransformType.Lowercase},
     }
-    },OverrideActionType.Block)
+    }, OverrideActionType.Block)
     {
     EnabledState = CustomRuleEnabledState.Enabled,
-    }
-    },
-    ManagedRuleSets =
+    }},
+    ManagedRuleSets = {new WafPolicyManagedRuleSet("DefaultRuleSet", "preview-1.0")
     {
-    new WafPolicyManagedRuleSet("DefaultRuleSet","preview-1.0")
+    RuleGroupOverrides = {new ManagedRuleGroupOverrideSetting("Group1")
     {
-    RuleGroupOverrides =
-    {
-    new ManagedRuleGroupOverrideSetting("Group1")
-    {
-    Rules =
-    {
-    new ManagedRuleOverrideSetting("GROUP1-0001")
+    Rules = {new ManagedRuleOverrideSetting("GROUP1-0001")
     {
     EnabledState = ManagedRuleSetupState.Enabled,
     Action = OverrideActionType.Redirect,
-    },new ManagedRuleOverrideSetting("GROUP1-0002")
+    }, new ManagedRuleOverrideSetting("GROUP1-0002")
     {
     EnabledState = ManagedRuleSetupState.Disabled,
-    }
-    },
-    }
-    },
-    }
-    },
+    }},
+    }},
+    }},
 };
 ArmOperation<CdnWebApplicationFirewallPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
 CdnWebApplicationFirewallPolicyResource result = lro.Value;

@@ -28,7 +28,7 @@ CdnOriginCollection collection = cdnEndpoint.GetCdnOrigins();
 
 // invoke the operation
 string originName = "www-someDomain-net";
-CdnOriginData data = new CdnOriginData()
+CdnOriginData data = new CdnOriginData
 {
     HostName = "www.someDomain.net",
     HttpPort = 80,

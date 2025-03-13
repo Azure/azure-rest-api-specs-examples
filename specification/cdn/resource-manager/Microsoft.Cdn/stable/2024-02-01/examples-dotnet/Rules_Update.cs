@@ -26,16 +26,13 @@ ResourceIdentifier frontDoorRuleResourceId = FrontDoorRuleResource.CreateResourc
 FrontDoorRuleResource frontDoorRule = client.GetFrontDoorRuleResource(frontDoorRuleResourceId);
 
 // invoke the operation
-FrontDoorRulePatch patch = new FrontDoorRulePatch()
+FrontDoorRulePatch patch = new FrontDoorRulePatch
 {
     Order = 1,
-    Actions =
-    {
-    new DeliveryRuleResponseHeaderAction(new HeaderActionProperties(HeaderActionType.HeaderAction,HeaderAction.Overwrite,"X-CDN")
+    Actions = {new DeliveryRuleResponseHeaderAction(new HeaderActionProperties(HeaderActionType.HeaderAction, HeaderAction.Overwrite, "X-CDN")
     {
     Value = "MSFT",
-    })
-    },
+    })},
 };
 ArmOperation<FrontDoorRuleResource> lro = await frontDoorRule.UpdateAsync(WaitUntil.Completed, patch);
 FrontDoorRuleResource result = lro.Value;

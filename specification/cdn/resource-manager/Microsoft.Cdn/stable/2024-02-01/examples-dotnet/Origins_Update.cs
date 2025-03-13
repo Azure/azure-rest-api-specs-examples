@@ -26,7 +26,7 @@ ResourceIdentifier cdnOriginResourceId = CdnOriginResource.CreateResourceIdentif
 CdnOriginResource cdnOrigin = client.GetCdnOriginResource(cdnOriginResourceId);
 
 // invoke the operation
-CdnOriginPatch patch = new CdnOriginPatch()
+CdnOriginPatch patch = new CdnOriginPatch
 {
     HttpPort = 42,
     HttpsPort = 43,

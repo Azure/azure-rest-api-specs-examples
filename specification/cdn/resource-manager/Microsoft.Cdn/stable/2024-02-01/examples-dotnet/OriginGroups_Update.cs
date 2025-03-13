@@ -27,22 +27,19 @@ ResourceIdentifier cdnOriginGroupResourceId = CdnOriginGroupResource.CreateResou
 CdnOriginGroupResource cdnOriginGroup = client.GetCdnOriginGroupResource(cdnOriginGroupResourceId);
 
 // invoke the operation
-CdnOriginGroupPatch patch = new CdnOriginGroupPatch()
+CdnOriginGroupPatch patch = new CdnOriginGroupPatch
 {
-    HealthProbeSettings = new HealthProbeSettings()
+    HealthProbeSettings = new HealthProbeSettings
     {
         ProbePath = "/health.aspx",
         ProbeRequestType = HealthProbeRequestType.Get,
         ProbeProtocol = HealthProbeProtocol.Http,
         ProbeIntervalInSeconds = 120,
     },
-    Origins =
-    {
-    new WritableSubResource()
+    Origins = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin2"),
-    }
-    },
+    }},
 };
 ArmOperation<CdnOriginGroupResource> lro = await cdnOriginGroup.UpdateAsync(WaitUntil.Completed, patch);
 CdnOriginGroupResource result = lro.Value;

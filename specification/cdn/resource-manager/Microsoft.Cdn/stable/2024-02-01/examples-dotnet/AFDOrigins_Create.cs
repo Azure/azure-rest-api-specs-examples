@@ -29,7 +29,7 @@ FrontDoorOriginCollection collection = frontDoorOriginGroup.GetFrontDoorOrigins(
 
 // invoke the operation
 string originName = "origin1";
-FrontDoorOriginData data = new FrontDoorOriginData()
+FrontDoorOriginData data = new FrontDoorOriginData
 {
     HostName = "host1.blob.core.windows.net",
     HttpPort = 80,

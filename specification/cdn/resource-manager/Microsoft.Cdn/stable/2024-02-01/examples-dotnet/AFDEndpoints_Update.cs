@@ -25,11 +25,9 @@ ResourceIdentifier frontDoorEndpointResourceId = FrontDoorEndpointResource.Creat
 FrontDoorEndpointResource frontDoorEndpoint = client.GetFrontDoorEndpointResource(frontDoorEndpointResourceId);
 
 // invoke the operation
-FrontDoorEndpointPatch patch = new FrontDoorEndpointPatch()
+FrontDoorEndpointPatch patch = new FrontDoorEndpointPatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
     EnabledState = EnabledState.Enabled,
 };
 ArmOperation<FrontDoorEndpointResource> lro = await frontDoorEndpoint.UpdateAsync(WaitUntil.Completed, patch);

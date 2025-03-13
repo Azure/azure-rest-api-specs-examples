@@ -28,4 +28,4 @@ CdnCustomDomainResource cdnCustomDomain = client.GetCdnCustomDomainResource(cdnC
 // invoke the operation
 await cdnCustomDomain.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

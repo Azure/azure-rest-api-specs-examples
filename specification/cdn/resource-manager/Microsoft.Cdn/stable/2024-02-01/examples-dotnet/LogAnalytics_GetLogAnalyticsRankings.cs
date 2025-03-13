@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
@@ -26,14 +26,12 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-ProfileResourceGetLogAnalyticsRankingsOptions options = new ProfileResourceGetLogAnalyticsRankingsOptions(rankings: new LogRanking[]
-{
-LogRanking.Uri
-}, metrics: new LogRankingMetric[]
-{
-LogRankingMetric.ClientRequestCount
-}, maxRanking: 5, dateTimeBegin: DateTimeOffset.Parse("2020-11-04T06:49:27.554Z"), dateTimeEnd: DateTimeOffset.Parse("2020-11-04T09:49:27.554Z"))
-{ };
+IEnumerable<LogRanking> rankings = new LogRanking[] { LogRanking.Uri };
+IEnumerable<LogRankingMetric> metrics = new LogRankingMetric[] { LogRankingMetric.ClientRequestCount };
+int maxRanking = 5;
+DateTimeOffset dateTimeBegin = DateTimeOffset.Parse("2020-11-04T06:49:27.554Z");
+DateTimeOffset dateTimeEnd = DateTimeOffset.Parse("2020-11-04T09:49:27.554Z");
+ProfileResourceGetLogAnalyticsRankingsOptions options = new ProfileResourceGetLogAnalyticsRankingsOptions(rankings, metrics, maxRanking, dateTimeBegin, dateTimeEnd);
 RankingsResponse result = await profile.GetLogAnalyticsRankingsAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

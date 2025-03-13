@@ -29,4 +29,4 @@ FrontDoorRouteResource frontDoorRoute = client.GetFrontDoorRouteResource(frontDo
 // invoke the operation
 await frontDoorRoute.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

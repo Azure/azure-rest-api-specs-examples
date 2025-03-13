@@ -27,4 +27,4 @@ FrontDoorEndpointResource frontDoorEndpoint = client.GetFrontDoorEndpointResourc
 // invoke the operation
 await frontDoorEndpoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

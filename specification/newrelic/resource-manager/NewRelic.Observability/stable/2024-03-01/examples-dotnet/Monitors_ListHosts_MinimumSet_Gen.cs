@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -29,14 +28,11 @@ NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResou
 // invoke the operation and iterate over the result
 NewRelicHostsGetContent content = new NewRelicHostsGetContent("ruxvg@xqkmdhrnoo.hlmbpm")
 {
-    VmIds =
-    {
-    new ResourceIdentifier("xzphvxvfmvjrnsgyns")
-    },
+    VmIds = { new ResourceIdentifier("xzphvxvfmvjrnsgyns") },
 };
 await foreach (NewRelicObservabilityVmInfo item in newRelicMonitorResource.GetHostsAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

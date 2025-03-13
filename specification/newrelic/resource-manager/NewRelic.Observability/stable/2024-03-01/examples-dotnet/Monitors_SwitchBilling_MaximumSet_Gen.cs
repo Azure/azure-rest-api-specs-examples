@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -31,7 +30,7 @@ NewRelicSwitchBillingContent content = new NewRelicSwitchBillingContent("ruxvg@x
 {
     AzureResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz"),
     OrganizationId = "k",
-    PlanData = new NewRelicPlanDetails()
+    PlanData = new NewRelicPlanDetails
     {
         UsageType = NewRelicObservabilityUsageType.Payg,
         NewRelicPlanBillingCycle = "Yearly",

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -27,30 +26,30 @@ ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateRes
 NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
 
 // invoke the operation
-NewRelicMonitorResourcePatch patch = new NewRelicMonitorResourcePatch()
+NewRelicMonitorResourcePatch patch = new NewRelicMonitorResourcePatch
 {
     Identity = new ManagedServiceIdentity("None")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("key8903")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("key8903")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
-    ["key164"] = "jqakdrrmmyzytqu",
+    ["key164"] = "jqakdrrmmyzytqu"
     },
-    NewRelicAccountProperties = new NewRelicAccountProperties()
+    NewRelicAccountProperties = new NewRelicAccountProperties
     {
         UserId = "vcscxlncofcuduadesd",
-        AccountInfo = new NewRelicObservabilityAccountInfo()
+        AccountInfo = new NewRelicObservabilityAccountInfo
         {
             AccountId = "xhqmg",
             IngestionKey = "wltnimmhqt",
             Region = new AzureLocation("ljcf"),
         },
         OrganizationId = "k",
-        SingleSignOnProperties = new NewRelicSingleSignOnProperties()
+        SingleSignOnProperties = new NewRelicSingleSignOnProperties
         {
             SingleSignOnState = NewRelicSingleSignOnState.Initial,
             EnterpriseAppId = "kwiwfz",
@@ -58,7 +57,7 @@ NewRelicMonitorResourcePatch patch = new NewRelicMonitorResourcePatch()
             ProvisioningState = NewRelicProvisioningState.Accepted,
         },
     },
-    UserInfo = new NewRelicObservabilityUserInfo()
+    UserInfo = new NewRelicObservabilityUserInfo
     {
         FirstName = "vdftzcggirefejajwahhwhyibutramdaotvnuf",
         LastName = "bcsztgqovdlmzfkjdrngidwzqsevagexzzilnlc",
@@ -66,7 +65,7 @@ NewRelicMonitorResourcePatch patch = new NewRelicMonitorResourcePatch()
         PhoneNumber = "krf",
         Country = "hslqnwdanrconqyekwbnttaetv",
     },
-    PlanData = new NewRelicPlanDetails()
+    PlanData = new NewRelicPlanDetails
     {
         UsageType = NewRelicObservabilityUsageType.Payg,
         NewRelicPlanBillingCycle = "Yearly",

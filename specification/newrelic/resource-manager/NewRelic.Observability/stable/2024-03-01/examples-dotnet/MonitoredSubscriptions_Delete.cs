@@ -27,4 +27,4 @@ NewRelicMonitoredSubscriptionResource newRelicMonitoredSubscription = client.Get
 // invoke the operation
 await newRelicMonitoredSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -35,20 +35,20 @@ NewRelicMonitorResourceData data = new NewRelicMonitorResourceData(new AzureLoca
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("key8903")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("key8903")] = new UserAssignedIdentity()
         },
     },
-    NewRelicAccountProperties = new NewRelicAccountProperties()
+    NewRelicAccountProperties = new NewRelicAccountProperties
     {
         UserId = "vcscxlncofcuduadesd",
-        AccountInfo = new NewRelicObservabilityAccountInfo()
+        AccountInfo = new NewRelicObservabilityAccountInfo
         {
             AccountId = "xhqmg",
             IngestionKey = "wltnimmhqt",
             Region = new AzureLocation("ljcf"),
         },
         OrganizationId = "k",
-        SingleSignOnProperties = new NewRelicSingleSignOnProperties()
+        SingleSignOnProperties = new NewRelicSingleSignOnProperties
         {
             SingleSignOnState = NewRelicSingleSignOnState.Initial,
             EnterpriseAppId = "kwiwfz",
@@ -56,7 +56,7 @@ NewRelicMonitorResourceData data = new NewRelicMonitorResourceData(new AzureLoca
             ProvisioningState = NewRelicProvisioningState.Accepted,
         },
     },
-    UserInfo = new NewRelicObservabilityUserInfo()
+    UserInfo = new NewRelicObservabilityUserInfo
     {
         FirstName = "vdftzcggirefejajwahhwhyibutramdaotvnuf",
         LastName = "bcsztgqovdlmzfkjdrngidwzqsevagexzzilnlc",
@@ -64,7 +64,7 @@ NewRelicMonitorResourceData data = new NewRelicMonitorResourceData(new AzureLoca
         PhoneNumber = "krf",
         Country = "hslqnwdanrconqyekwbnttaetv",
     },
-    PlanData = new NewRelicPlanDetails()
+    PlanData = new NewRelicPlanDetails
     {
         UsageType = NewRelicObservabilityUsageType.Payg,
         NewRelicPlanBillingCycle = "Yearly",
@@ -77,7 +77,7 @@ NewRelicMonitorResourceData data = new NewRelicMonitorResourceData(new AzureLoca
     SaaSAzureSubscriptionStatus = "Subscribed",
     Tags =
     {
-    ["key6976"] = "oaxfhf",
+    ["key6976"] = "oaxfhf"
     },
 };
 ArmOperation<NewRelicMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, monitorName, data);

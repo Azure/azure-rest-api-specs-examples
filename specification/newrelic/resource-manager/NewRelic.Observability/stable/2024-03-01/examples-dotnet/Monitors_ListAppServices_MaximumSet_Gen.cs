@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -29,14 +28,11 @@ NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResou
 // invoke the operation and iterate over the result
 NewRelicAppServicesGetContent content = new NewRelicAppServicesGetContent("ruxvg@xqkmdhrnoo.hlmbpm")
 {
-    AzureResourceIds =
-    {
-    new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz")
-    },
+    AzureResourceIds = { new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz") },
 };
 await foreach (NewRelicObservabilityAppServiceInfo item in newRelicMonitorResource.GetAppServicesAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

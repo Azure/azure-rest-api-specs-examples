@@ -4,10 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
 // Generated from example definition: specification/newrelic/resource-manager/NewRelic.Observability/stable/2024-03-01/examples/Monitors_ListBySubscription_MaximumSet_Gen.json
@@ -34,4 +32,4 @@ await foreach (NewRelicMonitorResource item in subscriptionResource.GetNewRelicM
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

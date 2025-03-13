@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -29,10 +28,7 @@ NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResou
 // invoke the operation
 NewRelicMetricsStatusContent content = new NewRelicMetricsStatusContent("ruxvg@xqkmdhrnoo.hlmbpm")
 {
-    AzureResourceIds =
-    {
-    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz"
-    },
+    AzureResourceIds = { "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz" },
 };
 NewRelicMetricsStatusResult result = await newRelicMonitorResource.GetMetricStatusAsync(content);
 

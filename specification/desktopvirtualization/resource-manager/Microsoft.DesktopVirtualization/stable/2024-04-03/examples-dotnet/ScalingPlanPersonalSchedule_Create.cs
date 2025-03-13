@@ -28,12 +28,9 @@ ScalingPlanPersonalScheduleCollection collection = scalingPlan.GetScalingPlanPer
 
 // invoke the operation
 string scalingPlanScheduleName = "scalingPlanScheduleWeekdays1";
-ScalingPlanPersonalScheduleData data = new ScalingPlanPersonalScheduleData()
+ScalingPlanPersonalScheduleData data = new ScalingPlanPersonalScheduleData
 {
-    DaysOfWeek =
-    {
-    DesktopVirtualizationDayOfWeek.Monday,DesktopVirtualizationDayOfWeek.Tuesday,DesktopVirtualizationDayOfWeek.Wednesday,DesktopVirtualizationDayOfWeek.Thursday,DesktopVirtualizationDayOfWeek.Friday
-    },
+    DaysOfWeek = { DesktopVirtualizationDayOfWeek.Monday, DesktopVirtualizationDayOfWeek.Tuesday, DesktopVirtualizationDayOfWeek.Wednesday, DesktopVirtualizationDayOfWeek.Thursday, DesktopVirtualizationDayOfWeek.Friday },
     RampUpStartTime = new ScalingActionTime(6, 0),
     RampUpAutoStartHosts = StartupBehavior.All,
     RampUpStartVmOnConnect = SetStartVmOnConnect.Enable,

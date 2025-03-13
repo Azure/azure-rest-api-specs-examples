@@ -25,7 +25,7 @@ ResourceIdentifier sessionHostResourceId = SessionHostResource.CreateResourceIde
 SessionHostResource sessionHost = client.GetSessionHostResource(sessionHostResourceId);
 
 // invoke the operation
-SessionHostPatch patch = new SessionHostPatch()
+SessionHostPatch patch = new SessionHostPatch
 {
     AllowNewSession = true,
     AssignedUser = "user1@microsoft.com",

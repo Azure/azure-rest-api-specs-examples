@@ -27,4 +27,4 @@ HostPoolPrivateEndpointConnectionResource hostPoolPrivateEndpointConnection = cl
 // invoke the operation
 await hostPoolPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

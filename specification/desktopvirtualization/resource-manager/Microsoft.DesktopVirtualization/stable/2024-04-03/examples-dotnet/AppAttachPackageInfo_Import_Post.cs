@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/AppAttachPackageInfo_Import_Post.json
@@ -25,7 +24,7 @@ ResourceIdentifier hostPoolResourceId = HostPoolResource.CreateResourceIdentifie
 HostPoolResource hostPool = client.GetHostPoolResource(hostPoolResourceId);
 
 // invoke the operation and iterate over the result
-ImportPackageInfoContent content = new ImportPackageInfoContent()
+ImportPackageInfoContent content = new ImportPackageInfoContent
 {
     Path = "imagepath",
     PackageArchitecture = AppAttachPackageArchitecture.X64,
@@ -39,4 +38,4 @@ await foreach (AppAttachPackageResource item in hostPool.ImportAppAttachPackageI
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

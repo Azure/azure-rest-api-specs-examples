@@ -35,7 +35,7 @@ HostPoolData data = new HostPoolData(new AzureLocation("centralus"), HostPoolTyp
     PersonalDesktopAssignmentType = PersonalDesktopAssignmentType.Automatic,
     CustomRdpProperty = null,
     MaxSessionLimit = 999999,
-    RegistrationInfo = new HostPoolRegistrationInfo()
+    RegistrationInfo = new HostPoolRegistrationInfo
     {
         ExpireOn = DateTimeOffset.Parse("2020-10-01T14:01:54.9571247Z"),
         RegistrationTokenOperation = HostPoolRegistrationTokenOperation.Update,
@@ -46,28 +46,25 @@ HostPoolData data = new HostPoolData(new AzureLocation("centralus"), HostPoolTyp
     SsoClientSecretKeyVaultPath = "https://keyvault/secret",
     SsoSecretType = HostPoolSsoSecretType.SharedKey,
     StartVmOnConnect = false,
-    AgentUpdate = new SessionHostAgentUpdateProperties()
+    AgentUpdate = new SessionHostAgentUpdateProperties
     {
         UpdateType = SessionHostComponentUpdateType.Scheduled,
         DoesUseSessionHostLocalTime = false,
         MaintenanceWindowTimeZone = "Alaskan Standard Time",
-        MaintenanceWindows =
-        {
-        new SessionHostMaintenanceWindowProperties()
+        MaintenanceWindows = {new SessionHostMaintenanceWindowProperties
         {
         Hour = 7,
         DayOfWeek = DesktopVirtualizationDayOfWeek.Friday,
-        },new SessionHostMaintenanceWindowProperties()
+        }, new SessionHostMaintenanceWindowProperties
         {
         Hour = 8,
         DayOfWeek = DesktopVirtualizationDayOfWeek.Saturday,
-        }
-        },
+        }},
     },
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<HostPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hostPoolName, data);

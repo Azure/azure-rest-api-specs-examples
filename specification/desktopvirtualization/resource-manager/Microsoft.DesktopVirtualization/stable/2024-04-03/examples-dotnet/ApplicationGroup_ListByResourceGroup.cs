@@ -40,4 +40,4 @@ await foreach (VirtualApplicationGroupResource item in collection.GetAllAsync(fi
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

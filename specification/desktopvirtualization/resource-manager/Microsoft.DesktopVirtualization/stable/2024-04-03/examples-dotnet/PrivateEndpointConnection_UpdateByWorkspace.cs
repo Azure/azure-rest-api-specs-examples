@@ -25,9 +25,9 @@ ResourceIdentifier workspacePrivateEndpointConnectionResourceId = WorkspacePriva
 WorkspacePrivateEndpointConnectionResource workspacePrivateEndpointConnection = client.GetWorkspacePrivateEndpointConnectionResource(workspacePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection()
+DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection
 {
-    ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState()
+    ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState
     {
         Status = DesktopVirtualizationPrivateEndpointServiceConnectionStatus.Approved,
         Description = "Approved by admin@consoto.com",

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/Workspace_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier virtualWorkspaceResourceId = VirtualWorkspaceResource.CreateR
 VirtualWorkspaceResource virtualWorkspace = client.GetVirtualWorkspaceResource(virtualWorkspaceResourceId);
 
 // invoke the operation
-VirtualWorkspacePatch patch = new VirtualWorkspacePatch()
+VirtualWorkspacePatch patch = new VirtualWorkspacePatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     Description = "des1",
     FriendlyName = "friendly",

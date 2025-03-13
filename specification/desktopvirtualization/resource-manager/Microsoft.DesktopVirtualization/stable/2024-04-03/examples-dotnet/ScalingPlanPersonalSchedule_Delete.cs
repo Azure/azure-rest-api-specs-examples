@@ -27,4 +27,4 @@ ScalingPlanPersonalScheduleResource scalingPlanPersonalSchedule = client.GetScal
 // invoke the operation
 await scalingPlanPersonalSchedule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

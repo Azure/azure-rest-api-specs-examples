@@ -39,4 +39,4 @@ await foreach (VirtualApplicationResource item in collection.GetAllAsync(pageSiz
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

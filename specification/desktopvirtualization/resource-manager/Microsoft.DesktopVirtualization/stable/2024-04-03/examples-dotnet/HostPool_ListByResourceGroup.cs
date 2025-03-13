@@ -39,4 +39,4 @@ await foreach (HostPoolResource item in collection.GetAllAsync(pageSize: pageSiz
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

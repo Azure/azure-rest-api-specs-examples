@@ -27,4 +27,4 @@ ScalingPlanPooledScheduleResource scalingPlanPooledSchedule = client.GetScalingP
 // invoke the operation
 await scalingPlanPooledSchedule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

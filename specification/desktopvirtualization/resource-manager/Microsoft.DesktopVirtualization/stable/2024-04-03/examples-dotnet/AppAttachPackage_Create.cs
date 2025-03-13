@@ -28,9 +28,9 @@ AppAttachPackageCollection collection = resourceGroupResource.GetAppAttachPackag
 
 // invoke the operation
 string appAttachPackageName = "msixpackagefullname";
-AppAttachPackageData data = new AppAttachPackageData(new AzureLocation("southcentralus"), new AppAttachPackageProperties()
+AppAttachPackageData data = new AppAttachPackageData(new AzureLocation("southcentralus"), new AppAttachPackageProperties
 {
-    Image = new AppAttachPackageInfoProperties()
+    Image = new AppAttachPackageInfoProperties
     {
         PackageAlias = "msixpackagealias",
         ImagePath = "imagepath",
@@ -41,36 +41,28 @@ AppAttachPackageData data = new AppAttachPackageData(new AzureLocation("southcen
         PackageRelativePath = "packagerelativepath",
         IsRegularRegistration = false,
         IsActive = false,
-        PackageDependencies =
-        {
-        new MsixPackageDependencies()
+        PackageDependencies = {new MsixPackageDependencies
         {
         DependencyName = "MsixPackage_Dependency_Name",
         Publisher = "MsixPackage_Dependency_Publisher",
         MinVersion = "packageDep_version",
-        }
-        },
+        }},
         Version = "packageversion",
         LastUpdatedOn = DateTimeOffset.Parse("2008-09-22T14:01:54.9571247Z"),
-        PackageApplications =
-        {
-        new MsixPackageApplications()
+        PackageApplications = {new MsixPackageApplications
         {
         AppId = "AppId",
         Description = "PackageApplicationDescription",
         AppUserModelId = "AppUserModelId",
         FriendlyName = "FriendlyName",
         IconImageName = "Iconimagename",
-        RawIcon = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
-        RawPng = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
-        }
-        },
+        RawIcon = BinaryData.FromObjectAsJson("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
+        RawPng = BinaryData.FromObjectAsJson("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
+        }},
         CertificateName = "certName",
         CertificateExpireOn = DateTimeOffset.Parse("2023-01-02T17:18:19.1234567Z"),
     },
-    HostPoolReferences =
-    {
-    },
+    HostPoolReferences = { },
     KeyVaultUri = new Uri(""),
     FailHealthCheckOnStagingFailure = FailHealthCheckOnStagingFailure.NeedsAssistance,
 });

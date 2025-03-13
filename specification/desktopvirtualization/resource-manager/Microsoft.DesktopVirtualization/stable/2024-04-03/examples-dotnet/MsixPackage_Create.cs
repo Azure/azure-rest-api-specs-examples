@@ -28,7 +28,7 @@ MsixPackageCollection collection = hostPool.GetMsixPackages();
 
 // invoke the operation
 string msixPackageFullName = "msixpackagefullname";
-MsixPackageData data = new MsixPackageData()
+MsixPackageData data = new MsixPackageData
 {
     ImagePath = "imagepath",
     PackageName = "MsixPackage_name",
@@ -37,30 +37,24 @@ MsixPackageData data = new MsixPackageData()
     PackageRelativePath = "packagerelativepath",
     IsRegularRegistration = false,
     IsActive = false,
-    PackageDependencies =
-    {
-    new MsixPackageDependencies()
+    PackageDependencies = {new MsixPackageDependencies
     {
     DependencyName = "MsixTest_Dependency_Name",
     Publisher = "PublishedName",
     MinVersion = "version",
-    }
-    },
+    }},
     Version = "version",
     LastUpdatedOn = DateTimeOffset.Parse("2008-09-22T14:01:54.9571247Z"),
-    PackageApplications =
-    {
-    new MsixPackageApplications()
+    PackageApplications = {new MsixPackageApplications
     {
     AppId = "ApplicationId",
     Description = "application-desc",
     AppUserModelId = "AppUserModelId",
     FriendlyName = "friendlyname",
     IconImageName = "Apptile",
-    RawIcon = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
-    RawPng = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
-    }
-    },
+    RawIcon = BinaryData.FromObjectAsJson("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
+    RawPng = BinaryData.FromObjectAsJson("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
+    }},
 };
 ArmOperation<MsixPackageResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, msixPackageFullName, data);
 MsixPackageResource result = lro.Value;

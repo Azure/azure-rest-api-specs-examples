@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppAttachPackageResource created on azure
-// for more information of creating AppAttachPackageResource, please refer to the document of AppAttachPackageResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
-string appAttachPackageName = "packagefullname";
-ResourceIdentifier appAttachPackageResourceId = AppAttachPackageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, appAttachPackageName);
-AppAttachPackageResource appAttachPackage = client.GetAppAttachPackageResource(appAttachPackageResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this AppAttachPackageResource
+AppAttachPackageCollection collection = resourceGroupResource.GetAppAttachPackages();
 
 // invoke the operation
-AppAttachPackageResource result = await appAttachPackage.GetAsync();
+string appAttachPackageName = "packagefullname";
+NullableResponse<AppAttachPackageResource> response = await collection.GetIfExistsAsync(appAttachPackageName);
+AppAttachPackageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppAttachPackageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppAttachPackageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

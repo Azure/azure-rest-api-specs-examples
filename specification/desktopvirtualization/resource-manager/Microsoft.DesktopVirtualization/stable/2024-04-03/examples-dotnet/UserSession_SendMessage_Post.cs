@@ -26,11 +26,11 @@ ResourceIdentifier userSessionResourceId = UserSessionResource.CreateResourceIde
 UserSessionResource userSession = client.GetUserSessionResource(userSessionResourceId);
 
 // invoke the operation
-UserSessionMessage sendMessage = new UserSessionMessage()
+UserSessionMessage sendMessage = new UserSessionMessage
 {
     MessageTitle = "title",
     MessageBody = "body",
 };
 await userSession.SendMessageAsync(sendMessage: sendMessage);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

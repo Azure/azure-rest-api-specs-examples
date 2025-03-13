@@ -15,36 +15,39 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuildResource created on azure
-// for more information of creating AppPlatformBuildResource, please refer to the document of AppPlatformBuildResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-string buildName = "mybuild";
-ResourceIdentifier appPlatformBuildResourceId = AppPlatformBuildResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, buildName);
-AppPlatformBuildResource appPlatformBuild = client.GetAppPlatformBuildResource(appPlatformBuildResourceId);
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
+
+// get the collection of this AppPlatformBuildResource
+AppPlatformBuildCollection collection = appPlatformBuildService.GetAppPlatformBuilds();
 
 // invoke the operation
-AppPlatformBuildData data = new AppPlatformBuildData()
+string buildName = "mybuild";
+AppPlatformBuildData data = new AppPlatformBuildData
 {
-    Properties = new AppPlatformBuildProperties()
+    Properties = new AppPlatformBuildProperties
     {
         RelativePath = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-20210601-3ed9f4a2-986b-4bbd-b833-a42dccb2f777",
         Builder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/builders/default",
         AgentPool = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/agentPools/default",
         Env =
         {
-        ["environmentVariable"] = "test",
+        ["environmentVariable"] = "test"
         },
-        ResourceRequests = new AppPlatformBuildResourceRequirements()
+        ResourceRequests = new AppPlatformBuildResourceRequirements
         {
             Cpu = "1",
             Memory = "2Gi",
         },
     },
 };
-ArmOperation<AppPlatformBuildResource> lro = await appPlatformBuild.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformBuildResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, buildName, data);
 AppPlatformBuildResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

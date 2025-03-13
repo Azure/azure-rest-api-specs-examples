@@ -30,37 +30,40 @@ AppPlatformDeploymentCollection collection = appPlatformApp.GetAppPlatformDeploy
 
 // invoke the operation
 string deploymentName = "mydeployment";
-AppPlatformDeploymentData data = new AppPlatformDeploymentData()
+AppPlatformDeploymentData data = new AppPlatformDeploymentData
 {
-    Properties = new AppPlatformDeploymentProperties()
+    Properties = new AppPlatformDeploymentProperties
     {
-        Source = new SourceUploadedUserSourceInfo()
+        Source = new SourceUploadedUserSourceInfo
         {
             ArtifactSelector = "sub-module-1",
             RelativePath = "resources/a172cedcae47474b615c54d510a5d84a8dea3032e958587430b413538be3f333-2019082605-e3095339-1723-44b7-8b5e-31b1003978bc",
             Version = "1.0",
         },
-        DeploymentSettings = new AppPlatformDeploymentSettings()
+        DeploymentSettings = new AppPlatformDeploymentSettings
         {
-            ResourceRequests = new AppPlatformDeploymentResourceRequirements()
+            ResourceRequests = new AppPlatformDeploymentResourceRequirements
             {
                 Cpu = "1000m",
                 Memory = "3Gi",
             },
             EnvironmentVariables =
             {
-            ["env"] = "test",
+            ["env"] = "test"
             },
             AddonConfigs =
             {
-            ["ApplicationConfigurationService"] = new Dictionary<string, BinaryData>()
+            ["ApplicationConfigurationService"] = new Dictionary<string, BinaryData>
             {
-            ["patterns"] = BinaryData.FromObjectAsJson(new object[] { "mypattern" }),
-            },
+            ["patterns"] = BinaryData.FromObjectAsJson(new object[]
+            {
+            "mypattern"
+            })
+            }
             },
             LivenessProbe = new AppInstanceProbe(false)
             {
-                ProbeAction = new AppInstanceHttpGetAction()
+                ProbeAction = new AppInstanceHttpGetAction
                 {
                     Path = "/health",
                     Scheme = AppInstanceHttpSchemeType.Http,
@@ -71,7 +74,7 @@ AppPlatformDeploymentData data = new AppPlatformDeploymentData()
             },
             ReadinessProbe = new AppInstanceProbe(false)
             {
-                ProbeAction = new AppInstanceHttpGetAction()
+                ProbeAction = new AppInstanceHttpGetAction
                 {
                     Path = "/health",
                     Scheme = AppInstanceHttpSchemeType.Http,
@@ -80,11 +83,11 @@ AppPlatformDeploymentData data = new AppPlatformDeploymentData()
                 PeriodInSeconds = 10,
                 FailureThreshold = 3,
             },
-            StartupProbe = null,
+            StartupProbe = default,
             TerminationGracePeriodInSeconds = 30,
         },
     },
-    Sku = new AppPlatformSku()
+    Sku = new AppPlatformSku
     {
         Name = "S0",
         Tier = "Standard",

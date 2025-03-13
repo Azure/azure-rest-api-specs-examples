@@ -27,4 +27,4 @@ AppPlatformGatewayResource appPlatformGateway = client.GetAppPlatformGatewayReso
 // invoke the operation
 await appPlatformGateway.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

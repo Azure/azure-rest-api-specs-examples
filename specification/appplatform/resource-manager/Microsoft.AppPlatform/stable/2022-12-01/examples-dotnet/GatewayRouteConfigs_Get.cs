@@ -34,7 +34,7 @@ AppPlatformGatewayRouteConfigResource result = response.HasValue ? response.Valu
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

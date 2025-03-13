@@ -27,4 +27,4 @@ AppPlatformGatewayCustomDomainResource appPlatformGatewayCustomDomain = client.G
 // invoke the operation
 await appPlatformGatewayCustomDomain.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

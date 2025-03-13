@@ -27,4 +27,4 @@ AppPlatformCertificateResource appPlatformCertificate = client.GetAppPlatformCer
 // invoke the operation
 await appPlatformCertificate.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

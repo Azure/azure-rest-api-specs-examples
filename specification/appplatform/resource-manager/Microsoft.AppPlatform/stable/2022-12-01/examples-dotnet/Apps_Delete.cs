@@ -28,4 +28,4 @@ AppPlatformAppResource appPlatformApp = client.GetAppPlatformAppResource(appPlat
 // invoke the operation
 await appPlatformApp.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

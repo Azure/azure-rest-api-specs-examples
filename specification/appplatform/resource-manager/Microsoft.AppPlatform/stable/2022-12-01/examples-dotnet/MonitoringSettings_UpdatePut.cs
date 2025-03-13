@@ -24,9 +24,9 @@ ResourceIdentifier appPlatformMonitoringSettingResourceId = AppPlatformMonitorin
 AppPlatformMonitoringSettingResource appPlatformMonitoringSetting = client.GetAppPlatformMonitoringSettingResource(appPlatformMonitoringSettingResourceId);
 
 // invoke the operation
-AppPlatformMonitoringSettingData data = new AppPlatformMonitoringSettingData()
+AppPlatformMonitoringSettingData data = new AppPlatformMonitoringSettingData
 {
-    Properties = new AppPlatformMonitoringSettingProperties()
+    Properties = new AppPlatformMonitoringSettingProperties
     {
         IsTraceEnabled = true,
         AppInsightsInstrumentationKey = "00000000-0000-0000-0000-000000000000",

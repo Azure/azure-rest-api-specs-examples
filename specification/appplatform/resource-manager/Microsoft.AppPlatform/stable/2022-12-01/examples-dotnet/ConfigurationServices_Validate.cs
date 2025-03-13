@@ -25,15 +25,9 @@ ResourceIdentifier appPlatformConfigurationServiceResourceId = AppPlatformConfig
 AppPlatformConfigurationServiceResource appPlatformConfigurationService = client.GetAppPlatformConfigurationServiceResource(appPlatformConfigurationServiceResourceId);
 
 // invoke the operation
-AppPlatformConfigurationServiceSettings settings = new AppPlatformConfigurationServiceSettings()
+AppPlatformConfigurationServiceSettings settings = new AppPlatformConfigurationServiceSettings
 {
-    ConfigurationServiceGitRepositories =
-    {
-    new AppPlatformConfigurationServiceGitRepository("fake",new string[]
-    {
-    "app/dev"
-    },new Uri("https://github.com/fake-user/fake-repository"),"master")
-    },
+    ConfigurationServiceGitRepositories = { new AppPlatformConfigurationServiceGitRepository("fake", new string[] { "app/dev" }, new Uri("https://github.com/fake-user/fake-repository"), "master") },
 };
 ArmOperation<AppPlatformConfigurationServiceSettingsValidateResult> lro = await appPlatformConfigurationService.ValidateAsync(WaitUntil.Completed, settings);
 AppPlatformConfigurationServiceSettingsValidateResult result = lro.Value;

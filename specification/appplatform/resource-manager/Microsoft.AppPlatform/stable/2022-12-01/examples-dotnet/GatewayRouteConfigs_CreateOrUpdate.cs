@@ -29,29 +29,20 @@ AppPlatformGatewayRouteConfigCollection collection = appPlatformGateway.GetAppPl
 
 // invoke the operation
 string routeConfigName = "myRouteConfig";
-AppPlatformGatewayRouteConfigData data = new AppPlatformGatewayRouteConfigData()
+AppPlatformGatewayRouteConfigData data = new AppPlatformGatewayRouteConfigData
 {
-    Properties = new AppPlatformGatewayRouteConfigProperties()
+    Properties = new AppPlatformGatewayRouteConfigProperties
     {
         AppResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apps/myApp"),
         OpenApiUri = new Uri("https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json"),
         Protocol = AppPlatformGatewayRouteConfigProtocol.Https,
-        Routes =
-        {
-        new AppPlatformGatewayApiRoute()
+        Routes = {new AppPlatformGatewayApiRoute
         {
         Title = "myApp route config",
         IsSsoEnabled = true,
-        Predicates =
-        {
-        "Path=/api5/customer/**"
-        },
-        Filters =
-        {
-        "StripPrefix=2","RateLimit=1,1s"
-        },
-        }
-        },
+        Predicates = {"Path=/api5/customer/**"},
+        Filters = {"StripPrefix=2", "RateLimit=1,1s"},
+        }},
     },
 };
 ArmOperation<AppPlatformGatewayRouteConfigResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeConfigName, data);

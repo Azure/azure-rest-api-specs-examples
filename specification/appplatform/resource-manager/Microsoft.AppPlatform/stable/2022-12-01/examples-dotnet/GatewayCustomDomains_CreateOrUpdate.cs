@@ -28,7 +28,7 @@ AppPlatformGatewayCustomDomainCollection collection = appPlatformGateway.GetAppP
 
 // invoke the operation
 string domainName = "myDomainName";
-AppPlatformGatewayCustomDomainData data = new AppPlatformGatewayCustomDomainData()
+AppPlatformGatewayCustomDomainData data = new AppPlatformGatewayCustomDomainData
 {
     GatewayCustomDomainThumbprint = "*",
 };

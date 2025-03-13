@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.AppPlatform.Models;
 using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/BuildService_GetBuildService.json
@@ -14,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformServiceResource created on azure
-// for more information of creating AppPlatformServiceResource, please refer to the document of AppPlatformServiceResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
-ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
-
-// get the collection of this AppPlatformBuildServiceResource
-AppPlatformBuildServiceCollection collection = appPlatformService.GetAppPlatformBuildServices();
+string buildServiceName = "default";
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
 
 // invoke the operation
-string buildServiceName = "default";
-NullableResponse<AppPlatformBuildServiceResource> response = await collection.GetIfExistsAsync(buildServiceName);
-AppPlatformBuildServiceResource result = response.HasValue ? response.Value : null;
+AppPlatformBuildServiceResource result = await appPlatformBuildService.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AppPlatformBuildServiceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AppPlatformBuildServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

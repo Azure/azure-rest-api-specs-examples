@@ -24,17 +24,14 @@ ResourceIdentifier appPlatformConfigServerResourceId = AppPlatformConfigServerRe
 AppPlatformConfigServerResource appPlatformConfigServer = client.GetAppPlatformConfigServerResource(appPlatformConfigServerResourceId);
 
 // invoke the operation
-AppPlatformConfigServerData data = new AppPlatformConfigServerData()
+AppPlatformConfigServerData data = new AppPlatformConfigServerData
 {
-    Properties = new AppPlatformConfigServerProperties()
+    Properties = new AppPlatformConfigServerProperties
     {
         ConfigServerGitProperty = new AppPlatformConfigServerGitProperty(new Uri("https://github.com/fake-user/fake-repository.git"))
         {
             Label = "master",
-            SearchPaths =
-            {
-            "/"
-            },
+            SearchPaths = { "/" },
         },
     },
 };

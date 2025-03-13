@@ -33,7 +33,7 @@ AppPlatformGatewayCustomDomainResource result = response.HasValue ? response.Val
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

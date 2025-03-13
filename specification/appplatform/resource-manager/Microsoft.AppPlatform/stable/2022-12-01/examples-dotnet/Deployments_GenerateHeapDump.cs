@@ -26,11 +26,11 @@ ResourceIdentifier appPlatformDeploymentResourceId = AppPlatformDeploymentResour
 AppPlatformDeploymentResource appPlatformDeployment = client.GetAppPlatformDeploymentResource(appPlatformDeploymentResourceId);
 
 // invoke the operation
-ApplicationDiagnosticContent content = new ApplicationDiagnosticContent()
+ApplicationDiagnosticContent content = new ApplicationDiagnosticContent
 {
     AppInstance = "myappinstance",
     FilePath = "/byos/diagnose",
 };
 await appPlatformDeployment.GenerateHeapDumpAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

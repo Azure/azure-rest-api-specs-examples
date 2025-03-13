@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.AppPlatform.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/Services_Update.json
@@ -28,14 +27,14 @@ AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceReso
 AppPlatformServiceData data = new AppPlatformServiceData(new AzureLocation("eastus"))
 {
     Properties = new AppPlatformServiceProperties(),
-    Sku = new AppPlatformSku()
+    Sku = new AppPlatformSku
     {
         Name = "S0",
         Tier = "Standard",
     },
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<AppPlatformServiceResource> lro = await appPlatformService.UpdateAsync(WaitUntil.Completed, data);

@@ -30,9 +30,9 @@ AppPlatformServiceCollection collection = resourceGroupResource.GetAppPlatformSe
 string serviceName = "myservice";
 AppPlatformServiceData data = new AppPlatformServiceData(new AzureLocation("eastus"))
 {
-    Properties = new AppPlatformServiceProperties()
+    Properties = new AppPlatformServiceProperties
     {
-        NetworkProfile = new AppPlatformServiceNetworkProfile()
+        NetworkProfile = new AppPlatformServiceNetworkProfile
         {
             ServiceRuntimeSubnetId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/serviceRuntime"),
             AppSubnetId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/apps"),
@@ -43,14 +43,14 @@ AppPlatformServiceData data = new AppPlatformServiceData(new AzureLocation("east
         },
         IsLogStreamPublicEndpoint = true,
     },
-    Sku = new AppPlatformSku()
+    Sku = new AppPlatformSku
     {
         Name = "S0",
         Tier = "Standard",
     },
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<AppPlatformServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

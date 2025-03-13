@@ -26,12 +26,9 @@ ResourceIdentifier appPlatformAppResourceId = AppPlatformAppResource.CreateResou
 AppPlatformAppResource appPlatformApp = client.GetAppPlatformAppResource(appPlatformAppResourceId);
 
 // invoke the operation
-ActiveAppPlatformDeploymentsContent content = new ActiveAppPlatformDeploymentsContent()
+ActiveAppPlatformDeploymentsContent content = new ActiveAppPlatformDeploymentsContent
 {
-    ActiveDeploymentNames =
-    {
-    "default"
-    },
+    ActiveDeploymentNames = { "default" },
 };
 ArmOperation<AppPlatformAppResource> lro = await appPlatformApp.ActivateDeploymentsAsync(WaitUntil.Completed, content);
 AppPlatformAppResource result = lro.Value;

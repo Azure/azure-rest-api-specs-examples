@@ -27,4 +27,4 @@ AppPlatformApiPortalResource appPlatformApiPortal = client.GetAppPlatformApiPort
 // invoke the operation
 await appPlatformApiPortal.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

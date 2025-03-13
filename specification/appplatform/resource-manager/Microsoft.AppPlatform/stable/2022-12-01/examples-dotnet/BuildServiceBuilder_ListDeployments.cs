@@ -32,4 +32,4 @@ await foreach (ResourceIdentifier item in appPlatformBuilder.GetDeploymentsAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

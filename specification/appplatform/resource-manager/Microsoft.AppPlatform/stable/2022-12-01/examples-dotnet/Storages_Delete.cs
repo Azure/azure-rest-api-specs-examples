@@ -27,4 +27,4 @@ AppPlatformStorageResource appPlatformStorage = client.GetAppPlatformStorageReso
 // invoke the operation
 await appPlatformStorage.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

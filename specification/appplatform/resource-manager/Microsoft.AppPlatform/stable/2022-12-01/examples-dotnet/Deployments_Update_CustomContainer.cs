@@ -26,25 +26,19 @@ ResourceIdentifier appPlatformDeploymentResourceId = AppPlatformDeploymentResour
 AppPlatformDeploymentResource appPlatformDeployment = client.GetAppPlatformDeploymentResource(appPlatformDeploymentResourceId);
 
 // invoke the operation
-AppPlatformDeploymentData data = new AppPlatformDeploymentData()
+AppPlatformDeploymentData data = new AppPlatformDeploymentData
 {
-    Properties = new AppPlatformDeploymentProperties()
+    Properties = new AppPlatformDeploymentProperties
     {
-        Source = new AppPlatformCustomContainerUserSourceInfo()
+        Source = new AppPlatformCustomContainerUserSourceInfo
         {
-            CustomContainer = new AppPlatformCustomContainer()
+            CustomContainer = new AppPlatformCustomContainer
             {
                 Server = "mynewacr.azurecr.io",
                 ContainerImage = "myNewContainerImage:v1",
-                Command =
-                {
-                "/bin/sh"
-                },
-                Args =
-                {
-                "-c","while true; do echo hello; sleep 10;done"
-                },
-                ImageRegistryCredential = new AppPlatformImageRegistryCredential()
+                Command = { "/bin/sh" },
+                Args = { "-c", "while true; do echo hello; sleep 10;done" },
+                ImageRegistryCredential = new AppPlatformImageRegistryCredential
                 {
                     Username = "myNewUsername",
                     Password = "<myNewPassword>",

@@ -25,7 +25,7 @@ ResourceIdentifier appPlatformCertificateResourceId = AppPlatformCertificateReso
 AppPlatformCertificateResource appPlatformCertificate = client.GetAppPlatformCertificateResource(appPlatformCertificateResourceId);
 
 // invoke the operation
-AppPlatformCertificateData data = new AppPlatformCertificateData()
+AppPlatformCertificateData data = new AppPlatformCertificateData
 {
     Properties = new AppPlatformKeyVaultCertificateProperties(new Uri("https://myvault.vault.azure.net"), "mycert")
     {

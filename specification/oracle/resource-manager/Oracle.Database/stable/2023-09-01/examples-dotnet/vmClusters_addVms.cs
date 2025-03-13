@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OracleDatabase.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
 // Generated from example definition: specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/vmClusters_addVms.json
@@ -25,10 +24,7 @@ ResourceIdentifier cloudVmClusterResourceId = CloudVmClusterResource.CreateResou
 CloudVmClusterResource cloudVmCluster = client.GetCloudVmClusterResource(cloudVmClusterResourceId);
 
 // invoke the operation
-CloudVmClusterDBNodeContent content = new CloudVmClusterDBNodeContent(new ResourceIdentifier[]
-{
-new ResourceIdentifier("ocid1..aaaa"),new ResourceIdentifier("ocid1..aaaaaa")
-});
+CloudVmClusterDBNodeContent content = new CloudVmClusterDBNodeContent(new ResourceIdentifier[] { new ResourceIdentifier("ocid1..aaaa"), new ResourceIdentifier("ocid1..aaaaaa") });
 ArmOperation<CloudVmClusterResource> lro = await cloudVmCluster.AddVmsAsync(WaitUntil.Completed, content);
 CloudVmClusterResource result = lro.Value;
 

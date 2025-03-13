@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OracleDatabase.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
 // Generated from example definition: specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/autonomousDatabase_failover.json
@@ -25,7 +24,7 @@ ResourceIdentifier autonomousDatabaseResourceId = AutonomousDatabaseResource.Cre
 AutonomousDatabaseResource autonomousDatabase = client.GetAutonomousDatabaseResource(autonomousDatabaseResourceId);
 
 // invoke the operation
-AutonomousDatabaseActionContent content = new AutonomousDatabaseActionContent()
+AutonomousDatabaseActionContent content = new AutonomousDatabaseActionContent
 {
     PeerDBId = "peerDbId",
 };

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OracleDatabase.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
 // Generated from example definition: specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/vmClusters_delete.json
@@ -27,4 +26,4 @@ CloudVmClusterResource cloudVmCluster = client.GetCloudVmClusterResource(cloudVm
 // invoke the operation
 await cloudVmCluster.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

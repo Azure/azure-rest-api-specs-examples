@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OracleDatabase.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
 // Generated from example definition: specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/vmClusters_listPrivateIpAddresses.json
@@ -31,4 +30,4 @@ await foreach (PrivateIPAddressResult item in cloudVmCluster.GetPrivateIPAddress
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

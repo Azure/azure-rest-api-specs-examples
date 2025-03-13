@@ -28,10 +28,7 @@ CloudExadataInfrastructureCollection collection = resourceGroupResource.GetCloud
 
 // invoke the operation
 string cloudexadatainfrastructurename = "infra1";
-CloudExadataInfrastructureData data = new CloudExadataInfrastructureData(new AzureLocation("eastus"), new string[]
-{
-"1"
-})
+CloudExadataInfrastructureData data = new CloudExadataInfrastructureData(new AzureLocation("eastus"), new string[] { "1" })
 {
     Properties = new CloudExadataInfrastructureProperties("EXADATA.X9M", "infra 1")
     {
@@ -40,7 +37,7 @@ CloudExadataInfrastructureData data = new CloudExadataInfrastructureData(new Azu
     },
     Tags =
     {
-    ["tagK1"] = "tagV1",
+    ["tagK1"] = "tagV1"
     },
 };
 ArmOperation<CloudExadataInfrastructureResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cloudexadatainfrastructurename, data);

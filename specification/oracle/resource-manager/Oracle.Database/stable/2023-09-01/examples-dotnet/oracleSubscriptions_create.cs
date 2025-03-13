@@ -23,7 +23,7 @@ ResourceIdentifier oracleSubscriptionResourceId = OracleSubscriptionResource.Cre
 OracleSubscriptionResource oracleSubscription = client.GetOracleSubscriptionResource(oracleSubscriptionResourceId);
 
 // invoke the operation
-OracleSubscriptionData data = new OracleSubscriptionData()
+OracleSubscriptionData data = new OracleSubscriptionData
 {
     Properties = new OracleSubscriptionProperties(),
     Plan = new ArmPlan("plan1", "publisher1", "product1")

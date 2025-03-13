@@ -27,4 +27,4 @@ CloudVmClusterVirtualNetworkAddressResource cloudVmClusterVirtualNetworkAddress 
 // invoke the operation
 await cloudVmClusterVirtualNetworkAddress.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

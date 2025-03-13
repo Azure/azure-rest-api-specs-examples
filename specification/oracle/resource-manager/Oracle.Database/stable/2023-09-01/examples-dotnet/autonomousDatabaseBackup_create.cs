@@ -28,9 +28,9 @@ AutonomousDatabaseBackupCollection collection = autonomousDatabase.GetAutonomous
 
 // invoke the operation
 string adbbackupid = "1711644130";
-AutonomousDatabaseBackupData data = new AutonomousDatabaseBackupData()
+AutonomousDatabaseBackupData data = new AutonomousDatabaseBackupData
 {
-    Properties = new AutonomousDatabaseBackupProperties()
+    Properties = new AutonomousDatabaseBackupProperties
     {
         DisplayName = "Nightly Backup",
         RetentionPeriodInDays = 365,

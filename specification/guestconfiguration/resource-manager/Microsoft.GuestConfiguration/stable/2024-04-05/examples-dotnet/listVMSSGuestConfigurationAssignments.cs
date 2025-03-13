@@ -15,15 +15,12 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this GuestConfigurationVmssAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmssName = "myVMSSName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}", subscriptionId, resourceGroupName, vmssName));
-GuestConfigurationVmssAssignmentCollection collection = client.GetGuestConfigurationVmssAssignments(scopeId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}";
+GuestConfigurationVmssAssignmentCollection collection = client.GetGuestConfigurationVmssAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (GuestConfigurationVmssAssignmentResource item in collection.GetAllAsync())
@@ -35,4 +32,4 @@ await foreach (GuestConfigurationVmssAssignmentResource item in collection.GetAl
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

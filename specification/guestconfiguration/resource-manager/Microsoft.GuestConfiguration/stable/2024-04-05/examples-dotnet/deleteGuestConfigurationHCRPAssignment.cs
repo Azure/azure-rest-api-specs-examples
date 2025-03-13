@@ -27,4 +27,4 @@ GuestConfigurationHcrpAssignmentResource guestConfigurationHcrpAssignment = clie
 // invoke the operation
 await guestConfigurationHcrpAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,30 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this GuestConfigurationVmAssignmentResource
+// this example assumes you already have this GuestConfigurationVmAssignmentResource created on azure
+// for more information of creating GuestConfigurationVmAssignmentResource, please refer to the document of GuestConfigurationVmAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmName = "myVMName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", subscriptionId, resourceGroupName, vmName));
-GuestConfigurationVmAssignmentCollection collection = client.GetGuestConfigurationVmAssignments(scopeId);
+string guestConfigurationAssignmentName = "SecureProtocol";
+ResourceIdentifier guestConfigurationVmAssignmentResourceId = GuestConfigurationVmAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName, guestConfigurationAssignmentName);
+GuestConfigurationVmAssignmentResource guestConfigurationVmAssignment = client.GetGuestConfigurationVmAssignmentResource(guestConfigurationVmAssignmentResourceId);
 
 // invoke the operation
-string guestConfigurationAssignmentName = "SecureProtocol";
-NullableResponse<GuestConfigurationVmAssignmentResource> response = await collection.GetIfExistsAsync(guestConfigurationAssignmentName);
-GuestConfigurationVmAssignmentResource result = response.HasValue ? response.Value : null;
+GuestConfigurationVmAssignmentResource result = await guestConfigurationVmAssignment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    GuestConfigurationAssignmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GuestConfigurationAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

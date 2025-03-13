@@ -30,4 +30,4 @@ await foreach (GuestConfigurationAssignmentReport item in guestConfigurationHcrp
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

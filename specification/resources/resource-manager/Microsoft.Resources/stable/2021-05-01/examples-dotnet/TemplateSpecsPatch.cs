@@ -24,11 +24,11 @@ ResourceIdentifier templateSpecResourceId = TemplateSpecResource.CreateResourceI
 TemplateSpecResource templateSpec = client.GetTemplateSpecResource(templateSpecResourceId);
 
 // invoke the operation
-TemplateSpecPatch patch = new TemplateSpecPatch()
+TemplateSpecPatch patch = new TemplateSpecPatch
 {
     Tags =
     {
-    ["myTag"] = "My Value",
+    ["myTag"] = "My Value"
     },
 };
 TemplateSpecResource result = await templateSpec.UpdateAsync(patch);

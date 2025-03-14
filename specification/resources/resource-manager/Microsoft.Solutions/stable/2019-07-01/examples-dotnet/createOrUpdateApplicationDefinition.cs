@@ -27,10 +27,7 @@ ArmApplicationDefinitionResource armApplicationDefinition = client.GetArmApplica
 ArmApplicationDefinitionData data = new ArmApplicationDefinitionData(new AzureLocation("East US 2"), ArmApplicationLockLevel.None)
 {
     DisplayName = "myManagedApplicationDef",
-    Authorizations =
-    {
-    new ArmApplicationAuthorization(Guid.Parse("validprincipalguid"),"validroleguid")
-    },
+    Authorizations = { new ArmApplicationAuthorization(Guid.Parse("validprincipalguid"), "validroleguid") },
     Description = "myManagedApplicationDef description",
     PackageFileUri = new Uri("https://path/to/packagezipfile"),
 };

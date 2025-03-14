@@ -24,11 +24,9 @@ ResourceIdentifier armDeploymentScriptResourceId = ArmDeploymentScriptResource.C
 ArmDeploymentScriptResource armDeploymentScript = client.GetArmDeploymentScriptResource(armDeploymentScriptResourceId);
 
 // invoke the operation
-ArmDeploymentScriptPatch patch = new ArmDeploymentScriptPatch()
+ArmDeploymentScriptPatch patch = new ArmDeploymentScriptPatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmDeploymentScriptResource result = await armDeploymentScript.UpdateAsync(patch);
 

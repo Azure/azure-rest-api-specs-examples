@@ -22,9 +22,9 @@ ResourceIdentifier tenantDataBoundaryResourceId = TenantDataBoundaryResource.Cre
 TenantDataBoundaryResource tenantDataBoundary = client.GetTenantDataBoundaryResource(tenantDataBoundaryResourceId);
 
 // invoke the operation
-DataBoundaryData data = new DataBoundaryData()
+DataBoundaryData data = new DataBoundaryData
 {
-    Properties = new DataBoundaryProperties()
+    Properties = new DataBoundaryProperties
     {
         DataBoundary = DataBoundaryRegion.EU,
     },

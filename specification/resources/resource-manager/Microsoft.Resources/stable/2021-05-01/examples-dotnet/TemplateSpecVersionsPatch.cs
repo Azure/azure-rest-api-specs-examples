@@ -25,11 +25,11 @@ ResourceIdentifier templateSpecVersionResourceId = TemplateSpecVersionResource.C
 TemplateSpecVersionResource templateSpecVersion0 = client.GetTemplateSpecVersionResource(templateSpecVersionResourceId);
 
 // invoke the operation
-TemplateSpecVersionPatch patch = new TemplateSpecVersionPatch()
+TemplateSpecVersionPatch patch = new TemplateSpecVersionPatch
 {
     Tags =
     {
-    ["myTag"] = "My Value",
+    ["myTag"] = "My Value"
     },
 };
 TemplateSpecVersionResource result = await templateSpecVersion0.UpdateAsync(patch);

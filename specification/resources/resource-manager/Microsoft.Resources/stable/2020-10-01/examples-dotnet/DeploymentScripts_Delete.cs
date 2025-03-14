@@ -26,4 +26,4 @@ ArmDeploymentScriptResource armDeploymentScript = client.GetArmDeploymentScriptR
 // invoke the operation
 await armDeploymentScript.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

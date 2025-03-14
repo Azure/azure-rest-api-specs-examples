@@ -15,37 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this GuestConfigurationVMwarevSphereAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmName = "myVMName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{2}", subscriptionId, resourceGroupName, vmName));
-GuestConfigurationVMwarevSphereAssignmentCollection collection = client.GetGuestConfigurationVMwarevSphereAssignments(scopeId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}";
+GuestConfigurationVMwarevSphereAssignmentCollection collection = client.GetGuestConfigurationVMwarevSphereAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation
 string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
-GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
+GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData
 {
-    Properties = new GuestConfigurationAssignmentProperties()
+    Properties = new GuestConfigurationAssignmentProperties
     {
-        GuestConfiguration = new GuestConfigurationNavigation()
+        GuestConfiguration = new GuestConfigurationNavigation
         {
             Name = "NotInstalledApplicationForWindows",
             Version = "1.0.0.0",
             ContentUri = new Uri("https://thisisfake/pacakge"),
             ContentHash = "123contenthash",
             AssignmentType = GuestConfigurationAssignmentType.ApplyAndAutoCorrect,
-            ConfigurationParameters =
-            {
-            new GuestConfigurationParameter()
+            ConfigurationParameters = {new GuestConfigurationParameter
             {
             Name = "[InstalledApplication]NotInstalledApplicationResource1;Name",
             Value = "NotePad,sql",
-            }
-            },
+            }},
         },
         Context = "Azure policy",
     },

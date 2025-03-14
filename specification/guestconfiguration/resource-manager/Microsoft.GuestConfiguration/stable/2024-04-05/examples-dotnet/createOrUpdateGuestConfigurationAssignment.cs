@@ -15,23 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this GuestConfigurationVmAssignmentResource
+// this example assumes you already have this GuestConfigurationVmAssignmentResource created on azure
+// for more information of creating GuestConfigurationVmAssignmentResource, please refer to the document of GuestConfigurationVmAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmName = "myVMName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", subscriptionId, resourceGroupName, vmName));
-GuestConfigurationVmAssignmentCollection collection = client.GetGuestConfigurationVmAssignments(scopeId);
+string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
+ResourceIdentifier guestConfigurationVmAssignmentResourceId = GuestConfigurationVmAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName, guestConfigurationAssignmentName);
+GuestConfigurationVmAssignmentResource guestConfigurationVmAssignment = client.GetGuestConfigurationVmAssignmentResource(guestConfigurationVmAssignmentResourceId);
 
 // invoke the operation
-string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
-GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
+GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData
 {
-    Properties = new GuestConfigurationAssignmentProperties()
+    Properties = new GuestConfigurationAssignmentProperties
     {
-        GuestConfiguration = new GuestConfigurationNavigation()
+        GuestConfiguration = new GuestConfigurationNavigation
         {
             Name = "NotInstalledApplicationForWindows",
             Version = "1.0.0.3",
@@ -39,21 +37,18 @@ GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
             ContentHash = "123contenthash",
             ContentManagedIdentity = "test_identity",
             AssignmentType = GuestConfigurationAssignmentType.ApplyAndAutoCorrect,
-            ConfigurationParameters =
-            {
-            new GuestConfigurationParameter()
+            ConfigurationParameters = {new GuestConfigurationParameter
             {
             Name = "[InstalledApplication]NotInstalledApplicationResource1;Name",
             Value = "NotePad,sql",
-            }
-            },
+            }},
         },
         Context = "Azure policy",
     },
     Name = "NotInstalledApplicationForWindows",
     Location = new AzureLocation("westcentralus"),
 };
-ArmOperation<GuestConfigurationVmAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, guestConfigurationAssignmentName, data);
+ArmOperation<GuestConfigurationVmAssignmentResource> lro = await guestConfigurationVmAssignment.UpdateAsync(WaitUntil.Completed, data);
 GuestConfigurationVmAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,42 +15,38 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GuestConfigurationHcrpAssignmentResource created on azure
-// for more information of creating GuestConfigurationHcrpAssignmentResource, please refer to the document of GuestConfigurationHcrpAssignmentResource
+// get the collection of this GuestConfigurationHcrpAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
-ResourceIdentifier guestConfigurationHcrpAssignmentResourceId = GuestConfigurationHcrpAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, guestConfigurationAssignmentName);
-GuestConfigurationHcrpAssignmentResource guestConfigurationHcrpAssignment = client.GetGuestConfigurationHcrpAssignmentResource(guestConfigurationHcrpAssignmentResourceId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}";
+GuestConfigurationHcrpAssignmentCollection collection = client.GetGuestConfigurationHcrpAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation
-GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
+string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
+GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData
 {
-    Properties = new GuestConfigurationAssignmentProperties()
+    Properties = new GuestConfigurationAssignmentProperties
     {
-        GuestConfiguration = new GuestConfigurationNavigation()
+        GuestConfiguration = new GuestConfigurationNavigation
         {
             Name = "NotInstalledApplicationForWindows",
             Version = "1.0.0.3",
             ContentUri = new Uri("https://thisisfake/pacakge"),
             ContentHash = "123contenthash",
             AssignmentType = GuestConfigurationAssignmentType.ApplyAndAutoCorrect,
-            ConfigurationParameters =
-            {
-            new GuestConfigurationParameter()
+            ConfigurationParameters = {new GuestConfigurationParameter
             {
             Name = "[InstalledApplication]NotInstalledApplicationResource1;Name",
             Value = "NotePad,sql",
-            }
-            },
+            }},
         },
         Context = "Azure policy",
     },
     Name = "NotInstalledApplicationForWindows",
     Location = new AzureLocation("westcentralus"),
 };
-ArmOperation<GuestConfigurationHcrpAssignmentResource> lro = await guestConfigurationHcrpAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<GuestConfigurationHcrpAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, guestConfigurationAssignmentName, data);
 GuestConfigurationHcrpAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

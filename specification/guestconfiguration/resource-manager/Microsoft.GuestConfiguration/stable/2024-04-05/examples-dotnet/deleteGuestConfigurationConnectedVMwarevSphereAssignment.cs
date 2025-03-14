@@ -27,4 +27,4 @@ GuestConfigurationVMwarevSphereAssignmentResource guestConfigurationVMwarevSpher
 // invoke the operation
 await guestConfigurationVMwarevSphereAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

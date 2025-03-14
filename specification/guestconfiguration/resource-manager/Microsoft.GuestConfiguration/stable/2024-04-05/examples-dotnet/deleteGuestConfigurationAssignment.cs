@@ -27,4 +27,4 @@ GuestConfigurationVmAssignmentResource guestConfigurationVmAssignment = client.G
 // invoke the operation
 await guestConfigurationVmAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

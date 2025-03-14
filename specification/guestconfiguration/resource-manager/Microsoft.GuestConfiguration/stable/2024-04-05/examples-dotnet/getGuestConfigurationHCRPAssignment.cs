@@ -15,20 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GuestConfigurationHcrpAssignmentResource created on azure
-// for more information of creating GuestConfigurationHcrpAssignmentResource, please refer to the document of GuestConfigurationHcrpAssignmentResource
+// get the collection of this GuestConfigurationHcrpAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-string guestConfigurationAssignmentName = "SecureProtocol";
-ResourceIdentifier guestConfigurationHcrpAssignmentResourceId = GuestConfigurationHcrpAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, guestConfigurationAssignmentName);
-GuestConfigurationHcrpAssignmentResource guestConfigurationHcrpAssignment = client.GetGuestConfigurationHcrpAssignmentResource(guestConfigurationHcrpAssignmentResourceId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}";
+GuestConfigurationHcrpAssignmentCollection collection = client.GetGuestConfigurationHcrpAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation
-GuestConfigurationHcrpAssignmentResource result = await guestConfigurationHcrpAssignment.GetAsync();
+string guestConfigurationAssignmentName = "SecureProtocol";
+NullableResponse<GuestConfigurationHcrpAssignmentResource> response = await collection.GetIfExistsAsync(guestConfigurationAssignmentName);
+GuestConfigurationHcrpAssignmentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GuestConfigurationAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GuestConfigurationAssignmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

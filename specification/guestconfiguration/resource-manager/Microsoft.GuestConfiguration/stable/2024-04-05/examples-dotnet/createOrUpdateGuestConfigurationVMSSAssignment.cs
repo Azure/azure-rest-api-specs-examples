@@ -25,11 +25,11 @@ ResourceIdentifier guestConfigurationVmssAssignmentResourceId = GuestConfigurati
 GuestConfigurationVmssAssignmentResource guestConfigurationVmssAssignment = client.GetGuestConfigurationVmssAssignmentResource(guestConfigurationVmssAssignmentResourceId);
 
 // invoke the operation
-GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
+GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData
 {
-    Properties = new GuestConfigurationAssignmentProperties()
+    Properties = new GuestConfigurationAssignmentProperties
     {
-        GuestConfiguration = new GuestConfigurationNavigation()
+        GuestConfiguration = new GuestConfigurationNavigation
         {
             Name = "NotInstalledApplicationForWindows",
             Version = "1.0.0.3",
@@ -37,14 +37,11 @@ GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
             ContentHash = "123contenthash",
             ContentManagedIdentity = "test_identity",
             AssignmentType = GuestConfigurationAssignmentType.ApplyAndAutoCorrect,
-            ConfigurationParameters =
-            {
-            new GuestConfigurationParameter()
+            ConfigurationParameters = {new GuestConfigurationParameter
             {
             Name = "[InstalledApplication]NotInstalledApplicationResource1;Name",
             Value = "NotePad,sql",
-            }
-            },
+            }},
         },
         Context = "Azure policy",
     },

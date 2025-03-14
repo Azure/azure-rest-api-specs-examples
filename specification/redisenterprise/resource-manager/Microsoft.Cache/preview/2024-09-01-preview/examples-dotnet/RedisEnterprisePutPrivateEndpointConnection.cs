@@ -25,9 +25,9 @@ ResourceIdentifier redisEnterprisePrivateEndpointConnectionResourceId = RedisEnt
 RedisEnterprisePrivateEndpointConnectionResource redisEnterprisePrivateEndpointConnection = client.GetRedisEnterprisePrivateEndpointConnectionResource(redisEnterprisePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-RedisEnterprisePrivateEndpointConnectionData data = new RedisEnterprisePrivateEndpointConnectionData()
+RedisEnterprisePrivateEndpointConnectionData data = new RedisEnterprisePrivateEndpointConnectionData
 {
-    ConnectionState = new RedisEnterprisePrivateLinkServiceConnectionState()
+    ConnectionState = new RedisEnterprisePrivateLinkServiceConnectionState
     {
         Status = RedisEnterprisePrivateEndpointServiceConnectionStatus.Approved,
         Description = "Auto-Approved",

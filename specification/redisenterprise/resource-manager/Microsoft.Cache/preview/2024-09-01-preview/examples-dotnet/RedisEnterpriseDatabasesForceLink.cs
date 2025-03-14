@@ -27,14 +27,15 @@ RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpr
 // invoke the operation
 ForceLinkContent content = new ForceLinkContent("groupName", new RedisEnterpriseLinkedDatabase[]
 {
-new RedisEnterpriseLinkedDatabase()
+new RedisEnterpriseLinkedDatabase
 {
 Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
-},new RedisEnterpriseLinkedDatabase()
+},
+new RedisEnterpriseLinkedDatabase
 {
 Id = new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"),
 }
 });
 await redisEnterpriseDatabase.ForceLinkToReplicationGroupAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

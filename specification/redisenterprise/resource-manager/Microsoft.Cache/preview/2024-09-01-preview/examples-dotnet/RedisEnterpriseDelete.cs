@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RedisEnterprise.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RedisEnterprise;
 
 // Generated from example definition: specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/examples/RedisEnterpriseDelete.json
@@ -27,4 +26,4 @@ RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpris
 // invoke the operation
 await redisEnterpriseCluster.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

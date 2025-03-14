@@ -28,27 +28,24 @@ RedisEnterpriseDatabaseCollection collection = redisEnterpriseCluster.GetRedisEn
 
 // invoke the operation
 string databaseName = "default";
-RedisEnterpriseDatabaseData data = new RedisEnterpriseDatabaseData()
+RedisEnterpriseDatabaseData data = new RedisEnterpriseDatabaseData
 {
     ClientProtocol = RedisEnterpriseClientProtocol.Encrypted,
     Port = 10000,
     ClusteringPolicy = RedisEnterpriseClusteringPolicy.EnterpriseCluster,
     EvictionPolicy = RedisEnterpriseEvictionPolicy.AllKeysLru,
-    Persistence = new RedisPersistenceSettings()
+    Persistence = new RedisPersistenceSettings
     {
         IsAofEnabled = true,
         AofFrequency = PersistenceSettingAofFrequency.OneSecond,
     },
-    Modules =
-    {
-    new RedisEnterpriseModule("RedisBloom")
+    Modules = {new RedisEnterpriseModule("RedisBloom")
     {
     Args = "ERROR_RATE 0.00 INITIAL_SIZE 400",
-    },new RedisEnterpriseModule("RedisTimeSeries")
+    }, new RedisEnterpriseModule("RedisTimeSeries")
     {
     Args = "RETENTION_POLICY 20",
-    },new RedisEnterpriseModule("RediSearch")
-    },
+    }, new RedisEnterpriseModule("RediSearch")},
     DeferUpgrade = DeferUpgradeSetting.NotDeferred,
     AccessKeysAuthentication = AccessKeysAuthentication.Enabled,
 };

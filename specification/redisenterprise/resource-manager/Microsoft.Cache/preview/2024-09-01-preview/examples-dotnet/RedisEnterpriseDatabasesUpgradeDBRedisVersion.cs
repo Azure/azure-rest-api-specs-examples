@@ -27,4 +27,4 @@ RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpr
 // invoke the operation
 await redisEnterpriseDatabase.UpgradeDBRedisVersionAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -25,13 +25,10 @@ ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseRe
 RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
 
 // invoke the operation
-FlushRedisEnterpriseDatabaseContent content = new FlushRedisEnterpriseDatabaseContent()
+FlushRedisEnterpriseDatabaseContent content = new FlushRedisEnterpriseDatabaseContent
 {
-    Ids =
-    {
-    new ResourceIdentifier("/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f2/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default")
-    },
+    Ids = { new ResourceIdentifier("/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f2/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default") },
 };
 await redisEnterpriseDatabase.FlushAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

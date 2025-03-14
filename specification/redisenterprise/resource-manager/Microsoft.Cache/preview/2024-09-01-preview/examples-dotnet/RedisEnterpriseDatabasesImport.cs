@@ -25,10 +25,7 @@ ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseRe
 RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
 
 // invoke the operation
-ImportRedisEnterpriseDatabaseContent content = new ImportRedisEnterpriseDatabaseContent(new Uri[]
-{
-new Uri("https://contosostorage.blob.core.window.net/urltoBlobFile1?sasKeyParameters"),new Uri("https://contosostorage.blob.core.window.net/urltoBlobFile2?sasKeyParameters")
-});
+ImportRedisEnterpriseDatabaseContent content = new ImportRedisEnterpriseDatabaseContent(new Uri[] { new Uri("https://contosostorage.blob.core.window.net/urltoBlobFile1?sasKeyParameters"), new Uri("https://contosostorage.blob.core.window.net/urltoBlobFile2?sasKeyParameters") });
 await redisEnterpriseDatabase.ImportAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

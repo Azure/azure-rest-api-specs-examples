@@ -28,4 +28,4 @@ RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpr
 ExportRedisEnterpriseDatabaseContent content = new ExportRedisEnterpriseDatabaseContent(new Uri("https://contosostorage.blob.core.window.net/urlToBlobContainer?sasKeyParameters"));
 await redisEnterpriseDatabase.ExportAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

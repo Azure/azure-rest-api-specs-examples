@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RedisEnterprise.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RedisEnterprise;
 
 // Generated from example definition: specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/examples/RedisEnterpriseListPrivateLinkResources.json
@@ -30,4 +29,4 @@ await foreach (RedisEnterprisePrivateLinkResource item in redisEnterpriseCluster
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

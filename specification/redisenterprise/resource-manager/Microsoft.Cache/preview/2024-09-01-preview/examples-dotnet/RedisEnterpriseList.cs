@@ -32,4 +32,4 @@ await foreach (RedisEnterpriseClusterResource item in subscriptionResource.GetRe
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

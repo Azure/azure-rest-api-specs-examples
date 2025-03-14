@@ -27,4 +27,4 @@ RedisEnterprisePrivateEndpointConnectionResource redisEnterprisePrivateEndpointC
 // invoke the operation
 await redisEnterprisePrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

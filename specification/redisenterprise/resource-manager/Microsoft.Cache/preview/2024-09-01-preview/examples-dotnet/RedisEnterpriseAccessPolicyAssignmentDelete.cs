@@ -27,4 +27,4 @@ AccessPolicyAssignmentResource accessPolicyAssignment = client.GetAccessPolicyAs
 // invoke the operation
 await accessPolicyAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

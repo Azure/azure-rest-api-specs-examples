@@ -5153,3 +5153,4 @@ id,name,language,tag,package,version,date_epoch,date
 5152,"Azure.ResourceManager.DefenderEasm,1.0.0-beta.3",dotnet,Azure.ResourceManager.DefenderEasm_1.0.0-beta.3,Azure.ResourceManager.DefenderEasm,1.0.0-beta.3,1741929375,03/14/2025
 5153,"Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.2",dotnet,Azure.ResourceManager.CosmosDBForPostgreSql_1.1.0-beta.2,Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.2,1741929356,03/14/2025
 5154,"Azure.ResourceManager.DataMigration,1.0.0-beta.5",dotnet,Azure.ResourceManager.DataMigration_1.0.0-beta.5,Azure.ResourceManager.DataMigration,1.0.0-beta.5,1741929311,03/14/2025
+5155,"Azure.ResourceManager.DataShare,1.1.1",dotnet,Azure.ResourceManager.DataShare_1.1.1,Azure.ResourceManager.DataShare,1.1.1,1741929301,03/14/2025

@@ -31,7 +31,8 @@ new ClusterLibrary(new ClusterPyPILibraryProperties("requests")
 {
 Version = "2.31.0",
 Remarks = "PyPi packages.",
-}),new ClusterLibrary(new ClusterMavenLibraryProperties("org.apache.flink","flink-connector-kafka")
+}),
+new ClusterLibrary(new ClusterMavenLibraryProperties("org.apache.flink", "flink-connector-kafka")
 {
 Version = "3.0.2-1.18",
 Remarks = "Maven packages.",
@@ -39,4 +40,4 @@ Remarks = "Maven packages.",
 }));
 await hdInsightCluster.ManageLibrariesClusterLibraryAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

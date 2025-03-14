@@ -32,45 +32,27 @@ HDInsightClusterData data = new HDInsightClusterData(new AzureLocation("West US 
 {
     Properties = new HDInsightClusterProperties("ranger", new ClusterComputeProfile(new ClusterComputeNodeProfile[]
 {
-new ClusterComputeNodeProfile("head","Standard_D3_v2",2)
+new ClusterComputeNodeProfile("head", "Standard_D3_v2", 2)
 })
     {
-        AvailabilityZones =
-        {
-        "1","2","3"
-        },
-    }, new ClusterProfile("0.0.1", "2.2.3", new AuthorizationProfile()
+        AvailabilityZones = { "1", "2", "3" },
+    }, new ClusterProfile("0.0.1", "2.2.3", new AuthorizationProfile
     {
-        UserIds =
-        {
-        "testuser1","testuser2"
-        },
+        UserIds = { "testuser1", "testuser2" },
     })
     {
-        IdentityList =
+        IdentityList = { new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster, new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"), "de91f1d8-767f-460a-ac11-3cf103f74b34", "40491351-c240-4042-91e0-f644a1d2b441") },
+        RangerProfile = new RangerProfile(new RangerAdminSpec(new string[] { "testuser1@contoso.com", "testuser2@contoso.com" }, new RangerAdminSpecDatabase("testsqlserver.database.windows.net", "testdb")
         {
-        new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster,new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"),"de91f1d8-767f-460a-ac11-3cf103f74b34","40491351-c240-4042-91e0-f644a1d2b441")
-        },
-        RangerProfile = new RangerProfile(new RangerAdminSpec(new string[]
-{
-"testuser1@contoso.com","testuser2@contoso.com"
-}, new RangerAdminSpecDatabase("testsqlserver.database.windows.net", "testdb")
-{
-    PasswordSecretRef = "https://testkv.vault.azure.net/secrets/mysecret/5df6584d9c25418c8d900240aa6c3452",
-    Username = "admin",
-}), new RangerUsersyncSpec()
-{
-    IsEnabled = true,
-    Groups =
-{
-"0a53828f-36c9-44c3-be3d-99a7fce977ad","13be6971-79db-4f33-9d41-b25589ca25ac"
-},
-    Mode = RangerUsersyncMode.Automatic,
-    Users =
-{
-"testuser1@contoso.com","testuser2@contoso.com"
-},
-})
+            PasswordSecretRef = "https://testkv.vault.azure.net/secrets/mysecret/5df6584d9c25418c8d900240aa6c3452",
+            Username = "admin",
+        }), new RangerUsersyncSpec
+        {
+            IsEnabled = true,
+            Groups = { "0a53828f-36c9-44c3-be3d-99a7fce977ad", "13be6971-79db-4f33-9d41-b25589ca25ac" },
+            Mode = RangerUsersyncMode.Automatic,
+            Users = { "testuser1@contoso.com", "testuser2@contoso.com" },
+        })
         {
             RangerAuditStorageAccount = "https://teststorage.blob.core.windows.net/testblob",
         },

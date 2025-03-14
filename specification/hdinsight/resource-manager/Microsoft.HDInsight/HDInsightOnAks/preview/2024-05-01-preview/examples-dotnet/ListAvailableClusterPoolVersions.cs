@@ -29,4 +29,4 @@ await foreach (ClusterPoolVersion item in subscriptionResource.GetAvailableClust
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

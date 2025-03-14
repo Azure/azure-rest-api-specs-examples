@@ -32,25 +32,17 @@ HDInsightClusterData data = new HDInsightClusterData(new AzureLocation("West US 
 {
     Properties = new HDInsightClusterProperties("Trino", new ClusterComputeProfile(new ClusterComputeNodeProfile[]
 {
-new ClusterComputeNodeProfile("Head","Standard_E8as_v5",2),new ClusterComputeNodeProfile("Worker","Standard_E8as_v5",3)
+new ClusterComputeNodeProfile("Head", "Standard_E8as_v5", 2),
+new ClusterComputeNodeProfile("Worker", "Standard_E8as_v5", 3)
 })
     {
-        AvailabilityZones =
-        {
-        "1","2","3"
-        },
-    }, new ClusterProfile("1.0.6", "0.410.0", new AuthorizationProfile()
+        AvailabilityZones = { "1", "2", "3" },
+    }, new ClusterProfile("1.0.6", "0.410.0", new AuthorizationProfile
     {
-        UserIds =
-        {
-        "testuser1","testuser2"
-        },
+        UserIds = { "testuser1", "testuser2" },
     })
     {
-        IdentityList =
-        {
-        new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster,new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"),"de91f1d8-767f-460a-ac11-3cf103f74b34","40491351-c240-4042-91e0-f644a1d2b441")
-        },
+        IdentityList = { new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster, new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"), "de91f1d8-767f-460a-ac11-3cf103f74b34", "40491351-c240-4042-91e0-f644a1d2b441") },
         SshProfile = new ClusterSshProfile(2)
         {
             VmSize = "Standard_E8as_v5",
@@ -61,17 +53,13 @@ new ClusterComputeNodeProfile("Head","Standard_E8as_v5",2),new ClusterComputeNod
             AutoscaleType = ClusterAutoscaleType.ScheduleBased,
             ScheduleBasedConfig = new ScheduleBasedConfig("Cen. Australia Standard Time", 10, new AutoscaleSchedule[]
 {
-new AutoscaleSchedule("00:00","12:00",20,new AutoscaleScheduleDay[]
-{
-AutoscaleScheduleDay.Monday
-}),new AutoscaleSchedule("00:00","12:00",25,new AutoscaleScheduleDay[]
-{
-AutoscaleScheduleDay.Sunday
-})
+new AutoscaleSchedule("00:00", "12:00", 20, new AutoscaleScheduleDay[]{AutoscaleScheduleDay.Monday}),
+new AutoscaleSchedule("00:00", "12:00", 25, new AutoscaleScheduleDay[]{AutoscaleScheduleDay.Sunday})
 }),
             LoadBasedConfig = new LoadBasedConfig(10, 20, new ScalingRule[]
 {
-new ScalingRule(ScaleActionType.ScaleUp,3,"cpu",new HDInsightComparisonRule(HDInsightComparisonOperator.GreaterThan,90)),new ScalingRule(ScaleActionType.ScaleDown,3,"cpu",new HDInsightComparisonRule(HDInsightComparisonOperator.LessThan,20))
+new ScalingRule(ScaleActionType.ScaleUp, 3, "cpu", new HDInsightComparisonRule(HDInsightComparisonOperator.GreaterThan, 90)),
+new ScalingRule(ScaleActionType.ScaleDown, 3, "cpu", new HDInsightComparisonRule(HDInsightComparisonOperator.LessThan, 20))
 })
             {
                 PollIntervalInSeconds = 60,

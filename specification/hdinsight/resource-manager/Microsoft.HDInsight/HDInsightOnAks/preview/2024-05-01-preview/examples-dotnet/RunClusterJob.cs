@@ -25,7 +25,7 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-ClusterJob clusterJob = new ClusterJob(new FlinkJobProperties()
+ClusterJob clusterJob = new ClusterJob(new FlinkJobProperties
 {
     JobName = "flink-job-name",
     JobJarDirectory = "abfs://flinkjob@hilosa.dfs.core.windows.net/jars",
@@ -35,7 +35,7 @@ ClusterJob clusterJob = new ClusterJob(new FlinkJobProperties()
     FlinkConfiguration =
     {
     ["parallelism"] = "1",
-    ["savepoint.directory"] = "abfs://flinkjob@hilosa.dfs.core.windows.net/savepoint",
+    ["savepoint.directory"] = "abfs://flinkjob@hilosa.dfs.core.windows.net/savepoint"
     },
 });
 ArmOperation<ClusterJob> lro = await hdInsightCluster.RunJobClusterJobAsync(WaitUntil.Completed, clusterJob);

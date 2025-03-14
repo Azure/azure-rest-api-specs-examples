@@ -25,30 +25,21 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-HDInsightClusterPatch patch = new HDInsightClusterPatch()
+HDInsightClusterPatch patch = new HDInsightClusterPatch
 {
-    ClusterProfile = new UpdatableClusterProfile()
+    ClusterProfile = new UpdatableClusterProfile
     {
-        RangerProfile = new RangerProfile(new RangerAdminSpec(new string[]
-{
-"testuser1@contoso.com","testuser2@contoso.com"
-}, new RangerAdminSpecDatabase("testsqlserver.database.windows.net", "testdb")
-{
-    PasswordSecretRef = "https://testkv.vault.azure.net/secrets/mysecret/5df6584d9c25418c8d900240aa6c3452",
-    Username = "admin",
-}), new RangerUsersyncSpec()
-{
-    IsEnabled = true,
-    Groups =
-{
-"0a53828f-36c9-44c3-be3d-99a7fce977ad","13be6971-79db-4f33-9d41-b25589ca25ac"
-},
-    Mode = RangerUsersyncMode.Automatic,
-    Users =
-{
-"testuser1@contoso.com","testuser2@contoso.com"
-},
-})
+        RangerProfile = new RangerProfile(new RangerAdminSpec(new string[] { "testuser1@contoso.com", "testuser2@contoso.com" }, new RangerAdminSpecDatabase("testsqlserver.database.windows.net", "testdb")
+        {
+            PasswordSecretRef = "https://testkv.vault.azure.net/secrets/mysecret/5df6584d9c25418c8d900240aa6c3452",
+            Username = "admin",
+        }), new RangerUsersyncSpec
+        {
+            IsEnabled = true,
+            Groups = { "0a53828f-36c9-44c3-be3d-99a7fce977ad", "13be6971-79db-4f33-9d41-b25589ca25ac" },
+            Mode = RangerUsersyncMode.Automatic,
+            Users = { "testuser1@contoso.com", "testuser2@contoso.com" },
+        })
         {
             RangerAuditStorageAccount = "https://teststorage.blob.core.windows.net/testblob",
         },

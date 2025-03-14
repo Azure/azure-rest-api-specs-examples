@@ -27,8 +27,9 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 // invoke the operation
 ClusterLibraryManagementOperationContent content = new ClusterLibraryManagementOperationContent(new ClusterLibraryManagementOperationProperties(LibraryManagementAction.Uninstall, new ClusterLibrary[]
 {
-new ClusterLibrary(new ClusterPyPILibraryProperties("tensorflow")),new ClusterLibrary(new ClusterMavenLibraryProperties("org.apache.flink","flink-connector-hudi"))
+new ClusterLibrary(new ClusterPyPILibraryProperties("tensorflow")),
+new ClusterLibrary(new ClusterMavenLibraryProperties("org.apache.flink", "flink-connector-hudi"))
 }));
 await hdInsightCluster.ManageLibrariesClusterLibraryAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

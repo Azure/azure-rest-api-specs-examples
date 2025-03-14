@@ -32,10 +32,7 @@ HDInsightClusterPoolData data = new HDInsightClusterPoolData(new AzureLocation("
 {
     Properties = new HDInsightClusterPoolProperties(new ClusterPoolComputeProfile("Standard_D3_v2")
     {
-        AvailabilityZones =
-        {
-        "1","2","3"
-        },
+        AvailabilityZones = { "1", "2", "3" },
     })
     {
         ClusterPoolVersion = "1.2",

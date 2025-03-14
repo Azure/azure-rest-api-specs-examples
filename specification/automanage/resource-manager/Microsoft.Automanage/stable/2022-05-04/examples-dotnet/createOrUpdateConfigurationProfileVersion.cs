@@ -1,10 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/createOrUpdateConfigurationProfileVersion.json
@@ -15,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomanageConfigurationProfileVersionResource created on azure
-// for more information of creating AutomanageConfigurationProfileVersionResource, please refer to the document of AutomanageConfigurationProfileVersionResource
+// this example assumes you already have this AutomanageConfigurationProfileResource created on azure
+// for more information of creating AutomanageConfigurationProfileResource, please refer to the document of AutomanageConfigurationProfileResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string configurationProfileName = "customConfigurationProfile";
-string versionName = "version1";
-ResourceIdentifier automanageConfigurationProfileVersionResourceId = AutomanageConfigurationProfileVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configurationProfileName, versionName);
-AutomanageConfigurationProfileVersionResource automanageConfigurationProfileVersion = client.GetAutomanageConfigurationProfileVersionResource(automanageConfigurationProfileVersionResourceId);
+ResourceIdentifier automanageConfigurationProfileResourceId = AutomanageConfigurationProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configurationProfileName);
+AutomanageConfigurationProfileResource automanageConfigurationProfile = client.GetAutomanageConfigurationProfileResource(automanageConfigurationProfileResourceId);
+
+// get the collection of this AutomanageConfigurationProfileVersionResource
+AutomanageConfigurationProfileVersionCollection collection = automanageConfigurationProfile.GetAutomanageConfigurationProfileVersions();
 
 // invoke the operation
+string versionName = "version1";
 AutomanageConfigurationProfileData data = new AutomanageConfigurationProfileData(new AzureLocation("East US"))
 {
-    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["Antimalware/Enable"] = "false",
         ["AzureSecurityCenter/Enable"] = "true",
@@ -41,10 +44,10 @@ AutomanageConfigurationProfileData data = new AutomanageConfigurationProfileData
     }),
     Tags =
     {
-    ["Organization"] = "Administration",
+    ["Organization"] = "Administration"
     },
 };
-ArmOperation<AutomanageConfigurationProfileVersionResource> lro = await automanageConfigurationProfileVersion.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AutomanageConfigurationProfileVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, versionName, data);
 AutomanageConfigurationProfileVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

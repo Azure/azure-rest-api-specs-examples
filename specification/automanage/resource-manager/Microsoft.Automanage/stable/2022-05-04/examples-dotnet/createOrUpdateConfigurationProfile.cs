@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automanage;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/createOrUpdateConfigurationProfile.json
 // this example is just showing the usage of "ConfigurationProfiles_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,7 +30,7 @@ AutomanageConfigurationProfileCollection collection = resourceGroupResource.GetA
 string configurationProfileName = "customConfigurationProfile";
 AutomanageConfigurationProfileData data = new AutomanageConfigurationProfileData(new AzureLocation("East US"))
 {
-    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["Antimalware/Enable"] = "false",
         ["AzureSecurityCenter/Enable"] = "true",
@@ -44,7 +44,7 @@ AutomanageConfigurationProfileData data = new AutomanageConfigurationProfileData
     }),
     Tags =
     {
-    ["Organization"] = "Administration",
+    ["Organization"] = "Administration"
     },
 };
 ArmOperation<AutomanageConfigurationProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationProfileName, data);

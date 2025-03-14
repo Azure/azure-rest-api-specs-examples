@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Blueprint;
 using Azure.ResourceManager.Blueprint.Models;
+using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/subscriptionBPDef/RoleAssignmentArtifact_Get.json
 // this example is just showing the usage of "Artifacts_Get" operation, for the dependent resources, they will have to be created separately.
@@ -33,7 +33,7 @@ BlueprintArtifactResource result = response.HasValue ? response.Value : null;
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

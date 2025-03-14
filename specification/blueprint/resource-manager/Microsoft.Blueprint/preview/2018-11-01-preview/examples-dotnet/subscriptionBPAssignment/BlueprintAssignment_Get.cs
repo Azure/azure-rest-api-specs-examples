@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/subscriptionBPAssignment/BlueprintAssignment_Get.json
@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this AssignmentResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceScope));
-AssignmentCollection collection = client.GetAssignments(scopeId);
+AssignmentCollection collection = client.GetAssignments(new ResourceIdentifier(resourceScope));
 
 // invoke the operation
 string assignmentName = "assignSimpleBlueprint";
@@ -29,7 +25,7 @@ AssignmentResource result = response.HasValue ? response.Value : null;
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Blueprint;
 using Azure.ResourceManager.Blueprint.Models;
+using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/PolicyAssignmentArtifact_Create.json
 // this example is just showing the usage of "Artifacts_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,16 +28,16 @@ BlueprintArtifactCollection collection = blueprint.GetBlueprintArtifacts();
 
 // invoke the operation
 string artifactName = "costCenterPolicy";
-ArtifactData data = new PolicyAssignmentArtifact("/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62", new Dictionary<string, ParameterValue>()
+ArtifactData data = new PolicyAssignmentArtifact("/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62", new Dictionary<string, ParameterValue>
 {
-    ["tagName"] = new ParameterValue()
+    ["tagName"] = new ParameterValue
     {
-        Value = BinaryData.FromString("\"costCenter\""),
+        Value = BinaryData.FromObjectAsJson("costCenter"),
     },
-    ["tagValue"] = new ParameterValue()
+    ["tagValue"] = new ParameterValue
     {
-        Value = BinaryData.FromString("\"[parameter('costCenter')]\""),
-    },
+        Value = BinaryData.FromObjectAsJson("[parameter('costCenter')]"),
+    }
 })
 {
     DisplayName = "force costCenter tag on all resources",

@@ -2,6 +2,7 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NotificationHubs.Models;

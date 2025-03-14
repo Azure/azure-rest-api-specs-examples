@@ -27,4 +27,4 @@ NotificationHubNamespaceAuthorizationRuleResource notificationHubNamespaceAuthor
 // invoke the operation
 await notificationHubNamespaceAuthorizationRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

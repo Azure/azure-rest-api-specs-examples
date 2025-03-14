@@ -2,6 +2,7 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NotificationHubs.Models;
@@ -25,9 +26,9 @@ ResourceIdentifier notificationHubResourceId = NotificationHubResource.CreateRes
 NotificationHubResource notificationHub = client.GetNotificationHubResource(notificationHubResourceId);
 
 // invoke the operation
-NotificationHubPatch patch = new NotificationHubPatch(new AzureLocation("placeholder"))
+NotificationHubPatch patch = new NotificationHubPatch((AzureLocation)default)
 {
-    RegistrationTtl = TimeSpan.Parse("10675199.02:48:05.4775807"),
+    RegistrationTtl = XmlConvert.ToTimeSpan("10675199.02:48:05.4775807"),
     GcmCredential = new NotificationHubGcmCredential("###################################")
     {
         GcmEndpoint = new Uri("https://fcm.googleapis.com/fcm/send"),

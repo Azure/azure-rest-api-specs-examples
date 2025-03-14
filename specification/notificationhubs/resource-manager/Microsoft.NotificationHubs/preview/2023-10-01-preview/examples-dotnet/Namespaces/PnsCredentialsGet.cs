@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NotificationHubs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NotificationHubs;
 
 // Generated from example definition: specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/preview/2023-10-01-preview/examples/Namespaces/PnsCredentialsGet.json

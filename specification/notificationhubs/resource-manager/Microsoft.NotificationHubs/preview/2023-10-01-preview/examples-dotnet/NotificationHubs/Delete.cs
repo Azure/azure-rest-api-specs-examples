@@ -2,6 +2,7 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NotificationHubs.Models;
@@ -27,4 +28,4 @@ NotificationHubResource notificationHub = client.GetNotificationHubResource(noti
 // invoke the operation
 await notificationHub.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

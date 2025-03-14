@@ -28,4 +28,4 @@ NotificationHubAuthorizationRuleResource notificationHubAuthorizationRule = clie
 // invoke the operation
 await notificationHubAuthorizationRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

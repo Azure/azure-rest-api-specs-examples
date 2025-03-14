@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NotificationHubs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NotificationHubs;
 
 // Generated from example definition: specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/preview/2023-10-01-preview/examples/Namespaces/Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier notificationHubNamespaceResourceId = NotificationHubNamespace
 NotificationHubNamespaceResource notificationHubNamespace = client.GetNotificationHubNamespaceResource(notificationHubNamespaceResourceId);
 
 // invoke the operation
-NotificationHubNamespacePatch patch = new NotificationHubNamespacePatch()
+NotificationHubNamespacePatch patch = new NotificationHubNamespacePatch
 {
     Sku = new NotificationHubSku(NotificationHubSkuName.Free),
-    Properties = new NotificationHubNamespaceProperties()
+    Properties = new NotificationHubNamespaceProperties
     {
-        PnsCredentials = new PnsCredentials()
+        PnsCredentials = new PnsCredentials
         {
             GcmCredential = new NotificationHubGcmCredential("#############################")
             {
@@ -40,7 +39,7 @@ NotificationHubNamespacePatch patch = new NotificationHubNamespacePatch()
     },
     Tags =
     {
-    ["tag1"] = "value3",
+    ["tag1"] = "value3"
     },
 };
 NotificationHubNamespaceResource result = await notificationHubNamespace.UpdateAsync(patch);

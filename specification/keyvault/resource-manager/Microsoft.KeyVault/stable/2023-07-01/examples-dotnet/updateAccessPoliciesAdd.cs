@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.KeyVault.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.KeyVault;
 
 // Generated from example definition: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/updateAccessPoliciesAdd.json
@@ -28,20 +27,11 @@ KeyVaultResource keyVault = client.GetKeyVaultResource(keyVaultResourceId);
 AccessPolicyUpdateKind operationKind = AccessPolicyUpdateKind.Add;
 KeyVaultAccessPolicyParameters keyVaultAccessPolicyParameters = new KeyVaultAccessPolicyParameters(new KeyVaultAccessPolicyProperties(new KeyVaultAccessPolicy[]
 {
-new KeyVaultAccessPolicy(Guid.Parse("00000000-0000-0000-0000-000000000000"),"00000000-0000-0000-0000-000000000000",new IdentityAccessPermissions()
+new KeyVaultAccessPolicy(Guid.Parse("00000000-0000-0000-0000-000000000000"), "00000000-0000-0000-0000-000000000000", new IdentityAccessPermissions
 {
-Keys =
-{
-IdentityAccessKeyPermission.Encrypt
-},
-Secrets =
-{
-IdentityAccessSecretPermission.Get
-},
-Certificates =
-{
-IdentityAccessCertificatePermission.Get
-},
+Keys = {IdentityAccessKeyPermission.Encrypt},
+Secrets = {IdentityAccessSecretPermission.Get},
+Certificates = {IdentityAccessCertificatePermission.Get},
 })
 }));
 KeyVaultAccessPolicyParameters result = await keyVault.UpdateAccessPolicyAsync(operationKind, keyVaultAccessPolicyParameters);

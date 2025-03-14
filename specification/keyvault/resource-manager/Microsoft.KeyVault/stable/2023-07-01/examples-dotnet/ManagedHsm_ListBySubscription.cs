@@ -32,4 +32,4 @@ await foreach (ManagedHsmResource item in subscriptionResource.GetManagedHsmsAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

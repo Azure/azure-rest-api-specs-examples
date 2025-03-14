@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.KeyVault.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.KeyVault;
 
 // Generated from example definition: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/updateVault.json
@@ -25,30 +24,18 @@ ResourceIdentifier keyVaultResourceId = KeyVaultResource.CreateResourceIdentifie
 KeyVaultResource keyVault = client.GetKeyVaultResource(keyVaultResourceId);
 
 // invoke the operation
-KeyVaultPatch patch = new KeyVaultPatch()
+KeyVaultPatch patch = new KeyVaultPatch
 {
-    Properties = new KeyVaultPatchProperties()
+    Properties = new KeyVaultPatchProperties
     {
         TenantId = Guid.Parse("00000000-0000-0000-0000-000000000000"),
         Sku = new KeyVaultSku(KeyVaultSkuFamily.A, KeyVaultSkuName.Standard),
-        AccessPolicies =
+        AccessPolicies = {new KeyVaultAccessPolicy(Guid.Parse("00000000-0000-0000-0000-000000000000"), "00000000-0000-0000-0000-000000000000", new IdentityAccessPermissions
         {
-        new KeyVaultAccessPolicy(Guid.Parse("00000000-0000-0000-0000-000000000000"),"00000000-0000-0000-0000-000000000000",new IdentityAccessPermissions()
-        {
-        Keys =
-        {
-        IdentityAccessKeyPermission.Encrypt,IdentityAccessKeyPermission.Decrypt,IdentityAccessKeyPermission.WrapKey,IdentityAccessKeyPermission.UnwrapKey,IdentityAccessKeyPermission.Sign,IdentityAccessKeyPermission.Verify,IdentityAccessKeyPermission.Get,IdentityAccessKeyPermission.List,IdentityAccessKeyPermission.Create,IdentityAccessKeyPermission.Update,IdentityAccessKeyPermission.Import,IdentityAccessKeyPermission.Delete,IdentityAccessKeyPermission.Backup,IdentityAccessKeyPermission.Restore,IdentityAccessKeyPermission.Recover,IdentityAccessKeyPermission.Purge
-        },
-        Secrets =
-        {
-        IdentityAccessSecretPermission.Get,IdentityAccessSecretPermission.List,IdentityAccessSecretPermission.Set,IdentityAccessSecretPermission.Delete,IdentityAccessSecretPermission.Backup,IdentityAccessSecretPermission.Restore,IdentityAccessSecretPermission.Recover,IdentityAccessSecretPermission.Purge
-        },
-        Certificates =
-        {
-        IdentityAccessCertificatePermission.Get,IdentityAccessCertificatePermission.List,IdentityAccessCertificatePermission.Delete,IdentityAccessCertificatePermission.Create,IdentityAccessCertificatePermission.Import,IdentityAccessCertificatePermission.Update,IdentityAccessCertificatePermission.ManageContacts,IdentityAccessCertificatePermission.GetIssuers,IdentityAccessCertificatePermission.ListIssuers,IdentityAccessCertificatePermission.SetIssuers,IdentityAccessCertificatePermission.DeleteIssuers,IdentityAccessCertificatePermission.ManageIssuers,IdentityAccessCertificatePermission.Recover,IdentityAccessCertificatePermission.Purge
-        },
-        })
-        },
+        Keys = {IdentityAccessKeyPermission.Encrypt, IdentityAccessKeyPermission.Decrypt, IdentityAccessKeyPermission.WrapKey, IdentityAccessKeyPermission.UnwrapKey, IdentityAccessKeyPermission.Sign, IdentityAccessKeyPermission.Verify, IdentityAccessKeyPermission.Get, IdentityAccessKeyPermission.List, IdentityAccessKeyPermission.Create, IdentityAccessKeyPermission.Update, IdentityAccessKeyPermission.Import, IdentityAccessKeyPermission.Delete, IdentityAccessKeyPermission.Backup, IdentityAccessKeyPermission.Restore, IdentityAccessKeyPermission.Recover, IdentityAccessKeyPermission.Purge},
+        Secrets = {IdentityAccessSecretPermission.Get, IdentityAccessSecretPermission.List, IdentityAccessSecretPermission.Set, IdentityAccessSecretPermission.Delete, IdentityAccessSecretPermission.Backup, IdentityAccessSecretPermission.Restore, IdentityAccessSecretPermission.Recover, IdentityAccessSecretPermission.Purge},
+        Certificates = {IdentityAccessCertificatePermission.Get, IdentityAccessCertificatePermission.List, IdentityAccessCertificatePermission.Delete, IdentityAccessCertificatePermission.Create, IdentityAccessCertificatePermission.Import, IdentityAccessCertificatePermission.Update, IdentityAccessCertificatePermission.ManageContacts, IdentityAccessCertificatePermission.GetIssuers, IdentityAccessCertificatePermission.ListIssuers, IdentityAccessCertificatePermission.SetIssuers, IdentityAccessCertificatePermission.DeleteIssuers, IdentityAccessCertificatePermission.ManageIssuers, IdentityAccessCertificatePermission.Recover, IdentityAccessCertificatePermission.Purge},
+        })},
         EnabledForDeployment = true,
         EnabledForDiskEncryption = true,
         EnabledForTemplateDeployment = true,

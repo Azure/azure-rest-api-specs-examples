@@ -25,9 +25,9 @@ ResourceIdentifier keyVaultSecretResourceId = KeyVaultSecretResource.CreateResou
 KeyVaultSecretResource keyVaultSecret = client.GetKeyVaultSecretResource(keyVaultSecretResourceId);
 
 // invoke the operation
-KeyVaultSecretPatch patch = new KeyVaultSecretPatch()
+KeyVaultSecretPatch patch = new KeyVaultSecretPatch
 {
-    Properties = new SecretPatchProperties()
+    Properties = new SecretPatchProperties
     {
         Value = "secret-value2",
     },

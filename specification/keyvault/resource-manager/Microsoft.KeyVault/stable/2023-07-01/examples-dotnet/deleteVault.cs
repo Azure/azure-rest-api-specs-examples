@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.KeyVault.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.KeyVault;
 
 // Generated from example definition: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/deleteVault.json
@@ -27,4 +26,4 @@ KeyVaultResource keyVault = client.GetKeyVaultResource(keyVaultResourceId);
 // invoke the operation
 await keyVault.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

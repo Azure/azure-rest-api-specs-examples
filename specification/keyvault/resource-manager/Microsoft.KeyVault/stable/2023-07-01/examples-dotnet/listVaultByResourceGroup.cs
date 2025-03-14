@@ -37,4 +37,4 @@ await foreach (KeyVaultResource item in collection.GetAllAsync(top: top))
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

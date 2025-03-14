@@ -28,7 +28,7 @@ KeyVaultSecretCollection collection = keyVault.GetKeyVaultSecrets();
 
 // invoke the operation
 string secretName = "secret-name";
-KeyVaultSecretCreateOrUpdateContent content = new KeyVaultSecretCreateOrUpdateContent(new SecretProperties()
+KeyVaultSecretCreateOrUpdateContent content = new KeyVaultSecretCreateOrUpdateContent(new SecretProperties
 {
     Value = "secret-value",
 });

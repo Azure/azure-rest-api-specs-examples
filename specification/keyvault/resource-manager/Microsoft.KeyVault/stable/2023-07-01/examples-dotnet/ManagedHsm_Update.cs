@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.KeyVault.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.KeyVault;
 
 // Generated from example definition: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/ManagedHsm_Update.json
@@ -25,13 +24,13 @@ ResourceIdentifier managedHsmResourceId = ManagedHsmResource.CreateResourceIdent
 ManagedHsmResource managedHsm = client.GetManagedHsmResource(managedHsmResourceId);
 
 // invoke the operation
-ManagedHsmData data = new ManagedHsmData(new AzureLocation("placeholder"))
+ManagedHsmData data = new ManagedHsmData(default)
 {
     Tags =
     {
     ["Dept"] = "hsm",
     ["Environment"] = "dogfood",
-    ["Slice"] = "A",
+    ["Slice"] = "A"
     },
 };
 ArmOperation<ManagedHsmResource> lro = await managedHsm.UpdateAsync(WaitUntil.Completed, data);

@@ -27,4 +27,4 @@ SqlServerTrustGroupResource sqlServerTrustGroup = client.GetSqlServerTrustGroupR
 // invoke the operation
 await sqlServerTrustGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

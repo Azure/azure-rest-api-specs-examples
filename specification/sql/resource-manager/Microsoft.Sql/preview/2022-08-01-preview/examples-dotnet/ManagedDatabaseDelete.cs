@@ -28,4 +28,4 @@ ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(mana
 // invoke the operation
 await managedDatabase.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -30,4 +30,4 @@ SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResou
 ReplicaType? replicaType = ReplicaType.Primary;
 await sqlDatabase.FailoverAsync(WaitUntil.Completed, replicaType: replicaType);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

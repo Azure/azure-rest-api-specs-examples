@@ -49,7 +49,7 @@ ManagedInstanceData data = new ManagedInstanceData(new AzureLocation("Japan East
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_MI_1"),
     MinimalTlsVersion = "1.2",
     RequestedBackupStorageRedundancy = SqlBackupStorageRedundancy.Geo,
-    Administrators = new ManagedInstanceExternalAdministrator()
+    Administrators = new ManagedInstanceExternalAdministrator
     {
         PrincipalType = SqlServerPrincipalType.User,
         Login = "bob@contoso.com",
@@ -57,13 +57,13 @@ ManagedInstanceData data = new ManagedInstanceData(new AzureLocation("Japan East
         TenantId = Guid.Parse("00000011-1111-2222-2222-123456789111"),
         IsAzureADOnlyAuthenticationEnabled = true,
     },
-    ServicePrincipal = new SqlServicePrincipal()
+    ServicePrincipal = new SqlServicePrincipal
     {
         PrincipalType = SqlServicePrincipalType.SystemAssigned,
     },
     Tags =
     {
-    ["tagKey1"] = "TagValue1",
+    ["tagKey1"] = "TagValue1"
     },
 };
 ArmOperation<ManagedInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedInstanceName, data);

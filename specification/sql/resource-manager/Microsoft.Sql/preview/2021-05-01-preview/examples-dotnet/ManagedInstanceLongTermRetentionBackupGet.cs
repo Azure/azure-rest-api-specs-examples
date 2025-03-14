@@ -34,7 +34,7 @@ SubscriptionLongTermRetentionManagedInstanceBackupResource result = response.Has
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

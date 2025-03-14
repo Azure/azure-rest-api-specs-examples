@@ -32,4 +32,4 @@ await foreach (SqlSynapseLinkWorkspace item in sqlDatabase.GetSynapseLinkWorkspa
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

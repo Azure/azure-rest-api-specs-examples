@@ -29,7 +29,7 @@ SqlDatabaseBlobAuditingPolicyCollection collection = sqlDatabase.GetSqlDatabaseB
 
 // invoke the operation
 BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-SqlDatabaseBlobAuditingPolicyData data = new SqlDatabaseBlobAuditingPolicyData()
+SqlDatabaseBlobAuditingPolicyData data = new SqlDatabaseBlobAuditingPolicyData
 {
     IsAzureMonitorTargetEnabled = true,
     State = BlobAuditingPolicyState.Enabled,

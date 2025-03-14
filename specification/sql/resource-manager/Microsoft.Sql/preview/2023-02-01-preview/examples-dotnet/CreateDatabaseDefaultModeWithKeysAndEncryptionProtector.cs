@@ -35,21 +35,21 @@ SqlDatabaseData data = new SqlDatabaseData(new AzureLocation("southeastasia"))
     {
         Tier = "Standard",
     },
-    Identity = new DatabaseIdentity()
+    Identity = new DatabaseIdentity
     {
         IdentityType = DatabaseIdentityType.UserAssigned,
         UserAssignedIdentities =
         {
-        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi"] = new UserAssignedIdentity(),
+        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi"] = new UserAssignedIdentity()
         },
     },
     CreateMode = SqlDatabaseCreateMode.Default,
     Collation = "SQL_Latin1_General_CP1_CI_AS",
-    MaxSizeBytes = 1073741824,
+    MaxSizeBytes = 1073741824L,
     Keys =
     {
     ["https://your-key-vault-name.vault.azure.net/yourKey/yourKeyVersion"] = new SqlDatabaseKey(),
-    ["https://your-key-vault-name.vault.azure.net/yourKey2/yourKey2Version"] = new SqlDatabaseKey(),
+    ["https://your-key-vault-name.vault.azure.net/yourKey2/yourKey2Version"] = new SqlDatabaseKey()
     },
     EncryptionProtector = "https://your-key-vault-name.vault.azure.net/yourKey/yourKeyVersion",
 };

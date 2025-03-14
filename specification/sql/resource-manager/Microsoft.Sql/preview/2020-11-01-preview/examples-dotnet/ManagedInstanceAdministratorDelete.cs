@@ -27,4 +27,4 @@ ManagedInstanceAdministratorResource managedInstanceAdministrator = client.GetMa
 // invoke the operation
 await managedInstanceAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

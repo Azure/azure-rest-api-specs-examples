@@ -29,4 +29,4 @@ SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobR
 // invoke the operation
 await sqlServerJob.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

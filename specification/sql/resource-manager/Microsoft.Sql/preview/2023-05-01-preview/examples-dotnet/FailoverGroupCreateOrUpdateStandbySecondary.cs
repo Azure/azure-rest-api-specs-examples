@@ -28,24 +28,18 @@ FailoverGroupCollection collection = sqlServer.GetFailoverGroups();
 
 // invoke the operation
 string failoverGroupName = "failover-group-test-3";
-FailoverGroupData data = new FailoverGroupData()
+FailoverGroupData data = new FailoverGroupData
 {
     ReadWriteEndpoint = new FailoverGroupReadWriteEndpoint(ReadWriteEndpointFailoverPolicy.Automatic)
     {
         FailoverWithDataLossGracePeriodMinutes = 480,
     },
-    ReadOnlyEndpoint = new FailoverGroupReadOnlyEndpoint()
+    ReadOnlyEndpoint = new FailoverGroupReadOnlyEndpoint
     {
         FailoverPolicy = ReadOnlyEndpointFailoverPolicy.Disabled,
     },
-    PartnerServers =
-    {
-    new PartnerServerInfo(new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-secondary-server"))
-    },
-    FailoverDatabases =
-    {
-    new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1"),new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2")
-    },
+    PartnerServers = { new PartnerServerInfo(new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-secondary-server")) },
+    FailoverDatabases = { new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1"), new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2") },
     SecondaryType = FailoverGroupDatabasesSecondaryType.Standby,
 };
 ArmOperation<FailoverGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, failoverGroupName, data);

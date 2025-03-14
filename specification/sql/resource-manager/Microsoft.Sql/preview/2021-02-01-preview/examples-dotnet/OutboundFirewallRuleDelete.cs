@@ -26,4 +26,4 @@ OutboundFirewallRuleResource outboundFirewallRule = client.GetOutboundFirewallRu
 // invoke the operation
 await outboundFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

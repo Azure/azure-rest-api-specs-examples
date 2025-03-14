@@ -33,7 +33,7 @@ ManagedInstancePrivateEndpointConnectionResource result = response.HasValue ? re
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

@@ -27,7 +27,7 @@ ResourceIdentifier sqlServerJobStepResourceId = SqlServerJobStepResource.CreateR
 SqlServerJobStepResource sqlServerJobStep = client.GetSqlServerJobStepResource(sqlServerJobStepResourceId);
 
 // invoke the operation
-SqlServerJobStepData data = new SqlServerJobStepData()
+SqlServerJobStepData data = new SqlServerJobStepData
 {
     StepId = 1,
     TargetGroup = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/targetGroups/targetGroup1",
@@ -44,7 +44,7 @@ SqlServerJobStepData data = new SqlServerJobStepData()
         ResourceGroupName = "group3",
         SchemaName = "myschema1234",
     },
-    ExecutionOptions = new JobStepExecutionOptions()
+    ExecutionOptions = new JobStepExecutionOptions
     {
         TimeoutSeconds = 1234,
         RetryAttempts = 42,

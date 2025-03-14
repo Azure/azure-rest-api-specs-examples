@@ -37,4 +37,4 @@ await foreach (LogicalDatabaseTransparentDataEncryptionResource item in collecti
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

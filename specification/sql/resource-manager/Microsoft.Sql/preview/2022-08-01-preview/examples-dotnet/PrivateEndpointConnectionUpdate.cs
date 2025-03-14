@@ -28,7 +28,7 @@ SqlPrivateEndpointConnectionCollection collection = sqlServer.GetSqlPrivateEndpo
 
 // invoke the operation
 string privateEndpointConnectionName = "private-endpoint-connection-name";
-SqlPrivateEndpointConnectionData data = new SqlPrivateEndpointConnectionData()
+SqlPrivateEndpointConnectionData data = new SqlPrivateEndpointConnectionData
 {
     ConnectionState = new SqlPrivateLinkServiceConnectionStateProperty(SqlPrivateLinkServiceConnectionStatus.Approved, "Approved by johndoe@contoso.com"),
 };

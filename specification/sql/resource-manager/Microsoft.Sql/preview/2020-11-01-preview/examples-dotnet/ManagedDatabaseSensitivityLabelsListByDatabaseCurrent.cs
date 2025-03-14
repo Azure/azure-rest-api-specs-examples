@@ -35,4 +35,4 @@ await foreach (ManagedDatabaseSensitivityLabelResource item in managedDatabase.G
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

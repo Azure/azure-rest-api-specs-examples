@@ -14,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceServerTrustCertificateResource created on azure
-// for more information of creating ManagedInstanceServerTrustCertificateResource, please refer to the document of ManagedInstanceServerTrustCertificateResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "0574222d-5c7f-489c-a172-b3013eafab53";
 string resourceGroupName = "testrg";
 string managedInstanceName = "testcl";
-string certificateName = "customerCertificateName";
-ResourceIdentifier managedInstanceServerTrustCertificateResourceId = ManagedInstanceServerTrustCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, certificateName);
-ManagedInstanceServerTrustCertificateResource managedInstanceServerTrustCertificate = client.GetManagedInstanceServerTrustCertificateResource(managedInstanceServerTrustCertificateResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstanceServerTrustCertificateResource
+ManagedInstanceServerTrustCertificateCollection collection = managedInstance.GetManagedInstanceServerTrustCertificates();
 
 // invoke the operation
-ServerTrustCertificateData data = new ServerTrustCertificateData()
+string certificateName = "customerCertificateName";
+ServerTrustCertificateData data = new ServerTrustCertificateData
 {
     PublicBlob = "308203AE30820296A0030201020210",
 };
-ArmOperation<ManagedInstanceServerTrustCertificateResource> lro = await managedInstanceServerTrustCertificate.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedInstanceServerTrustCertificateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateName, data);
 ManagedInstanceServerTrustCertificateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

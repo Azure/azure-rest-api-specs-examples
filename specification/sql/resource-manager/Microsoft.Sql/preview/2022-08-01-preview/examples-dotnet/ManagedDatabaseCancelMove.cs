@@ -29,4 +29,4 @@ ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(mana
 ManagedDatabaseMoveDefinition managedDatabaseMoveDefinition = new ManagedDatabaseMoveDefinition(new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/managedInstances/testInstanceTgt/databases/testDatabase"));
 await managedDatabase.CancelMoveAsync(WaitUntil.Completed, managedDatabaseMoveDefinition);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

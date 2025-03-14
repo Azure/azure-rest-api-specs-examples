@@ -28,7 +28,7 @@ ManagedInstancePrivateEndpointConnectionCollection collection = managedInstance.
 
 // invoke the operation
 string privateEndpointConnectionName = "private-endpoint-connection-name";
-ManagedInstancePrivateEndpointConnectionData data = new ManagedInstancePrivateEndpointConnectionData()
+ManagedInstancePrivateEndpointConnectionData data = new ManagedInstancePrivateEndpointConnectionData
 {
     ConnectionState = new ManagedInstancePrivateLinkServiceConnectionStateProperty("Approved", "Approved by johndoe@contoso.com"),
 };

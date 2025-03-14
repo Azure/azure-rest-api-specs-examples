@@ -41,7 +41,7 @@ InstancePoolData data = new InstancePoolData(new AzureLocation("japaneast"))
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_MI_1"),
     Tags =
     {
-    ["a"] = "b",
+    ["a"] = "b"
     },
 };
 ArmOperation<InstancePoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, instancePoolName, data);

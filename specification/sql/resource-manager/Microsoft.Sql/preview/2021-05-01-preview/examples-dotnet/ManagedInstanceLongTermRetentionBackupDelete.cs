@@ -27,4 +27,4 @@ SubscriptionLongTermRetentionManagedInstanceBackupResource subscriptionLongTermR
 // invoke the operation
 await subscriptionLongTermRetentionManagedInstanceBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

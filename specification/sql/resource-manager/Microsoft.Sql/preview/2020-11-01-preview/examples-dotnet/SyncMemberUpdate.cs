@@ -30,7 +30,7 @@ SyncMemberCollection collection = syncGroup.GetSyncMembers();
 
 // invoke the operation
 string syncMemberName = "syncmembercrud-4879";
-SyncMemberData data = new SyncMemberData()
+SyncMemberData data = new SyncMemberData
 {
     DatabaseType = SyncMemberDbType.AzureSqlDatabase,
     SyncMemberAzureDatabaseResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/syncgroupcrud-65440/providers/Microsoft.Sql/servers/syncgroupcrud-8475/databases/syncgroupcrud-4328"),

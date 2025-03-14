@@ -29,7 +29,7 @@ LedgerDigestUploadCollection collection = sqlDatabase.GetLedgerDigestUploads();
 
 // invoke the operation
 LedgerDigestUploadsName ledgerDigestUploads = LedgerDigestUploadsName.Current;
-LedgerDigestUploadData data = new LedgerDigestUploadData()
+LedgerDigestUploadData data = new LedgerDigestUploadData
 {
     DigestStorageEndpoint = "https://MyAccount.blob.core.windows.net",
 };

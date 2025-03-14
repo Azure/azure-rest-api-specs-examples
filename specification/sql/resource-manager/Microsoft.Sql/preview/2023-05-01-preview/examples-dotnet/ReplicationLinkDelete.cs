@@ -28,4 +28,4 @@ SqlServerDatabaseReplicationLinkResource sqlServerDatabaseReplicationLink = clie
 // invoke the operation
 await sqlServerDatabaseReplicationLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

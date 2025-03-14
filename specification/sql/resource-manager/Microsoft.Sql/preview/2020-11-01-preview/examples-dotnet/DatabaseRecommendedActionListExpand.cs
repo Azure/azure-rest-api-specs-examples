@@ -37,4 +37,4 @@ await foreach (SqlDatabaseAdvisorResource item in collection.GetAllAsync(expand:
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

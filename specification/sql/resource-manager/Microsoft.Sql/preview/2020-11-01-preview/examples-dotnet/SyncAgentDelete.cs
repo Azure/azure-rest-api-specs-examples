@@ -27,4 +27,4 @@ SyncAgentResource syncAgent = client.GetSyncAgentResource(syncAgentResourceId);
 // invoke the operation
 await syncAgent.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

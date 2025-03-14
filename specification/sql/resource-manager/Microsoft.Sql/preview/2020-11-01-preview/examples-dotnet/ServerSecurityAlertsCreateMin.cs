@@ -28,7 +28,7 @@ SqlServerSecurityAlertPolicyCollection collection = sqlServer.GetSqlServerSecuri
 
 // invoke the operation
 SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-SqlServerSecurityAlertPolicyData data = new SqlServerSecurityAlertPolicyData()
+SqlServerSecurityAlertPolicyData data = new SqlServerSecurityAlertPolicyData
 {
     State = SecurityAlertsPolicyState.Enabled,
 };

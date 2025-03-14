@@ -27,4 +27,4 @@ SqlServerDatabaseRestorePointResource sqlServerDatabaseRestorePoint = client.Get
 // invoke the operation
 await sqlServerDatabaseRestorePoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

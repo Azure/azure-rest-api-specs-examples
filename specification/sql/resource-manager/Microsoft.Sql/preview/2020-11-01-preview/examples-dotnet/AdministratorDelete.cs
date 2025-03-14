@@ -27,4 +27,4 @@ SqlServerAzureADAdministratorResource sqlServerAzureADAdministrator = client.Get
 // invoke the operation
 await sqlServerAzureADAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

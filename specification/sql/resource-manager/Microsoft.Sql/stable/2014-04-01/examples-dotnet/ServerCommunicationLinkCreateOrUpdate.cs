@@ -27,7 +27,7 @@ SqlServerCommunicationLinkCollection collection = sqlServer.GetSqlServerCommunic
 
 // invoke the operation
 string communicationLinkName = "link1";
-SqlServerCommunicationLinkData data = new SqlServerCommunicationLinkData()
+SqlServerCommunicationLinkData data = new SqlServerCommunicationLinkData
 {
     PartnerServer = "sqldcrudtest-test",
 };

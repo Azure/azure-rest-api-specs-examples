@@ -24,23 +24,23 @@ ResourceIdentifier sqlServerAutomaticTuningResourceId = SqlServerAutomaticTuning
 SqlServerAutomaticTuningResource sqlServerAutomaticTuning = client.GetSqlServerAutomaticTuningResource(sqlServerAutomaticTuningResourceId);
 
 // invoke the operation
-SqlServerAutomaticTuningData data = new SqlServerAutomaticTuningData()
+SqlServerAutomaticTuningData data = new SqlServerAutomaticTuningData
 {
     DesiredState = AutomaticTuningServerMode.Auto,
     Options =
     {
-    ["createIndex"] = new AutomaticTuningServerOptions()
+    ["createIndex"] = new AutomaticTuningServerOptions
     {
     DesiredState = AutomaticTuningOptionModeDesired.Off,
     },
-    ["dropIndex"] = new AutomaticTuningServerOptions()
+    ["dropIndex"] = new AutomaticTuningServerOptions
     {
     DesiredState = AutomaticTuningOptionModeDesired.On,
     },
-    ["forceLastGoodPlan"] = new AutomaticTuningServerOptions()
+    ["forceLastGoodPlan"] = new AutomaticTuningServerOptions
     {
     DesiredState = AutomaticTuningOptionModeDesired.Default,
-    },
+    }
     },
 };
 SqlServerAutomaticTuningResource result = await sqlServerAutomaticTuning.UpdateAsync(data);

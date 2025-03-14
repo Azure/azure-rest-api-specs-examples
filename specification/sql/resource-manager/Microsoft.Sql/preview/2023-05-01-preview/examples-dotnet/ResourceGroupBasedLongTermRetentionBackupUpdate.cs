@@ -27,7 +27,7 @@ ResourceIdentifier resourceGroupLongTermRetentionBackupResourceId = ResourceGrou
 ResourceGroupLongTermRetentionBackupResource resourceGroupLongTermRetentionBackup = client.GetResourceGroupLongTermRetentionBackupResource(resourceGroupLongTermRetentionBackupResourceId);
 
 // invoke the operation
-UpdateLongTermRetentionBackupContent content = new UpdateLongTermRetentionBackupContent()
+UpdateLongTermRetentionBackupContent content = new UpdateLongTermRetentionBackupContent
 {
     RequestedBackupStorageRedundancy = SqlBackupStorageRedundancy.Geo,
 };

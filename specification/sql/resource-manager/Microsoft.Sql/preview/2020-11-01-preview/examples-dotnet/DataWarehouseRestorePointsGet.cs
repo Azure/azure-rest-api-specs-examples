@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerDatabaseRestorePointResource created on azure
-// for more information of creating SqlServerDatabaseRestorePointResource, please refer to the document of SqlServerDatabaseRestorePointResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string serverName = "testserver";
 string databaseName = "testDatabase";
-string restorePointName = "131546477590000000";
-ResourceIdentifier sqlServerDatabaseRestorePointResourceId = SqlServerDatabaseRestorePointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, restorePointName);
-SqlServerDatabaseRestorePointResource sqlServerDatabaseRestorePoint = client.GetSqlServerDatabaseRestorePointResource(sqlServerDatabaseRestorePointResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this SqlServerDatabaseRestorePointResource
+SqlServerDatabaseRestorePointCollection collection = sqlDatabase.GetSqlServerDatabaseRestorePoints();
 
 // invoke the operation
-SqlServerDatabaseRestorePointResource result = await sqlServerDatabaseRestorePoint.GetAsync();
+string restorePointName = "131546477590000000";
+NullableResponse<SqlServerDatabaseRestorePointResource> response = await collection.GetIfExistsAsync(restorePointName);
+SqlServerDatabaseRestorePointResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SqlServerDatabaseRestorePointData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SqlServerDatabaseRestorePointData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

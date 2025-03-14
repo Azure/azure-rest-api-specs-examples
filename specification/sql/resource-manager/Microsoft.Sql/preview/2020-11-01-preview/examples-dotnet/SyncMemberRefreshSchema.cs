@@ -29,4 +29,4 @@ SyncMemberResource syncMember = client.GetSyncMemberResource(syncMemberResourceI
 // invoke the operation
 await syncMember.RefreshMemberSchemaAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

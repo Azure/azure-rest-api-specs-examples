@@ -28,7 +28,7 @@ SqlServerAzureADOnlyAuthenticationCollection collection = sqlServer.GetSqlServer
 
 // invoke the operation
 AuthenticationName authenticationName = AuthenticationName.Default;
-SqlServerAzureADOnlyAuthenticationData data = new SqlServerAzureADOnlyAuthenticationData()
+SqlServerAzureADOnlyAuthenticationData data = new SqlServerAzureADOnlyAuthenticationData
 {
     IsAzureADOnlyAuthenticationEnabled = false,
 };

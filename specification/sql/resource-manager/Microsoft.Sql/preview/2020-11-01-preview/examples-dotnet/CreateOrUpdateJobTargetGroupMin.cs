@@ -26,11 +26,9 @@ ResourceIdentifier sqlServerJobTargetGroupResourceId = SqlServerJobTargetGroupRe
 SqlServerJobTargetGroupResource sqlServerJobTargetGroup = client.GetSqlServerJobTargetGroupResource(sqlServerJobTargetGroupResourceId);
 
 // invoke the operation
-SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData()
+SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData
 {
-    Members =
-    {
-    },
+    Members = { },
 };
 ArmOperation<SqlServerJobTargetGroupResource> lro = await sqlServerJobTargetGroup.UpdateAsync(WaitUntil.Completed, data);
 SqlServerJobTargetGroupResource result = lro.Value;

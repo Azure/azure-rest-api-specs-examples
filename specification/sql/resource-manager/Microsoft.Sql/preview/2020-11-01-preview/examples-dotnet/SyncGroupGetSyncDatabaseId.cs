@@ -30,4 +30,4 @@ await foreach (SubResource item in subscriptionResource.GetSyncDatabaseIdsSyncGr
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

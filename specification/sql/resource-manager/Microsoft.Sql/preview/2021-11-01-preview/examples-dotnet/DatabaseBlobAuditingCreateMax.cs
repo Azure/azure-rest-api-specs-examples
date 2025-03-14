@@ -29,13 +29,10 @@ SqlDatabaseBlobAuditingPolicyCollection collection = sqlDatabase.GetSqlDatabaseB
 
 // invoke the operation
 BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-SqlDatabaseBlobAuditingPolicyData data = new SqlDatabaseBlobAuditingPolicyData()
+SqlDatabaseBlobAuditingPolicyData data = new SqlDatabaseBlobAuditingPolicyData
 {
     RetentionDays = 6,
-    AuditActionsAndGroups =
-    {
-    "DATABASE_LOGOUT_GROUP","DATABASE_ROLE_MEMBER_CHANGE_GROUP","UPDATE on database::TestDatabaseName by public"
-    },
+    AuditActionsAndGroups = { "DATABASE_LOGOUT_GROUP", "DATABASE_ROLE_MEMBER_CHANGE_GROUP", "UPDATE on database::TestDatabaseName by public" },
     IsStorageSecondaryKeyInUse = false,
     IsAzureMonitorTargetEnabled = true,
     QueueDelayMs = 4000,

@@ -30,4 +30,4 @@ SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResou
 SqlResourceMoveDefinition sqlResourceMoveDefinition = new SqlResourceMoveDefinition(new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/testsvr/databases/newtestdb"));
 await sqlDatabase.RenameAsync(sqlResourceMoveDefinition);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

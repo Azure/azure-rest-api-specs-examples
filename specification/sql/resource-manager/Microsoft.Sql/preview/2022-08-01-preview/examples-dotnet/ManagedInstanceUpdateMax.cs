@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,7 +24,7 @@ ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateRes
 ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
 
 // invoke the operation
-ManagedInstancePatch patch = new ManagedInstancePatch()
+ManagedInstancePatch patch = new ManagedInstancePatch
 {
     Sku = new SqlSku("GP_Gen4")
     {
@@ -34,7 +33,7 @@ ManagedInstancePatch patch = new ManagedInstancePatch()
     },
     Tags =
     {
-    ["tagKey1"] = "TagValue1",
+    ["tagKey1"] = "TagValue1"
     },
     AdministratorLogin = "dummylogin",
     AdministratorLoginPassword = "PLACEHOLDER",

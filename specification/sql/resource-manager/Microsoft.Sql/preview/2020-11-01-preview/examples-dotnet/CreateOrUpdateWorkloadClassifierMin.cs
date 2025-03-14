@@ -26,7 +26,7 @@ ResourceIdentifier workloadClassifierResourceId = WorkloadClassifierResource.Cre
 WorkloadClassifierResource workloadClassifier = client.GetWorkloadClassifierResource(workloadClassifierResourceId);
 
 // invoke the operation
-WorkloadClassifierData data = new WorkloadClassifierData()
+WorkloadClassifierData data = new WorkloadClassifierData
 {
     MemberName = "dbo",
 };

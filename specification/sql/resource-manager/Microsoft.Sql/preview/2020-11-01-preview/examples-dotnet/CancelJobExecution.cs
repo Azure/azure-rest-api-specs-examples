@@ -28,4 +28,4 @@ SqlServerJobExecutionResource sqlServerJobExecution = client.GetSqlServerJobExec
 // invoke the operation
 await sqlServerJobExecution.CancelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -33,7 +33,7 @@ SqlServerData data = new SqlServerData(new AzureLocation("Japan East"))
     AdministratorLogin = "dummylogin",
     AdministratorLoginPassword = "PLACEHOLDER",
     PublicNetworkAccess = ServerNetworkAccessFlag.Enabled,
-    Administrators = new ServerExternalAdministrator()
+    Administrators = new ServerExternalAdministrator
     {
         PrincipalType = SqlServerPrincipalType.User,
         Login = "bob@contoso.com",

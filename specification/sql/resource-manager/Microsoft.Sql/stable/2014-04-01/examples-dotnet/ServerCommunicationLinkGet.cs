@@ -32,7 +32,7 @@ SqlServerCommunicationLinkResource result = response.HasValue ? response.Value :
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

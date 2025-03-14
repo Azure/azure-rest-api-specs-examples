@@ -26,31 +26,28 @@ ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateRes
 ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
 
 // invoke the operation
-RecommendedSensitivityLabelUpdateList recommendedSensitivityLabelUpdateList = new RecommendedSensitivityLabelUpdateList()
+RecommendedSensitivityLabelUpdateList recommendedSensitivityLabelUpdateList = new RecommendedSensitivityLabelUpdateList
 {
-    Operations =
-    {
-    new RecommendedSensitivityLabelUpdate()
+    Operations = {new RecommendedSensitivityLabelUpdate
     {
     Op = RecommendedSensitivityLabelUpdateKind.Enable,
     Schema = "dbo",
     Table = "table1",
     Column = "column1",
-    },new RecommendedSensitivityLabelUpdate()
+    }, new RecommendedSensitivityLabelUpdate
     {
     Op = RecommendedSensitivityLabelUpdateKind.Disable,
     Schema = "dbo",
     Table = "table2",
     Column = "column2",
-    },new RecommendedSensitivityLabelUpdate()
+    }, new RecommendedSensitivityLabelUpdate
     {
     Op = RecommendedSensitivityLabelUpdateKind.Disable,
     Schema = "dbo",
     Table = "Table1",
     Column = "Column3",
-    }
-    },
+    }},
 };
 await managedDatabase.UpdateRecommendedManagedDatabaseSensitivityLabelAsync(recommendedSensitivityLabelUpdateList);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

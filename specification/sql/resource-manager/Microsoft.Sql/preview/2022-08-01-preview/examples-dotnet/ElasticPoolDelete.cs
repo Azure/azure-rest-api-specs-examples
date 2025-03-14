@@ -27,4 +27,4 @@ ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResou
 // invoke the operation
 await elasticPool.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

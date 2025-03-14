@@ -28,7 +28,7 @@ SqlServerBlobAuditingPolicyCollection collection = sqlServer.GetSqlServerBlobAud
 
 // invoke the operation
 BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-SqlServerBlobAuditingPolicyData data = new SqlServerBlobAuditingPolicyData()
+SqlServerBlobAuditingPolicyData data = new SqlServerBlobAuditingPolicyData
 {
     State = BlobAuditingPolicyState.Enabled,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",

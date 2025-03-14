@@ -27,17 +27,15 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation
-SensitivityLabelUpdateList sensitivityLabelUpdateList = new SensitivityLabelUpdateList()
+SensitivityLabelUpdateList sensitivityLabelUpdateList = new SensitivityLabelUpdateList
 {
-    Operations =
-    {
-    new SensitivityLabelUpdate()
+    Operations = {new SensitivityLabelUpdate
     {
     Op = SensitivityLabelUpdateKind.Set,
     Schema = "dbo",
     Table = "table1",
     Column = "column1",
-    SensitivityLabel = new SensitivityLabelData()
+    SensitivityLabel = new SensitivityLabelData
     {
     LabelName = "Highly Confidential",
     LabelId = "3A477B16-9423-432B-AA97-6069B481CEC3",
@@ -45,13 +43,13 @@ SensitivityLabelUpdateList sensitivityLabelUpdateList = new SensitivityLabelUpda
     InformationTypeId = "1D3652D6-422C-4115-82F1-65DAEBC665C8",
     Rank = SensitivityLabelRank.Low,
     },
-    },new SensitivityLabelUpdate()
+    }, new SensitivityLabelUpdate
     {
     Op = SensitivityLabelUpdateKind.Set,
     Schema = "dbo",
     Table = "table2",
     Column = "column2",
-    SensitivityLabel = new SensitivityLabelData()
+    SensitivityLabel = new SensitivityLabelData
     {
     LabelName = "PII",
     LabelId = "bf91e08c-f4f0-478a-b016-25164b2a65ff",
@@ -59,15 +57,14 @@ SensitivityLabelUpdateList sensitivityLabelUpdateList = new SensitivityLabelUpda
     InformationTypeId = "d22fa6e9-5ee4-3bde-4c2b-a409604c4646",
     Rank = SensitivityLabelRank.Critical,
     },
-    },new SensitivityLabelUpdate()
+    }, new SensitivityLabelUpdate
     {
     Op = SensitivityLabelUpdateKind.Remove,
     Schema = "dbo",
     Table = "Table1",
     Column = "Column3",
-    }
-    },
+    }},
 };
 await sqlDatabase.UpdateSensitivityLabelAsync(sensitivityLabelUpdateList);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

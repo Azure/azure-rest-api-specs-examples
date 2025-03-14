@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,11 +24,11 @@ ResourceIdentifier virtualClusterResourceId = VirtualClusterResource.CreateResou
 VirtualClusterResource virtualCluster = client.GetVirtualClusterResource(virtualClusterResourceId);
 
 // invoke the operation
-VirtualClusterPatch patch = new VirtualClusterPatch()
+VirtualClusterPatch patch = new VirtualClusterPatch
 {
     Tags =
     {
-    ["tkey"] = "tvalue1",
+    ["tkey"] = "tvalue1"
     },
 };
 ArmOperation<VirtualClusterResource> lro = await virtualCluster.UpdateAsync(WaitUntil.Completed, patch);

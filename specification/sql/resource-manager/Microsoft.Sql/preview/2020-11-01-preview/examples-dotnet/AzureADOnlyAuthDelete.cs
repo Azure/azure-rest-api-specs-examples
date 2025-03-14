@@ -27,4 +27,4 @@ SqlServerAzureADOnlyAuthenticationResource sqlServerAzureADOnlyAuthentication = 
 // invoke the operation
 await sqlServerAzureADOnlyAuthentication.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

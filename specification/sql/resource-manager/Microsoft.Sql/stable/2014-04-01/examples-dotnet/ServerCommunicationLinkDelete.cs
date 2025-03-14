@@ -26,4 +26,4 @@ SqlServerCommunicationLinkResource sqlServerCommunicationLink = client.GetSqlSer
 // invoke the operation
 await sqlServerCommunicationLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

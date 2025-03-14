@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,10 +24,10 @@ ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateRes
 ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
 
 // invoke the operation and iterate over the result
-ManagedInstanceResourceGetTopQueriesOptions options = new ManagedInstanceResourceGetTopQueriesOptions() { };
+ManagedInstanceResourceGetTopQueriesOptions options = new ManagedInstanceResourceGetTopQueriesOptions();
 await foreach (TopQueries item in managedInstance.GetTopQueriesAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

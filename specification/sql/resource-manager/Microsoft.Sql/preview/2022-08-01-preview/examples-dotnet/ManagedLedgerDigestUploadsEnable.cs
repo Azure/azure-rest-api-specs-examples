@@ -29,7 +29,7 @@ ManagedLedgerDigestUploadCollection collection = managedDatabase.GetManagedLedge
 
 // invoke the operation
 ManagedLedgerDigestUploadsName ledgerDigestUploads = ManagedLedgerDigestUploadsName.Current;
-ManagedLedgerDigestUploadData data = new ManagedLedgerDigestUploadData()
+ManagedLedgerDigestUploadData data = new ManagedLedgerDigestUploadData
 {
     DigestStorageEndpoint = "https://MyAccount.blob.core.windows.net",
 };

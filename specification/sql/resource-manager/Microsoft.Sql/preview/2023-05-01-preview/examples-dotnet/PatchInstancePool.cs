@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,11 +24,11 @@ ResourceIdentifier instancePoolResourceId = InstancePoolResource.CreateResourceI
 InstancePoolResource instancePool = client.GetInstancePoolResource(instancePoolResourceId);
 
 // invoke the operation
-InstancePoolPatch patch = new InstancePoolPatch()
+InstancePoolPatch patch = new InstancePoolPatch
 {
     Tags =
     {
-    ["x"] = "y",
+    ["x"] = "y"
     },
 };
 ArmOperation<InstancePoolResource> lro = await instancePool.UpdateAsync(WaitUntil.Completed, patch);

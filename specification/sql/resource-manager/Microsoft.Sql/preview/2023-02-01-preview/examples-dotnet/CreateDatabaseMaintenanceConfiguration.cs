@@ -37,7 +37,7 @@ SqlDatabaseData data = new SqlDatabaseData(new AzureLocation("southeastasia"))
     },
     CreateMode = SqlDatabaseCreateMode.Default,
     Collation = "SQL_Latin1_General_CP1_CI_AS",
-    MaxSizeBytes = 1073741824,
+    MaxSizeBytes = 1073741824L,
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_SouthEastAsia_1"),
 };
 ArmOperation<SqlDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, data);

@@ -28,4 +28,4 @@ ResourceGroupLongTermRetentionManagedInstanceBackupResource resourceGroupLongTer
 // invoke the operation
 await resourceGroupLongTermRetentionManagedInstanceBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

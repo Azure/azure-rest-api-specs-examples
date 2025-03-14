@@ -37,4 +37,4 @@ await foreach (ManagedTransparentDataEncryptionResource item in collection.GetAl
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

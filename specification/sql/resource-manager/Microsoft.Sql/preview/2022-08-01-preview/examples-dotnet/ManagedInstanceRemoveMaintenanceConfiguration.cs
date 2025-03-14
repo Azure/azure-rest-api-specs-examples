@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,7 +24,7 @@ ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateRes
 ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
 
 // invoke the operation
-ManagedInstancePatch patch = new ManagedInstancePatch()
+ManagedInstancePatch patch = new ManagedInstancePatch
 {
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/20d7082a-0fc7-4468-82bd-542694d5042b/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"),
 };

@@ -27,4 +27,4 @@ SqlServerJobCredentialResource sqlServerJobCredential = client.GetSqlServerJobCr
 // invoke the operation
 await sqlServerJobCredential.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

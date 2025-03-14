@@ -36,4 +36,4 @@ await foreach (ManagedInstanceAdvancedThreatProtectionResource item in collectio
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

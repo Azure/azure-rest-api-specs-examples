@@ -26,4 +26,4 @@ IPv6FirewallRuleResource iPv6FirewallRule = client.GetIPv6FirewallRuleResource(i
 // invoke the operation
 await iPv6FirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

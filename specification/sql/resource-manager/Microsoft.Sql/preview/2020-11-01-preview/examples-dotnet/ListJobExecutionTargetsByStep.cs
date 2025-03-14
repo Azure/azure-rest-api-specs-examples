@@ -31,7 +31,7 @@ SqlServerJobExecutionStepResource sqlServerJobExecutionStep = client.GetSqlServe
 SqlServerJobExecutionStepTargetCollection collection = sqlServerJobExecutionStep.GetSqlServerJobExecutionStepTargets();
 
 // invoke the operation and iterate over the result
-SqlServerJobExecutionStepTargetCollectionGetAllOptions options = new SqlServerJobExecutionStepTargetCollectionGetAllOptions() { };
+SqlServerJobExecutionStepTargetCollectionGetAllOptions options = new SqlServerJobExecutionStepTargetCollectionGetAllOptions();
 await foreach (SqlServerJobExecutionStepTargetResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -41,4 +41,4 @@ await foreach (SqlServerJobExecutionStepTargetResource item in collection.GetAll
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

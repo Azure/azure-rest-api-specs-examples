@@ -25,7 +25,7 @@ ResourceIdentifier dataMaskingPolicyResourceId = DataMaskingPolicyResource.Creat
 DataMaskingPolicyResource dataMaskingPolicy = client.GetDataMaskingPolicyResource(dataMaskingPolicyResourceId);
 
 // invoke the operation
-DataMaskingPolicyData data = new DataMaskingPolicyData()
+DataMaskingPolicyData data = new DataMaskingPolicyData
 {
     DataMaskingState = DataMaskingState.Enabled,
     ExemptPrincipals = "testuser;",

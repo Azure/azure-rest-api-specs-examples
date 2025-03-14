@@ -26,7 +26,7 @@ ResourceIdentifier sqlServerDatabaseReplicationLinkResourceId = SqlServerDatabas
 SqlServerDatabaseReplicationLinkResource sqlServerDatabaseReplicationLink = client.GetSqlServerDatabaseReplicationLinkResource(sqlServerDatabaseReplicationLinkResourceId);
 
 // invoke the operation
-SqlServerDatabaseReplicationLinkPatch patch = new SqlServerDatabaseReplicationLinkPatch()
+SqlServerDatabaseReplicationLinkPatch patch = new SqlServerDatabaseReplicationLinkPatch
 {
     LinkType = ReplicationLinkType.Standby,
 };

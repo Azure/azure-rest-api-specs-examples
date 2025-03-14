@@ -28,7 +28,7 @@ SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResou
 
 // invoke the operation
 string extensionName = "polybaseimport";
-SqlDatabaseExtension sqlDatabaseExtension = new SqlDatabaseExtension()
+SqlDatabaseExtension sqlDatabaseExtension = new SqlDatabaseExtension
 {
     OperationMode = DatabaseExtensionOperationMode.PolybaseImport,
     StorageKeyType = StorageKeyType.StorageAccessKey,

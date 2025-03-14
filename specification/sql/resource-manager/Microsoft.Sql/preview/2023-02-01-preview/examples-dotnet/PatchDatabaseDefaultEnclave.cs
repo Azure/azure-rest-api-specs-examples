@@ -27,7 +27,7 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation
-SqlDatabasePatch patch = new SqlDatabasePatch()
+SqlDatabasePatch patch = new SqlDatabasePatch
 {
     PreferredEnclaveType = SqlAlwaysEncryptedEnclaveType.Default,
 };

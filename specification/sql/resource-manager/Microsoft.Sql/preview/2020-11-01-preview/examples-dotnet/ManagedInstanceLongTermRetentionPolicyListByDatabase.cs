@@ -37,4 +37,4 @@ await foreach (ManagedInstanceLongTermRetentionPolicyResource item in collection
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

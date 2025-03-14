@@ -26,11 +26,11 @@ ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateRes
 ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
 
 // invoke the operation
-ManagedDatabasePatch patch = new ManagedDatabasePatch()
+ManagedDatabasePatch patch = new ManagedDatabasePatch
 {
     Tags =
     {
-    ["tagKey1"] = "TagValue1",
+    ["tagKey1"] = "TagValue1"
     },
 };
 ArmOperation<ManagedDatabaseResource> lro = await managedDatabase.UpdateAsync(WaitUntil.Completed, patch);

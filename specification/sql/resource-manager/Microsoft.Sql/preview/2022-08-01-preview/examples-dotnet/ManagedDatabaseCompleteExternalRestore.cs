@@ -29,4 +29,4 @@ ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(mana
 CompleteDatabaseRestoreDefinition completeDatabaseRestoreDefinition = new CompleteDatabaseRestoreDefinition("testdb1_log4");
 await managedDatabase.CompleteRestoreAsync(WaitUntil.Completed, completeDatabaseRestoreDefinition);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ ManagedInstanceStartStopScheduleResource managedInstanceStartStopSchedule = clie
 // invoke the operation
 await managedInstanceStartStopSchedule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

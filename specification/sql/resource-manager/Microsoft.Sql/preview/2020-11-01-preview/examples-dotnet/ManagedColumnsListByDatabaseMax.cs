@@ -26,22 +26,10 @@ ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateRes
 ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
 
 // invoke the operation and iterate over the result
-IEnumerable<string> schema = new string[]
-{
-"dbo"
-};
-IEnumerable<string> table = new string[]
-{
-"customer","address"
-};
-IEnumerable<string> column = new string[]
-{
-"username"
-};
-IEnumerable<string> orderBy = new string[]
-{
-"schema asc","table","column desc"
-};
+IEnumerable<string> schema = new string[] { "dbo" };
+IEnumerable<string> table = new string[] { "customer", "address" };
+IEnumerable<string> column = new string[] { "username" };
+IEnumerable<string> orderBy = new string[] { "schema asc", "table", "column desc" };
 await foreach (ManagedDatabaseColumnResource item in managedDatabase.GetManagedDatabaseColumnsByDatabaseAsync(schema: schema, table: table, column: column, orderBy: orderBy))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -51,4 +39,4 @@ await foreach (ManagedDatabaseColumnResource item in managedDatabase.GetManagedD
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

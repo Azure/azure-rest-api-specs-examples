@@ -29,4 +29,4 @@ SqlServerJobStepResource sqlServerJobStep = client.GetSqlServerJobStepResource(s
 // invoke the operation
 await sqlServerJobStep.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

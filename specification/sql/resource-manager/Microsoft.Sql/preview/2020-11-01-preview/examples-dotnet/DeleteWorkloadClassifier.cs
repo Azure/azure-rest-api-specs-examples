@@ -28,4 +28,4 @@ WorkloadClassifierResource workloadClassifier = client.GetWorkloadClassifierReso
 // invoke the operation
 await workloadClassifier.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

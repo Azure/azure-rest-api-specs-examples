@@ -28,7 +28,7 @@ ManagedServerSecurityAlertPolicyCollection collection = managedInstance.GetManag
 
 // invoke the operation
 SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-ManagedServerSecurityAlertPolicyData data = new ManagedServerSecurityAlertPolicyData()
+ManagedServerSecurityAlertPolicyData data = new ManagedServerSecurityAlertPolicyData
 {
     State = SecurityAlertsPolicyState.Enabled,
 };

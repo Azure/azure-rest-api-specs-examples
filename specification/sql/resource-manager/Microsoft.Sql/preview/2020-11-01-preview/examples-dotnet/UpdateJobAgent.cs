@@ -25,11 +25,11 @@ ResourceIdentifier sqlServerJobAgentResourceId = SqlServerJobAgentResource.Creat
 SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResource(sqlServerJobAgentResourceId);
 
 // invoke the operation
-SqlServerJobAgentPatch patch = new SqlServerJobAgentPatch()
+SqlServerJobAgentPatch patch = new SqlServerJobAgentPatch
 {
     Tags =
     {
-    ["mytag1"] = "myvalue1",
+    ["mytag1"] = "myvalue1"
     },
 };
 ArmOperation<SqlServerJobAgentResource> lro = await sqlServerJobAgent.UpdateAsync(WaitUntil.Completed, patch);

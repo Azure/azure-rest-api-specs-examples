@@ -25,7 +25,7 @@ ResourceIdentifier sqlServerJobAgentResourceId = SqlServerJobAgentResource.Creat
 SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResource(sqlServerJobAgentResourceId);
 
 // invoke the operation and iterate over the result
-SqlServerJobAgentResourceGetJobExecutionsByAgentOptions options = new SqlServerJobAgentResourceGetJobExecutionsByAgentOptions() { };
+SqlServerJobAgentResourceGetJobExecutionsByAgentOptions options = new SqlServerJobAgentResourceGetJobExecutionsByAgentOptions();
 await foreach (SqlServerJobExecutionResource item in sqlServerJobAgent.GetJobExecutionsByAgentAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (SqlServerJobExecutionResource item in sqlServerJobAgent.GetJobExe
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

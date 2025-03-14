@@ -27,4 +27,4 @@ ManagedServerDnsAliasResource managedServerDnsAlias = client.GetManagedServerDns
 // invoke the operation
 await managedServerDnsAlias.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

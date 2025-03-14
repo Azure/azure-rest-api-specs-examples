@@ -35,4 +35,4 @@ await foreach (ManagedDatabaseColumnResource item in managedDatabase.GetManagedD
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -25,7 +25,7 @@ ResourceIdentifier elasticPoolResourceId = ElasticPoolResource.CreateResourceIde
 ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResourceId);
 
 // invoke the operation
-ElasticPoolPatch patch = new ElasticPoolPatch()
+ElasticPoolPatch patch = new ElasticPoolPatch
 {
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_1"),
 };

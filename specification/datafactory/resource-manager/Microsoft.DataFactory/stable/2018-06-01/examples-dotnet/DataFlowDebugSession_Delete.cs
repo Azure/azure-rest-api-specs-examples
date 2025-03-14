@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_Delete.json
@@ -27,10 +25,10 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-DeleteDataFlowDebugSessionContent content = new DeleteDataFlowDebugSessionContent()
+DeleteDataFlowDebugSessionContent content = new DeleteDataFlowDebugSessionContent
 {
     SessionId = Guid.Parse("91fb57e0-8292-47be-89ff-c8f2d2bb2a7e"),
 };
 await dataFactory.DeleteDataFlowDebugSessionAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

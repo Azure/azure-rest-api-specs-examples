@@ -27,4 +27,4 @@ DataFactoryTriggerResource dataFactoryTrigger = client.GetDataFactoryTriggerReso
 // invoke the operation
 await dataFactoryTrigger.StartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

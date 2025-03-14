@@ -29,4 +29,4 @@ DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.Get
 LinkedIntegrationRuntimeContent content = new LinkedIntegrationRuntimeContent("exampleFactoryName-linked");
 await dataFactoryIntegrationRuntime.RemoveLinksAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

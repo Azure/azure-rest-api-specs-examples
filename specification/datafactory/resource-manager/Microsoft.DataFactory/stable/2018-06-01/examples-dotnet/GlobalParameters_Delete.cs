@@ -28,4 +28,4 @@ DataFactoryGlobalParameterResource dataFactoryGlobalParameter = client.GetDataFa
 // invoke the operation
 await dataFactoryGlobalParameter.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

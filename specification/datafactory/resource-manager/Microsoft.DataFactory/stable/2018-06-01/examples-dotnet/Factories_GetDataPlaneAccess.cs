@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetDataPlaneAccess.json
@@ -27,7 +25,7 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-DataFactoryDataPlaneUserAccessPolicy policy = new DataFactoryDataPlaneUserAccessPolicy()
+DataFactoryDataPlaneUserAccessPolicy policy = new DataFactoryDataPlaneUserAccessPolicy
 {
     Permissions = "r",
     AccessResourcePath = "",

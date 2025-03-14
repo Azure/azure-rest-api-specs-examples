@@ -27,7 +27,7 @@ DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.Get
 
 // invoke the operation
 string nodeName = "Node_1";
-UpdateIntegrationRuntimeNodeContent content = new UpdateIntegrationRuntimeNodeContent()
+UpdateIntegrationRuntimeNodeContent content = new UpdateIntegrationRuntimeNodeContent
 {
     ConcurrentJobsLimit = 2,
 };

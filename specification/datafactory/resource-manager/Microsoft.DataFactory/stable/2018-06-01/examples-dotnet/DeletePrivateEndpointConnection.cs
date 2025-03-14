@@ -27,4 +27,4 @@ DataFactoryPrivateEndpointConnectionResource dataFactoryPrivateEndpointConnectio
 // invoke the operation
 await dataFactoryPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

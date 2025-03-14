@@ -28,4 +28,4 @@ DataFactoryLinkedServiceResource dataFactoryLinkedService = client.GetDataFactor
 // invoke the operation
 await dataFactoryLinkedService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

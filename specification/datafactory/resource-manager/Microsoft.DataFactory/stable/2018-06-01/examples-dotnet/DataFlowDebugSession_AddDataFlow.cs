@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_AddDataFlow.json
@@ -27,99 +25,73 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-DataFactoryDataFlowDebugPackageContent content = new DataFactoryDataFlowDebugPackageContent()
+DataFactoryDataFlowDebugPackageContent content = new DataFactoryDataFlowDebugPackageContent
 {
     SessionId = Guid.Parse("f06ed247-9d07-49b2-b05e-2cb4a2fc871e"),
-    DataFlow = new DataFactoryDataFlowDebugInfo(new DataFactoryMappingDataFlowProperties()
+    DataFlow = new DataFactoryDataFlowDebugInfo(new DataFactoryMappingDataFlowProperties
     {
-        Sources =
+        Sources = {new DataFlowSource("source1")
         {
-        new DataFlowSource("source1")
-        {
-        Dataset = new DatasetReference(DatasetReferenceType.DatasetReference,"DelimitedText2"),
-        }
-        },
-        Sinks =
-        {
-        },
-        Transformations =
-        {
-        },
+        Dataset = new DatasetReference(DatasetReferenceType.DatasetReference, "DelimitedText2"),
+        }},
+        Sinks = { },
+        Transformations = { },
         Script = "\n\nsource(output(\n\t\tColumn_1 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1",
     })
     {
         Name = "dataflow1",
     },
-    Datasets =
+    Datasets = {new DataFactoryDatasetDebugInfo(new DelimitedTextDataset(new DataFactoryLinkedServiceReference(default, "linkedService5"))
     {
-    new DataFactoryDatasetDebugInfo(new DelimitedTextDataset(new DataFactoryLinkedServiceReference("LinkedServiceReference","linkedService5"))
+    DataLocation = new AzureBlobStorageLocation
     {
-    DataLocation = new AzureBlobStorageLocation()
-    {
-    Container = "dataflow-sample-data",
-    FileName = "Ansiencoding.csv",
+    Container = null,
+    FileName = null,
     },
-    ColumnDelimiter = ",",
-    QuoteChar = "\"",
-    EscapeChar = "\\",
-    FirstRowAsHeader = true,
-    Schema = new DatasetSchemaDataElement[]
-    {
-    new DatasetSchemaDataElement()
-    {
-    SchemaColumnType = "String",
-    }
-    },
-    Annotations =
-    {
-    },
+    ColumnDelimiter = null,
+    QuoteChar = null,
+    EscapeChar = null,
+    FirstRowAsHeader = null,
+    Schema = null,
+    Annotations = {},
     })
     {
     Name = "dataset1",
-    }
-    },
-    LinkedServices =
+    }},
+    LinkedServices = {new DataFactoryLinkedServiceDebugInfo(new AzureBlobStorageLinkedService
     {
-    new DataFactoryLinkedServiceDebugInfo(new AzureBlobStorageLinkedService()
-    {
-    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=<storageName>;EndpointSuffix=core.windows.net;",
+    ConnectionString = null,
     EncryptedCredential = "<credential>",
-    Annotations =
-    {
-    },
+    Annotations = {},
     })
     {
     Name = "linkedService1",
-    }
-    },
-    DebugSettings = new DataFlowDebugPackageDebugSettings()
+    }},
+    DebugSettings = new DataFlowDebugPackageDebugSettings
     {
-        SourceSettings =
-        {
-        new DataFlowSourceSetting()
+        SourceSettings = {new DataFlowSourceSetting
         {
         SourceName = "source1",
         RowLimit = 1000,
-        },new DataFlowSourceSetting()
+        }, new DataFlowSourceSetting
         {
         SourceName = "source2",
         RowLimit = 222,
-        }
-        },
+        }},
         Parameters =
         {
-        ["sourcePath"] = BinaryData.FromString("\"Toy\""),
+        ["sourcePath"] = BinaryData.FromObjectAsJson("Toy")
         },
-        DatasetParameters = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+        DatasetParameters = BinaryData.FromObjectAsJson(new
         {
-            ["Movies"] = new Dictionary<string, object>()
+            Movies = new
             {
-                ["path"] = "abc"
+                path = "abc",
             },
-            ["Output"] = new Dictionary<string, object>()
+            Output = new
             {
-                ["time"] = "def"
-            }
+                time = "def",
+            },
         }),
     },
 };

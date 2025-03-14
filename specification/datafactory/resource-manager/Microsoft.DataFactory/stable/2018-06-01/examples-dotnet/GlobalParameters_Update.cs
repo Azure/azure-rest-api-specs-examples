@@ -29,9 +29,9 @@ DataFactoryGlobalParameterCollection collection = dataFactory.GetDataFactoryGlob
 
 // invoke the operation
 string globalParameterName = "default";
-DataFactoryGlobalParameterData data = new DataFactoryGlobalParameterData(new Dictionary<string, DataFactoryGlobalParameterProperties>()
+DataFactoryGlobalParameterData data = new DataFactoryGlobalParameterData(new Dictionary<string, DataFactoryGlobalParameterProperties>
 {
-    ["waitTime"] = new DataFactoryGlobalParameterProperties(DataFactoryGlobalParameterType.Int, BinaryData.FromString("\"5\"")),
+    ["waitTime"] = new DataFactoryGlobalParameterProperties(DataFactoryGlobalParameterType.Int, BinaryData.FromObjectAsJson("5"))
 });
 ArmOperation<DataFactoryGlobalParameterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, globalParameterName, data);
 DataFactoryGlobalParameterResource result = lro.Value;

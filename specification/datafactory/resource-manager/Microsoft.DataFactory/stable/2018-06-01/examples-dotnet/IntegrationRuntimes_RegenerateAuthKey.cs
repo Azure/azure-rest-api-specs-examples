@@ -26,7 +26,7 @@ ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrat
 DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
-IntegrationRuntimeRegenerateKeyContent content = new IntegrationRuntimeRegenerateKeyContent()
+IntegrationRuntimeRegenerateKeyContent content = new IntegrationRuntimeRegenerateKeyContent
 {
     KeyName = IntegrationRuntimeAuthKeyName.AuthKey2,
 };

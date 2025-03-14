@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_QueryByFactory.json
@@ -27,7 +25,7 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation and iterate over the result
-TriggerFilterContent content = new TriggerFilterContent()
+TriggerFilterContent content = new TriggerFilterContent
 {
     ParentTriggerName = "exampleTrigger",
 };
@@ -40,4 +38,4 @@ await foreach (DataFactoryTriggerResource item in dataFactory.GetTriggersAsync(c
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

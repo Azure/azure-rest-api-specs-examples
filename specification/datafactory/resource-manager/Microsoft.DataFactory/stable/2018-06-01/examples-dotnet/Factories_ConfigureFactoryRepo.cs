@@ -1,10 +1,8 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
-using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.Resources;
@@ -26,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation locationId = new AzureLocation("East US");
-FactoryRepoContent content = new FactoryRepoContent()
+FactoryRepoContent content = new FactoryRepoContent
 {
     FactoryResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
     RepoConfiguration = new FactoryVstsConfiguration("ADF", "repo", "master", "/", "project")

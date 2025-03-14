@@ -28,4 +28,4 @@ DataFactoryTriggerResource dataFactoryTrigger = client.GetDataFactoryTriggerReso
 string runId = "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b";
 await dataFactoryTrigger.CancelTriggerRunAsync(runId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

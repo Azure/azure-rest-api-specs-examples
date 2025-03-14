@@ -27,4 +27,4 @@ DataFactoryServiceCredentialResource dataFactoryServiceCredential = client.GetDa
 // invoke the operation
 await dataFactoryServiceCredential.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -26,7 +26,7 @@ ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrat
 DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
-DataFactoryIntegrationRuntimePatch patch = new DataFactoryIntegrationRuntimePatch()
+DataFactoryIntegrationRuntimePatch patch = new DataFactoryIntegrationRuntimePatch
 {
     AutoUpdate = IntegrationRuntimeAutoUpdateState.Off,
     UpdateDelayOffset = XmlConvert.ToTimeSpan("\"PT3H\""),

@@ -29,11 +29,9 @@ DataFactoryPrivateEndpointCollection collection = dataFactoryManagedVirtualNetwo
 
 // invoke the operation
 string managedPrivateEndpointName = "exampleManagedPrivateEndpointName";
-DataFactoryPrivateEndpointData data = new DataFactoryPrivateEndpointData(new DataFactoryPrivateEndpointProperties()
+DataFactoryPrivateEndpointData data = new DataFactoryPrivateEndpointData(new DataFactoryPrivateEndpointProperties
 {
-    Fqdns =
-    {
-    },
+    Fqdns = { },
     GroupId = "blob",
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage"),
 });

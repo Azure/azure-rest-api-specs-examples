@@ -26,7 +26,7 @@ ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrat
 DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
-CreateLinkedIntegrationRuntimeContent content = new CreateLinkedIntegrationRuntimeContent()
+CreateLinkedIntegrationRuntimeContent content = new CreateLinkedIntegrationRuntimeContent
 {
     Name = "bfa92911-9fb6-4fbe-8f23-beae87bc1c83",
     SubscriptionId = "061774c7-4b5a-4159-a55b-365581830283",

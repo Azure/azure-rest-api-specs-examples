@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.DataFactory;
@@ -28,4 +29,4 @@ DataFactoryPipelineResource dataFactoryPipeline = client.GetDataFactoryPipelineR
 // invoke the operation
 await dataFactoryPipeline.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

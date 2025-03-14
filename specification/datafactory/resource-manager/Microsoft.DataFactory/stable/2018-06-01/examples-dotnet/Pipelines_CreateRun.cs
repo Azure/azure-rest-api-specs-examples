@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.DataFactory;
@@ -26,9 +27,12 @@ ResourceIdentifier dataFactoryPipelineResourceId = DataFactoryPipelineResource.C
 DataFactoryPipelineResource dataFactoryPipeline = client.GetDataFactoryPipelineResource(dataFactoryPipelineResourceId);
 
 // invoke the operation
-IDictionary<string, BinaryData> parameterValueSpecification = new Dictionary<string, BinaryData>()
+IDictionary<string, BinaryData> parameterValueSpecification = new Dictionary<string, BinaryData>
 {
-    ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[] { "exampleoutput.csv" }),
+    ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[]
+{
+"exampleoutput.csv"
+})
 };
 string referencePipelineRunId = null;
 PipelineCreateRunResult result = await dataFactoryPipeline.CreateRunAsync(parameterValueSpecification: parameterValueSpecification, referencePipelineRunId: referencePipelineRunId);

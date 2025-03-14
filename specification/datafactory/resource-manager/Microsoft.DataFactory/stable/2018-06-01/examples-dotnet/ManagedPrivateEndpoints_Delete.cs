@@ -28,4 +28,4 @@ DataFactoryPrivateEndpointResource dataFactoryPrivateEndpoint = client.GetDataFa
 // invoke the operation
 await dataFactoryPrivateEndpoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

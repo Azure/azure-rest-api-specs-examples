@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Sphere;
 using Azure.ResourceManager.Sphere.Models;
+using Azure.ResourceManager.Sphere;
 
 // Generated from example definition: specification/sphere/resource-manager/Microsoft.AzureSphere/stable/2024-04-01/examples/PutDeviceGroup.json
 // this example is just showing the usage of "DeviceGroups_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,7 +29,7 @@ SphereDeviceGroupCollection collection = sphereProduct.GetSphereDeviceGroups();
 
 // invoke the operation
 string deviceGroupName = "MyDeviceGroup1";
-SphereDeviceGroupData data = new SphereDeviceGroupData()
+SphereDeviceGroupData data = new SphereDeviceGroupData
 {
     Description = "Description for MyDeviceGroup1",
     OSFeedType = SphereOSFeedType.Retail,

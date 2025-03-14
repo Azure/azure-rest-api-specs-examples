@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Sphere;
 using Azure.ResourceManager.Sphere.Models;
+using Azure.ResourceManager.Sphere;
 
 // Generated from example definition: specification/sphere/resource-manager/Microsoft.AzureSphere/stable/2024-04-01/examples/PostClaimDevices.json
 // this example is just showing the usage of "DeviceGroups_ClaimDevices" operation, for the dependent resources, they will have to be created separately.
@@ -26,10 +26,7 @@ ResourceIdentifier sphereDeviceGroupResourceId = SphereDeviceGroupResource.Creat
 SphereDeviceGroupResource sphereDeviceGroup = client.GetSphereDeviceGroupResource(sphereDeviceGroupResourceId);
 
 // invoke the operation
-ClaimSphereDevicesContent content = new ClaimSphereDevicesContent(new string[]
-{
-"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-});
+ClaimSphereDevicesContent content = new ClaimSphereDevicesContent(new string[] { "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" });
 await sphereDeviceGroup.ClaimDevicesAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

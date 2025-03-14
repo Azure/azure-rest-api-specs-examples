@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Sphere;
 using Azure.ResourceManager.Sphere.Models;
+using Azure.ResourceManager.Sphere;
 
 // Generated from example definition: specification/sphere/resource-manager/Microsoft.AzureSphere/stable/2024-04-01/examples/DeleteCatalog.json
 // this example is just showing the usage of "Catalogs_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ SphereCatalogResource sphereCatalog = client.GetSphereCatalogResource(sphereCata
 // invoke the operation
 await sphereCatalog.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

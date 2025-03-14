@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Sphere;
 using Azure.ResourceManager.Sphere.Models;
+using Azure.ResourceManager.Sphere;
 
 // Generated from example definition: specification/sphere/resource-manager/Microsoft.AzureSphere/stable/2024-04-01/examples/PostGenerateDeviceCapabilityImage.json
 // this example is just showing the usage of "Devices_GenerateCapabilityImage" operation, for the dependent resources, they will have to be created separately.
@@ -27,10 +27,7 @@ ResourceIdentifier sphereDeviceResourceId = SphereDeviceResource.CreateResourceI
 SphereDeviceResource sphereDevice = client.GetSphereDeviceResource(sphereDeviceResourceId);
 
 // invoke the operation
-GenerateCapabilityImageContent content = new GenerateCapabilityImageContent(new SphereCapabilityType[]
-{
-SphereCapabilityType.ApplicationDevelopment
-});
+GenerateCapabilityImageContent content = new GenerateCapabilityImageContent(new SphereCapabilityType[] { SphereCapabilityType.ApplicationDevelopment });
 ArmOperation<SignedCapabilityImageResponse> lro = await sphereDevice.GenerateCapabilityImageAsync(WaitUntil.Completed, content);
 SignedCapabilityImageResponse result = lro.Value;
 

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/InteractionsCreateOrUpdate.json
 // this example is just showing the usage of "Interactions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,24 +25,18 @@ ResourceIdentifier interactionResourceFormatResourceId = InteractionResourceForm
 InteractionResourceFormatResource interactionResourceFormat = client.GetInteractionResourceFormatResource(interactionResourceFormatResourceId);
 
 // invoke the operation
-InteractionResourceFormatData data = new InteractionResourceFormatData()
+InteractionResourceFormatData data = new InteractionResourceFormatData
 {
     SmallImage = "\\\\Images\\\\smallImage",
     MediumImage = "\\\\Images\\\\MediumImage",
     LargeImage = "\\\\Images\\\\LargeImage",
     ApiEntitySetName = "TestInteractionType6358",
-    Fields =
-    {
-    new PropertyDefinition("TestInteractionType6358","Edm.String")
+    Fields = {new PropertyDefinition("TestInteractionType6358", "Edm.String")
     {
     IsArray = false,
     IsRequired = true,
-    },new PropertyDefinition("profile1","Edm.String")
-    },
-    IdPropertyNames =
-    {
-    "TestInteractionType6358"
-    },
+    }, new PropertyDefinition("profile1", "Edm.String")},
+    IdPropertyNames = { "TestInteractionType6358" },
     PrimaryParticipantProfilePropertyName = "profile1",
 };
 ArmOperation<InteractionResourceFormatResource> lro = await interactionResourceFormat.UpdateAsync(WaitUntil.Completed, data);

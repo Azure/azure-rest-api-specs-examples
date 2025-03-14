@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/AuthorizationPoliciesCreateOrUpdate.json
 // this example is just showing the usage of "AuthorizationPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,12 +28,9 @@ AuthorizationPolicyResourceFormatCollection collection = hub.GetAuthorizationPol
 
 // invoke the operation
 string authorizationPolicyName = "testPolicy4222";
-AuthorizationPolicyResourceFormatData data = new AuthorizationPolicyResourceFormatData()
+AuthorizationPolicyResourceFormatData data = new AuthorizationPolicyResourceFormatData
 {
-    Permissions =
-    {
-    PermissionType.Read,PermissionType.Write,PermissionType.Manage
-    },
+    Permissions = { PermissionType.Read, PermissionType.Write, PermissionType.Manage },
 };
 ArmOperation<AuthorizationPolicyResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationPolicyName, data);
 AuthorizationPolicyResourceFormatResource result = lro.Value;

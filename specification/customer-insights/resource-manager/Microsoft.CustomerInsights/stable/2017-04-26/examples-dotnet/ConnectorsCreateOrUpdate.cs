@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/ConnectorsCreateOrUpdate.json
 // this example is just showing the usage of "Connectors_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -16,30 +15,34 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ConnectorResourceFormatResource created on azure
-// for more information of creating ConnectorResourceFormatResource, please refer to the document of ConnectorResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string connectorName = "testConnector";
-ResourceIdentifier connectorResourceFormatResourceId = ConnectorResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, connectorName);
-ConnectorResourceFormatResource connectorResourceFormat = client.GetConnectorResourceFormatResource(connectorResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this ConnectorResourceFormatResource
+ConnectorResourceFormatCollection collection = hub.GetConnectorResourceFormats();
 
 // invoke the operation
-ConnectorResourceFormatData data = new ConnectorResourceFormatData()
+string connectorName = "testConnector";
+ConnectorResourceFormatData data = new ConnectorResourceFormatData
 {
     ConnectorType = ConnectorType.AzureBlob,
     DisplayName = "testConnector",
     Description = "Test connector",
     ConnectorProperties =
     {
-    ["connectionKeyVaultUrl"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    ["connectionKeyVaultUrl"] = BinaryData.FromObjectAsJson(new
     {
-    ["organizationId"] = "XXX",
-    ["organizationUrl"] = "https://XXX.crmlivetie.com/"}),
+    organizationId = "XXX",
+    organizationUrl = "https://XXX.crmlivetie.com/",
+    })
     },
 };
-ArmOperation<ConnectorResourceFormatResource> lro = await connectorResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ConnectorResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectorName, data);
 ConnectorResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

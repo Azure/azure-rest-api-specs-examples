@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/ProfilesCreateOrUpdate.json
 // this example is just showing the usage of "Profiles_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,47 +25,35 @@ ResourceIdentifier profileResourceFormatResourceId = ProfileResourceFormatResour
 ProfileResourceFormatResource profileResourceFormat = client.GetProfileResourceFormatResource(profileResourceFormatResourceId);
 
 // invoke the operation
-ProfileResourceFormatData data = new ProfileResourceFormatData()
+ProfileResourceFormatData data = new ProfileResourceFormatData
 {
     SmallImage = "\\\\Images\\\\smallImage",
     MediumImage = "\\\\Images\\\\MediumImage",
     LargeImage = "\\\\Images\\\\LargeImage",
     ApiEntitySetName = "TestProfileType396",
-    Fields =
-    {
-    new PropertyDefinition("Id","Edm.String")
+    Fields = {new PropertyDefinition("Id", "Edm.String")
     {
     IsArray = false,
     IsRequired = true,
-    },new PropertyDefinition("ProfileId","Edm.String")
+    }, new PropertyDefinition("ProfileId", "Edm.String")
     {
     IsArray = false,
     IsRequired = true,
-    },new PropertyDefinition("LastName","Edm.String")
+    }, new PropertyDefinition("LastName", "Edm.String")
     {
     IsArray = false,
     IsRequired = true,
-    },new PropertyDefinition("TestProfileType396","Edm.String")
+    }, new PropertyDefinition("TestProfileType396", "Edm.String")
     {
     IsArray = false,
     IsRequired = true,
-    },new PropertyDefinition("SavingAccountBalance","Edm.Int32")
+    }, new PropertyDefinition("SavingAccountBalance", "Edm.Int32")
     {
     IsArray = false,
     IsRequired = true,
-    }
-    },
+    }},
     SchemaItemTypeLink = "SchemaItemTypeLink",
-    StrongIds =
-    {
-    new StrongId(new string[]
-    {
-    "Id","SavingAccountBalance"
-    },"Id"),new StrongId(new string[]
-    {
-    "ProfileId","LastName"
-    },"ProfileId")
-    },
+    StrongIds = { new StrongId(new string[] { "Id", "SavingAccountBalance" }, "Id"), new StrongId(new string[] { "ProfileId", "LastName" }, "ProfileId") },
 };
 ArmOperation<ProfileResourceFormatResource> lro = await profileResourceFormat.UpdateAsync(WaitUntil.Completed, data);
 ProfileResourceFormatResource result = lro.Value;

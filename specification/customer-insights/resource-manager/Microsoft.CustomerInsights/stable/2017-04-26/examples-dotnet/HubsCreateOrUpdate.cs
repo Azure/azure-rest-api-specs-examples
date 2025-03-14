@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/HubsCreateOrUpdate.json
 // this example is just showing the usage of "Hubs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,7 +30,7 @@ HubCollection collection = resourceGroupResource.GetHubs();
 string hubName = "sdkTestHub";
 HubData data = new HubData(new AzureLocation("West US"))
 {
-    HubBillingInfo = new HubBillingInfoFormat()
+    HubBillingInfo = new HubBillingInfoFormat
     {
         SkuName = "B0",
         MinUnits = 1,

@@ -30,7 +30,7 @@ DicomServiceCollection collection = healthcareApisWorkspace.GetDicomServices();
 string dicomServiceName = "blue";
 DicomServiceData data = new DicomServiceData(new AzureLocation("westus"))
 {
-    StorageConfiguration = new HealthcareApisServiceStorageConfiguration()
+    StorageConfiguration = new HealthcareApisServiceStorageConfiguration
     {
         StorageResourceId = new ResourceIdentifier("/subscriptions/ab309d4e-4c2e-4241-be2e-08e1c8dd4246/resourceGroups/rgname/providers/Microsoft.Storage/storageAccounts/accountname"),
         FileSystemName = "fileSystemName",

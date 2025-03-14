@@ -27,4 +27,4 @@ DicomServiceResource dicomService = client.GetDicomServiceResource(dicomServiceR
 // invoke the operation
 await dicomService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

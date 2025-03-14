@@ -36,4 +36,4 @@ await foreach (HealthcareApisServicePrivateEndpointConnectionResource item in co
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

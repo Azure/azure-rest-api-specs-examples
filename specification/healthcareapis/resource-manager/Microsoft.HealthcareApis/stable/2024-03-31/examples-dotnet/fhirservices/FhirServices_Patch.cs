@@ -25,11 +25,11 @@ ResourceIdentifier fhirServiceResourceId = FhirServiceResource.CreateResourceIde
 FhirServiceResource fhirService = client.GetFhirServiceResource(fhirServiceResourceId);
 
 // invoke the operation
-FhirServicePatch patch = new FhirServicePatch()
+FhirServicePatch patch = new FhirServicePatch
 {
     Tags =
     {
-    ["tagKey"] = "tagValue",
+    ["tagKey"] = "tagValue"
     },
 };
 ArmOperation<FhirServiceResource> lro = await fhirService.UpdateAsync(WaitUntil.Completed, patch);

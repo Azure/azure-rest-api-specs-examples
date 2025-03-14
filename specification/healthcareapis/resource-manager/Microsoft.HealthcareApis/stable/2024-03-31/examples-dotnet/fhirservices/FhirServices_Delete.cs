@@ -27,4 +27,4 @@ FhirServiceResource fhirService = client.GetFhirServiceResource(fhirServiceResou
 // invoke the operation
 await fhirService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/ProviderShareSubscriptions_GetByShare.json
@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataShareResource created on azure
-// for more information of creating DataShareResource, please refer to the document of DataShareResource
+// this example assumes you already have this ProviderShareSubscriptionResource created on azure
+// for more information of creating ProviderShareSubscriptionResource, please refer to the document of ProviderShareSubscriptionResource
 string subscriptionId = "12345678-1234-1234-12345678abc";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "Account1";
 string shareName = "Share1";
-ResourceIdentifier dataShareResourceId = DataShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
-DataShareResource dataShare = client.GetDataShareResource(dataShareResourceId);
-
-// get the collection of this ProviderShareSubscriptionResource
-ProviderShareSubscriptionCollection collection = dataShare.GetProviderShareSubscriptions();
+string providerShareSubscriptionId = "4256e2cf-0f82-4865-961b-12f83333f487";
+ResourceIdentifier providerShareSubscriptionResourceId = ProviderShareSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName, providerShareSubscriptionId);
+ProviderShareSubscriptionResource providerShareSubscription = client.GetProviderShareSubscriptionResource(providerShareSubscriptionResourceId);
 
 // invoke the operation
-string providerShareSubscriptionId = "4256e2cf-0f82-4865-961b-12f83333f487";
-NullableResponse<ProviderShareSubscriptionResource> response = await collection.GetIfExistsAsync(providerShareSubscriptionId);
-ProviderShareSubscriptionResource result = response.HasValue ? response.Value : null;
+ProviderShareSubscriptionResource result = await providerShareSubscription.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ProviderShareSubscriptionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ProviderShareSubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

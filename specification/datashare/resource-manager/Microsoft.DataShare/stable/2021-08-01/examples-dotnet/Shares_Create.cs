@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataShare;
 using Azure.ResourceManager.DataShare.Models;
+using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/Shares_Create.json
 // this example is just showing the usage of "Shares_Create" operation, for the dependent resources, they will have to be created separately.
@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataShareAccountResource created on azure
-// for more information of creating DataShareAccountResource, please refer to the document of DataShareAccountResource
+// this example assumes you already have this DataShareResource created on azure
+// for more information of creating DataShareResource, please refer to the document of DataShareResource
 string subscriptionId = "12345678-1234-1234-12345678abc";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "Account1";
-ResourceIdentifier dataShareAccountResourceId = DataShareAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-DataShareAccountResource dataShareAccount = client.GetDataShareAccountResource(dataShareAccountResourceId);
-
-// get the collection of this DataShareResource
-DataShareCollection collection = dataShareAccount.GetDataShares();
+string shareName = "Share1";
+ResourceIdentifier dataShareResourceId = DataShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
+DataShareResource dataShare = client.GetDataShareResource(dataShareResourceId);
 
 // invoke the operation
-string shareName = "Share1";
-DataShareData data = new DataShareData()
+DataShareData data = new DataShareData
 {
     Description = "share description",
     ShareKind = DataShareKind.CopyBased,
     Terms = "Confidential",
 };
-ArmOperation<DataShareResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, shareName, data);
+ArmOperation<DataShareResource> lro = await dataShare.UpdateAsync(WaitUntil.Completed, data);
 DataShareResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

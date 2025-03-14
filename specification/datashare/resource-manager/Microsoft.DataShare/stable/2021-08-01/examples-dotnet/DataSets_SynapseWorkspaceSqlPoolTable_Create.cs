@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataShare;
 using Azure.ResourceManager.DataShare.Models;
+using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/DataSets_SynapseWorkspaceSqlPoolTable_Create.json
 // this example is just showing the usage of "DataSets_Create" operation, for the dependent resources, they will have to be created separately.
@@ -15,22 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataShareResource created on azure
-// for more information of creating DataShareResource, please refer to the document of DataShareResource
+// this example assumes you already have this ShareDataSetResource created on azure
+// for more information of creating ShareDataSetResource, please refer to the document of ShareDataSetResource
 string subscriptionId = "0f3dcfc3-18f8-4099-b381-8353e19d43a7";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "sourceAccount";
 string shareName = "share1";
-ResourceIdentifier dataShareResourceId = DataShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
-DataShareResource dataShare = client.GetDataShareResource(dataShareResourceId);
-
-// get the collection of this ShareDataSetResource
-ShareDataSetCollection collection = dataShare.GetShareDataSets();
+string dataSetName = "dataset1";
+ResourceIdentifier shareDataSetResourceId = ShareDataSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName, dataSetName);
+ShareDataSetResource shareDataSet = client.GetShareDataSetResource(shareDataSetResourceId);
 
 // invoke the operation
-string dataSetName = "dataset1";
 ShareDataSetData data = new SynapseWorkspaceSqlPoolTableDataSet(new ResourceIdentifier("/subscriptions/0f3dcfc3-18f8-4099-b381-8353e19d43a7/resourceGroups/SampleResourceGroup/providers/Microsoft.Synapse/workspaces/ExampleWorkspace/sqlPools/ExampleSqlPool/schemas/dbo/tables/table1"));
-ArmOperation<ShareDataSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataSetName, data);
+ArmOperation<ShareDataSetResource> lro = await shareDataSet.UpdateAsync(WaitUntil.Completed, data);
 ShareDataSetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

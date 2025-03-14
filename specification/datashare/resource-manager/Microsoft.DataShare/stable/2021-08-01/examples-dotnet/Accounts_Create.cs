@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataShare;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/Accounts_Create.json
 // this example is just showing the usage of "Accounts_Create" operation, for the dependent resources, they will have to be created separately.
@@ -33,7 +33,7 @@ DataShareAccountData data = new DataShareAccountData(new AzureLocation("West US 
     Tags =
     {
     ["tag1"] = "Red",
-    ["tag2"] = "White",
+    ["tag2"] = "White"
     },
 };
 ArmOperation<DataShareAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);

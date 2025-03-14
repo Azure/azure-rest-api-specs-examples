@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
 using Azure.ResourceManager.HybridContainerService.Models;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/PutKubernetesVersions.json
 // this example is just showing the usage of "PutKubernetesVersions" operation, for the dependent resources, they will have to be created separately.
@@ -22,9 +22,9 @@ ResourceIdentifier kubernetesVersionProfileResourceId = KubernetesVersionProfile
 KubernetesVersionProfileResource kubernetesVersionProfile = client.GetKubernetesVersionProfileResource(kubernetesVersionProfileResourceId);
 
 // invoke the operation
-KubernetesVersionProfileData data = new KubernetesVersionProfileData()
+KubernetesVersionProfileData data = new KubernetesVersionProfileData
 {
-    ExtendedLocation = new HybridContainerServiceExtendedLocation()
+    ExtendedLocation = new HybridContainerServiceExtendedLocation
     {
         ExtendedLocationType = HybridContainerServiceExtendedLocationType.CustomLocation,
         Name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",

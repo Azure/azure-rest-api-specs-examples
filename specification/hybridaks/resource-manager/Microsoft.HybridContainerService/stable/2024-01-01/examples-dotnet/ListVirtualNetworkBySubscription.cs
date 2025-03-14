@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
-using Azure.ResourceManager.HybridContainerService.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/ListVirtualNetworkBySubscription.json
 // this example is just showing the usage of "virtualNetworks_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (HybridContainerServiceVirtualNetworkResource item in subscription
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

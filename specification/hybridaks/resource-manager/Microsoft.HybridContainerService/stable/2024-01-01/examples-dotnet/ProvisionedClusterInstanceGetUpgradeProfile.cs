@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/ProvisionedClusterInstanceGetUpgradeProfile.json

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
 using Azure.ResourceManager.HybridContainerService.Models;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/PutAgentPool.json
 // this example is just showing the usage of "agentPool_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,30 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridContainerServiceAgentPoolResource created on azure
-// for more information of creating HybridContainerServiceAgentPoolResource, please refer to the document of HybridContainerServiceAgentPoolResource
+// this example assumes you already have this ProvisionedClusterResource created on azure
+// for more information of creating ProvisionedClusterResource, please refer to the document of ProvisionedClusterResource
 string connectedClusterResourceUri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/test-hybridakscluster";
-string agentPoolName = "testnodepool";
-ResourceIdentifier hybridContainerServiceAgentPoolResourceId = HybridContainerServiceAgentPoolResource.CreateResourceIdentifier(connectedClusterResourceUri, agentPoolName);
-HybridContainerServiceAgentPoolResource hybridContainerServiceAgentPool = client.GetHybridContainerServiceAgentPoolResource(hybridContainerServiceAgentPoolResourceId);
+ResourceIdentifier provisionedClusterResourceId = ProvisionedClusterResource.CreateResourceIdentifier(connectedClusterResourceUri);
+ProvisionedClusterResource provisionedCluster = client.GetProvisionedClusterResource(provisionedClusterResourceId);
+
+// get the collection of this HybridContainerServiceAgentPoolResource
+HybridContainerServiceAgentPoolCollection collection = provisionedCluster.GetHybridContainerServiceAgentPools();
 
 // invoke the operation
-HybridContainerServiceAgentPoolData data = new HybridContainerServiceAgentPoolData()
+string agentPoolName = "testnodepool";
+HybridContainerServiceAgentPoolData data = new HybridContainerServiceAgentPoolData
 {
     OSType = HybridContainerServiceOSType.Linux,
     NodeLabels =
     {
     ["env"] = "dev",
-    ["goal"] = "test",
+    ["goal"] = "test"
     },
-    NodeTaints =
-    {
-    "env=prod:NoSchedule","sku=gpu:NoSchedule"
-    },
+    NodeTaints = { "env=prod:NoSchedule", "sku=gpu:NoSchedule" },
     Count = 1,
     VmSize = "Standard_A4_v2",
 };
-ArmOperation<HybridContainerServiceAgentPoolResource> lro = await hybridContainerServiceAgentPool.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HybridContainerServiceAgentPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, agentPoolName, data);
 HybridContainerServiceAgentPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

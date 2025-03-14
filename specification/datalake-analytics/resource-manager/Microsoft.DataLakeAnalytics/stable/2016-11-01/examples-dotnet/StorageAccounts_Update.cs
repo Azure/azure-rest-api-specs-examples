@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/StorageAccounts_Update.json
 // this example is just showing the usage of "StorageAccounts_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,11 @@ ResourceIdentifier dataLakeAnalyticsStorageAccountInformationResourceId = DataLa
 DataLakeAnalyticsStorageAccountInformationResource dataLakeAnalyticsStorageAccountInformation = client.GetDataLakeAnalyticsStorageAccountInformationResource(dataLakeAnalyticsStorageAccountInformationResourceId);
 
 // invoke the operation
-DataLakeAnalyticsStorageAccountInformationPatch patch = new DataLakeAnalyticsStorageAccountInformationPatch()
+DataLakeAnalyticsStorageAccountInformationPatch patch = new DataLakeAnalyticsStorageAccountInformationPatch
 {
     AccessKey = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab346",
     Suffix = "test_suffix",
 };
 await dataLakeAnalyticsStorageAccountInformation.UpdateAsync(patch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

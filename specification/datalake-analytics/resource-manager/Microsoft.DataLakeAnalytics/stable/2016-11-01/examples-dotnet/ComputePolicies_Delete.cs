@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/ComputePolicies_Delete.json
 // this example is just showing the usage of "ComputePolicies_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ DataLakeAnalyticsComputePolicyResource dataLakeAnalyticsComputePolicy = client.G
 // invoke the operation
 await dataLakeAnalyticsComputePolicy.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5179,3 +5179,4 @@ id,name,language,tag,package,version,date_epoch,date
 5178,"Azure.ResourceManager.StorageActions,1.0.0-beta.2",dotnet,Azure.ResourceManager.StorageActions_1.0.0-beta.2,Azure.ResourceManager.StorageActions,1.0.0-beta.2,1741924283,03/14/2025
 5179,"Azure.ResourceManager.ServiceFabric,1.2.0-beta.2",dotnet,Azure.ResourceManager.ServiceFabric_1.2.0-beta.2,Azure.ResourceManager.ServiceFabric,1.2.0-beta.2,1741923775,03/14/2025
 5180,"Azure.ResourceManager.SelfHelp,1.1.0-beta.5",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.5,Azure.ResourceManager.SelfHelp,1.1.0-beta.5,1741923621,03/14/2025
+5181,"Azure.ResourceManager.SecurityCenter,1.2.0-beta.6",dotnet,Azure.ResourceManager.SecurityCenter_1.2.0-beta.6,Azure.ResourceManager.SecurityCenter,1.2.0-beta.6,1741923327,03/14/2025

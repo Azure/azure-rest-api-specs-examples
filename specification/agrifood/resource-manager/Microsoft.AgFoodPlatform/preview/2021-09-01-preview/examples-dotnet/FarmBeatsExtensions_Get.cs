@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.AgFoodPlatform;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/FarmBeatsExtensions_Get.json
@@ -14,27 +14,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this FarmBeatsExtensionResource
-FarmBeatsExtensionCollection collection = tenantResource.GetFarmBeatsExtensions();
+// this example assumes you already have this FarmBeatsExtensionResource created on azure
+// for more information of creating FarmBeatsExtensionResource, please refer to the document of FarmBeatsExtensionResource
+string farmBeatsExtensionId = "DTN.ContentServices";
+ResourceIdentifier farmBeatsExtensionResourceId = FarmBeatsExtensionResource.CreateResourceIdentifier(farmBeatsExtensionId);
+FarmBeatsExtensionResource farmBeatsExtension = client.GetFarmBeatsExtensionResource(farmBeatsExtensionResourceId);
 
 // invoke the operation
-string farmBeatsExtensionId = "DTN.ContentServices";
-NullableResponse<FarmBeatsExtensionResource> response = await collection.GetIfExistsAsync(farmBeatsExtensionId);
-FarmBeatsExtensionResource result = response.HasValue ? response.Value : null;
+FarmBeatsExtensionResource result = await farmBeatsExtension.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FarmBeatsExtensionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FarmBeatsExtensionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

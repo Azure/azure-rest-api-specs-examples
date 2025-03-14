@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/Connectors/CreateUpdateGcpCredentialsConnectorSubscription_example.json
 // this example is just showing the usage of "Connectors_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,10 +27,21 @@ SecurityCloudConnectorCollection collection = subscriptionResource.GetSecurityCl
 
 // invoke the operation
 string connectorName = "gcp_dev";
-SecurityCloudConnectorData data = new SecurityCloudConnectorData()
+SecurityCloudConnectorData data = new SecurityCloudConnectorData
 {
     HybridComputeSettings = new HybridComputeSettingsProperties(AutoProvisionState.Off),
-    AuthenticationDetails = new GcpCredentialsDetailsProperties("AscDemoOrg", "service_account", "asc-project-1234", "6efg587hra2568as34d22326b044cc20dc2af", "******", "asc-135@asc-project-1234.iam.gserviceaccount.com", "105889053725632919854", new Uri("https://accounts.google.com/o/oauth2/auth"), new Uri("https://oauth2.googleapis.com/token"), new Uri("https://www.googleapis.com/oauth2/v1/certs"), new Uri("https://www.googleapis.com/robot/v1/metadata/x509/asc-135%40asc-project-1234.iam.gserviceaccount.com")),
+    AuthenticationDetails = new GcpCredentialsDetailsProperties(
+    "AscDemoOrg",
+    "service_account",
+    "asc-project-1234",
+    "6efg587hra2568as34d22326b044cc20dc2af",
+    "******",
+    "asc-135@asc-project-1234.iam.gserviceaccount.com",
+    "105889053725632919854",
+    new Uri("https://accounts.google.com/o/oauth2/auth"),
+    new Uri("https://oauth2.googleapis.com/token"),
+    new Uri("https://www.googleapis.com/oauth2/v1/certs"),
+    new Uri("https://www.googleapis.com/robot/v1/metadata/x509/asc-135%40asc-project-1234.iam.gserviceaccount.com")),
 };
 ArmOperation<SecurityCloudConnectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectorName, data);
 SecurityCloudConnectorResource result = lro.Value;

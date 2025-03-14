@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-09-01-preview/examples/SecurityConnectorsDevOps/CreateOrUpdateAzureDevOpsOrgs_example.json
 // this example is just showing the usage of "AzureDevOpsOrgs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,12 +28,12 @@ DevOpsOrgCollection collection = devOpsConfiguration.GetDevOpsOrgs();
 
 // invoke the operation
 string orgName = "myAzDevOpsOrg";
-DevOpsOrgData data = new DevOpsOrgData()
+DevOpsOrgData data = new DevOpsOrgData
 {
-    Properties = new DevOpsOrgProperties()
+    Properties = new DevOpsOrgProperties
     {
         OnboardingState = ResourceOnboardingState.NotApplicable,
-        ActionableRemediation = new ActionableRemediation()
+        ActionableRemediation = new ActionableRemediation
         {
             State = ActionableRemediationState.Enabled,
         },

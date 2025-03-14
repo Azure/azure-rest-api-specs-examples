@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-01-01-preview/examples/SecurityOperators/PutSecurityOperatorByName_example.json
@@ -14,16 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityOperatorResource created on azure
-// for more information of creating SecurityOperatorResource, please refer to the document of SecurityOperatorResource
+// this example assumes you already have this SecurityCenterPricingResource created on azure
+// for more information of creating SecurityCenterPricingResource, please refer to the document of SecurityCenterPricingResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string pricingName = "CloudPosture";
-string securityOperatorName = "DefenderCSPMSecurityOperator";
-ResourceIdentifier securityOperatorResourceId = SecurityOperatorResource.CreateResourceIdentifier(subscriptionId, pricingName, securityOperatorName);
-SecurityOperatorResource securityOperator = client.GetSecurityOperatorResource(securityOperatorResourceId);
+ResourceIdentifier securityCenterPricingResourceId = SecurityCenterPricingResource.CreateResourceIdentifier(subscriptionId, pricingName);
+SecurityCenterPricingResource securityCenterPricing = client.GetSecurityCenterPricingResource(securityCenterPricingResourceId);
+
+// get the collection of this SecurityOperatorResource
+SecurityOperatorCollection collection = securityCenterPricing.GetSecurityOperators();
 
 // invoke the operation
-ArmOperation<SecurityOperatorResource> lro = await securityOperator.UpdateAsync(WaitUntil.Completed);
+string securityOperatorName = "DefenderCSPMSecurityOperator";
+ArmOperation<SecurityOperatorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityOperatorName);
 SecurityOperatorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

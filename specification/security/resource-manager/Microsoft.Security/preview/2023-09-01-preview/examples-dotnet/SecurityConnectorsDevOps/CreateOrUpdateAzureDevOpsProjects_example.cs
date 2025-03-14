@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-09-01-preview/examples/SecurityConnectorsDevOps/CreateOrUpdateAzureDevOpsProjects_example.json
 // this example is just showing the usage of "AzureDevOpsProjects_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,12 +29,12 @@ DevOpsProjectCollection collection = devOpsOrg.GetDevOpsProjects();
 
 // invoke the operation
 string projectName = "myAzDevOpsProject";
-DevOpsProjectData data = new DevOpsProjectData()
+DevOpsProjectData data = new DevOpsProjectData
 {
-    Properties = new DevOpsProjectProperties()
+    Properties = new DevOpsProjectProperties
     {
         OnboardingState = ResourceOnboardingState.NotApplicable,
-        ActionableRemediation = new ActionableRemediation()
+        ActionableRemediation = new ActionableRemediation
         {
             State = ActionableRemediationState.Enabled,
         },

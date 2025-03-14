@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/DeviceSecurityGroups/PutDeviceSecurityGroups_example.json
 // this example is just showing the usage of "DeviceSecurityGroups_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -16,22 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceSecurityGroupResource created on azure
-// for more information of creating DeviceSecurityGroupResource, please refer to the document of DeviceSecurityGroupResource
+// get the collection of this DeviceSecurityGroupResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub";
-string deviceSecurityGroupName = "samplesecuritygroup";
-ResourceIdentifier deviceSecurityGroupResourceId = DeviceSecurityGroupResource.CreateResourceIdentifier(resourceId, deviceSecurityGroupName);
-DeviceSecurityGroupResource deviceSecurityGroup = client.GetDeviceSecurityGroupResource(deviceSecurityGroupResourceId);
+DeviceSecurityGroupCollection collection = client.GetDeviceSecurityGroups(new ResourceIdentifier(resourceId));
 
 // invoke the operation
-DeviceSecurityGroupData data = new DeviceSecurityGroupData()
+string deviceSecurityGroupName = "samplesecuritygroup";
+DeviceSecurityGroupData data = new DeviceSecurityGroupData
 {
-    TimeWindowRules =
-    {
-    new ActiveConnectionsNotInAllowedRange(true,0,30,XmlConvert.ToTimeSpan("PT05M"))
-    },
+    TimeWindowRules = { new ActiveConnectionsNotInAllowedRange(true, 0, 30, XmlConvert.ToTimeSpan("PT05M")) },
 };
-ArmOperation<DeviceSecurityGroupResource> lro = await deviceSecurityGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DeviceSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deviceSecurityGroupName, data);
 DeviceSecurityGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

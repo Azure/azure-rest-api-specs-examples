@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2022-07-01-preview/examples/Applications/PutSecurityConnectorApplication_example.json
 // this example is just showing the usage of "SecurityConnectorApplications_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -26,21 +26,23 @@ ResourceIdentifier securityConnectorApplicationResourceId = SecurityConnectorApp
 SecurityConnectorApplicationResource securityConnectorApplication = client.GetSecurityConnectorApplicationResource(securityConnectorApplicationResourceId);
 
 // invoke the operation
-SecurityApplicationData data = new SecurityApplicationData()
+SecurityApplicationData data = new SecurityApplicationData
 {
     DisplayName = "GCP Admin's application",
     Description = "An application on critical GCP recommendations",
     SourceResourceType = ApplicationSourceResourceType.Assessments,
-    ConditionSets =
+    ConditionSets = {BinaryData.FromObjectAsJson(new
     {
-    BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    conditions = new object[]
     {
-    ["conditions"] = new object[] { new Dictionary<string, object>()
+    new Dictionary<string, object>
     {
     ["operator"] = "contains",
     ["property"] = "$.Id",
-    ["value"] = "-prod-"} }})
+    ["value"] = "-prod-"
+    }
     },
+    })},
 };
 ArmOperation<SecurityConnectorApplicationResource> lro = await securityConnectorApplication.UpdateAsync(WaitUntil.Completed, data);
 SecurityConnectorApplicationResource result = lro.Value;

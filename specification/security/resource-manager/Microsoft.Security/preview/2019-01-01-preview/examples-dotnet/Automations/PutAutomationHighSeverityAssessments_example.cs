@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/PutAutomationHighSeverityAssessments_example.json
 // this example is just showing the usage of "Automations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,49 +28,32 @@ SecurityAutomationData data = new SecurityAutomationData(new AzureLocation("Cent
 {
     Description = "An example of a security automation that triggers one LogicApp resource (myTest1) on any high severity security assessment",
     IsEnabled = true,
-    Scopes =
-    {
-    new SecurityAutomationScope()
+    Scopes = {new SecurityAutomationScope
     {
     Description = "A description that helps to identify this scope - for example: security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5",
     ScopePath = "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup",
-    }
-    },
-    Sources =
-    {
-    new SecurityAutomationSource()
+    }},
+    Sources = {new SecurityAutomationSource
     {
     EventSource = SecurityEventSource.Assessments,
-    RuleSets =
+    RuleSets = {new SecurityAutomationRuleSet
     {
-    new SecurityAutomationRuleSet()
-    {
-    Rules =
-    {
-    new SecurityAutomationTriggeringRule()
+    Rules = {new SecurityAutomationTriggeringRule
     {
     PropertyJPath = "properties.metadata.severity",
     PropertyType = AutomationTriggeringRulePropertyType.String,
     ExpectedValue = "High",
     Operator = AutomationTriggeringRuleOperator.EqualsValue,
-    }
-    },
-    }
-    },
-    }
-    },
-    Actions =
-    {
-    new SecurityAutomationActionLogicApp()
+    }},
+    }},
+    }},
+    Actions = {new SecurityAutomationActionLogicApp
     {
     LogicAppResourceId = new ResourceIdentifier("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"),
     Uri = new Uri("https://exampleTriggerUri1.com"),
-    }
-    },
+    }},
     ETag = new ETag("etag value (must be supplied for update)"),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SecurityAutomationResource> lro = await securityAutomation.UpdateAsync(WaitUntil.Completed, data);
 SecurityAutomationResource result = lro.Value;

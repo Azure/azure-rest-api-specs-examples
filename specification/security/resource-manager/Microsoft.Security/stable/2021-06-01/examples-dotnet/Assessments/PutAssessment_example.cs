@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2021-06-01/examples/Assessments/PutAssessment_example.json
 // this example is just showing the usage of "Assessments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +23,7 @@ ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.Cre
 SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
 
 // invoke the operation
-SecurityAssessmentCreateOrUpdateContent content = new SecurityAssessmentCreateOrUpdateContent()
+SecurityAssessmentCreateOrUpdateContent content = new SecurityAssessmentCreateOrUpdateContent
 {
     ResourceDetails = new AzureResourceDetails(),
     Status = new SecurityAssessmentStatus(SecurityAssessmentStatusCode.Healthy),

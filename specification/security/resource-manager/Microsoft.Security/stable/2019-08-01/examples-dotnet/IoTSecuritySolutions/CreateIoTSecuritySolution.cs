@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/CreateIoTSecuritySolution.json
 // this example is just showing the usage of "IotSecuritySolution_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -33,28 +33,13 @@ IotSecuritySolutionData data = new IotSecuritySolutionData(new AzureLocation("Ea
     Workspace = "/subscriptions/c4930e90-cd72-4aa5-93e9-2d081d129569/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace1",
     DisplayName = "Solution Default",
     Status = SecuritySolutionStatus.Enabled,
-    Export =
-    {
-    },
-    DisabledDataSources =
-    {
-    },
-    IotHubs =
-    {
-    "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub"
-    },
-    UserDefinedResources = new UserDefinedResourcesProperties("where type != \"microsoft.devices/iothubs\" | where name contains \"iot\"", new string[]
-{
-"075423e9-7d33-4166-8bdf-3920b04e3735"
-}),
-    RecommendationsConfiguration =
-    {
-    new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotOpenPorts,RecommendationConfigStatus.Disabled),new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotSharedCredentials,RecommendationConfigStatus.Disabled)
-    },
+    Export = { },
+    DisabledDataSources = { },
+    IotHubs = { "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub" },
+    UserDefinedResources = new UserDefinedResourcesProperties("where type != \"microsoft.devices/iothubs\" | where name contains \"iot\"", new string[] { "075423e9-7d33-4166-8bdf-3920b04e3735" }),
+    RecommendationsConfiguration = { new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotOpenPorts, RecommendationConfigStatus.Disabled), new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotSharedCredentials, RecommendationConfigStatus.Disabled) },
     UnmaskedIPLoggingStatus = UnmaskedIPLoggingStatus.Enabled,
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<IotSecuritySolutionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, solutionName, data);
 IotSecuritySolutionResource result = lro.Value;

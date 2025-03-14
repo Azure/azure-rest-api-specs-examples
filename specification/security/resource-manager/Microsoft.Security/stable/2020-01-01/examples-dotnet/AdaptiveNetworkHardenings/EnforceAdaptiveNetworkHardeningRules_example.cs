@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/AdaptiveNetworkHardenings/EnforceAdaptiveNetworkHardeningRules_example.json
 // this example is just showing the usage of "AdaptiveNetworkHardenings_Enforce" operation, for the dependent resources, they will have to be created separately.
@@ -29,36 +29,23 @@ AdaptiveNetworkHardeningResource adaptiveNetworkHardening = client.GetAdaptiveNe
 // invoke the operation
 AdaptiveNetworkHardeningEnforceContent content = new AdaptiveNetworkHardeningEnforceContent(new RecommendedSecurityRule[]
 {
-new RecommendedSecurityRule()
+new RecommendedSecurityRule
 {
 Name = "rule1",
 Direction = SecurityTrafficDirection.Inbound,
 DestinationPort = 3389,
-Protocols =
-{
-SecurityTransportProtocol.Tcp
+Protocols = {SecurityTransportProtocol.Tcp},
+IPAddresses = {"100.10.1.1", "200.20.2.2", "81.199.3.0/24"},
 },
-IPAddresses =
-{
-"100.10.1.1","200.20.2.2","81.199.3.0/24"
-},
-},new RecommendedSecurityRule()
+new RecommendedSecurityRule
 {
 Name = "rule2",
 Direction = SecurityTrafficDirection.Inbound,
 DestinationPort = 22,
-Protocols =
-{
-SecurityTransportProtocol.Tcp
-},
-IPAddresses =
-{
-},
+Protocols = {SecurityTransportProtocol.Tcp},
+IPAddresses = {},
 }
-}, new string[]
-{
-"/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1","/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2"
-});
+}, new string[] { "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1", "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2" });
 await adaptiveNetworkHardening.EnforceAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2022-07-01-preview/examples/Applications/DeleteSecurityConnectorApplication_example.json
 // this example is just showing the usage of "SecurityConnectorApplications_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +28,4 @@ SecurityConnectorApplicationResource securityConnectorApplication = client.GetSe
 // invoke the operation
 await securityConnectorApplication.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

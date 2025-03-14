@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-10-01-preview/examples/SecurityConnectors/PutSecurityConnector_example.json
 // this example is just showing the usage of "SecurityConnectors_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,21 +32,16 @@ SecurityConnectorData data = new SecurityConnectorData(new AzureLocation("Centra
 {
     HierarchyIdentifier = "exampleHierarchyId",
     EnvironmentName = SecurityCenterCloudName.Aws,
-    Offerings =
-    {
-    new CspmMonitorAwsOffering()
+    Offerings = {new CspmMonitorAwsOffering
     {
     CloudRoleArn = "arn:aws:iam::00000000:role/ASCMonitor",
-    }
-    },
-    EnvironmentData = new AwsEnvironment()
+    }},
+    EnvironmentData = new AwsEnvironment
     {
-        ScanInterval = 4,
+        ScanInterval = 4L,
     },
     ETag = new ETag("etag value (must be supplied for update)"),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SecurityConnectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityConnectorName, data);
 SecurityConnectorResource result = lro.Value;

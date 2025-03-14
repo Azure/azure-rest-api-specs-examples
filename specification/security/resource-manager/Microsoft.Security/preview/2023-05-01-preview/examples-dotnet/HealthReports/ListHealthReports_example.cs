@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-05-01-preview/examples/HealthReports/ListHealthReports_example.json
@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this SecurityHealthReportResource
 string scope = "subscriptions/a1efb6ca-fbc5-4782-9aaa-5c7daded1ce2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-SecurityHealthReportCollection collection = client.GetSecurityHealthReports(scopeId);
+SecurityHealthReportCollection collection = client.GetSecurityHealthReports(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (SecurityHealthReportResource item in collection.GetAllAsync())
@@ -32,4 +28,4 @@ await foreach (SecurityHealthReportResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

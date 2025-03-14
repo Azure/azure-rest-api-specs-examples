@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/UpdateAlertResourceGroupLocation_inProgress_example.json
@@ -25,4 +26,4 @@ ResourceGroupSecurityAlertResource resourceGroupSecurityAlert = client.GetResour
 // invoke the operation
 await resourceGroupSecurityAlert.UpdateSatateToInProgressAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

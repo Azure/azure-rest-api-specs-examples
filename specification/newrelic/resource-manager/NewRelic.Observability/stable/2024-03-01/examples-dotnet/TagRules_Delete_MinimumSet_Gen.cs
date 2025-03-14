@@ -27,4 +27,4 @@ NewRelicObservabilityTagRuleResource newRelicObservabilityTagRule = client.GetNe
 // invoke the operation
 await newRelicObservabilityTagRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

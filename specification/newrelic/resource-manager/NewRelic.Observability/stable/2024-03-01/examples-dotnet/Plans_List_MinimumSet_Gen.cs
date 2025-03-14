@@ -29,4 +29,4 @@ await foreach (NewRelicPlanData item in subscriptionResource.GetNewRelicPlansAsy
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

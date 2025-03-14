@@ -28,34 +28,28 @@ NewRelicObservabilityTagRuleCollection collection = newRelicMonitorResource.GetN
 
 // invoke the operation
 string ruleSetName = "bxcantgzggsepbhqmedjqyrqeezmfb";
-NewRelicObservabilityTagRuleData data = new NewRelicObservabilityTagRuleData()
+NewRelicObservabilityTagRuleData data = new NewRelicObservabilityTagRuleData
 {
-    LogRules = new NewRelicObservabilityLogRules()
+    LogRules = new NewRelicObservabilityLogRules
     {
         SendAadLogs = NewRelicObservabilitySendAadLogsStatus.IsEnabled,
         SendSubscriptionLogs = NewRelicObservabilitySendSubscriptionLogsStatus.IsEnabled,
         SendActivityLogs = NewRelicObservabilitySendActivityLogsStatus.IsEnabled,
-        FilteringTags =
-        {
-        new NewRelicObservabilityFilteringTag()
+        FilteringTags = {new NewRelicObservabilityFilteringTag
         {
         Name = "saokgpjvdlorciqbjmjxazpee",
         Value = "sarxrqsxouhdjwsrqqicbeirdb",
         Action = NewRelicObservabilityTagAction.Include,
-        }
-        },
+        }},
     },
-    MetricRules = new NewRelicObservabilityMetricRules()
+    MetricRules = new NewRelicObservabilityMetricRules
     {
-        FilteringTags =
-        {
-        new NewRelicObservabilityFilteringTag()
+        FilteringTags = {new NewRelicObservabilityFilteringTag
         {
         Name = "saokgpjvdlorciqbjmjxazpee",
         Value = "sarxrqsxouhdjwsrqqicbeirdb",
         Action = NewRelicObservabilityTagAction.Include,
-        }
-        },
+        }},
         UserEmail = "test@testing.com",
     },
 };

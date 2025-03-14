@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
@@ -30,4 +29,4 @@ NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResou
 string userEmail = "ruxvg@xqkmdhrnoo.hlmbpm";
 await newRelicMonitorResource.DeleteAsync(WaitUntil.Completed, userEmail);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

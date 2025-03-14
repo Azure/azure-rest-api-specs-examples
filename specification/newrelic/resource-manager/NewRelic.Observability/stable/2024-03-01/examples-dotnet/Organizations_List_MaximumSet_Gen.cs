@@ -30,4 +30,4 @@ await foreach (NewRelicOrganizationResourceData item in subscriptionResource.Get
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

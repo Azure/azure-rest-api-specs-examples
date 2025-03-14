@@ -5160,3 +5160,4 @@ id,name,language,tag,package,version,date_epoch,date
 5159,"Azure.ResourceManager.Datadog,1.0.0-beta.5",dotnet,Azure.ResourceManager.Datadog_1.0.0-beta.5,Azure.ResourceManager.Datadog,1.0.0-beta.5,1741929251,03/14/2025
 5160,"Azure.ResourceManager.BotService,1.1.1",dotnet,Azure.ResourceManager.BotService_1.1.1,Azure.ResourceManager.BotService,1.1.1,1741929235,03/14/2025
 5161,"Azure.ResourceManager.Blueprint,1.0.0-beta.5",dotnet,Azure.ResourceManager.Blueprint_1.0.0-beta.5,Azure.ResourceManager.Blueprint,1.0.0-beta.5,1741929226,03/14/2025
+5162,"Azure.ResourceManager.Automation,1.1.1",dotnet,Azure.ResourceManager.Automation_1.1.1,Azure.ResourceManager.Automation,1.1.1,1741929223,03/14/2025

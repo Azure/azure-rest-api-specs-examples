@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Datadog;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Datadog;
 
 // Generated from example definition: specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/examples/Monitors_Create.json
 // this example is just showing the usage of "Monitors_Create" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ DatadogMonitorResourceCollection collection = resourceGroupResource.GetDatadogMo
 
 // invoke the operation
 string monitorName = "myMonitor";
-DatadogMonitorResourceData data = new DatadogMonitorResourceData(new AzureLocation("placeholder"));
+DatadogMonitorResourceData data = new DatadogMonitorResourceData(default);
 ArmOperation<DatadogMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, monitorName, data);
 DatadogMonitorResource result = lro.Value;
 

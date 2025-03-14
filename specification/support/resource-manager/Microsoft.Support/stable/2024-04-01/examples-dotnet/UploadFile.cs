@@ -23,11 +23,11 @@ ResourceIdentifier supportTicketNoSubFileResourceId = SupportTicketNoSubFileReso
 SupportTicketNoSubFileResource supportTicketNoSubFile = client.GetSupportTicketNoSubFileResource(supportTicketNoSubFileResourceId);
 
 // invoke the operation
-UploadFileContent content = new UploadFileContent()
+UploadFileContent content = new UploadFileContent
 {
     Content = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABd",
     ChunkIndex = 0,
 };
 await supportTicketNoSubFile.UploadAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

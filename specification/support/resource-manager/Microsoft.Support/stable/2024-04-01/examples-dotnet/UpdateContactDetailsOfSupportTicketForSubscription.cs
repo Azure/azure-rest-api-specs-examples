@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
@@ -24,18 +23,15 @@ ResourceIdentifier subscriptionSupportTicketResourceId = SubscriptionSupportTick
 SubscriptionSupportTicketResource subscriptionSupportTicket = client.GetSubscriptionSupportTicketResource(subscriptionSupportTicketResourceId);
 
 // invoke the operation
-UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket()
+UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket
 {
-    ContactDetails = new SupportContactProfileContent()
+    ContactDetails = new SupportContactProfileContent
     {
         FirstName = "first name",
         LastName = "last name",
         PreferredContactMethod = PreferredContactMethod.Email,
         PrimaryEmailAddress = "test.name@contoso.com",
-        AdditionalEmailAddresses =
-        {
-        "tname@contoso.com","teamtest@contoso.com"
-        },
+        AdditionalEmailAddresses = { "tname@contoso.com", "teamtest@contoso.com" },
         PhoneNumber = "123-456-7890",
         PreferredTimeZone = "Pacific Standard Time",
         Country = "USA",

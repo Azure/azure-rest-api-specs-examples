@@ -14,30 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionSupportTicketResource created on azure
-// for more information of creating SubscriptionSupportTicketResource, please refer to the document of SubscriptionSupportTicketResource
+// this example assumes you already have this SupportTicketChatTranscriptResource created on azure
+// for more information of creating SupportTicketChatTranscriptResource, please refer to the document of SupportTicketChatTranscriptResource
 string subscriptionId = "132d901f-189d-4381-9214-fe68e27e05a1";
 string supportTicketName = "testticket";
-ResourceIdentifier subscriptionSupportTicketResourceId = SubscriptionSupportTicketResource.CreateResourceIdentifier(subscriptionId, supportTicketName);
-SubscriptionSupportTicketResource subscriptionSupportTicket = client.GetSubscriptionSupportTicketResource(subscriptionSupportTicketResourceId);
-
-// get the collection of this SupportTicketChatTranscriptResource
-SupportTicketChatTranscriptCollection collection = subscriptionSupportTicket.GetSupportTicketChatTranscripts();
+string chatTranscriptName = "69586795-45e9-45b5-bd9e-c9bb237d3e44";
+ResourceIdentifier supportTicketChatTranscriptResourceId = SupportTicketChatTranscriptResource.CreateResourceIdentifier(subscriptionId, supportTicketName, chatTranscriptName);
+SupportTicketChatTranscriptResource supportTicketChatTranscript = client.GetSupportTicketChatTranscriptResource(supportTicketChatTranscriptResourceId);
 
 // invoke the operation
-string chatTranscriptName = "69586795-45e9-45b5-bd9e-c9bb237d3e44";
-NullableResponse<SupportTicketChatTranscriptResource> response = await collection.GetIfExistsAsync(chatTranscriptName);
-SupportTicketChatTranscriptResource result = response.HasValue ? response.Value : null;
+SupportTicketChatTranscriptResource result = await supportTicketChatTranscript.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ChatTranscriptDetailData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ChatTranscriptDetailData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

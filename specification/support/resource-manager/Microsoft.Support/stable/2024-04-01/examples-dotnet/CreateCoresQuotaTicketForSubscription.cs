@@ -27,20 +27,31 @@ SubscriptionSupportTicketCollection collection = subscriptionResource.GetSubscri
 
 // invoke the operation
 string supportTicketName = "testticket";
-SupportTicketData data = new SupportTicketData("my description", "/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cores_problemClassification_guid", SupportSeverityLevel.Moderate, AdvancedDiagnosticConsent.Yes, new SupportContactProfile("abc", "xyz", PreferredContactMethod.Email, "abc@contoso.com", "Pacific Standard Time", "usa", "en-US"), "my title", "/providers/Microsoft.Support/services/quota_service_guid")
+SupportTicketData data = new SupportTicketData(
+    "my description",
+    "/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cores_problemClassification_guid",
+    SupportSeverityLevel.Moderate,
+    AdvancedDiagnosticConsent.Yes,
+    new SupportContactProfile(
+    "abc",
+    "xyz",
+    PreferredContactMethod.Email,
+    "abc@contoso.com",
+    "Pacific Standard Time",
+    "usa",
+    "en-US"),
+    "my title",
+    "/providers/Microsoft.Support/services/quota_service_guid")
 {
     SupportPlanId = "U291cmNlOlNDTSxDbGFyaWZ5SW5zdGFsbGF0aW9uU2l0ZUlkOjcsTGluZUl0ZW1JZDo5ODY1NzIyOSxDb250cmFjdElkOjk4NjU5MTk0LFN1YnNjcmlwdGlvbklkOjc2Y2I3N2ZhLThiMTctNGVhYi05NDkzLWI2NWRhY2U5OTgxMyw=",
-    QuotaTicketDetails = new QuotaTicketDetails()
+    QuotaTicketDetails = new QuotaTicketDetails
     {
         QuotaChangeRequestVersion = "1.0",
-        QuotaChangeRequests =
-        {
-        new SupportQuotaChangeContent()
+        QuotaChangeRequests = {new SupportQuotaChangeContent
         {
         Region = "EastUS",
         Payload = "{\"SKU\":\"DSv3 Series\",\"NewLimit\":104}",
-        }
-        },
+        }},
     },
 };
 ArmOperation<SubscriptionSupportTicketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, supportTicketName, data);

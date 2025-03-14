@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
@@ -15,9 +16,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this TenantSupportTicketResource
 TenantSupportTicketCollection collection = tenantResource.GetTenantSupportTickets();
@@ -33,4 +32,4 @@ await foreach (TenantSupportTicketResource item in collection.GetAllAsync(filter
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

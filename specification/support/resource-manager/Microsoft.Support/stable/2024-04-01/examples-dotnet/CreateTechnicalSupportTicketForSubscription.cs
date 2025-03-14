@@ -27,20 +27,31 @@ SubscriptionSupportTicketCollection collection = subscriptionResource.GetSubscri
 
 // invoke the operation
 string supportTicketName = "testticket";
-SupportTicketData data = new SupportTicketData("my description", "/providers/Microsoft.Support/services/virtual_machine_running_linux_service_guid/problemClassifications/problemClassification_guid", SupportSeverityLevel.Moderate, AdvancedDiagnosticConsent.Yes, new SupportContactProfile("abc", "xyz", PreferredContactMethod.Email, "abc@contoso.com", "Pacific Standard Time", "usa", "en-US"), "my title", "/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc")
+SupportTicketData data = new SupportTicketData(
+    "my description",
+    "/providers/Microsoft.Support/services/virtual_machine_running_linux_service_guid/problemClassifications/problemClassification_guid",
+    SupportSeverityLevel.Moderate,
+    AdvancedDiagnosticConsent.Yes,
+    new SupportContactProfile(
+    "abc",
+    "xyz",
+    PreferredContactMethod.Email,
+    "abc@contoso.com",
+    "Pacific Standard Time",
+    "usa",
+    "en-US"),
+    "my title",
+    "/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc")
 {
     ProblemScopingQuestions = "{\"articleId\":\"076846c1-4c0b-4b21-91c6-1a30246b3867\",\"scopingDetails\":[{\"question\":\"When did the problem begin?\",\"controlId\":\"problem_start_time\",\"orderId\":1,\"inputType\":\"static\",\"answer\":{\"displayValue\":\"2023-08-31T18:55:00.739Z\",\"value\":\"2023-08-31T18:55:00.739Z\",\"type\":\"datetime\"}},{\"question\":\"API Type of the Cosmos DB account\",\"controlId\":\"api_type\",\"orderId\":2,\"inputType\":\"static\",\"answer\":{\"displayValue\":\"Table\",\"value\":\"tables\",\"type\":\"string\"}},{\"question\":\"Table name\",\"controlId\":\"collection_name_table\",\"orderId\":11,\"inputType\":\"nonstatic\",\"answer\":{\"displayValue\":\"Select Table Name\",\"value\":\"dont_know_answer\",\"type\":\"string\"}},{\"question\":\"Provide additional details about the issue you're facing\",\"controlId\":\"problem_description\",\"orderId\":12,\"inputType\":\"nonstatic\",\"answer\":{\"displayValue\":\"test ticket, please ignore and close\",\"value\":\"test ticket, please ignore and close\",\"type\":\"string\"}}]}",
     SupportPlanId = "U291cmNlOlNDTSxDbGFyaWZ5SW5zdGFsbGF0aW9uU2l0ZUlkOjcsTGluZUl0ZW1JZDo5ODY1NzIyOSxDb250cmFjdElkOjk4NjU5MTk0LFN1YnNjcmlwdGlvbklkOjc2Y2I3N2ZhLThiMTctNGVhYi05NDkzLWI2NWRhY2U5OTgxMyw=",
     FileWorkspaceName = "6f16735c-1530836f-e9970f1a-2e49-47b7-96cd-9746b83aa066",
     TechnicalTicketDetailsResourceId = new ResourceIdentifier("/subscriptions/132d901f-189d-4381-9214-fe68e27e05a1/resourceGroups/test/providers/Microsoft.Compute/virtualMachines/testserver"),
-    SecondaryConsent =
-    {
-    new SecondaryConsent()
+    SecondaryConsent = {new SecondaryConsent
     {
     UserConsent = UserConsent.Yes,
     SecondaryConsentType = "virtualmachinerunninglinuxservice",
-    }
-    },
+    }},
 };
 ArmOperation<SubscriptionSupportTicketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, supportTicketName, data);
 SubscriptionSupportTicketResource result = lro.Value;

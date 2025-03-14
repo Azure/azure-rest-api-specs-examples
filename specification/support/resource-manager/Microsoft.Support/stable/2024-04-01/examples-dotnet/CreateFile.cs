@@ -25,7 +25,7 @@ SupportTicketNoSubFileCollection collection = tenantFileWorkspace.GetSupportTick
 
 // invoke the operation
 string fileName = "test.txt";
-SupportFileDetailData data = new SupportFileDetailData()
+SupportFileDetailData data = new SupportFileDetailData
 {
     ChunkSize = 41423,
     FileSize = 41423,

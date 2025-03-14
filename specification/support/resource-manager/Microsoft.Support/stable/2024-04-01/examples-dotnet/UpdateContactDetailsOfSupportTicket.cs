@@ -22,18 +22,15 @@ ResourceIdentifier tenantSupportTicketResourceId = TenantSupportTicketResource.C
 TenantSupportTicketResource tenantSupportTicket = client.GetTenantSupportTicketResource(tenantSupportTicketResourceId);
 
 // invoke the operation
-UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket()
+UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket
 {
-    ContactDetails = new SupportContactProfileContent()
+    ContactDetails = new SupportContactProfileContent
     {
         FirstName = "first name",
         LastName = "last name",
         PreferredContactMethod = PreferredContactMethod.Email,
         PrimaryEmailAddress = "test.name@contoso.com",
-        AdditionalEmailAddresses =
-        {
-        "tname@contoso.com","teamtest@contoso.com"
-        },
+        AdditionalEmailAddresses = { "tname@contoso.com", "teamtest@contoso.com" },
         PhoneNumber = "123-456-7890",
         PreferredTimeZone = "Pacific Standard Time",
         Country = "USA",

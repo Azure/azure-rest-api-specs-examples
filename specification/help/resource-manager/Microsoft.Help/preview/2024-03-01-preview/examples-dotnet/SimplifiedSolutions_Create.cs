@@ -22,12 +22,12 @@ ResourceIdentifier selfHelpSimplifiedSolutionResourceId = SelfHelpSimplifiedSolu
 SelfHelpSimplifiedSolutionResource selfHelpSimplifiedSolution = client.GetSelfHelpSimplifiedSolutionResource(selfHelpSimplifiedSolutionResourceId);
 
 // invoke the operation
-SelfHelpSimplifiedSolutionData data = new SelfHelpSimplifiedSolutionData()
+SelfHelpSimplifiedSolutionData data = new SelfHelpSimplifiedSolutionData
 {
     SolutionId = "sampleSolutionId",
     Parameters =
     {
-    ["resourceUri"] = "subscriptions/mySubscription/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-rp",
+    ["resourceUri"] = "subscriptions/mySubscription/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-rp"
     },
 };
 ArmOperation<SelfHelpSimplifiedSolutionResource> lro = await selfHelpSimplifiedSolution.UpdateAsync(WaitUntil.Completed, data);

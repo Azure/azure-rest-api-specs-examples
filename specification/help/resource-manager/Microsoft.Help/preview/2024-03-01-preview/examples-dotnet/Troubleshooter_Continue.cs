@@ -23,19 +23,16 @@ ResourceIdentifier selfHelpTroubleshooterResourceId = SelfHelpTroubleshooterReso
 SelfHelpTroubleshooterResource selfHelpTroubleshooter = client.GetSelfHelpTroubleshooterResource(selfHelpTroubleshooterResourceId);
 
 // invoke the operation
-TroubleshooterContinueContent content = new TroubleshooterContinueContent()
+TroubleshooterContinueContent content = new TroubleshooterContinueContent
 {
     StepId = "SampleStepId",
-    Responses =
-    {
-    new TroubleshooterResult()
+    Responses = {new TroubleshooterResult
     {
     QuestionId = "SampleQuestionId",
     QuestionType = new TroubleshooterQuestionType("Text"),
     Response = "Connection exception",
-    }
-    },
+    }},
 };
 await selfHelpTroubleshooter.ContinueAsync(content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

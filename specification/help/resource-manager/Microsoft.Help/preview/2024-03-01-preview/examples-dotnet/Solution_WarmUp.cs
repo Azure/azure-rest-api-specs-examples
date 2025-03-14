@@ -25,4 +25,4 @@ SelfHelpSolutionResource selfHelpSolution = client.GetSelfHelpSolutionResource(s
 // invoke the operation
 await selfHelpSolution.WarmUpAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

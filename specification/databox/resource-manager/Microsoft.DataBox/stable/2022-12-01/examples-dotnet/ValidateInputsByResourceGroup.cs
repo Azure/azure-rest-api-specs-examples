@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBox;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/ValidateInputsByResourceGroup.json
 // this example is just showing the usage of "Service_ValidateInputsByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -26,25 +27,27 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 AzureLocation location = new AzureLocation("westus");
 DataBoxValidationContent content = new CreateJobValidationContent(new DataBoxValidationInputContent[]
 {
-new DataTransferDetailsValidationContent(DataBoxSkuName.DataBox,DataBoxJobTransferType.ImportToAzure)
+new DataTransferDetailsValidationContent(DataBoxSkuName.DataBox, DataBoxJobTransferType.ImportToAzure)
 {
-DataImportDetails =
-{
-new DataImportDetails(new DataBoxStorageAccountDetails(new ResourceIdentifier("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")))
+DataImportDetails = {new DataImportDetails(new DataBoxStorageAccountDetails(new ResourceIdentifier("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")))},
 },
-},new DataBoxValidateAddressContent(new DataBoxShippingAddress("XXXX XXXX","XX","00000")
+new DataBoxValidateAddressContent(new DataBoxShippingAddress("XXXX XXXX", "XX", "00000")
 {
 StreetAddress2 = "XXXX XXXX",
 City = "XXXX XXXX",
 StateOrProvince = "XX",
 CompanyName = "XXXX XXXX",
 AddressType = DataBoxShippingAddressType.Commercial,
-},DataBoxSkuName.DataBox)
+}, DataBoxSkuName.DataBox)
 {
 TransportPreferences = new TransportPreferences(TransportShipmentType.MicrosoftManaged),
-},new SubscriptionIsAllowedToCreateJobValidationContent(),new SkuAvailabilityValidationContent(DataBoxSkuName.DataBox,DataBoxJobTransferType.ImportToAzure,"XX",new AzureLocation("westus")),new CreateOrderLimitForSubscriptionValidationContent(DataBoxSkuName.DataBox),new PreferencesValidationContent(DataBoxSkuName.DataBox)
+},
+new SubscriptionIsAllowedToCreateJobValidationContent(),
+new SkuAvailabilityValidationContent(DataBoxSkuName.DataBox, DataBoxJobTransferType.ImportToAzure, "XX", new AzureLocation("westus")),
+new CreateOrderLimitForSubscriptionValidationContent(DataBoxSkuName.DataBox),
+new PreferencesValidationContent(DataBoxSkuName.DataBox)
 {
-Preference = new DataBoxOrderPreferences()
+Preference = new DataBoxOrderPreferences
 {
 TransportPreferences = new TransportPreferences(TransportShipmentType.MicrosoftManaged),
 },

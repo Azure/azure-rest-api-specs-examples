@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBox;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/MarkDevicesShipped.json
 // this example is just showing the usage of "Jobs_MarkDevicesShipped" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier dataBoxJobResourceId = DataBoxJobResource.CreateResourceIdent
 DataBoxJobResource dataBoxJob = client.GetDataBoxJobResource(dataBoxJobResourceId);
 
 // invoke the operation
-MarkDevicesShippedContent content = new MarkDevicesShippedContent(new PackageCarrierInfo()
+MarkDevicesShippedContent content = new MarkDevicesShippedContent(new PackageCarrierInfo
 {
     CarrierName = "testCarrier",
     TrackingId = "000000",
 });
 await dataBoxJob.MarkDevicesShippedAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

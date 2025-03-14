@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBox;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsList.json
 // this example is just showing the usage of "Jobs_List" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +32,4 @@ await foreach (DataBoxJobResource item in subscriptionResource.GetDataBoxJobsAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

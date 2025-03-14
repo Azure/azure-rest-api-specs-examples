@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBox;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsListCredentials.json
 // this example is just showing the usage of "Jobs_ListCredentials" operation, for the dependent resources, they will have to be created separately.
@@ -30,4 +29,4 @@ await foreach (UnencryptedCredentials item in dataBoxJob.GetCredentialsAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,11 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Advisor;
-using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateSuppression.json
 // this example is just showing the usage of "Suppressions_Create" operation, for the dependent resources, they will have to be created separately.
@@ -24,7 +23,7 @@ ResourceIdentifier suppressionContractResourceId = SuppressionContractResource.C
 SuppressionContractResource suppressionContract = client.GetSuppressionContractResource(suppressionContractResourceId);
 
 // invoke the operation
-SuppressionContractData data = new SuppressionContractData()
+SuppressionContractData data = new SuppressionContractData
 {
     Ttl = "07:00:00:00",
 };

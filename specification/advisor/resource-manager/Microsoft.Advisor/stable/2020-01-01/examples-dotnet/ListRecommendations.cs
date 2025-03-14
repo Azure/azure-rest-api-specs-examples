@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Advisor;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListRecommendations.json
@@ -14,13 +14,10 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this ResourceRecommendationBaseResource
 string subscriptionId = "subscriptionId";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}", subscriptionId));
-ResourceRecommendationBaseCollection collection = client.GetResourceRecommendationBases(scopeId);
+string scope = $"/subscriptions/{subscriptionId}";
+ResourceRecommendationBaseCollection collection = client.GetResourceRecommendationBases(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 int? top = 10;
@@ -33,4 +30,4 @@ await foreach (ResourceRecommendationBaseResource item in collection.GetAllAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,9 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Advisor;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListRecommendationMetadata.json
@@ -14,9 +15,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this MetadataEntityResource
 MetadataEntityCollection collection = tenantResource.GetMetadataEntities();
@@ -31,4 +30,4 @@ await foreach (MetadataEntityResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Advisor;
+using Azure.ResourceManager.Advisor.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Advisor;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListSuppressions.json
 // this example is just showing the usage of "Suppressions_List" operation, for the dependent resources, they will have to be created separately.
@@ -31,4 +32,4 @@ await foreach (SuppressionContractResource item in subscriptionResource.GetSuppr
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

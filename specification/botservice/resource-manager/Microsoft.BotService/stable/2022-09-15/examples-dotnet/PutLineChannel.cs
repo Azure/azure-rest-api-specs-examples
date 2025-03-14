@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.BotService;
 using Azure.ResourceManager.BotService.Models;
+using Azure.ResourceManager.BotService;
 
 // Generated from example definition: specification/botservice/resource-manager/Microsoft.BotService/stable/2022-09-15/examples/PutLineChannel.json
 // this example is just showing the usage of "Channels_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,11 +30,11 @@ BotChannelCollection collection = bot.GetBotChannels();
 BotChannelName channelName = BotChannelName.LineChannel;
 BotChannelData data = new BotChannelData(new AzureLocation("global"))
 {
-    Properties = new LineChannel()
+    Properties = new LineChannel
     {
         Properties = new LineChannelProperties(new LineRegistration[]
 {
-new LineRegistration()
+new LineRegistration
 {
 ChannelSecret = "channelSecret",
 ChannelAccessToken = "channelAccessToken",

@@ -30,7 +30,7 @@ TrafficManagerEndpointCollection collection = trafficManagerProfile.GetTrafficMa
 // invoke the operation
 string endpointType = "ExternalEndpoints";
 string endpointName = "azsmnet7187";
-TrafficManagerEndpointData data = new TrafficManagerEndpointData()
+TrafficManagerEndpointData data = new TrafficManagerEndpointData
 {
     Target = "foobar.contoso.com",
     EndpointStatus = TrafficManagerEndpointStatus.Enabled,

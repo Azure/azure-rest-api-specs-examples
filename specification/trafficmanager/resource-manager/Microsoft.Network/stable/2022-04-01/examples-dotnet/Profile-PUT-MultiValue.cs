@@ -28,23 +28,23 @@ TrafficManagerProfileCollection collection = resourceGroupResource.GetTrafficMan
 
 // invoke the operation
 string profileName = "azsmnet6386";
-TrafficManagerProfileData data = new TrafficManagerProfileData()
+TrafficManagerProfileData data = new TrafficManagerProfileData
 {
     ProfileStatus = TrafficManagerProfileStatus.Enabled,
     TrafficRoutingMethod = TrafficRoutingMethod.MultiValue,
-    DnsConfig = new TrafficManagerDnsConfig()
+    DnsConfig = new TrafficManagerDnsConfig
     {
         RelativeName = "azsmnet6386",
-        Ttl = 35,
+        Ttl = 35L,
     },
-    MonitorConfig = new TrafficManagerMonitorConfig()
+    MonitorConfig = new TrafficManagerMonitorConfig
     {
         Protocol = TrafficManagerMonitorProtocol.Http,
-        Port = 80,
+        Port = 80L,
         Path = "/testpath.aspx",
     },
     TrafficViewEnrollmentStatus = TrafficViewEnrollmentStatus.Disabled,
-    MaxReturn = 2,
+    MaxReturn = 2L,
     Location = new AzureLocation("global"),
 };
 ArmOperation<TrafficManagerProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data);

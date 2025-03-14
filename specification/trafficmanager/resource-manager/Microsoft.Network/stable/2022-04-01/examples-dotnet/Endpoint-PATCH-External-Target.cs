@@ -25,7 +25,7 @@ ResourceIdentifier trafficManagerEndpointResourceId = TrafficManagerEndpointReso
 TrafficManagerEndpointResource trafficManagerEndpoint = client.GetTrafficManagerEndpointResource(trafficManagerEndpointResourceId);
 
 // invoke the operation
-TrafficManagerEndpointData data = new TrafficManagerEndpointData()
+TrafficManagerEndpointData data = new TrafficManagerEndpointData
 {
     Target = "another.foobar.contoso.com",
     Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1421/providers/Microsoft.Network/trafficManagerProfiles/azsmnet6386/externalEndpoints/azsmnet7187"),

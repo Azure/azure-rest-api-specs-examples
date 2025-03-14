@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.TrafficManager.Models;
 using Azure.ResourceManager.TrafficManager;
 
@@ -27,4 +26,4 @@ TrafficManagerProfileResource trafficManagerProfile = client.GetTrafficManagerPr
 // invoke the operation
 await trafficManagerProfile.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

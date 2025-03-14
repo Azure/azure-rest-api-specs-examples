@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.TrafficManager.Models;
 using Azure.ResourceManager.TrafficManager;
 
@@ -25,28 +24,25 @@ ResourceIdentifier trafficManagerProfileResourceId = TrafficManagerProfileResour
 TrafficManagerProfileResource trafficManagerProfile = client.GetTrafficManagerProfileResource(trafficManagerProfileResourceId);
 
 // invoke the operation
-TrafficManagerProfileData data = new TrafficManagerProfileData()
+TrafficManagerProfileData data = new TrafficManagerProfileData
 {
-    MonitorConfig = new TrafficManagerMonitorConfig()
+    MonitorConfig = new TrafficManagerMonitorConfig
     {
         Protocol = TrafficManagerMonitorProtocol.Http,
-        Port = 80,
+        Port = 80L,
         Path = "/testpath.aspx",
-        IntervalInSeconds = 30,
-        TimeoutInSeconds = 6,
-        ToleratedNumberOfFailures = 4,
-        CustomHeaders =
-        {
-        new TrafficManagerMonitorConfigCustomHeaderInfo()
+        IntervalInSeconds = 30L,
+        TimeoutInSeconds = 6L,
+        ToleratedNumberOfFailures = 4L,
+        CustomHeaders = {new TrafficManagerMonitorConfigCustomHeaderInfo
         {
         Name = "header-1",
         Value = "value-1",
-        },new TrafficManagerMonitorConfigCustomHeaderInfo()
+        }, new TrafficManagerMonitorConfigCustomHeaderInfo
         {
         Name = "header-2",
         Value = "value-2",
-        }
-        },
+        }},
     },
 };
 TrafficManagerProfileResource result = await trafficManagerProfile.UpdateAsync(data);

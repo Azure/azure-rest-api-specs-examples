@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
 
@@ -30,4 +29,4 @@ StorageCacheResource storageCache = client.GetStorageCacheResource(storageCacheR
 PrimingJobContent content = new PrimingJobContent("00000000000_0000000000");
 await storageCache.StopPrimingJobAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

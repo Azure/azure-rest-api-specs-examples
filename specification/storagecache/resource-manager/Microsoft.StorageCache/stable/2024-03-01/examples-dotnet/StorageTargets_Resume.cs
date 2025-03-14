@@ -27,4 +27,4 @@ StorageTargetResource storageTarget = client.GetStorageTargetResource(storageTar
 // invoke the operation
 await storageTarget.ResumeAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

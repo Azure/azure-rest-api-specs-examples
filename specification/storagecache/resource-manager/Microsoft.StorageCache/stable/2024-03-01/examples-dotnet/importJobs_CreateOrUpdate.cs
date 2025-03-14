@@ -30,15 +30,12 @@ StorageCacheImportJobCollection collection = amlFileSystem.GetStorageCacheImport
 string importJobName = "job1";
 StorageCacheImportJobData data = new StorageCacheImportJobData(new AzureLocation("eastus"))
 {
-    ImportPrefixes =
-    {
-    "/"
-    },
+    ImportPrefixes = { "/" },
     ConflictResolutionMode = ConflictResolutionMode.OverwriteAlways,
     MaximumErrors = 0,
     Tags =
     {
-    ["Dept"] = "ContosoAds",
+    ["Dept"] = "ContosoAds"
     },
 };
 ArmOperation<StorageCacheImportJobResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, importJobName, data);

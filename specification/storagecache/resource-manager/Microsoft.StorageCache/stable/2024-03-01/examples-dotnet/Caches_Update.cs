@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
 
@@ -32,46 +31,43 @@ StorageCacheData data = new StorageCacheData(new AzureLocation("westus"))
     SkuName = "Standard_2G",
     CacheSizeGB = 3072,
     Subnet = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1"),
-    UpgradeSettings = new StorageCacheUpgradeSettings()
+    UpgradeSettings = new StorageCacheUpgradeSettings
     {
         EnableUpgradeSchedule = true,
         ScheduledOn = DateTimeOffset.Parse("2022-04-26T18:25:43.511Z"),
     },
-    NetworkSettings = new StorageCacheNetworkSettings()
+    NetworkSettings = new StorageCacheNetworkSettings
     {
         Mtu = 1500,
-        DnsServers =
-        {
-        IPAddress.Parse("10.1.22.33"),IPAddress.Parse("10.1.12.33")
-        },
+        DnsServers = { IPAddress.Parse("10.1.22.33"), IPAddress.Parse("10.1.12.33") },
         DnsSearchDomain = "contoso.com",
         NtpServer = "time.contoso.com",
     },
-    SecurityAccessPolicies =
+    SecurityAccessPolicies = {new NfsAccessPolicy("default", new NfsAccessRule[]
     {
-    new NfsAccessPolicy("default",new NfsAccessRule[]
-    {
-    new NfsAccessRule(NfsAccessRuleScope.Default,NfsAccessRuleAccess.ReadWrite)
+    new NfsAccessRule(NfsAccessRuleScope.Default, NfsAccessRuleAccess.ReadWrite)
     {
     AllowSuid = false,
     AllowSubmountAccess = true,
     EnableRootSquash = false,
     }
-    }),new NfsAccessPolicy("restrictive",new NfsAccessRule[]
+    }), new NfsAccessPolicy("restrictive", new NfsAccessRule[]
     {
-    new NfsAccessRule(NfsAccessRuleScope.Host,NfsAccessRuleAccess.ReadWrite)
+    new NfsAccessRule(NfsAccessRuleScope.Host, NfsAccessRuleAccess.ReadWrite)
     {
     Filter = "10.99.3.145",
     AllowSuid = true,
     AllowSubmountAccess = true,
     EnableRootSquash = false,
-    },new NfsAccessRule(NfsAccessRuleScope.Network,NfsAccessRuleAccess.ReadWrite)
+    },
+    new NfsAccessRule(NfsAccessRuleScope.Network, NfsAccessRuleAccess.ReadWrite)
     {
     Filter = "10.99.1.0/24",
     AllowSuid = true,
     AllowSubmountAccess = true,
     EnableRootSquash = false,
-    },new NfsAccessRule(NfsAccessRuleScope.Default,NfsAccessRuleAccess.No)
+    },
+    new NfsAccessRule(NfsAccessRuleScope.Default, NfsAccessRuleAccess.No)
     {
     AllowSuid = false,
     AllowSubmountAccess = true,
@@ -79,15 +75,14 @@ StorageCacheData data = new StorageCacheData(new AzureLocation("westus"))
     AnonymousUID = "65534",
     AnonymousGID = "65534",
     }
-    })
-    },
-    DirectoryServicesSettings = new StorageCacheDirectorySettings()
+    })},
+    DirectoryServicesSettings = new StorageCacheDirectorySettings
     {
         ActiveDirectory = new StorageCacheActiveDirectorySettings(IPAddress.Parse("192.0.2.10"), "contosoAd.contoso.local", "contosoAd", "contosoSmb")
         {
             SecondaryDnsIPAddress = IPAddress.Parse("192.0.2.11"),
         },
-        UsernameDownload = new StorageCacheUsernameDownloadSettings()
+        UsernameDownload = new StorageCacheUsernameDownloadSettings
         {
             EnableExtendedGroups = true,
             UsernameSource = StorageCacheUsernameSourceType.AD,
@@ -95,7 +90,7 @@ StorageCacheData data = new StorageCacheData(new AzureLocation("westus"))
     },
     Tags =
     {
-    ["Dept"] = "Contoso",
+    ["Dept"] = "Contoso"
     },
 };
 ArmOperation<StorageCacheResource> lro = await storageCache.UpdateAsync(WaitUntil.Completed, data);

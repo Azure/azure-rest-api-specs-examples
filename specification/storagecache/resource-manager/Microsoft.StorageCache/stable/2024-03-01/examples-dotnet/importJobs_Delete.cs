@@ -27,4 +27,4 @@ StorageCacheImportJobResource storageCacheImportJob = client.GetStorageCacheImpo
 // invoke the operation
 await storageCacheImportJob.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

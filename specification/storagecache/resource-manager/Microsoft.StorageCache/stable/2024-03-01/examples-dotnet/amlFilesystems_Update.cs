@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
@@ -26,27 +25,27 @@ ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourc
 AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
 
 // invoke the operation
-AmlFileSystemPatch patch = new AmlFileSystemPatch()
+AmlFileSystemPatch patch = new AmlFileSystemPatch
 {
     Tags =
     {
-    ["Dept"] = "ContosoAds",
+    ["Dept"] = "ContosoAds"
     },
-    KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af"), new WritableSubResource()
+    KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af"), new WritableSubResource
     {
         Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.KeyVault/vaults/keyvault-cmk"),
     }),
-    MaintenanceWindow = new AmlFileSystemUpdatePropertiesMaintenanceWindow()
+    MaintenanceWindow = new AmlFileSystemUpdatePropertiesMaintenanceWindow
     {
         DayOfWeek = MaintenanceDayOfWeekType.Friday,
         TimeOfDayUTC = "22:00",
     },
-    RootSquashSettings = new AmlFileSystemRootSquashSettings()
+    RootSquashSettings = new AmlFileSystemRootSquashSettings
     {
         Mode = AmlFileSystemSquashMode.All,
         NoSquashNidLists = "10.0.0.[5-6]@tcp;10.0.1.2@tcp",
-        SquashUID = 99,
-        SquashGID = 99,
+        SquashUID = 99L,
+        SquashGID = 99L,
     },
 };
 ArmOperation<AmlFileSystemResource> lro = await amlFileSystem.UpdateAsync(WaitUntil.Completed, patch);

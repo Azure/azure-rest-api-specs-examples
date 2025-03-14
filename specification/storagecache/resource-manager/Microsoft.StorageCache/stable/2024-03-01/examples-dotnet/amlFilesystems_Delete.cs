@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
@@ -28,4 +27,4 @@ AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSys
 // invoke the operation
 await amlFileSystem.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

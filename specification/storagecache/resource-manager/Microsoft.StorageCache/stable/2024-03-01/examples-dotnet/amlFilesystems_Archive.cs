@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
@@ -26,10 +25,10 @@ ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourc
 AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
 
 // invoke the operation
-AmlFileSystemArchiveContent content = new AmlFileSystemArchiveContent()
+AmlFileSystemArchiveContent content = new AmlFileSystemArchiveContent
 {
     FilesystemPath = "/",
 };
 await amlFileSystem.ArchiveAsync(content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

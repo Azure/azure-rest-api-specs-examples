@@ -36,39 +36,36 @@ StorageCacheData data = new StorageCacheData(new AzureLocation("westus"))
     SkuName = "Standard_2G",
     CacheSizeGB = 3072,
     Subnet = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1"),
-    UpgradeSettings = new StorageCacheUpgradeSettings()
+    UpgradeSettings = new StorageCacheUpgradeSettings
     {
         EnableUpgradeSchedule = true,
         ScheduledOn = DateTimeOffset.Parse("2022-04-26T18:25:43.511Z"),
     },
-    EncryptionSettings = new StorageCacheEncryptionSettings()
+    EncryptionSettings = new StorageCacheEncryptionSettings
     {
-        KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://keyvault-cmk.vault.azure.net/keys/key2048/test"), new WritableSubResource()
+        KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://keyvault-cmk.vault.azure.net/keys/key2048/test"), new WritableSubResource
         {
             Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.KeyVault/vaults/keyvault-cmk"),
         }),
     },
-    SecurityAccessPolicies =
+    SecurityAccessPolicies = {new NfsAccessPolicy("default", new NfsAccessRule[]
     {
-    new NfsAccessPolicy("default",new NfsAccessRule[]
-    {
-    new NfsAccessRule(NfsAccessRuleScope.Default,NfsAccessRuleAccess.ReadWrite)
+    new NfsAccessRule(NfsAccessRuleScope.Default, NfsAccessRuleAccess.ReadWrite)
     {
     AllowSuid = false,
     AllowSubmountAccess = true,
     EnableRootSquash = false,
     }
-    })
-    },
-    DirectoryServicesSettings = new StorageCacheDirectorySettings()
+    })},
+    DirectoryServicesSettings = new StorageCacheDirectorySettings
     {
-        UsernameDownload = new StorageCacheUsernameDownloadSettings()
+        UsernameDownload = new StorageCacheUsernameDownloadSettings
         {
             EnableExtendedGroups = true,
             UsernameSource = StorageCacheUsernameSourceType.Ldap,
             LdapServer = "192.0.2.12",
             LdapBaseDN = "dc=contosoad,dc=contoso,dc=local",
-            Credentials = new StorageCacheUsernameDownloadCredential()
+            Credentials = new StorageCacheUsernameDownloadCredential
             {
                 BindDistinguishedName = "cn=ldapadmin,dc=contosoad,dc=contoso,dc=local",
                 BindPassword = "<bindPassword>",
@@ -77,7 +74,7 @@ StorageCacheData data = new StorageCacheData(new AzureLocation("westus"))
     },
     Tags =
     {
-    ["Dept"] = "Contoso",
+    ["Dept"] = "Contoso"
     },
 };
 ArmOperation<StorageCacheResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cacheName, data);

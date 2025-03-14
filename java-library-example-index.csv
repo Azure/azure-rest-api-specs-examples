@@ -5150,3 +5150,4 @@ id,name,language,tag,package,version,date_epoch,date
 5149,azure-mgmt-keyvault@11.0.0,python,azure-mgmt-keyvault_11.0.0,azure-mgmt-keyvault,11.0.0,1741839264,03/13/2025
 5150,"Azure.ResourceManager.DataFactory,1.7.0",dotnet,Azure.ResourceManager.DataFactory_1.7.0,Azure.ResourceManager.DataFactory,1.7.0,1741929400,03/14/2025
 5151,"Azure.ResourceManager.DataBox,1.0.4",dotnet,Azure.ResourceManager.DataBox_1.0.4,Azure.ResourceManager.DataBox,1.0.4,1741929377,03/14/2025
+5152,"Azure.ResourceManager.DefenderEasm,1.0.0-beta.3",dotnet,Azure.ResourceManager.DefenderEasm_1.0.0-beta.3,Azure.ResourceManager.DefenderEasm,1.0.0-beta.3,1741929375,03/14/2025

@@ -29,85 +29,73 @@ HDInsightClusterCollection collection = resourceGroupResource.GetHDInsightCluste
 
 // invoke the operation
 string clusterName = "cluster1";
-HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent()
+HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent
 {
-    Properties = new HDInsightClusterCreateOrUpdateProperties()
+    Properties = new HDInsightClusterCreateOrUpdateProperties
     {
         ClusterVersion = "3.6",
         OSType = HDInsightOSType.Linux,
-        ClusterDefinition = new HDInsightClusterDefinition()
+        ClusterDefinition = new HDInsightClusterDefinition
         {
             Kind = "hadoop",
-            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            Configurations = BinaryData.FromObjectAsJson(new
             {
-                ["gateway"] = new Dictionary<string, object>()
+                gateway = new Dictionary<string, object>
                 {
                     ["restAuthCredential.isEnabled"] = "true",
                     ["restAuthCredential.password"] = "**********",
                     ["restAuthCredential.username"] = "admin"
-                }
+                },
             }),
         },
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "headnode",
         TargetInstanceCount = 2,
         HardwareVmSize = "standard_d3",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
-        SshPublicKeys =
-        {
-        new HDInsightSshPublicKey()
+        SshPublicKeys = {new HDInsightSshPublicKey
         {
         CertificateData = "**********",
-        }
+        }},
         },
-        },
-        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile()
+        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile
         {
         Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"),
         Subnet = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "workernode",
         TargetInstanceCount = 2,
         HardwareVmSize = "standard_d3",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
-        SshPublicKeys =
-        {
-        new HDInsightSshPublicKey()
+        SshPublicKeys = {new HDInsightSshPublicKey
         {
         CertificateData = "**********",
-        }
+        }},
         },
-        },
-        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile()
+        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile
         {
         Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"),
         Subnet = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet",
         },
-        }
-        },
-        StorageAccounts =
-        {
-        new HDInsightStorageAccountInfo()
+        }},
+        StorageAccounts = {new HDInsightStorageAccountInfo
         {
         Name = "mystorage",
         IsDefault = true,
         Container = "containername",
         Key = "storage account key",
         EnableSecureChannel = true,
-        }
-        },
-        NetworkProperties = new HDInsightClusterNetworkProperties()
+        }},
+        NetworkProperties = new HDInsightClusterNetworkProperties
         {
             ResourceProviderConnection = HDInsightResourceProviderConnection.Outbound,
             PrivateLink = HDInsightPrivateLinkState.Enabled,

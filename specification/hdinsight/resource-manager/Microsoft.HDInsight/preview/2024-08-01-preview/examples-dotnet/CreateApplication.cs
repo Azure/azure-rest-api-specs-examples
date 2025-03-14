@@ -25,48 +25,29 @@ ResourceIdentifier hdInsightApplicationResourceId = HDInsightApplicationResource
 HDInsightApplicationResource hdInsightApplication = client.GetHDInsightApplicationResource(hdInsightApplicationResourceId);
 
 // invoke the operation
-HDInsightApplicationData data = new HDInsightApplicationData()
+HDInsightApplicationData data = new HDInsightApplicationData
 {
-    Properties = new HDInsightApplicationProperties()
+    Properties = new HDInsightApplicationProperties
     {
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "edgenode",
         TargetInstanceCount = 1,
         HardwareVmSize = "Standard_D12_v2",
-        }
-        },
-        InstallScriptActions =
-        {
-        new RuntimeScriptAction("app-install-app1",new Uri("https://.../install.sh"),new string[]
-        {
-        "edgenode"
-        })
+        }},
+        InstallScriptActions = {new RuntimeScriptAction("app-install-app1", new Uri("https://.../install.sh"), new string[]{"edgenode"})
         {
         Parameters = "-version latest -port 20000",
-        }
-        },
-        UninstallScriptActions =
+        }},
+        UninstallScriptActions = { },
+        HttpsEndpoints = {new HDInsightApplicationHttpsEndpoint
         {
-        },
-        HttpsEndpoints =
-        {
-        new HDInsightApplicationHttpsEndpoint()
-        {
-        AccessModes =
-        {
-        "WebPage"
-        },
+        AccessModes = {"WebPage"},
         DestinationPort = 20000,
         SubDomainSuffix = "dss",
-        }
-        },
+        }},
         ApplicationType = "CustomApplication",
-        Errors =
-        {
-        },
+        Errors = { },
     },
 };
 ArmOperation<HDInsightApplicationResource> lro = await hdInsightApplication.UpdateAsync(WaitUntil.Completed, data);

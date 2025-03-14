@@ -29,122 +29,97 @@ HDInsightClusterCollection collection = resourceGroupResource.GetHDInsightCluste
 
 // invoke the operation
 string clusterName = "cluster1";
-HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent()
+HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent
 {
-    Properties = new HDInsightClusterCreateOrUpdateProperties()
+    Properties = new HDInsightClusterCreateOrUpdateProperties
     {
         ClusterVersion = "3.6",
         OSType = HDInsightOSType.Linux,
         Tier = HDInsightTier.Standard,
-        ClusterDefinition = new HDInsightClusterDefinition()
+        ClusterDefinition = new HDInsightClusterDefinition
         {
             Kind = "hadoop",
             ComponentVersion =
             {
-            ["Hadoop"] = "2.7",
+            ["Hadoop"] = "2.7"
             },
-            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            Configurations = BinaryData.FromObjectAsJson(new
             {
-                ["gateway"] = new Dictionary<string, object>()
+                gateway = new Dictionary<string, object>
                 {
                     ["restAuthCredential.isEnabled"] = "true",
                     ["restAuthCredential.password"] = "**********",
                     ["restAuthCredential.username"] = "admin"
-                }
+                },
             }),
         },
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "workernode",
         TargetInstanceCount = 4,
-        AutoScaleConfiguration = new HDInsightAutoScaleConfiguration()
+        AutoScaleConfiguration = new HDInsightAutoScaleConfiguration
         {
-        Capacity = null,
-        Recurrence = new HDInsightAutoScaleRecurrence()
+        Capacity = default,
+        Recurrence = new HDInsightAutoScaleRecurrence
         {
         TimeZone = "China Standard Time",
-        Schedule =
+        Schedule = {new HDInsightAutoScaleSchedule
         {
-        new HDInsightAutoScaleSchedule()
-        {
-        Days =
-        {
-        HDInsightDayOfWeek.Monday,HDInsightDayOfWeek.Tuesday,HDInsightDayOfWeek.Wednesday,HDInsightDayOfWeek.Thursday,HDInsightDayOfWeek.Friday
-        },
-        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity()
+        Days = {HDInsightDayOfWeek.Monday, HDInsightDayOfWeek.Tuesday, HDInsightDayOfWeek.Wednesday, HDInsightDayOfWeek.Thursday, HDInsightDayOfWeek.Friday},
+        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity
         {
         Time = "09:00",
         MinInstanceCount = 3,
         MaxInstanceCount = 3,
         },
-        },new HDInsightAutoScaleSchedule()
+        }, new HDInsightAutoScaleSchedule
         {
-        Days =
-        {
-        HDInsightDayOfWeek.Monday,HDInsightDayOfWeek.Tuesday,HDInsightDayOfWeek.Wednesday,HDInsightDayOfWeek.Thursday,HDInsightDayOfWeek.Friday
-        },
-        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity()
+        Days = {HDInsightDayOfWeek.Monday, HDInsightDayOfWeek.Tuesday, HDInsightDayOfWeek.Wednesday, HDInsightDayOfWeek.Thursday, HDInsightDayOfWeek.Friday},
+        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity
         {
         Time = "18:00",
         MinInstanceCount = 6,
         MaxInstanceCount = 6,
         },
-        },new HDInsightAutoScaleSchedule()
+        }, new HDInsightAutoScaleSchedule
         {
-        Days =
-        {
-        HDInsightDayOfWeek.Saturday,HDInsightDayOfWeek.Sunday
-        },
-        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity()
+        Days = {HDInsightDayOfWeek.Saturday, HDInsightDayOfWeek.Sunday},
+        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity
         {
         Time = "09:00",
         MinInstanceCount = 2,
         MaxInstanceCount = 2,
         },
-        },new HDInsightAutoScaleSchedule()
+        }, new HDInsightAutoScaleSchedule
         {
-        Days =
-        {
-        HDInsightDayOfWeek.Saturday,HDInsightDayOfWeek.Sunday
-        },
-        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity()
+        Days = {HDInsightDayOfWeek.Saturday, HDInsightDayOfWeek.Sunday},
+        TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity
         {
         Time = "18:00",
         MinInstanceCount = 4,
         MaxInstanceCount = 4,
         },
-        }
-        },
+        }},
         },
         },
         HardwareVmSize = "Standard_D4_V2",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        VirtualNetworkProfile = null,
-        DataDisksGroups =
-        {
-        },
-        ScriptActions =
-        {
-        },
-        }
-        },
-        StorageAccounts =
-        {
-        new HDInsightStorageAccountInfo()
+        VirtualNetworkProfile = default,
+        DataDisksGroups = {},
+        ScriptActions = {},
+        }},
+        StorageAccounts = {new HDInsightStorageAccountInfo
         {
         Name = "mystorage.blob.core.windows.net",
         IsDefault = true,
         Container = "hdinsight-autoscale-tes-2019-06-18t05-49-16-591z",
         Key = "storagekey",
         EnableSecureChannel = true,
-        }
-        },
+        }},
     },
 };
 ArmOperation<HDInsightClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, content);

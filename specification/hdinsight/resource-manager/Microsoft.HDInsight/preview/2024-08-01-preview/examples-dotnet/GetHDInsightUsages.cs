@@ -30,4 +30,4 @@ await foreach (HDInsightUsage item in subscriptionResource.GetHDInsightUsagesAsy
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

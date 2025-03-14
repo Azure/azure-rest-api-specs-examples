@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/DeleteExtension.json
@@ -30,4 +29,4 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 string extensionName = "clustermonitoring";
 await hdInsightCluster.DeleteExtensionAsync(WaitUntil.Completed, extensionName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

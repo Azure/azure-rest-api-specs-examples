@@ -27,4 +27,4 @@ HDInsightApplicationResource hdInsightApplication = client.GetHDInsightApplicati
 // invoke the operation
 await hdInsightApplication.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

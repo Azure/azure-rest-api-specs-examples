@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/EnableOrUpdateAutoScaleWithLoadBasedConfiguration.json
@@ -28,11 +27,11 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 
 // invoke the operation
 HDInsightRoleName roleName = HDInsightRoleName.Workernode;
-HDInsightAutoScaleConfigurationUpdateContent content = new HDInsightAutoScaleConfigurationUpdateContent()
+HDInsightAutoScaleConfigurationUpdateContent content = new HDInsightAutoScaleConfigurationUpdateContent
 {
-    AutoScale = new HDInsightAutoScaleConfiguration()
+    AutoScale = new HDInsightAutoScaleConfiguration
     {
-        Capacity = new HDInsightAutoScaleCapacity()
+        Capacity = new HDInsightAutoScaleCapacity
         {
             MinInstanceCount = 3,
             MaxInstanceCount = 5,
@@ -41,4 +40,4 @@ HDInsightAutoScaleConfigurationUpdateContent content = new HDInsightAutoScaleCon
 };
 await hdInsightCluster.UpdateAutoScaleConfigurationAsync(WaitUntil.Completed, roleName, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

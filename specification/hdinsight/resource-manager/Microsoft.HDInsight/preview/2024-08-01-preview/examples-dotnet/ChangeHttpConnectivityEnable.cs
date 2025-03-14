@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/ChangeHttpConnectivityEnable.json
@@ -28,12 +27,12 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 
 // invoke the operation
 string configurationName = "gateway";
-IDictionary<string, string> clusterConfiguration = new Dictionary<string, string>()
+IDictionary<string, string> clusterConfiguration = new Dictionary<string, string>
 {
     ["restAuthCredential.isEnabled"] = "true",
     ["restAuthCredential.password"] = "**********",
-    ["restAuthCredential.username"] = "hadoop",
+    ["restAuthCredential.username"] = "hadoop"
 };
 await hdInsightCluster.UpdateConfigurationAsync(WaitUntil.Completed, configurationName, clusterConfiguration);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

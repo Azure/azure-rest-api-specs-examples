@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/EnableLinuxClusterAzureMonitor.json
@@ -27,11 +26,11 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-HDInsightAzureMonitorExtensionEnableContent content = new HDInsightAzureMonitorExtensionEnableContent()
+HDInsightAzureMonitorExtensionEnableContent content = new HDInsightAzureMonitorExtensionEnableContent
 {
     WorkspaceId = "a2090ead-8c9f-4fba-b70e-533e3e003163",
     PrimaryKey = "**********",
 };
 await hdInsightCluster.EnableAzureMonitorExtensionAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

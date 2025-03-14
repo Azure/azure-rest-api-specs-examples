@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CostManagement;
 using Azure.ResourceManager.CostManagement.Models;
+using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/scheduledActions/scheduledActions-list-shared.json
 // this example is just showing the usage of "ScheduledActions_ListByScope" operation, for the dependent resources, they will have to be created separately.
@@ -15,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this ScheduledActionResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-ScheduledActionCollection collection = client.GetScheduledActions(scopeId);
+ScheduledActionCollection collection = client.GetScheduledActions(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (ScheduledActionResource item in collection.GetAllAsync())
@@ -33,4 +29,4 @@ await foreach (ScheduledActionResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

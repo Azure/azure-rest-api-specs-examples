@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlServerResource created on azure
-// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
+// this example assumes you already have this MySqlVirtualNetworkRuleResource created on azure
+// for more information of creating MySqlVirtualNetworkRuleResource, please refer to the document of MySqlVirtualNetworkRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "vnet-test-svr";
-ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
-
-// get the collection of this MySqlVirtualNetworkRuleResource
-MySqlVirtualNetworkRuleCollection collection = mySqlServer.GetMySqlVirtualNetworkRules();
+string virtualNetworkRuleName = "vnet-firewall-rule";
+ResourceIdentifier mySqlVirtualNetworkRuleResourceId = MySqlVirtualNetworkRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, virtualNetworkRuleName);
+MySqlVirtualNetworkRuleResource mySqlVirtualNetworkRule = client.GetMySqlVirtualNetworkRuleResource(mySqlVirtualNetworkRuleResourceId);
 
 // invoke the operation
-string virtualNetworkRuleName = "vnet-firewall-rule";
-MySqlVirtualNetworkRuleData data = new MySqlVirtualNetworkRuleData()
+MySqlVirtualNetworkRuleData data = new MySqlVirtualNetworkRuleData
 {
     VirtualNetworkSubnetId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"),
     IgnoreMissingVnetServiceEndpoint = false,
 };
-ArmOperation<MySqlVirtualNetworkRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkRuleName, data);
+ArmOperation<MySqlVirtualNetworkRuleResource> lro = await mySqlVirtualNetworkRule.UpdateAsync(WaitUntil.Completed, data);
 MySqlVirtualNetworkRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

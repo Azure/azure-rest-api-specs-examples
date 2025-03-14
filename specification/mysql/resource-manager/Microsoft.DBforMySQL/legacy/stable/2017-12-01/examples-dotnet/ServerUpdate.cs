@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MySql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2017-12-01/examples/ServerUpdate.json
@@ -25,7 +24,7 @@ ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIde
 MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
 
 // invoke the operation
-MySqlServerPatch patch = new MySqlServerPatch()
+MySqlServerPatch patch = new MySqlServerPatch
 {
     AdministratorLoginPassword = "<administratorLoginPassword>",
     SslEnforcement = MySqlSslEnforcementEnum.Disabled,

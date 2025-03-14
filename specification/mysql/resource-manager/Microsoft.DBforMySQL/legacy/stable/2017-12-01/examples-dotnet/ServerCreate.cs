@@ -31,7 +31,7 @@ string serverName = "mysqltestsvc4";
 MySqlServerCreateOrUpdateContent content = new MySqlServerCreateOrUpdateContent(new MySqlServerPropertiesForDefaultCreate("cloudsa", "<administratorLoginPassword>")
 {
     SslEnforcement = MySqlSslEnforcementEnum.Enabled,
-    StorageProfile = new MySqlStorageProfile()
+    StorageProfile = new MySqlStorageProfile
     {
         BackupRetentionDays = 7,
         GeoRedundantBackup = MySqlGeoRedundantBackup.Enabled,
@@ -47,7 +47,7 @@ MySqlServerCreateOrUpdateContent content = new MySqlServerCreateOrUpdateContent(
     },
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<MySqlServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, content);

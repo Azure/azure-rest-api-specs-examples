@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MySql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2020-01-01/examples/ServerStop.json
@@ -27,4 +26,4 @@ MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResou
 // invoke the operation
 await mySqlServer.StopAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

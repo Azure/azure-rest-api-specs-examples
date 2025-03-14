@@ -27,4 +27,4 @@ MySqlFirewallRuleResource mySqlFirewallRule = client.GetMySqlFirewallRuleResourc
 // invoke the operation
 await mySqlFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

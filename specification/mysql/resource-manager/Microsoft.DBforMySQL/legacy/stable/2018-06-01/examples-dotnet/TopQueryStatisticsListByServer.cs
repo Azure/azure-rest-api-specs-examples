@@ -27,7 +27,13 @@ MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResou
 MySqlQueryStatisticCollection collection = mySqlServer.GetMySqlQueryStatistics();
 
 // invoke the operation and iterate over the result
-MySqlTopQueryStatisticsInput input = new MySqlTopQueryStatisticsInput(5, "avg", "duration", DateTimeOffset.Parse("2019-05-01T20:00:00.000Z"), DateTimeOffset.Parse("2019-05-07T20:00:00.000Z"), "PT15M");
+MySqlTopQueryStatisticsInput input = new MySqlTopQueryStatisticsInput(
+    5,
+    "avg",
+    "duration",
+    DateTimeOffset.Parse("2019-05-01T20:00:00.000Z"),
+    DateTimeOffset.Parse("2019-05-07T20:00:00.000Z"),
+    "PT15M");
 await foreach (MySqlQueryStatisticResource item in collection.GetAllAsync(input))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -37,4 +43,4 @@ await foreach (MySqlQueryStatisticResource item in collection.GetAllAsync(input)
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

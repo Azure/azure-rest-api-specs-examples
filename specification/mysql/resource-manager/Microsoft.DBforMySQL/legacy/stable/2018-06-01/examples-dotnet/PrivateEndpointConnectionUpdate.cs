@@ -28,7 +28,7 @@ MySqlPrivateEndpointConnectionCollection collection = mySqlServer.GetMySqlPrivat
 
 // invoke the operation
 string privateEndpointConnectionName = "private-endpoint-connection-name";
-MySqlPrivateEndpointConnectionData data = new MySqlPrivateEndpointConnectionData()
+MySqlPrivateEndpointConnectionData data = new MySqlPrivateEndpointConnectionData
 {
     ConnectionState = new MySqlPrivateLinkServiceConnectionStateProperty("Approved", "Approved by johndoe@contoso.com"),
 };

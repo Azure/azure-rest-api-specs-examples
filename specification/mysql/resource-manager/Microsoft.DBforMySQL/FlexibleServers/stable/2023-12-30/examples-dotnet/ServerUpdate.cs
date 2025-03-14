@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerUpdate.json
@@ -26,16 +25,16 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerPatch patch = new MySqlFlexibleServerPatch()
+MySqlFlexibleServerPatch patch = new MySqlFlexibleServerPatch
 {
-    Storage = new MySqlFlexibleServerStorage()
+    Storage = new MySqlFlexibleServerStorage
     {
         StorageSizeInGB = 30,
         Iops = 200,
         AutoGrow = MySqlFlexibleServerEnableStatusEnum.Disabled,
         AutoIoScaling = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },
-    Network = new MySqlFlexibleServerNetwork()
+    Network = new MySqlFlexibleServerNetwork
     {
         PublicNetworkAccess = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },

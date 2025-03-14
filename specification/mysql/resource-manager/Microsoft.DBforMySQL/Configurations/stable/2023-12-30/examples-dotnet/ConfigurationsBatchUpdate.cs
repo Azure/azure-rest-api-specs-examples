@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/Configurations/stable/2023-12-30/examples/ConfigurationsBatchUpdate.json
@@ -26,20 +25,17 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerConfigurationListForBatchUpdate mySqlFlexibleServerConfigurationListForBatchUpdate = new MySqlFlexibleServerConfigurationListForBatchUpdate()
+MySqlFlexibleServerConfigurationListForBatchUpdate mySqlFlexibleServerConfigurationListForBatchUpdate = new MySqlFlexibleServerConfigurationListForBatchUpdate
 {
-    Values =
-    {
-    new MySqlFlexibleServerConfigurationForBatchUpdate()
+    Values = {new MySqlFlexibleServerConfigurationForBatchUpdate
     {
     Name = "event_scheduler",
     Value = "OFF",
-    },new MySqlFlexibleServerConfigurationForBatchUpdate()
+    }, new MySqlFlexibleServerConfigurationForBatchUpdate
     {
     Name = "div_precision_increment",
     Value = "8",
-    }
-    },
+    }},
     ResetAllToDefault = MySqlFlexibleServerConfigurationResetAllToDefault.False,
 };
 ArmOperation<MySqlFlexibleServerConfigurations> lro = await mySqlFlexibleServer.UpdateConfigurationsAsync(WaitUntil.Completed, mySqlFlexibleServerConfigurationListForBatchUpdate);

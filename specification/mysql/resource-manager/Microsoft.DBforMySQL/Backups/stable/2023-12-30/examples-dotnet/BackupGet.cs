@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerBackupResource created on azure
-// for more information of creating MySqlFlexibleServerBackupResource, please refer to the document of MySqlFlexibleServerBackupResource
+// this example assumes you already have this MySqlFlexibleServerResource created on azure
+// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "mysqltestserver";
-string backupName = "daily_20210615T160516";
-ResourceIdentifier mySqlFlexibleServerBackupResourceId = MySqlFlexibleServerBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, backupName);
-MySqlFlexibleServerBackupResource mySqlFlexibleServerBackup = client.GetMySqlFlexibleServerBackupResource(mySqlFlexibleServerBackupResourceId);
+ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
+
+// get the collection of this MySqlFlexibleServerBackupResource
+MySqlFlexibleServerBackupCollection collection = mySqlFlexibleServer.GetMySqlFlexibleServerBackups();
 
 // invoke the operation
-MySqlFlexibleServerBackupResource result = await mySqlFlexibleServerBackup.GetAsync();
+string backupName = "daily_20210615T160516";
+NullableResponse<MySqlFlexibleServerBackupResource> response = await collection.GetIfExistsAsync(backupName);
+MySqlFlexibleServerBackupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MySqlFlexibleServerBackupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MySqlFlexibleServerBackupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

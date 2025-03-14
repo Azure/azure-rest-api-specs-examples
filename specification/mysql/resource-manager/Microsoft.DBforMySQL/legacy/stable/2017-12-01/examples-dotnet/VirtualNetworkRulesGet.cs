@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlServerResource created on azure
-// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
+// this example assumes you already have this MySqlVirtualNetworkRuleResource created on azure
+// for more information of creating MySqlVirtualNetworkRuleResource, please refer to the document of MySqlVirtualNetworkRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "vnet-test-svr";
-ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
-
-// get the collection of this MySqlVirtualNetworkRuleResource
-MySqlVirtualNetworkRuleCollection collection = mySqlServer.GetMySqlVirtualNetworkRules();
+string virtualNetworkRuleName = "vnet-firewall-rule";
+ResourceIdentifier mySqlVirtualNetworkRuleResourceId = MySqlVirtualNetworkRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, virtualNetworkRuleName);
+MySqlVirtualNetworkRuleResource mySqlVirtualNetworkRule = client.GetMySqlVirtualNetworkRuleResource(mySqlVirtualNetworkRuleResourceId);
 
 // invoke the operation
-string virtualNetworkRuleName = "vnet-firewall-rule";
-NullableResponse<MySqlVirtualNetworkRuleResource> response = await collection.GetIfExistsAsync(virtualNetworkRuleName);
-MySqlVirtualNetworkRuleResource result = response.HasValue ? response.Value : null;
+MySqlVirtualNetworkRuleResource result = await mySqlVirtualNetworkRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MySqlVirtualNetworkRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MySqlVirtualNetworkRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

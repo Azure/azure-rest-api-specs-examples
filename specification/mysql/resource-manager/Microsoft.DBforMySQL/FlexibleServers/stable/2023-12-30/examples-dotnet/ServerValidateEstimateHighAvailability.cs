@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerValidateEstimateHighAvailability.json
@@ -26,7 +25,7 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-HighAvailabilityValidationEstimation highAvailabilityValidationEstimation = new HighAvailabilityValidationEstimation()
+HighAvailabilityValidationEstimation highAvailabilityValidationEstimation = new HighAvailabilityValidationEstimation
 {
     ExpectedStandbyAvailabilityZone = "1",
 };

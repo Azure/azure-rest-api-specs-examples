@@ -27,4 +27,4 @@ MySqlAdvisorResource mySqlAdvisor = client.GetMySqlAdvisorResource(mySqlAdvisorR
 string databaseName = "someDatabaseName";
 await mySqlAdvisor.CreateRecommendedActionSessionAsync(WaitUntil.Completed, databaseName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

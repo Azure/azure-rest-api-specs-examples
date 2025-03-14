@@ -37,7 +37,7 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(new AzureLocation("So
     RestorePointInTime = DateTimeOffset.Parse("2021-06-24T00:00:37.467Z"),
     Tags =
     {
-    ["num"] = "1",
+    ["num"] = "1"
     },
 };
 ArmOperation<MySqlFlexibleServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, data);

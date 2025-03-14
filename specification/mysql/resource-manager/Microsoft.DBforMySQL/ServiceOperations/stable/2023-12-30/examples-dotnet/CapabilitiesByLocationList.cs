@@ -29,4 +29,4 @@ await foreach (MySqlFlexibleServerCapabilityProperties item in subscriptionResou
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

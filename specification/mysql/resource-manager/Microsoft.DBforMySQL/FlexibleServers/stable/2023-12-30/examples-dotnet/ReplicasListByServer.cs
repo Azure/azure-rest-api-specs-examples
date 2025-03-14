@@ -38,4 +38,4 @@ await foreach (MySqlFlexibleServerResource item in collection.GetReplicasAsync(s
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

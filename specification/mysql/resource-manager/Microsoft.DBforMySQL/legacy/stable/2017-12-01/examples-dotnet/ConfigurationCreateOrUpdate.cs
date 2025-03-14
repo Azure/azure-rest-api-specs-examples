@@ -27,7 +27,7 @@ MySqlConfigurationCollection collection = mySqlServer.GetMySqlConfigurations();
 
 // invoke the operation
 string configurationName = "event_scheduler";
-MySqlConfigurationData data = new MySqlConfigurationData()
+MySqlConfigurationData data = new MySqlConfigurationData
 {
     Value = "off",
     Source = "user-override",

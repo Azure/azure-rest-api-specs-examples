@@ -26,4 +26,4 @@ MySqlServerAdministratorResource mySqlServerAdministrator = client.GetMySqlServe
 // invoke the operation
 await mySqlServerAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

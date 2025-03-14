@@ -28,7 +28,7 @@ AdvancedThreatProtectionCollection collection = mySqlFlexibleServer.GetAdvancedT
 
 // invoke the operation
 AdvancedThreatProtectionName advancedThreatProtectionName = AdvancedThreatProtectionName.Default;
-AdvancedThreatProtectionData data = new AdvancedThreatProtectionData()
+AdvancedThreatProtectionData data = new AdvancedThreatProtectionData
 {
     State = AdvancedThreatProtectionState.Disabled,
 };

@@ -14,17 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerBackupResource created on azure
-// for more information of creating MySqlFlexibleServerBackupResource, please refer to the document of MySqlFlexibleServerBackupResource
+// this example assumes you already have this MySqlFlexibleServerResource created on azure
+// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "mysqltestserver";
-string backupName = "mybackup";
-ResourceIdentifier mySqlFlexibleServerBackupResourceId = MySqlFlexibleServerBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, backupName);
-MySqlFlexibleServerBackupResource mySqlFlexibleServerBackup = client.GetMySqlFlexibleServerBackupResource(mySqlFlexibleServerBackupResourceId);
+ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
+
+// get the collection of this MySqlFlexibleServerBackupResource
+MySqlFlexibleServerBackupCollection collection = mySqlFlexibleServer.GetMySqlFlexibleServerBackups();
 
 // invoke the operation
-ArmOperation<MySqlFlexibleServerBackupResource> lro = await mySqlFlexibleServerBackup.UpdateAsync(WaitUntil.Completed);
+string backupName = "mybackup";
+ArmOperation<MySqlFlexibleServerBackupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupName);
 MySqlFlexibleServerBackupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

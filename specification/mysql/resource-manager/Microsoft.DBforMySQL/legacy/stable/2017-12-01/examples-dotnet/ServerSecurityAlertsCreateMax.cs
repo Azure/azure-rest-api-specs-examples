@@ -25,17 +25,11 @@ ResourceIdentifier mySqlServerSecurityAlertPolicyResourceId = MySqlServerSecurit
 MySqlServerSecurityAlertPolicyResource mySqlServerSecurityAlertPolicy = client.GetMySqlServerSecurityAlertPolicyResource(mySqlServerSecurityAlertPolicyResourceId);
 
 // invoke the operation
-MySqlServerSecurityAlertPolicyData data = new MySqlServerSecurityAlertPolicyData()
+MySqlServerSecurityAlertPolicyData data = new MySqlServerSecurityAlertPolicyData
 {
     State = MySqlServerSecurityAlertPolicyState.Enabled,
-    DisabledAlerts =
-    {
-    "Access_Anomaly","Usage_Anomaly"
-    },
-    EmailAddresses =
-    {
-    "testSecurityAlert@microsoft.com"
-    },
+    DisabledAlerts = { "Access_Anomaly", "Usage_Anomaly" },
+    EmailAddresses = { "testSecurityAlert@microsoft.com" },
     SendToEmailAccountAdmins = true,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",

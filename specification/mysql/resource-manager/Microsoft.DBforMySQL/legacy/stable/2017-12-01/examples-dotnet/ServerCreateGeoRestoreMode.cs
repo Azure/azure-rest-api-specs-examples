@@ -38,7 +38,7 @@ MySqlServerCreateOrUpdateContent content = new MySqlServerCreateOrUpdateContent(
     },
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<MySqlServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, content);

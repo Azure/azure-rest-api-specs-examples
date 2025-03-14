@@ -26,4 +26,4 @@ MySqlFlexibleServerDatabaseResource mySqlFlexibleServerDatabase = client.GetMySq
 // invoke the operation
 await mySqlFlexibleServerDatabase.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

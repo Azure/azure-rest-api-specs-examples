@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/Backups/stable/2023-12-30/examples/BackupAndExport.json
@@ -26,10 +25,7 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerBackupAndExportContent content = new MySqlFlexibleServerBackupAndExportContent(new MySqlFlexibleServerBackupSettings("customer-backup-name"), new MySqlFlexibleServerFullBackupStoreDetails(new string[]
-{
-"sasuri1","sasuri2"
-}));
+MySqlFlexibleServerBackupAndExportContent content = new MySqlFlexibleServerBackupAndExportContent(new MySqlFlexibleServerBackupSettings("customer-backup-name"), new MySqlFlexibleServerFullBackupStoreDetails(new string[] { "sasuri1", "sasuri2" }));
 ArmOperation<MySqlFlexibleServerBackupAndExportResult> lro = await mySqlFlexibleServer.CreateBackupAndExportAsync(WaitUntil.Completed, content);
 MySqlFlexibleServerBackupAndExportResult result = lro.Value;
 

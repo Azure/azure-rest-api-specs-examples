@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerRestart.json
@@ -26,11 +25,11 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerRestartParameter mySqlFlexibleServerRestartParameter = new MySqlFlexibleServerRestartParameter()
+MySqlFlexibleServerRestartParameter mySqlFlexibleServerRestartParameter = new MySqlFlexibleServerRestartParameter
 {
     RestartWithFailover = MySqlFlexibleServerEnableStatusEnum.Enabled,
     MaxFailoverSeconds = 60,
 };
 await mySqlFlexibleServer.RestartAsync(WaitUntil.Completed, mySqlFlexibleServerRestartParameter);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

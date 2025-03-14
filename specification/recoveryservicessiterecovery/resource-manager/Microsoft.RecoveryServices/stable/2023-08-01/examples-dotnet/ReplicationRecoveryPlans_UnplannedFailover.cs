@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationRecoveryPlans_UnplannedFailover.json
 // this example is just showing the usage of "ReplicationRecoveryPlans_UnplannedFailover" operation, for the dependent resources, they will have to be created separately.
@@ -27,10 +27,7 @@ SiteRecoveryRecoveryPlanResource siteRecoveryRecoveryPlan = client.GetSiteRecove
 // invoke the operation
 RecoveryPlanUnplannedFailoverContent content = new RecoveryPlanUnplannedFailoverContent(new RecoveryPlanUnplannedFailoverProperties(PossibleOperationsDirection.PrimaryToRecovery, SourceSiteOperation.Required)
 {
-    ProviderSpecificDetails =
-    {
-    new RecoveryPlanHyperVReplicaAzureFailoverContent()
-    },
+    ProviderSpecificDetails = { new RecoveryPlanHyperVReplicaAzureFailoverContent() },
 });
 ArmOperation<SiteRecoveryRecoveryPlanResource> lro = await siteRecoveryRecoveryPlan.UnplannedFailoverAsync(WaitUntil.Completed, content);
 SiteRecoveryRecoveryPlanResource result = lro.Value;

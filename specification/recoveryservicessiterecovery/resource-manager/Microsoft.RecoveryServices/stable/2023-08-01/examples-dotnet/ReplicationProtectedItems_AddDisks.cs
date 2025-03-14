@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectedItems_AddDisks.json
 // this example is just showing the usage of "ReplicationProtectedItems_AddDisks" operation, for the dependent resources, they will have to be created separately.
@@ -29,14 +28,11 @@ ResourceIdentifier replicationProtectedItemResourceId = ReplicationProtectedItem
 ReplicationProtectedItemResource replicationProtectedItem = client.GetReplicationProtectedItemResource(replicationProtectedItemResourceId);
 
 // invoke the operation
-SiteRecoveryAddDisksContent content = new SiteRecoveryAddDisksContent()
+SiteRecoveryAddDisksContent content = new SiteRecoveryAddDisksContent
 {
-    SiteRecoveryAddDisksProviderSpecificDetails = new A2AAddDisksContent()
+    SiteRecoveryAddDisksProviderSpecificDetails = new A2AAddDisksContent
     {
-        VmDisks =
-        {
-        new A2AVmDiskDetails(new Uri("https://vmstorage.blob.core.windows.net/vhds/datadisk1.vhd"),new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource/providers/Microsoft.Storage/storageAccounts/recoverystorage"),new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/primaryResource/providers/Microsoft.Storage/storageAccounts/vmcachestorage"))
-        },
+        VmDisks = { new A2AVmDiskDetails(new Uri("https://vmstorage.blob.core.windows.net/vhds/datadisk1.vhd"), new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource/providers/Microsoft.Storage/storageAccounts/recoverystorage"), new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/primaryResource/providers/Microsoft.Storage/storageAccounts/vmcachestorage")) },
     },
 };
 ArmOperation<ReplicationProtectedItemResource> lro = await replicationProtectedItem.AddDisksAsync(WaitUntil.Completed, content);

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationVaultSetting_Create.json
 // this example is just showing the usage of "ReplicationVaultSetting_Create" operation, for the dependent resources, they will have to be created separately.
@@ -29,7 +29,7 @@ SiteRecoveryVaultSettingCollection collection = resourceGroupResource.GetSiteRec
 
 // invoke the operation
 string vaultSettingName = "default";
-SiteRecoveryVaultSettingCreateOrUpdateContent content = new SiteRecoveryVaultSettingCreateOrUpdateContent(new VaultSettingCreationProperties()
+SiteRecoveryVaultSettingCreateOrUpdateContent content = new SiteRecoveryVaultSettingCreateOrUpdateContent(new VaultSettingCreationProperties
 {
     MigrationSolutionId = new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.Migrate/MigrateProjects/resourceGroupPS1-MigrateProject/Solutions/Servers-Migration-ServerMigration"),
 });

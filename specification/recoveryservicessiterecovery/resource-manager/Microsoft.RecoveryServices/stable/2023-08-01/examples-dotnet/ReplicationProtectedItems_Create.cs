@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectedItems_Create.json
 // this example is just showing the usage of "ReplicationProtectedItems_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,9 +30,9 @@ ReplicationProtectedItemCollection collection = siteRecoveryProtectionContainer.
 
 // invoke the operation
 string replicatedProtectedItemName = "f8491e4f-817a-40dd-a90c-af773978c75b";
-ReplicationProtectedItemCreateOrUpdateContent content = new ReplicationProtectedItemCreateOrUpdateContent()
+ReplicationProtectedItemCreateOrUpdateContent content = new ReplicationProtectedItemCreateOrUpdateContent
 {
-    Properties = new EnableProtectionProperties()
+    Properties = new EnableProtectionProperties
     {
         PolicyId = new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/protectionprofile1"),
         ProtectableItemId = new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectableItems/f8491e4f-817a-40dd-a90c-af773978c75b"),

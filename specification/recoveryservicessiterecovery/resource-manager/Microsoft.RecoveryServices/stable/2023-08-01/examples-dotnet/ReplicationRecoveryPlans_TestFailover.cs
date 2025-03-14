@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationRecoveryPlans_TestFailover.json
 // this example is just showing the usage of "ReplicationRecoveryPlans_TestFailover" operation, for the dependent resources, they will have to be created separately.
@@ -28,10 +28,7 @@ SiteRecoveryRecoveryPlanResource siteRecoveryRecoveryPlan = client.GetSiteRecove
 RecoveryPlanTestFailoverContent content = new RecoveryPlanTestFailoverContent(new RecoveryPlanTestFailoverProperties(PossibleOperationsDirection.PrimaryToRecovery, "VmNetworkAsInput")
 {
     NetworkId = new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai"),
-    ProviderSpecificDetails =
-    {
-    new RecoveryPlanHyperVReplicaAzureFailoverContent()
-    },
+    ProviderSpecificDetails = { new RecoveryPlanHyperVReplicaAzureFailoverContent() },
 });
 ArmOperation<SiteRecoveryRecoveryPlanResource> lro = await siteRecoveryRecoveryPlan.TestFailoverAsync(WaitUntil.Completed, content);
 SiteRecoveryRecoveryPlanResource result = lro.Value;

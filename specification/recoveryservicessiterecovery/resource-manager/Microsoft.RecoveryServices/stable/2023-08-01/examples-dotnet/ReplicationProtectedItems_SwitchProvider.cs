@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectedItems_SwitchProvider.json
 // this example is just showing the usage of "ReplicationProtectedItems_SwitchProvider" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +28,9 @@ ResourceIdentifier replicationProtectedItemResourceId = ReplicationProtectedItem
 ReplicationProtectedItemResource replicationProtectedItem = client.GetReplicationProtectedItemResource(replicationProtectedItemResourceId);
 
 // invoke the operation
-SwitchProviderContent content = new SwitchProviderContent()
+SwitchProviderContent content = new SwitchProviderContent
 {
-    Properties = new SwitchProviderProperties()
+    Properties = new SwitchProviderProperties
     {
         TargetInstanceType = "InMageRcm",
         ProviderSpecificDetails = new InMageAzureV2SwitchProviderContent(new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault2"), new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud2"), "5efaa202-e958-435e-8171-706bf735fcc4"),

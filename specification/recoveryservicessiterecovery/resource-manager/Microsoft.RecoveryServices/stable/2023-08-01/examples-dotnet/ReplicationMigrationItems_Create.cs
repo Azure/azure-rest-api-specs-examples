@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationMigrationItems_Create.json
 // this example is just showing the usage of "ReplicationMigrationItems_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,10 +30,16 @@ SiteRecoveryMigrationItemCollection collection = siteRecoveryProtectionContainer
 
 // invoke the operation
 string migrationItemName = "virtualmachine1";
-SiteRecoveryMigrationItemCreateOrUpdateContent content = new SiteRecoveryMigrationItemCreateOrUpdateContent(new EnableMigrationProperties(new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationPolicies/vmwarepolicy1"), new VMwareCbtEnableMigrationContent(new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/machines/virtualmachine1"), new VMwareCbtDiskContent[]
+SiteRecoveryMigrationItemCreateOrUpdateContent content = new SiteRecoveryMigrationItemCreateOrUpdateContent(new EnableMigrationProperties(new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationPolicies/vmwarepolicy1"), new VMwareCbtEnableMigrationContent(
+    new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/machines/virtualmachine1"),
+    new VMwareCbtDiskContent[]
 {
-new VMwareCbtDiskContent("disk1","true",new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1"),"logStorageSas")
-}, new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"), new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"), new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1"), new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1"))));
+new VMwareCbtDiskContent("disk1", "true", new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1"), "logStorageSas")
+},
+    new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"),
+    new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"),
+    new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1"),
+    new ResourceIdentifier("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1"))));
 ArmOperation<SiteRecoveryMigrationItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, migrationItemName, content);
 SiteRecoveryMigrationItemResource result = lro.Value;
 

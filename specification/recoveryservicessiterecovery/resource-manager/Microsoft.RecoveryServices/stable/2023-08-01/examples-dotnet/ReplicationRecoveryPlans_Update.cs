@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationRecoveryPlans_Update.json
 // this example is just showing the usage of "ReplicationRecoveryPlans_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,66 +25,37 @@ ResourceIdentifier siteRecoveryRecoveryPlanResourceId = SiteRecoveryRecoveryPlan
 SiteRecoveryRecoveryPlanResource siteRecoveryRecoveryPlan = client.GetSiteRecoveryRecoveryPlanResource(siteRecoveryRecoveryPlanResourceId);
 
 // invoke the operation
-SiteRecoveryRecoveryPlanPatch patch = new SiteRecoveryRecoveryPlanPatch()
+SiteRecoveryRecoveryPlanPatch patch = new SiteRecoveryRecoveryPlanPatch
 {
-    UpdateRecoveryPlanContentGroups =
+    UpdateRecoveryPlanContentGroups = {new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Shutdown)
     {
-    new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Shutdown)
+    ReplicationProtectedItems = {},
+    StartGroupActions = {},
+    EndGroupActions = {},
+    }, new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Failover)
     {
-    ReplicationProtectedItems =
+    ReplicationProtectedItems = {},
+    StartGroupActions = {},
+    EndGroupActions = {},
+    }, new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Boot)
     {
-    },
-    StartGroupActions =
-    {
-    },
-    EndGroupActions =
-    {
-    },
-    },new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Failover)
-    {
-    ReplicationProtectedItems =
-    {
-    },
-    StartGroupActions =
-    {
-    },
-    EndGroupActions =
-    {
-    },
-    },new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Boot)
-    {
-    ReplicationProtectedItems =
-    {
-    new RecoveryPlanProtectedItem()
+    ReplicationProtectedItems = {new RecoveryPlanProtectedItem
     {
     Id = new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectedItems/f8491e4f-817a-40dd-a90c-af773978c75b"),
     VirtualMachineId = "f8491e4f-817a-40dd-a90c-af773978c75b",
-    }
-    },
-    StartGroupActions =
+    }},
+    StartGroupActions = {},
+    EndGroupActions = {},
+    }, new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Boot)
     {
-    },
-    EndGroupActions =
-    {
-    },
-    },new SiteRecoveryPlanGroup(RecoveryPlanGroupType.Boot)
-    {
-    ReplicationProtectedItems =
-    {
-    new RecoveryPlanProtectedItem()
+    ReplicationProtectedItems = {new RecoveryPlanProtectedItem
     {
     Id = new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1/replicationProtectionContainers/cloud_6d224fc6-f326-5d35-96de-fbf51efb3179/replicationProtectedItems/c0c14913-3d7a-48ea-9531-cc99e0e686e6"),
     VirtualMachineId = "c0c14913-3d7a-48ea-9531-cc99e0e686e6",
-    }
-    },
-    StartGroupActions =
-    {
-    },
-    EndGroupActions =
-    {
-    },
-    }
-    },
+    }},
+    StartGroupActions = {},
+    EndGroupActions = {},
+    }},
 };
 ArmOperation<SiteRecoveryRecoveryPlanResource> lro = await siteRecoveryRecoveryPlan.UpdateAsync(WaitUntil.Completed, patch);
 SiteRecoveryRecoveryPlanResource result = lro.Value;

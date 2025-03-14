@@ -26,4 +26,4 @@ RoleAssignmentScheduleRequestResource roleAssignmentScheduleRequest = client.Get
 // invoke the operation
 await roleAssignmentScheduleRequest.CancelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

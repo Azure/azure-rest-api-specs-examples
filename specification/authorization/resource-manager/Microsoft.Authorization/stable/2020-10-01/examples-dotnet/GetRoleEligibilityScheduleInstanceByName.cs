@@ -14,18 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoleEligibilityScheduleInstanceResource created on azure
-// for more information of creating RoleEligibilityScheduleInstanceResource, please refer to the document of RoleEligibilityScheduleInstanceResource
+// get the collection of this RoleEligibilityScheduleInstanceResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-string roleEligibilityScheduleInstanceName = "21e4b59a-0499-4fe0-a3c3-43a3055b773a";
-ResourceIdentifier roleEligibilityScheduleInstanceResourceId = RoleEligibilityScheduleInstanceResource.CreateResourceIdentifier(scope, roleEligibilityScheduleInstanceName);
-RoleEligibilityScheduleInstanceResource roleEligibilityScheduleInstance = client.GetRoleEligibilityScheduleInstanceResource(roleEligibilityScheduleInstanceResourceId);
+RoleEligibilityScheduleInstanceCollection collection = client.GetRoleEligibilityScheduleInstances(new ResourceIdentifier(scope));
 
 // invoke the operation
-RoleEligibilityScheduleInstanceResource result = await roleEligibilityScheduleInstance.GetAsync();
+string roleEligibilityScheduleInstanceName = "21e4b59a-0499-4fe0-a3c3-43a3055b773a";
+NullableResponse<RoleEligibilityScheduleInstanceResource> response = await collection.GetIfExistsAsync(roleEligibilityScheduleInstanceName);
+RoleEligibilityScheduleInstanceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RoleEligibilityScheduleInstanceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RoleEligibilityScheduleInstanceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

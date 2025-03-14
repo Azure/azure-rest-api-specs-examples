@@ -16,13 +16,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this RoleAssignmentScheduleRequestResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-RoleAssignmentScheduleRequestCollection collection = client.GetRoleAssignmentScheduleRequests(scopeId);
+RoleAssignmentScheduleRequestCollection collection = client.GetRoleAssignmentScheduleRequests(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 string filter = "assignedTo('A3BB8764-CB92-4276-9D2A-CA1E895E55EA')";
@@ -35,4 +31,4 @@ await foreach (RoleAssignmentScheduleRequestResource item in collection.GetAllAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

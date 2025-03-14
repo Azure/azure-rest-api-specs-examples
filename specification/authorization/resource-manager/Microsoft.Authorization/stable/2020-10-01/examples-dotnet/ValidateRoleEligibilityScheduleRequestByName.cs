@@ -24,7 +24,7 @@ ResourceIdentifier roleEligibilityScheduleRequestResourceId = RoleEligibilitySch
 RoleEligibilityScheduleRequestResource roleEligibilityScheduleRequest = client.GetRoleEligibilityScheduleRequestResource(roleEligibilityScheduleRequestResourceId);
 
 // invoke the operation
-RoleEligibilityScheduleRequestData data = new RoleEligibilityScheduleRequestData()
+RoleEligibilityScheduleRequestData data = new RoleEligibilityScheduleRequestData
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608"),
     PrincipalId = Guid.Parse("a3bb8764-cb92-4276-9d2a-ca1e895e55ea"),
@@ -33,7 +33,7 @@ RoleEligibilityScheduleRequestData data = new RoleEligibilityScheduleRequestData
     ConditionVersion = "1.0",
     StartOn = DateTimeOffset.Parse("2020-09-09T21:31:27.91Z"),
     ExpirationType = RoleManagementScheduleExpirationType.AfterDuration,
-    EndOn = null,
+    EndOn = default,
     Duration = XmlConvert.ToTimeSpan("P365D"),
 };
 RoleEligibilityScheduleRequestResource result = await roleEligibilityScheduleRequest.ValidateAsync(data);

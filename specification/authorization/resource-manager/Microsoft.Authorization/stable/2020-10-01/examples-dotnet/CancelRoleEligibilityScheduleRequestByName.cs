@@ -26,4 +26,4 @@ RoleEligibilityScheduleRequestResource roleEligibilityScheduleRequest = client.G
 // invoke the operation
 await roleEligibilityScheduleRequest.CancelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

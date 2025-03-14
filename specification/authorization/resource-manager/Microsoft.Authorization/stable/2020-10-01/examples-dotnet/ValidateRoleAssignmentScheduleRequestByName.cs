@@ -24,7 +24,7 @@ ResourceIdentifier roleAssignmentScheduleRequestResourceId = RoleAssignmentSched
 RoleAssignmentScheduleRequestResource roleAssignmentScheduleRequest = client.GetRoleAssignmentScheduleRequestResource(roleAssignmentScheduleRequestResourceId);
 
 // invoke the operation
-RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData()
+RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608"),
     PrincipalId = Guid.Parse("a3bb8764-cb92-4276-9d2a-ca1e895e55ea"),
@@ -34,7 +34,7 @@ RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData()
     ConditionVersion = "1.0",
     StartOn = DateTimeOffset.Parse("2020-09-09T21:35:27.91Z"),
     ExpirationType = RoleManagementScheduleExpirationType.AfterDuration,
-    EndOn = null,
+    EndOn = default,
     Duration = XmlConvert.ToTimeSpan("PT8H"),
 };
 RoleAssignmentScheduleRequestResource result = await roleAssignmentScheduleRequest.ValidateAsync(data);

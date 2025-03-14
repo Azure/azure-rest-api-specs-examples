@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Quantum;
 using Azure.ResourceManager.Quantum.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Quantum;
 
 // Generated from example definition: specification/quantum/resource-manager/Microsoft.Quantum/preview/2023-11-13-preview/examples/quantumWorkspacesCheckNameAvailability.json
 // this example is just showing the usage of "Workspace_CheckNameAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 string locationName = "westus2";
-WorkspaceNameAvailabilityContent content = new WorkspaceNameAvailabilityContent()
+WorkspaceNameAvailabilityContent content = new WorkspaceNameAvailabilityContent
 {
     Name = "sample-workspace-name",
     ResourceType = new ResourceType("Microsoft.Quantum/Workspaces"),

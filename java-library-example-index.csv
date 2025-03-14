@@ -5168,3 +5168,4 @@ id,name,language,tag,package,version,date_epoch,date
 5167,"Azure.ResourceManager.TrafficManager,1.1.3",dotnet,Azure.ResourceManager.TrafficManager_1.1.3,Azure.ResourceManager.TrafficManager,1.1.3,1741926391,03/14/2025
 5168,"Azure.ResourceManager.Automanage,1.1.1",dotnet,Azure.ResourceManager.Automanage_1.1.1,Azure.ResourceManager.Automanage,1.1.1,1741926390,03/14/2025
 5169,"Azure.ResourceManager.AlertsManagement,1.1.1",dotnet,Azure.ResourceManager.AlertsManagement_1.1.1,Azure.ResourceManager.AlertsManagement,1.1.1,1741926389,03/14/2025
+5170,"Azure.ResourceManager.Advisor,1.0.0-beta.5",dotnet,Azure.ResourceManager.Advisor_1.0.0-beta.5,Azure.ResourceManager.Advisor,1.0.0-beta.5,1741926355,03/14/2025

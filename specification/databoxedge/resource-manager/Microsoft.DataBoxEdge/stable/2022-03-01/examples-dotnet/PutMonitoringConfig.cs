@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/PutMonitoringConfig.json
 // this example is just showing the usage of "MonitoringConfig_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ MonitoringMetricConfigurationResource monitoringMetricConfiguration = client.Get
 // invoke the operation
 MonitoringMetricConfigurationData data = new MonitoringMetricConfigurationData(new DataBoxEdgeMetricConfiguration[]
 {
-new DataBoxEdgeMetricConfiguration(new ResourceIdentifier("test"),new DataBoxEdgeMetricCounterSet[]
+new DataBoxEdgeMetricConfiguration(new ResourceIdentifier("test"), new DataBoxEdgeMetricCounterSet[]
 {
 new DataBoxEdgeMetricCounterSet(new DataBoxEdgeMetricCounter[]
 {

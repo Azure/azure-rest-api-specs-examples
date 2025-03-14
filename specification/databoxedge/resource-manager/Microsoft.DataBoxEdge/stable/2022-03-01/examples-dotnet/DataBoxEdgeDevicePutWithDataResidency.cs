@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDevicePutWithDataResidency.json
 // this example is just showing the usage of "Devices_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,15 +30,13 @@ DataBoxEdgeDeviceCollection collection = resourceGroupResource.GetDataBoxEdgeDev
 string deviceName = "testedgedevice";
 DataBoxEdgeDeviceData data = new DataBoxEdgeDeviceData(new AzureLocation("WUS"))
 {
-    Sku = new DataBoxEdgeSku()
+    Sku = new DataBoxEdgeSku
     {
         Name = DataBoxEdgeSkuName.Edge,
         Tier = DataBoxEdgeSkuTier.Standard,
     },
     ResidencyType = DataBoxEdgeDataResidencyType.ZoneReplication,
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<DataBoxEdgeDeviceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deviceName, data);
 DataBoxEdgeDeviceResource result = lro.Value;

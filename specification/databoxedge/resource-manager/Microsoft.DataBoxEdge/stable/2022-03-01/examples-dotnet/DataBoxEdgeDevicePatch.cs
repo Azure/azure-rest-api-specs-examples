@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDevicePatch.json
 // this example is just showing the usage of "Devices_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +25,7 @@ ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.Creat
 DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
 
 // invoke the operation
-DataBoxEdgeDevicePatch patch = new DataBoxEdgeDevicePatch()
+DataBoxEdgeDevicePatch patch = new DataBoxEdgeDevicePatch
 {
     SubscriptionId = new ResourceIdentifier("/subscriptions/0d44739e-0563-474f-97e7-24a0cdb23b29/resourceGroups/rapvs-rg/providers/Microsoft.AzureStack/linkedSubscriptions/ca014ddc-5cf2-45f8-b390-e901e4a0ae87"),
 };

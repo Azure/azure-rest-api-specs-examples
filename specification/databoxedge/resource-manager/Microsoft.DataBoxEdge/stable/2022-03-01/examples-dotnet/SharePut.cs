@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/SharePut.json
 // this example is just showing the usage of "Shares_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,10 +29,7 @@ DataBoxEdgeShareData data = new DataBoxEdgeShareData(new ShareStatus("Online"), 
 {
     Description = "",
     AzureContainerInfo = new DataBoxEdgeStorageContainerInfo(new ResourceIdentifier("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/storageAccountCredentials/sac1"), "testContainerSMB", DataBoxEdgeStorageContainerDataFormat.BlockBlob),
-    UserAccessRights =
-    {
-    new UserAccessRight(new ResourceIdentifier("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/users/user2"),ShareAccessType.Change)
-    },
+    UserAccessRights = { new UserAccessRight(new ResourceIdentifier("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/users/user2"), ShareAccessType.Change) },
     DataPolicy = DataBoxEdgeDataPolicy.Cloud,
 };
 ArmOperation<DataBoxEdgeShareResource> lro = await dataBoxEdgeShare.UpdateAsync(WaitUntil.Completed, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/OrderPut.json
 // this example is just showing the usage of "Orders_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -24,12 +24,9 @@ ResourceIdentifier dataBoxEdgeOrderResourceId = DataBoxEdgeOrderResource.CreateR
 DataBoxEdgeOrderResource dataBoxEdgeOrder = client.GetDataBoxEdgeOrderResource(dataBoxEdgeOrderResourceId);
 
 // invoke the operation
-DataBoxEdgeOrderData data = new DataBoxEdgeOrderData()
+DataBoxEdgeOrderData data = new DataBoxEdgeOrderData
 {
-    ContactInformation = new DataBoxEdgeContactDetails("John Mcclane", "Microsoft", "(800) 426-9400", new string[]
-{
-"john@microsoft.com"
-}),
+    ContactInformation = new DataBoxEdgeContactDetails("John Mcclane", "Microsoft", "(800) 426-9400", new string[] { "john@microsoft.com" }),
     ShippingAddress = new DataBoxEdgeShippingAddress("USA")
     {
         AddressLine1 = "Microsoft Corporation",

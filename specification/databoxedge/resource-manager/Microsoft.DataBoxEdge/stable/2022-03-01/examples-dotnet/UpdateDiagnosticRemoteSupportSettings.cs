@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/UpdateDiagnosticRemoteSupportSettings.json
 // this example is just showing the usage of "DiagnosticSettings_UpdateDiagnosticRemoteSupportSettings" operation, for the dependent resources, they will have to be created separately.
@@ -24,17 +24,14 @@ ResourceIdentifier diagnosticRemoteSupportSettingResourceId = DiagnosticRemoteSu
 DiagnosticRemoteSupportSettingResource diagnosticRemoteSupportSetting = client.GetDiagnosticRemoteSupportSettingResource(diagnosticRemoteSupportSettingResourceId);
 
 // invoke the operation
-DiagnosticRemoteSupportSettingData data = new DiagnosticRemoteSupportSettingData()
+DiagnosticRemoteSupportSettingData data = new DiagnosticRemoteSupportSettingData
 {
-    RemoteSupportSettingsList =
-    {
-    new EdgeRemoteSupportSettings()
+    RemoteSupportSettingsList = {new EdgeRemoteSupportSettings
     {
     RemoteApplicationType = EdgeRemoteApplicationType.Powershell,
     AccessLevel = EdgeRemoteApplicationAccessLevel.ReadWrite,
     ExpireOn = DateTimeOffset.Parse("2021-07-07T00:00:00+00:00"),
-    }
-    },
+    }},
 };
 ArmOperation<DiagnosticRemoteSupportSettingResource> lro = await diagnosticRemoteSupportSetting.CreateOrUpdateAsync(WaitUntil.Completed, data);
 DiagnosticRemoteSupportSettingResource result = lro.Value;

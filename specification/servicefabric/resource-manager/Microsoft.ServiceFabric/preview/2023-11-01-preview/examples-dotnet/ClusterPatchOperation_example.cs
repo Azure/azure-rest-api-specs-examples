@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ClusterPatchOperation_example.json
 // this example is just showing the usage of "Clusters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,29 +24,26 @@ ResourceIdentifier serviceFabricClusterResourceId = ServiceFabricClusterResource
 ServiceFabricClusterResource serviceFabricCluster = client.GetServiceFabricClusterResource(serviceFabricClusterResourceId);
 
 // invoke the operation
-ServiceFabricClusterPatch patch = new ServiceFabricClusterPatch()
+ServiceFabricClusterPatch patch = new ServiceFabricClusterPatch
 {
     Tags =
     {
-    ["a"] = "b",
+    ["a"] = "b"
     },
     IsEventStoreServiceEnabled = true,
-    NodeTypes =
-    {
-    new ClusterNodeTypeDescription("nt1vm",19000,19007,true,5)
+    NodeTypes = {new ClusterNodeTypeDescription("nt1vm", 19000, 19007, true, 5)
     {
     DurabilityLevel = ClusterDurabilityLevel.Bronze,
-    ApplicationPorts = new ClusterEndpointRangeDescription(20000,30000),
-    EphemeralPorts = new ClusterEndpointRangeDescription(49000,64000),
+    ApplicationPorts = new ClusterEndpointRangeDescription(20000, 30000),
+    EphemeralPorts = new ClusterEndpointRangeDescription(49000, 64000),
     HttpGatewayTokenAuthEndpointPort = 19081,
-    },new ClusterNodeTypeDescription("testnt1",0,0,false,3)
+    }, new ClusterNodeTypeDescription("testnt1", 0, 0, false, 3)
     {
     DurabilityLevel = ClusterDurabilityLevel.Bronze,
-    ApplicationPorts = new ClusterEndpointRangeDescription(1000,2000),
-    EphemeralPorts = new ClusterEndpointRangeDescription(3000,4000),
+    ApplicationPorts = new ClusterEndpointRangeDescription(1000, 2000),
+    EphemeralPorts = new ClusterEndpointRangeDescription(3000, 4000),
     HttpGatewayTokenAuthEndpointPort = 19081,
-    }
-    },
+    }},
     ReliabilityLevel = ClusterReliabilityLevel.Bronze,
     UpgradeMode = ClusterUpgradeMode.Automatic,
     UpgradeWave = new ClusterUpgradeCadence("Wave"),

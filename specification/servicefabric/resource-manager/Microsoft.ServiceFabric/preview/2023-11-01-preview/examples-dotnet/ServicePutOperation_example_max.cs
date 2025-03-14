@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ServicePutOperation_example_max.json
 // this example is just showing the usage of "Services_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,31 +29,21 @@ ServiceFabricServiceCollection collection = serviceFabricApplication.GetServiceF
 
 // invoke the operation
 string serviceName = "myService";
-ServiceFabricServiceData data = new ServiceFabricServiceData(new AzureLocation("placeholder"))
+ServiceFabricServiceData data = new ServiceFabricServiceData(default)
 {
     PlacementConstraints = "NodeType==frontend",
-    CorrelationScheme =
-    {
-    new ServiceCorrelationDescription(ServiceCorrelationScheme.Affinity,"fabric:/app1/app1~svc1")
-    },
-    ServiceLoadMetrics =
-    {
-    new ServiceLoadMetricDescription("metric1")
+    CorrelationScheme = { new ServiceCorrelationDescription(ServiceCorrelationScheme.Affinity, "fabric:/app1/app1~svc1") },
+    ServiceLoadMetrics = {new ServiceLoadMetricDescription("metric1")
     {
     Weight = ServiceLoadMetricWeight.Low,
-    }
-    },
-    ServicePlacementPolicies =
-    {
-    },
+    }},
+    ServicePlacementPolicies = { },
     DefaultMoveCost = ApplicationMoveCost.Medium,
     ServiceTypeName = "myServiceType",
     PartitionDescription = new SingletonPartitionSchemeDescription(),
     ServicePackageActivationMode = ArmServicePackageActivationMode.SharedProcess,
     ServiceDnsName = "my.service.dns",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ServiceFabricServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);
 ServiceFabricServiceResource result = lro.Value;

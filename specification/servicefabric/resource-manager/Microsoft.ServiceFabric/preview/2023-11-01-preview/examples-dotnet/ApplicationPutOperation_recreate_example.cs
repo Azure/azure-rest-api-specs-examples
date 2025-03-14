@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ApplicationPutOperation_recreate_example.json
 // this example is just showing the usage of "Applications_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,21 +29,19 @@ ServiceFabricApplicationCollection collection = serviceFabricCluster.GetServiceF
 
 // invoke the operation
 string applicationName = "myApp";
-ServiceFabricApplicationData data = new ServiceFabricApplicationData(new AzureLocation("placeholder"))
+ServiceFabricApplicationData data = new ServiceFabricApplicationData(default)
 {
     TypeVersion = "1.0",
     Parameters =
     {
-    ["param1"] = "value1",
+    ["param1"] = "value1"
     },
-    UpgradePolicy = new ApplicationUpgradePolicy()
+    UpgradePolicy = new ApplicationUpgradePolicy
     {
         RecreateApplication = true,
     },
     TypeName = "myAppType",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ServiceFabricApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationName, data);
 ServiceFabricApplicationResource result = lro.Value;

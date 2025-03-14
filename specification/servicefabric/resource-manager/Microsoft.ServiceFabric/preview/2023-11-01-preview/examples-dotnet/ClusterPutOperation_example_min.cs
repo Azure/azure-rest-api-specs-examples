@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ClusterPutOperation_example_min.json
 // this example is just showing the usage of "Clusters_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,28 +32,20 @@ string clusterName = "myCluster";
 ServiceFabricClusterData data = new ServiceFabricClusterData(new AzureLocation("eastus"))
 {
     DiagnosticsStorageAccountConfig = new DiagnosticsStorageAccountConfig("diag", "StorageAccountKey1", new Uri("https://diag.blob.core.windows.net/"), new Uri("https://diag.queue.core.windows.net/"), new Uri("https://diag.table.core.windows.net/")),
-    FabricSettings =
+    FabricSettings = {new SettingsSectionDescription("UpgradeService", new SettingsParameterDescription[]
     {
-    new SettingsSectionDescription("UpgradeService",new SettingsParameterDescription[]
-    {
-    new SettingsParameterDescription("AppPollIntervalInSeconds","60")
-    })
-    },
+    new SettingsParameterDescription("AppPollIntervalInSeconds", "60")
+    })},
     ManagementEndpoint = new Uri("http://myCluster.eastus.cloudapp.azure.com:19080"),
-    NodeTypes =
-    {
-    new ClusterNodeTypeDescription("nt1vm",19000,19007,true,5)
+    NodeTypes = {new ClusterNodeTypeDescription("nt1vm", 19000, 19007, true, 5)
     {
     DurabilityLevel = ClusterDurabilityLevel.Bronze,
-    ApplicationPorts = new ClusterEndpointRangeDescription(20000,30000),
-    EphemeralPorts = new ClusterEndpointRangeDescription(49000,64000),
-    }
-    },
+    ApplicationPorts = new ClusterEndpointRangeDescription(20000, 30000),
+    EphemeralPorts = new ClusterEndpointRangeDescription(49000, 64000),
+    }},
     ReliabilityLevel = ClusterReliabilityLevel.Silver,
     UpgradeMode = ClusterUpgradeMode.Automatic,
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ServiceFabricClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);
 ServiceFabricClusterResource result = lro.Value;

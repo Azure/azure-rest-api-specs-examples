@@ -28,4 +28,4 @@ SapDiscoveryServerInstanceResource sapDiscoveryServerInstance = client.GetSapDis
 // invoke the operation
 await sapDiscoveryServerInstance.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

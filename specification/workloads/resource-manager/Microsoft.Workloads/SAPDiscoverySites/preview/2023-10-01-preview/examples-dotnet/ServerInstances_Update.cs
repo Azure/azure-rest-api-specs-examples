@@ -26,7 +26,7 @@ ResourceIdentifier sapDiscoveryServerInstanceResourceId = SapDiscoveryServerInst
 SapDiscoveryServerInstanceResource sapDiscoveryServerInstance = client.GetSapDiscoveryServerInstanceResource(sapDiscoveryServerInstanceResourceId);
 
 // invoke the operation
-SapDiscoveryServerInstancePatch patch = new SapDiscoveryServerInstancePatch()
+SapDiscoveryServerInstancePatch patch = new SapDiscoveryServerInstancePatch
 {
     Properties = new ServerInstanceProperties(),
 };

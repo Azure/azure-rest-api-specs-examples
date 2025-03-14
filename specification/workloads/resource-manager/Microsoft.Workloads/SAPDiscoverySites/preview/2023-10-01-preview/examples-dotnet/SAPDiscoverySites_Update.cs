@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MigrationDiscoverySap.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MigrationDiscoverySap;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/SAPDiscoverySites/preview/2023-10-01-preview/examples/SAPDiscoverySites_Update.json
@@ -26,11 +25,11 @@ ResourceIdentifier sapDiscoverySiteResourceId = SapDiscoverySiteResource.CreateR
 SapDiscoverySiteResource sapDiscoverySite = client.GetSapDiscoverySiteResource(sapDiscoverySiteResourceId);
 
 // invoke the operation
-SapDiscoverySitePatch patch = new SapDiscoverySitePatch()
+SapDiscoverySitePatch patch = new SapDiscoverySitePatch
 {
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 SapDiscoverySiteResource result = await sapDiscoverySite.UpdateAsync(patch);

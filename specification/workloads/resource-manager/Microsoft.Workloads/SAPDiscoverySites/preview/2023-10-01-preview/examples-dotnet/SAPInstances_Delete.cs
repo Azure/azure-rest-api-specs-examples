@@ -27,4 +27,4 @@ SapInstanceResource sapInstance = client.GetSapInstanceResource(sapInstanceResou
 // invoke the operation
 await sapInstance.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

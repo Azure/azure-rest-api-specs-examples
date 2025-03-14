@@ -5165,3 +5165,4 @@ id,name,language,tag,package,version,date_epoch,date
 5164,"Azure.ResourceManager.TrustedSigning,1.0.0-beta.2",dotnet,Azure.ResourceManager.TrustedSigning_1.0.0-beta.2,Azure.ResourceManager.TrustedSigning,1.0.0-beta.2,1741926409,03/14/2025
 5165,"Azure.ResourceManager.Analysis,1.1.1",dotnet,Azure.ResourceManager.Analysis_1.1.1,Azure.ResourceManager.Analysis,1.1.1,1741926397,03/14/2025
 5166,"Azure.ResourceManager.Attestation,1.0.0-beta.5",dotnet,Azure.ResourceManager.Attestation_1.0.0-beta.5,Azure.ResourceManager.Attestation,1.0.0-beta.5,1741926394,03/14/2025
+5167,"Azure.ResourceManager.TrafficManager,1.1.3",dotnet,Azure.ResourceManager.TrafficManager_1.1.3,Azure.ResourceManager.TrafficManager,1.1.3,1741926391,03/14/2025

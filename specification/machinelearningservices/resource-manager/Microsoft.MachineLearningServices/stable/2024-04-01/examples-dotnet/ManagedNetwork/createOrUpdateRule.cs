@@ -25,7 +25,7 @@ ResourceIdentifier machineLearningOutboundRuleBasicResourceId = MachineLearningO
 MachineLearningOutboundRuleBasicResource machineLearningOutboundRuleBasic = client.GetMachineLearningOutboundRuleBasicResource(machineLearningOutboundRuleBasicResourceId);
 
 // invoke the operation
-MachineLearningOutboundRuleBasicData data = new MachineLearningOutboundRuleBasicData(new FqdnOutboundRule()
+MachineLearningOutboundRuleBasicData data = new MachineLearningOutboundRuleBasicData(new FqdnOutboundRule
 {
     Destination = "destination_endpoint",
     Category = OutboundRuleCategory.UserDefined,

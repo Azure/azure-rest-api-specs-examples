@@ -26,12 +26,10 @@ ResourceIdentifier machineLearningBatchDeploymentResourceId = MachineLearningBat
 MachineLearningBatchDeploymentResource machineLearningBatchDeployment = client.GetMachineLearningBatchDeploymentResource(machineLearningBatchDeploymentResourceId);
 
 // invoke the operation
-MachineLearningBatchDeploymentPatch patch = new MachineLearningBatchDeploymentPatch()
+MachineLearningBatchDeploymentPatch patch = new MachineLearningBatchDeploymentPatch
 {
     PartialBatchDeploymentDescription = "string",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningBatchDeploymentResource> lro = await machineLearningBatchDeployment.UpdateAsync(WaitUntil.Completed, patch);
 MachineLearningBatchDeploymentResource result = lro.Value;

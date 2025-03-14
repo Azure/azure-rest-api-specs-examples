@@ -28,4 +28,4 @@ MachineLearningOnlineDeploymentResource machineLearningOnlineDeployment = client
 // invoke the operation
 await machineLearningOnlineDeployment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

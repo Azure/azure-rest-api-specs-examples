@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningComponentContainerResource created on azure
-// for more information of creating MachineLearningComponentContainerResource, please refer to the document of MachineLearningComponentContainerResource
+// this example assumes you already have this MachineLearningWorkspaceResource created on azure
+// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-string name = "string";
-ResourceIdentifier machineLearningComponentContainerResourceId = MachineLearningComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
-MachineLearningComponentContainerResource machineLearningComponentContainer = client.GetMachineLearningComponentContainerResource(machineLearningComponentContainerResourceId);
+ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
+
+// get the collection of this MachineLearningComponentContainerResource
+MachineLearningComponentContainerCollection collection = machineLearningWorkspace.GetMachineLearningComponentContainers();
 
 // invoke the operation
-MachineLearningComponentContainerResource result = await machineLearningComponentContainer.GetAsync();
+string name = "string";
+NullableResponse<MachineLearningComponentContainerResource> response = await collection.GetIfExistsAsync(name);
+MachineLearningComponentContainerResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningComponentContainerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MachineLearningComponentContainerData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

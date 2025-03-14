@@ -31,35 +31,33 @@ MachineLearningComputeCollection collection = machineLearningWorkspace.GetMachin
 string computeName = "compute123";
 MachineLearningComputeData data = new MachineLearningComputeData(new AzureLocation("eastus"))
 {
-    Properties = new MachineLearningKubernetesCompute()
+    Properties = new MachineLearningKubernetesCompute
     {
-        Properties = new MachineLearningKubernetesProperties()
+        Properties = new MachineLearningKubernetesProperties
         {
             Namespace = "default",
             DefaultInstanceType = "defaultInstanceType",
             InstanceTypes =
             {
-            ["defaultInstanceType"] = new MachineLearningInstanceTypeSchema()
+            ["defaultInstanceType"] = new MachineLearningInstanceTypeSchema
             {
-            NodeSelector =
-            {
-            },
-            Resources = new MachineLearningInstanceTypeSchemaResources()
+            NodeSelector = {},
+            Resources = new MachineLearningInstanceTypeSchemaResources
             {
             Requests =
             {
             ["cpu"] = "1",
             ["memory"] = "4Gi",
-            ["nvidia.com/gpu"] = null,
+            ["nvidia.com/gpu"] = null
             },
             Limits =
             {
             ["cpu"] = "1",
             ["memory"] = "4Gi",
-            ["nvidia.com/gpu"] = null,
+            ["nvidia.com/gpu"] = null
             },
             },
-            },
+            }
             },
         },
         Description = "some compute",

@@ -27,4 +27,4 @@ MachineLearningComponentContainerResource machineLearningComponentContainer = cl
 // invoke the operation
 await machineLearningComponentContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

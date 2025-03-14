@@ -27,7 +27,7 @@ ResourceIdentifier machineLearningComponentVersionResourceId = MachineLearningCo
 MachineLearningComponentVersionResource machineLearningComponentVersion = client.GetMachineLearningComponentVersionResource(machineLearningComponentVersionResourceId);
 
 // invoke the operation
-DestinationAssetContent content = new DestinationAssetContent()
+DestinationAssetContent content = new DestinationAssetContent
 {
     RegistryName = "string",
     DestinationName = "string",
@@ -35,4 +35,4 @@ DestinationAssetContent content = new DestinationAssetContent()
 };
 await machineLearningComponentVersion.PublishAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

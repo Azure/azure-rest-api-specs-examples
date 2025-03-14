@@ -28,20 +28,20 @@ MachineLearningRegistryEnvironmentContainerCollection collection = machineLearni
 
 // invoke the operation
 string environmentName = "testEnvironment";
-MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentContainerData(new MachineLearningEnvironmentContainerProperties()
+MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentContainerData(new MachineLearningEnvironmentContainerProperties
 {
     Description = "string",
     Tags =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
     Properties =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
 });
 ArmOperation<MachineLearningRegistryEnvironmentContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, environmentName, data);

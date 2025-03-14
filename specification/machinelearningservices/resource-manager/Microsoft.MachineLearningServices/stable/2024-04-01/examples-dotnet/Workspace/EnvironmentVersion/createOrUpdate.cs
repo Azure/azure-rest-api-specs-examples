@@ -29,7 +29,7 @@ MachineLearningEnvironmentVersionCollection collection = machineLearningEnvironm
 
 // invoke the operation
 string version = "string";
-MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersionData(new MachineLearningEnvironmentVersionProperties()
+MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersionData(new MachineLearningEnvironmentVersionProperties
 {
     Image = "docker.io/tensorflow/serving:latest",
     CondaFile = "string",
@@ -37,7 +37,7 @@ MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersi
     {
         DockerfilePath = "prod/Dockerfile",
     },
-    InferenceConfig = new MachineLearningInferenceContainerProperties()
+    InferenceConfig = new MachineLearningInferenceContainerProperties
     {
         LivenessRoute = new MachineLearningInferenceContainerRoute("string", 1),
         ReadinessRoute = new MachineLearningInferenceContainerRoute("string", 1),
@@ -47,11 +47,11 @@ MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersi
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningEnvironmentVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);

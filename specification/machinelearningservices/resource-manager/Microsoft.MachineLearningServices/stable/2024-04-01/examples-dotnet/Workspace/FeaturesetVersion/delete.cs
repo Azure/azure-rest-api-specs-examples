@@ -28,4 +28,4 @@ MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = clie
 // invoke the operation
 await machineLearningFeatureSetVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

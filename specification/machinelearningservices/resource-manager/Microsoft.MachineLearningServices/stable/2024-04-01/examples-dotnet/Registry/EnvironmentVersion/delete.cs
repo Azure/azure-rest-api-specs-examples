@@ -28,4 +28,4 @@ MachineLearningRegistryEnvironmentVersionResource machineLearningRegistryEnviron
 // invoke the operation
 await machineLearningRegistryEnvironmentVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

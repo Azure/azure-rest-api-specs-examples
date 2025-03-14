@@ -27,4 +27,4 @@ MachineLearningPrivateEndpointConnectionResource machineLearningPrivateEndpointC
 // invoke the operation
 await machineLearningPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

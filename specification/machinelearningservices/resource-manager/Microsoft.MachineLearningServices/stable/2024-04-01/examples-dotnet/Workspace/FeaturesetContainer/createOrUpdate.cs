@@ -28,17 +28,17 @@ MachineLearningFeatureSetContainerCollection collection = machineLearningWorkspa
 
 // invoke the operation
 string name = "string";
-MachineLearningFeatureSetContainerData data = new MachineLearningFeatureSetContainerData(new MachineLearningFeatureSetContainerProperties()
+MachineLearningFeatureSetContainerData data = new MachineLearningFeatureSetContainerData(new MachineLearningFeatureSetContainerProperties
 {
     IsArchived = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningFeatureSetContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

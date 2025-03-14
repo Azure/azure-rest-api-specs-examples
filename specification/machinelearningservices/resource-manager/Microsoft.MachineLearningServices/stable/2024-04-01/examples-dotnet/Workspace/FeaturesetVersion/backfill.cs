@@ -26,28 +26,25 @@ ResourceIdentifier machineLearningFeatureSetVersionResourceId = MachineLearningF
 MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = client.GetMachineLearningFeatureSetVersionResource(machineLearningFeatureSetVersionResourceId);
 
 // invoke the operation
-FeatureSetVersionBackfillContent content = new FeatureSetVersionBackfillContent()
+FeatureSetVersionBackfillContent content = new FeatureSetVersionBackfillContent
 {
     DisplayName = "string",
     Description = "string",
-    FeatureWindow = new FeatureWindow()
+    FeatureWindow = new FeatureWindow
     {
         FeatureWindowStart = DateTimeOffset.Parse("2020-01-01T12:34:56.999+00:51"),
         FeatureWindowEnd = DateTimeOffset.Parse("2020-01-01T12:34:56.999+00:51"),
     },
-    DataAvailabilityStatus =
-    {
-    DataAvailabilityStatus.None
-    },
+    DataAvailabilityStatus = { DataAvailabilityStatus.None },
     JobId = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     ResourceInstanceType = "string",
     SparkConfiguration =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 };
 ArmOperation<FeaturesetVersionBackfillResponse> lro = await machineLearningFeatureSetVersion.BackfillAsync(WaitUntil.Completed, content);

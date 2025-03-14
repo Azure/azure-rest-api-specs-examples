@@ -41,4 +41,4 @@ await foreach (MachineLearningOnlineDeploymentResource item in collection.GetAll
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

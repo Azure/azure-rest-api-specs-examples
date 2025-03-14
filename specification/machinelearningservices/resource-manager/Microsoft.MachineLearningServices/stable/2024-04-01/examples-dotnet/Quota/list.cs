@@ -29,4 +29,4 @@ await foreach (MachineLearningResourceQuota item in subscriptionResource.GetMach
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

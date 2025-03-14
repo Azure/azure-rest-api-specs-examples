@@ -15,30 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryDataContainerResource created on azure
-// for more information of creating MachineLearningRegistryDataContainerResource, please refer to the document of MachineLearningRegistryDataContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "registryName";
-string name = "string";
-ResourceIdentifier machineLearningRegistryDataContainerResourceId = MachineLearningRegistryDataContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, name);
-MachineLearningRegistryDataContainerResource machineLearningRegistryDataContainer = client.GetMachineLearningRegistryDataContainerResource(machineLearningRegistryDataContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearningRegistryDataContainerResource
+MachineLearningRegistryDataContainerCollection collection = machineLearningRegistry.GetMachineLearningRegistryDataContainers();
 
 // invoke the operation
+string name = "string";
 MachineLearningDataContainerData data = new MachineLearningDataContainerData(new MachineLearningDataContainerProperties(MachineLearningDataType.UriFolder)
 {
     IsArchived = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
-ArmOperation<MachineLearningRegistryDataContainerResource> lro = await machineLearningRegistryDataContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningRegistryDataContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 MachineLearningRegistryDataContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

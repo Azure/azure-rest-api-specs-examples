@@ -31,9 +31,9 @@ MachineLearningComputeCollection collection = machineLearningWorkspace.GetMachin
 string computeName = "compute123";
 MachineLearningComputeData data = new MachineLearningComputeData(new AzureLocation("eastus"))
 {
-    Properties = new AmlCompute()
+    Properties = new AmlCompute
     {
-        Properties = new AmlComputeProperties()
+        Properties = new AmlComputeProperties
         {
             OSType = MachineLearningOSType.Windows,
             VmSize = "STANDARD_NC6",

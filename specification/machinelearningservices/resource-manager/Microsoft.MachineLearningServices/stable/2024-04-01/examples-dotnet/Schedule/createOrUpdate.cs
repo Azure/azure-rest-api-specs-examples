@@ -31,7 +31,7 @@ MachineLearningScheduleData data = new MachineLearningScheduleData(new MachineLe
     EndTime = "string",
     StartTime = "string",
     TimeZone = "string",
-}, new MachineLearningEndpointScheduleAction(BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+}, new MachineLearningEndpointScheduleAction(BinaryData.FromObjectAsJson(new Dictionary<string, object>
 {
     ["9965593e-526f-4b89-bb36-761138cf2794"] = null
 })))
@@ -41,11 +41,11 @@ MachineLearningScheduleData data = new MachineLearningScheduleData(new MachineLe
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningScheduleResource> lro = await machineLearningSchedule.UpdateAsync(WaitUntil.Completed, data);

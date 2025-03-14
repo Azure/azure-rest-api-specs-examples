@@ -27,4 +27,4 @@ MachineLearningOutboundRuleBasicResource machineLearningOutboundRuleBasic = clie
 // invoke the operation
 await machineLearningOutboundRuleBasic.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -32,36 +32,37 @@ MachineLearningBatchDeploymentCollection collection = machineLearningBatchEndpoi
 
 // invoke the operation
 string deploymentName = "testDeploymentName";
-MachineLearningBatchDeploymentData data = new MachineLearningBatchDeploymentData(new AzureLocation("string"), new MachineLearningBatchDeploymentProperties()
+MachineLearningBatchDeploymentData data = new MachineLearningBatchDeploymentData(new AzureLocation("string"), new MachineLearningBatchDeploymentProperties
 {
     Compute = "string",
     ErrorThreshold = 1,
-    RetrySettings = new MachineLearningBatchRetrySettings()
+    RetrySettings = new MachineLearningBatchRetrySettings
     {
         MaxRetries = 1,
         Timeout = XmlConvert.ToTimeSpan("PT5M"),
     },
-    MiniBatchSize = 1,
+    MiniBatchSize = 1L,
     LoggingLevel = MachineLearningBatchLoggingLevel.Info,
     Model = new MachineLearningIdAssetReference(new ResourceIdentifier("string")),
     MaxConcurrencyPerInstance = 1,
     OutputAction = MachineLearningBatchOutputAction.SummaryOnly,
     OutputFileName = "string",
-    Resources = new MachineLearningDeploymentResourceConfiguration()
+    Resources = new MachineLearningDeploymentResourceConfiguration
     {
         InstanceCount = 1,
         InstanceType = "string",
         Properties =
         {
-        ["string"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+        ["string"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>
         {
-        ["cd3c37dc-2876-4ca4-8a54-21bd7619724a"] = null}),
+        ["cd3c37dc-2876-4ca4-8a54-21bd7619724a"] = null
+        })
         },
     },
     Description = "string",
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     CodeConfiguration = new MachineLearningCodeConfiguration("string")
     {
@@ -70,7 +71,7 @@ MachineLearningBatchDeploymentData data = new MachineLearningBatchDeploymentData
     EnvironmentId = "string",
     EnvironmentVariables =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 })
 {
@@ -79,7 +80,7 @@ MachineLearningBatchDeploymentData data = new MachineLearningBatchDeploymentData
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -89,9 +90,7 @@ MachineLearningBatchDeploymentData data = new MachineLearningBatchDeploymentData
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningBatchDeploymentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, data);
 MachineLearningBatchDeploymentResource result = lro.Value;

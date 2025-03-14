@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,21 +25,17 @@ ResourceIdentifier machineLearningOnlineEndpointResourceId = MachineLearningOnli
 MachineLearningOnlineEndpointResource machineLearningOnlineEndpoint = client.GetMachineLearningOnlineEndpointResource(machineLearningOnlineEndpointResourceId);
 
 // invoke the operation
-MachineLearningResourcePatchWithIdentity body = new MachineLearningResourcePatchWithIdentity()
+MachineLearningResourcePatchWithIdentity body = new MachineLearningResourcePatchWithIdentity
 {
-    Identity = new MachineLearningPartialManagedServiceIdentity()
+    Identity = new MachineLearningPartialManagedServiceIdentity
     {
         ManagedServiceIdentityType = "SystemAssigned",
         UserAssignedIdentities =
         {
-        ["string"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-        {
-        }),
+        ["string"] = BinaryData.FromObjectAsJson(new object())
         },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningOnlineEndpointResource> lro = await machineLearningOnlineEndpoint.UpdateAsync(WaitUntil.Completed, body);
 MachineLearningOnlineEndpointResource result = lro.Value;

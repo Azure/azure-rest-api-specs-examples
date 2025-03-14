@@ -28,20 +28,20 @@ MachineLearningEnvironmentContainerCollection collection = machineLearningWorksp
 
 // invoke the operation
 string name = "testEnvironment";
-MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentContainerData(new MachineLearningEnvironmentContainerProperties()
+MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentContainerData(new MachineLearningEnvironmentContainerProperties
 {
     Description = "string",
     Tags =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
     Properties =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
 });
 ArmOperation<MachineLearningEnvironmentContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

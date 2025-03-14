@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryResource created on azure
-// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
+// this example assumes you already have this MachineLearninRegistryComponentContainerResource created on azure
+// for more information of creating MachineLearninRegistryComponentContainerResource, please refer to the document of MachineLearninRegistryComponentContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
-ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
-MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
-
-// get the collection of this MachineLearninRegistryComponentContainerResource
-MachineLearninRegistryComponentContainerCollection collection = machineLearningRegistry.GetMachineLearninRegistryComponentContainers();
+string componentName = "string";
+ResourceIdentifier machineLearninRegistryComponentContainerResourceId = MachineLearninRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
+MachineLearninRegistryComponentContainerResource machineLearninRegistryComponentContainer = client.GetMachineLearninRegistryComponentContainerResource(machineLearninRegistryComponentContainerResourceId);
 
 // invoke the operation
-string componentName = "string";
-NullableResponse<MachineLearninRegistryComponentContainerResource> response = await collection.GetIfExistsAsync(componentName);
-MachineLearninRegistryComponentContainerResource result = response.HasValue ? response.Value : null;
+MachineLearninRegistryComponentContainerResource result = await machineLearninRegistryComponentContainer.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MachineLearningComponentContainerData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningComponentContainerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -24,28 +24,25 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("eastus");
-MachineLearningQuotaUpdateContent content = new MachineLearningQuotaUpdateContent()
+MachineLearningQuotaUpdateContent content = new MachineLearningQuotaUpdateContent
 {
-    Value =
-    {
-    new MachineLearningQuotaProperties()
+    Value = {new MachineLearningQuotaProperties
     {
     Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.MachineLearningServices/workspaces/demo_workspace1/quotas/Standard_DSv2_Family_Cluster_Dedicated_vCPUs",
     QuotaBasePropertiesType = "Microsoft.MachineLearningServices/workspaces/quotas",
-    Limit = 100,
+    Limit = 100L,
     Unit = MachineLearningQuotaUnit.Count,
-    },new MachineLearningQuotaProperties()
+    }, new MachineLearningQuotaProperties
     {
     Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.MachineLearningServices/workspaces/demo_workspace2/quotas/Standard_DSv2_Family_Cluster_Dedicated_vCPUs",
     QuotaBasePropertiesType = "Microsoft.MachineLearningServices/workspaces/quotas",
-    Limit = 200,
+    Limit = 200L,
     Unit = MachineLearningQuotaUnit.Count,
-    }
-    },
+    }},
 };
 await foreach (MachineLearningWorkspaceQuotaUpdate item in subscriptionResource.UpdateMachineLearningQuotasAsync(location, content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

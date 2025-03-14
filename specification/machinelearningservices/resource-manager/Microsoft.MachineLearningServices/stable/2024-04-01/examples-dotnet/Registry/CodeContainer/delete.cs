@@ -27,4 +27,4 @@ MachineLearningRegistryCodeContainerResource machineLearningRegistryCodeContaine
 // invoke the operation
 await machineLearningRegistryCodeContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

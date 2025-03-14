@@ -40,7 +40,7 @@ MachineLearningServerlessEndpointData data = new MachineLearningServerlessEndpoi
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -50,9 +50,7 @@ MachineLearningServerlessEndpointData data = new MachineLearningServerlessEndpoi
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningServerlessEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 MachineLearningServerlessEndpointResource result = lro.Value;

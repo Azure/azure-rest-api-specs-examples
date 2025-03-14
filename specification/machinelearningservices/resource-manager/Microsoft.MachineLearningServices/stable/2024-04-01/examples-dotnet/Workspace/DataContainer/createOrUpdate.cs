@@ -31,12 +31,12 @@ MachineLearningDataContainerData data = new MachineLearningDataContainerData(new
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     Properties =
     {
     ["properties1"] = "value1",
-    ["properties2"] = "value2",
+    ["properties2"] = "value2"
     },
 });
 ArmOperation<MachineLearningDataContainerResource> lro = await machineLearningDataContainer.UpdateAsync(WaitUntil.Completed, data);

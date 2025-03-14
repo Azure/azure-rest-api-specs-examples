@@ -25,13 +25,13 @@ ResourceIdentifier machineLearningRegistryCodeContainerResourceId = MachineLearn
 MachineLearningRegistryCodeContainerResource machineLearningRegistryCodeContainer = client.GetMachineLearningRegistryCodeContainerResource(machineLearningRegistryCodeContainerResourceId);
 
 // invoke the operation
-MachineLearningCodeContainerData data = new MachineLearningCodeContainerData(new MachineLearningCodeContainerProperties()
+MachineLearningCodeContainerData data = new MachineLearningCodeContainerData(new MachineLearningCodeContainerProperties
 {
     Description = "string",
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 });
 ArmOperation<MachineLearningRegistryCodeContainerResource> lro = await machineLearningRegistryCodeContainer.UpdateAsync(WaitUntil.Completed, data);

@@ -26,7 +26,7 @@ ResourceIdentifier machineLearningDataVersionResourceId = MachineLearningDataVer
 MachineLearningDataVersionResource machineLearningDataVersion = client.GetMachineLearningDataVersionResource(machineLearningDataVersionResourceId);
 
 // invoke the operation
-DestinationAssetContent content = new DestinationAssetContent()
+DestinationAssetContent content = new DestinationAssetContent
 {
     RegistryName = "string",
     DestinationName = "string",
@@ -34,4 +34,4 @@ DestinationAssetContent content = new DestinationAssetContent()
 };
 await machineLearningDataVersion.PublishAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

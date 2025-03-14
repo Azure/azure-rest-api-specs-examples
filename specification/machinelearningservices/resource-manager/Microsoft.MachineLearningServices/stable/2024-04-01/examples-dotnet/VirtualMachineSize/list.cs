@@ -29,4 +29,4 @@ await foreach (MachineLearningVmSize item in subscriptionResource.GetMachineLear
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

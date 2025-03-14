@@ -29,4 +29,4 @@ MachineLearningJobResource machineLearningJob = client.GetMachineLearningJobReso
 // invoke the operation
 await machineLearningJob.CancelAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

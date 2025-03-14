@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/Workspace/diagnose.json
@@ -25,37 +24,19 @@ ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspace
 MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
 
 // invoke the operation
-MachineLearningWorkspaceDiagnoseContent content = new MachineLearningWorkspaceDiagnoseContent()
+MachineLearningWorkspaceDiagnoseContent content = new MachineLearningWorkspaceDiagnoseContent
 {
-    Value = new MachineLearningWorkspaceDiagnoseProperties()
+    Value = new MachineLearningWorkspaceDiagnoseProperties
     {
-        Udr =
-        {
-        },
-        Nsg =
-        {
-        },
-        ResourceLock =
-        {
-        },
-        DnsResolution =
-        {
-        },
-        StorageAccount =
-        {
-        },
-        KeyVault =
-        {
-        },
-        ContainerRegistry =
-        {
-        },
-        ApplicationInsights =
-        {
-        },
-        Others =
-        {
-        },
+        Udr = { },
+        Nsg = { },
+        ResourceLock = { },
+        DnsResolution = { },
+        StorageAccount = { },
+        KeyVault = { },
+        ContainerRegistry = { },
+        ApplicationInsights = { },
+        Others = { },
     },
 };
 ArmOperation<MachineLearningWorkspaceDiagnoseResult> lro = await machineLearningWorkspace.DiagnoseAsync(WaitUntil.Completed, content: content);

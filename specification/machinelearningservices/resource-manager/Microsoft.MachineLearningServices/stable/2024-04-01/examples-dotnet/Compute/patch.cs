@@ -26,7 +26,7 @@ ResourceIdentifier machineLearningComputeResourceId = MachineLearningComputeReso
 MachineLearningComputeResource machineLearningCompute = client.GetMachineLearningComputeResource(machineLearningComputeResourceId);
 
 // invoke the operation
-MachineLearningComputePatch patch = new MachineLearningComputePatch()
+MachineLearningComputePatch patch = new MachineLearningComputePatch
 {
     ScaleSettings = new AmlComputeScaleSettings(4)
     {

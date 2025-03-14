@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/Registries/update-SystemCreated.json
@@ -26,16 +25,16 @@ ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryRe
 MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
 
 // invoke the operation
-MachineLearningRegistryPatch patch = new MachineLearningRegistryPatch()
+MachineLearningRegistryPatch patch = new MachineLearningRegistryPatch
 {
     Identity = new ManagedServiceIdentity("SystemAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
-    Sku = new MachineLearningSkuPatch()
+    Sku = new MachineLearningSkuPatch
     {
         Name = "string",
         Tier = MachineLearningSkuTier.Basic,
@@ -43,9 +42,7 @@ MachineLearningRegistryPatch patch = new MachineLearningRegistryPatch()
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 MachineLearningRegistryResource result = await machineLearningRegistry.UpdateAsync(patch);
 

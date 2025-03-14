@@ -26,18 +26,18 @@ ResourceIdentifier machineLearningRegistryCodeVersionResourceId = MachineLearnin
 MachineLearningRegistryCodeVersionResource machineLearningRegistryCodeVersion = client.GetMachineLearningRegistryCodeVersionResource(machineLearningRegistryCodeVersionResourceId);
 
 // invoke the operation
-MachineLearningCodeVersionData data = new MachineLearningCodeVersionData(new MachineLearningCodeVersionProperties()
+MachineLearningCodeVersionData data = new MachineLearningCodeVersionData(new MachineLearningCodeVersionProperties
 {
     CodeUri = new Uri("https://blobStorage/folderName"),
     IsAnonymous = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningRegistryCodeVersionResource> lro = await machineLearningRegistryCodeVersion.UpdateAsync(WaitUntil.Completed, data);

@@ -28,7 +28,7 @@ MachineLearningFeatureStoreEntityContainerResource machineLearningFeatureStoreEn
 MachineLearningFeaturestoreEntityVersionCollection collection = machineLearningFeatureStoreEntityContainer.GetMachineLearningFeaturestoreEntityVersions();
 
 // invoke the operation and iterate over the result
-MachineLearningFeaturestoreEntityVersionCollectionGetAllOptions options = new MachineLearningFeaturestoreEntityVersionCollectionGetAllOptions() { Tags = "string", ListViewType = MachineLearningListViewType.ActiveOnly };
+MachineLearningFeaturestoreEntityVersionCollectionGetAllOptions options = new MachineLearningFeaturestoreEntityVersionCollectionGetAllOptions { Tags = "string", ListViewType = MachineLearningListViewType.ActiveOnly };
 await foreach (MachineLearningFeaturestoreEntityVersionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -38,4 +38,4 @@ await foreach (MachineLearningFeaturestoreEntityVersionResource item in collecti
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

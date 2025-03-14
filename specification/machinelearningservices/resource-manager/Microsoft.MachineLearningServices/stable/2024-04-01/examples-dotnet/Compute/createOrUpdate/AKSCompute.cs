@@ -31,9 +31,9 @@ MachineLearningComputeCollection collection = machineLearningWorkspace.GetMachin
 string computeName = "compute123";
 MachineLearningComputeData data = new MachineLearningComputeData(new AzureLocation("eastus"))
 {
-    Properties = new MachineLearningAksCompute()
+    Properties = new MachineLearningAksCompute
     {
-        Properties = new MachineLearningAksComputeProperties()
+        Properties = new MachineLearningAksComputeProperties
         {
             AgentCount = 4,
         },

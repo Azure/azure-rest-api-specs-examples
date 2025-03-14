@@ -27,4 +27,4 @@ MachineLearningCodeContainerResource machineLearningCodeContainer = client.GetMa
 // invoke the operation
 await machineLearningCodeContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

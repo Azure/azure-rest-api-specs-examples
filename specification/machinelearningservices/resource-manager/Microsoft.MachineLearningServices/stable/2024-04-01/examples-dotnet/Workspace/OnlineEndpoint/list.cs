@@ -28,7 +28,7 @@ MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLea
 MachineLearningOnlineEndpointCollection collection = machineLearningWorkspace.GetMachineLearningOnlineEndpoints();
 
 // invoke the operation and iterate over the result
-MachineLearningOnlineEndpointCollectionGetAllOptions options = new MachineLearningOnlineEndpointCollectionGetAllOptions() { Name = "string", Count = 1, ComputeType = MachineLearningEndpointComputeType.Managed, Tags = "string", Properties = "string", OrderBy = MachineLearningOrderString.CreatedAtDesc };
+MachineLearningOnlineEndpointCollectionGetAllOptions options = new MachineLearningOnlineEndpointCollectionGetAllOptions { Name = "string", Count = 1, ComputeType = MachineLearningEndpointComputeType.Managed, Tags = "string", Properties = "string", OrderBy = MachineLearningOrderString.CreatedAtDesc };
 await foreach (MachineLearningOnlineEndpointResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -38,4 +38,4 @@ await foreach (MachineLearningOnlineEndpointResource item in collection.GetAllAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

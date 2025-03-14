@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,21 +25,17 @@ ResourceIdentifier machineLearningBatchEndpointResourceId = MachineLearningBatch
 MachineLearningBatchEndpointResource machineLearningBatchEndpoint = client.GetMachineLearningBatchEndpointResource(machineLearningBatchEndpointResourceId);
 
 // invoke the operation
-MachineLearningResourcePatchWithIdentity body = new MachineLearningResourcePatchWithIdentity()
+MachineLearningResourcePatchWithIdentity body = new MachineLearningResourcePatchWithIdentity
 {
-    Identity = new MachineLearningPartialManagedServiceIdentity()
+    Identity = new MachineLearningPartialManagedServiceIdentity
     {
         ManagedServiceIdentityType = "SystemAssigned",
         UserAssignedIdentities =
         {
-        ["string"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-        {
-        }),
+        ["string"] = BinaryData.FromObjectAsJson(new object())
         },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningBatchEndpointResource> lro = await machineLearningBatchEndpoint.UpdateAsync(WaitUntil.Completed, body);
 MachineLearningBatchEndpointResource result = lro.Value;

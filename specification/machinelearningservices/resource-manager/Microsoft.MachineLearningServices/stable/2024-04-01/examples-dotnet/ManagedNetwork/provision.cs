@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/ManagedNetwork/provision.json
@@ -25,7 +24,7 @@ ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspace
 MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
 
 // invoke the operation
-ManagedNetworkProvisionContent content = new ManagedNetworkProvisionContent()
+ManagedNetworkProvisionContent content = new ManagedNetworkProvisionContent
 {
     IncludeSpark = false,
 };

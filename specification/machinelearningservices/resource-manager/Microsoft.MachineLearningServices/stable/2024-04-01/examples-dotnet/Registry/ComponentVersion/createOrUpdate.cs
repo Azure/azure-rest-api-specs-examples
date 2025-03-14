@@ -27,9 +27,9 @@ ResourceIdentifier machineLearninRegistryComponentVersionResourceId = MachineLea
 MachineLearninRegistryComponentVersionResource machineLearninRegistryComponentVersion = client.GetMachineLearninRegistryComponentVersionResource(machineLearninRegistryComponentVersionResourceId);
 
 // invoke the operation
-MachineLearningComponentVersionData data = new MachineLearningComponentVersionData(new MachineLearningComponentVersionProperties()
+MachineLearningComponentVersionData data = new MachineLearningComponentVersionData(new MachineLearningComponentVersionProperties
 {
-    ComponentSpec = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    ComponentSpec = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["8ced901b-d826-477d-bfef-329da9672513"] = null
     }),
@@ -37,11 +37,11 @@ MachineLearningComponentVersionData data = new MachineLearningComponentVersionDa
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearninRegistryComponentVersionResource> lro = await machineLearninRegistryComponentVersion.UpdateAsync(WaitUntil.Completed, data);

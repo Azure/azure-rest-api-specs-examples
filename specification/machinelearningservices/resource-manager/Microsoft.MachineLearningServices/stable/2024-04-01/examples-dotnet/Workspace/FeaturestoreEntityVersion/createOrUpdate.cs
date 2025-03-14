@@ -29,26 +29,23 @@ MachineLearningFeaturestoreEntityVersionCollection collection = machineLearningF
 
 // invoke the operation
 string version = "string";
-MachineLearningFeaturestoreEntityVersionData data = new MachineLearningFeaturestoreEntityVersionData(new MachineLearningFeatureStoreEntityVersionProperties()
+MachineLearningFeaturestoreEntityVersionData data = new MachineLearningFeaturestoreEntityVersionData(new MachineLearningFeatureStoreEntityVersionProperties
 {
-    IndexColumns =
-    {
-    new IndexColumn()
+    IndexColumns = {new IndexColumn
     {
     DataType = FeatureDataType.Datetime,
     ColumnName = "string",
-    }
-    },
+    }},
     IsArchived = false,
     IsAnonymous = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningFeaturestoreEntityVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);

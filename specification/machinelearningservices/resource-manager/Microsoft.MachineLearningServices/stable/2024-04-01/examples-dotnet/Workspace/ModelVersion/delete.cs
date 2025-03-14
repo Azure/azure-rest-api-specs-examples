@@ -28,4 +28,4 @@ MachineLearningModelVersionResource machineLearningModelVersion = client.GetMach
 // invoke the operation
 await machineLearningModelVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

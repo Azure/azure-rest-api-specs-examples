@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApiCenter;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApiCenter;
 
 // Generated from example definition: specification/apicenter/resource-manager/Microsoft.ApiCenter/preview/2023-07-01-preview/examples/Services_CreateOrUpdate.json
 // this example is just showing the usage of "Services_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ ApiCenterServiceCollection collection = resourceGroupResource.GetApiCenterServic
 
 // invoke the operation
 string serviceName = "contoso";
-ApiCenterServiceData data = new ApiCenterServiceData(new AzureLocation("placeholder"));
+ApiCenterServiceData data = new ApiCenterServiceData(default);
 ArmOperation<ApiCenterServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);
 ApiCenterServiceResource result = lro.Value;
 

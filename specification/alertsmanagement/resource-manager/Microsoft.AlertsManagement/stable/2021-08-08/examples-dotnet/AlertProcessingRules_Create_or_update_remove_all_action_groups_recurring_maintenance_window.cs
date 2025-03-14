@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Create_or_update_remove_all_action_groups_recurring_maintenance_window.json
 // this example is just showing the usage of "AlertProcessingRules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,47 +31,30 @@ AlertProcessingRuleCollection collection = resourceGroupResource.GetAlertProcess
 string alertProcessingRuleName = "RemoveActionGroupsRecurringMaintenance";
 AlertProcessingRuleData data = new AlertProcessingRuleData(new AzureLocation("Global"))
 {
-    Properties = new AlertProcessingRuleProperties(new string[]
-{
-"/subscriptions/subId1/resourceGroups/RGId1","/subscriptions/subId1/resourceGroups/RGId2"
-}, new AlertProcessingRuleAction[]
+    Properties = new AlertProcessingRuleProperties(new string[] { "/subscriptions/subId1/resourceGroups/RGId1", "/subscriptions/subId1/resourceGroups/RGId2" }, new AlertProcessingRuleAction[]
 {
 new AlertProcessingRuleRemoveAllGroupsAction()
 })
     {
-        Conditions =
-        {
-        new AlertProcessingRuleCondition()
+        Conditions = {new AlertProcessingRuleCondition
         {
         Field = AlertProcessingRuleField.TargetResourceType,
         Operator = AlertProcessingRuleOperator.EqualsValue,
-        Values =
-        {
-        "microsoft.compute/virtualmachines"
-        },
-        }
-        },
-        Schedule = new AlertProcessingRuleSchedule()
+        Values = {"microsoft.compute/virtualmachines"},
+        }},
+        Schedule = new AlertProcessingRuleSchedule
         {
             TimeZone = "India Standard Time",
-            Recurrences =
+            Recurrences = {new AlertProcessingRuleWeeklyRecurrence(new AlertsManagementDayOfWeek[]{AlertsManagementDayOfWeek.Saturday, AlertsManagementDayOfWeek.Sunday})
             {
-            new AlertProcessingRuleWeeklyRecurrence(new AlertsManagementDayOfWeek[]
-            {
-            AlertsManagementDayOfWeek.Saturday,AlertsManagementDayOfWeek.Sunday
-            })
-            {
-            StartOn = TimeSpan.Parse("22:00:00"),
-            EndOn = TimeSpan.Parse("04:00:00"),
-            }
-            },
+            StartOn = XmlConvert.ToTimeSpan("22:00:00"),
+            EndOn = XmlConvert.ToTimeSpan("04:00:00"),
+            }},
         },
         Description = "Remove all ActionGroups from all Vitual machine Alerts during the recurring maintenance",
         IsEnabled = true,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AlertProcessingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertProcessingRuleName, data);
 AlertProcessingRuleResource result = lro.Value;

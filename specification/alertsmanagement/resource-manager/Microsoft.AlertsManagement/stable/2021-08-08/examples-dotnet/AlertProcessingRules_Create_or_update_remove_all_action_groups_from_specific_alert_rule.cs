@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Create_or_update_remove_all_action_groups_from_specific_alert_rule.json
 // this example is just showing the usage of "AlertProcessingRules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,32 +31,21 @@ AlertProcessingRuleCollection collection = resourceGroupResource.GetAlertProcess
 string alertProcessingRuleName = "RemoveActionGroupsSpecificAlertRule";
 AlertProcessingRuleData data = new AlertProcessingRuleData(new AzureLocation("Global"))
 {
-    Properties = new AlertProcessingRuleProperties(new string[]
-{
-"/subscriptions/subId1"
-}, new AlertProcessingRuleAction[]
+    Properties = new AlertProcessingRuleProperties(new string[] { "/subscriptions/subId1" }, new AlertProcessingRuleAction[]
 {
 new AlertProcessingRuleRemoveAllGroupsAction()
 })
     {
-        Conditions =
-        {
-        new AlertProcessingRuleCondition()
+        Conditions = {new AlertProcessingRuleCondition
         {
         Field = AlertProcessingRuleField.AlertRuleId,
         Operator = AlertProcessingRuleOperator.EqualsValue,
-        Values =
-        {
-        "/subscriptions/suubId1/resourceGroups/Rgid2/providers/microsoft.insights/activityLogAlerts/RuleName"
-        },
-        }
-        },
+        Values = {"/subscriptions/suubId1/resourceGroups/Rgid2/providers/microsoft.insights/activityLogAlerts/RuleName"},
+        }},
         Description = "Removes all ActionGroups from all Alerts that fire on above AlertRule",
         IsEnabled = true,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AlertProcessingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertProcessingRuleName, data);
 AlertProcessingRuleResource result = lro.Value;

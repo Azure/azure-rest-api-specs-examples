@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Create_or_update_remove_all_action_groups_outside_business_hours.json
 // this example is just showing the usage of "AlertProcessingRules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,35 +31,24 @@ AlertProcessingRuleCollection collection = resourceGroupResource.GetAlertProcess
 string alertProcessingRuleName = "RemoveActionGroupsOutsideBusinessHours";
 AlertProcessingRuleData data = new AlertProcessingRuleData(new AzureLocation("Global"))
 {
-    Properties = new AlertProcessingRuleProperties(new string[]
-{
-"/subscriptions/subId1"
-}, new AlertProcessingRuleAction[]
+    Properties = new AlertProcessingRuleProperties(new string[] { "/subscriptions/subId1" }, new AlertProcessingRuleAction[]
 {
 new AlertProcessingRuleRemoveAllGroupsAction()
 })
     {
-        Schedule = new AlertProcessingRuleSchedule()
+        Schedule = new AlertProcessingRuleSchedule
         {
             TimeZone = "Eastern Standard Time",
-            Recurrences =
+            Recurrences = {new DailyRecurrence
             {
-            new DailyRecurrence()
-            {
-            StartOn = TimeSpan.Parse("17:00:00"),
-            EndOn = TimeSpan.Parse("09:00:00"),
-            },new AlertProcessingRuleWeeklyRecurrence(new AlertsManagementDayOfWeek[]
-            {
-            AlertsManagementDayOfWeek.Saturday,AlertsManagementDayOfWeek.Sunday
-            })
-            },
+            StartOn = XmlConvert.ToTimeSpan("17:00:00"),
+            EndOn = XmlConvert.ToTimeSpan("09:00:00"),
+            }, new AlertProcessingRuleWeeklyRecurrence(new AlertsManagementDayOfWeek[]{AlertsManagementDayOfWeek.Saturday, AlertsManagementDayOfWeek.Sunday})},
         },
         Description = "Remove all ActionGroups outside business hours",
         IsEnabled = true,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AlertProcessingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertProcessingRuleName, data);
 AlertProcessingRuleResource result = lro.Value;

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Patch.json
 // this example is just showing the usage of "AlertProcessingRules_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier alertProcessingRuleResourceId = AlertProcessingRuleResource.C
 AlertProcessingRuleResource alertProcessingRule = client.GetAlertProcessingRuleResource(alertProcessingRuleResourceId);
 
 // invoke the operation
-AlertProcessingRulePatch patch = new AlertProcessingRulePatch()
+AlertProcessingRulePatch patch = new AlertProcessingRulePatch
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
     IsEnabled = false,
 };

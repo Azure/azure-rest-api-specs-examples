@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Create_or_update_remove_all_action_groups_specific_VM_one-off_maintenance_window.json
 // this example is just showing the usage of "AlertProcessingRules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,15 +31,12 @@ AlertProcessingRuleCollection collection = resourceGroupResource.GetAlertProcess
 string alertProcessingRuleName = "RemoveActionGroupsMaintenanceWindow";
 AlertProcessingRuleData data = new AlertProcessingRuleData(new AzureLocation("Global"))
 {
-    Properties = new AlertProcessingRuleProperties(new string[]
-{
-"/subscriptions/subId1/resourceGroups/RGId1/providers/Microsoft.Compute/virtualMachines/VMName"
-}, new AlertProcessingRuleAction[]
+    Properties = new AlertProcessingRuleProperties(new string[] { "/subscriptions/subId1/resourceGroups/RGId1/providers/Microsoft.Compute/virtualMachines/VMName" }, new AlertProcessingRuleAction[]
 {
 new AlertProcessingRuleRemoveAllGroupsAction()
 })
     {
-        Schedule = new AlertProcessingRuleSchedule()
+        Schedule = new AlertProcessingRuleSchedule
         {
             EffectiveFrom = DateTimeOffset.Parse("2021-04-15T18:00:00"),
             EffectiveUntil = DateTimeOffset.Parse("2021-04-15T20:00:00"),
@@ -47,9 +45,7 @@ new AlertProcessingRuleRemoveAllGroupsAction()
         Description = "Removes all ActionGroups from all Alerts on VMName during the maintenance window",
         IsEnabled = true,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AlertProcessingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertProcessingRuleName, data);
 AlertProcessingRuleResource result = lro.Value;

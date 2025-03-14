@@ -5172,3 +5172,4 @@ id,name,language,tag,package,version,date_epoch,date
 5171,"Azure.ResourceManager.Sphere,1.0.1",dotnet,Azure.ResourceManager.Sphere_1.0.1,Azure.ResourceManager.Sphere,1.0.1,1741926342,03/14/2025
 5172,"Azure.ResourceManager.Support,1.1.1",dotnet,Azure.ResourceManager.Support_1.1.1,Azure.ResourceManager.Support,1.1.1,1741926318,03/14/2025
 5173,"Azure.ResourceManager.AgFoodPlatform,1.0.0-beta.5",dotnet,Azure.ResourceManager.AgFoodPlatform_1.0.0-beta.5,Azure.ResourceManager.AgFoodPlatform,1.0.0-beta.5,1741926246,03/14/2025
+5174,"Azure.ResourceManager.StorageCache,1.3.1",dotnet,Azure.ResourceManager.StorageCache_1.3.1,Azure.ResourceManager.StorageCache,1.3.1,1741926200,03/14/2025

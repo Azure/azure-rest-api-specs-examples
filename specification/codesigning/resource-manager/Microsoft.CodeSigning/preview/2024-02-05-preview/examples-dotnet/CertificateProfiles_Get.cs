@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TrustedSigningAccountResource created on azure
-// for more information of creating TrustedSigningAccountResource, please refer to the document of TrustedSigningAccountResource
+// this example assumes you already have this TrustedSigningCertificateProfileResource created on azure
+// for more information of creating TrustedSigningCertificateProfileResource, please refer to the document of TrustedSigningCertificateProfileResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "MyResourceGroup";
 string accountName = "MyAccount";
-ResourceIdentifier trustedSigningAccountResourceId = TrustedSigningAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-TrustedSigningAccountResource trustedSigningAccount = client.GetTrustedSigningAccountResource(trustedSigningAccountResourceId);
-
-// get the collection of this TrustedSigningCertificateProfileResource
-TrustedSigningCertificateProfileCollection collection = trustedSigningAccount.GetTrustedSigningCertificateProfiles();
+string profileName = "profileA";
+ResourceIdentifier trustedSigningCertificateProfileResourceId = TrustedSigningCertificateProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, profileName);
+TrustedSigningCertificateProfileResource trustedSigningCertificateProfile = client.GetTrustedSigningCertificateProfileResource(trustedSigningCertificateProfileResourceId);
 
 // invoke the operation
-string profileName = "profileA";
-NullableResponse<TrustedSigningCertificateProfileResource> response = await collection.GetIfExistsAsync(profileName);
-TrustedSigningCertificateProfileResource result = response.HasValue ? response.Value : null;
+TrustedSigningCertificateProfileResource result = await trustedSigningCertificateProfile.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    TrustedSigningCertificateProfileData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+TrustedSigningCertificateProfileData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

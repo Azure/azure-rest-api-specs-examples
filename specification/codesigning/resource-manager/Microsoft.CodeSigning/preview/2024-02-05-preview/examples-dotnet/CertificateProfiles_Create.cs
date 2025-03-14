@@ -15,27 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TrustedSigningAccountResource created on azure
-// for more information of creating TrustedSigningAccountResource, please refer to the document of TrustedSigningAccountResource
+// this example assumes you already have this TrustedSigningCertificateProfileResource created on azure
+// for more information of creating TrustedSigningCertificateProfileResource, please refer to the document of TrustedSigningCertificateProfileResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "MyResourceGroup";
 string accountName = "MyAccount";
-ResourceIdentifier trustedSigningAccountResourceId = TrustedSigningAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-TrustedSigningAccountResource trustedSigningAccount = client.GetTrustedSigningAccountResource(trustedSigningAccountResourceId);
-
-// get the collection of this TrustedSigningCertificateProfileResource
-TrustedSigningCertificateProfileCollection collection = trustedSigningAccount.GetTrustedSigningCertificateProfiles();
+string profileName = "profileA";
+ResourceIdentifier trustedSigningCertificateProfileResourceId = TrustedSigningCertificateProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, profileName);
+TrustedSigningCertificateProfileResource trustedSigningCertificateProfile = client.GetTrustedSigningCertificateProfileResource(trustedSigningCertificateProfileResourceId);
 
 // invoke the operation
-string profileName = "profileA";
-TrustedSigningCertificateProfileData data = new TrustedSigningCertificateProfileData()
+TrustedSigningCertificateProfileData data = new TrustedSigningCertificateProfileData
 {
     ProfileType = CertificateProfileType.PublicTrust,
     IncludeStreetAddress = false,
     IncludePostalCode = true,
     IdentityValidationId = "00000000-1234-5678-3333-444444444444",
 };
-ArmOperation<TrustedSigningCertificateProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data);
+ArmOperation<TrustedSigningCertificateProfileResource> lro = await trustedSigningCertificateProfile.UpdateAsync(WaitUntil.Completed, data);
 TrustedSigningCertificateProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

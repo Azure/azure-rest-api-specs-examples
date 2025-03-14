@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createJobSchedule.json
 // this example is just showing the usage of "JobSchedule_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,10 +28,10 @@ AutomationJobScheduleCollection collection = automationAccount.GetAutomationJobS
 
 // invoke the operation
 Guid jobScheduleId = Guid.Parse("0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc");
-AutomationJobScheduleCreateOrUpdateContent content = new AutomationJobScheduleCreateOrUpdateContent(new ScheduleAssociationProperty()
+AutomationJobScheduleCreateOrUpdateContent content = new AutomationJobScheduleCreateOrUpdateContent(new ScheduleAssociationProperty
 {
     Name = "ScheduleNameGoesHere332204b5-debe-4348-a5c7-6357457189f2",
-}, new RunbookAssociationProperty()
+}, new RunbookAssociationProperty
 {
     Name = "TestRunbook",
 })
@@ -39,7 +39,7 @@ AutomationJobScheduleCreateOrUpdateContent content = new AutomationJobScheduleCr
     Parameters =
     {
     ["jobscheduletag01"] = "jobschedulevalue01",
-    ["jobscheduletag02"] = "jobschedulevalue02",
+    ["jobscheduletag02"] = "jobschedulevalue02"
     },
 };
 ArmOperation<AutomationJobScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobScheduleId, content);

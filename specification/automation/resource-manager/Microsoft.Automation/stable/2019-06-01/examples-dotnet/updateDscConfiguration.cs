@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/updateDscConfiguration.json
 // this example is just showing the usage of "DscConfiguration_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +25,12 @@ ResourceIdentifier dscConfigurationResourceId = DscConfigurationResource.CreateR
 DscConfigurationResource dscConfiguration = client.GetDscConfigurationResource(dscConfigurationResourceId);
 
 // invoke the operation
-DscConfigurationPatch patch = new DscConfigurationPatch()
+DscConfigurationPatch patch = new DscConfigurationPatch
 {
     Name = "SetupServer",
     Tags =
     {
-    ["Hello"] = "World",
+    ["Hello"] = "World"
     },
 };
 DscConfigurationResource result = await dscConfiguration.UpdateAsync(patch);

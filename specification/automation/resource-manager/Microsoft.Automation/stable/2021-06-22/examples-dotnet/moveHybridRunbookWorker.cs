@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/moveHybridRunbookWorker.json
 // this example is just showing the usage of "HybridRunbookWorkers_Move" operation, for the dependent resources, they will have to be created separately.
@@ -26,10 +26,10 @@ ResourceIdentifier hybridRunbookWorkerResourceId = HybridRunbookWorkerResource.C
 HybridRunbookWorkerResource hybridRunbookWorker = client.GetHybridRunbookWorkerResource(hybridRunbookWorkerResourceId);
 
 // invoke the operation
-HybridRunbookWorkerMoveContent content = new HybridRunbookWorkerMoveContent()
+HybridRunbookWorkerMoveContent content = new HybridRunbookWorkerMoveContent
 {
     HybridRunbookWorkerGroupName = "TestHybridGroup2",
 };
 await hybridRunbookWorker.MoveAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

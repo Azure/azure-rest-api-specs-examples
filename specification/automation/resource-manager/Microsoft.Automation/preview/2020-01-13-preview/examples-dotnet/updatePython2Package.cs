@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/updatePython2Package.json
 // this example is just showing the usage of "Python2Package_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,9 @@ ResourceIdentifier automationAccountPython2PackageResourceId = AutomationAccount
 AutomationAccountPython2PackageResource automationAccountPython2Package = client.GetAutomationAccountPython2PackageResource(automationAccountPython2PackageResourceId);
 
 // invoke the operation
-AutomationAccountPython2PackagePatch patch = new AutomationAccountPython2PackagePatch()
+AutomationAccountPython2PackagePatch patch = new AutomationAccountPython2PackagePatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 AutomationAccountPython2PackageResource result = await automationAccountPython2Package.UpdateAsync(patch);
 

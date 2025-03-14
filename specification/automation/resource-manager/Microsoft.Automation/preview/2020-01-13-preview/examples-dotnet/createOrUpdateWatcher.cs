@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateWatcher.json
@@ -27,19 +27,15 @@ AutomationWatcherCollection collection = automationAccount.GetAutomationWatchers
 
 // invoke the operation
 string watcherName = "MyTestWatcher";
-AutomationWatcherData data = new AutomationWatcherData(null)
+AutomationWatcherData data = new AutomationWatcherData(default)
 {
-    ETag = null,
-    ExecutionFrequencyInSeconds = 60,
+    ETag = default,
+    ExecutionFrequencyInSeconds = 60L,
     ScriptName = "MyTestWatcherRunbook",
-    ScriptParameters =
-    {
-    },
+    ScriptParameters = { },
     ScriptRunOn = "MyTestHybridWorkerGroup",
     Description = "This is a test watcher.",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AutomationWatcherResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, watcherName, data);
 AutomationWatcherResource result = lro.Value;

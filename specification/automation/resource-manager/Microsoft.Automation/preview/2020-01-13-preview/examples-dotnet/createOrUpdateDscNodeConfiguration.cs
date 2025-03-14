@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateDscNodeConfiguration.json
 // this example is just showing the usage of "DscNodeConfiguration_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,10 +25,10 @@ ResourceIdentifier dscNodeConfigurationResourceId = DscNodeConfigurationResource
 DscNodeConfigurationResource dscNodeConfiguration = client.GetDscNodeConfigurationResource(dscNodeConfigurationResourceId);
 
 // invoke the operation
-DscNodeConfigurationCreateOrUpdateContent content = new DscNodeConfigurationCreateOrUpdateContent()
+DscNodeConfigurationCreateOrUpdateContent content = new DscNodeConfigurationCreateOrUpdateContent
 {
     Name = "configName.nodeConfigName",
-    Source = new AutomationContentSource()
+    Source = new AutomationContentSource
     {
         Hash = new AutomationContentHash("sha256", "6DE256A57F01BFA29B88696D5E77A383D6E61484C7686E8DB955FA10ACE9FFE5"),
         SourceType = AutomationContentSourceType.EmbeddedContent,
@@ -40,4 +40,4 @@ DscNodeConfigurationCreateOrUpdateContent content = new DscNodeConfigurationCrea
 };
 await dscNodeConfiguration.UpdateAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

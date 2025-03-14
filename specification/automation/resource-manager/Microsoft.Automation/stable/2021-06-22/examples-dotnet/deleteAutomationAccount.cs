@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/deleteAutomationAccount.json
 // this example is just showing the usage of "AutomationAccount_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ AutomationAccountResource automationAccount = client.GetAutomationAccountResourc
 // invoke the operation
 await automationAccount.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

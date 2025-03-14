@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdatePython2Package.json
 // this example is just showing the usage of "Python2Package_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,16 +28,14 @@ AutomationAccountPython2PackageCollection collection = automationAccount.GetAuto
 
 // invoke the operation
 string packageName = "OmsCompositeResources";
-AutomationAccountPython2PackageCreateOrUpdateContent content = new AutomationAccountPython2PackageCreateOrUpdateContent(new AutomationContentLink()
+AutomationAccountPython2PackageCreateOrUpdateContent content = new AutomationAccountPython2PackageCreateOrUpdateContent(new AutomationContentLink
 {
     Uri = new Uri("https://teststorage.blob.core.windows.net/dsccomposite/OmsCompositeResources.zip"),
     ContentHash = new AutomationContentHash("sha265", "07E108A962B81DD9C9BAA89BB47C0F6EE52B29E83758B07795E408D258B2B87A"),
     Version = "1.0.0.0",
 })
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AutomationAccountPython2PackageResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, packageName, content);
 AutomationAccountPython2PackageResource result = lro.Value;

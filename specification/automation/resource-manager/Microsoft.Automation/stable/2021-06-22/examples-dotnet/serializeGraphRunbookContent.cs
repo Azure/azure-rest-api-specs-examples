@@ -1,15 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/serializeGraphRunbookContent.json
-// this example is just showing the usage of "convertGraphRunbookContent" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "ConvertGraphRunbookContent" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -25,7 +24,7 @@ ResourceIdentifier automationAccountResourceId = AutomationAccountResource.Creat
 AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
 
 // invoke the operation
-GraphicalRunbookContent content = new GraphicalRunbookContent()
+GraphicalRunbookContent content = new GraphicalRunbookContent
 {
     GraphRunbookJson = "<GraphRunbookJSON>",
 };

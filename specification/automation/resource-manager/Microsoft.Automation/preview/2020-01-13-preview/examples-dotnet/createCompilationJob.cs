@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createCompilationJob.json
 // this example is just showing the usage of "DscCompilationJob_Create" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier dscCompilationJobResourceId = DscCompilationJobResource.Creat
 DscCompilationJobResource dscCompilationJob = client.GetDscCompilationJobResource(dscCompilationJobResourceId);
 
 // invoke the operation
-DscCompilationJobCreateOrUpdateContent content = new DscCompilationJobCreateOrUpdateContent(new DscConfigurationAssociationProperty()
+DscCompilationJobCreateOrUpdateContent content = new DscCompilationJobCreateOrUpdateContent(new DscConfigurationAssociationProperty
 {
     ConfigurationName = "SetupServer",
 });

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateConnection.json
 // this example is just showing the usage of "Connection_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ AutomationConnectionCollection collection = automationAccount.GetAutomationConne
 
 // invoke the operation
 string connectionName = "mysConnection";
-AutomationConnectionCreateOrUpdateContent content = new AutomationConnectionCreateOrUpdateContent("mysConnection", new ConnectionTypeAssociationProperty()
+AutomationConnectionCreateOrUpdateContent content = new AutomationConnectionCreateOrUpdateContent("mysConnection", new ConnectionTypeAssociationProperty
 {
     Name = "Azure",
 })
@@ -37,7 +37,7 @@ AutomationConnectionCreateOrUpdateContent content = new AutomationConnectionCrea
     FieldDefinitionValues =
     {
     ["AutomationCertificateName"] = "mysCertificateName",
-    ["SubscriptionID"] = "subid",
+    ["SubscriptionID"] = "subid"
     },
 };
 ArmOperation<AutomationConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionName, content);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/putHybridRunbookWorker.json
 // this example is just showing the usage of "HybridRunbookWorkers_Create" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ ResourceIdentifier hybridRunbookWorkerResourceId = HybridRunbookWorkerResource.C
 HybridRunbookWorkerResource hybridRunbookWorker = client.GetHybridRunbookWorkerResource(hybridRunbookWorkerResourceId);
 
 // invoke the operation
-HybridRunbookWorkerCreateOrUpdateContent content = new HybridRunbookWorkerCreateOrUpdateContent()
+HybridRunbookWorkerCreateOrUpdateContent content = new HybridRunbookWorkerCreateOrUpdateContent
 {
     VmResourceId = new ResourceIdentifier("/subscriptions/vmsubid/resourceGroups/vmrg/providers/Microsoft.Compute/virtualMachines/vmname"),
 };

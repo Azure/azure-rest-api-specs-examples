@@ -30,7 +30,7 @@ AutonomousDatabaseCollection collection = resourceGroupResource.GetAutonomousDat
 string autonomousdatabasename = "databasedb1";
 AutonomousDatabaseData data = new AutonomousDatabaseData(new AzureLocation("eastus"))
 {
-    Properties = new AutonomousDatabaseProperties()
+    Properties = new AutonomousDatabaseProperties
     {
         AdminPassword = "********",
         CharacterSet = "AL32UTF8",
@@ -45,7 +45,7 @@ AutonomousDatabaseData data = new AutonomousDatabaseData(new AzureLocation("east
     },
     Tags =
     {
-    ["tagK1"] = "tagV1",
+    ["tagK1"] = "tagV1"
     },
 };
 ArmOperation<AutonomousDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, autonomousdatabasename, data);

@@ -27,4 +27,4 @@ AutonomousDatabaseBackupResource autonomousDatabaseBackup = client.GetAutonomous
 // invoke the operation
 await autonomousDatabaseBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

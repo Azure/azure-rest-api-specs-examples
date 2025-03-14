@@ -25,4 +25,4 @@ OracleSubscriptionResource oracleSubscription = client.GetOracleSubscriptionReso
 // invoke the operation
 await oracleSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

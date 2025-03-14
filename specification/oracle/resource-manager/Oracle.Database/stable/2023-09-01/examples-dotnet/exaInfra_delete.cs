@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OracleDatabase.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
 // Generated from example definition: specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/exaInfra_delete.json
@@ -27,4 +26,4 @@ CloudExadataInfrastructureResource cloudExadataInfrastructure = client.GetCloudE
 // invoke the operation
 await cloudExadataInfrastructure.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

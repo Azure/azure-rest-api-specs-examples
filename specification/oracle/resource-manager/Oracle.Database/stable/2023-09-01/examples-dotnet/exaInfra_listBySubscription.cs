@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.OracleDatabase.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OracleDatabase;
 
@@ -32,4 +31,4 @@ await foreach (CloudExadataInfrastructureResource item in subscriptionResource.G
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

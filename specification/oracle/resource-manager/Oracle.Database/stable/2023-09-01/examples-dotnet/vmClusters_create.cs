@@ -30,10 +30,15 @@ CloudVmClusterCollection collection = resourceGroupResource.GetCloudVmClusters()
 string cloudvmclustername = "cluster1";
 CloudVmClusterData data = new CloudVmClusterData(new AzureLocation("eastus"))
 {
-    Properties = new CloudVmClusterProperties("hostname1", 2, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/cloudExadataInfrastructures/infra1"), new string[]
-{
-"ssh-key 1"
-}, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1"), "19.0.0.0", new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"), "cluster 1")
+    Properties = new CloudVmClusterProperties(
+    "hostname1",
+    2,
+    new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/cloudExadataInfrastructures/infra1"),
+    new string[] { "ssh-key 1" },
+    new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1"),
+    "19.0.0.0",
+    new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"),
+    "cluster 1")
     {
         DataStorageSizeInTbs = 1000,
         DBNodeStorageSizeInGbs = 1000,
@@ -49,27 +54,21 @@ CloudVmClusterData data = new CloudVmClusterData(new AzureLocation("eastus"))
         ScanListenerPortTcp = 1050,
         ScanListenerPortTcpSsl = 1025,
         BackupSubnetCidr = "172.17.5.0/24",
-        NsgCidrs =
+        NsgCidrs = {new CloudVmClusterNsgCidr("10.0.0.0/16")
         {
-        new CloudVmClusterNsgCidr("10.0.0.0/16")
-        {
-        DestinationPortRange = new CloudVmClusterPortRange(1520,1522),
-        },new CloudVmClusterNsgCidr("10.10.0.0/24")
-        },
-        DataCollectionOptions = new DiagnosticCollectionConfig()
+        DestinationPortRange = new CloudVmClusterPortRange(1520, 1522),
+        }, new CloudVmClusterNsgCidr("10.10.0.0/24")},
+        DataCollectionOptions = new DiagnosticCollectionConfig
         {
             IsDiagnosticsEventsEnabled = false,
             IsHealthMonitoringEnabled = false,
             IsIncidentLogsEnabled = false,
         },
-        DBServers =
-        {
-        new ResourceIdentifier("ocid1..aaaa")
-        },
+        DBServers = { new ResourceIdentifier("ocid1..aaaa") },
     },
     Tags =
     {
-    ["tagK1"] = "tagV1",
+    ["tagK1"] = "tagV1"
     },
 };
 ArmOperation<CloudVmClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cloudvmclustername, data);

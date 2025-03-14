@@ -44,7 +44,7 @@ AutonomousDatabaseData data = new AutonomousDatabaseData(new AzureLocation("east
     },
     Tags =
     {
-    ["tagK1"] = "tagV1",
+    ["tagK1"] = "tagV1"
     },
 };
 ArmOperation<AutonomousDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, autonomousdatabasename, data);

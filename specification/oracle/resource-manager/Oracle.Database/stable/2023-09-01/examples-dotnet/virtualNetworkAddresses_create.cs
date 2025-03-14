@@ -28,9 +28,9 @@ CloudVmClusterVirtualNetworkAddressCollection collection = cloudVmCluster.GetClo
 
 // invoke the operation
 string virtualnetworkaddressname = "hostname1";
-CloudVmClusterVirtualNetworkAddressData data = new CloudVmClusterVirtualNetworkAddressData()
+CloudVmClusterVirtualNetworkAddressData data = new CloudVmClusterVirtualNetworkAddressData
 {
-    Properties = new CloudVmClusterVirtualNetworkAddressProperties()
+    Properties = new CloudVmClusterVirtualNetworkAddressProperties
     {
         IPAddress = "192.168.0.1",
         VmOcid = new ResourceIdentifier("ocid1..aaaa"),

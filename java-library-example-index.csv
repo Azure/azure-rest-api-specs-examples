@@ -5181,3 +5181,4 @@ id,name,language,tag,package,version,date_epoch,date
 5180,"Azure.ResourceManager.SelfHelp,1.1.0-beta.5",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.5,Azure.ResourceManager.SelfHelp,1.1.0-beta.5,1741923621,03/14/2025
 5181,"Azure.ResourceManager.SecurityCenter,1.2.0-beta.6",dotnet,Azure.ResourceManager.SecurityCenter_1.2.0-beta.6,Azure.ResourceManager.SecurityCenter,1.2.0-beta.6,1741923327,03/14/2025
 5182,"Azure.ResourceManager.NotificationHubs,1.2.0-beta.2",dotnet,Azure.ResourceManager.NotificationHubs_1.2.0-beta.2,Azure.ResourceManager.NotificationHubs,1.2.0-beta.2,1741912349,03/14/2025
+5183,"Azure.ResourceManager.Authorization,1.1.4",dotnet,Azure.ResourceManager.Authorization_1.1.4,Azure.ResourceManager.Authorization,1.1.4,1741884991,03/13/2025

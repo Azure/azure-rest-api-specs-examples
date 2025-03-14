@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/PrivateEndpointConnections_CreateOrUpdate.json
 // this example is just showing the usage of "PrivateEndpointConnections_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,25 +15,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PurviewPrivateEndpointConnectionResource created on azure
-// for more information of creating PurviewPrivateEndpointConnectionResource, please refer to the document of PurviewPrivateEndpointConnectionResource
+// this example assumes you already have this PurviewAccountResource created on azure
+// for more information of creating PurviewAccountResource, please refer to the document of PurviewAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "account1";
-string privateEndpointConnectionName = "privateEndpointConnection1";
-ResourceIdentifier purviewPrivateEndpointConnectionResourceId = PurviewPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
-PurviewPrivateEndpointConnectionResource purviewPrivateEndpointConnection = client.GetPurviewPrivateEndpointConnectionResource(purviewPrivateEndpointConnectionResourceId);
+ResourceIdentifier purviewAccountResourceId = PurviewAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+PurviewAccountResource purviewAccount = client.GetPurviewAccountResource(purviewAccountResourceId);
+
+// get the collection of this PurviewPrivateEndpointConnectionResource
+PurviewPrivateEndpointConnectionCollection collection = purviewAccount.GetPurviewPrivateEndpointConnections();
 
 // invoke the operation
-PurviewPrivateEndpointConnectionData data = new PurviewPrivateEndpointConnectionData()
+string privateEndpointConnectionName = "privateEndpointConnection1";
+PurviewPrivateEndpointConnectionData data = new PurviewPrivateEndpointConnectionData
 {
-    ConnectionState = new PurviewPrivateLinkServiceConnectionState()
+    ConnectionState = new PurviewPrivateLinkServiceConnectionState
     {
         Description = "Approved by johndoe@company.com",
         Status = PurviewPrivateLinkServiceStatus.Approved,
     },
 };
-ArmOperation<PurviewPrivateEndpointConnectionResource> lro = await purviewPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PurviewPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 PurviewPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

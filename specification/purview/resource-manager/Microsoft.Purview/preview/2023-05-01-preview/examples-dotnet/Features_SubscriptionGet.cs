@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/Features_SubscriptionGet.json
 // this example is just showing the usage of "Features_SubscriptionGet" operation, for the dependent resources, they will have to be created separately.
@@ -23,12 +24,9 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 string locations = "eastus";
-PurviewBatchFeatureContent content = new PurviewBatchFeatureContent()
+PurviewBatchFeatureContent content = new PurviewBatchFeatureContent
 {
-    Features =
-    {
-    "Feature1","Feature2","FeatureThatDoesntExist"
-    },
+    Features = { "Feature1", "Feature2", "FeatureThatDoesntExist" },
 };
 PurviewBatchFeatureStatus result = await subscriptionResource.SubscriptionGetFeatureAsync(locations, content);
 

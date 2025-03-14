@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/KafkaConfigurations_CreateOrUpdate.json
 // this example is just showing the usage of "KafkaConfigurations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,10 +28,10 @@ PurviewKafkaConfigurationCollection collection = purviewAccount.GetPurviewKafkaC
 
 // invoke the operation
 string kafkaConfigurationName = "kafkaConfigName";
-PurviewKafkaConfigurationData data = new PurviewKafkaConfigurationData()
+PurviewKafkaConfigurationData data = new PurviewKafkaConfigurationData
 {
     ConsumerGroup = "consumerGroup",
-    Credentials = new PurviewCredentials()
+    Credentials = new PurviewCredentials
     {
         IdentityId = "/subscriptions/47e8596d-ee73-4eb2-b6b4-cc13c2b87ssd/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testId",
         CredentialsType = PurviewCredentialsType.UserAssigned,

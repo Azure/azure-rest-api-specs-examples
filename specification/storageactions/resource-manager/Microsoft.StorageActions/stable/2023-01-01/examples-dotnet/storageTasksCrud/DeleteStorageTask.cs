@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.StorageActions.Models;
 using Azure.ResourceManager.StorageActions;
@@ -29,4 +28,4 @@ StorageTaskResource storageTask = client.GetStorageTaskResource(storageTaskResou
 // invoke the operation
 await storageTask.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

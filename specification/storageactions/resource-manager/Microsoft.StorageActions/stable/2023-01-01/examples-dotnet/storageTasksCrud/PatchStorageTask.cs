@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.StorageActions.Models;
 using Azure.ResourceManager.StorageActions;
@@ -27,13 +26,13 @@ ResourceIdentifier storageTaskResourceId = StorageTaskResource.CreateResourceIde
 StorageTaskResource storageTask = client.GetStorageTaskResource(storageTaskResourceId);
 
 // invoke the operation
-StorageTaskPatch patch = new StorageTaskPatch()
+StorageTaskPatch patch = new StorageTaskPatch
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity")] = new UserAssignedIdentity()
         },
     },
     Properties = new StorageTaskProperties(true, "My Storage task", new StorageTaskAction(new StorageTaskIfCondition("[[equals(AccessTier, 'Cool')]]", new StorageTaskOperationInfo[]
@@ -42,21 +41,18 @@ new StorageTaskOperationInfo(StorageTaskOperationName.SetBlobTier)
 {
 Parameters =
 {
-["tier"] = "Hot",
+["tier"] = "Hot"
 },
 OnSuccess = OnSuccessAction.Continue,
 OnFailure = OnFailureAction.Break,
 }
 }))
     {
-        ElseOperations =
-        {
-        new StorageTaskOperationInfo(StorageTaskOperationName.DeleteBlob)
+        ElseOperations = {new StorageTaskOperationInfo(StorageTaskOperationName.DeleteBlob)
         {
         OnSuccess = OnSuccessAction.Continue,
         OnFailure = OnFailureAction.Break,
-        }
-        },
+        }},
     }),
 };
 ArmOperation<StorageTaskResource> lro = await storageTask.UpdateAsync(WaitUntil.Completed, patch);

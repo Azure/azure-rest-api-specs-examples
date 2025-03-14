@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotFirmwareDefense;
 using Azure.ResourceManager.IotFirmwareDefense.Models;
+using Azure.ResourceManager.IotFirmwareDefense;
 
 // Generated from example definition: specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/examples/Firmwares_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "Firmwares_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,22 +28,19 @@ IotFirmwareCollection collection = firmwareAnalysisWorkspace.GetIotFirmwares();
 
 // invoke the operation
 string firmwareId = "umrkdttp";
-IotFirmwareData data = new IotFirmwareData()
+IotFirmwareData data = new IotFirmwareData
 {
     FileName = "wresexxulcdsdd",
     Vendor = "vycmdhgtmepcptyoubztiuudpkcpd",
     Model = "f",
     Version = "s",
     Description = "uz",
-    FileSize = 17,
+    FileSize = 17L,
     Status = FirmwareAnalysisStatus.Pending,
-    StatusMessages =
-    {
-    new FirmwareAnalysisStatusMessage()
+    StatusMessages = {new FirmwareAnalysisStatusMessage
     {
     Message = "ulvhmhokezathzzauiitu",
-    }
-    },
+    }},
 };
 ArmOperation<IotFirmwareResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firmwareId, data);
 IotFirmwareResource result = lro.Value;

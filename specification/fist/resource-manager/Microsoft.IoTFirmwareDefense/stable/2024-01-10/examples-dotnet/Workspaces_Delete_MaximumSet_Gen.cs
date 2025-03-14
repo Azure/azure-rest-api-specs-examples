@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotFirmwareDefense;
 using Azure.ResourceManager.IotFirmwareDefense.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.IotFirmwareDefense;
 
 // Generated from example definition: specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/examples/Workspaces_Delete_MaximumSet_Gen.json
 // this example is just showing the usage of "Workspaces_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ FirmwareAnalysisWorkspaceResource firmwareAnalysisWorkspace = client.GetFirmware
 // invoke the operation
 await firmwareAnalysisWorkspace.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

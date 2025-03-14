@@ -5156,3 +5156,4 @@ id,name,language,tag,package,version,date_epoch,date
 5155,"Azure.ResourceManager.DataShare,1.1.1",dotnet,Azure.ResourceManager.DataShare_1.1.1,Azure.ResourceManager.DataShare,1.1.1,1741929301,03/14/2025
 5156,"Azure.ResourceManager.DataLakeAnalytics,1.1.1",dotnet,Azure.ResourceManager.DataLakeAnalytics_1.1.1,Azure.ResourceManager.DataLakeAnalytics,1.1.1,1741929296,03/14/2025
 5157,"Azure.ResourceManager.CostManagement,1.0.2",dotnet,Azure.ResourceManager.CostManagement_1.0.2,Azure.ResourceManager.CostManagement,1.0.2,1741929288,03/14/2025
+5158,"Azure.ResourceManager.DataBoxEdge,1.1.1",dotnet,Azure.ResourceManager.DataBoxEdge_1.1.1,Azure.ResourceManager.DataBoxEdge,1.1.1,1741929286,03/14/2025

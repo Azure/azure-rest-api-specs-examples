@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/ServiceTasks_Update.json
 // this example is just showing the usage of "ServiceTasks_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,9 +25,9 @@ ResourceIdentifier serviceServiceTaskResourceId = ServiceServiceTaskResource.Cre
 ServiceServiceTaskResource serviceServiceTask = client.GetServiceServiceTaskResource(serviceServiceTaskResourceId);
 
 // invoke the operation
-ProjectTaskData data = new ProjectTaskData()
+ProjectTaskData data = new ProjectTaskData
 {
-    Properties = new CheckOciDriverTaskProperties()
+    Properties = new CheckOciDriverTaskProperties
     {
         InputServerVersion = "NA",
     },

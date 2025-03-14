@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/SqlDbCreateOrUpdateDatabaseMigrationMAX.json
 // this example is just showing the usage of "DatabaseMigrationsSqlDb_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,11 +29,11 @@ DatabaseMigrationSqlDBCollection collection = resourceGroupResource.GetDatabaseM
 // invoke the operation
 string sqlDBInstanceName = "sqldbinstance";
 string targetDBName = "db1";
-DatabaseMigrationSqlDBData data = new DatabaseMigrationSqlDBData()
+DatabaseMigrationSqlDBData data = new DatabaseMigrationSqlDBData
 {
-    Properties = new DatabaseMigrationSqlDBProperties()
+    Properties = new DatabaseMigrationSqlDBProperties
     {
-        TargetSqlConnection = new SqlConnectionInformation()
+        TargetSqlConnection = new SqlConnectionInformation
         {
             DataSource = "sqldbinstance",
             Authentication = "SqlAuthentication",
@@ -42,12 +42,9 @@ DatabaseMigrationSqlDBData data = new DatabaseMigrationSqlDBData()
             EncryptConnection = true,
             TrustServerCertificate = true,
         },
-        TableList =
-        {
-        "[Schema1].[TableName1]","[Schema2].[TableName2]"
-        },
+        TableList = { "[Schema1].[TableName1]", "[Schema2].[TableName2]" },
         Scope = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/servers/sqldbinstance",
-        SourceSqlConnection = new SqlConnectionInformation()
+        SourceSqlConnection = new SqlConnectionInformation
         {
             DataSource = "aaa",
             Authentication = "WindowsAuthentication",

@@ -5170,3 +5170,4 @@ id,name,language,tag,package,version,date_epoch,date
 5169,"Azure.ResourceManager.AlertsManagement,1.1.1",dotnet,Azure.ResourceManager.AlertsManagement_1.1.1,Azure.ResourceManager.AlertsManagement,1.1.1,1741926389,03/14/2025
 5170,"Azure.ResourceManager.Advisor,1.0.0-beta.5",dotnet,Azure.ResourceManager.Advisor_1.0.0-beta.5,Azure.ResourceManager.Advisor,1.0.0-beta.5,1741926355,03/14/2025
 5171,"Azure.ResourceManager.Sphere,1.0.1",dotnet,Azure.ResourceManager.Sphere_1.0.1,Azure.ResourceManager.Sphere,1.0.1,1741926342,03/14/2025
+5172,"Azure.ResourceManager.Support,1.1.1",dotnet,Azure.ResourceManager.Support_1.1.1,Azure.ResourceManager.Support,1.1.1,1741926318,03/14/2025

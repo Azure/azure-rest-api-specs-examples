@@ -2,10 +2,10 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Maintenance.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Maintenance;
 
 // Generated from example definition: specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2023-10-01-preview/examples/MaintenanceConfigurations_DeleteForResource.json
@@ -27,4 +27,4 @@ MaintenanceConfigurationResource maintenanceConfiguration = client.GetMaintenanc
 // invoke the operation
 await maintenanceConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -24,11 +24,24 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-ResourceGroupResourceCreateOrUpdateConfigurationAssignmentByParentOptions options = new ResourceGroupResourceCreateOrUpdateConfigurationAssignmentByParentOptions(providerName: "Microsoft.Compute", resourceParentType: "virtualMachineScaleSets", resourceParentName: "smdtest1", resourceType: "virtualMachines", resourceName: "smdvm1", configurationAssignmentName: "workervmPolicy", data: new MaintenanceConfigurationAssignmentData()
+string providerName = "Microsoft.Compute";
+string resourceParentType = "virtualMachineScaleSets";
+string resourceParentName = "smdtest1";
+string resourceType = "virtualMachines";
+string resourceName = "smdvm1";
+string configurationAssignmentName = "workervmPolicy";
+MaintenanceConfigurationAssignmentData data = new MaintenanceConfigurationAssignmentData
 {
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/examplerg/providers/Microsoft.Maintenance/maintenanceConfigurations/policy1"),
-})
-{ };
+};
+ResourceGroupResourceCreateOrUpdateConfigurationAssignmentByParentOptions options = new ResourceGroupResourceCreateOrUpdateConfigurationAssignmentByParentOptions(
+    providerName,
+    resourceParentType,
+    resourceParentName,
+    resourceType,
+    resourceName,
+    configurationAssignmentName,
+    data);
 MaintenanceConfigurationAssignmentData result = await resourceGroupResource.CreateOrUpdateConfigurationAssignmentByParentAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

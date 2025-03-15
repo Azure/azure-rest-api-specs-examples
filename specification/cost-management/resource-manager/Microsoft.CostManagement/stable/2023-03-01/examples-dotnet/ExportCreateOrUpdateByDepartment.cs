@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CostManagement;
 using Azure.ResourceManager.CostManagement.Models;
+using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/ExportCreateOrUpdateByDepartment.json
 // this example is just showing the usage of "Exports_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +23,7 @@ ResourceIdentifier costManagementExportResourceId = CostManagementExportResource
 CostManagementExportResource costManagementExport = client.GetCostManagementExportResource(costManagementExportResourceId);
 
 // invoke the operation
-CostManagementExportData data = new CostManagementExportData()
+CostManagementExportData data = new CostManagementExportData
 {
     Format = ExportFormatType.Csv,
     DeliveryInfoDestination = new ExportDeliveryDestination("exports")
@@ -33,16 +33,13 @@ CostManagementExportData data = new CostManagementExportData()
     },
     Definition = new ExportDefinition(ExportType.ActualCost, TimeframeType.MonthToDate)
     {
-        DataSet = new ExportDataset()
+        DataSet = new ExportDataset
         {
             Granularity = GranularityType.Daily,
-            Columns =
-            {
-            "Date","MeterId","ResourceId","ResourceLocation","Quantity"
-            },
+            Columns = { "Date", "MeterId", "ResourceId", "ResourceLocation", "Quantity" },
         },
     },
-    Schedule = new ExportSchedule()
+    Schedule = new ExportSchedule
     {
         Status = ExportScheduleStatusType.Active,
         Recurrence = ExportScheduleRecurrenceType.Weekly,

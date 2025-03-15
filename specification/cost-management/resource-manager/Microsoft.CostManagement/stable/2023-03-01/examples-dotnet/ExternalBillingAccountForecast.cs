@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CostManagement;
 using Azure.ResourceManager.CostManagement.Models;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/ExternalBillingAccountForecast.json
 // this example is just showing the usage of "Forecast_ExternalCloudProviderUsage" operation, for the dependent resources, they will have to be created separately.
@@ -16,49 +17,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation
 ExternalCloudProviderType externalCloudProviderType = ExternalCloudProviderType.ExternalBillingAccounts;
 string externalCloudProviderId = "100";
-ForecastDefinition forecastDefinition = new ForecastDefinition(ForecastType.Usage, ForecastTimeframe.Custom, new ForecastDataset(new Dictionary<string, ForecastAggregation>()
+ForecastDefinition forecastDefinition = new ForecastDefinition(ForecastType.Usage, ForecastTimeframe.Custom, new ForecastDataset(new Dictionary<string, ForecastAggregation>
 {
-    ["totalCost"] = new ForecastAggregation(FunctionName.Cost, FunctionType.Sum),
+    ["totalCost"] = new ForecastAggregation(FunctionName.Cost, FunctionType.Sum)
 })
 {
     Granularity = GranularityType.Daily,
-    Filter = new ForecastFilter()
+    Filter = new ForecastFilter
     {
-        And =
+        And = {new ForecastFilter
         {
-        new ForecastFilter()
+        Or = {new ForecastFilter
         {
-        Or =
+        Dimensions = new ForecastComparisonExpression("ResourceLocation", ForecastOperatorType.In, new string[]{"East US", "West Europe"}),
+        }, new ForecastFilter
         {
-        new ForecastFilter()
+        Tags = new ForecastComparisonExpression("Environment", ForecastOperatorType.In, new string[]{"UAT", "Prod"}),
+        }},
+        }, new ForecastFilter
         {
-        Dimensions = new ForecastComparisonExpression("ResourceLocation",ForecastOperatorType.In,new string[]
-        {
-        "East US","West Europe"
-        }),
-        },new ForecastFilter()
-        {
-        Tags = new ForecastComparisonExpression("Environment",ForecastOperatorType.In,new string[]
-        {
-        "UAT","Prod"
-        }),
-        }
-        },
-        },new ForecastFilter()
-        {
-        Dimensions = new ForecastComparisonExpression("ResourceGroup",ForecastOperatorType.In,new string[]
-        {
-        "API"
-        }),
-        }
-        },
+        Dimensions = new ForecastComparisonExpression("ResourceGroup", ForecastOperatorType.In, new string[]{"API"}),
+        }},
     },
 })
 {

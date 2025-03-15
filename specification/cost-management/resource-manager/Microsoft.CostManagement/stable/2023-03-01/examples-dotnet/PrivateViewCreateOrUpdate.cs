@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CostManagement;
 using Azure.ResourceManager.CostManagement.Models;
+using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/PrivateViewCreateOrUpdate.json
 // this example is just showing the usage of "Views_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -22,61 +22,50 @@ ResourceIdentifier tenantsCostManagementViewsResourceId = TenantsCostManagementV
 TenantsCostManagementViewsResource tenantsCostManagementViews = client.GetTenantsCostManagementViewsResource(tenantsCostManagementViewsResourceId);
 
 // invoke the operation
-CostManagementViewData data = new CostManagementViewData()
+CostManagementViewData data = new CostManagementViewData
 {
     DisplayName = "swagger Example",
     Chart = ViewChartType.Table,
     Accumulated = AccumulatedType.True,
     Metric = ViewMetricType.ActualCost,
-    Kpis =
-    {
-    new ViewKpiProperties()
+    Kpis = {new ViewKpiProperties
     {
     KpiType = ViewKpiType.Forecast,
     Id = null,
     IsEnabled = true,
-    },new ViewKpiProperties()
+    }, new ViewKpiProperties
     {
     KpiType = ViewKpiType.Budget,
     Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
     IsEnabled = true,
-    }
-    },
-    Pivots =
-    {
-    new ViewPivotProperties()
+    }},
+    Pivots = {new ViewPivotProperties
     {
     PivotType = ViewPivotType.Dimension,
     Name = "ServiceName",
-    },new ViewPivotProperties()
+    }, new ViewPivotProperties
     {
     PivotType = ViewPivotType.Dimension,
     Name = "MeterCategory",
-    },new ViewPivotProperties()
+    }, new ViewPivotProperties
     {
     PivotType = ViewPivotType.TagKey,
     Name = "swaggerTagKey",
-    }
-    },
+    }},
     TypePropertiesQueryType = ViewReportType.Usage,
     Timeframe = ReportTimeframeType.MonthToDate,
-    DataSet = new ReportConfigDataset()
+    DataSet = new ReportConfigDataset
     {
         Granularity = ReportGranularityType.Daily,
         Aggregation =
         {
-        ["totalCost"] = new ReportConfigAggregation("PreTaxCost",FunctionType.Sum),
+        ["totalCost"] = new ReportConfigAggregation("PreTaxCost", FunctionType.Sum)
         },
-        Grouping =
-        {
-        },
-        Sorting =
-        {
-        new ReportConfigSorting("UsageDate")
+        Grouping = { },
+        Sorting = {new ReportConfigSorting("UsageDate")
         {
         Direction = ReportConfigSortingType.Ascending,
-        }
-        },
+        }},
     },
     ETag = new ETag("\"1d4ff9fe66f1d10\""),
 };

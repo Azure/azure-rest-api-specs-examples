@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ApplicationPutOperation_example_max.json
 // this example is just showing the usage of "Applications_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,31 +29,31 @@ ServiceFabricApplicationCollection collection = serviceFabricCluster.GetServiceF
 
 // invoke the operation
 string applicationName = "myApp";
-ServiceFabricApplicationData data = new ServiceFabricApplicationData(new AzureLocation("placeholder"))
+ServiceFabricApplicationData data = new ServiceFabricApplicationData(default)
 {
     TypeVersion = "1.0",
     Parameters =
     {
-    ["param1"] = "value1",
+    ["param1"] = "value1"
     },
-    UpgradePolicy = new ApplicationUpgradePolicy()
+    UpgradePolicy = new ApplicationUpgradePolicy
     {
-        UpgradeReplicaSetCheckTimeout = TimeSpan.Parse("01:00:00"),
+        UpgradeReplicaSetCheckTimeout = XmlConvert.ToTimeSpan("01:00:00"),
         ForceRestart = false,
-        RollingUpgradeMonitoringPolicy = new ArmRollingUpgradeMonitoringPolicy()
+        RollingUpgradeMonitoringPolicy = new ArmRollingUpgradeMonitoringPolicy
         {
             FailureAction = ArmUpgradeFailureAction.Rollback,
-            HealthCheckWaitDuration = TimeSpan.Parse("00:02:00"),
-            HealthCheckStableDuration = TimeSpan.Parse("00:05:00"),
-            HealthCheckRetryTimeout = TimeSpan.Parse("00:10:00"),
-            UpgradeTimeout = TimeSpan.Parse("01:00:00"),
-            UpgradeDomainTimeout = TimeSpan.Parse("1.06:00:00"),
+            HealthCheckWaitDuration = XmlConvert.ToTimeSpan("00:02:00"),
+            HealthCheckStableDuration = XmlConvert.ToTimeSpan("00:05:00"),
+            HealthCheckRetryTimeout = XmlConvert.ToTimeSpan("00:10:00"),
+            UpgradeTimeout = XmlConvert.ToTimeSpan("01:00:00"),
+            UpgradeDomainTimeout = XmlConvert.ToTimeSpan("1.06:00:00"),
         },
-        ApplicationHealthPolicy = new ArmApplicationHealthPolicy()
+        ApplicationHealthPolicy = new ArmApplicationHealthPolicy
         {
             ConsiderWarningAsError = true,
             MaxPercentUnhealthyDeployedApplications = 0,
-            DefaultServiceTypeHealthPolicy = new ArmServiceTypeHealthPolicy()
+            DefaultServiceTypeHealthPolicy = new ArmServiceTypeHealthPolicy
             {
                 MaxPercentUnhealthyServices = 0,
                 MaxPercentUnhealthyPartitionsPerService = 0,
@@ -61,23 +62,18 @@ ServiceFabricApplicationData data = new ServiceFabricApplicationData(new AzureLo
         },
         UpgradeMode = ApplicationRollingUpgradeMode.Monitored,
     },
-    MinimumNodes = 1,
-    MaximumNodes = 3,
+    MinimumNodes = 1L,
+    MaximumNodes = 3L,
     RemoveApplicationCapacity = false,
-    Metrics =
-    {
-    new ApplicationMetricDescription()
+    Metrics = {new ApplicationMetricDescription
     {
     Name = "metric1",
-    MaximumCapacity = 3,
-    ReservationCapacity = 1,
-    TotalApplicationCapacity = 5,
-    }
-    },
+    MaximumCapacity = 3L,
+    ReservationCapacity = 1L,
+    TotalApplicationCapacity = 5L,
+    }},
     TypeName = "myAppType",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ServiceFabricApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationName, data);
 ServiceFabricApplicationResource result = lro.Value;

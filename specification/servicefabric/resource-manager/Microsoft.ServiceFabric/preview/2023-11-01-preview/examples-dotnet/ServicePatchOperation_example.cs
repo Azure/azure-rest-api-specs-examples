@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ServicePatchOperation_example.json
 // this example is just showing the usage of "Services_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,18 +26,13 @@ ResourceIdentifier serviceFabricServiceResourceId = ServiceFabricServiceResource
 ServiceFabricServiceResource serviceFabricService = client.GetServiceFabricServiceResource(serviceFabricServiceResourceId);
 
 // invoke the operation
-ServiceFabricServicePatch patch = new ServiceFabricServicePatch(new AzureLocation("placeholder"))
+ServiceFabricServicePatch patch = new ServiceFabricServicePatch(default)
 {
-    ServiceLoadMetrics =
-    {
-    new ServiceLoadMetricDescription("metric1")
+    ServiceLoadMetrics = {new ServiceLoadMetricDescription("metric1")
     {
     Weight = ServiceLoadMetricWeight.Low,
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    Tags = { },
 };
 ArmOperation<ServiceFabricServiceResource> lro = await serviceFabricService.UpdateAsync(WaitUntil.Completed, patch);
 ServiceFabricServiceResource result = lro.Value;

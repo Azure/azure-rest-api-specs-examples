@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceFabric;
 using Azure.ResourceManager.ServiceFabric.Models;
+using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ApplicationPatchOperation_example.json
 // this example is just showing the usage of "Applications_Update" operation, for the dependent resources, they will have to be created separately.
@@ -29,19 +29,14 @@ ServiceFabricApplicationPatch patch = new ServiceFabricApplicationPatch(new Azur
 {
     TypeVersion = "1.0",
     RemoveApplicationCapacity = false,
-    Metrics =
-    {
-    new ApplicationMetricDescription()
+    Metrics = {new ApplicationMetricDescription
     {
     Name = "metric1",
-    MaximumCapacity = 3,
-    ReservationCapacity = 1,
-    TotalApplicationCapacity = 5,
-    }
-    },
-    Tags =
-    {
-    },
+    MaximumCapacity = 3L,
+    ReservationCapacity = 1L,
+    TotalApplicationCapacity = 5L,
+    }},
+    Tags = { },
 };
 ArmOperation<ServiceFabricApplicationResource> lro = await serviceFabricApplication.UpdateAsync(WaitUntil.Completed, patch);
 ServiceFabricApplicationResource result = lro.Value;

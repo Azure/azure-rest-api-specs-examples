@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/ApplicationTypeVersionPutOperation_example.json
@@ -25,12 +25,10 @@ ResourceIdentifier serviceFabricApplicationTypeVersionResourceId = ServiceFabric
 ServiceFabricApplicationTypeVersionResource serviceFabricApplicationTypeVersion = client.GetServiceFabricApplicationTypeVersionResource(serviceFabricApplicationTypeVersionResourceId);
 
 // invoke the operation
-ServiceFabricApplicationTypeVersionData data = new ServiceFabricApplicationTypeVersionData(new AzureLocation("placeholder"))
+ServiceFabricApplicationTypeVersionData data = new ServiceFabricApplicationTypeVersionData(default)
 {
     AppPackageUri = new Uri("http://fakelink.test.com/MyAppType"),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ServiceFabricApplicationTypeVersionResource> lro = await serviceFabricApplicationTypeVersion.UpdateAsync(WaitUntil.Completed, data);
 ServiceFabricApplicationTypeVersionResource result = lro.Value;

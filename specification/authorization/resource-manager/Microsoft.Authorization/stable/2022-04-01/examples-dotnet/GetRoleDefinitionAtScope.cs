@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this AuthorizationRoleDefinitionResource
 string scope = "scope";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-AuthorizationRoleDefinitionCollection collection = client.GetAuthorizationRoleDefinitions(scopeId);
+AuthorizationRoleDefinitionCollection collection = client.GetAuthorizationRoleDefinitions(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (AuthorizationRoleDefinitionResource item in collection.GetAllAsync())
@@ -32,4 +28,4 @@ await foreach (AuthorizationRoleDefinitionResource item in collection.GetAllAsyn
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

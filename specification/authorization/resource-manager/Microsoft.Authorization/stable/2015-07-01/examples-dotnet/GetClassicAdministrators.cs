@@ -28,4 +28,4 @@ await foreach (AuthorizationClassicAdministrator item in subscriptionResource.Ge
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

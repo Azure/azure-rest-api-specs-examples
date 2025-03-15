@@ -16,13 +16,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this RoleEligibilityScheduleRequestResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-RoleEligibilityScheduleRequestCollection collection = client.GetRoleEligibilityScheduleRequests(scopeId);
+RoleEligibilityScheduleRequestCollection collection = client.GetRoleEligibilityScheduleRequests(new ResourceIdentifier(scope));
 
 // invoke the operation
 string roleEligibilityScheduleRequestName = "64caffb6-55c0-4deb-a585-68e948ea1ad6";
@@ -31,7 +27,7 @@ RoleEligibilityScheduleRequestResource result = response.HasValue ? response.Val
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

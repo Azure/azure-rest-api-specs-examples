@@ -2,8 +2,10 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Authorization.Models;
 using Azure.ResourceManager.Authorization;
 
 // Generated from example definition: specification/authorization/resource-manager/Microsoft.Authorization/stable/2020-10-01/examples/GetRoleManagementPolicyByName.json
@@ -14,28 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this RoleManagementPolicyResource
+// this example assumes you already have this RoleManagementPolicyResource created on azure
+// for more information of creating RoleManagementPolicyResource, please refer to the document of RoleManagementPolicyResource
 string scope = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-RoleManagementPolicyCollection collection = client.GetRoleManagementPolicies(scopeId);
+string roleManagementPolicyName = "570c3619-7688-4b34-b290-2b8bb3ccab2a";
+ResourceIdentifier roleManagementPolicyResourceId = RoleManagementPolicyResource.CreateResourceIdentifier(scope, roleManagementPolicyName);
+RoleManagementPolicyResource roleManagementPolicy = client.GetRoleManagementPolicyResource(roleManagementPolicyResourceId);
 
 // invoke the operation
-string roleManagementPolicyName = "570c3619-7688-4b34-b290-2b8bb3ccab2a";
-NullableResponse<RoleManagementPolicyResource> response = await collection.GetIfExistsAsync(roleManagementPolicyName);
-RoleManagementPolicyResource result = response.HasValue ? response.Value : null;
+RoleManagementPolicyResource result = await roleManagementPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RoleManagementPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RoleManagementPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

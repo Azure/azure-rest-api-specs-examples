@@ -33,4 +33,4 @@ await foreach (RoleDefinitionPermission item in resourceGroupResource.GetAzurePe
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

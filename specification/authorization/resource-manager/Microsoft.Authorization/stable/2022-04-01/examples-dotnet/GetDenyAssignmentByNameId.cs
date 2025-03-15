@@ -14,18 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DenyAssignmentResource created on azure
-// for more information of creating DenyAssignmentResource, please refer to the document of DenyAssignmentResource
+// get the collection of this DenyAssignmentResource
 string scope = "subscriptions/subId/resourcegroups/rgname";
-string denyAssignmentId = "denyAssignmentId";
-ResourceIdentifier denyAssignmentResourceId = DenyAssignmentResource.CreateResourceIdentifier(scope, denyAssignmentId);
-DenyAssignmentResource denyAssignment = client.GetDenyAssignmentResource(denyAssignmentResourceId);
+DenyAssignmentCollection collection = client.GetDenyAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation
-DenyAssignmentResource result = await denyAssignment.GetAsync();
+string denyAssignmentId = "denyAssignmentId";
+NullableResponse<DenyAssignmentResource> response = await collection.GetIfExistsAsync(denyAssignmentId);
+DenyAssignmentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DenyAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DenyAssignmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

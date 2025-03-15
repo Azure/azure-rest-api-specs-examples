@@ -24,64 +24,40 @@ ResourceIdentifier roleManagementPolicyResourceId = RoleManagementPolicyResource
 RoleManagementPolicyResource roleManagementPolicy = client.GetRoleManagementPolicyResource(roleManagementPolicyResourceId);
 
 // invoke the operation
-RoleManagementPolicyData data = new RoleManagementPolicyData()
+RoleManagementPolicyData data = new RoleManagementPolicyData
 {
-    Rules =
-    {
-    new RoleManagementPolicyExpirationRule()
+    Rules = {new RoleManagementPolicyExpirationRule
     {
     IsExpirationRequired = false,
     MaximumDuration = XmlConvert.ToTimeSpan("P180D"),
     Id = "Expiration_Admin_Eligibility",
-    Target = new RoleManagementPolicyRuleTarget()
+    Target = new RoleManagementPolicyRuleTarget
     {
     Caller = "Admin",
-    Operations =
-    {
-    "All"
-    },
+    Operations = {"All"},
     Level = RoleManagementAssignmentLevel.Eligibility,
-    TargetObjects =
-    {
+    TargetObjects = {},
+    InheritableSettings = {},
+    EnforcedSettings = {},
     },
-    InheritableSettings =
-    {
-    },
-    EnforcedSettings =
-    {
-    },
-    },
-    },new RoleManagementPolicyNotificationRule()
+    }, new RoleManagementPolicyNotificationRule
     {
     NotificationDeliveryType = NotificationDeliveryType.Email,
     NotificationLevel = RoleManagementPolicyNotificationLevel.Critical,
     RecipientType = RoleManagementPolicyRecipientType.Admin,
-    NotificationRecipients =
-    {
-    "admin_admin_eligible@test.com"
-    },
+    NotificationRecipients = {"admin_admin_eligible@test.com"},
     AreDefaultRecipientsEnabled = false,
     Id = "Notification_Admin_Admin_Eligibility",
-    Target = new RoleManagementPolicyRuleTarget()
+    Target = new RoleManagementPolicyRuleTarget
     {
     Caller = "Admin",
-    Operations =
-    {
-    "All"
-    },
+    Operations = {"All"},
     Level = RoleManagementAssignmentLevel.Eligibility,
-    TargetObjects =
-    {
+    TargetObjects = {},
+    InheritableSettings = {},
+    EnforcedSettings = {},
     },
-    InheritableSettings =
-    {
-    },
-    EnforcedSettings =
-    {
-    },
-    },
-    }
-    },
+    }},
 };
 RoleManagementPolicyResource result = await roleManagementPolicy.UpdateAsync(data);
 

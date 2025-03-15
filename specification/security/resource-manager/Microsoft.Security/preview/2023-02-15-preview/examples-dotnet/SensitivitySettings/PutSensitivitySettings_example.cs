@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2023-02-15-preview/examples/SensitivitySettings/PutSensitivitySettings_example.json
 // this example is just showing the usage of "UpdateSensitivitySettings" operation, for the dependent resources, they will have to be created separately.
@@ -21,10 +21,7 @@ ResourceIdentifier sensitivitySettingResourceId = SensitivitySettingResource.Cre
 SensitivitySettingResource sensitivitySetting = client.GetSensitivitySettingResource(sensitivitySettingResourceId);
 
 // invoke the operation
-SensitivitySettingCreateOrUpdateContent content = new SensitivitySettingCreateOrUpdateContent(new Guid[]
-{
-Guid.Parse("f2f8a7a1-28c0-404b-9ab4-30a0a7af18cb"),Guid.Parse("b452f22b-f87d-4f48-8490-ecf0873325b5"),Guid.Parse("d59ee8b6-2618-404b-a5e7-aa377cd67543")
-})
+SensitivitySettingCreateOrUpdateContent content = new SensitivitySettingCreateOrUpdateContent(new Guid[] { Guid.Parse("f2f8a7a1-28c0-404b-9ab4-30a0a7af18cb"), Guid.Parse("b452f22b-f87d-4f48-8490-ecf0873325b5"), Guid.Parse("d59ee8b6-2618-404b-a5e7-aa377cd67543") })
 {
     SensitivityThresholdLabelOrder = 2,
     SensitivityThresholdLabelId = Guid.Parse("f2f8a7a1-28c0-404b-9ab4-30a0a7af18cb"),

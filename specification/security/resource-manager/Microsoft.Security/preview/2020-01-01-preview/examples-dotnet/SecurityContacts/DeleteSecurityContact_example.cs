@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/SecurityContacts/DeleteSecurityContact_example.json
 // this example is just showing the usage of "SecurityContacts_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -25,4 +25,4 @@ SecurityContactResource securityContact = client.GetSecurityContactResource(secu
 // invoke the operation
 await securityContact.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,9 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2021-06-01/examples/AssessmentsMetadata/GetAssessmentsMetadata_example.json
@@ -14,9 +15,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this TenantAssessmentMetadataResource
 TenantAssessmentMetadataCollection collection = tenantResource.GetAllTenantAssessmentMetadata();
@@ -28,7 +27,7 @@ TenantAssessmentMetadataResource result = response.HasValue ? response.Value : n
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

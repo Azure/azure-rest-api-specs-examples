@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/SimulateAlerts_example.json
 // this example is just showing the usage of "Alerts_Simulate" operation, for the dependent resources, they will have to be created separately.
@@ -26,16 +26,13 @@ SecurityCenterLocationResource securityCenterLocation = client.GetSecurityCenter
 SubscriptionSecurityAlertCollection collection = securityCenterLocation.GetSubscriptionSecurityAlerts();
 
 // invoke the operation
-SecurityAlertSimulatorContent content = new SecurityAlertSimulatorContent()
+SecurityAlertSimulatorContent content = new SecurityAlertSimulatorContent
 {
-    Properties = new SecurityAlertSimulatorBundlesRequestProperties()
+    Properties = new SecurityAlertSimulatorBundlesRequestProperties
     {
-        Bundles =
-        {
-        SecurityAlertSimulatorBundleType.AppServices,SecurityAlertSimulatorBundleType.Dns,SecurityAlertSimulatorBundleType.KeyVaults,SecurityAlertSimulatorBundleType.KubernetesService,SecurityAlertSimulatorBundleType.ResourceManager,SecurityAlertSimulatorBundleType.SqlServers,SecurityAlertSimulatorBundleType.StorageAccounts,SecurityAlertSimulatorBundleType.VirtualMachines,SecurityAlertSimulatorBundleType.CosmosDbs
-        },
+        Bundles = { SecurityAlertSimulatorBundleType.AppServices, SecurityAlertSimulatorBundleType.Dns, SecurityAlertSimulatorBundleType.KeyVaults, SecurityAlertSimulatorBundleType.KubernetesService, SecurityAlertSimulatorBundleType.ResourceManager, SecurityAlertSimulatorBundleType.SqlServers, SecurityAlertSimulatorBundleType.StorageAccounts, SecurityAlertSimulatorBundleType.VirtualMachines, SecurityAlertSimulatorBundleType.CosmosDbs },
     },
 };
 await collection.SimulateAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/Connectors/CreateUpdateAwsCredConnectorSubscription_example.json
 // this example is just showing the usage of "Connectors_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,18 +27,18 @@ SecurityCloudConnectorCollection collection = subscriptionResource.GetSecurityCl
 
 // invoke the operation
 string connectorName = "aws_dev1";
-SecurityCloudConnectorData data = new SecurityCloudConnectorData()
+SecurityCloudConnectorData data = new SecurityCloudConnectorData
 {
     HybridComputeSettings = new HybridComputeSettingsProperties(AutoProvisionState.On)
     {
         ResourceGroupName = "AwsConnectorRG",
         Region = "West US 2",
-        ProxyServer = new ProxyServerProperties()
+        ProxyServer = new ProxyServerProperties
         {
             IP = "167.220.197.140",
             Port = "34",
         },
-        ServicePrincipal = new ServicePrincipalProperties()
+        ServicePrincipal = new ServicePrincipalProperties
         {
             ApplicationId = Guid.Parse("ad9bcd79-be9c-45ab-abd8-80ca1654a7d1"),
             Secret = "<secret>",

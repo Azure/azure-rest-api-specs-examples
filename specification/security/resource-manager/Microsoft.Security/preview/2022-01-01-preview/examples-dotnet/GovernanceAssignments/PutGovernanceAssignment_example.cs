@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceAssignments/PutGovernanceAssignment_example.json
 // this example is just showing the usage of "GovernanceAssignments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -24,18 +24,18 @@ ResourceIdentifier governanceAssignmentResourceId = GovernanceAssignmentResource
 GovernanceAssignmentResource governanceAssignment = client.GetGovernanceAssignmentResource(governanceAssignmentResourceId);
 
 // invoke the operation
-GovernanceAssignmentData data = new GovernanceAssignmentData()
+GovernanceAssignmentData data = new GovernanceAssignmentData
 {
     Owner = "user@contoso.com",
     RemediationDueOn = DateTimeOffset.Parse("2022-01-07T13:00:00.0000000Z"),
     RemediationEta = new RemediationEta(DateTimeOffset.Parse("2022-01-08T13:00:00.0000000Z"), "Justification of ETA"),
     IsGracePeriod = true,
-    GovernanceEmailNotification = new GovernanceEmailNotification()
+    GovernanceEmailNotification = new GovernanceEmailNotification
     {
         IsManagerEmailNotificationDisabled = false,
         IsOwnerEmailNotificationDisabled = false,
     },
-    AdditionalData = new GovernanceAssignmentAdditionalInfo()
+    AdditionalData = new GovernanceAssignmentAdditionalInfo
     {
         TicketNumber = 123123,
         TicketLink = "https://snow.com",

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceRules/GetGovernanceRule_example.json
 // this example is just showing the usage of "GovernanceRules_Get" operation, for the dependent resources, they will have to be created separately.
@@ -16,18 +16,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GovernanceRuleResource created on azure
-// for more information of creating GovernanceRuleResource, please refer to the document of GovernanceRuleResource
+// get the collection of this GovernanceRuleResource
 string scope = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-string ruleId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
-ResourceIdentifier governanceRuleResourceId = GovernanceRuleResource.CreateResourceIdentifier(scope, ruleId);
-GovernanceRuleResource governanceRule = client.GetGovernanceRuleResource(governanceRuleResourceId);
+GovernanceRuleCollection collection = client.GetGovernanceRules(new ResourceIdentifier(scope));
 
 // invoke the operation
-GovernanceRuleResource result = await governanceRule.GetAsync();
+string ruleId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
+NullableResponse<GovernanceRuleResource> response = await collection.GetIfExistsAsync(ruleId);
+GovernanceRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GovernanceRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GovernanceRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

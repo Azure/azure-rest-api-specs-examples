@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/UpdateIoTSecuritySolution.json
 // this example is just showing the usage of "IotSecuritySolution_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,19 +24,13 @@ ResourceIdentifier iotSecuritySolutionResourceId = IotSecuritySolutionResource.C
 IotSecuritySolutionResource iotSecuritySolution = client.GetIotSecuritySolutionResource(iotSecuritySolutionResourceId);
 
 // invoke the operation
-IotSecuritySolutionPatch patch = new IotSecuritySolutionPatch()
+IotSecuritySolutionPatch patch = new IotSecuritySolutionPatch
 {
-    UserDefinedResources = new UserDefinedResourcesProperties("where type != \"microsoft.devices/iothubs\" | where name contains \"v2\"", new string[]
-{
-"075423e9-7d33-4166-8bdf-3920b04e3735"
-}),
-    RecommendationsConfiguration =
-    {
-    new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotOpenPorts,RecommendationConfigStatus.Disabled),new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotSharedCredentials,RecommendationConfigStatus.Disabled)
-    },
+    UserDefinedResources = new UserDefinedResourcesProperties("where type != \"microsoft.devices/iothubs\" | where name contains \"v2\"", new string[] { "075423e9-7d33-4166-8bdf-3920b04e3735" }),
+    RecommendationsConfiguration = { new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotOpenPorts, RecommendationConfigStatus.Disabled), new RecommendationConfigurationProperties(IotSecurityRecommendationType.IotSharedCredentials, RecommendationConfigStatus.Disabled) },
     Tags =
     {
-    ["foo"] = "bar",
+    ["foo"] = "bar"
     },
 };
 IotSecuritySolutionResource result = await iotSecuritySolution.UpdateAsync(patch);

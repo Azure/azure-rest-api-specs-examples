@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/JitNetworkAccessPolicies/InitiateJitNetworkAccessPolicy_example.json
 // this example is just showing the usage of "JitNetworkAccessPolicies_Initiate" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +28,9 @@ JitNetworkAccessPolicyResource jitNetworkAccessPolicy = client.GetJitNetworkAcce
 // invoke the operation
 JitNetworkAccessPolicyInitiateContent content = new JitNetworkAccessPolicyInitiateContent(new JitNetworkAccessPolicyInitiateVirtualMachine[]
 {
-new JitNetworkAccessPolicyInitiateVirtualMachine(new ResourceIdentifier("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"),new JitNetworkAccessPolicyInitiatePort[]
+new JitNetworkAccessPolicyInitiateVirtualMachine(new ResourceIdentifier("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"), new JitNetworkAccessPolicyInitiatePort[]
 {
-new JitNetworkAccessPolicyInitiatePort(3389,DateTimeOffset.Parse("placeholder"))
+new JitNetworkAccessPolicyInitiatePort(3389, default)
 {
 AllowedSourceAddressPrefix = "192.127.0.2",
 }

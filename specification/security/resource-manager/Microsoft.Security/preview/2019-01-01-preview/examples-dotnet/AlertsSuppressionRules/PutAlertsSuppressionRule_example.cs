@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
+using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/AlertsSuppressionRules/PutAlertsSuppressionRule_example.json
 // this example is just showing the usage of "AlertsSuppressionRules_Update" operation, for the dependent resources, they will have to be created separately.
@@ -23,23 +23,20 @@ ResourceIdentifier securityAlertsSuppressionRuleResourceId = SecurityAlertsSuppr
 SecurityAlertsSuppressionRuleResource securityAlertsSuppressionRule = client.GetSecurityAlertsSuppressionRuleResource(securityAlertsSuppressionRuleResourceId);
 
 // invoke the operation
-SecurityAlertsSuppressionRuleData data = new SecurityAlertsSuppressionRuleData()
+SecurityAlertsSuppressionRuleData data = new SecurityAlertsSuppressionRuleData
 {
     AlertType = "IpAnomaly",
     ExpireOn = DateTimeOffset.Parse("2019-12-01T19:50:47.083633Z"),
     Reason = "FalsePositive",
     State = SecurityAlertsSuppressionRuleState.Enabled,
     Comment = "Test VM",
-    SuppressionAlertsScopeAllOf =
-    {
-    new SuppressionAlertsScopeElement()
+    SuppressionAlertsScopeAllOf = {new SuppressionAlertsScopeElement
     {
     Field = "entities.ip.address",
-    },new SuppressionAlertsScopeElement()
+    }, new SuppressionAlertsScopeElement
     {
     Field = "entities.process.commandline",
-    }
-    },
+    }},
 };
 ArmOperation<SecurityAlertsSuppressionRuleResource> lro = await securityAlertsSuppressionRule.UpdateAsync(WaitUntil.Completed, data);
 SecurityAlertsSuppressionRuleResource result = lro.Value;

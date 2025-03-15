@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2019-01-01/examples/AdvancedThreatProtection/PutAdvancedThreatProtectionSettings_example.json
@@ -21,7 +21,7 @@ ResourceIdentifier advancedThreatProtectionSettingResourceId = AdvancedThreatPro
 AdvancedThreatProtectionSettingResource advancedThreatProtectionSetting = client.GetAdvancedThreatProtectionSettingResource(advancedThreatProtectionSettingResourceId);
 
 // invoke the operation
-AdvancedThreatProtectionSettingData data = new AdvancedThreatProtectionSettingData()
+AdvancedThreatProtectionSettingData data = new AdvancedThreatProtectionSettingData
 {
     IsEnabled = true,
 };

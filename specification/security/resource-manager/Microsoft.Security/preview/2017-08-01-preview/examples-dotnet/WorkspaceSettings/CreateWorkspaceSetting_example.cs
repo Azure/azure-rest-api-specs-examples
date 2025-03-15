@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 
@@ -26,7 +26,7 @@ SecurityWorkspaceSettingCollection collection = subscriptionResource.GetSecurity
 
 // invoke the operation
 string workspaceSettingName = "default";
-SecurityWorkspaceSettingData data = new SecurityWorkspaceSettingData()
+SecurityWorkspaceSettingData data = new SecurityWorkspaceSettingData
 {
     WorkspaceId = new ResourceIdentifier("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"),
     Scope = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",

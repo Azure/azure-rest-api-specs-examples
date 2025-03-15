@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/TriggerSupportPackage.json
 // this example is just showing the usage of "SupportPackages_TriggerSupportPackage" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +25,7 @@ ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.Creat
 DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
 
 // invoke the operation
-TriggerSupportPackageContent content = new TriggerSupportPackageContent()
+TriggerSupportPackageContent content = new TriggerSupportPackageContent
 {
     MinimumTimeStamp = DateTimeOffset.Parse("2018-12-18T02:18:51.4270267Z"),
     MaximumTimeStamp = DateTimeOffset.Parse("2018-12-18T02:19:51.4270267Z"),
@@ -34,4 +33,4 @@ TriggerSupportPackageContent content = new TriggerSupportPackageContent()
 };
 await dataBoxEdgeDevice.TriggerSupportPackageAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

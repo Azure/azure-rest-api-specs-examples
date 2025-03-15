@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/RolePut.json
 // this example is just showing the usage of "Roles_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
-// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
+// this example assumes you already have this DataBoxEdgeRoleResource created on azure
+// for more information of creating DataBoxEdgeRoleResource, please refer to the document of DataBoxEdgeRoleResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
-DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
-
-// get the collection of this DataBoxEdgeRoleResource
-DataBoxEdgeRoleCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeRoles();
+string name = "IoTRole1";
+ResourceIdentifier dataBoxEdgeRoleResourceId = DataBoxEdgeRoleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
+DataBoxEdgeRoleResource dataBoxEdgeRole = client.GetDataBoxEdgeRoleResource(dataBoxEdgeRoleResourceId);
 
 // invoke the operation
-string name = "IoTRole1";
-DataBoxEdgeRoleData data = new EdgeIotRole()
+DataBoxEdgeRoleData data = new EdgeIotRole
 {
     HostPlatform = DataBoxEdgeOSPlatformType.Linux,
     IotDeviceDetails = new EdgeIotDeviceInfo("iotdevice", "iothub.azure-devices.net")
@@ -45,12 +42,10 @@ DataBoxEdgeRoleData data = new EdgeIotRole()
             EncryptionCertThumbprint = "1245475856069999244",
         },
     },
-    ShareMappings =
-    {
-    },
+    ShareMappings = { },
     RoleStatus = DataBoxEdgeRoleStatus.Enabled,
 };
-ArmOperation<DataBoxEdgeRoleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<DataBoxEdgeRoleResource> lro = await dataBoxEdgeRole.UpdateAsync(WaitUntil.Completed, data);
 DataBoxEdgeRoleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

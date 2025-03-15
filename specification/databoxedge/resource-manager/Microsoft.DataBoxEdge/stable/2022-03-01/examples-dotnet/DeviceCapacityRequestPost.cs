@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DeviceCapacityRequestPost.json
 // this example is just showing the usage of "DeviceCapacityCheck_CheckResourceCreationFeasibility" operation, for the dependent resources, they will have to be created separately.
@@ -28,11 +27,8 @@ DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResourc
 // invoke the operation
 DeviceCapacityRequestContent content = new DeviceCapacityRequestContent(new IList<string>[]
 {
-new string[]
-{
-"Standard_D2_v2"
-}
+new string[]{"Standard_D2_v2"}
 });
 await dataBoxEdgeDevice.CheckResourceCreationFeasibilityAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

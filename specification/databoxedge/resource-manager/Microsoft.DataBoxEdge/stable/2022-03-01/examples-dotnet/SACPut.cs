@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/SACPut.json
 // this example is just showing the usage of "StorageAccountCredentials_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeStorageAccountCredentialResource created on azure
-// for more information of creating DataBoxEdgeStorageAccountCredentialResource, please refer to the document of DataBoxEdgeStorageAccountCredentialResource
+// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
+// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-string name = "sac1";
-ResourceIdentifier dataBoxEdgeStorageAccountCredentialResourceId = DataBoxEdgeStorageAccountCredentialResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
-DataBoxEdgeStorageAccountCredentialResource dataBoxEdgeStorageAccountCredential = client.GetDataBoxEdgeStorageAccountCredentialResource(dataBoxEdgeStorageAccountCredentialResourceId);
+ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
+DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
+
+// get the collection of this DataBoxEdgeStorageAccountCredentialResource
+DataBoxEdgeStorageAccountCredentialCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeStorageAccountCredentials();
 
 // invoke the operation
+string name = "sac1";
 DataBoxEdgeStorageAccountCredentialData data = new DataBoxEdgeStorageAccountCredentialData("sac1", DataBoxEdgeStorageAccountSslStatus.Disabled, DataBoxEdgeStorageAccountType.BlobStorage)
 {
     UserName = "cisbvt",
@@ -33,7 +36,7 @@ DataBoxEdgeStorageAccountCredentialData data = new DataBoxEdgeStorageAccountCred
         EncryptionCertThumbprint = "2A9D8D6BE51574B5461230AEF02F162C5F01AD31",
     },
 };
-ArmOperation<DataBoxEdgeStorageAccountCredentialResource> lro = await dataBoxEdgeStorageAccountCredential.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataBoxEdgeStorageAccountCredentialResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 DataBoxEdgeStorageAccountCredentialResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

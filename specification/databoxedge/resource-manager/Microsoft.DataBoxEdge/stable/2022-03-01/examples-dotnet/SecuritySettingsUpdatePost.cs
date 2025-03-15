@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBoxEdge;
 using Azure.ResourceManager.DataBoxEdge.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBoxEdge;
 
 // Generated from example definition: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/SecuritySettingsUpdatePost.json
 // this example is just showing the usage of "Devices_CreateOrUpdateSecuritySettings" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ DataBoxEdgeSecuritySettings securitySettings = new DataBoxEdgeSecuritySettings(n
 });
 await dataBoxEdgeDevice.CreateOrUpdateSecuritySettingsAsync(WaitUntil.Completed, securitySettings);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

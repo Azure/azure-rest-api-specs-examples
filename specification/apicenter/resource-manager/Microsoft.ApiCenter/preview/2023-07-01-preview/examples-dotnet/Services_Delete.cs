@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApiCenter;
 using Azure.ResourceManager.ApiCenter.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApiCenter;
 
 // Generated from example definition: specification/apicenter/resource-manager/Microsoft.ApiCenter/preview/2023-07-01-preview/examples/Services_Delete.json
 // this example is just showing the usage of "Services_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ ApiCenterServiceResource apiCenterService = client.GetApiCenterServiceResource(a
 // invoke the operation
 await apiCenterService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

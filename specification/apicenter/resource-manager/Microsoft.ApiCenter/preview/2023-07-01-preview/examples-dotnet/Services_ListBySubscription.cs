@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApiCenter;
-using Azure.ResourceManager.ApiCenter.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApiCenter;
 
 // Generated from example definition: specification/apicenter/resource-manager/Microsoft.ApiCenter/preview/2023-07-01-preview/examples/Services_ListBySubscription.json
 // this example is just showing the usage of "Services_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (ApiCenterServiceResource item in subscriptionResource.GetApiCente
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

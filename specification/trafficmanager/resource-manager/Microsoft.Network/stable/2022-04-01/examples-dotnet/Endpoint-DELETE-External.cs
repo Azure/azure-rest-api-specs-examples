@@ -27,4 +27,4 @@ TrafficManagerEndpointResource trafficManagerEndpoint = client.GetTrafficManager
 // invoke the operation
 await trafficManagerEndpoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

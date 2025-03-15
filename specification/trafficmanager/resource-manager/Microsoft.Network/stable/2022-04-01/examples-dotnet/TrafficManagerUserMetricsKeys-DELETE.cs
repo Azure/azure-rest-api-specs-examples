@@ -23,4 +23,4 @@ TrafficManagerUserMetricsResource trafficManagerUserMetrics = client.GetTrafficM
 // invoke the operation
 await trafficManagerUserMetrics.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -30,23 +30,20 @@ TrafficManagerEndpointCollection collection = trafficManagerProfile.GetTrafficMa
 // invoke the operation
 string endpointType = "ExternalEndpoints";
 string endpointName = "azsmnet7187";
-TrafficManagerEndpointData data = new TrafficManagerEndpointData()
+TrafficManagerEndpointData data = new TrafficManagerEndpointData
 {
     Target = "foobar.contoso.com",
     EndpointStatus = TrafficManagerEndpointStatus.Enabled,
     EndpointLocation = "North Europe",
-    CustomHeaders =
-    {
-    new TrafficManagerEndpointCustomHeaderInfo()
+    CustomHeaders = {new TrafficManagerEndpointCustomHeaderInfo
     {
     Name = "header-1",
     Value = "value-1",
-    },new TrafficManagerEndpointCustomHeaderInfo()
+    }, new TrafficManagerEndpointCustomHeaderInfo
     {
     Name = "header-2",
     Value = "value-2",
-    }
-    },
+    }},
     Name = "azsmnet7187",
     ResourceType = new ResourceType("Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"),
 };

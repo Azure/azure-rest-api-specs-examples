@@ -32,4 +32,4 @@ await foreach (TrafficManagerProfileResource item in subscriptionResource.GetTra
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

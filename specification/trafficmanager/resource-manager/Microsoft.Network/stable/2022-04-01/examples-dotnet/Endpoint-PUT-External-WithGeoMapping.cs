@@ -30,14 +30,11 @@ TrafficManagerEndpointCollection collection = trafficManagerProfile.GetTrafficMa
 // invoke the operation
 string endpointType = "ExternalEndpoints";
 string endpointName = "My%20external%20endpoint";
-TrafficManagerEndpointData data = new TrafficManagerEndpointData()
+TrafficManagerEndpointData data = new TrafficManagerEndpointData
 {
     Target = "foobar.contoso.com",
     EndpointStatus = TrafficManagerEndpointStatus.Enabled,
-    GeoMapping =
-    {
-    "GEO-AS","GEO-AF"
-    },
+    GeoMapping = { "GEO-AS", "GEO-AF" },
     Name = "My external endpoint",
     ResourceType = new ResourceType("Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"),
 };

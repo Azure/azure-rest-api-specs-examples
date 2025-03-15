@@ -30,22 +30,19 @@ TrafficManagerEndpointCollection collection = trafficManagerProfile.GetTrafficMa
 // invoke the operation
 string endpointType = "ExternalEndpoints";
 string endpointName = "My%20external%20endpoint";
-TrafficManagerEndpointData data = new TrafficManagerEndpointData()
+TrafficManagerEndpointData data = new TrafficManagerEndpointData
 {
     Target = "foobar.contoso.com",
     EndpointStatus = TrafficManagerEndpointStatus.Enabled,
-    Subnets =
-    {
-    new TrafficManagerEndpointSubnetInfo()
+    Subnets = {new TrafficManagerEndpointSubnetInfo
     {
     First = IPAddress.Parse("1.2.3.0"),
     Scope = 24,
-    },new TrafficManagerEndpointSubnetInfo()
+    }, new TrafficManagerEndpointSubnetInfo
     {
     First = IPAddress.Parse("25.26.27.28"),
     Last = IPAddress.Parse("29.30.31.32"),
-    }
-    },
+    }},
     Name = "My external endpoint",
     ResourceType = new ResourceType("Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"),
 };

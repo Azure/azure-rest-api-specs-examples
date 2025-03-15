@@ -28,67 +28,55 @@ TrafficManagerProfileCollection collection = resourceGroupResource.GetTrafficMan
 
 // invoke the operation
 string profileName = "azuresdkfornetautoresttrafficmanager6192";
-TrafficManagerProfileData data = new TrafficManagerProfileData()
+TrafficManagerProfileData data = new TrafficManagerProfileData
 {
     ProfileStatus = TrafficManagerProfileStatus.Enabled,
     TrafficRoutingMethod = TrafficRoutingMethod.Performance,
-    DnsConfig = new TrafficManagerDnsConfig()
+    DnsConfig = new TrafficManagerDnsConfig
     {
         RelativeName = "azuresdkfornetautoresttrafficmanager6192",
-        Ttl = 35,
+        Ttl = 35L,
     },
-    MonitorConfig = new TrafficManagerMonitorConfig()
+    MonitorConfig = new TrafficManagerMonitorConfig
     {
         Protocol = TrafficManagerMonitorProtocol.Http,
-        Port = 80,
+        Port = 80L,
         Path = "/testpath.aspx",
-        IntervalInSeconds = 10,
-        TimeoutInSeconds = 5,
-        ToleratedNumberOfFailures = 2,
-        CustomHeaders =
-        {
-        new TrafficManagerMonitorConfigCustomHeaderInfo()
+        IntervalInSeconds = 10L,
+        TimeoutInSeconds = 5L,
+        ToleratedNumberOfFailures = 2L,
+        CustomHeaders = {new TrafficManagerMonitorConfigCustomHeaderInfo
         {
         Name = "header-1",
         Value = "value-1",
-        },new TrafficManagerMonitorConfigCustomHeaderInfo()
+        }, new TrafficManagerMonitorConfigCustomHeaderInfo
         {
         Name = "header-2",
         Value = "value-2",
-        }
-        },
-        ExpectedStatusCodeRanges =
-        {
-        new ExpectedStatusCodeRangeInfo()
+        }},
+        ExpectedStatusCodeRanges = {new ExpectedStatusCodeRangeInfo
         {
         Min = 200,
         Max = 205,
-        },new ExpectedStatusCodeRangeInfo()
+        }, new ExpectedStatusCodeRangeInfo
         {
         Min = 400,
         Max = 410,
-        }
-        },
+        }},
     },
-    Endpoints =
-    {
-    new TrafficManagerEndpointData()
+    Endpoints = {new TrafficManagerEndpointData
     {
     Target = "foobar.contoso.com",
     EndpointStatus = TrafficManagerEndpointStatus.Enabled,
     EndpointLocation = "North Europe",
-    CustomHeaders =
-    {
-    new TrafficManagerEndpointCustomHeaderInfo()
+    CustomHeaders = {new TrafficManagerEndpointCustomHeaderInfo
     {
     Name = "header-2",
     Value = "value-2-overridden",
-    }
-    },
+    }},
     Name = "My external endpoint",
     ResourceType = new ResourceType("Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"),
-    }
-    },
+    }},
     TrafficViewEnrollmentStatus = TrafficViewEnrollmentStatus.Disabled,
     Location = new AzureLocation("global"),
 };

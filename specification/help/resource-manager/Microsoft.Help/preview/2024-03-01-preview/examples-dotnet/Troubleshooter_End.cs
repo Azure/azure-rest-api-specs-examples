@@ -25,4 +25,4 @@ SelfHelpTroubleshooterResource selfHelpTroubleshooter = client.GetSelfHelpTroubl
 // invoke the operation
 await selfHelpTroubleshooter.EndAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

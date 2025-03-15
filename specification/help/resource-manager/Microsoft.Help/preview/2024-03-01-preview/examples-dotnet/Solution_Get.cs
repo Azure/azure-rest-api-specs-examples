@@ -15,28 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this SelfHelpSolutionResource
+// this example assumes you already have this SelfHelpSolutionResource created on azure
+// for more information of creating SelfHelpSolutionResource, please refer to the document of SelfHelpSolutionResource
 string scope = "subscriptions/mySubscription/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-rp";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-SelfHelpSolutionCollection collection = client.GetSelfHelpSolutions(scopeId);
+string solutionResourceName = "SolutionResource1";
+ResourceIdentifier selfHelpSolutionResourceId = SelfHelpSolutionResource.CreateResourceIdentifier(scope, solutionResourceName);
+SelfHelpSolutionResource selfHelpSolution = client.GetSelfHelpSolutionResource(selfHelpSolutionResourceId);
 
 // invoke the operation
-string solutionResourceName = "SolutionResource1";
-NullableResponse<SelfHelpSolutionResource> response = await collection.GetIfExistsAsync(solutionResourceName);
-SelfHelpSolutionResource result = response.HasValue ? response.Value : null;
+SelfHelpSolutionResource result = await selfHelpSolution.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SelfHelpSolutionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SelfHelpSolutionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

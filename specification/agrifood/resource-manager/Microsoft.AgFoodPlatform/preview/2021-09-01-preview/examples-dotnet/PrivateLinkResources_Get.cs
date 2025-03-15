@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.AgFoodPlatform;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/PrivateLinkResources_Get.json
@@ -13,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AgFoodPlatformPrivateLinkResource created on azure
-// for more information of creating AgFoodPlatformPrivateLinkResource, please refer to the document of AgFoodPlatformPrivateLinkResource
+// this example assumes you already have this FarmBeatResource created on azure
+// for more information of creating FarmBeatResource, please refer to the document of FarmBeatResource
 string subscriptionId = "11111111-2222-3333-4444-555555555555";
 string resourceGroupName = "examples-rg";
 string farmBeatsResourceName = "examples-farmbeatsResourceName";
-string subResourceName = "farmbeats";
-ResourceIdentifier agFoodPlatformPrivateLinkResourceId = AgFoodPlatformPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName, subResourceName);
-AgFoodPlatformPrivateLinkResource agFoodPlatformPrivateLinkResource = client.GetAgFoodPlatformPrivateLinkResource(agFoodPlatformPrivateLinkResourceId);
+ResourceIdentifier farmBeatResourceId = FarmBeatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName);
+FarmBeatResource farmBeat = client.GetFarmBeatResource(farmBeatResourceId);
+
+// get the collection of this AgFoodPlatformPrivateLinkResource
+AgFoodPlatformPrivateLinkResourceCollection collection = farmBeat.GetAgFoodPlatformPrivateLinkResources();
 
 // invoke the operation
-AgFoodPlatformPrivateLinkResource result = await agFoodPlatformPrivateLinkResource.GetAsync();
+string subResourceName = "farmbeats";
+NullableResponse<AgFoodPlatformPrivateLinkResource> response = await collection.GetIfExistsAsync(subResourceName);
+AgFoodPlatformPrivateLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AgFoodPlatformPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AgFoodPlatformPrivateLinkResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

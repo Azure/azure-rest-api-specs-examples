@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AgFoodPlatform;
 using Azure.ResourceManager.AgFoodPlatform.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AgFoodPlatform;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/Locations_CheckNameAvailability_Available.json
 // this example is just showing the usage of "Locations_CheckNameAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -22,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-CheckNameAvailabilityContent content = new CheckNameAvailabilityContent()
+CheckNameAvailabilityContent content = new CheckNameAvailabilityContent
 {
     Name = "newaccountname",
     ResourceType = "Microsoft.AgFoodPlatform/farmBeats",

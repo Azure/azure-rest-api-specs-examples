@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AgFoodPlatform;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AgFoodPlatform;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/FarmBeatsModels_ListByResourceGroup.json
 // this example is just showing the usage of "FarmBeatsModels_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -35,4 +35,4 @@ await foreach (FarmBeatResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

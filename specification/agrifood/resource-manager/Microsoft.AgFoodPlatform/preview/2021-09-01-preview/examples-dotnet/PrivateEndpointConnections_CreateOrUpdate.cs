@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AgFoodPlatform;
 using Azure.ResourceManager.AgFoodPlatform.Models;
+using Azure.ResourceManager.AgFoodPlatform;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/PrivateEndpointConnections_CreateOrUpdate.json
 // this example is just showing the usage of "PrivateEndpointConnections_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ AgFoodPlatformPrivateEndpointConnectionCollection collection = farmBeat.GetAgFoo
 
 // invoke the operation
 string privateEndpointConnectionName = "privateEndpointConnectionName";
-AgFoodPlatformPrivateEndpointConnectionData data = new AgFoodPlatformPrivateEndpointConnectionData()
+AgFoodPlatformPrivateEndpointConnectionData data = new AgFoodPlatformPrivateEndpointConnectionData
 {
-    ConnectionState = new AgFoodPlatformPrivateLinkServiceConnectionState()
+    ConnectionState = new AgFoodPlatformPrivateLinkServiceConnectionState
     {
         Status = AgFoodPlatformPrivateEndpointServiceConnectionStatus.Approved,
         Description = "Approved by johndoe@contoso.com",

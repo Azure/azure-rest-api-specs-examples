@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DefenderEasm;
 using Azure.ResourceManager.DefenderEasm.Models;
+using Azure.ResourceManager.DefenderEasm;
 
 // Generated from example definition: specification/riskiq/resource-manager/Microsoft.Easm/preview/2023-04-01-preview/examples/Labels_Delete.json
 // this example is just showing the usage of "Labels_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ EasmLabelResource easmLabel = client.GetEasmLabelResource(easmLabelResourceId);
 // invoke the operation
 await easmLabel.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

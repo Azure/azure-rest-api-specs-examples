@@ -1,13 +1,12 @@
-using System;
-using System.Net;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/Accounts_List.json
 // this example is just showing the usage of "Accounts_List" operation, for the dependent resources, they will have to be created separately.
@@ -24,10 +23,10 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-SubscriptionResourceGetAccountsOptions options = new SubscriptionResourceGetAccountsOptions() { Filter = "test_filter", Top = 1, Skip = 1, Select = "test_select", Orderby = "test_orderby", Count = false };
+SubscriptionResourceGetAccountsOptions options = new SubscriptionResourceGetAccountsOptions { Filter = "test_filter", Top = 1, Skip = 1, Select = "test_select", Orderby = "test_orderby", Count = false };
 await foreach (DataLakeAnalyticsAccountBasic item in subscriptionResource.GetAccountsAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

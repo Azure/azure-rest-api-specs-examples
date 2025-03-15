@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/ComputePolicies_Update.json
 // this example is just showing the usage of "ComputePolicies_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier dataLakeAnalyticsComputePolicyResourceId = DataLakeAnalyticsC
 DataLakeAnalyticsComputePolicyResource dataLakeAnalyticsComputePolicy = client.GetDataLakeAnalyticsComputePolicyResource(dataLakeAnalyticsComputePolicyResourceId);
 
 // invoke the operation
-DataLakeAnalyticsComputePolicyPatch patch = new DataLakeAnalyticsComputePolicyPatch()
+DataLakeAnalyticsComputePolicyPatch patch = new DataLakeAnalyticsComputePolicyPatch
 {
     MaxDegreeOfParallelismPerJob = 11,
     MinPriorityPerJob = 31,

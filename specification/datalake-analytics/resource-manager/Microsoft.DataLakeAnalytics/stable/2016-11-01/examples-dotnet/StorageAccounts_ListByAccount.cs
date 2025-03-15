@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/StorageAccounts_ListByAccount.json
 // this example is just showing the usage of "StorageAccounts_ListByAccount" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ DataLakeAnalyticsAccountResource dataLakeAnalyticsAccount = client.GetDataLakeAn
 DataLakeAnalyticsStorageAccountInformationCollection collection = dataLakeAnalyticsAccount.GetAllDataLakeAnalyticsStorageAccountInformation();
 
 // invoke the operation and iterate over the result
-DataLakeAnalyticsStorageAccountInformationCollectionGetAllOptions options = new DataLakeAnalyticsStorageAccountInformationCollectionGetAllOptions() { Filter = "test_filter", Top = 1, Skip = 1, Select = "test_select", Orderby = "test_orderby", Count = false };
+DataLakeAnalyticsStorageAccountInformationCollectionGetAllOptions options = new DataLakeAnalyticsStorageAccountInformationCollectionGetAllOptions { Filter = "test_filter", Top = 1, Skip = 1, Select = "test_select", Orderby = "test_orderby", Count = false };
 await foreach (DataLakeAnalyticsStorageAccountInformationResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -37,4 +37,4 @@ await foreach (DataLakeAnalyticsStorageAccountInformationResource item in collec
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

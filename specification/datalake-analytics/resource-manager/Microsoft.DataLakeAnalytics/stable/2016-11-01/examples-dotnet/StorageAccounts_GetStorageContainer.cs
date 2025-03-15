@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/StorageAccounts_GetStorageContainer.json
@@ -33,7 +33,7 @@ DataLakeAnalyticsStorageContainerResource result = response.HasValue ? response.
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

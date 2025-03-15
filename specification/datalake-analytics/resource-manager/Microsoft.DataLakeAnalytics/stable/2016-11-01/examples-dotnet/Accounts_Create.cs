@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataLakeAnalytics;
 using Azure.ResourceManager.DataLakeAnalytics.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataLakeAnalytics;
 
 // Generated from example definition: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/Accounts_Create.json
 // this example is just showing the usage of "Accounts_Create" operation, for the dependent resources, they will have to be created separately.
@@ -39,27 +39,18 @@ Suffix = "test_suffix",
 {
     Tags =
     {
-    ["test_key"] = "test_value",
+    ["test_key"] = "test_value"
     },
-    StorageAccounts =
-    {
-    new StorageAccountForDataLakeAnalyticsAccountCreateOrUpdateContent("test_storage","34adfa4f-cedf-4dc0-ba29-b6d1a69ab346")
+    StorageAccounts = {new StorageAccountForDataLakeAnalyticsAccountCreateOrUpdateContent("test_storage", "34adfa4f-cedf-4dc0-ba29-b6d1a69ab346")
     {
     Suffix = "test_suffix",
-    }
-    },
-    ComputePolicies =
-    {
-    new ComputePolicyForDataLakeAnalyticsAccountCreateOrUpdateContent("test_policy",Guid.Parse("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"),AadObjectIdentifierType.User)
+    }},
+    ComputePolicies = {new ComputePolicyForDataLakeAnalyticsAccountCreateOrUpdateContent("test_policy", Guid.Parse("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"), AadObjectIdentifierType.User)
     {
     MaxDegreeOfParallelismPerJob = 1,
     MinPriorityPerJob = 1,
-    }
-    },
-    FirewallRules =
-    {
-    new FirewallRuleForDataLakeAnalyticsAccountCreateOrUpdateContent("test_rule",IPAddress.Parse("1.1.1.1"),IPAddress.Parse("2.2.2.2"))
-    },
+    }},
+    FirewallRules = { new FirewallRuleForDataLakeAnalyticsAccountCreateOrUpdateContent("test_rule", IPAddress.Parse("1.1.1.1"), IPAddress.Parse("2.2.2.2")) },
     FirewallState = DataLakeAnalyticsFirewallState.Enabled,
     FirewallAllowAzureIPs = DataLakeAnalyticsFirewallAllowAzureIPsState.Enabled,
     NewTier = DataLakeAnalyticsCommitmentTierType.Consumption,

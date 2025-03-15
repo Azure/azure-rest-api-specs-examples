@@ -32,4 +32,4 @@ await foreach (NotificationHubNamespaceResource item in subscriptionResource.Get
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

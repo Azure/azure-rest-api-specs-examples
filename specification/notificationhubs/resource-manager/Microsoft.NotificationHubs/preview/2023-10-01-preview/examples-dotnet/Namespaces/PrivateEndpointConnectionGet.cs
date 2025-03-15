@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubPrivateEndpointConnectionResource created on azure
-// for more information of creating NotificationHubPrivateEndpointConnectionResource, please refer to the document of NotificationHubPrivateEndpointConnectionResource
+// this example assumes you already have this NotificationHubNamespaceResource created on azure
+// for more information of creating NotificationHubNamespaceResource, please refer to the document of NotificationHubNamespaceResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
 string namespaceName = "nh-sdk-ns";
-string privateEndpointConnectionName = "nh-sdk-ns.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-ResourceIdentifier notificationHubPrivateEndpointConnectionResourceId = NotificationHubPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, privateEndpointConnectionName);
-NotificationHubPrivateEndpointConnectionResource notificationHubPrivateEndpointConnection = client.GetNotificationHubPrivateEndpointConnectionResource(notificationHubPrivateEndpointConnectionResourceId);
+ResourceIdentifier notificationHubNamespaceResourceId = NotificationHubNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+NotificationHubNamespaceResource notificationHubNamespace = client.GetNotificationHubNamespaceResource(notificationHubNamespaceResourceId);
+
+// get the collection of this NotificationHubPrivateEndpointConnectionResource
+NotificationHubPrivateEndpointConnectionCollection collection = notificationHubNamespace.GetNotificationHubPrivateEndpointConnections();
 
 // invoke the operation
-NotificationHubPrivateEndpointConnectionResource result = await notificationHubPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "nh-sdk-ns.1fa229cd-bf3f-47f0-8c49-afb36723997e";
+NullableResponse<NotificationHubPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+NotificationHubPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NotificationHubPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NotificationHubPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

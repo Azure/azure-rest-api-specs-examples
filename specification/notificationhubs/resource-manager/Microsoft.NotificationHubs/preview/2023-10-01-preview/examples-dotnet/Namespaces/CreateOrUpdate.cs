@@ -34,24 +34,15 @@ NotificationHubNamespaceData data = new NotificationHubNamespaceData(new AzureLo
 })
 {
     ZoneRedundancy = ZoneRedundancyPreference.Enabled,
-    NetworkAcls = new NotificationHubNetworkAcls()
+    NetworkAcls = new NotificationHubNetworkAcls
     {
-        IPRules =
-        {
-        new NotificationHubIPRule("185.48.100.00/24",new AuthorizationRuleAccessRightExt[]
-        {
-        AuthorizationRuleAccessRightExt.Manage,AuthorizationRuleAccessRightExt.Send,AuthorizationRuleAccessRightExt.Listen
-        })
-        },
-        PublicNetworkRuleAccessRights =
-        {
-        AuthorizationRuleAccessRightExt.Listen
-        },
+        IPRules = { new NotificationHubIPRule("185.48.100.00/24", new AuthorizationRuleAccessRightExt[] { AuthorizationRuleAccessRightExt.Manage, AuthorizationRuleAccessRightExt.Send, AuthorizationRuleAccessRightExt.Listen }) },
+        PublicNetworkRuleAccessRights = { AuthorizationRuleAccessRightExt.Listen },
     },
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<NotificationHubNamespaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, namespaceName, data);

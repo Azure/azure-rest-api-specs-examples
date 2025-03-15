@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-NotificationHubAvailabilityContent content = new NotificationHubAvailabilityContent(new AzureLocation("placeholder"));
+NotificationHubAvailabilityContent content = new NotificationHubAvailabilityContent(default);
 NotificationHubAvailabilityResult result = await subscriptionResource.CheckNotificationHubNamespaceAvailabilityAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

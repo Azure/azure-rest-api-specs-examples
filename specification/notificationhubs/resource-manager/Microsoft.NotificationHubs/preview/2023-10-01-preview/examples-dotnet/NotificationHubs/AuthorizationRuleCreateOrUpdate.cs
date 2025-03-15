@@ -26,12 +26,9 @@ ResourceIdentifier notificationHubAuthorizationRuleResourceId = NotificationHubA
 NotificationHubAuthorizationRuleResource notificationHubAuthorizationRule = client.GetNotificationHubAuthorizationRuleResource(notificationHubAuthorizationRuleResourceId);
 
 // invoke the operation
-NotificationHubAuthorizationRuleData data = new NotificationHubAuthorizationRuleData(new AzureLocation("placeholder"))
+NotificationHubAuthorizationRuleData data = new NotificationHubAuthorizationRuleData(default)
 {
-    AccessRights =
-    {
-    AuthorizationRuleAccessRightExt.Listen,AuthorizationRuleAccessRightExt.Send
-    },
+    AccessRights = { AuthorizationRuleAccessRightExt.Listen, AuthorizationRuleAccessRightExt.Send },
 };
 ArmOperation<NotificationHubAuthorizationRuleResource> lro = await notificationHubAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
 NotificationHubAuthorizationRuleResource result = lro.Value;

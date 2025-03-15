@@ -27,4 +27,4 @@ NotificationHubPrivateEndpointConnectionResource notificationHubPrivateEndpointC
 // invoke the operation
 await notificationHubPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

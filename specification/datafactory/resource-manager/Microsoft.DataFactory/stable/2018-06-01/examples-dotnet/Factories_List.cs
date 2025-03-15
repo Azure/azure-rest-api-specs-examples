@@ -1,10 +1,8 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
-using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.Resources;
@@ -34,4 +32,4 @@ await foreach (DataFactoryResource item in subscriptionResource.GetDataFactories
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

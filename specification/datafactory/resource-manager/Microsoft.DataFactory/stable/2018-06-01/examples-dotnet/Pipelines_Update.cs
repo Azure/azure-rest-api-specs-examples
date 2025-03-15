@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.DataFactory;
@@ -16,67 +17,56 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryPipelineResource created on azure
+// for more information of creating DataFactoryPipelineResource, please refer to the document of DataFactoryPipelineResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryPipelineResource
-DataFactoryPipelineCollection collection = dataFactory.GetDataFactoryPipelines();
+string pipelineName = "examplePipeline";
+ResourceIdentifier dataFactoryPipelineResourceId = DataFactoryPipelineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, pipelineName);
+DataFactoryPipelineResource dataFactoryPipeline = client.GetDataFactoryPipelineResource(dataFactoryPipelineResourceId);
 
 // invoke the operation
-string pipelineName = "examplePipeline";
-DataFactoryPipelineData data = new DataFactoryPipelineData()
+DataFactoryPipelineData data = new DataFactoryPipelineData
 {
     Description = "Example description",
-    Activities =
+    Activities = {new ForEachActivity("ExampleForeachActivity", new DataFactoryExpression(DataFactoryExpressionType.Expression, "@pipeline().parameters.OutputBlobNameList"), new PipelineActivity[]
     {
-    new ForEachActivity("ExampleForeachActivity",new DataFactoryExpression(DataFactoryExpressionType.Expression,"@pipeline().parameters.OutputBlobNameList"),new PipelineActivity[]
+    new CopyActivity("ExampleCopyActivity", new DataFactoryBlobSource(), new DataFactoryBlobSink())
     {
-    new CopyActivity("ExampleCopyActivity",new DataFactoryBlobSource(),new DataFactoryBlobSink())
-    {
-    Inputs =
-    {
-    new DatasetReference(DatasetReferenceType.DatasetReference,"exampleDataset")
+    Inputs = {new DatasetReference(DatasetReferenceType.DatasetReference, "exampleDataset")
     {
     Parameters =
     {
-    ["MyFileName"] = BinaryData.FromString("\"examplecontainer.csv\""),
-    ["MyFolderPath"] = BinaryData.FromString("\"examplecontainer\""),
+    ["MyFileName"] = BinaryData.FromObjectAsJson("examplecontainer.csv"),
+    ["MyFolderPath"] = BinaryData.FromObjectAsJson("examplecontainer")
     },
-    }
-    },
-    Outputs =
-    {
-    new DatasetReference(DatasetReferenceType.DatasetReference,"exampleDataset")
+    }},
+    Outputs = {new DatasetReference(DatasetReferenceType.DatasetReference, "exampleDataset")
     {
     Parameters =
     {
-    ["MyFileName"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    ["MyFileName"] = BinaryData.FromObjectAsJson(new
     {
-    ["type"] = "Expression",
-    ["value"] = "@item()"}),
-    ["MyFolderPath"] = BinaryData.FromString("\"examplecontainer\""),
+    type = "Expression",
+    value = "@item()",
+    }),
+    ["MyFolderPath"] = BinaryData.FromObjectAsJson("examplecontainer")
     },
-    }
-    },
-    DataIntegrationUnits = 32,
+    }},
+    DataIntegrationUnits = null,
     }
     })
     {
     IsSequential = true,
-    }
-    },
+    }},
     Parameters =
     {
-    ["OutputBlobNameList"] = new EntityParameterSpecification(EntityParameterType.Array),
+    ["OutputBlobNameList"] = new EntityParameterSpecification(EntityParameterType.Array)
     },
-    ElapsedTimeMetricDuration = BinaryData.FromString("\"0.00:10:00\""),
+    ElapsedTimeMetricDuration = BinaryData.FromObjectAsJson("0.00:10:00"),
 };
-ArmOperation<DataFactoryPipelineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pipelineName, data);
+ArmOperation<DataFactoryPipelineResource> lro = await dataFactoryPipeline.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryPipelineResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

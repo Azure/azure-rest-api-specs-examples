@@ -26,7 +26,7 @@ ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrat
 DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation and iterate over the result
-GetSsisObjectMetadataContent content = new GetSsisObjectMetadataContent()
+GetSsisObjectMetadataContent content = new GetSsisObjectMetadataContent
 {
     MetadataPath = "ssisFolders",
 };
@@ -35,4 +35,4 @@ await foreach (SsisObjectMetadata item in dataFactoryIntegrationRuntime.GetAllIn
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

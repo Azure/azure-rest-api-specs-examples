@@ -28,7 +28,7 @@ DataFactoryIntegrationRuntimeCollection collection = dataFactory.GetDataFactoryI
 
 // invoke the operation
 string integrationRuntimeName = "exampleIntegrationRuntime";
-DataFactoryIntegrationRuntimeData data = new DataFactoryIntegrationRuntimeData(new SelfHostedIntegrationRuntime()
+DataFactoryIntegrationRuntimeData data = new DataFactoryIntegrationRuntimeData(new SelfHostedIntegrationRuntime
 {
     Description = "A selfhosted integration runtime",
 });

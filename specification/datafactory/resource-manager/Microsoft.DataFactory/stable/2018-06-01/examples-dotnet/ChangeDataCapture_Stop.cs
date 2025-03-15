@@ -26,4 +26,4 @@ DataFactoryChangeDataCaptureResource dataFactoryChangeDataCapture = client.GetDa
 // invoke the operation
 await dataFactoryChangeDataCapture.StopAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

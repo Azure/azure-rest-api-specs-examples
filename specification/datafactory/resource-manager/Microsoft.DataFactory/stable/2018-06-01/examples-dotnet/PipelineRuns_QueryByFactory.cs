@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/PipelineRuns_QueryByFactory.json
@@ -29,17 +27,11 @@ DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResou
 // invoke the operation and iterate over the result
 RunFilterContent content = new RunFilterContent(DateTimeOffset.Parse("2018-06-16T00:36:44.3345758Z"), DateTimeOffset.Parse("2018-06-16T00:49:48.3686473Z"))
 {
-    Filters =
-    {
-    new RunQueryFilter(RunQueryFilterOperand.PipelineName,RunQueryFilterOperator.EqualsValue,new string[]
-    {
-    "examplePipeline"
-    })
-    },
+    Filters = { new RunQueryFilter(RunQueryFilterOperand.PipelineName, RunQueryFilterOperator.EqualsValue, new string[] { "examplePipeline" }) },
 };
 await foreach (DataFactoryPipelineRunInfo item in dataFactory.GetPipelineRunsAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

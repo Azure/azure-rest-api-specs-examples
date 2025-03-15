@@ -25,7 +25,7 @@ ResourceIdentifier dataFactoryServiceCredentialResourceId = DataFactoryServiceCr
 DataFactoryServiceCredentialResource dataFactoryServiceCredential = client.GetDataFactoryServiceCredentialResource(dataFactoryServiceCredentialResourceId);
 
 // invoke the operation
-DataFactoryServiceCredentialData data = new DataFactoryServiceCredentialData(new DataFactoryManagedIdentityCredentialProperties()
+DataFactoryServiceCredentialData data = new DataFactoryServiceCredentialData(new DataFactoryManagedIdentityCredentialProperties
 {
     ResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"),
 });

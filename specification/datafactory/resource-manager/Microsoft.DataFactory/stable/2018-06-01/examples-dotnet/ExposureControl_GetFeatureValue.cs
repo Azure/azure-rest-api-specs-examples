@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation locationId = new AzureLocation("WestEurope");
-ExposureControlContent content = new ExposureControlContent()
+ExposureControlContent content = new ExposureControlContent
 {
     FeatureName = "ADFIntegrationRuntimeSharingRbac",
     FeatureType = "Feature",

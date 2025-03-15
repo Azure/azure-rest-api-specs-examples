@@ -28,7 +28,7 @@ DataFactoryTriggerCollection collection = dataFactory.GetDataFactoryTriggers();
 
 // invoke the operation
 string triggerName = "exampleTrigger";
-DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactoryScheduleTrigger(new ScheduleTriggerRecurrence()
+DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactoryScheduleTrigger(new ScheduleTriggerRecurrence
 {
     Frequency = DataFactoryRecurrenceFrequency.Minute,
     Interval = 4,
@@ -37,17 +37,17 @@ DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactorySchedule
     TimeZone = "UTC",
 })
 {
-    Pipelines =
+    Pipelines = {new TriggerPipelineReference
     {
-    new TriggerPipelineReference()
-    {
-    PipelineReference = new DataFactoryPipelineReference(DataFactoryPipelineReferenceType.PipelineReference,"examplePipeline"),
+    PipelineReference = new DataFactoryPipelineReference(DataFactoryPipelineReferenceType.PipelineReference, "examplePipeline"),
     Parameters =
     {
-    ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[] { "exampleoutput.csv" }),
+    ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[]
+    {
+    "exampleoutput.csv"
+    })
     },
-    }
-    },
+    }},
     Description = "Example description",
 });
 ArmOperation<DataFactoryTriggerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, triggerName, data);

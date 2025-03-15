@@ -27,4 +27,4 @@ DataFactoryDataFlowResource dataFactoryDataFlow = client.GetDataFactoryDataFlowR
 // invoke the operation
 await dataFactoryDataFlow.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

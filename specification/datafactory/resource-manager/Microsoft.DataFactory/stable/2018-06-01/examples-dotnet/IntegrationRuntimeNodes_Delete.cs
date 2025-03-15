@@ -29,4 +29,4 @@ DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.Get
 string nodeName = "Node_1";
 await dataFactoryIntegrationRuntime.DeleteIntegrationRuntimeNodeAsync(nodeName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

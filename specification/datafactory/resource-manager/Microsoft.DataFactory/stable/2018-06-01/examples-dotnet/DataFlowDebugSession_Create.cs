@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager.DataFactory.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_Create.json
@@ -27,15 +25,15 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-DataFactoryDataFlowDebugSessionContent content = new DataFactoryDataFlowDebugSessionContent()
+DataFactoryDataFlowDebugSessionContent content = new DataFactoryDataFlowDebugSessionContent
 {
     TimeToLiveInMinutes = 60,
-    IntegrationRuntime = new DataFactoryIntegrationRuntimeDebugInfo(new ManagedIntegrationRuntime()
+    IntegrationRuntime = new DataFactoryIntegrationRuntimeDebugInfo(new ManagedIntegrationRuntime
     {
-        ComputeProperties = new IntegrationRuntimeComputeProperties()
+        ComputeProperties = new IntegrationRuntimeComputeProperties
         {
             Location = new AzureLocation("AutoResolve"),
-            DataFlowProperties = new IntegrationRuntimeDataFlowProperties()
+            DataFlowProperties = new IntegrationRuntimeDataFlowProperties
             {
                 ComputeType = DataFlowComputeType.General,
                 CoreCount = 48,

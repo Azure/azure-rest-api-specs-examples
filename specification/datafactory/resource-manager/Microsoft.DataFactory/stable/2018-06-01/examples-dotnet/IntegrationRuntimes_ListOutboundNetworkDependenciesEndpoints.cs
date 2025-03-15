@@ -31,4 +31,4 @@ await foreach (IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint ite
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

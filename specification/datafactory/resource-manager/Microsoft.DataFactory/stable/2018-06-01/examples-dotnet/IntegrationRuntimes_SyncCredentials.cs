@@ -28,4 +28,4 @@ DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.Get
 // invoke the operation
 await dataFactoryIntegrationRuntime.SyncCredentialsAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

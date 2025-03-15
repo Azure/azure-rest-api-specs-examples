@@ -28,4 +28,4 @@ DataFactoryDatasetResource dataFactoryDataset = client.GetDataFactoryDatasetReso
 // invoke the operation
 await dataFactoryDataset.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

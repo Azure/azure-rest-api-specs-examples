@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataBox;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsCreateDoubleEncryption.json
 // this example is just showing the usage of "Jobs_Create" operation, for the dependent resources, they will have to be created separately.
@@ -31,10 +31,7 @@ DataBoxJobCollection collection = resourceGroupResource.GetDataBoxJobs();
 string jobName = "TestJobName1";
 DataBoxJobData data = new DataBoxJobData(new AzureLocation("westus"), DataBoxJobTransferType.ImportToAzure, new DataBoxSku(DataBoxSkuName.DataBox))
 {
-    Details = new DataBoxJobDetails(new DataBoxContactDetails("XXXX XXXX", "0000000000", new string[]
-{
-"xxxx@xxxx.xxx"
-})
+    Details = new DataBoxJobDetails(new DataBoxContactDetails("XXXX XXXX", "0000000000", new string[] { "xxxx@xxxx.xxx" })
     {
         PhoneExtension = "",
     })
@@ -47,13 +44,10 @@ DataBoxJobData data = new DataBoxJobData(new AzureLocation("westus"), DataBoxJob
             CompanyName = "XXXX XXXX",
             AddressType = DataBoxShippingAddressType.Commercial,
         },
-        DataImportDetails =
+        DataImportDetails = { new DataImportDetails(new DataBoxStorageAccountDetails(new ResourceIdentifier("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"))) },
+        Preferences = new DataBoxOrderPreferences
         {
-        new DataImportDetails(new DataBoxStorageAccountDetails(new ResourceIdentifier("/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName")))
-        },
-        Preferences = new DataBoxOrderPreferences()
-        {
-            EncryptionPreferences = new DataBoxEncryptionPreferences()
+            EncryptionPreferences = new DataBoxEncryptionPreferences
             {
                 DoubleEncryption = DataBoxDoubleEncryption.Enabled,
             },

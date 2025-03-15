@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/ViewsCreateOrUpdate.json
@@ -24,12 +24,12 @@ ResourceIdentifier viewResourceFormatResourceId = ViewResourceFormatResource.Cre
 ViewResourceFormatResource viewResourceFormat = client.GetViewResourceFormatResource(viewResourceFormatResourceId);
 
 // invoke the operation
-ViewResourceFormatData data = new ViewResourceFormatData()
+ViewResourceFormatData data = new ViewResourceFormatData
 {
     UserId = "testUser",
     DisplayName =
     {
-    ["en"] = "some name",
+    ["en"] = "some name"
     },
     Definition = "{\\\"isProfileType\\\":false,\\\"profileTypes\\\":[],\\\"widgets\\\":[],\\\"style\\\":[]}",
 };

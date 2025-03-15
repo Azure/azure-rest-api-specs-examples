@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CustomerInsights;
 using Azure.ResourceManager.CustomerInsights.Models;
+using Azure.ResourceManager.CustomerInsights;
 
 // Generated from example definition: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/RelationshipsCreateOrUpdate.json
 // this example is just showing the usage of "Relationships_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,34 +15,35 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelationshipResourceFormatResource created on azure
-// for more information of creating RelationshipResourceFormatResource, please refer to the document of RelationshipResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string relationshipName = "SomeRelationship";
-ResourceIdentifier relationshipResourceFormatResourceId = RelationshipResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, relationshipName);
-RelationshipResourceFormatResource relationshipResourceFormat = client.GetRelationshipResourceFormatResource(relationshipResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this RelationshipResourceFormatResource
+RelationshipResourceFormatCollection collection = hub.GetRelationshipResourceFormats();
 
 // invoke the operation
-RelationshipResourceFormatData data = new RelationshipResourceFormatData()
+string relationshipName = "SomeRelationship";
+RelationshipResourceFormatData data = new RelationshipResourceFormatData
 {
     Cardinality = CardinalityType.OneToOne,
     DisplayName =
     {
-    ["en-us"] = "Relationship DisplayName",
+    ["en-us"] = "Relationship DisplayName"
     },
     Description =
     {
-    ["en-us"] = "Relationship Description",
+    ["en-us"] = "Relationship Description"
     },
-    Fields =
-    {
-    },
+    Fields = { },
     ProfileType = "testProfile2326994",
     RelatedProfileType = "testProfile2326994",
 };
-ArmOperation<RelationshipResourceFormatResource> lro = await relationshipResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RelationshipResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, relationshipName, data);
 RelationshipResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

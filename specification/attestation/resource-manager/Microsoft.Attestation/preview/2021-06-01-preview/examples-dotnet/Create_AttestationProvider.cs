@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Attestation;
 using Azure.ResourceManager.Attestation.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Attestation;
 
 // Generated from example definition: specification/attestation/resource-manager/Microsoft.Attestation/preview/2021-06-01-preview/examples/Create_AttestationProvider.json
 // this example is just showing the usage of "AttestationProviders_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ AttestationProviderCollection collection = resourceGroupResource.GetAttestationP
 
 // invoke the operation
 string providerName = "myattestationprovider";
-AttestationProviderCreateOrUpdateContent content = new AttestationProviderCreateOrUpdateContent(new AzureLocation("East US"), new AttestationServiceCreationSpecificParams()
+AttestationProviderCreateOrUpdateContent content = new AttestationProviderCreateOrUpdateContent(new AzureLocation("East US"), new AttestationServiceCreationSpecificParams
 {
     PublicNetworkAccess = PublicNetworkAccessType.Enabled,
 })
@@ -37,7 +37,7 @@ AttestationProviderCreateOrUpdateContent content = new AttestationProviderCreate
     {
     ["Property1"] = "Value1",
     ["Property2"] = "Value2",
-    ["Property3"] = "Value3",
+    ["Property3"] = "Value3"
     },
 };
 ArmOperation<AttestationProviderResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, providerName, content);

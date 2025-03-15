@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Attestation;
-using Azure.ResourceManager.Attestation.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Attestation;
 
 // Generated from example definition: specification/attestation/resource-manager/Microsoft.Attestation/preview/2021-06-01-preview/examples/Get_DefaultProviderByLocation.json
 // this example is just showing the usage of "AttestationProviders_GetDefaultByLocation" operation, for the dependent resources, they will have to be created separately.

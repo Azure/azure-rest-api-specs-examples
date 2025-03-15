@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Sphere;
 using Azure.ResourceManager.Sphere.Models;
+using Azure.ResourceManager.Sphere;
 
 // Generated from example definition: specification/sphere/resource-manager/Microsoft.AzureSphere/stable/2024-04-01/examples/PostListDeviceGroupsCatalog.json
 // this example is just showing the usage of "Catalogs_ListDeviceGroups" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier sphereCatalogResourceId = SphereCatalogResource.CreateResourc
 SphereCatalogResource sphereCatalog = client.GetSphereCatalogResource(sphereCatalogResourceId);
 
 // invoke the operation and iterate over the result
-ListSphereDeviceGroupsContent content = new ListSphereDeviceGroupsContent()
+ListSphereDeviceGroupsContent content = new ListSphereDeviceGroupsContent
 {
     DeviceGroupName = "MyDeviceGroup1",
 };
@@ -38,4 +37,4 @@ await foreach (SphereDeviceGroupResource item in sphereCatalog.GetDeviceGroupsAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

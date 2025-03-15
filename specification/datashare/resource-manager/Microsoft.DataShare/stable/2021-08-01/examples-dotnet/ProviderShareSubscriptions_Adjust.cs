@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/ProviderShareSubscriptions_Adjust.json
@@ -25,7 +25,7 @@ ResourceIdentifier providerShareSubscriptionResourceId = ProviderShareSubscripti
 ProviderShareSubscriptionResource providerShareSubscription = client.GetProviderShareSubscriptionResource(providerShareSubscriptionResourceId);
 
 // invoke the operation
-ProviderShareSubscriptionData data = new ProviderShareSubscriptionData()
+ProviderShareSubscriptionData data = new ProviderShareSubscriptionData
 {
     ExpireOn = DateTimeOffset.Parse("2020-12-26T22:33:24.5785265Z"),
 };

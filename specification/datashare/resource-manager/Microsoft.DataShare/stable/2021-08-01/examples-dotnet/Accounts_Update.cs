@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataShare;
 using Azure.ResourceManager.DataShare.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/Accounts_Update.json
 // this example is just showing the usage of "Accounts_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier dataShareAccountResourceId = DataShareAccountResource.CreateR
 DataShareAccountResource dataShareAccount = client.GetDataShareAccountResource(dataShareAccountResourceId);
 
 // invoke the operation
-DataShareAccountPatch patch = new DataShareAccountPatch()
+DataShareAccountPatch patch = new DataShareAccountPatch
 {
     Tags =
     {
     ["tag1"] = "Red",
-    ["tag2"] = "White",
+    ["tag2"] = "White"
     },
 };
 DataShareAccountResource result = await dataShareAccount.UpdateAsync(patch);

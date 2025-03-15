@@ -1,10 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataShare;
 using Azure.ResourceManager.DataShare.Models;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataShare;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/EmailRegistrations_ActivateEmail.json
 // this example is just showing the usage of "EmailRegistrations_ActivateEmail" operation, for the dependent resources, they will have to be created separately.
@@ -14,13 +16,11 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation
 AzureLocation location = new AzureLocation("East US 2");
-DataShareEmailRegistration emailRegistration = new DataShareEmailRegistration()
+DataShareEmailRegistration emailRegistration = new DataShareEmailRegistration
 {
     ActivationCode = "djsfhakj2lekowd3wepfklpwe9lpflcd",
 };

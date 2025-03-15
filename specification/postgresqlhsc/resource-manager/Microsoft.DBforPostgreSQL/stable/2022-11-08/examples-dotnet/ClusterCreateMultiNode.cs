@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CosmosDBForPostgreSql;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.CosmosDBForPostgreSql;
 
 // Generated from example definition: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/ClusterCreateMultiNode.json
 // this example is just showing the usage of "Clusters_Create" operation, for the dependent resources, they will have to be created separately.
@@ -44,9 +44,7 @@ CosmosDBForPostgreSqlClusterData data = new CosmosDBForPostgreSqlClusterData(new
     NodeStorageQuotaInMb = 524288,
     NodeVCores = 8,
     IsNodePublicIPAccessEnabled = false,
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<CosmosDBForPostgreSqlClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);
 CosmosDBForPostgreSqlClusterResource result = lro.Value;

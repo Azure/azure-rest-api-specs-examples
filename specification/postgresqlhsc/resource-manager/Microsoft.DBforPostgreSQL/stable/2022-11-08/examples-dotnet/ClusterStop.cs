@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.CosmosDBForPostgreSql;
 using Azure.ResourceManager.CosmosDBForPostgreSql.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.CosmosDBForPostgreSql;
 
 // Generated from example definition: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/ClusterStop.json
 // this example is just showing the usage of "Clusters_Stop" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ CosmosDBForPostgreSqlClusterResource cosmosDBForPostgreSqlCluster = client.GetCo
 // invoke the operation
 await cosmosDBForPostgreSqlCluster.StopAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.CosmosDBForPostgreSql;
 
 // Generated from example definition: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/RoleDelete.json
@@ -26,4 +26,4 @@ CosmosDBForPostgreSqlRoleResource cosmosDBForPostgreSqlRole = client.GetCosmosDB
 // invoke the operation
 await cosmosDBForPostgreSqlRole.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

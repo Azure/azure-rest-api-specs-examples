@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/Files_CreateOrUpdate.json
 // this example is just showing the usage of "Files_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +29,9 @@ ProjectFileCollection collection = project.GetProjectFiles();
 
 // invoke the operation
 string fileName = "x114d023d8";
-ProjectFileData data = new ProjectFileData()
+ProjectFileData data = new ProjectFileData
 {
-    Properties = new ProjectFileProperties()
+    Properties = new ProjectFileProperties
     {
         FilePath = "DmsSdkFilePath/DmsSdkFile.sql",
     },

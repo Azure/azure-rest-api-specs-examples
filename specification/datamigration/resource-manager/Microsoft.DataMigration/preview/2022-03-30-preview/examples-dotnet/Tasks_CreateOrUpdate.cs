@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/Tasks_CreateOrUpdate.json
 // this example is just showing the usage of "Tasks_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +29,9 @@ ServiceProjectTaskCollection collection = project.GetServiceProjectTasks();
 
 // invoke the operation
 string taskName = "DmsSdkTask";
-ProjectTaskData data = new ProjectTaskData()
+ProjectTaskData data = new ProjectTaskData
 {
-    Properties = new ConnectToTargetSqlDBTaskProperties()
+    Properties = new ConnectToTargetSqlDBTaskProperties
     {
         Input = new ConnectToTargetSqlDBTaskInput(new SqlConnectionInfo("ssma-test-server.database.windows.net")
         {

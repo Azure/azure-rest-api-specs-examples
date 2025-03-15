@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/DeleteMigrationService.json
 // this example is just showing the usage of "SqlMigrationServices_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ SqlMigrationServiceResource sqlMigrationService = client.GetSqlMigrationServiceR
 // invoke the operation
 await sqlMigrationService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

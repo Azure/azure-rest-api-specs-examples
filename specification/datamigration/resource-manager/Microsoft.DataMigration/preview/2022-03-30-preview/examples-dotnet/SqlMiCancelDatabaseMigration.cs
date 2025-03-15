@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/SqlMiCancelDatabaseMigration.json
-// this example is just showing the usage of "DatabaseMigrationsSqlMi_cancel" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "DatabaseMigrationsSqlMi_Cancel" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -25,10 +25,10 @@ ResourceIdentifier databaseMigrationSqlMIResourceId = DatabaseMigrationSqlMIReso
 DatabaseMigrationSqlMIResource databaseMigrationSqlMI = client.GetDatabaseMigrationSqlMIResource(databaseMigrationSqlMIResourceId);
 
 // invoke the operation
-MigrationOperationInput input = new MigrationOperationInput()
+MigrationOperationInput input = new MigrationOperationInput
 {
     MigrationOperationId = Guid.Parse("4124fe90-d1b6-4b50-b4d9-46d02381f59a"),
 };
 await databaseMigrationSqlMI.CancelAsync(WaitUntil.Completed, input);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

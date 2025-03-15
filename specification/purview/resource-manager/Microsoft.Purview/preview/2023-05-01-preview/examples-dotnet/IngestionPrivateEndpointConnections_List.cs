@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/IngestionPrivateEndpointConnections_List.json
 // this example is just showing the usage of "IngestionPrivateEndpointConnections_List" operation, for the dependent resources, they will have to be created separately.
@@ -34,4 +33,4 @@ await foreach (PurviewPrivateEndpointConnectionResource item in purviewAccount.G
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

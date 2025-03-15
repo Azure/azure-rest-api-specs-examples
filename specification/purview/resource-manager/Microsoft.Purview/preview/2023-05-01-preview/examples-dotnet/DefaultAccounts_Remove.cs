@@ -1,10 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/DefaultAccounts_Remove.json
 // this example is just showing the usage of "DefaultAccounts_Remove" operation, for the dependent resources, they will have to be created separately.
@@ -14,9 +16,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation
 Guid scopeTenantId = Guid.Parse("ee85a74c-405e-4adc-bb47-ffa8ca0c9f31");
@@ -24,4 +24,4 @@ PurviewAccountScopeType scopeType = PurviewAccountScopeType.Tenant;
 string scope = "12345678-1234-1234-1234-12345678abcd";
 await tenantResource.RemoveDefaultAccountAsync(scopeTenantId, scopeType, scope: scope);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

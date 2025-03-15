@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/Accounts_AddRootCollectionAdmin.json
 // this example is just showing the usage of "Accounts_AddRootCollectionAdmin" operation, for the dependent resources, they will have to be created separately.
@@ -25,10 +24,10 @@ ResourceIdentifier purviewAccountResourceId = PurviewAccountResource.CreateResou
 PurviewAccountResource purviewAccount = client.GetPurviewAccountResource(purviewAccountResourceId);
 
 // invoke the operation
-CollectionAdminUpdateContent content = new CollectionAdminUpdateContent()
+CollectionAdminUpdateContent content = new CollectionAdminUpdateContent
 {
     AdminObjectId = "7e8de0e7-2bfc-4e1f-9659-2a5785e4356f",
 };
 await purviewAccount.AddRootCollectionAdminAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

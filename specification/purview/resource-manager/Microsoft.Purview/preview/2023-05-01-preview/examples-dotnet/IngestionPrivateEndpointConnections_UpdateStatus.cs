@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Purview;
 using Azure.ResourceManager.Purview.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Purview;
 
 // Generated from example definition: specification/purview/resource-manager/Microsoft.Purview/preview/2023-05-01-preview/examples/IngestionPrivateEndpointConnections_UpdateStatus.json
 // this example is just showing the usage of "IngestionPrivateEndpointConnections_UpdateStatus" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier purviewAccountResourceId = PurviewAccountResource.CreateResou
 PurviewAccountResource purviewAccount = client.GetPurviewAccountResource(purviewAccountResourceId);
 
 // invoke the operation
-PrivateEndpointConnectionStatusUpdateContent content = new PrivateEndpointConnectionStatusUpdateContent()
+PrivateEndpointConnectionStatusUpdateContent content = new PrivateEndpointConnectionStatusUpdateContent
 {
     PrivateEndpointId = "/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1/privateEndpointConnections/privateEndpointConnection1",
     Status = "Approved",

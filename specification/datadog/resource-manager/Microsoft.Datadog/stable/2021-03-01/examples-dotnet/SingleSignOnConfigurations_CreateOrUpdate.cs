@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Datadog;
 
 // Generated from example definition: specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/examples/SingleSignOnConfigurations_CreateOrUpdate.json
@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatadogMonitorResource created on azure
-// for more information of creating DatadogMonitorResource, please refer to the document of DatadogMonitorResource
+// this example assumes you already have this DatadogSingleSignOnResource created on azure
+// for more information of creating DatadogSingleSignOnResource, please refer to the document of DatadogSingleSignOnResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
-DatadogMonitorResource datadogMonitorResource = client.GetDatadogMonitorResource(datadogMonitorResourceId);
-
-// get the collection of this DatadogSingleSignOnResource
-DatadogSingleSignOnResourceCollection collection = datadogMonitorResource.GetDatadogSingleSignOnResources();
+string configurationName = "default";
+ResourceIdentifier datadogSingleSignOnResourceId = DatadogSingleSignOnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, configurationName);
+DatadogSingleSignOnResource datadogSingleSignOnResource = client.GetDatadogSingleSignOnResource(datadogSingleSignOnResourceId);
 
 // invoke the operation
-string configurationName = "default";
 DatadogSingleSignOnResourceData data = new DatadogSingleSignOnResourceData();
-ArmOperation<DatadogSingleSignOnResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
+ArmOperation<DatadogSingleSignOnResource> lro = await datadogSingleSignOnResource.UpdateAsync(WaitUntil.Completed, data);
 DatadogSingleSignOnResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

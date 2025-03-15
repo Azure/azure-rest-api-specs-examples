@@ -29,7 +29,7 @@ SyncGroupCollection collection = sqlDatabase.GetSyncGroups();
 
 // invoke the operation
 string syncGroupName = "syncgroupcrud-3187";
-SyncGroupData data = new SyncGroupData()
+SyncGroupData data = new SyncGroupData
 {
     Interval = -1,
     ConflictResolutionPolicy = SyncConflictResolutionPolicy.HubWin,

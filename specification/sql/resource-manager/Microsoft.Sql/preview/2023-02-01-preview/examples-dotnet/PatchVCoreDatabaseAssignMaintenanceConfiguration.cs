@@ -27,7 +27,7 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation
-SqlDatabasePatch patch = new SqlDatabasePatch()
+SqlDatabasePatch patch = new SqlDatabasePatch
 {
     Sku = new SqlSku("BC_Gen5_4"),
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_SouthEastAsia_1"),

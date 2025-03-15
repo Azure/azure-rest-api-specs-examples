@@ -24,7 +24,7 @@ ResourceIdentifier iPv6FirewallRuleResourceId = IPv6FirewallRuleResource.CreateR
 IPv6FirewallRuleResource iPv6FirewallRule = client.GetIPv6FirewallRuleResource(iPv6FirewallRuleResourceId);
 
 // invoke the operation
-IPv6FirewallRuleData data = new IPv6FirewallRuleData()
+IPv6FirewallRuleData data = new IPv6FirewallRuleData
 {
     StartIPv6Address = "0000:0000:0000:0000:0000:ffff:0000:0003",
     EndIPv6Address = "0000:0000:0000:0000:0000:ffff:0000:0003",

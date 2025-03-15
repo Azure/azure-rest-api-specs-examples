@@ -30,4 +30,4 @@ await foreach (ManagedInstanceLongTermRetentionBackupData item in resourceGroupR
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

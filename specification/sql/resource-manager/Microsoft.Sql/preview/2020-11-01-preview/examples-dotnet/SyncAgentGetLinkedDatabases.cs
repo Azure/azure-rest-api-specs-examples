@@ -30,4 +30,4 @@ await foreach (SyncAgentLinkedDatabase item in syncAgent.GetLinkedDatabasesAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

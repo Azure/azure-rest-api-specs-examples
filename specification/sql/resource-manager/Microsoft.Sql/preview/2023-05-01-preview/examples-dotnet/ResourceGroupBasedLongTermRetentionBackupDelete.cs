@@ -29,4 +29,4 @@ ResourceGroupLongTermRetentionBackupResource resourceGroupLongTermRetentionBacku
 // invoke the operation
 await resourceGroupLongTermRetentionBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

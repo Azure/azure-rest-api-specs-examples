@@ -27,7 +27,7 @@ DistributedAvailabilityGroupCollection collection = managedInstance.GetDistribut
 
 // invoke the operation
 string distributedAvailabilityGroupName = "dag";
-DistributedAvailabilityGroupData data = new DistributedAvailabilityGroupData()
+DistributedAvailabilityGroupData data = new DistributedAvailabilityGroupData
 {
     TargetDatabase = "testdb",
     SourceEndpoint = "TCP://SERVER:7022",

@@ -29,7 +29,7 @@ ManagedBackupShortTermRetentionPolicyCollection collection = managedDatabase.Get
 
 // invoke the operation
 ManagedShortTermRetentionPolicyName policyName = ManagedShortTermRetentionPolicyName.Default;
-ManagedBackupShortTermRetentionPolicyData data = new ManagedBackupShortTermRetentionPolicyData()
+ManagedBackupShortTermRetentionPolicyData data = new ManagedBackupShortTermRetentionPolicyData
 {
     RetentionDays = 14,
 };

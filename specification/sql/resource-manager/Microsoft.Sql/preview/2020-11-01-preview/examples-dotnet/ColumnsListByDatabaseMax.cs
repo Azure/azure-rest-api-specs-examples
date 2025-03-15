@@ -27,22 +27,10 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation and iterate over the result
-IEnumerable<string> schema = new string[]
-{
-"dbo"
-};
-IEnumerable<string> table = new string[]
-{
-"customer","address"
-};
-IEnumerable<string> column = new string[]
-{
-"username"
-};
-IEnumerable<string> orderBy = new string[]
-{
-"schema asc","table","column desc"
-};
+IEnumerable<string> schema = new string[] { "dbo" };
+IEnumerable<string> table = new string[] { "customer", "address" };
+IEnumerable<string> column = new string[] { "username" };
+IEnumerable<string> orderBy = new string[] { "schema asc", "table", "column desc" };
 await foreach (SqlDatabaseColumnResource item in sqlDatabase.GetDatabaseColumnsAsync(schema: schema, table: table, column: column, orderBy: orderBy))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -52,4 +40,4 @@ await foreach (SqlDatabaseColumnResource item in sqlDatabase.GetDatabaseColumnsA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

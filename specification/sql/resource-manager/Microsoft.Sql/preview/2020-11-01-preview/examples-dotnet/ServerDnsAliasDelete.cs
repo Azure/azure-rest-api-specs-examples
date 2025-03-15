@@ -27,4 +27,4 @@ SqlServerDnsAliasResource sqlServerDnsAlias = client.GetSqlServerDnsAliasResourc
 // invoke the operation
 await sqlServerDnsAlias.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

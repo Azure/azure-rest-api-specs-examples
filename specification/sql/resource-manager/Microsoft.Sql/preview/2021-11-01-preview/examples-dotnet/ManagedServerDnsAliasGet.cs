@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedServerDnsAliasResource created on azure
-// for more information of creating ManagedServerDnsAliasResource, please refer to the document of ManagedServerDnsAliasResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string managedInstanceName = "dns-mi";
-string dnsAliasName = "dns-alias-mi";
-ResourceIdentifier managedServerDnsAliasResourceId = ManagedServerDnsAliasResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, dnsAliasName);
-ManagedServerDnsAliasResource managedServerDnsAlias = client.GetManagedServerDnsAliasResource(managedServerDnsAliasResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedServerDnsAliasResource
+ManagedServerDnsAliasCollection collection = managedInstance.GetManagedServerDnsAliases();
 
 // invoke the operation
-ManagedServerDnsAliasResource result = await managedServerDnsAlias.GetAsync();
+string dnsAliasName = "dns-alias-mi";
+NullableResponse<ManagedServerDnsAliasResource> response = await collection.GetIfExistsAsync(dnsAliasName);
+ManagedServerDnsAliasResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedServerDnsAliasData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagedServerDnsAliasData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

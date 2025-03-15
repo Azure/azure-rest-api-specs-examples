@@ -26,34 +26,31 @@ ResourceIdentifier sqlServerJobTargetGroupResourceId = SqlServerJobTargetGroupRe
 SqlServerJobTargetGroupResource sqlServerJobTargetGroup = client.GetSqlServerJobTargetGroupResource(sqlServerJobTargetGroupResourceId);
 
 // invoke the operation
-SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData()
+SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData
 {
-    Members =
-    {
-    new JobTarget(JobTargetType.SqlDatabase)
+    Members = {new JobTarget(JobTargetType.SqlDatabase)
     {
     MembershipType = JobTargetGroupMembershipType.Exclude,
     ServerName = "server1",
     DatabaseName = "database1",
-    },new JobTarget(JobTargetType.SqlServer)
+    }, new JobTarget(JobTargetType.SqlServer)
     {
     MembershipType = JobTargetGroupMembershipType.Include,
     ServerName = "server1",
     RefreshCredential = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/credentials/testCredential",
-    },new JobTarget(JobTargetType.SqlElasticPool)
+    }, new JobTarget(JobTargetType.SqlElasticPool)
     {
     MembershipType = JobTargetGroupMembershipType.Include,
     ServerName = "server2",
     ElasticPoolName = "pool1",
     RefreshCredential = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/credentials/testCredential",
-    },new JobTarget(JobTargetType.SqlShardMap)
+    }, new JobTarget(JobTargetType.SqlShardMap)
     {
     MembershipType = JobTargetGroupMembershipType.Include,
     ServerName = "server3",
     ShardMapName = "shardMap1",
     RefreshCredential = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/credentials/testCredential",
-    }
-    },
+    }},
 };
 ArmOperation<SqlServerJobTargetGroupResource> lro = await sqlServerJobTargetGroup.UpdateAsync(WaitUntil.Completed, data);
 SqlServerJobTargetGroupResource result = lro.Value;

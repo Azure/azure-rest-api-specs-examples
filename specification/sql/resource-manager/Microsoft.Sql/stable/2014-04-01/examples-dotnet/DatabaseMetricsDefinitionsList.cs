@@ -32,4 +32,4 @@ await foreach (SqlMetricDefinition item in sqlDatabase.GetMetricDefinitionsAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

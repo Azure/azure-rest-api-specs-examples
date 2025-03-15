@@ -28,4 +28,4 @@ SubscriptionLongTermRetentionBackupResource subscriptionLongTermRetentionBackup 
 // invoke the operation
 await subscriptionLongTermRetentionBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

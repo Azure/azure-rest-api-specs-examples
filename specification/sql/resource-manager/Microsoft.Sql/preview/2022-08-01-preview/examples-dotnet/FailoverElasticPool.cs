@@ -27,4 +27,4 @@ ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResou
 // invoke the operation
 await elasticPool.FailoverAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

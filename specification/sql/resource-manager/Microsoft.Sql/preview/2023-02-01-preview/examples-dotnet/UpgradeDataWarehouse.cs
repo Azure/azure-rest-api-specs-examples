@@ -29,4 +29,4 @@ SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResou
 // invoke the operation
 await sqlDatabase.UpgradeDataWarehouseAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

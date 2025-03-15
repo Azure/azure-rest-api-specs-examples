@@ -30,4 +30,4 @@ await foreach (SqlMetricDefinition item in elasticPool.GetMetricDefinitionsAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

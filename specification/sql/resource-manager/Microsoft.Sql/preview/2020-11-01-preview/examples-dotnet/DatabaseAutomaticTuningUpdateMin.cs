@@ -25,7 +25,7 @@ ResourceIdentifier sqlDatabaseAutomaticTuningResourceId = SqlDatabaseAutomaticTu
 SqlDatabaseAutomaticTuningResource sqlDatabaseAutomaticTuning = client.GetSqlDatabaseAutomaticTuningResource(sqlDatabaseAutomaticTuningResourceId);
 
 // invoke the operation
-SqlDatabaseAutomaticTuningData data = new SqlDatabaseAutomaticTuningData()
+SqlDatabaseAutomaticTuningData data = new SqlDatabaseAutomaticTuningData
 {
     DesiredState = AutomaticTuningMode.Auto,
 };

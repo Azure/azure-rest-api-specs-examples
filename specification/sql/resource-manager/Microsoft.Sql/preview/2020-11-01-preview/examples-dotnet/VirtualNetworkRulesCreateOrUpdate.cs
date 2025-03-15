@@ -27,7 +27,7 @@ SqlServerVirtualNetworkRuleCollection collection = sqlServer.GetSqlServerVirtual
 
 // invoke the operation
 string virtualNetworkRuleName = "vnet-firewall-rule";
-SqlServerVirtualNetworkRuleData data = new SqlServerVirtualNetworkRuleData()
+SqlServerVirtualNetworkRuleData data = new SqlServerVirtualNetworkRuleData
 {
     VirtualNetworkSubnetId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"),
     IgnoreMissingVnetServiceEndpoint = false,

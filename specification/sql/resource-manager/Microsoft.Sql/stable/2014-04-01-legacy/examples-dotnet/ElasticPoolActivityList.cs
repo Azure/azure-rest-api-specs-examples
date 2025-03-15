@@ -30,4 +30,4 @@ await foreach (ElasticPoolActivity item in elasticPool.GetElasticPoolActivitiesA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

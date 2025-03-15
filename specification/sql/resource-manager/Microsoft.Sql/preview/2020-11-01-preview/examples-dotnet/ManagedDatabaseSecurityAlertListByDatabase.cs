@@ -37,4 +37,4 @@ await foreach (ManagedDatabaseSecurityAlertPolicyResource item in collection.Get
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

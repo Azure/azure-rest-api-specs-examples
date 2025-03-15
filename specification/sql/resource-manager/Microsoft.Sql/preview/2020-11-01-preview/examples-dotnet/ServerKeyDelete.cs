@@ -27,4 +27,4 @@ SqlServerKeyResource sqlServerKey = client.GetSqlServerKeyResource(sqlServerKeyR
 // invoke the operation
 await sqlServerKey.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

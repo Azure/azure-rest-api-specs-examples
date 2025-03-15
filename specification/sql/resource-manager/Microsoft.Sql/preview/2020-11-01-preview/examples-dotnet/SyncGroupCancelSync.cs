@@ -4,8 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -30,4 +28,4 @@ SyncGroupResource syncGroup = client.GetSyncGroupResource(syncGroupResourceId);
 // invoke the operation
 await syncGroup.CancelSyncAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,4 +29,4 @@ SqlDatabaseColumnResource sqlDatabaseColumn = client.GetSqlDatabaseColumnResourc
 // invoke the operation
 await sqlDatabaseColumn.EnableRecommendationSensitivityLabelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

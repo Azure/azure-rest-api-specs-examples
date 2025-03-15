@@ -25,7 +25,7 @@ ResourceIdentifier managedInstanceAdvancedThreatProtectionResourceId = ManagedIn
 ManagedInstanceAdvancedThreatProtectionResource managedInstanceAdvancedThreatProtection = client.GetManagedInstanceAdvancedThreatProtectionResource(managedInstanceAdvancedThreatProtectionResourceId);
 
 // invoke the operation
-ManagedInstanceAdvancedThreatProtectionData data = new ManagedInstanceAdvancedThreatProtectionData()
+ManagedInstanceAdvancedThreatProtectionData data = new ManagedInstanceAdvancedThreatProtectionData
 {
     State = AdvancedThreatProtectionState.Enabled,
 };

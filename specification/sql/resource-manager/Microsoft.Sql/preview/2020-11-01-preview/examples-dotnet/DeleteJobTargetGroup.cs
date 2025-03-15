@@ -28,4 +28,4 @@ SqlServerJobTargetGroupResource sqlServerJobTargetGroup = client.GetSqlServerJob
 // invoke the operation
 await sqlServerJobTargetGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

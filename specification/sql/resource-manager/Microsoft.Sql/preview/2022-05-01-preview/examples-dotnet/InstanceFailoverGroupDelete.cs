@@ -27,4 +27,4 @@ InstanceFailoverGroupResource instanceFailoverGroup = client.GetInstanceFailover
 // invoke the operation
 await instanceFailoverGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

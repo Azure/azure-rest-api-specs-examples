@@ -27,4 +27,4 @@ WorkloadGroupResource workloadGroup = client.GetWorkloadGroupResource(workloadGr
 // invoke the operation
 await workloadGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

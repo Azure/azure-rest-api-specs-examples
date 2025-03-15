@@ -26,4 +26,4 @@ ManagedInstanceServerTrustCertificateResource managedInstanceServerTrustCertific
 // invoke the operation
 await managedInstanceServerTrustCertificate.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

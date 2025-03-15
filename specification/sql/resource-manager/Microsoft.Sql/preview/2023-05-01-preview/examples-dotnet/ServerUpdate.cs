@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,7 +24,7 @@ ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentif
 SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
 
 // invoke the operation
-SqlServerPatch patch = new SqlServerPatch()
+SqlServerPatch patch = new SqlServerPatch
 {
     AdministratorLogin = "dummylogin",
     AdministratorLoginPassword = "placeholder",

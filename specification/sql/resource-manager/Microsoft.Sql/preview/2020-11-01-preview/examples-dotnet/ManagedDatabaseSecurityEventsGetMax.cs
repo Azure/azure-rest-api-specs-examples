@@ -35,4 +35,4 @@ await foreach (SecurityEvent item in managedDatabase.GetManagedDatabaseSecurityE
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

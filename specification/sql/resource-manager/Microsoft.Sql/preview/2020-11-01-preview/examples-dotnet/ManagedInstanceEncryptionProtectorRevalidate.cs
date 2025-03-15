@@ -27,4 +27,4 @@ ManagedInstanceEncryptionProtectorResource managedInstanceEncryptionProtector = 
 // invoke the operation
 await managedInstanceEncryptionProtector.RevalidateAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

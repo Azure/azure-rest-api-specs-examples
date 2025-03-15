@@ -27,25 +27,25 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation
-SqlDatabasePatch patch = new SqlDatabasePatch()
+SqlDatabasePatch patch = new SqlDatabasePatch
 {
     Sku = new SqlSku("S0")
     {
         Tier = "Standard",
     },
-    Identity = new DatabaseIdentity()
+    Identity = new DatabaseIdentity
     {
         IdentityType = DatabaseIdentityType.UserAssigned,
         UserAssignedIdentities =
         {
         ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi"] = new UserAssignedIdentity(),
-        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umiToDelete"] = null,
+        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umiToDelete"] = default
         },
     },
     Keys =
     {
     ["https://your-key-vault-name.vault.azure.net/yourKey/yourKeyVersion"] = new SqlDatabaseKey(),
-    ["https://your-key-vault-name.vault.azure.net/yourKey2/yourKey2VersionToDelete"] = null,
+    ["https://your-key-vault-name.vault.azure.net/yourKey2/yourKey2VersionToDelete"] = default
     },
     EncryptionProtector = "https://your-key-vault-name.vault.azure.net/yourKey/yourKeyVersion",
 };

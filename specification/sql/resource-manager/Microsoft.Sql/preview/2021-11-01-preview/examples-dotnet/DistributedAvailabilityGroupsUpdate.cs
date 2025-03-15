@@ -25,7 +25,7 @@ ResourceIdentifier distributedAvailabilityGroupResourceId = DistributedAvailabil
 DistributedAvailabilityGroupResource distributedAvailabilityGroup = client.GetDistributedAvailabilityGroupResource(distributedAvailabilityGroupResourceId);
 
 // invoke the operation
-DistributedAvailabilityGroupData data = new DistributedAvailabilityGroupData()
+DistributedAvailabilityGroupData data = new DistributedAvailabilityGroupData
 {
     ReplicationMode = DistributedAvailabilityGroupReplicationMode.Sync,
 };

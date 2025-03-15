@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -29,7 +28,7 @@ DatabaseImportDefinition databaseImportDefinition = new DatabaseImportDefinition
 {
     DatabaseName = "testdb",
     AuthenticationType = "Sql",
-    NetworkIsolation = new NetworkIsolationSettings()
+    NetworkIsolation = new NetworkIsolationSettings
     {
         StorageAccountResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Storage/storageAccounts/test-privatelink"),
         SqlServerResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/testsvr"),

@@ -27,4 +27,4 @@ DistributedAvailabilityGroupResource distributedAvailabilityGroup = client.GetDi
 // invoke the operation
 await distributedAvailabilityGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

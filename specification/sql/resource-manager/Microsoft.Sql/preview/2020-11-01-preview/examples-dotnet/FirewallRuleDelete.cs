@@ -26,4 +26,4 @@ SqlFirewallRuleResource sqlFirewallRule = client.GetSqlFirewallRuleResource(sqlF
 // invoke the operation
 await sqlFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

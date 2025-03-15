@@ -27,7 +27,7 @@ ResourceIdentifier recommendedActionResourceId = RecommendedActionResource.Creat
 RecommendedActionResource recommendedAction = client.GetRecommendedActionResource(recommendedActionResourceId);
 
 // invoke the operation
-RecommendedActionData data = new RecommendedActionData()
+RecommendedActionData data = new RecommendedActionData
 {
     State = new RecommendedActionStateInfo(RecommendedActionCurrentState.Pending),
 };

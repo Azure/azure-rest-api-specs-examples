@@ -26,7 +26,7 @@ ResourceIdentifier subscriptionLongTermRetentionBackupResourceId = SubscriptionL
 SubscriptionLongTermRetentionBackupResource subscriptionLongTermRetentionBackup = client.GetSubscriptionLongTermRetentionBackupResource(subscriptionLongTermRetentionBackupResourceId);
 
 // invoke the operation
-UpdateLongTermRetentionBackupContent content = new UpdateLongTermRetentionBackupContent()
+UpdateLongTermRetentionBackupContent content = new UpdateLongTermRetentionBackupContent
 {
     RequestedBackupStorageRedundancy = SqlBackupStorageRedundancy.Geo,
 };

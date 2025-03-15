@@ -29,4 +29,4 @@ ManagedDatabaseColumnResource managedDatabaseColumn = client.GetManagedDatabaseC
 // invoke the operation
 await managedDatabaseColumn.EnableRecommendationManagedDatabaseSensitivityLabelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

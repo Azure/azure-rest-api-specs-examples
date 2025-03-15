@@ -26,7 +26,7 @@ ResourceIdentifier subscriptionLongTermRetentionBackupResourceId = SubscriptionL
 SubscriptionLongTermRetentionBackupResource subscriptionLongTermRetentionBackup = client.GetSubscriptionLongTermRetentionBackupResource(subscriptionLongTermRetentionBackupResourceId);
 
 // invoke the operation
-CopyLongTermRetentionBackupContent content = new CopyLongTermRetentionBackupContent()
+CopyLongTermRetentionBackupContent content = new CopyLongTermRetentionBackupContent
 {
     TargetServerResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver2"),
     TargetDatabaseName = "testDatabase2",

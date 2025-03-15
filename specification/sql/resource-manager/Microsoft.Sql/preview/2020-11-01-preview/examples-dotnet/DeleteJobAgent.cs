@@ -27,4 +27,4 @@ SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResourc
 // invoke the operation
 await sqlServerJobAgent.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

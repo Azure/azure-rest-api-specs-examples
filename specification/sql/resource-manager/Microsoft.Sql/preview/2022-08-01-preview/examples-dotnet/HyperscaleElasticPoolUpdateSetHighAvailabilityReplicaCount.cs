@@ -25,7 +25,7 @@ ResourceIdentifier elasticPoolResourceId = ElasticPoolResource.CreateResourceIde
 ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResourceId);
 
 // invoke the operation
-ElasticPoolPatch patch = new ElasticPoolPatch()
+ElasticPoolPatch patch = new ElasticPoolPatch
 {
     HighAvailabilityReplicaCount = 2,
 };

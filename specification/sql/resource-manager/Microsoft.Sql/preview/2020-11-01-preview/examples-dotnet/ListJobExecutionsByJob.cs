@@ -29,7 +29,7 @@ SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobR
 SqlServerJobExecutionCollection collection = sqlServerJob.GetSqlServerJobExecutions();
 
 // invoke the operation and iterate over the result
-SqlServerJobExecutionCollectionGetAllOptions options = new SqlServerJobExecutionCollectionGetAllOptions() { };
+SqlServerJobExecutionCollectionGetAllOptions options = new SqlServerJobExecutionCollectionGetAllOptions();
 await foreach (SqlServerJobExecutionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -39,4 +39,4 @@ await foreach (SqlServerJobExecutionResource item in collection.GetAllAsync(opti
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

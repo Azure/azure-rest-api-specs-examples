@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -15,17 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this InstanceFailoverGroupResource created on azure
-// for more information of creating InstanceFailoverGroupResource, please refer to the document of InstanceFailoverGroupResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this InstanceFailoverGroupResource
 AzureLocation locationName = new AzureLocation("Japan East");
-string failoverGroupName = "failover-group-test-3";
-ResourceIdentifier instanceFailoverGroupResourceId = InstanceFailoverGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, locationName, failoverGroupName);
-InstanceFailoverGroupResource instanceFailoverGroup = client.GetInstanceFailoverGroupResource(instanceFailoverGroupResourceId);
+InstanceFailoverGroupCollection collection = resourceGroupResource.GetInstanceFailoverGroups(locationName);
 
 // invoke the operation
-InstanceFailoverGroupData data = new InstanceFailoverGroupData()
+string failoverGroupName = "failover-group-test-3";
+InstanceFailoverGroupData data = new InstanceFailoverGroupData
 {
     SecondaryType = GeoSecondaryInstanceType.Geo,
     ReadWriteEndpoint = new InstanceFailoverGroupReadWriteEndpoint(ReadWriteEndpointFailoverPolicy.Automatic)
@@ -33,23 +37,17 @@ InstanceFailoverGroupData data = new InstanceFailoverGroupData()
         FailoverWithDataLossGracePeriodMinutes = 480,
     },
     ReadOnlyEndpointFailoverPolicy = ReadOnlyEndpointFailoverPolicy.Disabled,
-    PartnerRegions =
-    {
-    new PartnerRegionInfo()
+    PartnerRegions = {new PartnerRegionInfo
     {
     Location = new AzureLocation("Japan West"),
-    }
-    },
-    ManagedInstancePairs =
-    {
-    new ManagedInstancePairInfo()
+    }},
+    ManagedInstancePairs = {new ManagedInstancePairInfo
     {
     PrimaryManagedInstanceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/managedInstances/failover-group-primary-mngdInstance"),
     PartnerManagedInstanceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/managedInstances/failover-group-secondary-mngdInstance"),
-    }
-    },
+    }},
 };
-ArmOperation<InstanceFailoverGroupResource> lro = await instanceFailoverGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<InstanceFailoverGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, failoverGroupName, data);
 InstanceFailoverGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

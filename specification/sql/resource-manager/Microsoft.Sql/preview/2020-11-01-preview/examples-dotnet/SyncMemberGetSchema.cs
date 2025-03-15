@@ -32,4 +32,4 @@ await foreach (SyncFullSchemaProperties item in syncMember.GetMemberSchemasAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

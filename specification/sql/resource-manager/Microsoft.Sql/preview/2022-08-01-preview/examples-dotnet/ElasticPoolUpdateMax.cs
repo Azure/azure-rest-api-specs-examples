@@ -25,14 +25,14 @@ ResourceIdentifier elasticPoolResourceId = ElasticPoolResource.CreateResourceIde
 ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResourceId);
 
 // invoke the operation
-ElasticPoolPatch patch = new ElasticPoolPatch()
+ElasticPoolPatch patch = new ElasticPoolPatch
 {
     Sku = new SqlSku("BC_Gen4")
     {
         Tier = "BusinessCritical",
         Capacity = 2,
     },
-    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings
     {
         MinCapacity = 0.25,
         MaxCapacity = 1,

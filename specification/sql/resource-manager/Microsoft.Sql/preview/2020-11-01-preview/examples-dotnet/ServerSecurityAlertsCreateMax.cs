@@ -28,17 +28,11 @@ SqlServerSecurityAlertPolicyCollection collection = sqlServer.GetSqlServerSecuri
 
 // invoke the operation
 SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-SqlServerSecurityAlertPolicyData data = new SqlServerSecurityAlertPolicyData()
+SqlServerSecurityAlertPolicyData data = new SqlServerSecurityAlertPolicyData
 {
     State = SecurityAlertsPolicyState.Enabled,
-    DisabledAlerts =
-    {
-    "Access_Anomaly","Usage_Anomaly"
-    },
-    EmailAddresses =
-    {
-    "testSecurityAlert@microsoft.com"
-    },
+    DisabledAlerts = { "Access_Anomaly", "Usage_Anomaly" },
+    EmailAddresses = { "testSecurityAlert@microsoft.com" },
     SendToEmailAccountAdmins = true,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",

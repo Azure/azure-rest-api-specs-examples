@@ -26,4 +26,4 @@ SqlServerVirtualNetworkRuleResource sqlServerVirtualNetworkRule = client.GetSqlS
 // invoke the operation
 await sqlServerVirtualNetworkRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

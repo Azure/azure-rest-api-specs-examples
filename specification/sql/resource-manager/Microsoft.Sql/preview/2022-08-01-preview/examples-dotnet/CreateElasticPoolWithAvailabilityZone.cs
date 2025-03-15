@@ -31,7 +31,7 @@ string elasticPoolName = "sqlcrudtest-8102";
 ElasticPoolData data = new ElasticPoolData(new AzureLocation("Japan East"))
 {
     Sku = new SqlSku("HS_Gen5_4"),
-    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings
     {
         MinCapacity = 0.25,
         MaxCapacity = 2,

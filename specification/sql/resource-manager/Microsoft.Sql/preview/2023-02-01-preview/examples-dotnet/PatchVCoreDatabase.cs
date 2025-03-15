@@ -27,10 +27,10 @@ ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIde
 SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
 
 // invoke the operation
-SqlDatabasePatch patch = new SqlDatabasePatch()
+SqlDatabasePatch patch = new SqlDatabasePatch
 {
     Sku = new SqlSku("BC_Gen4_4"),
-    MaxSizeBytes = 1073741824,
+    MaxSizeBytes = 1073741824L,
     LicenseType = DatabaseLicenseType.LicenseIncluded,
 };
 ArmOperation<SqlDatabaseResource> lro = await sqlDatabase.UpdateAsync(WaitUntil.Completed, patch);

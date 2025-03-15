@@ -29,7 +29,7 @@ SqlServerDatabaseReplicationLinkCollection collection = sqlDatabase.GetSqlServer
 
 // invoke the operation
 string linkId = "00000000-1111-2222-3333-666666666666";
-SqlServerDatabaseReplicationLinkData data = new SqlServerDatabaseReplicationLinkData()
+SqlServerDatabaseReplicationLinkData data = new SqlServerDatabaseReplicationLinkData
 {
     LinkType = ReplicationLinkType.Standby,
 };

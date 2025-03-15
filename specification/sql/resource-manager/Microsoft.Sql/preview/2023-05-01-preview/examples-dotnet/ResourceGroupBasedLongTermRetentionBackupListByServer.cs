@@ -31,4 +31,4 @@ await foreach (LongTermRetentionBackupData item in resourceGroupResource.GetLong
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

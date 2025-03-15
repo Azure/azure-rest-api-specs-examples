@@ -29,7 +29,8 @@ SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobR
 SqlServerJobExecutionCollection collection = sqlServerJob.GetSqlServerJobExecutions();
 
 // invoke the operation and iterate over the result
-SqlServerJobExecutionCollectionGetJobTargetExecutionsOptions options = new SqlServerJobExecutionCollectionGetJobTargetExecutionsOptions(jobExecutionId: Guid.Parse("5A86BF65-43AC-F258-2524-9E92992F97CA")) { };
+Guid jobExecutionId = Guid.Parse("5A86BF65-43AC-F258-2524-9E92992F97CA");
+SqlServerJobExecutionCollectionGetJobTargetExecutionsOptions options = new SqlServerJobExecutionCollectionGetJobTargetExecutionsOptions(jobExecutionId);
 await foreach (SqlServerJobExecutionStepTargetResource item in collection.GetJobTargetExecutionsAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -39,4 +40,4 @@ await foreach (SqlServerJobExecutionStepTargetResource item in collection.GetJob
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

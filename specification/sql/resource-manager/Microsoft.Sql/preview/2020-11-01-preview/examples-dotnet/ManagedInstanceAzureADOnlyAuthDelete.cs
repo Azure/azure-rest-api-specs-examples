@@ -27,4 +27,4 @@ ManagedInstanceAzureADOnlyAuthenticationResource managedInstanceAzureADOnlyAuthe
 // invoke the operation
 await managedInstanceAzureADOnlyAuthentication.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

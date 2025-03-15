@@ -27,18 +27,15 @@ MaintenanceWindowsResource maintenanceWindows = client.GetMaintenanceWindowsReso
 
 // invoke the operation
 string maintenanceWindowName = "current";
-MaintenanceWindowsData data = new MaintenanceWindowsData()
+MaintenanceWindowsData data = new MaintenanceWindowsData
 {
-    TimeRanges =
-    {
-    new MaintenanceWindowTimeRange()
+    TimeRanges = {new MaintenanceWindowTimeRange
     {
     DayOfWeek = SqlDayOfWeek.Saturday,
     StartTime = "00:00:00",
     Duration = XmlConvert.ToTimeSpan("PT60M"),
-    }
-    },
+    }},
 };
 await maintenanceWindows.CreateOrUpdateAsync(WaitUntil.Completed, maintenanceWindowName, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

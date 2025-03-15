@@ -29,7 +29,7 @@ LongTermRetentionPolicyCollection collection = sqlDatabase.GetLongTermRetentionP
 
 // invoke the operation
 LongTermRetentionPolicyName policyName = LongTermRetentionPolicyName.Default;
-LongTermRetentionPolicyData data = new LongTermRetentionPolicyData()
+LongTermRetentionPolicyData data = new LongTermRetentionPolicyData
 {
     MakeBackupsImmutable = true,
     BackupStorageAccessTier = SqlBackupStorageAccessTier.Hot,

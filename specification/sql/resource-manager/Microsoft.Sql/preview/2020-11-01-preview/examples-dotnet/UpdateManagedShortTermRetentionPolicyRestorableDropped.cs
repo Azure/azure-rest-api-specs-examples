@@ -26,7 +26,7 @@ ResourceIdentifier managedRestorableDroppedDbBackupShortTermRetentionPolicyResou
 ManagedRestorableDroppedDbBackupShortTermRetentionPolicyResource managedRestorableDroppedDbBackupShortTermRetentionPolicy = client.GetManagedRestorableDroppedDbBackupShortTermRetentionPolicyResource(managedRestorableDroppedDbBackupShortTermRetentionPolicyResourceId);
 
 // invoke the operation
-ManagedBackupShortTermRetentionPolicyData data = new ManagedBackupShortTermRetentionPolicyData()
+ManagedBackupShortTermRetentionPolicyData data = new ManagedBackupShortTermRetentionPolicyData
 {
     RetentionDays = 14,
 };

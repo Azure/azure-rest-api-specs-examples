@@ -27,4 +27,4 @@ ManagedInstanceKeyResource managedInstanceKey = client.GetManagedInstanceKeyReso
 // invoke the operation
 await managedInstanceKey.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

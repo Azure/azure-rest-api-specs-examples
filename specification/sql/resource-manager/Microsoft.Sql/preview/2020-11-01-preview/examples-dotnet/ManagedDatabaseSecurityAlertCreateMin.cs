@@ -29,7 +29,7 @@ ManagedDatabaseSecurityAlertPolicyCollection collection = managedDatabase.GetMan
 
 // invoke the operation
 SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-ManagedDatabaseSecurityAlertPolicyData data = new ManagedDatabaseSecurityAlertPolicyData()
+ManagedDatabaseSecurityAlertPolicyData data = new ManagedDatabaseSecurityAlertPolicyData
 {
     State = SecurityAlertPolicyState.Enabled,
 };

@@ -30,4 +30,4 @@ await foreach (DataMaskingRule item in dataMaskingPolicy.GetDataMaskingRulesAsyn
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

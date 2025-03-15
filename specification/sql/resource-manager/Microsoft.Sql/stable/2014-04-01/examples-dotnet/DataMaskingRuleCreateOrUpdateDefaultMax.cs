@@ -26,7 +26,7 @@ DataMaskingPolicyResource dataMaskingPolicy = client.GetDataMaskingPolicyResourc
 
 // invoke the operation
 string dataMaskingRuleName = "rule1";
-DataMaskingRule dataMaskingRule = new DataMaskingRule()
+DataMaskingRule dataMaskingRule = new DataMaskingRule
 {
     AliasName = "nickname",
     RuleState = DataMaskingRuleState.Enabled,

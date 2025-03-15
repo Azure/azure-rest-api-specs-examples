@@ -28,13 +28,10 @@ SqlServerBlobAuditingPolicyCollection collection = sqlServer.GetSqlServerBlobAud
 
 // invoke the operation
 BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-SqlServerBlobAuditingPolicyData data = new SqlServerBlobAuditingPolicyData()
+SqlServerBlobAuditingPolicyData data = new SqlServerBlobAuditingPolicyData
 {
     RetentionDays = 6,
-    AuditActionsAndGroups =
-    {
-    "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP","FAILED_DATABASE_AUTHENTICATION_GROUP","BATCH_COMPLETED_GROUP"
-    },
+    AuditActionsAndGroups = { "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP", "BATCH_COMPLETED_GROUP" },
     IsStorageSecondaryKeyInUse = false,
     IsAzureMonitorTargetEnabled = true,
     QueueDelayMs = 4000,

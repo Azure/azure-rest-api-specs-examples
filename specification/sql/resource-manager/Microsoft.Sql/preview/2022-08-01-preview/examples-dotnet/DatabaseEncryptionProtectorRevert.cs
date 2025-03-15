@@ -30,4 +30,4 @@ SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResou
 EncryptionProtectorName encryptionProtectorName = EncryptionProtectorName.Current;
 await sqlDatabase.RevertDatabaseEncryptionProtectorAsync(WaitUntil.Completed, encryptionProtectorName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

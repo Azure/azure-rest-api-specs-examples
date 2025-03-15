@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
@@ -25,10 +24,10 @@ ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentif
 SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
 
 // invoke the operation
-TdeCertificate tdeCertificate = new TdeCertificate()
+TdeCertificate tdeCertificate = new TdeCertificate
 {
     PrivateBlob = "MIIXXXXXXXX",
 };
 await sqlServer.CreateTdeCertificateAsync(WaitUntil.Completed, tdeCertificate);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

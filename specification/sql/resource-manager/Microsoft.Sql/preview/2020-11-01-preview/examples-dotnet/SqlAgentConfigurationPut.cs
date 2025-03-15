@@ -24,7 +24,7 @@ ResourceIdentifier sqlAgentConfigurationResourceId = SqlAgentConfigurationResour
 SqlAgentConfigurationResource sqlAgentConfiguration = client.GetSqlAgentConfigurationResource(sqlAgentConfigurationResourceId);
 
 // invoke the operation
-SqlAgentConfigurationData data = new SqlAgentConfigurationData()
+SqlAgentConfigurationData data = new SqlAgentConfigurationData
 {
     State = SqlAgentConfigurationPropertiesState.Enabled,
 };

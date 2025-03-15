@@ -27,4 +27,4 @@ FailoverGroupResource failoverGroup = client.GetFailoverGroupResource(failoverGr
 // invoke the operation
 await failoverGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

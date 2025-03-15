@@ -27,4 +27,4 @@ SqlPrivateEndpointConnectionResource sqlPrivateEndpointConnection = client.GetSq
 // invoke the operation
 await sqlPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

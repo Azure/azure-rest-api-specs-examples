@@ -27,4 +27,4 @@ EncryptionProtectorResource encryptionProtector = client.GetEncryptionProtectorR
 // invoke the operation
 await encryptionProtector.RevalidateAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

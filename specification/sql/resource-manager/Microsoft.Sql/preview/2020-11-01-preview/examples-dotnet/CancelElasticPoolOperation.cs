@@ -28,4 +28,4 @@ ElasticPoolResource elasticPool = client.GetElasticPoolResource(elasticPoolResou
 Guid operationId = Guid.Parse("f779414b-e748-4925-8cfe-c8598f7660ae");
 await elasticPool.CancelElasticPoolOperationAsync(operationId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -24,7 +24,7 @@ ResourceIdentifier sqlServerAutomaticTuningResourceId = SqlServerAutomaticTuning
 SqlServerAutomaticTuningResource sqlServerAutomaticTuning = client.GetSqlServerAutomaticTuningResource(sqlServerAutomaticTuningResourceId);
 
 // invoke the operation
-SqlServerAutomaticTuningData data = new SqlServerAutomaticTuningData()
+SqlServerAutomaticTuningData data = new SqlServerAutomaticTuningData
 {
     DesiredState = AutomaticTuningServerMode.Auto,
 };

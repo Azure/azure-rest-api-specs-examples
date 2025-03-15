@@ -35,7 +35,7 @@ ElasticPoolData data = new ElasticPoolData(new AzureLocation("Japan East"))
         Tier = "GeneralPurpose",
         Capacity = 2,
     },
-    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+    PerDatabaseSettings = new ElasticPoolPerDatabaseSettings
     {
         MinCapacity = 0.25,
         MaxCapacity = 2,

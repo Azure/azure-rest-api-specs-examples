@@ -32,7 +32,7 @@ ManagedDatabaseData data = new ManagedDatabaseData(new AzureLocation("southeasta
 {
     Tags =
     {
-    ["tagKey1"] = "TagValue1",
+    ["tagKey1"] = "TagValue1"
     },
 };
 ArmOperation<ManagedDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, data);

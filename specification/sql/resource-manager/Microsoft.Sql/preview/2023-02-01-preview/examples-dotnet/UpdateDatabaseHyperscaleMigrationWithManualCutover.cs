@@ -35,13 +35,13 @@ SqlDatabaseData data = new SqlDatabaseData(new AzureLocation("southeastasia"))
     {
         Tier = "Hyperscale",
     },
-    Identity = new DatabaseIdentity()
+    Identity = new DatabaseIdentity
     {
         IdentityType = DatabaseIdentityType.UserAssigned,
         UserAssignedIdentities =
         {
         ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/userAssignedIdentities/umi"] = new UserAssignedIdentity(),
-        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/userAssignedIdentities/umiToDelete"] = null,
+        ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/userAssignedIdentities/umiToDelete"] = default
         },
     },
     ManualCutover = true,

@@ -26,4 +26,4 @@ ManagedInstanceOperationResource managedInstanceOperation = client.GetManagedIns
 // invoke the operation
 await managedInstanceOperation.CancelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

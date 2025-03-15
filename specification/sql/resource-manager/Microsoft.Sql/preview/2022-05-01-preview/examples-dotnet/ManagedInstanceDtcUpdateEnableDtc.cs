@@ -25,7 +25,7 @@ ResourceIdentifier managedInstanceDtcResourceId = ManagedInstanceDtcResource.Cre
 ManagedInstanceDtcResource managedInstanceDtc = client.GetManagedInstanceDtcResource(managedInstanceDtcResourceId);
 
 // invoke the operation
-ManagedInstanceDtcData data = new ManagedInstanceDtcData()
+ManagedInstanceDtcData data = new ManagedInstanceDtcData
 {
     DtcEnabled = true,
 };

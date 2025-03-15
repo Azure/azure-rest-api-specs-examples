@@ -31,4 +31,4 @@ await foreach (SqlMetric item in elasticPool.GetMetricsAsync(filter))
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

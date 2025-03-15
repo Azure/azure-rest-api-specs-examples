@@ -32,4 +32,4 @@ ManagedDatabaseStartMoveDefinition managedDatabaseStartMoveDefinition = new Mana
 };
 await managedDatabase.StartMoveAsync(WaitUntil.Completed, managedDatabaseStartMoveDefinition);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

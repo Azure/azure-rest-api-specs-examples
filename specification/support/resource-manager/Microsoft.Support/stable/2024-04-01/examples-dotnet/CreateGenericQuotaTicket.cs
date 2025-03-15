@@ -27,7 +27,21 @@ SubscriptionSupportTicketCollection collection = subscriptionResource.GetSubscri
 
 // invoke the operation
 string supportTicketName = "testticket";
-SupportTicketData data = new SupportTicketData("Increase the maximum throughput per container limit to 10000 for account foo bar", "/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cosmosdb_problemClassification_guid", SupportSeverityLevel.Moderate, AdvancedDiagnosticConsent.Yes, new SupportContactProfile("abc", "xyz", PreferredContactMethod.Email, "abc@contoso.com", "Pacific Standard Time", "usa", "en-US"), "my title", "/providers/Microsoft.Support/services/quota_service_guid");
+SupportTicketData data = new SupportTicketData(
+    "Increase the maximum throughput per container limit to 10000 for account foo bar",
+    "/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cosmosdb_problemClassification_guid",
+    SupportSeverityLevel.Moderate,
+    AdvancedDiagnosticConsent.Yes,
+    new SupportContactProfile(
+    "abc",
+    "xyz",
+    PreferredContactMethod.Email,
+    "abc@contoso.com",
+    "Pacific Standard Time",
+    "usa",
+    "en-US"),
+    "my title",
+    "/providers/Microsoft.Support/services/quota_service_guid");
 ArmOperation<SubscriptionSupportTicketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, supportTicketName, data);
 SubscriptionSupportTicketResource result = lro.Value;
 

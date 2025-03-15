@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
@@ -15,16 +16,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this TenantSupportTicketResource
 TenantSupportTicketCollection collection = tenantResource.GetTenantSupportTickets();
 
 // invoke the operation
 string supportTicketName = "testticket";
-SupportTicketData data = new SupportTicketData("my description", "/providers/Microsoft.Support/services/subscription_management_service_guid/problemClassifications/subscription_management_problemClassification_guid", SupportSeverityLevel.Moderate, AdvancedDiagnosticConsent.Yes, new SupportContactProfile("abc", "xyz", PreferredContactMethod.Email, "abc@contoso.com", "Pacific Standard Time", "usa", "en-US"), "my title", "/providers/Microsoft.Support/services/subscription_management_service_guid")
+SupportTicketData data = new SupportTicketData(
+    "my description",
+    "/providers/Microsoft.Support/services/subscription_management_service_guid/problemClassifications/subscription_management_problemClassification_guid",
+    SupportSeverityLevel.Moderate,
+    AdvancedDiagnosticConsent.Yes,
+    new SupportContactProfile(
+    "abc",
+    "xyz",
+    PreferredContactMethod.Email,
+    "abc@contoso.com",
+    "Pacific Standard Time",
+    "usa",
+    "en-US"),
+    "my title",
+    "/providers/Microsoft.Support/services/subscription_management_service_guid")
 {
     SupportPlanId = "U291cmNlOlNDTSxDbGFyaWZ5SW5zdGFsbGF0aW9uU2l0ZUlkOjcsTGluZUl0ZW1JZDo5ODY1NzIyOSxDb250cmFjdElkOjk4NjU5MTk0LFN1YnNjcmlwdGlvbklkOjc2Y2I3N2ZhLThiMTctNGVhYi05NDkzLWI2NWRhY2U5OTgxMyw=",
     FileWorkspaceName = "6f16735c-1530836f-e9970f1a-2e49-47b7-96cd-9746b83aa066",

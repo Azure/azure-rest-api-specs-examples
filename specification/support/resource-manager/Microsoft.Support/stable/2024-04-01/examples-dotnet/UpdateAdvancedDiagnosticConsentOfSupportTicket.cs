@@ -22,7 +22,7 @@ ResourceIdentifier tenantSupportTicketResourceId = TenantSupportTicketResource.C
 TenantSupportTicketResource tenantSupportTicket = client.GetTenantSupportTicketResource(tenantSupportTicketResourceId);
 
 // invoke the operation
-UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket()
+UpdateSupportTicket updateSupportTicket = new UpdateSupportTicket
 {
     AdvancedDiagnosticConsent = AdvancedDiagnosticConsent.Yes,
 };

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automanage;
 using Azure.ResourceManager.Automanage.Models;
+using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/createOrUpdateConfigurationProfileHCIAssignment.json
 // this example is just showing the usage of "ConfigurationProfileHCIAssignments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,24 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomanageHciClusterConfigurationProfileAssignmentResource created on azure
-// for more information of creating AutomanageHciClusterConfigurationProfileAssignmentResource, please refer to the document of AutomanageHciClusterConfigurationProfileAssignmentResource
+// get the collection of this AutomanageHciClusterConfigurationProfileAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string clusterName = "myClusterName";
-string configurationProfileAssignmentName = "default";
-ResourceIdentifier automanageHciClusterConfigurationProfileAssignmentResourceId = AutomanageHciClusterConfigurationProfileAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, configurationProfileAssignmentName);
-AutomanageHciClusterConfigurationProfileAssignmentResource automanageHciClusterConfigurationProfileAssignment = client.GetAutomanageHciClusterConfigurationProfileAssignmentResource(automanageHciClusterConfigurationProfileAssignmentResourceId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}";
+AutomanageHciClusterConfigurationProfileAssignmentCollection collection = client.GetAutomanageHciClusterConfigurationProfileAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation
-AutomanageConfigurationProfileAssignmentData data = new AutomanageConfigurationProfileAssignmentData()
+string configurationProfileAssignmentName = "default";
+AutomanageConfigurationProfileAssignmentData data = new AutomanageConfigurationProfileAssignmentData
 {
-    Properties = new AutomanageConfigurationProfileAssignmentProperties()
+    Properties = new AutomanageConfigurationProfileAssignmentProperties
     {
         ConfigurationProfile = new ResourceIdentifier("/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"),
     },
 };
-ArmOperation<AutomanageHciClusterConfigurationProfileAssignmentResource> lro = await automanageHciClusterConfigurationProfileAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AutomanageHciClusterConfigurationProfileAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationProfileAssignmentName, data);
 AutomanageHciClusterConfigurationProfileAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

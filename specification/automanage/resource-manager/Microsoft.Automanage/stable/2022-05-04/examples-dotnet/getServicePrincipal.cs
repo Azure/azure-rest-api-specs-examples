@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automanage;
 using Azure.ResourceManager.Automanage.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/getServicePrincipal.json
 // this example is just showing the usage of "ServicePrincipals_Get" operation, for the dependent resources, they will have to be created separately.

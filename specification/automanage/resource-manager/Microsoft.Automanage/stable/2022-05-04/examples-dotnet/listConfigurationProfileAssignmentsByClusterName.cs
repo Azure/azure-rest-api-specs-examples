@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automanage;
 using Azure.ResourceManager.Automanage.Models;
+using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/listConfigurationProfileAssignmentsByClusterName.json
 // this example is just showing the usage of "ConfigurationProfileAssignments_ListByClusterName" operation, for the dependent resources, they will have to be created separately.
@@ -15,15 +15,12 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this AutomanageHciClusterConfigurationProfileAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string clusterName = "myClusterName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHci/clusters/{2}", subscriptionId, resourceGroupName, clusterName));
-AutomanageHciClusterConfigurationProfileAssignmentCollection collection = client.GetAutomanageHciClusterConfigurationProfileAssignments(scopeId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}";
+AutomanageHciClusterConfigurationProfileAssignmentCollection collection = client.GetAutomanageHciClusterConfigurationProfileAssignments(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (AutomanageHciClusterConfigurationProfileAssignmentResource item in collection.GetAllAsync())
@@ -35,4 +32,4 @@ await foreach (AutomanageHciClusterConfigurationProfileAssignmentResource item i
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

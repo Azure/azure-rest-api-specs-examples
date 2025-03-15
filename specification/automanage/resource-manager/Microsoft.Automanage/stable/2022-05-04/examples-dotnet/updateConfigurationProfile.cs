@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automanage;
 using Azure.ResourceManager.Automanage.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automanage;
 
 // Generated from example definition: specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/examples/updateConfigurationProfile.json
 // this example is just showing the usage of "ConfigurationProfiles_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,9 +25,9 @@ ResourceIdentifier automanageConfigurationProfileResourceId = AutomanageConfigur
 AutomanageConfigurationProfileResource automanageConfigurationProfile = client.GetAutomanageConfigurationProfileResource(automanageConfigurationProfileResourceId);
 
 // invoke the operation
-AutomanageConfigurationProfilePatch patch = new AutomanageConfigurationProfilePatch()
+AutomanageConfigurationProfilePatch patch = new AutomanageConfigurationProfilePatch
 {
-    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Configuration = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["Antimalware/Enable"] = "false",
         ["AzureSecurityCenter/Enable"] = "true",
@@ -42,7 +41,7 @@ AutomanageConfigurationProfilePatch patch = new AutomanageConfigurationProfilePa
     }),
     Tags =
     {
-    ["Organization"] = "Administration",
+    ["Organization"] = "Administration"
     },
 };
 AutomanageConfigurationProfileResource result = await automanageConfigurationProfile.UpdateAsync(patch);

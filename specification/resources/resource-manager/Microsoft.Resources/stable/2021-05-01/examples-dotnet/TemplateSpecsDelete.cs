@@ -26,4 +26,4 @@ TemplateSpecResource templateSpec = client.GetTemplateSpecResource(templateSpecR
 // invoke the operation
 await templateSpec.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

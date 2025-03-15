@@ -31,14 +31,12 @@ string templateSpecVersion = "v1.0";
 TemplateSpecVersionData data = new TemplateSpecVersionData(new AzureLocation("eastus"))
 {
     Description = "This is version v1.0 of our template content",
-    MainTemplate = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    MainTemplate = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["$schema"] = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         ["contentVersion"] = "1.0.0.0",
-        ["parameters"] = new Dictionary<string, object>()
-        {
-        },
-        ["resources"] = new object[] { }
+        ["parameters"] = new object(),
+        ["resources"] = Array.Empty<object>()
     }),
 };
 ArmOperation<TemplateSpecVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, templateSpecVersion, data);

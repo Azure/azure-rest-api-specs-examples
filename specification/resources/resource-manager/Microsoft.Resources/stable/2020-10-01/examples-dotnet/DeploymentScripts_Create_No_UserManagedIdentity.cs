@@ -32,10 +32,7 @@ string scriptName = "MyDeploymentScript";
 ArmDeploymentScriptData data = new AzurePowerShellScript(new AzureLocation("westus"), XmlConvert.ToTimeSpan("PT7D"), "1.7.0")
 {
     CleanupPreference = ScriptCleanupOptions.Always,
-    SupportingScriptUris =
-    {
-    new Uri("https://uri1.to.supporting.script"),new Uri("https://uri2.to.supporting.script")
-    },
+    SupportingScriptUris = { new Uri("https://uri1.to.supporting.script"), new Uri("https://uri2.to.supporting.script") },
     ScriptContent = "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
     Arguments = "-Location 'westus' -Name \"*rg2\"",
     Timeout = XmlConvert.ToTimeSpan("PT1H"),

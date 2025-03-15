@@ -31,25 +31,22 @@ ArmDeploymentScriptCollection collection = resourceGroupResource.GetArmDeploymen
 string scriptName = "MyDeploymentScript";
 ArmDeploymentScriptData data = new AzurePowerShellScript(new AzureLocation("westus"), XmlConvert.ToTimeSpan("PT7D"), "1.7.0")
 {
-    StorageAccountSettings = new ScriptStorageConfiguration()
+    StorageAccountSettings = new ScriptStorageConfiguration
     {
         StorageAccountName = "contosostorage",
         StorageAccountKey = "contosostoragekey",
     },
     CleanupPreference = ScriptCleanupOptions.Always,
-    SupportingScriptUris =
-    {
-    new Uri("https://uri1.to.supporting.script"),new Uri("https://uri2.to.supporting.script")
-    },
+    SupportingScriptUris = { new Uri("https://uri1.to.supporting.script"), new Uri("https://uri2.to.supporting.script") },
     ScriptContent = "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
     Arguments = "-Location 'westus' -Name \"*rg2\"",
     Timeout = XmlConvert.ToTimeSpan("PT1H"),
-    Identity = new ArmDeploymentScriptManagedIdentity()
+    Identity = new ArmDeploymentScriptManagedIdentity
     {
         IdentityType = ArmDeploymentScriptManagedIdentityType.UserAssigned,
         UserAssignedIdentities =
         {
-        ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai"] = new UserAssignedIdentity(),
+        ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai"] = new UserAssignedIdentity()
         },
     },
 };

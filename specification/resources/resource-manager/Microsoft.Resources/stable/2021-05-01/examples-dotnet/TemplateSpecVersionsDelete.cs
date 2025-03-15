@@ -27,4 +27,4 @@ TemplateSpecVersionResource templateSpecVersion0 = client.GetTemplateSpecVersion
 // invoke the operation
 await templateSpecVersion0.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

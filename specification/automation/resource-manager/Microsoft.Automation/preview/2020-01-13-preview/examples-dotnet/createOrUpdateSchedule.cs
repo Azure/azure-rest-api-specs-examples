@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateSchedule.json
 // this example is just showing the usage of "Schedule_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,7 +32,7 @@ AutomationScheduleCreateOrUpdateContent content = new AutomationScheduleCreateOr
 {
     Description = "my description of schedule goes here",
     ExpireOn = DateTimeOffset.Parse("2017-04-01T17:28:57.2494819Z"),
-    Interval = BinaryData.FromString("\"1\""),
+    Interval = BinaryData.FromObjectAsJson("1"),
     AdvancedSchedule = new AutomationAdvancedSchedule(),
 };
 ArmOperation<AutomationScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scheduleName, content);

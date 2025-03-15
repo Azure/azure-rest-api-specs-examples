@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/updateAutomationAccount.json
 // this example is just showing the usage of "AutomationAccount_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier automationAccountResourceId = AutomationAccountResource.Creat
 AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
 
 // invoke the operation
-AutomationAccountPatch patch = new AutomationAccountPatch()
+AutomationAccountPatch patch = new AutomationAccountPatch
 {
     Name = "myAutomationAccount9",
     Location = new AzureLocation("East US 2"),

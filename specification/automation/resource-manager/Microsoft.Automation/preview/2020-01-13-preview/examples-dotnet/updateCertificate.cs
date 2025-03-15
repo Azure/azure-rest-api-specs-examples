@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/updateCertificate.json
 // this example is just showing the usage of "Certificate_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier automationCertificateResourceId = AutomationCertificateResour
 AutomationCertificateResource automationCertificate = client.GetAutomationCertificateResource(automationCertificateResourceId);
 
 // invoke the operation
-AutomationCertificatePatch patch = new AutomationCertificatePatch()
+AutomationCertificatePatch patch = new AutomationCertificatePatch
 {
     Name = "testCert",
     Description = "sample certificate. Description updated",

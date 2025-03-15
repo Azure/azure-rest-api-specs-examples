@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/sourceControl/createOrUpdateSourceControl.json
 // this example is just showing the usage of "SourceControl_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ AutomationSourceControlCollection collection = automationAccount.GetAutomationSo
 
 // invoke the operation
 string sourceControlName = "sampleSourceControl";
-AutomationSourceControlCreateOrUpdateContent content = new AutomationSourceControlCreateOrUpdateContent()
+AutomationSourceControlCreateOrUpdateContent content = new AutomationSourceControlCreateOrUpdateContent
 {
     RepoUri = new Uri("https://sampleUser.visualstudio.com/myProject/_git/myRepository"),
     Branch = "master",
@@ -36,7 +36,7 @@ AutomationSourceControlCreateOrUpdateContent content = new AutomationSourceContr
     IsAutoSyncEnabled = true,
     IsAutoPublishRunbookEnabled = true,
     SourceType = SourceControlSourceType.VsoGit,
-    SecurityToken = new SourceControlSecurityTokenProperties()
+    SecurityToken = new SourceControlSecurityTokenProperties
     {
         AccessToken = "3a326f7a0dcd343ea58fee21f2fd5fb4c1234567",
         TokenType = SourceControlTokenType.PersonalAccessToken,

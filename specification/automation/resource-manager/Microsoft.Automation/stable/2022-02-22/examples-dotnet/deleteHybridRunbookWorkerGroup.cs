@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2022-02-22/examples/deleteHybridRunbookWorkerGroup.json
 // this example is just showing the usage of "HybridRunbookWorkerGroup_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ HybridRunbookWorkerGroupResource hybridRunbookWorkerGroup = client.GetHybridRunb
 // invoke the operation
 await hybridRunbookWorkerGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/createOrUpdateRunbook.json
 // this example is just showing the usage of "Runbook_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -35,11 +35,11 @@ AutomationRunbookCreateOrUpdateContent content = new AutomationRunbookCreateOrUp
     Tags =
     {
     ["tag01"] = "value01",
-    ["tag02"] = "value02",
+    ["tag02"] = "value02"
     },
     IsLogVerboseEnabled = false,
     IsLogProgressEnabled = true,
-    PublishContentLink = new AutomationContentLink()
+    PublishContentLink = new AutomationContentLink
     {
         Uri = new Uri("https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"),
         ContentHash = new AutomationContentHash("SHA256", "115775B8FF2BE672D8A946BD0B489918C724DDE15A440373CA54461D53010A80"),

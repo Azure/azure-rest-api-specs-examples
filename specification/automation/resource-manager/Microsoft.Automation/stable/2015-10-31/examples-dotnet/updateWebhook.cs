@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/examples/updateWebhook.json
 // this example is just showing the usage of "Webhook_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier automationWebhookResourceId = AutomationWebhookResource.Creat
 AutomationWebhookResource automationWebhook = client.GetAutomationWebhookResource(automationWebhookResourceId);
 
 // invoke the operation
-AutomationWebhookPatch patch = new AutomationWebhookPatch()
+AutomationWebhookPatch patch = new AutomationWebhookPatch
 {
     Name = "TestWebhook",
     IsEnabled = false,

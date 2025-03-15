@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/stable/2022-02-22/examples/putHybridRunbookWorkerGroup.json
 // this example is just showing the usage of "HybridRunbookWorkerGroup_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ HybridRunbookWorkerGroupCollection collection = automationAccount.GetHybridRunbo
 
 // invoke the operation
 string hybridRunbookWorkerGroupName = "TestHybridGroup";
-HybridRunbookWorkerGroupCreateOrUpdateContent content = new HybridRunbookWorkerGroupCreateOrUpdateContent()
+HybridRunbookWorkerGroupCreateOrUpdateContent content = new HybridRunbookWorkerGroupCreateOrUpdateContent
 {
     CredentialName = "myRunAsCredentialName",
 };

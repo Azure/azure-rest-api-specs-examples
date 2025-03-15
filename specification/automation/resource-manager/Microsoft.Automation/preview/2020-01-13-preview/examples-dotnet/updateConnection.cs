@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Automation;
 using Azure.ResourceManager.Automation.Models;
+using Azure.ResourceManager.Automation;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/updateConnection.json
 // this example is just showing the usage of "Connection_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,14 +25,14 @@ ResourceIdentifier automationConnectionResourceId = AutomationConnectionResource
 AutomationConnectionResource automationConnection = client.GetAutomationConnectionResource(automationConnectionResourceId);
 
 // invoke the operation
-AutomationConnectionPatch patch = new AutomationConnectionPatch()
+AutomationConnectionPatch patch = new AutomationConnectionPatch
 {
     Name = "myConnection",
     Description = "my description goes here",
     FieldDefinitionValues =
     {
     ["AutomationCertificateName"] = "myCertificateName",
-    ["SubscriptionID"] = "b5e4748c-f69a-467c-8749-e2f9c8cd3009",
+    ["SubscriptionID"] = "b5e4748c-f69a-467c-8749-e2f9c8cd3009"
     },
 };
 AutomationConnectionResource result = await automationConnection.UpdateAsync(patch);

@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.TrustedSigning.Models;
 using Azure.ResourceManager.TrustedSigning;
 
@@ -27,4 +26,4 @@ TrustedSigningAccountResource trustedSigningAccount = client.GetTrustedSigningAc
 // invoke the operation
 await trustedSigningAccount.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

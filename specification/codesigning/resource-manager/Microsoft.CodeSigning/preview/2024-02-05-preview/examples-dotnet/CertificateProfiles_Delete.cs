@@ -27,4 +27,4 @@ TrustedSigningCertificateProfileResource trustedSigningCertificateProfile = clie
 // invoke the operation
 await trustedSigningCertificateProfile.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

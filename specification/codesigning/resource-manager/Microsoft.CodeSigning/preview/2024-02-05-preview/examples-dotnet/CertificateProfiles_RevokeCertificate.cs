@@ -31,4 +31,4 @@ RevokeCertificateContent content = new RevokeCertificateContent("xxxxxxxxxxxxxxx
 };
 await trustedSigningCertificateProfile.RevokeCertificateAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -32,4 +32,4 @@ await foreach (TrustedSigningAccountResource item in subscriptionResource.GetTru
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

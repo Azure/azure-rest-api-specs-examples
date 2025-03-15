@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.TrustedSigning.Models;
 using Azure.ResourceManager.TrustedSigning;
 
@@ -25,11 +24,11 @@ ResourceIdentifier trustedSigningAccountResourceId = TrustedSigningAccountResour
 TrustedSigningAccountResource trustedSigningAccount = client.GetTrustedSigningAccountResource(trustedSigningAccountResourceId);
 
 // invoke the operation
-TrustedSigningAccountPatch patch = new TrustedSigningAccountPatch()
+TrustedSigningAccountPatch patch = new TrustedSigningAccountPatch
 {
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<TrustedSigningAccountResource> lro = await trustedSigningAccount.UpdateAsync(WaitUntil.Completed, patch);

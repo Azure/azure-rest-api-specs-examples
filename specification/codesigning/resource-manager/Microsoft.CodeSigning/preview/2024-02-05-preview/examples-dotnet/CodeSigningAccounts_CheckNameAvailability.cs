@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-TrustedSigningAccountNameAvailabilityContent content = new TrustedSigningAccountNameAvailabilityContent("sample-account", new ResourceType("placeholder"));
+TrustedSigningAccountNameAvailabilityContent content = new TrustedSigningAccountNameAvailabilityContent("sample-account", default);
 TrustedSigningAccountNameAvailabilityResult result = await subscriptionResource.CheckTrustedSigningAccountNameAvailabilityAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

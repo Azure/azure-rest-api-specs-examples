@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/SmartGroups_List.json
 // this example is just showing the usage of "SmartGroups_GetAll" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 SmartGroupCollection collection = subscriptionResource.GetSmartGroups();
 
 // invoke the operation and iterate over the result
-SmartGroupCollectionGetAllOptions options = new SmartGroupCollectionGetAllOptions() { };
+SmartGroupCollectionGetAllOptions options = new SmartGroupCollectionGetAllOptions();
 await foreach (SmartGroupResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -36,4 +36,4 @@ await foreach (SmartGroupResource item in collection.GetAllAsync(options))
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

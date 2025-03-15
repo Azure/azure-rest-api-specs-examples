@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AlertsManagement;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/Alerts_Summary.json
 // this example is just showing the usage of "Alerts_GetSummary" operation, for the dependent resources, they will have to be created separately.
@@ -22,7 +23,8 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-SubscriptionResourceGetServiceAlertSummaryOptions options = new SubscriptionResourceGetServiceAlertSummaryOptions(groupby: new AlertsSummaryGroupByField("severity,alertState")) { };
+AlertsSummaryGroupByField groupby = new AlertsSummaryGroupByField("severity,alertState");
+SubscriptionResourceGetServiceAlertSummaryOptions options = new SubscriptionResourceGetServiceAlertSummaryOptions(groupby);
 ServiceAlertSummary result = await subscriptionResource.GetServiceAlertSummaryAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

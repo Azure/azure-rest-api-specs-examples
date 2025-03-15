@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
 
@@ -29,4 +28,4 @@ StorageCacheResource storageCache = client.GetStorageCacheResource(storageCacheR
 // invoke the operation
 await storageCache.UpgradeFirmwareAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

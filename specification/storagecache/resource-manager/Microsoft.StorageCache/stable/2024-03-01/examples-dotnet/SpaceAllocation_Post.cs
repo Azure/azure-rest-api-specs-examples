@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
 
@@ -29,15 +28,17 @@ StorageCacheResource storageCache = client.GetStorageCacheResource(storageCacheR
 // invoke the operation
 IEnumerable<StorageTargetSpaceAllocation> spaceAllocation = new StorageTargetSpaceAllocation[]
 {
-new StorageTargetSpaceAllocation()
+new StorageTargetSpaceAllocation
 {
 Name = "st1",
 AllocationPercentage = 25,
-},new StorageTargetSpaceAllocation()
+},
+new StorageTargetSpaceAllocation
 {
 Name = "st2",
 AllocationPercentage = 50,
-},new StorageTargetSpaceAllocation()
+},
+new StorageTargetSpaceAllocation
 {
 Name = "st3",
 AllocationPercentage = 25,
@@ -45,4 +46,4 @@ AllocationPercentage = 25,
 };
 await storageCache.UpdateSpaceAllocationAsync(WaitUntil.Completed, spaceAllocation: spaceAllocation);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

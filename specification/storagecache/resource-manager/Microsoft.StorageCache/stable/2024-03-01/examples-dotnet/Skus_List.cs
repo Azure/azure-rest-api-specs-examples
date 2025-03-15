@@ -28,4 +28,4 @@ await foreach (StorageCacheSku item in subscriptionResource.GetStorageCacheSkusA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

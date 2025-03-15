@@ -36,45 +36,39 @@ AmlFileSystemData data = new AmlFileSystemData(new AzureLocation("eastus"))
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity()
         },
     },
     SkuName = "AMLFS-Durable-Premium-250",
-    Zones =
-    {
-    "1"
-    },
+    Zones = { "1" },
     StorageCapacityTiB = 16,
     FilesystemSubnet = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/fsSub",
-    KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af"), new WritableSubResource()
+    KeyEncryptionKey = new StorageCacheEncryptionKeyVaultKeyReference(new Uri("https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af"), new WritableSubResource
     {
         Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.KeyVault/vaults/keyvault-cmk"),
     }),
-    MaintenanceWindow = new AmlFileSystemPropertiesMaintenanceWindow()
+    MaintenanceWindow = new AmlFileSystemPropertiesMaintenanceWindow
     {
         DayOfWeek = MaintenanceDayOfWeekType.Friday,
         TimeOfDayUTC = "22:00",
     },
-    Hsm = new AmlFileSystemPropertiesHsm()
+    Hsm = new AmlFileSystemPropertiesHsm
     {
         Settings = new AmlFileSystemHsmSettings("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Storage/storageAccounts/storageaccountname/blobServices/default/containers/containername", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Storage/storageAccounts/storageaccountname/blobServices/default/containers/loggingcontainername")
         {
-            ImportPrefixesInitial =
-            {
-            "/"
-            },
+            ImportPrefixesInitial = { "/" },
         },
     },
-    RootSquashSettings = new AmlFileSystemRootSquashSettings()
+    RootSquashSettings = new AmlFileSystemRootSquashSettings
     {
         Mode = AmlFileSystemSquashMode.All,
         NoSquashNidLists = "10.0.0.[5-6]@tcp;10.0.1.2@tcp",
-        SquashUID = 99,
-        SquashGID = 99,
+        SquashUID = 99L,
+        SquashGID = 99L,
     },
     Tags =
     {
-    ["Dept"] = "ContosoAds",
+    ["Dept"] = "ContosoAds"
     },
 };
 ArmOperation<AmlFileSystemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, amlFileSystemName, data);

@@ -25,11 +25,11 @@ ResourceIdentifier storageCacheImportJobResourceId = StorageCacheImportJobResour
 StorageCacheImportJobResource storageCacheImportJob = client.GetStorageCacheImportJobResource(storageCacheImportJobResourceId);
 
 // invoke the operation
-StorageCacheImportJobPatch patch = new StorageCacheImportJobPatch()
+StorageCacheImportJobPatch patch = new StorageCacheImportJobPatch
 {
     Tags =
     {
-    ["Dept"] = "ContosoAds",
+    ["Dept"] = "ContosoAds"
     },
 };
 ArmOperation<StorageCacheImportJobResource> lro = await storageCacheImportJob.UpdateAsync(WaitUntil.Completed, patch);

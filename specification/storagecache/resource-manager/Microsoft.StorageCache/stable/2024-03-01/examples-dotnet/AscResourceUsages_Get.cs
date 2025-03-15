@@ -29,4 +29,4 @@ await foreach (StorageCacheUsage item in subscriptionResource.GetStorageCacheUsa
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

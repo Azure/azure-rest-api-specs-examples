@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-AmlFileSystemSubnetContent content = new AmlFileSystemSubnetContent()
+AmlFileSystemSubnetContent content = new AmlFileSystemSubnetContent
 {
     FilesystemSubnet = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/fsSub",
     StorageCapacityTiB = 16,
@@ -31,4 +31,4 @@ AmlFileSystemSubnetContent content = new AmlFileSystemSubnetContent()
 };
 await subscriptionResource.CheckAmlFSSubnetsAsync(content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

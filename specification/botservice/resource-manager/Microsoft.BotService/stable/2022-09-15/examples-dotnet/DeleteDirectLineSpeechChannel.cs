@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.BotService;
 using Azure.ResourceManager.BotService.Models;
+using Azure.ResourceManager.BotService;
 
 // Generated from example definition: specification/botservice/resource-manager/Microsoft.BotService/stable/2022-09-15/examples/DeleteDirectLineSpeechChannel.json
 // this example is just showing the usage of "Channels_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ BotChannelResource botChannel = client.GetBotChannelResource(botChannelResourceI
 // invoke the operation
 await botChannel.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

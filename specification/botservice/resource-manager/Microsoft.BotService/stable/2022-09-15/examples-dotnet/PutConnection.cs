@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.BotService;
 using Azure.ResourceManager.BotService.Models;
+using Azure.ResourceManager.BotService;
 
 // Generated from example definition: specification/botservice/resource-manager/Microsoft.BotService/stable/2022-09-15/examples/PutConnection.json
 // this example is just showing the usage of "BotConnection_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,24 +30,21 @@ BotConnectionSettingCollection collection = bot.GetBotConnectionSettings();
 string connectionName = "sampleConnection";
 BotConnectionSettingData data = new BotConnectionSettingData(new AzureLocation("West US"))
 {
-    Properties = new BotConnectionSettingProperties()
+    Properties = new BotConnectionSettingProperties
     {
         ClientId = "sampleclientid",
         ClientSecret = "samplesecret",
         Scopes = "samplescope",
         ServiceProviderId = "serviceproviderid",
-        Parameters =
-        {
-        new BotConnectionSettingParameter()
+        Parameters = {new BotConnectionSettingParameter
         {
         Key = "key1",
         Value = "value1",
-        },new BotConnectionSettingParameter()
+        }, new BotConnectionSettingParameter
         {
         Key = "key2",
         Value = "value2",
-        }
-        },
+        }},
     },
     ETag = new ETag("etag1"),
 };

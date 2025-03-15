@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.BotService;
 using Azure.ResourceManager.BotService.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.BotService;
 
 // Generated from example definition: specification/botservice/resource-manager/Microsoft.BotService/stable/2022-09-15/examples/UpdateBot.json
 // this example is just showing the usage of "Bots_Update" operation, for the dependent resources, they will have to be created separately.
@@ -37,10 +36,7 @@ BotData data = new BotData(new AzureLocation("West US"))
         DeveloperAppInsightKey = "appinsightskey",
         DeveloperAppInsightsApiKey = "appinsightsapikey",
         DeveloperAppInsightsApplicationId = "appinsightsappid",
-        LuisAppIds =
-        {
-        "luisappid1","luisappid2"
-        },
+        LuisAppIds = { "luisappid1", "luisappid2" },
         LuisKey = "luiskey",
         IsCmekEnabled = true,
         CmekKeyVaultUri = new Uri("https://myCmekKey"),
@@ -54,7 +50,7 @@ BotData data = new BotData(new AzureLocation("West US"))
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 BotResource result = await bot.UpdateAsync(data);

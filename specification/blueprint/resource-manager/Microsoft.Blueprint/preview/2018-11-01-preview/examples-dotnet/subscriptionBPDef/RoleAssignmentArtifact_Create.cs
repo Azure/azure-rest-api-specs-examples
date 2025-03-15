@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Blueprint;
 using Azure.ResourceManager.Blueprint.Models;
+using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/subscriptionBPDef/RoleAssignmentArtifact_Create.json
 // this example is just showing the usage of "Artifacts_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ BlueprintArtifactCollection collection = blueprint.GetBlueprintArtifacts();
 
 // invoke the operation
 string artifactName = "ownerAssignment";
-ArtifactData data = new RoleAssignmentArtifact("/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7", BinaryData.FromString("\"[parameters('owners')]\""))
+ArtifactData data = new RoleAssignmentArtifact("/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7", BinaryData.FromObjectAsJson("[parameters('owners')]"))
 {
     DisplayName = "enforce owners of given subscription",
 };

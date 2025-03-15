@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Blueprint;
 using Azure.ResourceManager.Blueprint.Models;
+using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/subscriptionBPDef/Blueprint_Get.json
 // this example is just showing the usage of "Blueprints_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlueprintResource created on azure
-// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+// get the collection of this BlueprintResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
-string blueprintName = "simpleBlueprint";
-ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
-BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
+BlueprintCollection collection = client.GetBlueprints(new ResourceIdentifier(resourceScope));
 
 // invoke the operation
-BlueprintResource result = await blueprint.GetAsync();
+string blueprintName = "simpleBlueprint";
+NullableResponse<BlueprintResource> response = await collection.GetIfExistsAsync(blueprintName);
+BlueprintResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BlueprintData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BlueprintData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

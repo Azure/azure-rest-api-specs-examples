@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Blueprint;
 using Azure.ResourceManager.Blueprint.Models;
+using Azure.ResourceManager.Blueprint;
 
 // Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/Blueprint_Create.json
 // this example is just showing the usage of "Blueprints_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,15 +15,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlueprintResource created on azure
-// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+// get the collection of this BlueprintResource
 string resourceScope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup";
-string blueprintName = "simpleBlueprint";
-ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
-BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
+BlueprintCollection collection = client.GetBlueprints(new ResourceIdentifier(resourceScope));
 
 // invoke the operation
-BlueprintData data = new BlueprintData()
+string blueprintName = "simpleBlueprint";
+BlueprintData data = new BlueprintData
 {
     Description = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}",
     TargetScope = BlueprintTargetScope.Subscription,
@@ -40,18 +38,18 @@ BlueprintData data = new BlueprintData()
     ["storageAccountType"] = new ParameterDefinition(TemplateParameterType.String)
     {
     DisplayName = "storage account type.",
-    },
+    }
     },
     ResourceGroups =
     {
-    ["storageRG"] = new ResourceGroupDefinition()
+    ["storageRG"] = new ResourceGroupDefinition
     {
     DisplayName = "storage resource group",
     Description = "Contains storageAccounts that collect all shoebox logs.",
-    },
+    }
     },
 };
-ArmOperation<BlueprintResource> lro = await blueprint.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BlueprintResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, blueprintName, data);
 BlueprintResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

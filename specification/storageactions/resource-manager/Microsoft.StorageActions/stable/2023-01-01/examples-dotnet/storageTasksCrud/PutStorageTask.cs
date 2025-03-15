@@ -35,21 +35,18 @@ new StorageTaskOperationInfo(StorageTaskOperationName.SetBlobTier)
 {
 Parameters =
 {
-["tier"] = "Hot",
+["tier"] = "Hot"
 },
 OnSuccess = OnSuccessAction.Continue,
 OnFailure = OnFailureAction.Break,
 }
 }))
 {
-    ElseOperations =
-    {
-    new StorageTaskOperationInfo(StorageTaskOperationName.DeleteBlob)
+    ElseOperations = {new StorageTaskOperationInfo(StorageTaskOperationName.DeleteBlob)
     {
     OnSuccess = OnSuccessAction.Continue,
     OnFailure = OnFailureAction.Break,
-    }
-    },
+    }},
 }));
 ArmOperation<StorageTaskResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, storageTaskName, data);
 StorageTaskResource result = lro.Value;

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceConnector;
 using Azure.ResourceManager.ResourceConnector.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceConnector;
 
 // Generated from example definition: specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/stable/2022-10-27/examples/AppliancesPatch.json
 // this example is just showing the usage of "Appliances_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier resourceConnectorApplianceResourceId = ResourceConnectorAppli
 ResourceConnectorApplianceResource resourceConnectorAppliance = client.GetResourceConnectorApplianceResource(resourceConnectorApplianceResourceId);
 
 // invoke the operation
-ResourceConnectorAppliancePatch patch = new ResourceConnectorAppliancePatch()
+ResourceConnectorAppliancePatch patch = new ResourceConnectorAppliancePatch
 {
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 ResourceConnectorApplianceResource result = await resourceConnectorAppliance.UpdateAsync(patch);

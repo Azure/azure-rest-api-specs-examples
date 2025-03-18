@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceConnector;
 using Azure.ResourceManager.ResourceConnector.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceConnector;
 
 // Generated from example definition: specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/stable/2022-10-27/examples/AppliancesDelete.json
 // this example is just showing the usage of "Appliances_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ ResourceConnectorApplianceResource resourceConnectorAppliance = client.GetResour
 // invoke the operation
 await resourceConnectorAppliance.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

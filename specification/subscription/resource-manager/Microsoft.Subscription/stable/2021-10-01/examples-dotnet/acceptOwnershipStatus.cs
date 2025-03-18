@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Subscription;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Subscription.Models;
+using Azure.ResourceManager.Subscription;
 
 // Generated from example definition: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/acceptOwnershipStatus.json
 // this example is just showing the usage of "Subscription_AcceptOwnershipStatus" operation, for the dependent resources, they will have to be created separately.
@@ -15,9 +16,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation
 string subscriptionId = "291bba3f-e0a5-47bc-a099-3bdcb2a50a05";

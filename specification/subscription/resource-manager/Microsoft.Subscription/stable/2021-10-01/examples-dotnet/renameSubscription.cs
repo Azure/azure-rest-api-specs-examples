@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Subscription;
 using Azure.ResourceManager.Subscription.Models;
+using Azure.ResourceManager.Subscription;
 
 // Generated from example definition: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/renameSubscription.json
 // this example is just showing the usage of "Subscription_Rename" operation, for the dependent resources, they will have to be created separately.
@@ -22,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-SubscriptionName body = new SubscriptionName()
+SubscriptionName body = new SubscriptionName
 {
     SubscriptionNameValue = "Test Sub",
 };

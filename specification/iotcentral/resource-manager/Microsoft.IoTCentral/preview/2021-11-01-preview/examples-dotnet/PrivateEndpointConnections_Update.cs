@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotCentral;
 using Azure.ResourceManager.IotCentral.Models;
+using Azure.ResourceManager.IotCentral;
 
 // Generated from example definition: specification/iotcentral/resource-manager/Microsoft.IoTCentral/preview/2021-11-01-preview/examples/PrivateEndpointConnections_Update.json
 // this example is just showing the usage of "PrivateEndpointConnections_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ IotCentralPrivateEndpointConnectionCollection collection = iotCentralApp.GetIotC
 
 // invoke the operation
 string privateEndpointConnectionName = "myIoTCentralAppEndpoint";
-IotCentralPrivateEndpointConnectionData data = new IotCentralPrivateEndpointConnectionData()
+IotCentralPrivateEndpointConnectionData data = new IotCentralPrivateEndpointConnectionData
 {
-    ConnectionState = new IotCentralPrivateLinkServiceConnectionState()
+    ConnectionState = new IotCentralPrivateLinkServiceConnectionState
     {
         Status = IotCentralPrivateEndpointServiceConnectionStatus.Approved,
         Description = "Auto-approved",

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/FqdnListGlobalRulestack_Get_MinimumSet_Gen.json
@@ -14,29 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackResource created on azure
-// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
+// this example assumes you already have this GlobalRulestackFqdnResource created on azure
+// for more information of creating GlobalRulestackFqdnResource, please refer to the document of GlobalRulestackFqdnResource
 string globalRulestackName = "praval";
-ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
-GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
-
-// get the collection of this GlobalRulestackFqdnResource
-GlobalRulestackFqdnCollection collection = globalRulestack.GetGlobalRulestackFqdns();
+string name = "armid1";
+ResourceIdentifier globalRulestackFqdnResourceId = GlobalRulestackFqdnResource.CreateResourceIdentifier(globalRulestackName, name);
+GlobalRulestackFqdnResource globalRulestackFqdn = client.GetGlobalRulestackFqdnResource(globalRulestackFqdnResourceId);
 
 // invoke the operation
-string name = "armid1";
-NullableResponse<GlobalRulestackFqdnResource> response = await collection.GetIfExistsAsync(name);
-GlobalRulestackFqdnResource result = response.HasValue ? response.Value : null;
+GlobalRulestackFqdnResource result = await globalRulestackFqdn.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    GlobalRulestackFqdnData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GlobalRulestackFqdnData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

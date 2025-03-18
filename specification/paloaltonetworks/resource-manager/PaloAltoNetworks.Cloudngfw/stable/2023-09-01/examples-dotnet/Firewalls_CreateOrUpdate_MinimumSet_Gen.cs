@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/Firewalls_CreateOrUpdate_MinimumSet_Gen.json
 // this example is just showing the usage of "Firewalls_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,7 +31,7 @@ PaloAltoNetworksFirewallCollection collection = resourceGroupResource.GetPaloAlt
 string firewallName = "firewall1";
 PaloAltoNetworksFirewallData data = new PaloAltoNetworksFirewallData(new AzureLocation("eastus"), new FirewallNetworkProfile(FirewallNetworkType.Vnet, new IPAddressInfo[]
 {
-new IPAddressInfo()
+new IPAddressInfo
 {
 ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"),
 Address = "20.22.92.11",

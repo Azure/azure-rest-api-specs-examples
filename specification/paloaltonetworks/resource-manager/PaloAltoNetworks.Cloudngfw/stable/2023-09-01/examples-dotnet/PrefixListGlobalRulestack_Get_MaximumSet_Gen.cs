@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/PrefixListGlobalRulestack_Get_MaximumSet_Gen.json
@@ -14,18 +14,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackPrefixResource created on azure
-// for more information of creating GlobalRulestackPrefixResource, please refer to the document of GlobalRulestackPrefixResource
+// this example assumes you already have this GlobalRulestackResource created on azure
+// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
 string globalRulestackName = "praval";
-string name = "armid1";
-ResourceIdentifier globalRulestackPrefixResourceId = GlobalRulestackPrefixResource.CreateResourceIdentifier(globalRulestackName, name);
-GlobalRulestackPrefixResource globalRulestackPrefix = client.GetGlobalRulestackPrefixResource(globalRulestackPrefixResourceId);
+ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
+GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
+
+// get the collection of this GlobalRulestackPrefixResource
+GlobalRulestackPrefixCollection collection = globalRulestack.GetGlobalRulestackPrefixes();
 
 // invoke the operation
-GlobalRulestackPrefixResource result = await globalRulestackPrefix.GetAsync();
+string name = "armid1";
+NullableResponse<GlobalRulestackPrefixResource> response = await collection.GetIfExistsAsync(name);
+GlobalRulestackPrefixResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GlobalRulestackPrefixData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GlobalRulestackPrefixData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -1,16 +1,15 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/Firewalls_saveLogProfile_MaximumSet_Gen.json
-// this example is just showing the usage of "Firewalls_saveLogProfile" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Firewalls_SaveLogProfile" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -26,24 +25,24 @@ ResourceIdentifier paloAltoNetworksFirewallResourceId = PaloAltoNetworksFirewall
 PaloAltoNetworksFirewallResource paloAltoNetworksFirewall = client.GetPaloAltoNetworksFirewallResource(paloAltoNetworksFirewallResourceId);
 
 // invoke the operation
-FirewallLogSettings logSettings = new FirewallLogSettings()
+FirewallLogSettings logSettings = new FirewallLogSettings
 {
     LogType = FirewallLogType.Traffic,
     LogOption = FirewallLogOption.SameDestination,
-    ApplicationInsights = new FirewallApplicationInsights()
+    ApplicationInsights = new FirewallApplicationInsights
     {
         Id = "aaaaaaaaaaaaaaaa",
         Key = "aaaaaaaaaaaaa",
     },
-    CommonDestination = new FirewallLogDestination()
+    CommonDestination = new FirewallLogDestination
     {
-        StorageConfiguration = new StorageAccountConfiguration()
+        StorageConfiguration = new StorageAccountConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaa",
             AccountName = "aaaaaaaaaaaaaaaaaaaaaaa",
         },
-        EventHubConfiguration = new EventHubConfiguration()
+        EventHubConfiguration = new EventHubConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaa",
@@ -51,7 +50,7 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             NameSpace = "aaaaaaaaaaaaaaaaaaaaa",
             PolicyName = "aaaaaaaaaaaa",
         },
-        MonitorConfiguration = new MonitorLogConfiguration()
+        MonitorConfiguration = new MonitorLogConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaaaaa",
@@ -60,15 +59,15 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             SecondaryKey = "a",
         },
     },
-    TrafficLogDestination = new FirewallLogDestination()
+    TrafficLogDestination = new FirewallLogDestination
     {
-        StorageConfiguration = new StorageAccountConfiguration()
+        StorageConfiguration = new StorageAccountConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaa",
             AccountName = "aaaaaaaaaaaaaaaaaaaaaaa",
         },
-        EventHubConfiguration = new EventHubConfiguration()
+        EventHubConfiguration = new EventHubConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaa",
@@ -76,7 +75,7 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             NameSpace = "aaaaaaaaaaaaaaaaaaaaa",
             PolicyName = "aaaaaaaaaaaa",
         },
-        MonitorConfiguration = new MonitorLogConfiguration()
+        MonitorConfiguration = new MonitorLogConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaaaaa",
@@ -85,15 +84,15 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             SecondaryKey = "a",
         },
     },
-    ThreatLogDestination = new FirewallLogDestination()
+    ThreatLogDestination = new FirewallLogDestination
     {
-        StorageConfiguration = new StorageAccountConfiguration()
+        StorageConfiguration = new StorageAccountConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaa",
             AccountName = "aaaaaaaaaaaaaaaaaaaaaaa",
         },
-        EventHubConfiguration = new EventHubConfiguration()
+        EventHubConfiguration = new EventHubConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaa",
@@ -101,7 +100,7 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             NameSpace = "aaaaaaaaaaaaaaaaaaaaa",
             PolicyName = "aaaaaaaaaaaa",
         },
-        MonitorConfiguration = new MonitorLogConfiguration()
+        MonitorConfiguration = new MonitorLogConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaaaaa",
@@ -110,15 +109,15 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             SecondaryKey = "a",
         },
     },
-    DecryptLogDestination = new FirewallLogDestination()
+    DecryptLogDestination = new FirewallLogDestination
     {
-        StorageConfiguration = new StorageAccountConfiguration()
+        StorageConfiguration = new StorageAccountConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaa",
             AccountName = "aaaaaaaaaaaaaaaaaaaaaaa",
         },
-        EventHubConfiguration = new EventHubConfiguration()
+        EventHubConfiguration = new EventHubConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaa",
@@ -126,7 +125,7 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
             NameSpace = "aaaaaaaaaaaaaaaaaaaaa",
             PolicyName = "aaaaaaaaaaaa",
         },
-        MonitorConfiguration = new MonitorLogConfiguration()
+        MonitorConfiguration = new MonitorLogConfiguration
         {
             Id = new ResourceIdentifier("aaaaaaaaaaaaaaaaaaa"),
             SubscriptionId = "aaaaaaaaaaaaa",
@@ -138,4 +137,4 @@ FirewallLogSettings logSettings = new FirewallLogSettings()
 };
 await paloAltoNetworksFirewall.SaveLogProfileAsync(logSettings: logSettings);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

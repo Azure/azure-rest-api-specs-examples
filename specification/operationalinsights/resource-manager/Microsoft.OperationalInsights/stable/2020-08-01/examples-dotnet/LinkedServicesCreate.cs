@@ -24,7 +24,7 @@ ResourceIdentifier operationalInsightsLinkedServiceResourceId = OperationalInsig
 OperationalInsightsLinkedServiceResource operationalInsightsLinkedService = client.GetOperationalInsightsLinkedServiceResource(operationalInsightsLinkedServiceResourceId);
 
 // invoke the operation
-OperationalInsightsLinkedServiceData data = new OperationalInsightsLinkedServiceData()
+OperationalInsightsLinkedServiceData data = new OperationalInsightsLinkedServiceData
 {
     WriteAccessResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/clusters/testcluster"),
 };

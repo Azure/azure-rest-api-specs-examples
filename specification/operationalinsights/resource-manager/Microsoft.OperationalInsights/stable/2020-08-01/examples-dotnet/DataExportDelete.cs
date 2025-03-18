@@ -26,4 +26,4 @@ OperationalInsightsDataExportResource operationalInsightsDataExport = client.Get
 // invoke the operation
 await operationalInsightsDataExport.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

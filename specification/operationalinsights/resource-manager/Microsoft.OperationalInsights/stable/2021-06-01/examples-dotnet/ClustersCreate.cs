@@ -30,14 +30,14 @@ OperationalInsightsClusterCollection collection = resourceGroupResource.GetOpera
 string clusterName = "oiautorest6685";
 OperationalInsightsClusterData data = new OperationalInsightsClusterData(new AzureLocation("australiasoutheast"))
 {
-    Sku = new OperationalInsightsClusterSku()
+    Sku = new OperationalInsightsClusterSku
     {
         Capacity = OperationalInsightsClusterCapacity.TenHundred,
         Name = OperationalInsightsClusterSkuName.CapacityReservation,
     },
     Tags =
     {
-    ["tag1"] = "val1",
+    ["tag1"] = "val1"
     },
 };
 ArmOperation<OperationalInsightsClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPackQueriesSearch.json
@@ -25,21 +24,15 @@ ResourceIdentifier logAnalyticsQueryPackResourceId = LogAnalyticsQueryPackResour
 LogAnalyticsQueryPackResource logAnalyticsQueryPack = client.GetLogAnalyticsQueryPackResource(logAnalyticsQueryPackResourceId);
 
 // invoke the operation and iterate over the result
-LogAnalyticsQuerySearchProperties querySearchProperties = new LogAnalyticsQuerySearchProperties()
+LogAnalyticsQuerySearchProperties querySearchProperties = new LogAnalyticsQuerySearchProperties
 {
-    Related = new LogAnalyticsQuerySearchRelatedMetadata()
+    Related = new LogAnalyticsQuerySearchRelatedMetadata
     {
-        Categories =
-        {
-        "other","analytics"
-        },
+        Categories = { "other", "analytics" },
     },
     Tags =
     {
-    ["my-label"] = new string[]
-    {
-    "label1"
-    },
+    ["my-label"] = new string[]{"label1"}
     },
 };
 long? top = 3L;
@@ -53,4 +46,4 @@ await foreach (LogAnalyticsQueryResource item in logAnalyticsQueryPack.SearchQue
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

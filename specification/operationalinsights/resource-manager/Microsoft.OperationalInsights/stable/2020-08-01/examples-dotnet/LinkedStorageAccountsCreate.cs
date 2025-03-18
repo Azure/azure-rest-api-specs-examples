@@ -25,12 +25,9 @@ ResourceIdentifier operationalInsightsLinkedStorageAccountsResourceId = Operatio
 OperationalInsightsLinkedStorageAccountsResource operationalInsightsLinkedStorageAccounts = client.GetOperationalInsightsLinkedStorageAccountsResource(operationalInsightsLinkedStorageAccountsResourceId);
 
 // invoke the operation
-OperationalInsightsLinkedStorageAccountsData data = new OperationalInsightsLinkedStorageAccountsData()
+OperationalInsightsLinkedStorageAccountsData data = new OperationalInsightsLinkedStorageAccountsData
 {
-    StorageAccountIds =
-    {
-    new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA"),new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB")
-    },
+    StorageAccountIds = { new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA"), new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB") },
 };
 ArmOperation<OperationalInsightsLinkedStorageAccountsResource> lro = await operationalInsightsLinkedStorageAccounts.UpdateAsync(WaitUntil.Completed, data);
 OperationalInsightsLinkedStorageAccountsResource result = lro.Value;

@@ -27,4 +27,4 @@ OperationalInsightsLinkedStorageAccountsResource operationalInsightsLinkedStorag
 // invoke the operation
 await operationalInsightsLinkedStorageAccounts.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

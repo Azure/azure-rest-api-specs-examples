@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesDisableIntelligencePack.json
@@ -28,4 +27,4 @@ OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOp
 string intelligencePackName = "ChangeTracking";
 await operationalInsightsWorkspace.DisableIntelligencePackAsync(intelligencePackName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

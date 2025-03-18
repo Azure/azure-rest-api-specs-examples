@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2021-06-01/examples/ClustersUpdate.json
@@ -26,25 +25,25 @@ ResourceIdentifier operationalInsightsClusterResourceId = OperationalInsightsClu
 OperationalInsightsClusterResource operationalInsightsCluster = client.GetOperationalInsightsClusterResource(operationalInsightsClusterResourceId);
 
 // invoke the operation
-OperationalInsightsClusterPatch patch = new OperationalInsightsClusterPatch()
+OperationalInsightsClusterPatch patch = new OperationalInsightsClusterPatch
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourcegroups/oiautorest6685/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myidentity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourcegroups/oiautorest6685/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myidentity")] = new UserAssignedIdentity()
         },
     },
-    Sku = new OperationalInsightsClusterSku()
+    Sku = new OperationalInsightsClusterSku
     {
         Capacity = OperationalInsightsClusterCapacity.TenHundred,
         Name = OperationalInsightsClusterSkuName.CapacityReservation,
     },
     Tags =
     {
-    ["tag1"] = "val1",
+    ["tag1"] = "val1"
     },
-    KeyVaultProperties = new OperationalInsightsKeyVaultProperties()
+    KeyVaultProperties = new OperationalInsightsKeyVaultProperties
     {
         KeyVaultUri = new Uri("https://aztest2170.vault.azure.net"),
         KeyName = "aztest2170cert",

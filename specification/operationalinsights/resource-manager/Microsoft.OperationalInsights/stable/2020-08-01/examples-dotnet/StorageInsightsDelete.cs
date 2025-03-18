@@ -27,4 +27,4 @@ StorageInsightResource storageInsight = client.GetStorageInsightResource(storage
 // invoke the operation
 await storageInsight.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

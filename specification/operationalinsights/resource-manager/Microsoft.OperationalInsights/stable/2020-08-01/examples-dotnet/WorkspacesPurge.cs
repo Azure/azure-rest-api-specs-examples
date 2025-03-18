@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurge.json
@@ -27,11 +26,11 @@ OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOp
 // invoke the operation
 OperationalInsightsWorkspacePurgeContent content = new OperationalInsightsWorkspacePurgeContent("Heartbeat", new OperationalInsightsWorkspacePurgeFilter[]
 {
-new OperationalInsightsWorkspacePurgeFilter()
+new OperationalInsightsWorkspacePurgeFilter
 {
 Column = "TimeGenerated",
 Operator = ">",
-Value = BinaryData.FromString("\"2017-09-01T00:00:00\""),
+Value = BinaryData.FromObjectAsJson("2017-09-01T00:00:00"),
 }
 });
 OperationalInsightsWorkspacePurgeResult result = await operationalInsightsWorkspace.PurgeAsync(content);

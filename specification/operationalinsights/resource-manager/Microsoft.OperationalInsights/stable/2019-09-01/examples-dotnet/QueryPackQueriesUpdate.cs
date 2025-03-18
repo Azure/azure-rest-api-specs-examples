@@ -25,28 +25,19 @@ ResourceIdentifier logAnalyticsQueryResourceId = LogAnalyticsQueryResource.Creat
 LogAnalyticsQueryResource logAnalyticsQuery = client.GetLogAnalyticsQueryResource(logAnalyticsQueryResourceId);
 
 // invoke the operation
-LogAnalyticsQueryData data = new LogAnalyticsQueryData()
+LogAnalyticsQueryData data = new LogAnalyticsQueryData
 {
     DisplayName = "Exceptions - New in the last 24 hours",
     Description = "my description",
     Body = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n",
-    Related = new LogAnalyticsQueryRelatedMetadata()
+    Related = new LogAnalyticsQueryRelatedMetadata
     {
-        Categories =
-        {
-        "analytics"
-        },
+        Categories = { "analytics" },
     },
     Tags =
     {
-    ["my-label"] = new string[]
-    {
-    "label1"
-    },
-    ["my-other-label"] = new string[]
-    {
-    "label2"
-    },
+    ["my-label"] = new string[]{"label1"},
+    ["my-other-label"] = new string[]{"label2"}
     },
 };
 LogAnalyticsQueryResource result = await logAnalyticsQuery.UpdateAsync(data);

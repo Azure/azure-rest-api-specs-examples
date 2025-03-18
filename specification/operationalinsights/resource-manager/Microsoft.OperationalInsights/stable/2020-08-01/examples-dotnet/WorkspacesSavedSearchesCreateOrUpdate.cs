@@ -30,10 +30,7 @@ OperationalInsightsSavedSearchData data = new OperationalInsightsSavedSearchData
     FunctionAlias = "heartbeat_func",
     FunctionParameters = "a:int=1",
     Version = 2L,
-    Tags =
-    {
-    new OperationalInsightsTag("Group","Computer")
-    },
+    Tags = { new OperationalInsightsTag("Group", "Computer") },
 };
 ArmOperation<OperationalInsightsSavedSearchResource> lro = await operationalInsightsSavedSearch.UpdateAsync(WaitUntil.Completed, data);
 OperationalInsightsSavedSearchResource result = lro.Value;

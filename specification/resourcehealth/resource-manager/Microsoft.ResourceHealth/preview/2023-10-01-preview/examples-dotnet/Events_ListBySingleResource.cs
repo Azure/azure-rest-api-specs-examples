@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceHealth;
 using Azure.ResourceManager.ResourceHealth.Models;
+using Azure.ResourceManager.ResourceHealth;
 
 // Generated from example definition: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/preview/2023-10-01-preview/examples/Events_ListBySingleResource.json
 // this example is just showing the usage of "Events_ListBySingleResource" operation, for the dependent resources, they will have to be created separately.
@@ -15,12 +16,11 @@ TokenCredential cred = new DefaultAzureCredential();
 ArmClient client = new ArmClient(cred);
 
 // invoke the operation and iterate over the result
-string resourceUri = "subscriptions/4abcdefgh-ijkl-mnop-qrstuvwxyz/resourceGroups/rhctestenv/providers/Microsoft.Compute/virtualMachines/rhctestenvV1PI";
-ResourceIdentifier scope = new ResourceIdentifier(string.Format("/{0}", resourceUri));
+ResourceIdentifier scope = null;
 await foreach (ResourceHealthEventData item in client.GetHealthEventsOfSingleResourceAsync(scope))
 {
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceHealth;
 using Azure.ResourceManager.ResourceHealth.Models;
+using Azure.ResourceManager.ResourceHealth;
 
 // Generated from example definition: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/preview/2023-10-01-preview/examples/AvailabilityStatuses_List.json
 // this example is just showing the usage of "AvailabilityStatuses_List" operation, for the dependent resources, they will have to be created separately.
@@ -15,11 +16,10 @@ TokenCredential cred = new DefaultAzureCredential();
 ArmClient client = new ArmClient(cred);
 
 // invoke the operation and iterate over the result
-string resourceUri = "resourceUri";
-ResourceIdentifier scope = new ResourceIdentifier(string.Format("/{0}", resourceUri));
+ResourceIdentifier scope = null;
 await foreach (ResourceHealthAvailabilityStatus item in client.GetAvailabilityStatusesAsync(scope))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

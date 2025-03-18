@@ -5190,3 +5190,4 @@ id,name,language,tag,package,version,date_epoch,date
 5189,"Azure.ResourceManager.SqlVirtualMachine,1.1.1",dotnet,Azure.ResourceManager.SqlVirtualMachine_1.1.1,Azure.ResourceManager.SqlVirtualMachine,1.1.1,1742290842,03/18/2025
 5190,"Azure.ResourceManager.Synapse,1.2.1",dotnet,Azure.ResourceManager.Synapse_1.2.1,Azure.ResourceManager.Synapse,1.2.1,1742290839,03/18/2025
 5191,"Azure.ResourceManager.Workloads,1.1.1",dotnet,Azure.ResourceManager.Workloads_1.1.1,Azure.ResourceManager.Workloads,1.1.1,1742290800,03/18/2025
+5192,"Azure.ResourceManager.Subscription,1.1.1",dotnet,Azure.ResourceManager.Subscription_1.1.1,Azure.ResourceManager.Subscription,1.1.1,1742290799,03/18/2025

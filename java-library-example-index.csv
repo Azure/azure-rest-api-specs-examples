@@ -5192,3 +5192,4 @@ id,name,language,tag,package,version,date_epoch,date
 5191,"Azure.ResourceManager.Workloads,1.1.1",dotnet,Azure.ResourceManager.Workloads_1.1.1,Azure.ResourceManager.Workloads,1.1.1,1742290800,03/18/2025
 5192,"Azure.ResourceManager.Subscription,1.1.1",dotnet,Azure.ResourceManager.Subscription_1.1.1,Azure.ResourceManager.Subscription,1.1.1,1742290799,03/18/2025
 5193,"Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.2",dotnet,Azure.ResourceManager.SpringAppDiscovery_1.0.0-beta.2,Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.2,1742290788,03/18/2025
+5194,"Azure.ResourceManager.ServiceLinker,1.1.1",dotnet,Azure.ResourceManager.ServiceLinker_1.1.1,Azure.ResourceManager.ServiceLinker,1.1.1,1742290782,03/18/2025

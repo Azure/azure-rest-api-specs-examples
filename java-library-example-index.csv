@@ -5204,3 +5204,4 @@ id,name,language,tag,package,version,date_epoch,date
 5203,"Azure.ResourceManager.ResourceConnector,1.0.0-beta.3",dotnet,Azure.ResourceManager.ResourceConnector_1.0.0-beta.3,Azure.ResourceManager.ResourceConnector,1.0.0-beta.3,1742287948,03/18/2025
 5204,"Azure.ResourceManager.ResourceMover,1.1.2-beta.2",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.2,Azure.ResourceManager.ResourceMover,1.1.2-beta.2,1742287933,03/18/2025
 5205,"Azure.ResourceManager.PowerBIDedicated,1.0.0-beta.5",dotnet,Azure.ResourceManager.PowerBIDedicated_1.0.0-beta.5,Azure.ResourceManager.PowerBIDedicated,1.0.0-beta.5,1742287924,03/18/2025
+5206,"Azure.ResourceManager.RecoveryServicesBackup,1.2.1",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.2.1,Azure.ResourceManager.RecoveryServicesBackup,1.2.1,1742287910,03/18/2025

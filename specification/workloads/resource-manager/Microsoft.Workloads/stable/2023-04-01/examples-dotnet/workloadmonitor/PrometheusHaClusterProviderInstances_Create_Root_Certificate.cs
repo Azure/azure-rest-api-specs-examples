@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/workloadmonitor/PrometheusHaClusterProviderInstances_Create_Root_Certificate.json
 // this example is just showing the usage of "ProviderInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ SapProviderInstanceCollection collection = sapMonitor.GetSapProviderInstances();
 
 // invoke the operation
 string providerInstanceName = "myProviderInstance";
-SapProviderInstanceData data = new SapProviderInstanceData()
+SapProviderInstanceData data = new SapProviderInstanceData
 {
-    ProviderSettings = new PrometheusHAClusterProviderInstanceProperties()
+    ProviderSettings = new PrometheusHAClusterProviderInstanceProperties
     {
         PrometheusUri = new Uri("http://192.168.0.0:9090/metrics"),
         Hostname = "hostname",

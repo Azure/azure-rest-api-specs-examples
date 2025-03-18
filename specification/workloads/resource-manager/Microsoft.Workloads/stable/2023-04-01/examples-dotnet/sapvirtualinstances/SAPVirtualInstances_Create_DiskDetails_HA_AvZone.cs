@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPVirtualInstances_Create_DiskDetails_HA_AvZone.json
 // this example is just showing the usage of "SAPVirtualInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,118 +28,116 @@ SapVirtualInstanceCollection collection = resourceGroupResource.GetSapVirtualIns
 
 // invoke the operation
 string sapVirtualInstanceName = "X00";
-SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("westcentralus"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration()
+SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("westcentralus"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration
 {
     AppLocation = new AzureLocation("eastus"),
-    InfrastructureConfiguration = new ThreeTierConfiguration("X00-RG", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E16ds_v4", new SapImageReference()
+    InfrastructureConfiguration = new ThreeTierConfiguration("X00-RG", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E16ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 2), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference()
+    }), 2L), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 6), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference()
+    }), 6L), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/dindurkhya-e2etesting/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 2)
+    }), 2L)
     {
         DatabaseType = SapDatabaseType.Hana,
         DiskVolumeConfigurations =
         {
-        ["backup"] = new DiskVolumeConfiguration()
+        ["backup"] = new DiskVolumeConfiguration
         {
-        Count = 2,
-        SizeInGB = 256,
+        Count = 2L,
+        SizeInGB = 256L,
         SkuName = DiskDetailsDiskSkuName.StandardSsdLrs,
         },
-        ["hana/data"] = new DiskVolumeConfiguration()
+        ["hana/data"] = new DiskVolumeConfiguration
         {
-        Count = 4,
-        SizeInGB = 128,
+        Count = 4L,
+        SizeInGB = 128L,
         SkuName = DiskDetailsDiskSkuName.PremiumLrs,
         },
-        ["hana/log"] = new DiskVolumeConfiguration()
+        ["hana/log"] = new DiskVolumeConfiguration
         {
-        Count = 3,
-        SizeInGB = 128,
+        Count = 3L,
+        SizeInGB = 128L,
         SkuName = DiskDetailsDiskSkuName.PremiumLrs,
         },
-        ["hana/shared"] = new DiskVolumeConfiguration()
+        ["hana/shared"] = new DiskVolumeConfiguration
         {
-        Count = 1,
-        SizeInGB = 256,
+        Count = 1L,
+        SizeInGB = 256L,
         SkuName = DiskDetailsDiskSkuName.StandardSsdLrs,
         },
-        ["os"] = new DiskVolumeConfiguration()
+        ["os"] = new DiskVolumeConfiguration
         {
-        Count = 1,
-        SizeInGB = 64,
+        Count = 1L,
+        SizeInGB = 64L,
         SkuName = DiskDetailsDiskSkuName.StandardSsdLrs,
         },
-        ["usr/sap"] = new DiskVolumeConfiguration()
+        ["usr/sap"] = new DiskVolumeConfiguration
         {
-        Count = 1,
-        SizeInGB = 128,
+        Count = 1L,
+        SizeInGB = 128L,
         SkuName = DiskDetailsDiskSkuName.PremiumLrs,
-        },
+        }
         },
     })
     {
         HighAvailabilityType = SapHighAvailabilityType.AvailabilityZone,
     },
-    OSSapConfiguration = new OSSapConfiguration()
+    OSSapConfiguration = new OSSapConfiguration
     {
         SapFqdn = "xyz.test.com",
     },
 })
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SapVirtualInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapVirtualInstanceName, data);
 SapVirtualInstanceResource result = lro.Value;

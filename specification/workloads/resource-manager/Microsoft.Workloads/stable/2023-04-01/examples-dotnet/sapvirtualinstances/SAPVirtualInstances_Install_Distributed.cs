@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPVirtualInstances_Install_Distributed.json
 // this example is just showing the usage of "SAPVirtualInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,69 +28,69 @@ SapVirtualInstanceCollection collection = resourceGroupResource.GetSapVirtualIns
 
 // invoke the operation
 string sapVirtualInstanceName = "X00";
-SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("eastus2"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration()
+SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("eastus2"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration
 {
     AppLocation = new AzureLocation("eastus"),
-    InfrastructureConfiguration = new ThreeTierConfiguration("{{resourcegrp}}", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_E4ds_v4", new SapImageReference()
+    InfrastructureConfiguration = new ThreeTierConfiguration("{{resourcegrp}}", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_E4ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP-HA",
         Sku = "8.2",
         Version = "8.2.2021091201",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "azureuser",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "{{sshkey}}",
                 PrivateKey = "{{privateKey}}",
             },
         },
-    }), 1), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_E4ds_v4", new SapImageReference()
+    }), 1L), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_E4ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP-HA",
         Sku = "8.2",
         Version = "8.2.2021091201",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "azureuser",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "{{sshkey}}",
                 PrivateKey = "{{privateKey}}",
             },
         },
-    }), 2), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference()
+    }), 2L), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/app"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP-HA",
         Sku = "8.2",
         Version = "8.2.2021091201",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "azureuser",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "{{sshkey}}",
                 PrivateKey = "{{privateKey}}",
             },
         },
-    }), 1))
+    }), 1L))
     {
         IsSecondaryIPEnabled = true,
     },
     SoftwareConfiguration = new SapInstallWithoutOSConfigSoftwareConfiguration(new Uri("https://teststorageaccount.blob.core.windows.net/sapbits/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml"), "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/teststorageaccount", "SAP S/4HANA 1909 SPS 03"),
-    OSSapConfiguration = new OSSapConfiguration()
+    OSSapConfiguration = new OSSapConfiguration
     {
         SapFqdn = "sap.bpaas.com",
     },
@@ -98,7 +98,7 @@ SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("east
 {
     Tags =
     {
-    ["created by"] = "azureuser",
+    ["created by"] = "azureuser"
     },
 };
 ArmOperation<SapVirtualInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapVirtualInstanceName, data);

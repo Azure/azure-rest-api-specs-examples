@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPApplicationServerInstances_Create.json
@@ -29,9 +29,7 @@ SapApplicationServerInstanceCollection collection = sapVirtualInstance.GetSapApp
 string applicationInstanceName = "app01";
 SapApplicationServerInstanceData data = new SapApplicationServerInstanceData(new AzureLocation("westcentralus"))
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SapApplicationServerInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationInstanceName, data);
 SapApplicationServerInstanceResource result = lro.Value;

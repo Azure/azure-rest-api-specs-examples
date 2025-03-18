@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/workloadmonitor/SapLandscapeMonitor_Update.json
 // this example is just showing the usage of "SapLandscapeMonitor_Update" operation, for the dependent resources, they will have to be created separately.
@@ -24,43 +24,28 @@ ResourceIdentifier sapLandscapeMonitorResourceId = SapLandscapeMonitorResource.C
 SapLandscapeMonitorResource sapLandscapeMonitor = client.GetSapLandscapeMonitorResource(sapLandscapeMonitorResourceId);
 
 // invoke the operation
-SapLandscapeMonitorData data = new SapLandscapeMonitorData()
+SapLandscapeMonitorData data = new SapLandscapeMonitorData
 {
-    Grouping = new SapLandscapeMonitorPropertiesGrouping()
+    Grouping = new SapLandscapeMonitorPropertiesGrouping
     {
-        Landscape =
-        {
-        new SapLandscapeMonitorSidMapping()
+        Landscape = {new SapLandscapeMonitorSidMapping
         {
         Name = "Prod",
-        TopSid =
-        {
-        "SID1","SID2"
-        },
-        }
-        },
-        SapApplication =
-        {
-        new SapLandscapeMonitorSidMapping()
+        TopSid = {"SID1", "SID2"},
+        }},
+        SapApplication = {new SapLandscapeMonitorSidMapping
         {
         Name = "ERP1",
-        TopSid =
-        {
-        "SID1","SID2"
-        },
-        }
-        },
+        TopSid = {"SID1", "SID2"},
+        }},
     },
-    TopMetricsThresholds =
-    {
-    new SapLandscapeMonitorMetricThresholds()
+    TopMetricsThresholds = {new SapLandscapeMonitorMetricThresholds
     {
     Name = "Instance Availability",
     Green = 90,
     Yellow = 75,
     Red = 50,
-    }
-    },
+    }},
 };
 SapLandscapeMonitorResource result = await sapLandscapeMonitor.UpdateAsync(data);
 

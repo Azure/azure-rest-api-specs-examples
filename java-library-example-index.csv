@@ -5233,3 +5233,4 @@ id,name,language,tag,package,version,date_epoch,date
 5232,"Azure.ResourceManager.HealthBot,1.1.1",dotnet,Azure.ResourceManager.HealthBot_1.1.1,Azure.ResourceManager.HealthBot,1.1.1,1742227874,03/17/2025
 5233,"Azure.ResourceManager.DevCenter,1.0.2",dotnet,Azure.ResourceManager.DevCenter_1.0.2,Azure.ResourceManager.DevCenter,1.0.2,1742227741,03/17/2025
 5234,"Azure.ResourceManager.EdgeZones,1.0.0-beta.2",dotnet,Azure.ResourceManager.EdgeZones_1.0.0-beta.2,Azure.ResourceManager.EdgeZones,1.0.0-beta.2,1742226892,03/17/2025
+5235,"Azure.ResourceManager.IotCentral,1.1.0-beta.3",dotnet,Azure.ResourceManager.IotCentral_1.1.0-beta.3,Azure.ResourceManager.IotCentral,1.1.0-beta.3,1742226393,03/17/2025

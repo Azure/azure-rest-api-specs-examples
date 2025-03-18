@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedServices;
 using Azure.ResourceManager.ManagedServices.Models;
+using Azure.ResourceManager.ManagedServices;
 
 // Generated from example definition: specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2022-10-01/examples/DeleteRegistrationDefinition.json
 // this example is just showing the usage of "RegistrationDefinitions_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -26,4 +26,4 @@ ManagedServicesRegistrationResource managedServicesRegistration = client.GetMana
 // invoke the operation
 await managedServicesRegistration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

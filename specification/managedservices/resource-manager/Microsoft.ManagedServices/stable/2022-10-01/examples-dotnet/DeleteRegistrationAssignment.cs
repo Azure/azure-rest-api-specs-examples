@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedServices;
 using Azure.ResourceManager.ManagedServices.Models;
+using Azure.ResourceManager.ManagedServices;
 
 // Generated from example definition: specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2022-10-01/examples/DeleteRegistrationAssignment.json
 // this example is just showing the usage of "RegistrationAssignments_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -25,4 +25,4 @@ ManagedServicesRegistrationAssignmentResource managedServicesRegistrationAssignm
 // invoke the operation
 await managedServicesRegistrationAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

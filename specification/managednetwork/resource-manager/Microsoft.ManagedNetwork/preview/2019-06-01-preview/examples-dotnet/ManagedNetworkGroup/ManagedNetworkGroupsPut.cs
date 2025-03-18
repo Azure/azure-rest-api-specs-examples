@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetwork;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.ManagedNetwork;
 
 // Generated from example definition: specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/examples/ManagedNetworkGroup/ManagedNetworkGroupsPut.json
 // this example is just showing the usage of "ManagedNetworkGroups_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,31 +25,21 @@ ResourceIdentifier managedNetworkGroupResourceId = ManagedNetworkGroupResource.C
 ManagedNetworkGroupResource managedNetworkGroup = client.GetManagedNetworkGroupResource(managedNetworkGroupResourceId);
 
 // invoke the operation
-ManagedNetworkGroupData data = new ManagedNetworkGroupData()
+ManagedNetworkGroupData data = new ManagedNetworkGroupData
 {
-    ManagementGroups =
-    {
-    },
-    Subscriptions =
-    {
-    },
-    VirtualNetworks =
-    {
-    new WritableSubResource()
+    ManagementGroups = { },
+    Subscriptions = { },
+    VirtualNetworks = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"),
-    }
-    },
-    Subnets =
-    {
-    new WritableSubResource()
+    }},
+    Subnets = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA/subnets/subnetA"),
-    }
-    },
+    }},
 };
 ArmOperation<ManagedNetworkGroupResource> lro = await managedNetworkGroup.UpdateAsync(WaitUntil.Completed, data);
 ManagedNetworkGroupResource result = lro.Value;

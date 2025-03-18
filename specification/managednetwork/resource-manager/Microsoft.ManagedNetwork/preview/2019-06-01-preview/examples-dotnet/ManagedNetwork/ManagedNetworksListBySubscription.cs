@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetwork;
-using Azure.ResourceManager.ManagedNetwork.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetwork;
 
 // Generated from example definition: specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/examples/ManagedNetwork/ManagedNetworksListBySubscription.json
 // this example is just showing the usage of "ManagedNetworks_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (ManagedNetworkResource item in subscriptionResource.GetManagedNet
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

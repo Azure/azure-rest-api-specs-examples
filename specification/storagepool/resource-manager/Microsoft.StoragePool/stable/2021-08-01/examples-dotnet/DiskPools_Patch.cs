@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
-using Azure.ResourceManager.StoragePool;
 using Azure.ResourceManager.StoragePool.Models;
+using Azure.ResourceManager.StoragePool;
 
 // Generated from example definition: specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/DiskPools_Patch.json
 // this example is just showing the usage of "DiskPools_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +25,7 @@ ResourceIdentifier diskPoolResourceId = DiskPoolResource.CreateResourceIdentifie
 DiskPoolResource diskPool = client.GetDiskPoolResource(diskPoolResourceId);
 
 // invoke the operation
-DiskPoolPatch patch = new DiskPoolPatch()
+DiskPoolPatch patch = new DiskPoolPatch
 {
     Sku = new StoragePoolSku("Basic_B1")
     {
@@ -34,18 +33,15 @@ DiskPoolPatch patch = new DiskPoolPatch()
     },
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
-    Disks =
-    {
-    new WritableSubResource()
+    Disks = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_0"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1"),
-    }
-    },
+    }},
 };
 ArmOperation<DiskPoolResource> lro = await diskPool.UpdateAsync(WaitUntil.Completed, patch);
 DiskPoolResource result = lro.Value;

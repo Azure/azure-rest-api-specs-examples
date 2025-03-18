@@ -5197,3 +5197,4 @@ id,name,language,tag,package,version,date_epoch,date
 5196,"Azure.ResourceManager.StreamAnalytics,1.2.1",dotnet,Azure.ResourceManager.StreamAnalytics_1.2.1,Azure.ResourceManager.StreamAnalytics,1.2.1,1742290771,03/18/2025
 5197,"Azure.ResourceManager.WorkloadMonitor,1.0.0-beta.5",dotnet,Azure.ResourceManager.WorkloadMonitor_1.0.0-beta.5,Azure.ResourceManager.WorkloadMonitor,1.0.0-beta.5,1742290747,03/18/2025
 5198,"Azure.ResourceManager.VoiceServices,1.0.2",dotnet,Azure.ResourceManager.VoiceServices_1.0.2,Azure.ResourceManager.VoiceServices,1.0.2,1742290731,03/18/2025
+5199,"Azure.ResourceManager.Reservations,1.4.1",dotnet,Azure.ResourceManager.Reservations_1.4.1,Azure.ResourceManager.Reservations,1.4.1,1742290592,03/18/2025

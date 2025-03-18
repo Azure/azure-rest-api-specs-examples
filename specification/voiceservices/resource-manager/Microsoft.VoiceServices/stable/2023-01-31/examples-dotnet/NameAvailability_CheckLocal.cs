@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.VoiceServices;
 using Azure.ResourceManager.VoiceServices.Models;
+using Azure.ResourceManager.VoiceServices;
 
 // Generated from example definition: specification/voiceservices/resource-manager/Microsoft.VoiceServices/stable/2023-01-31/examples/NameAvailability_CheckLocal.json
 // this example is just showing the usage of "NameAvailability_CheckLocal" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("useast");
-VoiceServicesCheckNameAvailabilityContent content = new VoiceServicesCheckNameAvailabilityContent()
+VoiceServicesCheckNameAvailabilityContent content = new VoiceServicesCheckNameAvailabilityContent
 {
     Name = "myname",
     ResourceType = new ResourceType("Microsoft.VoiceServices/CommunicationsGateway"),

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.VoiceServices;
 using Azure.ResourceManager.VoiceServices.Models;
+using Azure.ResourceManager.VoiceServices;
 
 // Generated from example definition: specification/voiceservices/resource-manager/Microsoft.VoiceServices/stable/2023-01-31/examples/TestLines_Get.json
 // this example is just showing the usage of "TestLines_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VoiceServicesTestLineResource created on azure
-// for more information of creating VoiceServicesTestLineResource, please refer to the document of VoiceServicesTestLineResource
+// this example assumes you already have this VoiceServicesCommunicationsGatewayResource created on azure
+// for more information of creating VoiceServicesCommunicationsGatewayResource, please refer to the document of VoiceServicesCommunicationsGatewayResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "testrg";
 string communicationsGatewayName = "myname";
-string testLineName = "myline";
-ResourceIdentifier voiceServicesTestLineResourceId = VoiceServicesTestLineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName, testLineName);
-VoiceServicesTestLineResource voiceServicesTestLine = client.GetVoiceServicesTestLineResource(voiceServicesTestLineResourceId);
+ResourceIdentifier voiceServicesCommunicationsGatewayResourceId = VoiceServicesCommunicationsGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName);
+VoiceServicesCommunicationsGatewayResource voiceServicesCommunicationsGateway = client.GetVoiceServicesCommunicationsGatewayResource(voiceServicesCommunicationsGatewayResourceId);
+
+// get the collection of this VoiceServicesTestLineResource
+VoiceServicesTestLineCollection collection = voiceServicesCommunicationsGateway.GetVoiceServicesTestLines();
 
 // invoke the operation
-VoiceServicesTestLineResource result = await voiceServicesTestLine.GetAsync();
+string testLineName = "myline";
+NullableResponse<VoiceServicesTestLineResource> response = await collection.GetIfExistsAsync(testLineName);
+VoiceServicesTestLineResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VoiceServicesTestLineData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VoiceServicesTestLineData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

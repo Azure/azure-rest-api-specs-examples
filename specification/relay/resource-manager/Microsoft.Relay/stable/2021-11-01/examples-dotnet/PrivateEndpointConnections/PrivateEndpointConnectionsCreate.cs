@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Relay;
 using Azure.ResourceManager.Relay.Models;
+using Azure.ResourceManager.Relay;
 
 // Generated from example definition: specification/relay/resource-manager/Microsoft.Relay/stable/2021-11-01/examples/PrivateEndpointConnections/PrivateEndpointConnectionsCreate.json
 // this example is just showing the usage of "PrivateEndpointConnections_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,29 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayNamespaceResource created on azure
-// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
+// this example assumes you already have this RelayPrivateEndpointConnectionResource created on azure
+// for more information of creating RelayPrivateEndpointConnectionResource, please refer to the document of RelayPrivateEndpointConnectionResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-5849";
-ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
-
-// get the collection of this RelayPrivateEndpointConnectionResource
-RelayPrivateEndpointConnectionCollection collection = relayNamespace.GetRelayPrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnection name}";
+ResourceIdentifier relayPrivateEndpointConnectionResourceId = RelayPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, privateEndpointConnectionName);
+RelayPrivateEndpointConnectionResource relayPrivateEndpointConnection = client.GetRelayPrivateEndpointConnectionResource(relayPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnection name}";
-RelayPrivateEndpointConnectionData data = new RelayPrivateEndpointConnectionData()
+RelayPrivateEndpointConnectionData data = new RelayPrivateEndpointConnectionData
 {
     PrivateEndpointId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/resourcegroup/providers/Microsoft.Network/privateEndpoints/ali-relay-pve-1"),
-    ConnectionState = new RelayPrivateLinkServiceConnectionState()
+    ConnectionState = new RelayPrivateLinkServiceConnectionState
     {
         Status = RelayPrivateLinkConnectionStatus.Approved,
         Description = "You may pass",
     },
 };
-ArmOperation<RelayPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<RelayPrivateEndpointConnectionResource> lro = await relayPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 RelayPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

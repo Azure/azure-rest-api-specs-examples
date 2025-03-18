@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListConfigurations.json
 // this example is just showing the usage of "ListConfigurations" operation, for the dependent resources, they will have to be created separately.
@@ -25,20 +26,14 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 // invoke the operation and iterate over the result
 ConfigurationsContent content = new ConfigurationsContent(new ConfigurationFilters[]
 {
-new ConfigurationFilters(new HierarchyInformation()
+new ConfigurationFilters(new HierarchyInformation
 {
 ProductFamilyName = "AzureStackEdge",
 ProductLineName = "AzureStackEdge",
 ProductName = "AzureStackEdgeGPU",
 })
 {
-FilterableProperty =
-{
-new FilterableProperty(SupportedFilterType.ShipToCountries,new string[]
-{
-"US"
-})
-},
+FilterableProperty = {new FilterableProperty(SupportedFilterType.ShipToCountries, new string[]{"US"})},
 }
 });
 await foreach (ProductConfiguration item in subscriptionResource.GetConfigurationsAsync(content))
@@ -46,4 +41,4 @@ await foreach (ProductConfiguration item in subscriptionResource.GetConfiguratio
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

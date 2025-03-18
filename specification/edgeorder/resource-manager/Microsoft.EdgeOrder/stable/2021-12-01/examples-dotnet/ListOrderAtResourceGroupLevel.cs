@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListOrderAtResourceGroupLevel.json
 // this example is just showing the usage of "ListOrderAtResourceGroupLevel" operation, for the dependent resources, they will have to be created separately.
@@ -31,4 +32,4 @@ await foreach (EdgeOrderResource item in resourceGroupResource.GetEdgeOrdersAsyn
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

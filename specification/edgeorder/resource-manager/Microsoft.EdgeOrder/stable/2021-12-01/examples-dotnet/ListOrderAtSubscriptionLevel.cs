@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListOrderAtSubscriptionLevel.json
 // this example is just showing the usage of "ListOrderAtSubscriptionLevel" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +33,4 @@ await foreach (EdgeOrderResource item in subscriptionResource.GetEdgeOrdersAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

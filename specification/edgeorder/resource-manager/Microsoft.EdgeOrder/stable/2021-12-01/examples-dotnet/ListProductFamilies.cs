@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListProductFamilies.json
 // this example is just showing the usage of "ListProductFamilies" operation, for the dependent resources, they will have to be created separately.
@@ -23,19 +24,16 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-ProductFamiliesContent content = new ProductFamiliesContent(new Dictionary<string, IList<FilterableProperty>>()
+ProductFamiliesContent content = new ProductFamiliesContent(new Dictionary<string, IList<FilterableProperty>>
 {
     ["azurestackedge"] = new FilterableProperty[]
 {
-new FilterableProperty(SupportedFilterType.ShipToCountries,new string[]
-{
-"US"
-})
-},
+new FilterableProperty(SupportedFilterType.ShipToCountries, new string[]{"US"})
+}
 });
 await foreach (ProductFamily item in subscriptionResource.GetProductFamiliesAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

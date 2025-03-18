@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Dra_Delete.json
 // this example is just showing the usage of "Dra_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ DataReplicationDraResource dataReplicationDra = client.GetDataReplicationDraReso
 // invoke the operation
 await dataReplicationDra.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

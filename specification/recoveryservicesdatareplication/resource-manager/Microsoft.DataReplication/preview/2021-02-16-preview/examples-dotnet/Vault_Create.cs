@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Vault_Create.json
 // this example is just showing the usage of "Vault_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,13 +30,13 @@ DataReplicationVaultCollection collection = resourceGroupResource.GetDataReplica
 string vaultName = "4";
 DataReplicationVaultData data = new DataReplicationVaultData(new AzureLocation("eck"))
 {
-    Properties = new DataReplicationVaultProperties()
+    Properties = new DataReplicationVaultProperties
     {
         VaultType = DataReplicationReplicationVaultType.DisasterRecovery,
     },
     Tags =
     {
-    ["key5359"] = "ljfilxolxzuxrauopwtyxghrp",
+    ["key5359"] = "ljfilxolxzuxrauopwtyxghrp"
     },
 };
 ArmOperation<DataReplicationVaultResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, data);

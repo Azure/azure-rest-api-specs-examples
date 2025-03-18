@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/ReplicationExtension_Get.json
 // this example is just showing the usage of "ReplicationExtension_Get" operation, for the dependent resources, they will have to be created separately.
@@ -33,7 +33,7 @@ DataReplicationReplicationExtensionResource result = response.HasValue ? respons
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

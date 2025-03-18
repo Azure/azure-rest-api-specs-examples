@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/EmailConfiguration_Create.json
 // this example is just showing the usage of "EmailConfiguration_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,10 +30,7 @@ DataReplicationEmailConfigurationCollection collection = dataReplicationVault.Ge
 string emailConfigurationName = "0";
 DataReplicationEmailConfigurationData data = new DataReplicationEmailConfigurationData(new DataReplicationEmailConfigurationProperties(true)
 {
-    CustomEmailAddresses =
-    {
-    "ketvbducyailcny"
-    },
+    CustomEmailAddresses = { "ketvbducyailcny" },
     Locale = "vpnjxjvdqtebnucyxiyrjiko",
 });
 ArmOperation<DataReplicationEmailConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, emailConfigurationName, data);

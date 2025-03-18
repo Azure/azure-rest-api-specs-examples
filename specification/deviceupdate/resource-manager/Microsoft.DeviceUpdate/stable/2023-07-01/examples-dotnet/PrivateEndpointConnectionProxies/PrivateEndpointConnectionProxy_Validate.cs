@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceUpdate;
 using Azure.ResourceManager.DeviceUpdate.Models;
+using Azure.ResourceManager.DeviceUpdate;
 
 // Generated from example definition: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2023-07-01/examples/PrivateEndpointConnectionProxies/PrivateEndpointConnectionProxy_Validate.json
 // this example is just showing the usage of "PrivateEndpointConnectionProxies_Validate" operation, for the dependent resources, they will have to be created separately.
@@ -25,38 +25,27 @@ ResourceIdentifier deviceUpdatePrivateEndpointConnectionProxyResourceId = Device
 DeviceUpdatePrivateEndpointConnectionProxyResource deviceUpdatePrivateEndpointConnectionProxy = client.GetDeviceUpdatePrivateEndpointConnectionProxyResource(deviceUpdatePrivateEndpointConnectionProxyResourceId);
 
 // invoke the operation
-DeviceUpdatePrivateEndpointConnectionProxyData data = new DeviceUpdatePrivateEndpointConnectionProxyData()
+DeviceUpdatePrivateEndpointConnectionProxyData data = new DeviceUpdatePrivateEndpointConnectionProxyData
 {
-    RemotePrivateEndpoint = new DeviceUpdateRemotePrivateEndpoint()
+    RemotePrivateEndpoint = new DeviceUpdateRemotePrivateEndpoint
     {
         Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{privateEndpointConnectionProxyId}"),
         Location = new AzureLocation("westus2"),
         ImmutableSubscriptionId = "00000000-0000-0000-0000-000000000000",
         ImmutableResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{peName}"),
-        ManualPrivateLinkServiceConnections =
-        {
-        new DeviceUpdatePrivateLinkServiceConnection()
+        ManualPrivateLinkServiceConnections = {new DeviceUpdatePrivateLinkServiceConnection
         {
         Name = "{privateEndpointConnectionProxyId}",
-        GroupIds =
-        {
-        "DeviceUpdate"
-        },
+        GroupIds = {"DeviceUpdate"},
         RequestMessage = "Please approve my connection, thanks.",
-        }
-        },
-        PrivateLinkServiceProxies =
-        {
-        new DeviceUpdatePrivateLinkServiceProxy()
+        }},
+        PrivateLinkServiceProxies = {new DeviceUpdatePrivateLinkServiceProxy
         {
         Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{privateEndpointConnectionProxyId}/privateLinkServiceProxies/{privateEndpointConnectionProxyId}"),
-        GroupConnectivityInformation =
-        {
-        },
-        }
-        },
+        GroupConnectivityInformation = {},
+        }},
     },
 };
 await deviceUpdatePrivateEndpointConnectionProxy.ValidateAsync(data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

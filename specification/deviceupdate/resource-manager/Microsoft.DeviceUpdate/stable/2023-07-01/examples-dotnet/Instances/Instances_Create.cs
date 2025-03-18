@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceUpdate;
 using Azure.ResourceManager.DeviceUpdate.Models;
+using Azure.ResourceManager.DeviceUpdate;
 
 // Generated from example definition: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2023-07-01/examples/Instances/Instances_Create.json
 // this example is just showing the usage of "Instances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,10 +30,7 @@ DeviceUpdateInstanceCollection collection = deviceUpdateAccount.GetDeviceUpdateI
 string instanceName = "blue";
 DeviceUpdateInstanceData data = new DeviceUpdateInstanceData(new AzureLocation("westus2"))
 {
-    IotHubs =
-    {
-    new DeviceUpdateIotHubSettings(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/blue-contoso-hub"))
-    },
+    IotHubs = { new DeviceUpdateIotHubSettings(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/blue-contoso-hub")) },
     EnableDiagnostics = false,
     DiagnosticStorageProperties = new DiagnosticStorageProperties(DiagnosticStorageAuthenticationType.KeyBased, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/adu-resource-group/providers/Microsoft.Storage/storageAccounts/testAccount"))
     {

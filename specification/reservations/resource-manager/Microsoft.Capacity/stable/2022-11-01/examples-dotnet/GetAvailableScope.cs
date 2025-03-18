@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/examples/GetAvailableScope.json
 // this example is just showing the usage of "Reservation_AvailableScopes" operation, for the dependent resources, they will have to be created separately.
@@ -23,12 +23,9 @@ ResourceIdentifier reservationDetailResourceId = ReservationDetailResource.Creat
 ReservationDetailResource reservationDetail = client.GetReservationDetailResource(reservationDetailResourceId);
 
 // invoke the operation
-AvailableScopesContent content = new AvailableScopesContent()
+AvailableScopesContent content = new AvailableScopesContent
 {
-    Scopes =
-    {
-    "/subscriptions/efc7c997-7700-4a74-b731-55aec16c15e9"
-    },
+    Scopes = { "/subscriptions/efc7c997-7700-4a74-b731-55aec16c15e9" },
 };
 ArmOperation<AvailableScopesProperties> lro = await reservationDetail.GetAvailableScopesAsync(WaitUntil.Completed, content);
 AvailableScopesProperties result = lro.Value;

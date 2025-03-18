@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/examples/ChangeDirectoryReservationOrder.json
 // this example is just showing the usage of "ReservationOrder_ChangeDirectory" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +23,7 @@ ResourceIdentifier reservationOrderResourceId = ReservationOrderResource.CreateR
 ReservationOrderResource reservationOrder = client.GetReservationOrderResource(reservationOrderResourceId);
 
 // invoke the operation
-ChangeDirectoryContent content = new ChangeDirectoryContent()
+ChangeDirectoryContent content = new ChangeDirectoryContent
 {
     DestinationTenantId = Guid.Parse("906655ea-30be-4587-9d12-b50e077b0f32"),
 };

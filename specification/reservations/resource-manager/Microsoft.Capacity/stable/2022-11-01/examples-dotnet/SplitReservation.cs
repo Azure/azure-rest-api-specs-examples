@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/examples/SplitReservation.json
 // this example is just showing the usage of "Reservation_Split" operation, for the dependent resources, they will have to be created separately.
@@ -23,12 +23,9 @@ ResourceIdentifier reservationOrderResourceId = ReservationOrderResource.CreateR
 ReservationOrderResource reservationOrder = client.GetReservationOrderResource(reservationOrderResourceId);
 
 // invoke the operation
-SplitContent content = new SplitContent()
+SplitContent content = new SplitContent
 {
-    Quantities =
-    {
-    1,2
-    },
+    Quantities = { 1, 2 },
     ReservationId = new ResourceIdentifier("/providers/Microsoft.Capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/bcae77cd-3119-4766-919f-b50d36c75c7a"),
 };
 ArmOperation<IList<ReservationDetailData>> lro = await reservationOrder.SplitReservationAsync(WaitUntil.Completed, content);

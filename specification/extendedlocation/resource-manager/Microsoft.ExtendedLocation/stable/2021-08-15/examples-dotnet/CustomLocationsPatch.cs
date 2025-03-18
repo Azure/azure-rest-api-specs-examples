@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ExtendedLocations;
 using Azure.ResourceManager.ExtendedLocations.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ExtendedLocations;
 
 // Generated from example definition: specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/examples/CustomLocationsPatch.json
 // this example is just showing the usage of "CustomLocations_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,18 +25,15 @@ ResourceIdentifier customLocationResourceId = CustomLocationResource.CreateResou
 CustomLocationResource customLocation = client.GetCustomLocationResource(customLocationResourceId);
 
 // invoke the operation
-CustomLocationPatch patch = new CustomLocationPatch()
+CustomLocationPatch patch = new CustomLocationPatch
 {
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     Tags =
     {
     ["archv3"] = "",
-    ["tier"] = "testing",
+    ["tier"] = "testing"
     },
-    ClusterExtensionIds =
-    {
-    new ResourceIdentifier("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension"),new ResourceIdentifier("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01/Microsoft.KubernetesConfiguration/clusterExtensions/barExtension")
-    },
+    ClusterExtensionIds = { new ResourceIdentifier("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension"), new ResourceIdentifier("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01/Microsoft.KubernetesConfiguration/clusterExtensions/barExtension") },
 };
 CustomLocationResource result = await customLocation.UpdateAsync(patch);
 

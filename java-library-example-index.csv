@@ -5220,3 +5220,4 @@ id,name,language,tag,package,version,date_epoch,date
 5219,"Azure.ResourceManager.ManagedNetwork,1.0.0-beta.5",dotnet,Azure.ResourceManager.ManagedNetwork_1.0.0-beta.5,Azure.ResourceManager.ManagedNetwork,1.0.0-beta.5,1742229084,03/17/2025
 5220,"Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.5",dotnet,Azure.ResourceManager.MachineLearningCompute_1.0.0-beta.5,Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.5,1742229079,03/17/2025
 5221,"Azure.ResourceManager.Kubernetes,1.0.0-beta.5",dotnet,Azure.ResourceManager.Kubernetes_1.0.0-beta.5,Azure.ResourceManager.Kubernetes,1.0.0-beta.5,1742228974,03/17/2025
+5222,"Azure.ResourceManager.LabServices,1.1.1",dotnet,Azure.ResourceManager.LabServices_1.1.1,Azure.ResourceManager.LabServices,1.1.1,1742228472,03/17/2025

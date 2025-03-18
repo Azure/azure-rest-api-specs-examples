@@ -5210,3 +5210,4 @@ id,name,language,tag,package,version,date_epoch,date
 5209,"Azure.ResourceManager.Relay,1.2.1",dotnet,Azure.ResourceManager.Relay_1.2.1,Azure.ResourceManager.Relay,1.2.1,1742287893,03/18/2025
 5210,"Azure.ResourceManager.Orbital,1.1.1",dotnet,Azure.ResourceManager.Orbital_1.1.1,Azure.ResourceManager.Orbital,1.1.1,1742287888,03/18/2025
 5211,"Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.1.1",dotnet,Azure.ResourceManager.PaloAltoNetworks.Ngfw_1.1.1,Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.1.1,1742287863,03/18/2025
+5212,"Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0-beta.3",dotnet,Azure.ResourceManager.RecoveryServicesDataReplication_1.0.0-beta.3,Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0-beta.3,1742286383,03/18/2025

@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreateExchangePeering.json
 // this example is just showing the usage of "Peerings_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,19 +29,17 @@ PeeringCollection collection = resourceGroupResource.GetPeerings();
 
 // invoke the operation
 string peeringName = "peeringName";
-PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
+PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku
 {
     Name = "Basic_Exchange_Free",
 }, PeeringKind.Exchange)
 {
-    Exchange = new ExchangePeeringProperties()
+    Exchange = new ExchangePeeringProperties
     {
-        Connections =
-        {
-        new PeeringExchangeConnection()
+        Connections = {new PeeringExchangeConnection
         {
         PeeringDBFacilityId = 99999,
-        BgpSession = new PeeringBgpSession()
+        BgpSession = new PeeringBgpSession
         {
         PeerSessionIPv4Address = IPAddress.Parse("192.168.2.1"),
         PeerSessionIPv6Address = IPAddress.Parse("fd00::1"),
@@ -50,10 +48,10 @@ PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
         Md5AuthenticationKey = "test-md5-auth-key",
         },
         ConnectionIdentifier = Guid.Parse("CE495334-0E94-4E51-8164-8116D6CD284D"),
-        },new PeeringExchangeConnection()
+        }, new PeeringExchangeConnection
         {
         PeeringDBFacilityId = 99999,
-        BgpSession = new PeeringBgpSession()
+        BgpSession = new PeeringBgpSession
         {
         PeerSessionIPv4Address = IPAddress.Parse("192.168.2.2"),
         PeerSessionIPv6Address = IPAddress.Parse("fd00::2"),
@@ -62,8 +60,7 @@ PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
         Md5AuthenticationKey = "test-md5-auth-key",
         },
         ConnectionIdentifier = Guid.Parse("CDD8E673-CB07-47E6-84DE-3739F778762B"),
-        }
-        },
+        }},
         PeerAsnId = new ResourceIdentifier("/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"),
     },
     PeeringLocation = "peeringLocation0",

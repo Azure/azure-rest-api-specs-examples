@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreatePeeringServicePrefix.json
@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PeeringServicePrefixResource created on azure
-// for more information of creating PeeringServicePrefixResource, please refer to the document of PeeringServicePrefixResource
+// this example assumes you already have this PeeringServiceResource created on azure
+// for more information of creating PeeringServiceResource, please refer to the document of PeeringServiceResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string peeringServiceName = "peeringServiceName";
-string prefixName = "peeringServicePrefixName";
-ResourceIdentifier peeringServicePrefixResourceId = PeeringServicePrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringServiceName, prefixName);
-PeeringServicePrefixResource peeringServicePrefix = client.GetPeeringServicePrefixResource(peeringServicePrefixResourceId);
+ResourceIdentifier peeringServiceResourceId = PeeringServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringServiceName);
+PeeringServiceResource peeringService = client.GetPeeringServiceResource(peeringServiceResourceId);
+
+// get the collection of this PeeringServicePrefixResource
+PeeringServicePrefixCollection collection = peeringService.GetPeeringServicePrefixes();
 
 // invoke the operation
-PeeringServicePrefixData data = new PeeringServicePrefixData()
+string prefixName = "peeringServicePrefixName";
+PeeringServicePrefixData data = new PeeringServicePrefixData
 {
     Prefix = "192.168.1.0/24",
     PeeringServicePrefixKey = "00000000-0000-0000-0000-000000000000",
 };
-ArmOperation<PeeringServicePrefixResource> lro = await peeringServicePrefix.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PeeringServicePrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, prefixName, data);
 PeeringServicePrefixResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

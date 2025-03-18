@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreatePeeringService.json
 // this example is just showing the usage of "PeeringServices_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.

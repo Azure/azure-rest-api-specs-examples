@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreatePeeringWithExchangeRouteServer.json
 // this example is just showing the usage of "Peerings_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,22 +29,20 @@ PeeringCollection collection = resourceGroupResource.GetPeerings();
 
 // invoke the operation
 string peeringName = "peeringName";
-PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
+PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku
 {
     Name = "Premium_Direct_Free",
 }, PeeringKind.Direct)
 {
-    Direct = new DirectPeeringProperties()
+    Direct = new DirectPeeringProperties
     {
-        Connections =
-        {
-        new PeeringDirectConnection()
+        Connections = {new PeeringDirectConnection
         {
         BandwidthInMbps = 10000,
         SessionAddressProvider = PeeringSessionAddressProvider.Peer,
         UseForPeeringService = true,
         PeeringDBFacilityId = 99999,
-        BgpSession = new PeeringBgpSession()
+        BgpSession = new PeeringBgpSession
         {
         SessionPrefixV4 = "192.168.0.0/24",
         MicrosoftSessionIPv4Address = IPAddress.Parse("192.168.0.123"),
@@ -53,8 +51,7 @@ PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
         MaxPrefixesAdvertisedV6 = 100,
         },
         ConnectionIdentifier = "5F4CB5C7-6B43-4444-9338-9ABC72606C16",
-        }
-        },
+        }},
         PeerAsnId = new ResourceIdentifier("/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"),
         DirectPeeringType = DirectPeeringType.IxRs,
     },

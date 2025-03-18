@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/DeleteConnectionMonitorTest.json
@@ -26,4 +26,4 @@ ConnectionMonitorTestResource connectionMonitorTest = client.GetConnectionMonito
 // invoke the operation
 await connectionMonitorTest.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

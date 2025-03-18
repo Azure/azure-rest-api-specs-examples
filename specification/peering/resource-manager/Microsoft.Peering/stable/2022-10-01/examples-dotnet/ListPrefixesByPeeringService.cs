@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/ListPrefixesByPeeringService.json
@@ -35,4 +35,4 @@ await foreach (PeeringServicePrefixResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

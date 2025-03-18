@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreateRegisteredAsn.json
@@ -24,7 +24,7 @@ ResourceIdentifier peeringRegisteredAsnResourceId = PeeringRegisteredAsnResource
 PeeringRegisteredAsnResource peeringRegisteredAsn = client.GetPeeringRegisteredAsnResource(peeringRegisteredAsnResourceId);
 
 // invoke the operation
-PeeringRegisteredAsnData data = new PeeringRegisteredAsnData()
+PeeringRegisteredAsnData data = new PeeringRegisteredAsnData
 {
     Asn = 65000,
 };

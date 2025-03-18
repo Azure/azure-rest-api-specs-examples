@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceLinker;
 using Azure.ResourceManager.ServiceLinker.Models;
+using Azure.ResourceManager.ServiceLinker;
 
 // Generated from example definition: specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/DeleteLink.json
 // this example is just showing the usage of "Linker_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -25,4 +25,4 @@ LinkerResource linkerResource = client.GetLinkerResource(linkerResourceId);
 // invoke the operation
 await linkerResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

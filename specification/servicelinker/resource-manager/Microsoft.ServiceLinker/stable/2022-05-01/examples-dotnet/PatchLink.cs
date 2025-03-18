@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceLinker;
 using Azure.ResourceManager.ServiceLinker.Models;
+using Azure.ResourceManager.ServiceLinker;
 
 // Generated from example definition: specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/PatchLink.json
 // this example is just showing the usage of "Linker_Update" operation, for the dependent resources, they will have to be created separately.
@@ -23,9 +23,9 @@ ResourceIdentifier linkerResourceId = LinkerResource.CreateResourceIdentifier(re
 LinkerResource linkerResource = client.GetLinkerResource(linkerResourceId);
 
 // invoke the operation
-LinkerResourcePatch patch = new LinkerResourcePatch()
+LinkerResourcePatch patch = new LinkerResourcePatch
 {
-    TargetService = new AzureResourceInfo()
+    TargetService = new AzureResourceInfo
     {
         Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
     },

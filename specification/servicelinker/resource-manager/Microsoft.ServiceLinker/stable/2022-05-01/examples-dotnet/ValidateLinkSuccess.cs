@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ServiceLinker;
 using Azure.ResourceManager.ServiceLinker.Models;
+using Azure.ResourceManager.ServiceLinker;
 
 // Generated from example definition: specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/ValidateLinkSuccess.json
 // this example is just showing the usage of "Linker_Validate" operation, for the dependent resources, they will have to be created separately.

@@ -5231,3 +5231,4 @@ id,name,language,tag,package,version,date_epoch,date
 5230,"Azure.ResourceManager.FluidRelay,1.1.1",dotnet,Azure.ResourceManager.FluidRelay_1.1.1,Azure.ResourceManager.FluidRelay,1.1.1,1742227925,03/17/2025
 5231,"Azure.ResourceManager.DeviceUpdate,1.0.1",dotnet,Azure.ResourceManager.DeviceUpdate_1.0.1,Azure.ResourceManager.DeviceUpdate,1.0.1,1742227883,03/17/2025
 5232,"Azure.ResourceManager.HealthBot,1.1.1",dotnet,Azure.ResourceManager.HealthBot_1.1.1,Azure.ResourceManager.HealthBot,1.1.1,1742227874,03/17/2025
+5233,"Azure.ResourceManager.DevCenter,1.0.2",dotnet,Azure.ResourceManager.DevCenter_1.0.2,Azure.ResourceManager.DevCenter,1.0.2,1742227741,03/17/2025

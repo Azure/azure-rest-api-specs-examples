@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.ManagementGroups;
-using Azure.ResourceManager.PolicyInsights;
 using Azure.ResourceManager.PolicyInsights.Models;
+using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_QueryManagementGroupScopeNextLink.json
 // this example is just showing the usage of "PolicyEvents_ListQueryResultsForManagementGroup" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +29,4 @@ await foreach (PolicyEvent item in managementGroupResource.GetPolicyEventQueryRe
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

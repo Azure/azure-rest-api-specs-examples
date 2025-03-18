@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PolicyInsights;
 using Azure.ResourceManager.PolicyInsights.Models;
+using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-09-01/examples/Attestations_CreateResourceScope.json
 // this example is just showing the usage of "Attestations_CreateOrUpdateAtResource" operation, for the dependent resources, they will have to be created separately.
@@ -16,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this PolicyAttestationResource
 string resourceId = "subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myrg/providers/microsoft.compute/virtualMachines/devVM";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-PolicyAttestationCollection collection = client.GetPolicyAttestations(scopeId);
+PolicyAttestationCollection collection = client.GetPolicyAttestations(new ResourceIdentifier(resourceId));
 
 // invoke the operation
 string attestationName = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e";
@@ -33,18 +28,15 @@ PolicyAttestationData data = new PolicyAttestationData(new ResourceIdentifier("/
     ExpireOn = DateTimeOffset.Parse("2021-06-15T00:00:00Z"),
     Owner = "55a32e28-3aa5-4eea-9b5a-4cd85153b966",
     Comments = "This subscription has passed a security audit.",
-    Evidence =
-    {
-    new AttestationEvidence()
+    Evidence = {new AttestationEvidence
     {
     Description = "The results of the security audit.",
     SourceUri = new Uri("https://gist.github.com/contoso/9573e238762c60166c090ae16b814011"),
-    }
-    },
+    }},
     AssessOn = DateTimeOffset.Parse("2021-06-10T00:00:00Z"),
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Metadata = BinaryData.FromObjectAsJson(new
     {
-        ["departmentId"] = "NYC-MARKETING-1"
+        departmentId = "NYC-MARKETING-1",
     }),
 };
 ArmOperation<PolicyAttestationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, attestationName, data);

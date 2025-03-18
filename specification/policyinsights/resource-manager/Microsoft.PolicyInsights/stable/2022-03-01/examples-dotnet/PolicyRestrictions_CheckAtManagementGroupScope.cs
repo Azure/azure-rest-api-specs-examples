@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.ManagementGroups;
-using Azure.ResourceManager.PolicyInsights;
 using Azure.ResourceManager.PolicyInsights.Models;
+using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/examples/PolicyRestrictions_CheckAtManagementGroupScope.json
 // this example is just showing the usage of "PolicyRestrictions_CheckAtManagementGroupScope" operation, for the dependent resources, they will have to be created separately.
@@ -22,12 +23,9 @@ ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateRes
 ManagementGroupResource managementGroupResource = client.GetManagementGroupResource(managementGroupResourceId);
 
 // invoke the operation
-CheckManagementGroupPolicyRestrictionsContent content = new CheckManagementGroupPolicyRestrictionsContent()
+CheckManagementGroupPolicyRestrictionsContent content = new CheckManagementGroupPolicyRestrictionsContent
 {
-    PendingFields =
-    {
-    new PendingField("type")
-    },
+    PendingFields = { new PendingField("type") },
 };
 CheckPolicyRestrictionsResult result = await managementGroupResource.CheckPolicyRestrictionsAsync(content);
 

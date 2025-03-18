@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.FluidRelay;
 using Azure.ResourceManager.FluidRelay.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.FluidRelay;
 
 // Generated from example definition: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_Delete.json
 // this example is just showing the usage of "FluidRelayServers_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ FluidRelayServerResource fluidRelayServer = client.GetFluidRelayServerResource(f
 // invoke the operation
 await fluidRelayServer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

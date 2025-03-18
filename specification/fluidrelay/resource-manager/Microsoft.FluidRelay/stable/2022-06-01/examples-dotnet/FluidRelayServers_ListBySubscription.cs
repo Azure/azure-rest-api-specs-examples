@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.FluidRelay;
-using Azure.ResourceManager.FluidRelay.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.FluidRelay;
 
 // Generated from example definition: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_ListBySubscription.json
 // this example is just showing the usage of "FluidRelayServers_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (FluidRelayServerResource item in subscriptionResource.GetFluidRel
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

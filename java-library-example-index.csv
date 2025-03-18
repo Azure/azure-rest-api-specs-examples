@@ -5200,3 +5200,4 @@ id,name,language,tag,package,version,date_epoch,date
 5199,"Azure.ResourceManager.Reservations,1.4.1",dotnet,Azure.ResourceManager.Reservations_1.4.1,Azure.ResourceManager.Reservations,1.4.1,1742290592,03/18/2025
 5200,"Azure.ResourceManager.SecurityDevOps,1.0.0-beta.5",dotnet,Azure.ResourceManager.SecurityDevOps_1.0.0-beta.5,Azure.ResourceManager.SecurityDevOps,1.0.0-beta.5,1742290535,03/18/2025
 5201,"Azure.ResourceManager.ResourceHealth,1.1.0-beta.4",dotnet,Azure.ResourceManager.ResourceHealth_1.1.0-beta.4,Azure.ResourceManager.ResourceHealth,1.1.0-beta.4,1742288028,03/18/2025
+5202,"Azure.ResourceManager.ProviderHub,1.1.1",dotnet,Azure.ResourceManager.ProviderHub_1.1.1,Azure.ResourceManager.ProviderHub,1.1.1,1742287955,03/18/2025

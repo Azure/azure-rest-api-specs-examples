@@ -5208,3 +5208,4 @@ id,name,language,tag,package,version,date_epoch,date
 5207,"Azure.ResourceManager.PolicyInsights,1.2.1",dotnet,Azure.ResourceManager.PolicyInsights_1.2.1,Azure.ResourceManager.PolicyInsights,1.2.1,1742287909,03/18/2025
 5208,"Azure.ResourceManager.Peering,1.2.2",dotnet,Azure.ResourceManager.Peering_1.2.2,Azure.ResourceManager.Peering,1.2.2,1742287906,03/18/2025
 5209,"Azure.ResourceManager.Relay,1.2.1",dotnet,Azure.ResourceManager.Relay_1.2.1,Azure.ResourceManager.Relay,1.2.1,1742287893,03/18/2025
+5210,"Azure.ResourceManager.Orbital,1.1.1",dotnet,Azure.ResourceManager.Orbital_1.1.1,Azure.ResourceManager.Orbital,1.1.1,1742287888,03/18/2025

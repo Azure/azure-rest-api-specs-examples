@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PowerBIDedicated;
 using Azure.ResourceManager.PowerBIDedicated.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PowerBIDedicated;
 
 // Generated from example definition: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/createAutoScaleVCore.json
 // this example is just showing the usage of "AutoScaleVCores_Create" operation, for the dependent resources, they will have to be created separately.
@@ -38,7 +38,7 @@ AutoScaleVCoreData data = new AutoScaleVCoreData(new AzureLocation("West US"), n
     CapacityObjectId = "a28f00bd-5330-4572-88f1-fa883e074785",
     Tags =
     {
-    ["testKey"] = "testValue",
+    ["testKey"] = "testValue"
     },
 };
 ArmOperation<AutoScaleVCoreResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vcoreName, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/VirtualMachines/resetPasswordVirtualMachine.json
 // this example is just showing the usage of "VirtualMachines_ResetPassword" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +28,4 @@ LabVirtualMachineResource labVirtualMachine = client.GetLabVirtualMachineResourc
 LabVirtualMachineResetPasswordContent content = new LabVirtualMachineResetPasswordContent("example-username", "example-password");
 await labVirtualMachine.ResetPasswordAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

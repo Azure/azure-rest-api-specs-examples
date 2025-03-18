@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Schedules/putSchedule.json
 // this example is just showing the usage of "Schedules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ LabServicesScheduleCollection collection = lab.GetLabServicesSchedules();
 
 // invoke the operation
 string scheduleName = "schedule1";
-LabServicesScheduleData data = new LabServicesScheduleData()
+LabServicesScheduleData data = new LabServicesScheduleData
 {
     StartOn = DateTimeOffset.Parse("2020-05-26T12:00:00Z"),
     StopOn = DateTimeOffset.Parse("2020-05-26T18:00:00Z"),
@@ -37,7 +37,7 @@ LabServicesScheduleData data = new LabServicesScheduleData()
         Interval = 2,
     },
     TimeZoneId = "America/Los_Angeles",
-    Notes = BinaryData.FromString("\"Schedule 1 for students\""),
+    Notes = BinaryData.FromObjectAsJson("Schedule 1 for students"),
 };
 ArmOperation<LabServicesScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scheduleName, data);
 LabServicesScheduleResource result = lro.Value;

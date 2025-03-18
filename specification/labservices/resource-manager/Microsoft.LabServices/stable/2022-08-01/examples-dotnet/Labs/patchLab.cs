@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Labs/patchLab.json
 // this example is just showing the usage of "Labs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,9 +24,9 @@ ResourceIdentifier labResourceId = LabResource.CreateResourceIdentifier(subscrip
 LabResource lab = client.GetLabResource(labResourceId);
 
 // invoke the operation
-LabPatch patch = new LabPatch()
+LabPatch patch = new LabPatch
 {
-    SecurityProfile = new LabSecurityProfile()
+    SecurityProfile = new LabSecurityProfile
     {
         OpenAccess = LabServicesEnableState.Enabled,
     },

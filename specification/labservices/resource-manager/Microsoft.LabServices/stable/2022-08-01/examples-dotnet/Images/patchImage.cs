@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Images/patchImage.json
 // this example is just showing the usage of "Images_Update" operation, for the dependent resources, they will have to be created separately.
@@ -24,7 +25,7 @@ ResourceIdentifier labVirtualMachineImageResourceId = LabVirtualMachineImageReso
 LabVirtualMachineImageResource labVirtualMachineImage = client.GetLabVirtualMachineImageResource(labVirtualMachineImageResourceId);
 
 // invoke the operation
-LabVirtualMachineImagePatch patch = new LabVirtualMachineImagePatch()
+LabVirtualMachineImagePatch patch = new LabVirtualMachineImagePatch
 {
     EnabledState = LabServicesEnableState.Enabled,
 };

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Grafana;
 
 // Generated from example definition: specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/examples/ManagedPrivateEndpoints_Create.json
@@ -31,10 +31,7 @@ ManagedPrivateEndpointModelData data = new ManagedPrivateEndpointModelData(new A
 {
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-000000000000/resourceGroups/xx-rg/providers/Microsoft.Kusto/Clusters/sampleKustoResource"),
     PrivateLinkResourceRegion = "West US",
-    GroupIds =
-    {
-    "grafana"
-    },
+    GroupIds = { "grafana" },
     RequestMessage = "Example Request Message",
     PrivateLinkServiceUri = new Uri("my-self-hosted-influxdb.westus.mydomain.com"),
 };

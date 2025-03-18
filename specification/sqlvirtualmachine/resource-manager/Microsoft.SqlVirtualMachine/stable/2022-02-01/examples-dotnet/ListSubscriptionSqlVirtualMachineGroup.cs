@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SqlVirtualMachine;
-using Azure.ResourceManager.SqlVirtualMachine.Models;
 
 // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/ListSubscriptionSqlVirtualMachineGroup.json
 // this example is just showing the usage of "SqlVirtualMachineGroups_List" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (SqlVmGroupResource item in subscriptionResource.GetSqlVmGroupsAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

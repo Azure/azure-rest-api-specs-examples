@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SqlVirtualMachine;
 using Azure.ResourceManager.SqlVirtualMachine.Models;
+using Azure.ResourceManager.SqlVirtualMachine;
 
 // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/CreateOrUpdateSqlVirtualMachineMAX.json
 // this example is just showing the usage of "SqlVirtualMachines_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -35,14 +35,14 @@ SqlVmData data = new SqlVmData(new AzureLocation("northeurope"))
     SqlServerLicenseType = SqlServerLicenseType.Payg,
     SqlManagement = SqlManagementMode.Full,
     SqlImageSku = SqlImageSku.Enterprise,
-    AutoPatchingSettings = new SqlVmAutoPatchingSettings()
+    AutoPatchingSettings = new SqlVmAutoPatchingSettings
     {
         IsEnabled = true,
         DayOfWeek = SqlVmAutoPatchingDayOfWeek.Sunday,
         MaintenanceWindowStartingHour = 2,
         MaintenanceWindowDurationInMinutes = 60,
     },
-    AutoBackupSettings = new SqlVmAutoBackupSettings()
+    AutoBackupSettings = new SqlVmAutoBackupSettings
     {
         IsEnabled = true,
         IsEncryptionEnabled = true,
@@ -58,13 +58,13 @@ SqlVmData data = new SqlVmData(new AzureLocation("northeurope"))
         FullBackupWindowHours = 11,
         LogBackupFrequency = 10,
     },
-    KeyVaultCredentialSettings = new SqlVmKeyVaultCredentialSettings()
+    KeyVaultCredentialSettings = new SqlVmKeyVaultCredentialSettings
     {
         IsEnabled = false,
     },
-    ServerConfigurationsManagementSettings = new SqlServerConfigurationsManagementSettings()
+    ServerConfigurationsManagementSettings = new SqlServerConfigurationsManagementSettings
     {
-        SqlConnectivityUpdateSettings = new SqlConnectivityUpdateSettings()
+        SqlConnectivityUpdateSettings = new SqlConnectivityUpdateSettings
         {
             ConnectivityType = SqlServerConnectivityType.Private,
             Port = 1433,
@@ -72,14 +72,14 @@ SqlVmData data = new SqlVmData(new AzureLocation("northeurope"))
             SqlAuthUpdatePassword = "<password>",
         },
         SqlWorkloadType = SqlWorkloadType.Oltp,
-        SqlStorageUpdateSettings = new SqlStorageUpdateSettings()
+        SqlStorageUpdateSettings = new SqlStorageUpdateSettings
         {
             DiskCount = 1,
             StartingDeviceId = 2,
             DiskConfigurationType = SqlVmDiskConfigurationType.New,
         },
         IsRServicesEnabled = false,
-        SqlInstanceSettings = new SqlInstanceSettings()
+        SqlInstanceSettings = new SqlInstanceSettings
         {
             Collation = "SQL_Latin1_General_CP1_CI_AS",
             MaxDop = 8,
@@ -90,15 +90,15 @@ SqlVmData data = new SqlVmData(new AzureLocation("northeurope"))
             IsIfiEnabled = true,
         },
     },
-    AssessmentSettings = new SqlVmAssessmentSettings()
+    AssessmentSettings = new SqlVmAssessmentSettings
     {
         IsEnabled = true,
         RunImmediately = true,
-        Schedule = new SqlVmAssessmentSchedule()
+        Schedule = new SqlVmAssessmentSchedule
         {
             IsEnabled = true,
             WeeklyInterval = 1,
-            MonthlyOccurrence = null,
+            MonthlyOccurrence = default,
             DayOfWeek = SqlVmAssessmentDayOfWeek.Sunday,
             StartTime = "23:17",
         },

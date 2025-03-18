@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkToNetworkInterconnects_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkToNetworkInterconnects_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,51 +32,36 @@ NetworkToNetworkInterconnectData data = new NetworkToNetworkInterconnectData(Net
 {
     NniType = NniType.CE,
     IsManagementType = IsManagementType.True,
-    Layer2Configuration = new Layer2Configuration()
+    Layer2Configuration = new Layer2Configuration
     {
         Mtu = 1500,
-        Interfaces =
-        {
-        new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface")
-        },
+        Interfaces = { new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface") },
     },
-    OptionBLayer3Configuration = new NetworkToNetworkInterconnectOptionBLayer3Configuration()
+    OptionBLayer3Configuration = new NetworkToNetworkInterconnectOptionBLayer3Configuration
     {
-        PeerAsn = 61234,
+        PeerAsn = 61234L,
         VlanId = 1234,
         PrimaryIPv4Prefix = "10.0.0.12/30",
         PrimaryIPv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
         SecondaryIPv4Prefix = "40.0.0.14/30",
         SecondaryIPv6Prefix = "6FFE:FFFF:0:CD30::ac/127",
     },
-    NpbStaticRouteConfiguration = new NpbStaticRouteConfiguration()
+    NpbStaticRouteConfiguration = new NpbStaticRouteConfiguration
     {
-        BfdConfiguration = new BfdConfiguration()
+        BfdConfiguration = new BfdConfiguration
         {
             IntervalInMilliSeconds = 300,
             Multiplier = 25,
         },
-        IPv4Routes =
-        {
-        new StaticRouteProperties("20.0.0.12/30",new string[]
-        {
-        "21.20.20.20"
-        })
-        },
-        IPv6Routes =
-        {
-        new StaticRouteProperties("3FFE:FFFF:0:CD30::ac/127",new string[]
-        {
-        "4FFE:FFFF:0:CD30::ac"
-        })
-        },
+        IPv4Routes = { new StaticRouteProperties("20.0.0.12/30", new string[] { "21.20.20.20" }) },
+        IPv6Routes = { new StaticRouteProperties("3FFE:FFFF:0:CD30::ac/127", new string[] { "4FFE:FFFF:0:CD30::ac" }) },
     },
-    ImportRoutePolicy = new ImportRoutePolicyInformation()
+    ImportRoutePolicy = new ImportRoutePolicyInformation
     {
         ImportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"),
         ImportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"),
     },
-    ExportRoutePolicy = new ExportRoutePolicyInformation()
+    ExportRoutePolicy = new ExportRoutePolicyInformation
     {
         ExportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"),
         ExportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"),

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkFabricControllers_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkFabricControllers_Create" operation, for the dependent resources, they will have to be created separately.
@@ -31,21 +31,15 @@ string networkFabricControllerName = "example-networkController";
 NetworkFabricControllerData data = new NetworkFabricControllerData(new AzureLocation("eastus"))
 {
     Annotation = "annotation",
-    InfrastructureExpressRouteConnections =
-    {
-    new ExpressRouteConnectionInformation(new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"))
+    InfrastructureExpressRouteConnections = {new ExpressRouteConnectionInformation(new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"))
     {
     ExpressRouteAuthorizationKey = "1234ABCD-0A1B-1234-5678-123456ABCDEF",
-    }
-    },
-    WorkloadExpressRouteConnections =
-    {
-    new ExpressRouteConnectionInformation(new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"))
+    }},
+    WorkloadExpressRouteConnections = {new ExpressRouteConnectionInformation(new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName"))
     {
     ExpressRouteAuthorizationKey = "xxxxx",
-    }
-    },
-    ManagedResourceGroupConfiguration = new ManagedResourceGroupConfiguration()
+    }},
+    ManagedResourceGroupConfiguration = new ManagedResourceGroupConfiguration
     {
         Name = "managedResourceGroupName",
         Location = new AzureLocation("eastus"),

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/InternetGateways_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "InternetGateways_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier networkFabricInternetGatewayResourceId = NetworkFabricInterne
 NetworkFabricInternetGatewayResource networkFabricInternetGateway = client.GetNetworkFabricInternetGatewayResource(networkFabricInternetGatewayResourceId);
 
 // invoke the operation
-NetworkFabricInternetGatewayPatch patch = new NetworkFabricInternetGatewayPatch()
+NetworkFabricInternetGatewayPatch patch = new NetworkFabricInternetGatewayPatch
 {
     InternetGatewayRuleId = new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxxx/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/example-internetGatewayRule"),
     Tags =
     {
-    ["key81"] = "2345",
+    ["key81"] = "2345"
     },
 };
 ArmOperation<NetworkFabricInternetGatewayResource> lro = await networkFabricInternetGateway.UpdateAsync(WaitUntil.Completed, patch);

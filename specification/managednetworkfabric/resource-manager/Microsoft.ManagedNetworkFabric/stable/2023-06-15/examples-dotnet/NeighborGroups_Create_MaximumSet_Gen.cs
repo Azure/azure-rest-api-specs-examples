@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NeighborGroups_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NeighborGroups_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,20 +32,14 @@ string neighborGroupName = "example-neighborGroup";
 NetworkFabricNeighborGroupData data = new NetworkFabricNeighborGroupData(new AzureLocation("eastus"))
 {
     Annotation = "annotation",
-    Destination = new NeighborGroupDestination()
+    Destination = new NeighborGroupDestination
     {
-        IPv4Addresses =
-        {
-        IPAddress.Parse("10.10.10.10"),IPAddress.Parse("20.10.10.10"),IPAddress.Parse("30.10.10.10"),IPAddress.Parse("40.10.10.10"),IPAddress.Parse("50.10.10.10"),IPAddress.Parse("60.10.10.10"),IPAddress.Parse("70.10.10.10"),IPAddress.Parse("80.10.10.10"),IPAddress.Parse("90.10.10.10")
-        },
-        IPv6Addresses =
-        {
-        "2F::/100"
-        },
+        IPv4Addresses = { IPAddress.Parse("10.10.10.10"), IPAddress.Parse("20.10.10.10"), IPAddress.Parse("30.10.10.10"), IPAddress.Parse("40.10.10.10"), IPAddress.Parse("50.10.10.10"), IPAddress.Parse("60.10.10.10"), IPAddress.Parse("70.10.10.10"), IPAddress.Parse("80.10.10.10"), IPAddress.Parse("90.10.10.10") },
+        IPv6Addresses = { "2F::/100" },
     },
     Tags =
     {
-    ["key8107"] = "1234",
+    ["key8107"] = "1234"
     },
 };
 ArmOperation<NetworkFabricNeighborGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, neighborGroupName, data);

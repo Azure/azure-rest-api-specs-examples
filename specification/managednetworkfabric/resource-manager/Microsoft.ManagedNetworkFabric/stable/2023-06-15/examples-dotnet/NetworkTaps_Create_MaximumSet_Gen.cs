@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkTaps_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkTaps_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,18 +30,15 @@ NetworkTapCollection collection = resourceGroupResource.GetNetworkTaps();
 string networkTapName = "example-networkTap";
 NetworkTapData data = new NetworkTapData(new AzureLocation("eastuseuap"), new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/example-networkPacketBroker"), new NetworkTapPropertiesDestinationsItem[]
 {
-new NetworkTapPropertiesDestinationsItem()
+new NetworkTapPropertiesDestinationsItem
 {
 Name = "example-destinaionName",
 DestinationType = NetworkTapDestinationType.IsolationDomain,
 DestinationId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/l3IsloationDomains/example-l3Domain/internalNetworks/example-internalNetwork"),
-IsolationDomainProperties = new IsolationDomainProperties()
+IsolationDomainProperties = new IsolationDomainProperties
 {
 Encapsulation = IsolationDomainEncapsulationType.None,
-NeighborGroupIds =
-{
-new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")
-},
+NeighborGroupIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")},
 },
 DestinationTapRuleId = new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxxx/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkTapRules/example-destinationTapRule"),
 }
@@ -51,7 +48,7 @@ DestinationTapRuleId = new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxx
     PollingType = NetworkTapPollingType.Pull,
     Tags =
     {
-    ["key6024"] = "1234",
+    ["key6024"] = "1234"
     },
 };
 ArmOperation<NetworkTapResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkTapName, data);

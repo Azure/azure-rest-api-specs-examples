@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkPacketBrokers_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkPacketBrokers_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier networkPacketBrokerResourceId = NetworkPacketBrokerResource.C
 NetworkPacketBrokerResource networkPacketBroker = client.GetNetworkPacketBrokerResource(networkPacketBrokerResourceId);
 
 // invoke the operation
-NetworkPacketBrokerPatch patch = new NetworkPacketBrokerPatch()
+NetworkPacketBrokerPatch patch = new NetworkPacketBrokerPatch
 {
     Tags =
     {
-    ["key8772"] = "1234",
+    ["key8772"] = "1234"
     },
 };
 ArmOperation<NetworkPacketBrokerResource> lro = await networkPacketBroker.UpdateAsync(WaitUntil.Completed, patch);

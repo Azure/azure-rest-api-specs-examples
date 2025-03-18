@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkInterfaces_Create_MaximumSet_Gen.json
@@ -27,7 +27,7 @@ NetworkDeviceInterfaceCollection collection = networkDevice.GetNetworkDeviceInte
 
 // invoke the operation
 string networkInterfaceName = "example-interface";
-NetworkDeviceInterfaceData data = new NetworkDeviceInterfaceData()
+NetworkDeviceInterfaceData data = new NetworkDeviceInterfaceData
 {
     Annotation = "annotation",
 };

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/L2IsolationDomains_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "L2IsolationDomains_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,13 +24,13 @@ ResourceIdentifier networkFabricL2IsolationDomainResourceId = NetworkFabricL2Iso
 NetworkFabricL2IsolationDomainResource networkFabricL2IsolationDomain = client.GetNetworkFabricL2IsolationDomainResource(networkFabricL2IsolationDomainResourceId);
 
 // invoke the operation
-NetworkFabricL2IsolationDomainPatch patch = new NetworkFabricL2IsolationDomainPatch()
+NetworkFabricL2IsolationDomainPatch patch = new NetworkFabricL2IsolationDomainPatch
 {
     Annotation = "annotation1",
     Mtu = 6000,
     Tags =
     {
-    ["keyID"] = "keyValue",
+    ["keyID"] = "keyValue"
     },
 };
 ArmOperation<NetworkFabricL2IsolationDomainResource> lro = await networkFabricL2IsolationDomain.UpdateAsync(WaitUntil.Completed, patch);

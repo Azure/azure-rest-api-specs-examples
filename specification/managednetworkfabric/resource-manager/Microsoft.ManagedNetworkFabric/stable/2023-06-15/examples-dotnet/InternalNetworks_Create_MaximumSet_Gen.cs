@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/InternalNetworks_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "InternalNetworks_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,28 +32,22 @@ NetworkFabricInternalNetworkData data = new NetworkFabricInternalNetworkData(755
 {
     Annotation = "annotation",
     Mtu = 1500,
-    ConnectedIPv4Subnets =
-    {
-    new ConnectedSubnet("10.0.0.0/24")
+    ConnectedIPv4Subnets = {new ConnectedSubnet("10.0.0.0/24")
     {
     Annotation = "annotation",
-    }
-    },
-    ConnectedIPv6Subnets =
-    {
-    new ConnectedSubnet("3FFE:FFFF:0:CD30::a0/29")
+    }},
+    ConnectedIPv6Subnets = {new ConnectedSubnet("3FFE:FFFF:0:CD30::a0/29")
     {
     Annotation = "annotation",
-    }
-    },
+    }},
     ImportRoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
     ExportRoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
-    ImportRoutePolicy = new ImportRoutePolicy()
+    ImportRoutePolicy = new ImportRoutePolicy
     {
         ImportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
         ImportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
     },
-    ExportRoutePolicy = new ExportRoutePolicy()
+    ExportRoutePolicy = new ExportRoutePolicy
     {
         ExportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
         ExportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
@@ -62,9 +56,9 @@ NetworkFabricInternalNetworkData data = new NetworkFabricInternalNetworkData(755
     EgressAclId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"),
     IsMonitoringEnabled = IsMonitoringEnabled.True,
     Extension = StaticRouteConfigurationExtension.NoExtension,
-    BgpConfiguration = new InternalNetworkBgpConfiguration()
+    BgpConfiguration = new InternalNetworkBgpConfiguration
     {
-        BfdConfiguration = new BfdConfiguration()
+        BfdConfiguration = new BfdConfiguration
         {
             IntervalInMilliSeconds = 300,
             Multiplier = 5,
@@ -72,53 +66,29 @@ NetworkFabricInternalNetworkData data = new NetworkFabricInternalNetworkData(755
         DefaultRouteOriginate = NetworkFabricBooleanValue.True,
         AllowAS = 10,
         AllowASOverride = AllowASOverride.Enable,
-        PeerAsn = 61234,
-        IPv4ListenRangePrefixes =
-        {
-        "10.1.0.0/25"
-        },
-        IPv6ListenRangePrefixes =
-        {
-        "2fff::/66"
-        },
-        IPv4NeighborAddress =
-        {
-        new NeighborAddress()
+        PeerAsn = 61234L,
+        IPv4ListenRangePrefixes = { "10.1.0.0/25" },
+        IPv6ListenRangePrefixes = { "2fff::/66" },
+        IPv4NeighborAddress = {new NeighborAddress
         {
         Address = "10.1.0.0",
-        }
-        },
-        IPv6NeighborAddress =
-        {
-        new NeighborAddress()
+        }},
+        IPv6NeighborAddress = {new NeighborAddress
         {
         Address = "2fff::",
-        }
-        },
+        }},
         Annotation = "annotation",
     },
-    StaticRouteConfiguration = new InternalNetworkStaticRouteConfiguration()
+    StaticRouteConfiguration = new InternalNetworkStaticRouteConfiguration
     {
         Extension = StaticRouteConfigurationExtension.NoExtension,
-        BfdConfiguration = new BfdConfiguration()
+        BfdConfiguration = new BfdConfiguration
         {
             IntervalInMilliSeconds = 300,
             Multiplier = 15,
         },
-        IPv4Routes =
-        {
-        new StaticRouteProperties("jffgck",new string[]
-        {
-        "10.0.0.1"
-        })
-        },
-        IPv6Routes =
-        {
-        new StaticRouteProperties("2fff::/64",new string[]
-        {
-        "3ffe::1"
-        })
-        },
+        IPv4Routes = { new StaticRouteProperties("jffgck", new string[] { "10.0.0.1" }) },
+        IPv6Routes = { new StaticRouteProperties("2fff::/64", new string[] { "3ffe::1" }) },
     },
 };
 ArmOperation<NetworkFabricInternalNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, internalNetworkName, data);

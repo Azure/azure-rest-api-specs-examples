@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkTapRules_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkTapRules_Create" operation, for the dependent resources, they will have to be created separately.
@@ -33,128 +33,71 @@ NetworkTapRuleData data = new NetworkTapRuleData(new AzureLocation("eastus"))
     Annotation = "annotation",
     ConfigurationType = NetworkFabricConfigurationType.File,
     TapRulesUri = new Uri("https://microsoft.com/a"),
-    MatchConfigurations =
-    {
-    new NetworkTapRuleMatchConfiguration()
+    MatchConfigurations = {new NetworkTapRuleMatchConfiguration
     {
     MatchConfigurationName = "config1",
-    SequenceNumber = 10,
+    SequenceNumber = 10L,
     IPAddressType = NetworkFabricIPAddressType.IPv4,
-    MatchConditions =
-    {
-    new NetworkTapRuleMatchCondition()
+    MatchConditions = {new NetworkTapRuleMatchCondition
     {
     EncapsulationType = NetworkTapEncapsulationType.None,
     PortCondition = new NetworkFabricPortCondition(Layer4Protocol.Tcp)
     {
     PortType = NetworkFabricPortType.SourcePort,
-    Ports =
+    Ports = {"100"},
+    PortGroupNames = {"example-portGroup1"},
+    },
+    ProtocolTypes = {"TCP"},
+    VlanMatchCondition = new VlanMatchCondition
     {
-    "100"
+    Vlans = {"10"},
+    InnerVlans = {"11-20"},
+    VlanGroupNames = {"exmaple-vlanGroup"},
     },
-    PortGroupNames =
-    {
-    "example-portGroup1"
-    },
-    },
-    ProtocolTypes =
-    {
-    "TCP"
-    },
-    VlanMatchCondition = new VlanMatchCondition()
-    {
-    Vlans =
-    {
-    "10"
-    },
-    InnerVlans =
-    {
-    "11-20"
-    },
-    VlanGroupNames =
-    {
-    "exmaple-vlanGroup"
-    },
-    },
-    IPCondition = new IPMatchCondition()
+    IPCondition = new IPMatchCondition
     {
     SourceDestinationType = SourceDestinationType.SourceIP,
     PrefixType = IPMatchConditionPrefixType.Prefix,
-    IPPrefixValues =
-    {
-    "10.10.10.10/20"
+    IPPrefixValues = {"10.10.10.10/20"},
+    IPGroupNames = {"example-ipGroup"},
     },
-    IPGroupNames =
-    {
-    "example-ipGroup"
-    },
-    },
-    }
-    },
-    Actions =
-    {
-    new NetworkTapRuleAction()
+    }},
+    Actions = {new NetworkTapRuleAction
     {
     TapRuleActionType = TapRuleActionType.Drop,
     Truncate = "100",
     IsTimestampEnabled = NetworkFabricBooleanValue.True,
     DestinationId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup"),
     MatchConfigurationName = "match1",
-    }
-    },
-    }
-    },
-    DynamicMatchConfigurations =
+    }},
+    }},
+    DynamicMatchConfigurations = {new CommonDynamicMatchConfiguration
     {
-    new CommonDynamicMatchConfiguration()
-    {
-    IPGroups =
-    {
-    new MatchConfigurationIPGroupProperties()
+    IPGroups = {new MatchConfigurationIPGroupProperties
     {
     Name = "example-ipGroup1",
     IPAddressType = NetworkFabricIPAddressType.IPv4,
-    IPPrefixes =
-    {
-    "10.10.10.10/30"
-    },
-    }
-    },
-    VlanGroups =
-    {
-    new VlanGroupProperties()
+    IPPrefixes = {"10.10.10.10/30"},
+    }},
+    VlanGroups = {new VlanGroupProperties
     {
     Name = "exmaple-vlanGroup",
-    Vlans =
-    {
-    "10","100-200"
-    },
-    }
-    },
-    PortGroups =
-    {
-    new PortGroupProperties()
+    Vlans = {"10", "100-200"},
+    }},
+    PortGroups = {new PortGroupProperties
     {
     Name = "example-portGroup1",
-    Ports =
-    {
-    "100-200"
-    },
-    },new PortGroupProperties()
+    Ports = {"100-200"},
+    }, new PortGroupProperties
     {
     Name = "example-portGroup2",
-    Ports =
-    {
-    "900","1000-2000"
-    },
-    }
-    },
-    }
-    },
+    Ports = {"900", "1000-2000"},
+    }},
+    }},
     PollingIntervalInSeconds = PollingIntervalInSecond.Thirty,
     Tags =
     {
-    ["keyID"] = "keyValue",
+    ["keyID"] = "keyValue"
     },
 };
 ArmOperation<NetworkTapRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkTapRuleName, data);

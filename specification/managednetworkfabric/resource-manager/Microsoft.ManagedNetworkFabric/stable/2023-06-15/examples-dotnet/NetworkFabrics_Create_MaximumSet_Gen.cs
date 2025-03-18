@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkFabrics_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkFabrics_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,119 +28,91 @@ NetworkFabricCollection collection = resourceGroupResource.GetNetworkFabrics();
 
 // invoke the operation
 string networkFabricName = "example-fabric";
-NetworkFabricData data = new NetworkFabricData(new AzureLocation("eastuseuap"), "M4-A400-A100-C16-aa", new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-fabricController"), 8, "10.18.0.0/19", 29249, new TerminalServerConfiguration()
-{
-    PrimaryIPv4Prefix = "10.0.0.12/30",
-    PrimaryIPv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
-    SecondaryIPv4Prefix = "20.0.0.13/30",
-    SecondaryIPv6Prefix = "6FFE:FFFF:0:CD30::ac/127",
-    Username = "username",
-    Password = "xxxx",
-    SerialNumber = "123456",
-}, new ManagementNetworkConfigurationProperties(new VpnConfigurationProperties(PeeringOption.OptionA)
-{
-    NetworkToNetworkInterconnectId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"),
-    OptionBProperties = new OptionBProperties()
-    {
-        ImportRouteTargets =
-        {
-        "65046:10050"
-        },
-        ExportRouteTargets =
-        {
-        "65046:10050"
-        },
-        RouteTargets = new RouteTargetInformation()
-        {
-            ImportIPv4RouteTargets =
-            {
-            "65046:10039"
-            },
-            ImportIPv6RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv4RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv6RouteTargets =
-            {
-            "65046:10039"
-            },
-        },
-    },
-    OptionAProperties = new VpnConfigurationOptionAProperties()
+NetworkFabricData data = new NetworkFabricData(
+    new AzureLocation("eastuseuap"),
+    "M4-A400-A100-C16-aa",
+    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-fabricController"),
+    8,
+    "10.18.0.0/19",
+    29249L,
+    new TerminalServerConfiguration
     {
         PrimaryIPv4Prefix = "10.0.0.12/30",
         PrimaryIPv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
         SecondaryIPv4Prefix = "20.0.0.13/30",
         SecondaryIPv6Prefix = "6FFE:FFFF:0:CD30::ac/127",
-        Mtu = 1501,
-        VlanId = 3001,
-        PeerAsn = 1235,
-        BfdConfiguration = new BfdConfiguration()
-        {
-            IntervalInMilliSeconds = 300,
-            Multiplier = 10,
-        },
+        Username = "username",
+        Password = "xxxx",
+        SerialNumber = "123456",
     },
-}, new VpnConfigurationProperties(PeeringOption.OptionA)
-{
-    NetworkToNetworkInterconnectId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"),
-    OptionBProperties = new OptionBProperties()
+    new ManagementNetworkConfigurationProperties(new VpnConfigurationProperties(PeeringOption.OptionA)
     {
-        ImportRouteTargets =
+        NetworkToNetworkInterconnectId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"),
+        OptionBProperties = new OptionBProperties
         {
-        "65046:10050"
-        },
-        ExportRouteTargets =
-        {
-        "65046:10050"
-        },
-        RouteTargets = new RouteTargetInformation()
-        {
-            ImportIPv4RouteTargets =
+            ImportRouteTargets = { "65046:10050" },
+            ExportRouteTargets = { "65046:10050" },
+            RouteTargets = new RouteTargetInformation
             {
-            "65046:10039"
-            },
-            ImportIPv6RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv4RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv6RouteTargets =
-            {
-            "65046:10039"
+                ImportIPv4RouteTargets = { "65046:10039" },
+                ImportIPv6RouteTargets = { "65046:10039" },
+                ExportIPv4RouteTargets = { "65046:10039" },
+                ExportIPv6RouteTargets = { "65046:10039" },
             },
         },
-    },
-    OptionAProperties = new VpnConfigurationOptionAProperties()
+        OptionAProperties = new VpnConfigurationOptionAProperties
+        {
+            PrimaryIPv4Prefix = "10.0.0.12/30",
+            PrimaryIPv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
+            SecondaryIPv4Prefix = "20.0.0.13/30",
+            SecondaryIPv6Prefix = "6FFE:FFFF:0:CD30::ac/127",
+            Mtu = 1501,
+            VlanId = 3001,
+            PeerAsn = 1235L,
+            BfdConfiguration = new BfdConfiguration
+            {
+                IntervalInMilliSeconds = 300,
+                Multiplier = 10,
+            },
+        },
+    }, new VpnConfigurationProperties(PeeringOption.OptionA)
     {
-        PrimaryIPv4Prefix = "10.0.0.14/30",
-        PrimaryIPv6Prefix = "2FFE:FFFF:0:CD30::a7/126",
-        SecondaryIPv4Prefix = "10.0.0.15/30",
-        SecondaryIPv6Prefix = "2FFE:FFFF:0:CD30::ac/126",
-        Mtu = 1500,
-        VlanId = 3000,
-        PeerAsn = 61234,
-        BfdConfiguration = new BfdConfiguration()
+        NetworkToNetworkInterconnectId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"),
+        OptionBProperties = new OptionBProperties
         {
-            IntervalInMilliSeconds = 300,
-            Multiplier = 5,
+            ImportRouteTargets = { "65046:10050" },
+            ExportRouteTargets = { "65046:10050" },
+            RouteTargets = new RouteTargetInformation
+            {
+                ImportIPv4RouteTargets = { "65046:10039" },
+                ImportIPv6RouteTargets = { "65046:10039" },
+                ExportIPv4RouteTargets = { "65046:10039" },
+                ExportIPv6RouteTargets = { "65046:10039" },
+            },
         },
-    },
-}))
+        OptionAProperties = new VpnConfigurationOptionAProperties
+        {
+            PrimaryIPv4Prefix = "10.0.0.14/30",
+            PrimaryIPv6Prefix = "2FFE:FFFF:0:CD30::a7/126",
+            SecondaryIPv4Prefix = "10.0.0.15/30",
+            SecondaryIPv6Prefix = "2FFE:FFFF:0:CD30::ac/126",
+            Mtu = 1500,
+            VlanId = 3000,
+            PeerAsn = 61234L,
+            BfdConfiguration = new BfdConfiguration
+            {
+                IntervalInMilliSeconds = 300,
+                Multiplier = 5,
+            },
+        },
+    }))
 {
     Annotation = "annotation",
     RackCount = 4,
     IPv6Prefix = "3FFE:FFFF:0:CD40::/59",
     Tags =
     {
-    ["keyID"] = "keyValue",
+    ["keyID"] = "keyValue"
     },
 };
 ArmOperation<NetworkFabricResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkFabricName, data);

@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Orbital;
 using Azure.ResourceManager.Orbital.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/ContactProfileCreate.json
 // this example is just showing the usage of "ContactProfiles_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -37,24 +37,21 @@ OrbitalContactProfileData data = new OrbitalContactProfileData(new AzureLocation
     AutoTrackingConfiguration = AutoTrackingConfiguration.Disabled,
     EventHubUri = new Uri("/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.EventHub/namespaces/contosoHub/eventhubs/contosoHub"),
     NetworkSubnetId = new ResourceIdentifier("/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Network/virtualNetworks/contoso-vnet/subnets/orbital-delegated-subnet"),
-    Links =
+    Links = {new OrbitalContactProfileLink("contoso-uplink", OrbitalLinkPolarization.Lhcp, OrbitalLinkDirection.Uplink, new OrbitalContactProfileLinkChannel[]
     {
-    new OrbitalContactProfileLink("contoso-uplink",OrbitalLinkPolarization.Lhcp,OrbitalLinkDirection.Uplink,new OrbitalContactProfileLinkChannel[]
-    {
-    new OrbitalContactProfileLinkChannel("contoso-uplink-channel",2250,2,new OrbitalContactEndpoint(IPAddress.Parse("10.1.0.4"),"ContosoTest_Uplink","50000",OrbitalContactProtocol.Tcp))
+    new OrbitalContactProfileLinkChannel("contoso-uplink-channel", 2250, 2, new OrbitalContactEndpoint(IPAddress.Parse("10.1.0.4"), "ContosoTest_Uplink", "50000", OrbitalContactProtocol.Tcp))
     })
     {
     GainOverTemperature = 0,
     EirpdBW = 45,
-    },new OrbitalContactProfileLink("contoso-downlink",OrbitalLinkPolarization.Rhcp,OrbitalLinkDirection.Downlink,new OrbitalContactProfileLinkChannel[]
+    }, new OrbitalContactProfileLink("contoso-downlink", OrbitalLinkPolarization.Rhcp, OrbitalLinkDirection.Downlink, new OrbitalContactProfileLinkChannel[]
     {
-    new OrbitalContactProfileLinkChannel("contoso-downlink-channel",8160,15,new OrbitalContactEndpoint(IPAddress.Parse("10.1.0.5"),"ContosoTest_Downlink","50001",OrbitalContactProtocol.Udp))
+    new OrbitalContactProfileLinkChannel("contoso-downlink-channel", 8160, 15, new OrbitalContactEndpoint(IPAddress.Parse("10.1.0.5"), "ContosoTest_Downlink", "50001", OrbitalContactProtocol.Udp))
     })
     {
     GainOverTemperature = 25,
     EirpdBW = 0,
-    }
-    },
+    }},
 };
 ArmOperation<OrbitalContactProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, contactProfileName, data);
 OrbitalContactProfileResource result = lro.Value;

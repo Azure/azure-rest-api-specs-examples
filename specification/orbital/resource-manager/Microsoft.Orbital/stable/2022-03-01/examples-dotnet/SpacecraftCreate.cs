@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Orbital;
 using Azure.ResourceManager.Orbital.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/SpacecraftCreate.json
 // this example is just showing the usage of "Spacecrafts_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -34,10 +34,7 @@ OrbitalSpacecraftData data = new OrbitalSpacecraftData(new AzureLocation("eastus
     TitleLine = "CONTOSO_SAT",
     TleLine1 = "1 27424U 02022A   22167.05119303  .00000638  00000+0  15103-3 0  9994",
     TleLine2 = "2 27424  98.2477 108.9546 0000928  92.9194 327.0802 14.57300770 69982",
-    Links =
-    {
-    new OrbitalSpacecraftLink("uplink_lhcp1",2250,2,OrbitalLinkDirection.Uplink,OrbitalLinkPolarization.Lhcp),new OrbitalSpacecraftLink("downlink_rhcp1",8160,15,OrbitalLinkDirection.Downlink,OrbitalLinkPolarization.Rhcp)
-    },
+    Links = { new OrbitalSpacecraftLink("uplink_lhcp1", 2250, 2, OrbitalLinkDirection.Uplink, OrbitalLinkPolarization.Lhcp), new OrbitalSpacecraftLink("downlink_rhcp1", 8160, 15, OrbitalLinkDirection.Downlink, OrbitalLinkPolarization.Rhcp) },
 };
 ArmOperation<OrbitalSpacecraftResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, spacecraftName, data);
 OrbitalSpacecraftResource result = lro.Value;

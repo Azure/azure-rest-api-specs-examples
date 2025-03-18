@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Orbital;
 using Azure.ResourceManager.Orbital.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/AvailableGroundStationsByCapabilityList.json
 // this example is just showing the usage of "AvailableGroundStations_ListByCapability" operation, for the dependent resources, they will have to be created separately.
@@ -36,4 +36,4 @@ await foreach (AvailableGroundStationResource item in collection.GetAllAsync(cap
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

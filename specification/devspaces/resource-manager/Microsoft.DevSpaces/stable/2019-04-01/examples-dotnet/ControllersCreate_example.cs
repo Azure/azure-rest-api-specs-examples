@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevSpaces;
 using Azure.ResourceManager.DevSpaces.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevSpaces;
 
 // Generated from example definition: specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/examples/ControllersCreate_example.json
 // this example is just showing the usage of "Controllers_Create" operation, for the dependent resources, they will have to be created separately.
@@ -33,9 +33,7 @@ ControllerData data = new ControllerData(new AzureLocation("eastus"), new DevSpa
     Tier = DevSpacesSkuTier.Standard,
 }, "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myCluster", "QmFzZTY0IEVuY29kZWQgVmFsdWUK")
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ControllerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 ControllerResource result = lro.Value;

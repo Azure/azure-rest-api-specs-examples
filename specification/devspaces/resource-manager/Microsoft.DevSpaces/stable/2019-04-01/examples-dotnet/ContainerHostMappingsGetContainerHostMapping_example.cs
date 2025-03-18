@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevSpaces;
 using Azure.ResourceManager.DevSpaces.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevSpaces;
 
 // Generated from example definition: specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/examples/ContainerHostMappingsGetContainerHostMapping_example.json
 // this example is just showing the usage of "ContainerHostMappings_GetContainerHostMapping" operation, for the dependent resources, they will have to be created separately.
@@ -24,7 +25,7 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 
 // invoke the operation
 AzureLocation location = new AzureLocation("eastus");
-ContainerHostMapping containerHostMapping = new ContainerHostMapping()
+ContainerHostMapping containerHostMapping = new ContainerHostMapping
 {
     ContainerHostResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myCluster",
 };

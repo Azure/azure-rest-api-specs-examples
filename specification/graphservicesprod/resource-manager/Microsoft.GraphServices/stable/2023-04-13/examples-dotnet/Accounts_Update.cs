@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.GraphServices;
 using Azure.ResourceManager.GraphServices.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.GraphServices;
 
 // Generated from example definition: specification/graphservicesprod/resource-manager/Microsoft.GraphServices/stable/2023-04-13/examples/Accounts_Update.json
 // this example is just showing the usage of "Accounts_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier graphServicesAccountResourceId = GraphServicesAccountResource
 GraphServicesAccountResource graphServicesAccountResource = client.GetGraphServicesAccountResource(graphServicesAccountResourceId);
 
 // invoke the operation
-GraphServicesAccountResourcePatch patch = new GraphServicesAccountResourcePatch()
+GraphServicesAccountResourcePatch patch = new GraphServicesAccountResourcePatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 GraphServicesAccountResource result = await graphServicesAccountResource.UpdateAsync(patch);

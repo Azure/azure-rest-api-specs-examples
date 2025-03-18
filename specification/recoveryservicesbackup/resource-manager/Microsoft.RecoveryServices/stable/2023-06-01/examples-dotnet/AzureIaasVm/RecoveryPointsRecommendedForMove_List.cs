@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/RecoveryPointsRecommendedForMove_List.json
 // this example is just showing the usage of "RecoveryPointsRecommendedForMove_List" operation, for the dependent resources, they will have to be created separately.
@@ -27,13 +27,10 @@ ResourceIdentifier backupProtectedItemResourceId = BackupProtectedItemResource.C
 BackupProtectedItemResource backupProtectedItem = client.GetBackupProtectedItemResource(backupProtectedItemResourceId);
 
 // invoke the operation and iterate over the result
-RecoveryPointsRecommendedForMoveContent content = new RecoveryPointsRecommendedForMoveContent()
+RecoveryPointsRecommendedForMoveContent content = new RecoveryPointsRecommendedForMoveContent
 {
     ObjectType = "ListRecoveryPointsRecommendedForMoveRequest",
-    ExcludedRPList =
-    {
-    "348916168024334","348916168024335"
-    },
+    ExcludedRPList = { "348916168024334", "348916168024335" },
 };
 await foreach (BackupRecoveryPointResource item in backupProtectedItem.GetRecoveryPointsRecommendedForMoveAsync(content))
 {
@@ -44,4 +41,4 @@ await foreach (BackupRecoveryPointResource item in backupProtectedItem.GetRecove
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/V2Policy/v2-Get-Policy.json
 // this example is just showing the usage of "ProtectionPolicies_Get" operation, for the dependent resources, they will have to be created separately.
@@ -34,7 +34,7 @@ BackupProtectionPolicyResource result = response.HasValue ? response.Value : nul
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

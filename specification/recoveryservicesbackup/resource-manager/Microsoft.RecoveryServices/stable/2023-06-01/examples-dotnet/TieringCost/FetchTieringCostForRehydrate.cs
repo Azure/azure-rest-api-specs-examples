@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/TieringCost/FetchTieringCostForRehydrate.json
 // this example is just showing the usage of "FetchTieringCost_Post" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,13 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 
 // invoke the operation
 string vaultName = "testVault";
-FetchTieringCostInfoContent content = new FetchTieringCostInfoForRehydrationContent(RecoveryPointTierType.ArchivedRP, RecoveryPointTierType.HardenedRP, "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1", "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1", "1222343434", RehydrationPriority.High);
+FetchTieringCostInfoContent content = new FetchTieringCostInfoForRehydrationContent(
+    RecoveryPointTierType.ArchivedRP,
+    RecoveryPointTierType.HardenedRP,
+    "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1",
+    "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1",
+    "1222343434",
+    RehydrationPriority.High);
 ArmOperation<TieringCostInfo> lro = await resourceGroupResource.PostFetchTieringCostAsync(WaitUntil.Completed, vaultName, content);
 TieringCostInfo result = lro.Value;
 

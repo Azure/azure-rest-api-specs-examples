@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/TriggerRecoveryPointMove_Post.json
 // this example is just showing the usage of "MoveRecoveryPoint" operation, for the dependent resources, they will have to be created separately.
@@ -29,7 +29,7 @@ ResourceIdentifier backupRecoveryPointResourceId = BackupRecoveryPointResource.C
 BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
 // invoke the operation
-MoveRPAcrossTiersContent content = new MoveRPAcrossTiersContent()
+MoveRPAcrossTiersContent content = new MoveRPAcrossTiersContent
 {
     ObjectType = "MoveRPAcrossTiersRequest",
     SourceTierType = RecoveryPointTierType.HardenedRP,
@@ -37,4 +37,4 @@ MoveRPAcrossTiersContent content = new MoveRPAcrossTiersContent()
 };
 await backupRecoveryPoint.MoveRecoveryPointAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

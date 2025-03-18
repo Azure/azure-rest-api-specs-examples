@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/Common/TriggerExportJobs.json
 // this example is just showing the usage of "Jobs_Export" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 string vaultName = "NetSDKTestRsVault";
 await resourceGroupResource.ExportJobAsync(vaultName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

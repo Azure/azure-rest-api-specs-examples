@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/Common/BackupResourceVaultConfigs_Put.json
 // this example is just showing the usage of "BackupResourceVaultConfigs_Put" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ BackupResourceVaultConfigCollection collection = resourceGroupResource.GetBackup
 
 // invoke the operation
 string vaultName = "SwaggerTest";
-BackupResourceVaultConfigData data = new BackupResourceVaultConfigData(new AzureLocation("placeholder"))
+BackupResourceVaultConfigData data = new BackupResourceVaultConfigData(default)
 {
-    Properties = new BackupResourceVaultConfigProperties()
+    Properties = new BackupResourceVaultConfigProperties
     {
         EnhancedSecurityState = EnhancedSecurityState.Enabled,
         SoftDeleteFeatureState = SoftDeleteFeatureState.Enabled,

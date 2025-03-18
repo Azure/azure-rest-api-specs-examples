@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/TriggerRestore_ALR_IaasVMRestoreRequest_IdentityBasedRestoreDetails.json
 // this example is just showing the usage of "Restores_Trigger" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +29,9 @@ ResourceIdentifier backupRecoveryPointResourceId = BackupRecoveryPointResource.C
 BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
 // invoke the operation
-TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
+TriggerRestoreContent content = new TriggerRestoreContent(default)
 {
-    Properties = new IaasVmRestoreContent()
+    Properties = new IaasVmRestoreContent
     {
         RecoveryPointId = "348916168024334",
         RecoveryType = FileShareRecoveryType.AlternateLocation,
@@ -43,15 +43,15 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
         Region = new AzureLocation("southeastasia"),
         DoesCreateNewCloudService = false,
         OriginalStorageAccountOption = false,
-        EncryptionDetails = new VmEncryptionDetails()
+        EncryptionDetails = new VmEncryptionDetails
         {
             IsEncryptionEnabled = false,
         },
-        IdentityInfo = new BackupIdentityInfo()
+        IdentityInfo = new BackupIdentityInfo
         {
             IsSystemAssignedIdentity = true,
         },
-        IdentityBasedRestoreDetails = new IdentityBasedRestoreDetails()
+        IdentityBasedRestoreDetails = new IdentityBasedRestoreDetails
         {
             TargetStorageAccountId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Storage/storageAccounts/testingAccount"),
         },
@@ -59,4 +59,4 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
 };
 await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

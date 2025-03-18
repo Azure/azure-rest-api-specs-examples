@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/BackupResourceEncryptionConfig_Put.json
 // this example is just showing the usage of "BackupResourceEncryptionConfigs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ BackupResourceEncryptionConfigExtendedCollection collection = resourceGroupResou
 
 // invoke the operation
 string vaultName = "source-rsv";
-BackupResourceEncryptionConfigExtendedCreateOrUpdateContent content = new BackupResourceEncryptionConfigExtendedCreateOrUpdateContent(new AzureLocation("placeholder"))
+BackupResourceEncryptionConfigExtendedCreateOrUpdateContent content = new BackupResourceEncryptionConfigExtendedCreateOrUpdateContent(default)
 {
-    Properties = new BackupResourceEncryptionConfig()
+    Properties = new BackupResourceEncryptionConfig
     {
         EncryptionAtRestType = BackupEncryptionAtRestType.CustomerManaged,
         KeyUri = new Uri("https://gktestkv1.vault.azure.net/keys/Test1/ed2e8cdc7f86477ebf0c6462b504a9ed"),
@@ -40,4 +40,4 @@ BackupResourceEncryptionConfigExtendedCreateOrUpdateContent content = new Backup
 };
 await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

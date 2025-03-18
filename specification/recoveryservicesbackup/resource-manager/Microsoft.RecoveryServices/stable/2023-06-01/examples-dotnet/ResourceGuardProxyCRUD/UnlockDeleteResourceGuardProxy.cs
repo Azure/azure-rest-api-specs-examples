@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/ResourceGuardProxyCRUD/UnlockDeleteResourceGuardProxy.json
 // this example is just showing the usage of "ResourceGuardProxy_UnlockDelete" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +25,9 @@ ResourceIdentifier resourceGuardProxyResourceId = ResourceGuardProxyResource.Cre
 ResourceGuardProxyResource resourceGuardProxy = client.GetResourceGuardProxyResource(resourceGuardProxyResourceId);
 
 // invoke the operation
-UnlockDeleteContent content = new UnlockDeleteContent()
+UnlockDeleteContent content = new UnlockDeleteContent
 {
-    ResourceGuardOperationRequests =
-    {
-    "/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew/deleteProtectedItemRequests/default"
-    },
+    ResourceGuardOperationRequests = { "/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew/deleteProtectedItemRequests/default" },
     ResourceToBeDeleted = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/gaallarg/providers/Microsoft.RecoveryServices/vaults/MercuryCrrVault/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;crrtestrg;crrtestvm/protectedItems/SQLDataBase;mssqlserver;testdb",
 };
 UnlockDeleteResult result = await resourceGuardProxy.UnlockDeleteAsync(content);

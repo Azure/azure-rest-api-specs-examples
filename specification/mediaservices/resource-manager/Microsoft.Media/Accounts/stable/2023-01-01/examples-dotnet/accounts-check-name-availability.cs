@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Accounts/stable/2023-01-01/examples/accounts-check-name-availability.json
 // this example is just showing the usage of "Locations_CheckNameAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation locationName = new AzureLocation("japanwest");
-MediaServicesNameAvailabilityContent content = new MediaServicesNameAvailabilityContent()
+MediaServicesNameAvailabilityContent content = new MediaServicesNameAvailabilityContent
 {
     Name = "contosotv",
     ResourceType = "Microsoft.Media/mediaservices",

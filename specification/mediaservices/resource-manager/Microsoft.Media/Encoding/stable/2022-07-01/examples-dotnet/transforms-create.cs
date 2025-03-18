@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Encoding/stable/2022-07-01/examples/transforms-create.json
 // this example is just showing the usage of "Transforms_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,13 +28,10 @@ MediaTransformCollection collection = mediaServicesAccount.GetMediaTransforms();
 
 // invoke the operation
 string transformName = "createdTransform";
-MediaTransformData data = new MediaTransformData()
+MediaTransformData data = new MediaTransformData
 {
     Description = "Example Transform to illustrate create and update.",
-    Outputs =
-    {
-    new MediaTransformOutput(new BuiltInStandardEncoderPreset(EncoderNamedPreset.AdaptiveStreaming))
-    },
+    Outputs = { new MediaTransformOutput(new BuiltInStandardEncoderPreset(EncoderNamedPreset.AdaptiveStreaming)) },
 };
 ArmOperation<MediaTransformResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, transformName, data);
 MediaTransformResource result = lro.Value;

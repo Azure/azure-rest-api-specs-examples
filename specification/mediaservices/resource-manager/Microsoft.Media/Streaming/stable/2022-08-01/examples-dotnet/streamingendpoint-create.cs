@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/streamingendpoint-create.json
 // this example is just showing the usage of "StreamingEndpoints_Create" operation, for the dependent resources, they will have to be created separately.
@@ -34,36 +34,30 @@ StreamingEndpointData data = new StreamingEndpointData(new AzureLocation("West U
     Description = "test event 1",
     ScaleUnits = 1,
     AvailabilitySetName = "availableset",
-    AccessControl = new StreamingEndpointAccessControl()
+    AccessControl = new StreamingEndpointAccessControl
     {
-        AkamaiSignatureHeaderAuthenticationKeyList =
-        {
-        new AkamaiSignatureHeaderAuthenticationKey()
+        AkamaiSignatureHeaderAuthenticationKeyList = {new AkamaiSignatureHeaderAuthenticationKey
         {
         Identifier = "id1",
         Base64Key = "dGVzdGlkMQ==",
         ExpireOn = DateTimeOffset.Parse("2029-12-31T16:00:00-08:00"),
-        },new AkamaiSignatureHeaderAuthenticationKey()
+        }, new AkamaiSignatureHeaderAuthenticationKey
         {
         Identifier = "id2",
         Base64Key = "dGVzdGlkMQ==",
         ExpireOn = DateTimeOffset.Parse("2030-12-31T16:00:00-08:00"),
-        }
-        },
-        AllowedIPs =
-        {
-        new IPRange()
+        }},
+        AllowedIPs = {new IPRange
         {
         Name = "AllowedIp",
         Address = IPAddress.Parse("192.168.1.1"),
-        }
-        },
+        }},
     },
     IsCdnEnabled = false,
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<StreamingEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, streamingEndpointName, data);

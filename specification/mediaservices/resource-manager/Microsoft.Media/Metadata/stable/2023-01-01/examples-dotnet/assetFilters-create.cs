@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/assetFilters-create.json
 // this example is just showing the usage of "AssetFilters_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,28 +29,28 @@ MediaAssetFilterCollection collection = mediaAsset.GetMediaAssetFilters();
 
 // invoke the operation
 string filterName = "newAssetFilter";
-MediaAssetFilterData data = new MediaAssetFilterData()
+MediaAssetFilterData data = new MediaAssetFilterData
 {
-    PresentationTimeRange = new PresentationTimeRange()
+    PresentationTimeRange = new PresentationTimeRange
     {
-        StartTimestamp = 0,
-        EndTimestamp = 170000000,
-        PresentationWindowDuration = 9223372036854775000,
-        LiveBackoffDuration = 0,
-        Timescale = 10000000,
+        StartTimestamp = 0L,
+        EndTimestamp = 170000000L,
+        PresentationWindowDuration = 9223372036854775000L,
+        LiveBackoffDuration = 0L,
+        Timescale = 10000000L,
         ForceEndTimestamp = false,
     },
     FirstQualityBitrate = 128000,
-    Tracks =
+    Tracks = {new FilterTrackSelection(new FilterTrackPropertyCondition[]
     {
-    new FilterTrackSelection(new FilterTrackPropertyCondition[]
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type, "Audio", FilterTrackPropertyCompareOperation.Equal),
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Language, "en", FilterTrackPropertyCompareOperation.NotEqual),
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.FourCC, "EC-3", FilterTrackPropertyCompareOperation.NotEqual)
+    }), new FilterTrackSelection(new FilterTrackPropertyCondition[]
     {
-    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type,"Audio",FilterTrackPropertyCompareOperation.Equal),new FilterTrackPropertyCondition(FilterTrackPropertyType.Language,"en",FilterTrackPropertyCompareOperation.NotEqual),new FilterTrackPropertyCondition(FilterTrackPropertyType.FourCC,"EC-3",FilterTrackPropertyCompareOperation.NotEqual)
-    }),new FilterTrackSelection(new FilterTrackPropertyCondition[]
-    {
-    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type,"Video",FilterTrackPropertyCompareOperation.Equal),new FilterTrackPropertyCondition(FilterTrackPropertyType.Bitrate,"3000000-5000000",FilterTrackPropertyCompareOperation.Equal)
-    })
-    },
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Type, "Video", FilterTrackPropertyCompareOperation.Equal),
+    new FilterTrackPropertyCondition(FilterTrackPropertyType.Bitrate, "3000000-5000000", FilterTrackPropertyCompareOperation.Equal)
+    })},
 };
 ArmOperation<MediaAssetFilterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, filterName, data);
 MediaAssetFilterResource result = lro.Value;

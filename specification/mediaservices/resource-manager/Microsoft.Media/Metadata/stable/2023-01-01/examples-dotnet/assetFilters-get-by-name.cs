@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/assetFilters-get-by-name.json
 // this example is just showing the usage of "AssetFilters_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaAssetFilterResource created on azure
-// for more information of creating MediaAssetFilterResource, please refer to the document of MediaAssetFilterResource
+// this example assumes you already have this MediaAssetResource created on azure
+// for more information of creating MediaAssetResource, please refer to the document of MediaAssetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
 string assetName = "ClimbingMountRainer";
-string filterName = "assetFilterWithTimeWindowAndTrack";
-ResourceIdentifier mediaAssetFilterResourceId = MediaAssetFilterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, assetName, filterName);
-MediaAssetFilterResource mediaAssetFilter = client.GetMediaAssetFilterResource(mediaAssetFilterResourceId);
+ResourceIdentifier mediaAssetResourceId = MediaAssetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, assetName);
+MediaAssetResource mediaAsset = client.GetMediaAssetResource(mediaAssetResourceId);
+
+// get the collection of this MediaAssetFilterResource
+MediaAssetFilterCollection collection = mediaAsset.GetMediaAssetFilters();
 
 // invoke the operation
-MediaAssetFilterResource result = await mediaAssetFilter.GetAsync();
+string filterName = "assetFilterWithTimeWindowAndTrack";
+NullableResponse<MediaAssetFilterResource> response = await collection.GetIfExistsAsync(filterName);
+MediaAssetFilterResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MediaAssetFilterData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MediaAssetFilterData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

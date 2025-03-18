@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/assets-delete.json
 // this example is just showing the usage of "Assets_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ MediaAssetResource mediaAsset = client.GetMediaAssetResource(mediaAssetResourceI
 // invoke the operation
 await mediaAsset.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

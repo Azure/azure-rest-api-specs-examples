@@ -1,11 +1,12 @@
-using System;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/content-key-policies-create-widevine-token.json
 // this example is just showing the usage of "ContentKeyPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,22 +29,16 @@ ContentKeyPolicyCollection collection = mediaServicesAccount.GetContentKeyPolici
 
 // invoke the operation
 string contentKeyPolicyName = "PolicyWithWidevineOptionAndJwtTokenRestriction";
-ContentKeyPolicyData data = new ContentKeyPolicyData()
+ContentKeyPolicyData data = new ContentKeyPolicyData
 {
     Description = "ArmPolicyDescription",
-    Options =
+    Options = {new ContentKeyPolicyOption(new ContentKeyPolicyWidevineConfiguration("{\"allowed_track_types\":\"SD_HD\",\"content_key_specs\":[{\"track_type\":\"SD\",\"security_level\":1,\"required_output_protection\":{\"hdcp\":\"HDCP_V2\"}}],\"policy_overrides\":{\"can_play\":true,\"can_persist\":true,\"can_renew\":false}}"), new ContentKeyPolicyTokenRestriction("urn:issuer", "urn:audience", new ContentKeyPolicyRsaTokenKey(Encoding.UTF8.GetBytes("AQAB"), Encoding.UTF8.GetBytes("AQAD")), ContentKeyPolicyRestrictionTokenType.Jwt)
     {
-    new ContentKeyPolicyOption(new ContentKeyPolicyWidevineConfiguration("{\"allowed_track_types\":\"SD_HD\",\"content_key_specs\":[{\"track_type\":\"SD\",\"security_level\":1,\"required_output_protection\":{\"hdcp\":\"HDCP_V2\"}}],\"policy_overrides\":{\"can_play\":true,\"can_persist\":true,\"can_renew\":false}}"),new ContentKeyPolicyTokenRestriction("urn:issuer","urn:audience",new ContentKeyPolicyRsaTokenKey(Convert.FromBase64String("AQAB"),Convert.FromBase64String("AQAD")),ContentKeyPolicyRestrictionTokenType.Jwt)
-    {
-    AlternateVerificationKeys =
-    {
-    new ContentKeyPolicySymmetricTokenKey(Convert.FromBase64String("AAAAAAAAAAAAAAAAAAAAAA=="))
-    },
+    AlternateVerificationKeys = {new ContentKeyPolicySymmetricTokenKey(Encoding.UTF8.GetBytes("AAAAAAAAAAAAAAAAAAAAAA=="))},
     })
     {
     Name = "widevineoption",
-    }
-    },
+    }},
 };
 ArmOperation<ContentKeyPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, contentKeyPolicyName, data);
 ContentKeyPolicyResource result = lro.Value;

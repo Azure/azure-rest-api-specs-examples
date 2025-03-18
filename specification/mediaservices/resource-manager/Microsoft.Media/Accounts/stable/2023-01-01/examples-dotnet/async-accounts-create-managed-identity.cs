@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Accounts/stable/2023-01-01/examples/async-accounts-create-managed-identity.json
 // this example is just showing the usage of "Mediaservices_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -36,20 +36,17 @@ MediaServicesAccountData data = new MediaServicesAccountData(new AzureLocation("
         UserAssignedIdentities =
         {
         [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity()
         },
     },
-    StorageAccounts =
-    {
-    new MediaServicesStorageAccount(MediaServicesStorageAccountType.Primary)
+    StorageAccounts = {new MediaServicesStorageAccount(MediaServicesStorageAccountType.Primary)
     {
     Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.Storage/storageAccounts/contososportsstore"),
     Identity = new ResourceIdentity(false)
     {
     UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1",
     },
-    }
-    },
+    }},
     StorageAuthentication = MediaStorageAuthentication.ManagedIdentity,
     Encryption = new AccountEncryption(AccountEncryptionKeyType.CustomerKey)
     {
@@ -58,7 +55,7 @@ MediaServicesAccountData data = new MediaServicesAccountData(new AzureLocation("
             UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1",
         },
     },
-    KeyDeliveryAccessControl = new MediaAccessControl()
+    KeyDeliveryAccessControl = new MediaAccessControl
     {
         DefaultAction = IPAccessControlDefaultAction.Allow,
     },
@@ -66,7 +63,7 @@ MediaServicesAccountData data = new MediaServicesAccountData(new AzureLocation("
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 ArmOperation<MediaServicesAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);

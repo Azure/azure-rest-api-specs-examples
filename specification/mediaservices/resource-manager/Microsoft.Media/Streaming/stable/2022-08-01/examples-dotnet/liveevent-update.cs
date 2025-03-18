@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/liveevent-update.json
 // this example is just showing the usage of "LiveEvents_Update" operation, for the dependent resources, they will have to be created separately.
@@ -32,32 +32,26 @@ MediaLiveEventData data = new MediaLiveEventData(new AzureLocation("West US"))
     Description = "test event updated",
     Input = new LiveEventInput(LiveEventInputProtocol.FragmentedMp4)
     {
-        IPAllowedIPs =
-        {
-        new IPRange()
+        IPAllowedIPs = {new IPRange
         {
         Name = "AllowOne",
         Address = IPAddress.Parse("192.1.1.0"),
-        }
-        },
+        }},
         KeyFrameIntervalDuration = XmlConvert.ToTimeSpan("PT6S"),
     },
-    Preview = new LiveEventPreview()
+    Preview = new LiveEventPreview
     {
-        IPAllowedIPs =
-        {
-        new IPRange()
+        IPAllowedIPs = {new IPRange
         {
         Name = "AllowOne",
         Address = IPAddress.Parse("192.1.1.0"),
-        }
-        },
+        }},
     },
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<MediaLiveEventResource> lro = await mediaLiveEvent.UpdateAsync(WaitUntil.Completed, data);

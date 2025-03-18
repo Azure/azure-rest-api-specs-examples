@@ -1,11 +1,12 @@
-using System;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/content-key-policies-create-playready-open.json
 // this example is just showing the usage of "ContentKeyPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,27 +29,24 @@ ContentKeyPolicyCollection collection = mediaServicesAccount.GetContentKeyPolici
 
 // invoke the operation
 string contentKeyPolicyName = "PolicyWithPlayReadyOptionAndOpenRestriction";
-ContentKeyPolicyData data = new ContentKeyPolicyData()
+ContentKeyPolicyData data = new ContentKeyPolicyData
 {
     Description = "ArmPolicyDescription",
-    Options =
+    Options = {new ContentKeyPolicyOption(new ContentKeyPolicyPlayReadyConfiguration(new ContentKeyPolicyPlayReadyLicense[]
     {
-    new ContentKeyPolicyOption(new ContentKeyPolicyPlayReadyConfiguration(new ContentKeyPolicyPlayReadyLicense[]
-    {
-    new ContentKeyPolicyPlayReadyLicense(true,ContentKeyPolicyPlayReadyLicenseType.Persistent,new ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader(),ContentKeyPolicyPlayReadyContentType.UltraVioletDownload)
+    new ContentKeyPolicyPlayReadyLicense(true, ContentKeyPolicyPlayReadyLicenseType.Persistent, new ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader(), ContentKeyPolicyPlayReadyContentType.UltraVioletDownload)
     {
     SecurityLevel = PlayReadySecurityLevel.SL150,
     BeginOn = DateTimeOffset.Parse("2017-10-16T18:22:53.46Z"),
-    PlayRight = new ContentKeyPolicyPlayReadyPlayRight(false,true,false,ContentKeyPolicyPlayReadyUnknownOutputPassingOption.NotAllowed)
+    PlayRight = new ContentKeyPolicyPlayReadyPlayRight(false, true, false, ContentKeyPolicyPlayReadyUnknownOutputPassingOption.NotAllowed)
     {
     ScmsRestriction = 2,
     },
     }
-    }),new ContentKeyPolicyOpenRestriction())
+    }), new ContentKeyPolicyOpenRestriction())
     {
     Name = "ArmPolicyOptionName",
-    }
-    },
+    }},
 };
 ArmOperation<ContentKeyPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, contentKeyPolicyName, data);
 ContentKeyPolicyResource result = lro.Value;

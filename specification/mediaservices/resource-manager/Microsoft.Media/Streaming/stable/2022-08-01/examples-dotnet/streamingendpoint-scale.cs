@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/streamingendpoint-scale.json
 // this example is just showing the usage of "StreamingEndpoints_Scale" operation, for the dependent resources, they will have to be created separately.
@@ -25,10 +25,10 @@ ResourceIdentifier streamingEndpointResourceId = StreamingEndpointResource.Creat
 StreamingEndpointResource streamingEndpoint = client.GetStreamingEndpointResource(streamingEndpointResourceId);
 
 // invoke the operation
-StreamingEntityScaleUnit streamingEntityScaleUnit = new StreamingEntityScaleUnit()
+StreamingEntityScaleUnit streamingEntityScaleUnit = new StreamingEntityScaleUnit
 {
     ScaleUnit = 5,
 };
 await streamingEndpoint.ScaleAsync(WaitUntil.Completed, streamingEntityScaleUnit);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

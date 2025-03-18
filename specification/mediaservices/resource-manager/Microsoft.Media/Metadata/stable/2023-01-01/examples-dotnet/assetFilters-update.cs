@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/assetFilters-update.json
 // this example is just showing the usage of "AssetFilters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,15 +26,15 @@ ResourceIdentifier mediaAssetFilterResourceId = MediaAssetFilterResource.CreateR
 MediaAssetFilterResource mediaAssetFilter = client.GetMediaAssetFilterResource(mediaAssetFilterResourceId);
 
 // invoke the operation
-MediaAssetFilterData data = new MediaAssetFilterData()
+MediaAssetFilterData data = new MediaAssetFilterData
 {
-    PresentationTimeRange = new PresentationTimeRange()
+    PresentationTimeRange = new PresentationTimeRange
     {
-        StartTimestamp = 10,
-        EndTimestamp = 170000000,
-        PresentationWindowDuration = 9223372036854775000,
-        LiveBackoffDuration = 0,
-        Timescale = 10000000,
+        StartTimestamp = 10L,
+        EndTimestamp = 170000000L,
+        PresentationWindowDuration = 9223372036854775000L,
+        LiveBackoffDuration = 0L,
+        Timescale = 10000000L,
         ForceEndTimestamp = false,
     },
     FirstQualityBitrate = 128000,

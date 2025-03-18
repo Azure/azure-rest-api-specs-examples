@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LoadTesting;
 using Azure.ResourceManager.LoadTesting.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LoadTesting;
 
 // Generated from example definition: specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/LoadTests_CreateOrUpdate.json
 // this example is just showing the usage of "LoadTests_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -35,13 +35,13 @@ LoadTestingResourceData data = new LoadTestingResourceData(new AzureLocation("we
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity()
         },
     },
     Description = "This is new load test resource",
-    Encryption = new LoadTestingCmkEncryptionProperties()
+    Encryption = new LoadTestingCmkEncryptionProperties
     {
-        Identity = new LoadTestingCmkIdentity()
+        Identity = new LoadTestingCmkIdentity
         {
             IdentityType = LoadTestingCmkIdentityType.UserAssigned,
             ResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1"),
@@ -50,7 +50,7 @@ LoadTestingResourceData data = new LoadTestingResourceData(new AzureLocation("we
     },
     Tags =
     {
-    ["Team"] = "Dev Exp",
+    ["Team"] = "Dev Exp"
     },
 };
 ArmOperation<LoadTestingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadTestName, data);

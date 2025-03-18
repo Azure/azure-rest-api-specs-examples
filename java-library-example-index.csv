@@ -5222,3 +5222,4 @@ id,name,language,tag,package,version,date_epoch,date
 5221,"Azure.ResourceManager.Kubernetes,1.0.0-beta.5",dotnet,Azure.ResourceManager.Kubernetes_1.0.0-beta.5,Azure.ResourceManager.Kubernetes,1.0.0-beta.5,1742228974,03/17/2025
 5222,"Azure.ResourceManager.LabServices,1.1.1",dotnet,Azure.ResourceManager.LabServices_1.1.1,Azure.ResourceManager.LabServices,1.1.1,1742228472,03/17/2025
 5223,"Azure.ResourceManager.ManagedNetworkFabric,1.1.2",dotnet,Azure.ResourceManager.ManagedNetworkFabric_1.1.2,Azure.ResourceManager.ManagedNetworkFabric,1.1.2,1742228427,03/17/2025
+5224,"Azure.ResourceManager.ExtendedLocations,1.1.1",dotnet,Azure.ResourceManager.ExtendedLocations_1.1.1,Azure.ResourceManager.ExtendedLocations,1.1.1,1742228269,03/17/2025

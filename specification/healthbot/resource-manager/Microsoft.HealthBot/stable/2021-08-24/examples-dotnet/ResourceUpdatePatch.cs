@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HealthBot;
 using Azure.ResourceManager.HealthBot.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HealthBot;
 
 // Generated from example definition: specification/healthbot/resource-manager/Microsoft.HealthBot/stable/2021-08-24/examples/ResourceUpdatePatch.json
 // this example is just showing the usage of "Bots_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier healthBotResourceId = HealthBotResource.CreateResourceIdentif
 HealthBotResource healthBot = client.GetHealthBotResource(healthBotResourceId);
 
 // invoke the operation
-HealthBotPatch patch = new HealthBotPatch()
+HealthBotPatch patch = new HealthBotPatch
 {
     SkuName = HealthBotSkuName.F0,
 };

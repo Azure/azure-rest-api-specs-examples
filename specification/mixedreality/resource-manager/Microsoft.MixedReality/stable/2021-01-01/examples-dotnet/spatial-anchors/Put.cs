@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MixedReality;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MixedReality;
 
 // Generated from example definition: specification/mixedreality/resource-manager/Microsoft.MixedReality/stable/2021-01-01/examples/spatial-anchors/Put.json
 // this example is just showing the usage of "SpatialAnchorsAccounts_Create" operation, for the dependent resources, they will have to be created separately.

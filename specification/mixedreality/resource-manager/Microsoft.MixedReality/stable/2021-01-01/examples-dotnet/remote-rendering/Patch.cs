@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MixedReality;
 using Azure.ResourceManager.MixedReality.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MixedReality;
 
 // Generated from example definition: specification/mixedreality/resource-manager/Microsoft.MixedReality/stable/2021-01-01/examples/remote-rendering/Patch.json
 // this example is just showing the usage of "RemoteRenderingAccounts_Update" operation, for the dependent resources, they will have to be created separately.
@@ -32,7 +31,7 @@ RemoteRenderingAccountData data = new RemoteRenderingAccountData(new AzureLocati
     Tags =
     {
     ["hero"] = "romeo",
-    ["heroine"] = "juliet",
+    ["heroine"] = "juliet"
     },
 };
 RemoteRenderingAccountResource result = await remoteRenderingAccount.UpdateAsync(data);

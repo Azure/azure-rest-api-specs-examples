@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/QueryUserRules.json
 // this example is just showing the usage of "QueryUserRules" operation, for the dependent resources, they will have to be created separately.
@@ -22,16 +22,13 @@ ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceI
 PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
 
 // invoke the operation and iterate over the result
-QueryUserRulesContent content = new QueryUserRulesContent()
+QueryUserRulesContent content = new QueryUserRulesContent
 {
-    SubscriptionIds =
-    {
-    "b340914e-353d-453a-85fb-8f9b65b51f91"
-    },
+    SubscriptionIds = { "b340914e-353d-453a-85fb-8f9b65b51f91" },
 };
 await foreach (MarketplaceRule item in privateStore.QueryUserRulesAsync(content: content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

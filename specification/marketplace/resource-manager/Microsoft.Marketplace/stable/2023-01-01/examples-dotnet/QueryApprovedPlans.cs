@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/QueryApprovedPlans.json
 // this example is just showing the usage of "PrivateStore_QueryApprovedPlans" operation, for the dependent resources, they will have to be created separately.
@@ -22,17 +22,11 @@ ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceI
 PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
 
 // invoke the operation
-QueryApprovedPlansContent content = new QueryApprovedPlansContent()
+QueryApprovedPlansContent content = new QueryApprovedPlansContent
 {
     OfferId = "marketplacetestthirdparty.md-test-third-party-2",
-    PlanIds =
-    {
-    "testPlanA","testPlanB","testPlanC"
-    },
-    SubscriptionIds =
-    {
-    "85e3e079-c718-4e4c-abbe-f72fceba8305","7752d461-4bf1-4185-8b56-8a3f11486ac6"
-    },
+    PlanIds = { "testPlanA", "testPlanB", "testPlanC" },
+    SubscriptionIds = { "85e3e079-c718-4e4c-abbe-f72fceba8305", "7752d461-4bf1-4185-8b56-8a3f11486ac6" },
 };
 QueryApprovedPlansResult result = await privateStore.QueryApprovedPlansAsync(content: content);
 

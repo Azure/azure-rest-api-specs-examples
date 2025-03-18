@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/QueryUserOffers.json
 // this example is just showing the usage of "PrivateStore_QueryUserOffers" operation, for the dependent resources, they will have to be created separately.
@@ -22,20 +22,14 @@ ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceI
 PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
 
 // invoke the operation and iterate over the result
-QueryUserOffersContent content = new QueryUserOffersContent()
+QueryUserOffersContent content = new QueryUserOffersContent
 {
-    OfferIds =
-    {
-    "contoso.logger","contoso.monitor"
-    },
-    SubscriptionIds =
-    {
-    "b340914e-353d-453a-85fb-8f9b65b51f91"
-    },
+    OfferIds = { "contoso.logger", "contoso.monitor" },
+    SubscriptionIds = { "b340914e-353d-453a-85fb-8f9b65b51f91" },
 };
 await foreach (PrivateStoreOfferResult item in privateStore.QueryUserOffersAsync(content: content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

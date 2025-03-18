@@ -1,11 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Marketplace;
-using Azure.ResourceManager.Marketplace.Models;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/GetRequestApproval.json
 // this example is just showing the usage of "PrivateStore_GetRequestApproval" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +14,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MarketplaceApprovalRequestResource created on azure
-// for more information of creating MarketplaceApprovalRequestResource, please refer to the document of MarketplaceApprovalRequestResource
+// this example assumes you already have this PrivateStoreResource created on azure
+// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
 Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
-string requestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
-ResourceIdentifier marketplaceApprovalRequestResourceId = MarketplaceApprovalRequestResource.CreateResourceIdentifier(privateStoreId, requestApprovalId);
-MarketplaceApprovalRequestResource marketplaceApprovalRequest = client.GetMarketplaceApprovalRequestResource(marketplaceApprovalRequestResourceId);
+ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
+PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
+
+// get the collection of this MarketplaceApprovalRequestResource
+MarketplaceApprovalRequestCollection collection = privateStore.GetMarketplaceApprovalRequests();
 
 // invoke the operation
-MarketplaceApprovalRequestResource result = await marketplaceApprovalRequest.GetAsync();
+string requestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
+NullableResponse<MarketplaceApprovalRequestResource> response = await collection.GetIfExistsAsync(requestApprovalId);
+MarketplaceApprovalRequestResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MarketplaceApprovalRequestData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MarketplaceApprovalRequestData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

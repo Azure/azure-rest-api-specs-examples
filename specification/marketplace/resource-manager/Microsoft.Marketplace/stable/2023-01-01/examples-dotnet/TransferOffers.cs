@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/TransferOffers.json
 // this example is just showing the usage of "PrivateStoreCollection_TransferOffers" operation, for the dependent resources, they will have to be created separately.
@@ -23,17 +23,11 @@ ResourceIdentifier privateStoreCollectionInfoResourceId = PrivateStoreCollection
 PrivateStoreCollectionInfoResource privateStoreCollectionInfo = client.GetPrivateStoreCollectionInfoResource(privateStoreCollectionInfoResourceId);
 
 // invoke the operation
-TransferOffersContent content = new TransferOffersContent()
+TransferOffersContent content = new TransferOffersContent
 {
-    TargetCollections =
-    {
-    "c752f021-1c37-4af5-b82f-74c51c27b44a","f47ef1c7-e908-4f39-ae29-db181634ad8d"
-    },
+    TargetCollections = { "c752f021-1c37-4af5-b82f-74c51c27b44a", "f47ef1c7-e908-4f39-ae29-db181634ad8d" },
     Operation = "copy",
-    OfferIdsList =
-    {
-    "marketplacetestthirdparty.md-test-third-party-2","marketplacetestthirdparty.md-test-third-party-3"
-    },
+    OfferIdsList = { "marketplacetestthirdparty.md-test-third-party-2", "marketplacetestthirdparty.md-test-third-party-3" },
 };
 TransferOffersResult result = await privateStoreCollectionInfo.TransferOffersAsync(content: content);
 

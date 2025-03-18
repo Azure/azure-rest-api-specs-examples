@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Kubernetes;
 using Azure.ResourceManager.Kubernetes.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Kubernetes;
 
 // Generated from example definition: specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-05-01-preview/examples/CreateClusterPrivateLinkExample.json
 // this example is just showing the usage of "ConnectedCluster_Create" operation, for the dependent resources, they will have to be created separately.
@@ -33,9 +33,7 @@ ConnectedClusterData data = new ConnectedClusterData(new AzureLocation("East US"
 {
     PrivateLinkState = PrivateLinkState.Enabled,
     PrivateLinkScopeResourceId = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ConnectedClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);
 ConnectedClusterResource result = lro.Value;

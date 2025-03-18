@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityDevOps;
 using Azure.ResourceManager.SecurityDevOps.Models;
+using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/GitHubConnectorDelete.json
 // this example is just showing the usage of "GitHubConnector_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ GitHubConnectorResource gitHubConnector = client.GetGitHubConnectorResource(gitH
 // invoke the operation
 await gitHubConnector.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

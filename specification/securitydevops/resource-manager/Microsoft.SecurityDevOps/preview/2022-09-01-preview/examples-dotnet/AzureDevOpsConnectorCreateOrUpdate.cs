@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SecurityDevOps;
 using Azure.ResourceManager.SecurityDevOps.Models;
+using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsConnectorCreateOrUpdate.json
 // this example is just showing the usage of "AzureDevOpsConnector_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,27 +30,18 @@ AzureDevOpsConnectorCollection collection = resourceGroupResource.GetAzureDevOps
 string azureDevOpsConnectorName = "testconnector";
 AzureDevOpsConnectorData data = new AzureDevOpsConnectorData(new AzureLocation("West US"))
 {
-    Properties = new AzureDevOpsConnectorProperties()
+    Properties = new AzureDevOpsConnectorProperties
     {
         AuthorizationCode = "00000000000000000000",
-        Orgs =
-        {
-        new AzureDevOpsOrgMetadata()
+        Orgs = {new AzureDevOpsOrgMetadata
         {
         Name = "testOrg",
-        Projects =
-        {
-        new AzureDevOpsProjectMetadata()
+        Projects = {new AzureDevOpsProjectMetadata
         {
         Name = "testProject",
-        Repos =
-        {
-        "testRepo"
-        },
-        }
-        },
-        }
-        },
+        Repos = {"testRepo"},
+        }},
+        }},
     },
 };
 ArmOperation<AzureDevOpsConnectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, azureDevOpsConnectorName, data);

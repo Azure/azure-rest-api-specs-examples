@@ -5223,3 +5223,4 @@ id,name,language,tag,package,version,date_epoch,date
 5222,"Azure.ResourceManager.LabServices,1.1.1",dotnet,Azure.ResourceManager.LabServices_1.1.1,Azure.ResourceManager.LabServices,1.1.1,1742228472,03/17/2025
 5223,"Azure.ResourceManager.ManagedNetworkFabric,1.1.2",dotnet,Azure.ResourceManager.ManagedNetworkFabric_1.1.2,Azure.ResourceManager.ManagedNetworkFabric,1.1.2,1742228427,03/17/2025
 5224,"Azure.ResourceManager.ExtendedLocations,1.1.1",dotnet,Azure.ResourceManager.ExtendedLocations_1.1.1,Azure.ResourceManager.ExtendedLocations,1.1.1,1742228269,03/17/2025
+5225,"Azure.ResourceManager.Grafana,1.1.1",dotnet,Azure.ResourceManager.Grafana_1.1.1,Azure.ResourceManager.Grafana,1.1.1,1742228251,03/17/2025

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/SensitivityLabelsRecommendedUpdate.json
 // this example is just showing the usage of "SqlPoolRecommendedSensitivityLabels_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,31 +25,28 @@ ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResou
 SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
 
 // invoke the operation
-SynapseRecommendedSensitivityLabelUpdateOperationListResult synapseRecommendedSensitivityLabelUpdateOperationListResult = new SynapseRecommendedSensitivityLabelUpdateOperationListResult()
+SynapseRecommendedSensitivityLabelUpdateOperationListResult synapseRecommendedSensitivityLabelUpdateOperationListResult = new SynapseRecommendedSensitivityLabelUpdateOperationListResult
 {
-    Operations =
-    {
-    new SynapseRecommendedSensitivityLabelUpdate()
+    Operations = {new SynapseRecommendedSensitivityLabelUpdate
     {
     Op = SynapseRecommendedSensitivityLabelUpdateKind.Enable,
     Schema = "dbo",
     Table = "table1",
     Column = "column1",
-    },new SynapseRecommendedSensitivityLabelUpdate()
+    }, new SynapseRecommendedSensitivityLabelUpdate
     {
     Op = SynapseRecommendedSensitivityLabelUpdateKind.Enable,
     Schema = "dbo",
     Table = "table2",
     Column = "column2",
-    },new SynapseRecommendedSensitivityLabelUpdate()
+    }, new SynapseRecommendedSensitivityLabelUpdate
     {
     Op = SynapseRecommendedSensitivityLabelUpdateKind.Disable,
     Schema = "dbo",
     Table = "table1",
     Column = "column3",
-    }
-    },
+    }},
 };
 await synapseSqlPool.UpdateSqlPoolRecommendedSensitivityLabelAsync(synapseRecommendedSensitivityLabelUpdateOperationListResult);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

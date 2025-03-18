@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/IntegrationRuntimes_Create.json
 // this example is just showing the usage of "IntegrationRuntimes_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ SynapseIntegrationRuntimeCollection collection = synapseWorkspace.GetSynapseInte
 
 // invoke the operation
 string integrationRuntimeName = "exampleIntegrationRuntime";
-SynapseIntegrationRuntimeData data = new SynapseIntegrationRuntimeData(new SynapseSelfHostedIntegrationRuntime()
+SynapseIntegrationRuntimeData data = new SynapseIntegrationRuntimeData(new SynapseSelfHostedIntegrationRuntime
 {
     Description = "A selfhosted integration runtime",
 });

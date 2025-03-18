@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolPrincipalAssignmentsCreateOrUpdate.json
 // this example is just showing the usage of "KustoPoolPrincipalAssignments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ ResourceIdentifier synapseClusterPrincipalAssignmentResourceId = SynapseClusterP
 SynapseClusterPrincipalAssignmentResource synapseClusterPrincipalAssignment = client.GetSynapseClusterPrincipalAssignmentResource(synapseClusterPrincipalAssignmentResourceId);
 
 // invoke the operation
-SynapseClusterPrincipalAssignmentData data = new SynapseClusterPrincipalAssignmentData()
+SynapseClusterPrincipalAssignmentData data = new SynapseClusterPrincipalAssignmentData
 {
     PrincipalId = "87654321-1234-1234-1234-123456789123",
     Role = SynapseClusterPrincipalRole.AllDatabasesAdmin,

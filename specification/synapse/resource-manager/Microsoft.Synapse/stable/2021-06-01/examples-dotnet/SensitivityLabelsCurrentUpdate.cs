@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/SensitivityLabelsCurrentUpdate.json
 // this example is just showing the usage of "SqlPoolSensitivityLabels_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,17 +25,15 @@ ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResou
 SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
 
 // invoke the operation
-SynapseSensitivityLabelUpdateListResult synapseSensitivityLabelUpdateListResult = new SynapseSensitivityLabelUpdateListResult()
+SynapseSensitivityLabelUpdateListResult synapseSensitivityLabelUpdateListResult = new SynapseSensitivityLabelUpdateListResult
 {
-    Operations =
-    {
-    new SynapseSensitivityLabelUpdate()
+    Operations = {new SynapseSensitivityLabelUpdate
     {
     Op = SynapseSensitivityLabelUpdateKind.Set,
     Schema = "dbo",
     Table = "table1",
     Column = "column1",
-    SensitivityLabel = new SynapseSensitivityLabelData()
+    SensitivityLabel = new SynapseSensitivityLabelData
     {
     LabelName = "Highly Confidential",
     LabelId = Guid.Parse("3A477B16-9423-432B-AA97-6069B481CEC3"),
@@ -43,13 +41,13 @@ SynapseSensitivityLabelUpdateListResult synapseSensitivityLabelUpdateListResult 
     InformationTypeId = Guid.Parse("1D3652D6-422C-4115-82F1-65DAEBC665C8"),
     Rank = SynapseSensitivityLabelRank.Low,
     },
-    },new SynapseSensitivityLabelUpdate()
+    }, new SynapseSensitivityLabelUpdate
     {
     Op = SynapseSensitivityLabelUpdateKind.Set,
     Schema = "dbo",
     Table = "table2",
     Column = "column2",
-    SensitivityLabel = new SynapseSensitivityLabelData()
+    SensitivityLabel = new SynapseSensitivityLabelData
     {
     LabelName = "PII",
     LabelId = Guid.Parse("bf91e08c-f4f0-478a-b016-25164b2a65ff"),
@@ -57,15 +55,14 @@ SynapseSensitivityLabelUpdateListResult synapseSensitivityLabelUpdateListResult 
     InformationTypeId = Guid.Parse("d22fa6e9-5ee4-3bde-4c2b-a409604c4646"),
     Rank = SynapseSensitivityLabelRank.Critical,
     },
-    },new SynapseSensitivityLabelUpdate()
+    }, new SynapseSensitivityLabelUpdate
     {
     Op = SynapseSensitivityLabelUpdateKind.Remove,
     Schema = "dbo",
     Table = "Table1",
     Column = "Column3",
-    }
-    },
+    }},
 };
 await synapseSqlPool.UpdateSqlPoolSensitivityLabelAsync(synapseSensitivityLabelUpdateListResult);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

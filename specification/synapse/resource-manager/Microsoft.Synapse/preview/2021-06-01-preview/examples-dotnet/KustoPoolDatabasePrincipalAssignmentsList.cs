@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolDatabasePrincipalAssignmentsList.json
 // this example is just showing the usage of "KustoPoolDatabasePrincipalAssignments_List" operation, for the dependent resources, they will have to be created separately.
@@ -38,4 +38,4 @@ await foreach (SynapseDatabasePrincipalAssignmentResource item in collection.Get
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

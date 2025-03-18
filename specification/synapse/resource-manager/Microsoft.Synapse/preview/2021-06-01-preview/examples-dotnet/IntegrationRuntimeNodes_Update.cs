@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/IntegrationRuntimeNodes_Update.json
 // this example is just showing the usage of "IntegrationRuntimeNodes_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ SynapseIntegrationRuntimeResource synapseIntegrationRuntime = client.GetSynapseI
 
 // invoke the operation
 string nodeName = "Node_1";
-UpdateIntegrationRuntimeNodeContent content = new UpdateIntegrationRuntimeNodeContent()
+UpdateIntegrationRuntimeNodeContent content = new UpdateIntegrationRuntimeNodeContent
 {
     ConcurrentJobsLimit = 2,
 };

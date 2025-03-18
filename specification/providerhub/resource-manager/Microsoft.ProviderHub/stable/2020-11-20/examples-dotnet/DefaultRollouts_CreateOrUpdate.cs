@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/DefaultRollouts_CreateOrUpdate.json
 // this example is just showing the usage of "DefaultRollouts_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,20 +25,17 @@ ResourceIdentifier defaultRolloutResourceId = DefaultRolloutResource.CreateResou
 DefaultRolloutResource defaultRollout = client.GetDefaultRolloutResource(defaultRolloutResourceId);
 
 // invoke the operation
-DefaultRolloutData data = new DefaultRolloutData()
+DefaultRolloutData data = new DefaultRolloutData
 {
-    Properties = new DefaultRolloutProperties()
+    Properties = new DefaultRolloutProperties
     {
-        Specification = new DefaultRolloutSpecification()
+        Specification = new DefaultRolloutSpecification
         {
-            Canary = new CanaryTrafficRegionRolloutConfiguration()
+            Canary = new CanaryTrafficRegionRolloutConfiguration
             {
-                SkipRegions =
-                {
-                new AzureLocation("eastus2euap")
-                },
+                SkipRegions = { new AzureLocation("eastus2euap") },
             },
-            RestOfTheWorldGroupTwo = new TrafficRegionRolloutConfiguration()
+            RestOfTheWorldGroupTwo = new TrafficRegionRolloutConfiguration
             {
                 WaitDuration = XmlConvert.ToTimeSpan("PT4H"),
             },

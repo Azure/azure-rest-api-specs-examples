@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_DeleteNestedResourceTypeThird.json
 // this example is just showing the usage of "Skus_DeleteNestedResourceTypeThird" operation, for the dependent resources, they will have to be created separately.
@@ -30,4 +30,4 @@ NestedResourceTypeThirdSkuResource nestedResourceTypeThirdSku = client.GetNested
 // invoke the operation
 await nestedResourceTypeThirdSku.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

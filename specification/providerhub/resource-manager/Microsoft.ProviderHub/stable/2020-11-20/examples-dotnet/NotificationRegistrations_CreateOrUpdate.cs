@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/NotificationRegistrations_CreateOrUpdate.json
 // this example is just showing the usage of "NotificationRegistrations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,34 +27,22 @@ NotificationRegistrationCollection collection = providerRegistration.GetNotifica
 
 // invoke the operation
 string notificationRegistrationName = "fooNotificationRegistration";
-NotificationRegistrationData data = new NotificationRegistrationData()
+NotificationRegistrationData data = new NotificationRegistrationData
 {
-    Properties = new NotificationRegistrationProperties()
+    Properties = new NotificationRegistrationProperties
     {
         NotificationMode = NotificationMode.EventHub,
         MessageScope = MessageScope.RegisteredSubscriptions,
-        IncludedEvents =
-        {
-        "*/write","Microsoft.Contoso/employees/delete"
-        },
-        NotificationEndpoints =
-        {
-        new NotificationEndpoint()
+        IncludedEvents = { "*/write", "Microsoft.Contoso/employees/delete" },
+        NotificationEndpoints = {new NotificationEndpoint
         {
         NotificationDestination = new ResourceIdentifier("/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"),
-        Locations =
-        {
-        new AzureLocation(""),new AzureLocation("East US")
-        },
-        },new NotificationEndpoint()
+        Locations = {new AzureLocation(""), new AzureLocation("East US")},
+        }, new NotificationEndpoint
         {
         NotificationDestination = new ResourceIdentifier("/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-northeurope/providers/Microsoft.EventHub/namespaces/europe-mgmtexpint/eventhubs/armlinkednotifications"),
-        Locations =
-        {
-        new AzureLocation("North Europe")
-        },
-        }
-        },
+        Locations = {new AzureLocation("North Europe")},
+        }},
     },
 };
 ArmOperation<NotificationRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, notificationRegistrationName, data);

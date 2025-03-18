@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_CreateOrUpdate.json
 // this example is just showing the usage of "Skus_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceTypeRegistrationResource created on azure
-// for more information of creating ResourceTypeRegistrationResource, please refer to the document of ResourceTypeRegistrationResource
+// this example assumes you already have this ResourceTypeSkuResource created on azure
+// for more information of creating ResourceTypeSkuResource, please refer to the document of ResourceTypeSkuResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
 string resourceType = "testResourceType";
-ResourceIdentifier resourceTypeRegistrationResourceId = ResourceTypeRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType);
-ResourceTypeRegistrationResource resourceTypeRegistration = client.GetResourceTypeRegistrationResource(resourceTypeRegistrationResourceId);
-
-// get the collection of this ResourceTypeSkuResource
-ResourceTypeSkuCollection collection = resourceTypeRegistration.GetResourceTypeSkus();
+string sku = "testSku";
+ResourceIdentifier resourceTypeSkuResourceId = ResourceTypeSkuResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType, sku);
+ResourceTypeSkuResource resourceTypeSku = client.GetResourceTypeSkuResource(resourceTypeSkuResourceId);
 
 // invoke the operation
-string sku = "testSku";
-ResourceTypeSkuData data = new ResourceTypeSkuData()
+ResourceTypeSkuData data = new ResourceTypeSkuData
 {
     Properties = new ResourceTypeSkuProperties(new ResourceTypeSkuSetting[]
 {
@@ -36,18 +33,16 @@ new ResourceTypeSkuSetting("freeSku")
 {
 Tier = "Tier1",
 Kind = "Standard",
-},new ResourceTypeSkuSetting("premiumSku")
+},
+new ResourceTypeSkuSetting("premiumSku")
 {
 Tier = "Tier2",
 Kind = "Premium",
-Costs =
-{
-new ResourceTypeSkuCost("xxx")
-},
+Costs = {new ResourceTypeSkuCost("xxx")},
 }
 }),
 };
-ArmOperation<ResourceTypeSkuResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sku, data);
+ArmOperation<ResourceTypeSkuResource> lro = await resourceTypeSku.UpdateAsync(WaitUntil.Completed, data);
 ResourceTypeSkuResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/CustomRollouts_CreateOrUpdate.json
 // this example is just showing the usage of "CustomRollouts_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,12 +27,9 @@ CustomRolloutCollection collection = providerRegistration.GetCustomRollouts();
 
 // invoke the operation
 string rolloutName = "brazilUsShoeBoxTesting";
-CustomRolloutData data = new CustomRolloutData(new CustomRolloutProperties(new CustomRolloutSpecification(new TrafficRegions()
+CustomRolloutData data = new CustomRolloutData(new CustomRolloutProperties(new CustomRolloutSpecification(new TrafficRegions
 {
-    Regions =
-    {
-    new AzureLocation("brazilus")
-    },
+    Regions = { new AzureLocation("brazilus") },
 })));
 ArmOperation<CustomRolloutResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, rolloutName, data);
 CustomRolloutResource result = lro.Value;

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.NetworkFunction;
 using Azure.ResourceManager.NetworkFunction.Models;
+using Azure.ResourceManager.NetworkFunction;
 
 // Generated from example definition: specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/CollectorPolicyCreate.json
 // this example is just showing the usage of "CollectorPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,32 +30,23 @@ CollectorPolicyCollection collection = azureTrafficCollector.GetCollectorPolicie
 string collectorPolicyName = "cp1";
 CollectorPolicyData data = new CollectorPolicyData(new AzureLocation("West US"))
 {
-    IngestionPolicy = new IngestionPolicyPropertiesFormat()
+    IngestionPolicy = new IngestionPolicyPropertiesFormat
     {
         IngestionType = IngestionType.Ipfix,
-        IngestionSources =
-        {
-        new IngestionSourcesPropertiesFormat()
+        IngestionSources = {new IngestionSourcesPropertiesFormat
         {
         SourceType = IngestionSourceType.Resource,
         ResourceId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
-        }
-        },
+        }},
     },
-    EmissionPolicies =
-    {
-    new EmissionPoliciesPropertiesFormat()
+    EmissionPolicies = {new EmissionPoliciesPropertiesFormat
     {
     EmissionType = EmissionType.Ipfix,
-    EmissionDestinations =
-    {
-    new EmissionPolicyDestination()
+    EmissionDestinations = {new EmissionPolicyDestination
     {
     DestinationType = EmissionDestinationType.AzureMonitor,
-    }
-    },
-    }
-    },
+    }},
+    }},
 };
 ArmOperation<CollectorPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, collectorPolicyName, data);
 CollectorPolicyResource result = lro.Value;

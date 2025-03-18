@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.NetworkFunction;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.NetworkFunction;
 
 // Generated from example definition: specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/AzureTrafficCollectorsByResourceGroupList.json
 // this example is just showing the usage of "AzureTrafficCollectorsByResourceGroup_List" operation, for the dependent resources, they will have to be created separately.
@@ -35,4 +35,4 @@ await foreach (AzureTrafficCollectorResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

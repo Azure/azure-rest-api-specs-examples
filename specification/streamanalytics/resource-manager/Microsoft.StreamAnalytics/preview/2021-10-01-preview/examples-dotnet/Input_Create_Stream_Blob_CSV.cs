@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Input_Create_Stream_Blob_CSV.json
 // this example is just showing the usage of "Inputs_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -28,27 +29,24 @@ StreamingJobInputCollection collection = streamingJob.GetStreamingJobInputs();
 
 // invoke the operation
 string inputName = "input8899";
-StreamingJobInputData input = new StreamingJobInputData()
+StreamingJobInputData input = new StreamingJobInputData
 {
-    Properties = new StreamInputProperties()
+    Properties = new StreamInputProperties
     {
-        Datasource = new BlobStreamInputDataSource()
+        Datasource = new BlobStreamInputDataSource
         {
-            StorageAccounts =
-            {
-            new StreamAnalyticsStorageAccount()
+            StorageAccounts = {new StreamAnalyticsStorageAccount
             {
             AccountName = "someAccountName",
             AccountKey = "someAccountKey==",
-            }
-            },
+            }},
             Container = "state",
             PathPattern = "{date}/{time}",
             DateFormat = "yyyy/MM/dd",
             TimeFormat = "HH",
             SourcePartitionCount = 16,
         },
-        Serialization = new CsvFormatSerialization()
+        Serialization = new CsvFormatSerialization
         {
             FieldDelimiter = ",",
             Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,

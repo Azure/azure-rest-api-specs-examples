@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Function_Create_JavaScript.json
 // this example is just showing the usage of "Functions_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -28,19 +28,16 @@ StreamingJobFunctionCollection collection = streamingJob.GetStreamingJobFunction
 
 // invoke the operation
 string functionName = "function8197";
-StreamingJobFunctionData data = new StreamingJobFunctionData()
+StreamingJobFunctionData data = new StreamingJobFunctionData
 {
-    Properties = new ScalarFunctionProperties()
+    Properties = new ScalarFunctionProperties
     {
-        Inputs =
-        {
-        new StreamingJobFunctionInput()
+        Inputs = {new StreamingJobFunctionInput
         {
         DataType = "Any",
-        }
-        },
+        }},
         OutputDataType = "Any",
-        Binding = new JavaScriptFunctionBinding()
+        Binding = new JavaScriptFunctionBinding
         {
             Script = "function (x, y) { return x + y; }",
         },

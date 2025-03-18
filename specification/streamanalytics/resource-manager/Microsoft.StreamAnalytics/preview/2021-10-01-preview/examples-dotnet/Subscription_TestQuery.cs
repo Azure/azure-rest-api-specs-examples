@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Subscription_TestQuery.json
 // this example is just showing the usage of "Subscriptions_TestQuery" operation, for the dependent resources, they will have to be created separately.
@@ -33,50 +33,42 @@ StreamAnalyticsTestQuery testQuery = new StreamAnalyticsTestQuery(new StreamingJ
     EventsLateArrivalMaxDelayInSeconds = 5,
     DataLocalion = new AzureLocation("en-US"),
     CompatibilityLevel = StreamingJobCompatibilityLevel.Level1_0,
-    Inputs =
+    Inputs = {new StreamingJobInputData
     {
-    new StreamingJobInputData()
+    Properties = new StreamInputProperties
     {
-    Properties = new StreamInputProperties()
-    {
-    Datasource = new RawStreamInputDataSource()
+    Datasource = new RawStreamInputDataSource
     {
     PayloadUri = new Uri("http://myinput.com"),
     },
-    Serialization = new JsonFormatSerialization()
+    Serialization = new JsonFormatSerialization
     {
     Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,
     },
     },
     Name = "inputtest",
-    }
-    },
-    Transformation = new StreamingJobTransformationData()
+    }},
+    Transformation = new StreamingJobTransformationData
     {
         StreamingUnits = 1,
         Query = "Select Id, Name from inputtest",
         Name = "transformationtest",
     },
-    Outputs =
+    Outputs = {new StreamingJobOutputData
     {
-    new StreamingJobOutputData()
-    {
-    Datasource = new RawOutputDatasource()
+    Datasource = new RawOutputDatasource
     {
     PayloadUri = new Uri("http://myoutput.com"),
     },
     Serialization = new JsonFormatSerialization(),
     Name = "outputtest",
-    }
-    },
-    Functions =
-    {
-    },
+    }},
+    Functions = { },
     Tags =
     {
     ["key1"] = "value1",
     ["key3"] = "value3",
-    ["randomKey"] = "randomValue",
+    ["randomKey"] = "randomValue"
     },
 })
 {

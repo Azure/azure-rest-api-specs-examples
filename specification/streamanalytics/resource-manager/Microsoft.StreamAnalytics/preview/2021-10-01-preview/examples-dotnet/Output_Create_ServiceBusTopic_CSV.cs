@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Output_Create_ServiceBusTopic_CSV.json
 // this example is just showing the usage of "Outputs_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -28,20 +28,17 @@ StreamingJobOutputCollection collection = streamingJob.GetStreamingJobOutputs();
 
 // invoke the operation
 string outputName = "output7886";
-StreamingJobOutputData data = new StreamingJobOutputData()
+StreamingJobOutputData data = new StreamingJobOutputData
 {
-    Datasource = new ServiceBusTopicOutputDataSource()
+    Datasource = new ServiceBusTopicOutputDataSource
     {
         ServiceBusNamespace = "sdktest",
         SharedAccessPolicyName = "RootManageSharedAccessKey",
         SharedAccessPolicyKey = "sharedAccessPolicyKey=",
         TopicName = "sdktopic",
-        PropertyColumns =
-        {
-        "column1","column2"
-        },
+        PropertyColumns = { "column1", "column2" },
     },
-    Serialization = new CsvFormatSerialization()
+    Serialization = new CsvFormatSerialization
     {
         FieldDelimiter = ",",
         Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,

@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Transformation_Update.json
@@ -23,7 +24,7 @@ ResourceIdentifier streamingJobTransformationResourceId = StreamingJobTransforma
 StreamingJobTransformationResource streamingJobTransformation = client.GetStreamingJobTransformationResource(streamingJobTransformationResourceId);
 
 // invoke the operation
-StreamingJobTransformationData data = new StreamingJobTransformationData()
+StreamingJobTransformationData data = new StreamingJobTransformationData
 {
     Query = "New query",
 };

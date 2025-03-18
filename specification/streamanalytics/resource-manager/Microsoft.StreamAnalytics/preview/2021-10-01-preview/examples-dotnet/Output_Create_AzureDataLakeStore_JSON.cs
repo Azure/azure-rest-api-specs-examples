@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Output_Create_AzureDataLakeStore_JSON.json
 // this example is just showing the usage of "Outputs_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ StreamingJobOutputCollection collection = streamingJob.GetStreamingJobOutputs();
 
 // invoke the operation
 string outputName = "output5195";
-StreamingJobOutputData data = new StreamingJobOutputData()
+StreamingJobOutputData data = new StreamingJobOutputData
 {
-    Datasource = new DataLakeStoreOutputDataSource()
+    Datasource = new DataLakeStoreOutputDataSource
     {
         RefreshToken = "someRefreshToken==",
         TokenUserPrincipalName = "bobsmith@contoso.com",
@@ -41,7 +41,7 @@ StreamingJobOutputData data = new StreamingJobOutputData()
         DateFormat = "yyyy/MM/dd",
         TimeFormat = "HH",
     },
-    Serialization = new JsonFormatSerialization()
+    Serialization = new JsonFormatSerialization
     {
         Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,
         Format = JsonOutputSerializationFormat.Array,

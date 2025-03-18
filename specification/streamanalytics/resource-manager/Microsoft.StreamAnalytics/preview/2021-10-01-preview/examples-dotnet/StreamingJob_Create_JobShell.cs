@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/StreamingJob_Create_JobShell.json
 // this example is just showing the usage of "StreamingJobs_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -37,20 +37,14 @@ StreamingJobData data = new StreamingJobData(new AzureLocation("West US"))
     EventsLateArrivalMaxDelayInSeconds = 16,
     DataLocalion = new AzureLocation("en-US"),
     CompatibilityLevel = StreamingJobCompatibilityLevel.Level1_0,
-    Inputs =
-    {
-    },
-    Outputs =
-    {
-    },
-    Functions =
-    {
-    },
+    Inputs = { },
+    Outputs = { },
+    Functions = { },
     Tags =
     {
     ["key1"] = "value1",
     ["key3"] = "value3",
-    ["randomKey"] = "randomValue",
+    ["randomKey"] = "randomValue"
     },
 };
 ArmOperation<StreamingJobResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobName, data);

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Subscription_TestOutput.json
 // this example is just showing the usage of "Subscriptions_TestOutput" operation, for the dependent resources, they will have to be created separately.
@@ -24,24 +24,21 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("West US");
-StreamAnalyticsTestOutput testOutput = new StreamAnalyticsTestOutput(new StreamingJobOutputData()
+StreamAnalyticsTestOutput testOutput = new StreamAnalyticsTestOutput(new StreamingJobOutputData
 {
-    Datasource = new BlobOutputDataSource()
+    Datasource = new BlobOutputDataSource
     {
-        StorageAccounts =
-        {
-        new StreamAnalyticsStorageAccount()
+        StorageAccounts = {new StreamAnalyticsStorageAccount
         {
         AccountName = "someAccountName",
         AccountKey = "accountKey==",
-        }
-        },
+        }},
         Container = "state",
         PathPattern = "{date}/{time}",
         DateFormat = "yyyy/MM/dd",
         TimeFormat = "HH",
     },
-    Serialization = new CsvFormatSerialization()
+    Serialization = new CsvFormatSerialization
     {
         FieldDelimiter = ",",
         Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,

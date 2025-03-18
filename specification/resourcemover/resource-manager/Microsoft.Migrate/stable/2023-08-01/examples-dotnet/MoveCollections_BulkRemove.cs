@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.ResourceMover;
 using Azure.ResourceManager.ResourceMover.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceMover;
 
 // Generated from example definition: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01/examples/MoveCollections_BulkRemove.json
 // this example is just showing the usage of "MoveCollections_BulkRemove" operation, for the dependent resources, they will have to be created separately.
@@ -26,13 +25,10 @@ ResourceIdentifier moverResourceSetResourceId = MoverResourceSetResource.CreateR
 MoverResourceSetResource moverResourceSet = client.GetMoverResourceSetResource(moverResourceSetResourceId);
 
 // invoke the operation
-MoverBulkRemoveContent content = new MoverBulkRemoveContent()
+MoverBulkRemoveContent content = new MoverBulkRemoveContent
 {
     ValidateOnly = false,
-    MoverResources =
-    {
-    new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Migrate/MoveCollections/movecollection1/MoveResources/moveresource1")
-    },
+    MoverResources = { new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Migrate/MoveCollections/movecollection1/MoveResources/moveresource1") },
 };
 ArmOperation<MoverOperationStatus> lro = await moverResourceSet.BulkRemoveAsync(WaitUntil.Completed, content: content);
 MoverOperationStatus result = lro.Value;

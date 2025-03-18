@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.ResourceMover;
 using Azure.ResourceManager.ResourceMover.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceMover;
 
 // Generated from example definition: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01/examples/MoveCollections_ResolveDependencies.json
 // this example is just showing the usage of "MoveCollections_ResolveDependencies" operation, for the dependent resources, they will have to be created separately.

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MachineLearningCompute;
 using Azure.ResourceManager.MachineLearningCompute.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MachineLearningCompute;
 
 // Generated from example definition: specification/machinelearningcompute/resource-manager/Microsoft.MachineLearningCompute/preview/2017-08-01-preview/examples/OperationalizationClusters_Update.json
 // this example is just showing the usage of "OperationalizationClusters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier operationalizationClusterResourceId = OperationalizationClust
 OperationalizationClusterResource operationalizationCluster = client.GetOperationalizationClusterResource(operationalizationClusterResourceId);
 
 // invoke the operation
-OperationalizationClusterPatch patch = new OperationalizationClusterPatch()
+OperationalizationClusterPatch patch = new OperationalizationClusterPatch
 {
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 OperationalizationClusterResource result = await operationalizationCluster.UpdateAsync(patch);

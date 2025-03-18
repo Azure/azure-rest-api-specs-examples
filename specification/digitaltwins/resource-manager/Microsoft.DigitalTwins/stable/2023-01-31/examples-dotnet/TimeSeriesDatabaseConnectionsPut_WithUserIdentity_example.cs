@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DigitalTwins;
 using Azure.ResourceManager.DigitalTwins.Models;
+using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/TimeSeriesDatabaseConnectionsPut_WithUserIdentity_example.json
 // this example is just showing the usage of "TimeSeriesDatabaseConnections_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +25,18 @@ ResourceIdentifier timeSeriesDatabaseConnectionResourceId = TimeSeriesDatabaseCo
 TimeSeriesDatabaseConnectionResource timeSeriesDatabaseConnection = client.GetTimeSeriesDatabaseConnectionResource(timeSeriesDatabaseConnectionResourceId);
 
 // invoke the operation
-TimeSeriesDatabaseConnectionData data = new TimeSeriesDatabaseConnectionData()
+TimeSeriesDatabaseConnectionData data = new TimeSeriesDatabaseConnectionData
 {
-    Properties = new DataExplorerConnectionProperties(new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"), new Uri("https://mycluster.kusto.windows.net"), "myDatabase", new Uri("sb://myeh.servicebus.windows.net/"), "myeh", new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"))
+    Properties = new DataExplorerConnectionProperties(
+    new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"),
+    new Uri("https://mycluster.kusto.windows.net"),
+    "myDatabase",
+    new Uri("sb://myeh.servicebus.windows.net/"),
+    "myeh",
+    new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"))
     {
         AdxTableName = "myTable",
-        Identity = new DigitalTwinsManagedIdentityReference()
+        Identity = new DigitalTwinsManagedIdentityReference
         {
             IdentityType = DigitalTwinsManagedIdentityType.UserAssigned,
             UserAssignedIdentity = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity",

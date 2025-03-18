@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DigitalTwins;
 using Azure.ResourceManager.DigitalTwins.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/DigitalTwinsPatch_example.json
 // this example is just showing the usage of "DigitalTwins_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,11 +25,11 @@ ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionRe
 DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
 
 // invoke the operation
-DigitalTwinsDescriptionPatch patch = new DigitalTwinsDescriptionPatch()
+DigitalTwinsDescriptionPatch patch = new DigitalTwinsDescriptionPatch
 {
     Tags =
     {
-    ["purpose"] = "dev",
+    ["purpose"] = "dev"
     },
 };
 ArmOperation<DigitalTwinsDescriptionResource> lro = await digitalTwinsDescription.UpdateAsync(WaitUntil.Completed, patch);

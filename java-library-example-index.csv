@@ -5214,3 +5214,4 @@ id,name,language,tag,package,version,date_epoch,date
 5213,"Azure.ResourceManager.NetworkAnalytics,1.0.1",dotnet,Azure.ResourceManager.NetworkAnalytics_1.0.1,Azure.ResourceManager.NetworkAnalytics,1.0.1,1742285315,03/18/2025
 5214,"Azure.ResourceManager.NetworkFunction,1.0.0-beta.5",dotnet,Azure.ResourceManager.NetworkFunction_1.0.0-beta.5,Azure.ResourceManager.NetworkFunction,1.0.0-beta.5,1742285301,03/18/2025
 5215,"Azure.ResourceManager.ManagedServices,1.1.1",dotnet,Azure.ResourceManager.ManagedServices_1.1.1,Azure.ResourceManager.ManagedServices,1.1.1,1742285274,03/18/2025
+5216,"Azure.ResourceManager.MixedReality,1.1.1",dotnet,Azure.ResourceManager.MixedReality_1.1.1,Azure.ResourceManager.MixedReality,1.1.1,1742285268,03/18/2025

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
 using Azure.ResourceManager.Models;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/ProjectEnvironmentTypes_Put.json
 // this example is just showing the usage of "ProjectEnvironmentTypes_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,34 +29,34 @@ DevCenterProjectEnvironmentCollection collection = devCenterProject.GetDevCenter
 
 // invoke the operation
 string environmentTypeName = "DevTest";
-DevCenterProjectEnvironmentData data = new DevCenterProjectEnvironmentData(new AzureLocation("placeholder"))
+DevCenterProjectEnvironmentData data = new DevCenterProjectEnvironmentData(default)
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/identityGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/identityGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity1")] = new UserAssignedIdentity()
         },
     },
     DeploymentTargetId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000"),
     Status = EnvironmentTypeEnableStatus.IsEnabled,
     Roles =
     {
-    ["4cbf0b6c-e750-441c-98a7-10da8387e4d6"] = new DevCenterEnvironmentRole(),
+    ["4cbf0b6c-e750-441c-98a7-10da8387e4d6"] = new DevCenterEnvironmentRole()
     },
     UserRoleAssignments =
     {
-    ["e45e3m7c-176e-416a-b466-0c5ec8298f8a"] = new DevCenterUserRoleAssignments()
+    ["e45e3m7c-176e-416a-b466-0c5ec8298f8a"] = new DevCenterUserRoleAssignments
     {
     Roles =
     {
-    ["4cbf0b6c-e750-441c-98a7-10da8387e4d6"] = new DevCenterEnvironmentRole(),
+    ["4cbf0b6c-e750-441c-98a7-10da8387e4d6"] = new DevCenterEnvironmentRole()
     },
-    },
+    }
     },
     Tags =
     {
-    ["CostCenter"] = "RnD",
+    ["CostCenter"] = "RnD"
     },
 };
 ArmOperation<DevCenterProjectEnvironmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, environmentTypeName, data);

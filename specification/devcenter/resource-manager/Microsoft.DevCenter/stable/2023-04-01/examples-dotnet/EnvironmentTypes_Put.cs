@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/EnvironmentTypes_Put.json
@@ -27,11 +27,11 @@ DevCenterEnvironmentTypeCollection collection = devCenter.GetDevCenterEnvironmen
 
 // invoke the operation
 string environmentTypeName = "DevTest";
-DevCenterEnvironmentTypeData data = new DevCenterEnvironmentTypeData()
+DevCenterEnvironmentTypeData data = new DevCenterEnvironmentTypeData
 {
     Tags =
     {
-    ["Owner"] = "superuser",
+    ["Owner"] = "superuser"
     },
 };
 ArmOperation<DevCenterEnvironmentTypeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, environmentTypeName, data);

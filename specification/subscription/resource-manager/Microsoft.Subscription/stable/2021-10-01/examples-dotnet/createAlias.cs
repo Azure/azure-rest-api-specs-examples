@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Subscription;
 using Azure.ResourceManager.Subscription.Models;
+using Azure.ResourceManager.Subscription;
 
 // Generated from example definition: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/createAlias.json
 // this example is just showing the usage of "Alias_Create" operation, for the dependent resources, they will have to be created separately.
@@ -22,13 +22,13 @@ ResourceIdentifier subscriptionAliasResourceId = SubscriptionAliasResource.Creat
 SubscriptionAliasResource subscriptionAlias = client.GetSubscriptionAliasResource(subscriptionAliasResourceId);
 
 // invoke the operation
-SubscriptionAliasCreateOrUpdateContent content = new SubscriptionAliasCreateOrUpdateContent()
+SubscriptionAliasCreateOrUpdateContent content = new SubscriptionAliasCreateOrUpdateContent
 {
     DisplayName = "Test Subscription",
     Workload = SubscriptionWorkload.Production,
     BillingScope = "/billingAccounts/af6231a7-7f8d-4fcc-a993-dd8466108d07:c663dac6-a9a5-405a-8938-cd903e12ab5b_2019_05_31/billingProfiles/QWDQ-QWHI-AUW-SJDO-DJH/invoiceSections/FEUF-EUHE-ISJ-SKDW-DJH",
     SubscriptionId = null,
-    AdditionalProperties = new SubscriptionAliasAdditionalProperties()
+    AdditionalProperties = new SubscriptionAliasAdditionalProperties
     {
         ManagementGroupId = null,
         SubscriptionTenantId = Guid.Parse("66f6e4d6-07dc-4aea-94ea-e12d3026a3c8"),
@@ -37,7 +37,7 @@ SubscriptionAliasCreateOrUpdateContent content = new SubscriptionAliasCreateOrUp
         {
         ["tag1"] = "Messi",
         ["tag2"] = "Ronaldo",
-        ["tag3"] = "Lebron",
+        ["tag3"] = "Lebron"
         },
     },
 };

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Subscription;
 using Azure.ResourceManager.Subscription.Models;
+using Azure.ResourceManager.Subscription;
 
 // Generated from example definition: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/changeTenantPolicy.json
 // this example is just showing the usage of "SubscriptionPolicy_AddUpdatePolicyForTenant" operation, for the dependent resources, they will have to be created separately.
@@ -21,14 +21,11 @@ ResourceIdentifier tenantPolicyResourceId = TenantPolicyResource.CreateResourceI
 TenantPolicyResource tenantPolicy = client.GetTenantPolicyResource(tenantPolicyResourceId);
 
 // invoke the operation
-TenantPolicyCreateOrUpdateContent content = new TenantPolicyCreateOrUpdateContent()
+TenantPolicyCreateOrUpdateContent content = new TenantPolicyCreateOrUpdateContent
 {
     BlockSubscriptionsLeavingTenant = true,
     BlockSubscriptionsIntoTenant = true,
-    ExemptedPrincipals =
-    {
-    Guid.Parse("e879cf0f-2b4d-5431-109a-f72fc9868693"),Guid.Parse("9792da87-c97b-410d-a97d-27021ba09ce6")
-    },
+    ExemptedPrincipals = { Guid.Parse("e879cf0f-2b4d-5431-109a-f72fc9868693"), Guid.Parse("9792da87-c97b-410d-a97d-27021ba09ce6") },
 };
 ArmOperation<TenantPolicyResource> lro = await tenantPolicy.CreateOrUpdateAsync(WaitUntil.Completed, content);
 TenantPolicyResource result = lro.Value;

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Grafana;
 
 // Generated from example definition: specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/examples/PrivateEndpointConnections_Approve.json
@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GrafanaPrivateEndpointConnectionResource created on azure
-// for more information of creating GrafanaPrivateEndpointConnectionResource, please refer to the document of GrafanaPrivateEndpointConnectionResource
+// this example assumes you already have this ManagedGrafanaResource created on azure
+// for more information of creating ManagedGrafanaResource, please refer to the document of ManagedGrafanaResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string workspaceName = "myWorkspace";
-string privateEndpointConnectionName = "myConnection";
-ResourceIdentifier grafanaPrivateEndpointConnectionResourceId = GrafanaPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
-GrafanaPrivateEndpointConnectionResource grafanaPrivateEndpointConnection = client.GetGrafanaPrivateEndpointConnectionResource(grafanaPrivateEndpointConnectionResourceId);
+ResourceIdentifier managedGrafanaResourceId = ManagedGrafanaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+ManagedGrafanaResource managedGrafana = client.GetManagedGrafanaResource(managedGrafanaResourceId);
+
+// get the collection of this GrafanaPrivateEndpointConnectionResource
+GrafanaPrivateEndpointConnectionCollection collection = managedGrafana.GetGrafanaPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "myConnection";
 GrafanaPrivateEndpointConnectionData data = new GrafanaPrivateEndpointConnectionData();
-ArmOperation<GrafanaPrivateEndpointConnectionResource> lro = await grafanaPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<GrafanaPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 GrafanaPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Grafana;
 using Azure.ResourceManager.Grafana.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Grafana;
 
 // Generated from example definition: specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/examples/Grafana_Update.json
 // this example is just showing the usage of "Grafana_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,30 +24,27 @@ ResourceIdentifier managedGrafanaResourceId = ManagedGrafanaResource.CreateResou
 ManagedGrafanaResource managedGrafana = client.GetManagedGrafanaResource(managedGrafanaResourceId);
 
 // invoke the operation
-ManagedGrafanaPatch patch = new ManagedGrafanaPatch()
+ManagedGrafanaPatch patch = new ManagedGrafanaPatch
 {
     SkuName = "Standard",
     Tags =
     {
-    ["Environment"] = "Dev 2",
+    ["Environment"] = "Dev 2"
     },
-    Properties = new ManagedGrafanaPatchProperties()
+    Properties = new ManagedGrafanaPatchProperties
     {
         ApiKey = GrafanaApiKey.Enabled,
         DeterministicOutboundIP = DeterministicOutboundIP.Enabled,
-        MonitorWorkspaceIntegrations =
-        {
-        new MonitorWorkspaceIntegration()
+        MonitorWorkspaceIntegrations = {new MonitorWorkspaceIntegration
         {
         MonitorWorkspaceResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.monitor/accounts/myAzureMonitorWorkspace"),
-        }
-        },
-        EnterpriseConfigurations = new EnterpriseConfigurations()
+        }},
+        EnterpriseConfigurations = new EnterpriseConfigurations
         {
             MarketplacePlanId = "myPlanId",
             MarketplaceAutoRenew = MarketplaceAutoRenew.Enabled,
         },
-        GrafanaConfigurationsSmtp = new Smtp()
+        GrafanaConfigurationsSmtp = new Smtp
         {
             Enabled = true,
             Host = "smtp.sendemail.com:587",
@@ -61,7 +57,7 @@ ManagedGrafanaPatch patch = new ManagedGrafanaPatch()
         },
         GrafanaPlugins =
         {
-        ["sample-plugin-id"] = new GrafanaPlugin(),
+        ["sample-plugin-id"] = new GrafanaPlugin()
         },
         GrafanaMajorVersion = "9",
     },

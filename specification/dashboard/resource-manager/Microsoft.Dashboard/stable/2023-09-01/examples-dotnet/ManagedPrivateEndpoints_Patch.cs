@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Grafana;
 using Azure.ResourceManager.Grafana.Models;
+using Azure.ResourceManager.Grafana;
 
 // Generated from example definition: specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/examples/ManagedPrivateEndpoints_Patch.json
 // this example is just showing the usage of "ManagedPrivateEndpoints_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,11 @@ ResourceIdentifier managedPrivateEndpointModelResourceId = ManagedPrivateEndpoin
 ManagedPrivateEndpointModelResource managedPrivateEndpointModel = client.GetManagedPrivateEndpointModelResource(managedPrivateEndpointModelResourceId);
 
 // invoke the operation
-ManagedPrivateEndpointModelPatch patch = new ManagedPrivateEndpointModelPatch()
+ManagedPrivateEndpointModelPatch patch = new ManagedPrivateEndpointModelPatch
 {
     Tags =
     {
-    ["Environment"] = "Dev 2",
+    ["Environment"] = "Dev 2"
     },
 };
 ArmOperation<ManagedPrivateEndpointModelResource> lro = await managedPrivateEndpointModel.UpdateAsync(WaitUntil.Completed, patch);

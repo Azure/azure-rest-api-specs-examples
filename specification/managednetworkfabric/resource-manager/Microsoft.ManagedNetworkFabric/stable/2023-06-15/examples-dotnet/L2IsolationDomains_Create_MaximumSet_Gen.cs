@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/L2IsolationDomains_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "L2IsolationDomains_Create" operation, for the dependent resources, they will have to be created separately.
@@ -33,7 +33,7 @@ NetworkFabricL2IsolationDomainData data = new NetworkFabricL2IsolationDomainData
     Mtu = 1500,
     Tags =
     {
-    ["keyID"] = "keyValue",
+    ["keyID"] = "keyValue"
     },
 };
 ArmOperation<NetworkFabricL2IsolationDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, l2IsolationDomainName, data);

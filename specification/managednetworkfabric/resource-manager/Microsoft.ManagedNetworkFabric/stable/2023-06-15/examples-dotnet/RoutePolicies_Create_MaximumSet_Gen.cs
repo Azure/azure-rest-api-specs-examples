@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/RoutePolicies_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "RoutePolicies_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,62 +32,35 @@ NetworkFabricRoutePolicyData data = new NetworkFabricRoutePolicyData(new AzureLo
 {
     Annotation = "annotation",
     DefaultAction = CommunityActionType.Deny,
-    Statements =
-    {
-    new RoutePolicyStatementProperties(7,new StatementConditionProperties()
+    Statements = {new RoutePolicyStatementProperties(7L, new StatementConditionProperties
     {
     RoutePolicyConditionType = RoutePolicyConditionType.Or,
     IPPrefixId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix"),
-    IPExtendedCommunityIds =
+    IPExtendedCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")},
+    IPCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")},
+    }, new StatementActionProperties(RoutePolicyActionType.Permit)
     {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")
+    LocalPreference = 20L,
+    IPCommunityProperties = new ActionIPCommunityProperties
+    {
+    DeleteIPCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")},
+    SetIPCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")},
+    AddIPCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")},
     },
-    IPCommunityIds =
+    IPExtendedCommunityProperties = new ActionIPExtendedCommunityProperties
     {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")
-    },
-    },new StatementActionProperties(RoutePolicyActionType.Permit)
-    {
-    LocalPreference = 20,
-    IPCommunityProperties = new ActionIPCommunityProperties()
-    {
-    DeleteIPCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")
-    },
-    SetIPCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")
-    },
-    AddIPCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")
-    },
-    },
-    IPExtendedCommunityProperties = new ActionIPExtendedCommunityProperties()
-    {
-    DeleteIPExtendedCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")
-    },
-    SetIPExtendedCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")
-    },
-    AddIPExtendedCommunityIds =
-    {
-    new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")
-    },
+    DeleteIPExtendedCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")},
+    SetIPExtendedCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")},
+    AddIPExtendedCommunityIds = {new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")},
     },
     })
     {
     Annotation = "annotation",
-    }
-    },
+    }},
     AddressFamilyType = AddressFamilyType.IPv4,
     Tags =
     {
-    ["keyID"] = "keyValue",
+    ["keyID"] = "keyValue"
     },
 };
 ArmOperation<NetworkFabricRoutePolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routePolicyName, data);

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/AccessControlLists_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "AccessControlLists_Create" operation, for the dependent resources, they will have to be created separately.
@@ -34,140 +34,68 @@ NetworkFabricAccessControlListData data = new NetworkFabricAccessControlListData
     ConfigurationType = NetworkFabricConfigurationType.File,
     AclsUri = new Uri("https://ACL-Storage-URL"),
     DefaultAction = CommunityActionType.Permit,
-    MatchConfigurations =
-    {
-    new AccessControlListMatchConfiguration()
+    MatchConfigurations = {new AccessControlListMatchConfiguration
     {
     MatchConfigurationName = "example-match",
-    SequenceNumber = 123,
+    SequenceNumber = 123L,
     IPAddressType = NetworkFabricIPAddressType.IPv4,
-    MatchConditions =
+    MatchConditions = {new AccessControlListMatchCondition
     {
-    new AccessControlListMatchCondition()
-    {
-    EtherTypes =
-    {
-    "0x1"
-    },
-    Fragments =
-    {
-    "0xff00-0xffff"
-    },
-    IPLengths =
-    {
-    "4094-9214"
-    },
-    TtlValues =
-    {
-    "23"
-    },
-    DscpMarkings =
-    {
-    "32"
-    },
+    EtherTypes = {"0x1"},
+    Fragments = {"0xff00-0xffff"},
+    IPLengths = {"4094-9214"},
+    TtlValues = {"23"},
+    DscpMarkings = {"32"},
     PortCondition = new AccessControlListPortCondition(Layer4Protocol.Tcp)
     {
-    Flags =
-    {
-    "established"
-    },
+    Flags = {"established"},
     PortType = NetworkFabricPortType.SourcePort,
-    Ports =
+    Ports = {"1-20"},
+    PortGroupNames = {"example-portGroup"},
+    },
+    ProtocolTypes = {"TCP"},
+    VlanMatchCondition = new VlanMatchCondition
     {
-    "1-20"
+    Vlans = {"20-30"},
+    InnerVlans = {"30"},
+    VlanGroupNames = {"example-vlanGroup"},
     },
-    PortGroupNames =
-    {
-    "example-portGroup"
-    },
-    },
-    ProtocolTypes =
-    {
-    "TCP"
-    },
-    VlanMatchCondition = new VlanMatchCondition()
-    {
-    Vlans =
-    {
-    "20-30"
-    },
-    InnerVlans =
-    {
-    "30"
-    },
-    VlanGroupNames =
-    {
-    "example-vlanGroup"
-    },
-    },
-    IPCondition = new IPMatchCondition()
+    IPCondition = new IPMatchCondition
     {
     SourceDestinationType = SourceDestinationType.SourceIP,
     PrefixType = IPMatchConditionPrefixType.Prefix,
-    IPPrefixValues =
-    {
-    "10.20.20.20/12"
+    IPPrefixValues = {"10.20.20.20/12"},
+    IPGroupNames = {"example-ipGroup"},
     },
-    IPGroupNames =
-    {
-    "example-ipGroup"
-    },
-    },
-    }
-    },
-    Actions =
-    {
-    new AccessControlListAction()
+    }},
+    Actions = {new AccessControlListAction
     {
     AclActionType = AclActionType.Count,
     CounterName = "example-counter",
-    }
-    },
-    }
-    },
-    DynamicMatchConfigurations =
+    }},
+    }},
+    DynamicMatchConfigurations = {new CommonDynamicMatchConfiguration
     {
-    new CommonDynamicMatchConfiguration()
-    {
-    IPGroups =
-    {
-    new MatchConfigurationIPGroupProperties()
+    IPGroups = {new MatchConfigurationIPGroupProperties
     {
     Name = "example-ipGroup",
     IPAddressType = NetworkFabricIPAddressType.IPv4,
-    IPPrefixes =
-    {
-    "10.20.3.1/20"
-    },
-    }
-    },
-    VlanGroups =
-    {
-    new VlanGroupProperties()
+    IPPrefixes = {"10.20.3.1/20"},
+    }},
+    VlanGroups = {new VlanGroupProperties
     {
     Name = "example-vlanGroup",
-    Vlans =
-    {
-    "20-30"
-    },
-    }
-    },
-    PortGroups =
-    {
-    new PortGroupProperties()
+    Vlans = {"20-30"},
+    }},
+    PortGroups = {new PortGroupProperties
     {
     Name = "example-portGroup",
-    Ports =
-    {
-    "100-200"
-    },
-    }
-    },
-    }
-    },
+    Ports = {"100-200"},
+    }},
+    }},
     Tags =
     {
-    ["keyID"] = "KeyValue",
+    ["keyID"] = "KeyValue"
     },
 };
 ArmOperation<NetworkFabricAccessControlListResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accessControlListName, data);

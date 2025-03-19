@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/L3IsolationDomains_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "L3IsolationDomains_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,26 +24,20 @@ ResourceIdentifier networkFabricL3IsolationDomainResourceId = NetworkFabricL3Iso
 NetworkFabricL3IsolationDomainResource networkFabricL3IsolationDomain = client.GetNetworkFabricL3IsolationDomainResource(networkFabricL3IsolationDomainResourceId);
 
 // invoke the operation
-NetworkFabricL3IsolationDomainPatch patch = new NetworkFabricL3IsolationDomainPatch()
+NetworkFabricL3IsolationDomainPatch patch = new NetworkFabricL3IsolationDomainPatch
 {
     Annotation = "annotation1",
     RedistributeConnectedSubnets = RedistributeConnectedSubnet.True,
     RedistributeStaticRoutes = RedistributeStaticRoute.False,
-    AggregateRouteConfiguration = new AggregateRouteConfiguration()
+    AggregateRouteConfiguration = new AggregateRouteConfiguration
     {
-        IPv4Routes =
-        {
-        new AggregateRoute("10.0.0.0/24")
-        },
-        IPv6Routes =
-        {
-        new AggregateRoute("3FFE:FFFF:0:CD30::a0/29")
-        },
+        IPv4Routes = { new AggregateRoute("10.0.0.0/24") },
+        IPv6Routes = { new AggregateRoute("3FFE:FFFF:0:CD30::a0/29") },
     },
-    ConnectedSubnetRoutePolicy = new ConnectedSubnetRoutePolicy()
+    ConnectedSubnetRoutePolicy = new ConnectedSubnetRoutePolicy
     {
         ExportRoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
-        ExportRoutePolicy = new L3ExportRoutePolicy()
+        ExportRoutePolicy = new L3ExportRoutePolicy
         {
             ExportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),
             ExportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),
@@ -52,7 +45,7 @@ NetworkFabricL3IsolationDomainPatch patch = new NetworkFabricL3IsolationDomainPa
     },
     Tags =
     {
-    ["key4953"] = "1234",
+    ["key4953"] = "1234"
     },
 };
 ArmOperation<NetworkFabricL3IsolationDomainResource> lro = await networkFabricL3IsolationDomain.UpdateAsync(WaitUntil.Completed, patch);

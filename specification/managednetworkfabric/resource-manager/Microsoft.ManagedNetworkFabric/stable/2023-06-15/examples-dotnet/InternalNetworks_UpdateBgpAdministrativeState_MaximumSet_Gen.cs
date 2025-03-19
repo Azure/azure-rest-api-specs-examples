@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/InternalNetworks_UpdateBgpAdministrativeState_MaximumSet_Gen.json
 // this example is just showing the usage of "InternalNetworks_UpdateBgpAdministrativeState" operation, for the dependent resources, they will have to be created separately.
@@ -25,13 +25,10 @@ ResourceIdentifier networkFabricInternalNetworkResourceId = NetworkFabricInterna
 NetworkFabricInternalNetworkResource networkFabricInternalNetwork = client.GetNetworkFabricInternalNetworkResource(networkFabricInternalNetworkResourceId);
 
 // invoke the operation
-UpdateAdministrativeStateContent content = new UpdateAdministrativeStateContent()
+UpdateAdministrativeStateContent content = new UpdateAdministrativeStateContent
 {
     State = AdministrativeEnableState.Enable,
-    ResourceIds =
-    {
-    new ResourceIdentifier("")
-    },
+    ResourceIds = { new ResourceIdentifier("") },
 };
 ArmOperation<StateUpdateCommonPostActionResult> lro = await networkFabricInternalNetwork.UpdateBgpAdministrativeStateAsync(WaitUntil.Completed, content);
 StateUpdateCommonPostActionResult result = lro.Value;

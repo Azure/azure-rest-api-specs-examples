@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/ExternalNetworks_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "ExternalNetworks_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,58 +25,40 @@ ResourceIdentifier networkFabricExternalNetworkResourceId = NetworkFabricExterna
 NetworkFabricExternalNetworkResource networkFabricExternalNetwork = client.GetNetworkFabricExternalNetworkResource(networkFabricExternalNetworkResourceId);
 
 // invoke the operation
-NetworkFabricExternalNetworkPatch patch = new NetworkFabricExternalNetworkPatch()
+NetworkFabricExternalNetworkPatch patch = new NetworkFabricExternalNetworkPatch
 {
     Annotation = "annotation1",
     ImportRoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
     ExportRoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
-    ImportRoutePolicy = new ImportRoutePolicy()
+    ImportRoutePolicy = new ImportRoutePolicy
     {
         ImportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
         ImportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
     },
-    ExportRoutePolicy = new ExportRoutePolicy()
+    ExportRoutePolicy = new ExportRoutePolicy
     {
         ExportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
         ExportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"),
     },
     PeeringOption = PeeringOption.OptionA,
-    OptionBProperties = new L3OptionBProperties()
+    OptionBProperties = new L3OptionBProperties
     {
-        ImportRouteTargets =
+        ImportRouteTargets = { "65046:10039" },
+        ExportRouteTargets = { "65046:10039" },
+        RouteTargets = new RouteTargetInformation
         {
-        "65046:10039"
-        },
-        ExportRouteTargets =
-        {
-        "65046:10039"
-        },
-        RouteTargets = new RouteTargetInformation()
-        {
-            ImportIPv4RouteTargets =
-            {
-            "65046:10039"
-            },
-            ImportIPv6RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv4RouteTargets =
-            {
-            "65046:10039"
-            },
-            ExportIPv6RouteTargets =
-            {
-            "65046:10039"
-            },
+            ImportIPv4RouteTargets = { "65046:10039" },
+            ImportIPv6RouteTargets = { "65046:10039" },
+            ExportIPv4RouteTargets = { "65046:10039" },
+            ExportIPv6RouteTargets = { "65046:10039" },
         },
     },
-    OptionAProperties = new ExternalNetworkPatchOptionAProperties()
+    OptionAProperties = new ExternalNetworkPatchOptionAProperties
     {
         Mtu = 1500,
         VlanId = 1001,
-        PeerAsn = 65047,
-        BfdConfiguration = new BfdConfiguration()
+        PeerAsn = 65047L,
+        BfdConfiguration = new BfdConfiguration
         {
             IntervalInMilliSeconds = 300,
             Multiplier = 15,

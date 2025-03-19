@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/IpPrefixes_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "IpPrefixes_Create" operation, for the dependent resources, they will have to be created separately.
@@ -31,17 +31,14 @@ string ipPrefixName = "example-ipPrefix";
 NetworkFabricIPPrefixData data = new NetworkFabricIPPrefixData(new AzureLocation("eastus"))
 {
     Annotation = "annotation",
-    IPPrefixRules =
-    {
-    new IPPrefixRule(CommunityActionType.Permit,4155123341,"10.10.10.10/30")
+    IPPrefixRules = {new IPPrefixRule(CommunityActionType.Permit, 4155123341L, "10.10.10.10/30")
     {
     Condition = IPPrefixRuleCondition.GreaterThanOrEqualTo,
     SubnetMaskLength = "10",
-    }
-    },
+    }},
     Tags =
     {
-    ["keyID"] = "KeyValue",
+    ["keyID"] = "KeyValue"
     },
 };
 ArmOperation<NetworkFabricIPPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ipPrefixName, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/ExternalNetworks_Delete_MaximumSet_Gen.json
 // this example is just showing the usage of "ExternalNetworks_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ NetworkFabricExternalNetworkResource networkFabricExternalNetwork = client.GetNe
 // invoke the operation
 await networkFabricExternalNetwork.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

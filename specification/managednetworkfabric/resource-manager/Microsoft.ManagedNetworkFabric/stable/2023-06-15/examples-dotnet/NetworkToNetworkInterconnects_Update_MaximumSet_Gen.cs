@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkToNetworkInterconnects_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkToNetworkInterconnects_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,53 +25,38 @@ ResourceIdentifier networkToNetworkInterconnectResourceId = NetworkToNetworkInte
 NetworkToNetworkInterconnectResource networkToNetworkInterconnect = client.GetNetworkToNetworkInterconnectResource(networkToNetworkInterconnectResourceId);
 
 // invoke the operation
-NetworkToNetworkInterconnectPatch patch = new NetworkToNetworkInterconnectPatch()
+NetworkToNetworkInterconnectPatch patch = new NetworkToNetworkInterconnectPatch
 {
-    Layer2Configuration = new Layer2Configuration()
+    Layer2Configuration = new Layer2Configuration
     {
         Mtu = 1500,
-        Interfaces =
-        {
-        new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface")
-        },
+        Interfaces = { new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface") },
     },
-    OptionBLayer3Configuration = new OptionBLayer3Configuration()
+    OptionBLayer3Configuration = new OptionBLayer3Configuration
     {
-        PeerAsn = 2345,
+        PeerAsn = 2345L,
         VlanId = 1235,
         PrimaryIPv4Prefix = "20.0.0.12/29",
         PrimaryIPv6Prefix = "4FFE:FFFF:0:CD30::a8/127",
         SecondaryIPv4Prefix = "20.0.0.14/29",
         SecondaryIPv6Prefix = "6FFE:FFFF:0:CD30::ac/127",
     },
-    NpbStaticRouteConfiguration = new NpbStaticRouteConfiguration()
+    NpbStaticRouteConfiguration = new NpbStaticRouteConfiguration
     {
-        BfdConfiguration = new BfdConfiguration()
+        BfdConfiguration = new BfdConfiguration
         {
             IntervalInMilliSeconds = 310,
             Multiplier = 15,
         },
-        IPv4Routes =
-        {
-        new StaticRouteProperties("20.0.0.11/30",new string[]
-        {
-        "21.20.20.10"
-        })
-        },
-        IPv6Routes =
-        {
-        new StaticRouteProperties("4FFE:FFFF:0:CD30::ac/127",new string[]
-        {
-        "5FFE:FFFF:0:CD30::ac"
-        })
-        },
+        IPv4Routes = { new StaticRouteProperties("20.0.0.11/30", new string[] { "21.20.20.10" }) },
+        IPv6Routes = { new StaticRouteProperties("4FFE:FFFF:0:CD30::ac/127", new string[] { "5FFE:FFFF:0:CD30::ac" }) },
     },
-    ImportRoutePolicy = new ImportRoutePolicyInformation()
+    ImportRoutePolicy = new ImportRoutePolicyInformation
     {
         ImportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),
         ImportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),
     },
-    ExportRoutePolicy = new ExportRoutePolicyInformation()
+    ExportRoutePolicy = new ExportRoutePolicyInformation
     {
         ExportIPv4RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),
         ExportIPv6RoutePolicyId = new ResourceIdentifier("/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy1"),

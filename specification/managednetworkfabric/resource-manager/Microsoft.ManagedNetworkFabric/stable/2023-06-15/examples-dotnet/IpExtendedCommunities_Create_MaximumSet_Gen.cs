@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetworkFabric;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/IpExtendedCommunities_Create_MaximumSet_Gen.json
 // this example is just showing the usage of "IpExtendedCommunities_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,16 +30,13 @@ NetworkFabricIPExtendedCommunityCollection collection = resourceGroupResource.Ge
 string ipExtendedCommunityName = "example-ipExtendedCommunity";
 NetworkFabricIPExtendedCommunityData data = new NetworkFabricIPExtendedCommunityData(new AzureLocation("eastus"), new IPExtendedCommunityRule[]
 {
-new IPExtendedCommunityRule(CommunityActionType.Permit,4155123341,new string[]
-{
-"1234:2345"
-})
+new IPExtendedCommunityRule(CommunityActionType.Permit, 4155123341L, new string[]{"1234:2345"})
 })
 {
     Annotation = "annotation",
     Tags =
     {
-    ["keyID"] = "KeyValue",
+    ["keyID"] = "KeyValue"
     },
 };
 ArmOperation<NetworkFabricIPExtendedCommunityResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ipExtendedCommunityName, data);

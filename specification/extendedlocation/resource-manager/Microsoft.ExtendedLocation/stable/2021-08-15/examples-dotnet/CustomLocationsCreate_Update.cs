@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ExtendedLocations;
 using Azure.ResourceManager.ExtendedLocations.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ExtendedLocations;
 
 // Generated from example definition: specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/examples/CustomLocationsCreate_Update.json
 // this example is just showing the usage of "CustomLocations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,15 +32,12 @@ string resourceName = "customLocation01";
 CustomLocationData data = new CustomLocationData(new AzureLocation("West US"))
 {
     Identity = new ManagedServiceIdentity("SystemAssigned"),
-    Authentication = new CustomLocationAuthentication()
+    Authentication = new CustomLocationAuthentication
     {
         CustomLocationPropertiesAuthenticationType = "KubeConfig",
         Value = "<base64 KubeConfig>",
     },
-    ClusterExtensionIds =
-    {
-    new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension")
-    },
+    ClusterExtensionIds = { new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension") },
     DisplayName = "customLocationLocation01",
     HostResourceId = new ResourceIdentifier("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"),
     Namespace = "namespace01",

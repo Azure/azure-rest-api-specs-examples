@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevSpaces;
 using Azure.ResourceManager.DevSpaces.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevSpaces;
 
 // Generated from example definition: specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/examples/ControllersListByResourceGroup_example.json
 // this example is just showing the usage of "Controllers_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -36,4 +36,4 @@ await foreach (ControllerResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

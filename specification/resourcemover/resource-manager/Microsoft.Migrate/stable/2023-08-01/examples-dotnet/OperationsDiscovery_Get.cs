@@ -1,10 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceMover;
 using Azure.ResourceManager.ResourceMover.Models;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceMover;
 
 // Generated from example definition: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01/examples/OperationsDiscovery_Get.json
 // this example is just showing the usage of "OperationsDiscovery_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,9 +16,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation and iterate over the result
 await foreach (MoverOperationsDiscovery item in tenantResource.GetOperationsDiscoveriesAsync())
@@ -24,4 +24,4 @@ await foreach (MoverOperationsDiscovery item in tenantResource.GetOperationsDisc
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

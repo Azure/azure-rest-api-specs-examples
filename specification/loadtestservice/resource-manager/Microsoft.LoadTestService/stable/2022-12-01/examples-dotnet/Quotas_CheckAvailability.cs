@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LoadTesting;
 using Azure.ResourceManager.LoadTesting.Models;
+using Azure.ResourceManager.LoadTesting;
 
 // Generated from example definition: specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/Quotas_CheckAvailability.json
 // this example is just showing the usage of "Quotas_CheckAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -23,12 +24,12 @@ ResourceIdentifier loadTestingQuotaResourceId = LoadTestingQuotaResource.CreateR
 LoadTestingQuotaResource loadTestingQuota = client.GetLoadTestingQuotaResource(loadTestingQuotaResourceId);
 
 // invoke the operation
-LoadTestingQuotaBucketContent content = new LoadTestingQuotaBucketContent()
+LoadTestingQuotaBucketContent content = new LoadTestingQuotaBucketContent
 {
     CurrentUsage = 20,
     CurrentQuota = 40,
     NewQuota = 50,
-    Dimensions = new LoadTestingQuotaBucketDimensions()
+    Dimensions = new LoadTestingQuotaBucketDimensions
     {
         SubscriptionId = "testsubscriptionId",
         Location = new AzureLocation("westus"),

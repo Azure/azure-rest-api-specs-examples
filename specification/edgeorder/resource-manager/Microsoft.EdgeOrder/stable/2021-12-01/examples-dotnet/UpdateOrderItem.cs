@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/UpdateOrderItem.json
 // this example is just showing the usage of "UpdateOrderItem" operation, for the dependent resources, they will have to be created separately.
@@ -25,19 +24,16 @@ ResourceIdentifier edgeOrderItemResourceId = EdgeOrderItemResource.CreateResourc
 EdgeOrderItemResource edgeOrderItem = client.GetEdgeOrderItemResource(edgeOrderItemResourceId);
 
 // invoke the operation
-EdgeOrderItemPatch patch = new EdgeOrderItemPatch()
+EdgeOrderItemPatch patch = new EdgeOrderItemPatch
 {
     Tags =
     {
     ["ant"] = "insect",
     ["pigeon"] = "bird",
-    ["tiger"] = "animal",
+    ["tiger"] = "animal"
     },
-    ForwardAddress = new EdgeOrderItemAddressProperties(new EdgeOrderAddressContactDetails("Updated contact name", "2222200000", new string[]
-{
-"testemail@microsoft.com"
-})),
-    Preferences = new OrderItemPreferences()
+    ForwardAddress = new EdgeOrderItemAddressProperties(new EdgeOrderAddressContactDetails("Updated contact name", "2222200000", new string[] { "testemail@microsoft.com" })),
+    Preferences = new OrderItemPreferences
     {
         TransportPreferencesPreferredShipmentType = TransportShipmentType.CustomerManaged,
     },

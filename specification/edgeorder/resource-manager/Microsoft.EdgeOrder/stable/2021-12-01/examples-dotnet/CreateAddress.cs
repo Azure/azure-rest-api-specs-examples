@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/CreateAddress.json
 // this example is just showing the usage of "CreateAddress" operation, for the dependent resources, they will have to be created separately.
@@ -28,10 +28,7 @@ EdgeOrderAddressCollection collection = resourceGroupResource.GetEdgeOrderAddres
 
 // invoke the operation
 string addressName = "TestMSAddressName";
-EdgeOrderAddressData data = new EdgeOrderAddressData(new AzureLocation("westus"), new EdgeOrderAddressContactDetails("Petr Cech", "1234567890", new string[]
-{
-"testemail@microsoft.com"
-})
+EdgeOrderAddressData data = new EdgeOrderAddressData(new AzureLocation("westus"), new EdgeOrderAddressContactDetails("Petr Cech", "1234567890", new string[] { "testemail@microsoft.com" })
 {
     PhoneExtension = "",
 })

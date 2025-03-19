@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/CreateOrderItem.json
 // this example is just showing the usage of "CreateOrderItem" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ EdgeOrderItemCollection collection = resourceGroupResource.GetEdgeOrderItems();
 
 // invoke the operation
 string orderItemName = "TestOrderItemName01";
-EdgeOrderItemData data = new EdgeOrderItemData(new AzureLocation("westus"), new EdgeOrderItemDetails(new ProductDetails(new HierarchyInformation()
+EdgeOrderItemData data = new EdgeOrderItemData(new AzureLocation("westus"), new EdgeOrderItemDetails(new ProductDetails(new HierarchyInformation
 {
     ProductFamilyName = "AzureStackEdge",
     ProductLineName = "AzureStackEdge",
@@ -36,14 +36,11 @@ EdgeOrderItemData data = new EdgeOrderItemData(new AzureLocation("westus"), new 
     ConfigurationName = "AzureStackEdgeGPU",
 }), OrderItemType.Purchase)
 {
-    Preferences = new OrderItemPreferences()
+    Preferences = new OrderItemPreferences
     {
         TransportPreferencesPreferredShipmentType = TransportShipmentType.MicrosoftManaged,
     },
-}, new EdgeOrderItemAddressDetails(new EdgeOrderItemAddressProperties(new EdgeOrderAddressContactDetails("164 TOWNSEND ST", "3213131190", new string[]
-{
-"ssemmail@microsoft.com","vishwamdir@microsoft.com"
-}))
+}, new EdgeOrderItemAddressDetails(new EdgeOrderItemAddressProperties(new EdgeOrderAddressContactDetails("164 TOWNSEND ST", "3213131190", new string[] { "ssemmail@microsoft.com", "vishwamdir@microsoft.com" }))
 {
     ShippingAddress = new EdgeOrderShippingAddress("16 TOWNSEND ST", "US")
     {
@@ -60,7 +57,7 @@ EdgeOrderItemData data = new EdgeOrderItemData(new AzureLocation("westus"), new 
     Tags =
     {
     ["carrot"] = "vegetable",
-    ["mango"] = "fruit",
+    ["mango"] = "fruit"
     },
 };
 ArmOperation<EdgeOrderItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, orderItemName, data);

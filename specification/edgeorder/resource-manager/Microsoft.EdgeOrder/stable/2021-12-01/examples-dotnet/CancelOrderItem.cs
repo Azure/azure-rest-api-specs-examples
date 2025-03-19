@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.EdgeOrder;
 using Azure.ResourceManager.EdgeOrder.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/CancelOrderItem.json
 // this example is just showing the usage of "CancelOrderItem" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +27,4 @@ EdgeOrderItemResource edgeOrderItem = client.GetEdgeOrderItemResource(edgeOrderI
 EdgeOrderItemCancellationReason cancellationReason = new EdgeOrderItemCancellationReason("Order cancelled");
 await edgeOrderItem.CancelAsync(cancellationReason);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

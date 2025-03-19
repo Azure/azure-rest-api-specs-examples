@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SpringAppDiscovery;
 using Azure.ResourceManager.SpringAppDiscovery.Models;
+using Azure.ResourceManager.SpringAppDiscovery;
 
 // Generated from example definition: specification/offazurespringboot/resource-manager/Microsoft.OffAzureSpringBoot/preview/2023-01-01-preview/examples/springbootapps_Get_MinimumSet_Gen.json
 // this example is just showing the usage of "springbootapps_Get" operation, for the dependent resources, they will have to be created separately.

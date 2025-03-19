@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SpringAppDiscovery;
 using Azure.ResourceManager.SpringAppDiscovery.Models;
+using Azure.ResourceManager.SpringAppDiscovery;
 
 // Generated from example definition: specification/offazurespringboot/resource-manager/Microsoft.OffAzureSpringBoot/preview/2023-01-01-preview/examples/springbootservers_CreateOrUpdate_MaximumSet_Gen.json
 // this example is just showing the usage of "springbootservers_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,20 +28,16 @@ SpringBootServerCollection collection = springBootSite.GetSpringBootServers();
 
 // invoke the operation
 string springbootserversName = "zkarbqnwnxeozvjrkpdqmgnwedwgtwcmmyqwaijkn";
-SpringBootServerData data = new SpringBootServerData()
+SpringBootServerData data = new SpringBootServerData
 {
     Properties = new SpringBootServerProperties("thhuxocfyqpeluqcgnypi")
     {
         Port = 10,
-        FqdnAndIPAddressList =
-        {
-        },
+        FqdnAndIPAddressList = { },
         MachineArmId = new ResourceIdentifier("fvfkiapbqsprnbzczdfmuryknrna"),
         TotalApps = 5,
         SpringBootApps = 17,
-        Errors =
-        {
-        },
+        Errors = { },
     },
 };
 ArmOperation<SpringBootServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, springbootserversName, data);

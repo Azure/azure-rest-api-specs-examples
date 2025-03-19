@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SpringAppDiscovery;
 using Azure.ResourceManager.SpringAppDiscovery.Models;
+using Azure.ResourceManager.SpringAppDiscovery;
 
 // Generated from example definition: specification/offazurespringboot/resource-manager/Microsoft.OffAzureSpringBoot/preview/2023-01-01-preview/examples/springbootsites_CreateOrUpdate_MaximumSet_Gen.json
 // this example is just showing the usage of "springbootsites_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,19 +30,19 @@ SpringBootSiteCollection collection = resourceGroupResource.GetSpringBootSites()
 string springbootsitesName = "xrmzlavpewxtfeitghdrj";
 SpringBootSiteData data = new SpringBootSiteData(new AzureLocation("tgobtvxktootwhhvjtsmpddvlqlrq"))
 {
-    Properties = new SpringBootSiteProperties()
+    Properties = new SpringBootSiteProperties
     {
         MasterSiteId = "xsoimrgshsactearljwuljmi",
         MigrateProjectId = "wwuattybgco",
     },
-    ExtendedLocation = new SpringBootSiteModelExtendedLocation()
+    ExtendedLocation = new SpringBootSiteModelExtendedLocation
     {
         SpringbootsitesModelExtendedLocationType = "lvsb",
         Name = "rywvpbfsqovhlfirtwisugsdsfsgf",
     },
     Tags =
     {
-    ["key3558"] = "xeuhtglamqzj",
+    ["key3558"] = "xeuhtglamqzj"
     },
 };
 ArmOperation<SpringBootSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, springbootsitesName, data);

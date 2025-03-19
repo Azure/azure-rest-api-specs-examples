@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/DeletePeeringService.json
 // this example is just showing the usage of "PeeringServices_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ PeeringServiceResource peeringService = client.GetPeeringServiceResource(peering
 // invoke the operation
 await peeringService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

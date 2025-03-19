@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/ListPeeringServiceCountriesBySubscription.json
 // this example is just showing the usage of "PeeringServiceCountries_List" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +28,4 @@ await foreach (PeeringServiceCountry item in subscriptionResource.GetPeeringServ
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

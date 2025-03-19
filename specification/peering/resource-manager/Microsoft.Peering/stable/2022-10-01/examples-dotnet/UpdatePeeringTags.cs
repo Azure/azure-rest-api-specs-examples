@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/UpdatePeeringTags.json
 // this example is just showing the usage of "Peerings_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier peeringResourceId = PeeringResource.CreateResourceIdentifier(
 PeeringResource peering = client.GetPeeringResource(peeringResourceId);
 
 // invoke the operation
-PeeringPatch patch = new PeeringPatch()
+PeeringPatch patch = new PeeringPatch
 {
     Tags =
     {
     ["tag0"] = "value0",
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 PeeringResource result = await peering.UpdateAsync(patch);

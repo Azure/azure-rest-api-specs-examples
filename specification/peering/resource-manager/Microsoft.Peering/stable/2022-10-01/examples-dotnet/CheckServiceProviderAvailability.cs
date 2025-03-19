@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CheckServiceProviderAvailability.json
 // this example is just showing the usage of "CheckServiceProviderAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -22,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-CheckPeeringServiceProviderAvailabilityContent content = new CheckPeeringServiceProviderAvailabilityContent()
+CheckPeeringServiceProviderAvailabilityContent content = new CheckPeeringServiceProviderAvailabilityContent
 {
     PeeringServiceLocation = "peeringServiceLocation1",
     PeeringServiceProvider = "peeringServiceProvider1",

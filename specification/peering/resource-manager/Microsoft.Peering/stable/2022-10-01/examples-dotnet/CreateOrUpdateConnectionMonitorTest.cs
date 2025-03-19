@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreateOrUpdateConnectionMonitorTest.json
@@ -14,24 +14,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ConnectionMonitorTestResource created on azure
-// for more information of creating ConnectionMonitorTestResource, please refer to the document of ConnectionMonitorTestResource
+// this example assumes you already have this PeeringServiceResource created on azure
+// for more information of creating PeeringServiceResource, please refer to the document of PeeringServiceResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string peeringServiceName = "peeringServiceName";
-string connectionMonitorTestName = "connectionMonitorTestName";
-ResourceIdentifier connectionMonitorTestResourceId = ConnectionMonitorTestResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringServiceName, connectionMonitorTestName);
-ConnectionMonitorTestResource connectionMonitorTest = client.GetConnectionMonitorTestResource(connectionMonitorTestResourceId);
+ResourceIdentifier peeringServiceResourceId = PeeringServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringServiceName);
+PeeringServiceResource peeringService = client.GetPeeringServiceResource(peeringServiceResourceId);
+
+// get the collection of this ConnectionMonitorTestResource
+ConnectionMonitorTestCollection collection = peeringService.GetConnectionMonitorTests();
 
 // invoke the operation
-ConnectionMonitorTestData data = new ConnectionMonitorTestData()
+string connectionMonitorTestName = "connectionMonitorTestName";
+ConnectionMonitorTestData data = new ConnectionMonitorTestData
 {
     SourceAgent = "Example Source Agent",
     Destination = "Example Destination",
     DestinationPort = 443,
     TestFrequencyInSec = 30,
 };
-ArmOperation<ConnectionMonitorTestResource> lro = await connectionMonitorTest.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ConnectionMonitorTestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorTestName, data);
 ConnectionMonitorTestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

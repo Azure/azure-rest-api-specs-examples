@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Peering;
 using Azure.ResourceManager.Peering.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreateDirectPeering.json
 // this example is just showing the usage of "Peerings_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,22 +29,20 @@ PeeringCollection collection = resourceGroupResource.GetPeerings();
 
 // invoke the operation
 string peeringName = "peeringName";
-PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
+PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku
 {
     Name = "Basic_Direct_Free",
 }, PeeringKind.Direct)
 {
-    Direct = new DirectPeeringProperties()
+    Direct = new DirectPeeringProperties
     {
-        Connections =
-        {
-        new PeeringDirectConnection()
+        Connections = {new PeeringDirectConnection
         {
         BandwidthInMbps = 10000,
         SessionAddressProvider = PeeringSessionAddressProvider.Peer,
         UseForPeeringService = false,
         PeeringDBFacilityId = 99999,
-        BgpSession = new PeeringBgpSession()
+        BgpSession = new PeeringBgpSession
         {
         SessionPrefixV4 = "192.168.0.0/31",
         SessionPrefixV6 = "fd00::0/127",
@@ -53,15 +51,14 @@ PeeringData data = new PeeringData(new AzureLocation("eastus"), new PeeringSku()
         Md5AuthenticationKey = "test-md5-auth-key",
         },
         ConnectionIdentifier = "5F4CB5C7-6B43-4444-9338-9ABC72606C16",
-        },new PeeringDirectConnection()
+        }, new PeeringDirectConnection
         {
         BandwidthInMbps = 10000,
         SessionAddressProvider = PeeringSessionAddressProvider.Microsoft,
         UseForPeeringService = true,
         PeeringDBFacilityId = 99999,
         ConnectionIdentifier = "8AB00818-D533-4504-A25A-03A17F61201C",
-        }
-        },
+        }},
         PeerAsnId = new ResourceIdentifier("/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"),
         DirectPeeringType = DirectPeeringType.Edge,
     },

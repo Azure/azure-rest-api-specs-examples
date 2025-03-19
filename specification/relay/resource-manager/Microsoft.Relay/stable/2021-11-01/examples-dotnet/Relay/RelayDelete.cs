@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Relay;
 using Azure.ResourceManager.Relay.Models;
+using Azure.ResourceManager.Relay;
 
 // Generated from example definition: specification/relay/resource-manager/Microsoft.Relay/stable/2021-11-01/examples/Relay/RelayDelete.json
 // this example is just showing the usage of "WCFRelays_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ WcfRelayResource wcfRelay = client.GetWcfRelayResource(wcfRelayResourceId);
 // invoke the operation
 await wcfRelay.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

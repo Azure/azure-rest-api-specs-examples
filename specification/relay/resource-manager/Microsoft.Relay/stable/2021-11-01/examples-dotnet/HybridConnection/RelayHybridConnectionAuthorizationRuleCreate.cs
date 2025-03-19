@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Relay;
 using Azure.ResourceManager.Relay.Models;
+using Azure.ResourceManager.Relay;
 
 // Generated from example definition: specification/relay/resource-manager/Microsoft.Relay/stable/2021-11-01/examples/HybridConnection/RelayHybridConnectionAuthorizationRuleCreate.json
 // this example is just showing the usage of "HybridConnections_CreateOrUpdateAuthorizationRule" operation, for the dependent resources, they will have to be created separately.
@@ -26,12 +26,9 @@ ResourceIdentifier relayHybridConnectionAuthorizationRuleResourceId = RelayHybri
 RelayHybridConnectionAuthorizationRuleResource relayHybridConnectionAuthorizationRule = client.GetRelayHybridConnectionAuthorizationRuleResource(relayHybridConnectionAuthorizationRuleResourceId);
 
 // invoke the operation
-RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
+RelayAuthorizationRuleData data = new RelayAuthorizationRuleData
 {
-    Rights =
-    {
-    RelayAccessRight.Listen,RelayAccessRight.Send
-    },
+    Rights = { RelayAccessRight.Listen, RelayAccessRight.Send },
 };
 ArmOperation<RelayHybridConnectionAuthorizationRuleResource> lro = await relayHybridConnectionAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
 RelayHybridConnectionAuthorizationRuleResource result = lro.Value;

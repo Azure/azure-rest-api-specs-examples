@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StoragePool;
 using Azure.ResourceManager.StoragePool.Models;
+using Azure.ResourceManager.StoragePool;
 
 // Generated from example definition: specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/IscsiTargets_Patch.json
 // this example is just showing the usage of "IscsiTargets_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,19 +25,10 @@ ResourceIdentifier diskPoolIscsiTargetResourceId = DiskPoolIscsiTargetResource.C
 DiskPoolIscsiTargetResource diskPoolIscsiTarget = client.GetDiskPoolIscsiTargetResource(diskPoolIscsiTargetResourceId);
 
 // invoke the operation
-DiskPoolIscsiTargetPatch patch = new DiskPoolIscsiTargetPatch()
+DiskPoolIscsiTargetPatch patch = new DiskPoolIscsiTargetPatch
 {
-    StaticAcls =
-    {
-    new DiskPoolIscsiTargetPortalGroupAcl("iqn.2005-03.org.iscsi:client",new string[]
-    {
-    "lun0"
-    })
-    },
-    Luns =
-    {
-    new ManagedDiskIscsiLun("lun0",new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1"))
-    },
+    StaticAcls = { new DiskPoolIscsiTargetPortalGroupAcl("iqn.2005-03.org.iscsi:client", new string[] { "lun0" }) },
+    Luns = { new ManagedDiskIscsiLun("lun0", new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1")) },
 };
 ArmOperation<DiskPoolIscsiTargetResource> lro = await diskPoolIscsiTarget.UpdateAsync(WaitUntil.Completed, patch);
 DiskPoolIscsiTargetResource result = lro.Value;

@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StoragePool;
 using Azure.ResourceManager.StoragePool.Models;
+using Azure.ResourceManager.StoragePool;
 
 // Generated from example definition: specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/Skus_List.json
 // this example is just showing the usage of "ResourceSkus_List" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +29,4 @@ await foreach (StoragePoolSkuInfo item in subscriptionResource.GetResourceSkusAs
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

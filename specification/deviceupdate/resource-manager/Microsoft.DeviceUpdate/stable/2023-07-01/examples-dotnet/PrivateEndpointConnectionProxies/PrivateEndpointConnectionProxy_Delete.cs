@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceUpdate;
 using Azure.ResourceManager.DeviceUpdate.Models;
+using Azure.ResourceManager.DeviceUpdate;
 
 // Generated from example definition: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2023-07-01/examples/PrivateEndpointConnectionProxies/PrivateEndpointConnectionProxy_Delete.json
 // this example is just showing the usage of "PrivateEndpointConnectionProxies_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ DeviceUpdatePrivateEndpointConnectionProxyResource deviceUpdatePrivateEndpointCo
 // invoke the operation
 await deviceUpdatePrivateEndpointConnectionProxy.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

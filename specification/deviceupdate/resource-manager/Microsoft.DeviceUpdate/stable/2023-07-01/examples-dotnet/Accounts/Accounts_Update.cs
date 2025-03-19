@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceUpdate;
 using Azure.ResourceManager.DeviceUpdate.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DeviceUpdate;
 
 // Generated from example definition: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2023-07-01/examples/Accounts/Accounts_Update.json
 // this example is just showing the usage of "Accounts_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.C
 DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
 
 // invoke the operation
-DeviceUpdateAccountPatch patch = new DeviceUpdateAccountPatch()
+DeviceUpdateAccountPatch patch = new DeviceUpdateAccountPatch
 {
     Tags =
     {
-    ["tagKey"] = "tagValue",
+    ["tagKey"] = "tagValue"
     },
 };
 ArmOperation<DeviceUpdateAccountResource> lro = await deviceUpdateAccount.UpdateAsync(WaitUntil.Completed, patch);

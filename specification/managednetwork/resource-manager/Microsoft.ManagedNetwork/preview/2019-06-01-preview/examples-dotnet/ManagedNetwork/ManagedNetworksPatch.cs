@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetwork;
 using Azure.ResourceManager.ManagedNetwork.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ManagedNetwork;
 
 // Generated from example definition: specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/examples/ManagedNetwork/ManagedNetworksPatch.json
 // this example is just showing the usage of "ManagedNetworks_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,9 @@ ResourceIdentifier managedNetworkResourceId = ManagedNetworkResource.CreateResou
 ManagedNetworkResource managedNetwork = client.GetManagedNetworkResource(managedNetworkResourceId);
 
 // invoke the operation
-ManagedNetworkPatch patch = new ManagedNetworkPatch()
+ManagedNetworkPatch patch = new ManagedNetworkPatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ManagedNetworkResource> lro = await managedNetwork.UpdateAsync(WaitUntil.Completed, patch);
 ManagedNetworkResource result = lro.Value;

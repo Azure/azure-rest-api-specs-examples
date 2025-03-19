@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedNetwork;
 using Azure.ResourceManager.ManagedNetwork.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.ManagedNetwork;
 
 // Generated from example definition: specification/managednetwork/resource-manager/Microsoft.ManagedNetwork/preview/2019-06-01-preview/examples/ManagedNetwork/ManagedNetworksPut.json
 // this example is just showing the usage of "ManagedNetworks_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,52 +31,38 @@ ManagedNetworkCollection collection = resourceGroupResource.GetManagedNetworks()
 string managedNetworkName = "myManagedNetwork";
 ManagedNetworkData data = new ManagedNetworkData(new AzureLocation("eastus"))
 {
-    Scope = new Scope()
+    Scope = new Scope
     {
-        ManagementGroups =
-        {
-        new WritableSubResource()
+        ManagementGroups = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/providers/Microsoft.Management/managementGroups/20000000-0001-0000-0000-000000000000"),
-        },new WritableSubResource()
+        }, new WritableSubResource
         {
         Id = new ResourceIdentifier("/providers/Microsoft.Management/managementGroups/20000000-0002-0000-0000-000000000000"),
-        }
-        },
-        Subscriptions =
-        {
-        new WritableSubResource()
+        }},
+        Subscriptions = {new WritableSubResource
         {
         Id = new ResourceIdentifier("subscriptionA"),
-        },new WritableSubResource()
+        }, new WritableSubResource
         {
         Id = new ResourceIdentifier("subscriptionB"),
-        }
-        },
-        VirtualNetworks =
-        {
-        new WritableSubResource()
+        }},
+        VirtualNetworks = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"),
-        },new WritableSubResource()
+        }, new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"),
-        }
-        },
-        Subnets =
-        {
-        new WritableSubResource()
+        }},
+        Subnets = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetA"),
-        },new WritableSubResource()
+        }, new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/subscriptionC/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetC/subnets/subnetB"),
-        }
-        },
+        }},
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ManagedNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedNetworkName, data);
 ManagedNetworkResource result = lro.Value;

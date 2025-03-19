@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MarketplaceOrdering;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MarketplaceOrdering;
 
 // Generated from example definition: specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/examples/GetAgreementMarketplaceTerms.json
 // this example is just showing the usage of "MarketplaceAgreements_GetAgreement" operation, for the dependent resources, they will have to be created separately.
@@ -27,6 +28,18 @@ MarketplaceAgreementCollection collection = subscriptionResource.GetMarketplaceA
 string publisherId = "pubid";
 string offerId = "offid";
 string planId = "planid";
-bool result = await collection.ExistsAsync(publisherId, offerId, planId);
+NullableResponse<MarketplaceAgreementResource> response = await collection.GetIfExistsAsync(publisherId, offerId, planId);
+MarketplaceAgreementResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MarketplaceAgreementTermData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

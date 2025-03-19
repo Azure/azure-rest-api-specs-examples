@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PowerBIDedicated;
 using Azure.ResourceManager.PowerBIDedicated.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PowerBIDedicated;
 
 // Generated from example definition: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/updateAutoScaleVCore.json
 // this example is just showing the usage of "AutoScaleVCores_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier autoScaleVCoreResourceId = AutoScaleVCoreResource.CreateResou
 AutoScaleVCoreResource autoScaleVCore = client.GetAutoScaleVCoreResource(autoScaleVCoreResourceId);
 
 // invoke the operation
-AutoScaleVCorePatch patch = new AutoScaleVCorePatch()
+AutoScaleVCorePatch patch = new AutoScaleVCorePatch
 {
     Sku = new AutoScaleVCoreSku("AutoScale")
     {
@@ -34,7 +33,7 @@ AutoScaleVCorePatch patch = new AutoScaleVCorePatch()
     },
     Tags =
     {
-    ["testKey"] = "testValue",
+    ["testKey"] = "testValue"
     },
     CapacityLimit = 20,
 };

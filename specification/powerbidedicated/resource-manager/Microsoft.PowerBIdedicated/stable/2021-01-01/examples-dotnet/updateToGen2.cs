@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PowerBIDedicated;
 using Azure.ResourceManager.PowerBIDedicated.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PowerBIDedicated;
 
 // Generated from example definition: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/updateToGen2.json
 // this example is just showing the usage of "Capacities_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier dedicatedCapacityResourceId = DedicatedCapacityResource.Creat
 DedicatedCapacityResource dedicatedCapacity = client.GetDedicatedCapacityResource(dedicatedCapacityResourceId);
 
 // invoke the operation
-DedicatedCapacityPatch patch = new DedicatedCapacityPatch()
+DedicatedCapacityPatch patch = new DedicatedCapacityPatch
 {
     Sku = new CapacitySku("A1")
     {
@@ -33,7 +32,7 @@ DedicatedCapacityPatch patch = new DedicatedCapacityPatch()
     },
     Tags =
     {
-    ["testKey"] = "testValue",
+    ["testKey"] = "testValue"
     },
     Mode = Mode.Gen2,
 };

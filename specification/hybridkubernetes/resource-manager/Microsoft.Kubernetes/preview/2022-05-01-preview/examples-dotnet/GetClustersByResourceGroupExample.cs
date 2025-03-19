@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Kubernetes;
 using Azure.ResourceManager.Kubernetes.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Kubernetes;
 
 // Generated from example definition: specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-05-01-preview/examples/GetClustersByResourceGroupExample.json
 // this example is just showing the usage of "ConnectedCluster_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -37,4 +37,4 @@ await foreach (ConnectedClusterResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

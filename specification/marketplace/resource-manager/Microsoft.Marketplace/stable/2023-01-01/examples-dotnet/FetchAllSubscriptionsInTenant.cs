@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/FetchAllSubscriptionsInTenant.json
 // this example is just showing the usage of "PrivateStore_FetchAllSubscriptionsInTenant" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ await foreach (MarketplaceSubscription item in privateStore.FetchAllMarketplaceS
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/QueryRequestApproval.json
 // this example is just showing the usage of "PrivateStore_QueryRequestApproval" operation, for the dependent resources, they will have to be created separately.
@@ -23,13 +23,10 @@ ResourceIdentifier marketplaceApprovalRequestResourceId = MarketplaceApprovalReq
 MarketplaceApprovalRequestResource marketplaceApprovalRequest = client.GetMarketplaceApprovalRequestResource(marketplaceApprovalRequestResourceId);
 
 // invoke the operation
-QueryApprovalRequestContent content = new QueryApprovalRequestContent()
+QueryApprovalRequestContent content = new QueryApprovalRequestContent
 {
     PublisherId = "marketplacetestthirdparty",
-    PlanIds =
-    {
-    "testPlanA","testPlanB","*"
-    },
+    PlanIds = { "testPlanA", "testPlanB", "*" },
 };
 QueryApprovalRequestResult result = await marketplaceApprovalRequest.QueryApprovalRequestAsync(content: content);
 

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/SetCollectionRules.json
 // this example is just showing the usage of "SetCollectionRules" operation, for the dependent resources, they will have to be created separately.
@@ -23,16 +23,13 @@ ResourceIdentifier privateStoreCollectionInfoResourceId = PrivateStoreCollection
 PrivateStoreCollectionInfoResource privateStoreCollectionInfo = client.GetPrivateStoreCollectionInfoResource(privateStoreCollectionInfoResourceId);
 
 // invoke the operation
-SetRulesContent content = new SetRulesContent()
+SetRulesContent content = new SetRulesContent
 {
-    Value =
-    {
-    new MarketplaceRule()
+    Value = {new MarketplaceRule
     {
     RuleType = MarketplaceRuleType.PrivateProducts,
-    }
-    },
+    }},
 };
 await privateStoreCollectionInfo.SetCollectionRulesAsync(content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

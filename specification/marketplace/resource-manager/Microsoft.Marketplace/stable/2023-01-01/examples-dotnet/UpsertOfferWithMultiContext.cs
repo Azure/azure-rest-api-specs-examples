@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/UpsertOfferWithMultiContext.json
 // this example is just showing the usage of "PrivateStoreCollectionOffer_UpsertOfferWithMultiContext" operation, for the dependent resources, they will have to be created separately.
@@ -24,28 +24,19 @@ ResourceIdentifier privateStoreOfferResourceId = PrivateStoreOfferResource.Creat
 PrivateStoreOfferResource privateStoreOffer = client.GetPrivateStoreOfferResource(privateStoreOfferResourceId);
 
 // invoke the operation
-MultiContextAndPlansContent content = new MultiContextAndPlansContent()
+MultiContextAndPlansContent content = new MultiContextAndPlansContent
 {
     OfferId = "contoso.logger",
     ETag = new ETag("\"9301f4fd-0000-0100-0000-5e248b350332\""),
-    PlansContext =
-    {
-    new ContextAndPlansDetails()
+    PlansContext = {new ContextAndPlansDetails
     {
     Context = "a5edbe7d-9f73-47fd-834a-0d6142f4c7a1",
-    PlanIds =
-    {
-    "log4db","log4file"
-    },
-    },new ContextAndPlansDetails()
+    PlanIds = {"log4db", "log4file"},
+    }, new ContextAndPlansDetails
     {
     Context = "45b604af-19bb-448e-a761-4a6be7374b2f",
-    PlanIds =
-    {
-    "log4web"
-    },
-    }
-    },
+    PlanIds = {"log4web"},
+    }},
 };
 PrivateStoreOfferResource result = await privateStoreOffer.UpsertOfferWithMultiContextAsync(content: content);
 

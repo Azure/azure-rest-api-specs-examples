@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Marketplace;
 using Azure.ResourceManager.Marketplace.Models;
+using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/UpdateAdminRequestApproval.json
 // this example is just showing the usage of "PrivateStore_UpdateAdminRequestApproval" operation, for the dependent resources, they will have to be created separately.
@@ -26,19 +26,13 @@ MarketplaceAdminApprovalRequestCollection collection = privateStore.GetMarketpla
 
 // invoke the operation
 string adminRequestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
-MarketplaceAdminApprovalRequestData data = new MarketplaceAdminApprovalRequestData()
+MarketplaceAdminApprovalRequestData data = new MarketplaceAdminApprovalRequestData
 {
     PublisherId = "marketplacetestthirdparty",
     AdminAction = MarketplaceAdminAction.Approved,
-    ApprovedPlans =
-    {
-    "testPlan"
-    },
+    ApprovedPlans = { "testPlan" },
     Comment = "I'm ok with that",
-    CollectionIds =
-    {
-    Guid.Parse("f8ee227e-85d7-477d-abbf-854d6decaf70"),Guid.Parse("39246ad6-c521-4fed-8de7-77dede2e873f")
-    },
+    CollectionIds = { Guid.Parse("f8ee227e-85d7-477d-abbf-854d6decaf70"), Guid.Parse("39246ad6-c521-4fed-8de7-77dede2e873f") },
 };
 ArmOperation<MarketplaceAdminApprovalRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, adminRequestApprovalId, data);
 MarketplaceAdminApprovalRequestResource result = lro.Value;

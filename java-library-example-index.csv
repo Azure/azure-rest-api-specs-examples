@@ -5238,3 +5238,4 @@ id,name,language,tag,package,version,date_epoch,date
 5237,azure-mgmt-databox@3.1.0,python,azure-mgmt-databox_3.1.0,azure-mgmt-databox,3.1.0,1742267866,03/18/2025
 5238,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy@v0.10.0,go,sdk/resourcemanager/resources/armpolicy/v0.10.0,sdk/resourcemanager/resources/armpolicy,v0.10.0,1742355535,03/19/2025
 5239,"Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.1",dotnet,Azure.ResourceManager.DatabaseWatcher_1.0.0-beta.1,Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.1,1742373384,03/19/2025
+5240,"Azure.ResourceManager.StorageSync,1.2.1",dotnet,Azure.ResourceManager.StorageSync_1.2.1,Azure.ResourceManager.StorageSync,1.2.1,1742295730,03/18/2025

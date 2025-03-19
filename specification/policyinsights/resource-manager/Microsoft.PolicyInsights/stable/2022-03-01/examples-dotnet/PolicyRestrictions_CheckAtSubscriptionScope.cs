@@ -1,13 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PolicyInsights;
 using Azure.ResourceManager.PolicyInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/examples/PolicyRestrictions_CheckAtSubscriptionScope.json
 // this example is just showing the usage of "PolicyRestrictions_CheckAtSubscriptionScope" operation, for the dependent resources, they will have to be created separately.
@@ -24,34 +23,25 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-CheckPolicyRestrictionsContent content = new CheckPolicyRestrictionsContent(new CheckRestrictionsResourceDetails(BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+CheckPolicyRestrictionsContent content = new CheckPolicyRestrictionsContent(new CheckRestrictionsResourceDetails(BinaryData.FromObjectAsJson(new
 {
-    ["type"] = "Microsoft.Compute/virtualMachines",
-    ["properties"] = new Dictionary<string, object>()
+    type = "Microsoft.Compute/virtualMachines",
+    properties = new
     {
-        ["priority"] = "Spot"
-    }
+        priority = "Spot",
+    },
 }))
 {
     ApiVersion = "2019-12-01",
 })
 {
-    PendingFields =
+    PendingFields = {new PendingField("name")
     {
-    new PendingField("name")
+    Values = {"myVMName"},
+    }, new PendingField("location")
     {
-    Values =
-    {
-    "myVMName"
-    },
-    },new PendingField("location")
-    {
-    Values =
-    {
-    "eastus","westus","westus2","westeurope"
-    },
-    },new PendingField("tags")
-    },
+    Values = {"eastus", "westus", "westus2", "westeurope"},
+    }, new PendingField("tags")},
 };
 CheckPolicyRestrictionsResult result = await subscriptionResource.CheckPolicyRestrictionsAsync(content);
 

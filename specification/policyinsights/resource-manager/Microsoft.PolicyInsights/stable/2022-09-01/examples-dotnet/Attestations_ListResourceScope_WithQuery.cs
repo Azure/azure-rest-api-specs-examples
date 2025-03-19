@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PolicyInsights;
 using Azure.ResourceManager.PolicyInsights.Models;
+using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-09-01/examples/Attestations_ListResourceScope_WithQuery.json
 // this example is just showing the usage of "Attestations_ListForResource" operation, for the dependent resources, they will have to be created separately.
@@ -16,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this PolicyAttestationResource
 string resourceId = "subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myrg/providers/microsoft.compute/virtualMachines/devVM";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-PolicyAttestationCollection collection = client.GetPolicyAttestations(scopeId);
+PolicyAttestationCollection collection = client.GetPolicyAttestations(new ResourceIdentifier(resourceId));
 
 // invoke the operation and iterate over the result
 await foreach (PolicyAttestationResource item in collection.GetAllAsync())
@@ -34,4 +29,4 @@ await foreach (PolicyAttestationResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,9 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.PolicyInsights.Models;
 using Azure.ResourceManager.PolicyInsights;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/examples/Remediations_GetResourceScope.json
@@ -14,28 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this PolicyRemediationResource
+// this example assumes you already have this PolicyRemediationResource created on azure
+// for more information of creating PolicyRemediationResource, please refer to the document of PolicyRemediationResource
 string resourceId = "subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-PolicyRemediationCollection collection = client.GetPolicyRemediations(scopeId);
+string remediationName = "storageRemediation";
+ResourceIdentifier policyRemediationResourceId = PolicyRemediationResource.CreateResourceIdentifier(resourceId, remediationName);
+PolicyRemediationResource policyRemediation = client.GetPolicyRemediationResource(policyRemediationResourceId);
 
 // invoke the operation
-string remediationName = "storageRemediation";
-NullableResponse<PolicyRemediationResource> response = await collection.GetIfExistsAsync(remediationName);
-PolicyRemediationResource result = response.HasValue ? response.Value : null;
+PolicyRemediationResource result = await policyRemediation.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PolicyRemediationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PolicyRemediationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

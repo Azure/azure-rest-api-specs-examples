@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/CloudEndpoints_PreRestore.json
 // this example is just showing the usage of "CloudEndpoints_PreRestore" operation, for the dependent resources, they will have to be created separately.
@@ -26,30 +26,27 @@ ResourceIdentifier cloudEndpointResourceId = CloudEndpointResource.CreateResourc
 CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpointResourceId);
 
 // invoke the operation
-PreRestoreContent content = new PreRestoreContent()
+PreRestoreContent content = new PreRestoreContent
 {
     AzureFileShareUri = new Uri("https://hfsazbackupdevintncus2.file.core.test-cint.azure-test.net/sampleFileShare"),
-    RestoreFileSpec =
-    {
-    new RestoreFileSpec()
+    RestoreFileSpec = {new RestoreFileSpec
     {
     Path = "text1.txt",
     IsDirectory = false,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir",
     IsDirectory = true,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir/SubDir",
     IsDirectory = false,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir/SubDir/File1.pdf",
     IsDirectory = false,
-    }
-    },
+    }},
 };
 await cloudEndpoint.PreRestoreAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

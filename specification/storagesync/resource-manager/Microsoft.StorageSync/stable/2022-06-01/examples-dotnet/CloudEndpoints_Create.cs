@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/CloudEndpoints_Create.json
 // this example is just showing the usage of "CloudEndpoints_Create" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ ResourceIdentifier cloudEndpointResourceId = CloudEndpointResource.CreateResourc
 CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpointResourceId);
 
 // invoke the operation
-CloudEndpointCreateOrUpdateContent content = new CloudEndpointCreateOrUpdateContent()
+CloudEndpointCreateOrUpdateContent content = new CloudEndpointCreateOrUpdateContent
 {
     StorageAccountResourceId = new ResourceIdentifier("/subscriptions/744f4d70-6d17-4921-8970-a765d14f763f/resourceGroups/tminienv59svc/providers/Microsoft.Storage/storageAccounts/tminienv59storage"),
     AzureFileShareName = "cvcloud-afscv-0719-058-a94a1354-a1fd-4e9a-9a50-919fad8c4ba4",

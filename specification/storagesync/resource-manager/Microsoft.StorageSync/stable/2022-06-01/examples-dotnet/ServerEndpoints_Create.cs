@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/ServerEndpoints_Create.json
 // this example is just showing the usage of "ServerEndpoints_Create" operation, for the dependent resources, they will have to be created separately.
@@ -29,7 +29,7 @@ StorageSyncServerEndpointCollection collection = storageSyncGroup.GetStorageSync
 
 // invoke the operation
 string serverEndpointName = "SampleServerEndpoint_1";
-StorageSyncServerEndpointCreateOrUpdateContent content = new StorageSyncServerEndpointCreateOrUpdateContent()
+StorageSyncServerEndpointCreateOrUpdateContent content = new StorageSyncServerEndpointCreateOrUpdateContent
 {
     ServerLocalPath = "D:\\SampleServerEndpoint_1",
     CloudTiering = StorageSyncFeatureStatus.Off,

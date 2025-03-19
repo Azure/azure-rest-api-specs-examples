@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/ContactCreate.json
@@ -14,24 +14,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OrbitalContactResource created on azure
-// for more information of creating OrbitalContactResource, please refer to the document of OrbitalContactResource
+// this example assumes you already have this OrbitalSpacecraftResource created on azure
+// for more information of creating OrbitalSpacecraftResource, please refer to the document of OrbitalSpacecraftResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
 string resourceGroupName = "contoso-Rgp";
 string spacecraftName = "CONTOSO_SAT";
-string contactName = "contact1";
-ResourceIdentifier orbitalContactResourceId = OrbitalContactResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName, contactName);
-OrbitalContactResource orbitalContact = client.GetOrbitalContactResource(orbitalContactResourceId);
+ResourceIdentifier orbitalSpacecraftResourceId = OrbitalSpacecraftResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName);
+OrbitalSpacecraftResource orbitalSpacecraft = client.GetOrbitalSpacecraftResource(orbitalSpacecraftResourceId);
+
+// get the collection of this OrbitalContactResource
+OrbitalContactCollection collection = orbitalSpacecraft.GetOrbitalContacts();
 
 // invoke the operation
-OrbitalContactData data = new OrbitalContactData()
+string contactName = "contact1";
+OrbitalContactData data = new OrbitalContactData
 {
     ReservationStartOn = DateTimeOffset.Parse("2022-03-02T10:58:30Z"),
     ReservationEndOn = DateTimeOffset.Parse("2022-03-02T11:10:45Z"),
     GroundStationName = "EASTUS2_0",
     ContactProfileId = new ResourceIdentifier("/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Orbital/contactProfiles/CONTOSO-CP"),
 };
-ArmOperation<OrbitalContactResource> lro = await orbitalContact.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<OrbitalContactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, contactName, data);
 OrbitalContactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

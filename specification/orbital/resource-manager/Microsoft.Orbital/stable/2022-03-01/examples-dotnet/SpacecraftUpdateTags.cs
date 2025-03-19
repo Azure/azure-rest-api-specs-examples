@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Orbital;
 using Azure.ResourceManager.Orbital.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/SpacecraftUpdateTags.json
 // this example is just showing the usage of "Spacecrafts_UpdateTags" operation, for the dependent resources, they will have to be created separately.
@@ -26,12 +25,12 @@ ResourceIdentifier orbitalSpacecraftResourceId = OrbitalSpacecraftResource.Creat
 OrbitalSpacecraftResource orbitalSpacecraft = client.GetOrbitalSpacecraftResource(orbitalSpacecraftResourceId);
 
 // invoke the operation
-OrbitalSpacecraftTags orbitalSpacecraftTags = new OrbitalSpacecraftTags()
+OrbitalSpacecraftTags orbitalSpacecraftTags = new OrbitalSpacecraftTags
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<OrbitalSpacecraftResource> lro = await orbitalSpacecraft.UpdateAsync(WaitUntil.Completed, orbitalSpacecraftTags);

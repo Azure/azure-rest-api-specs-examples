@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Orbital;
-using Azure.ResourceManager.Orbital.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/ContactProfilesBySubscriptionList.json
 // this example is just showing the usage of "ContactProfiles_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (OrbitalContactProfileResource item in subscriptionResource.GetOrb
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

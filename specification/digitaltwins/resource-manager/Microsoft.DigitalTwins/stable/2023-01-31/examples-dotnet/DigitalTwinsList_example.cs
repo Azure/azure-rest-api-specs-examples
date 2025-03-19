@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DigitalTwins;
 using Azure.ResourceManager.DigitalTwins.Models;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/DigitalTwinsList_example.json
 // this example is just showing the usage of "DigitalTwins_List" operation, for the dependent resources, they will have to be created separately.
@@ -33,4 +32,4 @@ await foreach (DigitalTwinsDescriptionResource item in subscriptionResource.GetD
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

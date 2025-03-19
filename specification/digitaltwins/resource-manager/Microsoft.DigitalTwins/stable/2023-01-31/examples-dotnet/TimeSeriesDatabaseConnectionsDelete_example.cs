@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DigitalTwins;
 using Azure.ResourceManager.DigitalTwins.Models;
+using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/TimeSeriesDatabaseConnectionsDelete_example.json
 // this example is just showing the usage of "TimeSeriesDatabaseConnections_Delete" operation, for the dependent resources, they will have to be created separately.

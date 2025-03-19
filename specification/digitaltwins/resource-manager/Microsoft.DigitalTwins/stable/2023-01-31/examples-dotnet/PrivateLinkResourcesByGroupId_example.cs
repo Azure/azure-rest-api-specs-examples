@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/PrivateLinkResourcesByGroupId_example.json
@@ -32,7 +32,7 @@ DigitalTwinsPrivateLinkResource result = response.HasValue ? response.Value : nu
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

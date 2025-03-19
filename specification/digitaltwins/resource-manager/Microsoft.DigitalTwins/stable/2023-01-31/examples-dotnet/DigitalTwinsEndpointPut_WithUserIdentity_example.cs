@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DigitalTwins;
 using Azure.ResourceManager.DigitalTwins.Models;
+using Azure.ResourceManager.DigitalTwins;
 
 // Generated from example definition: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/DigitalTwinsEndpointPut_WithUserIdentity_example.json
 // this example is just showing the usage of "DigitalTwinsEndpoint_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,12 +28,12 @@ DigitalTwinsEndpointResourceCollection collection = digitalTwinsDescription.GetD
 
 // invoke the operation
 string endpointName = "myServiceBus";
-DigitalTwinsEndpointResourceData data = new DigitalTwinsEndpointResourceData(new DigitalTwinsServiceBusProperties()
+DigitalTwinsEndpointResourceData data = new DigitalTwinsEndpointResourceData(new DigitalTwinsServiceBusProperties
 {
     EndpointUri = new Uri("sb://mysb.servicebus.windows.net/"),
     EntityPath = "mysbtopic",
     AuthenticationType = DigitalTwinsAuthenticationType.IdentityBased,
-    Identity = new DigitalTwinsManagedIdentityReference()
+    Identity = new DigitalTwinsManagedIdentityReference
     {
         IdentityType = DigitalTwinsManagedIdentityType.UserAssigned,
         UserAssignedIdentity = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity",

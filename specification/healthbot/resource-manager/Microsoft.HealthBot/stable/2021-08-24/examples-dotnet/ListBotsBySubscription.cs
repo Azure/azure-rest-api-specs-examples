@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HealthBot;
-using Azure.ResourceManager.HealthBot.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HealthBot;
 
 // Generated from example definition: specification/healthbot/resource-manager/Microsoft.HealthBot/stable/2021-08-24/examples/ListBotsBySubscription.json
 // this example is just showing the usage of "Bots_List" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +31,4 @@ await foreach (HealthBotResource item in subscriptionResource.GetHealthBotsAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPVirtualInstances_Create_Discover_CustomMrgStorageAccountName.json
 // this example is just showing the usage of "SAPVirtualInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ SapVirtualInstanceCollection collection = resourceGroupResource.GetSapVirtualIns
 
 // invoke the operation
 string sapVirtualInstanceName = "X00";
-SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("northeurope"), SapEnvironmentType.NonProd, SapProductType.S4Hana, new DiscoveryConfiguration()
+SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("northeurope"), SapEnvironmentType.NonProd, SapProductType.S4Hana, new DiscoveryConfiguration
 {
     CentralServerVmId = new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/sapq20scsvm0"),
     ManagedRgStorageAccountName = "q20saacssgrs",
@@ -37,7 +37,7 @@ SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("nort
     Tags =
     {
     ["createdby"] = "abc@microsoft.com",
-    ["test"] = "abc",
+    ["test"] = "abc"
     },
 };
 ArmOperation<SapVirtualInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapVirtualInstanceName, data);

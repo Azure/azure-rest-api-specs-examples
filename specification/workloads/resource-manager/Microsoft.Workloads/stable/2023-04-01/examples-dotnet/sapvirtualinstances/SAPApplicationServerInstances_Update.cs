@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPApplicationServerInstances_Update.json
 // this example is just showing the usage of "SAPApplicationServerInstances_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,11 +26,11 @@ ResourceIdentifier sapApplicationServerInstanceResourceId = SapApplicationServer
 SapApplicationServerInstanceResource sapApplicationServerInstance = client.GetSapApplicationServerInstanceResource(sapApplicationServerInstanceResourceId);
 
 // invoke the operation
-SapApplicationServerInstancePatch patch = new SapApplicationServerInstancePatch()
+SapApplicationServerInstancePatch patch = new SapApplicationServerInstancePatch
 {
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 ArmOperation<SapApplicationServerInstanceResource> lro = await sapApplicationServerInstance.UpdateAsync(WaitUntil.Completed, patch);

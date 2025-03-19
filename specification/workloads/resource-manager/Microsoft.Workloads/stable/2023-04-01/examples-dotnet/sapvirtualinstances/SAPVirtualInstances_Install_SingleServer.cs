@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPVirtualInstances_Install_SingleServer.json
 // this example is just showing the usage of "SAPVirtualInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,22 +28,22 @@ SapVirtualInstanceCollection collection = resourceGroupResource.GetSapVirtualIns
 
 // invoke the operation
 string sapVirtualInstanceName = "X00";
-SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("eastus2"), SapEnvironmentType.NonProd, SapProductType.S4Hana, new DeploymentWithOSConfiguration()
+SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("eastus2"), SapEnvironmentType.NonProd, SapProductType.S4Hana, new DeploymentWithOSConfiguration
 {
     AppLocation = new AzureLocation("eastus"),
-    InfrastructureConfiguration = new SingleServerConfiguration("test-rg", new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/testsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference()
+    InfrastructureConfiguration = new SingleServerConfiguration("test-rg", new ResourceIdentifier("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/testsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference
     {
         Publisher = "SUSE",
         Offer = "SLES-SAP",
         Sku = "12-sp4-gen2",
         Version = "2022.02.01",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "azureappadmin",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "{{sshkey}}",
                 PrivateKey = "{{privateKey}}",
@@ -51,15 +51,13 @@ SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("east
         },
     })),
     SoftwareConfiguration = new SapInstallWithoutOSConfigSoftwareConfiguration(new Uri("https://teststorageaccount.blob.core.windows.net/sapbits/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml"), "/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/teststorageaccount", "SAP S/4HANA 1909 SPS 03"),
-    OSSapConfiguration = new OSSapConfiguration()
+    OSSapConfiguration = new OSSapConfiguration
     {
         SapFqdn = "sap.bpaas.com",
     },
 })
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SapVirtualInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapVirtualInstanceName, data);
 SapVirtualInstanceResource result = lro.Value;

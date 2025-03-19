@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPCentralInstances_Create_HA_AvSet.json
@@ -29,9 +29,7 @@ SapCentralServerInstanceCollection collection = sapVirtualInstance.GetSapCentral
 string centralInstanceName = "centralServer";
 SapCentralServerInstanceData data = new SapCentralServerInstanceData(new AzureLocation("westcentralus"))
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SapCentralServerInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, centralInstanceName, data);
 SapCentralServerInstanceResource result = lro.Value;

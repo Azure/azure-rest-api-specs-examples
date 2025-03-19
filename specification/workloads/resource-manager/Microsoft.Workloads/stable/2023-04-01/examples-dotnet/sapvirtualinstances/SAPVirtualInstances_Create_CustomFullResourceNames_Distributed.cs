@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
+using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPVirtualInstances_Create_CustomFullResourceNames_Distributed.json
 // this example is just showing the usage of "SAPVirtualInstances_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,196 +28,152 @@ SapVirtualInstanceCollection collection = resourceGroupResource.GetSapVirtualIns
 
 // invoke the operation
 string sapVirtualInstanceName = "X00";
-SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("westcentralus"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration()
+SapVirtualInstanceData data = new SapVirtualInstanceData(new AzureLocation("westcentralus"), SapEnvironmentType.Prod, SapProductType.S4Hana, new DeploymentWithOSConfiguration
 {
     AppLocation = new AzureLocation("eastus"),
-    InfrastructureConfiguration = new ThreeTierConfiguration("X00-RG", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E16ds_v4", new SapImageReference()
+    InfrastructureConfiguration = new ThreeTierConfiguration("X00-RG", new CentralServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E16ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 1), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference()
+    }), 1L), new ApplicationServerConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/appsubnet"), new SapVirtualMachineConfiguration("Standard_E32ds_v4", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 6), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference()
+    }), 6L), new DatabaseConfiguration(new ResourceIdentifier("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/test-rg/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/dbsubnet"), new SapVirtualMachineConfiguration("Standard_M32ts", new SapImageReference
     {
         Publisher = "RedHat",
         Offer = "RHEL-SAP",
         Sku = "84sapha-gen2",
         Version = "latest",
-    }, new SapOSProfile()
+    }, new SapOSProfile
     {
         AdminUsername = "{your-username}",
-        OSConfiguration = new SapLinuxConfiguration()
+        OSConfiguration = new SapLinuxConfiguration
         {
             DisablePasswordAuthentication = true,
-            SshKeyPair = new SapSshKeyPair()
+            SshKeyPair = new SapSshKeyPair
             {
                 PublicKey = "abc",
                 PrivateKey = "xyz",
             },
         },
-    }), 1)
+    }), 1L)
     {
         DatabaseType = SapDatabaseType.Hana,
     })
     {
-        CustomResourceNames = new ThreeTierFullResourceNames()
+        CustomResourceNames = new ThreeTierFullResourceNames
         {
-            CentralServer = new CentralServerFullResourceNames()
+            CentralServer = new CentralServerFullResourceNames
             {
-                VirtualMachines =
-                {
-                new VirtualMachineResourceNames()
+                VirtualMachines = {new VirtualMachineResourceNames
                 {
                 VmName = "ascsvm",
                 HostName = "ascshostName",
-                NetworkInterfaces =
-                {
-                new NetworkInterfaceResourceNames()
+                NetworkInterfaces = {new NetworkInterfaceResourceNames
                 {
                 NetworkInterfaceName = "ascsnic",
-                }
-                },
+                }},
                 OSDiskName = "ascsosdisk",
                 DataDiskNames =
                 {
-                ["default"] = new string[]
-                {
-                "ascsdisk0"
+                ["default"] = new string[]{"ascsdisk0"}
                 },
-                },
-                }
-                },
+                }},
             },
-            ApplicationServer = new ApplicationServerFullResourceNames()
+            ApplicationServer = new ApplicationServerFullResourceNames
             {
-                VirtualMachines =
-                {
-                new VirtualMachineResourceNames()
+                VirtualMachines = {new VirtualMachineResourceNames
                 {
                 VmName = "appvm0",
                 HostName = "apphostName0",
-                NetworkInterfaces =
-                {
-                new NetworkInterfaceResourceNames()
+                NetworkInterfaces = {new NetworkInterfaceResourceNames
                 {
                 NetworkInterfaceName = "appnic0",
-                }
-                },
+                }},
                 OSDiskName = "app0osdisk",
                 DataDiskNames =
                 {
-                ["default"] = new string[]
-                {
-                "app0disk0"
+                ["default"] = new string[]{"app0disk0"}
                 },
-                },
-                },new VirtualMachineResourceNames()
+                }, new VirtualMachineResourceNames
                 {
                 VmName = "appvm1",
                 HostName = "apphostName1",
-                NetworkInterfaces =
-                {
-                new NetworkInterfaceResourceNames()
+                NetworkInterfaces = {new NetworkInterfaceResourceNames
                 {
                 NetworkInterfaceName = "appnic1",
-                }
-                },
+                }},
                 OSDiskName = "app1osdisk",
                 DataDiskNames =
                 {
-                ["default"] = new string[]
-                {
-                "app1disk0"
+                ["default"] = new string[]{"app1disk0"}
                 },
-                },
-                }
-                },
+                }},
                 AvailabilitySetName = "appAvSet",
             },
-            DatabaseServer = new DatabaseServerFullResourceNames()
+            DatabaseServer = new DatabaseServerFullResourceNames
             {
-                VirtualMachines =
-                {
-                new VirtualMachineResourceNames()
+                VirtualMachines = {new VirtualMachineResourceNames
                 {
                 VmName = "dbvm",
                 HostName = "dbhostName",
-                NetworkInterfaces =
-                {
-                new NetworkInterfaceResourceNames()
+                NetworkInterfaces = {new NetworkInterfaceResourceNames
                 {
                 NetworkInterfaceName = "dbnic",
-                }
-                },
+                }},
                 OSDiskName = "dbosdisk",
                 DataDiskNames =
                 {
-                ["hanaData"] = new string[]
-                {
-                "hanadata0","hanadata1"
+                ["hanaData"] = new string[]{"hanadata0", "hanadata1"},
+                ["hanaLog"] = new string[]{"hanalog0", "hanalog1", "hanalog2"},
+                ["hanaShared"] = new string[]{"hanashared0", "hanashared1"},
+                ["usrSap"] = new string[]{"usrsap0"}
                 },
-                ["hanaLog"] = new string[]
-                {
-                "hanalog0","hanalog1","hanalog2"
-                },
-                ["hanaShared"] = new string[]
-                {
-                "hanashared0","hanashared1"
-                },
-                ["usrSap"] = new string[]
-                {
-                "usrsap0"
-                },
-                },
-                }
-                },
+                }},
             },
-            SharedStorage = new SharedStorageResourceNames()
+            SharedStorage = new SharedStorageResourceNames
             {
                 SharedStorageAccountName = "storageacc",
                 SharedStorageAccountPrivateEndPointName = "peForxNFS",
             },
         },
     },
-    OSSapConfiguration = new OSSapConfiguration()
+    OSSapConfiguration = new OSSapConfiguration
     {
         SapFqdn = "xyz.test.com",
     },
 })
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<SapVirtualInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapVirtualInstanceName, data);
 SapVirtualInstanceResource result = lro.Value;

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SqlVirtualMachine;
 using Azure.ResourceManager.SqlVirtualMachine.Models;
+using Azure.ResourceManager.SqlVirtualMachine;
 
 // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/CreateOrUpdateSqlVirtualMachineGroup.json
 // this example is just showing the usage of "SqlVirtualMachineGroups_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,7 +32,7 @@ SqlVmGroupData data = new SqlVmGroupData(new AzureLocation("northeurope"))
 {
     SqlImageOffer = "SQL2016-WS2016",
     SqlImageSku = SqlVmGroupImageSku.Enterprise,
-    WindowsServerFailoverClusterDomainProfile = new WindowsServerFailoverClusterDomainProfile()
+    WindowsServerFailoverClusterDomainProfile = new WindowsServerFailoverClusterDomainProfile
     {
         DomainFqdn = "testdomain.com",
         OrganizationalUnitPath = "OU=WSCluster,DC=testdomain,DC=com",
@@ -45,7 +45,7 @@ SqlVmGroupData data = new SqlVmGroupData(new AzureLocation("northeurope"))
     },
     Tags =
     {
-    ["mytag"] = "myval",
+    ["mytag"] = "myval"
     },
 };
 ArmOperation<SqlVmGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sqlVmGroupName, data);

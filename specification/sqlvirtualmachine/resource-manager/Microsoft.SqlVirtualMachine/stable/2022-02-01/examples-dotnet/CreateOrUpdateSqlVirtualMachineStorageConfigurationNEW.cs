@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SqlVirtualMachine;
 using Azure.ResourceManager.SqlVirtualMachine.Models;
+using Azure.ResourceManager.SqlVirtualMachine;
 
 // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/CreateOrUpdateSqlVirtualMachineStorageConfigurationNEW.json
 // this example is just showing the usage of "SqlVirtualMachines_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,25 +32,19 @@ string sqlVmName = "testvm";
 SqlVmData data = new SqlVmData(new AzureLocation("northeurope"))
 {
     VirtualMachineResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm"),
-    StorageConfigurationSettings = new SqlVmStorageConfigurationSettings()
+    StorageConfigurationSettings = new SqlVmStorageConfigurationSettings
     {
-        SqlDataSettings = new SqlStorageSettings()
+        SqlDataSettings = new SqlStorageSettings
         {
-            Luns =
-            {
-            0
-            },
+            Luns = { 0 },
             DefaultFilePath = "F:\\folderpath\\",
         },
-        SqlLogSettings = new SqlStorageSettings()
+        SqlLogSettings = new SqlStorageSettings
         {
-            Luns =
-            {
-            1
-            },
+            Luns = { 1 },
             DefaultFilePath = "G:\\folderpath\\",
         },
-        SqlTempDBSettings = new SqlTempDBSettings()
+        SqlTempDBSettings = new SqlTempDBSettings
         {
             DataFileSize = 256,
             DataGrowth = 512,

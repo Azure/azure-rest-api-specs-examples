@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.SqlVirtualMachine;
 using Azure.ResourceManager.SqlVirtualMachine.Models;
+using Azure.ResourceManager.SqlVirtualMachine;
 
 // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/UpdateSqlVirtualMachineGroup.json
 // this example is just showing the usage of "SqlVirtualMachineGroups_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier sqlVmGroupResourceId = SqlVmGroupResource.CreateResourceIdent
 SqlVmGroupResource sqlVmGroup = client.GetSqlVmGroupResource(sqlVmGroupResourceId);
 
 // invoke the operation
-SqlVmGroupPatch patch = new SqlVmGroupPatch()
+SqlVmGroupPatch patch = new SqlVmGroupPatch
 {
     Tags =
     {
-    ["mytag"] = "myval",
+    ["mytag"] = "myval"
     },
 };
 ArmOperation<SqlVmGroupResource> lro = await sqlVmGroup.UpdateAsync(WaitUntil.Completed, patch);

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/GitHubOwnerGet.json
@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GitHubConnectorResource created on azure
-// for more information of creating GitHubConnectorResource, please refer to the document of GitHubConnectorResource
+// this example assumes you already have this GitHubOwnerResource created on azure
+// for more information of creating GitHubOwnerResource, please refer to the document of GitHubOwnerResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "westusrg";
 string gitHubConnectorName = "testconnector";
-ResourceIdentifier gitHubConnectorResourceId = GitHubConnectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gitHubConnectorName);
-GitHubConnectorResource gitHubConnector = client.GetGitHubConnectorResource(gitHubConnectorResourceId);
-
-// get the collection of this GitHubOwnerResource
-GitHubOwnerCollection collection = gitHubConnector.GetGitHubOwners();
+string gitHubOwnerName = "Azure";
+ResourceIdentifier gitHubOwnerResourceId = GitHubOwnerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gitHubConnectorName, gitHubOwnerName);
+GitHubOwnerResource gitHubOwner = client.GetGitHubOwnerResource(gitHubOwnerResourceId);
 
 // invoke the operation
-string gitHubOwnerName = "Azure";
-NullableResponse<GitHubOwnerResource> response = await collection.GetIfExistsAsync(gitHubOwnerName);
-GitHubOwnerResource result = response.HasValue ? response.Value : null;
+GitHubOwnerResource result = await gitHubOwner.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    GitHubOwnerData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GitHubOwnerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

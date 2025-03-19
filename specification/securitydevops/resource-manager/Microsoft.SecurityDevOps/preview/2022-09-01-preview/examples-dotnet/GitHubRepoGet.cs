@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/GitHubRepoGet.json
@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GitHubRepoResource created on azure
-// for more information of creating GitHubRepoResource, please refer to the document of GitHubRepoResource
+// this example assumes you already have this GitHubOwnerResource created on azure
+// for more information of creating GitHubOwnerResource, please refer to the document of GitHubOwnerResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "westusrg";
 string gitHubConnectorName = "testconnector";
 string gitHubOwnerName = "Azure";
-string gitHubRepoName = "39093389";
-ResourceIdentifier gitHubRepoResourceId = GitHubRepoResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gitHubConnectorName, gitHubOwnerName, gitHubRepoName);
-GitHubRepoResource gitHubRepo = client.GetGitHubRepoResource(gitHubRepoResourceId);
+ResourceIdentifier gitHubOwnerResourceId = GitHubOwnerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gitHubConnectorName, gitHubOwnerName);
+GitHubOwnerResource gitHubOwner = client.GetGitHubOwnerResource(gitHubOwnerResourceId);
+
+// get the collection of this GitHubRepoResource
+GitHubRepoCollection collection = gitHubOwner.GetGitHubRepos();
 
 // invoke the operation
-GitHubRepoResource result = await gitHubRepo.GetAsync();
+string gitHubRepoName = "39093389";
+NullableResponse<GitHubRepoResource> response = await collection.GetIfExistsAsync(gitHubRepoName);
+GitHubRepoResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GitHubRepoData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GitHubRepoData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityDevOps;
 using Azure.ResourceManager.SecurityDevOps.Models;
+using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsRepoCreateOrUpdate.json
 // this example is just showing the usage of "AzureDevOpsRepo_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,27 +30,18 @@ AzureDevOpsRepoCollection collection = azureDevOpsProject.GetAzureDevOpsRepos();
 
 // invoke the operation
 string azureDevOpsRepoName = "myRepo";
-AzureDevOpsRepoData data = new AzureDevOpsRepoData()
+AzureDevOpsRepoData data = new AzureDevOpsRepoData
 {
-    Properties = new AzureDevOpsRepoProperties()
+    Properties = new AzureDevOpsRepoProperties
     {
         RepoId = "00000000-0000-0000-0000-000000000000",
         RepoUri = new Uri("https://dev.azure.com/myOrg/myProject/_git/myRepo"),
-        ActionableRemediation = new ActionableRemediation()
+        ActionableRemediation = new ActionableRemediation
         {
             State = ActionableRemediationState.Enabled,
-            SeverityLevels =
-            {
-            "High"
-            },
-            Categories =
-            {
-            ActionableRemediationRuleCategory.Secrets
-            },
-            BranchNames =
-            {
-            "main"
-            },
+            SeverityLevels = { "High" },
+            Categories = { ActionableRemediationRuleCategory.Secrets },
+            BranchNames = { "main" },
         },
     },
 };

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.SecurityDevOps;
 using Azure.ResourceManager.SecurityDevOps.Models;
+using Azure.ResourceManager.SecurityDevOps;
 
 // Generated from example definition: specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsOrgUpdate.json
 // this example is just showing the usage of "AzureDevOpsOrg_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,9 +25,9 @@ ResourceIdentifier azureDevOpsOrgResourceId = AzureDevOpsOrgResource.CreateResou
 AzureDevOpsOrgResource azureDevOpsOrg = client.GetAzureDevOpsOrgResource(azureDevOpsOrgResourceId);
 
 // invoke the operation
-AzureDevOpsOrgData data = new AzureDevOpsOrgData()
+AzureDevOpsOrgData data = new AzureDevOpsOrgData
 {
-    Properties = new AzureDevOpsOrgProperties()
+    Properties = new AzureDevOpsOrgProperties
     {
         AutoDiscovery = AutoDiscovery.Disabled,
     },

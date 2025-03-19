@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/Projects_Patch.json
 // this example is just showing the usage of "Projects_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier devCenterProjectResourceId = DevCenterProjectResource.CreateR
 DevCenterProjectResource devCenterProject = client.GetDevCenterProjectResource(devCenterProjectResourceId);
 
 // invoke the operation
-DevCenterProjectPatch patch = new DevCenterProjectPatch()
+DevCenterProjectPatch patch = new DevCenterProjectPatch
 {
     Description = "This is my first project.",
     Tags =
     {
-    ["CostCenter"] = "R&D",
+    ["CostCenter"] = "R&D"
     },
 };
 ArmOperation<DevCenterProjectResource> lro = await devCenterProject.UpdateAsync(WaitUntil.Completed, patch);

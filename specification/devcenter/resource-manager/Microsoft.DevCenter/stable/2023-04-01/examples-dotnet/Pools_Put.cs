@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/Pools_Put.json
 // this example is just showing the usage of "Pools_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -34,7 +34,7 @@ DevCenterPoolData data = new DevCenterPoolData(new AzureLocation("centralus"))
     NetworkConnectionName = "Network1-westus2",
     LicenseType = DevCenterLicenseType.WindowsClient,
     LocalAdministrator = LocalAdminStatus.IsEnabled,
-    StopOnDisconnect = new StopOnDisconnectConfiguration()
+    StopOnDisconnect = new StopOnDisconnectConfiguration
     {
         Status = StopOnDisconnectEnableStatus.IsEnabled,
         GracePeriodMinutes = 60,

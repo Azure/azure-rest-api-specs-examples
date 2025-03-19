@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/NetworkConnections_ListByResourceGroup.json
 // this example is just showing the usage of "NetworkConnections_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -36,4 +36,4 @@ await foreach (DevCenterNetworkConnectionResource item in collection.GetAllAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

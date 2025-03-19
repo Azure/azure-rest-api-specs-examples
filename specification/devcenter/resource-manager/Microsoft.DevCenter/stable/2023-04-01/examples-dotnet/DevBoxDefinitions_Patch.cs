@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/DevBoxDefinitions_Patch.json
 // this example is just showing the usage of "DevBoxDefinitions_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,9 +25,9 @@ ResourceIdentifier devBoxDefinitionResourceId = DevBoxDefinitionResource.CreateR
 DevBoxDefinitionResource devBoxDefinition = client.GetDevBoxDefinitionResource(devBoxDefinitionResourceId);
 
 // invoke the operation
-DevBoxDefinitionPatch patch = new DevBoxDefinitionPatch()
+DevBoxDefinitionPatch patch = new DevBoxDefinitionPatch
 {
-    ImageReference = new DevCenterImageReference()
+    ImageReference = new DevCenterImageReference
     {
         Id = new ResourceIdentifier("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/Example/providers/Microsoft.DevCenter/devcenters/Contoso/galleries/contosogallery/images/exampleImage/version/2.0.0"),
     },

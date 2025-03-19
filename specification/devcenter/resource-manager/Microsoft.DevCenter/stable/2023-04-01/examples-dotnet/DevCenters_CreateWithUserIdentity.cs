@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/DevCenters_CreateWithUserIdentity.json
 // this example is just showing the usage of "DevCenters_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -34,12 +34,12 @@ DevCenterData data = new DevCenterData(new AzureLocation("centralus"))
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/identityGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/identityGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity1")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
-    ["CostCode"] = "12345",
+    ["CostCode"] = "12345"
     },
 };
 ArmOperation<DevCenterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, devCenterName, data);

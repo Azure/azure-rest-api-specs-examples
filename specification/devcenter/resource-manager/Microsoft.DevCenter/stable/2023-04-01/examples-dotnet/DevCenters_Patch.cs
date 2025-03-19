@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/DevCenters_Patch.json
 // this example is just showing the usage of "DevCenters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentif
 DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
 
 // invoke the operation
-DevCenterPatch patch = new DevCenterPatch()
+DevCenterPatch patch = new DevCenterPatch
 {
     Tags =
     {
-    ["CostCode"] = "12345",
+    ["CostCode"] = "12345"
     },
 };
 ArmOperation<DevCenterResource> lro = await devCenter.UpdateAsync(WaitUntil.Completed, patch);

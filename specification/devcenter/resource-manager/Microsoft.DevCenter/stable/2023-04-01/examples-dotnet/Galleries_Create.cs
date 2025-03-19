@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/Galleries_Create.json
@@ -27,7 +27,7 @@ DevCenterGalleryCollection collection = devCenter.GetDevCenterGalleries();
 
 // invoke the operation
 string galleryName = "StandardGallery";
-DevCenterGalleryData data = new DevCenterGalleryData()
+DevCenterGalleryData data = new DevCenterGalleryData
 {
     GalleryResourceId = new ResourceIdentifier("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.Compute/galleries/StandardGallery"),
 };

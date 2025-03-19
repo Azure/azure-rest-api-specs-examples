@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevCenter;
 using Azure.ResourceManager.DevCenter.Models;
+using Azure.ResourceManager.DevCenter;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/examples/Catalogs_CreateAdo.json
 // this example is just showing the usage of "Catalogs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +28,9 @@ DevCenterCatalogCollection collection = devCenter.GetDevCenterCatalogs();
 
 // invoke the operation
 string catalogName = "CentralCatalog";
-DevCenterCatalogData data = new DevCenterCatalogData()
+DevCenterCatalogData data = new DevCenterCatalogData
 {
-    AdoGit = new DevCenterGitCatalog()
+    AdoGit = new DevCenterGitCatalog
     {
         Uri = new Uri("https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"),
         Branch = "main",

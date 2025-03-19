@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureWorkload/ProtectionPolicies_CreateOrUpdate_Complex.json
 // this example is just showing the usage of "ProtectionPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,144 +29,102 @@ BackupProtectionPolicyCollection collection = resourceGroupResource.GetBackupPro
 
 // invoke the operation
 string policyName = "testPolicy1";
-BackupProtectionPolicyData data = new BackupProtectionPolicyData(new AzureLocation("placeholder"))
+BackupProtectionPolicyData data = new BackupProtectionPolicyData(default)
 {
-    Properties = new VmWorkloadProtectionPolicy()
+    Properties = new VmWorkloadProtectionPolicy
     {
         WorkLoadType = BackupWorkloadType.SqlDatabase,
-        Settings = new BackupCommonSettings()
+        Settings = new BackupCommonSettings
         {
             TimeZone = "Pacific Standard Time",
             IsSqlCompression = false,
         },
-        SubProtectionPolicy =
-        {
-        new SubProtectionPolicy()
+        SubProtectionPolicy = {new SubProtectionPolicy
         {
         PolicyType = SubProtectionPolicyType.Full,
-        SchedulePolicy = new SimpleSchedulePolicy()
+        SchedulePolicy = new SimpleSchedulePolicy
         {
         ScheduleRunFrequency = ScheduleRunType.Weekly,
-        ScheduleRunDays =
-        {
-        BackupDayOfWeek.Sunday,BackupDayOfWeek.Tuesday
+        ScheduleRunDays = {BackupDayOfWeek.Sunday, BackupDayOfWeek.Tuesday},
+        ScheduleRunTimes = {default},
         },
-        ScheduleRunTimes =
+        RetentionPolicy = new LongTermRetentionPolicy
         {
-        DateTimeOffset.Parse("2018-01-24T10:00:00Z")
-        },
-        },
-        RetentionPolicy = new LongTermRetentionPolicy()
+        WeeklySchedule = new WeeklyRetentionSchedule
         {
-        WeeklySchedule = new WeeklyRetentionSchedule()
-        {
-        DaysOfTheWeek =
-        {
-        BackupDayOfWeek.Sunday,BackupDayOfWeek.Tuesday
-        },
-        RetentionTimes =
-        {
-        DateTimeOffset.Parse("2018-01-24T10:00:00Z")
-        },
-        RetentionDuration = new RetentionDuration()
+        DaysOfTheWeek = {BackupDayOfWeek.Sunday, BackupDayOfWeek.Tuesday},
+        RetentionTimes = {default},
+        RetentionDuration = new RetentionDuration
         {
         Count = 2,
         DurationType = RetentionDurationType.Weeks,
         },
         },
-        MonthlySchedule = new MonthlyRetentionSchedule()
+        MonthlySchedule = new MonthlyRetentionSchedule
         {
         RetentionScheduleFormatType = RetentionScheduleFormat.Weekly,
-        RetentionScheduleWeekly = new WeeklyRetentionFormat()
+        RetentionScheduleWeekly = new WeeklyRetentionFormat
         {
-        DaysOfTheWeek =
-        {
-        BackupDayOfWeek.Sunday
+        DaysOfTheWeek = {BackupDayOfWeek.Sunday},
+        WeeksOfTheMonth = {BackupWeekOfMonth.Second},
         },
-        WeeksOfTheMonth =
-        {
-        BackupWeekOfMonth.Second
-        },
-        },
-        RetentionTimes =
-        {
-        DateTimeOffset.Parse("2018-01-24T10:00:00Z")
-        },
-        RetentionDuration = new RetentionDuration()
+        RetentionTimes = {default},
+        RetentionDuration = new RetentionDuration
         {
         Count = 1,
         DurationType = RetentionDurationType.Months,
         },
         },
-        YearlySchedule = new YearlyRetentionSchedule()
+        YearlySchedule = new YearlyRetentionSchedule
         {
         RetentionScheduleFormatType = RetentionScheduleFormat.Weekly,
-        MonthsOfYear =
+        MonthsOfYear = {BackupMonthOfYear.January, BackupMonthOfYear.June, BackupMonthOfYear.December},
+        RetentionScheduleWeekly = new WeeklyRetentionFormat
         {
-        BackupMonthOfYear.January,BackupMonthOfYear.June,BackupMonthOfYear.December
+        DaysOfTheWeek = {BackupDayOfWeek.Sunday},
+        WeeksOfTheMonth = {BackupWeekOfMonth.Last},
         },
-        RetentionScheduleWeekly = new WeeklyRetentionFormat()
-        {
-        DaysOfTheWeek =
-        {
-        BackupDayOfWeek.Sunday
-        },
-        WeeksOfTheMonth =
-        {
-        BackupWeekOfMonth.Last
-        },
-        },
-        RetentionTimes =
-        {
-        DateTimeOffset.Parse("2018-01-24T10:00:00Z")
-        },
-        RetentionDuration = new RetentionDuration()
+        RetentionTimes = {default},
+        RetentionDuration = new RetentionDuration
         {
         Count = 1,
         DurationType = RetentionDurationType.Years,
         },
         },
         },
-        },new SubProtectionPolicy()
+        }, new SubProtectionPolicy
         {
         PolicyType = SubProtectionPolicyType.Differential,
-        SchedulePolicy = new SimpleSchedulePolicy()
+        SchedulePolicy = new SimpleSchedulePolicy
         {
         ScheduleRunFrequency = ScheduleRunType.Weekly,
-        ScheduleRunDays =
-        {
-        BackupDayOfWeek.Friday
+        ScheduleRunDays = {BackupDayOfWeek.Friday},
+        ScheduleRunTimes = {default},
         },
-        ScheduleRunTimes =
+        RetentionPolicy = new SimpleRetentionPolicy
         {
-        DateTimeOffset.Parse("2018-01-24T10:00:00Z")
-        },
-        },
-        RetentionPolicy = new SimpleRetentionPolicy()
-        {
-        RetentionDuration = new RetentionDuration()
+        RetentionDuration = new RetentionDuration
         {
         Count = 8,
         DurationType = RetentionDurationType.Days,
         },
         },
-        },new SubProtectionPolicy()
+        }, new SubProtectionPolicy
         {
         PolicyType = SubProtectionPolicyType.Log,
-        SchedulePolicy = new LogSchedulePolicy()
+        SchedulePolicy = new LogSchedulePolicy
         {
         ScheduleFrequencyInMins = 60,
         },
-        RetentionPolicy = new SimpleRetentionPolicy()
+        RetentionPolicy = new SimpleRetentionPolicy
         {
-        RetentionDuration = new RetentionDuration()
+        RetentionDuration = new RetentionDuration
         {
         Count = 7,
         DurationType = RetentionDurationType.Days,
         },
         },
-        }
-        },
+        }},
     },
 };
 ArmOperation<BackupProtectionPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);

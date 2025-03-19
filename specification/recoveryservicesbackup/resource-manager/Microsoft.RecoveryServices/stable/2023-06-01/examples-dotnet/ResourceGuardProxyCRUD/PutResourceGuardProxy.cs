@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/ResourceGuardProxyCRUD/PutResourceGuardProxy.json
 // this example is just showing the usage of "ResourceGuardProxy_Put" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +16,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGuardProxyResource created on azure
-// for more information of creating ResourceGuardProxyResource, please refer to the document of ResourceGuardProxyResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "0b352192-dcac-4cc7-992e-a96190ccc68c";
 string resourceGroupName = "SampleResourceGroup";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ResourceGuardProxyResource
 string vaultName = "sampleVault";
-string resourceGuardProxyName = "swaggerExample";
-ResourceIdentifier resourceGuardProxyResourceId = ResourceGuardProxyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, resourceGuardProxyName);
-ResourceGuardProxyResource resourceGuardProxy = client.GetResourceGuardProxyResource(resourceGuardProxyResourceId);
+ResourceGuardProxyCollection collection = resourceGroupResource.GetResourceGuardProxies(vaultName);
 
 // invoke the operation
-ResourceGuardProxyData data = new ResourceGuardProxyData(new AzureLocation("placeholder"))
+string resourceGuardProxyName = "swaggerExample";
+ResourceGuardProxyData data = new ResourceGuardProxyData(default)
 {
     Properties = new ResourceGuardProxyProperties(new ResourceIdentifier("/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew")),
 };
-ArmOperation<ResourceGuardProxyResource> lro = await resourceGuardProxy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ResourceGuardProxyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceGuardProxyName, data);
 ResourceGuardProxyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

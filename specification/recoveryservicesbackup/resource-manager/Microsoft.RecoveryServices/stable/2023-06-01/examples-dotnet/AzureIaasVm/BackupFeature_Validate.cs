@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/BackupFeature_Validate.json
 // this example is just showing the usage of "FeatureSupport_Validate" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("southeastasia");
-FeatureSupportContent content = new VmResourceFeatureSupportContent()
+FeatureSupportContent content = new VmResourceFeatureSupportContent
 {
     VmSize = "Basic_A0",
     VmSku = "Premium",

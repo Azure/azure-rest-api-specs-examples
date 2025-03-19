@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/Revoke_Ilr.json
 // this example is just showing the usage of "ItemLevelRecoveryConnections_Revoke" operation, for the dependent resources, they will have to be created separately.
@@ -31,4 +31,4 @@ BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointR
 // invoke the operation
 await backupRecoveryPoint.RevokeItemLevelRecoveryConnectionAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

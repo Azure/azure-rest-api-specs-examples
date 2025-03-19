@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/ProtectionIntent_CreateOrUpdate.json
 // this example is just showing the usage of "ProtectionIntent_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -16,26 +16,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupProtectionIntentResource created on azure
-// for more information of creating BackupProtectionIntentResource, please refer to the document of BackupProtectionIntentResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this BackupProtectionIntentResource
+BackupProtectionIntentCollection collection = resourceGroupResource.GetBackupProtectionIntents();
+
+// invoke the operation
 string vaultName = "myVault";
 string fabricName = "Azure";
 string intentObjectName = "vm;iaasvmcontainerv2;chamsrgtest;chamscandel";
-ResourceIdentifier backupProtectionIntentResourceId = BackupProtectionIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, intentObjectName);
-BackupProtectionIntentResource backupProtectionIntent = client.GetBackupProtectionIntentResource(backupProtectionIntentResourceId);
-
-// invoke the operation
-BackupProtectionIntentData data = new BackupProtectionIntentData(new AzureLocation("placeholder"))
+BackupProtectionIntentData data = new BackupProtectionIntentData(default)
 {
-    Properties = new ResourceProtectionIntent()
+    Properties = new ResourceProtectionIntent
     {
         SourceResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/chamsrgtest/providers/Microsoft.Compute/virtualMachines/chamscandel"),
         PolicyId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.RecoveryServices/vaults/myVault/backupPolicies/myPolicy"),
     },
 };
-ArmOperation<BackupProtectionIntentResource> lro = await backupProtectionIntent.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BackupProtectionIntentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, fabricName, intentObjectName, data);
 BackupProtectionIntentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

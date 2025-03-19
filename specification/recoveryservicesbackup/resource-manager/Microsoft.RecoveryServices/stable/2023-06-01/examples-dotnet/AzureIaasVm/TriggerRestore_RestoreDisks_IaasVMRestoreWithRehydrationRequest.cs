@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/TriggerRestore_RestoreDisks_IaasVMRestoreWithRehydrationRequest.json
 // this example is just showing the usage of "Restores_Trigger" operation, for the dependent resources, they will have to be created separately.
@@ -29,11 +29,11 @@ ResourceIdentifier backupRecoveryPointResourceId = BackupRecoveryPointResource.C
 BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
 // invoke the operation
-TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
+TriggerRestoreContent content = new TriggerRestoreContent(default)
 {
-    Properties = new IaasVmRestoreWithRehydrationContent()
+    Properties = new IaasVmRestoreWithRehydrationContent
     {
-        RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo()
+        RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo
         {
             RehydrationRetentionDuration = XmlConvert.ToTimeSpan("P7D"),
             RehydrationPriority = RehydrationPriority.Standard,
@@ -45,7 +45,7 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
         Region = new AzureLocation("southeastasia"),
         DoesCreateNewCloudService = true,
         OriginalStorageAccountOption = false,
-        EncryptionDetails = new VmEncryptionDetails()
+        EncryptionDetails = new VmEncryptionDetails
         {
             IsEncryptionEnabled = false,
         },
@@ -53,4 +53,4 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
 };
 await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

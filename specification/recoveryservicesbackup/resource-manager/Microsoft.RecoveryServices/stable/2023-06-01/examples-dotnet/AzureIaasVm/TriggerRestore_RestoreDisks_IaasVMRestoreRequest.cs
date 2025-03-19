@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureIaasVm/TriggerRestore_RestoreDisks_IaasVMRestoreRequest.json
 // this example is just showing the usage of "Restores_Trigger" operation, for the dependent resources, they will have to be created separately.
@@ -29,9 +29,9 @@ ResourceIdentifier backupRecoveryPointResourceId = BackupRecoveryPointResource.C
 BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
 // invoke the operation
-TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
+TriggerRestoreContent content = new TriggerRestoreContent(default)
 {
-    Properties = new IaasVmRestoreContent()
+    Properties = new IaasVmRestoreContent
     {
         RecoveryPointId = "348916168024334",
         RecoveryType = FileShareRecoveryType.RestoreDisks,
@@ -40,16 +40,16 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
         Region = new AzureLocation("southeastasia"),
         DoesCreateNewCloudService = true,
         OriginalStorageAccountOption = false,
-        EncryptionDetails = new VmEncryptionDetails()
+        EncryptionDetails = new VmEncryptionDetails
         {
             IsEncryptionEnabled = false,
         },
-        IdentityInfo = new BackupIdentityInfo()
+        IdentityInfo = new BackupIdentityInfo
         {
             IsSystemAssignedIdentity = false,
             ManagedIdentityResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/asmaskarRG1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/asmaskartestmsi"),
         },
-        TargetDiskNetworkAccessSettings = new BackupTargetDiskNetworkAccessSettings()
+        TargetDiskNetworkAccessSettings = new BackupTargetDiskNetworkAccessSettings
         {
             TargetDiskNetworkAccessOption = BackupTargetDiskNetworkAccessOption.EnablePrivateAccessForAllDisks,
             TargetDiskAccessId = new ResourceIdentifier("/subscriptions/e7a191f5-713c-4bdb-b5e4-cf3dd90230ef/resourceGroups/arpja/providers/Microsoft.Compute/diskAccesses/arpja-diskaccess-ccy"),
@@ -58,4 +58,4 @@ TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("pla
 };
 await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

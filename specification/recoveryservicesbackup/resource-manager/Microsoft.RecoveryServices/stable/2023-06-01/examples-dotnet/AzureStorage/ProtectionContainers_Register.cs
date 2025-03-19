@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/AzureStorage/ProtectionContainers_Register.json
 // this example is just showing the usage of "ProtectionContainers_Register" operation, for the dependent resources, they will have to be created separately.
@@ -27,9 +26,9 @@ ResourceIdentifier backupProtectionContainerResourceId = BackupProtectionContain
 BackupProtectionContainerResource backupProtectionContainer = client.GetBackupProtectionContainerResource(backupProtectionContainerResourceId);
 
 // invoke the operation
-BackupProtectionContainerData data = new BackupProtectionContainerData(new AzureLocation("placeholder"))
+BackupProtectionContainerData data = new BackupProtectionContainerData(default)
 {
-    Properties = new StorageContainer()
+    Properties = new StorageContainer
     {
         SourceResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/SwaggerTestRg/providers/Microsoft.Storage/storageAccounts/swaggertestsa"),
         AcquireStorageAccountLock = AcquireStorageAccountLock.Acquire,

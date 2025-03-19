@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/ResourceTypeRegistrations_CreateOrUpdate.json
 // this example is just showing the usage of "ResourceTypeRegistrations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,41 +27,23 @@ ResourceTypeRegistrationCollection collection = providerRegistration.GetResource
 
 // invoke the operation
 string resourceType = "employees";
-ResourceTypeRegistrationData data = new ResourceTypeRegistrationData()
+ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
 {
-    Properties = new ResourceTypeRegistrationProperties()
+    Properties = new ResourceTypeRegistrationProperties
     {
         RoutingType = ResourceRoutingType.Default,
         Regionality = ResourceTypeRegistrationRegionality.Regional,
-        Endpoints =
+        Endpoints = {new ResourceTypeEndpoint
         {
-        new ResourceTypeEndpoint()
+        ApiVersions = {"2020-06-01-preview"},
+        Locations = {new AzureLocation("West US"), new AzureLocation("East US"), new AzureLocation("North Europe")},
+        RequiredFeatures = {"<feature flag>"},
+        }},
+        SwaggerSpecifications = {new SwaggerSpecification
         {
-        ApiVersions =
-        {
-        "2020-06-01-preview"
-        },
-        Locations =
-        {
-        new AzureLocation("West US"),new AzureLocation("East US"),new AzureLocation("North Europe")
-        },
-        RequiredFeatures =
-        {
-        "<feature flag>"
-        },
-        }
-        },
-        SwaggerSpecifications =
-        {
-        new SwaggerSpecification()
-        {
-        ApiVersions =
-        {
-        "2020-06-01-preview"
-        },
+        ApiVersions = {"2020-06-01-preview"},
         SwaggerSpecFolderUri = new Uri("https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<ResourceTypeRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceType, data);

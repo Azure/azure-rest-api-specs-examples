@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_GetNestedResourceTypeSecond.json
 // this example is just showing the usage of "Skus_GetNestedResourceTypeSecond" operation, for the dependent resources, they will have to be created separately.
@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NestedResourceTypeSecondSkuResource created on azure
-// for more information of creating NestedResourceTypeSecondSkuResource, please refer to the document of NestedResourceTypeSecondSkuResource
+// this example assumes you already have this ResourceTypeRegistrationResource created on azure
+// for more information of creating ResourceTypeRegistrationResource, please refer to the document of ResourceTypeRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
 string resourceType = "testResourceType";
+ResourceIdentifier resourceTypeRegistrationResourceId = ResourceTypeRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType);
+ResourceTypeRegistrationResource resourceTypeRegistration = client.GetResourceTypeRegistrationResource(resourceTypeRegistrationResourceId);
+
+// get the collection of this NestedResourceTypeSecondSkuResource
 string nestedResourceTypeFirst = "nestedResourceTypeFirst";
 string nestedResourceTypeSecond = "nestedResourceTypeSecond";
-string sku = "testSku";
-ResourceIdentifier nestedResourceTypeSecondSkuResourceId = NestedResourceTypeSecondSkuResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType, nestedResourceTypeFirst, nestedResourceTypeSecond, sku);
-NestedResourceTypeSecondSkuResource nestedResourceTypeSecondSku = client.GetNestedResourceTypeSecondSkuResource(nestedResourceTypeSecondSkuResourceId);
+NestedResourceTypeSecondSkuCollection collection = resourceTypeRegistration.GetNestedResourceTypeSecondSkus(nestedResourceTypeFirst, nestedResourceTypeSecond);
 
 // invoke the operation
-NestedResourceTypeSecondSkuResource result = await nestedResourceTypeSecondSku.GetAsync();
+string sku = "testSku";
+NullableResponse<NestedResourceTypeSecondSkuResource> response = await collection.GetIfExistsAsync(sku);
+NestedResourceTypeSecondSkuResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ResourceTypeSkuData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ResourceTypeSkuData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

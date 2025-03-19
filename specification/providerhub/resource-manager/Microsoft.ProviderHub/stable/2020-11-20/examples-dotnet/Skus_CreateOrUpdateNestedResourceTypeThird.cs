@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_CreateOrUpdateNestedResourceTypeThird.json
 // this example is just showing the usage of "Skus_CreateOrUpdateNestedResourceTypeThird" operation, for the dependent resources, they will have to be created separately.
@@ -31,7 +31,7 @@ NestedResourceTypeThirdSkuCollection collection = resourceTypeRegistration.GetNe
 
 // invoke the operation
 string sku = "testSku";
-ResourceTypeSkuData data = new ResourceTypeSkuData()
+ResourceTypeSkuData data = new ResourceTypeSkuData
 {
     Properties = new ResourceTypeSkuProperties(new ResourceTypeSkuSetting[]
 {
@@ -39,14 +39,12 @@ new ResourceTypeSkuSetting("freeSku")
 {
 Tier = "Tier1",
 Kind = "Standard",
-},new ResourceTypeSkuSetting("premiumSku")
+},
+new ResourceTypeSkuSetting("premiumSku")
 {
 Tier = "Tier2",
 Kind = "Premium",
-Costs =
-{
-new ResourceTypeSkuCost("xxx")
-},
+Costs = {new ResourceTypeSkuCost("xxx")},
 }
 }),
 };

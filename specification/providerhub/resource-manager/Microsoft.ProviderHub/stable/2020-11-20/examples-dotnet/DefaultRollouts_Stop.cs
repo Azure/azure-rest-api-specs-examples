@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ProviderHub;
 using Azure.ResourceManager.ProviderHub.Models;
+using Azure.ResourceManager.ProviderHub;
 
 // Generated from example definition: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/DefaultRollouts_Stop.json
 // this example is just showing the usage of "DefaultRollouts_Stop" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ DefaultRolloutResource defaultRollout = client.GetDefaultRolloutResource(default
 // invoke the operation
 await defaultRollout.StopAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

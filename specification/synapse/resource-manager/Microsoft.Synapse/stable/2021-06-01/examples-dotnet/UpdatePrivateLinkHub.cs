@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/UpdatePrivateLinkHub.json
 // this example is just showing the usage of "PrivateLinkHubs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier synapsePrivateLinkHubResourceId = SynapsePrivateLinkHubResour
 SynapsePrivateLinkHubResource synapsePrivateLinkHub = client.GetSynapsePrivateLinkHubResource(synapsePrivateLinkHubResourceId);
 
 // invoke the operation
-SynapsePrivateLinkHubPatch patch = new SynapsePrivateLinkHubPatch()
+SynapsePrivateLinkHubPatch patch = new SynapsePrivateLinkHubPatch
 {
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 SynapsePrivateLinkHubResource result = await synapsePrivateLinkHub.UpdateAsync(patch);

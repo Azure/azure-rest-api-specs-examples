@@ -1,14 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/UpdateWorkspace.json
 // this example is just showing the usage of "Workspaces_Update" operation, for the dependent resources, they will have to be created separately.
@@ -27,24 +26,21 @@ ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateR
 SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
 
 // invoke the operation
-SynapseWorkspacePatch patch = new SynapseWorkspacePatch()
+SynapseWorkspacePatch patch = new SynapseWorkspacePatch
 {
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     SqlAdministratorLoginPassword = "password",
-    ManagedVirtualNetworkSettings = new SynapseManagedVirtualNetworkSettings()
+    ManagedVirtualNetworkSettings = new SynapseManagedVirtualNetworkSettings
     {
         PreventDataExfiltration = false,
         EnableLinkedAccessCheckOnTargetResource = false,
-        AllowedAadTenantIdsForLinking =
-        {
-        "740239CE-A25B-485B-86A0-262F29F6EBDB"
-        },
+        AllowedAadTenantIdsForLinking = { "740239CE-A25B-485B-86A0-262F29F6EBDB" },
     },
-    WorkspaceRepositoryConfiguration = new SynapseWorkspaceRepositoryConfiguration()
+    WorkspaceRepositoryConfiguration = new SynapseWorkspaceRepositoryConfiguration
     {
         WorkspaceRepositoryConfigurationType = "FactoryGitHubConfiguration",
         HostName = "",
@@ -55,11 +51,11 @@ SynapseWorkspacePatch patch = new SynapseWorkspacePatch()
         RootFolder = "/",
     },
     PurviewResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup1/providers/Microsoft.ProjectPurview/accounts/accountname1"),
-    Encryption = new SynapseEncryptionDetails()
+    Encryption = new SynapseEncryptionDetails
     {
-        Cmk = new WorkspaceCustomerManagedKeyDetails()
+        Cmk = new WorkspaceCustomerManagedKeyDetails
         {
-            Key = new SynapseWorkspaceKeyDetails()
+            Key = new SynapseWorkspaceKeyDetails
             {
                 Name = "default",
                 KeyVaultUri = new Uri("https://vault.azure.net/keys/key1"),

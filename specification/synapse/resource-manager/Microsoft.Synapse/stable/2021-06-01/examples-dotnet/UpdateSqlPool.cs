@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/UpdateSqlPool.json
 // this example is just showing the usage of "SqlPools_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,18 +25,16 @@ ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResou
 SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
 
 // invoke the operation
-SynapseSqlPoolPatch patch = new SynapseSqlPoolPatch()
+SynapseSqlPoolPatch patch = new SynapseSqlPoolPatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
     Location = new AzureLocation("West US 2"),
-    Sku = new SynapseSku()
+    Sku = new SynapseSku
     {
         Tier = "",
         Name = "",
     },
-    MaxSizeBytes = 0,
+    MaxSizeBytes = 0L,
     Collation = "",
     RestorePointInTime = DateTimeOffset.Parse("1970-01-01T00:00:00.000Z"),
 };

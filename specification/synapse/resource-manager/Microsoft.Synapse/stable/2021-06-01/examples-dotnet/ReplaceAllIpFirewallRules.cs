@@ -1,14 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/ReplaceAllIpFirewallRules.json
 // this example is just showing the usage of "IpFirewallRules_ReplaceAll" operation, for the dependent resources, they will have to be created separately.
@@ -27,20 +26,20 @@ ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateR
 SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
 
 // invoke the operation
-ReplaceAllIPFirewallRulesContent content = new ReplaceAllIPFirewallRulesContent()
+ReplaceAllIPFirewallRulesContent content = new ReplaceAllIPFirewallRulesContent
 {
     IPFirewallRules =
     {
-    ["AnotherExampleFirewallRule"] = new SynapseIPFirewallRuleProperties()
+    ["AnotherExampleFirewallRule"] = new SynapseIPFirewallRuleProperties
     {
     EndIPAddress = IPAddress.Parse("10.0.1.254"),
     StartIPAddress = IPAddress.Parse("10.0.1.0"),
     },
-    ["ExampleFirewallRule"] = new SynapseIPFirewallRuleProperties()
+    ["ExampleFirewallRule"] = new SynapseIPFirewallRuleProperties
     {
     EndIPAddress = IPAddress.Parse("10.0.0.254"),
     StartIPAddress = IPAddress.Parse("10.0.0.0"),
-    },
+    }
     },
 };
 ArmOperation<ReplaceAllFirewallRulesOperationResult> lro = await synapseWorkspace.ReplaceAllIpFirewallRuleAsync(WaitUntil.Completed, content);

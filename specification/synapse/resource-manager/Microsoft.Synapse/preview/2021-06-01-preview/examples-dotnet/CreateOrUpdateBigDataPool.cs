@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/CreateOrUpdateBigDataPool.json
 // this example is just showing the usage of "BigDataPools_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,13 +30,13 @@ SynapseBigDataPoolInfoCollection collection = synapseWorkspace.GetSynapseBigData
 string bigDataPoolName = "ExamplePool";
 SynapseBigDataPoolInfoData info = new SynapseBigDataPoolInfoData(new AzureLocation("West US 2"))
 {
-    AutoScale = new BigDataPoolAutoScaleProperties()
+    AutoScale = new BigDataPoolAutoScaleProperties
     {
         MinNodeCount = 3,
         IsEnabled = true,
         MaxNodeCount = 50,
     },
-    AutoPause = new BigDataPoolAutoPauseProperties()
+    AutoPause = new BigDataPoolAutoPauseProperties
     {
         DelayInMinutes = 15,
         IsEnabled = true,
@@ -44,7 +44,7 @@ SynapseBigDataPoolInfoData info = new SynapseBigDataPoolInfoData(new AzureLocati
     IsAutotuneEnabled = false,
     SparkEventsFolder = "/events",
     NodeCount = 4,
-    LibraryRequirements = new BigDataPoolLibraryRequirements()
+    LibraryRequirements = new BigDataPoolLibraryRequirements
     {
         Content = "",
         Filename = "requirements.txt",
@@ -55,7 +55,7 @@ SynapseBigDataPoolInfoData info = new SynapseBigDataPoolInfoData(new AzureLocati
     NodeSizeFamily = BigDataPoolNodeSizeFamily.MemoryOptimized,
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 ArmOperation<SynapseBigDataPoolInfoResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bigDataPoolName, info);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolDataConnectionsUpdate.json
 // this example is just showing the usage of "KustoPoolDataConnections_Update" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ ResourceIdentifier synapseDataConnectionResourceId = SynapseDataConnectionResour
 SynapseDataConnectionResource synapseDataConnection = client.GetSynapseDataConnectionResource(synapseDataConnectionResourceId);
 
 // invoke the operation
-SynapseDataConnectionData data = new SynapseEventHubDataConnection()
+SynapseDataConnectionData data = new SynapseEventHubDataConnection
 {
     EventHubResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.EventHub/namespaces/eventhubTestns1/eventhubs/eventhubTest1"),
     ConsumerGroup = "testConsumerGroup1",

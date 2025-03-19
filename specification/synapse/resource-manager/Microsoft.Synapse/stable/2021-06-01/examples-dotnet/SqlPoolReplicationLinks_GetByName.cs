@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/SqlPoolReplicationLinks_GetByName.json
@@ -13,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseReplicationLinkResource created on azure
-// for more information of creating SynapseReplicationLinkResource, please refer to the document of SynapseReplicationLinkResource
+// this example assumes you already have this SynapseSqlPoolResource created on azure
+// for more information of creating SynapseSqlPoolResource, please refer to the document of SynapseSqlPoolResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-4799";
 string workspaceName = "sqlcrudtest-6440";
 string sqlPoolName = "testdb";
-string linkId = "5b301b68-03f6-4b26-b0f4-73ebb8634238";
-ResourceIdentifier synapseReplicationLinkResourceId = SynapseReplicationLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, linkId);
-SynapseReplicationLinkResource synapseReplicationLink = client.GetSynapseReplicationLinkResource(synapseReplicationLinkResourceId);
+ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
+SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
+
+// get the collection of this SynapseReplicationLinkResource
+SynapseReplicationLinkCollection collection = synapseSqlPool.GetSynapseReplicationLinks();
 
 // invoke the operation
-SynapseReplicationLinkResource result = await synapseReplicationLink.GetAsync();
+string linkId = "5b301b68-03f6-4b26-b0f4-73ebb8634238";
+NullableResponse<SynapseReplicationLinkResource> response = await collection.GetIfExistsAsync(linkId);
+SynapseReplicationLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseReplicationLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseReplicationLinkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

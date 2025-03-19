@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Synapse;
 
@@ -31,7 +31,7 @@ SynapsePrivateLinkHubData data = new SynapsePrivateLinkHubData(new AzureLocation
 {
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 ArmOperation<SynapsePrivateLinkHubResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateLinkHubName, data);

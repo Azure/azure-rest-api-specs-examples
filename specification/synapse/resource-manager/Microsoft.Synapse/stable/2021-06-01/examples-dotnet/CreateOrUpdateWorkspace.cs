@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateWorkspace.json
 // this example is just showing the usage of "Workspaces_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -35,10 +35,10 @@ SynapseWorkspaceData data = new SynapseWorkspaceData(new AzureLocation("East US"
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/resourceGroup1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/resourceGroup1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami1")] = new UserAssignedIdentity()
         },
     },
-    DefaultDataLakeStorage = new SynapseDataLakeStorageAccountDetails()
+    DefaultDataLakeStorage = new SynapseDataLakeStorageAccountDetails
     {
         AccountUri = new Uri("https://accountname.dfs.core.windows.net"),
         Filesystem = "default",
@@ -47,32 +47,29 @@ SynapseWorkspaceData data = new SynapseWorkspaceData(new AzureLocation("East US"
     ManagedResourceGroupName = "workspaceManagedResourceGroupUnique",
     SqlAdministratorLogin = "login",
     ManagedVirtualNetwork = "default",
-    Encryption = new SynapseEncryptionDetails()
+    Encryption = new SynapseEncryptionDetails
     {
-        Cmk = new WorkspaceCustomerManagedKeyDetails()
+        Cmk = new WorkspaceCustomerManagedKeyDetails
         {
-            Key = new SynapseWorkspaceKeyDetails()
+            Key = new SynapseWorkspaceKeyDetails
             {
                 Name = "default",
                 KeyVaultUri = new Uri("https://vault.azure.net/keys/key1"),
             },
-            KekIdentity = new KekIdentityProperties()
+            KekIdentity = new KekIdentityProperties
             {
                 UserAssignedIdentityId = new ResourceIdentifier("/subscriptions/b64d7b94-73e7-4d36-94b2-7764ea3fd74a/resourcegroups/SynapseCI/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami1"),
-                UseSystemAssignedIdentity = BinaryData.FromString("\"false\""),
+                UseSystemAssignedIdentity = BinaryData.FromObjectAsJson("false"),
             },
         },
     },
-    ManagedVirtualNetworkSettings = new SynapseManagedVirtualNetworkSettings()
+    ManagedVirtualNetworkSettings = new SynapseManagedVirtualNetworkSettings
     {
         PreventDataExfiltration = false,
         EnableLinkedAccessCheckOnTargetResource = false,
-        AllowedAadTenantIdsForLinking =
-        {
-        "740239CE-A25B-485B-86A0-262F29F6EBDB"
-        },
+        AllowedAadTenantIdsForLinking = { "740239CE-A25B-485B-86A0-262F29F6EBDB" },
     },
-    WorkspaceRepositoryConfiguration = new SynapseWorkspaceRepositoryConfiguration()
+    WorkspaceRepositoryConfiguration = new SynapseWorkspaceRepositoryConfiguration
     {
         WorkspaceRepositoryConfigurationType = "FactoryGitHubConfiguration",
         HostName = "",
@@ -87,7 +84,7 @@ SynapseWorkspaceData data = new SynapseWorkspaceData(new AzureLocation("East US"
     InitialWorkspaceAdminObjectId = Guid.Parse("6c20646f-8050-49ec-b3b1-80a0e58e454d"),
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 ArmOperation<SynapseWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workspaceName, data);

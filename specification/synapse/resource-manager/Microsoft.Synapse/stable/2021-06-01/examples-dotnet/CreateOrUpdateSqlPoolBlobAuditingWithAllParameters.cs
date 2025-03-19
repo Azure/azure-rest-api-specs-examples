@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolBlobAuditingWithAllParameters.json
 // this example is just showing the usage of "SqlPoolBlobAuditingPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,16 +25,13 @@ ResourceIdentifier synapseSqlPoolBlobAuditingPolicyResourceId = SynapseSqlPoolBl
 SynapseSqlPoolBlobAuditingPolicyResource synapseSqlPoolBlobAuditingPolicy = client.GetSynapseSqlPoolBlobAuditingPolicyResource(synapseSqlPoolBlobAuditingPolicyResourceId);
 
 // invoke the operation
-SynapseSqlPoolBlobAuditingPolicyData data = new SynapseSqlPoolBlobAuditingPolicyData()
+SynapseSqlPoolBlobAuditingPolicyData data = new SynapseSqlPoolBlobAuditingPolicyData
 {
     State = SynapseBlobAuditingPolicyState.Enabled,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",
     RetentionDays = 6,
-    AuditActionsAndGroups =
-    {
-    "DATABASE_LOGOUT_GROUP","DATABASE_ROLE_MEMBER_CHANGE_GROUP","UPDATE on database::TestDatabaseName by public"
-    },
+    AuditActionsAndGroups = { "DATABASE_LOGOUT_GROUP", "DATABASE_ROLE_MEMBER_CHANGE_GROUP", "UPDATE on database::TestDatabaseName by public" },
     StorageAccountSubscriptionId = Guid.Parse("00000000-1234-0000-5678-000000000000"),
     IsStorageSecondaryKeyInUse = false,
     IsAzureMonitorTargetEnabled = true,

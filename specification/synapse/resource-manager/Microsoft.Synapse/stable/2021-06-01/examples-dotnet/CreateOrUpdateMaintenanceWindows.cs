@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
+using Azure.ResourceManager.Synapse;
 
 // Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateMaintenanceWindows.json
 // this example is just showing the usage of "SqlPoolMaintenanceWindows_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -27,18 +27,15 @@ SynapseMaintenanceWindowResource synapseMaintenanceWindow = client.GetSynapseMai
 
 // invoke the operation
 string maintenanceWindowName = "current";
-SynapseMaintenanceWindowData data = new SynapseMaintenanceWindowData()
+SynapseMaintenanceWindowData data = new SynapseMaintenanceWindowData
 {
-    TimeRanges =
-    {
-    new SynapseMaintenanceWindowTimeRange()
+    TimeRanges = {new SynapseMaintenanceWindowTimeRange
     {
     DayOfWeek = SynapseDayOfWeek.Saturday,
-    StartOn = TimeSpan.Parse("00:00:00"),
+    StartOn = XmlConvert.ToTimeSpan("00:00:00"),
     Duration = XmlConvert.ToTimeSpan("PT60M"),
-    }
-    },
+    }},
 };
 await synapseMaintenanceWindow.CreateOrUpdateAsync(WaitUntil.Completed, maintenanceWindowName, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

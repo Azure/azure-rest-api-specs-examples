@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/StreamingJob_Start_CustomTime.json
 // this example is just showing the usage of "StreamingJobs_Start" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier streamingJobResourceId = StreamingJobResource.CreateResourceI
 StreamingJobResource streamingJob = client.GetStreamingJobResource(streamingJobResourceId);
 
 // invoke the operation
-StartStreamingJobContent content = new StartStreamingJobContent()
+StartStreamingJobContent content = new StartStreamingJobContent
 {
     OutputStartMode = StreamingJobOutputStartMode.CustomTime,
     OutputStartOn = DateTimeOffset.Parse("2012-12-12T12:12:12Z"),
 };
 await streamingJob.StartAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

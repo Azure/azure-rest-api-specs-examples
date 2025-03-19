@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/examples/PrivateEndpoint_Create.json
 // this example is just showing the usage of "PrivateEndpoints_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,21 +28,15 @@ StreamAnalyticsPrivateEndpointCollection collection = streamAnalyticsCluster.Get
 
 // invoke the operation
 string privateEndpointName = "testpe";
-StreamAnalyticsPrivateEndpointData data = new StreamAnalyticsPrivateEndpointData()
+StreamAnalyticsPrivateEndpointData data = new StreamAnalyticsPrivateEndpointData
 {
-    Properties = new StreamAnalyticsPrivateEndpointProperties()
+    Properties = new StreamAnalyticsPrivateEndpointProperties
     {
-        ManualPrivateLinkServiceConnections =
-        {
-        new StreamAnalyticsPrivateLinkServiceConnection()
+        ManualPrivateLinkServiceConnections = {new StreamAnalyticsPrivateLinkServiceConnection
         {
         PrivateLinkServiceId = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls"),
-        GroupIds =
-        {
-        "groupIdFromResource"
-        },
-        }
-        },
+        GroupIds = {"groupIdFromResource"},
+        }},
     },
 };
 ArmOperation<StreamAnalyticsPrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data);

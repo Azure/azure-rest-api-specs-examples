@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Input_Update_Stream_Blob.json
 // this example is just showing the usage of "Inputs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,15 +25,15 @@ ResourceIdentifier streamingJobInputResourceId = StreamingJobInputResource.Creat
 StreamingJobInputResource streamingJobInput = client.GetStreamingJobInputResource(streamingJobInputResourceId);
 
 // invoke the operation
-StreamingJobInputData input = new StreamingJobInputData()
+StreamingJobInputData input = new StreamingJobInputData
 {
-    Properties = new StreamInputProperties()
+    Properties = new StreamInputProperties
     {
-        Datasource = new BlobStreamInputDataSource()
+        Datasource = new BlobStreamInputDataSource
         {
             SourcePartitionCount = 32,
         },
-        Serialization = new CsvFormatSerialization()
+        Serialization = new CsvFormatSerialization
         {
             FieldDelimiter = "|",
             Encoding = StreamAnalyticsDataSerializationEncoding.Utf8,

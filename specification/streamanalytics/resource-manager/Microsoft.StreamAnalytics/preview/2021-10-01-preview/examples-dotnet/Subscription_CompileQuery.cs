@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Subscription_CompileQuery.json
 // this example is just showing the usage of "Subscriptions_CompileQuery" operation, for the dependent resources, they will have to be created separately.
@@ -26,24 +26,18 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 AzureLocation location = new AzureLocation("West US");
 StreamAnalyticsCompileQuery compileQuery = new StreamAnalyticsCompileQuery("SELECT\r\n    *\r\nINTO\r\n    [output1]\r\nFROM\r\n    [input1]", StreamingJobType.Cloud)
 {
-    Inputs =
+    Inputs = { new StreamAnalyticsQueryInput("input1", "Stream") },
+    Functions = {new StreamAnalyticsQueryFunction("function1", "Scalar", "Microsoft.StreamAnalytics/JavascriptUdf", new StreamingJobFunctionInput[]
     {
-    new StreamAnalyticsQueryInput("input1","Stream")
-    },
-    Functions =
-    {
-    new StreamAnalyticsQueryFunction("function1","Scalar","Microsoft.StreamAnalytics/JavascriptUdf",new StreamingJobFunctionInput[]
-    {
-    new StreamingJobFunctionInput()
+    new StreamingJobFunctionInput
     {
     DataType = "any",
-    IsConfigurationParameter = null,
+    IsConfigurationParameter = default,
     }
-    },new StreamingJobFunctionOutput()
+    }, new StreamingJobFunctionOutput
     {
     DataType = "bigint",
-    })
-    },
+    })},
     CompatibilityLevel = StreamingJobCompatibilityLevel.Level1_2,
 };
 StreamAnalyticsQueryCompilationResult result = await subscriptionResource.CompileQuerySubscriptionAsync(location, compileQuery);

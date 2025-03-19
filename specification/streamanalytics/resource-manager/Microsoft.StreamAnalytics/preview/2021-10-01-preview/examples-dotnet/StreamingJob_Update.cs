@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/StreamingJob_Update.json
 // this example is just showing the usage of "StreamingJobs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +24,7 @@ ResourceIdentifier streamingJobResourceId = StreamingJobResource.CreateResourceI
 StreamingJobResource streamingJob = client.GetStreamingJobResource(streamingJobResourceId);
 
 // invoke the operation
-StreamingJobData data = new StreamingJobData(new AzureLocation("placeholder"))
+StreamingJobData data = new StreamingJobData(default)
 {
     EventsOutOfOrderMaxDelayInSeconds = 21,
     EventsLateArrivalMaxDelayInSeconds = 13,

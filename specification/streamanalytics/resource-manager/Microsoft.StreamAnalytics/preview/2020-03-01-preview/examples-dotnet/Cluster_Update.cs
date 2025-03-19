@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/examples/Cluster_Update.json
 // this example is just showing the usage of "Clusters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +26,7 @@ StreamAnalyticsClusterResource streamAnalyticsCluster = client.GetStreamAnalytic
 // invoke the operation
 StreamAnalyticsClusterData data = new StreamAnalyticsClusterData(new AzureLocation("Central US"))
 {
-    Sku = new StreamAnalyticsClusterSku()
+    Sku = new StreamAnalyticsClusterSku
     {
         Capacity = 96,
     },

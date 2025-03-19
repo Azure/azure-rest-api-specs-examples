@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Transformation_Create.json
@@ -27,7 +27,7 @@ StreamingJobTransformationCollection collection = streamingJob.GetStreamingJobTr
 
 // invoke the operation
 string transformationName = "transformation952";
-StreamingJobTransformationData data = new StreamingJobTransformationData()
+StreamingJobTransformationData data = new StreamingJobTransformationData
 {
     StreamingUnits = 6,
     Query = "Select Id, Name from inputtest",

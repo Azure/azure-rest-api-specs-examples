@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Function_Create_AzureMLService.json
 // this example is just showing the usage of "Functions_CreateOrReplace" operation, for the dependent resources, they will have to be created separately.
@@ -28,39 +28,30 @@ StreamingJobFunctionCollection collection = streamingJob.GetStreamingJobFunction
 
 // invoke the operation
 string functionName = "function588";
-StreamingJobFunctionData data = new StreamingJobFunctionData()
+StreamingJobFunctionData data = new StreamingJobFunctionData
 {
-    Properties = new ScalarFunctionProperties()
+    Properties = new ScalarFunctionProperties
     {
-        Inputs =
-        {
-        new StreamingJobFunctionInput()
+        Inputs = {new StreamingJobFunctionInput
         {
         DataType = "nvarchar(max)",
-        }
-        },
+        }},
         OutputDataType = "nvarchar(max)",
-        Binding = new MachineLearningServiceFunctionBinding()
+        Binding = new MachineLearningServiceFunctionBinding
         {
             Endpoint = "someAzureMLEndpointURL",
             ApiKey = "someApiKey==",
-            Inputs =
-            {
-            new MachineLearningServiceInputColumn()
+            Inputs = {new MachineLearningServiceInputColumn
             {
             Name = "data",
             DataType = "array",
             MapTo = 0,
-            }
-            },
-            Outputs =
-            {
-            new MachineLearningServiceOutputColumn()
+            }},
+            Outputs = {new MachineLearningServiceOutputColumn
             {
             Name = "Sentiment",
             DataType = "string",
-            }
-            },
+            }},
             BatchSize = 1000,
             NumberOfParallelRequests = 1,
             InputRequestName = "Inputs",

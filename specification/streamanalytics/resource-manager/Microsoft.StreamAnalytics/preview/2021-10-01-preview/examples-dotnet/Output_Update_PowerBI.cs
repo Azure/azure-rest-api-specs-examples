@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StreamAnalytics;
 using Azure.ResourceManager.StreamAnalytics.Models;
+using Azure.ResourceManager.StreamAnalytics;
 
 // Generated from example definition: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/Output_Update_PowerBI.json
 // this example is just showing the usage of "Outputs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,9 +25,9 @@ ResourceIdentifier streamingJobOutputResourceId = StreamingJobOutputResource.Cre
 StreamingJobOutputResource streamingJobOutput = client.GetStreamingJobOutputResource(streamingJobOutputResourceId);
 
 // invoke the operation
-StreamingJobOutputData data = new StreamingJobOutputData()
+StreamingJobOutputData data = new StreamingJobOutputData
 {
-    Datasource = new PowerBIOutputDataSource()
+    Datasource = new PowerBIOutputDataSource
     {
         Dataset = "differentDataset",
     },

@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.FluidRelay;
 using Azure.ResourceManager.FluidRelay.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.FluidRelay;
 
 // Generated from example definition: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_CreateWithAmi.json
 // this example is just showing the usage of "FluidRelayServers_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -36,13 +36,13 @@ FluidRelayServerData data = new FluidRelayServerData(new AzureLocation("west-us"
         UserAssignedIdentities =
         {
         [new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
-        [new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity()
         },
     },
     StorageSku = FluidRelayStorageSku.Basic,
     Tags =
     {
-    ["Category"] = "sales",
+    ["Category"] = "sales"
     },
 };
 ArmOperation<FluidRelayServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fluidRelayServerName, data);

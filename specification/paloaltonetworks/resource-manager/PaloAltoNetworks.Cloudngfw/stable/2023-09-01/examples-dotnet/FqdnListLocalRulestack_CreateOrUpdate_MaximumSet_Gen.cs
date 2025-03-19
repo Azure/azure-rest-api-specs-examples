@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/FqdnListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
@@ -14,26 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LocalRulestackFqdnResource created on azure
-// for more information of creating LocalRulestackFqdnResource, please refer to the document of LocalRulestackFqdnResource
+// this example assumes you already have this LocalRulestackResource created on azure
+// for more information of creating LocalRulestackResource, please refer to the document of LocalRulestackResource
 string subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
 string resourceGroupName = "rgopenapi";
 string localRulestackName = "lrs1";
-string name = "armid1";
-ResourceIdentifier localRulestackFqdnResourceId = LocalRulestackFqdnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName, name);
-LocalRulestackFqdnResource localRulestackFqdn = client.GetLocalRulestackFqdnResource(localRulestackFqdnResourceId);
+ResourceIdentifier localRulestackResourceId = LocalRulestackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName);
+LocalRulestackResource localRulestack = client.GetLocalRulestackResource(localRulestackResourceId);
+
+// get the collection of this LocalRulestackFqdnResource
+LocalRulestackFqdnCollection collection = localRulestack.GetLocalRulestackFqdns();
 
 // invoke the operation
-LocalRulestackFqdnData data = new LocalRulestackFqdnData(new string[]
-{
-"string1","string2"
-})
+string name = "armid1";
+LocalRulestackFqdnData data = new LocalRulestackFqdnData(new string[] { "string1", "string2" })
 {
     Description = "string",
     ETag = new ETag("aaaaaaaaaaaaaaaaaa"),
     AuditComment = "string",
 };
-ArmOperation<LocalRulestackFqdnResource> lro = await localRulestackFqdn.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<LocalRulestackFqdnResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 LocalRulestackFqdnResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

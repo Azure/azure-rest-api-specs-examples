@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/Firewalls_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "Firewalls_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,120 +25,108 @@ ResourceIdentifier paloAltoNetworksFirewallResourceId = PaloAltoNetworksFirewall
 PaloAltoNetworksFirewallResource paloAltoNetworksFirewall = client.GetPaloAltoNetworksFirewallResource(paloAltoNetworksFirewallResourceId);
 
 // invoke the operation
-PaloAltoNetworksFirewallPatch patch = new PaloAltoNetworksFirewallPatch()
+PaloAltoNetworksFirewallPatch patch = new PaloAltoNetworksFirewallPatch
 {
     Identity = new ManagedServiceIdentity("None")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("key16")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("key16")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
-    ["tagName"] = "value",
+    ["tagName"] = "value"
     },
-    Properties = new FirewallUpdateProperties()
+    Properties = new FirewallUpdateProperties
     {
         PanETag = new ETag("2bf4a339-294d-4c25-b0b2-ef649e9f5c12"),
         NetworkProfile = new FirewallNetworkProfile(FirewallNetworkType.Vnet, new IPAddressInfo[]
 {
-new IPAddressInfo()
+new IPAddressInfo
 {
 ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-PublicIp1"),
 Address = "20.22.92.11",
 }
 }, AllowEgressNatType.Enabled)
         {
-            VnetConfiguration = new FirewallVnetConfiguration(new IPAddressSpaceInfo()
+            VnetConfiguration = new FirewallVnetConfiguration(new IPAddressSpaceInfo
             {
                 ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet"),
                 AddressSpace = "10.1.0.0/16",
-            }, new IPAddressSpaceInfo()
+            }, new IPAddressSpaceInfo
             {
                 ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-trust-subnet"),
                 AddressSpace = "10.1.1.0/24",
-            }, new IPAddressSpaceInfo()
+            }, new IPAddressSpaceInfo
             {
                 ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"),
                 AddressSpace = "10.1.1.0/24",
             })
             {
-                IPOfTrustSubnetForUdr = new IPAddressInfo()
+                IPOfTrustSubnetForUdr = new IPAddressInfo
                 {
                     ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"),
                     Address = "10.1.1.0/24",
                 },
             },
-            VwanConfiguration = new FirewallVwanConfiguration(new IPAddressSpaceInfo()
+            VwanConfiguration = new FirewallVwanConfiguration(new IPAddressSpaceInfo
             {
                 ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"),
                 AddressSpace = "10.1.1.0/24",
             })
             {
                 NetworkVirtualApplianceId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c12",
-                TrustSubnet = new IPAddressSpaceInfo()
+                TrustSubnet = new IPAddressSpaceInfo
                 {
                     ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-trust-subnet"),
                     AddressSpace = "10.1.1.0/24",
                 },
-                UnTrustSubnet = new IPAddressSpaceInfo()
+                UnTrustSubnet = new IPAddressSpaceInfo
                 {
                     ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"),
                     AddressSpace = "10.1.1.0/24",
                 },
-                IPOfTrustSubnetForUdr = new IPAddressInfo()
+                IPOfTrustSubnetForUdr = new IPAddressInfo
                 {
                     ResourceId = new ResourceIdentifier("/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/os-liftr-integration/providers/Microsoft.Network/virtualNetworks/os-liftr-integration-vnet/subnets/os-liftr-integration-untrust-subnet"),
                     Address = "10.1.1.0/24",
                 },
             },
-            EgressNatIP =
-            {
-            new IPAddressInfo()
+            EgressNatIP = {new IPAddressInfo
             {
             ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"),
             Address = "20.22.92.111",
-            }
-            },
-            TrustedRanges =
-            {
-            "20.22.92.11"
-            },
+            }},
+            TrustedRanges = { "20.22.92.11" },
         },
         IsPanoramaManaged = FirewallBooleanType.True,
         PanoramaConfig = new FirewallPanoramaConfiguration("bas64EncodedString"),
-        AssociatedRulestack = new RulestackDetails()
+        AssociatedRulestack = new RulestackDetails
         {
             ResourceId = new ResourceIdentifier("aaaaaaaaaa"),
             RulestackId = "aaaaaaaaaaaaaaaa",
             Location = new AzureLocation("eastus"),
         },
-        DnsSettings = new FirewallDnsSettings()
+        DnsSettings = new FirewallDnsSettings
         {
             EnableDnsProxy = AllowDnsProxyType.Disabled,
             EnabledDnsType = EnabledDnsType.Custom,
-            DnsServers =
-            {
-            new IPAddressInfo()
+            DnsServers = {new IPAddressInfo
             {
             ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-egressNatIp1"),
             Address = "20.22.92.111",
-            }
-            },
+            }},
         },
-        FrontEndSettings =
-        {
-        new FirewallFrontendSetting("frontendsetting11",FirewallProtocolType.Tcp,new FirewallEndpointConfiguration("80",new IPAddressInfo()
+        FrontEndSettings = {new FirewallFrontendSetting("frontendsetting11", FirewallProtocolType.Tcp, new FirewallEndpointConfiguration("80", new IPAddressInfo
         {
         ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp1"),
         Address = "20.22.91.251",
-        }),new FirewallEndpointConfiguration("80",new IPAddressInfo()
+        }), new FirewallEndpointConfiguration("80", new IPAddressInfo
         {
         ResourceId = new ResourceIdentifier("/subscriptions/01c7d41f-afaf-464e-8a8b-5c6f9f98cee8/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp2"),
         Address = "20.22.32.136",
-        }))
-        },
+        }))},
         PlanData = new FirewallBillingPlanInfo(FirewallBillingCycle.Weekly, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         {
             UsageType = FirewallBillingPlanUsageType.Payg,

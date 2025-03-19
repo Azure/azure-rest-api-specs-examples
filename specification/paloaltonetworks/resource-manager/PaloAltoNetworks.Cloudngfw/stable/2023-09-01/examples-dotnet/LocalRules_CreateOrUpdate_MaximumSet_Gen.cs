@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw.Models;
+using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/LocalRules_CreateOrUpdate_MaximumSet_Gen.json
 // this example is just showing the usage of "LocalRules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -33,75 +33,33 @@ LocalRulestackRuleData data = new LocalRulestackRuleData("localRule1")
     ETag = new ETag("c18e6eef-ba3e-49ee-8a85-2b36c863a9d0"),
     Description = "description of local rule",
     RuleState = RulestackStateType.Disabled,
-    Source = new SourceAddressInfo()
+    Source = new SourceAddressInfo
     {
-        Cidrs =
-        {
-        "1.0.0.1/10"
-        },
-        Countries =
-        {
-        "India"
-        },
-        Feeds =
-        {
-        "feed"
-        },
-        PrefixLists =
-        {
-        "PL1"
-        },
+        Cidrs = { "1.0.0.1/10" },
+        Countries = { "India" },
+        Feeds = { "feed" },
+        PrefixLists = { "PL1" },
     },
     NegateSource = FirewallBooleanType.True,
-    Destination = new DestinationAddressInfo()
+    Destination = new DestinationAddressInfo
     {
-        Cidrs =
-        {
-        "1.0.0.1/10"
-        },
-        Countries =
-        {
-        "India"
-        },
-        Feeds =
-        {
-        "feed"
-        },
-        PrefixLists =
-        {
-        "PL1"
-        },
-        FqdnLists =
-        {
-        "FQDN1"
-        },
+        Cidrs = { "1.0.0.1/10" },
+        Countries = { "India" },
+        Feeds = { "feed" },
+        PrefixLists = { "PL1" },
+        FqdnLists = { "FQDN1" },
     },
     NegateDestination = FirewallBooleanType.True,
-    Applications =
-    {
-    "app1"
-    },
-    Category = new EdlMatchCategory(new string[]
-{
-"https://microsoft.com"
-}, new string[]
-{
-"feed"
-}),
+    Applications = { "app1" },
+    Category = new EdlMatchCategory(new string[] { "https://microsoft.com" }, new string[] { "feed" }),
     Protocol = "HTTP",
-    ProtocolPortList =
-    {
-    "80"
-    },
+    ProtocolPortList = { "80" },
     InboundInspectionCertificate = "cert1",
     AuditComment = "example comment",
     ActionType = RulestackActionType.Allow,
     EnableLogging = RulestackStateType.Disabled,
     DecryptionRuleType = DecryptionRuleType.SslOutboundInspection,
-    Tags =
-    {
-    new RulestackTagInfo("keyName","value")
-    },
+    Tags = { new RulestackTagInfo("keyName", "value") },
 };
 ArmOperation<LocalRulestackRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, priority, data);
 LocalRulestackRuleResource result = lro.Value;

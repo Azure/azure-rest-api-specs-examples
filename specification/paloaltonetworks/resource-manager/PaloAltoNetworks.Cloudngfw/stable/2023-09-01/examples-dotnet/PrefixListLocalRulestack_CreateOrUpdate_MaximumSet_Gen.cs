@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/examples/PrefixListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
@@ -24,10 +24,7 @@ ResourceIdentifier localRulestackPrefixResourceId = LocalRulestackPrefixResource
 LocalRulestackPrefixResource localRulestackPrefix = client.GetLocalRulestackPrefixResource(localRulestackPrefixResourceId);
 
 // invoke the operation
-LocalRulestackPrefixData data = new LocalRulestackPrefixData(new string[]
-{
-"1.0.0.0/24"
-})
+LocalRulestackPrefixData data = new LocalRulestackPrefixData(new string[] { "1.0.0.0/24" })
 {
     Description = "string",
     ETag = new ETag("2bf4a339-294d-4c25-b0b2-ef649e9f5c27"),

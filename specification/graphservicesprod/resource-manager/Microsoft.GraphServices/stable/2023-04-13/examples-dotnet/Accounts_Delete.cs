@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.GraphServices;
 using Azure.ResourceManager.GraphServices.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.GraphServices;
 
 // Generated from example definition: specification/graphservicesprod/resource-manager/Microsoft.GraphServices/stable/2023-04-13/examples/Accounts_Delete.json
 // this example is just showing the usage of "Accounts_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ GraphServicesAccountResource graphServicesAccountResource = client.GetGraphServi
 // invoke the operation
 await graphServicesAccountResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

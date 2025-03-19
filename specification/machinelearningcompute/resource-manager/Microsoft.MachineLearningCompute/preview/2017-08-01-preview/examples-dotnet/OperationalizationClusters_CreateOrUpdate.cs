@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MachineLearningCompute;
 using Azure.ResourceManager.MachineLearningCompute.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MachineLearningCompute;
 
 // Generated from example definition: specification/machinelearningcompute/resource-manager/Microsoft.MachineLearningCompute/preview/2017-08-01-preview/examples/OperationalizationClusters_CreateOrUpdate.json
 // this example is just showing the usage of "OperationalizationClusters_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -36,9 +36,9 @@ OperationalizationClusterData data = new OperationalizationClusterData(new Azure
     {
         OrchestratorServicePrincipal = new ServicePrincipalProperties("abcdefghijklmnopqrt", "<secret>"),
     },
-    GlobalServiceConfiguration = new GlobalServiceConfiguration()
+    GlobalServiceConfiguration = new GlobalServiceConfiguration
     {
-        Ssl = new SslConfiguration()
+        Ssl = new SslConfiguration
         {
             Status = Status.Enabled,
             Cert = "afjdklq2131casfakld=",
@@ -49,7 +49,7 @@ OperationalizationClusterData data = new OperationalizationClusterData(new Azure
     Tags =
     {
     ["key1"] = "alpha",
-    ["key2"] = "beta",
+    ["key2"] = "beta"
     },
 };
 ArmOperation<OperationalizationClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);

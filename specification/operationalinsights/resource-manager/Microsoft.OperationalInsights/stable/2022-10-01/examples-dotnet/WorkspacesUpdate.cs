@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/WorkspacesUpdate.json
@@ -25,11 +24,11 @@ ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsW
 OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
 
 // invoke the operation
-OperationalInsightsWorkspacePatch patch = new OperationalInsightsWorkspacePatch()
+OperationalInsightsWorkspacePatch patch = new OperationalInsightsWorkspacePatch
 {
     Sku = new OperationalInsightsWorkspaceSku(OperationalInsightsWorkspaceSkuName.PerGB2018),
     RetentionInDays = 30,
-    WorkspaceCapping = new OperationalInsightsWorkspaceCapping()
+    WorkspaceCapping = new OperationalInsightsWorkspaceCapping
     {
         DailyQuotaInGB = -1,
     },

@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.OperationalInsights.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
@@ -28,7 +27,7 @@ LogAnalyticsQueryPackData data = new LogAnalyticsQueryPackData(new AzureLocation
 {
     Tags =
     {
-    ["Tag1"] = "Value1",
+    ["Tag1"] = "Value1"
     },
 };
 LogAnalyticsQueryPackResource result = await resourceGroupResource.CreateOrUpdateWithoutNameQueryPackAsync(data);

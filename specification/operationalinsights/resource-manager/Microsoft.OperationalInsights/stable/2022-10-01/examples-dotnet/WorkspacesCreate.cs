@@ -34,7 +34,7 @@ OperationalInsightsWorkspaceData data = new OperationalInsightsWorkspaceData(new
     RetentionInDays = 30,
     Tags =
     {
-    ["tag1"] = "val1",
+    ["tag1"] = "val1"
     },
 };
 ArmOperation<OperationalInsightsWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workspaceName, data);

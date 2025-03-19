@@ -31,7 +31,7 @@ LogAnalyticsQueryPackData data = new LogAnalyticsQueryPackData(new AzureLocation
 {
     Tags =
     {
-    ["Tag1"] = "Value1",
+    ["Tag1"] = "Value1"
     },
 };
 ArmOperation<LogAnalyticsQueryPackResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, queryPackName, data);

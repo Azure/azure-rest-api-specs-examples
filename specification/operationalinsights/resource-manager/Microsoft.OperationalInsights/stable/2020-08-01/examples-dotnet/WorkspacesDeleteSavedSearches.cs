@@ -27,4 +27,4 @@ OperationalInsightsSavedSearchResource operationalInsightsSavedSearch = client.G
 // invoke the operation
 await operationalInsightsSavedSearch.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPacksUpdateTagsOnly.json
@@ -25,12 +24,12 @@ ResourceIdentifier logAnalyticsQueryPackResourceId = LogAnalyticsQueryPackResour
 LogAnalyticsQueryPackResource logAnalyticsQueryPack = client.GetLogAnalyticsQueryPackResource(logAnalyticsQueryPackResourceId);
 
 // invoke the operation
-LogAnalyticsQueryPackPatch patch = new LogAnalyticsQueryPackPatch()
+LogAnalyticsQueryPackPatch patch = new LogAnalyticsQueryPackPatch
 {
     Tags =
     {
     ["Tag1"] = "Value1",
-    ["Tag2"] = "Value2",
+    ["Tag2"] = "Value2"
     },
 };
 LogAnalyticsQueryPackResource result = await logAnalyticsQueryPack.UpdateAsync(patch);

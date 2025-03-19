@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.OperationalInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesGatewaysDelete.json
@@ -28,4 +27,4 @@ OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOp
 Guid gatewayId = Guid.Parse("00000000-0000-0000-0000-00000000000");
 await operationalInsightsWorkspace.DeleteGatewayAsync(gatewayId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

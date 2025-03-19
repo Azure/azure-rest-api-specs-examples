@@ -24,12 +24,9 @@ ResourceIdentifier operationalInsightsDataExportResourceId = OperationalInsights
 OperationalInsightsDataExportResource operationalInsightsDataExport = client.GetOperationalInsightsDataExportResource(operationalInsightsDataExportResourceId);
 
 // invoke the operation
-OperationalInsightsDataExportData data = new OperationalInsightsDataExportData()
+OperationalInsightsDataExportData data = new OperationalInsightsDataExportData
 {
-    TableNames =
-    {
-    "Heartbeat"
-    },
+    TableNames = { "Heartbeat" },
     ResourceId = new ResourceIdentifier("/subscriptions/192b9f85-a39a-4276-b96d-d5cd351703f9/resourceGroups/OIAutoRest1234/providers/Microsoft.EventHub/namespaces/test"),
 };
 ArmOperation<OperationalInsightsDataExportResource> lro = await operationalInsightsDataExport.UpdateAsync(WaitUntil.Completed, data);

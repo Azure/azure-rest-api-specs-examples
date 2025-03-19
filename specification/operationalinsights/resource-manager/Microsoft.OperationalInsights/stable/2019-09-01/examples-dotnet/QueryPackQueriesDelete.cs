@@ -27,4 +27,4 @@ LogAnalyticsQueryResource logAnalyticsQuery = client.GetLogAnalyticsQueryResourc
 // invoke the operation
 await logAnalyticsQuery.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

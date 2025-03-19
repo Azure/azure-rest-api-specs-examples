@@ -27,4 +27,4 @@ OperationalInsightsTableResource operationalInsightsTable = client.GetOperationa
 // invoke the operation
 await operationalInsightsTable.MigrateAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

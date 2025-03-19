@@ -1,8 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ResourceHealth;
 
 // Generated from example definition: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/preview/2023-10-01-preview/examples/Event_GetBySubscriptionIdAndTrackingId.json
@@ -13,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceHealthEventResource created on azure
-// for more information of creating ResourceHealthEventResource, please refer to the document of ResourceHealthEventResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "subscriptionId";
-string eventTrackingId = "eventTrackingId";
-ResourceIdentifier resourceHealthEventResourceId = ResourceHealthEventResource.CreateResourceIdentifier(subscriptionId, eventTrackingId);
-ResourceHealthEventResource resourceHealthEvent = client.GetResourceHealthEventResource(resourceHealthEventResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this ResourceHealthEventResource
+ResourceHealthEventCollection collection = subscriptionResource.GetResourceHealthEvents();
 
 // invoke the operation
+string eventTrackingId = "eventTrackingId";
 string filter = "properties/status eq 'Active'";
 string queryStartTime = "7/10/2022";
-ResourceHealthEventResource result = await resourceHealthEvent.GetAsync(filter: filter, queryStartTime: queryStartTime);
+NullableResponse<ResourceHealthEventResource> response = await collection.GetIfExistsAsync(eventTrackingId, filter: filter, queryStartTime: queryStartTime);
+ResourceHealthEventResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ResourceHealthEventData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ResourceHealthEventData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

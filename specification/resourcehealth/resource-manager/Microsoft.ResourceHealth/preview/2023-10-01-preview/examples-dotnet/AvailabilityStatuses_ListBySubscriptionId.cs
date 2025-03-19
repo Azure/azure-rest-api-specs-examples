@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ResourceHealth;
 using Azure.ResourceManager.ResourceHealth.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ResourceHealth;
 
 // Generated from example definition: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/preview/2023-10-01-preview/examples/AvailabilityStatuses_ListBySubscriptionId.json
 // this example is just showing the usage of "AvailabilityStatuses_ListBySubscriptionId" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +29,4 @@ await foreach (ResourceHealthAvailabilityStatus item in subscriptionResource.Get
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

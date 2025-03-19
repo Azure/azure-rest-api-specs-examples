@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Accounts/stable/2023-01-01/examples/async-accounts-create.json
 // this example is just showing the usage of "Mediaservices_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,17 +31,14 @@ MediaServicesAccountCollection collection = resourceGroupResource.GetMediaServic
 string accountName = "contososports";
 MediaServicesAccountData data = new MediaServicesAccountData(new AzureLocation("South Central US"))
 {
-    StorageAccounts =
-    {
-    new MediaServicesStorageAccount(MediaServicesStorageAccountType.Primary)
+    StorageAccounts = {new MediaServicesStorageAccount(MediaServicesStorageAccountType.Primary)
     {
     Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosorg/providers/Microsoft.Storage/storageAccounts/teststorageaccount"),
-    }
-    },
+    }},
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 ArmOperation<MediaServicesAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);

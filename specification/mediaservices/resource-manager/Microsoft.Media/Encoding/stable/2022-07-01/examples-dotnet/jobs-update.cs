@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Encoding/stable/2022-07-01/examples/jobs-update.json
 // this example is just showing the usage of "Jobs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,14 +26,11 @@ ResourceIdentifier mediaJobResourceId = MediaJobResource.CreateResourceIdentifie
 MediaJobResource mediaJob = client.GetMediaJobResource(mediaJobResourceId);
 
 // invoke the operation
-MediaJobData data = new MediaJobData()
+MediaJobData data = new MediaJobData
 {
     Description = "Example job to illustrate update.",
     Input = new MediaJobInputAsset("job1-InputAsset"),
-    Outputs =
-    {
-    new MediaJobOutputAsset("job1-OutputAsset")
-    },
+    Outputs = { new MediaJobOutputAsset("job1-OutputAsset") },
     Priority = MediaJobPriority.High,
 };
 MediaJobResource result = await mediaJob.UpdateAsync(data);

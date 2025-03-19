@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/content-key-policies-update.json
 // this example is just showing the usage of "ContentKeyPolicies_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,16 +25,13 @@ ResourceIdentifier contentKeyPolicyResourceId = ContentKeyPolicyResource.CreateR
 ContentKeyPolicyResource contentKeyPolicy = client.GetContentKeyPolicyResource(contentKeyPolicyResourceId);
 
 // invoke the operation
-ContentKeyPolicyData data = new ContentKeyPolicyData()
+ContentKeyPolicyData data = new ContentKeyPolicyData
 {
     Description = "Updated Policy",
-    Options =
-    {
-    new ContentKeyPolicyOption(new ContentKeyPolicyClearKeyConfiguration(),new ContentKeyPolicyOpenRestriction())
+    Options = {new ContentKeyPolicyOption(new ContentKeyPolicyClearKeyConfiguration(), new ContentKeyPolicyOpenRestriction())
     {
     Name = "ClearKeyOption",
-    }
-    },
+    }},
 };
 ContentKeyPolicyResource result = await contentKeyPolicy.UpdateAsync(data);
 

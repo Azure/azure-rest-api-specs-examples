@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Encoding/stable/2022-07-01/examples/jobs-create.json
 // this example is just showing the usage of "Jobs_Create" operation, for the dependent resources, they will have to be created separately.
@@ -29,17 +29,14 @@ MediaJobCollection collection = mediaTransform.GetMediaJobs();
 
 // invoke the operation
 string jobName = "job1";
-MediaJobData data = new MediaJobData()
+MediaJobData data = new MediaJobData
 {
     Input = new MediaJobInputAsset("job1-InputAsset"),
-    Outputs =
-    {
-    new MediaJobOutputAsset("job1-OutputAsset")
-    },
+    Outputs = { new MediaJobOutputAsset("job1-OutputAsset") },
     CorrelationData =
     {
     ["Key 2"] = "Value 2",
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<MediaJobResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobName, data);

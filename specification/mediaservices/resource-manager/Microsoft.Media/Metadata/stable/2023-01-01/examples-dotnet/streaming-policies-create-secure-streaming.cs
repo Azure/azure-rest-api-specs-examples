@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Metadata/stable/2023-01-01/examples/streaming-policies-create-secure-streaming.json
 // this example is just showing the usage of "StreamingPolicies_Create" operation, for the dependent resources, they will have to be created separately.
@@ -15,57 +15,54 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StreamingPolicyResource created on azure
-// for more information of creating StreamingPolicyResource, please refer to the document of StreamingPolicyResource
+// this example assumes you already have this MediaServicesAccountResource created on azure
+// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-string streamingPolicyName = "UserCreatedSecureStreamingPolicy";
-ResourceIdentifier streamingPolicyResourceId = StreamingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, streamingPolicyName);
-StreamingPolicyResource streamingPolicy = client.GetStreamingPolicyResource(streamingPolicyResourceId);
+ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
+
+// get the collection of this StreamingPolicyResource
+StreamingPolicyCollection collection = mediaServicesAccount.GetStreamingPolicies();
 
 // invoke the operation
-StreamingPolicyData data = new StreamingPolicyData()
+string streamingPolicyName = "UserCreatedSecureStreamingPolicy";
+StreamingPolicyData data = new StreamingPolicyData
 {
     DefaultContentKeyPolicyName = "PolicyWithMultipleOptions",
-    EnvelopeEncryption = new EnvelopeEncryption()
+    EnvelopeEncryption = new EnvelopeEncryption
     {
         EnabledProtocols = new MediaEnabledProtocols(false, true, true, true),
-        ContentKeys = new StreamingPolicyContentKeys()
+        ContentKeys = new StreamingPolicyContentKeys
         {
-            DefaultKey = new EncryptionSchemeDefaultKey()
+            DefaultKey = new EncryptionSchemeDefaultKey
             {
                 Label = "aesDefaultKey",
             },
         },
         CustomKeyAcquisitionUriTemplate = "https://contoso.com/{AssetAlternativeId}/envelope/{ContentKeyId}",
     },
-    CommonEncryptionCenc = new CommonEncryptionCenc()
+    CommonEncryptionCenc = new CommonEncryptionCenc
     {
         EnabledProtocols = new MediaEnabledProtocols(false, true, false, true),
-        ClearTracks =
+        ClearTracks = {new MediaTrackSelection
         {
-        new MediaTrackSelection()
-        {
-        TrackSelections =
-        {
-        new TrackPropertyCondition(TrackPropertyType.FourCC,TrackPropertyCompareOperation.Equal)
+        TrackSelections = {new TrackPropertyCondition(TrackPropertyType.FourCC, TrackPropertyCompareOperation.Equal)
         {
         Value = "hev1",
-        }
-        },
-        }
-        },
-        ContentKeys = new StreamingPolicyContentKeys()
+        }},
+        }},
+        ContentKeys = new StreamingPolicyContentKeys
         {
-            DefaultKey = new EncryptionSchemeDefaultKey()
+            DefaultKey = new EncryptionSchemeDefaultKey
             {
                 Label = "cencDefaultKey",
             },
         },
-        Drm = new CencDrmConfiguration()
+        Drm = new CencDrmConfiguration
         {
-            PlayReady = new StreamingPolicyPlayReadyConfiguration()
+            PlayReady = new StreamingPolicyPlayReadyConfiguration
             {
                 CustomLicenseAcquisitionUriTemplate = "https://contoso.com/{AssetAlternativeId}/playready/{ContentKeyId}",
                 PlayReadyCustomAttributes = "PlayReady CustomAttributes",
@@ -73,17 +70,17 @@ StreamingPolicyData data = new StreamingPolicyData()
             WidevineCustomLicenseAcquisitionUriTemplate = "https://contoso.com/{AssetAlternativeId}/widevine/{ContentKeyId",
         },
     },
-    CommonEncryptionCbcs = new CommonEncryptionCbcs()
+    CommonEncryptionCbcs = new CommonEncryptionCbcs
     {
         EnabledProtocols = new MediaEnabledProtocols(false, false, true, false),
-        ContentKeys = new StreamingPolicyContentKeys()
+        ContentKeys = new StreamingPolicyContentKeys
         {
-            DefaultKey = new EncryptionSchemeDefaultKey()
+            DefaultKey = new EncryptionSchemeDefaultKey
             {
                 Label = "cbcsDefaultKey",
             },
         },
-        Drm = new CbcsDrmConfiguration()
+        Drm = new CbcsDrmConfiguration
         {
             FairPlay = new StreamingPolicyFairPlayConfiguration(true)
             {
@@ -92,7 +89,7 @@ StreamingPolicyData data = new StreamingPolicyData()
         },
     },
 };
-ArmOperation<StreamingPolicyResource> lro = await streamingPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StreamingPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, streamingPolicyName, data);
 StreamingPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Media;
 using Azure.ResourceManager.Media.Models;
+using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/liveevent-create.json
 // this example is just showing the usage of "LiveEvents_Create" operation, for the dependent resources, they will have to be created separately.
@@ -35,33 +35,27 @@ MediaLiveEventData data = new MediaLiveEventData(new AzureLocation("West US"))
     Description = "test event 1",
     Input = new LiveEventInput(LiveEventInputProtocol.Rtmp)
     {
-        IPAllowedIPs =
-        {
-        new IPRange()
+        IPAllowedIPs = {new IPRange
         {
         Name = "AllowAll",
         Address = IPAddress.Parse("0.0.0.0"),
         SubnetPrefixLength = 0,
-        }
-        },
+        }},
         KeyFrameIntervalDuration = XmlConvert.ToTimeSpan("PT6S"),
     },
-    Preview = new LiveEventPreview()
+    Preview = new LiveEventPreview
     {
-        IPAllowedIPs =
-        {
-        new IPRange()
+        IPAllowedIPs = {new IPRange
         {
         Name = "AllowAll",
         Address = IPAddress.Parse("0.0.0.0"),
         SubnetPrefixLength = 0,
-        }
-        },
+        }},
     },
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<MediaLiveEventResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, liveEventName, data);

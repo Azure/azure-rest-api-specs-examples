@@ -1,10 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Media;
 
 // Generated from example definition: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/liveoutput-create.json
@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaLiveOutputResource created on azure
-// for more information of creating MediaLiveOutputResource, please refer to the document of MediaLiveOutputResource
+// this example assumes you already have this MediaLiveEventResource created on azure
+// for more information of creating MediaLiveEventResource, please refer to the document of MediaLiveEventResource
 string subscriptionId = "0a6ec948-5a62-437d-b9df-934dc7c1b722";
 string resourceGroupName = "mediaresources";
 string accountName = "slitestmedia10";
 string liveEventName = "myLiveEvent1";
-string liveOutputName = "myLiveOutput1";
-ResourceIdentifier mediaLiveOutputResourceId = MediaLiveOutputResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, liveEventName, liveOutputName);
-MediaLiveOutputResource mediaLiveOutput = client.GetMediaLiveOutputResource(mediaLiveOutputResourceId);
+ResourceIdentifier mediaLiveEventResourceId = MediaLiveEventResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, liveEventName);
+MediaLiveEventResource mediaLiveEvent = client.GetMediaLiveEventResource(mediaLiveEventResourceId);
+
+// get the collection of this MediaLiveOutputResource
+MediaLiveOutputCollection collection = mediaLiveEvent.GetMediaLiveOutputs();
 
 // invoke the operation
-MediaLiveOutputData data = new MediaLiveOutputData()
+string liveOutputName = "myLiveOutput1";
+MediaLiveOutputData data = new MediaLiveOutputData
 {
     Description = "test live output 1",
     AssetName = "6f3264f5-a189-48b4-a29a-a40f22575212",
@@ -35,7 +38,7 @@ MediaLiveOutputData data = new MediaLiveOutputData()
     ManifestName = "testmanifest",
     HlsFragmentsPerTsSegment = 5,
 };
-ArmOperation<MediaLiveOutputResource> lro = await mediaLiveOutput.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MediaLiveOutputResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, liveOutputName, data);
 MediaLiveOutputResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

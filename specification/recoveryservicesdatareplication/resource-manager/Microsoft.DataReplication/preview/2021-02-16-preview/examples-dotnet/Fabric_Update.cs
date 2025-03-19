@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Fabric_Update.json
 // this example is just showing the usage of "Fabric_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier dataReplicationFabricResourceId = DataReplicationFabricResour
 DataReplicationFabricResource dataReplicationFabric = client.GetDataReplicationFabricResource(dataReplicationFabricResourceId);
 
 // invoke the operation
-DataReplicationFabricPatch patch = new DataReplicationFabricPatch()
+DataReplicationFabricPatch patch = new DataReplicationFabricPatch
 {
     Tags =
     {
-    ["key6664"] = "def",
+    ["key6664"] = "def"
     },
     Properties = new DataReplicationFabricProperties(new GeneralFabricModelCustomProperties()),
 };

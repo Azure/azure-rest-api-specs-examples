@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/CheckNameAvailability.json
 // this example is just showing the usage of "CheckNameAvailability" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("trfqtbtmusswpibw");
-DataReplicationNameAvailabilityContent content = new DataReplicationNameAvailabilityContent()
+DataReplicationNameAvailabilityContent content = new DataReplicationNameAvailabilityContent
 {
     Name = "updkdcixs",
     ResourceType = new ResourceType("gngmcancdauwhdixjjvqnfkvqc"),

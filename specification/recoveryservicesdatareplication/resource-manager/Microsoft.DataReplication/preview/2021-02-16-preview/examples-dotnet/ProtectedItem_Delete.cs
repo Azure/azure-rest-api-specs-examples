@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/ProtectedItem_Delete.json
 // this example is just showing the usage of "ProtectedItem_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +28,4 @@ DataReplicationProtectedItemResource dataReplicationProtectedItem = client.GetDa
 bool? forceDelete = true;
 await dataReplicationProtectedItem.DeleteAsync(WaitUntil.Completed, forceDelete: forceDelete);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

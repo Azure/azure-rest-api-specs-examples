@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/DeploymentPreflight.json
 // this example is just showing the usage of "DeploymentPreflight" operation, for the dependent resources, they will have to be created separately.
@@ -24,18 +25,15 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 
 // invoke the operation
 string deploymentId = "kjoiahxljomjcmvabaobumg";
-DeploymentPreflightModel body = new DeploymentPreflightModel()
+DeploymentPreflightModel body = new DeploymentPreflightModel
 {
-    Resources =
-    {
-    new DeploymentPreflightResourceInfo()
+    Resources = {new DeploymentPreflightResourceInfo
     {
     Name = "xtgugoflfc",
     DeploymentPreflightResourceType = new ResourceType("nsnaptduolqcxsikrewvgjbxqpt"),
     Location = new AzureLocation("cbsgtxkjdzwbyp"),
     ApiVersion = "otihymhvzblycdoxo",
-    }
-    },
+    }},
 };
 DeploymentPreflightModel result = await resourceGroupResource.DeploymentPreflightAsync(deploymentId, body: body);
 

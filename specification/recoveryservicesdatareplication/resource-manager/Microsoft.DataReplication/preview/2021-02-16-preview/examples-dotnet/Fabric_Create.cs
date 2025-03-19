@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Fabric_Create.json
 // this example is just showing the usage of "Fabric_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,7 +32,7 @@ DataReplicationFabricData data = new DataReplicationFabricData(new AzureLocation
 {
     Tags =
     {
-    ["key3917"] = "vgralu",
+    ["key3917"] = "vgralu"
     },
 };
 ArmOperation<DataReplicationFabricResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fabricName, data);

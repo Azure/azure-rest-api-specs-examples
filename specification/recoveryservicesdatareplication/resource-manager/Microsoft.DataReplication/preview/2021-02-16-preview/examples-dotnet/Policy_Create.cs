@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesDataReplication;
 using Azure.ResourceManager.RecoveryServicesDataReplication.Models;
+using Azure.ResourceManager.RecoveryServicesDataReplication;
 
 // Generated from example definition: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Policy_Create.json
 // this example is just showing the usage of "Policy_Create" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataReplicationPolicyResource created on azure
-// for more information of creating DataReplicationPolicyResource, please refer to the document of DataReplicationPolicyResource
+// this example assumes you already have this DataReplicationVaultResource created on azure
+// for more information of creating DataReplicationVaultResource, please refer to the document of DataReplicationVaultResource
 string subscriptionId = "930CEC23-4430-4513-B855-DBA237E2F3BF";
 string resourceGroupName = "rgrecoveryservicesdatareplication";
 string vaultName = "4";
-string policyName = "fafqwc";
-ResourceIdentifier dataReplicationPolicyResourceId = DataReplicationPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, policyName);
-DataReplicationPolicyResource dataReplicationPolicy = client.GetDataReplicationPolicyResource(dataReplicationPolicyResourceId);
+ResourceIdentifier dataReplicationVaultResourceId = DataReplicationVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
+DataReplicationVaultResource dataReplicationVault = client.GetDataReplicationVaultResource(dataReplicationVaultResourceId);
+
+// get the collection of this DataReplicationPolicyResource
+DataReplicationPolicyCollection collection = dataReplicationVault.GetDataReplicationPolicies();
 
 // invoke the operation
+string policyName = "fafqwc";
 DataReplicationPolicyData data = new DataReplicationPolicyData(new DataReplicationPolicyProperties(new GeneralPolicyModelCustomProperties()));
-ArmOperation<DataReplicationPolicyResource> lro = await dataReplicationPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataReplicationPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
 DataReplicationPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

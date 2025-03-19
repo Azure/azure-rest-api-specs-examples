@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/examples/GetCatalog.json
 // this example is just showing the usage of "GetCatalog" operation, for the dependent resources, they will have to be created separately.
@@ -22,10 +23,10 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-SubscriptionResourceGetCatalogOptions options = new SubscriptionResourceGetCatalogOptions() { ReservedResourceType = "VirtualMachines", Location = new AzureLocation("eastus") };
+SubscriptionResourceGetCatalogOptions options = new SubscriptionResourceGetCatalogOptions { ReservedResourceType = "VirtualMachines", Location = new AzureLocation("eastus") };
 await foreach (ReservationCatalog item in subscriptionResource.GetCatalogAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

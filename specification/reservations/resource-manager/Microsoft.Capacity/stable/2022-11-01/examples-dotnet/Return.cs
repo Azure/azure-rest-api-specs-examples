@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/examples/Return.json
 // this example is just showing the usage of "Return_Post" operation, for the dependent resources, they will have to be created separately.
@@ -23,13 +23,13 @@ ResourceIdentifier reservationOrderResourceId = ReservationOrderResource.CreateR
 ReservationOrderResource reservationOrder = client.GetReservationOrderResource(reservationOrderResourceId);
 
 // invoke the operation
-ReservationRefundContent content = new ReservationRefundContent()
+ReservationRefundContent content = new ReservationRefundContent
 {
-    Properties = new ReservationRefundRequestProperties()
+    Properties = new ReservationRefundRequestProperties
     {
         SessionId = Guid.Parse("10000000-aaaa-bbbb-cccc-200000000000"),
         Scope = "Reservation",
-        ReservationToReturn = new ReservationToReturn()
+        ReservationToReturn = new ReservationToReturn
         {
             ReservationId = new ResourceIdentifier("/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000004/reservations/40000000-aaaa-bbbb-cccc-100000000000"),
             Quantity = 1,

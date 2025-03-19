@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Reservations;
 using Azure.ResourceManager.Reservations.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Reservations;
 
 // Generated from example definition: specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putComputeOneSkuQuotaRequest.json
 // this example is just showing the usage of "Quota_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,13 +29,13 @@ ReservationQuotaCollection collection = subscriptionResource.GetAllReservationQu
 
 // invoke the operation
 string resourceName = "standardFSv2Family";
-ReservationQuotaData data = new ReservationQuotaData()
+ReservationQuotaData data = new ReservationQuotaData
 {
-    Properties = new QuotaProperties()
+    Properties = new QuotaProperties
     {
         Limit = 200,
         Unit = "Count",
-        ResourceName = new ReservationResourceName()
+        ResourceName = new ReservationResourceName
         {
             Value = "standardFSv2Family",
         },

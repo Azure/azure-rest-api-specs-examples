@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/LabPlans/putLabPlan.json
 // this example is just showing the usage of "LabPlans_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,14 +31,14 @@ LabPlanCollection collection = resourceGroupResource.GetLabPlans();
 string labPlanName = "testlabplan";
 LabPlanData data = new LabPlanData(new AzureLocation("westus"))
 {
-    DefaultConnectionProfile = new LabConnectionProfile()
+    DefaultConnectionProfile = new LabConnectionProfile
     {
         WebSshAccess = LabVirtualMachineConnectionType.None,
         WebRdpAccess = LabVirtualMachineConnectionType.None,
         ClientSshAccess = LabVirtualMachineConnectionType.Public,
         ClientRdpAccess = LabVirtualMachineConnectionType.Public,
     },
-    DefaultAutoShutdownProfile = new LabAutoShutdownProfile()
+    DefaultAutoShutdownProfile = new LabAutoShutdownProfile
     {
         ShutdownOnDisconnect = LabServicesEnableState.Enabled,
         ShutdownWhenNotConnected = LabServicesEnableState.Enabled,
@@ -49,7 +49,7 @@ LabPlanData data = new LabPlanData(new AzureLocation("westus"))
     },
     DefaultNetworkSubnetId = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"),
     SharedGalleryId = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Compute/galleries/testsig"),
-    SupportInfo = new LabPlanSupportInfo()
+    SupportInfo = new LabPlanSupportInfo
     {
         Uri = new Uri("help.contoso.com"),
         Email = "help@contoso.com",

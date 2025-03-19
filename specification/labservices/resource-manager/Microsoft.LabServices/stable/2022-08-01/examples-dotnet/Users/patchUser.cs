@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Users/patchUser.json
 // this example is just showing the usage of "Users_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,7 +26,7 @@ ResourceIdentifier labUserResourceId = LabUserResource.CreateResourceIdentifier(
 LabUserResource labUser = client.GetLabUserResource(labUserResourceId);
 
 // invoke the operation
-LabUserPatch patch = new LabUserPatch()
+LabUserPatch patch = new LabUserPatch
 {
     AdditionalUsageQuota = XmlConvert.ToTimeSpan("PT10H"),
 };

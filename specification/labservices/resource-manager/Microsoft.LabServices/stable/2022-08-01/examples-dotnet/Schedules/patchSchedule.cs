@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Schedules/patchSchedule.json
 // this example is just showing the usage of "Schedules_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier labServicesScheduleResourceId = LabServicesScheduleResource.C
 LabServicesScheduleResource labServicesSchedule = client.GetLabServicesScheduleResource(labServicesScheduleResourceId);
 
 // invoke the operation
-LabServicesSchedulePatch patch = new LabServicesSchedulePatch()
+LabServicesSchedulePatch patch = new LabServicesSchedulePatch
 {
     RecurrencePattern = new LabServicesRecurrencePattern(LabServicesRecurrenceFrequency.Daily, DateTimeOffset.Parse("2020-08-14T23:59:59Z"))
     {

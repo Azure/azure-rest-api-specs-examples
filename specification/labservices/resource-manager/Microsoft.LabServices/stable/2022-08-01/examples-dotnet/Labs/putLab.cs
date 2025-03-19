@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LabServices;
 using Azure.ResourceManager.LabServices.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LabServices;
 
 // Generated from example definition: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Labs/putLab.json
 // this example is just showing the usage of "Labs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,7 +31,7 @@ LabCollection collection = resourceGroupResource.GetLabs();
 string labName = "testlab";
 LabData data = new LabData(new AzureLocation("westus"))
 {
-    AutoShutdownProfile = new LabAutoShutdownProfile()
+    AutoShutdownProfile = new LabAutoShutdownProfile
     {
         ShutdownOnDisconnect = LabServicesEnableState.Enabled,
         ShutdownWhenNotConnected = LabServicesEnableState.Enabled,
@@ -40,14 +40,14 @@ LabData data = new LabData(new AzureLocation("westus"))
         NoConnectDelay = XmlConvert.ToTimeSpan("PT5M"),
         IdleDelay = XmlConvert.ToTimeSpan("PT5M"),
     },
-    ConnectionProfile = new LabConnectionProfile()
+    ConnectionProfile = new LabConnectionProfile
     {
         WebSshAccess = LabVirtualMachineConnectionType.None,
         WebRdpAccess = LabVirtualMachineConnectionType.None,
         ClientSshAccess = LabVirtualMachineConnectionType.Public,
         ClientRdpAccess = LabVirtualMachineConnectionType.Public,
     },
-    VirtualMachineProfile = new LabVirtualMachineProfile(LabVirtualMachineCreateOption.TemplateVm, new LabVirtualMachineImageReference()
+    VirtualMachineProfile = new LabVirtualMachineProfile(LabVirtualMachineCreateOption.TemplateVm, new LabVirtualMachineImageReference
     {
         Offer = "WindowsServer",
         Publisher = "Microsoft",
@@ -58,14 +58,14 @@ LabData data = new LabData(new AzureLocation("westus"))
         AdditionalCapabilitiesInstallGpuDrivers = LabServicesEnableState.Disabled,
         UseSharedPassword = LabServicesEnableState.Disabled,
     },
-    SecurityProfile = new LabSecurityProfile()
+    SecurityProfile = new LabSecurityProfile
     {
         OpenAccess = LabServicesEnableState.Disabled,
     },
     LabPlanId = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.LabServices/labPlans/testlabplan"),
     Title = "Test Lab",
     Description = "This is a test lab.",
-    NetworkProfile = new LabNetworkProfile()
+    NetworkProfile = new LabNetworkProfile
     {
         SubnetId = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"),
     },

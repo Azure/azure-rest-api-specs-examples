@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/StorageSyncServices_Create.json
 // this example is just showing the usage of "StorageSyncServices_Create" operation, for the dependent resources, they will have to be created separately.
@@ -30,9 +30,7 @@ StorageSyncServiceCollection collection = resourceGroupResource.GetStorageSyncSe
 string storageSyncServiceName = "SampleStorageSyncService_1";
 StorageSyncServiceCreateOrUpdateContent content = new StorageSyncServiceCreateOrUpdateContent(new AzureLocation("WestUS"))
 {
-    Tags =
-    {
-    },
+    Tags = { },
     IncomingTrafficPolicy = IncomingTrafficPolicy.AllowAllTraffic,
 };
 ArmOperation<StorageSyncServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, storageSyncServiceName, content);

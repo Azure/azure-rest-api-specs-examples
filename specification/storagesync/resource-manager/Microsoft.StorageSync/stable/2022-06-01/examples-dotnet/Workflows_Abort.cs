@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/Workflows_Abort.json
@@ -25,4 +26,4 @@ StorageSyncWorkflowResource storageSyncWorkflow = client.GetStorageSyncWorkflowR
 // invoke the operation
 await storageSyncWorkflow.AbortAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/SyncGroups_Create.json
 // this example is just showing the usage of "SyncGroups_Create" operation, for the dependent resources, they will have to be created separately.
@@ -26,11 +25,9 @@ ResourceIdentifier storageSyncGroupResourceId = StorageSyncGroupResource.CreateR
 StorageSyncGroupResource storageSyncGroup = client.GetStorageSyncGroupResource(storageSyncGroupResourceId);
 
 // invoke the operation
-StorageSyncGroupCreateOrUpdateContent content = new StorageSyncGroupCreateOrUpdateContent()
+StorageSyncGroupCreateOrUpdateContent content = new StorageSyncGroupCreateOrUpdateContent
 {
-    Properties = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
+    Properties = BinaryData.FromObjectAsJson(new object()),
 };
 ArmOperation<StorageSyncGroupResource> lro = await storageSyncGroup.UpdateAsync(WaitUntil.Completed, content);
 StorageSyncGroupResource result = lro.Value;

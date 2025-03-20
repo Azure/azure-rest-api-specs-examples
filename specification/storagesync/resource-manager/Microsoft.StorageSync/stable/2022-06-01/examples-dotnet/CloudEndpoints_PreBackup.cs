@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/CloudEndpoints_PreBackup.json
 // this example is just showing the usage of "CloudEndpoints_PreBackup" operation, for the dependent resources, they will have to be created separately.
@@ -26,10 +26,10 @@ ResourceIdentifier cloudEndpointResourceId = CloudEndpointResource.CreateResourc
 CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpointResourceId);
 
 // invoke the operation
-CloudEndpointBackupContent content = new CloudEndpointBackupContent()
+CloudEndpointBackupContent content = new CloudEndpointBackupContent
 {
     AzureFileShare = "https://sampleserver.file.core.test-cint.azure-test.net/sampleFileShare",
 };
 await cloudEndpoint.PreBackupAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

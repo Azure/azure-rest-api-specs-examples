@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/CloudEndpoints_RestoreHeatbeat.json
-// this example is just showing the usage of "CloudEndpoints_restoreheartbeat" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "CloudEndpoints_Restoreheartbeat" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -28,4 +28,4 @@ CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpo
 // invoke the operation
 await cloudEndpoint.RestoreHeartbeatAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

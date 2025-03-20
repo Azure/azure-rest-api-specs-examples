@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.StorageSync;
 using Azure.ResourceManager.StorageSync.Models;
+using Azure.ResourceManager.StorageSync;
 
 // Generated from example definition: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-06-01/examples/CloudEndpoints_PostRestore.json
 // this example is just showing the usage of "CloudEndpoints_PostRestore" operation, for the dependent resources, they will have to be created separately.
@@ -26,32 +26,29 @@ ResourceIdentifier cloudEndpointResourceId = CloudEndpointResource.CreateResourc
 CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpointResourceId);
 
 // invoke the operation
-PostRestoreContent content = new PostRestoreContent()
+PostRestoreContent content = new PostRestoreContent
 {
     AzureFileShareUri = new Uri("https://hfsazbackupdevintncus2.file.core.test-cint.azure-test.net/sampleFileShare"),
     Status = "Succeeded",
     SourceAzureFileShareUri = new Uri("https://hfsazbackupdevintncus2.file.core.test-cint.azure-test.net/sampleFileShare"),
-    RestoreFileSpec =
-    {
-    new RestoreFileSpec()
+    RestoreFileSpec = {new RestoreFileSpec
     {
     Path = "text1.txt",
     IsDirectory = false,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir",
     IsDirectory = true,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir/SubDir",
     IsDirectory = false,
-    },new RestoreFileSpec()
+    }, new RestoreFileSpec
     {
     Path = "MyDir/SubDir/File1.pdf",
     IsDirectory = false,
-    }
-    },
+    }},
 };
 await cloudEndpoint.PostRestoreAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

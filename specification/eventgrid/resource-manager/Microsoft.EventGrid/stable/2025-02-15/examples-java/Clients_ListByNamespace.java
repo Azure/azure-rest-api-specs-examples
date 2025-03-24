@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Clients ListByNamespace.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2025-02-15/examples/Clients_ListByNamespace.
+     * json
+     */
+    /**
+     * Sample code: Clients_ListByNamespace.
+     * 
+     * @param manager Entry point to EventGridManager.
+     */
+    public static void clientsListByNamespace(com.azure.resourcemanager.eventgrid.EventGridManager manager) {
+        manager.clients().listByNamespace("examplerg", "namespace123", null, null, com.azure.core.util.Context.NONE);
+    }
+}

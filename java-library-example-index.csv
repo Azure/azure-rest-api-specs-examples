@@ -5244,3 +5244,4 @@ id,name,language,tag,package,version,date_epoch,date
 5243,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2@v2.0.0-beta.1,go,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2.0.0-beta.1,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes,v2.0.0-beta.1,1742801704,03/24/2025
 5244,@azure/arm-containerservice@22.0.0-beta.1,js,@azure/arm-containerservice_22.0.0-beta.1,@azure/arm-containerservice,22.0.0-beta.1,1742799827,03/24/2025
 5245,azure-mgmt-pineconevectordb@1.0.0b2,python,azure-mgmt-pineconevectordb_1.0.0b2,azure-mgmt-pineconevectordb,1.0.0b2,1742786988,03/24/2025
+5246,azure-mgmt-compute@34.1.0,python,azure-mgmt-compute_34.1.0,azure-mgmt-compute,34.1.0,1742786974,03/24/2025

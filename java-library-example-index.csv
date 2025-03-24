@@ -5241,3 +5241,4 @@ id,name,language,tag,package,version,date_epoch,date
 5240,"Azure.ResourceManager.StorageSync,1.2.1",dotnet,Azure.ResourceManager.StorageSync_1.2.1,Azure.ResourceManager.StorageSync,1.2.1,1742295730,03/18/2025
 5241,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox/v2@v2.2.0,go,sdk/resourcemanager/databox/armdatabox/v2.2.0,sdk/resourcemanager/databox/armdatabox,v2.2.0,1742449311,03/20/2025
 5242,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0,java,azure-resourcemanager-eventgrid_1.2.0,azure-resourcemanager-eventgrid,1.2.0,1742793901,03/24/2025
+5243,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2@v2.0.0-beta.1,go,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2.0.0-beta.1,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes,v2.0.0-beta.1,1742801704,03/24/2025

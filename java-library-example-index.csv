@@ -5240,3 +5240,9 @@ id,name,language,tag,package,version,date_epoch,date
 5239,"Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.1",dotnet,Azure.ResourceManager.DatabaseWatcher_1.0.0-beta.1,Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.1,1742373384,03/19/2025
 5240,"Azure.ResourceManager.StorageSync,1.2.1",dotnet,Azure.ResourceManager.StorageSync_1.2.1,Azure.ResourceManager.StorageSync,1.2.1,1742295730,03/18/2025
 5241,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox/v2@v2.2.0,go,sdk/resourcemanager/databox/armdatabox/v2.2.0,sdk/resourcemanager/databox/armdatabox,v2.2.0,1742449311,03/20/2025
+5242,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0,java,azure-resourcemanager-eventgrid_1.2.0,azure-resourcemanager-eventgrid,1.2.0,1742793901,03/24/2025
+5243,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2@v2.0.0-beta.1,go,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2.0.0-beta.1,sdk/resourcemanager/hybridkubernetes/armhybridkubernetes,v2.0.0-beta.1,1742801704,03/24/2025
+5244,@azure/arm-containerservice@22.0.0-beta.1,js,@azure/arm-containerservice_22.0.0-beta.1,@azure/arm-containerservice,22.0.0-beta.1,1742799827,03/24/2025
+5245,azure-mgmt-pineconevectordb@1.0.0b2,python,azure-mgmt-pineconevectordb_1.0.0b2,azure-mgmt-pineconevectordb,1.0.0b2,1742786988,03/24/2025
+5246,azure-mgmt-compute@34.1.0,python,azure-mgmt-compute_34.1.0,azure-mgmt-compute,34.1.0,1742786974,03/24/2025
+5247,azure-mgmt-eventgrid@10.4.0,python,azure-mgmt-eventgrid_10.4.0,azure-mgmt-eventgrid,10.4.0,1742786957,03/24/2025

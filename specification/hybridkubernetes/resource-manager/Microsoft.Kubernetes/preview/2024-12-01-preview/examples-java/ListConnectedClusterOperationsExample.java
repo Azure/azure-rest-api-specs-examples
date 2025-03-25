@@ -1,0 +1,20 @@
+
+/**
+ * Samples for Operations Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-12-01-preview/examples/
+     * ListConnectedClusterOperationsExample.json
+     */
+    /**
+     * Sample code: ListConnectedClusterOperationsExample.
+     * 
+     * @param manager Entry point to HybridKubernetesManager.
+     */
+    public static void listConnectedClusterOperationsExample(
+        com.azure.resourcemanager.hybridkubernetes.HybridKubernetesManager manager) {
+        manager.operations().get(com.azure.core.util.Context.NONE);
+    }
+}

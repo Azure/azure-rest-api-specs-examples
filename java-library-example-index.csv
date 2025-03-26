@@ -5251,3 +5251,4 @@ id,name,language,tag,package,version,date_epoch,date
 5250,azure-mgmt-postgresqlflexibleservers@1.1.0,python,azure-mgmt-postgresqlflexibleservers_1.1.0,azure-mgmt-postgresqlflexibleservers,1.1.0,1742887728,03/25/2025
 5251,azure-mgmt-durabletask@1.0.0b1,python,azure-mgmt-durabletask_1.0.0b1,azure-mgmt-durabletask,1.0.0b1,1742885529,03/25/2025
 5252,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v0.1.0,go,sdk/resourcemanager/durabletask/armdurabletask/v0.1.0,sdk/resourcemanager/durabletask/armdurabletask,v0.1.0,1742957083,03/26/2025
+5253,azure-mgmt-hybridkubernetes@1.2.0b2,python,azure-mgmt-hybridkubernetes_1.2.0b2,azure-mgmt-hybridkubernetes,1.2.0b2,1742972031,03/26/2025

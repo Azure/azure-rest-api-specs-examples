@@ -5246,3 +5246,7 @@ id,name,language,tag,package,version,date_epoch,date
 5245,azure-mgmt-pineconevectordb@1.0.0b2,python,azure-mgmt-pineconevectordb_1.0.0b2,azure-mgmt-pineconevectordb,1.0.0b2,1742786988,03/24/2025
 5246,azure-mgmt-compute@34.1.0,python,azure-mgmt-compute_34.1.0,azure-mgmt-compute,34.1.0,1742786974,03/24/2025
 5247,azure-mgmt-eventgrid@10.4.0,python,azure-mgmt-eventgrid_10.4.0,azure-mgmt-eventgrid,10.4.0,1742786957,03/24/2025
+5248,com.azure.resourcemanager:azure-resourcemanager-durabletask:1.0.0-beta.1,java,azure-resourcemanager-durabletask_1.0.0-beta.1,azure-resourcemanager-durabletask,1.0.0-beta.1,1742881938,03/25/2025
+5249,com.azure.resourcemanager:azure-resourcemanager-hybridkubernetes:1.1.0-beta.1,java,azure-resourcemanager-hybridkubernetes_1.1.0-beta.1,azure-resourcemanager-hybridkubernetes,1.1.0-beta.1,1742868786,03/25/2025
+5250,azure-mgmt-postgresqlflexibleservers@1.1.0,python,azure-mgmt-postgresqlflexibleservers_1.1.0,azure-mgmt-postgresqlflexibleservers,1.1.0,1742887728,03/25/2025
+5251,azure-mgmt-durabletask@1.0.0b1,python,azure-mgmt-durabletask_1.0.0b1,azure-mgmt-durabletask,1.0.0b1,1742885529,03/25/2025

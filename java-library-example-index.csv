@@ -5254,3 +5254,4 @@ id,name,language,tag,package,version,date_epoch,date
 5253,azure-mgmt-hybridkubernetes@1.2.0b2,python,azure-mgmt-hybridkubernetes_1.2.0b2,azure-mgmt-hybridkubernetes,1.2.0b2,1742972031,03/26/2025
 5254,azure-mgmt-sql@4.0.0b21,python,azure-mgmt-sql_4.0.0b21,azure-mgmt-sql,4.0.0b21,1742972029,03/26/2025
 5255,com.azure.resourcemanager:azure-resourcemanager:2.49.0,java,azure-resourcemanager_2.49.0,azure-resourcemanager,2.49.0,1743145170,03/28/2025
+5256,com.azure.resourcemanager:azure-resourcemanager-databox:1.1.0,java,azure-resourcemanager-databox_1.1.0,azure-resourcemanager-databox,1.1.0,1743127561,03/28/2025

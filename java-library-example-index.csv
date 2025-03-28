@@ -5258,3 +5258,4 @@ id,name,language,tag,package,version,date_epoch,date
 5257,@azure/arm-durabletask@1.0.0-beta.1,js,@azure/arm-durabletask_1.0.0-beta.1,@azure/arm-durabletask,1.0.0-beta.1,1743152182,03/28/2025
 5258,@azure/arm-agricultureplatform@1.0.0-beta.1,js,@azure/arm-agricultureplatform_1.0.0-beta.1,@azure/arm-agricultureplatform,1.0.0-beta.1,1743152153,03/28/2025
 5259,@azure/arm-hybridconnectivity@2.0.0-beta.1,js,@azure/arm-hybridconnectivity_2.0.0-beta.1,@azure/arm-hybridconnectivity,2.0.0-beta.1,1743150692,03/28/2025
+5260,@azure/arm-hybridkubernetes@3.0.0-beta.1,js,@azure/arm-hybridkubernetes_3.0.0-beta.1,@azure/arm-hybridkubernetes,3.0.0-beta.1,1743149598,03/28/2025

@@ -23,7 +23,7 @@ async function createClusterExample() {
   const result = await client.connectedClusterOperations.beginCreateAndWait(
     resourceGroupName,
     clusterName,
-    connectedCluster
+    connectedCluster,
   );
   console.log(result);
 }

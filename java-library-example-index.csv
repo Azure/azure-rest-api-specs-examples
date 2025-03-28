@@ -5261,3 +5261,4 @@ id,name,language,tag,package,version,date_epoch,date
 5260,@azure/arm-hybridkubernetes@3.0.0-beta.1,js,@azure/arm-hybridkubernetes_3.0.0-beta.1,@azure/arm-hybridkubernetes,3.0.0-beta.1,1743149598,03/28/2025
 5261,@azure/arm-containerservice@21.5.0,js,@azure/arm-containerservice_21.5.0,@azure/arm-containerservice,21.5.0,1743149587,03/28/2025
 5262,@azure/arm-appinsights@5.0.0-beta.8,js,@azure/arm-appinsights_5.0.0-beta.8,@azure/arm-appinsights,5.0.0-beta.8,1743149536,03/28/2025
+5263,@azure/arm-pineconevectordb@1.0.0-beta.2,js,@azure/arm-pineconevectordb_1.0.0-beta.2,@azure/arm-pineconevectordb,1.0.0-beta.2,1743149496,03/28/2025

@@ -5270,3 +5270,4 @@ id,name,language,tag,package,version,date_epoch,date
 5269,@azure/arm-policy@5.2.0-beta.2,js,@azure/arm-policy_5.2.0-beta.2,@azure/arm-policy,5.2.0-beta.2,1743136227,03/28/2025
 5270,@azure/arm-eventgrid@14.2.0,js,@azure/arm-eventgrid_14.2.0,@azure/arm-eventgrid,14.2.0,1743136187,03/28/2025
 5271,@azure/arm-databox@5.1.0,js,@azure/arm-databox_5.1.0,@azure/arm-databox,5.1.0,1743135031,03/28/2025
+5272,"Azure.ResourceManager.Monitor,1.4.0-beta.3",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.3,Azure.ResourceManager.Monitor,1.4.0-beta.3,1743142745,03/28/2025

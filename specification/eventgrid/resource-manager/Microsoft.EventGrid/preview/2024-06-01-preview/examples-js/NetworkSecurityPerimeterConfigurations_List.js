@@ -1,5 +1,6 @@
 const { EventGridManagementClient } = require("@azure/arm-eventgrid");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get all network security perimeter configurations associated with a topic or domain.
@@ -16,7 +17,7 @@ async function networkSecurityPerimeterConfigurationsList() {
   const credential = new DefaultAzureCredential();
   const client = new EventGridManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.networkSecurityPerimeterConfigurations.list(
+  for await (const item of client.networkSecurityPerimeterConfigurations.list(
     resourceGroupName,
     resourceType,
     resourceName,

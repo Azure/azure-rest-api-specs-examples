@@ -1,5 +1,6 @@
 const { EventGridManagementClient } = require("@azure/arm-eventgrid");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get properties of a partner destination.

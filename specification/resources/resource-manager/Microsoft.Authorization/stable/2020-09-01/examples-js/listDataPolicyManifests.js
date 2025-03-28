@@ -9,12 +9,10 @@ require("dotenv/config");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/examples/listDataPolicyManifests.json
  */
 async function listDataPolicyManifests() {
-  const subscriptionId =
-    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
-  const client = new PolicyClient(credential, subscriptionId);
+  const client = new PolicyClient(credential);
   const resArray = new Array();
-  for await (let item of client.dataPolicyManifests.list()) {
+  for await (const item of client.dataPolicyManifests.list()) {
     resArray.push(item);
   }
   console.log(resArray);

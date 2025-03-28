@@ -15,7 +15,7 @@ async function listGalleryInVMAccessControlProfilesInAGallery() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.galleryInVMAccessControlProfiles.listByGallery(
+  for await (const item of client.galleryInVMAccessControlProfiles.listByGallery(
     resourceGroupName,
     galleryName,
   )) {

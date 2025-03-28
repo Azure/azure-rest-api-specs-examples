@@ -15,7 +15,7 @@ async function listsAllAvailableResourceSkUsForTheSpecifiedRegion() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.resourceSkus.list(options)) {
+  for await (const item of client.resourceSkus.list(options)) {
     resArray.push(item);
   }
   console.log(resArray);

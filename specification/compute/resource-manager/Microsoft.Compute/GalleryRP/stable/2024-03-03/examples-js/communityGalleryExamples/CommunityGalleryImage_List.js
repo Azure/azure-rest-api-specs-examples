@@ -15,7 +15,7 @@ async function listCommunityGalleryImages() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.communityGalleryImages.list(location, publicGalleryName)) {
+  for await (const item of client.communityGalleryImages.list(location, publicGalleryName)) {
     resArray.push(item);
   }
   console.log(resArray);

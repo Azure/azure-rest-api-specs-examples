@@ -5266,3 +5266,4 @@ id,name,language,tag,package,version,date_epoch,date
 5265,@azure/arm-compute@22.4.0,js,@azure/arm-compute_22.4.0,@azure/arm-compute,22.4.0,1743149429,03/28/2025
 5266,@azure/arm-migrationassessment@1.0.0-beta.1,js,@azure/arm-migrationassessment_1.0.0-beta.1,@azure/arm-migrationassessment,1.0.0-beta.1,1743149331,03/28/2025
 5267,@azure/arm-weightsandbiases@1.0.0-beta.1,js,@azure/arm-weightsandbiases_1.0.0-beta.1,@azure/arm-weightsandbiases,1.0.0-beta.1,1743149298,03/28/2025
+5268,@azure/arm-arizeaiobservabilityeval@1.0.0-beta.1,js,@azure/arm-arizeaiobservabilityeval_1.0.0-beta.1,@azure/arm-arizeaiobservabilityeval,1.0.0-beta.1,1743149250,03/28/2025

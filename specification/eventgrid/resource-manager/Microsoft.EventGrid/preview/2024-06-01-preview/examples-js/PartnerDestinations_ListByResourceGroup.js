@@ -1,5 +1,6 @@
 const { EventGridManagementClient } = require("@azure/arm-eventgrid");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List all the partner destinations under a resource group.
@@ -14,7 +15,7 @@ async function partnerDestinationsListByResourceGroup() {
   const credential = new DefaultAzureCredential();
   const client = new EventGridManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.partnerDestinations.listByResourceGroup(resourceGroupName)) {
+  for await (const item of client.partnerDestinations.listByResourceGroup(resourceGroupName)) {
     resArray.push(item);
   }
   console.log(resArray);

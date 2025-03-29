@@ -1,5 +1,6 @@
 const { EventGridManagementClient } = require("@azure/arm-eventgrid");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Reconcile a specific network security perimeter configuration for a given network security perimeter association with a topic or domain.

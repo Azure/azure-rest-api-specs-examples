@@ -1,5 +1,6 @@
 const { EventGridManagementClient } = require("@azure/arm-eventgrid");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List all the partner destinations under an Azure subscription.
@@ -13,7 +14,7 @@ async function partnerDestinationsListBySubscription() {
   const credential = new DefaultAzureCredential();
   const client = new EventGridManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.partnerDestinations.listBySubscription()) {
+  for await (const item of client.partnerDestinations.listBySubscription()) {
     resArray.push(item);
   }
   console.log(resArray);

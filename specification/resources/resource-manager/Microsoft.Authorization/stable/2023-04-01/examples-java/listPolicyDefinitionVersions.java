@@ -1,0 +1,20 @@
+
+/**
+ * Samples for PolicyDefinitionVersions List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/examples/
+     * listPolicyDefinitionVersions.json
+     */
+    /**
+     * Sample code: List policy definition versions by subscription.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void
+        listPolicyDefinitionVersionsBySubscription(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.genericResources().manager().policyClient().getPolicyDefinitionVersions().list("ResourceNaming", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

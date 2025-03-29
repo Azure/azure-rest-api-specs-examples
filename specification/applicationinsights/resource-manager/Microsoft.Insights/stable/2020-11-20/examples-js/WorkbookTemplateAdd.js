@@ -1,5 +1,6 @@
 const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create a new workbook template.
@@ -8,8 +9,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/examples/WorkbookTemplateAdd.json
  */
 async function workbookTemplateAdd() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId = process.env["APPLICATIONINSIGHTS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName =
+    process.env["APPLICATIONINSIGHTS_RESOURCE_GROUP"] || "my-resource-group";
   const resourceName = "testtemplate2";
   const workbookTemplateProperties = {
     author: "Contoso",
@@ -59,9 +61,7 @@ async function workbookTemplateAdd() {
   const result = await client.workbookTemplates.createOrUpdate(
     resourceGroupName,
     resourceName,
-    workbookTemplateProperties
+    workbookTemplateProperties,
   );
   console.log(result);
 }
-
-workbookTemplateAdd().catch(console.error);

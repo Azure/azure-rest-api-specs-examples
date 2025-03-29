@@ -1,5 +1,6 @@
 const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Deletes a specific Analytics Items defined within an Application Insights component.
@@ -8,8 +9,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnalyticsItemDelete.json
  */
 async function analyticsItemDelete() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId = process.env["APPLICATIONINSIGHTS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName =
+    process.env["APPLICATIONINSIGHTS_RESOURCE_GROUP"] || "my-resource-group";
   const resourceName = "my-component";
   const scopePath = "analyticsItems";
   const id = "3466c160-4a10-4df8-afdf-0007f3f6dee5";
@@ -20,9 +22,7 @@ async function analyticsItemDelete() {
     resourceGroupName,
     resourceName,
     scopePath,
-    options
+    options,
   );
   console.log(result);
 }
-
-analyticsItemDelete().catch(console.error);

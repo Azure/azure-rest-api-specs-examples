@@ -1,5 +1,6 @@
 const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the list of annotations for a component for given time range
@@ -8,8 +9,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnnotationsList.json
  */
 async function annotationsList() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId = process.env["APPLICATIONINSIGHTS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName =
+    process.env["APPLICATIONINSIGHTS_RESOURCE_GROUP"] || "my-resource-group";
   const resourceName = "my-component";
   const start = "2018-02-05T00%253A30%253A00.000Z";
   const end = "2018-02-06T00%253A33A00.000Z";
@@ -21,5 +23,3 @@ async function annotationsList() {
   }
   console.log(resArray);
 }
-
-annotationsList().catch(console.error);

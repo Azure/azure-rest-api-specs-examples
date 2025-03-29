@@ -1,5 +1,6 @@
 const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a favorite that has already been added to an Application Insights component.
@@ -8,8 +9,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/FavoriteUpdate.json
  */
 async function favoriteList() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId = process.env["APPLICATIONINSIGHTS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName =
+    process.env["APPLICATIONINSIGHTS_RESOURCE_GROUP"] || "my-resource-group";
   const resourceName = "my-ai-component";
   const favoriteId = "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2";
   const favoriteProperties = {
@@ -31,9 +33,7 @@ async function favoriteList() {
     resourceGroupName,
     resourceName,
     favoriteId,
-    favoriteProperties
+    favoriteProperties,
   );
   console.log(result);
 }
-
-favoriteList().catch(console.error);

@@ -22,7 +22,7 @@ async function workbookUpdate() {
     sourceId:
       "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/MyGroup/providers/Microsoft.Web/sites/MyTestApp-CodeLens",
     storageUri: undefined,
-    tags: { "0": "TagSample01", "1": "TagSample02" },
+    tags: { 0: "TagSample01", 1: "TagSample02" },
     version: "ME",
   };
   const credential = new DefaultAzureCredential();
@@ -30,7 +30,7 @@ async function workbookUpdate() {
   const result = await client.myWorkbooks.update(
     resourceGroupName,
     resourceName,
-    workbookProperties
+    workbookProperties,
   );
   console.log(result);
 }

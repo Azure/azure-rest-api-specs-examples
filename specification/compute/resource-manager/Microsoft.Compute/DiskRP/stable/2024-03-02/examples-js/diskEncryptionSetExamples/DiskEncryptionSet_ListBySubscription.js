@@ -13,7 +13,7 @@ async function listAllDiskEncryptionSetsInASubscription() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.diskEncryptionSets.list()) {
+  for await (const item of client.diskEncryptionSets.list()) {
     resArray.push(item);
   }
   console.log(resArray);

@@ -16,7 +16,7 @@ async function listSharedGalleryImageVersions() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.sharedGalleryImageVersions.list(
+  for await (const item of client.sharedGalleryImageVersions.list(
     location,
     galleryUniqueName,
     galleryImageName,

@@ -13,7 +13,7 @@ async function listAllManagedDisksInASubscription() {
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.disks.list()) {
+  for await (const item of client.disks.list()) {
     resArray.push(item);
   }
   console.log(resArray);

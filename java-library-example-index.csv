@@ -5281,3 +5281,4 @@ id,name,language,tag,package,version,date_epoch,date
 5280,com.azure.resourcemanager:azure-resourcemanager-weightsandbiases:1.0.0-beta.1,java,azure-resourcemanager-weightsandbiases_1.0.0-beta.1,azure-resourcemanager-weightsandbiases,1.0.0-beta.1,1743412669,03/31/2025
 5281,com.azure.resourcemanager:azure-resourcemanager-arizeaiobservabilityeval:1.0.0-beta.1,java,azure-resourcemanager-arizeaiobservabilityeval_1.0.0-beta.1,azure-resourcemanager-arizeaiobservabilityeval,1.0.0-beta.1,1743409218,03/31/2025
 5282,"Azure.ResourceManager.DataBox,1.1.0",dotnet,Azure.ResourceManager.DataBox_1.1.0,Azure.ResourceManager.DataBox,1.1.0,1743409034,03/31/2025
+5283,"Azure.ResourceManager.EventGrid,1.1.0",dotnet,Azure.ResourceManager.EventGrid_1.1.0,Azure.ResourceManager.EventGrid,1.1.0,1743408047,03/31/2025

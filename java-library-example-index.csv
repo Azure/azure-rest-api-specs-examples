@@ -5271,3 +5271,10 @@ id,name,language,tag,package,version,date_epoch,date
 5270,@azure/arm-eventgrid@14.2.0,js,@azure/arm-eventgrid_14.2.0,@azure/arm-eventgrid,14.2.0,1743136187,03/28/2025
 5271,@azure/arm-databox@5.1.0,js,@azure/arm-databox_5.1.0,@azure/arm-databox,5.1.0,1743135031,03/28/2025
 5272,"Azure.ResourceManager.Monitor,1.4.0-beta.3",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.3,Azure.ResourceManager.Monitor,1.4.0-beta.3,1743142745,03/28/2025
+5273,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/arizeaiobservabilityeval/armarizeaiobservabilityeval@v0.1.0,go,sdk/resourcemanager/arizeaiobservabilityeval/armarizeaiobservabilityeval/v0.1.0,sdk/resourcemanager/arizeaiobservabilityeval/armarizeaiobservabilityeval,v0.1.0,1743399257,03/31/2025
+5274,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/weightsandbiases/armweightsandbiases@v0.1.0,go,sdk/resourcemanager/weightsandbiases/armweightsandbiases/v0.1.0,sdk/resourcemanager/weightsandbiases/armweightsandbiases,v0.1.0,1743395096,03/31/2025
+5275,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.5.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.5.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.5.0,1742980260,03/26/2025
+5276,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.4.0,go,sdk/resourcemanager/compute/armcompute/v6.4.0,sdk/resourcemanager/compute/armcompute,v6.4.0,1742960841,03/26/2025
+5277,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2@v2.3.0,go,sdk/resourcemanager/eventgrid/armeventgrid/v2.3.0,sdk/resourcemanager/eventgrid/armeventgrid,v2.3.0,1742960815,03/26/2025
+5278,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault@v1.5.0,go,sdk/resourcemanager/keyvault/armkeyvault/v1.5.0,sdk/resourcemanager/keyvault/armkeyvault,v1.5.0,1742957210,03/26/2025
+5279,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4@v4.1.0,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4.1.0,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v4.1.0,1742888548,03/25/2025

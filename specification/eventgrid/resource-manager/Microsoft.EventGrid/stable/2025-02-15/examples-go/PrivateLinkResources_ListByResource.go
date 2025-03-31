@@ -1,0 +1,52 @@
+package armeventgrid_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ee1eec42dcc710ff88db2d1bf574b2f9afe3d654/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2025-02-15/examples/PrivateLinkResources_ListByResource.json
+func ExamplePrivateLinkResourcesClient_NewListByResourcePager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armeventgrid.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewPrivateLinkResourcesClient().NewListByResourcePager("examplerg", "topics", "exampletopic1", &armeventgrid.PrivateLinkResourcesClientListByResourceOptions{Filter: nil,
+		Top: nil,
+	})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateLinkResourcesListResult = armeventgrid.PrivateLinkResourcesListResult{
+		// 	Value: []*armeventgrid.PrivateLinkResource{
+		// 		{
+		// 			Name: to.Ptr("topic"),
+		// 			Type: to.Ptr("Microsoft.EventGrid/topics/privateLinkResources"),
+		// 			ID: to.Ptr("/subscriptions/5B4B650E-28B9-4790-B3AB-DDBD88D727C4/resourceGroups/amh/providers/Microsoft.EventGrid/topics/exampletopic1/privateLinkResources/topic"),
+		// 			Properties: &armeventgrid.PrivateLinkResourceProperties{
+		// 				DisplayName: to.Ptr("Event Grid topic"),
+		// 				GroupID: to.Ptr("topic"),
+		// 				RequiredMembers: []*string{
+		// 					to.Ptr("topic")},
+		// 					RequiredZoneNames: []*string{
+		// 						to.Ptr("privatelink.eventgrid.azure.net")},
+		// 					},
+		// 			}},
+		// 		}
+	}
+}

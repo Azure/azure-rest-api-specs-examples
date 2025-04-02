@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.hybridconnectivity import HybridConnectivityMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-hybridconnectivity
+# USAGE
+    python generate_aws_template_post.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = HybridConnectivityMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.generate_aws_template.post(
+        generate_aws_template_request={
+            "connectorId": "pnxcfjidglabnwxit",
+            "solutionTypes": [{"solutionSettings": {}, "solutionType": "hjyownzpfxwiufmd"}],
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: 2024-12-01/GenerateAwsTemplate_Post.json
+if __name__ == "__main__":
+    main()

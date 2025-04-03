@@ -5291,3 +5291,4 @@ id,name,language,tag,package,version,date_epoch,date
 5290,azure-mgmt-weightsandbiases@1.0.0b1,python,azure-mgmt-weightsandbiases_1.0.0b1,azure-mgmt-weightsandbiases,1.0.0b1,1743558734,04/02/2025
 5291,"Azure.ResourceManager.AppContainers,1.4.0-beta.1",dotnet,Azure.ResourceManager.AppContainers_1.4.0-beta.1,Azure.ResourceManager.AppContainers,1.4.0-beta.1,1743676138,04/03/2025
 5292,"Azure.ResourceManager.Compute,1.9.0",dotnet,Azure.ResourceManager.Compute_1.9.0,Azure.ResourceManager.Compute,1.9.0,1743610176,04/02/2025
+5293,"Azure.ResourceManager.KeyVault,1.3.2",dotnet,Azure.ResourceManager.KeyVault_1.3.2,Azure.ResourceManager.KeyVault,1.3.2,1743608511,04/02/2025

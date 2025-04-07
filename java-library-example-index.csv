@@ -5294,3 +5294,4 @@ id,name,language,tag,package,version,date_epoch,date
 5293,"Azure.ResourceManager.KeyVault,1.3.2",dotnet,Azure.ResourceManager.KeyVault_1.3.2,Azure.ResourceManager.KeyVault,1.3.2,1743608511,04/02/2025
 5294,"Azure.ResourceManager.AgriculturePlatform,1.0.0-beta.1",dotnet,Azure.ResourceManager.AgriculturePlatform_1.0.0-beta.1,Azure.ResourceManager.AgriculturePlatform,1.0.0-beta.1,1743870164,04/05/2025
 5295,"Azure.ResourceManager.HybridConnectivity,1.1.0",dotnet,Azure.ResourceManager.HybridConnectivity_1.1.0,Azure.ResourceManager.HybridConnectivity,1.1.0,1743869995,04/05/2025
+5296,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0-beta.3,go,sdk/resourcemanager/search/armsearch/v1.4.0-beta.3,sdk/resourcemanager/search/armsearch,v1.4.0-beta.3,1744015869,04/07/2025

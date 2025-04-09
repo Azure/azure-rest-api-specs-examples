@@ -5297,3 +5297,4 @@ id,name,language,tag,package,version,date_epoch,date
 5296,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0-beta.3,go,sdk/resourcemanager/search/armsearch/v1.4.0-beta.3,sdk/resourcemanager/search/armsearch,v1.4.0-beta.3,1744015869,04/07/2025
 5297,@azure/arm-search@3.3.0-beta.2,js,@azure/arm-search_3.3.0-beta.2,@azure/arm-search,3.3.0-beta.2,1744093703,04/08/2025
 5298,@azure/arm-policy@6.0.0,js,@azure/arm-policy_6.0.0,@azure/arm-policy,6.0.0,1744087747,04/08/2025
+5299,azure-mgmt-iothub@4.0.0,python,azure-mgmt-iothub_4.0.0,azure-mgmt-iothub,4.0.0,1744186667,04/09/2025

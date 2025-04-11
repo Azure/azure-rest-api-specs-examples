@@ -1,6 +1,6 @@
 
 /**
- * Samples for Pipelines ListByFactory.
+ * Samples for Pipelines ListByFactorySync.
  */
 public final class Main {
     /*

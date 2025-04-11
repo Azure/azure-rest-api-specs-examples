@@ -4,7 +4,7 @@ import com.azure.resourcemanager.datafactory.models.ExposureControlRequest;
 import java.util.Arrays;
 
 /**
- * Samples for ExposureControl QueryFeatureValuesByFactory.
+ * Samples for ExposureControl QueryFeatureValuesByFactorySync.
  */
 public final class Main {
     /*

@@ -1,6 +1,6 @@
 
 /**
- * Samples for DataFlows Get.
+ * Samples for DataFlows GetSync.
  */
 public final class Main {
     /*

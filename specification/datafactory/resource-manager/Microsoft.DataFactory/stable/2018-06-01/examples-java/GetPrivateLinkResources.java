@@ -1,6 +1,6 @@
 
 /**
- * Samples for PrivateLinkResources Get.
+ * Samples for PrivateLinkResources GetSync.
  */
 public final class Main {
     /*

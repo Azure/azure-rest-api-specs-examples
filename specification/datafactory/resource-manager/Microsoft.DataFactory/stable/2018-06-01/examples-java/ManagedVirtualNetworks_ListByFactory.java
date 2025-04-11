@@ -1,6 +1,6 @@
 
 /**
- * Samples for ManagedVirtualNetworks ListByFactory.
+ * Samples for ManagedVirtualNetworks ListByFactorySync.
  */
 public final class Main {
     /*

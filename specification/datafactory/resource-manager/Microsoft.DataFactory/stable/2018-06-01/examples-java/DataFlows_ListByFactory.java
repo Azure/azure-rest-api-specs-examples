@@ -1,6 +1,6 @@
 
 /**
- * Samples for DataFlows ListByFactory.
+ * Samples for DataFlows ListByFactorySync.
  */
 public final class Main {
     /*

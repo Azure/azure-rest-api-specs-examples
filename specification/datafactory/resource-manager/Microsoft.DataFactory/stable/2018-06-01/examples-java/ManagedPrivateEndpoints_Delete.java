@@ -1,6 +1,6 @@
 
 /**
- * Samples for ManagedPrivateEndpoints Delete.
+ * Samples for ManagedPrivateEndpoints DeleteSync.
  */
 public final class Main {
     /*

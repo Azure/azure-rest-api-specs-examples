@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Pipelines CreateOrUpdate.
+ * Samples for Pipelines CreateOrUpdateSync.
  */
 public final class Main {
     /*

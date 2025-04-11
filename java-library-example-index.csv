@@ -5299,3 +5299,4 @@ id,name,language,tag,package,version,date_epoch,date
 5298,@azure/arm-policy@6.0.0,js,@azure/arm-policy_6.0.0,@azure/arm-policy,6.0.0,1744087747,04/08/2025
 5299,azure-mgmt-iothub@4.0.0,python,azure-mgmt-iothub_4.0.0,azure-mgmt-iothub,4.0.0,1744186667,04/09/2025
 5300,"Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0",dotnet,Azure.ResourceManager.RecoveryServicesDataReplication_1.0.0,Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0,1744243669,04/10/2025
+5301,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.1.0,java,azure-resourcemanager-datafactory_1.1.0,azure-resourcemanager-datafactory,1.1.0,1744358909,04/11/2025

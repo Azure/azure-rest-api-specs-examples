@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 /**
- * Samples for TriggerRuns QueryByFactory.
+ * Samples for TriggerRuns QueryByFactorySync.
  */
 public final class Main {
     /*

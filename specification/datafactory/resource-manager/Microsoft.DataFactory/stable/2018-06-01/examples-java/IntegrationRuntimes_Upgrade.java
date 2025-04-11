@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes Upgrade.
+ * Samples for IntegrationRuntimes UpgradeSync.
  */
 public final class Main {
     /*

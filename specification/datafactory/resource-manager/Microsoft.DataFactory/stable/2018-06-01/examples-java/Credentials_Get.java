@@ -1,6 +1,6 @@
 
 /**
- * Samples for CredentialOperations Get.
+ * Samples for CredentialOperations GetSync.
  */
 public final class Main {
     /*

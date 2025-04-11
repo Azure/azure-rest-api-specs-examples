@@ -1,6 +1,6 @@
 
 /**
- * Samples for PrivateEndpointConnectionOperation Delete.
+ * Samples for PrivateEndpointConnectionOperation DeleteSync.
  */
 public final class Main {
     /*

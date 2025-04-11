@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.ManagedIdentityCredential;
 
 /**
- * Samples for CredentialOperations CreateOrUpdate.
+ * Samples for CredentialOperations CreateOrUpdateSync.
  */
 public final class Main {
     /*

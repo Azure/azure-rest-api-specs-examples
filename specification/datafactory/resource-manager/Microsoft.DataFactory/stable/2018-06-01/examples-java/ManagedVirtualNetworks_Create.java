@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for ManagedVirtualNetworks CreateOrUpdate.
+ * Samples for ManagedVirtualNetworks CreateOrUpdateSync.
  */
 public final class Main {
     /*

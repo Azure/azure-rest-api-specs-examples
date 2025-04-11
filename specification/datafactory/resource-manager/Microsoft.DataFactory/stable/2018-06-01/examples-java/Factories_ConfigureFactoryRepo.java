@@ -3,7 +3,7 @@ import com.azure.resourcemanager.datafactory.models.FactoryRepoUpdate;
 import com.azure.resourcemanager.datafactory.models.FactoryVstsConfiguration;
 
 /**
- * Samples for Factories ConfigureFactoryRepo.
+ * Samples for Factories ConfigureFactoryRepoSync.
  */
 public final class Main {
     /*

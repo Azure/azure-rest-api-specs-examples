@@ -1,6 +1,6 @@
 
 /**
- * Samples for ManagedPrivateEndpoints ListByFactory.
+ * Samples for ManagedPrivateEndpoints ListByFactorySync.
  */
 public final class Main {
     /*

@@ -5,7 +5,7 @@ import com.azure.resourcemanager.datafactory.models.MapperTargetConnectionsInfo;
 import java.util.List;
 
 /**
- * Samples for ChangeDataCapture CreateOrUpdate.
+ * Samples for ChangeDataCapture CreateOrUpdateSync.
  */
 public final class Main {
     /*

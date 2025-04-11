@@ -1,6 +1,6 @@
 
 /**
- * Samples for ChangeDataCapture Status.
+ * Samples for ChangeDataCapture StatusSync.
  */
 public final class Main {
     /*

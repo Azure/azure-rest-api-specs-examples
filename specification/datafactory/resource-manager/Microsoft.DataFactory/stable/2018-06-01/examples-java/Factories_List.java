@@ -1,6 +1,6 @@
 
 /**
- * Samples for Factories List.
+ * Samples for Factories ListSync.
  */
 public final class Main {
     /*

@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.UpdateIntegrationRuntimeNodeRequest;
 
 /**
- * Samples for IntegrationRuntimeNodes Update.
+ * Samples for IntegrationRuntimeNodes UpdateSync.
  */
 public final class Main {
     /*

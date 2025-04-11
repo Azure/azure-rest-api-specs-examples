@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimeNodes Get.
+ * Samples for IntegrationRuntimeNodes GetSync.
  */
 public final class Main {
     /*

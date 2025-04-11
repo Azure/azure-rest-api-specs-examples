@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.GitHubAccessTokenRequest;
 
 /**
- * Samples for Factories GetGitHubAccessToken.
+ * Samples for Factories GetGitHubAccessTokenSync.
  */
 public final class Main {
     /*

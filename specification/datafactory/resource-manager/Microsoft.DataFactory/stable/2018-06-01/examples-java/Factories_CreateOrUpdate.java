@@ -1,6 +1,6 @@
 
 /**
- * Samples for Factories CreateOrUpdate.
+ * Samples for Factories CreateOrUpdateSync.
  */
 public final class Main {
     /*

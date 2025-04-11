@@ -1,6 +1,6 @@
 
 /**
- * Samples for PrivateEndpointConnectionOperation Get.
+ * Samples for PrivateEndpointConnectionOperation GetSync.
  */
 public final class Main {
     /*

@@ -3,7 +3,7 @@ import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeAutoUpdate
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeResource;
 
 /**
- * Samples for IntegrationRuntimes Update.
+ * Samples for IntegrationRuntimes UpdateSync.
  */
 public final class Main {
     /*

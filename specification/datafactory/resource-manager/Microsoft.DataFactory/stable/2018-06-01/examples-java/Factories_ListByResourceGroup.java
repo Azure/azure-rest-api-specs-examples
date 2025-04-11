@@ -1,6 +1,6 @@
 
 /**
- * Samples for Factories ListByResourceGroup.
+ * Samples for Factories ListByResourceGroupSync.
  */
 public final class Main {
     /*

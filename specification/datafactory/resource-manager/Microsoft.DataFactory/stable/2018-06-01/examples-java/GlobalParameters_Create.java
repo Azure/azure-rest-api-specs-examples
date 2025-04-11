@@ -3,7 +3,7 @@ import com.azure.resourcemanager.datafactory.models.GlobalParameterSpecification
 import java.util.Map;
 
 /**
- * Samples for GlobalParameters CreateOrUpdate.
+ * Samples for GlobalParameters CreateOrUpdateSync.
  */
 public final class Main {
     /*

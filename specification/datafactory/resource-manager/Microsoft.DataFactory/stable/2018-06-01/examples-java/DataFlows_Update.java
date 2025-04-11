@@ -7,7 +7,7 @@ import com.azure.resourcemanager.datafactory.models.MappingDataFlow;
 import java.util.Arrays;
 
 /**
- * Samples for DataFlows CreateOrUpdate.
+ * Samples for DataFlows CreateOrUpdateSync.
  */
 public final class Main {
     /*

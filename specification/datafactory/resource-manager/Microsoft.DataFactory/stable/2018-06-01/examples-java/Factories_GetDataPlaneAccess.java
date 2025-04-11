@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.UserAccessPolicy;
 
 /**
- * Samples for Factories GetDataPlaneAccess.
+ * Samples for Factories GetDataPlaneAccessSync.
  */
 public final class Main {
     /*

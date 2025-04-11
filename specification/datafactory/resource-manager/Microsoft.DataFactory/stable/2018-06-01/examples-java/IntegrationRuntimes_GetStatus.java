@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes GetStatus.
+ * Samples for IntegrationRuntimes GetStatusSync.
  */
 public final class Main {
     /*

@@ -3,7 +3,7 @@ import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeAuthKeyNam
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeRegenerateKeyParameters;
 
 /**
- * Samples for IntegrationRuntimes RegenerateAuthKey.
+ * Samples for IntegrationRuntimes RegenerateAuthKeySync.
  */
 public final class Main {
     /*

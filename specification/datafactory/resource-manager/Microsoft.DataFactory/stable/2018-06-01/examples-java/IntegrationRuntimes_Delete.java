@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes Delete.
+ * Samples for IntegrationRuntimes DeleteSync.
  */
 public final class Main {
     /*

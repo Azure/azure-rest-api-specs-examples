@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Pipelines CreateRun.
+ * Samples for Pipelines CreateRunSync.
  */
 public final class Main {
     /*

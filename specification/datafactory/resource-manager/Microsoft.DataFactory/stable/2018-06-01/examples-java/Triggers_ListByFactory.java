@@ -1,6 +1,6 @@
 
 /**
- * Samples for Triggers ListByFactory.
+ * Samples for Triggers ListByFactorySync.
  */
 public final class Main {
     /*

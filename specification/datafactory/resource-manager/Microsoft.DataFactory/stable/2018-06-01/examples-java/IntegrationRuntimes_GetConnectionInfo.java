@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes GetConnectionInfo.
+ * Samples for IntegrationRuntimes GetConnectionInfoSync.
  */
 public final class Main {
     /*

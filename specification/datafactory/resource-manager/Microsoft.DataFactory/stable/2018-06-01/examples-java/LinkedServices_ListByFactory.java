@@ -1,6 +1,6 @@
 
 /**
- * Samples for LinkedServices ListByFactory.
+ * Samples for LinkedServices ListByFactorySync.
  */
 public final class Main {
     /*

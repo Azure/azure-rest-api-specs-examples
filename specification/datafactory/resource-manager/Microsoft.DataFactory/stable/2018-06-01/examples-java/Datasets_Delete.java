@@ -1,6 +1,6 @@
 
 /**
- * Samples for Datasets Delete.
+ * Samples for Datasets DeleteSync.
  */
 public final class Main {
     /*

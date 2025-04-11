@@ -4,7 +4,7 @@ import com.azure.resourcemanager.datafactory.models.PrivateLinkConnectionApprova
 import com.azure.resourcemanager.datafactory.models.PrivateLinkConnectionState;
 
 /**
- * Samples for PrivateEndpointConnectionOperation CreateOrUpdate.
+ * Samples for PrivateEndpointConnectionOperation CreateOrUpdateSync.
  */
 public final class Main {
     /*

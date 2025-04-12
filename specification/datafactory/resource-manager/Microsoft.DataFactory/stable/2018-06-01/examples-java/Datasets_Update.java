@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Datasets CreateOrUpdate.
+ * Samples for Datasets CreateOrUpdateSync.
  */
 public final class Main {
     /*

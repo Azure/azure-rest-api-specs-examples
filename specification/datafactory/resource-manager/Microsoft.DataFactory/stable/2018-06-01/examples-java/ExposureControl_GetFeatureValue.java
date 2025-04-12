@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.ExposureControlRequest;
 
 /**
- * Samples for ExposureControl GetFeatureValue.
+ * Samples for ExposureControl GetFeatureValueSync.
  */
 public final class Main {
     /*

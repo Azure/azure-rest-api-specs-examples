@@ -1,6 +1,6 @@
 
 /**
- * Samples for Triggers Delete.
+ * Samples for Triggers DeleteSync.
  */
 public final class Main {
     /*

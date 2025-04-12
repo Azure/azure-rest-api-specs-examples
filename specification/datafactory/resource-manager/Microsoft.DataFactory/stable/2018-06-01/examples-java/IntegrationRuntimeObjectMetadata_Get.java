@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.GetSsisObjectMetadataRequest;
 
 /**
- * Samples for IntegrationRuntimeObjectMetadata Get.
+ * Samples for IntegrationRuntimeObjectMetadata GetSync.
  */
 public final class Main {
     /*

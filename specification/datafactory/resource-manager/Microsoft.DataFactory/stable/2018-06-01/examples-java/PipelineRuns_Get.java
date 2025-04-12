@@ -1,6 +1,6 @@
 
 /**
- * Samples for PipelineRuns Get.
+ * Samples for PipelineRuns GetSync.
  */
 public final class Main {
     /*

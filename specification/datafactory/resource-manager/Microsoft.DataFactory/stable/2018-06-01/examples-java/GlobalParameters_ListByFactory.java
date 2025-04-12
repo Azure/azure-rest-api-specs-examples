@@ -1,6 +1,6 @@
 
 /**
- * Samples for GlobalParameters ListByFactory.
+ * Samples for GlobalParameters ListByFactorySync.
  */
 public final class Main {
     /*

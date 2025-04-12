@@ -1,6 +1,6 @@
 
 /**
- * Samples for PipelineRuns Cancel.
+ * Samples for PipelineRuns CancelSync.
  */
 public final class Main {
     /*

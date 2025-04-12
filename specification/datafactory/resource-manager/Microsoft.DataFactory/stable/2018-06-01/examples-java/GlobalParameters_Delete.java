@@ -1,6 +1,6 @@
 
 /**
- * Samples for GlobalParameters Delete.
+ * Samples for GlobalParameters DeleteSync.
  */
 public final class Main {
     /*

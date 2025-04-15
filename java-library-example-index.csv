@@ -5300,3 +5300,4 @@ id,name,language,tag,package,version,date_epoch,date
 5299,azure-mgmt-iothub@4.0.0,python,azure-mgmt-iothub_4.0.0,azure-mgmt-iothub,4.0.0,1744186667,04/09/2025
 5300,"Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0",dotnet,Azure.ResourceManager.RecoveryServicesDataReplication_1.0.0,Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0,1744243669,04/10/2025
 5301,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.1.0,java,azure-resourcemanager-datafactory_1.1.0,azure-resourcemanager-datafactory,1.1.0,1744358909,04/11/2025
+5302,azure-mgmt-containerservice@35.0.0,python,azure-mgmt-containerservice_35.0.0,azure-mgmt-containerservice,35.0.0,1744703854,04/15/2025

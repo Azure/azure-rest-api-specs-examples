@@ -5303,3 +5303,4 @@ id,name,language,tag,package,version,date_epoch,date
 5302,azure-mgmt-containerservice@35.0.0,python,azure-mgmt-containerservice_35.0.0,azure-mgmt-containerservice,35.0.0,1744703854,04/15/2025
 5303,com.azure.resourcemanager:azure-resourcemanager-dependencymap:1.0.0-beta.1,java,azure-resourcemanager-dependencymap_1.0.0-beta.1,azure-resourcemanager-dependencymap,1.0.0-beta.1,1744884632,04/17/2025
 5304,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.1.0,java,azure-resourcemanager-appcontainers_1.1.0,azure-resourcemanager-appcontainers,1.1.0,1744878266,04/17/2025
+5305,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.6.0,java,azure-resourcemanager-recoveryservicesbackup_1.6.0,azure-resourcemanager-recoveryservicesbackup,1.6.0,1744863239,04/17/2025

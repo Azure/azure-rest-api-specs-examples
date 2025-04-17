@@ -5305,3 +5305,4 @@ id,name,language,tag,package,version,date_epoch,date
 5304,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.1.0,java,azure-resourcemanager-appcontainers_1.1.0,azure-resourcemanager-appcontainers,1.1.0,1744878266,04/17/2025
 5305,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.6.0,java,azure-resourcemanager-recoveryservicesbackup_1.6.0,azure-resourcemanager-recoveryservicesbackup,1.6.0,1744863239,04/17/2025
 5306,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.8.0,go,sdk/resourcemanager/storage/armstorage/v1.8.0,sdk/resourcemanager/storage/armstorage,v1.8.0,1744856430,04/17/2025
+5307,azure-mgmt-recoveryservicesbackup@9.2.0,python,azure-mgmt-recoveryservicesbackup_9.2.0,azure-mgmt-recoveryservicesbackup,9.2.0,1744877490,04/17/2025

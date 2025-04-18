@@ -5307,3 +5307,4 @@ id,name,language,tag,package,version,date_epoch,date
 5306,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.8.0,go,sdk/resourcemanager/storage/armstorage/v1.8.0,sdk/resourcemanager/storage/armstorage,v1.8.0,1744856430,04/17/2025
 5307,azure-mgmt-recoveryservicesbackup@9.2.0,python,azure-mgmt-recoveryservicesbackup_9.2.0,azure-mgmt-recoveryservicesbackup,9.2.0,1744877490,04/17/2025
 5308,com.azure.resourcemanager:azure-resourcemanager-workloadssapvirtualinstance:1.0.0,java,azure-resourcemanager-workloadssapvirtualinstance_1.0.0,azure-resourcemanager-workloadssapvirtualinstance,1.0.0,1744962315,04/18/2025
+5309,com.azure.resourcemanager:azure-resourcemanager-storageactions:1.0.0-beta.3,java,azure-resourcemanager-storageactions_1.0.0-beta.3,azure-resourcemanager-storageactions,1.0.0-beta.3,1744947205,04/18/2025

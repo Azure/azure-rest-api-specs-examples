@@ -5301,3 +5301,8 @@ id,name,language,tag,package,version,date_epoch,date
 5300,"Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0",dotnet,Azure.ResourceManager.RecoveryServicesDataReplication_1.0.0,Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0,1744243669,04/10/2025
 5301,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.1.0,java,azure-resourcemanager-datafactory_1.1.0,azure-resourcemanager-datafactory,1.1.0,1744358909,04/11/2025
 5302,azure-mgmt-containerservice@35.0.0,python,azure-mgmt-containerservice_35.0.0,azure-mgmt-containerservice,35.0.0,1744703854,04/15/2025
+5303,com.azure.resourcemanager:azure-resourcemanager-dependencymap:1.0.0-beta.1,java,azure-resourcemanager-dependencymap_1.0.0-beta.1,azure-resourcemanager-dependencymap,1.0.0-beta.1,1744884632,04/17/2025
+5304,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.1.0,java,azure-resourcemanager-appcontainers_1.1.0,azure-resourcemanager-appcontainers,1.1.0,1744878266,04/17/2025
+5305,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.6.0,java,azure-resourcemanager-recoveryservicesbackup_1.6.0,azure-resourcemanager-recoveryservicesbackup,1.6.0,1744863239,04/17/2025
+5306,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.8.0,go,sdk/resourcemanager/storage/armstorage/v1.8.0,sdk/resourcemanager/storage/armstorage,v1.8.0,1744856430,04/17/2025
+5307,azure-mgmt-recoveryservicesbackup@9.2.0,python,azure-mgmt-recoveryservicesbackup_9.2.0,azure-mgmt-recoveryservicesbackup,9.2.0,1744877490,04/17/2025

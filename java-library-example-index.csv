@@ -5313,3 +5313,4 @@ id,name,language,tag,package,version,date_epoch,date
 5312,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v0.2.0,go,sdk/resourcemanager/durabletask/armdurabletask/v0.2.0,sdk/resourcemanager/durabletask/armdurabletask,v0.2.0,1744964122,04/18/2025
 5313,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dependencymap/armdependencymap@v0.1.0,go,sdk/resourcemanager/dependencymap/armdependencymap/v0.1.0,sdk/resourcemanager/dependencymap/armdependencymap,v0.1.0,1744962537,04/18/2025
 5314,"Azure.ResourceManager.ContainerRegistry,1.3.0-beta.3",dotnet,Azure.ResourceManager.ContainerRegistry_1.3.0-beta.3,Azure.ResourceManager.ContainerRegistry,1.3.0-beta.3,1744889791,04/17/2025
+5315,com.azure.resourcemanager:azure-resourcemanager-netapp:1.7.0,java,azure-resourcemanager-netapp_1.7.0,azure-resourcemanager-netapp,1.7.0,1745144783,04/20/2025

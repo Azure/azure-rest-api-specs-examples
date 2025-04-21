@@ -5315,3 +5315,4 @@ id,name,language,tag,package,version,date_epoch,date
 5314,"Azure.ResourceManager.ContainerRegistry,1.3.0-beta.3",dotnet,Azure.ResourceManager.ContainerRegistry_1.3.0-beta.3,Azure.ResourceManager.ContainerRegistry,1.3.0-beta.3,1744889791,04/17/2025
 5315,com.azure.resourcemanager:azure-resourcemanager-netapp:1.7.0,java,azure-resourcemanager-netapp_1.7.0,azure-resourcemanager-netapp,1.7.0,1745144783,04/20/2025
 5316,com.azure.resourcemanager:azure-resourcemanager-standbypool:1.1.0,java,azure-resourcemanager-standbypool_1.1.0,azure-resourcemanager-standbypool,1.1.0,1745227248,04/21/2025
+5317,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.2.0-beta.2,java,azure-resourcemanager-elasticsan_1.2.0-beta.2,azure-resourcemanager-elasticsan,1.2.0-beta.2,1745203046,04/21/2025

@@ -5327,3 +5327,4 @@ id,name,language,tag,package,version,date_epoch,date
 5326,azure-mgmt-netapp@13.5.0,python,azure-mgmt-netapp_13.5.0,azure-mgmt-netapp,13.5.0,1745209043,04/21/2025
 5327,azure-mgmt-storageactions@1.0.0b2,python,azure-mgmt-storageactions_1.0.0b2,azure-mgmt-storageactions,1.0.0b2,1745209014,04/21/2025
 5328,azure-mgmt-networkcloud@2.1.0b1,python,azure-mgmt-networkcloud_2.1.0b1,azure-mgmt-networkcloud,2.1.0b1,1745209010,04/21/2025
+5329,azure-mgmt-datafactory@9.2.0,python,azure-mgmt-datafactory_9.2.0,azure-mgmt-datafactory,9.2.0,1745209008,04/21/2025

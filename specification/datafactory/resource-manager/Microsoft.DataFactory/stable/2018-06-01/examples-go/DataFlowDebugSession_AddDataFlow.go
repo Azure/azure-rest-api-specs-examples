@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v9"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v10"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ab04533261eff228f28e08900445d0edef3eb70c/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_AddDataFlow.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/8eb3f7a4f66d408152c32b9d647e59147172d533/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_AddDataFlow.json
 func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -27,7 +27,7 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 				Type: to.Ptr("MappingDataFlow"),
 				TypeProperties: &armdatafactory.MappingDataFlowTypeProperties{
 					Script: to.Ptr("\n\nsource(output(\n		Column_1 as string\n	),\n	allowSchemaDrift: true,\n	validateSchema: false) ~> source1"),
-					Sinks: []*armdatafactory.DataFlowSink{},
+					Sinks:  []*armdatafactory.DataFlowSink{},
 					Sources: []*armdatafactory.DataFlowSource{
 						{
 							Name: to.Ptr("source1"),

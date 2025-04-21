@@ -5322,3 +5322,4 @@ id,name,language,tag,package,version,date_epoch,date
 5321,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.5.0,go,sdk/resourcemanager/netapp/armnetapp/v7.5.0,sdk/resourcemanager/netapp/armnetapp,v7.5.0,1745217684,04/21/2025
 5322,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v10@v10.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v10.0.0,sdk/resourcemanager/datafactory/armdatafactory,v10.0.0,1745215595,04/21/2025
 5323,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.3.0-beta.1,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.3.0-beta.1,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.3.0-beta.1,1745214855,04/21/2025
+5324,azure-mgmt-storage@22.2.0,python,azure-mgmt-storage_22.2.0,azure-mgmt-storage,22.2.0,1745209083,04/21/2025

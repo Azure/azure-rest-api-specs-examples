@@ -5325,3 +5325,4 @@ id,name,language,tag,package,version,date_epoch,date
 5324,azure-mgmt-storage@22.2.0,python,azure-mgmt-storage_22.2.0,azure-mgmt-storage,22.2.0,1745209083,04/21/2025
 5325,azure-mgmt-appcontainers@3.2.0,python,azure-mgmt-appcontainers_3.2.0,azure-mgmt-appcontainers,3.2.0,1745209066,04/21/2025
 5326,azure-mgmt-netapp@13.5.0,python,azure-mgmt-netapp_13.5.0,azure-mgmt-netapp,13.5.0,1745209043,04/21/2025
+5327,azure-mgmt-storageactions@1.0.0b2,python,azure-mgmt-storageactions_1.0.0b2,azure-mgmt-storageactions,1.0.0b2,1745209014,04/21/2025

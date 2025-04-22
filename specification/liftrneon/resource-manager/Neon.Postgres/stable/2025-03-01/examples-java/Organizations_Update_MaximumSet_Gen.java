@@ -1,0 +1,109 @@
+
+import com.azure.resourcemanager.neonpostgres.models.Attributes;
+import com.azure.resourcemanager.neonpostgres.models.BranchProperties;
+import com.azure.resourcemanager.neonpostgres.models.CompanyDetails;
+import com.azure.resourcemanager.neonpostgres.models.DefaultEndpointSettings;
+import com.azure.resourcemanager.neonpostgres.models.EndpointProperties;
+import com.azure.resourcemanager.neonpostgres.models.EndpointType;
+import com.azure.resourcemanager.neonpostgres.models.MarketplaceDetails;
+import com.azure.resourcemanager.neonpostgres.models.MarketplaceSubscriptionStatus;
+import com.azure.resourcemanager.neonpostgres.models.NeonDatabaseProperties;
+import com.azure.resourcemanager.neonpostgres.models.NeonRoleProperties;
+import com.azure.resourcemanager.neonpostgres.models.OfferDetails;
+import com.azure.resourcemanager.neonpostgres.models.OrganizationProperties;
+import com.azure.resourcemanager.neonpostgres.models.OrganizationResource;
+import com.azure.resourcemanager.neonpostgres.models.PartnerOrganizationProperties;
+import com.azure.resourcemanager.neonpostgres.models.ProjectProperties;
+import com.azure.resourcemanager.neonpostgres.models.SingleSignOnProperties;
+import com.azure.resourcemanager.neonpostgres.models.SingleSignOnStates;
+import com.azure.resourcemanager.neonpostgres.models.UserDetails;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Organizations Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-03-01/Organizations_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Organizations_Update_MaximumSet.
+     * 
+     * @param manager Entry point to NeonPostgresManager.
+     */
+    public static void
+        organizationsUpdateMaximumSet(com.azure.resourcemanager.neonpostgres.NeonPostgresManager manager) {
+        OrganizationResource resource = manager.organizations()
+            .getByResourceGroupWithResponse("rgneon", "test-org", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("key609", "fakeTokenPlaceholder")).withProperties(new OrganizationProperties()
+            .withMarketplaceDetails(new MarketplaceDetails().withSubscriptionId("yxmkfivp")
+                .withSubscriptionStatus(MarketplaceSubscriptionStatus.PENDING_FULFILLMENT_START)
+                .withOfferDetails(new OfferDetails().withPublisherId("hporaxnopmolttlnkbarw")
+                    .withOfferId("bunyeeupoedueofwrzej").withPlanId("nlbfiwtslenfwek")
+                    .withPlanName("ljbmgpkfqklaufacbpml").withTermUnit("qbcq").withTermId("aedlchikwqckuploswthvshe")))
+            .withUserDetails(new UserDetails().withFirstName("zhelh").withLastName("zbdhouyeozylnerrc")
+                .withEmailAddress("test@contoso.com").withUpn("mixcikvxlnhkfugetqlngz")
+                .withPhoneNumber("zmejenytglrmjnt"))
+            .withCompanyDetails(new CompanyDetails().withCompanyName("xtul").withCountry("ycmyjdcpyjieemfrthfyxdlvn")
+                .withOfficeAddress("icirtoqmmozijk").withBusinessPhone("hucxvzcvpaupqjkgb")
+                .withDomain("snoshqumfsthyofpnrsgyjhszvgtj").withNumberOfEmployees(12L))
+            .withPartnerOrganizationProperties(new PartnerOrganizationProperties()
+                .withOrganizationId("fynmpcbivqkwqdfhrmsyusjd").withOrganizationName("entity-name")
+                .withSingleSignOnProperties(new SingleSignOnProperties()
+                    .withSingleSignOnState(SingleSignOnStates.INITIAL).withEnterpriseAppId("urtjzjfr")
+                    .withSingleSignOnUrl("gcmlwvtxcsjozitm").withAadDomains(Arrays.asList("mdzbelaiphukhe"))))
+            .withProjectProperties(new ProjectProperties().withEntityName("entity-name")
+                .withAttributes(Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                .withRegionId("vxvmjwuttpiakirzdf").withStorage(23L).withPgVersion(16).withHistoryRetention(16)
+                .withDefaultEndpointSettings(
+                    new DefaultEndpointSettings().withAutoscalingLimitMinCu(8.0).withAutoscalingLimitMaxCu(4.0))
+                .withBranch(new BranchProperties().withEntityName("entity-name")
+                    .withAttributes(
+                        Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                    .withProjectId("oik").withParentId("entity-id").withRoleName("qrrairsupyosxnqotdwhbpc")
+                    .withDatabaseName("duhxebzhd")
+                    .withRoles(Arrays.asList(new NeonRoleProperties().withEntityName("entity-name")
+                        .withAttributes(
+                            Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                        .withBranchId("wxbojkmdgaggkfiwqfakdkbyztm")
+                        .withPermissions(Arrays.asList("myucqecpjriewzohxvadgkhiudnyx")).withIsSuperUser(true)))
+                    .withDatabases(Arrays.asList(new NeonDatabaseProperties().withEntityName("entity-name")
+                        .withAttributes(
+                            Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                        .withBranchId("orfdwdmzvfvlnrgussvcvoek").withOwnerName("odmbeg")))
+                    .withEndpoints(Arrays.asList(new EndpointProperties().withEntityName("entity-name")
+                        .withAttributes(
+                            Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                        .withProjectId("rtvdeeflqzlrpfzhjqhcsfbldw").withBranchId("rzsyrhpfbydxtfkpaa")
+                        .withEndpointType(EndpointType.READ_ONLY))))
+                .withRoles(Arrays.asList(new NeonRoleProperties().withEntityName("entity-name")
+                    .withAttributes(
+                        Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                    .withBranchId("wxbojkmdgaggkfiwqfakdkbyztm")
+                    .withPermissions(Arrays.asList("myucqecpjriewzohxvadgkhiudnyx")).withIsSuperUser(true)))
+                .withDatabases(Arrays.asList(new NeonDatabaseProperties().withEntityName("entity-name")
+                    .withAttributes(
+                        Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                    .withBranchId("orfdwdmzvfvlnrgussvcvoek").withOwnerName("odmbeg")))
+                .withEndpoints(Arrays.asList(new EndpointProperties().withEntityName("entity-name")
+                    .withAttributes(
+                        Arrays.asList(new Attributes().withName("trhvzyvaqy").withValue("evpkgsskyavybxwwssm")))
+                    .withProjectId("rtvdeeflqzlrpfzhjqhcsfbldw").withBranchId("rzsyrhpfbydxtfkpaa")
+                    .withEndpointType(EndpointType.READ_ONLY)))))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

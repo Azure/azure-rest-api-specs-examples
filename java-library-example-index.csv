@@ -5330,3 +5330,4 @@ id,name,language,tag,package,version,date_epoch,date
 5329,azure-mgmt-datafactory@9.2.0,python,azure-mgmt-datafactory_9.2.0,azure-mgmt-datafactory,9.2.0,1745209008,04/21/2025
 5330,azure-mgmt-elasticsan@1.2.0b2,python,azure-mgmt-elasticsan_1.2.0b2,azure-mgmt-elasticsan,1.2.0b2,1745208978,04/21/2025
 5331,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.2.0-beta.1,java,azure-resourcemanager-networkcloud_1.2.0-beta.1,azure-resourcemanager-networkcloud,1.2.0-beta.1,1745307042,04/22/2025
+5332,com.azure.resourcemanager:azure-resourcemanager-neonpostgres:1.0.0,java,azure-resourcemanager-neonpostgres_1.0.0,azure-resourcemanager-neonpostgres,1.0.0,1745298432,04/22/2025

@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b43974e07d3204c4b6f8396627f5430994a7f7c9/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksList/ListStorageTasksByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5b798125a6aa7d5152fe0e3dd595d8a76dcfa568/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksList/ListStorageTasksByResourceGroup.json
 func ExampleStorageTasksClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -50,8 +50,8 @@ func ExampleStorageTasksClient_NewListByResourceGroupPager() {
 		// 						Operations: []*armstorageactions.StorageTaskOperation{
 		// 							{
 		// 								Name: to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
-		// 								OnFailure: to.Ptr("break"),
-		// 								OnSuccess: to.Ptr("continue"),
+		// 								OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+		// 								OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 		// 						}},
 		// 					},
 		// 				},
@@ -66,6 +66,15 @@ func ExampleStorageTasksClient_NewListByResourceGroupPager() {
 		// 			Type: to.Ptr("Microsoft.StorageActions/storageTasks"),
 		// 			ID: to.Ptr("/subscriptions/c86a9c18-8373-41fa-92d4-1d7bdc16977b/resourceGroups/res6117/providers/Microsoft.StorageActions/storageTasks/mytask2"),
 		// 			Location: to.Ptr("westus"),
+		// 			Identity: &armstorageactions.ManagedServiceIdentity{
+		// 				Type: to.Ptr(armstorageactions.ManagedServiceIdentityTypeUserAssigned),
+		// 				UserAssignedIdentities: map[string]*armstorageactions.UserAssignedIdentity{
+		// 					"/subscriptions/c86a9c18-8373-41fa-92d4-1d7bdc16977b/resourceGroups/res6117/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity": &armstorageactions.UserAssignedIdentity{
+		// 						ClientID: to.Ptr("bbbbbbbb-0000-0000-0000-000000000000"),
+		// 						PrincipalID: to.Ptr("aaaaaaaa-0000-0000-0000-000000000000"),
+		// 					},
+		// 				},
+		// 			},
 		// 			Properties: &armstorageactions.StorageTaskProperties{
 		// 				Description: to.Ptr("Storage task"),
 		// 				Action: &armstorageactions.StorageTaskAction{
@@ -73,8 +82,8 @@ func ExampleStorageTasksClient_NewListByResourceGroupPager() {
 		// 						Operations: []*armstorageactions.StorageTaskOperation{
 		// 							{
 		// 								Name: to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
-		// 								OnFailure: to.Ptr("break"),
-		// 								OnSuccess: to.Ptr("continue"),
+		// 								OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+		// 								OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 		// 						}},
 		// 					},
 		// 					If: &armstorageactions.IfCondition{
@@ -82,8 +91,8 @@ func ExampleStorageTasksClient_NewListByResourceGroupPager() {
 		// 						Operations: []*armstorageactions.StorageTaskOperation{
 		// 							{
 		// 								Name: to.Ptr(armstorageactions.StorageTaskOperationNameSetBlobTier),
-		// 								OnFailure: to.Ptr("break"),
-		// 								OnSuccess: to.Ptr("continue"),
+		// 								OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+		// 								OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 		// 								Parameters: map[string]*string{
 		// 									"tier": to.Ptr("Hot"),
 		// 								},

@@ -1,0 +1,92 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.RecoveryServicesBackup;
+
+// Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2025-02-01/examples/AzureIaasVm/ProtectionPolicies_CreateOrUpdate_Complex.json
+// this example is just showing the usage of "ProtectionPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this BackupProtectionPolicyResource created on azure
+// for more information of creating BackupProtectionPolicyResource, please refer to the document of BackupProtectionPolicyResource
+string subscriptionId = "00000000-0000-0000-0000-000000000000";
+string resourceGroupName = "SwaggerTestRg";
+string vaultName = "NetSDKTestRsVault";
+string policyName = "testPolicy1";
+ResourceIdentifier backupProtectionPolicyResourceId = BackupProtectionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, policyName);
+BackupProtectionPolicyResource backupProtectionPolicy = client.GetBackupProtectionPolicyResource(backupProtectionPolicyResourceId);
+
+// invoke the operation
+BackupProtectionPolicyData data = new BackupProtectionPolicyData(default)
+{
+    Properties = new IaasVmProtectionPolicy
+    {
+        SchedulePolicy = new SimpleSchedulePolicy
+        {
+            ScheduleRunFrequency = ScheduleRunType.Weekly,
+            ScheduleRunDays = { BackupDayOfWeek.Monday, BackupDayOfWeek.Wednesday, BackupDayOfWeek.Thursday },
+            ScheduleRunTimes = { default },
+        },
+        RetentionPolicy = new LongTermRetentionPolicy
+        {
+            WeeklySchedule = new WeeklyRetentionSchedule
+            {
+                DaysOfTheWeek = { BackupDayOfWeek.Monday, BackupDayOfWeek.Wednesday, BackupDayOfWeek.Thursday },
+                RetentionTimes = { default },
+                RetentionDuration = new RetentionDuration
+                {
+                    Count = 1,
+                    DurationType = RetentionDurationType.Weeks,
+                },
+            },
+            MonthlySchedule = new MonthlyRetentionSchedule
+            {
+                RetentionScheduleFormatType = RetentionScheduleFormat.Weekly,
+                RetentionScheduleWeekly = new WeeklyRetentionFormat
+                {
+                    DaysOfTheWeek = { BackupDayOfWeek.Wednesday, BackupDayOfWeek.Thursday },
+                    WeeksOfTheMonth = { BackupWeekOfMonth.First, BackupWeekOfMonth.Third },
+                },
+                RetentionTimes = { default },
+                RetentionDuration = new RetentionDuration
+                {
+                    Count = 2,
+                    DurationType = RetentionDurationType.Months,
+                },
+            },
+            YearlySchedule = new YearlyRetentionSchedule
+            {
+                RetentionScheduleFormatType = RetentionScheduleFormat.Weekly,
+                MonthsOfYear = { BackupMonthOfYear.February, BackupMonthOfYear.November },
+                RetentionScheduleWeekly = new WeeklyRetentionFormat
+                {
+                    DaysOfTheWeek = { BackupDayOfWeek.Monday, BackupDayOfWeek.Thursday },
+                    WeeksOfTheMonth = { BackupWeekOfMonth.Fourth },
+                },
+                RetentionTimes = { default },
+                RetentionDuration = new RetentionDuration
+                {
+                    Count = 4,
+                    DurationType = RetentionDurationType.Years,
+                },
+            },
+        },
+        TimeZone = "Pacific Standard Time",
+    },
+};
+ArmOperation<BackupProtectionPolicyResource> lro = await backupProtectionPolicy.UpdateAsync(WaitUntil.Completed, data);
+BackupProtectionPolicyResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BackupProtectionPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

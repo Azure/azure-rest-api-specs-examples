@@ -5339,3 +5339,4 @@ id,name,language,tag,package,version,date_epoch,date
 5338,azure-mgmt-apimanagement@5.0.0,python,azure-mgmt-apimanagement_5.0.0,azure-mgmt-apimanagement,5.0.0,1745302798,04/22/2025
 5339,azure-mgmt-neonpostgres@1.0.0,python,azure-mgmt-neonpostgres_1.0.0,azure-mgmt-neonpostgres,1.0.0,1745302796,04/22/2025
 5340,azure-mgmt-dependencymap@1.0.0b1,python,azure-mgmt-dependencymap_1.0.0b1,azure-mgmt-dependencymap,1.0.0b1,1745302787,04/22/2025
+5341,azure-mgmt-redisenterprise@3.1.0b3,python,azure-mgmt-redisenterprise_3.1.0b3,azure-mgmt-redisenterprise,3.1.0b3,1745302768,04/22/2025

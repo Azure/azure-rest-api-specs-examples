@@ -5333,3 +5333,4 @@ id,name,language,tag,package,version,date_epoch,date
 5332,com.azure.resourcemanager:azure-resourcemanager-neonpostgres:1.0.0,java,azure-resourcemanager-neonpostgres_1.0.0,azure-resourcemanager-neonpostgres,1.0.0,1745298432,04/22/2025
 5333,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.6.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.6.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.6.0,1745305415,04/22/2025
 5334,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions@v0.2.0,go,sdk/resourcemanager/storageactions/armstorageactions/v0.2.0,sdk/resourcemanager/storageactions/armstorageactions,v0.2.0,1745302062,04/22/2025
+5335,"Azure.ResourceManager.ContainerServiceFleet,1.1.0",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.1.0,Azure.ResourceManager.ContainerServiceFleet,1.1.0,1745317252,04/22/2025

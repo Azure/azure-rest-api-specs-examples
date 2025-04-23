@@ -5342,3 +5342,4 @@ id,name,language,tag,package,version,date_epoch,date
 5341,azure-mgmt-redisenterprise@3.1.0b3,python,azure-mgmt-redisenterprise_3.1.0b3,azure-mgmt-redisenterprise,3.1.0b3,1745302768,04/22/2025
 5342,azure-mgmt-containerregistry@13.0.0,python,azure-mgmt-containerregistry_13.0.0,azure-mgmt-containerregistry,13.0.0,1745302765,04/22/2025
 5343,azure-mgmt-standbypool@2.0.0,python,azure-mgmt-standbypool_2.0.0,azure-mgmt-standbypool,2.0.0,1745302753,04/22/2025
+5344,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.3.0,java,azure-resourcemanager-recoveryservicessiterecovery_1.3.0,azure-resourcemanager-recoveryservicessiterecovery,1.3.0,1745390410,04/23/2025

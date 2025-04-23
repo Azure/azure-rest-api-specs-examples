@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b43974e07d3204c4b6f8396627f5430994a7f7c9/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksCrud/PutStorageTask.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5b798125a6aa7d5152fe0e3dd595d8a76dcfa568/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksCrud/PutStorageTask.json
 func ExampleStorageTasksClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -22,6 +22,9 @@ func ExampleStorageTasksClient_BeginCreate() {
 	}
 	poller, err := clientFactory.NewStorageTasksClient().BeginCreate(ctx, "res4228", "mytask1", armstorageactions.StorageTask{
 		Location: to.Ptr("westus"),
+		Identity: &armstorageactions.ManagedServiceIdentity{
+			Type: to.Ptr(armstorageactions.ManagedServiceIdentityTypeSystemAssigned),
+		},
 		Properties: &armstorageactions.StorageTaskProperties{
 			Description: to.Ptr("My Storage task"),
 			Action: &armstorageactions.StorageTaskAction{
@@ -29,8 +32,8 @@ func ExampleStorageTasksClient_BeginCreate() {
 					Operations: []*armstorageactions.StorageTaskOperation{
 						{
 							Name:      to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
-							OnFailure: to.Ptr("break"),
-							OnSuccess: to.Ptr("continue"),
+							OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+							OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 						}},
 				},
 				If: &armstorageactions.IfCondition{
@@ -38,8 +41,8 @@ func ExampleStorageTasksClient_BeginCreate() {
 					Operations: []*armstorageactions.StorageTaskOperation{
 						{
 							Name:      to.Ptr(armstorageactions.StorageTaskOperationNameSetBlobTier),
-							OnFailure: to.Ptr("break"),
-							OnSuccess: to.Ptr("continue"),
+							OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+							OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 							Parameters: map[string]*string{
 								"tier": to.Ptr("Hot"),
 							},
@@ -64,6 +67,11 @@ func ExampleStorageTasksClient_BeginCreate() {
 	// 	Type: to.Ptr("Microsoft.StorageActions/storageTasks"),
 	// 	ID: to.Ptr("/subscriptions/c86a9c18-8373-41fa-92d4-1d7bdc16977b/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/mytask1"),
 	// 	Location: to.Ptr("westus"),
+	// 	Identity: &armstorageactions.ManagedServiceIdentity{
+	// 		Type: to.Ptr(armstorageactions.ManagedServiceIdentityTypeSystemAssigned),
+	// 		PrincipalID: to.Ptr("2fd475e8-8923-4597-842f-7ce1adfc6c4a"),
+	// 		TenantID: to.Ptr("b4a2005c-32c1-434c-bbf0-ff486912fc75"),
+	// 	},
 	// 	Properties: &armstorageactions.StorageTaskProperties{
 	// 		Description: to.Ptr("Storage task"),
 	// 		Action: &armstorageactions.StorageTaskAction{
@@ -71,8 +79,8 @@ func ExampleStorageTasksClient_BeginCreate() {
 	// 				Operations: []*armstorageactions.StorageTaskOperation{
 	// 					{
 	// 						Name: to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
-	// 						OnFailure: to.Ptr("break"),
-	// 						OnSuccess: to.Ptr("continue"),
+	// 						OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+	// 						OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 	// 				}},
 	// 			},
 	// 			If: &armstorageactions.IfCondition{
@@ -80,8 +88,8 @@ func ExampleStorageTasksClient_BeginCreate() {
 	// 				Operations: []*armstorageactions.StorageTaskOperation{
 	// 					{
 	// 						Name: to.Ptr(armstorageactions.StorageTaskOperationNameSetBlobTier),
-	// 						OnFailure: to.Ptr("break"),
-	// 						OnSuccess: to.Ptr("continue"),
+	// 						OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+	// 						OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 	// 						Parameters: map[string]*string{
 	// 							"tier": to.Ptr("Hot"),
 	// 						},

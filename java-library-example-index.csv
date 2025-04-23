@@ -5329,3 +5329,16 @@ id,name,language,tag,package,version,date_epoch,date
 5328,azure-mgmt-networkcloud@2.1.0b1,python,azure-mgmt-networkcloud_2.1.0b1,azure-mgmt-networkcloud,2.1.0b1,1745209010,04/21/2025
 5329,azure-mgmt-datafactory@9.2.0,python,azure-mgmt-datafactory_9.2.0,azure-mgmt-datafactory,9.2.0,1745209008,04/21/2025
 5330,azure-mgmt-elasticsan@1.2.0b2,python,azure-mgmt-elasticsan_1.2.0b2,azure-mgmt-elasticsan,1.2.0b2,1745208978,04/21/2025
+5331,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.2.0-beta.1,java,azure-resourcemanager-networkcloud_1.2.0-beta.1,azure-resourcemanager-networkcloud,1.2.0-beta.1,1745307042,04/22/2025
+5332,com.azure.resourcemanager:azure-resourcemanager-neonpostgres:1.0.0,java,azure-resourcemanager-neonpostgres_1.0.0,azure-resourcemanager-neonpostgres,1.0.0,1745298432,04/22/2025
+5333,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.6.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.6.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.6.0,1745305415,04/22/2025
+5334,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions@v0.2.0,go,sdk/resourcemanager/storageactions/armstorageactions/v0.2.0,sdk/resourcemanager/storageactions/armstorageactions,v0.2.0,1745302062,04/22/2025
+5335,"Azure.ResourceManager.ContainerServiceFleet,1.1.0",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.1.0,Azure.ResourceManager.ContainerServiceFleet,1.1.0,1745317252,04/22/2025
+5336,"Azure.ResourceManager.RecoveryServicesBackup,1.3.0",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.3.0,Azure.ResourceManager.RecoveryServicesBackup,1.3.0,1745299873,04/22/2025
+5337,azure-mgmt-servicebus@9.0.0,python,azure-mgmt-servicebus_9.0.0,azure-mgmt-servicebus,9.0.0,1745313624,04/22/2025
+5338,azure-mgmt-apimanagement@5.0.0,python,azure-mgmt-apimanagement_5.0.0,azure-mgmt-apimanagement,5.0.0,1745302798,04/22/2025
+5339,azure-mgmt-neonpostgres@1.0.0,python,azure-mgmt-neonpostgres_1.0.0,azure-mgmt-neonpostgres,1.0.0,1745302796,04/22/2025
+5340,azure-mgmt-dependencymap@1.0.0b1,python,azure-mgmt-dependencymap_1.0.0b1,azure-mgmt-dependencymap,1.0.0b1,1745302787,04/22/2025
+5341,azure-mgmt-redisenterprise@3.1.0b3,python,azure-mgmt-redisenterprise_3.1.0b3,azure-mgmt-redisenterprise,3.1.0b3,1745302768,04/22/2025
+5342,azure-mgmt-containerregistry@13.0.0,python,azure-mgmt-containerregistry_13.0.0,azure-mgmt-containerregistry,13.0.0,1745302765,04/22/2025
+5343,azure-mgmt-standbypool@2.0.0,python,azure-mgmt-standbypool_2.0.0,azure-mgmt-standbypool,2.0.0,1745302753,04/22/2025

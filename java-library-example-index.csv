@@ -5343,3 +5343,4 @@ id,name,language,tag,package,version,date_epoch,date
 5342,azure-mgmt-containerregistry@13.0.0,python,azure-mgmt-containerregistry_13.0.0,azure-mgmt-containerregistry,13.0.0,1745302765,04/22/2025
 5343,azure-mgmt-standbypool@2.0.0,python,azure-mgmt-standbypool_2.0.0,azure-mgmt-standbypool,2.0.0,1745302753,04/22/2025
 5344,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.3.0,java,azure-resourcemanager-recoveryservicessiterecovery_1.3.0,azure-resourcemanager-recoveryservicessiterecovery,1.3.0,1745390410,04/23/2025
+5345,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/neonpostgres/armneonpostgres@v1.0.0,go,sdk/resourcemanager/neonpostgres/armneonpostgres/v1.0.0,sdk/resourcemanager/neonpostgres/armneonpostgres,v1.0.0,1745385677,04/23/2025

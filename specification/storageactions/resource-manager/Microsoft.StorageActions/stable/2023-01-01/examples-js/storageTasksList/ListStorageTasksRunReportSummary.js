@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Fetch the storage tasks run report summary for each assignment.
@@ -15,7 +16,7 @@ async function listStorageTasksByResourceGroup() {
   const credential = new DefaultAzureCredential();
   const client = new StorageActionsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.storageTasksReport.list(resourceGroupName, storageTaskName)) {
+  for await (const item of client.storageTasksReport.list(resourceGroupName, storageTaskName)) {
     resArray.push(item);
   }
   console.log(resArray);

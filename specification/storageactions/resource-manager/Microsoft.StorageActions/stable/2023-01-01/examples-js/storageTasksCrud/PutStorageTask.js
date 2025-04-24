@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
@@ -13,6 +14,7 @@ async function putStorageTask() {
   const resourceGroupName = process.env["STORAGEACTIONS_RESOURCE_GROUP"] || "res4228";
   const storageTaskName = "mytask1";
   const parameters = {
+    identity: { type: "SystemAssigned" },
     location: "westus",
     properties: {
       description: "My Storage task",

@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all the storage tasks available under the subscription.
@@ -13,7 +14,7 @@ async function listStorageTasksBySubscription() {
   const credential = new DefaultAzureCredential();
   const client = new StorageActionsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.storageTasks.listBySubscription()) {
+  for await (const item of client.storageTasks.listBySubscription()) {
     resArray.push(item);
   }
   console.log(resArray);

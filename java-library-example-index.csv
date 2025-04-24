@@ -5365,3 +5365,4 @@ id,name,language,tag,package,version,date_epoch,date
 5364,"Azure.ResourceManager.ElasticSan,1.2.0-beta.2",dotnet,Azure.ResourceManager.ElasticSan_1.2.0-beta.2,Azure.ResourceManager.ElasticSan,1.2.0-beta.2,1745490222,04/24/2025
 5365,"Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.1",dotnet,Azure.ResourceManager.PortalServicesCopilot_1.0.0-beta.1,Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.1,1745485735,04/24/2025
 5366,"Azure.ResourceManager.WeightsAndBiases,1.0.0-beta.1",dotnet,Azure.ResourceManager.WeightsAndBiases_1.0.0-beta.1,Azure.ResourceManager.WeightsAndBiases,1.0.0-beta.1,1745479340,04/24/2025
+5367,"Azure.ResourceManager.LambdaTestHyperExecute,1.0.0-beta.1",dotnet,Azure.ResourceManager.LambdaTestHyperExecute_1.0.0-beta.1,Azure.ResourceManager.LambdaTestHyperExecute,1.0.0-beta.1,1745479309,04/24/2025

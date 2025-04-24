@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.apimanagement.models.ApiUpdateContract;
+
+/**
+ * Samples for WorkspaceApi Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementUpdateWorkspaceApi.json
+     */
+    /**
+     * Sample code: ApiManagementUpdateWorkspaceApi.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementUpdateWorkspaceApi(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceApis().updateWithResponse(
+            "rg1", "apimService1", "wks1", "echo-api", "*", new ApiUpdateContract().withDisplayName("Echo API New")
+                .withServiceUrl("http://echoapi.cloudapp.net/api2").withPath("newecho"),
+            com.azure.core.util.Context.NONE);
+    }
+}

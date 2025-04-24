@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.apimanagement.models.PolicyIdName;
+
+/**
+ * Samples for WorkspaceApiOperationPolicy Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementGetWorkspaceApiOperationPolicy.json
+     */
+    /**
+     * Sample code: ApiManagementGetWorkspaceApiOperationPolicy.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void apiManagementGetWorkspaceApiOperationPolicy(
+        com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceApiOperationPolicies().getWithResponse("rg1", "apimService1", "wks1",
+            "5600b539c53f5b0062040001", "5600b53ac53f5b0062080006", PolicyIdName.POLICY, null,
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.apimanagement.models.SubscriptionUpdateParameters;
+
+/**
+ * Samples for WorkspaceSubscription Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementUpdateWorkspaceSubscription.json
+     */
+    /**
+     * Sample code: ApiManagementUpdateWorkspaceSubscription.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementUpdateWorkspaceSubscription(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceSubscriptions().updateWithResponse("rg1", "apimService1", "wks1", "testsub", "*",
+            new SubscriptionUpdateParameters().withDisplayName("testsub"), null, null,
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,21 @@
+
+/**
+ * Samples for WorkspaceApiPolicy ListByApi.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementListWorkspaceApiPolicies.json
+     */
+    /**
+     * Sample code: ApiManagementListWorkspaceApiPolicies.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementListWorkspaceApiPolicies(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceApiPolicies().listByApi("rg1", "apimService1", "wks1", "5600b59475ff190048040001",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,21 @@
+
+/**
+ * Samples for WorkspaceNotification ListByService.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementListWorkspaceNotifications.json
+     */
+    /**
+     * Sample code: ApiManagementListWorkspaceNotifications.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementListWorkspaceNotifications(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceNotifications().listByService("rg1", "apimService1", "wks1", null, null,
+            com.azure.core.util.Context.NONE);
+    }
+}

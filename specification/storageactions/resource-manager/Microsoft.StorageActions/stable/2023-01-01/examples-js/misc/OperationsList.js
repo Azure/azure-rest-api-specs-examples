@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all of the available Storage Actions Rest API operations.
@@ -13,7 +14,7 @@ async function operationsList() {
   const credential = new DefaultAzureCredential();
   const client = new StorageActionsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.operations.list()) {
+  for await (const item of client.operations.list()) {
     resArray.push(item);
   }
   console.log(resArray);

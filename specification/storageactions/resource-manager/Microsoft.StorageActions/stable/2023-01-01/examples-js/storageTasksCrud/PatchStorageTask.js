@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Update storage task properties
@@ -13,6 +14,13 @@ async function patchStorageTask() {
   const resourceGroupName = process.env["STORAGEACTIONS_RESOURCE_GROUP"] || "res4228";
   const storageTaskName = "mytask1";
   const parameters = {
+    identity: {
+      type: "UserAssigned",
+      userAssignedIdentities: {
+        "/subscriptions/1f31ba14Ce164281B9b43e78da6e1616/resourceGroups/res4228/providers/MicrosoftManagedIdentity/userAssignedIdentities/myUserAssignedIdentity":
+          {},
+      },
+    },
     properties: {
       description: "My Storage task",
       action: {

@@ -1,5 +1,6 @@
 const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Runs the input conditions against input object metadata properties and designates matched objects in response.

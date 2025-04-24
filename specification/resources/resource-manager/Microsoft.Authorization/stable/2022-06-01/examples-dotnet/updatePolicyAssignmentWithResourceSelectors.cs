@@ -24,26 +24,17 @@ ResourceIdentifier policyAssignmentResourceId = PolicyAssignmentResource.CreateR
 PolicyAssignmentResource policyAssignment = client.GetPolicyAssignmentResource(policyAssignmentResourceId);
 
 // invoke the operation
-PolicyAssignmentPatch patch = new PolicyAssignmentPatch()
+PolicyAssignmentPatch patch = new PolicyAssignmentPatch
 {
-    ResourceSelectors =
-    {
-    new ResourceSelector()
+    ResourceSelectors = {new ResourceSelector
     {
     Name = "SDPRegions",
-    Selectors =
-    {
-    new ResourceSelectorExpression()
+    Selectors = {new ResourceSelectorExpression
     {
     Kind = ResourceSelectorKind.ResourceLocation,
-    In =
-    {
-    "eastus2euap","centraluseuap"
-    },
-    }
-    },
-    }
-    },
+    In = {"eastus2euap", "centraluseuap"},
+    }},
+    }},
 };
 PolicyAssignmentResource result = await policyAssignment.UpdateAsync(patch);
 

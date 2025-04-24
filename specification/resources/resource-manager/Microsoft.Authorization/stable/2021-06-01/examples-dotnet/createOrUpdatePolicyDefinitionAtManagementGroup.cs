@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.ManagementGroups;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Resources;
 
@@ -16,61 +17,64 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupPolicyDefinitionResource created on azure
-// for more information of creating ManagementGroupPolicyDefinitionResource, please refer to the document of ManagementGroupPolicyDefinitionResource
+// this example assumes you already have this ManagementGroupResource created on azure
+// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
 string managementGroupId = "MyManagementGroup";
-string policyDefinitionName = "ResourceNaming";
-ResourceIdentifier managementGroupPolicyDefinitionResourceId = ManagementGroupPolicyDefinitionResource.CreateResourceIdentifier(managementGroupId, policyDefinitionName);
-ManagementGroupPolicyDefinitionResource managementGroupPolicyDefinition = client.GetManagementGroupPolicyDefinitionResource(managementGroupPolicyDefinitionResourceId);
+ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(managementGroupId);
+ManagementGroupResource managementGroupResource = client.GetManagementGroupResource(managementGroupResourceId);
+
+// get the collection of this ManagementGroupPolicyDefinitionResource
+ManagementGroupPolicyDefinitionCollection collection = managementGroupResource.GetManagementGroupPolicyDefinitions();
 
 // invoke the operation
-PolicyDefinitionData data = new PolicyDefinitionData()
+string policyDefinitionName = "ResourceNaming";
+PolicyDefinitionData data = new PolicyDefinitionData
 {
     Mode = "All",
     DisplayName = "Enforce resource naming convention",
     Description = "Force resource names to begin with given 'prefix' and/or end with given 'suffix'",
-    PolicyRule = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    PolicyRule = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
-        ["if"] = new Dictionary<string, object>()
+        ["if"] = new
         {
-            ["not"] = new Dictionary<string, object>()
+            not = new
             {
-                ["field"] = "name",
-                ["like"] = "[concat(parameters('prefix'), '*', parameters('suffix'))]"
-            }
+                field = "name",
+                like = "[concat(parameters('prefix'), '*', parameters('suffix'))]",
+            },
         },
-        ["then"] = new Dictionary<string, object>()
+        ["then"] = new
         {
-            ["effect"] = "deny"
+            effect = "deny",
         }
     }),
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Metadata = BinaryData.FromObjectAsJson(new
     {
-        ["category"] = "Naming"
+        category = "Naming",
     }),
     Parameters =
     {
-    ["prefix"] = new ArmPolicyParameter()
+    ["prefix"] = new ArmPolicyParameter
     {
     ParameterType = ArmPolicyParameterType.String,
-    Metadata = new ParameterDefinitionsValueMetadata()
+    Metadata = new ParameterDefinitionsValueMetadata
     {
     DisplayName = "Prefix",
     Description = "Resource name prefix",
     },
     },
-    ["suffix"] = new ArmPolicyParameter()
+    ["suffix"] = new ArmPolicyParameter
     {
     ParameterType = ArmPolicyParameterType.String,
-    Metadata = new ParameterDefinitionsValueMetadata()
+    Metadata = new ParameterDefinitionsValueMetadata
     {
     DisplayName = "Suffix",
     Description = "Resource name suffix",
     },
-    },
+    }
     },
 };
-ArmOperation<ManagementGroupPolicyDefinitionResource> lro = await managementGroupPolicyDefinition.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagementGroupPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyDefinitionName, data);
 ManagementGroupPolicyDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -17,30 +16,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this PolicyAssignmentResource
 string scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-PolicyAssignmentCollection collection = client.GetGenericResource(scopeId).GetPolicyAssignments();
+PolicyAssignmentCollection collection = client.GetGenericResource(new ResourceIdentifier(scope)).GetPolicyAssignments();
 
 // invoke the operation
 string policyAssignmentName = "securityInitAssignment";
-PolicyAssignmentData data = new PolicyAssignmentData()
+PolicyAssignmentData data = new PolicyAssignmentData
 {
     DisplayName = "Enforce security policies",
     PolicyDefinitionId = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/securityInitiative",
-    NonComplianceMessages =
-    {
-    new NonComplianceMessage("Resources must comply with all internal security policies. See <internal site URL> for more info."),new NonComplianceMessage("Resource names must start with 'DeptA' and end with '-LC'.")
+    NonComplianceMessages = {new NonComplianceMessage("Resources must comply with all internal security policies. See <internal site URL> for more info."), new NonComplianceMessage("Resource names must start with 'DeptA' and end with '-LC'.")
     {
     PolicyDefinitionReferenceId = "10420126870854049575",
-    },new NonComplianceMessage("Storage accounts must have firewall rules configured.")
+    }, new NonComplianceMessage("Storage accounts must have firewall rules configured.")
     {
     PolicyDefinitionReferenceId = "8572513655450389710",
-    }
-    },
+    }},
 };
 ArmOperation<PolicyAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyAssignmentName, data);
 PolicyAssignmentResource result = lro.Value;

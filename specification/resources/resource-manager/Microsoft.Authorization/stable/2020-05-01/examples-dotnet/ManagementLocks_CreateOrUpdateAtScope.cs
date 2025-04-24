@@ -15,18 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ManagementLockResource
+// this example assumes you already have this ManagementLockResource created on azure
+// for more information of creating ManagementLockResource, please refer to the document of ManagementLockResource
 string scope = "subscriptions/subscriptionId";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-ManagementLockCollection collection = client.GetGenericResource(scopeId).GetManagementLocks();
+string lockName = "testlock";
+ResourceIdentifier managementLockResourceId = ManagementLockResource.CreateResourceIdentifier(scope, lockName);
+ManagementLockResource managementLock = client.GetManagementLockResource(managementLockResourceId);
 
 // invoke the operation
-string lockName = "testlock";
 ManagementLockData data = new ManagementLockData(ManagementLockLevel.ReadOnly);
-ArmOperation<ManagementLockResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, lockName, data);
+ArmOperation<ManagementLockResource> lro = await managementLock.UpdateAsync(WaitUntil.Completed, data);
 ManagementLockResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

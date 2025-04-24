@@ -28,4 +28,4 @@ await foreach (ProviderResourceType item in resourceProvider.GetProviderResource
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

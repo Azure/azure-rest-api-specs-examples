@@ -22,13 +22,13 @@ ResourceIdentifier tagResourceId = TagResource.CreateResourceIdentifier(scope);
 TagResource tagResource = client.GetTagResource(tagResourceId);
 
 // invoke the operation
-TagResourcePatch patch = new TagResourcePatch()
+TagResourcePatch patch = new TagResourcePatch
 {
     PatchMode = TagPatchMode.Replace,
     TagValues =
     {
     ["tagKey1"] = "tag-value-1",
-    ["tagKey2"] = "tag-value-2",
+    ["tagKey2"] = "tag-value-2"
     },
 };
 ArmOperation<TagResource> lro = await tagResource.UpdateAsync(WaitUntil.Completed, patch);

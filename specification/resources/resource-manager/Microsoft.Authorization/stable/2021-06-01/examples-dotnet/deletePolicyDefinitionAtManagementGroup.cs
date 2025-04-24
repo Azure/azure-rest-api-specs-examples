@@ -26,4 +26,4 @@ ManagementGroupPolicyDefinitionResource managementGroupPolicyDefinition = client
 // invoke the operation
 await managementGroupPolicyDefinition.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

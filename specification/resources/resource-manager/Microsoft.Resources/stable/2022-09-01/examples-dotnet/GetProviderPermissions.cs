@@ -28,4 +28,4 @@ await foreach (ProviderPermission item in resourceProvider.ProviderPermissionsAs
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

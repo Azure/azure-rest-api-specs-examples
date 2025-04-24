@@ -24,4 +24,4 @@ TagResource tagResource = client.GetTagResource(tagResourceId);
 // invoke the operation
 await tagResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

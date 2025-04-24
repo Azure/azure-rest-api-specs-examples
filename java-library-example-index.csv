@@ -5353,3 +5353,4 @@ id,name,language,tag,package,version,date_epoch,date
 5352,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.1.0-beta.3,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.1.0-beta.3,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.1.0-beta.3,1745461486,04/24/2025
 5353,@azure/arm-netapp@21.5.0,js,@azure/arm-netapp_21.5.0,@azure/arm-netapp,21.5.0,1745467173,04/24/2025
 5354,@azure/arm-storage@18.5.0,js,@azure/arm-storage_18.5.0,@azure/arm-storage,18.5.0,1745467131,04/24/2025
+5355,@azure/arm-storageactions@1.0.0-beta.2,js,@azure/arm-storageactions_1.0.0-beta.2,@azure/arm-storageactions,1.0.0-beta.2,1745467116,04/24/2025

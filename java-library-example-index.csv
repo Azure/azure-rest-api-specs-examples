@@ -5356,3 +5356,4 @@ id,name,language,tag,package,version,date_epoch,date
 5355,@azure/arm-storageactions@1.0.0-beta.2,js,@azure/arm-storageactions_1.0.0-beta.2,@azure/arm-storageactions,1.0.0-beta.2,1745467116,04/24/2025
 5356,@azure/arm-networkcloud@1.2.0-beta.1,js,@azure/arm-networkcloud_1.2.0-beta.1,@azure/arm-networkcloud,1.2.0-beta.1,1745467113,04/24/2025
 5357,@azure/arm-elasticsan@1.2.0-beta.2,js,@azure/arm-elasticsan_1.2.0-beta.2,@azure/arm-elasticsan,1.2.0-beta.2,1745463047,04/24/2025
+5358,"Azure.ResourceManager.PineconeVectorDB,1.0.0-beta.1",dotnet,Azure.ResourceManager.PineconeVectorDB_1.0.0-beta.1,Azure.ResourceManager.PineconeVectorDB,1.0.0-beta.1,1745421143,04/23/2025

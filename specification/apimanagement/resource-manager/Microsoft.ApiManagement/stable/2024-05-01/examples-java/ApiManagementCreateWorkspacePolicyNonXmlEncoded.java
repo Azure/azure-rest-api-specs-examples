@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.apimanagement.fluent.models.PolicyContractInner;
+import com.azure.resourcemanager.apimanagement.models.PolicyContentFormat;
+import com.azure.resourcemanager.apimanagement.models.PolicyIdName;
+
+/**
+ * Samples for WorkspacePolicy CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementCreateWorkspacePolicyNonXmlEncoded.json
+     */
+    /**
+     * Sample code: ApiManagementCreateWorkspacePolicyNonXmlEncoded.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void apiManagementCreateWorkspacePolicyNonXmlEncoded(
+        com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspacePolicies().createOrUpdateWithResponse("rg1", "apimService1", "wks1", PolicyIdName.POLICY,
+            new PolicyContractInner().withValue(
+                "<policies>\r\n     <inbound>\r\n     <base />\r\n  <set-header name=\"newvalue\" exists-action=\"override\">\r\n   <value>\"@(context.Request.Headers.FirstOrDefault(h => h.Ke==\"Via\"))\" </value>\r\n    </set-header>\r\n  </inbound>\r\n      </policies>")
+                .withFormat(PolicyContentFormat.RAWXML),
+            "*", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.apimanagement.models.MigrateToStv2Contract;
+import com.azure.resourcemanager.apimanagement.models.MigrateToStv2Mode;
+
+/**
+ * Samples for ApiManagementService MigrateToStv2.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementServiceMigrateToStv2.json
+     */
+    /**
+     * Sample code: ApiManagementMigrateService.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementMigrateService(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.apiManagementServices().migrateToStv2("rg1", "apimService1",
+            new MigrateToStv2Contract().withMode(MigrateToStv2Mode.PRESERVE_IP), com.azure.core.util.Context.NONE);
+    }
+}

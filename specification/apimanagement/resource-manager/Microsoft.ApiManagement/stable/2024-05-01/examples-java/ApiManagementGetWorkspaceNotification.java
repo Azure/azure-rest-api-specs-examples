@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.apimanagement.models.NotificationName;
+
+/**
+ * Samples for WorkspaceNotification Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementGetWorkspaceNotification.json
+     */
+    /**
+     * Sample code: ApiManagementGetWorkspaceNotification.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void
+        apiManagementGetWorkspaceNotification(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspaceNotifications().getWithResponse("rg1", "apimService1", "wks1",
+            NotificationName.REQUEST_PUBLISHER_NOTIFICATION_MESSAGE, com.azure.core.util.Context.NONE);
+    }
+}

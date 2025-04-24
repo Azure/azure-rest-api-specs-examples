@@ -1,0 +1,21 @@
+
+/**
+ * Samples for WorkspacePolicyFragment ListReferences.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2024-05-01/examples/
+     * ApiManagementListWorkspacePolicyFragmentReferences.json
+     */
+    /**
+     * Sample code: ApiManagementListWorkspacePolicyFragmentReferences.
+     * 
+     * @param manager Entry point to ApiManagementManager.
+     */
+    public static void apiManagementListWorkspacePolicyFragmentReferences(
+        com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.workspacePolicyFragments().listReferencesWithResponse("rg1", "apimService1", "wks1", "policyFragment1",
+            null, null, com.azure.core.util.Context.NONE);
+    }
+}

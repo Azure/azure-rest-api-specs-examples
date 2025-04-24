@@ -5351,3 +5351,4 @@ id,name,language,tag,package,version,date_epoch,date
 5350,azure-mgmt-redisenterprise@3.1.0b4,python,azure-mgmt-redisenterprise_3.1.0b4,azure-mgmt-redisenterprise,3.1.0b4,1745391028,04/23/2025
 5351,com.azure.resourcemanager:azure-resourcemanager-apimanagement:2.0.0,java,azure-resourcemanager-apimanagement_2.0.0,azure-resourcemanager-apimanagement,2.0.0,1745466277,04/24/2025
 5352,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.1.0-beta.3,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.1.0-beta.3,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.1.0-beta.3,1745461486,04/24/2025
+5353,@azure/arm-netapp@21.5.0,js,@azure/arm-netapp_21.5.0,@azure/arm-netapp,21.5.0,1745467173,04/24/2025

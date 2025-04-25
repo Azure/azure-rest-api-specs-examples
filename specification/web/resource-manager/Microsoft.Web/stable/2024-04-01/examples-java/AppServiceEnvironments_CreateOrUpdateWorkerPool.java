@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.appservice.fluent.models.WorkerPoolResourceInner;
 
 /**
- * Samples for AppServiceEnvironments UpdateWorkerPool.
+ * Samples for AppServiceEnvironments CreateOrUpdateWorkerPool.
  */
 public final class Main {
     /*
@@ -15,7 +15,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getPropertiesOfAWorkerPool(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getAppServiceEnvironments().updateWorkerPoolWithResponse("test-rg",
+        azure.webApps().manager().serviceClient().getAppServiceEnvironments().createOrUpdateWorkerPool("test-rg",
             "test-ase", "0", new WorkerPoolResourceInner().withWorkerSize("Small").withWorkerCount(3),
             com.azure.core.util.Context.NONE);
     }

@@ -5367,3 +5367,4 @@ id,name,language,tag,package,version,date_epoch,date
 5366,"Azure.ResourceManager.WeightsAndBiases,1.0.0-beta.1",dotnet,Azure.ResourceManager.WeightsAndBiases_1.0.0-beta.1,Azure.ResourceManager.WeightsAndBiases,1.0.0-beta.1,1745479340,04/24/2025
 5367,"Azure.ResourceManager.LambdaTestHyperExecute,1.0.0-beta.1",dotnet,Azure.ResourceManager.LambdaTestHyperExecute_1.0.0-beta.1,Azure.ResourceManager.LambdaTestHyperExecute,1.0.0-beta.1,1745479309,04/24/2025
 5368,"Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0-beta.1",dotnet,Azure.ResourceManager.ArizeAIObservabilityEval_1.0.0-beta.1,Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0-beta.1,1745479288,04/24/2025
+5369,com.azure.resourcemanager:azure-resourcemanager:2.50.0,java,azure-resourcemanager_2.50.0,azure-resourcemanager,2.50.0,1745548755,04/25/2025

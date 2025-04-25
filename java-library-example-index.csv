@@ -5370,3 +5370,4 @@ id,name,language,tag,package,version,date_epoch,date
 5369,com.azure.resourcemanager:azure-resourcemanager:2.50.0,java,azure-resourcemanager_2.50.0,azure-resourcemanager,2.50.0,1745548755,04/25/2025
 5370,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement/v3@v3.0.0,go,sdk/resourcemanager/apimanagement/armapimanagement/v3.0.0,sdk/resourcemanager/apimanagement/armapimanagement,v3.0.0,1745573740,04/25/2025
 5371,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/v2@v2.4.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/v2.4.0,sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery,v2.4.0,1745570649,04/25/2025
+5372,@azure/arm-containerservice@22.0.0-beta.2,js,@azure/arm-containerservice_22.0.0-beta.2,@azure/arm-containerservice,22.0.0-beta.2,1745575087,04/25/2025

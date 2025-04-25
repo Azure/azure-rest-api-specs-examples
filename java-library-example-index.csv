@@ -5377,3 +5377,4 @@ id,name,language,tag,package,version,date_epoch,date
 5376,@azure/arm-appcontainers@2.2.0,js,@azure/arm-appcontainers_2.2.0,@azure/arm-appcontainers,2.2.0,1745569120,04/25/2025
 5377,@azure/arm-apimanagement@10.0.0,js,@azure/arm-apimanagement_10.0.0,@azure/arm-apimanagement,10.0.0,1745568920,04/25/2025
 5378,@azure/arm-standbypool@2.0.0,js,@azure/arm-standbypool_2.0.0,@azure/arm-standbypool,2.0.0,1745568837,04/25/2025
+5379,@azure/arm-redisenterprisecache@4.0.0-beta.1,js,@azure/arm-redisenterprisecache_4.0.0-beta.1,@azure/arm-redisenterprisecache,4.0.0-beta.1,1745568800,04/25/2025

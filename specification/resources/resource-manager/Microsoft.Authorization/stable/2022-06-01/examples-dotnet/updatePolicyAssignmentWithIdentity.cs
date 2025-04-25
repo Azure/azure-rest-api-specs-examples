@@ -24,7 +24,7 @@ ResourceIdentifier policyAssignmentResourceId = PolicyAssignmentResource.CreateR
 PolicyAssignmentResource policyAssignment = client.GetPolicyAssignmentResource(policyAssignmentResourceId);
 
 // invoke the operation
-PolicyAssignmentPatch patch = new PolicyAssignmentPatch()
+PolicyAssignmentPatch patch = new PolicyAssignmentPatch
 {
     Location = new AzureLocation("eastus"),
     Identity = new ManagedServiceIdentity("SystemAssigned"),

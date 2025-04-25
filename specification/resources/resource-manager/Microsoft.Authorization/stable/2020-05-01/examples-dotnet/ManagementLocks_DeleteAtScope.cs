@@ -25,4 +25,4 @@ ManagementLockResource managementLock = client.GetManagementLockResource(managem
 // invoke the operation
 await managementLock.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

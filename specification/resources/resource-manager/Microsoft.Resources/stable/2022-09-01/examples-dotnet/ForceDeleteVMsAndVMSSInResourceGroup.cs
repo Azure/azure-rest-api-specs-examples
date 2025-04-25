@@ -26,4 +26,4 @@ ResourceGroupResource resourceGroup = client.GetResourceGroupResource(resourceGr
 string forceDeletionTypes = "Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets";
 await resourceGroup.DeleteAsync(WaitUntil.Completed, forceDeletionTypes: forceDeletionTypes);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

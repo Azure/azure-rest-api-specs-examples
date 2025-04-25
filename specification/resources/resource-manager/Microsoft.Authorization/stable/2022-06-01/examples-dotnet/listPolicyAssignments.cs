@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -17,13 +16,10 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this PolicyAssignmentResource
 string subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}", subscriptionId));
-PolicyAssignmentCollection collection = client.GetGenericResource(scopeId).GetPolicyAssignments();
+string scope = $"/subscriptions/{subscriptionId}";
+PolicyAssignmentCollection collection = client.GetGenericResource(new ResourceIdentifier(scope)).GetPolicyAssignments();
 
 // invoke the operation and iterate over the result
 string filter = "atScope()";
@@ -36,4 +32,4 @@ await foreach (PolicyAssignmentResource item in collection.GetAllAsync(filter: f
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

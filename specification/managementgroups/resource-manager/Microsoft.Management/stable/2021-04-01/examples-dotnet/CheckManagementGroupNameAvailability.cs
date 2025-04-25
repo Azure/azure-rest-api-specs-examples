@@ -16,15 +16,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this ManagementGroupResource
 ManagementGroupCollection collection = tenantResource.GetManagementGroups();
 
 // invoke the operation
-ManagementGroupNameAvailabilityContent content = new ManagementGroupNameAvailabilityContent()
+ManagementGroupNameAvailabilityContent content = new ManagementGroupNameAvailabilityContent
 {
     Name = "nameTocheck",
     ResourceType = new ResourceType("Microsoft.Management/managementGroups"),

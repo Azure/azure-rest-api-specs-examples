@@ -14,9 +14,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenant = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenant = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this DataPolicyManifestResource
 DataPolicyManifestCollection collection = tenant.GetDataPolicyManifests();
@@ -32,4 +30,4 @@ await foreach (DataPolicyManifestResource item in collection.GetAllAsync(filter:
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

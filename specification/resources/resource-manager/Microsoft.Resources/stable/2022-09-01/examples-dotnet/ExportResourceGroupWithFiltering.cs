@@ -23,12 +23,9 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroup = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-ExportTemplate exportTemplate = new ExportTemplate()
+ExportTemplate exportTemplate = new ExportTemplate
 {
-    Resources =
-    {
-    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/My.RP/myResourceType/myFirstResource"
-    },
+    Resources = { "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/My.RP/myResourceType/myFirstResource" },
     Options = "SkipResourceNameParameterization",
 };
 ArmOperation<ResourceGroupExportResult> lro = await resourceGroup.ExportTemplateAsync(WaitUntil.Completed, exportTemplate);

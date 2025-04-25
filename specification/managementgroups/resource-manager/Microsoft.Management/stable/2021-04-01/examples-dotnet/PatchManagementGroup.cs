@@ -22,7 +22,7 @@ ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateRes
 ManagementGroupResource managementGroup = client.GetManagementGroupResource(managementGroupResourceId);
 
 // invoke the operation
-ManagementGroupPatch patch = new ManagementGroupPatch()
+ManagementGroupPatch patch = new ManagementGroupPatch
 {
     DisplayName = "AlternateDisplayName",
     ParentGroupId = "/providers/Microsoft.Management/managementGroups/AlternateRootGroup",

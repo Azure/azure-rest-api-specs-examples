@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,4 +25,4 @@ SubscriptionPolicySetDefinitionResource subscriptionPolicySetDefinition = client
 // invoke the operation
 await subscriptionPolicySetDefinition.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

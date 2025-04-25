@@ -23,12 +23,9 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroup = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-ExportTemplate exportTemplate = new ExportTemplate()
+ExportTemplate exportTemplate = new ExportTemplate
 {
-    Resources =
-    {
-    "*"
-    },
+    Resources = { "*" },
     Options = "IncludeParameterDefaultValue,IncludeComments",
 };
 ArmOperation<ResourceGroupExportResult> lro = await resourceGroup.ExportTemplateAsync(WaitUntil.Completed, exportTemplate);

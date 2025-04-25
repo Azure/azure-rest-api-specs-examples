@@ -25,4 +25,4 @@ ManagementGroupResource managementGroup = client.GetManagementGroupResource(mana
 string cacheControl = "no-cache";
 await managementGroup.DeleteAsync(WaitUntil.Completed, cacheControl: cacheControl);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

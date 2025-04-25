@@ -27,4 +27,4 @@ await foreach (LocationExpanded item in subscription.GetLocationsAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -24,27 +24,18 @@ ResourceIdentifier policyAssignmentResourceId = PolicyAssignmentResource.CreateR
 PolicyAssignmentResource policyAssignment = client.GetPolicyAssignmentResource(policyAssignmentResourceId);
 
 // invoke the operation
-PolicyAssignmentPatch patch = new PolicyAssignmentPatch()
+PolicyAssignmentPatch patch = new PolicyAssignmentPatch
 {
-    Overrides =
-    {
-    new PolicyOverride()
+    Overrides = {new PolicyOverride
     {
     Kind = PolicyOverrideKind.PolicyEffect,
     Value = "Audit",
-    Selectors =
-    {
-    new ResourceSelectorExpression()
+    Selectors = {new ResourceSelectorExpression
     {
     Kind = ResourceSelectorKind.PolicyDefinitionReferenceId,
-    In =
-    {
-    "Limit_Skus","Limit_Locations"
-    },
-    }
-    },
-    }
-    },
+    In = {"Limit_Skus", "Limit_Locations"},
+    }},
+    }},
 };
 PolicyAssignmentResource result = await policyAssignment.UpdateAsync(patch);
 

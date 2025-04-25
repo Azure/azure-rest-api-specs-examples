@@ -24,14 +24,14 @@ ResourceIdentifier policyAssignmentResourceId = PolicyAssignmentResource.CreateR
 PolicyAssignmentResource policyAssignment = client.GetPolicyAssignmentResource(policyAssignmentResourceId);
 
 // invoke the operation
-PolicyAssignmentPatch patch = new PolicyAssignmentPatch()
+PolicyAssignmentPatch patch = new PolicyAssignmentPatch
 {
     Location = new AzureLocation("eastus"),
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/testResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/testResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity()
         },
     },
 };

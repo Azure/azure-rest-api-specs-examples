@@ -27,4 +27,4 @@ await foreach (DescendantData item in managementGroup.GetDescendantsAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

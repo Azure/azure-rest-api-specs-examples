@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -17,43 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this PolicyAssignmentResource
 string scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-PolicyAssignmentCollection collection = client.GetGenericResource(scopeId).GetPolicyAssignments();
+PolicyAssignmentCollection collection = client.GetGenericResource(new ResourceIdentifier(scope)).GetPolicyAssignments();
 
 // invoke the operation
 string policyAssignmentName = "CostManagement";
-PolicyAssignmentData data = new PolicyAssignmentData()
+PolicyAssignmentData data = new PolicyAssignmentData
 {
     DisplayName = "Limit the resource location and resource SKU",
     PolicyDefinitionId = "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/CostManagement",
     Description = "Limit the resource location and resource SKU",
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Metadata = BinaryData.FromObjectAsJson(new
     {
-        ["assignedBy"] = "Special Someone"
+        assignedBy = "Special Someone",
     }),
-    ResourceSelectors =
-    {
-    new ResourceSelector()
+    ResourceSelectors = {new ResourceSelector
     {
     Name = "SDPRegions",
-    Selectors =
-    {
-    new ResourceSelectorExpression()
+    Selectors = {new ResourceSelectorExpression
     {
     Kind = ResourceSelectorKind.ResourceLocation,
-    In =
-    {
-    "eastus2euap","centraluseuap"
-    },
-    }
-    },
-    }
-    },
+    In = {"eastus2euap", "centraluseuap"},
+    }},
+    }},
 };
 ArmOperation<PolicyAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyAssignmentName, data);
 PolicyAssignmentResource result = lro.Value;

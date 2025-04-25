@@ -25,4 +25,4 @@ ManagementGroupSubscriptionResource managementGroupSubscription = client.GetMana
 string cacheControl = "no-cache";
 await managementGroupSubscription.DeleteAsync(WaitUntil.Completed, cacheControl: cacheControl);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

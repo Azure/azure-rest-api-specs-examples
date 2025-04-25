@@ -33,4 +33,4 @@ await foreach (ManagementGroupSubscriptionResource item in collection.GetAllAsyn
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -16,21 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this ManagementGroupResource
 ManagementGroupCollection collection = tenantResource.GetManagementGroups();
 
 // invoke the operation
 string groupId = "ChildGroup";
-ManagementGroupCreateOrUpdateContent content = new ManagementGroupCreateOrUpdateContent()
+ManagementGroupCreateOrUpdateContent content = new ManagementGroupCreateOrUpdateContent
 {
     DisplayName = "ChildGroup",
-    Details = new CreateManagementGroupDetails()
+    Details = new CreateManagementGroupDetails
     {
-        Parent = new ManagementGroupParentCreateOptions()
+        Parent = new ManagementGroupParentCreateOptions
         {
             Id = "/providers/Microsoft.Management/managementGroups/RootGroup",
         },

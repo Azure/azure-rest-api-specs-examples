@@ -14,9 +14,7 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenant = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+TenantResource tenant = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // get the collection of this DataPolicyManifestResource
 DataPolicyManifestCollection collection = tenant.GetDataPolicyManifests();
@@ -28,7 +26,7 @@ DataPolicyManifestResource result = response.HasValue ? response.Value : null;
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

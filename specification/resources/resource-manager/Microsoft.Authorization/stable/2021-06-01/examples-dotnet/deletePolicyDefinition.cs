@@ -26,4 +26,4 @@ SubscriptionPolicyDefinitionResource subscriptionPolicyDefinition = client.GetSu
 // invoke the operation
 await subscriptionPolicyDefinition.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

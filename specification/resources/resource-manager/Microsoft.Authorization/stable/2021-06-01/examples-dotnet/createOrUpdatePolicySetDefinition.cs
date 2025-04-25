@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -24,54 +23,55 @@ ResourceIdentifier subscriptionPolicySetDefinitionResourceId = SubscriptionPolic
 SubscriptionPolicySetDefinitionResource subscriptionPolicySetDefinition = client.GetSubscriptionPolicySetDefinitionResource(subscriptionPolicySetDefinitionResourceId);
 
 // invoke the operation
-PolicySetDefinitionData data = new PolicySetDefinitionData()
+PolicySetDefinitionData data = new PolicySetDefinitionData
 {
     DisplayName = "Cost Management",
     Description = "Policies to enforce low cost storage SKUs",
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Metadata = BinaryData.FromObjectAsJson(new
     {
-        ["category"] = "Cost Management"
+        category = "Cost Management",
     }),
     Parameters =
     {
-    ["namePrefix"] = new ArmPolicyParameter()
+    ["namePrefix"] = new ArmPolicyParameter
     {
     ParameterType = ArmPolicyParameterType.String,
-    DefaultValue = BinaryData.FromString("\"myPrefix\""),
-    Metadata = new ParameterDefinitionsValueMetadata()
+    DefaultValue = BinaryData.FromObjectAsJson("myPrefix"),
+    Metadata = new ParameterDefinitionsValueMetadata
     {
     DisplayName = "Prefix to enforce on resource names",
     },
-    },
-    },
-    PolicyDefinitions =
-    {
-    new PolicyDefinitionReference("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
-    {
-    Parameters =
-    {
-    ["listOfAllowedSKUs"] = new ArmPolicyParameterValue()
-    {
-    Value = BinaryData.FromObjectAsJson(new object[] { "Standard_GRS", "Standard_LRS" }),
-    },
-    },
-    PolicyDefinitionReferenceId = "Limit_Skus",
-    },new PolicyDefinitionReference("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
-    {
-    Parameters =
-    {
-    ["prefix"] = new ArmPolicyParameterValue()
-    {
-    Value = BinaryData.FromString("\"[parameters('namePrefix')]\""),
-    },
-    ["suffix"] = new ArmPolicyParameterValue()
-    {
-    Value = BinaryData.FromString("\"-LC\""),
-    },
-    },
-    PolicyDefinitionReferenceId = "Resource_Naming",
     }
     },
+    PolicyDefinitions = {new PolicyDefinitionReference("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
+    {
+    Parameters =
+    {
+    ["listOfAllowedSKUs"] = new ArmPolicyParameterValue
+    {
+    Value = BinaryData.FromObjectAsJson(new object[]
+    {
+    "Standard_GRS",
+    "Standard_LRS"
+    }),
+    }
+    },
+    PolicyDefinitionReferenceId = "Limit_Skus",
+    }, new PolicyDefinitionReference("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
+    {
+    Parameters =
+    {
+    ["prefix"] = new ArmPolicyParameterValue
+    {
+    Value = BinaryData.FromObjectAsJson("[parameters('namePrefix')]"),
+    },
+    ["suffix"] = new ArmPolicyParameterValue
+    {
+    Value = BinaryData.FromObjectAsJson("-LC"),
+    }
+    },
+    PolicyDefinitionReferenceId = "Resource_Naming",
+    }},
 };
 ArmOperation<SubscriptionPolicySetDefinitionResource> lro = await subscriptionPolicySetDefinition.UpdateAsync(WaitUntil.Completed, data);
 SubscriptionPolicySetDefinitionResource result = lro.Value;

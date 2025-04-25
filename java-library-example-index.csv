@@ -5382,3 +5382,4 @@ id,name,language,tag,package,version,date_epoch,date
 5381,@azure/arm-dependencymap@1.0.0-beta.1,js,@azure/arm-dependencymap_1.0.0-beta.1,@azure/arm-dependencymap,1.0.0-beta.1,1745562052,04/25/2025
 5382,@azure/arm-portalservicescopilot@1.0.0-beta.1,js,@azure/arm-portalservicescopilot_1.0.0-beta.1,@azure/arm-portalservicescopilot,1.0.0-beta.1,1745517373,04/24/2025
 5383,"Azure.ResourceManager.NetworkCloud,1.2.0-beta.1",dotnet,Azure.ResourceManager.NetworkCloud_1.2.0-beta.1,Azure.ResourceManager.NetworkCloud,1.2.0-beta.1,1745558070,04/25/2025
+5384,"Azure.ResourceManager.DurableTask,1.0.0-beta.1",dotnet,Azure.ResourceManager.DurableTask_1.0.0-beta.1,Azure.ResourceManager.DurableTask,1.0.0-beta.1,1745556774,04/25/2025

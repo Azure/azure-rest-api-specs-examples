@@ -5378,3 +5378,4 @@ id,name,language,tag,package,version,date_epoch,date
 5377,@azure/arm-apimanagement@10.0.0,js,@azure/arm-apimanagement_10.0.0,@azure/arm-apimanagement,10.0.0,1745568920,04/25/2025
 5378,@azure/arm-standbypool@2.0.0,js,@azure/arm-standbypool_2.0.0,@azure/arm-standbypool,2.0.0,1745568837,04/25/2025
 5379,@azure/arm-redisenterprisecache@4.0.0-beta.1,js,@azure/arm-redisenterprisecache_4.0.0-beta.1,@azure/arm-redisenterprisecache,4.0.0-beta.1,1745568800,04/25/2025
+5380,@azure/arm-containerregistry@11.0.0-beta.5,js,@azure/arm-containerregistry_11.0.0-beta.5,@azure/arm-containerregistry,11.0.0-beta.5,1745567292,04/25/2025

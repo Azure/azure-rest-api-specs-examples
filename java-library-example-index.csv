@@ -5375,3 +5375,4 @@ id,name,language,tag,package,version,date_epoch,date
 5374,@azure/arm-neonpostgres@1.0.0,js,@azure/arm-neonpostgres_1.0.0,@azure/arm-neonpostgres,1.0.0,1745569872,04/25/2025
 5375,@azure/arm-recoveryservicesbackup@13.2.0,js,@azure/arm-recoveryservicesbackup_13.2.0,@azure/arm-recoveryservicesbackup,13.2.0,1745569363,04/25/2025
 5376,@azure/arm-appcontainers@2.2.0,js,@azure/arm-appcontainers_2.2.0,@azure/arm-appcontainers,2.2.0,1745569120,04/25/2025
+5377,@azure/arm-apimanagement@10.0.0,js,@azure/arm-apimanagement_10.0.0,@azure/arm-apimanagement,10.0.0,1745568920,04/25/2025

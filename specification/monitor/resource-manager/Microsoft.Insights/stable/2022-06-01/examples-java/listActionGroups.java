@@ -1,6 +1,6 @@
 
 /**
- * Samples for ActionGroups List.
+ * Samples for ActionGroups ListByResourceGroup.
  */
 public final class Main {
     /*
@@ -8,11 +8,12 @@ public final class Main {
      * specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/listActionGroups.json
      */
     /**
-     * Sample code: List action groups at subscription level.
+     * Sample code: List action groups at resource group level.
      * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void listActionGroupsAtSubscriptionLevel(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getActionGroups().list(com.azure.core.util.Context.NONE);
+    public static void listActionGroupsAtResourceGroupLevel(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.diagnosticSettings().manager().serviceClient().getActionGroups()
+            .listByResourceGroup("Default-NotificationRules", com.azure.core.util.Context.NONE);
     }
 }

@@ -5389,3 +5389,4 @@ id,name,language,tag,package,version,date_epoch,date
 5388,com.azure.resourcemanager:azure-resourcemanager-durabletask:1.0.0-beta.2,java,azure-resourcemanager-durabletask_1.0.0-beta.2,azure-resourcemanager-durabletask,1.0.0-beta.2,1745896897,04/29/2025
 5389,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v2@v2.0.0,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v2.0.0,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v2.0.0,1745898482,04/29/2025
 5390,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/carbonoptimization/armcarbonoptimization@v0.1.0,go,sdk/resourcemanager/carbonoptimization/armcarbonoptimization/v0.1.0,sdk/resourcemanager/carbonoptimization/armcarbonoptimization,v0.1.0,1745898457,04/29/2025
+5391,@azure/arm-durabletask@1.0.0-beta.2,js,@azure/arm-durabletask_1.0.0-beta.2,@azure/arm-durabletask,1.0.0-beta.2,1745891102,04/29/2025

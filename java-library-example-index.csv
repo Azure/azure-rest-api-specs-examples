@@ -5385,3 +5385,4 @@ id,name,language,tag,package,version,date_epoch,date
 5384,"Azure.ResourceManager.DurableTask,1.0.0-beta.1",dotnet,Azure.ResourceManager.DurableTask_1.0.0-beta.1,Azure.ResourceManager.DurableTask,1.0.0-beta.1,1745556774,04/25/2025
 5385,azure-mgmt-portalservicescopilot@1.0.0b1,python,azure-mgmt-portalservicescopilot_1.0.0b1,azure-mgmt-portalservicescopilot,1.0.0b1,1745518067,04/24/2025
 5386,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.2.0-beta.1,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.2.0-beta.1,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.2.0-beta.1,1745724543,04/27/2025
+5387,"Azure.ResourceManager.StorageSync,1.3.0",dotnet,Azure.ResourceManager.StorageSync_1.3.0,Azure.ResourceManager.StorageSync,1.3.0,1745825840,04/28/2025

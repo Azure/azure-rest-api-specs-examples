@@ -5392,3 +5392,4 @@ id,name,language,tag,package,version,date_epoch,date
 5391,@azure/arm-durabletask@1.0.0-beta.2,js,@azure/arm-durabletask_1.0.0-beta.2,@azure/arm-durabletask,1.0.0-beta.2,1745891102,04/29/2025
 5392,azure-mgmt-containerregistry@14.0.0,python,azure-mgmt-containerregistry_14.0.0,azure-mgmt-containerregistry,14.0.0,1745897048,04/29/2025
 5393,azure-mgmt-durabletask@1.0.0b2,python,azure-mgmt-durabletask_1.0.0b2,azure-mgmt-durabletask,1.0.0b2,1745891066,04/29/2025
+5394,azure-mgmt-workloadssapvirtualinstance@1.0.0,python,azure-mgmt-workloadssapvirtualinstance_1.0.0,azure-mgmt-workloadssapvirtualinstance,1.0.0,1745999136,04/30/2025

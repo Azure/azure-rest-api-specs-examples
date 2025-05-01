@@ -5394,3 +5394,4 @@ id,name,language,tag,package,version,date_epoch,date
 5393,azure-mgmt-durabletask@1.0.0b2,python,azure-mgmt-durabletask_1.0.0b2,azure-mgmt-durabletask,1.0.0b2,1745891066,04/29/2025
 5394,azure-mgmt-workloadssapvirtualinstance@1.0.0,python,azure-mgmt-workloadssapvirtualinstance_1.0.0,azure-mgmt-workloadssapvirtualinstance,1.0.0,1745999136,04/30/2025
 5395,"Azure.ResourceManager.Search,1.3.0-beta.5",dotnet,Azure.ResourceManager.Search_1.3.0-beta.5,Azure.ResourceManager.Search,1.3.0-beta.5,1746032085,04/30/2025
+5396,"Azure.ResourceManager.RedisEnterprise,1.2.0-beta.3",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0-beta.3,Azure.ResourceManager.RedisEnterprise,1.2.0-beta.3,1746029517,04/30/2025

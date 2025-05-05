@@ -22,11 +22,18 @@ def main():
         subscription_id="subid",
     )
 
+    # fetch the cross connect details
+    expressroute = client.express_route_cross_connections.list(
+            filter=f"name eq '<circuitServiceKey>'").next()
+
     response = client.express_route_cross_connections.begin_create_or_update(
         resource_group_name="CrossConnection-SiliconValley",
         cross_connection_name="<circuitServiceKey>",
-        parameters={"properties": {"serviceProviderProvisioningState": "NotProvisioned"}},
-    ).result()
+        parameters={"serviceProviderProvisioningState": "Provisioning",
+                    "location": expressroute.location,
+                    "expressRouteCircuit": {
+                        "id": expressroute.express_route_circuit.id
+                    }}).result()
     print(response)
 
 

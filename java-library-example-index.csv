@@ -5398,3 +5398,4 @@ id,name,language,tag,package,version,date_epoch,date
 5397,"Azure.ResourceManager.Storage,1.4.2",dotnet,Azure.ResourceManager.Storage_1.4.2,Azure.ResourceManager.Storage,1.4.2,1746028473,04/30/2025
 5398,"Azure.ResourceManager.Chaos,1.1.0-beta.3",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.3,Azure.ResourceManager.Chaos,1.1.0-beta.3,1746025544,04/30/2025
 5399,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.1.0-beta.3,java,azure-resourcemanager-redisenterprise_2.1.0-beta.3,azure-resourcemanager-redisenterprise,2.1.0-beta.3,1746516673,05/06/2025
+5400,"Azure.ResourceManager.WorkloadsSapVirtualInstance,1.0.0-beta.1",dotnet,Azure.ResourceManager.WorkloadsSapVirtualInstance_1.0.0-beta.1,Azure.ResourceManager.WorkloadsSapVirtualInstance,1.0.0-beta.1,1746517431,05/06/2025

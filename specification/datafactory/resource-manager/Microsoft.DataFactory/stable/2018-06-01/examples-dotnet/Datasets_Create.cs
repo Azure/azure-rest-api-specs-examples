@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryDatasetResource created on azure
+// for more information of creating DataFactoryDatasetResource, please refer to the document of DataFactoryDatasetResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryDatasetResource
-DataFactoryDatasetCollection collection = dataFactory.GetDataFactoryDatasets();
+string datasetName = "exampleDataset";
+ResourceIdentifier dataFactoryDatasetResourceId = DataFactoryDatasetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, datasetName);
+DataFactoryDatasetResource dataFactoryDataset = client.GetDataFactoryDatasetResource(dataFactoryDatasetResourceId);
 
 // invoke the operation
-string datasetName = "exampleDataset";
 DataFactoryDatasetData data = new DataFactoryDatasetData(new AzureBlobDataset(new DataFactoryLinkedServiceReference(default, "exampleLinkedService"))
 {
     FolderPath = null,
@@ -40,7 +37,7 @@ DataFactoryDatasetData data = new DataFactoryDatasetData(new AzureBlobDataset(ne
     ["MyFolderPath"] = new EntityParameterSpecification(EntityParameterType.String)
     },
 });
-ArmOperation<DataFactoryDatasetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, datasetName, data);
+ArmOperation<DataFactoryDatasetResource> lro = await dataFactoryDataset.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryDatasetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

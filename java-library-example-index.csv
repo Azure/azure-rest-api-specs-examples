@@ -5404,3 +5404,4 @@ id,name,language,tag,package,version,date_epoch,date
 5403,"Azure.ResourceManager.DataFactory,1.8.0",dotnet,Azure.ResourceManager.DataFactory_1.8.0,Azure.ResourceManager.DataFactory,1.8.0,1746615204,05/07/2025
 5404,azure-mgmt-cosmosdb@9.8.0,python,azure-mgmt-cosmosdb_9.8.0,azure-mgmt-cosmosdb,9.8.0,1746598802,05/07/2025
 5405,com.azure.resourcemanager:azure-resourcemanager-lambdatesthyperexecute:1.0.0-beta.1,java,azure-resourcemanager-lambdatesthyperexecute_1.0.0-beta.1,azure-resourcemanager-lambdatesthyperexecute,1.0.0-beta.1,1746683972,05/08/2025
+5406,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/portalservicescopilot/armportalservicescopilot@v0.1.0,go,sdk/resourcemanager/portalservicescopilot/armportalservicescopilot/v0.1.0,sdk/resourcemanager/portalservicescopilot/armportalservicescopilot,v0.1.0,1746682216,05/08/2025

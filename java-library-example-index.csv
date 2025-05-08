@@ -5410,3 +5410,4 @@ id,name,language,tag,package,version,date_epoch,date
 5409,"Azure.ResourceManager.NetApp,1.10.0",dotnet,Azure.ResourceManager.NetApp_1.10.0,Azure.ResourceManager.NetApp,1.10.0,1746675333,05/08/2025
 5410,azure-mgmt-lambdatesthyperexecute@1.0.0b1,python,azure-mgmt-lambdatesthyperexecute_1.0.0b1,azure-mgmt-lambdatesthyperexecute,1.0.0b1,1746682663,05/08/2025
 5411,azure-mgmt-carbonoptimization@1.0.0b1,python,azure-mgmt-carbonoptimization_1.0.0b1,azure-mgmt-carbonoptimization,1.0.0b1,1746682656,05/08/2025
+5412,azure-mgmt-containerservicefleet@3.1.0,python,azure-mgmt-containerservicefleet_3.1.0,azure-mgmt-containerservicefleet,3.1.0,1746682635,05/08/2025

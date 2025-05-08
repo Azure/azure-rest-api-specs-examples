@@ -5406,3 +5406,4 @@ id,name,language,tag,package,version,date_epoch,date
 5405,com.azure.resourcemanager:azure-resourcemanager-lambdatesthyperexecute:1.0.0-beta.1,java,azure-resourcemanager-lambdatesthyperexecute_1.0.0-beta.1,azure-resourcemanager-lambdatesthyperexecute,1.0.0-beta.1,1746683972,05/08/2025
 5406,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/portalservicescopilot/armportalservicescopilot@v0.1.0,go,sdk/resourcemanager/portalservicescopilot/armportalservicescopilot/v0.1.0,sdk/resourcemanager/portalservicescopilot/armportalservicescopilot,v0.1.0,1746682216,05/08/2025
 5407,@azure/arm-lambdatesthyperexecute@1.0.0-beta.1,js,@azure/arm-lambdatesthyperexecute_1.0.0-beta.1,@azure/arm-lambdatesthyperexecute,1.0.0-beta.1,1746686854,05/08/2025
+5408,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.6",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.6,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.6,1746696208,05/08/2025

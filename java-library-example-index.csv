@@ -5412,3 +5412,4 @@ id,name,language,tag,package,version,date_epoch,date
 5411,azure-mgmt-carbonoptimization@1.0.0b1,python,azure-mgmt-carbonoptimization_1.0.0b1,azure-mgmt-carbonoptimization,1.0.0b1,1746682656,05/08/2025
 5412,azure-mgmt-containerservicefleet@3.1.0,python,azure-mgmt-containerservicefleet_3.1.0,azure-mgmt-containerservicefleet,3.1.0,1746682635,05/08/2025
 5413,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/lambdatesthyperexecute/armlambdatesthyperexecute@v0.1.0,go,sdk/resourcemanager/lambdatesthyperexecute/armlambdatesthyperexecute/v0.1.0,sdk/resourcemanager/lambdatesthyperexecute/armlambdatesthyperexecute,v0.1.0,1747114120,05/13/2025
+5414,"Azure.ResourceManager.DependencyMap,1.0.0-beta.1",dotnet,Azure.ResourceManager.DependencyMap_1.0.0-beta.1,Azure.ResourceManager.DependencyMap,1.0.0-beta.1,1747133807,05/13/2025

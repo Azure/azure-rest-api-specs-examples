@@ -1,0 +1,19 @@
+
+/**
+ * Samples for AutoUpgradeProfileOperations GenerateUpdateRun.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-03-01/AutoUpgradeProfileOperations_GenerateUpdateRun_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: AutoUpgradeProfileOperations_GenerateUpdateRun_MaximumSet.
+     * 
+     * @param manager Entry point to ContainerServiceFleetManager.
+     */
+    public static void autoUpgradeProfileOperationsGenerateUpdateRunMaximumSet(
+        com.azure.resourcemanager.containerservicefleet.ContainerServiceFleetManager manager) {
+        manager.autoUpgradeProfileOperations().generateUpdateRun("rgfleets", "fleet1", "aup1",
+            com.azure.core.util.Context.NONE);
+    }
+}

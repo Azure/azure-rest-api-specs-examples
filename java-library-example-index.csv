@@ -5417,3 +5417,4 @@ id,name,language,tag,package,version,date_epoch,date
 5416,"Azure.ResourceManager.StandbyPool,1.1.0",dotnet,Azure.ResourceManager.StandbyPool_1.1.0,Azure.ResourceManager.StandbyPool,1.1.0,1747116025,05/13/2025
 5417,"Azure.ResourceManager.CarbonOptimization,1.0.0-beta.1",dotnet,Azure.ResourceManager.CarbonOptimization_1.0.0-beta.1,Azure.ResourceManager.CarbonOptimization,1.0.0-beta.1,1747113116,05/13/2025
 5418,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.2.0,java,azure-resourcemanager-containerservicefleet_1.2.0,azure-resourcemanager-containerservicefleet,1.2.0,1747202036,05/14/2025
+5419,com.azure.resourcemanager:azure-resourcemanager-carbonoptimization:1.0.0-beta.1,java,azure-resourcemanager-carbonoptimization_1.0.0-beta.1,azure-resourcemanager-carbonoptimization,1.0.0-beta.1,1747174152,05/13/2025

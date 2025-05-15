@@ -5420,3 +5420,4 @@ id,name,language,tag,package,version,date_epoch,date
 5419,com.azure.resourcemanager:azure-resourcemanager-carbonoptimization:1.0.0-beta.1,java,azure-resourcemanager-carbonoptimization_1.0.0-beta.1,azure-resourcemanager-carbonoptimization,1.0.0-beta.1,1747174152,05/13/2025
 5420,@azure/arm-carbonoptimization@1.0.0-beta.1,js,@azure/arm-carbonoptimization_1.0.0-beta.1,@azure/arm-carbonoptimization,1.0.0-beta.1,1747177309,05/13/2025
 5421,@azure/arm-containerservicefleet@2.0.0,js,@azure/arm-containerservicefleet_2.0.0,@azure/arm-containerservicefleet,2.0.0,1747241778,05/14/2025
+5422,azure-mgmt-cognitiveservices@13.7.0b1,python,azure-mgmt-cognitiveservices_13.7.0b1,azure-mgmt-cognitiveservices,13.7.0b1,1747280111,05/15/2025

@@ -5426,3 +5426,4 @@ id,name,language,tag,package,version,date_epoch,date
 5425,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.1.0-beta.1,java,azure-resourcemanager-confidentialledger_1.1.0-beta.1,azure-resourcemanager-confidentialledger,1.1.0-beta.1,1747363756,05/16/2025
 5426,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices@v1.8.0-beta.1,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v1.8.0-beta.1,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v1.8.0-beta.1,1747377347,05/16/2025
 5427,@azure/arm-servicenetworking@2.1.0-beta.1,js,@azure/arm-servicenetworking_2.1.0-beta.1,@azure/arm-servicenetworking,2.1.0-beta.1,1747363584,05/16/2025
+5428,azure-mgmt-servicenetworking@2.1.0b1,python,azure-mgmt-servicenetworking_2.1.0b1,azure-mgmt-servicenetworking,2.1.0b1,1747363625,05/16/2025

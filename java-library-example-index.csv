@@ -5424,3 +5424,4 @@ id,name,language,tag,package,version,date_epoch,date
 5423,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.2.0-beta.1,java,azure-resourcemanager-postgresqlflexibleserver_1.2.0-beta.1,azure-resourcemanager-postgresqlflexibleserver,1.2.0-beta.1,1747370996,05/16/2025
 5424,com.azure.resourcemanager:azure-resourcemanager-chaos:1.3.0,java,azure-resourcemanager-chaos_1.3.0,azure-resourcemanager-chaos,1.3.0,1747367984,05/16/2025
 5425,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.1.0-beta.1,java,azure-resourcemanager-confidentialledger_1.1.0-beta.1,azure-resourcemanager-confidentialledger,1.1.0-beta.1,1747363756,05/16/2025
+5426,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices@v1.8.0-beta.1,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v1.8.0-beta.1,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v1.8.0-beta.1,1747377347,05/16/2025

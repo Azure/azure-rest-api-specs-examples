@@ -5422,3 +5422,4 @@ id,name,language,tag,package,version,date_epoch,date
 5421,@azure/arm-containerservicefleet@2.0.0,js,@azure/arm-containerservicefleet_2.0.0,@azure/arm-containerservicefleet,2.0.0,1747241778,05/14/2025
 5422,azure-mgmt-cognitiveservices@13.7.0b1,python,azure-mgmt-cognitiveservices_13.7.0b1,azure-mgmt-cognitiveservices,13.7.0b1,1747280111,05/15/2025
 5423,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.2.0-beta.1,java,azure-resourcemanager-postgresqlflexibleserver_1.2.0-beta.1,azure-resourcemanager-postgresqlflexibleserver,1.2.0-beta.1,1747370996,05/16/2025
+5424,com.azure.resourcemanager:azure-resourcemanager-chaos:1.3.0,java,azure-resourcemanager-chaos_1.3.0,azure-resourcemanager-chaos,1.3.0,1747367984,05/16/2025

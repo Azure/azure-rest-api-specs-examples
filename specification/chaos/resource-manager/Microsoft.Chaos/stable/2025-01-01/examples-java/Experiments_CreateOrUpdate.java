@@ -1,0 +1,58 @@
+
+import com.azure.resourcemanager.chaos.models.ChaosExperimentBranch;
+import com.azure.resourcemanager.chaos.models.ChaosExperimentStep;
+import com.azure.resourcemanager.chaos.models.ChaosTargetListSelector;
+import com.azure.resourcemanager.chaos.models.ContinuousAction;
+import com.azure.resourcemanager.chaos.models.KeyValuePair;
+import com.azure.resourcemanager.chaos.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.chaos.models.ResourceIdentity;
+import com.azure.resourcemanager.chaos.models.TargetReference;
+import com.azure.resourcemanager.chaos.models.TargetReferenceType;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Experiments CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/Experiments_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Create/update a Experiment in a resource group.
+     * 
+     * @param manager Entry point to ChaosManager.
+     */
+    public static void createUpdateAExperimentInAResourceGroup(com.azure.resourcemanager.chaos.ChaosManager manager) {
+        manager.experiments().define("exampleExperiment").withRegion("eastus2euap")
+            .withExistingResourceGroup("exampleRG")
+            .withSteps(
+                Arrays.asList(new ChaosExperimentStep().withName("step1")
+                    .withBranches(Arrays.asList(new ChaosExperimentBranch().withName("branch1")
+                        .withActions(Arrays.asList(new ContinuousAction()
+                            .withName("urn:csci:microsoft:virtualMachine:shutdown/1.0")
+                            .withDuration(Duration.parse("PT10M"))
+                            .withParameters(
+                                Arrays.asList(new KeyValuePair().withKey("fakeTokenPlaceholder").withValue("false")))
+                            .withSelectorId("selector1")))))))
+            .withSelectors(Arrays.asList(new ChaosTargetListSelector().withId("selector1")
+                .withTargets(Arrays.asList(new TargetReference().withType(TargetReferenceType.CHAOS_TARGET).withId(
+                    "/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine")))))
+            .withTags(mapOf("key7131", "fakeTokenPlaceholder", "key2138", "fakeTokenPlaceholder"))
+            .withIdentity(new ResourceIdentity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED)).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

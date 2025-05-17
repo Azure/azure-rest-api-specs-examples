@@ -1,0 +1,122 @@
+package armcognitiveservices_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5802c95f18bfba1003be50e545d07f8bb679c857/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/preview/2025-04-01-preview/examples/ListRaiContentFilters.json
+func ExampleRaiContentFiltersClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewRaiContentFiltersClient().NewListPager("WestUS", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.RaiContentFilterListResult = armcognitiveservices.RaiContentFilterListResult{
+		// 	Value: []*armcognitiveservices.RaiContentFilter{
+		// 		{
+		// 			Name: to.Ptr("Hate"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Hate"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Hate"),
+		// 				IsMultiLevelFilter: to.Ptr(true),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Sexual"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Sexual"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Sexual"),
+		// 				IsMultiLevelFilter: to.Ptr(true),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Violence"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Violence"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Violence"),
+		// 				IsMultiLevelFilter: to.Ptr(true),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Selfharm"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Selfharm"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Selfharm"),
+		// 				IsMultiLevelFilter: to.Ptr(true),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Jailbreak"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Jailbreak"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Jailbreak"),
+		// 				IsMultiLevelFilter: to.Ptr(false),
+		// 				Source: to.Ptr(armcognitiveservices.RaiPolicyContentSourcePrompt),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("ProtectedMaterialText"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/ProtectedMaterialText"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Protected Material Text"),
+		// 				IsMultiLevelFilter: to.Ptr(false),
+		// 				Source: to.Ptr(armcognitiveservices.RaiPolicyContentSourceCompletion),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("ProtectedMaterialCode"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/ProtectedMaterialCode"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Protected Material Code"),
+		// 				IsMultiLevelFilter: to.Ptr(false),
+		// 				Source: to.Ptr(armcognitiveservices.RaiPolicyContentSourceCompletion),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Profanity"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/Profanity"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Profanity"),
+		// 				IsMultiLevelFilter: to.Ptr(false),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("IndirectAttack"),
+		// 			Type: to.Ptr("Microsoft.CognitiveServices/locations/raiContentFilters"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CognitiveServices/locations/WestUS/raiContentFilters/IndirectAttack"),
+		// 			Properties: &armcognitiveservices.RaiContentFilterProperties{
+		// 				Name: to.Ptr("Indirect Attack"),
+		// 				IsMultiLevelFilter: to.Ptr(false),
+		// 				Source: to.Ptr(armcognitiveservices.RaiPolicyContentSourcePrompt),
+		// 			},
+		// 	}},
+		// }
+	}
+}

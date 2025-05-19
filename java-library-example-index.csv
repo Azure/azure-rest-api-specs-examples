@@ -5428,3 +5428,4 @@ id,name,language,tag,package,version,date_epoch,date
 5427,@azure/arm-servicenetworking@2.1.0-beta.1,js,@azure/arm-servicenetworking_2.1.0-beta.1,@azure/arm-servicenetworking,2.1.0-beta.1,1747363584,05/16/2025
 5428,azure-mgmt-servicenetworking@2.1.0b1,python,azure-mgmt-servicenetworking_2.1.0b1,azure-mgmt-servicenetworking,2.1.0b1,1747363625,05/16/2025
 5429,"Azure.ResourceManager.FrontDoor,1.4.0",dotnet,Azure.ResourceManager.FrontDoor_1.4.0,Azure.ResourceManager.FrontDoor,1.4.0,1747624671,05/19/2025
+5430,"Azure.ResourceManager.Sql,1.4.0-beta.1",dotnet,Azure.ResourceManager.Sql_1.4.0-beta.1,Azure.ResourceManager.Sql,1.4.0-beta.1,1747622872,05/19/2025

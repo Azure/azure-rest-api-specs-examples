@@ -5431,3 +5431,4 @@ id,name,language,tag,package,version,date_epoch,date
 5430,"Azure.ResourceManager.Sql,1.4.0-beta.1",dotnet,Azure.ResourceManager.Sql_1.4.0-beta.1,Azure.ResourceManager.Sql,1.4.0-beta.1,1747622872,05/19/2025
 5431,azure-mgmt-postgresqlflexibleservers@1.2.0b1,python,azure-mgmt-postgresqlflexibleservers_1.2.0b1,azure-mgmt-postgresqlflexibleservers,1.2.0b1,1747636148,05/19/2025
 5432,azure-mgmt-confidentialledger@2.0.0b5,python,azure-mgmt-confidentialledger_2.0.0b5,azure-mgmt-confidentialledger,2.0.0b5,1747636138,05/19/2025
+5433,azure-mgmt-containerservice@36.0.0,python,azure-mgmt-containerservice_36.0.0,azure-mgmt-containerservice,36.0.0,1747624387,05/19/2025

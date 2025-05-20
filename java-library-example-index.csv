@@ -5427,3 +5427,8 @@ id,name,language,tag,package,version,date_epoch,date
 5426,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices@v1.8.0-beta.1,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v1.8.0-beta.1,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v1.8.0-beta.1,1747377347,05/16/2025
 5427,@azure/arm-servicenetworking@2.1.0-beta.1,js,@azure/arm-servicenetworking_2.1.0-beta.1,@azure/arm-servicenetworking,2.1.0-beta.1,1747363584,05/16/2025
 5428,azure-mgmt-servicenetworking@2.1.0b1,python,azure-mgmt-servicenetworking_2.1.0b1,azure-mgmt-servicenetworking,2.1.0b1,1747363625,05/16/2025
+5429,"Azure.ResourceManager.FrontDoor,1.4.0",dotnet,Azure.ResourceManager.FrontDoor_1.4.0,Azure.ResourceManager.FrontDoor,1.4.0,1747624671,05/19/2025
+5430,"Azure.ResourceManager.Sql,1.4.0-beta.1",dotnet,Azure.ResourceManager.Sql_1.4.0-beta.1,Azure.ResourceManager.Sql,1.4.0-beta.1,1747622872,05/19/2025
+5431,azure-mgmt-postgresqlflexibleservers@1.2.0b1,python,azure-mgmt-postgresqlflexibleservers_1.2.0b1,azure-mgmt-postgresqlflexibleservers,1.2.0b1,1747636148,05/19/2025
+5432,azure-mgmt-confidentialledger@2.0.0b5,python,azure-mgmt-confidentialledger_2.0.0b5,azure-mgmt-confidentialledger,2.0.0b5,1747636138,05/19/2025
+5433,azure-mgmt-containerservice@36.0.0,python,azure-mgmt-containerservice_36.0.0,azure-mgmt-containerservice,36.0.0,1747624387,05/19/2025

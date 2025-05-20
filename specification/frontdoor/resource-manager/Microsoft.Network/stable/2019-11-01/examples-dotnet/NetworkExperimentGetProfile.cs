@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.FrontDoor;
 
 // Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentGetProfile.json
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this FrontDoorNetworkExperimentProfileResource created on azure
+// for more information of creating FrontDoorNetworkExperimentProfileResource, please refer to the document of FrontDoorNetworkExperimentProfileResource
 string subscriptionId = "subid";
 string resourceGroupName = "MyResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this FrontDoorNetworkExperimentProfileResource
-FrontDoorNetworkExperimentProfileCollection collection = resourceGroupResource.GetFrontDoorNetworkExperimentProfiles();
+string profileName = "MyProfile";
+ResourceIdentifier frontDoorNetworkExperimentProfileResourceId = FrontDoorNetworkExperimentProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
+FrontDoorNetworkExperimentProfileResource frontDoorNetworkExperimentProfile = client.GetFrontDoorNetworkExperimentProfileResource(frontDoorNetworkExperimentProfileResourceId);
 
 // invoke the operation
-string profileName = "MyProfile";
-NullableResponse<FrontDoorNetworkExperimentProfileResource> response = await collection.GetIfExistsAsync(profileName);
-FrontDoorNetworkExperimentProfileResource result = response.HasValue ? response.Value : null;
+FrontDoorNetworkExperimentProfileResource result = await frontDoorNetworkExperimentProfile.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FrontDoorNetworkExperimentProfileData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontDoorNetworkExperimentProfileData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

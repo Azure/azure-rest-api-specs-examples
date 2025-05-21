@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import DeploymentStacksClient
+from azure.mgmt.resource.deploymentstacks import DeploymentStacksClient
 
 """
 # PREREQUISITES

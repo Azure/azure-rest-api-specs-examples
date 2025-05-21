@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import ApplicationClient
+from azure.mgmt.resource.managedapplications import ApplicationClient
 
 """
 # PREREQUISITES

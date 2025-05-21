@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import ChangesClient
+from azure.mgmt.resource.changes import ChangesClient
 
 """
 # PREREQUISITES

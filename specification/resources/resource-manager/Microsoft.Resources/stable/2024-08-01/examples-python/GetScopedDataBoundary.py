@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import DataBoundaryMgmtClient
+from azure.mgmt.resource.databoundaries import DataBoundaryMgmtClient
 
 """
 # PREREQUISITES

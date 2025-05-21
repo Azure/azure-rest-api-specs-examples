@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import TemplateSpecsClient
+from azure.mgmt.resource.templatespecs import TemplateSpecsClient
 
 """
 # PREREQUISITES

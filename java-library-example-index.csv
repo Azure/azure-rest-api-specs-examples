@@ -5446,3 +5446,4 @@ id,name,language,tag,package,version,date_epoch,date
 5445,"Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.0-beta.1,Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1,1747908940,05/22/2025
 5446,"Azure.ResourceManager.Chaos,1.1.0",dotnet,Azure.ResourceManager.Chaos_1.1.0,Azure.ResourceManager.Chaos,1.1.0,1747905332,05/22/2025
 5447,"Azure.ResourceManager.AppContainers,1.4.0",dotnet,Azure.ResourceManager.AppContainers_1.4.0,Azure.ResourceManager.AppContainers,1.4.0,1747898322,05/22/2025
+5448,"Azure.ResourceManager.ApiManagement,1.3.0",dotnet,Azure.ResourceManager.ApiManagement_1.3.0,Azure.ResourceManager.ApiManagement,1.3.0,1747834373,05/21/2025

@@ -5434,3 +5434,9 @@ id,name,language,tag,package,version,date_epoch,date
 5433,azure-mgmt-containerservice@36.0.0,python,azure-mgmt-containerservice_36.0.0,azure-mgmt-containerservice,36.0.0,1747624387,05/19/2025
 5434,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0-beta.1,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5.0.0-beta.1,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v5.0.0-beta.1,1747732275,05/20/2025
 5435,azure-mgmt-netapp@14.0.0b1,python,azure-mgmt-netapp_14.0.0b1,azure-mgmt-netapp,14.0.0b1,1747726430,05/20/2025
+5436,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v8@v8.0.0-beta.1,go,sdk/resourcemanager/netapp/armnetapp/v8.0.0-beta.1,sdk/resourcemanager/netapp/armnetapp,v8.0.0-beta.1,1747799399,05/21/2025
+5437,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v2@v2.1.0,go,sdk/resourcemanager/resources/armresources/v2.1.0,sdk/resourcemanager/resources/armresources,v2.1.0,1747798845,05/21/2025
+5438,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance@v1.0.0,go,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance/v1.0.0,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance,v1.0.0,1747798441,05/21/2025
+5439,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity@v0.1.0,go,sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity/v0.1.0,sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity,v0.1.0,1747752113,05/20/2025
+5440,"Azure.ResourceManager.Cdn,1.4.0",dotnet,Azure.ResourceManager.Cdn_1.4.0,Azure.ResourceManager.Cdn,1.4.0,1747798080,05/21/2025
+5441,azure-mgmt-resource@23.4.0,python,azure-mgmt-resource_23.4.0,azure-mgmt-resource,23.4.0,1747795587,05/21/2025

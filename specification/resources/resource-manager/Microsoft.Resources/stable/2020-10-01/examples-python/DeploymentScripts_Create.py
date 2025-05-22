@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import DeploymentScriptsClient
+from azure.mgmt.resource.deploymentscripts import DeploymentScriptsClient
 
 """
 # PREREQUISITES

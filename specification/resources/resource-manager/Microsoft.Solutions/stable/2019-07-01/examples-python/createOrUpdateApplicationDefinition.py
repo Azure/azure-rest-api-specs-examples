@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import ApplicationClient
+from azure.mgmt.resource.managedapplications import ApplicationClient
 
 """
 # PREREQUISITES
@@ -22,7 +22,7 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.application_definitions.begin_create_or_update_by_id(
+    response = client.application_definitions.begin_create_or_update(
         resource_group_name="rg",
         application_definition_name="myManagedApplicationDef",
         parameters={

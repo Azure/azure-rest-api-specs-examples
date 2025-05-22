@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import FeatureClient
+from azure.mgmt.resource.features import FeatureClient
 
 """
 # PREREQUISITES

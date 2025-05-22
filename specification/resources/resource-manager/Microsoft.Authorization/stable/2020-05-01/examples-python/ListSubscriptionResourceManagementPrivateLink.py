@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.resource import ResourcePrivateLinkClient
+from azure.mgmt.resource.privatelinks import ResourcePrivateLinkClient
 
 """
 # PREREQUISITES

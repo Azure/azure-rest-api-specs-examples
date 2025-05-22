@@ -5443,3 +5443,4 @@ id,name,language,tag,package,version,date_epoch,date
 5442,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.2.0-beta.1,java,azure-resourcemanager-cognitiveservices_1.2.0-beta.1,azure-resourcemanager-cognitiveservices,1.2.0-beta.1,1747896079,05/22/2025
 5443,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/confidentialledger/armconfidentialledger@v1.3.0-beta.3,go,sdk/resourcemanager/confidentialledger/armconfidentialledger/v1.3.0-beta.3,sdk/resourcemanager/confidentialledger/armconfidentialledger,v1.3.0-beta.3,1747904282,05/22/2025
 5444,"Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.1",dotnet,Azure.ResourceManager.SecretsStoreExtension_1.0.0-beta.1,Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.1,1747911290,05/22/2025
+5445,"Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.0-beta.1,Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1,1747908940,05/22/2025

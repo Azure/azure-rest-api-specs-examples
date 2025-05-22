@@ -5440,3 +5440,4 @@ id,name,language,tag,package,version,date_epoch,date
 5439,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity@v0.1.0,go,sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity/v0.1.0,sdk/resourcemanager/programmableconnectivity/armprogrammableconnectivity,v0.1.0,1747752113,05/20/2025
 5440,"Azure.ResourceManager.Cdn,1.4.0",dotnet,Azure.ResourceManager.Cdn_1.4.0,Azure.ResourceManager.Cdn,1.4.0,1747798080,05/21/2025
 5441,azure-mgmt-resource@23.4.0,python,azure-mgmt-resource_23.4.0,azure-mgmt-resource,23.4.0,1747795587,05/21/2025
+5442,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.2.0-beta.1,java,azure-resourcemanager-cognitiveservices_1.2.0-beta.1,azure-resourcemanager-cognitiveservices,1.2.0-beta.1,1747896079,05/22/2025

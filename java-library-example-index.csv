@@ -5450,3 +5450,4 @@ id,name,language,tag,package,version,date_epoch,date
 5449,azure-mgmt-kubernetesconfiguration-extensiontypes@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-extensiontypes_1.0.0b1,azure-mgmt-kubernetesconfiguration-extensiontypes,1.0.0b1,1747905439,05/22/2025
 5450,azure-mgmt-kubernetesconfiguration-extensions@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-extensions_1.0.0b1,azure-mgmt-kubernetesconfiguration-extensions,1.0.0b1,1747905405,05/22/2025
 5451,azure-mgmt-kubernetesconfiguration-fluxconfigurations@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-fluxconfigurations_1.0.0b1,azure-mgmt-kubernetesconfiguration-fluxconfigurations,1.0.0b1,1747905388,05/22/2025
+5452,azure-mgmt-storage@23.0.0,python,azure-mgmt-storage_23.0.0,azure-mgmt-storage,23.0.0,1747884653,05/22/2025

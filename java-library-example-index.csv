@@ -5444,3 +5444,4 @@ id,name,language,tag,package,version,date_epoch,date
 5443,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/confidentialledger/armconfidentialledger@v1.3.0-beta.3,go,sdk/resourcemanager/confidentialledger/armconfidentialledger/v1.3.0-beta.3,sdk/resourcemanager/confidentialledger/armconfidentialledger,v1.3.0-beta.3,1747904282,05/22/2025
 5444,"Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.1",dotnet,Azure.ResourceManager.SecretsStoreExtension_1.0.0-beta.1,Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.1,1747911290,05/22/2025
 5445,"Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.0-beta.1,Azure.ResourceManager.PureStorageBlock,1.0.0-beta.1,1747908940,05/22/2025
+5446,"Azure.ResourceManager.Chaos,1.1.0",dotnet,Azure.ResourceManager.Chaos_1.1.0,Azure.ResourceManager.Chaos,1.1.0,1747905332,05/22/2025

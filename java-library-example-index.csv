@@ -5458,3 +5458,4 @@ id,name,language,tag,package,version,date_epoch,date
 5457,@azure/arm-cognitiveservices@7.7.0-beta.1,js,@azure/arm-cognitiveservices_7.7.0-beta.1,@azure/arm-cognitiveservices,7.7.0-beta.1,1747994569,05/23/2025
 5458,@azure/arm-postgresql-flexible@8.1.0-beta.1,js,@azure/arm-postgresql-flexible_8.1.0-beta.1,@azure/arm-postgresql-flexible,8.1.0-beta.1,1747994506,05/23/2025
 5459,@azure/arm-confidentialledger@1.3.0-beta.3,js,@azure/arm-confidentialledger_1.3.0-beta.3,@azure/arm-confidentialledger,1.3.0-beta.3,1747994409,05/23/2025
+5460,@azure/arm-resources@6.1.0,js,@azure/arm-resources_6.1.0,@azure/arm-resources,6.1.0,1747994303,05/23/2025

@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualHubResource created on azure
-// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
+// this example assumes you already have this RouteMapResource created on azure
+// for more information of creating RouteMapResource, please refer to the document of RouteMapResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
-VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
-
-// get the collection of this RouteMapResource
-RouteMapCollection collection = virtualHub.GetRouteMaps();
+string routeMapName = "routeMap1";
+ResourceIdentifier routeMapResourceId = RouteMapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routeMapName);
+RouteMapResource routeMap = client.GetRouteMapResource(routeMapResourceId);
 
 // invoke the operation
-string routeMapName = "routeMap1";
-NullableResponse<RouteMapResource> response = await collection.GetIfExistsAsync(routeMapName);
-RouteMapResource result = response.HasValue ? response.Value : null;
+RouteMapResource result = await routeMap.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RouteMapData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RouteMapData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

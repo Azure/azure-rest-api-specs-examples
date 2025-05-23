@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/examples/ExpressRouteCircuitPeeringCreate.json
@@ -14,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCircuitResource created on azure
-// for more information of creating ExpressRouteCircuitResource, please refer to the document of ExpressRouteCircuitResource
+// this example assumes you already have this ExpressRouteCircuitPeeringResource created on azure
+// for more information of creating ExpressRouteCircuitPeeringResource, please refer to the document of ExpressRouteCircuitPeeringResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string circuitName = "circuitName";
-ResourceIdentifier expressRouteCircuitResourceId = ExpressRouteCircuitResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName);
-ExpressRouteCircuitResource expressRouteCircuit = client.GetExpressRouteCircuitResource(expressRouteCircuitResourceId);
-
-// get the collection of this ExpressRouteCircuitPeeringResource
-ExpressRouteCircuitPeeringCollection collection = expressRouteCircuit.GetExpressRouteCircuitPeerings();
+string peeringName = "AzurePrivatePeering";
+ResourceIdentifier expressRouteCircuitPeeringResourceId = ExpressRouteCircuitPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, peeringName);
+ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpressRouteCircuitPeeringResource(expressRouteCircuitPeeringResourceId);
 
 // invoke the operation
-string peeringName = "AzurePrivatePeering";
 ExpressRouteCircuitPeeringData data = new ExpressRouteCircuitPeeringData
 {
     PeerASN = 200L,
@@ -34,7 +32,7 @@ ExpressRouteCircuitPeeringData data = new ExpressRouteCircuitPeeringData
     SecondaryPeerAddressPrefix = "192.168.18.252/30",
     VlanId = 200,
 };
-ArmOperation<ExpressRouteCircuitPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, peeringName, data);
+ArmOperation<ExpressRouteCircuitPeeringResource> lro = await expressRouteCircuitPeering.UpdateAsync(WaitUntil.Completed, data);
 ExpressRouteCircuitPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

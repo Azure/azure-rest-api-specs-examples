@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AdminRuleGroupResource created on azure
-// for more information of creating AdminRuleGroupResource, please refer to the document of AdminRuleGroupResource
+// this example assumes you already have this SecurityAdminConfigurationResource created on azure
+// for more information of creating SecurityAdminConfigurationResource, please refer to the document of SecurityAdminConfigurationResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string configurationName = "myTestSecurityConfig";
-string ruleCollectionName = "testRuleCollection";
-ResourceIdentifier adminRuleGroupResourceId = AdminRuleGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName);
-AdminRuleGroupResource adminRuleGroup = client.GetAdminRuleGroupResource(adminRuleGroupResourceId);
+ResourceIdentifier securityAdminConfigurationResourceId = SecurityAdminConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
+SecurityAdminConfigurationResource securityAdminConfiguration = client.GetSecurityAdminConfigurationResource(securityAdminConfigurationResourceId);
+
+// get the collection of this AdminRuleGroupResource
+AdminRuleGroupCollection collection = securityAdminConfiguration.GetAdminRuleGroups();
 
 // invoke the operation
-AdminRuleGroupResource result = await adminRuleGroup.GetAsync();
+string ruleCollectionName = "testRuleCollection";
+NullableResponse<AdminRuleGroupResource> response = await collection.GetIfExistsAsync(ruleCollectionName);
+AdminRuleGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AdminRuleGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AdminRuleGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

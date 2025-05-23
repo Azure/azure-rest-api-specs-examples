@@ -15,33 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerRoutingRulesResource created on azure
-// for more information of creating NetworkManagerRoutingRulesResource, please refer to the document of NetworkManagerRoutingRulesResource
+// this example assumes you already have this NetworkManagerRoutingRuleResource created on azure
+// for more information of creating NetworkManagerRoutingRuleResource, please refer to the document of NetworkManagerRoutingRuleResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string configurationName = "myTestSecurityConfig";
 string ruleCollectionName = "testRuleCollection";
-ResourceIdentifier networkManagerRoutingRulesResourceId = NetworkManagerRoutingRulesResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName);
-NetworkManagerRoutingRulesResource networkManagerRoutingRules = client.GetNetworkManagerRoutingRulesResource(networkManagerRoutingRulesResourceId);
-
-// get the collection of this NetworkManagerRoutingRuleResource
-NetworkManagerRoutingRuleCollection collection = networkManagerRoutingRules.GetNetworkManagerRoutingRules();
+string ruleName = "SampleRoutingRule";
+ResourceIdentifier networkManagerRoutingRuleResourceId = NetworkManagerRoutingRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName);
+NetworkManagerRoutingRuleResource networkManagerRoutingRule = client.GetNetworkManagerRoutingRuleResource(networkManagerRoutingRuleResourceId);
 
 // invoke the operation
-string ruleName = "SampleRoutingRule";
-NullableResponse<NetworkManagerRoutingRuleResource> response = await collection.GetIfExistsAsync(ruleName);
-NetworkManagerRoutingRuleResource result = response.HasValue ? response.Value : null;
+NetworkManagerRoutingRuleResource result = await networkManagerRoutingRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NetworkManagerRoutingRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkManagerRoutingRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

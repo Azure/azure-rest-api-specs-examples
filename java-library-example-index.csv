@@ -5460,3 +5460,4 @@ id,name,language,tag,package,version,date_epoch,date
 5459,@azure/arm-confidentialledger@1.3.0-beta.3,js,@azure/arm-confidentialledger_1.3.0-beta.3,@azure/arm-confidentialledger,1.3.0-beta.3,1747994409,05/23/2025
 5460,@azure/arm-resources@6.1.0,js,@azure/arm-resources_6.1.0,@azure/arm-resources,6.1.0,1747994303,05/23/2025
 5461,@azure/arm-network@34.0.0,js,@azure/arm-network_34.0.0,@azure/arm-network,34.0.0,1747993276,05/23/2025
+5462,@azure/arm-cosmosdb@16.3.0,js,@azure/arm-cosmosdb_16.3.0,@azure/arm-cosmosdb,16.3.0,1747983768,05/23/2025

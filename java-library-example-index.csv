@@ -5452,3 +5452,4 @@ id,name,language,tag,package,version,date_epoch,date
 5451,azure-mgmt-kubernetesconfiguration-fluxconfigurations@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-fluxconfigurations_1.0.0b1,azure-mgmt-kubernetesconfiguration-fluxconfigurations,1.0.0b1,1747905388,05/22/2025
 5452,azure-mgmt-storage@23.0.0,python,azure-mgmt-storage_23.0.0,azure-mgmt-storage,23.0.0,1747884653,05/22/2025
 5453,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensiontypes@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes,v0.1.0,1747985547,05/23/2025
+5454,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensions@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensions/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armextensions,v0.1.0,1747980637,05/23/2025

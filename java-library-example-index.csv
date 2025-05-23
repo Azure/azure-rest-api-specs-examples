@@ -5456,3 +5456,4 @@ id,name,language,tag,package,version,date_epoch,date
 5455,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.3.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.3.0,sdk/resourcemanager/cosmos/armcosmos,v3.3.0,1747973179,05/23/2025
 5456,@azure/arm-kubernetesconfiguration-extensiontypes@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-extensiontypes_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-extensiontypes,1.0.0-beta.1,1747997918,05/23/2025
 5457,@azure/arm-cognitiveservices@7.7.0-beta.1,js,@azure/arm-cognitiveservices_7.7.0-beta.1,@azure/arm-cognitiveservices,7.7.0-beta.1,1747994569,05/23/2025
+5458,@azure/arm-postgresql-flexible@8.1.0-beta.1,js,@azure/arm-postgresql-flexible_8.1.0-beta.1,@azure/arm-postgresql-flexible,8.1.0-beta.1,1747994506,05/23/2025

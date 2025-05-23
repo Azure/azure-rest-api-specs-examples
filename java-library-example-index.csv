@@ -5453,3 +5453,4 @@ id,name,language,tag,package,version,date_epoch,date
 5452,azure-mgmt-storage@23.0.0,python,azure-mgmt-storage_23.0.0,azure-mgmt-storage,23.0.0,1747884653,05/22/2025
 5453,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensiontypes@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes,v0.1.0,1747985547,05/23/2025
 5454,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensions@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensions/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armextensions,v0.1.0,1747980637,05/23/2025
+5455,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.3.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.3.0,sdk/resourcemanager/cosmos/armcosmos,v3.3.0,1747973179,05/23/2025

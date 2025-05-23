@@ -5464,3 +5464,4 @@ id,name,language,tag,package,version,date_epoch,date
 5463,@azure/arm-netapp@21.6.0-beta.1,js,@azure/arm-netapp_21.6.0-beta.1,@azure/arm-netapp,21.6.0-beta.1,1747983162,05/23/2025
 5464,"Azure.ResourceManager.AppService,1.4.0",dotnet,Azure.ResourceManager.AppService_1.4.0,Azure.ResourceManager.AppService,1.4.0,1747978908,05/23/2025
 5465,"Azure.ResourceManager.Network,1.11.0-beta.2",dotnet,Azure.ResourceManager.Network_1.11.0-beta.2,Azure.ResourceManager.Network,1.11.0-beta.2,1747972131,05/23/2025
+5466,azure-mgmt-network@29.0.0,python,azure-mgmt-network_29.0.0,azure-mgmt-network,29.0.0,1747969255,05/23/2025

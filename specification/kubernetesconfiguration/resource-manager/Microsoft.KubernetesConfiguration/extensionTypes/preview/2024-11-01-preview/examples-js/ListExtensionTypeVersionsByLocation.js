@@ -1,0 +1,36 @@
+const { ExtensionTypesClient } = require("@azure/arm-kubernetesconfiguration-extensiontypes");
+const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
+
+/**
+ * This sample demonstrates how to List the versions for an extension type and location.
+ *
+ * @summary List the versions for an extension type and location.
+ * x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/extensionTypes/preview/2024-11-01-preview/examples/ListExtensionTypeVersionsByLocation.json
+ */
+async function listExtensionTypeVersions() {
+  const subscriptionId = process.env["KUBERNETESCONFIGURATION_SUBSCRIPTION_ID"] || "subId1";
+  const location = "westus";
+  const extensionTypeName = "extensionType1";
+  const releaseTrain = "stable";
+  const clusterType = "connectedCluster";
+  const majorVersion = "2";
+  const showLatest = true;
+  const options = {
+    releaseTrain,
+    clusterType,
+    majorVersion,
+    showLatest,
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ExtensionTypesClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.extensionTypes.listVersions(
+    location,
+    extensionTypeName,
+    options,
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

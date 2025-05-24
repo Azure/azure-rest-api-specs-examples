@@ -5466,3 +5466,4 @@ id,name,language,tag,package,version,date_epoch,date
 5465,"Azure.ResourceManager.Network,1.11.0-beta.2",dotnet,Azure.ResourceManager.Network_1.11.0-beta.2,Azure.ResourceManager.Network,1.11.0-beta.2,1747972131,05/23/2025
 5466,azure-mgmt-network@29.0.0,python,azure-mgmt-network_29.0.0,azure-mgmt-network,29.0.0,1747969255,05/23/2025
 5467,@azure/arm-kubernetesconfiguration-extensions@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-extensions_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-extensions,1.0.0-beta.1,1747997985,05/23/2025
+5468,@azure/arm-kubernetesconfiguration-fluxconfigurations@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-fluxconfigurations_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-fluxconfigurations,1.0.0-beta.1,1747997951,05/23/2025

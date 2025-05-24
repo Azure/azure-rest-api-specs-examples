@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/examples/CloudServiceSwapPut.json
@@ -15,19 +16,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CloudServiceSwapResource created on azure
-// for more information of creating CloudServiceSwapResource, please refer to the document of CloudServiceSwapResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string groupName = "rg1";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, groupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this CloudServiceSwapResource
 string resourceName = "testCloudService";
-ResourceIdentifier cloudServiceSwapResourceId = CloudServiceSwapResource.CreateResourceIdentifier(subscriptionId, groupName, resourceName);
-CloudServiceSwapResource cloudServiceSwap = client.GetCloudServiceSwapResource(cloudServiceSwapResourceId);
+CloudServiceSwapCollection collection = resourceGroupResource.GetCloudServiceSwaps(resourceName);
 
 // invoke the operation
 CloudServiceSwapData data = new CloudServiceSwapData
 {
     CloudServiceSwapSlotType = SwapSlotType.Production,
 };
-await cloudServiceSwap.UpdateAsync(WaitUntil.Completed, data);
+await collection.CreateOrUpdateAsync(WaitUntil.Completed, data);
 
 Console.WriteLine("Succeeded");

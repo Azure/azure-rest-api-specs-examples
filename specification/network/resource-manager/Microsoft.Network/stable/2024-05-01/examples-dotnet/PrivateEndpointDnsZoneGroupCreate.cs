@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateEndpointResource created on azure
-// for more information of creating PrivateEndpointResource, please refer to the document of PrivateEndpointResource
+// this example assumes you already have this PrivateDnsZoneGroupResource created on azure
+// for more information of creating PrivateDnsZoneGroupResource, please refer to the document of PrivateDnsZoneGroupResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string privateEndpointName = "testPe";
-ResourceIdentifier privateEndpointResourceId = PrivateEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateEndpointName);
-PrivateEndpointResource privateEndpoint = client.GetPrivateEndpointResource(privateEndpointResourceId);
-
-// get the collection of this PrivateDnsZoneGroupResource
-PrivateDnsZoneGroupCollection collection = privateEndpoint.GetPrivateDnsZoneGroups();
+string privateDnsZoneGroupName = "testPdnsgroup";
+ResourceIdentifier privateDnsZoneGroupResourceId = PrivateDnsZoneGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateEndpointName, privateDnsZoneGroupName);
+PrivateDnsZoneGroupResource privateDnsZoneGroup = client.GetPrivateDnsZoneGroupResource(privateDnsZoneGroupResourceId);
 
 // invoke the operation
-string privateDnsZoneGroupName = "testPdnsgroup";
 PrivateDnsZoneGroupData data = new PrivateDnsZoneGroupData
 {
     PrivateDnsZoneConfigs = {new PrivateDnsZoneConfig
@@ -35,7 +32,7 @@ PrivateDnsZoneGroupData data = new PrivateDnsZoneGroupData
     PrivateDnsZoneId = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com",
     }},
 };
-ArmOperation<PrivateDnsZoneGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateDnsZoneGroupName, data);
+ArmOperation<PrivateDnsZoneGroupResource> lro = await privateDnsZoneGroup.UpdateAsync(WaitUntil.Completed, data);
 PrivateDnsZoneGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

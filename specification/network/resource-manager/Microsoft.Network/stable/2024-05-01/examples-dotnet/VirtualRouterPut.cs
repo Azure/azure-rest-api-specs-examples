@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/examples/VirtualRouterPut.json
@@ -14,15 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualRouterResource created on azure
-// for more information of creating VirtualRouterResource, please refer to the document of VirtualRouterResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string virtualRouterName = "virtualRouter";
-ResourceIdentifier virtualRouterResourceId = VirtualRouterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualRouterName);
-VirtualRouterResource virtualRouter = client.GetVirtualRouterResource(virtualRouterResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this VirtualRouterResource
+VirtualRouterCollection collection = resourceGroupResource.GetVirtualRouters();
 
 // invoke the operation
+string virtualRouterName = "virtualRouter";
 VirtualRouterData data = new VirtualRouterData
 {
     HostedGatewayId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vnetGateway"),
@@ -32,7 +36,7 @@ VirtualRouterData data = new VirtualRouterData
     ["key1"] = "value1"
     },
 };
-ArmOperation<VirtualRouterResource> lro = await virtualRouter.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VirtualRouterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualRouterName, data);
 VirtualRouterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

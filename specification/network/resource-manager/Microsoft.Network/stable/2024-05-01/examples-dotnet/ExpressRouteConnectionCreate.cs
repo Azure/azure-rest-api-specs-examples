@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteConnectionResource created on azure
-// for more information of creating ExpressRouteConnectionResource, please refer to the document of ExpressRouteConnectionResource
+// this example assumes you already have this ExpressRouteGatewayResource created on azure
+// for more information of creating ExpressRouteGatewayResource, please refer to the document of ExpressRouteGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "resourceGroupName";
 string expressRouteGatewayName = "gateway-2";
-string connectionName = "connectionName";
-ResourceIdentifier expressRouteConnectionResourceId = ExpressRouteConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName, connectionName);
-ExpressRouteConnectionResource expressRouteConnection = client.GetExpressRouteConnectionResource(expressRouteConnectionResourceId);
+ResourceIdentifier expressRouteGatewayResourceId = ExpressRouteGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName);
+ExpressRouteGatewayResource expressRouteGateway = client.GetExpressRouteGatewayResource(expressRouteGatewayResourceId);
+
+// get the collection of this ExpressRouteConnectionResource
+ExpressRouteConnectionCollection collection = expressRouteGateway.GetExpressRouteConnections();
 
 // invoke the operation
+string connectionName = "connectionName";
 ExpressRouteConnectionData data = new ExpressRouteConnectionData
 {
     ExpressRouteCircuitPeeringId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"),
@@ -54,7 +57,7 @@ ExpressRouteConnectionData data = new ExpressRouteConnectionData
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName"),
     Name = "connectionName",
 };
-ArmOperation<ExpressRouteConnectionResource> lro = await expressRouteConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRouteConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionName, data);
 ExpressRouteConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

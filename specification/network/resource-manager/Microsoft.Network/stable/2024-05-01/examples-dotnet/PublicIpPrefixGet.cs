@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/examples/PublicIpPrefixGet.json
@@ -15,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PublicIPPrefixResource created on azure
-// for more information of creating PublicIPPrefixResource, please refer to the document of PublicIPPrefixResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string publicIPPrefixName = "test-ipprefix";
-ResourceIdentifier publicIPPrefixResourceId = PublicIPPrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, publicIPPrefixName);
-PublicIPPrefixResource publicIPPrefix = client.GetPublicIPPrefixResource(publicIPPrefixResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this PublicIPPrefixResource
+PublicIPPrefixCollection collection = resourceGroupResource.GetPublicIPPrefixes();
 
 // invoke the operation
-PublicIPPrefixResource result = await publicIPPrefix.GetAsync();
+string publicIPPrefixName = "test-ipprefix";
+NullableResponse<PublicIPPrefixResource> response = await collection.GetIfExistsAsync(publicIPPrefixName);
+PublicIPPrefixResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PublicIPPrefixData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PublicIPPrefixData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

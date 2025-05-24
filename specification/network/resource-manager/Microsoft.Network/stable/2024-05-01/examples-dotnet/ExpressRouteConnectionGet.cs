@@ -16,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteConnectionResource created on azure
-// for more information of creating ExpressRouteConnectionResource, please refer to the document of ExpressRouteConnectionResource
+// this example assumes you already have this ExpressRouteGatewayResource created on azure
+// for more information of creating ExpressRouteGatewayResource, please refer to the document of ExpressRouteGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "resourceGroupName";
 string expressRouteGatewayName = "expressRouteGatewayName";
-string connectionName = "connectionName";
-ResourceIdentifier expressRouteConnectionResourceId = ExpressRouteConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName, connectionName);
-ExpressRouteConnectionResource expressRouteConnection = client.GetExpressRouteConnectionResource(expressRouteConnectionResourceId);
+ResourceIdentifier expressRouteGatewayResourceId = ExpressRouteGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName);
+ExpressRouteGatewayResource expressRouteGateway = client.GetExpressRouteGatewayResource(expressRouteGatewayResourceId);
+
+// get the collection of this ExpressRouteConnectionResource
+ExpressRouteConnectionCollection collection = expressRouteGateway.GetExpressRouteConnections();
 
 // invoke the operation
-ExpressRouteConnectionResource result = await expressRouteConnection.GetAsync();
+string connectionName = "connectionName";
+NullableResponse<ExpressRouteConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
+ExpressRouteConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ExpressRouteConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ExpressRouteConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

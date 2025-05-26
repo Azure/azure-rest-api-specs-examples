@@ -5469,3 +5469,4 @@ id,name,language,tag,package,version,date_epoch,date
 5468,@azure/arm-kubernetesconfiguration-fluxconfigurations@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-fluxconfigurations_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-fluxconfigurations,1.0.0-beta.1,1747997951,05/23/2025
 5469,"Azure.ResourceManager.SiteManager,1.0.0-beta.1",dotnet,Azure.ResourceManager.SiteManager_1.0.0-beta.1,Azure.ResourceManager.SiteManager,1.0.0-beta.1,1748050567,05/24/2025
 5470,"Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.1",dotnet,Azure.ResourceManager.OnlineExperimentation_1.0.0-beta.1,Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.1,1748008425,05/23/2025
+5471,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v7@v7.0.0,go,sdk/resourcemanager/network/armnetwork/v7.0.0,sdk/resourcemanager/network/armnetwork,v7.0.0,1748228633,05/26/2025

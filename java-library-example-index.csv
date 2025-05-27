@@ -5472,3 +5472,4 @@ id,name,language,tag,package,version,date_epoch,date
 5471,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v7@v7.0.0,go,sdk/resourcemanager/network/armnetwork/v7.0.0,sdk/resourcemanager/network/armnetwork,v7.0.0,1748228633,05/26/2025
 5472,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations,v0.1.0,1748226847,05/26/2025
 5473,com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.4.0,java,azure-resourcemanager-mediaservices_2.4.0,azure-resourcemanager-mediaservices,2.4.0,1748318461,05/27/2025
+5474,com.azure.resourcemanager:azure-resourcemanager-sitemanager:1.0.0-beta.1,java,azure-resourcemanager-sitemanager_1.0.0-beta.1,azure-resourcemanager-sitemanager,1.0.0-beta.1,1748316885,05/27/2025

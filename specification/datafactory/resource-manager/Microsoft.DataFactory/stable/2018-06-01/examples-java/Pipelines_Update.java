@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Pipelines CreateOrUpdateSync.
+ * Samples for Pipelines CreateOrUpdate.
  */
 public final class Main {
     /*

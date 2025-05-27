@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes ListByFactorySync.
+ * Samples for IntegrationRuntimes ListByFactory.
  */
 public final class Main {
     /*

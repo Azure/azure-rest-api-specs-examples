@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.ChangeDataCaptureResource;
 
 /**
- * Samples for ChangeDataCapture CreateOrUpdateSync.
+ * Samples for ChangeDataCapture CreateOrUpdate.
  */
 public final class Main {
     /*

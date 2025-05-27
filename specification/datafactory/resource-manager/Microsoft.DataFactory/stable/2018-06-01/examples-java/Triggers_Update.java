@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Triggers CreateOrUpdateSync.
+ * Samples for Triggers CreateOrUpdate.
  */
 public final class Main {
     /*

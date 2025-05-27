@@ -1,6 +1,6 @@
 
 /**
- * Samples for Datasets ListByFactorySync.
+ * Samples for Datasets ListByFactory.
  */
 public final class Main {
     /*

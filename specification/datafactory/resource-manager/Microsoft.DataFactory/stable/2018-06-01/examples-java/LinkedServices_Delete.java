@@ -1,6 +1,6 @@
 
 /**
- * Samples for LinkedServices DeleteSync.
+ * Samples for LinkedServices Delete.
  */
 public final class Main {
     /*

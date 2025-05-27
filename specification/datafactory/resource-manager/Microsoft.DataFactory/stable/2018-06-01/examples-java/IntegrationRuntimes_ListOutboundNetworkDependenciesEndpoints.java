@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes ListOutboundNetworkDependenciesEndpointsSync.
+ * Samples for IntegrationRuntimes ListOutboundNetworkDependenciesEndpoints.
  */
 public final class Main {
     /*

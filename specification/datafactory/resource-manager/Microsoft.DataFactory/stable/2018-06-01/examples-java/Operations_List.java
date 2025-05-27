@@ -1,6 +1,6 @@
 
 /**
- * Samples for Operations ListSync.
+ * Samples for Operations List.
  */
 public final class Main {
     /*

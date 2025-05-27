@@ -1,6 +1,6 @@
 
 /**
- * Samples for ChangeDataCapture StartSync.
+ * Samples for ChangeDataCapture Start.
  */
 public final class Main {
     /*

@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimeNodes GetIpAddressSync.
+ * Samples for IntegrationRuntimeNodes GetIpAddress.
  */
 public final class Main {
     /*

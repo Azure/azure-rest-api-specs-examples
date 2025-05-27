@@ -1,6 +1,6 @@
 
 /**
- * Samples for ManagedPrivateEndpoints GetSync.
+ * Samples for ManagedPrivateEndpoints Get.
  */
 public final class Main {
     /*

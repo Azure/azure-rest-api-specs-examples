@@ -1,6 +1,6 @@
 
 /**
- * Samples for CredentialOperations ListByFactorySync.
+ * Samples for CredentialOperations ListByFactory.
  */
 public final class Main {
     /*

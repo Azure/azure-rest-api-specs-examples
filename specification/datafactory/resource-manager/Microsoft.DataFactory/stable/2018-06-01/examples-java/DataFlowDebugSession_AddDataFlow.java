@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for DataFlowDebugSession AddDataFlowSync.
+ * Samples for DataFlowDebugSession AddDataFlow.
  */
 public final class Main {
     /*

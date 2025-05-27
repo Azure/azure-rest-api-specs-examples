@@ -1,6 +1,6 @@
 
 /**
- * Samples for DataFlowDebugSession QueryByFactorySync.
+ * Samples for DataFlowDebugSession QueryByFactory.
  */
 public final class Main {
     /*

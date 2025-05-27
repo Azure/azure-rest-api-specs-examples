@@ -1,6 +1,6 @@
 
 /**
- * Samples for Triggers GetSync.
+ * Samples for Triggers Get.
  */
 public final class Main {
     /*

@@ -1,6 +1,6 @@
 
 /**
- * Samples for Pipelines DeleteSync.
+ * Samples for Pipelines Delete.
  */
 public final class Main {
     /*

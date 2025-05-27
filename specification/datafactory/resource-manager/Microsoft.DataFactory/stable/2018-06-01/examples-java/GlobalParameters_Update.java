@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.GlobalParameterResource;
 
 /**
- * Samples for GlobalParameters CreateOrUpdateSync.
+ * Samples for GlobalParameters CreateOrUpdate.
  */
 public final class Main {
     /*

@@ -5,7 +5,7 @@ import com.azure.resourcemanager.datafactory.models.AzureStorageLinkedService;
 import java.io.IOException;
 
 /**
- * Samples for LinkedServices CreateOrUpdateSync.
+ * Samples for LinkedServices CreateOrUpdate.
  */
 public final class Main {
     /*

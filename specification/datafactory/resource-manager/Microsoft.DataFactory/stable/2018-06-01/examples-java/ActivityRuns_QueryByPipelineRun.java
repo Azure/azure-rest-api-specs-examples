@@ -3,7 +3,7 @@ import com.azure.resourcemanager.datafactory.models.RunFilterParameters;
 import java.time.OffsetDateTime;
 
 /**
- * Samples for ActivityRuns QueryByPipelineRunSync.
+ * Samples for ActivityRuns QueryByPipelineRun.
  */
 public final class Main {
     /*

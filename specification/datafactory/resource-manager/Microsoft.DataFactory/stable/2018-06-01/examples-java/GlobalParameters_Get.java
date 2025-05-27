@@ -1,6 +1,6 @@
 
 /**
- * Samples for GlobalParameters GetSync.
+ * Samples for GlobalParameters Get.
  */
 public final class Main {
     /*

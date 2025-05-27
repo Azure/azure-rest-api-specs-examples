@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes GetMonitoringDataSync.
+ * Samples for IntegrationRuntimes GetMonitoringData.
  */
 public final class Main {
     /*

@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.TriggerFilterParameters;
 
 /**
- * Samples for Triggers QueryByFactorySync.
+ * Samples for Triggers QueryByFactory.
  */
 public final class Main {
     /*

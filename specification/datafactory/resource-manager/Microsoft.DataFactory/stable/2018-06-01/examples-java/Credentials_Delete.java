@@ -1,6 +1,6 @@
 
 /**
- * Samples for CredentialOperations DeleteSync.
+ * Samples for CredentialOperations Delete.
  */
 public final class Main {
     /*

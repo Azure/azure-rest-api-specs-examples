@@ -5475,3 +5475,4 @@ id,name,language,tag,package,version,date_epoch,date
 5474,com.azure.resourcemanager:azure-resourcemanager-sitemanager:1.0.0-beta.1,java,azure-resourcemanager-sitemanager_1.0.0-beta.1,azure-resourcemanager-sitemanager,1.0.0-beta.1,1748316885,05/27/2025
 5475,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.2.0,java,azure-resourcemanager-datafactory_1.2.0,azure-resourcemanager-datafactory,1.2.0,1748314064,05/27/2025
 5476,com.azure.resourcemanager:azure-resourcemanager:2.51.0,java,azure-resourcemanager_2.51.0,azure-resourcemanager,2.51.0,1748263782,05/26/2025
+5477,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sitemanager/armsitemanager@v0.1.0,go,sdk/resourcemanager/sitemanager/armsitemanager/v0.1.0,sdk/resourcemanager/sitemanager/armsitemanager,v0.1.0,1748264567,05/26/2025

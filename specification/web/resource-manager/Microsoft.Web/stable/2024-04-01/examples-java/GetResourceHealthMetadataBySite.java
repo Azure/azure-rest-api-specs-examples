@@ -1,6 +1,6 @@
 
 /**
- * Samples for ResourceHealthMetadata GetBySite.
+ * Samples for ResourceHealthMetadata GetBySiteSlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getResourceHealthMetadata(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getResourceHealthMetadatas().getBySiteWithResponse(
-            "Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getResourceHealthMetadatas().getBySiteSlotWithResponse(
+            "Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", "Production", com.azure.core.util.Context.NONE);
     }
 }

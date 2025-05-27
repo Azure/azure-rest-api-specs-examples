@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps StopNetworkTraceSlot.
+ * Samples for WebApps StopWebSiteNetworkTraceSlot.
  */
 public final class Main {
     /*
@@ -14,7 +14,7 @@ public final class Main {
      */
     public static void
         stopACurrentlyRunningNetworkTraceOperationForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().stopNetworkTraceSlotWithResponse("testrg123",
+        azure.webApps().manager().serviceClient().getWebApps().stopWebSiteNetworkTraceSlotWithResponse("testrg123",
             "SampleApp", "Production", com.azure.core.util.Context.NONE);
     }
 }

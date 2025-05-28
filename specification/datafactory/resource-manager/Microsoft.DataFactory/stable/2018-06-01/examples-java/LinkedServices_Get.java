@@ -1,6 +1,6 @@
 
 /**
- * Samples for LinkedServices GetSync.
+ * Samples for LinkedServices Get.
  */
 public final class Main {
     /*

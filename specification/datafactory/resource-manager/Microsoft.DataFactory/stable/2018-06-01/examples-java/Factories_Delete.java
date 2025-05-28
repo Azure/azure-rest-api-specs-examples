@@ -1,6 +1,6 @@
 
 /**
- * Samples for Factories DeleteSync.
+ * Samples for Factories Delete.
  */
 public final class Main {
     /*

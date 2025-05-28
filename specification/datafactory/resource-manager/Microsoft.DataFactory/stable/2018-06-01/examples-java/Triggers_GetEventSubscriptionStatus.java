@@ -1,6 +1,6 @@
 
 /**
- * Samples for Triggers GetEventSubscriptionStatusSync.
+ * Samples for Triggers GetEventSubscriptionStatus.
  */
 public final class Main {
     /*

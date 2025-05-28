@@ -1,6 +1,6 @@
 
 /**
- * Samples for Datasets GetSync.
+ * Samples for Datasets Get.
  */
 public final class Main {
     /*

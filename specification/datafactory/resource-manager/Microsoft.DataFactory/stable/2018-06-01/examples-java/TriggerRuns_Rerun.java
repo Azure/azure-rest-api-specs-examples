@@ -1,6 +1,6 @@
 
 /**
- * Samples for TriggerRuns RerunSync.
+ * Samples for TriggerRuns Rerun.
  */
 public final class Main {
     /*

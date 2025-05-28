@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.CreateLinkedIntegrationRuntimeRequest;
 
 /**
- * Samples for IntegrationRuntimes CreateLinkedIntegrationRuntimeSync.
+ * Samples for IntegrationRuntimes CreateLinkedIntegrationRuntime.
  */
 public final class Main {
     /*

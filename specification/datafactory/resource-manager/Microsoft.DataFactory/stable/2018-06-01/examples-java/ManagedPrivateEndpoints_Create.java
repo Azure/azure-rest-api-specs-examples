@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for ManagedPrivateEndpoints CreateOrUpdateSync.
+ * Samples for ManagedPrivateEndpoints CreateOrUpdate.
  */
 public final class Main {
     /*

@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.DeleteDataFlowDebugSessionRequest;
 
 /**
- * Samples for DataFlowDebugSession DeleteSync.
+ * Samples for DataFlowDebugSession Delete.
  */
 public final class Main {
     /*

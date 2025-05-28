@@ -1,6 +1,6 @@
 
 /**
- * Samples for PrivateEndPointConnections ListByFactorySync.
+ * Samples for PrivateEndPointConnections ListByFactory.
  */
 public final class Main {
     /*

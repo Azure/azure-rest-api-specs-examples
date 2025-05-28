@@ -1,6 +1,6 @@
 
 /**
- * Samples for ManagedVirtualNetworks GetSync.
+ * Samples for ManagedVirtualNetworks Get.
  */
 public final class Main {
     /*

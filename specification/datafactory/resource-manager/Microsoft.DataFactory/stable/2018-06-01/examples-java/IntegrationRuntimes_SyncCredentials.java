@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes SyncCredentialsSync.
+ * Samples for IntegrationRuntimes SyncCredentials.
  */
 public final class Main {
     /*

@@ -1,6 +1,6 @@
 
 /**
- * Samples for TriggerRuns CancelSync.
+ * Samples for TriggerRuns Cancel.
  */
 public final class Main {
     /*

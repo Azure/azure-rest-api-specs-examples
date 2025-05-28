@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.SelfHostedIntegrationRuntime;
 
 /**
- * Samples for IntegrationRuntimes CreateOrUpdateSync.
+ * Samples for IntegrationRuntimes CreateOrUpdate.
  */
 public final class Main {
     /*

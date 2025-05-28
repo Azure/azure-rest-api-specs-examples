@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Factories UpdateSync.
+ * Samples for Factories Update.
  */
 public final class Main {
     /*

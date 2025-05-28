@@ -1,6 +1,6 @@
 
 /**
- * Samples for ChangeDataCapture ListByFactorySync.
+ * Samples for ChangeDataCapture ListByFactory.
  */
 public final class Main {
     /*

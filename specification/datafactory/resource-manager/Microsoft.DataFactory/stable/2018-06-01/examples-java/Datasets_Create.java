@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Samples for Datasets CreateOrUpdateSync.
+ * Samples for Datasets CreateOrUpdate.
  */
 public final class Main {
     /*

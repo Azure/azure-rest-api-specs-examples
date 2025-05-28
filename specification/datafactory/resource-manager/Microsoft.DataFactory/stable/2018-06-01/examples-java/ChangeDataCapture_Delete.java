@@ -1,6 +1,6 @@
 
 /**
- * Samples for ChangeDataCapture DeleteSync.
+ * Samples for ChangeDataCapture Delete.
  */
 public final class Main {
     /*

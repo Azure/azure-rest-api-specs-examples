@@ -1,6 +1,6 @@
 
 /**
- * Samples for IntegrationRuntimes ListAuthKeysSync.
+ * Samples for IntegrationRuntimes ListAuthKeys.
  */
 public final class Main {
     /*

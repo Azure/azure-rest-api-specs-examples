@@ -1,6 +1,6 @@
 
 /**
- * Samples for DataFlows DeleteSync.
+ * Samples for DataFlows Delete.
  */
 public final class Main {
     /*

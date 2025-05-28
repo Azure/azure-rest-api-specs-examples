@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.datafactory.models.LinkedIntegrationRuntimeRequest;
 
 /**
- * Samples for IntegrationRuntimes RemoveLinksSync.
+ * Samples for IntegrationRuntimes RemoveLinks.
  */
 public final class Main {
     /*

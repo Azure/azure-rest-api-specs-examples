@@ -5481,3 +5481,4 @@ id,name,language,tag,package,version,date_epoch,date
 5480,"Azure.ResourceManager.Network,1.11.0",dotnet,Azure.ResourceManager.Network_1.11.0,Azure.ResourceManager.Network,1.11.0,1748266406,05/26/2025
 5481,azure-mgmt-sitemanager@1.0.0b1,python,azure-mgmt-sitemanager_1.0.0b1,azure-mgmt-sitemanager,1.0.0b1,1748264292,05/26/2025
 5482,com.azure.resourcemanager:azure-resourcemanager-secretsstoreextension:1.0.0-beta.1,java,azure-resourcemanager-secretsstoreextension_1.0.0-beta.1,azure-resourcemanager-secretsstoreextension,1.0.0-beta.1,1748423726,05/28/2025
+5483,azure-mgmt-secretsstoreextension@1.0.0b1,python,azure-mgmt-secretsstoreextension_1.0.0b1,azure-mgmt-secretsstoreextension,1.0.0b1,1748423434,05/28/2025

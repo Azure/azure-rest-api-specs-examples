@@ -1,6 +1,6 @@
 
 /**
- * Samples for StreamingEndpoints AsyncOperation.
+ * Samples for LiveOutputs AsyncOperation.
  */
 public final class Main {
     /*
@@ -9,13 +9,13 @@ public final class Main {
      * -result.json
      */
     /**
-     * Sample code: Get the streaming endpoint operation status.
+     * Sample code: Get the LiveOutput operation status.
      * 
      * @param manager Entry point to MediaServicesManager.
      */
     public static void
-        getTheStreamingEndpointOperationStatus(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
-        manager.streamingEndpoints().asyncOperationWithResponse("mediaresources", "slitestmedia10",
+        getTheLiveOutputOperationStatus(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
+        manager.liveOutputs().asyncOperationWithResponse("mediaresources", "slitestmedia10",
             "62e4d893-d233-4005-988e-a428d9f77076", com.azure.core.util.Context.NONE);
     }
 }

@@ -5471,3 +5471,12 @@ id,name,language,tag,package,version,date_epoch,date
 5470,"Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.1",dotnet,Azure.ResourceManager.OnlineExperimentation_1.0.0-beta.1,Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.1,1748008425,05/23/2025
 5471,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v7@v7.0.0,go,sdk/resourcemanager/network/armnetwork/v7.0.0,sdk/resourcemanager/network/armnetwork,v7.0.0,1748228633,05/26/2025
 5472,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armfluxconfigurations,v0.1.0,1748226847,05/26/2025
+5473,com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.4.0,java,azure-resourcemanager-mediaservices_2.4.0,azure-resourcemanager-mediaservices,2.4.0,1748318461,05/27/2025
+5474,com.azure.resourcemanager:azure-resourcemanager-sitemanager:1.0.0-beta.1,java,azure-resourcemanager-sitemanager_1.0.0-beta.1,azure-resourcemanager-sitemanager,1.0.0-beta.1,1748316885,05/27/2025
+5475,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.2.0,java,azure-resourcemanager-datafactory_1.2.0,azure-resourcemanager-datafactory,1.2.0,1748314064,05/27/2025
+5476,com.azure.resourcemanager:azure-resourcemanager:2.51.0,java,azure-resourcemanager_2.51.0,azure-resourcemanager,2.51.0,1748263782,05/26/2025
+5477,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sitemanager/armsitemanager@v0.1.0,go,sdk/resourcemanager/sitemanager/armsitemanager/v0.1.0,sdk/resourcemanager/sitemanager/armsitemanager,v0.1.0,1748264567,05/26/2025
+5478,@azure/arm-sitemanager@1.0.0-beta.1,js,@azure/arm-sitemanager_1.0.0-beta.1,@azure/arm-sitemanager,1.0.0-beta.1,1748316525,05/27/2025
+5479,"Azure.ResourceManager.Dell.Storage,1.0.0-beta.1",dotnet,Azure.ResourceManager.Dell.Storage_1.0.0-beta.1,Azure.ResourceManager.Dell.Storage,1.0.0-beta.1,1748273158,05/26/2025
+5480,"Azure.ResourceManager.Network,1.11.0",dotnet,Azure.ResourceManager.Network_1.11.0,Azure.ResourceManager.Network,1.11.0,1748266406,05/26/2025
+5481,azure-mgmt-sitemanager@1.0.0b1,python,azure-mgmt-sitemanager_1.0.0b1,azure-mgmt-sitemanager,1.0.0b1,1748264292,05/26/2025

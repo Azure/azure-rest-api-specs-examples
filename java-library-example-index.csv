@@ -5486,3 +5486,4 @@ id,name,language,tag,package,version,date_epoch,date
 5485,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dell/armdellstorage@v0.1.0,go,sdk/resourcemanager/dell/armdellstorage/v0.1.0,sdk/resourcemanager/dell/armdellstorage,v0.1.0,1748842701,06/02/2025
 5486,azure-mgmt-media@10.2.1,python,azure-mgmt-media_10.2.1,azure-mgmt-media,10.2.1,1748934331,06/03/2025
 5487,@azure/arm-purestorageblock@1.0.0-beta.1,js,@azure/arm-purestorageblock_1.0.0-beta.1,@azure/arm-purestorageblock,1.0.0-beta.1,1748955614,06/03/2025
+5488,"Azure.ResourceManager.IotFirmwareDefense,1.1.0-beta.1",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.1.0-beta.1,Azure.ResourceManager.IotFirmwareDefense,1.1.0-beta.1,1749009341,06/04/2025

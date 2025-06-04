@@ -5484,3 +5484,4 @@ id,name,language,tag,package,version,date_epoch,date
 5483,azure-mgmt-secretsstoreextension@1.0.0b1,python,azure-mgmt-secretsstoreextension_1.0.0b1,azure-mgmt-secretsstoreextension,1.0.0b1,1748423434,05/28/2025
 5484,"Azure.ResourceManager.MongoDBAtlas,1.0.0-beta.1",dotnet,Azure.ResourceManager.MongoDBAtlas_1.0.0-beta.1,Azure.ResourceManager.MongoDBAtlas,1.0.0-beta.1,1748615787,05/30/2025
 5485,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dell/armdellstorage@v0.1.0,go,sdk/resourcemanager/dell/armdellstorage/v0.1.0,sdk/resourcemanager/dell/armdellstorage,v0.1.0,1748842701,06/02/2025
+5486,azure-mgmt-media@10.2.1,python,azure-mgmt-media_10.2.1,azure-mgmt-media,10.2.1,1748934331,06/03/2025

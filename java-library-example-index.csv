@@ -5489,3 +5489,4 @@ id,name,language,tag,package,version,date_epoch,date
 5488,"Azure.ResourceManager.IotFirmwareDefense,1.1.0-beta.1",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.1.0-beta.1,Azure.ResourceManager.IotFirmwareDefense,1.1.0-beta.1,1749009341,06/04/2025
 5489,"Azure.ResourceManager.CognitiveServices,1.5.0-beta.1",dotnet,Azure.ResourceManager.CognitiveServices_1.5.0-beta.1,Azure.ResourceManager.CognitiveServices,1.5.0-beta.1,1748999782,06/04/2025
 5490,com.azure.resourcemanager:azure-resourcemanager-mongodbatlas:1.0.0-beta.1,java,azure-resourcemanager-mongodbatlas_1.0.0-beta.1,azure-resourcemanager-mongodbatlas,1.0.0-beta.1,1749118552,06/05/2025
+5491,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongodbatlas/armmongodbatlas@v0.1.0,go,sdk/resourcemanager/mongodbatlas/armmongodbatlas/v0.1.0,sdk/resourcemanager/mongodbatlas/armmongodbatlas,v0.1.0,1749117018,06/05/2025

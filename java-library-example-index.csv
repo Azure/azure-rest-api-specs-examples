@@ -5495,3 +5495,4 @@ id,name,language,tag,package,version,date_epoch,date
 5494,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v7@v7.0.0-beta.3,go,sdk/resourcemanager/containerservice/armcontainerservice/v7.0.0-beta.3,sdk/resourcemanager/containerservice/armcontainerservice,v7.0.0-beta.3,1749095137,06/05/2025
 5495,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logz/armlogz@v1.2.1,go,sdk/resourcemanager/logz/armlogz/v1.2.1,sdk/resourcemanager/logz/armlogz,v1.2.1,1749092133,06/05/2025
 5496,"Azure.ResourceManager.EventGrid,1.2.0-beta.1",dotnet,Azure.ResourceManager.EventGrid_1.2.0-beta.1,Azure.ResourceManager.EventGrid,1.2.0-beta.1,1749106535,06/05/2025
+5497,"Azure.ResourceManager.ApiCenter,1.0.0",dotnet,Azure.ResourceManager.ApiCenter_1.0.0,Azure.ResourceManager.ApiCenter,1.0.0,1749054394,06/04/2025

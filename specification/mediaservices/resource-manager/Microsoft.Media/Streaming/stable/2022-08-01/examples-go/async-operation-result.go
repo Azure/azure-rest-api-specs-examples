@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e7bf3adfa2d5e5cdbb804eec35279501794f461c/specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/async-operation-result.json
-func ExampleStreamingEndpointsClient_AsyncOperation() {
+func ExampleLiveEventsClient_AsyncOperation() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleStreamingEndpointsClient_AsyncOperation() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewStreamingEndpointsClient().AsyncOperation(ctx, "mediaresources", "slitestmedia10", "62e4d893-d233-4005-988e-a428d9f77076", nil)
+	res, err := clientFactory.NewLiveEventsClient().AsyncOperation(ctx, "mediaresources", "slitestmedia10", "62e4d893-d233-4005-988e-a428d9f77076", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

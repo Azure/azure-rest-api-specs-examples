@@ -5497,3 +5497,4 @@ id,name,language,tag,package,version,date_epoch,date
 5496,"Azure.ResourceManager.EventGrid,1.2.0-beta.1",dotnet,Azure.ResourceManager.EventGrid_1.2.0-beta.1,Azure.ResourceManager.EventGrid,1.2.0-beta.1,1749106535,06/05/2025
 5497,"Azure.ResourceManager.ApiCenter,1.0.0",dotnet,Azure.ResourceManager.ApiCenter_1.0.0,Azure.ResourceManager.ApiCenter,1.0.0,1749054394,06/04/2025
 5498,azure-mgmt-mongodbatlas@1.0.0b1,python,azure-mgmt-mongodbatlas_1.0.0b1,azure-mgmt-mongodbatlas,1.0.0b1,1749119021,06/05/2025
+5499,azure-mgmt-recoveryservices@3.1.0,python,azure-mgmt-recoveryservices_3.1.0,azure-mgmt-recoveryservices,3.1.0,1749092083,06/05/2025

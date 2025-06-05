@@ -5491,3 +5491,4 @@ id,name,language,tag,package,version,date_epoch,date
 5490,com.azure.resourcemanager:azure-resourcemanager-mongodbatlas:1.0.0-beta.1,java,azure-resourcemanager-mongodbatlas_1.0.0-beta.1,azure-resourcemanager-mongodbatlas,1.0.0-beta.1,1749118552,06/05/2025
 5491,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongodbatlas/armmongodbatlas@v0.1.0,go,sdk/resourcemanager/mongodbatlas/armmongodbatlas/v0.1.0,sdk/resourcemanager/mongodbatlas/armmongodbatlas,v0.1.0,1749117018,06/05/2025
 5492,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mediaservices/armmediaservices/v3@v3.4.1,go,sdk/resourcemanager/mediaservices/armmediaservices/v3.4.1,sdk/resourcemanager/mediaservices/armmediaservices,v3.4.1,1749106106,06/05/2025
+5493,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform/v2@v2.0.1,go,sdk/resourcemanager/appplatform/armappplatform/v2.0.1,sdk/resourcemanager/appplatform/armappplatform,v2.0.1,1749104154,06/05/2025

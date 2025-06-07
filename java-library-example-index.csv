@@ -5499,3 +5499,7 @@ id,name,language,tag,package,version,date_epoch,date
 5498,azure-mgmt-mongodbatlas@1.0.0b1,python,azure-mgmt-mongodbatlas_1.0.0b1,azure-mgmt-mongodbatlas,1.0.0b1,1749119021,06/05/2025
 5499,azure-mgmt-recoveryservices@3.1.0,python,azure-mgmt-recoveryservices_3.1.0,azure-mgmt-recoveryservices,3.1.0,1749092083,06/05/2025
 5500,azure-mgmt-appplatform@10.0.1,python,azure-mgmt-appplatform_10.0.1,azure-mgmt-appplatform,10.0.1,1749091652,06/05/2025
+5501,@azure/arm-arizeaiobservabilityeval@1.0.0,js,@azure/arm-arizeaiobservabilityeval_1.0.0,@azure/arm-arizeaiobservabilityeval,1.0.0,1749202020,06/06/2025
+5502,@azure/arm-chaos@2.0.0,js,@azure/arm-chaos_2.0.0,@azure/arm-chaos,2.0.0,1749200355,06/06/2025
+5503,@azure/arm-mongodbatlas@1.0.0-beta.1,js,@azure/arm-mongodbatlas_1.0.0-beta.1,@azure/arm-mongodbatlas,1.0.0-beta.1,1749194969,06/06/2025
+5504,azure-mgmt-purestorageblock@1.0.0b1,python,azure-mgmt-purestorageblock_1.0.0b1,azure-mgmt-purestorageblock,1.0.0b1,1749128893,06/05/2025

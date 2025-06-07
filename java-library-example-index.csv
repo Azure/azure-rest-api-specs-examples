@@ -5504,3 +5504,4 @@ id,name,language,tag,package,version,date_epoch,date
 5503,@azure/arm-mongodbatlas@1.0.0-beta.1,js,@azure/arm-mongodbatlas_1.0.0-beta.1,@azure/arm-mongodbatlas,1.0.0-beta.1,1749194969,06/06/2025
 5504,azure-mgmt-purestorageblock@1.0.0b1,python,azure-mgmt-purestorageblock_1.0.0b1,azure-mgmt-purestorageblock,1.0.0b1,1749128893,06/05/2025
 5505,com.azure.resourcemanager:azure-resourcemanager-purestorageblock:1.0.0-beta.1,java,azure-resourcemanager-purestorageblock_1.0.0-beta.1,azure-resourcemanager-purestorageblock,1.0.0-beta.1,1749280875,06/07/2025
+5506,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.1.0,java,azure-resourcemanager-computeschedule_1.1.0,azure-resourcemanager-computeschedule,1.1.0,1749238697,06/06/2025

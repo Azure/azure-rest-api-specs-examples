@@ -5507,3 +5507,4 @@ id,name,language,tag,package,version,date_epoch,date
 5506,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.1.0,java,azure-resourcemanager-computeschedule_1.1.0,azure-resourcemanager-computeschedule,1.1.0,1749238697,06/06/2025
 5507,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purestorageblock/armpurestorageblock@v0.1.0,go,sdk/resourcemanager/purestorageblock/armpurestorageblock/v0.1.0,sdk/resourcemanager/purestorageblock/armpurestorageblock,v0.1.0,1749280081,06/07/2025
 5508,"Azure.ResourceManager.Resources,1.10.0",dotnet,Azure.ResourceManager.Resources_1.10.0,Azure.ResourceManager.Resources,1.10.0,1749451353,06/09/2025
+5509,azure-mgmt-resource-templatespecs@1.0.0b1,python,azure-mgmt-resource-templatespecs_1.0.0b1,azure-mgmt-resource-templatespecs,1.0.0b1,1749529965,06/10/2025

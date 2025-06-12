@@ -5515,3 +5515,4 @@ id,name,language,tag,package,version,date_epoch,date
 5514,com.azure.resourcemanager:azure-resourcemanager-planetarycomputer:1.0.0-beta.1,java,azure-resourcemanager-planetarycomputer_1.0.0-beta.1,azure-resourcemanager-planetarycomputer,1.0.0-beta.1,1749675704,06/11/2025
 5515,com.azure.resourcemanager:azure-resourcemanager-onlineexperimentation:1.0.0-beta.1,java,azure-resourcemanager-onlineexperimentation_1.0.0-beta.1,azure-resourcemanager-onlineexperimentation,1.0.0-beta.1,1749668128,06/11/2025
 5516,@azure/arm-onlineexperimentation@1.0.0-beta.1,js,@azure/arm-onlineexperimentation_1.0.0-beta.1,@azure/arm-onlineexperimentation,1.0.0-beta.1,1749667558,06/11/2025
+5517,azure-mgmt-chaos@2.0.0,python,azure-mgmt-chaos_2.0.0,azure-mgmt-chaos,2.0.0,1749711994,06/12/2025

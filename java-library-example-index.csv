@@ -5511,3 +5511,4 @@ id,name,language,tag,package,version,date_epoch,date
 5510,azure-mgmt-resource-deploymentscripts@1.0.0b1,python,azure-mgmt-resource-deploymentscripts_1.0.0b1,azure-mgmt-resource-deploymentscripts,1.0.0b1,1749529922,06/10/2025
 5511,azure-mgmt-resource-deploymentstacks@1.0.0b1,python,azure-mgmt-resource-deploymentstacks_1.0.0b1,azure-mgmt-resource-deploymentstacks,1.0.0b1,1749529823,06/10/2025
 5512,azure-mgmt-containerservice@37.0.0,python,azure-mgmt-containerservice_37.0.0,azure-mgmt-containerservice,37.0.0,1749629891,06/11/2025
+5513,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.1.0,java,azure-resourcemanager-appconfiguration_1.1.0,azure-resourcemanager-appconfiguration,1.1.0,1749719076,06/12/2025

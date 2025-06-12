@@ -5516,3 +5516,4 @@ id,name,language,tag,package,version,date_epoch,date
 5515,com.azure.resourcemanager:azure-resourcemanager-onlineexperimentation:1.0.0-beta.1,java,azure-resourcemanager-onlineexperimentation_1.0.0-beta.1,azure-resourcemanager-onlineexperimentation,1.0.0-beta.1,1749668128,06/11/2025
 5516,@azure/arm-onlineexperimentation@1.0.0-beta.1,js,@azure/arm-onlineexperimentation_1.0.0-beta.1,@azure/arm-onlineexperimentation,1.0.0-beta.1,1749667558,06/11/2025
 5517,azure-mgmt-chaos@2.0.0,python,azure-mgmt-chaos_2.0.0,azure-mgmt-chaos,2.0.0,1749711994,06/12/2025
+5518,azure-mgmt-onlineexperimentation@1.0.0b1,python,azure-mgmt-onlineexperimentation_1.0.0b1,azure-mgmt-onlineexperimentation,1.0.0b1,1749681166,06/11/2025

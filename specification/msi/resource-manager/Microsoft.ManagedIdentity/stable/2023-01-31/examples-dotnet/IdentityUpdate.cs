@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ManagedServiceIdentities.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ManagedServiceIdentities;
 
 // Generated from example definition: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/IdentityUpdate.json
@@ -30,7 +29,7 @@ UserAssignedIdentityPatch patch = new UserAssignedIdentityPatch(new AzureLocatio
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 UserAssignedIdentityResource result = await userAssignedIdentity.UpdateAsync(patch);

@@ -32,7 +32,7 @@ UserAssignedIdentityData data = new UserAssignedIdentityData(new AzureLocation("
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 ArmOperation<UserAssignedIdentityResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

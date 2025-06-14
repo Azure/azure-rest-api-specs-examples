@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.ManagedServiceIdentities.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ManagedServiceIdentities;
 
@@ -32,4 +31,4 @@ await foreach (UserAssignedIdentityResource item in subscriptionResource.GetUser
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ManagedServiceIdentities.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ManagedServiceIdentities;
 
 // Generated from example definition: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/IdentityDelete.json
@@ -27,4 +26,4 @@ UserAssignedIdentityResource userAssignedIdentity = client.GetUserAssignedIdenti
 // invoke the operation
 await userAssignedIdentity.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

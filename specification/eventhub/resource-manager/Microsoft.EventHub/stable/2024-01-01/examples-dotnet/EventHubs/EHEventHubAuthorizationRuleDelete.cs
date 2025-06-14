@@ -28,4 +28,4 @@ EventHubAuthorizationRuleResource eventHubAuthorizationRule = client.GetEventHub
 // invoke the operation
 await eventHubAuthorizationRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

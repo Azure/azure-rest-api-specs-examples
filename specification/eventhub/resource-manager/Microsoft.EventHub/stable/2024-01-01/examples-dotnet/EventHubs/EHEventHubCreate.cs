@@ -25,21 +25,21 @@ ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifie
 EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
 
 // invoke the operation
-EventHubData data = new EventHubData()
+EventHubData data = new EventHubData
 {
     PartitionCount = 4L,
     Status = EventHubEntityStatus.Active,
     UserMetadata = "key",
-    CaptureDescription = new CaptureDescription()
+    CaptureDescription = new CaptureDescription
     {
         Enabled = true,
         Encoding = EncodingCaptureDescription.Avro,
         IntervalInSeconds = 120,
         SizeLimitInBytes = 10485763,
-        Destination = new EventHubDestination()
+        Destination = new EventHubDestination
         {
             Name = "EventHubArchive.AzureBlockBlob",
-            Identity = new EventHubsCaptureIdentity()
+            Identity = new EventHubsCaptureIdentity
             {
                 IdentityType = EventHubsCaptureIdentityType.UserAssigned,
                 UserAssignedIdentity = "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2",
@@ -49,7 +49,7 @@ EventHubData data = new EventHubData()
             ArchiveNameFormat = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}",
         },
     },
-    RetentionDescription = new RetentionDescription()
+    RetentionDescription = new RetentionDescription
     {
         CleanupPolicy = CleanupPolicyRetentionDescription.Compaction,
         RetentionTimeInHours = 96L,

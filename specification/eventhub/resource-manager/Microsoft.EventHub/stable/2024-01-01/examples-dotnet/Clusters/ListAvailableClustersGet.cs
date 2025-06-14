@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.EventHubs;
 
 // Generated from example definition: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2024-01-01/examples/Clusters/ListAvailableClustersGet.json
@@ -29,4 +28,4 @@ await foreach (AvailableCluster item in subscriptionResource.GetAvailableCluster
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

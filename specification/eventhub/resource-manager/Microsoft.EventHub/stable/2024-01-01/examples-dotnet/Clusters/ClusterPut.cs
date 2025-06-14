@@ -37,7 +37,7 @@ EventHubsClusterData data = new EventHubsClusterData(new AzureLocation("South Ce
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<EventHubsClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);

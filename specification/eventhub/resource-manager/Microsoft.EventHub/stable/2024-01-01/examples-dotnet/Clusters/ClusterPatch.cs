@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.EventHubs;
 
@@ -31,7 +30,7 @@ EventHubsClusterData data = new EventHubsClusterData(new AzureLocation("South Ce
     Tags =
     {
     ["tag3"] = "value3",
-    ["tag4"] = "value4",
+    ["tag4"] = "value4"
     },
 };
 ArmOperation<EventHubsClusterResource> lro = await eventHubsCluster.UpdateAsync(WaitUntil.Completed, data);

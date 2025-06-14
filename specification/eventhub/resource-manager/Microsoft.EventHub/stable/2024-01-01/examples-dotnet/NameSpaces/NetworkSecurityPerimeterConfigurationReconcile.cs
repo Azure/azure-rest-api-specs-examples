@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventHubs;
 
 // Generated from example definition: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2024-01-01/examples/NameSpaces/NetworkSecurityPerimeterConfigurationReconcile.json
@@ -29,4 +28,4 @@ EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceReso
 string resourceAssociationName = "resourceAssociation1";
 await eventHubsNamespace.CreateOrUpdateNetworkSecurityPerimeterConfigurationAsync(WaitUntil.Completed, resourceAssociationName);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

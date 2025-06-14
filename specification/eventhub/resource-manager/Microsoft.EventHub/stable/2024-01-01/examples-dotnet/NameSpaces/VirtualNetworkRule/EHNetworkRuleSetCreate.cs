@@ -24,49 +24,43 @@ ResourceIdentifier eventHubsNetworkRuleSetResourceId = EventHubsNetworkRuleSetRe
 EventHubsNetworkRuleSetResource eventHubsNetworkRuleSet = client.GetEventHubsNetworkRuleSetResource(eventHubsNetworkRuleSetResourceId);
 
 // invoke the operation
-EventHubsNetworkRuleSetData data = new EventHubsNetworkRuleSetData()
+EventHubsNetworkRuleSetData data = new EventHubsNetworkRuleSetData
 {
     DefaultAction = EventHubsNetworkRuleSetDefaultAction.Deny,
-    VirtualNetworkRules =
-    {
-    new EventHubsNetworkRuleSetVirtualNetworkRules()
+    VirtualNetworkRules = {new EventHubsNetworkRuleSetVirtualNetworkRules
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet2"),
     IgnoreMissingVnetServiceEndpoint = true,
-    },new EventHubsNetworkRuleSetVirtualNetworkRules()
+    }, new EventHubsNetworkRuleSetVirtualNetworkRules
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet3"),
     IgnoreMissingVnetServiceEndpoint = false,
-    },new EventHubsNetworkRuleSetVirtualNetworkRules()
+    }, new EventHubsNetworkRuleSetVirtualNetworkRules
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet6"),
     IgnoreMissingVnetServiceEndpoint = false,
-    }
-    },
-    IPRules =
-    {
-    new EventHubsNetworkRuleSetIPRules()
+    }},
+    IPRules = {new EventHubsNetworkRuleSetIPRules
     {
     IPMask = "1.1.1.1",
     Action = EventHubsNetworkRuleIPAction.Allow,
-    },new EventHubsNetworkRuleSetIPRules()
+    }, new EventHubsNetworkRuleSetIPRules
     {
     IPMask = "1.1.1.2",
     Action = EventHubsNetworkRuleIPAction.Allow,
-    },new EventHubsNetworkRuleSetIPRules()
+    }, new EventHubsNetworkRuleSetIPRules
     {
     IPMask = "1.1.1.3",
     Action = EventHubsNetworkRuleIPAction.Allow,
-    },new EventHubsNetworkRuleSetIPRules()
+    }, new EventHubsNetworkRuleSetIPRules
     {
     IPMask = "1.1.1.4",
     Action = EventHubsNetworkRuleIPAction.Allow,
-    },new EventHubsNetworkRuleSetIPRules()
+    }, new EventHubsNetworkRuleSetIPRules
     {
     IPMask = "1.1.1.5",
     Action = EventHubsNetworkRuleIPAction.Allow,
-    }
-    },
+    }},
 };
 ArmOperation<EventHubsNetworkRuleSetResource> lro = await eventHubsNetworkRuleSet.CreateOrUpdateAsync(WaitUntil.Completed, data);
 EventHubsNetworkRuleSetResource result = lro.Value;

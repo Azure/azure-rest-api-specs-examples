@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.EventHubs;
 
@@ -26,12 +25,12 @@ ResourceIdentifier eventHubsClusterResourceId = EventHubsClusterResource.CreateR
 EventHubsClusterResource eventHubsCluster = client.GetEventHubsClusterResource(eventHubsClusterResourceId);
 
 // invoke the operation
-ClusterQuotaConfigurationProperties clusterQuotaConfigurationProperties = new ClusterQuotaConfigurationProperties()
+ClusterQuotaConfigurationProperties clusterQuotaConfigurationProperties = new ClusterQuotaConfigurationProperties
 {
     Settings =
     {
     ["eventhub-per-namespace-quota"] = "20",
-    ["namespaces-per-cluster-quota"] = "200",
+    ["namespaces-per-cluster-quota"] = "200"
     },
 };
 ClusterQuotaConfigurationProperties result = await eventHubsCluster.PatchConfigurationAsync(clusterQuotaConfigurationProperties);

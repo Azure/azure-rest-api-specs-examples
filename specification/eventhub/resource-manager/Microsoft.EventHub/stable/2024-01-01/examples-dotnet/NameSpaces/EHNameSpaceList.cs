@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventHubs;
 
@@ -33,4 +32,4 @@ await foreach (EventHubsNamespaceResource item in subscriptionResource.GetEventH
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
 // invoke the operation
 await eventHub.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

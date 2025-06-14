@@ -27,4 +27,4 @@ EventHubsApplicationGroupResource eventHubsApplicationGroup = client.GetEventHub
 // invoke the operation
 await eventHubsApplicationGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

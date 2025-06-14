@@ -27,4 +27,4 @@ EventHubsConsumerGroupResource eventHubsConsumerGroup = client.GetEventHubsConsu
 // invoke the operation
 await eventHubsConsumerGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventHubs;
 
 // Generated from example definition: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2024-01-01/examples/NameSpaces/NetworkSecurityPerimeterConfigurationList.json
@@ -31,4 +30,4 @@ await foreach (EventHubsNetworkSecurityPerimeterConfiguration item in eventHubsN
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

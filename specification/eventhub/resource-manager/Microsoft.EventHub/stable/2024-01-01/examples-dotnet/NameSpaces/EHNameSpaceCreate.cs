@@ -36,21 +36,18 @@ EventHubsNamespaceData data = new EventHubsNamespaceData(new AzureLocation("East
         UserAssignedIdentities =
         {
         [new ResourceIdentifier("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1")] = new UserAssignedIdentity(),
-        [new ResourceIdentifier("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2")] = new UserAssignedIdentity()
         },
     },
     ClusterArmId = new ResourceIdentifier("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.EventHub/clusters/enc-test"),
-    Encryption = new EventHubsEncryption()
+    Encryption = new EventHubsEncryption
     {
-        KeyVaultProperties =
-        {
-        new EventHubsKeyVaultProperties()
+        KeyVaultProperties = {new EventHubsKeyVaultProperties
         {
         KeyName = "Samplekey",
         KeyVaultUri = new Uri("https://aprao-keyvault-user.vault-int.azure-int.net/"),
         UserAssignedIdentity = "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1",
-        }
-        },
+        }},
         KeySource = EventHubsKeySource.MicrosoftKeyVault,
     },
 };

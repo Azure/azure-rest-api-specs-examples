@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.EventHubs;
 
@@ -28,4 +27,4 @@ EventHubsClusterResource eventHubsCluster = client.GetEventHubsClusterResource(e
 // invoke the operation
 await eventHubsCluster.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

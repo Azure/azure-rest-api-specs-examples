@@ -27,4 +27,4 @@ EventHubsPrivateEndpointConnectionResource eventHubsPrivateEndpointConnection = 
 // invoke the operation
 await eventHubsPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

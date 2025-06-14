@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.WebPubSub.Models;
 using Azure.ResourceManager.WebPubSub;
 
@@ -26,7 +25,7 @@ ResourceIdentifier webPubSubResourceId = WebPubSubResource.CreateResourceIdentif
 WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
 
 // invoke the operation
-WebPubSubRegenerateKeyContent content = new WebPubSubRegenerateKeyContent()
+WebPubSubRegenerateKeyContent content = new WebPubSubRegenerateKeyContent
 {
     KeyType = WebPubSubKeyType.Primary,
 };

@@ -26,4 +26,4 @@ WebPubSubSharedPrivateLinkResource webPubSubSharedPrivateLink = client.GetWebPub
 // invoke the operation
 await webPubSubSharedPrivateLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

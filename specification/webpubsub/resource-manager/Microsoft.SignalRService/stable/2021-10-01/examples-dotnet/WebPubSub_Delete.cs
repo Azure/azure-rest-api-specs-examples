@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.WebPubSub.Models;
 using Azure.ResourceManager.WebPubSub;
 
@@ -28,4 +27,4 @@ WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
 // invoke the operation
 await webPubSub.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

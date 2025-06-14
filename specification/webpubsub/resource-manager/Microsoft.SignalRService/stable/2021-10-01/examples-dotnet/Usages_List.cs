@@ -29,4 +29,4 @@ await foreach (SignalRServiceUsage item in subscriptionResource.GetUsagesAsync(l
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ WebPubSubPrivateEndpointConnectionResource webPubSubPrivateEndpointConnection = 
 // invoke the operation
 await webPubSubPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

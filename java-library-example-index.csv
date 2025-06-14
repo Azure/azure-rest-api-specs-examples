@@ -5519,3 +5519,4 @@ id,name,language,tag,package,version,date_epoch,date
 5518,azure-mgmt-onlineexperimentation@1.0.0b1,python,azure-mgmt-onlineexperimentation_1.0.0b1,azure-mgmt-onlineexperimentation,1.0.0b1,1749681166,06/11/2025
 5519,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v2@v2.0.0,go,sdk/resourcemanager/chaos/armchaos/v2.0.0,sdk/resourcemanager/chaos/armchaos,v2.0.0,1749785380,06/13/2025
 5520,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/planetarycomputer/armplanetarycomputer@v0.1.0,go,sdk/resourcemanager/planetarycomputer/armplanetarycomputer/v0.1.0,sdk/resourcemanager/planetarycomputer/armplanetarycomputer,v0.1.0,1749829501,06/13/2025
+5521,"Azure.ResourceManager.EventHubs,1.2.0",dotnet,Azure.ResourceManager.EventHubs_1.2.0,Azure.ResourceManager.EventHubs,1.2.0,1749817481,06/13/2025

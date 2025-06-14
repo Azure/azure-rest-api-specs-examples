@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.WebPubSub.Models;
 using Azure.ResourceManager.WebPubSub;
@@ -33,4 +32,4 @@ await foreach (WebPubSubResource item in subscriptionResource.GetWebPubSubsAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

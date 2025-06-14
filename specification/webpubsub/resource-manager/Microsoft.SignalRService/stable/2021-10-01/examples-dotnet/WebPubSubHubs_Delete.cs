@@ -27,4 +27,4 @@ WebPubSubHubResource webPubSubHub = client.GetWebPubSubHubResource(webPubSubHubR
 // invoke the operation
 await webPubSubHub.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

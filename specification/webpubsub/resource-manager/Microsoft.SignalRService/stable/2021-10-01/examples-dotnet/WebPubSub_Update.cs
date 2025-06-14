@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.WebPubSub.Models;
 using Azure.ResourceManager.WebPubSub;
 
@@ -35,43 +34,31 @@ WebPubSubData data = new WebPubSubData(new AzureLocation("eastus"))
     },
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     IsClientCertEnabled = false,
-    LiveTraceConfiguration = new LiveTraceConfiguration()
+    LiveTraceConfiguration = new LiveTraceConfiguration
     {
-        Categories =
-        {
-        new LiveTraceCategory()
+        Categories = {new LiveTraceCategory
         {
         Name = "ConnectivityLogs",
-        }
-        },
+        }},
     },
-    NetworkAcls = new WebPubSubNetworkAcls()
+    NetworkAcls = new WebPubSubNetworkAcls
     {
         DefaultAction = AclAction.Deny,
-        PublicNetwork = new PublicNetworkAcls()
+        PublicNetwork = new PublicNetworkAcls
         {
-            Allow =
-            {
-            WebPubSubRequestType.ClientConnection
-            },
+            Allow = { WebPubSubRequestType.ClientConnection },
         },
-        PrivateEndpoints =
+        PrivateEndpoints = {new PrivateEndpointAcl("mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e")
         {
-        new PrivateEndpointAcl("mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e")
-        {
-        Allow =
-        {
-        WebPubSubRequestType.ServerConnection
-        },
-        }
-        },
+        Allow = {WebPubSubRequestType.ServerConnection},
+        }},
     },
     PublicNetworkAccess = "Enabled",
     IsLocalAuthDisabled = false,
     IsAadAuthDisabled = false,
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<WebPubSubResource> lro = await webPubSub.UpdateAsync(WaitUntil.Completed, data);

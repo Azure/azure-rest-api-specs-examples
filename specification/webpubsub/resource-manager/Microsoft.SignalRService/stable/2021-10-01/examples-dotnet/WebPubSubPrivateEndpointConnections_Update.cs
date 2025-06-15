@@ -28,10 +28,10 @@ WebPubSubPrivateEndpointConnectionCollection collection = webPubSub.GetWebPubSub
 
 // invoke the operation
 string privateEndpointConnectionName = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-WebPubSubPrivateEndpointConnectionData data = new WebPubSubPrivateEndpointConnectionData()
+WebPubSubPrivateEndpointConnectionData data = new WebPubSubPrivateEndpointConnectionData
 {
     PrivateEndpointId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"),
-    ConnectionState = new WebPubSubPrivateLinkServiceConnectionState()
+    ConnectionState = new WebPubSubPrivateLinkServiceConnectionState
     {
         Status = WebPubSubPrivateLinkServiceConnectionStatus.Approved,
         ActionsRequired = "None",

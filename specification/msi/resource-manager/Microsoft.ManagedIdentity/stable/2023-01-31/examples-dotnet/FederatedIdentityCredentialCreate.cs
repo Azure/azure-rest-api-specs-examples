@@ -24,14 +24,11 @@ ResourceIdentifier federatedIdentityCredentialResourceId = FederatedIdentityCred
 FederatedIdentityCredentialResource federatedIdentityCredential = client.GetFederatedIdentityCredentialResource(federatedIdentityCredentialResourceId);
 
 // invoke the operation
-FederatedIdentityCredentialData data = new FederatedIdentityCredentialData()
+FederatedIdentityCredentialData data = new FederatedIdentityCredentialData
 {
     IssuerUri = new Uri("https://oidc.prod-aks.azure.com/TenantGUID/IssuerGUID"),
     Subject = "system:serviceaccount:ns:svcaccount",
-    Audiences =
-    {
-    "api://AzureADTokenExchange"
-    },
+    Audiences = { "api://AzureADTokenExchange" },
 };
 ArmOperation<FederatedIdentityCredentialResource> lro = await federatedIdentityCredential.UpdateAsync(WaitUntil.Completed, data);
 FederatedIdentityCredentialResource result = lro.Value;

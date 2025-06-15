@@ -26,4 +26,4 @@ FederatedIdentityCredentialResource federatedIdentityCredential = client.GetFede
 // invoke the operation
 await federatedIdentityCredential.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

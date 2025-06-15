@@ -26,4 +26,4 @@ EventHubsDisasterRecoveryResource eventHubsDisasterRecovery = client.GetEventHub
 // invoke the operation
 await eventHubsDisasterRecovery.BreakPairingAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

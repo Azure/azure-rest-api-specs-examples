@@ -27,4 +27,4 @@ EventHubsNamespaceAuthorizationRuleResource eventHubsNamespaceAuthorizationRule 
 // invoke the operation
 await eventHubsNamespaceAuthorizationRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

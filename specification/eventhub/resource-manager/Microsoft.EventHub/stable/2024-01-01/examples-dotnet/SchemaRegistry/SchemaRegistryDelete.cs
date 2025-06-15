@@ -27,4 +27,4 @@ EventHubsSchemaGroupResource eventHubsSchemaGroup = client.GetEventHubsSchemaGro
 // invoke the operation
 await eventHubsSchemaGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

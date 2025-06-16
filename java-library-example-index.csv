@@ -5525,3 +5525,4 @@ id,name,language,tag,package,version,date_epoch,date
 5524,azure-mgmt-planetarycomputer@1.0.0b1,python,azure-mgmt-planetarycomputer_1.0.0b1,azure-mgmt-planetarycomputer,1.0.0b1,1749835133,06/13/2025
 5525,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.1.0,java,azure-resourcemanager-dnsresolver_1.1.0,azure-resourcemanager-dnsresolver,1.1.0,1750059534,06/16/2025
 5526,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.1.0-beta.2,java,azure-resourcemanager-hybridcompute_1.1.0-beta.2,azure-resourcemanager-hybridcompute,1.1.0-beta.2,1750057271,06/16/2025
+5527,"Azure.ResourceManager.CognitiveServices,1.5.0",dotnet,Azure.ResourceManager.CognitiveServices_1.5.0,Azure.ResourceManager.CognitiveServices,1.5.0,1750064777,06/16/2025

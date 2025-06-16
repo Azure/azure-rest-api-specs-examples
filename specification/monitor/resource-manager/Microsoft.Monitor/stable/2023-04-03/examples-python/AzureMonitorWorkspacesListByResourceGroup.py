@@ -7,7 +7,7 @@ from azure.mgmt.monitor import MonitorManagementClient
     pip install azure-identity
     pip install azure-mgmt-monitor
 # USAGE
-    python list_scheduled_query_rules.py
+    python azure_monitor_workspaces_list_by_resource_group.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -19,14 +19,16 @@ from azure.mgmt.monitor import MonitorManagementClient
 def main():
     client = MonitorManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7",
+        subscription_id="703362b3-f278-4e4b-9179-c76eaf41ffc2",
     )
 
-    response = client.scheduled_query_rules.list_by_subscription()
+    response = client.azure_monitor_workspaces.list_by_resource_group(
+        resource_group_name="myResourceGroup",
+    )
     for item in response:
         print(item)
 
 
-# x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/examples/listScheduledQueryRules.json
+# x-ms-original-file: specification/monitor/resource-manager/Microsoft.Monitor/stable/2023-04-03/examples/AzureMonitorWorkspacesListByResourceGroup.json
 if __name__ == "__main__":
     main()

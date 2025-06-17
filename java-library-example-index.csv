@@ -5536,3 +5536,4 @@ id,name,language,tag,package,version,date_epoch,date
 5535,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.3.0,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.3.0,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.3.0,1750135621,06/17/2025
 5536,azure-mgmt-kubernetesconfiguration-privatelinkscopes@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-privatelinkscopes_1.0.0b1,azure-mgmt-kubernetesconfiguration-privatelinkscopes,1.0.0b1,1750150361,06/17/2025
 5537,azure-mgmt-resource@24.0.0,python,azure-mgmt-resource_24.0.0,azure-mgmt-resource,24.0.0,1750147142,06/17/2025
+5538,azure-mgmt-web@9.0.0,python,azure-mgmt-web_9.0.0,azure-mgmt-web,9.0.0,1750144330,06/17/2025

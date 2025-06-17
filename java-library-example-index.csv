@@ -5530,3 +5530,4 @@ id,name,language,tag,package,version,date_epoch,date
 5529,azure-mgmt-monitor@7.0.0b2,python,azure-mgmt-monitor_7.0.0b2,azure-mgmt-monitor,7.0.0b2,1750066652,06/16/2025
 5530,azure-mgmt-dnsresolver@1.1.0,python,azure-mgmt-dnsresolver_1.1.0,azure-mgmt-dnsresolver,1.1.0,1750063493,06/16/2025
 5531,azure-mgmt-networkcloud@2.1.0,python,azure-mgmt-networkcloud_2.1.0,azure-mgmt-networkcloud,2.1.0,1750062657,06/16/2025
+5532,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dnsresolver/armdnsresolver@v1.3.0,go,sdk/resourcemanager/dnsresolver/armdnsresolver/v1.3.0,sdk/resourcemanager/dnsresolver/armdnsresolver,v1.3.0,1750155023,06/17/2025

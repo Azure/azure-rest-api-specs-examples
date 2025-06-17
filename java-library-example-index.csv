@@ -5537,3 +5537,4 @@ id,name,language,tag,package,version,date_epoch,date
 5536,azure-mgmt-kubernetesconfiguration-privatelinkscopes@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-privatelinkscopes_1.0.0b1,azure-mgmt-kubernetesconfiguration-privatelinkscopes,1.0.0b1,1750150361,06/17/2025
 5537,azure-mgmt-resource@24.0.0,python,azure-mgmt-resource_24.0.0,azure-mgmt-resource,24.0.0,1750147142,06/17/2025
 5538,azure-mgmt-web@9.0.0,python,azure-mgmt-web_9.0.0,azure-mgmt-web,9.0.0,1750144330,06/17/2025
+5539,azure-mgmt-hybridcompute@9.1.0b2,python,azure-mgmt-hybridcompute_9.1.0b2,azure-mgmt-hybridcompute,9.1.0b2,1750142728,06/17/2025

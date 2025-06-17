@@ -5523,3 +5523,10 @@ id,name,language,tag,package,version,date_epoch,date
 5522,"Azure.ResourceManager.WebPubSub,1.2.0",dotnet,Azure.ResourceManager.WebPubSub_1.2.0,Azure.ResourceManager.WebPubSub,1.2.0,1749816087,06/13/2025
 5523,"Azure.ResourceManager.ManagedServiceIdentities,1.3.0",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.3.0,Azure.ResourceManager.ManagedServiceIdentities,1.3.0,1749816054,06/13/2025
 5524,azure-mgmt-planetarycomputer@1.0.0b1,python,azure-mgmt-planetarycomputer_1.0.0b1,azure-mgmt-planetarycomputer,1.0.0b1,1749835133,06/13/2025
+5525,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.1.0,java,azure-resourcemanager-dnsresolver_1.1.0,azure-resourcemanager-dnsresolver,1.1.0,1750059534,06/16/2025
+5526,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.1.0-beta.2,java,azure-resourcemanager-hybridcompute_1.1.0-beta.2,azure-resourcemanager-hybridcompute,1.1.0-beta.2,1750057271,06/16/2025
+5527,"Azure.ResourceManager.CognitiveServices,1.5.0",dotnet,Azure.ResourceManager.CognitiveServices_1.5.0,Azure.ResourceManager.CognitiveServices,1.5.0,1750064777,06/16/2025
+5528,"Azure.ResourceManager.ContainerInstance,1.3.0-beta.2",dotnet,Azure.ResourceManager.ContainerInstance_1.3.0-beta.2,Azure.ResourceManager.ContainerInstance,1.3.0-beta.2,1750064251,06/16/2025
+5529,azure-mgmt-monitor@7.0.0b2,python,azure-mgmt-monitor_7.0.0b2,azure-mgmt-monitor,7.0.0b2,1750066652,06/16/2025
+5530,azure-mgmt-dnsresolver@1.1.0,python,azure-mgmt-dnsresolver_1.1.0,azure-mgmt-dnsresolver,1.1.0,1750063493,06/16/2025
+5531,azure-mgmt-networkcloud@2.1.0,python,azure-mgmt-networkcloud_2.1.0,azure-mgmt-networkcloud,2.1.0,1750062657,06/16/2025

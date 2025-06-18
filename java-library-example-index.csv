@@ -5541,3 +5541,4 @@ id,name,language,tag,package,version,date_epoch,date
 5540,azure-mgmt-datamigration@10.1.0b2,python,azure-mgmt-datamigration_10.1.0b2,azure-mgmt-datamigration,10.1.0b2,1750142702,06/17/2025
 5541,azure-mgmt-appconfiguration@5.0.0,python,azure-mgmt-appconfiguration_5.0.0,azure-mgmt-appconfiguration,5.0.0,1750142685,06/17/2025
 5542,com.azure.resourcemanager:azure-resourcemanager-networkcloud:2.0.0,java,azure-resourcemanager-networkcloud_2.0.0,azure-resourcemanager-networkcloud,2.0.0,1750208828,06/18/2025
+5543,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v7@v7.1.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v7.1.0,sdk/resourcemanager/containerservice/armcontainerservice,v7.1.0,1750226929,06/18/2025

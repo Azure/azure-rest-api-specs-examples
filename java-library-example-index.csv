@@ -5540,3 +5540,4 @@ id,name,language,tag,package,version,date_epoch,date
 5539,azure-mgmt-hybridcompute@9.1.0b2,python,azure-mgmt-hybridcompute_9.1.0b2,azure-mgmt-hybridcompute,9.1.0b2,1750142728,06/17/2025
 5540,azure-mgmt-datamigration@10.1.0b2,python,azure-mgmt-datamigration_10.1.0b2,azure-mgmt-datamigration,10.1.0b2,1750142702,06/17/2025
 5541,azure-mgmt-appconfiguration@5.0.0,python,azure-mgmt-appconfiguration_5.0.0,azure-mgmt-appconfiguration,5.0.0,1750142685,06/17/2025
+5542,com.azure.resourcemanager:azure-resourcemanager-networkcloud:2.0.0,java,azure-resourcemanager-networkcloud_2.0.0,azure-resourcemanager-networkcloud,2.0.0,1750208828,06/18/2025

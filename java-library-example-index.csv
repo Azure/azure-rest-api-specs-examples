@@ -5530,3 +5530,13 @@ id,name,language,tag,package,version,date_epoch,date
 5529,azure-mgmt-monitor@7.0.0b2,python,azure-mgmt-monitor_7.0.0b2,azure-mgmt-monitor,7.0.0b2,1750066652,06/16/2025
 5530,azure-mgmt-dnsresolver@1.1.0,python,azure-mgmt-dnsresolver_1.1.0,azure-mgmt-dnsresolver,1.1.0,1750063493,06/16/2025
 5531,azure-mgmt-networkcloud@2.1.0,python,azure-mgmt-networkcloud_2.1.0,azure-mgmt-networkcloud,2.1.0,1750062657,06/16/2025
+5532,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dnsresolver/armdnsresolver@v1.3.0,go,sdk/resourcemanager/dnsresolver/armdnsresolver/v1.3.0,sdk/resourcemanager/dnsresolver/armdnsresolver,v1.3.0,1750155023,06/17/2025
+5533,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.1.0-beta.2,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.1.0-beta.2,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.1.0-beta.2,1750153042,06/17/2025
+5534,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration/v3@v3.0.0,go,sdk/resourcemanager/appconfiguration/armappconfiguration/v3.0.0,sdk/resourcemanager/appconfiguration/armappconfiguration,v3.0.0,1750149470,06/17/2025
+5535,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.3.0,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.3.0,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.3.0,1750135621,06/17/2025
+5536,azure-mgmt-kubernetesconfiguration-privatelinkscopes@1.0.0b1,python,azure-mgmt-kubernetesconfiguration-privatelinkscopes_1.0.0b1,azure-mgmt-kubernetesconfiguration-privatelinkscopes,1.0.0b1,1750150361,06/17/2025
+5537,azure-mgmt-resource@24.0.0,python,azure-mgmt-resource_24.0.0,azure-mgmt-resource,24.0.0,1750147142,06/17/2025
+5538,azure-mgmt-web@9.0.0,python,azure-mgmt-web_9.0.0,azure-mgmt-web,9.0.0,1750144330,06/17/2025
+5539,azure-mgmt-hybridcompute@9.1.0b2,python,azure-mgmt-hybridcompute_9.1.0b2,azure-mgmt-hybridcompute,9.1.0b2,1750142728,06/17/2025
+5540,azure-mgmt-datamigration@10.1.0b2,python,azure-mgmt-datamigration_10.1.0b2,azure-mgmt-datamigration,10.1.0b2,1750142702,06/17/2025
+5541,azure-mgmt-appconfiguration@5.0.0,python,azure-mgmt-appconfiguration_5.0.0,azure-mgmt-appconfiguration,5.0.0,1750142685,06/17/2025

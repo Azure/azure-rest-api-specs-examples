@@ -5550,3 +5550,4 @@ id,name,language,tag,package,version,date_epoch,date
 5549,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.1.0,java,azure-resourcemanager-oracledatabase_1.1.0,azure-resourcemanager-oracledatabase,1.1.0,1750267030,06/18/2025
 5550,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes,v0.1.0,1750301206,06/19/2025
 5551,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v1.1.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v1.1.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v1.1.0,1750266554,06/18/2025
+5552,@azure/arm-containerservice@23.0.0-beta.1,js,@azure/arm-containerservice_23.0.0-beta.1,@azure/arm-containerservice,23.0.0-beta.1,1750314944,06/19/2025

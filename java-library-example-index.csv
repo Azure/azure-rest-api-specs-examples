@@ -5553,3 +5553,4 @@ id,name,language,tag,package,version,date_epoch,date
 5552,@azure/arm-containerservice@23.0.0-beta.1,js,@azure/arm-containerservice_23.0.0-beta.1,@azure/arm-containerservice,23.0.0-beta.1,1750314944,06/19/2025
 5553,@azure/arm-oracledatabase@2.0.0,js,@azure/arm-oracledatabase_2.0.0,@azure/arm-oracledatabase,2.0.0,1750266470,06/18/2025
 5554,"Azure.ResourceManager.DataFactory,1.9.0",dotnet,Azure.ResourceManager.DataFactory_1.9.0,Azure.ResourceManager.DataFactory,1.9.0,1750318668,06/19/2025
+5555,"Azure.ResourceManager.OracleDatabase,1.1.0",dotnet,Azure.ResourceManager.OracleDatabase_1.1.0,Azure.ResourceManager.OracleDatabase,1.1.0,1750314822,06/19/2025

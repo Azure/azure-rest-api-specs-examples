@@ -5547,3 +5547,4 @@ id,name,language,tag,package,version,date_epoch,date
 5546,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5@v5.0.0,go,sdk/resourcemanager/appservice/armappservice/v5.0.0,sdk/resourcemanager/appservice/armappservice,v5.0.0,1750216923,06/18/2025
 5547,@azure/arm-containerservice@22.0.0,js,@azure/arm-containerservice_22.0.0,@azure/arm-containerservice,22.0.0,1750214259,06/18/2025
 5548,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.5.0,java,azure-resourcemanager-recoveryservices_1.5.0,azure-resourcemanager-recoveryservices,1.5.0,1750314142,06/19/2025
+5549,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.1.0,java,azure-resourcemanager-oracledatabase_1.1.0,azure-resourcemanager-oracledatabase,1.1.0,1750267030,06/18/2025

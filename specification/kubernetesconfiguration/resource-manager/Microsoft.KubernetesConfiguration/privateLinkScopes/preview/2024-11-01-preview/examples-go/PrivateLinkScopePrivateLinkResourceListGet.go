@@ -1,0 +1,48 @@
+package armprivatelinkscopes_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4a2bb0762eaad11e725516708483598e0c12cabb/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/privateLinkScopes/preview/2024-11-01-preview/examples/PrivateLinkScopePrivateLinkResourceListGet.json
+func ExamplePrivateLinkResourcesClient_ListByPrivateLinkScope() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armprivatelinkscopes.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewPrivateLinkResourcesClient().ListByPrivateLinkScope(ctx, "myResourceGroup", "myPrivateLinkScope", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateLinkResourceListResult = armprivatelinkscopes.PrivateLinkResourceListResult{
+	// 	Value: []*armprivatelinkscopes.PrivateLinkResource{
+	// 		{
+	// 			Name: to.Ptr("KubernetesConfiguration"),
+	// 			Type: to.Ptr("Microsoft.KubernetesConfiguration/privateLinkScopes/privateLinkResources"),
+	// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.KubernetesConfiguration/privateLinkScopes/myPrivateLinkScope/privateLinkResources/KubernetesConfiguration"),
+	// 			Properties: &armprivatelinkscopes.PrivateLinkResourceProperties{
+	// 				GroupID: to.Ptr("KubernetesConfiguration"),
+	// 				RequiredMembers: []*string{
+	// 					to.Ptr("KubernetesConfiguration.ServerDP"),
+	// 					to.Ptr("KubernetesConfiguration.K8sConfigurationDP"),
+	// 					to.Ptr("KubernetesConfiguration.GuestConfigDP")},
+	// 					RequiredZoneNames: []*string{
+	// 						to.Ptr("privatelink.his.arc.azure.com"),
+	// 						to.Ptr("privatelink.kubernetesconfiguration.azure.com"),
+	// 						to.Ptr("privatelink.Guestconfiguration.azure.com")},
+	// 					},
+	// 			}},
+	// 		}
+}

@@ -5560,3 +5560,4 @@ id,name,language,tag,package,version,date_epoch,date
 5559,@azure/arm-appconfiguration@5.0.0,js,@azure/arm-appconfiguration_5.0.0,@azure/arm-appconfiguration,5.0.0,1750409425,06/20/2025
 5560,@azure/arm-networkcloud@1.2.0,js,@azure/arm-networkcloud_1.2.0,@azure/arm-networkcloud,1.2.0,1750407981,06/20/2025
 5561,@azure/arm-recoveryservices@6.1.0,js,@azure/arm-recoveryservices_6.1.0,@azure/arm-recoveryservices,6.1.0,1750407882,06/20/2025
+5562,@azure/arm-containerservice@22.1.0,js,@azure/arm-containerservice_22.1.0,@azure/arm-containerservice,22.1.0,1750403369,06/20/2025

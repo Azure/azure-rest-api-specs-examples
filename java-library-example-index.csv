@@ -5556,3 +5556,4 @@ id,name,language,tag,package,version,date_epoch,date
 5555,"Azure.ResourceManager.OracleDatabase,1.1.0",dotnet,Azure.ResourceManager.OracleDatabase_1.1.0,Azure.ResourceManager.OracleDatabase,1.1.0,1750314822,06/19/2025
 5556,azure-mgmt-oracledatabase@2.0.0,python,azure-mgmt-oracledatabase_2.0.0,azure-mgmt-oracledatabase,2.0.0,1750266515,06/18/2025
 5557,azure-mgmt-computeschedule@1.1.0,python,azure-mgmt-computeschedule_1.1.0,azure-mgmt-computeschedule,1.1.0,1750254027,06/18/2025
+5558,@azure/arm-appservice@17.0.0,js,@azure/arm-appservice_17.0.0,@azure/arm-appservice,17.0.0,1750410559,06/20/2025

@@ -5546,3 +5546,13 @@ id,name,language,tag,package,version,date_epoch,date
 5545,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/agricultureplatform/armagricultureplatform@v0.1.0,go,sdk/resourcemanager/agricultureplatform/armagricultureplatform/v0.1.0,sdk/resourcemanager/agricultureplatform/armagricultureplatform,v0.1.0,1750218214,06/18/2025
 5546,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5@v5.0.0,go,sdk/resourcemanager/appservice/armappservice/v5.0.0,sdk/resourcemanager/appservice/armappservice,v5.0.0,1750216923,06/18/2025
 5547,@azure/arm-containerservice@22.0.0,js,@azure/arm-containerservice_22.0.0,@azure/arm-containerservice,22.0.0,1750214259,06/18/2025
+5548,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.5.0,java,azure-resourcemanager-recoveryservices_1.5.0,azure-resourcemanager-recoveryservices,1.5.0,1750314142,06/19/2025
+5549,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.1.0,java,azure-resourcemanager-oracledatabase_1.1.0,azure-resourcemanager-oracledatabase,1.1.0,1750267030,06/18/2025
+5550,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes@v0.1.0,go,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes/v0.1.0,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes,v0.1.0,1750301206,06/19/2025
+5551,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v1.1.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v1.1.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v1.1.0,1750266554,06/18/2025
+5552,@azure/arm-containerservice@23.0.0-beta.1,js,@azure/arm-containerservice_23.0.0-beta.1,@azure/arm-containerservice,23.0.0-beta.1,1750314944,06/19/2025
+5553,@azure/arm-oracledatabase@2.0.0,js,@azure/arm-oracledatabase_2.0.0,@azure/arm-oracledatabase,2.0.0,1750266470,06/18/2025
+5554,"Azure.ResourceManager.DataFactory,1.9.0",dotnet,Azure.ResourceManager.DataFactory_1.9.0,Azure.ResourceManager.DataFactory,1.9.0,1750318668,06/19/2025
+5555,"Azure.ResourceManager.OracleDatabase,1.1.0",dotnet,Azure.ResourceManager.OracleDatabase_1.1.0,Azure.ResourceManager.OracleDatabase,1.1.0,1750314822,06/19/2025
+5556,azure-mgmt-oracledatabase@2.0.0,python,azure-mgmt-oracledatabase_2.0.0,azure-mgmt-oracledatabase,2.0.0,1750266515,06/18/2025
+5557,azure-mgmt-computeschedule@1.1.0,python,azure-mgmt-computeschedule_1.1.0,azure-mgmt-computeschedule,1.1.0,1750254027,06/18/2025

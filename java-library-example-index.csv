@@ -5558,3 +5558,4 @@ id,name,language,tag,package,version,date_epoch,date
 5557,azure-mgmt-computeschedule@1.1.0,python,azure-mgmt-computeschedule_1.1.0,azure-mgmt-computeschedule,1.1.0,1750254027,06/18/2025
 5558,@azure/arm-appservice@17.0.0,js,@azure/arm-appservice_17.0.0,@azure/arm-appservice,17.0.0,1750410559,06/20/2025
 5559,@azure/arm-appconfiguration@5.0.0,js,@azure/arm-appconfiguration_5.0.0,@azure/arm-appconfiguration,5.0.0,1750409425,06/20/2025
+5560,@azure/arm-networkcloud@1.2.0,js,@azure/arm-networkcloud_1.2.0,@azure/arm-networkcloud,1.2.0,1750407981,06/20/2025

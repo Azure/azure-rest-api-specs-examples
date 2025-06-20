@@ -5563,3 +5563,4 @@ id,name,language,tag,package,version,date_epoch,date
 5562,@azure/arm-containerservice@22.1.0,js,@azure/arm-containerservice_22.1.0,@azure/arm-containerservice,22.1.0,1750403369,06/20/2025
 5563,@azure/arm-kubernetesconfiguration-privatelinkscopes@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-privatelinkscopes_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-privatelinkscopes,1.0.0-beta.1,1750403071,06/20/2025
 5564,@azure/arm-planetarycomputer@1.0.0-beta.1,js,@azure/arm-planetarycomputer_1.0.0-beta.1,@azure/arm-planetarycomputer,1.0.0-beta.1,1750373074,06/19/2025
+5565,"Azure.ResourceManager.ConnectedCache,1.0.0-beta.1",dotnet,Azure.ResourceManager.ConnectedCache_1.0.0-beta.1,Azure.ResourceManager.ConnectedCache,1.0.0-beta.1,1750417144,06/20/2025

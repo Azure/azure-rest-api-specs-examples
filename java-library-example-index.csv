@@ -5556,3 +5556,12 @@ id,name,language,tag,package,version,date_epoch,date
 5555,"Azure.ResourceManager.OracleDatabase,1.1.0",dotnet,Azure.ResourceManager.OracleDatabase_1.1.0,Azure.ResourceManager.OracleDatabase,1.1.0,1750314822,06/19/2025
 5556,azure-mgmt-oracledatabase@2.0.0,python,azure-mgmt-oracledatabase_2.0.0,azure-mgmt-oracledatabase,2.0.0,1750266515,06/18/2025
 5557,azure-mgmt-computeschedule@1.1.0,python,azure-mgmt-computeschedule_1.1.0,azure-mgmt-computeschedule,1.1.0,1750254027,06/18/2025
+5558,@azure/arm-appservice@17.0.0,js,@azure/arm-appservice_17.0.0,@azure/arm-appservice,17.0.0,1750410559,06/20/2025
+5559,@azure/arm-appconfiguration@5.0.0,js,@azure/arm-appconfiguration_5.0.0,@azure/arm-appconfiguration,5.0.0,1750409425,06/20/2025
+5560,@azure/arm-networkcloud@1.2.0,js,@azure/arm-networkcloud_1.2.0,@azure/arm-networkcloud,1.2.0,1750407981,06/20/2025
+5561,@azure/arm-recoveryservices@6.1.0,js,@azure/arm-recoveryservices_6.1.0,@azure/arm-recoveryservices,6.1.0,1750407882,06/20/2025
+5562,@azure/arm-containerservice@22.1.0,js,@azure/arm-containerservice_22.1.0,@azure/arm-containerservice,22.1.0,1750403369,06/20/2025
+5563,@azure/arm-kubernetesconfiguration-privatelinkscopes@1.0.0-beta.1,js,@azure/arm-kubernetesconfiguration-privatelinkscopes_1.0.0-beta.1,@azure/arm-kubernetesconfiguration-privatelinkscopes,1.0.0-beta.1,1750403071,06/20/2025
+5564,@azure/arm-planetarycomputer@1.0.0-beta.1,js,@azure/arm-planetarycomputer_1.0.0-beta.1,@azure/arm-planetarycomputer,1.0.0-beta.1,1750373074,06/19/2025
+5565,"Azure.ResourceManager.ConnectedCache,1.0.0-beta.1",dotnet,Azure.ResourceManager.ConnectedCache_1.0.0-beta.1,Azure.ResourceManager.ConnectedCache,1.0.0-beta.1,1750417144,06/20/2025
+5566,azure-mgmt-resource-deployments@1.0.0b1,python,azure-mgmt-resource-deployments_1.0.0b1,azure-mgmt-resource-deployments,1.0.0b1,1750395157,06/20/2025

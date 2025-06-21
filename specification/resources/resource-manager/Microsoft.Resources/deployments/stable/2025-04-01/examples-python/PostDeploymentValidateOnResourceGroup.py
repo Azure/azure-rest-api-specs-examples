@@ -7,7 +7,7 @@ from azure.mgmt.resource.deployments import DeploymentsMgmtClient
     pip install azure-identity
     pip install azure-mgmt-resource-deployments
 # USAGE
-    python put_deployment_with_external_inputs.py
+    python post_deployment_validate_on_resource_group.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,21 +22,16 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000001",
     )
 
-    response = client.deployments.begin_create_or_update(
+    response = client.deployments.begin_validate(
         resource_group_name="my-resource-group",
         deployment_name="my-deployment",
         parameters={
             "properties": {
-                "externalInputDefinitions": {"fooValue": {"config": "FOO_VALUE", "kind": "sys.envVar"}},
-                "externalInputs": {"fooValue": {"value": "baz"}},
                 "mode": "Incremental",
-                "parameters": {"inputObj": {"expression": "[createObject('foo', externalInputs('fooValue'))]"}},
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "outputs": {"inputObj": {"type": "object", "value": "[parameters('inputObj')]"}},
-                    "parameters": {"inputObj": {"type": "object"}},
-                    "resources": [],
+                "parameters": {},
+                "templateLink": {
+                    "queryString": "sv=2019-02-02&st=2019-04-29T22%3A18%3A26Z&se=2019-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=xxxxxxxx0xxxxxxxxxxxxx%2bxxxxxxxxxxxxxxxxxxxx%3d",
+                    "uri": "https://example.com/exampleTemplate.json",
                 },
             }
         },
@@ -44,6 +39,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentWithExternalInputs.json
+# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentValidateOnResourceGroup.json
 if __name__ == "__main__":
     main()

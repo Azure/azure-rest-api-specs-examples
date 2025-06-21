@@ -7,7 +7,7 @@ from azure.mgmt.resource.deployments import DeploymentsMgmtClient
     pip install azure-identity
     pip install azure-mgmt-resource-deployments
 # USAGE
-    python put_deployment_with_external_inputs.py
+    python put_deployment_resource_group_template_specs_with_id.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -27,16 +27,10 @@ def main():
         deployment_name="my-deployment",
         parameters={
             "properties": {
-                "externalInputDefinitions": {"fooValue": {"config": "FOO_VALUE", "kind": "sys.envVar"}},
-                "externalInputs": {"fooValue": {"value": "baz"}},
                 "mode": "Incremental",
-                "parameters": {"inputObj": {"expression": "[createObject('foo', externalInputs('fooValue'))]"}},
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "outputs": {"inputObj": {"type": "object", "value": "[parameters('inputObj')]"}},
-                    "parameters": {"inputObj": {"type": "object"}},
-                    "resources": [],
+                "parameters": {},
+                "templateLink": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"
                 },
             }
         },
@@ -44,6 +38,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentWithExternalInputs.json
+# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentResourceGroupTemplateSpecsWithId.json
 if __name__ == "__main__":
     main()

@@ -5565,3 +5565,4 @@ id,name,language,tag,package,version,date_epoch,date
 5564,@azure/arm-planetarycomputer@1.0.0-beta.1,js,@azure/arm-planetarycomputer_1.0.0-beta.1,@azure/arm-planetarycomputer,1.0.0-beta.1,1750373074,06/19/2025
 5565,"Azure.ResourceManager.ConnectedCache,1.0.0-beta.1",dotnet,Azure.ResourceManager.ConnectedCache_1.0.0-beta.1,Azure.ResourceManager.ConnectedCache,1.0.0-beta.1,1750417144,06/20/2025
 5566,azure-mgmt-resource-deployments@1.0.0b1,python,azure-mgmt-resource-deployments_1.0.0b1,azure-mgmt-resource-deployments,1.0.0b1,1750395157,06/20/2025
+5567,"Azure.ResourceManager,1.14.0-beta.1",dotnet,Azure.ResourceManager_1.14.0-beta.1,Azure.ResourceManager,1.14.0-beta.1,1750656737,06/23/2025

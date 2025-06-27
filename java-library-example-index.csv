@@ -5573,3 +5573,4 @@ id,name,language,tag,package,version,date_epoch,date
 5572,"Azure.ResourceManager.PostgreSql,1.3.0",dotnet,Azure.ResourceManager.PostgreSql_1.3.0,Azure.ResourceManager.PostgreSql,1.3.0,1750845541,06/25/2025
 5573,"Azure.ResourceManager.NetworkCloud,1.2.0",dotnet,Azure.ResourceManager.NetworkCloud_1.2.0,Azure.ResourceManager.NetworkCloud,1.2.0,1750839512,06/25/2025
 5574,"Azure.ResourceManager.ContainerService,1.2.4",dotnet,Azure.ResourceManager.ContainerService_1.2.4,Azure.ResourceManager.ContainerService,1.2.4,1750822667,06/25/2025
+5575,"Azure.ResourceManager.Resources,1.11.0",dotnet,Azure.ResourceManager.Resources_1.11.0,Azure.ResourceManager.Resources,1.11.0,1750689286,06/23/2025

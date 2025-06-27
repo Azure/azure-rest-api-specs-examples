@@ -32,4 +32,4 @@ await foreach (PostgreSqlServerResource item in subscriptionResource.GetPostgreS
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

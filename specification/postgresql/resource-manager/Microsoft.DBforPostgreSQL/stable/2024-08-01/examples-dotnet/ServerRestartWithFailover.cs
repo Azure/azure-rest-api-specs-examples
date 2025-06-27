@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/ServerRestartWithFailover.json
@@ -26,11 +25,11 @@ ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServer
 PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
 
 // invoke the operation
-PostgreSqlFlexibleServerRestartParameter postgreSqlFlexibleServerRestartParameter = new PostgreSqlFlexibleServerRestartParameter()
+PostgreSqlFlexibleServerRestartParameter postgreSqlFlexibleServerRestartParameter = new PostgreSqlFlexibleServerRestartParameter
 {
     RestartWithFailover = true,
     FailoverMode = PostgreSqlFlexibleServerFailoverMode.ForcedFailover,
 };
 await postgreSqlFlexibleServer.RestartAsync(WaitUntil.Completed, postgreSqlFlexibleServerRestartParameter: postgreSqlFlexibleServerRestartParameter);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

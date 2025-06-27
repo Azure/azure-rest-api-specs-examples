@@ -25,13 +25,10 @@ ResourceIdentifier virtualEndpointResourceId = VirtualEndpointResource.CreateRes
 VirtualEndpointResource virtualEndpointResource = client.GetVirtualEndpointResource(virtualEndpointResourceId);
 
 // invoke the operation
-VirtualEndpointResourcePatch patch = new VirtualEndpointResourcePatch()
+VirtualEndpointResourcePatch patch = new VirtualEndpointResourcePatch
 {
     EndpointType = VirtualEndpointType.ReadWrite,
-    Members =
-    {
-    "testReplica1"
-    },
+    Members = { "testReplica1" },
 };
 ArmOperation<VirtualEndpointResource> lro = await virtualEndpointResource.UpdateAsync(WaitUntil.Completed, patch);
 VirtualEndpointResource result = lro.Value;

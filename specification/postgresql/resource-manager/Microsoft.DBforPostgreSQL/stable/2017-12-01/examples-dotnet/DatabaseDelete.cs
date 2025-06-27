@@ -26,4 +26,4 @@ PostgreSqlDatabaseResource postgreSqlDatabase = client.GetPostgreSqlDatabaseReso
 // invoke the operation
 await postgreSqlDatabase.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

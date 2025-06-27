@@ -25,13 +25,13 @@ ResourceIdentifier postgreSqlPrivateEndpointConnectionResourceId = PostgreSqlPri
 PostgreSqlPrivateEndpointConnectionResource postgreSqlPrivateEndpointConnection = client.GetPostgreSqlPrivateEndpointConnectionResource(postgreSqlPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-PostgreSqlPrivateEndpointConnectionPatch patch = new PostgreSqlPrivateEndpointConnectionPatch()
+PostgreSqlPrivateEndpointConnectionPatch patch = new PostgreSqlPrivateEndpointConnectionPatch
 {
     Tags =
     {
     ["key1"] = "val1",
     ["key2"] = "val2",
-    ["key3"] = "val3",
+    ["key3"] = "val3"
     },
 };
 ArmOperation<PostgreSqlPrivateEndpointConnectionResource> lro = await postgreSqlPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, patch);

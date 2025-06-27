@@ -27,4 +27,4 @@ PostgreSqlServerKeyResource postgreSqlServerKey = client.GetPostgreSqlServerKeyR
 // invoke the operation
 await postgreSqlServerKey.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

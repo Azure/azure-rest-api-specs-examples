@@ -35,4 +35,4 @@ await foreach (PostgreSqlFlexibleServerBackupResource item in collection.GetAllA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

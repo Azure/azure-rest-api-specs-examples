@@ -27,4 +27,4 @@ PostgreSqlFlexibleServersPrivateEndpointConnectionResource postgreSqlFlexibleSer
 // invoke the operation
 await postgreSqlFlexibleServersPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

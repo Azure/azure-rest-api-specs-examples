@@ -26,4 +26,4 @@ PostgreSqlServerAdministratorResource postgreSqlServerAdministrator = client.Get
 // invoke the operation
 await postgreSqlServerAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

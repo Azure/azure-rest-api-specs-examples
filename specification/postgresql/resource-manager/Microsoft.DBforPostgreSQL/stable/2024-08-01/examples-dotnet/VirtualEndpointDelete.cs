@@ -27,4 +27,4 @@ VirtualEndpointResource virtualEndpointResource = client.GetVirtualEndpointResou
 // invoke the operation
 await virtualEndpointResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

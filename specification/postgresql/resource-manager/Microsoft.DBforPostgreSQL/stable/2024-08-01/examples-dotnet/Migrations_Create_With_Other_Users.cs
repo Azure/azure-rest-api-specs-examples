@@ -37,10 +37,7 @@ PostgreSqlMigrationData data = new PostgreSqlMigrationData(new AzureLocation("we
         SourceServerUsername = "newadmin@testsource",
         TargetServerUsername = "targetadmin",
     },
-    DbsToMigrate =
-    {
-    "db1","db2","db3","db4"
-    },
+    DbsToMigrate = { "db1", "db2", "db3", "db4" },
 };
 ArmOperation<PostgreSqlMigrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, migrationName, data);
 PostgreSqlMigrationResource result = lro.Value;

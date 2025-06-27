@@ -14,17 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlFlexibleServerBackupResource created on azure
-// for more information of creating PostgreSqlFlexibleServerBackupResource, please refer to the document of PostgreSqlFlexibleServerBackupResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "postgresqltestserver";
-string backupName = "backup_20210615T160516";
-ResourceIdentifier postgreSqlFlexibleServerBackupResourceId = PostgreSqlFlexibleServerBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, backupName);
-PostgreSqlFlexibleServerBackupResource postgreSqlFlexibleServerBackup = client.GetPostgreSqlFlexibleServerBackupResource(postgreSqlFlexibleServerBackupResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this PostgreSqlFlexibleServerBackupResource
+PostgreSqlFlexibleServerBackupCollection collection = postgreSqlFlexibleServer.GetPostgreSqlFlexibleServerBackups();
 
 // invoke the operation
-ArmOperation<PostgreSqlFlexibleServerBackupResource> lro = await postgreSqlFlexibleServerBackup.UpdateAsync(WaitUntil.Completed);
+string backupName = "backup_20210615T160516";
+ArmOperation<PostgreSqlFlexibleServerBackupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupName);
 PostgreSqlFlexibleServerBackupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -27,4 +27,4 @@ PostgreSqlFirewallRuleResource postgreSqlFirewallRule = client.GetPostgreSqlFire
 // invoke the operation
 await postgreSqlFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

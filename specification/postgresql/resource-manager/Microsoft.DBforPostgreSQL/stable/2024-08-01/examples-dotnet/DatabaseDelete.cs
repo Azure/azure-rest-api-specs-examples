@@ -26,4 +26,4 @@ PostgreSqlFlexibleServerDatabaseResource postgreSqlFlexibleServerDatabase = clie
 // invoke the operation
 await postgreSqlFlexibleServerDatabase.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

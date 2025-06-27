@@ -25,9 +25,9 @@ ResourceIdentifier postgreSqlFlexibleServersPrivateEndpointConnectionResourceId 
 PostgreSqlFlexibleServersPrivateEndpointConnectionResource postgreSqlFlexibleServersPrivateEndpointConnection = client.GetPostgreSqlFlexibleServersPrivateEndpointConnectionResource(postgreSqlFlexibleServersPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-PostgreSqlFlexibleServersPrivateEndpointConnectionData data = new PostgreSqlFlexibleServersPrivateEndpointConnectionData()
+PostgreSqlFlexibleServersPrivateEndpointConnectionData data = new PostgreSqlFlexibleServersPrivateEndpointConnectionData
 {
-    ConnectionState = new PostgreSqlFlexibleServersPrivateLinkServiceConnectionState()
+    ConnectionState = new PostgreSqlFlexibleServersPrivateLinkServiceConnectionState
     {
         Status = PostgreSqlFlexibleServersPrivateEndpointServiceConnectionStatus.Approved,
         Description = "Approved by johndoe@contoso.com",

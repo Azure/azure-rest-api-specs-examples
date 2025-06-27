@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlServerResource created on azure
-// for more information of creating PostgreSqlServerResource, please refer to the document of PostgreSqlServerResource
+// this example assumes you already have this PostgreSqlFirewallRuleResource created on azure
+// for more information of creating PostgreSqlFirewallRuleResource, please refer to the document of PostgreSqlFirewallRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-ResourceIdentifier postgreSqlServerResourceId = PostgreSqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(postgreSqlServerResourceId);
-
-// get the collection of this PostgreSqlFirewallRuleResource
-PostgreSqlFirewallRuleCollection collection = postgreSqlServer.GetPostgreSqlFirewallRules();
+string firewallRuleName = "rule1";
+ResourceIdentifier postgreSqlFirewallRuleResourceId = PostgreSqlFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
+PostgreSqlFirewallRuleResource postgreSqlFirewallRule = client.GetPostgreSqlFirewallRuleResource(postgreSqlFirewallRuleResourceId);
 
 // invoke the operation
-string firewallRuleName = "rule1";
 PostgreSqlFirewallRuleData data = new PostgreSqlFirewallRuleData(IPAddress.Parse("0.0.0.0"), IPAddress.Parse("255.255.255.255"));
-ArmOperation<PostgreSqlFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firewallRuleName, data);
+ArmOperation<PostgreSqlFirewallRuleResource> lro = await postgreSqlFirewallRule.UpdateAsync(WaitUntil.Completed, data);
 PostgreSqlFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

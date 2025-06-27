@@ -28,13 +28,10 @@ VirtualEndpointResourceCollection collection = postgreSqlFlexibleServer.GetVirtu
 
 // invoke the operation
 string virtualEndpointName = "pgVirtualEndpoint1";
-VirtualEndpointResourceData data = new VirtualEndpointResourceData()
+VirtualEndpointResourceData data = new VirtualEndpointResourceData
 {
     EndpointType = VirtualEndpointType.ReadWrite,
-    Members =
-    {
-    "testPrimary1"
-    },
+    Members = { "testPrimary1" },
 };
 ArmOperation<VirtualEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualEndpointName, data);
 VirtualEndpointResource result = lro.Value;

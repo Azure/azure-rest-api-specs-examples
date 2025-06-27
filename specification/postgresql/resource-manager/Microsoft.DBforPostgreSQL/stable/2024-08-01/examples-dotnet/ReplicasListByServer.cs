@@ -38,4 +38,4 @@ await foreach (PostgreSqlFlexibleServerResource item in collection.GetReplicasAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

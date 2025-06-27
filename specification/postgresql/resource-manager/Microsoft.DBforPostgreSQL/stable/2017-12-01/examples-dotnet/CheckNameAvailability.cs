@@ -4,12 +4,12 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
+using Azure.ResourceManager.PostgreSql.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.PostgreSql.FlexibleServers;
+using Azure.ResourceManager.PostgreSql;
 
-// Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/CapabilitiesByLocation.json
-// this example is just showing the usage of "LocationBasedCapabilities_Execute" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/CheckNameAvailability.json
+// this example is just showing the usage of "CheckNameAvailability_Execute" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -22,11 +22,11 @@ string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
-// invoke the operation and iterate over the result
-AzureLocation locationName = new AzureLocation("eastus");
-await foreach (PostgreSqlFlexibleServerCapabilityProperties item in subscriptionResource.ExecuteLocationBasedCapabilitiesAsync(locationName))
+// invoke the operation
+PostgreSqlNameAvailabilityContent content = new PostgreSqlNameAvailabilityContent("name1")
 {
-    Console.WriteLine($"Succeeded: {item}");
-}
+    ResourceType = new ResourceType("Microsoft.DBforPostgreSQL"),
+};
+PostgreSqlNameAvailabilityResult result = await subscriptionResource.CheckPostgreSqlNameAvailabilityAsync(content);
 
-Console.WriteLine("Succeeded");
+Console.WriteLine($"Succeeded: {result}");

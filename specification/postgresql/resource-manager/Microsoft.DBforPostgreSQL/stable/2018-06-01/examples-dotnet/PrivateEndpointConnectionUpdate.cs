@@ -28,7 +28,7 @@ PostgreSqlPrivateEndpointConnectionCollection collection = postgreSqlServer.GetP
 
 // invoke the operation
 string privateEndpointConnectionName = "private-endpoint-connection-name";
-PostgreSqlPrivateEndpointConnectionData data = new PostgreSqlPrivateEndpointConnectionData()
+PostgreSqlPrivateEndpointConnectionData data = new PostgreSqlPrivateEndpointConnectionData
 {
     ConnectionState = new PostgreSqlPrivateLinkServiceConnectionStateProperty("Approved", "Approved by johndoe@contoso.com"),
 };

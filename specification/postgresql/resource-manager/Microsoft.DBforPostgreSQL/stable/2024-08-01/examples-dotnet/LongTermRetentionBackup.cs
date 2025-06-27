@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/LongTermRetentionBackup.json
@@ -26,10 +25,7 @@ ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServer
 PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
 
 // invoke the operation
-PostgreSqlFlexibleServerLtrBackupContent content = new PostgreSqlFlexibleServerLtrBackupContent(new PostgreSqlFlexibleServerBackupSettings("backup1"), new PostgreSqlFlexibleServerBackupStoreDetails(new string[]
-{
-"sasuri"
-}));
+PostgreSqlFlexibleServerLtrBackupContent content = new PostgreSqlFlexibleServerLtrBackupContent(new PostgreSqlFlexibleServerBackupSettings("backup1"), new PostgreSqlFlexibleServerBackupStoreDetails(new string[] { "sasuri" }));
 ArmOperation<PostgreSqlFlexibleServerLtrBackupResult> lro = await postgreSqlFlexibleServer.StartLtrBackupFlexibleServerAsync(WaitUntil.Completed, content);
 PostgreSqlFlexibleServerLtrBackupResult result = lro.Value;
 

@@ -5568,3 +5568,4 @@ id,name,language,tag,package,version,date_epoch,date
 5567,"Azure.ResourceManager,1.14.0-beta.1",dotnet,Azure.ResourceManager_1.14.0-beta.1,Azure.ResourceManager,1.14.0-beta.1,1750656737,06/23/2025
 5568,@azure/arm-hybridcompute@5.0.0-beta.1,js,@azure/arm-hybridcompute_5.0.0-beta.1,@azure/arm-hybridcompute,5.0.0-beta.1,1750757468,06/24/2025
 5569,@azure/arm-dnsresolver@1.2.0,js,@azure/arm-dnsresolver_1.2.0,@azure/arm-dnsresolver,1.2.0,1750830158,06/25/2025
+5570,"Azure.ResourceManager.Terraform,1.0.0-beta.2",dotnet,Azure.ResourceManager.Terraform_1.0.0-beta.2,Azure.ResourceManager.Terraform,1.0.0-beta.2,1751008710,06/27/2025

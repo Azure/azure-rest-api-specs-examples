@@ -15,13 +15,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantDataBoundaryResource created on azure
-// for more information of creating TenantDataBoundaryResource, please refer to the document of TenantDataBoundaryResource
-DataBoundaryName name = DataBoundaryName.Default;
-ResourceIdentifier tenantDataBoundaryResourceId = TenantDataBoundaryResource.CreateResourceIdentifier(name);
-TenantDataBoundaryResource tenantDataBoundary = client.GetTenantDataBoundaryResource(tenantDataBoundaryResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this TenantDataBoundaryResource
+TenantDataBoundaryCollection collection = tenantResource.GetTenantDataBoundaries();
 
 // invoke the operation
+DataBoundaryName name = DataBoundaryName.Default;
 DataBoundaryData data = new DataBoundaryData
 {
     Properties = new DataBoundaryProperties
@@ -29,7 +29,7 @@ DataBoundaryData data = new DataBoundaryData
         DataBoundary = DataBoundaryRegion.EU,
     },
 };
-ArmOperation<TenantDataBoundaryResource> lro = await tenantDataBoundary.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<TenantDataBoundaryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 TenantDataBoundaryResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

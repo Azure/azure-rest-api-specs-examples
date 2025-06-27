@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation locationName = new AzureLocation("westus");
-PostgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter postgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter = new PostgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter()
+PostgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter postgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter = new PostgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter
 {
     VirtualNetworkArmResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet"),
 };

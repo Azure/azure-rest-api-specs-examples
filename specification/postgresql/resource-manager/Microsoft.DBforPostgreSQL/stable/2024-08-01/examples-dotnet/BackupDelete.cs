@@ -26,4 +26,4 @@ PostgreSqlFlexibleServerBackupResource postgreSqlFlexibleServerBackup = client.G
 // invoke the operation
 await postgreSqlFlexibleServerBackup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

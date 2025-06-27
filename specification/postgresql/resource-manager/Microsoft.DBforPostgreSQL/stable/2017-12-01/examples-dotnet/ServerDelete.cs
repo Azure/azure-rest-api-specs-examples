@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.PostgreSql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerDelete.json
@@ -27,4 +26,4 @@ PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(p
 // invoke the operation
 await postgreSqlServer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

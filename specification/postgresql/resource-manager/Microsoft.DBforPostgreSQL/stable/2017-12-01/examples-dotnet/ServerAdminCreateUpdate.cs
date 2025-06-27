@@ -24,7 +24,7 @@ ResourceIdentifier postgreSqlServerAdministratorResourceId = PostgreSqlServerAdm
 PostgreSqlServerAdministratorResource postgreSqlServerAdministrator = client.GetPostgreSqlServerAdministratorResource(postgreSqlServerAdministratorResourceId);
 
 // invoke the operation
-PostgreSqlServerAdministratorData data = new PostgreSqlServerAdministratorData()
+PostgreSqlServerAdministratorData data = new PostgreSqlServerAdministratorData
 {
     AdministratorType = PostgreSqlAdministratorType.ActiveDirectory,
     LoginAccountName = "bob@contoso.com",

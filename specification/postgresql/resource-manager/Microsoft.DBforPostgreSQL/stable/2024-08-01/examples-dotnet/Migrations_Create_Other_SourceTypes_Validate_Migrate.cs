@@ -36,10 +36,7 @@ PostgreSqlMigrationData data = new PostgreSqlMigrationData(new AzureLocation("we
     SslMode = PostgreSqlFlexibleServersSslMode.Prefer,
     SourceDbServerResourceId = new ResourceIdentifier("testsource:5432@pguser"),
     SecretParameters = new PostgreSqlMigrationSecretParameters(new PostgreSqlMigrationAdminCredentials("xxxxxxxx", "xxxxxxxx")),
-    DbsToMigrate =
-    {
-    "db1","db2","db3","db4"
-    },
+    DbsToMigrate = { "db1", "db2", "db3", "db4" },
     OverwriteDbsInTarget = PostgreSqlMigrationOverwriteDbsInTarget.True,
 };
 ArmOperation<PostgreSqlMigrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, migrationName, data);

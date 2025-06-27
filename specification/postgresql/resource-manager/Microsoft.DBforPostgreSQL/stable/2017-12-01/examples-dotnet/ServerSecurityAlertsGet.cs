@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlServerResource created on azure
-// for more information of creating PostgreSqlServerResource, please refer to the document of PostgreSqlServerResource
+// this example assumes you already have this PostgreSqlServerSecurityAlertPolicyResource created on azure
+// for more information of creating PostgreSqlServerSecurityAlertPolicyResource, please refer to the document of PostgreSqlServerSecurityAlertPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-4799";
 string serverName = "securityalert-6440";
-ResourceIdentifier postgreSqlServerResourceId = PostgreSqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(postgreSqlServerResourceId);
-
-// get the collection of this PostgreSqlServerSecurityAlertPolicyResource
-PostgreSqlServerSecurityAlertPolicyCollection collection = postgreSqlServer.GetPostgreSqlServerSecurityAlertPolicies();
+PostgreSqlSecurityAlertPolicyName securityAlertPolicyName = PostgreSqlSecurityAlertPolicyName.Default;
+ResourceIdentifier postgreSqlServerSecurityAlertPolicyResourceId = PostgreSqlServerSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, securityAlertPolicyName);
+PostgreSqlServerSecurityAlertPolicyResource postgreSqlServerSecurityAlertPolicy = client.GetPostgreSqlServerSecurityAlertPolicyResource(postgreSqlServerSecurityAlertPolicyResourceId);
 
 // invoke the operation
-PostgreSqlSecurityAlertPolicyName securityAlertPolicyName = PostgreSqlSecurityAlertPolicyName.Default;
-NullableResponse<PostgreSqlServerSecurityAlertPolicyResource> response = await collection.GetIfExistsAsync(securityAlertPolicyName);
-PostgreSqlServerSecurityAlertPolicyResource result = response.HasValue ? response.Value : null;
+PostgreSqlServerSecurityAlertPolicyResource result = await postgreSqlServerSecurityAlertPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PostgreSqlServerSecurityAlertPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PostgreSqlServerSecurityAlertPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

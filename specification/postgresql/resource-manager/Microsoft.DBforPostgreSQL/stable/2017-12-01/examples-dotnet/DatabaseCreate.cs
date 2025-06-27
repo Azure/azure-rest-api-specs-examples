@@ -27,7 +27,7 @@ PostgreSqlDatabaseCollection collection = postgreSqlServer.GetPostgreSqlDatabase
 
 // invoke the operation
 string databaseName = "db1";
-PostgreSqlDatabaseData data = new PostgreSqlDatabaseData()
+PostgreSqlDatabaseData data = new PostgreSqlDatabaseData
 {
     Charset = "UTF8",
     Collation = "English_United States.1252",

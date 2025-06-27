@@ -35,33 +35,33 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(new AzureLo
     AdministratorLogin = "cloudsa",
     AdministratorLoginPassword = "password",
     Version = PostgreSqlFlexibleServerVersion.Ver12,
-    Storage = new PostgreSqlFlexibleServerStorage()
+    Storage = new PostgreSqlFlexibleServerStorage
     {
         StorageSizeInGB = 512,
         AutoGrow = StorageAutoGrow.Disabled,
         Tier = PostgreSqlManagedDiskPerformanceTier.P20,
     },
-    AuthConfig = new PostgreSqlFlexibleServerAuthConfig()
+    AuthConfig = new PostgreSqlFlexibleServerAuthConfig
     {
         ActiveDirectoryAuth = PostgreSqlFlexibleServerActiveDirectoryAuthEnum.Enabled,
         PasswordAuth = PostgreSqlFlexibleServerPasswordAuthEnum.Enabled,
         TenantId = Guid.Parse("tttttt-tttt-tttt-tttt-tttttttttttt"),
     },
-    DataEncryption = new PostgreSqlFlexibleServerDataEncryption()
+    DataEncryption = new PostgreSqlFlexibleServerDataEncryption
     {
         KeyType = PostgreSqlFlexibleServerKeyType.SystemManaged,
     },
-    Backup = new PostgreSqlFlexibleServerBackupProperties()
+    Backup = new PostgreSqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 7,
         GeoRedundantBackup = PostgreSqlFlexibleServerGeoRedundantBackupEnum.Disabled,
     },
-    Network = new PostgreSqlFlexibleServerNetwork()
+    Network = new PostgreSqlFlexibleServerNetwork
     {
         DelegatedSubnetResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-vnet-subnet"),
         PrivateDnsZoneArmResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/testrg/providers/Microsoft.Network/privateDnsZones/test-private-dns-zone.postgres.database.azure.com"),
     },
-    HighAvailability = new PostgreSqlFlexibleServerHighAvailability()
+    HighAvailability = new PostgreSqlFlexibleServerHighAvailability
     {
         Mode = PostgreSqlFlexibleServerHighAvailabilityMode.ZoneRedundant,
     },
@@ -69,7 +69,7 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(new AzureLo
     CreateMode = PostgreSqlFlexibleServerCreateMode.Create,
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<PostgreSqlFlexibleServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, data);

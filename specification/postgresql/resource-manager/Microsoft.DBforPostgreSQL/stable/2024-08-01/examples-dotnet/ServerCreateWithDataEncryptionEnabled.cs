@@ -36,18 +36,18 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(new AzureLo
     {
         UserAssignedIdentities =
         {
-        ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"] = new UserAssignedIdentity(),
+        ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"] = new UserAssignedIdentity()
         },
     },
     AdministratorLogin = "cloudsa",
     AdministratorLoginPassword = "password",
     Version = PostgreSqlFlexibleServerVersion.Ver12,
-    Storage = new PostgreSqlFlexibleServerStorage()
+    Storage = new PostgreSqlFlexibleServerStorage
     {
         StorageSizeInGB = 512,
         AutoGrow = StorageAutoGrow.Disabled,
     },
-    DataEncryption = new PostgreSqlFlexibleServerDataEncryption()
+    DataEncryption = new PostgreSqlFlexibleServerDataEncryption
     {
         PrimaryKeyUri = new Uri("https://test-kv.vault.azure.net/keys/test-key1/77f57315bab34b0189daa113fbc78787"),
         PrimaryUserAssignedIdentityId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"),
@@ -55,17 +55,17 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(new AzureLo
         GeoBackupUserAssignedIdentityId = "",
         KeyType = PostgreSqlFlexibleServerKeyType.AzureKeyVault,
     },
-    Backup = new PostgreSqlFlexibleServerBackupProperties()
+    Backup = new PostgreSqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 7,
         GeoRedundantBackup = PostgreSqlFlexibleServerGeoRedundantBackupEnum.Disabled,
     },
-    Network = new PostgreSqlFlexibleServerNetwork()
+    Network = new PostgreSqlFlexibleServerNetwork
     {
         DelegatedSubnetResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-vnet-subnet"),
         PrivateDnsZoneArmResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/testrg/providers/Microsoft.Network/privateDnsZones/test-private-dns-zone.postgres.database.azure.com"),
     },
-    HighAvailability = new PostgreSqlFlexibleServerHighAvailability()
+    HighAvailability = new PostgreSqlFlexibleServerHighAvailability
     {
         Mode = PostgreSqlFlexibleServerHighAvailabilityMode.ZoneRedundant,
     },
@@ -73,7 +73,7 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(new AzureLo
     CreateMode = PostgreSqlFlexibleServerCreateMode.Create,
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<PostgreSqlFlexibleServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, data);

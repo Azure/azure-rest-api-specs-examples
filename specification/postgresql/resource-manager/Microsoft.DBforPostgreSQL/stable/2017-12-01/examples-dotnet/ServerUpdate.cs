@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.PostgreSql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerUpdate.json
@@ -25,7 +24,7 @@ ResourceIdentifier postgreSqlServerResourceId = PostgreSqlServerResource.CreateR
 PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(postgreSqlServerResourceId);
 
 // invoke the operation
-PostgreSqlServerPatch patch = new PostgreSqlServerPatch()
+PostgreSqlServerPatch patch = new PostgreSqlServerPatch
 {
     AdministratorLoginPassword = "<administratorLoginPassword>",
     SslEnforcement = PostgreSqlSslEnforcementEnum.Enabled,

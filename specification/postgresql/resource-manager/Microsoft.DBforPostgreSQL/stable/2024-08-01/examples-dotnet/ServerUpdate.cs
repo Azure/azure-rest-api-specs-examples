@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/ServerUpdate.json
@@ -26,17 +25,17 @@ ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServer
 PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
 
 // invoke the operation
-PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch()
+PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch
 {
     Sku = new PostgreSqlFlexibleServerSku("Standard_D8s_v3", PostgreSqlFlexibleServerSkuTier.GeneralPurpose),
     AdministratorLoginPassword = "newpassword",
-    Storage = new PostgreSqlFlexibleServerStorage()
+    Storage = new PostgreSqlFlexibleServerStorage
     {
         StorageSizeInGB = 1024,
         AutoGrow = StorageAutoGrow.Enabled,
         Tier = PostgreSqlManagedDiskPerformanceTier.P30,
     },
-    Backup = new PostgreSqlFlexibleServerBackupProperties()
+    Backup = new PostgreSqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 20,
     },

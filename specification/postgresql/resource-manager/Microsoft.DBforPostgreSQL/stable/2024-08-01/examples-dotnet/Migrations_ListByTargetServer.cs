@@ -37,4 +37,4 @@ await foreach (PostgreSqlMigrationResource item in collection.GetAllAsync(migrat
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

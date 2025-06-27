@@ -27,4 +27,4 @@ PostgreSqlMigrationResource postgreSqlMigration = client.GetPostgreSqlMigrationR
 // invoke the operation
 await postgreSqlMigration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

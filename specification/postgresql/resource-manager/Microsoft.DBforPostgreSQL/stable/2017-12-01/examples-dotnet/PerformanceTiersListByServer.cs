@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.PostgreSql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/PerformanceTiersListByServer.json
@@ -30,4 +29,4 @@ await foreach (PostgreSqlPerformanceTierProperties item in postgreSqlServer.GetS
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

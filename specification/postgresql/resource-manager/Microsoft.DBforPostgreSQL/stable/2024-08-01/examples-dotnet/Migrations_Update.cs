@@ -25,7 +25,7 @@ ResourceIdentifier postgreSqlMigrationResourceId = PostgreSqlMigrationResource.C
 PostgreSqlMigrationResource postgreSqlMigration = client.GetPostgreSqlMigrationResource(postgreSqlMigrationResourceId);
 
 // invoke the operation
-PostgreSqlMigrationPatch patch = new PostgreSqlMigrationPatch()
+PostgreSqlMigrationPatch patch = new PostgreSqlMigrationPatch
 {
     SetupLogicalReplicationOnSourceDbIfNeeded = PostgreSqlMigrationLogicalReplicationOnSourceDb.True,
 };

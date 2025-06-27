@@ -25,7 +25,7 @@ ResourceIdentifier postgreSqlServerKeyResourceId = PostgreSqlServerKeyResource.C
 PostgreSqlServerKeyResource postgreSqlServerKey = client.GetPostgreSqlServerKeyResource(postgreSqlServerKeyResourceId);
 
 // invoke the operation
-PostgreSqlServerKeyData data = new PostgreSqlServerKeyData()
+PostgreSqlServerKeyData data = new PostgreSqlServerKeyData
 {
     ServerKeyType = PostgreSqlServerKeyType.AzureKeyVault,
     Uri = new Uri("https://someVault.vault.azure.net/keys/someKey/01234567890123456789012345678901"),

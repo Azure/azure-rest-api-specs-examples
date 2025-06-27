@@ -38,7 +38,7 @@ PostgreSqlServerCreateOrUpdateContent content = new PostgreSqlServerCreateOrUpda
     },
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<PostgreSqlServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, content);

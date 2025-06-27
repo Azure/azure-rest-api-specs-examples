@@ -32,7 +32,7 @@ PostgreSqlServerCreateOrUpdateContent content = new PostgreSqlServerCreateOrUpda
 {
     SslEnforcement = PostgreSqlSslEnforcementEnum.Enabled,
     MinimalTlsVersion = PostgreSqlMinimalTlsVersionEnum.Tls1_2,
-    StorageProfile = new PostgreSqlStorageProfile()
+    StorageProfile = new PostgreSqlStorageProfile
     {
         BackupRetentionDays = 7,
         GeoRedundantBackup = PostgreSqlGeoRedundantBackup.Disabled,
@@ -48,7 +48,7 @@ PostgreSqlServerCreateOrUpdateContent content = new PostgreSqlServerCreateOrUpda
     },
     Tags =
     {
-    ["ElasticServer"] = "1",
+    ["ElasticServer"] = "1"
     },
 };
 ArmOperation<PostgreSqlServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, content);

@@ -26,4 +26,4 @@ PostgreSqlVirtualNetworkRuleResource postgreSqlVirtualNetworkRule = client.GetPo
 // invoke the operation
 await postgreSqlVirtualNetworkRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

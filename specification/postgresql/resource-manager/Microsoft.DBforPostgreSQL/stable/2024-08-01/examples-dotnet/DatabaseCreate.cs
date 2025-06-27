@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlFlexibleServerDatabaseResource created on azure
-// for more information of creating PostgreSqlFlexibleServerDatabaseResource, please refer to the document of PostgreSqlFlexibleServerDatabaseResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-string databaseName = "db1";
-ResourceIdentifier postgreSqlFlexibleServerDatabaseResourceId = PostgreSqlFlexibleServerDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-PostgreSqlFlexibleServerDatabaseResource postgreSqlFlexibleServerDatabase = client.GetPostgreSqlFlexibleServerDatabaseResource(postgreSqlFlexibleServerDatabaseResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this PostgreSqlFlexibleServerDatabaseResource
+PostgreSqlFlexibleServerDatabaseCollection collection = postgreSqlFlexibleServer.GetPostgreSqlFlexibleServerDatabases();
 
 // invoke the operation
-PostgreSqlFlexibleServerDatabaseData data = new PostgreSqlFlexibleServerDatabaseData()
+string databaseName = "db1";
+PostgreSqlFlexibleServerDatabaseData data = new PostgreSqlFlexibleServerDatabaseData
 {
     Charset = "utf8",
     Collation = "en_US.utf8",
 };
-ArmOperation<PostgreSqlFlexibleServerDatabaseResource> lro = await postgreSqlFlexibleServerDatabase.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PostgreSqlFlexibleServerDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, data);
 PostgreSqlFlexibleServerDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -37,4 +37,4 @@ await foreach (PostgreSqlServerResource item in collection.GetReplicasAsync(serv
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

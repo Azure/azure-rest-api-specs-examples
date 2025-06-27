@@ -27,4 +27,4 @@ PostgreSqlPrivateEndpointConnectionResource postgreSqlPrivateEndpointConnection 
 // invoke the operation
 await postgreSqlPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ PostgreSqlFlexibleServerActiveDirectoryAdministratorResource postgreSqlFlexibleS
 // invoke the operation
 await postgreSqlFlexibleServerActiveDirectoryAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/ServerUpdateWithDataEncryptionEnabled.json
@@ -26,7 +25,7 @@ ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServer
 PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
 
 // invoke the operation
-PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch()
+PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch
 {
     Sku = new PostgreSqlFlexibleServerSku("Standard_D8s_v3", PostgreSqlFlexibleServerSkuTier.GeneralPurpose),
     Identity = new PostgreSqlFlexibleServerUserAssignedIdentity(PostgreSqlFlexibleServerIdentityType.UserAssigned)
@@ -34,15 +33,15 @@ PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch()
         UserAssignedIdentities =
         {
         ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-geo-usermanagedidentity"] = new UserAssignedIdentity(),
-        ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"] = new UserAssignedIdentity(),
+        ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"] = new UserAssignedIdentity()
         },
     },
     AdministratorLoginPassword = "newpassword",
-    Backup = new PostgreSqlFlexibleServerBackupProperties()
+    Backup = new PostgreSqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 20,
     },
-    DataEncryption = new PostgreSqlFlexibleServerDataEncryption()
+    DataEncryption = new PostgreSqlFlexibleServerDataEncryption
     {
         PrimaryKeyUri = new Uri("https://test-kv.vault.azure.net/keys/test-key1/77f57315bab34b0189daa113fbc78787"),
         PrimaryUserAssignedIdentityId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"),

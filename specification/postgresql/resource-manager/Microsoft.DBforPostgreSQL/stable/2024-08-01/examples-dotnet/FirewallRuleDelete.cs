@@ -27,4 +27,4 @@ PostgreSqlFlexibleServerFirewallRuleResource postgreSqlFlexibleServerFirewallRul
 // invoke the operation
 await postgreSqlFlexibleServerFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

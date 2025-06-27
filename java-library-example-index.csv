@@ -5576,3 +5576,4 @@ id,name,language,tag,package,version,date_epoch,date
 5575,"Azure.ResourceManager.Resources,1.11.0",dotnet,Azure.ResourceManager.Resources_1.11.0,Azure.ResourceManager.Resources,1.11.0,1750689286,06/23/2025
 5576,azure-mgmt-servicefabricmanagedclusters@2.1.0b3,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b3,azure-mgmt-servicefabricmanagedclusters,2.1.0b3,1750971658,06/26/2025
 5577,com.azure.resourcemanager:azure-resourcemanager:2.52.0,java,azure-resourcemanager_2.52.0,azure-resourcemanager,2.52.0,1751009562,06/27/2025
+5578,"Azure.ResourceManager.CloudHealth,1.0.0-beta.1",dotnet,Azure.ResourceManager.CloudHealth_1.0.0-beta.1,Azure.ResourceManager.CloudHealth,1.0.0-beta.1,1750829459,06/25/2025

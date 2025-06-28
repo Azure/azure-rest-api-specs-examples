@@ -3,7 +3,7 @@ import com.azure.resourcemanager.sql.fluent.models.ManagedBackupShortTermRetenti
 import com.azure.resourcemanager.sql.models.ManagedShortTermRetentionPolicyName;
 
 /**
- * Samples for ManagedBackupShortTermRetentionPolicies CreateOrUpdate.
+ * Samples for ManagedBackupShortTermRetentionPolicies Update.
  */
 public final class Main {
     /*
@@ -18,7 +18,7 @@ public final class Main {
      */
     public static void
         updateTheShortTermRetentionPolicyForTheDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getManagedBackupShortTermRetentionPolicies().createOrUpdate(
+        azure.sqlServers().manager().serviceClient().getManagedBackupShortTermRetentionPolicies().update(
             "resourceGroup", "testsvr", "testdb", ManagedShortTermRetentionPolicyName.DEFAULT,
             new ManagedBackupShortTermRetentionPolicyInner().withRetentionDays(14), com.azure.core.util.Context.NONE);
     }

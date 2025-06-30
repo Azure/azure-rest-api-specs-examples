@@ -5579,3 +5579,4 @@ id,name,language,tag,package,version,date_epoch,date
 5578,"Azure.ResourceManager.CloudHealth,1.0.0-beta.1",dotnet,Azure.ResourceManager.CloudHealth_1.0.0-beta.1,Azure.ResourceManager.CloudHealth,1.0.0-beta.1,1750829459,06/25/2025
 5579,"Azure.ResourceManager.Grafana,1.2.0-beta.1",dotnet,Azure.ResourceManager.Grafana_1.2.0-beta.1,Azure.ResourceManager.Grafana,1.2.0-beta.1,1750814465,06/25/2025
 5580,azure-mgmt-containerservicesafeguards@1.0.0b1,python,azure-mgmt-containerservicesafeguards_1.0.0b1,azure-mgmt-containerservicesafeguards,1.0.0b1,1751031915,06/27/2025
+5581,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.1,java,azure-resourcemanager-cloudhealth_1.0.0-beta.1,azure-resourcemanager-cloudhealth,1.0.0-beta.1,1751275004,06/30/2025

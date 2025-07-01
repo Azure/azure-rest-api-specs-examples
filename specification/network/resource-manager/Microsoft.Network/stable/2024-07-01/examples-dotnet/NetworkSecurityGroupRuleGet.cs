@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityRuleResource created on azure
-// for more information of creating SecurityRuleResource, please refer to the document of SecurityRuleResource
+// this example assumes you already have this NetworkSecurityGroupResource created on azure
+// for more information of creating NetworkSecurityGroupResource, please refer to the document of NetworkSecurityGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkSecurityGroupName = "testnsg";
-string securityRuleName = "rule1";
-ResourceIdentifier securityRuleResourceId = SecurityRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityGroupName, securityRuleName);
-SecurityRuleResource securityRule = client.GetSecurityRuleResource(securityRuleResourceId);
+ResourceIdentifier networkSecurityGroupResourceId = NetworkSecurityGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityGroupName);
+NetworkSecurityGroupResource networkSecurityGroup = client.GetNetworkSecurityGroupResource(networkSecurityGroupResourceId);
+
+// get the collection of this SecurityRuleResource
+SecurityRuleCollection collection = networkSecurityGroup.GetSecurityRules();
 
 // invoke the operation
-SecurityRuleResource result = await securityRule.GetAsync();
+string securityRuleName = "rule1";
+NullableResponse<SecurityRuleResource> response = await collection.GetIfExistsAsync(securityRuleName);
+SecurityRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecurityRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

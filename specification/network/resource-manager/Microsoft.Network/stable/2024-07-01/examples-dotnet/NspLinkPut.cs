@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
-// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
+// this example assumes you already have this NetworkSecurityPerimeterLinkResource created on azure
+// for more information of creating NetworkSecurityPerimeterLinkResource, please refer to the document of NetworkSecurityPerimeterLinkResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
-ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
-NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
-
-// get the collection of this NetworkSecurityPerimeterLinkResource
-NetworkSecurityPerimeterLinkCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterLinks();
+string linkName = "link1";
+ResourceIdentifier networkSecurityPerimeterLinkResourceId = NetworkSecurityPerimeterLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, linkName);
+NetworkSecurityPerimeterLinkResource networkSecurityPerimeterLink = client.GetNetworkSecurityPerimeterLinkResource(networkSecurityPerimeterLinkResourceId);
 
 // invoke the operation
-string linkName = "link1";
 NetworkSecurityPerimeterLinkData data = new NetworkSecurityPerimeterLinkData
 {
     AutoApprovedRemotePerimeterResourceId = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityPerimeters/nsp2"),
     LocalInboundProfiles = { "*" },
     RemoteInboundProfiles = { "*" },
 };
-ArmOperation<NetworkSecurityPerimeterLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkName, data);
+ArmOperation<NetworkSecurityPerimeterLinkResource> lro = await networkSecurityPerimeterLink.UpdateAsync(WaitUntil.Completed, data);
 NetworkSecurityPerimeterLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

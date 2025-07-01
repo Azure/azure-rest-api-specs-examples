@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkVerifierWorkspaceResource created on azure
-// for more information of creating NetworkVerifierWorkspaceResource, please refer to the document of NetworkVerifierWorkspaceResource
+// this example assumes you already have this ReachabilityAnalysisIntentResource created on azure
+// for more information of creating ReachabilityAnalysisIntentResource, please refer to the document of ReachabilityAnalysisIntentResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string workspaceName = "testWorkspace";
-ResourceIdentifier networkVerifierWorkspaceResourceId = NetworkVerifierWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName);
-NetworkVerifierWorkspaceResource networkVerifierWorkspace = client.GetNetworkVerifierWorkspaceResource(networkVerifierWorkspaceResourceId);
-
-// get the collection of this ReachabilityAnalysisIntentResource
-ReachabilityAnalysisIntentCollection collection = networkVerifierWorkspace.GetReachabilityAnalysisIntents();
+string reachabilityAnalysisIntentName = "testAnalysisIntentName";
+ResourceIdentifier reachabilityAnalysisIntentResourceId = ReachabilityAnalysisIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisIntentName);
+ReachabilityAnalysisIntentResource reachabilityAnalysisIntent = client.GetReachabilityAnalysisIntentResource(reachabilityAnalysisIntentResourceId);
 
 // invoke the operation
-string reachabilityAnalysisIntentName = "testAnalysisIntentName";
 ReachabilityAnalysisIntentData data = new ReachabilityAnalysisIntentData(new ReachabilityAnalysisIntentProperties(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/testVmSrc"), new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/testVmDest"), new NetworkVerifierIPTraffic(new string[] { "10.4.0.0" }, new string[] { "10.4.0.1" }, new string[] { "0" }, new string[] { "0" }, new NetworkProtocol[] { NetworkProtocol.Any }))
 {
     Description = "A sample reachability analysis intent",
 });
-ArmOperation<ReachabilityAnalysisIntentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, reachabilityAnalysisIntentName, data);
+ArmOperation<ReachabilityAnalysisIntentResource> lro = await reachabilityAnalysisIntent.UpdateAsync(WaitUntil.Completed, data);
 ReachabilityAnalysisIntentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

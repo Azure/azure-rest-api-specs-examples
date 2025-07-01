@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ReachabilityAnalysisRunResource created on azure
-// for more information of creating ReachabilityAnalysisRunResource, please refer to the document of ReachabilityAnalysisRunResource
+// this example assumes you already have this NetworkVerifierWorkspaceResource created on azure
+// for more information of creating NetworkVerifierWorkspaceResource, please refer to the document of NetworkVerifierWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string workspaceName = "testWorkspace";
-string reachabilityAnalysisRunName = "testAnalysisRunName";
-ResourceIdentifier reachabilityAnalysisRunResourceId = ReachabilityAnalysisRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName);
-ReachabilityAnalysisRunResource reachabilityAnalysisRun = client.GetReachabilityAnalysisRunResource(reachabilityAnalysisRunResourceId);
+ResourceIdentifier networkVerifierWorkspaceResourceId = NetworkVerifierWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName);
+NetworkVerifierWorkspaceResource networkVerifierWorkspace = client.GetNetworkVerifierWorkspaceResource(networkVerifierWorkspaceResourceId);
+
+// get the collection of this ReachabilityAnalysisRunResource
+ReachabilityAnalysisRunCollection collection = networkVerifierWorkspace.GetReachabilityAnalysisRuns();
 
 // invoke the operation
+string reachabilityAnalysisRunName = "testAnalysisRunName";
 ReachabilityAnalysisRunData data = new ReachabilityAnalysisRunData(new ReachabilityAnalysisRunProperties("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/verifierWorkspaces/testVerifierWorkspace1/reachabilityAnalysisIntents/testReachabilityAnalysisIntenant1")
 {
     Description = "A sample reachability analysis run",
 });
-ArmOperation<ReachabilityAnalysisRunResource> lro = await reachabilityAnalysisRun.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ReachabilityAnalysisRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, reachabilityAnalysisRunName, data);
 ReachabilityAnalysisRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

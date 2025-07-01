@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnSiteLinkResource created on azure
-// for more information of creating VpnSiteLinkResource, please refer to the document of VpnSiteLinkResource
+// this example assumes you already have this VpnSiteResource created on azure
+// for more information of creating VpnSiteResource, please refer to the document of VpnSiteResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string vpnSiteName = "vpnSite1";
-string vpnSiteLinkName = "vpnSiteLink1";
-ResourceIdentifier vpnSiteLinkResourceId = VpnSiteLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vpnSiteName, vpnSiteLinkName);
-VpnSiteLinkResource vpnSiteLink = client.GetVpnSiteLinkResource(vpnSiteLinkResourceId);
+ResourceIdentifier vpnSiteResourceId = VpnSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vpnSiteName);
+VpnSiteResource vpnSite = client.GetVpnSiteResource(vpnSiteResourceId);
+
+// get the collection of this VpnSiteLinkResource
+VpnSiteLinkCollection collection = vpnSite.GetVpnSiteLinks();
 
 // invoke the operation
-VpnSiteLinkResource result = await vpnSiteLink.GetAsync();
+string vpnSiteLinkName = "vpnSiteLink1";
+NullableResponse<VpnSiteLinkResource> response = await collection.GetIfExistsAsync(vpnSiteLinkName);
+VpnSiteLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VpnSiteLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VpnSiteLinkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

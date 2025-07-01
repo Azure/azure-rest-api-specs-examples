@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/examples/DscpConfigurationCreate.json
@@ -16,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DscpConfigurationResource created on azure
+// for more information of creating DscpConfigurationResource, please refer to the document of DscpConfigurationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DscpConfigurationResource
-DscpConfigurationCollection collection = resourceGroupResource.GetDscpConfigurations();
+string dscpConfigurationName = "mydscpconfig";
+ResourceIdentifier dscpConfigurationResourceId = DscpConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dscpConfigurationName);
+DscpConfigurationResource dscpConfiguration = client.GetDscpConfigurationResource(dscpConfigurationResourceId);
 
 // invoke the operation
-string dscpConfigurationName = "mydscpconfig";
 DscpConfigurationData data = new DscpConfigurationData
 {
     QosDefinitionCollection = {new DscpQosDefinition
@@ -85,7 +81,7 @@ DscpConfigurationData data = new DscpConfigurationData
     }},
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<DscpConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dscpConfigurationName, data);
+ArmOperation<DscpConfigurationResource> lro = await dscpConfiguration.UpdateAsync(WaitUntil.Completed, data);
 DscpConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

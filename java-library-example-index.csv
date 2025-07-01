@@ -5583,3 +5583,4 @@ id,name,language,tag,package,version,date_epoch,date
 5582,azure-mgmt-storage@23.0.1,python,azure-mgmt-storage_23.0.1,azure-mgmt-storage,23.0.1,1751268341,06/30/2025
 5583,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v3@v3.0.0,go,sdk/resourcemanager/resources/armresources/v3.0.0,sdk/resourcemanager/resources/armresources,v3.0.0,1751338570,07/01/2025
 5584,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.8.1,go,sdk/resourcemanager/storage/armstorage/v1.8.1,sdk/resourcemanager/storage/armstorage,v1.8.1,1751338566,07/01/2025
+5585,"Azure.ResourceManager.Network,1.11.1",dotnet,Azure.ResourceManager.Network_1.11.1,Azure.ResourceManager.Network,1.11.1,1751359574,07/01/2025

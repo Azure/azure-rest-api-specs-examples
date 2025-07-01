@@ -11,8 +11,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/97ee23a6db6078abcbec7b75bf9af8c503e9bb8b/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/examples/TableOperationPutOrPatchAcls.json
-func ExampleTableClient_Create_tableOperationPutOrPatchAcls() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/86c6306649b02e542117adb46c61e8019dbd78e9/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/examples/TableOperationPutOrPatchAcls.json
+func ExampleTableClient_Update_tableOperationPutOrPatchAcls() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,7 +22,7 @@ func ExampleTableClient_Create_tableOperationPutOrPatchAcls() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewTableClient().Create(ctx, "res3376", "sto328", "table6185", &armstorage.TableClientCreateOptions{Parameters: &armstorage.Table{
+	res, err := clientFactory.NewTableClient().Update(ctx, "res3376", "sto328", "table6185", &armstorage.TableClientUpdateOptions{Parameters: &armstorage.Table{
 		TableProperties: &armstorage.TableProperties{
 			SignedIdentifiers: []*armstorage.TableSignedIdentifier{
 				{

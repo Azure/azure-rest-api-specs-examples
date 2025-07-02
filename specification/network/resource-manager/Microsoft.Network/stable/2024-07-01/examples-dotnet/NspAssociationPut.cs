@@ -15,23 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterAssociationResource created on azure
-// for more information of creating NetworkSecurityPerimeterAssociationResource, please refer to the document of NetworkSecurityPerimeterAssociationResource
+// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
+// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
-string associationName = "association1";
-ResourceIdentifier networkSecurityPerimeterAssociationResourceId = NetworkSecurityPerimeterAssociationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, associationName);
-NetworkSecurityPerimeterAssociationResource networkSecurityPerimeterAssociation = client.GetNetworkSecurityPerimeterAssociationResource(networkSecurityPerimeterAssociationResourceId);
+ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
+NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
+
+// get the collection of this NetworkSecurityPerimeterAssociationResource
+NetworkSecurityPerimeterAssociationCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterAssociations();
 
 // invoke the operation
+string associationName = "association1";
 NetworkSecurityPerimeterAssociationData data = new NetworkSecurityPerimeterAssociationData
 {
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/{paasSubscriptionId}/resourceGroups/{paasResourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}"),
     ProfileId = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityPerimeters/nsp1/profiles/{profileName}"),
     AccessMode = NetworkSecurityPerimeterAssociationAccessMode.Enforced,
 };
-ArmOperation<NetworkSecurityPerimeterAssociationResource> lro = await networkSecurityPerimeterAssociation.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NetworkSecurityPerimeterAssociationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, associationName, data);
 NetworkSecurityPerimeterAssociationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

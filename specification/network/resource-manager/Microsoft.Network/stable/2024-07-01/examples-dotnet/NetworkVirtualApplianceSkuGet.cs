@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/examples/NetworkVirtualApplianceSkuGet.json
@@ -14,18 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkVirtualApplianceSkuResource created on azure
-// for more information of creating NetworkVirtualApplianceSkuResource, please refer to the document of NetworkVirtualApplianceSkuResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "subid";
-string skuName = "ciscoSdwan";
-ResourceIdentifier networkVirtualApplianceSkuResourceId = NetworkVirtualApplianceSkuResource.CreateResourceIdentifier(subscriptionId, skuName);
-NetworkVirtualApplianceSkuResource networkVirtualApplianceSku = client.GetNetworkVirtualApplianceSkuResource(networkVirtualApplianceSkuResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this NetworkVirtualApplianceSkuResource
+NetworkVirtualApplianceSkuCollection collection = subscriptionResource.GetNetworkVirtualApplianceSkus();
 
 // invoke the operation
-NetworkVirtualApplianceSkuResource result = await networkVirtualApplianceSku.GetAsync();
+string skuName = "ciscoSdwan";
+NullableResponse<NetworkVirtualApplianceSkuResource> response = await collection.GetIfExistsAsync(skuName);
+NetworkVirtualApplianceSkuResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkVirtualApplianceSkuData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkVirtualApplianceSkuData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

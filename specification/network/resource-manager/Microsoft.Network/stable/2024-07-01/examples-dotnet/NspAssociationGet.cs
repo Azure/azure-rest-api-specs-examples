@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterAssociationResource created on azure
-// for more information of creating NetworkSecurityPerimeterAssociationResource, please refer to the document of NetworkSecurityPerimeterAssociationResource
+// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
+// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
-string associationName = "association1";
-ResourceIdentifier networkSecurityPerimeterAssociationResourceId = NetworkSecurityPerimeterAssociationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, associationName);
-NetworkSecurityPerimeterAssociationResource networkSecurityPerimeterAssociation = client.GetNetworkSecurityPerimeterAssociationResource(networkSecurityPerimeterAssociationResourceId);
+ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
+NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
+
+// get the collection of this NetworkSecurityPerimeterAssociationResource
+NetworkSecurityPerimeterAssociationCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterAssociations();
 
 // invoke the operation
-NetworkSecurityPerimeterAssociationResource result = await networkSecurityPerimeterAssociation.GetAsync();
+string associationName = "association1";
+NullableResponse<NetworkSecurityPerimeterAssociationResource> response = await collection.GetIfExistsAsync(associationName);
+NetworkSecurityPerimeterAssociationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkSecurityPerimeterAssociationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkSecurityPerimeterAssociationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

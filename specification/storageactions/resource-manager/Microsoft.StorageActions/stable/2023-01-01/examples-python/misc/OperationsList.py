@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/misc/OperationsList.json
+# x-ms-original-file: 2023-01-01/misc/OperationsList.json
 if __name__ == "__main__":
     main()

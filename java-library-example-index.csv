@@ -5590,3 +5590,4 @@ id,name,language,tag,package,version,date_epoch,date
 5589,azure-mgmt-lambdatesthyperexecute@1.0.0,python,azure-mgmt-lambdatesthyperexecute_1.0.0,azure-mgmt-lambdatesthyperexecute,1.0.0,1751449553,07/02/2025
 5590,com.azure.resourcemanager:azure-resourcemanager-arizeaiobservabilityeval:1.0.0,java,azure-resourcemanager-arizeaiobservabilityeval_1.0.0,azure-resourcemanager-arizeaiobservabilityeval,1.0.0,1751524664,07/03/2025
 5591,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purestorageblock/armpurestorageblock@v1.0.0,go,sdk/resourcemanager/purestorageblock/armpurestorageblock/v1.0.0,sdk/resourcemanager/purestorageblock/armpurestorageblock,v1.0.0,1751537569,07/03/2025
+5592,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions@v1.0.0,go,sdk/resourcemanager/storageactions/armstorageactions/v1.0.0,sdk/resourcemanager/storageactions/armstorageactions,v1.0.0,1751533553,07/03/2025

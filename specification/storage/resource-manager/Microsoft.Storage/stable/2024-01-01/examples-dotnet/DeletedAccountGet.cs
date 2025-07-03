@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Storage;
 
 // Generated from example definition: specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/examples/DeletedAccountGet.json
@@ -14,19 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeletedAccountResource created on azure
-// for more information of creating DeletedAccountResource, please refer to the document of DeletedAccountResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "{subscription-id}";
-AzureLocation location = new AzureLocation("eastus");
-string deletedAccountName = "sto1125";
-ResourceIdentifier deletedAccountResourceId = DeletedAccountResource.CreateResourceIdentifier(subscriptionId, location, deletedAccountName);
-DeletedAccountResource deletedAccount = client.GetDeletedAccountResource(deletedAccountResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this DeletedAccountResource
+DeletedAccountCollection collection = subscriptionResource.GetDeletedAccounts();
 
 // invoke the operation
-DeletedAccountResource result = await deletedAccount.GetAsync();
+AzureLocation location = new AzureLocation("eastus");
+string deletedAccountName = "sto1125";
+NullableResponse<DeletedAccountResource> response = await collection.GetIfExistsAsync(location, deletedAccountName);
+DeletedAccountResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeletedAccountData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DeletedAccountData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

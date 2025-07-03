@@ -5598,3 +5598,4 @@ id,name,language,tag,package,version,date_epoch,date
 5597,"Azure.ResourceManager.LambdaTestHyperExecute,1.0.0",dotnet,Azure.ResourceManager.LambdaTestHyperExecute_1.0.0,Azure.ResourceManager.LambdaTestHyperExecute,1.0.0,1751534828,07/03/2025
 5598,"Azure.ResourceManager.Avs,1.5.0",dotnet,Azure.ResourceManager.Avs_1.5.0,Azure.ResourceManager.Avs,1.5.0,1751534045,07/03/2025
 5599,"Azure.ResourceManager.Storage,1.4.3",dotnet,Azure.ResourceManager.Storage_1.4.3,Azure.ResourceManager.Storage,1.4.3,1751512359,07/03/2025
+5600,"Azure.ResourceManager.StorageActions,1.0.0",dotnet,Azure.ResourceManager.StorageActions_1.0.0,Azure.ResourceManager.StorageActions,1.0.0,1751512322,07/03/2025

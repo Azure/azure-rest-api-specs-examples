@@ -5596,3 +5596,4 @@ id,name,language,tag,package,version,date_epoch,date
 5595,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armdeploymentsafeguards@v0.1.0,go,sdk/resourcemanager/containerservice/armdeploymentsafeguards/v0.1.0,sdk/resourcemanager/containerservice/armdeploymentsafeguards,v0.1.0,1751470034,07/02/2025
 5596,@azure/arm-purestorageblock@1.0.0,js,@azure/arm-purestorageblock_1.0.0,@azure/arm-purestorageblock,1.0.0,1751537539,07/03/2025
 5597,"Azure.ResourceManager.LambdaTestHyperExecute,1.0.0",dotnet,Azure.ResourceManager.LambdaTestHyperExecute_1.0.0,Azure.ResourceManager.LambdaTestHyperExecute,1.0.0,1751534828,07/03/2025
+5598,"Azure.ResourceManager.Avs,1.5.0",dotnet,Azure.ResourceManager.Avs_1.5.0,Azure.ResourceManager.Avs,1.5.0,1751534045,07/03/2025

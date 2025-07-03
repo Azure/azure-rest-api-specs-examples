@@ -5600,3 +5600,4 @@ id,name,language,tag,package,version,date_epoch,date
 5599,"Azure.ResourceManager.Storage,1.4.3",dotnet,Azure.ResourceManager.Storage_1.4.3,Azure.ResourceManager.Storage,1.4.3,1751512359,07/03/2025
 5600,"Azure.ResourceManager.StorageActions,1.0.0",dotnet,Azure.ResourceManager.StorageActions_1.0.0,Azure.ResourceManager.StorageActions,1.0.0,1751512322,07/03/2025
 5601,"Azure.ResourceManager.PureStorageBlock,1.0.0",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.0,Azure.ResourceManager.PureStorageBlock,1.0.0,1751509972,07/03/2025
+5602,"Azure.ResourceManager.Compute,1.10.0",dotnet,Azure.ResourceManager.Compute_1.10.0,Azure.ResourceManager.Compute,1.10.0,1751509498,07/03/2025

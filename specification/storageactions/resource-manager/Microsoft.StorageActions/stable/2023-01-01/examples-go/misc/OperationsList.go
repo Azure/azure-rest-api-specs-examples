@@ -8,14 +8,14 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5b798125a6aa7d5152fe0e3dd595d8a76dcfa568/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/misc/OperationsList.json
+// Generated from example definition: 2023-01-01/misc/OperationsList.json
 func ExampleOperationsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armstorageactions.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armstorageactions.NewClientFactory("<subscriptionID>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,38 +30,41 @@ func ExampleOperationsClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.OperationListResult = armstorageactions.OperationListResult{
-		// 	Value: []*armstorageactions.Operation{
-		// 		{
-		// 			Name: to.Ptr("Microsoft.StorageActions/storageTasks/read"),
-		// 			Display: &armstorageactions.OperationDisplay{
-		// 				Description: to.Ptr("Gets or Lists existing StorageTask resource(s)."),
-		// 				Operation: to.Ptr("Get or List StorageTask resource(s)."),
-		// 				Provider: to.Ptr("Microsoft StorageActions"),
-		// 				Resource: to.Ptr("StorageTasks"),
+		// page = armstorageactions.OperationsClientListResponse{
+		// 	OperationListResult: armstorageactions.OperationListResult{
+		// 		Value: []*armstorageactions.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.StorageActions/storageTasks/read"),
+		// 				Display: &armstorageactions.OperationDisplay{
+		// 					Description: to.Ptr("Gets or Lists existing StorageTask resource(s)."),
+		// 					Operation: to.Ptr("Get or List StorageTask resource(s)."),
+		// 					Provider: to.Ptr("Microsoft StorageActions"),
+		// 					Resource: to.Ptr("StorageTasks"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
 		// 			},
-		// 			IsDataAction: to.Ptr(false),
+		// 			{
+		// 				Name: to.Ptr("Microsoft.StorageActions/storageTasks/write"),
+		// 				Display: &armstorageactions.OperationDisplay{
+		// 					Description: to.Ptr("Creates or Updates StorageTask resource."),
+		// 					Operation: to.Ptr("Create or Update StorageTask resource."),
+		// 					Provider: to.Ptr("Microsoft StorageActions"),
+		// 					Resource: to.Ptr("StorageTasks"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.StorageActions/storageTasks/delete"),
+		// 				Display: &armstorageactions.OperationDisplay{
+		// 					Description: to.Ptr("Deletes StorageTask resource."),
+		// 					Operation: to.Ptr("Delete StorageTask resource."),
+		// 					Provider: to.Ptr("Microsoft StorageActions"),
+		// 					Resource: to.Ptr("StorageTasks"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
 		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.StorageActions/storageTasks/write"),
-		// 			Display: &armstorageactions.OperationDisplay{
-		// 				Description: to.Ptr("Creates or Updates StorageTask resource."),
-		// 				Operation: to.Ptr("Create or Update StorageTask resource."),
-		// 				Provider: to.Ptr("Microsoft StorageActions"),
-		// 				Resource: to.Ptr("StorageTasks"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.StorageActions/storageTasks/delete"),
-		// 			Display: &armstorageactions.OperationDisplay{
-		// 				Description: to.Ptr("Deletes StorageTask resource."),
-		// 				Operation: to.Ptr("Delete StorageTask resource."),
-		// 				Provider: to.Ptr("Microsoft StorageActions"),
-		// 				Resource: to.Ptr("StorageTasks"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 	}},
+		// 	},
 		// }
 	}
 }

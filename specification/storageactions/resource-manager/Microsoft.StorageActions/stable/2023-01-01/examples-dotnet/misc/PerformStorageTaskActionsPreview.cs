@@ -8,8 +8,8 @@ using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StorageActions.Models;
 using Azure.ResourceManager.StorageActions;
 
-// Generated from example definition: specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/misc/PerformStorageTaskActionsPreview.json
-// this example is just showing the usage of "StorageTasks_PreviewActions" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2023-01-01/misc/PerformStorageTaskActionsPreview.json
+// this example is just showing the usage of "StorageTasksOperationGroup_PreviewActions" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();

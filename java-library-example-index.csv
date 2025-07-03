@@ -5603,3 +5603,4 @@ id,name,language,tag,package,version,date_epoch,date
 5602,"Azure.ResourceManager.Compute,1.10.0",dotnet,Azure.ResourceManager.Compute_1.10.0,Azure.ResourceManager.Compute,1.10.0,1751509498,07/03/2025
 5603,azure-mgmt-purestorageblock@1.0.0,python,azure-mgmt-purestorageblock_1.0.0,azure-mgmt-purestorageblock,1.0.0,1751537608,07/03/2025
 5604,azure-mgmt-storageactions@1.0.0,python,azure-mgmt-storageactions_1.0.0,azure-mgmt-storageactions,1.0.0,1751534247,07/03/2025
+5605,azure-mgmt-arizeaiobservabilityeval@1.0.0,python,azure-mgmt-arizeaiobservabilityeval_1.0.0,azure-mgmt-arizeaiobservabilityeval,1.0.0,1751524166,07/03/2025

@@ -5601,3 +5601,4 @@ id,name,language,tag,package,version,date_epoch,date
 5600,"Azure.ResourceManager.StorageActions,1.0.0",dotnet,Azure.ResourceManager.StorageActions_1.0.0,Azure.ResourceManager.StorageActions,1.0.0,1751512322,07/03/2025
 5601,"Azure.ResourceManager.PureStorageBlock,1.0.0",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.0,Azure.ResourceManager.PureStorageBlock,1.0.0,1751509972,07/03/2025
 5602,"Azure.ResourceManager.Compute,1.10.0",dotnet,Azure.ResourceManager.Compute_1.10.0,Azure.ResourceManager.Compute,1.10.0,1751509498,07/03/2025
+5603,azure-mgmt-purestorageblock@1.0.0,python,azure-mgmt-purestorageblock_1.0.0,azure-mgmt-purestorageblock,1.0.0,1751537608,07/03/2025

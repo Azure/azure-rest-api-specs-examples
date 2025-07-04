@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageAccountResource created on azure
-// for more information of creating StorageAccountResource, please refer to the document of StorageAccountResource
+// this example assumes you already have this StorageAccountMigrationResource created on azure
+// for more information of creating StorageAccountMigrationResource, please refer to the document of StorageAccountMigrationResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "resource-group-name";
 string accountName = "accountname";
-ResourceIdentifier storageAccountResourceId = StorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-StorageAccountResource storageAccount = client.GetStorageAccountResource(storageAccountResourceId);
-
-// get the collection of this StorageAccountMigrationResource
-StorageAccountMigrationCollection collection = storageAccount.GetStorageAccountMigrations();
+StorageAccountMigrationName migrationName = StorageAccountMigrationName.Default;
+ResourceIdentifier storageAccountMigrationResourceId = StorageAccountMigrationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, migrationName);
+StorageAccountMigrationResource storageAccountMigration = client.GetStorageAccountMigrationResource(storageAccountMigrationResourceId);
 
 // invoke the operation
-StorageAccountMigrationName migrationName = StorageAccountMigrationName.Default;
-NullableResponse<StorageAccountMigrationResource> response = await collection.GetIfExistsAsync(migrationName);
-StorageAccountMigrationResource result = response.HasValue ? response.Value : null;
+StorageAccountMigrationResource result = await storageAccountMigration.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StorageAccountMigrationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageAccountMigrationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -9,14 +9,14 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5b798125a6aa7d5152fe0e3dd595d8a76dcfa568/specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksCrud/PatchStorageTask.json
+// Generated from example definition: 2023-01-01/storageTasksCrud/PatchStorageTask.json
 func ExampleStorageTasksClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armstorageactions.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armstorageactions.NewClientFactory("1f31ba14-ce16-4281-b9b4-3e78da6e1616", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -27,8 +27,7 @@ func ExampleStorageTasksClient_BeginUpdate() {
 				"/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity": {},
 			},
 		},
-		Properties: &armstorageactions.StorageTaskProperties{
-			Description: to.Ptr("My Storage task"),
+		Properties: &armstorageactions.StorageTaskUpdateProperties{
 			Action: &armstorageactions.StorageTaskAction{
 				Else: &armstorageactions.ElseCondition{
 					Operations: []*armstorageactions.StorageTaskOperation{
@@ -36,7 +35,8 @@ func ExampleStorageTasksClient_BeginUpdate() {
 							Name:      to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
 							OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
 							OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
-						}},
+						},
+					},
 				},
 				If: &armstorageactions.IfCondition{
 					Condition: to.Ptr("[[equals(AccessTier, 'Cool')]]"),
@@ -48,7 +48,8 @@ func ExampleStorageTasksClient_BeginUpdate() {
 							Parameters: map[string]*string{
 								"tier": to.Ptr("Hot"),
 							},
-						}},
+						},
+					},
 				},
 			},
 			Enabled: to.Ptr(true),
@@ -64,48 +65,52 @@ func ExampleStorageTasksClient_BeginUpdate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.StorageTask = armstorageactions.StorageTask{
-	// 	Name: to.Ptr("mytask1"),
-	// 	Type: to.Ptr("Microsoft.StorageActions/storageTasks"),
-	// 	ID: to.Ptr("/subscriptions/c86a9c18-8373-41fa-92d4-1d7bdc16977b/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/mytask1"),
-	// 	Location: to.Ptr("westus"),
-	// 	Identity: &armstorageactions.ManagedServiceIdentity{
-	// 		Type: to.Ptr(armstorageactions.ManagedServiceIdentityTypeUserAssigned),
-	// 		UserAssignedIdentities: map[string]*armstorageactions.UserAssignedIdentity{
-	// 			"/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity": &armstorageactions.UserAssignedIdentity{
-	// 				ClientID: to.Ptr("bbbbbbbb-0000-0000-0000-000000000000"),
-	// 				PrincipalID: to.Ptr("aaaaaaaa-0000-0000-0000-000000000000"),
+	// res = armstorageactions.StorageTasksClientUpdateResponse{
+	// 	StorageTask: &armstorageactions.StorageTask{
+	// 		Name: to.Ptr("mytask1"),
+	// 		Type: to.Ptr("Microsoft.StorageActions/storageTasks"),
+	// 		ID: to.Ptr("/subscriptions/c86a9c18-8373-41fa-92d4-1d7bdc16977b/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/mytask1"),
+	// 		Identity: &armstorageactions.ManagedServiceIdentity{
+	// 			Type: to.Ptr(armstorageactions.ManagedServiceIdentityTypeUserAssigned),
+	// 			UserAssignedIdentities: map[string]*armstorageactions.UserAssignedIdentity{
+	// 				"/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity": &armstorageactions.UserAssignedIdentity{
+	// 					ClientID: to.Ptr("bbbbbbbb-0000-0000-0000-000000000000"),
+	// 					PrincipalID: to.Ptr("aaaaaaaa-0000-0000-0000-000000000000"),
+	// 				},
 	// 			},
 	// 		},
-	// 	},
-	// 	Properties: &armstorageactions.StorageTaskProperties{
-	// 		Description: to.Ptr("Storage task"),
-	// 		Action: &armstorageactions.StorageTaskAction{
-	// 			Else: &armstorageactions.ElseCondition{
-	// 				Operations: []*armstorageactions.StorageTaskOperation{
-	// 					{
-	// 						Name: to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
-	// 						OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
-	// 						OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
-	// 				}},
-	// 			},
-	// 			If: &armstorageactions.IfCondition{
-	// 				Condition: to.Ptr("[[equals(AccessTier, 'Cool')]]"),
-	// 				Operations: []*armstorageactions.StorageTaskOperation{
-	// 					{
-	// 						Name: to.Ptr(armstorageactions.StorageTaskOperationNameSetBlobTier),
-	// 						OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
-	// 						OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
-	// 						Parameters: map[string]*string{
-	// 							"tier": to.Ptr("Hot"),
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armstorageactions.StorageTaskProperties{
+	// 			Description: to.Ptr("Storage task"),
+	// 			Action: &armstorageactions.StorageTaskAction{
+	// 				Else: &armstorageactions.ElseCondition{
+	// 					Operations: []*armstorageactions.StorageTaskOperation{
+	// 						{
+	// 							Name: to.Ptr(armstorageactions.StorageTaskOperationNameDeleteBlob),
+	// 							OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+	// 							OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
 	// 						},
-	// 				}},
+	// 					},
+	// 				},
+	// 				If: &armstorageactions.IfCondition{
+	// 					Condition: to.Ptr("[[equals(AccessTier, 'Cool')]]"),
+	// 					Operations: []*armstorageactions.StorageTaskOperation{
+	// 						{
+	// 							Name: to.Ptr(armstorageactions.StorageTaskOperationNameSetBlobTier),
+	// 							OnFailure: to.Ptr(armstorageactions.OnFailureBreak),
+	// 							OnSuccess: to.Ptr(armstorageactions.OnSuccessContinue),
+	// 							Parameters: map[string]*string{
+	// 								"tier": to.Ptr("Hot"),
+	// 							},
+	// 						},
+	// 					},
+	// 				},
 	// 			},
+	// 			CreationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-07-06T00:24:59.1441663Z"); return t}()),
+	// 			Enabled: to.Ptr(true),
+	// 			ProvisioningState: to.Ptr(armstorageactions.ProvisioningStateSucceeded),
+	// 			TaskVersion: to.Ptr[int64](1),
 	// 		},
-	// 		CreationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-07-06T00:24:59.144Z"); return t}()),
-	// 		Enabled: to.Ptr(true),
-	// 		ProvisioningState: to.Ptr(armstorageactions.ProvisioningStateSucceeded),
-	// 		TaskVersion: to.Ptr[int64](1),
 	// 	},
 	// }
 }

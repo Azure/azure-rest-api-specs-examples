@@ -19,7 +19,7 @@ from azure.mgmt.storageactions import StorageActionsMgmtClient
 def main():
     client = StorageActionsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="1f31ba14-ce16-4281-b9b4-3e78da6e1616",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.storage_tasks.begin_create(
@@ -51,6 +51,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksCrud/PutStorageTask.json
+# x-ms-original-file: 2023-01-01/storageTasksCrud/PutStorageTask.json
 if __name__ == "__main__":
     main()

@@ -5610,3 +5610,4 @@ id,name,language,tag,package,version,date_epoch,date
 5609,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongodbatlas/armmongodbatlas@v1.0.0,go,sdk/resourcemanager/mongodbatlas/armmongodbatlas/v1.0.0,sdk/resourcemanager/mongodbatlas/armmongodbatlas,v1.0.0,1751574264,07/03/2025
 5610,@azure/arm-lambdatesthyperexecute@1.0.0,js,@azure/arm-lambdatesthyperexecute_1.0.0,@azure/arm-lambdatesthyperexecute,1.0.0,1751570769,07/03/2025
 5611,"Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0",dotnet,Azure.ResourceManager.ArizeAIObservabilityEval_1.0.0,Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0,1751613766,07/04/2025
+5612,azure-mgmt-mongodbatlas@1.0.0,python,azure-mgmt-mongodbatlas_1.0.0,azure-mgmt-mongodbatlas,1.0.0,1751576187,07/03/2025

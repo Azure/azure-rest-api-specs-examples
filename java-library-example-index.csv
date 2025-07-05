@@ -5605,3 +5605,9 @@ id,name,language,tag,package,version,date_epoch,date
 5604,azure-mgmt-storageactions@1.0.0,python,azure-mgmt-storageactions_1.0.0,azure-mgmt-storageactions,1.0.0,1751534247,07/03/2025
 5605,azure-mgmt-arizeaiobservabilityeval@1.0.0,python,azure-mgmt-arizeaiobservabilityeval_1.0.0,azure-mgmt-arizeaiobservabilityeval,1.0.0,1751524166,07/03/2025
 5606,azure-mgmt-iotfirmwaredefense@2.0.0b1,python,azure-mgmt-iotfirmwaredefense_2.0.0b1,azure-mgmt-iotfirmwaredefense,2.0.0b1,1751480299,07/02/2025
+5607,com.azure.resourcemanager:azure-resourcemanager-mongodbatlas:1.0.0,java,azure-resourcemanager-mongodbatlas_1.0.0,azure-resourcemanager-mongodbatlas,1.0.0,1751602245,07/04/2025
+5608,com.azure.resourcemanager:azure-resourcemanager-purestorageblock:1.0.0,java,azure-resourcemanager-purestorageblock_1.0.0,azure-resourcemanager-purestorageblock,1.0.0,1751539942,07/03/2025
+5609,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongodbatlas/armmongodbatlas@v1.0.0,go,sdk/resourcemanager/mongodbatlas/armmongodbatlas/v1.0.0,sdk/resourcemanager/mongodbatlas/armmongodbatlas,v1.0.0,1751574264,07/03/2025
+5610,@azure/arm-lambdatesthyperexecute@1.0.0,js,@azure/arm-lambdatesthyperexecute_1.0.0,@azure/arm-lambdatesthyperexecute,1.0.0,1751570769,07/03/2025
+5611,"Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0",dotnet,Azure.ResourceManager.ArizeAIObservabilityEval_1.0.0,Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0,1751613766,07/04/2025
+5612,azure-mgmt-mongodbatlas@1.0.0,python,azure-mgmt-mongodbatlas_1.0.0,azure-mgmt-mongodbatlas,1.0.0,1751576187,07/03/2025

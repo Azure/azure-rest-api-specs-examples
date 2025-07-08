@@ -5612,3 +5612,4 @@ id,name,language,tag,package,version,date_epoch,date
 5611,"Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0",dotnet,Azure.ResourceManager.ArizeAIObservabilityEval_1.0.0,Azure.ResourceManager.ArizeAIObservabilityEval,1.0.0,1751613766,07/04/2025
 5612,azure-mgmt-mongodbatlas@1.0.0,python,azure-mgmt-mongodbatlas_1.0.0,azure-mgmt-mongodbatlas,1.0.0,1751576187,07/03/2025
 5613,@azure/arm-avs@7.0.0,js,@azure/arm-avs_7.0.0,@azure/arm-avs,7.0.0,1751882059,07/07/2025
+5614,azure-mgmt-avs@9.1.0,python,azure-mgmt-avs_9.1.0,azure-mgmt-avs,9.1.0,1751914065,07/07/2025

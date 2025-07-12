@@ -5614,3 +5614,6 @@ id,name,language,tag,package,version,date_epoch,date
 5613,@azure/arm-avs@7.0.0,js,@azure/arm-avs_7.0.0,@azure/arm-avs,7.0.0,1751882059,07/07/2025
 5614,azure-mgmt-avs@9.1.0,python,azure-mgmt-avs_9.1.0,azure-mgmt-avs,9.1.0,1751914065,07/07/2025
 5615,"Azure.ResourceManager.MongoDBAtlas,1.0.0",dotnet,Azure.ResourceManager.MongoDBAtlas_1.0.0,Azure.ResourceManager.MongoDBAtlas,1.0.0,1752039142,07/09/2025
+5616,@azure/arm-storageactions@1.0.0,js,@azure/arm-storageactions_1.0.0,@azure/arm-storageactions,1.0.0,1752221696,07/11/2025
+5617,"Azure.ResourceManager.PlanetaryComputer,1.0.0-beta.1",dotnet,Azure.ResourceManager.PlanetaryComputer_1.0.0-beta.1,Azure.ResourceManager.PlanetaryComputer,1.0.0-beta.1,1752226803,07/11/2025
+5618,azure-mgmt-keyvault@12.0.0,python,azure-mgmt-keyvault_12.0.0,azure-mgmt-keyvault,12.0.0,1752208844,07/11/2025

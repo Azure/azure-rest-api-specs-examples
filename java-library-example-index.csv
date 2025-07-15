@@ -5622,3 +5622,4 @@ id,name,language,tag,package,version,date_epoch,date
 5621,azure-mgmt-dns@9.0.0,python,azure-mgmt-dns_9.0.0,azure-mgmt-dns,9.0.0,1752481299,07/14/2025
 5622,com.azure.resourcemanager:azure-resourcemanager-avs:1.3.0,java,azure-resourcemanager-avs_1.3.0,azure-resourcemanager-avs,1.3.0,1752566397,07/15/2025
 5623,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.2.0-beta.1,java,azure-resourcemanager-dashboard_1.2.0-beta.1,azure-resourcemanager-dashboard,1.2.0-beta.1,1752476249,07/14/2025
+5624,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/playwright/armplaywright@v0.1.0,go,sdk/resourcemanager/playwright/armplaywright/v0.1.0,sdk/resourcemanager/playwright/armplaywright,v0.1.0,1752566328,07/15/2025

@@ -22,7 +22,7 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.record_sets.list_all_by_dns_zone(
+    response = client.record_sets.list_by_dns_zone(
         resource_group_name="rg1",
         zone_name="zone1",
     )

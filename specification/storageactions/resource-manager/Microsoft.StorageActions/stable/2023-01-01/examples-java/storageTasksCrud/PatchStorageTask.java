@@ -9,7 +9,7 @@ import com.azure.resourcemanager.storageactions.models.StorageTask;
 import com.azure.resourcemanager.storageactions.models.StorageTaskAction;
 import com.azure.resourcemanager.storageactions.models.StorageTaskOperation;
 import com.azure.resourcemanager.storageactions.models.StorageTaskOperationName;
-import com.azure.resourcemanager.storageactions.models.StorageTaskProperties;
+import com.azure.resourcemanager.storageactions.models.StorageTaskUpdateProperties;
 import com.azure.resourcemanager.storageactions.models.UserAssignedIdentity;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,9 +20,7 @@ import java.util.Map;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/
-     * storageTasksCrud/PatchStorageTask.json
+     * x-ms-original-file: 2023-01-01/storageTasksCrud/PatchStorageTask.json
      */
     /**
      * Sample code: PatchStorageTask.
@@ -36,7 +34,7 @@ public final class Main {
             .withUserAssignedIdentities(mapOf(
                 "/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity",
                 new UserAssignedIdentity())))
-            .withProperties(new StorageTaskProperties().withEnabled(true).withDescription("My Storage task")
+            .withProperties(new StorageTaskUpdateProperties().withEnabled(true)
                 .withAction(new StorageTaskAction()
                     .withIfProperty(new IfCondition().withCondition("[[equals(AccessTier, 'Cool')]]")
                         .withOperations(Arrays.asList(new StorageTaskOperation()

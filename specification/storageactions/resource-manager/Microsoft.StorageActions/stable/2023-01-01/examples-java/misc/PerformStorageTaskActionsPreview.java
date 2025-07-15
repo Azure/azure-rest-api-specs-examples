@@ -13,9 +13,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/misc/
-     * PerformStorageTaskActionsPreview.json
+     * x-ms-original-file: 2023-01-01/misc/PerformStorageTaskActionsPreview.json
      */
     /**
      * Sample code: PerformStorageTaskActionsPreview.

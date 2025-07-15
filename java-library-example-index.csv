@@ -5624,3 +5624,4 @@ id,name,language,tag,package,version,date_epoch,date
 5623,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.2.0-beta.1,java,azure-resourcemanager-dashboard_1.2.0-beta.1,azure-resourcemanager-dashboard,1.2.0-beta.1,1752476249,07/14/2025
 5624,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/playwright/armplaywright@v0.1.0,go,sdk/resourcemanager/playwright/armplaywright/v0.1.0,sdk/resourcemanager/playwright/armplaywright,v0.1.0,1752566328,07/15/2025
 5625,@azure/arm-playwright@1.0.0-beta.1,js,@azure/arm-playwright_1.0.0-beta.1,@azure/arm-playwright,1.0.0-beta.1,1752557843,07/15/2025
+5626,azure-mgmt-playwright@1.0.0b1,python,azure-mgmt-playwright_1.0.0b1,azure-mgmt-playwright,1.0.0b1,1752568515,07/15/2025

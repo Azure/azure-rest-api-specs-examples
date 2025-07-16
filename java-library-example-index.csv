@@ -5630,3 +5630,4 @@ id,name,language,tag,package,version,date_epoch,date
 5629,com.azure.resourcemanager:azure-resourcemanager-playwright:1.0.0-beta.1,java,azure-resourcemanager-playwright_1.0.0-beta.1,azure-resourcemanager-playwright,1.0.0-beta.1,1752643325,07/16/2025
 5630,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v1.1.0,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v1.1.0,sdk/resourcemanager/computeschedule/armcomputeschedule,v1.1.0,1752591000,07/15/2025
 5631,@azure/arm-mongodbatlas@1.0.0,js,@azure/arm-mongodbatlas_1.0.0,@azure/arm-mongodbatlas,1.0.0,1752652250,07/16/2025
+5632,@azure/arm-computeschedule@1.1.0,js,@azure/arm-computeschedule_1.1.0,@azure/arm-computeschedule,1.1.0,1752587679,07/15/2025

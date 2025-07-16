@@ -5631,3 +5631,4 @@ id,name,language,tag,package,version,date_epoch,date
 5630,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v1.1.0,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v1.1.0,sdk/resourcemanager/computeschedule/armcomputeschedule,v1.1.0,1752591000,07/15/2025
 5631,@azure/arm-mongodbatlas@1.0.0,js,@azure/arm-mongodbatlas_1.0.0,@azure/arm-mongodbatlas,1.0.0,1752652250,07/16/2025
 5632,@azure/arm-computeschedule@1.1.0,js,@azure/arm-computeschedule_1.1.0,@azure/arm-computeschedule,1.1.0,1752587679,07/15/2025
+5633,azure-mgmt-eventhub@12.0.0b1,python,azure-mgmt-eventhub_12.0.0b1,azure-mgmt-eventhub,12.0.0b1,1752635060,07/16/2025

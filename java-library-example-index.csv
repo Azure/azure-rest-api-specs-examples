@@ -5627,3 +5627,4 @@ id,name,language,tag,package,version,date_epoch,date
 5626,azure-mgmt-playwright@1.0.0b1,python,azure-mgmt-playwright_1.0.0b1,azure-mgmt-playwright,1.0.0b1,1752568515,07/15/2025
 5627,azure-mgmt-resource-bicep@1.0.0b1,python,azure-mgmt-resource-bicep_1.0.0b1,azure-mgmt-resource-bicep,1.0.0b1,1752555656,07/15/2025
 5628,azure-mgmt-containerservice@38.0.0,python,azure-mgmt-containerservice_38.0.0,azure-mgmt-containerservice,38.0.0,1752549343,07/15/2025
+5629,com.azure.resourcemanager:azure-resourcemanager-playwright:1.0.0-beta.1,java,azure-resourcemanager-playwright_1.0.0-beta.1,azure-resourcemanager-playwright,1.0.0-beta.1,1752643325,07/16/2025

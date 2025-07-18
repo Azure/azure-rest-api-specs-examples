@@ -5639,3 +5639,4 @@ id,name,language,tag,package,version,date_epoch,date
 5638,azure-mgmt-resource@25.0.0b1,python,azure-mgmt-resource_25.0.0b1,azure-mgmt-resource,25.0.0b1,1752745158,07/17/2025
 5639,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.1.0,java,azure-resourcemanager-hardwaresecuritymodules_1.1.0,azure-resourcemanager-hardwaresecuritymodules,1.1.0,1752763113,07/17/2025
 5640,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.6.0,go,sdk/resourcemanager/netapp/armnetapp/v7.6.0,sdk/resourcemanager/netapp/armnetapp,v7.6.0,1752810714,07/18/2025
+5641,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights@v0.9.0,go,sdk/resourcemanager/policyinsights/armpolicyinsights/v0.9.0,sdk/resourcemanager/policyinsights/armpolicyinsights,v0.9.0,1752810697,07/18/2025

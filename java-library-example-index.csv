@@ -5637,3 +5637,11 @@ id,name,language,tag,package,version,date_epoch,date
 5636,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v7@v7.2.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v7.2.0,sdk/resourcemanager/containerservice/armcontainerservice,v7.2.0,1752732717,07/17/2025
 5637,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/msi/armmsi@v1.3.0,go,sdk/resourcemanager/msi/armmsi/v1.3.0,sdk/resourcemanager/msi/armmsi,v1.3.0,1752731959,07/17/2025
 5638,azure-mgmt-resource@25.0.0b1,python,azure-mgmt-resource_25.0.0b1,azure-mgmt-resource,25.0.0b1,1752745158,07/17/2025
+5639,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.1.0,java,azure-resourcemanager-hardwaresecuritymodules_1.1.0,azure-resourcemanager-hardwaresecuritymodules,1.1.0,1752763113,07/17/2025
+5640,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.6.0,go,sdk/resourcemanager/netapp/armnetapp/v7.6.0,sdk/resourcemanager/netapp/armnetapp,v7.6.0,1752810714,07/18/2025
+5641,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights@v0.9.0,go,sdk/resourcemanager/policyinsights/armpolicyinsights/v0.9.0,sdk/resourcemanager/policyinsights/armpolicyinsights,v0.9.0,1752810697,07/18/2025
+5642,@azure/arm-resourcesdeployments@1.0.0-beta.1,js,@azure/arm-resourcesdeployments_1.0.0-beta.1,@azure/arm-resourcesdeployments,1.0.0-beta.1,1752817033,07/18/2025
+5643,@azure/arm-storage@18.6.0,js,@azure/arm-storage_18.6.0,@azure/arm-storage,18.6.0,1752813091,07/18/2025
+5644,@azure/arm-hardwaresecuritymodules@2.0.0,js,@azure/arm-hardwaresecuritymodules_2.0.0,@azure/arm-hardwaresecuritymodules,2.0.0,1752760050,07/17/2025
+5645,azure-mgmt-dellstorage@1.0.0b1,python,azure-mgmt-dellstorage_1.0.0b1,azure-mgmt-dellstorage,1.0.0b1,1752825035,07/18/2025
+5646,azure-mgmt-hardwaresecuritymodules@1.0.0,python,azure-mgmt-hardwaresecuritymodules_1.0.0,azure-mgmt-hardwaresecuritymodules,1.0.0,1752762652,07/17/2025

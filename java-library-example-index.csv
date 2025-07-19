@@ -5645,3 +5645,4 @@ id,name,language,tag,package,version,date_epoch,date
 5644,@azure/arm-hardwaresecuritymodules@2.0.0,js,@azure/arm-hardwaresecuritymodules_2.0.0,@azure/arm-hardwaresecuritymodules,2.0.0,1752760050,07/17/2025
 5645,azure-mgmt-dellstorage@1.0.0b1,python,azure-mgmt-dellstorage_1.0.0b1,azure-mgmt-dellstorage,1.0.0b1,1752825035,07/18/2025
 5646,azure-mgmt-hardwaresecuritymodules@1.0.0,python,azure-mgmt-hardwaresecuritymodules_1.0.0,azure-mgmt-hardwaresecuritymodules,1.0.0,1752762652,07/17/2025
+5647,"Azure.ResourceManager,1.13.2",dotnet,Azure.ResourceManager_1.13.2,Azure.ResourceManager,1.13.2,1752844511,07/18/2025

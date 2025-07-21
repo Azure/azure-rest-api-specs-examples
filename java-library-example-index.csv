@@ -5649,3 +5649,4 @@ id,name,language,tag,package,version,date_epoch,date
 5648,com.azure.resourcemanager:azure-resourcemanager-netapp:1.8.0,java,azure-resourcemanager-netapp_1.8.0,azure-resourcemanager-netapp,1.8.0,1753081213,07/21/2025
 5649,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.2.0,java,azure-resourcemanager-cognitiveservices_1.2.0,azure-resourcemanager-cognitiveservices,1.2.0,1753073160,07/21/2025
 5650,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.1.0,java,azure-resourcemanager-healthbot_1.1.0,azure-resourcemanager-healthbot,1.1.0,1753069133,07/21/2025
+5651,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datamigration/armdatamigration/v2@v2.0.0-beta.1,go,sdk/resourcemanager/datamigration/armdatamigration/v2.0.0-beta.1,sdk/resourcemanager/datamigration/armdatamigration,v2.0.0-beta.1,1753074733,07/21/2025

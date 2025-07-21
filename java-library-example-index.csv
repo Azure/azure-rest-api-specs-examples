@@ -5651,3 +5651,4 @@ id,name,language,tag,package,version,date_epoch,date
 5650,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.1.0,java,azure-resourcemanager-healthbot_1.1.0,azure-resourcemanager-healthbot,1.1.0,1753069133,07/21/2025
 5651,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datamigration/armdatamigration/v2@v2.0.0-beta.1,go,sdk/resourcemanager/datamigration/armdatamigration/v2.0.0-beta.1,sdk/resourcemanager/datamigration/armdatamigration,v2.0.0-beta.1,1753074733,07/21/2025
 5652,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices@v1.8.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v1.8.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v1.8.0,1753072363,07/21/2025
+5653,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0,go,sdk/resourcemanager/search/armsearch/v1.4.0,sdk/resourcemanager/search/armsearch,v1.4.0,1753070683,07/21/2025

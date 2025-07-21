@@ -5659,3 +5659,4 @@ id,name,language,tag,package,version,date_epoch,date
 5658,azure-mgmt-monitor@7.0.0b3,python,azure-mgmt-monitor_7.0.0b3,azure-mgmt-monitor,7.0.0b3,1753079002,07/21/2025
 5659,azure-mgmt-search@9.2.0,python,azure-mgmt-search_9.2.0,azure-mgmt-search,9.2.0,1753078987,07/21/2025
 5660,azure-mgmt-netapp@13.6.0,python,azure-mgmt-netapp_13.6.0,azure-mgmt-netapp,13.6.0,1753078984,07/21/2025
+5661,azure-mgmt-cognitiveservices@13.7.0,python,azure-mgmt-cognitiveservices_13.7.0,azure-mgmt-cognitiveservices,13.7.0,1753078978,07/21/2025

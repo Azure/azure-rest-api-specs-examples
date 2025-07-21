@@ -5647,3 +5647,4 @@ id,name,language,tag,package,version,date_epoch,date
 5646,azure-mgmt-hardwaresecuritymodules@1.0.0,python,azure-mgmt-hardwaresecuritymodules_1.0.0,azure-mgmt-hardwaresecuritymodules,1.0.0,1752762652,07/17/2025
 5647,"Azure.ResourceManager,1.13.2",dotnet,Azure.ResourceManager_1.13.2,Azure.ResourceManager,1.13.2,1752844511,07/18/2025
 5648,com.azure.resourcemanager:azure-resourcemanager-netapp:1.8.0,java,azure-resourcemanager-netapp_1.8.0,azure-resourcemanager-netapp,1.8.0,1753081213,07/21/2025
+5649,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.2.0,java,azure-resourcemanager-cognitiveservices_1.2.0,azure-resourcemanager-cognitiveservices,1.2.0,1753073160,07/21/2025

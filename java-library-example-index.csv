@@ -5654,3 +5654,4 @@ id,name,language,tag,package,version,date_epoch,date
 5653,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0,go,sdk/resourcemanager/search/armsearch/v1.4.0,sdk/resourcemanager/search/armsearch,v1.4.0,1753070683,07/21/2025
 5654,@azure/arm-dell-storage@1.0.0-beta.1,js,@azure/arm-dell-storage_1.0.0-beta.1,@azure/arm-dell-storage,1.0.0-beta.1,1753012113,07/20/2025
 5655,azure-mgmt-containerservice@39.0.0,python,azure-mgmt-containerservice_39.0.0,azure-mgmt-containerservice,39.0.0,1753084166,07/21/2025
+5656,azure-mgmt-eventgrid@10.5.0b1,python,azure-mgmt-eventgrid_10.5.0b1,azure-mgmt-eventgrid,10.5.0b1,1753079073,07/21/2025

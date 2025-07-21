@@ -5653,3 +5653,4 @@ id,name,language,tag,package,version,date_epoch,date
 5652,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices@v1.8.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v1.8.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v1.8.0,1753072363,07/21/2025
 5653,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0,go,sdk/resourcemanager/search/armsearch/v1.4.0,sdk/resourcemanager/search/armsearch,v1.4.0,1753070683,07/21/2025
 5654,@azure/arm-dell-storage@1.0.0-beta.1,js,@azure/arm-dell-storage_1.0.0-beta.1,@azure/arm-dell-storage,1.0.0-beta.1,1753012113,07/20/2025
+5655,azure-mgmt-containerservice@39.0.0,python,azure-mgmt-containerservice_39.0.0,azure-mgmt-containerservice,39.0.0,1753084166,07/21/2025

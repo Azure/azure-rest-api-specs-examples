@@ -5661,3 +5661,4 @@ id,name,language,tag,package,version,date_epoch,date
 5660,azure-mgmt-netapp@13.6.0,python,azure-mgmt-netapp_13.6.0,azure-mgmt-netapp,13.6.0,1753078984,07/21/2025
 5661,azure-mgmt-cognitiveservices@13.7.0,python,azure-mgmt-cognitiveservices_13.7.0,azure-mgmt-cognitiveservices,13.7.0,1753078978,07/21/2025
 5662,azure-mgmt-policyinsights@1.1.0b5,python,azure-mgmt-policyinsights_1.1.0b5,azure-mgmt-policyinsights,1.1.0b5,1753078955,07/21/2025
+5663,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v2@v2.0.0,go,sdk/resourcemanager/providerhub/armproviderhub/v2.0.0,sdk/resourcemanager/providerhub/armproviderhub,v2.0.0,1753177214,07/22/2025

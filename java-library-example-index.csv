@@ -5668,3 +5668,4 @@ id,name,language,tag,package,version,date_epoch,date
 5667,"Azure.ResourceManager.RedisEnterprise,1.2.0",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0,Azure.ResourceManager.RedisEnterprise,1.2.0,1753156193,07/22/2025
 5668,com.azure.resourcemanager:azure-resourcemanager-storagediscovery:1.0.0-beta.1,java,azure-resourcemanager-storagediscovery_1.0.0-beta.1,azure-resourcemanager-storagediscovery,1.0.0-beta.1,1753223579,07/22/2025
 5669,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagediscovery/armstoragediscovery@v0.1.0,go,sdk/resourcemanager/storagediscovery/armstoragediscovery/v0.1.0,sdk/resourcemanager/storagediscovery/armstoragediscovery,v0.1.0,1753224649,07/22/2025
+5670,azure-mgmt-storagediscovery@1.0.0b1,python,azure-mgmt-storagediscovery_1.0.0b1,azure-mgmt-storagediscovery,1.0.0b1,1753230228,07/23/2025

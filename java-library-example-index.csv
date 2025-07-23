@@ -5666,3 +5666,4 @@ id,name,language,tag,package,version,date_epoch,date
 5665,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dashboard/armdashboard/v2@v2.0.0-beta.1,go,sdk/resourcemanager/dashboard/armdashboard/v2.0.0-beta.1,sdk/resourcemanager/dashboard/armdashboard,v2.0.0-beta.1,1753169504,07/22/2025
 5666,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v7@v7.3.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v7.3.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v7.3.0-beta.1,1753156221,07/22/2025
 5667,"Azure.ResourceManager.RedisEnterprise,1.2.0",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0,Azure.ResourceManager.RedisEnterprise,1.2.0,1753156193,07/22/2025
+5668,com.azure.resourcemanager:azure-resourcemanager-storagediscovery:1.0.0-beta.1,java,azure-resourcemanager-storagediscovery_1.0.0-beta.1,azure-resourcemanager-storagediscovery,1.0.0-beta.1,1753223579,07/22/2025

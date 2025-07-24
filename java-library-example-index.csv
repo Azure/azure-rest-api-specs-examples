@@ -5672,3 +5672,4 @@ id,name,language,tag,package,version,date_epoch,date
 5671,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentstacks@v1.0.1,go,sdk/resourcemanager/resources/armdeploymentstacks/v1.0.1,sdk/resourcemanager/resources/armdeploymentstacks,v1.0.1,1753337810,07/24/2025
 5672,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments@v0.1.0,go,sdk/resourcemanager/resources/armdeployments/v0.1.0,sdk/resourcemanager/resources/armdeployments,v0.1.0,1753336245,07/24/2025
 5673,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.0.0,go,sdk/resourcemanager/compute/armcompute/v7.0.0,sdk/resourcemanager/compute/armcompute,v7.0.0,1753325906,07/24/2025
+5674,@azure/arm-msi@2.2.0,js,@azure/arm-msi_2.2.0,@azure/arm-msi,2.2.0,1753333188,07/24/2025

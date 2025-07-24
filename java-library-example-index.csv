@@ -5675,3 +5675,4 @@ id,name,language,tag,package,version,date_epoch,date
 5674,@azure/arm-msi@2.2.0,js,@azure/arm-msi_2.2.0,@azure/arm-msi,2.2.0,1753333188,07/24/2025
 5675,@azure/arm-containerservice@23.0.0-beta.2,js,@azure/arm-containerservice_23.0.0-beta.2,@azure/arm-containerservice,23.0.0-beta.2,1753333164,07/24/2025
 5676,azure-mgmt-carbonoptimization@1.0.0,python,azure-mgmt-carbonoptimization_1.0.0,azure-mgmt-carbonoptimization,1.0.0,1753349833,07/24/2025
+5677,azure-mgmt-authorization@5.0.0b1,python,azure-mgmt-authorization_5.0.0b1,azure-mgmt-authorization,5.0.0b1,1753337466,07/24/2025

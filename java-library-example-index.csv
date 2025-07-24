@@ -5674,3 +5674,4 @@ id,name,language,tag,package,version,date_epoch,date
 5673,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.0.0,go,sdk/resourcemanager/compute/armcompute/v7.0.0,sdk/resourcemanager/compute/armcompute,v7.0.0,1753325906,07/24/2025
 5674,@azure/arm-msi@2.2.0,js,@azure/arm-msi_2.2.0,@azure/arm-msi,2.2.0,1753333188,07/24/2025
 5675,@azure/arm-containerservice@23.0.0-beta.2,js,@azure/arm-containerservice_23.0.0-beta.2,@azure/arm-containerservice,23.0.0-beta.2,1753333164,07/24/2025
+5676,azure-mgmt-carbonoptimization@1.0.0,python,azure-mgmt-carbonoptimization_1.0.0,azure-mgmt-carbonoptimization,1.0.0,1753349833,07/24/2025

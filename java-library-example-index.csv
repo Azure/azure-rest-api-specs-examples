@@ -5676,3 +5676,4 @@ id,name,language,tag,package,version,date_epoch,date
 5675,@azure/arm-containerservice@23.0.0-beta.2,js,@azure/arm-containerservice_23.0.0-beta.2,@azure/arm-containerservice,23.0.0-beta.2,1753333164,07/24/2025
 5676,azure-mgmt-carbonoptimization@1.0.0,python,azure-mgmt-carbonoptimization_1.0.0,azure-mgmt-carbonoptimization,1.0.0,1753349833,07/24/2025
 5677,azure-mgmt-authorization@5.0.0b1,python,azure-mgmt-authorization_5.0.0b1,azure-mgmt-authorization,5.0.0b1,1753337466,07/24/2025
+5678,com.azure.resourcemanager:azure-resourcemanager-carbonoptimization:1.0.0,java,azure-resourcemanager-carbonoptimization_1.0.0,azure-resourcemanager-carbonoptimization,1.0.0,1753432678,07/25/2025

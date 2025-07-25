@@ -5689,3 +5689,4 @@ id,name,language,tag,package,version,date_epoch,date
 5688,@azure/arm-cognitiveservices@7.7.0,js,@azure/arm-cognitiveservices_7.7.0,@azure/arm-cognitiveservices,7.7.0,1753420359,07/25/2025
 5689,"Azure.ResourceManager.RedisEnterprise,1.2.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.1,Azure.ResourceManager.RedisEnterprise,1.2.1,1753428627,07/25/2025
 5690,"Azure.ResourceManager.HardwareSecurityModules,1.0.0",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.0.0,Azure.ResourceManager.HardwareSecurityModules,1.0.0,1753355965,07/24/2025
+5691,azure-mgmt-applicationinsights@5.0.0b1,python,azure-mgmt-applicationinsights_5.0.0b1,azure-mgmt-applicationinsights,5.0.0b1,1753426627,07/25/2025

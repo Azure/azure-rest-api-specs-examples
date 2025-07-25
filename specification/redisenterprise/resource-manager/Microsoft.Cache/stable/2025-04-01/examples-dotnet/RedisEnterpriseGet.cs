@@ -4,9 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.RedisEnterprise.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RedisEnterprise;
 
 // Generated from example definition: specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2025-04-01/examples/RedisEnterpriseGet.json
@@ -17,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this RedisEnterpriseClusterResource created on azure
+// for more information of creating RedisEnterpriseClusterResource, please refer to the document of RedisEnterpriseClusterResource
 string subscriptionId = "e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this RedisEnterpriseClusterResource
-RedisEnterpriseClusterCollection collection = resourceGroupResource.GetRedisEnterpriseClusters();
+string clusterName = "cache1";
+ResourceIdentifier redisEnterpriseClusterResourceId = RedisEnterpriseClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpriseClusterResource(redisEnterpriseClusterResourceId);
 
 // invoke the operation
-string clusterName = "cache1";
-NullableResponse<RedisEnterpriseClusterResource> response = await collection.GetIfExistsAsync(clusterName);
-RedisEnterpriseClusterResource result = response.HasValue ? response.Value : null;
+RedisEnterpriseClusterResource result = await redisEnterpriseCluster.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RedisEnterpriseClusterData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RedisEnterpriseClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

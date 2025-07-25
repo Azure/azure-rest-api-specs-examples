@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AccessPolicyAssignmentResource created on azure
-// for more information of creating AccessPolicyAssignmentResource, please refer to the document of AccessPolicyAssignmentResource
+// this example assumes you already have this RedisEnterpriseDatabaseResource created on azure
+// for more information of creating RedisEnterpriseDatabaseResource, please refer to the document of RedisEnterpriseDatabaseResource
 string subscriptionId = "e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f";
 string resourceGroupName = "rg1";
 string clusterName = "cache1";
 string databaseName = "default";
-string accessPolicyAssignmentName = "defaultTestEntraApp1";
-ResourceIdentifier accessPolicyAssignmentResourceId = AccessPolicyAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName, accessPolicyAssignmentName);
-AccessPolicyAssignmentResource accessPolicyAssignment = client.GetAccessPolicyAssignmentResource(accessPolicyAssignmentResourceId);
+ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
+RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
+
+// get the collection of this AccessPolicyAssignmentResource
+AccessPolicyAssignmentCollection collection = redisEnterpriseDatabase.GetAccessPolicyAssignments();
 
 // invoke the operation
+string accessPolicyAssignmentName = "defaultTestEntraApp1";
 AccessPolicyAssignmentData data = new AccessPolicyAssignmentData
 {
     AccessPolicyName = "default",
     UserObjectId = Guid.Parse("6497c918-11ad-41e7-1b0f-7c518a87d0b0"),
 };
-ArmOperation<AccessPolicyAssignmentResource> lro = await accessPolicyAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AccessPolicyAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accessPolicyAssignmentName, data);
 AccessPolicyAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

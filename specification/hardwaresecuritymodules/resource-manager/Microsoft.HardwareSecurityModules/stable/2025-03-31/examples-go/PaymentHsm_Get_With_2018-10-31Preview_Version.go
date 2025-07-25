@@ -1,0 +1,61 @@
+package armhardwaresecuritymodules_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2"
+)
+
+// Generated from example definition: 2025-03-31/PaymentHsm_Get_With_2018-10-31Preview_Version.json
+func ExampleDedicatedHsmClient_Get_getAPaymentHsmWith20181031PreviewApiVersion() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhardwaresecuritymodules.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewDedicatedHsmClient().Get(ctx, "hsm-group", "hsm1", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armhardwaresecuritymodules.DedicatedHsmClientGetResponse{
+	// 	DedicatedHsm: &armhardwaresecuritymodules.DedicatedHsm{
+	// 		Name: to.Ptr("hsm1"),
+	// 		Type: to.Ptr("Microsoft.HardwareSecurityModules/dedicatedHSMs"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm1"),
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armhardwaresecuritymodules.DedicatedHsmProperties{
+	// 			NetworkProfile: &armhardwaresecuritymodules.NetworkProfile{
+	// 				NetworkInterfaces: []*armhardwaresecuritymodules.NetworkInterface{
+	// 					{
+	// 						PrivateIPAddress: to.Ptr("1.0.0.1"),
+	// 						ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/networkInterfaces/hsm1_HSMHost1Nic"),
+	// 					},
+	// 				},
+	// 				Subnet: &armhardwaresecuritymodules.APIEntityReference{
+	// 					ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"),
+	// 				},
+	// 			},
+	// 			ProvisioningState: to.Ptr(armhardwaresecuritymodules.JSONWebKeyTypeSucceeded),
+	// 			StampID: to.Ptr("stamp01"),
+	// 			StatusMessage: to.Ptr("DedicatedHsm device is functional."),
+	// 		},
+	// 		SKU: &armhardwaresecuritymodules.SKU{
+	// 			Name: to.Ptr(armhardwaresecuritymodules.SKUNamePayShield10KLMK1CPS60),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"Dept": to.Ptr("hsm"),
+	// 			"Environment": to.Ptr("dogfood"),
+	// 			"Slice": to.Ptr("A"),
+	// 		},
+	// 	},
+	// }
+}

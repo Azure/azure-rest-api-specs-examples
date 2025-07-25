@@ -5682,3 +5682,4 @@ id,name,language,tag,package,version,date_epoch,date
 5681,@azure/arm-netapp@21.6.0,js,@azure/arm-netapp_21.6.0,@azure/arm-netapp,21.6.0,1753426289,07/25/2025
 5682,@azure/arm-carbonoptimization@1.0.0,js,@azure/arm-carbonoptimization_1.0.0,@azure/arm-carbonoptimization,1.0.0,1753426043,07/25/2025
 5683,@azure/arm-search@3.3.0,js,@azure/arm-search_3.3.0,@azure/arm-search,3.3.0,1753426018,07/25/2025
+5684,@azure/arm-resources@7.0.0,js,@azure/arm-resources_7.0.0,@azure/arm-resources,7.0.0,1753425996,07/25/2025

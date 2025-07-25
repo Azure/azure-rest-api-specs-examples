@@ -5684,3 +5684,4 @@ id,name,language,tag,package,version,date_epoch,date
 5683,@azure/arm-search@3.3.0,js,@azure/arm-search_3.3.0,@azure/arm-search,3.3.0,1753426018,07/25/2025
 5684,@azure/arm-resources@7.0.0,js,@azure/arm-resources_7.0.0,@azure/arm-resources,7.0.0,1753425996,07/25/2025
 5685,@azure/arm-eventgrid@15.0.0-beta.1,js,@azure/arm-eventgrid_15.0.0-beta.1,@azure/arm-eventgrid,15.0.0-beta.1,1753425953,07/25/2025
+5686,@azure/arm-datamigration@3.0.0-beta.4,js,@azure/arm-datamigration_3.0.0-beta.4,@azure/arm-datamigration,3.0.0-beta.4,1753425891,07/25/2025

@@ -15,6 +15,6 @@ public final class Main {
      */
     public static void virtualMachineScaleSetVMListMinimumSetGen(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.virtualMachines().manager().serviceClient().getVirtualMachineScaleSetVMs().list("rgcompute",
-            "aaaaaaaaaaaaaaaaaaaaaaaaaaaa", null, null, null, com.azure.core.util.Context.NONE);
+            "aaaaaaaaaaaaaa", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

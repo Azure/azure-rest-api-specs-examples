@@ -2,6 +2,7 @@
 import com.azure.resourcemanager.compute.fluent.models.VirtualMachineScaleSetInner;
 import com.azure.resourcemanager.compute.models.ApiEntityReference;
 import com.azure.resourcemanager.compute.models.CachingTypes;
+import com.azure.resourcemanager.compute.models.DiskControllerTypes;
 import com.azure.resourcemanager.compute.models.DiskCreateOptionTypes;
 import com.azure.resourcemanager.compute.models.EventGridAndResourceGraph;
 import com.azure.resourcemanager.compute.models.ImageReference;
@@ -60,7 +61,7 @@ public final class Main {
                             .withCreateOption(DiskCreateOptionTypes.FROM_IMAGE)
                             .withManagedDisk(new VirtualMachineScaleSetManagedDiskParameters()
                                 .withStorageAccountType(StorageAccountTypes.STANDARD_LRS)))
-                        .withDiskControllerType("NVMe"))
+                        .withDiskControllerType(DiskControllerTypes.NVME))
                     .withNetworkProfile(new VirtualMachineScaleSetNetworkProfile().withNetworkInterfaceConfigurations(
                         Arrays.asList(new VirtualMachineScaleSetNetworkConfiguration().withName("{vmss-name}")
                             .withPrimary(true)

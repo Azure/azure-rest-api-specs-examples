@@ -1,6 +1,4 @@
 
-import com.azure.resourcemanager.compute.models.Expand;
-
 /**
  * Samples for VirtualMachineImages ListWithProperties.
  */
@@ -17,8 +15,8 @@ public final class Main {
      */
     public static void
         virtualMachineImagesListWithPropertiesMaximumSet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getVirtualMachineImages().listWithProperties("eastus",
-            "MicrosoftWindowsServer", "WindowsServer", "2022-datacenter-azure-edition", Expand.PROPERTIES, 4, "aa",
+        azure.virtualMachines().manager().serviceClient().getVirtualMachineImages().listWithPropertiesWithResponse(
+            "eastus", "MicrosoftWindowsServer", "WindowsServer", "2022-datacenter-azure-edition", "Properties", 4, "aa",
             com.azure.core.util.Context.NONE);
     }
 }

@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.compute.models.DiskPurchasePlan;
+import com.azure.resourcemanager.compute.models.DiskUpdate;
+
+/**
+ * Samples for Disks Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/examples/diskExamples/
+     * Disk_Update_AddPurchasePlan.json
+     */
+    /**
+     * Sample code: update a managed disk to add purchase plan.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void updateAManagedDiskToAddPurchasePlan(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.virtualMachines().manager().serviceClient().getDisks().update("myResourceGroup", "myDisk",
+            new DiskUpdate().withPurchasePlan(
+                new DiskPurchasePlan().withName("myPurchasePlanName").withPublisher("myPurchasePlanPublisher")
+                    .withProduct("myPurchasePlanProduct").withPromotionCode("fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
+    }
+}

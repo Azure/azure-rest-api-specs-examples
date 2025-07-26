@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps GetFtpAllowedSlot.
+ * Samples for WebApps GetScmAllowedSlot.
  */
 public final class Main {
     /*
@@ -9,12 +9,12 @@ public final class Main {
      * json
      */
     /**
-     * Sample code: Get FTP Allowed.
+     * Sample code: Get SCM Allowed.
      * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void getFTPAllowed(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().getFtpAllowedSlotWithResponse("rg", "testSite", "stage",
+    public static void getSCMAllowed(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.webApps().manager().serviceClient().getWebApps().getScmAllowedSlotWithResponse("rg", "testSite", "stage",
             com.azure.core.util.Context.NONE);
     }
 }

@@ -1,0 +1,88 @@
+package armhardwaresecuritymodules_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2"
+)
+
+// Generated from example definition: 2025-03-31/CloudHsmClusterPrivateEndpointConnection_ListByCloudHsmCluster_MaximumSet_Gen.json
+func ExamplePrivateEndpointConnectionsClient_NewListByCloudHsmClusterPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhardwaresecuritymodules.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewPrivateEndpointConnectionsClient().NewListByCloudHsmClusterPager("rgcloudhsm", "chsm1", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armhardwaresecuritymodules.PrivateEndpointConnectionsClientListByCloudHsmClusterResponse{
+		// 	PrivateEndpointConnectionListResult: armhardwaresecuritymodules.PrivateEndpointConnectionListResult{
+		// 		Value: []*armhardwaresecuritymodules.PrivateEndpointConnection{
+		// 			{
+		// 				Name: to.Ptr("chsm1"),
+		// 				Type: to.Ptr("Microsoft.HardwareSecurityModules/cloudHsmClusters/privateEndpointConnections"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgcloudhsm/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/chsm1/privateEndpointConnections/sample-pec1"),
+		// 				Properties: &armhardwaresecuritymodules.PrivateEndpointConnectionProperties{
+		// 					PrivateEndpoint: &armhardwaresecuritymodules.PrivateEndpoint{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgcloudhsm/providers/Microsoft.Network/privateEndpoints/sample-pec1"),
+		// 					},
+		// 					PrivateLinkServiceConnectionState: &armhardwaresecuritymodules.PrivateLinkServiceConnectionState{
+		// 						Description: to.Ptr("This was automatically approved by user1234@contoso.com"),
+		// 						ActionsRequired: to.Ptr("None"),
+		// 						Status: to.Ptr(armhardwaresecuritymodules.PrivateEndpointServiceConnectionStatusApproved),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armhardwaresecuritymodules.PrivateEndpointConnectionProvisioningStateSucceeded),
+		// 				},
+		// 				SystemData: &armhardwaresecuritymodules.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+		// 					CreatedBy: to.Ptr("User1"),
+		// 					CreatedByType: to.Ptr(armhardwaresecuritymodules.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("User2"),
+		// 					LastModifiedByType: to.Ptr(armhardwaresecuritymodules.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("chsm2"),
+		// 				Type: to.Ptr("Microsoft.HardwareSecurityModules/cloudHsmClusters/privateEndpointConnections"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgcloudhsm/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/chsm2/privateEndpointConnections/sample-pec2"),
+		// 				Properties: &armhardwaresecuritymodules.PrivateEndpointConnectionProperties{
+		// 					PrivateEndpoint: &armhardwaresecuritymodules.PrivateEndpoint{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgcloudhsm/providers/Microsoft.Network/privateEndpoints/sample-pec2"),
+		// 					},
+		// 					PrivateLinkServiceConnectionState: &armhardwaresecuritymodules.PrivateLinkServiceConnectionState{
+		// 						Description: to.Ptr("This was automatically approved by user1234@contoso.com"),
+		// 						ActionsRequired: to.Ptr("None"),
+		// 						Status: to.Ptr(armhardwaresecuritymodules.PrivateEndpointServiceConnectionStatusApproved),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armhardwaresecuritymodules.PrivateEndpointConnectionProvisioningStateSucceeded),
+		// 				},
+		// 				SystemData: &armhardwaresecuritymodules.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+		// 					CreatedBy: to.Ptr("User1"),
+		// 					CreatedByType: to.Ptr(armhardwaresecuritymodules.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("User2"),
+		// 					LastModifiedByType: to.Ptr(armhardwaresecuritymodules.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

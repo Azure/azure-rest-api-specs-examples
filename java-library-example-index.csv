@@ -5691,3 +5691,5 @@ id,name,language,tag,package,version,date_epoch,date
 5690,"Azure.ResourceManager.HardwareSecurityModules,1.0.0",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.0.0,Azure.ResourceManager.HardwareSecurityModules,1.0.0,1753355965,07/24/2025
 5691,azure-mgmt-applicationinsights@5.0.0b1,python,azure-mgmt-applicationinsights_5.0.0b1,azure-mgmt-applicationinsights,5.0.0b1,1753426627,07/25/2025
 5692,azure-mgmt-compute@35.0.0,python,azure-mgmt-compute_35.0.0,azure-mgmt-compute,35.0.0,1753412752,07/25/2025
+5693,com.azure.resourcemanager:azure-resourcemanager:2.53.0,java,azure-resourcemanager_2.53.0,azure-resourcemanager,2.53.0,1753455843,07/25/2025
+5694,@azure/arm-storagediscovery@1.0.0-beta.1,js,@azure/arm-storagediscovery_1.0.0-beta.1,@azure/arm-storagediscovery,1.0.0-beta.1,1753477803,07/25/2025

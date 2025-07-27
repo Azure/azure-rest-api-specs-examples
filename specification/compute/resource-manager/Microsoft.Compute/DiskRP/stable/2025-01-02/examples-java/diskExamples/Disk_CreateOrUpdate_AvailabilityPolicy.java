@@ -1,0 +1,30 @@
+
+import com.azure.resourcemanager.compute.fluent.models.DiskInner;
+import com.azure.resourcemanager.compute.models.AvailabilityPolicy;
+import com.azure.resourcemanager.compute.models.AvailabilityPolicyDiskDelay;
+import com.azure.resourcemanager.compute.models.CreationData;
+import com.azure.resourcemanager.compute.models.DiskCreateOption;
+
+/**
+ * Samples for Disks CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/examples/diskExamples/
+     * Disk_CreateOrUpdate_AvailabilityPolicy.json
+     */
+    /**
+     * Sample code: create a managed disk with availability policy.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void createAManagedDiskWithAvailabilityPolicy(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.virtualMachines().manager().serviceClient().getDisks().createOrUpdate("myResourceGroup", "myDisk",
+            new DiskInner().withLocation("West US")
+                .withCreationData(new CreationData().withCreateOption(DiskCreateOption.EMPTY)).withDiskSizeGB(1024)
+                .withAvailabilityPolicy(
+                    new AvailabilityPolicy().withActionOnDiskDelay(AvailabilityPolicyDiskDelay.AUTOMATIC_REATTACH)),
+            com.azure.core.util.Context.NONE);
+    }
+}

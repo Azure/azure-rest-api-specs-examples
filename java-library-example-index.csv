@@ -5698,3 +5698,4 @@ id,name,language,tag,package,version,date_epoch,date
 5697,"Azure.ResourceManager.CognitiveServices,1.5.1",dotnet,Azure.ResourceManager.CognitiveServices_1.5.1,Azure.ResourceManager.CognitiveServices,1.5.1,1753695602,07/28/2025
 5698,"Azure.ResourceManager.Authorization,1.1.5",dotnet,Azure.ResourceManager.Authorization_1.1.5,Azure.ResourceManager.Authorization,1.1.5,1753695392,07/28/2025
 5699,"Azure.ResourceManager.Storage,1.4.4",dotnet,Azure.ResourceManager.Storage_1.4.4,Azure.ResourceManager.Storage,1.4.4,1753695358,07/28/2025
+5700,"Azure.ResourceManager.AppConfiguration,1.4.1",dotnet,Azure.ResourceManager.AppConfiguration_1.4.1,Azure.ResourceManager.AppConfiguration,1.4.1,1753694960,07/28/2025

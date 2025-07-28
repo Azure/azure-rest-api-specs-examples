@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.monitor import MonitorManagementClient
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="187f412d-1758-44d9-b052-169e2564721d",
     )
 
-    response = client.action_groups.delete(
+    client.action_groups.delete(
         resource_group_name="Default-NotificationRules",
         action_group_name="SampleActionGroup",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2023-01-01/examples/deleteActionGroup.json

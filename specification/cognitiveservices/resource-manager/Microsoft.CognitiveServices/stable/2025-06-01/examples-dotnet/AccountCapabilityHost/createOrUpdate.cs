@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesCapabilityHostResource created on azure
-// for more information of creating CognitiveServicesCapabilityHostResource, please refer to the document of CognitiveServicesCapabilityHostResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string accountName = "account-1";
-string capabilityHostName = "capabilityHostName";
-ResourceIdentifier cognitiveServicesCapabilityHostResourceId = CognitiveServicesCapabilityHostResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, capabilityHostName);
-CognitiveServicesCapabilityHostResource cognitiveServicesCapabilityHost = client.GetCognitiveServicesCapabilityHostResource(cognitiveServicesCapabilityHostResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CognitiveServicesCapabilityHostResource
+CognitiveServicesCapabilityHostCollection collection = cognitiveServicesAccount.GetCognitiveServicesCapabilityHosts();
 
 // invoke the operation
+string capabilityHostName = "capabilityHostName";
 CognitiveServicesCapabilityHostData data = new CognitiveServicesCapabilityHostData(new CognitiveServicesCapabilityHostProperties
 {
     CustomerSubnet = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroups/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet",
 });
-ArmOperation<CognitiveServicesCapabilityHostResource> lro = await cognitiveServicesCapabilityHost.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<CognitiveServicesCapabilityHostResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, capabilityHostName, data);
 CognitiveServicesCapabilityHostResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

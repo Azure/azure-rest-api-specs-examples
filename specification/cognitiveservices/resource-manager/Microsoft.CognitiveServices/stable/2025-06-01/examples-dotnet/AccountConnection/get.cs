@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesConnectionResource created on azure
-// for more information of creating CognitiveServicesConnectionResource, please refer to the document of CognitiveServicesConnectionResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "resourceGroup-1";
 string accountName = "account-1";
-string connectionName = "connection-1";
-ResourceIdentifier cognitiveServicesConnectionResourceId = CognitiveServicesConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, connectionName);
-CognitiveServicesConnectionResource cognitiveServicesConnection = client.GetCognitiveServicesConnectionResource(cognitiveServicesConnectionResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CognitiveServicesConnectionResource
+CognitiveServicesConnectionCollection collection = cognitiveServicesAccount.GetCognitiveServicesConnections();
 
 // invoke the operation
-CognitiveServicesConnectionResource result = await cognitiveServicesConnection.GetAsync();
+string connectionName = "connection-1";
+NullableResponse<CognitiveServicesConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
+CognitiveServicesConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CognitiveServicesConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CognitiveServicesConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

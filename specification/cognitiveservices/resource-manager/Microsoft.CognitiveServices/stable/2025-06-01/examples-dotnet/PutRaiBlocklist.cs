@@ -1,11 +1,9 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.CognitiveServices.Models;
 using Azure.ResourceManager.CognitiveServices;
 
 // Generated from example definition: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2025-06-01/examples/PutRaiBlocklist.json
@@ -16,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RaiBlocklistResource created on azure
-// for more information of creating RaiBlocklistResource, please refer to the document of RaiBlocklistResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-string raiBlocklistName = "raiBlocklistName";
-ResourceIdentifier raiBlocklistResourceId = RaiBlocklistResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, raiBlocklistName);
-RaiBlocklistResource raiBlocklist = client.GetRaiBlocklistResource(raiBlocklistResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this RaiBlocklistResource
+RaiBlocklistCollection collection = cognitiveServicesAccount.GetRaiBlocklists();
 
 // invoke the operation
+string raiBlocklistName = "raiBlocklistName";
 RaiBlocklistData data = new RaiBlocklistData
 {
     RaiBlocklistDescription = "Basic blocklist description",
 };
-ArmOperation<RaiBlocklistResource> lro = await raiBlocklist.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RaiBlocklistResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, raiBlocklistName, data);
 RaiBlocklistResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

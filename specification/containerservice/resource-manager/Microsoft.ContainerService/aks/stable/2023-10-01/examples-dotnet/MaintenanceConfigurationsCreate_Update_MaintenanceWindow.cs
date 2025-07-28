@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceMaintenanceConfigurationResource created on azure
-// for more information of creating ContainerServiceMaintenanceConfigurationResource, please refer to the document of ContainerServiceMaintenanceConfigurationResource
+// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
+// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-string configName = "aksManagedAutoUpgradeSchedule";
-ResourceIdentifier containerServiceMaintenanceConfigurationResourceId = ContainerServiceMaintenanceConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, configName);
-ContainerServiceMaintenanceConfigurationResource containerServiceMaintenanceConfiguration = client.GetContainerServiceMaintenanceConfigurationResource(containerServiceMaintenanceConfigurationResourceId);
+ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
+
+// get the collection of this ContainerServiceMaintenanceConfigurationResource
+ContainerServiceMaintenanceConfigurationCollection collection = containerServiceManagedCluster.GetContainerServiceMaintenanceConfigurations();
 
 // invoke the operation
+string configName = "aksManagedAutoUpgradeSchedule";
 ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintenanceConfigurationData
 {
     MaintenanceWindow = new ContainerServiceMaintenanceWindow(new ContainerServiceMaintenanceSchedule
@@ -37,7 +40,7 @@ ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintena
         NotAllowedDates = { new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-02-18"), DateTimeOffset.Parse("2023-02-25")), new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-12-23"), DateTimeOffset.Parse("2024-01-05")) },
     },
 };
-ArmOperation<ContainerServiceMaintenanceConfigurationResource> lro = await containerServiceMaintenanceConfiguration.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ContainerServiceMaintenanceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configName, data);
 ContainerServiceMaintenanceConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,19 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this RoleManagementPolicyAssignmentResource
+// this example assumes you already have this RoleManagementPolicyAssignmentResource created on azure
+// for more information of creating RoleManagementPolicyAssignmentResource, please refer to the document of RoleManagementPolicyAssignmentResource
 string scope = "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368";
-RoleManagementPolicyAssignmentCollection collection = client.GetRoleManagementPolicyAssignments(new ResourceIdentifier(scope));
+string roleManagementPolicyAssignmentName = "b959d571-f0b5-4042-88a7-01be6cb22db9_a1705bd2-3a8f-45a5-8683-466fcfd5cc24";
+ResourceIdentifier roleManagementPolicyAssignmentResourceId = RoleManagementPolicyAssignmentResource.CreateResourceIdentifier(scope, roleManagementPolicyAssignmentName);
+RoleManagementPolicyAssignmentResource roleManagementPolicyAssignment = client.GetRoleManagementPolicyAssignmentResource(roleManagementPolicyAssignmentResourceId);
 
 // invoke the operation
-string roleManagementPolicyAssignmentName = "b959d571-f0b5-4042-88a7-01be6cb22db9_a1705bd2-3a8f-45a5-8683-466fcfd5cc24";
 RoleManagementPolicyAssignmentData data = new RoleManagementPolicyAssignmentData
 {
     Scope = "/subscriptions/129ff972-28f8-46b8-a726-e497be039368",
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/129ff972-28f8-46b8-a726-e497be039368/providers/Microsoft.Authorization/roleDefinitions/a1705bd2-3a8f-45a5-8683-466fcfd5cc24"),
     PolicyId = new ResourceIdentifier("/subscriptions/129ff972-28f8-46b8-a726-e497be039368/providers/Microsoft.Authorization/roleManagementPolicies/b959d571-f0b5-4042-88a7-01be6cb22db9"),
 };
-ArmOperation<RoleManagementPolicyAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleManagementPolicyAssignmentName, data);
+ArmOperation<RoleManagementPolicyAssignmentResource> lro = await roleManagementPolicyAssignment.UpdateAsync(WaitUntil.Completed, data);
 RoleManagementPolicyAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -5696,3 +5696,4 @@ id,name,language,tag,package,version,date_epoch,date
 5695,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.1.0-beta.1,java,azure-resourcemanager-datamigration_1.1.0-beta.1,azure-resourcemanager-datamigration,1.1.0-beta.1,1753678559,07/28/2025
 5696,@azure/arm-containerservice@23.0.0-beta.3,js,@azure/arm-containerservice_23.0.0-beta.3,@azure/arm-containerservice,23.0.0-beta.3,1753669222,07/28/2025
 5697,"Azure.ResourceManager.CognitiveServices,1.5.1",dotnet,Azure.ResourceManager.CognitiveServices_1.5.1,Azure.ResourceManager.CognitiveServices,1.5.1,1753695602,07/28/2025
+5698,"Azure.ResourceManager.Authorization,1.1.5",dotnet,Azure.ResourceManager.Authorization_1.1.5,Azure.ResourceManager.Authorization,1.1.5,1753695392,07/28/2025

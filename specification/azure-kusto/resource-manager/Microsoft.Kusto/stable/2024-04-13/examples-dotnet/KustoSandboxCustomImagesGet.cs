@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SandboxCustomImageResource created on azure
-// for more information of creating SandboxCustomImageResource, please refer to the document of SandboxCustomImageResource
+// this example assumes you already have this KustoClusterResource created on azure
+// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
-string sandboxCustomImageName = "customImage8";
-ResourceIdentifier sandboxCustomImageResourceId = SandboxCustomImageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, sandboxCustomImageName);
-SandboxCustomImageResource sandboxCustomImage = client.GetSandboxCustomImageResource(sandboxCustomImageResourceId);
+ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
+
+// get the collection of this SandboxCustomImageResource
+SandboxCustomImageCollection collection = kustoCluster.GetSandboxCustomImages();
 
 // invoke the operation
-SandboxCustomImageResource result = await sandboxCustomImage.GetAsync();
+string sandboxCustomImageName = "customImage8";
+NullableResponse<SandboxCustomImageResource> response = await collection.GetIfExistsAsync(sandboxCustomImageName);
+SandboxCustomImageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SandboxCustomImageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SandboxCustomImageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

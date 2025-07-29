@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoDatabaseResource created on azure
-// for more information of creating KustoDatabaseResource, please refer to the document of KustoDatabaseResource
+// this example assumes you already have this KustoDatabasePrincipalAssignmentResource created on azure
+// for more information of creating KustoDatabasePrincipalAssignmentResource, please refer to the document of KustoDatabasePrincipalAssignmentResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
 string databaseName = "Kustodatabase8";
-ResourceIdentifier kustoDatabaseResourceId = KustoDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
-KustoDatabaseResource kustoDatabase = client.GetKustoDatabaseResource(kustoDatabaseResourceId);
-
-// get the collection of this KustoDatabasePrincipalAssignmentResource
-KustoDatabasePrincipalAssignmentCollection collection = kustoDatabase.GetKustoDatabasePrincipalAssignments();
+string principalAssignmentName = "kustoprincipal1";
+ResourceIdentifier kustoDatabasePrincipalAssignmentResourceId = KustoDatabasePrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName, principalAssignmentName);
+KustoDatabasePrincipalAssignmentResource kustoDatabasePrincipalAssignment = client.GetKustoDatabasePrincipalAssignmentResource(kustoDatabasePrincipalAssignmentResourceId);
 
 // invoke the operation
-string principalAssignmentName = "kustoprincipal1";
-NullableResponse<KustoDatabasePrincipalAssignmentResource> response = await collection.GetIfExistsAsync(principalAssignmentName);
-KustoDatabasePrincipalAssignmentResource result = response.HasValue ? response.Value : null;
+KustoDatabasePrincipalAssignmentResource result = await kustoDatabasePrincipalAssignment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    KustoDatabasePrincipalAssignmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+KustoDatabasePrincipalAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

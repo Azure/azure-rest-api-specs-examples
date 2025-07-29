@@ -1,0 +1,34 @@
+
+import com.azure.resourcemanager.providerhub.models.ApplicationDataAuthorization;
+import com.azure.resourcemanager.providerhub.models.ApplicationProviderAuthorization;
+import com.azure.resourcemanager.providerhub.models.AuthorizedApplicationProperties;
+import com.azure.resourcemanager.providerhub.models.Role;
+import java.util.Arrays;
+import java.util.UUID;
+
+/**
+ * Samples for AuthorizedApplications CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
+     * AuthorizedApplications_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: AuthorizedApplications_CreateOrUpdate.
+     * 
+     * @param manager Entry point to ProviderHubManager.
+     */
+    public static void
+        authorizedApplicationsCreateOrUpdate(com.azure.resourcemanager.providerhub.ProviderHubManager manager) {
+        manager.authorizedApplications().define(UUID.fromString("760505bf-dcfa-4311-b890-18da392a00b2"))
+            .withExistingProviderRegistration("Microsoft.Contoso")
+            .withProperties(new AuthorizedApplicationProperties()
+                .withProviderAuthorization(
+                    new ApplicationProviderAuthorization().withRoleDefinitionId("123456bf-gkur-2098-b890-98da392a00b2")
+                        .withManagedByRoleDefinitionId("1a3b5c7d-8e9f-10g1-1h12-i13j14k1"))
+                .withDataAuthorizations(Arrays.asList(new ApplicationDataAuthorization().withRole(Role.SERVICE_OWNER)
+                    .withResourceTypes(Arrays.asList("*")))))
+            .create();
+    }
+}

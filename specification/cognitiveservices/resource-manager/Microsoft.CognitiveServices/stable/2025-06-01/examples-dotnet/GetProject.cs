@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.CognitiveServices.Models;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.CognitiveServices;
 
 // Generated from example definition: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2025-06-01/examples/GetProject.json
@@ -16,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesAccountResource created on azure
-// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
+// this example assumes you already have this CognitiveServicesProjectResource created on azure
+// for more information of creating CognitiveServicesProjectResource, please refer to the document of CognitiveServicesProjectResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myResourceGroup";
 string accountName = "myAccount";
-ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
-
-// get the collection of this CognitiveServicesProjectResource
-CognitiveServicesProjectCollection collection = cognitiveServicesAccount.GetCognitiveServicesProjects();
+string projectName = "myProject";
+ResourceIdentifier cognitiveServicesProjectResourceId = CognitiveServicesProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, projectName);
+CognitiveServicesProjectResource cognitiveServicesProject = client.GetCognitiveServicesProjectResource(cognitiveServicesProjectResourceId);
 
 // invoke the operation
-string projectName = "myProject";
-NullableResponse<CognitiveServicesProjectResource> response = await collection.GetIfExistsAsync(projectName);
-CognitiveServicesProjectResource result = response.HasValue ? response.Value : null;
+CognitiveServicesProjectResource result = await cognitiveServicesProject.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CognitiveServicesProjectData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CognitiveServicesProjectData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

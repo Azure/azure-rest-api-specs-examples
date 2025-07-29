@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.CognitiveServices;
 
 // Generated from example definition: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2025-06-01/examples/GetRaiContentFilter.json
@@ -14,19 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RaiContentFilterResource created on azure
-// for more information of creating RaiContentFilterResource, please refer to the document of RaiContentFilterResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this RaiContentFilterResource
 AzureLocation location = new AzureLocation("WestUS");
-string filterName = "IndirectAttack";
-ResourceIdentifier raiContentFilterResourceId = RaiContentFilterResource.CreateResourceIdentifier(subscriptionId, location, filterName);
-RaiContentFilterResource raiContentFilter = client.GetRaiContentFilterResource(raiContentFilterResourceId);
+RaiContentFilterCollection collection = subscriptionResource.GetRaiContentFilters(location);
 
 // invoke the operation
-RaiContentFilterResource result = await raiContentFilter.GetAsync();
+string filterName = "IndirectAttack";
+NullableResponse<RaiContentFilterResource> response = await collection.GetIfExistsAsync(filterName);
+RaiContentFilterResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RaiContentFilterData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RaiContentFilterData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

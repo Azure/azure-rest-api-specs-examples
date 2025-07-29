@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesEncryptionScopeResource created on azure
-// for more information of creating CognitiveServicesEncryptionScopeResource, please refer to the document of CognitiveServicesEncryptionScopeResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-string encryptionScopeName = "encryptionScopeName";
-ResourceIdentifier cognitiveServicesEncryptionScopeResourceId = CognitiveServicesEncryptionScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, encryptionScopeName);
-CognitiveServicesEncryptionScopeResource cognitiveServicesEncryptionScope = client.GetCognitiveServicesEncryptionScopeResource(cognitiveServicesEncryptionScopeResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CognitiveServicesEncryptionScopeResource
+CognitiveServicesEncryptionScopeCollection collection = cognitiveServicesAccount.GetCognitiveServicesEncryptionScopes();
 
 // invoke the operation
+string encryptionScopeName = "encryptionScopeName";
 CognitiveServicesEncryptionScopeData data = new CognitiveServicesEncryptionScopeData
 {
     Properties = new CognitiveServicesEncryptionScopeProperties
@@ -40,7 +43,7 @@ CognitiveServicesEncryptionScopeData data = new CognitiveServicesEncryptionScope
         KeySource = ServiceAccountEncryptionKeySource.MicrosoftKeyVault,
     },
 };
-ArmOperation<CognitiveServicesEncryptionScopeResource> lro = await cognitiveServicesEncryptionScope.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<CognitiveServicesEncryptionScopeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, encryptionScopeName, data);
 CognitiveServicesEncryptionScopeResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

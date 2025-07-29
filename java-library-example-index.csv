@@ -5693,3 +5693,12 @@ id,name,language,tag,package,version,date_epoch,date
 5692,azure-mgmt-compute@35.0.0,python,azure-mgmt-compute_35.0.0,azure-mgmt-compute,35.0.0,1753412752,07/25/2025
 5693,com.azure.resourcemanager:azure-resourcemanager:2.53.0,java,azure-resourcemanager_2.53.0,azure-resourcemanager,2.53.0,1753455843,07/25/2025
 5694,@azure/arm-storagediscovery@1.0.0-beta.1,js,@azure/arm-storagediscovery_1.0.0-beta.1,@azure/arm-storagediscovery,1.0.0-beta.1,1753477803,07/25/2025
+5695,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.1.0-beta.1,java,azure-resourcemanager-datamigration_1.1.0-beta.1,azure-resourcemanager-datamigration,1.1.0-beta.1,1753678559,07/28/2025
+5696,@azure/arm-containerservice@23.0.0-beta.3,js,@azure/arm-containerservice_23.0.0-beta.3,@azure/arm-containerservice,23.0.0-beta.3,1753669222,07/28/2025
+5697,"Azure.ResourceManager.CognitiveServices,1.5.1",dotnet,Azure.ResourceManager.CognitiveServices_1.5.1,Azure.ResourceManager.CognitiveServices,1.5.1,1753695602,07/28/2025
+5698,"Azure.ResourceManager.Authorization,1.1.5",dotnet,Azure.ResourceManager.Authorization_1.1.5,Azure.ResourceManager.Authorization,1.1.5,1753695392,07/28/2025
+5699,"Azure.ResourceManager.Storage,1.4.4",dotnet,Azure.ResourceManager.Storage_1.4.4,Azure.ResourceManager.Storage,1.4.4,1753695358,07/28/2025
+5700,"Azure.ResourceManager.AppConfiguration,1.4.1",dotnet,Azure.ResourceManager.AppConfiguration_1.4.1,Azure.ResourceManager.AppConfiguration,1.4.1,1753694960,07/28/2025
+5701,"Azure.ResourceManager.ContainerService,1.2.5",dotnet,Azure.ResourceManager.ContainerService_1.2.5,Azure.ResourceManager.ContainerService,1.2.5,1753684133,07/28/2025
+5702,"Azure.ResourceManager.NetApp,1.11.0",dotnet,Azure.ResourceManager.NetApp_1.11.0,Azure.ResourceManager.NetApp,1.11.0,1753678836,07/28/2025
+5703,azure-mgmt-monitor@7.0.0,python,azure-mgmt-monitor_7.0.0,azure-mgmt-monitor,7.0.0,1753688673,07/28/2025

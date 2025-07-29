@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceMaintenanceConfigurationResource created on azure
-// for more information of creating ContainerServiceMaintenanceConfigurationResource, please refer to the document of ContainerServiceMaintenanceConfigurationResource
+// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
+// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-string configName = "aksManagedNodeOSUpgradeSchedule";
-ResourceIdentifier containerServiceMaintenanceConfigurationResourceId = ContainerServiceMaintenanceConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, configName);
-ContainerServiceMaintenanceConfigurationResource containerServiceMaintenanceConfiguration = client.GetContainerServiceMaintenanceConfigurationResource(containerServiceMaintenanceConfigurationResourceId);
+ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
+
+// get the collection of this ContainerServiceMaintenanceConfigurationResource
+ContainerServiceMaintenanceConfigurationCollection collection = containerServiceManagedCluster.GetContainerServiceMaintenanceConfigurations();
 
 // invoke the operation
-ContainerServiceMaintenanceConfigurationResource result = await containerServiceMaintenanceConfiguration.GetAsync();
+string configName = "aksManagedNodeOSUpgradeSchedule";
+NullableResponse<ContainerServiceMaintenanceConfigurationResource> response = await collection.GetIfExistsAsync(configName);
+ContainerServiceMaintenanceConfigurationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerServiceMaintenanceConfigurationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerServiceMaintenanceConfigurationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

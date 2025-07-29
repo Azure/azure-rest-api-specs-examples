@@ -5703,3 +5703,4 @@ id,name,language,tag,package,version,date_epoch,date
 5702,"Azure.ResourceManager.NetApp,1.11.0",dotnet,Azure.ResourceManager.NetApp_1.11.0,Azure.ResourceManager.NetApp,1.11.0,1753678836,07/28/2025
 5703,azure-mgmt-monitor@7.0.0,python,azure-mgmt-monitor_7.0.0,azure-mgmt-monitor,7.0.0,1753688673,07/28/2025
 5704,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.1.0-beta.1,java,azure-resourcemanager-policyinsights_1.1.0-beta.1,azure-resourcemanager-policyinsights,1.1.0-beta.1,1753786416,07/29/2025
+5705,com.azure.resourcemanager:azure-resourcemanager-providerhub:2.0.0,java,azure-resourcemanager-providerhub_2.0.0,azure-resourcemanager-providerhub,2.0.0,1753779433,07/29/2025

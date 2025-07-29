@@ -14,24 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this RoleAssignmentScheduleResource
+// this example assumes you already have this RoleAssignmentScheduleResource created on azure
+// for more information of creating RoleAssignmentScheduleResource, please refer to the document of RoleAssignmentScheduleResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-RoleAssignmentScheduleCollection collection = client.GetRoleAssignmentSchedules(new ResourceIdentifier(scope));
+string roleAssignmentScheduleName = "c9e264ff-3133-4776-a81a-ebc7c33c8ec6";
+ResourceIdentifier roleAssignmentScheduleResourceId = RoleAssignmentScheduleResource.CreateResourceIdentifier(scope, roleAssignmentScheduleName);
+RoleAssignmentScheduleResource roleAssignmentSchedule = client.GetRoleAssignmentScheduleResource(roleAssignmentScheduleResourceId);
 
 // invoke the operation
-string roleAssignmentScheduleName = "c9e264ff-3133-4776-a81a-ebc7c33c8ec6";
-NullableResponse<RoleAssignmentScheduleResource> response = await collection.GetIfExistsAsync(roleAssignmentScheduleName);
-RoleAssignmentScheduleResource result = response.HasValue ? response.Value : null;
+RoleAssignmentScheduleResource result = await roleAssignmentSchedule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RoleAssignmentScheduleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RoleAssignmentScheduleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

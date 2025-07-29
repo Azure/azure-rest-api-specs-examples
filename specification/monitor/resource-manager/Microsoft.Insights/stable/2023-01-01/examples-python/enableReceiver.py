@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.monitor import MonitorManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="187f412d-1758-44d9-b052-169e2564721d",
     )
 
-    response = client.action_groups.enable_receiver(
+    client.action_groups.enable_receiver(
         resource_group_name="Default-NotificationRules",
         action_group_name="SampleActionGroup",
         enable_request={"receiverName": "John Doe's mobile"},
     )
-    print(response)
 
 
 # x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2023-01-01/examples/enableReceiver.json

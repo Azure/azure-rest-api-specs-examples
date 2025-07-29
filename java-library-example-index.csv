@@ -5705,3 +5705,4 @@ id,name,language,tag,package,version,date_epoch,date
 5704,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.1.0-beta.1,java,azure-resourcemanager-policyinsights_1.1.0-beta.1,azure-resourcemanager-policyinsights,1.1.0-beta.1,1753786416,07/29/2025
 5705,com.azure.resourcemanager:azure-resourcemanager-providerhub:2.0.0,java,azure-resourcemanager-providerhub_2.0.0,azure-resourcemanager-providerhub,2.0.0,1753779433,07/29/2025
 5706,"Azure.ResourceManager.Kusto,1.6.1",dotnet,Azure.ResourceManager.Kusto_1.6.1,Azure.ResourceManager.Kusto,1.6.1,1753754147,07/29/2025
+5707,"Azure.ResourceManager.OperationalInsights,1.3.1",dotnet,Azure.ResourceManager.OperationalInsights_1.3.1,Azure.ResourceManager.OperationalInsights,1.3.1,1753752271,07/29/2025

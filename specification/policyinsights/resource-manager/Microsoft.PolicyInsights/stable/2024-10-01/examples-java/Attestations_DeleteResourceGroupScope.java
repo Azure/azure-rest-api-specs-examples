@@ -1,0 +1,21 @@
+
+/**
+ * Samples for Attestations Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2024-10-01/examples/
+     * Attestations_DeleteResourceGroupScope.json
+     */
+    /**
+     * Sample code: Delete attestation at resource group scope.
+     * 
+     * @param manager Entry point to PolicyInsightsManager.
+     */
+    public static void
+        deleteAttestationAtResourceGroupScope(com.azure.resourcemanager.policyinsights.PolicyInsightsManager manager) {
+        manager.attestations().deleteByResourceGroupWithResponse("myRg", "790996e6-9871-4b1f-9cd9-ec42cd6ced1e",
+            com.azure.core.util.Context.NONE);
+    }
+}

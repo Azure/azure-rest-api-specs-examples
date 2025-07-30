@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisPatchScheduleResource created on azure
-// for more information of creating RedisPatchScheduleResource, please refer to the document of RedisPatchScheduleResource
+// this example assumes you already have this RedisResource created on azure
+// for more information of creating RedisResource, please refer to the document of RedisResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string name = "cache1";
-RedisPatchScheduleDefaultName defaultName = RedisPatchScheduleDefaultName.Default;
-ResourceIdentifier redisPatchScheduleResourceId = RedisPatchScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, defaultName);
-RedisPatchScheduleResource redisPatchSchedule = client.GetRedisPatchScheduleResource(redisPatchScheduleResourceId);
+ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+RedisResource redis = client.GetRedisResource(redisResourceId);
+
+// get the collection of this RedisPatchScheduleResource
+RedisPatchScheduleCollection collection = redis.GetRedisPatchSchedules();
 
 // invoke the operation
+RedisPatchScheduleDefaultName defaultName = RedisPatchScheduleDefaultName.Default;
 RedisPatchScheduleData data = new RedisPatchScheduleData(new RedisPatchScheduleSetting[]
 {
 new RedisPatchScheduleSetting(RedisDayOfWeek.Monday, 12)
@@ -34,7 +37,7 @@ MaintenanceWindow = XmlConvert.ToTimeSpan("PT5H"),
 },
 new RedisPatchScheduleSetting(RedisDayOfWeek.Tuesday, 12)
 });
-ArmOperation<RedisPatchScheduleResource> lro = await redisPatchSchedule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RedisPatchScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, defaultName, data);
 RedisPatchScheduleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

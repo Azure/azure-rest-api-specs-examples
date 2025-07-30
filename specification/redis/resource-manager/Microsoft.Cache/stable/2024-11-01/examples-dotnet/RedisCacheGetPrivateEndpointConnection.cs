@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisResource created on azure
-// for more information of creating RedisResource, please refer to the document of RedisResource
+// this example assumes you already have this RedisPrivateEndpointConnectionResource created on azure
+// for more information of creating RedisPrivateEndpointConnectionResource, please refer to the document of RedisPrivateEndpointConnectionResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rgtest01";
 string cacheName = "cachetest01";
-ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
-RedisResource redis = client.GetRedisResource(redisResourceId);
-
-// get the collection of this RedisPrivateEndpointConnectionResource
-RedisPrivateEndpointConnectionCollection collection = redis.GetRedisPrivateEndpointConnections();
+string privateEndpointConnectionName = "pectest01";
+ResourceIdentifier redisPrivateEndpointConnectionResourceId = RedisPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, privateEndpointConnectionName);
+RedisPrivateEndpointConnectionResource redisPrivateEndpointConnection = client.GetRedisPrivateEndpointConnectionResource(redisPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "pectest01";
-NullableResponse<RedisPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
-RedisPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
+RedisPrivateEndpointConnectionResource result = await redisPrivateEndpointConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RedisPrivateEndpointConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RedisPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

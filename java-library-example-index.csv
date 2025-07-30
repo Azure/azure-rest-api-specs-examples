@@ -5713,3 +5713,4 @@ id,name,language,tag,package,version,date_epoch,date
 5712,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservicesdatareplication/armrecoveryservicesdatareplication@v1.0.0,go,sdk/resourcemanager/recoveryservicesdatareplication/armrecoveryservicesdatareplication/v1.0.0,sdk/resourcemanager/recoveryservicesdatareplication/armrecoveryservicesdatareplication,v1.0.0,1753814579,07/29/2025
 5713,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.1.0,go,sdk/resourcemanager/avs/armavs/v2.1.0,sdk/resourcemanager/avs/armavs,v2.1.0,1753803536,07/29/2025
 5714,@azure/arm-compute@23.0.0,js,@azure/arm-compute_23.0.0,@azure/arm-compute,23.0.0,1753848778,07/30/2025
+5715,@azure/arm-recoveryservicesdatareplication@1.0.0,js,@azure/arm-recoveryservicesdatareplication_1.0.0,@azure/arm-recoveryservicesdatareplication,1.0.0,1753814551,07/29/2025

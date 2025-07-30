@@ -11,7 +11,7 @@ require("dotenv/config");
 async function virtualMachineScaleSetVMListMinimumSetGen() {
   const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "rgcompute";
-  const virtualMachineScaleSetName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+  const virtualMachineScaleSetName = "aaaaaaaaaaaaaa";
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();

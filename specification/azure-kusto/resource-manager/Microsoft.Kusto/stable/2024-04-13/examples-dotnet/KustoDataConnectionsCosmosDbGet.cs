@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoDataConnectionResource created on azure
-// for more information of creating KustoDataConnectionResource, please refer to the document of KustoDataConnectionResource
+// this example assumes you already have this KustoDatabaseResource created on azure
+// for more information of creating KustoDatabaseResource, please refer to the document of KustoDatabaseResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
 string databaseName = "KustoDatabase1";
-string dataConnectionName = "dataConnectionTest";
-ResourceIdentifier kustoDataConnectionResourceId = KustoDataConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName, dataConnectionName);
-KustoDataConnectionResource kustoDataConnection = client.GetKustoDataConnectionResource(kustoDataConnectionResourceId);
+ResourceIdentifier kustoDatabaseResourceId = KustoDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
+KustoDatabaseResource kustoDatabase = client.GetKustoDatabaseResource(kustoDatabaseResourceId);
+
+// get the collection of this KustoDataConnectionResource
+KustoDataConnectionCollection collection = kustoDatabase.GetKustoDataConnections();
 
 // invoke the operation
-KustoDataConnectionResource result = await kustoDataConnection.GetAsync();
+string dataConnectionName = "dataConnectionTest";
+NullableResponse<KustoDataConnectionResource> response = await collection.GetIfExistsAsync(dataConnectionName);
+KustoDataConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-KustoDataConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    KustoDataConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

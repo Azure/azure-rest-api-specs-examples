@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ProtectedItem Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2024-09-01/ProtectedItem_Create.json
+     */
+    /**
+     * Sample code: Puts the protected item.
+     * 
+     * @param manager Entry point to RecoveryServicesDataReplicationManager.
+     */
+    public static void putsTheProtectedItem(
+        com.azure.resourcemanager.recoveryservicesdatareplication.RecoveryServicesDataReplicationManager manager) {
+        manager.protectedItems().define("d").withExistingReplicationVault("rgrecoveryservicesdatareplication", "4")
+            .create();
+    }
+}

@@ -1,0 +1,103 @@
+package armrecoveryservicesdatareplication_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservicesdatareplication/armrecoveryservicesdatareplication"
+)
+
+// Generated from example definition: 2024-09-01/Event_List.json
+func ExampleEventClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesdatareplication.NewClientFactory("930CEC23-4430-4513-B855-DBA237E2F3BF", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewEventClient().NewListPager("rgswagger_2024-09-01", "4", &armrecoveryservicesdatareplication.EventClientListOptions{
+		ContinuationToken: to.Ptr("gabpzsxrifposvleqqcjnvofz")})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armrecoveryservicesdatareplication.EventClientListResponse{
+		// 	EventModelListResult: armrecoveryservicesdatareplication.EventModelListResult{
+		// 		Value: []*armrecoveryservicesdatareplication.EventModel{
+		// 			{
+		// 				Properties: &armrecoveryservicesdatareplication.EventModelProperties{
+		// 					ResourceType: to.Ptr("surgdzezskgregozynvlinfutyh"),
+		// 					ResourceName: to.Ptr("yhpkowkbvtqnbiklnjzc"),
+		// 					EventType: to.Ptr("npumqmvspm"),
+		// 					EventName: to.Ptr("s"),
+		// 					TimeOfOccurrence: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:53.432Z"); return t}()),
+		// 					Severity: to.Ptr("sjous"),
+		// 					CorrelationID: to.Ptr("lwfsxforxnhvpmheujutjicflmxv"),
+		// 					HealthErrors: []*armrecoveryservicesdatareplication.HealthErrorModel{
+		// 						{
+		// 							AffectedResourceType: to.Ptr("scfniv"),
+		// 							AffectedResourceCorrelationIDs: []*string{
+		// 								to.Ptr("fope"),
+		// 							},
+		// 							ChildErrors: []*armrecoveryservicesdatareplication.InnerHealthErrorModel{
+		// 								{
+		// 									Code: to.Ptr("yuxxpblihirpedwkigywgwjjrlzq"),
+		// 									HealthCategory: to.Ptr("mhdgfjqwbikhxmhtomkl"),
+		// 									Category: to.Ptr("lcsdxrqxquke"),
+		// 									Severity: to.Ptr("wqxxiuaqjyagq"),
+		// 									Source: to.Ptr("wevvftugwydzzw"),
+		// 									CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:52.128Z"); return t}()),
+		// 									IsCustomerResolvable: to.Ptr(true),
+		// 									Summary: to.Ptr("djsmgrltruljo"),
+		// 									Message: to.Ptr("sskcei"),
+		// 									Causes: to.Ptr("kefaugkpxjkpulimjthjnl"),
+		// 									Recommendation: to.Ptr("kqybwaesqumywtjepi"),
+		// 								},
+		// 							},
+		// 							Code: to.Ptr("dgxkefzmeukd"),
+		// 							HealthCategory: to.Ptr("itc"),
+		// 							Category: to.Ptr("leigw"),
+		// 							Severity: to.Ptr("vvdajssdcypewdyechilxjmuijvdd"),
+		// 							Source: to.Ptr("iy"),
+		// 							CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:52.128Z"); return t}()),
+		// 							IsCustomerResolvable: to.Ptr(true),
+		// 							Summary: to.Ptr("jtooblbvaxxrvcwgscbobq"),
+		// 							Message: to.Ptr("lbywtdprdqdekl"),
+		// 							Causes: to.Ptr("xznphqrrmsdzm"),
+		// 							Recommendation: to.Ptr("gmssteizlhjtclyeoo"),
+		// 						},
+		// 					},
+		// 					CustomProperties: &armrecoveryservicesdatareplication.HyperVToAzStackHCIEventModelCustomProperties{
+		// 						InstanceType: to.Ptr("EventModelCustomProperties"),
+		// 					},
+		// 					Description: to.Ptr("dk"),
+		// 					ProvisioningState: to.Ptr(armrecoveryservicesdatareplication.ProvisioningStateCanceled),
+		// 				},
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DataReplication/replicationVaults/vault1/events/event1"),
+		// 				Name: to.Ptr("j"),
+		// 				Type: to.Ptr("lgk"),
+		// 				SystemData: &armrecoveryservicesdatareplication.SystemData{
+		// 					CreatedBy: to.Ptr("uske"),
+		// 					CreatedByType: to.Ptr(armrecoveryservicesdatareplication.CreatedByType("luzowppyxjalugkef")),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:53.432Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("ufrixpmhben"),
+		// 					LastModifiedByType: to.Ptr(armrecoveryservicesdatareplication.CreatedByType("aubgraubkuaeipwzvbcgnlpseobx")),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:53.432Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

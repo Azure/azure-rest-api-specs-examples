@@ -1,0 +1,131 @@
+package armrecoveryservicesdatareplication_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservicesdatareplication/armrecoveryservicesdatareplication"
+)
+
+// Generated from example definition: 2024-09-01/FabricAgent_Create.json
+func ExampleFabricAgentClient_BeginCreate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesdatareplication.NewClientFactory("930CEC23-4430-4513-B855-DBA237E2F3BF", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewFabricAgentClient().BeginCreate(ctx, "rgswagger_2024-09-01", "wPR", "M", armrecoveryservicesdatareplication.FabricAgentModel{
+		Properties: &armrecoveryservicesdatareplication.FabricAgentModelProperties{
+			MachineID:   to.Ptr("envzcoijbqhtrpncbjbhk"),
+			MachineName: to.Ptr("y"),
+			AuthenticationIdentity: &armrecoveryservicesdatareplication.IdentityModel{
+				TenantID:      to.Ptr("joclkkdovixwapephhxaqtefubhhmq"),
+				ApplicationID: to.Ptr("cwktzrwajuvfyyymfstpey"),
+				ObjectID:      to.Ptr("khsiaqfbpuhp"),
+				Audience:      to.Ptr("dkjobanyqgzenivyxhvavottpc"),
+				AADAuthority:  to.Ptr("bubwwbowfhdmujrt"),
+			},
+			ResourceAccessIdentity: &armrecoveryservicesdatareplication.IdentityModel{
+				TenantID:      to.Ptr("joclkkdovixwapephhxaqtefubhhmq"),
+				ApplicationID: to.Ptr("cwktzrwajuvfyyymfstpey"),
+				ObjectID:      to.Ptr("khsiaqfbpuhp"),
+				Audience:      to.Ptr("dkjobanyqgzenivyxhvavottpc"),
+				AADAuthority:  to.Ptr("bubwwbowfhdmujrt"),
+			},
+			CustomProperties: &armrecoveryservicesdatareplication.VMwareFabricAgentModelCustomProperties{
+				InstanceType: to.Ptr("FabricAgentModelCustomProperties"),
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armrecoveryservicesdatareplication.FabricAgentClientCreateResponse{
+	// 	FabricAgentModel: &armrecoveryservicesdatareplication.FabricAgentModel{
+	// 		Properties: &armrecoveryservicesdatareplication.FabricAgentModelProperties{
+	// 			MachineID: to.Ptr("envzcoijbqhtrpncbjbhk"),
+	// 			MachineName: to.Ptr("y"),
+	// 			AuthenticationIdentity: &armrecoveryservicesdatareplication.IdentityModel{
+	// 				TenantID: to.Ptr("joclkkdovixwapephhxaqtefubhhmq"),
+	// 				ApplicationID: to.Ptr("cwktzrwajuvfyyymfstpey"),
+	// 				ObjectID: to.Ptr("khsiaqfbpuhp"),
+	// 				Audience: to.Ptr("dkjobanyqgzenivyxhvavottpc"),
+	// 				AADAuthority: to.Ptr("bubwwbowfhdmujrt"),
+	// 			},
+	// 			ResourceAccessIdentity: &armrecoveryservicesdatareplication.IdentityModel{
+	// 				TenantID: to.Ptr("joclkkdovixwapephhxaqtefubhhmq"),
+	// 				ApplicationID: to.Ptr("cwktzrwajuvfyyymfstpey"),
+	// 				ObjectID: to.Ptr("khsiaqfbpuhp"),
+	// 				Audience: to.Ptr("dkjobanyqgzenivyxhvavottpc"),
+	// 				AADAuthority: to.Ptr("bubwwbowfhdmujrt"),
+	// 			},
+	// 			CustomProperties: &armrecoveryservicesdatareplication.VMwareFabricAgentModelCustomProperties{
+	// 				InstanceType: to.Ptr("FabricAgentModelCustomProperties"),
+	// 			},
+	// 			CorrelationID: to.Ptr("t"),
+	// 			IsResponsive: to.Ptr(true),
+	// 			LastHeartbeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:52.127Z"); return t}()),
+	// 			VersionNumber: to.Ptr("wnksfnisrhs"),
+	// 			ProvisioningState: to.Ptr(armrecoveryservicesdatareplication.ProvisioningStateCanceled),
+	// 			HealthErrors: []*armrecoveryservicesdatareplication.HealthErrorModel{
+	// 				{
+	// 					AffectedResourceType: to.Ptr("scfniv"),
+	// 					AffectedResourceCorrelationIDs: []*string{
+	// 						to.Ptr("fope"),
+	// 					},
+	// 					ChildErrors: []*armrecoveryservicesdatareplication.InnerHealthErrorModel{
+	// 						{
+	// 							Code: to.Ptr("yuxxpblihirpedwkigywgwjjrlzq"),
+	// 							HealthCategory: to.Ptr("mhdgfjqwbikhxmhtomkl"),
+	// 							Category: to.Ptr("lcsdxrqxquke"),
+	// 							Severity: to.Ptr("wqxxiuaqjyagq"),
+	// 							Source: to.Ptr("wevvftugwydzzw"),
+	// 							CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:52.128Z"); return t}()),
+	// 							IsCustomerResolvable: to.Ptr(true),
+	// 							Summary: to.Ptr("djsmgrltruljo"),
+	// 							Message: to.Ptr("sskcei"),
+	// 							Causes: to.Ptr("kefaugkpxjkpulimjthjnl"),
+	// 							Recommendation: to.Ptr("kqybwaesqumywtjepi"),
+	// 						},
+	// 					},
+	// 					Code: to.Ptr("dgxkefzmeukd"),
+	// 					HealthCategory: to.Ptr("itc"),
+	// 					Category: to.Ptr("leigw"),
+	// 					Severity: to.Ptr("vvdajssdcypewdyechilxjmuijvdd"),
+	// 					Source: to.Ptr("iy"),
+	// 					CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:52.128Z"); return t}()),
+	// 					IsCustomerResolvable: to.Ptr(true),
+	// 					Summary: to.Ptr("jtooblbvaxxrvcwgscbobq"),
+	// 					Message: to.Ptr("lbywtdprdqdekl"),
+	// 					Causes: to.Ptr("xznphqrrmsdzm"),
+	// 					Recommendation: to.Ptr("gmssteizlhjtclyeoo"),
+	// 				},
+	// 			},
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DataReplication/replicationFabrics/fabric1/fabricAgents/agent1"),
+	// 		Name: to.Ptr("ioxmwhzrzdilxivkvhpvzexl"),
+	// 		Type: to.Ptr("ptgmahzsyv"),
+	// 		SystemData: &armrecoveryservicesdatareplication.SystemData{
+	// 			CreatedBy: to.Ptr("ewufpudzcjrljhmmzhfnxoqdqwnya"),
+	// 			CreatedByType: to.Ptr(armrecoveryservicesdatareplication.CreatedByType("zioqm")),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:53.022Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("rx"),
+	// 			LastModifiedByType: to.Ptr(armrecoveryservicesdatareplication.CreatedByType("tqbvuqoakaaqij")),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-25T00:28:53.022Z"); return t}()),
+	// 		},
+	// 	},
+	// }
+}

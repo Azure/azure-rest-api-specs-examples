@@ -5719,3 +5719,4 @@ id,name,language,tag,package,version,date_epoch,date
 5718,azure-mgmt-sql@4.0.0b22,python,azure-mgmt-sql_4.0.0b22,azure-mgmt-sql,4.0.0b22,1753860187,07/30/2025
 5719,azure-mgmt-computeschedule@1.2.0b1,python,azure-mgmt-computeschedule_1.2.0b1,azure-mgmt-computeschedule,1.2.0b1,1753822477,07/29/2025
 5720,azure-mgmt-recoveryservicesdatareplication@1.0.0,python,azure-mgmt-recoveryservicesdatareplication_1.0.0,azure-mgmt-recoveryservicesdatareplication,1.0.0,1753814576,07/29/2025
+5721,"Azure.ResourceManager.Playwright,1.0.0-beta.1",dotnet,Azure.ResourceManager.Playwright_1.0.0-beta.1,Azure.ResourceManager.Playwright,1.0.0-beta.1,1753888987,07/30/2025

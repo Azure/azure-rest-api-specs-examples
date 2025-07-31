@@ -3,9 +3,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets a list of compute operations.
+ * This sample demonstrates how to List the operations for the provider
  *
- * @summary Gets a list of compute operations.
+ * @summary List the operations for the provider
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/examples/computeRPCommonExamples/Operations_List_MaximumSet_Gen.json
  */
 async function operationsListMaximumSetGen() {

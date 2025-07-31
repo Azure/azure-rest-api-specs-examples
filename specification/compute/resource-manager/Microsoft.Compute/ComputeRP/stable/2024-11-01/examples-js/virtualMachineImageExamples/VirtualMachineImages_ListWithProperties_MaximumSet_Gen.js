@@ -23,16 +23,13 @@ async function virtualMachineImagesListWithPropertiesMaximumSet() {
   };
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
-  const resArray = new Array();
-  for await (const item of client.virtualMachineImages.listWithProperties(
+  const result = await client.virtualMachineImages.listWithProperties(
     location,
     publisherName,
     offer,
     skus,
     expand,
     options,
-  )) {
-    resArray.push(item);
-  }
-  console.log(resArray);
+  );
+  console.log(result);
 }

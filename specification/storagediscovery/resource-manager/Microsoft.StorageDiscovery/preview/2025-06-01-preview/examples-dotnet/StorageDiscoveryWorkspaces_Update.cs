@@ -1,0 +1,51 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.StorageDiscovery.Models;
+using Azure.ResourceManager.StorageDiscovery;
+
+// Generated from example definition: 2025-06-01-preview/StorageDiscoveryWorkspaces_Update.json
+// this example is just showing the usage of "StorageDiscoveryWorkspace_Update" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this StorageDiscoveryWorkspaceResource created on azure
+// for more information of creating StorageDiscoveryWorkspaceResource, please refer to the document of StorageDiscoveryWorkspaceResource
+string subscriptionId = "b79cb3ba-745e-5d9a-8903-4a02327a7e09";
+string resourceGroupName = "sample-rg";
+string storageDiscoveryWorkspaceName = "Sample-Storage-Workspace";
+ResourceIdentifier storageDiscoveryWorkspaceResourceId = StorageDiscoveryWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageDiscoveryWorkspaceName);
+StorageDiscoveryWorkspaceResource storageDiscoveryWorkspace = client.GetStorageDiscoveryWorkspaceResource(storageDiscoveryWorkspaceResourceId);
+
+// invoke the operation
+StorageDiscoveryWorkspacePatch patch = new StorageDiscoveryWorkspacePatch
+{
+    Properties = new StorageDiscoveryWorkspacePropertiesUpdate
+    {
+        Sku = StorageDiscoverySku.Free,
+        Description = "Updated Sample Storage Discovery Workspace",
+        WorkspaceRoots = { new ResourceIdentifier("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09") },
+        Scopes = {new StorageDiscoveryScope("Updated-Sample-Collection", new StorageDiscoveryResourceType[]{new StorageDiscoveryResourceType("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/updated-sample-storageAccount")})
+        {
+        TagKeysOnly = {"updated-filtertag1", "updated-filtertag2"},
+        Tags =
+        {
+        ["updated-filtertag3"] = "updated-value3",
+        ["updated-filtertag4"] = "updated-value4"
+        },
+        }},
+    },
+};
+StorageDiscoveryWorkspaceResource result = await storageDiscoveryWorkspace.UpdateAsync(patch);
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageDiscoveryWorkspaceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

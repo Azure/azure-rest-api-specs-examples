@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlDatabaseResource created on azure
-// for more information of creating CosmosDBSqlDatabaseResource, please refer to the document of CosmosDBSqlDatabaseResource
+// this example assumes you already have this CosmosDBSqlContainerResource created on azure
+// for more information of creating CosmosDBSqlContainerResource, please refer to the document of CosmosDBSqlContainerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string databaseName = "databaseName";
-ResourceIdentifier cosmosDBSqlDatabaseResourceId = CosmosDBSqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-CosmosDBSqlDatabaseResource cosmosDBSqlDatabase = client.GetCosmosDBSqlDatabaseResource(cosmosDBSqlDatabaseResourceId);
-
-// get the collection of this CosmosDBSqlContainerResource
-CosmosDBSqlContainerCollection collection = cosmosDBSqlDatabase.GetCosmosDBSqlContainers();
+string containerName = "containerName";
+ResourceIdentifier cosmosDBSqlContainerResourceId = CosmosDBSqlContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName);
+CosmosDBSqlContainerResource cosmosDBSqlContainer = client.GetCosmosDBSqlContainerResource(cosmosDBSqlContainerResourceId);
 
 // invoke the operation
-string containerName = "containerName";
 CosmosDBSqlContainerCreateOrUpdateContent content = new CosmosDBSqlContainerCreateOrUpdateContent(new AzureLocation("West US"), new CosmosDBSqlContainerResourceInfo("containerName")
 {
     IndexingPolicy = new CosmosDBIndexingPolicy
@@ -83,7 +80,7 @@ new CosmosDBClientEncryptionIncludedPath("/path", "keyId", "Deterministic", "AEA
     Options = new CosmosDBCreateUpdateConfig(),
     Tags = { },
 };
-ArmOperation<CosmosDBSqlContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, containerName, content);
+ArmOperation<CosmosDBSqlContainerResource> lro = await cosmosDBSqlContainer.UpdateAsync(WaitUntil.Completed, content);
 CosmosDBSqlContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

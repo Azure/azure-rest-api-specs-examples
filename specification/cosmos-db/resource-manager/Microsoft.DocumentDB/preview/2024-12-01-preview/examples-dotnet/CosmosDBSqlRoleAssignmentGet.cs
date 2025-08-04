@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this CosmosDBSqlRoleAssignmentResource created on azure
+// for more information of creating CosmosDBSqlRoleAssignmentResource, please refer to the document of CosmosDBSqlRoleAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this CosmosDBSqlRoleAssignmentResource
-CosmosDBSqlRoleAssignmentCollection collection = cosmosDBAccount.GetCosmosDBSqlRoleAssignments();
+string roleAssignmentId = "myRoleAssignmentId";
+ResourceIdentifier cosmosDBSqlRoleAssignmentResourceId = CosmosDBSqlRoleAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, roleAssignmentId);
+CosmosDBSqlRoleAssignmentResource cosmosDBSqlRoleAssignment = client.GetCosmosDBSqlRoleAssignmentResource(cosmosDBSqlRoleAssignmentResourceId);
 
 // invoke the operation
-string roleAssignmentId = "myRoleAssignmentId";
-NullableResponse<CosmosDBSqlRoleAssignmentResource> response = await collection.GetIfExistsAsync(roleAssignmentId);
-CosmosDBSqlRoleAssignmentResource result = response.HasValue ? response.Value : null;
+CosmosDBSqlRoleAssignmentResource result = await cosmosDBSqlRoleAssignment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CosmosDBSqlRoleAssignmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBSqlRoleAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

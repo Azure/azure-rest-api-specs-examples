@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this DataTransferJobGetResultResource created on azure
+// for more information of creating DataTransferJobGetResultResource, please refer to the document of DataTransferJobGetResultResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this DataTransferJobGetResultResource
-DataTransferJobGetResultCollection collection = cosmosDBAccount.GetDataTransferJobGetResults();
+string jobName = "j1";
+ResourceIdentifier dataTransferJobGetResultResourceId = DataTransferJobGetResultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, jobName);
+DataTransferJobGetResultResource dataTransferJobGetResult = client.GetDataTransferJobGetResultResource(dataTransferJobGetResultResourceId);
 
 // invoke the operation
-string jobName = "j1";
-NullableResponse<DataTransferJobGetResultResource> response = await collection.GetIfExistsAsync(jobName);
-DataTransferJobGetResultResource result = response.HasValue ? response.Value : null;
+DataTransferJobGetResultResource result = await dataTransferJobGetResult.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DataTransferJobGetResultData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataTransferJobGetResultData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

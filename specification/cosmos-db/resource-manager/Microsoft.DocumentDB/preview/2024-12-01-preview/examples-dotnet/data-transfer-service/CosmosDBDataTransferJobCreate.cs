@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this DataTransferJobGetResultResource created on azure
+// for more information of creating DataTransferJobGetResultResource, please refer to the document of DataTransferJobGetResultResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this DataTransferJobGetResultResource
-DataTransferJobGetResultCollection collection = cosmosDBAccount.GetDataTransferJobGetResults();
+string jobName = "j1";
+ResourceIdentifier dataTransferJobGetResultResourceId = DataTransferJobGetResultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, jobName);
+DataTransferJobGetResultResource dataTransferJobGetResult = client.GetDataTransferJobGetResultResource(dataTransferJobGetResultResourceId);
 
 // invoke the operation
-string jobName = "j1";
 DataTransferJobGetResultCreateOrUpdateContent content = new DataTransferJobGetResultCreateOrUpdateContent(new DataTransferJobProperties(new CosmosCassandraDataTransferDataSourceSink("keyspace", "table"), new AzureBlobDataTransferDataSourceSink("blob_container")
 {
     EndpointUri = new Uri("https://blob.windows.net"),
 }));
-ArmOperation<DataTransferJobGetResultResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobName, content);
+ArmOperation<DataTransferJobGetResultResource> lro = await dataTransferJobGetResult.UpdateAsync(WaitUntil.Completed, content);
 DataTransferJobGetResultResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

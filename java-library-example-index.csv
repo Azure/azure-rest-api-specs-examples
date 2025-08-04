@@ -5722,3 +5722,4 @@ id,name,language,tag,package,version,date_epoch,date
 5721,"Azure.ResourceManager.Playwright,1.0.0-beta.1",dotnet,Azure.ResourceManager.Playwright_1.0.0-beta.1,Azure.ResourceManager.Playwright,1.0.0-beta.1,1753888987,07/30/2025
 5722,"Azure.ResourceManager.Sql,1.4.0-beta.3",dotnet,Azure.ResourceManager.Sql_1.4.0-beta.3,Azure.ResourceManager.Sql,1.4.0-beta.3,1754013966,08/01/2025
 5723,"Azure.ResourceManager.StorageDiscovery,1.0.0-beta.1",dotnet,Azure.ResourceManager.StorageDiscovery_1.0.0-beta.1,Azure.ResourceManager.StorageDiscovery,1.0.0-beta.1,1754011355,08/01/2025
+5724,"Azure.ResourceManager.ApplicationInsights,1.1.0-beta.1",dotnet,Azure.ResourceManager.ApplicationInsights_1.1.0-beta.1,Azure.ResourceManager.ApplicationInsights,1.1.0-beta.1,1754302594,08/04/2025

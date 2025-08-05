@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GremlinDatabaseResource created on azure
-// for more information of creating GremlinDatabaseResource, please refer to the document of GremlinDatabaseResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string databaseName = "databaseName";
-ResourceIdentifier gremlinDatabaseResourceId = GremlinDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-GremlinDatabaseResource gremlinDatabase = client.GetGremlinDatabaseResource(gremlinDatabaseResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this GremlinDatabaseResource
+GremlinDatabaseCollection collection = cosmosDBAccount.GetGremlinDatabases();
 
 // invoke the operation
-GremlinDatabaseResource result = await gremlinDatabase.GetAsync();
+string databaseName = "databaseName";
+NullableResponse<GremlinDatabaseResource> response = await collection.GetIfExistsAsync(databaseName);
+GremlinDatabaseResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GremlinDatabaseData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GremlinDatabaseData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

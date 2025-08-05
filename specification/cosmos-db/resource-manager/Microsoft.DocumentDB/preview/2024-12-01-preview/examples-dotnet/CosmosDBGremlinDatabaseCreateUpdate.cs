@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GremlinDatabaseResource created on azure
-// for more information of creating GremlinDatabaseResource, please refer to the document of GremlinDatabaseResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string databaseName = "databaseName";
-ResourceIdentifier gremlinDatabaseResourceId = GremlinDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-GremlinDatabaseResource gremlinDatabase = client.GetGremlinDatabaseResource(gremlinDatabaseResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this GremlinDatabaseResource
+GremlinDatabaseCollection collection = cosmosDBAccount.GetGremlinDatabases();
 
 // invoke the operation
+string databaseName = "databaseName";
 GremlinDatabaseCreateOrUpdateContent content = new GremlinDatabaseCreateOrUpdateContent(new AzureLocation("West US"), new GremlinDatabaseResourceInfo("databaseName"))
 {
     Options = new CosmosDBCreateUpdateConfig(),
     Tags = { },
 };
-ArmOperation<GremlinDatabaseResource> lro = await gremlinDatabase.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<GremlinDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, content);
 GremlinDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

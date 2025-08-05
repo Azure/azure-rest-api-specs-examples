@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBDatabaseResource created on azure
-// for more information of creating MongoDBDatabaseResource, please refer to the document of MongoDBDatabaseResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string databaseName = "databaseName";
-ResourceIdentifier mongoDBDatabaseResourceId = MongoDBDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-MongoDBDatabaseResource mongoDBDatabase = client.GetMongoDBDatabaseResource(mongoDBDatabaseResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this MongoDBDatabaseResource
+MongoDBDatabaseCollection collection = cosmosDBAccount.GetMongoDBDatabases();
 
 // invoke the operation
+string databaseName = "databaseName";
 MongoDBDatabaseCreateOrUpdateContent content = new MongoDBDatabaseCreateOrUpdateContent(new AzureLocation("West US"), new MongoDBDatabaseResourceInfo("databaseName"))
 {
     Options = new CosmosDBCreateUpdateConfig(),
     Tags = { },
 };
-ArmOperation<MongoDBDatabaseResource> lro = await mongoDBDatabase.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<MongoDBDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, content);
 MongoDBDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

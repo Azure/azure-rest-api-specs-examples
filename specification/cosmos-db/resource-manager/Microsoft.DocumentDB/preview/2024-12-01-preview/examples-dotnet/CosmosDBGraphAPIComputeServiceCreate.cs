@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this CosmosDBServiceResource created on azure
+// for more information of creating CosmosDBServiceResource, please refer to the document of CosmosDBServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this CosmosDBServiceResource
-CosmosDBServiceCollection collection = cosmosDBAccount.GetCosmosDBServices();
+string serviceName = "GraphAPICompute";
+ResourceIdentifier cosmosDBServiceResourceId = CosmosDBServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, serviceName);
+CosmosDBServiceResource cosmosDBService = client.GetCosmosDBServiceResource(cosmosDBServiceResourceId);
 
 // invoke the operation
-string serviceName = "GraphAPICompute";
 CosmosDBServiceCreateOrUpdateContent content = new CosmosDBServiceCreateOrUpdateContent
 {
     Properties = new GraphApiComputeServiceResourceCreateUpdateProperties
@@ -36,7 +33,7 @@ CosmosDBServiceCreateOrUpdateContent content = new CosmosDBServiceCreateOrUpdate
         InstanceCount = 1,
     },
 };
-ArmOperation<CosmosDBServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, content);
+ArmOperation<CosmosDBServiceResource> lro = await cosmosDBService.UpdateAsync(WaitUntil.Completed, content);
 CosmosDBServiceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

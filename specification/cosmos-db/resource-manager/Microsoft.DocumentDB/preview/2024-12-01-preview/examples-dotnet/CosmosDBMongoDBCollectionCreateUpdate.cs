@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBDatabaseResource created on azure
-// for more information of creating MongoDBDatabaseResource, please refer to the document of MongoDBDatabaseResource
+// this example assumes you already have this MongoDBCollectionResource created on azure
+// for more information of creating MongoDBCollectionResource, please refer to the document of MongoDBCollectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string databaseName = "databaseName";
-ResourceIdentifier mongoDBDatabaseResourceId = MongoDBDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-MongoDBDatabaseResource mongoDBDatabase = client.GetMongoDBDatabaseResource(mongoDBDatabaseResourceId);
-
-// get the collection of this MongoDBCollectionResource
-MongoDBCollectionCollection collection = mongoDBDatabase.GetMongoDBCollections();
+string collectionName = "collectionName";
+ResourceIdentifier mongoDBCollectionResourceId = MongoDBCollectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, collectionName);
+MongoDBCollectionResource mongoDBCollection = client.GetMongoDBCollectionResource(mongoDBCollectionResourceId);
 
 // invoke the operation
-string collectionName = "collectionName";
 MongoDBCollectionCreateOrUpdateContent content = new MongoDBCollectionCreateOrUpdateContent(new AzureLocation("West US"), new MongoDBCollectionResourceInfo("collectionName")
 {
     ShardKey =
@@ -53,7 +50,7 @@ MongoDBCollectionCreateOrUpdateContent content = new MongoDBCollectionCreateOrUp
     Options = new CosmosDBCreateUpdateConfig(),
     Tags = { },
 };
-ArmOperation<MongoDBCollectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, collectionName, content);
+ArmOperation<MongoDBCollectionResource> lro = await mongoDBCollection.UpdateAsync(WaitUntil.Completed, content);
 MongoDBCollectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

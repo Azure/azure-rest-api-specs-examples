@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlDatabaseResource created on azure
-// for more information of creating CosmosDBSqlDatabaseResource, please refer to the document of CosmosDBSqlDatabaseResource
+// this example assumes you already have this CosmosDBSqlContainerResource created on azure
+// for more information of creating CosmosDBSqlContainerResource, please refer to the document of CosmosDBSqlContainerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rgName";
 string accountName = "ddb1";
 string databaseName = "databaseName";
-ResourceIdentifier cosmosDBSqlDatabaseResourceId = CosmosDBSqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-CosmosDBSqlDatabaseResource cosmosDBSqlDatabase = client.GetCosmosDBSqlDatabaseResource(cosmosDBSqlDatabaseResourceId);
-
-// get the collection of this CosmosDBSqlContainerResource
-CosmosDBSqlContainerCollection collection = cosmosDBSqlDatabase.GetCosmosDBSqlContainers();
+string containerName = "containerName";
+ResourceIdentifier cosmosDBSqlContainerResourceId = CosmosDBSqlContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName);
+CosmosDBSqlContainerResource cosmosDBSqlContainer = client.GetCosmosDBSqlContainerResource(cosmosDBSqlContainerResourceId);
 
 // invoke the operation
-string containerName = "containerName";
-NullableResponse<CosmosDBSqlContainerResource> response = await collection.GetIfExistsAsync(containerName);
-CosmosDBSqlContainerResource result = response.HasValue ? response.Value : null;
+CosmosDBSqlContainerResource result = await cosmosDBSqlContainer.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CosmosDBSqlContainerData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBSqlContainerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.CosmosDB.Models;
 using Azure.ResourceManager.CosmosDB;
 
 // Generated from example definition: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2024-12-01-preview/examples/CosmosDBRestorableDatabaseAccountGet.json
@@ -14,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBLocationResource created on azure
-// for more information of creating CosmosDBLocationResource, please refer to the document of CosmosDBLocationResource
+// this example assumes you already have this RestorableCosmosDBAccountResource created on azure
+// for more information of creating RestorableCosmosDBAccountResource, please refer to the document of RestorableCosmosDBAccountResource
 string subscriptionId = "subid";
 AzureLocation location = new AzureLocation("West US");
-ResourceIdentifier cosmosDBLocationResourceId = CosmosDBLocationResource.CreateResourceIdentifier(subscriptionId, location);
-CosmosDBLocationResource cosmosDBLocation = client.GetCosmosDBLocationResource(cosmosDBLocationResourceId);
-
-// get the collection of this RestorableCosmosDBAccountResource
-RestorableCosmosDBAccountCollection collection = cosmosDBLocation.GetRestorableCosmosDBAccounts();
+Guid instanceId = Guid.Parse("d9b26648-2f53-4541-b3d8-3044f4f9810d");
+ResourceIdentifier restorableCosmosDBAccountResourceId = RestorableCosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, location, instanceId);
+RestorableCosmosDBAccountResource restorableCosmosDBAccount = client.GetRestorableCosmosDBAccountResource(restorableCosmosDBAccountResourceId);
 
 // invoke the operation
-Guid instanceId = Guid.Parse("d9b26648-2f53-4541-b3d8-3044f4f9810d");
-NullableResponse<RestorableCosmosDBAccountResource> response = await collection.GetIfExistsAsync(instanceId);
-RestorableCosmosDBAccountResource result = response.HasValue ? response.Value : null;
+RestorableCosmosDBAccountResource result = await restorableCosmosDBAccount.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RestorableCosmosDBAccountData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RestorableCosmosDBAccountData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

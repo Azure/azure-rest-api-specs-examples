@@ -5726,3 +5726,4 @@ id,name,language,tag,package,version,date_epoch,date
 5725,"Azure.ResourceManager.Grafana,1.2.0-beta.2",dotnet,Azure.ResourceManager.Grafana_1.2.0-beta.2,Azure.ResourceManager.Grafana,1.2.0-beta.2,1754302593,08/04/2025
 5726,"Azure.ResourceManager.CosmosDB,1.4.0-beta.13",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.13,Azure.ResourceManager.CosmosDB,1.4.0-beta.13,1754302563,08/04/2025
 5727,"Azure.ResourceManager.Datadog,1.0.0-beta.6",dotnet,Azure.ResourceManager.Datadog_1.0.0-beta.6,Azure.ResourceManager.Datadog,1.0.0-beta.6,1754285015,08/04/2025
+5728,com.azure.resourcemanager:azure-resourcemanager:2.53.1,java,azure-resourcemanager_2.53.1,azure-resourcemanager,2.53.1,1754366488,08/05/2025

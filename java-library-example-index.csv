@@ -5732,3 +5732,4 @@ id,name,language,tag,package,version,date_epoch,date
 5731,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.1.0-beta.1,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.1.0-beta.1,sdk/resourcemanager/mongocluster/armmongocluster,v1.1.0-beta.1,1754456664,08/06/2025
 5732,@azure/arm-mongocluster@1.1.0-beta.1,js,@azure/arm-mongocluster_1.1.0-beta.1,@azure/arm-mongocluster,1.1.0-beta.1,1754451514,08/06/2025
 5733,azure-mgmt-databoxedge@3.0.0b1,python,azure-mgmt-databoxedge_3.0.0b1,azure-mgmt-databoxedge,3.0.0b1,1754467716,08/06/2025
+5734,azure-mgmt-monitor@8.0.0b1,python,azure-mgmt-monitor_8.0.0b1,azure-mgmt-monitor,8.0.0b1,1754458812,08/06/2025

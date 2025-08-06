@@ -5730,3 +5730,4 @@ id,name,language,tag,package,version,date_epoch,date
 5729,@azure/arm-hybridconnectivity@2.0.0-beta.2,js,@azure/arm-hybridconnectivity_2.0.0-beta.2,@azure/arm-hybridconnectivity,2.0.0-beta.2,1754383989,08/05/2025
 5730,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.1.0-beta.1,java,azure-resourcemanager-mongocluster_1.1.0-beta.1,azure-resourcemanager-mongocluster,1.1.0-beta.1,1754457030,08/06/2025
 5731,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.1.0-beta.1,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.1.0-beta.1,sdk/resourcemanager/mongocluster/armmongocluster,v1.1.0-beta.1,1754456664,08/06/2025
+5732,@azure/arm-mongocluster@1.1.0-beta.1,js,@azure/arm-mongocluster_1.1.0-beta.1,@azure/arm-mongocluster,1.1.0-beta.1,1754451514,08/06/2025

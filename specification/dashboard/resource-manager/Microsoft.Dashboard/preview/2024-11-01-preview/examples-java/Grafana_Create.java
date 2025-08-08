@@ -36,8 +36,8 @@ public final class Main {
      * @param manager Entry point to DashboardManager.
      */
     public static void grafanaCreate(com.azure.resourcemanager.dashboard.DashboardManager manager) {
-        manager.grafanas().define("myWorkspace").withRegion("West US").withExistingResourceGroup("myResourceGroup")
-            .withTags(mapOf("Environment", "Dev")).withSku(new ResourceSku().withName("Standard"))
+        manager.grafanas().define("myWorkspace").withExistingResourceGroup("myResourceGroup").withRegion("West US")
+            .withTags(mapOf("Environment", "Dev"))
             .withProperties(new ManagedGrafanaProperties().withPublicNetworkAccess(PublicNetworkAccess.ENABLED)
                 .withZoneRedundancy(ZoneRedundancy.ENABLED).withApiKey(ApiKey.ENABLED)
                 .withDeterministicOutboundIp(DeterministicOutboundIp.ENABLED)
@@ -56,6 +56,7 @@ public final class Main {
                     .withSecurity(new Security().withCsrfAlwaysCheck(false))
                     .withUnifiedAlertingScreenshots(new UnifiedAlertingScreenshots().withCaptureEnabled(false)))
                 .withGrafanaPlugins(mapOf("sample-plugin-id", new GrafanaPlugin())).withGrafanaMajorVersion("9"))
+            .withSku(new ResourceSku().withName("Standard"))
             .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED)).create();
     }
 

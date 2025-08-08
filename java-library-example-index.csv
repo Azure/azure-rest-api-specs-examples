@@ -5735,3 +5735,4 @@ id,name,language,tag,package,version,date_epoch,date
 5734,azure-mgmt-monitor@8.0.0b1,python,azure-mgmt-monitor_8.0.0b1,azure-mgmt-monitor,8.0.0b1,1754458812,08/06/2025
 5735,azure-mgmt-mongocluster@1.1.0b1,python,azure-mgmt-mongocluster_1.1.0b1,azure-mgmt-mongocluster,1.1.0b1,1754456438,08/06/2025
 5736,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.2.0-beta.2,java,azure-resourcemanager-dashboard_1.2.0-beta.2,azure-resourcemanager-dashboard,1.2.0-beta.2,1754603820,08/07/2025
+5737,@azure/arm-dashboard@2.0.0-beta.1,js,@azure/arm-dashboard_2.0.0-beta.1,@azure/arm-dashboard,2.0.0-beta.1,1754603178,08/07/2025

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlMigrationResource created on azure
-// for more information of creating PostgreSqlMigrationResource, please refer to the document of PostgreSqlMigrationResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testrg";
 string targetDbServerName = "testtarget";
-string migrationName = "testmigrationwithvalidationfailure";
-ResourceIdentifier postgreSqlMigrationResourceId = PostgreSqlMigrationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, targetDbServerName, migrationName);
-PostgreSqlMigrationResource postgreSqlMigration = client.GetPostgreSqlMigrationResource(postgreSqlMigrationResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, targetDbServerName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this PostgreSqlMigrationResource
+PostgreSqlMigrationCollection collection = postgreSqlFlexibleServer.GetPostgreSqlMigrations();
 
 // invoke the operation
-PostgreSqlMigrationResource result = await postgreSqlMigration.GetAsync();
+string migrationName = "testmigrationwithvalidationfailure";
+NullableResponse<PostgreSqlMigrationResource> response = await collection.GetIfExistsAsync(migrationName);
+PostgreSqlMigrationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PostgreSqlMigrationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PostgreSqlMigrationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

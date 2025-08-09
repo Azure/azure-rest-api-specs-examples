@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlPrivateEndpointConnectionResource created on azure
-// for more information of creating PostgreSqlPrivateEndpointConnectionResource, please refer to the document of PostgreSqlPrivateEndpointConnectionResource
+// this example assumes you already have this PostgreSqlServerResource created on azure
+// for more information of creating PostgreSqlServerResource, please refer to the document of PostgreSqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string serverName = "test-svr";
-string privateEndpointConnectionName = "private-endpoint-connection-name";
-ResourceIdentifier postgreSqlPrivateEndpointConnectionResourceId = PostgreSqlPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, privateEndpointConnectionName);
-PostgreSqlPrivateEndpointConnectionResource postgreSqlPrivateEndpointConnection = client.GetPostgreSqlPrivateEndpointConnectionResource(postgreSqlPrivateEndpointConnectionResourceId);
+ResourceIdentifier postgreSqlServerResourceId = PostgreSqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(postgreSqlServerResourceId);
+
+// get the collection of this PostgreSqlPrivateEndpointConnectionResource
+PostgreSqlPrivateEndpointConnectionCollection collection = postgreSqlServer.GetPostgreSqlPrivateEndpointConnections();
 
 // invoke the operation
-PostgreSqlPrivateEndpointConnectionResource result = await postgreSqlPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "private-endpoint-connection-name";
+NullableResponse<PostgreSqlPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+PostgreSqlPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PostgreSqlPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PostgreSqlPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

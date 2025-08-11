@@ -5741,3 +5741,4 @@ id,name,language,tag,package,version,date_epoch,date
 5740,azure-mgmt-dashboard@2.0.0b1,python,azure-mgmt-dashboard_2.0.0b1,azure-mgmt-dashboard,2.0.0b1,1754603218,08/07/2025
 5741,"Azure.ResourceManager.Network,1.11.2",dotnet,Azure.ResourceManager.Network_1.11.2,Azure.ResourceManager.Network,1.11.2,1754905976,08/11/2025
 5742,"Azure.ResourceManager.AppContainers,1.4.1",dotnet,Azure.ResourceManager.AppContainers_1.4.1,Azure.ResourceManager.AppContainers,1.4.1,1754905710,08/11/2025
+5743,"Azure.ResourceManager.AppService,1.4.1",dotnet,Azure.ResourceManager.AppService_1.4.1,Azure.ResourceManager.AppService,1.4.1,1754904720,08/11/2025

@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteSlotWorkflowResource created on azure
-// for more information of creating SiteSlotWorkflowResource, please refer to the document of SiteSlotWorkflowResource
+// this example assumes you already have this WebSiteSlotResource created on azure
+// for more information of creating WebSiteSlotResource, please refer to the document of WebSiteSlotResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string name = "testsite2";
 string slot = "staging";
-string workflowName = "stateful1";
-ResourceIdentifier siteSlotWorkflowResourceId = SiteSlotWorkflowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot, workflowName);
-SiteSlotWorkflowResource siteSlotWorkflow = client.GetSiteSlotWorkflowResource(siteSlotWorkflowResourceId);
+ResourceIdentifier webSiteSlotResourceId = WebSiteSlotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot);
+WebSiteSlotResource webSiteSlot = client.GetWebSiteSlotResource(webSiteSlotResourceId);
+
+// get the collection of this SiteSlotWorkflowResource
+SiteSlotWorkflowCollection collection = webSiteSlot.GetSiteSlotWorkflows();
 
 // invoke the operation
-SiteSlotWorkflowResource result = await siteSlotWorkflow.GetAsync();
+string workflowName = "stateful1";
+NullableResponse<SiteSlotWorkflowResource> response = await collection.GetIfExistsAsync(workflowName);
+SiteSlotWorkflowResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WorkflowEnvelopeData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    WorkflowEnvelopeData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

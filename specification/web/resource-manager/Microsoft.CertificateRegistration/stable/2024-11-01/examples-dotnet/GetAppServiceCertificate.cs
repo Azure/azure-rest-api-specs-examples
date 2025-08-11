@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2024-11-01/examples/GetAppServiceCertificate.json
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppServiceCertificateResource created on azure
-// for more information of creating AppServiceCertificateResource, please refer to the document of AppServiceCertificateResource
+// this example assumes you already have this AppServiceCertificateOrderResource created on azure
+// for more information of creating AppServiceCertificateOrderResource, please refer to the document of AppServiceCertificateOrderResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string certificateOrderName = "SampleCertificateOrderName";
-string name = "SampleCertName1";
-ResourceIdentifier appServiceCertificateResourceId = AppServiceCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, certificateOrderName, name);
-AppServiceCertificateResource appServiceCertificate = client.GetAppServiceCertificateResource(appServiceCertificateResourceId);
+ResourceIdentifier appServiceCertificateOrderResourceId = AppServiceCertificateOrderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, certificateOrderName);
+AppServiceCertificateOrderResource appServiceCertificateOrder = client.GetAppServiceCertificateOrderResource(appServiceCertificateOrderResourceId);
+
+// get the collection of this AppServiceCertificateResource
+AppServiceCertificateCollection collection = appServiceCertificateOrder.GetAppServiceCertificates();
 
 // invoke the operation
-AppServiceCertificateResource result = await appServiceCertificate.GetAsync();
+string name = "SampleCertName1";
+NullableResponse<AppServiceCertificateResource> response = await collection.GetIfExistsAsync(name);
+AppServiceCertificateResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppServiceCertificateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppServiceCertificateData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

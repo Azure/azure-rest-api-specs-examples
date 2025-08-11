@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteBuildLinkedBackendResource created on azure
-// for more information of creating StaticSiteBuildLinkedBackendResource, please refer to the document of StaticSiteBuildLinkedBackendResource
+// this example assumes you already have this StaticSiteBuildResource created on azure
+// for more information of creating StaticSiteBuildResource, please refer to the document of StaticSiteBuildResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
 string environmentName = "default";
-string linkedBackendName = "testBackend";
-ResourceIdentifier staticSiteBuildLinkedBackendResourceId = StaticSiteBuildLinkedBackendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName, linkedBackendName);
-StaticSiteBuildLinkedBackendResource staticSiteBuildLinkedBackend = client.GetStaticSiteBuildLinkedBackendResource(staticSiteBuildLinkedBackendResourceId);
+ResourceIdentifier staticSiteBuildResourceId = StaticSiteBuildResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName);
+StaticSiteBuildResource staticSiteBuild = client.GetStaticSiteBuildResource(staticSiteBuildResourceId);
+
+// get the collection of this StaticSiteBuildLinkedBackendResource
+StaticSiteBuildLinkedBackendCollection collection = staticSiteBuild.GetStaticSiteBuildLinkedBackends();
 
 // invoke the operation
-StaticSiteBuildLinkedBackendResource result = await staticSiteBuildLinkedBackend.GetAsync();
+string linkedBackendName = "testBackend";
+NullableResponse<StaticSiteBuildLinkedBackendResource> response = await collection.GetIfExistsAsync(linkedBackendName);
+StaticSiteBuildLinkedBackendResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StaticSiteLinkedBackendData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StaticSiteLinkedBackendData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

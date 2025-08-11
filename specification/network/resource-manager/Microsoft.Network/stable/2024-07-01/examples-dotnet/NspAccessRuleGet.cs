@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterProfileResource created on azure
-// for more information of creating NetworkSecurityPerimeterProfileResource, please refer to the document of NetworkSecurityPerimeterProfileResource
+// this example assumes you already have this NetworkSecurityPerimeterAccessRuleResource created on azure
+// for more information of creating NetworkSecurityPerimeterAccessRuleResource, please refer to the document of NetworkSecurityPerimeterAccessRuleResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
 string profileName = "profile1";
-ResourceIdentifier networkSecurityPerimeterProfileResourceId = NetworkSecurityPerimeterProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, profileName);
-NetworkSecurityPerimeterProfileResource networkSecurityPerimeterProfile = client.GetNetworkSecurityPerimeterProfileResource(networkSecurityPerimeterProfileResourceId);
-
-// get the collection of this NetworkSecurityPerimeterAccessRuleResource
-NetworkSecurityPerimeterAccessRuleCollection collection = networkSecurityPerimeterProfile.GetNetworkSecurityPerimeterAccessRules();
+string accessRuleName = "accessRule1";
+ResourceIdentifier networkSecurityPerimeterAccessRuleResourceId = NetworkSecurityPerimeterAccessRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, profileName, accessRuleName);
+NetworkSecurityPerimeterAccessRuleResource networkSecurityPerimeterAccessRule = client.GetNetworkSecurityPerimeterAccessRuleResource(networkSecurityPerimeterAccessRuleResourceId);
 
 // invoke the operation
-string accessRuleName = "accessRule1";
-NullableResponse<NetworkSecurityPerimeterAccessRuleResource> response = await collection.GetIfExistsAsync(accessRuleName);
-NetworkSecurityPerimeterAccessRuleResource result = response.HasValue ? response.Value : null;
+NetworkSecurityPerimeterAccessRuleResource result = await networkSecurityPerimeterAccessRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NetworkSecurityPerimeterAccessRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkSecurityPerimeterAccessRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

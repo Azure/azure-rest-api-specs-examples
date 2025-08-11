@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Network;
 
@@ -16,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkWatcherResource created on azure
-// for more information of creating NetworkWatcherResource, please refer to the document of NetworkWatcherResource
+// this example assumes you already have this FlowLogResource created on azure
+// for more information of creating FlowLogResource, please refer to the document of FlowLogResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkWatcherName = "nw1";
-ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName);
-NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
-
-// get the collection of this FlowLogResource
-FlowLogCollection collection = networkWatcher.GetFlowLogs();
+string flowLogName = "flowLog1";
+ResourceIdentifier flowLogResourceId = FlowLogResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName, flowLogName);
+FlowLogResource flowLog = client.GetFlowLogResource(flowLogResourceId);
 
 // invoke the operation
-string flowLogName = "flowLog1";
-NullableResponse<FlowLogResource> response = await collection.GetIfExistsAsync(flowLogName);
-FlowLogResource result = response.HasValue ? response.Value : null;
+FlowLogResource result = await flowLog.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FlowLogData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FlowLogData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -16,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HubVirtualNetworkConnectionResource created on azure
-// for more information of creating HubVirtualNetworkConnectionResource, please refer to the document of HubVirtualNetworkConnectionResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-string connectionName = "connection1";
-ResourceIdentifier hubVirtualNetworkConnectionResourceId = HubVirtualNetworkConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, connectionName);
-HubVirtualNetworkConnectionResource hubVirtualNetworkConnection = client.GetHubVirtualNetworkConnectionResource(hubVirtualNetworkConnectionResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this HubVirtualNetworkConnectionResource
+HubVirtualNetworkConnectionCollection collection = virtualHub.GetHubVirtualNetworkConnections();
 
 // invoke the operation
-HubVirtualNetworkConnectionResource result = await hubVirtualNetworkConnection.GetAsync();
+string connectionName = "connection1";
+NullableResponse<HubVirtualNetworkConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
+HubVirtualNetworkConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HubVirtualNetworkConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HubVirtualNetworkConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

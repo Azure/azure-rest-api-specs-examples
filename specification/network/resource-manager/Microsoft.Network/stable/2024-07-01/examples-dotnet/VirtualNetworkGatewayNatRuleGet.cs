@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkGatewayResource created on azure
-// for more information of creating VirtualNetworkGatewayResource, please refer to the document of VirtualNetworkGatewayResource
+// this example assumes you already have this VirtualNetworkGatewayNatRuleResource created on azure
+// for more information of creating VirtualNetworkGatewayNatRuleResource, please refer to the document of VirtualNetworkGatewayNatRuleResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualNetworkGatewayName = "gateway1";
-ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName);
-VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
-
-// get the collection of this VirtualNetworkGatewayNatRuleResource
-VirtualNetworkGatewayNatRuleCollection collection = virtualNetworkGateway.GetVirtualNetworkGatewayNatRules();
+string natRuleName = "natRule1";
+ResourceIdentifier virtualNetworkGatewayNatRuleResourceId = VirtualNetworkGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName, natRuleName);
+VirtualNetworkGatewayNatRuleResource virtualNetworkGatewayNatRule = client.GetVirtualNetworkGatewayNatRuleResource(virtualNetworkGatewayNatRuleResourceId);
 
 // invoke the operation
-string natRuleName = "natRule1";
-NullableResponse<VirtualNetworkGatewayNatRuleResource> response = await collection.GetIfExistsAsync(natRuleName);
-VirtualNetworkGatewayNatRuleResource result = response.HasValue ? response.Value : null;
+VirtualNetworkGatewayNatRuleResource result = await virtualNetworkGatewayNatRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VirtualNetworkGatewayNatRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualNetworkGatewayNatRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

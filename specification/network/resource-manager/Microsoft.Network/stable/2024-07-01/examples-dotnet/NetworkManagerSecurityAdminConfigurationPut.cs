@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAdminConfigurationResource created on azure
-// for more information of creating SecurityAdminConfigurationResource, please refer to the document of SecurityAdminConfigurationResource
+// this example assumes you already have this NetworkManagerResource created on azure
+// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-string configurationName = "myTestSecurityConfig";
-ResourceIdentifier securityAdminConfigurationResourceId = SecurityAdminConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
-SecurityAdminConfigurationResource securityAdminConfiguration = client.GetSecurityAdminConfigurationResource(securityAdminConfigurationResourceId);
+ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
+NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
+
+// get the collection of this SecurityAdminConfigurationResource
+SecurityAdminConfigurationCollection collection = networkManager.GetSecurityAdminConfigurations();
 
 // invoke the operation
+string configurationName = "myTestSecurityConfig";
 SecurityAdminConfigurationData data = new SecurityAdminConfigurationData
 {
     Description = "A sample policy",
     ApplyOnNetworkIntentPolicyBasedServices = { NetworkIntentPolicyBasedService.None },
 };
-ArmOperation<SecurityAdminConfigurationResource> lro = await securityAdminConfiguration.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SecurityAdminConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
 SecurityAdminConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GalleryInVmAccessControlProfileResource created on azure
-// for more information of creating GalleryInVmAccessControlProfileResource, please refer to the document of GalleryInVmAccessControlProfileResource
+// this example assumes you already have this GalleryInVmAccessControlProfileVersionResource created on azure
+// for more information of creating GalleryInVmAccessControlProfileVersionResource, please refer to the document of GalleryInVmAccessControlProfileVersionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string galleryName = "myGalleryName";
 string inVmAccessControlProfileName = "myInVMAccessControlProfileName";
-ResourceIdentifier galleryInVmAccessControlProfileResourceId = GalleryInVmAccessControlProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName, inVmAccessControlProfileName);
-GalleryInVmAccessControlProfileResource galleryInVmAccessControlProfile = client.GetGalleryInVmAccessControlProfileResource(galleryInVmAccessControlProfileResourceId);
-
-// get the collection of this GalleryInVmAccessControlProfileVersionResource
-GalleryInVmAccessControlProfileVersionCollection collection = galleryInVmAccessControlProfile.GetGalleryInVmAccessControlProfileVersions();
+string inVmAccessControlProfileVersionName = "1.0.0";
+ResourceIdentifier galleryInVmAccessControlProfileVersionResourceId = GalleryInVmAccessControlProfileVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName, inVmAccessControlProfileName, inVmAccessControlProfileVersionName);
+GalleryInVmAccessControlProfileVersionResource galleryInVmAccessControlProfileVersion = client.GetGalleryInVmAccessControlProfileVersionResource(galleryInVmAccessControlProfileVersionResourceId);
 
 // invoke the operation
-string inVmAccessControlProfileVersionName = "1.0.0";
-NullableResponse<GalleryInVmAccessControlProfileVersionResource> response = await collection.GetIfExistsAsync(inVmAccessControlProfileVersionName);
-GalleryInVmAccessControlProfileVersionResource result = response.HasValue ? response.Value : null;
+GalleryInVmAccessControlProfileVersionResource result = await galleryInVmAccessControlProfileVersion.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    GalleryInVmAccessControlProfileVersionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GalleryInVmAccessControlProfileVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

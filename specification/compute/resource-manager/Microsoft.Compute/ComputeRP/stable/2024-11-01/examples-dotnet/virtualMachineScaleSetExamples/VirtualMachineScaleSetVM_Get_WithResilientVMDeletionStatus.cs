@@ -16,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineScaleSetVmResource created on azure
-// for more information of creating VirtualMachineScaleSetVmResource, please refer to the document of VirtualMachineScaleSetVmResource
+// this example assumes you already have this VirtualMachineScaleSetResource created on azure
+// for more information of creating VirtualMachineScaleSetResource, please refer to the document of VirtualMachineScaleSetResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string virtualMachineScaleSetName = "{vmss-name}";
-string instanceId = "1";
-ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, instanceId);
-VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
+ResourceIdentifier virtualMachineScaleSetResourceId = VirtualMachineScaleSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName);
+VirtualMachineScaleSetResource virtualMachineScaleSet = client.GetVirtualMachineScaleSetResource(virtualMachineScaleSetResourceId);
+
+// get the collection of this VirtualMachineScaleSetVmResource
+VirtualMachineScaleSetVmCollection collection = virtualMachineScaleSet.GetVirtualMachineScaleSetVms();
 
 // invoke the operation
-VirtualMachineScaleSetVmResource result = await virtualMachineScaleSetVm.GetAsync();
+string instanceId = "1";
+NullableResponse<VirtualMachineScaleSetVmResource> response = await collection.GetIfExistsAsync(instanceId);
+VirtualMachineScaleSetVmResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VirtualMachineScaleSetVmData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VirtualMachineScaleSetVmData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

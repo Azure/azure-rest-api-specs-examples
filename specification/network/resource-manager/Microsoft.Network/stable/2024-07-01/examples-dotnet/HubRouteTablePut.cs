@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HubRouteTableResource created on azure
-// for more information of creating HubRouteTableResource, please refer to the document of HubRouteTableResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-string routeTableName = "hubRouteTable1";
-ResourceIdentifier hubRouteTableResourceId = HubRouteTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routeTableName);
-HubRouteTableResource hubRouteTable = client.GetHubRouteTableResource(hubRouteTableResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this HubRouteTableResource
+HubRouteTableCollection collection = virtualHub.GetHubRouteTables();
 
 // invoke the operation
+string routeTableName = "hubRouteTable1";
 HubRouteTableData data = new HubRouteTableData
 {
     Routes = { new HubRoute("route1", "CIDR", new string[] { "10.0.0.0/8", "20.0.0.0/8", "30.0.0.0/8" }, "ResourceId", "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azureFirewall1") },
     Labels = { "label1", "label2" },
 };
-ArmOperation<HubRouteTableResource> lro = await hubRouteTable.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HubRouteTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data);
 HubRouteTableResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

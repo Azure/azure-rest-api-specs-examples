@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCircuitResource created on azure
-// for more information of creating ExpressRouteCircuitResource, please refer to the document of ExpressRouteCircuitResource
+// this example assumes you already have this ExpressRouteCircuitAuthorizationResource created on azure
+// for more information of creating ExpressRouteCircuitAuthorizationResource, please refer to the document of ExpressRouteCircuitAuthorizationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string circuitName = "circuitName";
-ResourceIdentifier expressRouteCircuitResourceId = ExpressRouteCircuitResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName);
-ExpressRouteCircuitResource expressRouteCircuit = client.GetExpressRouteCircuitResource(expressRouteCircuitResourceId);
-
-// get the collection of this ExpressRouteCircuitAuthorizationResource
-ExpressRouteCircuitAuthorizationCollection collection = expressRouteCircuit.GetExpressRouteCircuitAuthorizations();
+string authorizationName = "authorizatinName";
+ResourceIdentifier expressRouteCircuitAuthorizationResourceId = ExpressRouteCircuitAuthorizationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, authorizationName);
+ExpressRouteCircuitAuthorizationResource expressRouteCircuitAuthorization = client.GetExpressRouteCircuitAuthorizationResource(expressRouteCircuitAuthorizationResourceId);
 
 // invoke the operation
-string authorizationName = "authorizatinName";
 ExpressRouteCircuitAuthorizationData data = new ExpressRouteCircuitAuthorizationData();
-ArmOperation<ExpressRouteCircuitAuthorizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationName, data);
+ArmOperation<ExpressRouteCircuitAuthorizationResource> lro = await expressRouteCircuitAuthorization.UpdateAsync(WaitUntil.Completed, data);
 ExpressRouteCircuitAuthorizationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

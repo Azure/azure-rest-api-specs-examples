@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
-// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
+// this example assumes you already have this NetworkSecurityPerimeterLoggingConfigurationResource created on azure
+// for more information of creating NetworkSecurityPerimeterLoggingConfigurationResource, please refer to the document of NetworkSecurityPerimeterLoggingConfigurationResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
-ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
-NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
-
-// get the collection of this NetworkSecurityPerimeterLoggingConfigurationResource
-NetworkSecurityPerimeterLoggingConfigurationCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterLoggingConfigurations();
+string loggingConfigurationName = "instance";
+ResourceIdentifier networkSecurityPerimeterLoggingConfigurationResourceId = NetworkSecurityPerimeterLoggingConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, loggingConfigurationName);
+NetworkSecurityPerimeterLoggingConfigurationResource networkSecurityPerimeterLoggingConfiguration = client.GetNetworkSecurityPerimeterLoggingConfigurationResource(networkSecurityPerimeterLoggingConfigurationResourceId);
 
 // invoke the operation
-string loggingConfigurationName = "instance";
 NetworkSecurityPerimeterLoggingConfigurationData data = new NetworkSecurityPerimeterLoggingConfigurationData
 {
     EnabledLogCategories = { "NspPublicInboundPerimeterRulesDenied", "NspPublicOutboundPerimeterRulesDenied" },
 };
-ArmOperation<NetworkSecurityPerimeterLoggingConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loggingConfigurationName, data);
+ArmOperation<NetworkSecurityPerimeterLoggingConfigurationResource> lro = await networkSecurityPerimeterLoggingConfiguration.UpdateAsync(WaitUntil.Completed, data);
 NetworkSecurityPerimeterLoggingConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

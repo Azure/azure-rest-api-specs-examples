@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryResource created on azure
-// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
+// this example assumes you already have this ContainerRegistryTokenResource created on azure
+// for more information of creating ContainerRegistryTokenResource, please refer to the document of ContainerRegistryTokenResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
-ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
-
-// get the collection of this ContainerRegistryTokenResource
-ContainerRegistryTokenCollection collection = containerRegistry.GetContainerRegistryTokens();
+string tokenName = "myToken";
+ResourceIdentifier containerRegistryTokenResourceId = ContainerRegistryTokenResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, tokenName);
+ContainerRegistryTokenResource containerRegistryToken = client.GetContainerRegistryTokenResource(containerRegistryTokenResourceId);
 
 // invoke the operation
-string tokenName = "myToken";
-NullableResponse<ContainerRegistryTokenResource> response = await collection.GetIfExistsAsync(tokenName);
-ContainerRegistryTokenResource result = response.HasValue ? response.Value : null;
+ContainerRegistryTokenResource result = await containerRegistryToken.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerRegistryTokenData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerRegistryTokenData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

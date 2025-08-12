@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlDatabaseResource created on azure
-// for more information of creating MySqlDatabaseResource, please refer to the document of MySqlDatabaseResource
+// this example assumes you already have this MySqlServerResource created on azure
+// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-string databaseName = "db1";
-ResourceIdentifier mySqlDatabaseResourceId = MySqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-MySqlDatabaseResource mySqlDatabase = client.GetMySqlDatabaseResource(mySqlDatabaseResourceId);
+ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
+
+// get the collection of this MySqlDatabaseResource
+MySqlDatabaseCollection collection = mySqlServer.GetMySqlDatabases();
 
 // invoke the operation
+string databaseName = "db1";
 MySqlDatabaseData data = new MySqlDatabaseData
 {
     Charset = "utf8",
     Collation = "utf8_general_ci",
 };
-ArmOperation<MySqlDatabaseResource> lro = await mySqlDatabase.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MySqlDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, data);
 MySqlDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

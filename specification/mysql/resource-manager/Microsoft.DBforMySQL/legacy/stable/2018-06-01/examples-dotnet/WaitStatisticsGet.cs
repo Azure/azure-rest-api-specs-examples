@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.MySql.Models;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2018-06-01/examples/WaitStatisticsGet.json
@@ -14,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlWaitStatisticResource created on azure
-// for more information of creating MySqlWaitStatisticResource, please refer to the document of MySqlWaitStatisticResource
+// this example assumes you already have this MySqlServerResource created on azure
+// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testResourceGroupName";
 string serverName = "testServerName";
-string waitStatisticsId = "636927606000000000-636927615000000000-send-wait/io/socket/sql/client_connection-2--0";
-ResourceIdentifier mySqlWaitStatisticResourceId = MySqlWaitStatisticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, waitStatisticsId);
-MySqlWaitStatisticResource mySqlWaitStatistic = client.GetMySqlWaitStatisticResource(mySqlWaitStatisticResourceId);
+ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
+
+// get the collection of this MySqlWaitStatisticResource
+MySqlWaitStatisticCollection collection = mySqlServer.GetMySqlWaitStatistics();
 
 // invoke the operation
-MySqlWaitStatisticResource result = await mySqlWaitStatistic.GetAsync();
+string waitStatisticsId = "636927606000000000-636927615000000000-send-wait/io/socket/sql/client_connection-2--0";
+NullableResponse<MySqlWaitStatisticResource> response = await collection.GetIfExistsAsync(waitStatisticsId);
+MySqlWaitStatisticResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MySqlWaitStatisticData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MySqlWaitStatisticData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

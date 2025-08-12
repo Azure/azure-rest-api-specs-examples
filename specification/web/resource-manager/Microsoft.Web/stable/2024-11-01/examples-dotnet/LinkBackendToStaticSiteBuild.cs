@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteBuildLinkedBackendResource created on azure
-// for more information of creating StaticSiteBuildLinkedBackendResource, please refer to the document of StaticSiteBuildLinkedBackendResource
+// this example assumes you already have this StaticSiteBuildResource created on azure
+// for more information of creating StaticSiteBuildResource, please refer to the document of StaticSiteBuildResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
 string environmentName = "default";
-string linkedBackendName = "testBackend";
-ResourceIdentifier staticSiteBuildLinkedBackendResourceId = StaticSiteBuildLinkedBackendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName, linkedBackendName);
-StaticSiteBuildLinkedBackendResource staticSiteBuildLinkedBackend = client.GetStaticSiteBuildLinkedBackendResource(staticSiteBuildLinkedBackendResourceId);
+ResourceIdentifier staticSiteBuildResourceId = StaticSiteBuildResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName);
+StaticSiteBuildResource staticSiteBuild = client.GetStaticSiteBuildResource(staticSiteBuildResourceId);
+
+// get the collection of this StaticSiteBuildLinkedBackendResource
+StaticSiteBuildLinkedBackendCollection collection = staticSiteBuild.GetStaticSiteBuildLinkedBackends();
 
 // invoke the operation
+string linkedBackendName = "testBackend";
 StaticSiteLinkedBackendData data = new StaticSiteLinkedBackendData
 {
     BackendResourceId = new ResourceIdentifier("/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend"),
     Region = "West US 2",
 };
-ArmOperation<StaticSiteBuildLinkedBackendResource> lro = await staticSiteBuildLinkedBackend.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StaticSiteBuildLinkedBackendResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkedBackendName, data);
 StaticSiteBuildLinkedBackendResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

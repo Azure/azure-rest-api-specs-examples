@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkflowVersionResource created on azure
-// for more information of creating WorkflowVersionResource, please refer to the document of WorkflowVersionResource
+// this example assumes you already have this WebSiteResource created on azure
+// for more information of creating WebSiteResource, please refer to the document of WebSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string name = "test-name";
+ResourceIdentifier webSiteResourceId = WebSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+WebSiteResource webSite = client.GetWebSiteResource(webSiteResourceId);
+
+// get the collection of this WorkflowVersionResource
 string workflowName = "test-workflow";
-string versionId = "08586676824806722526";
-ResourceIdentifier workflowVersionResourceId = WorkflowVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, versionId);
-WorkflowVersionResource workflowVersion = client.GetWorkflowVersionResource(workflowVersionResourceId);
+WorkflowVersionCollection collection = webSite.GetWorkflowVersions(workflowName);
 
 // invoke the operation
-WorkflowVersionResource result = await workflowVersion.GetAsync();
+string versionId = "08586676824806722526";
+NullableResponse<WorkflowVersionResource> response = await collection.GetIfExistsAsync(versionId);
+WorkflowVersionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WorkflowVersionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    WorkflowVersionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

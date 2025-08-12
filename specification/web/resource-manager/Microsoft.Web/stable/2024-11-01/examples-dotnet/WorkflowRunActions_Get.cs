@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2024-11-01/examples/WorkflowRunActions_Get.json
@@ -15,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkflowRunActionResource created on azure
-// for more information of creating WorkflowRunActionResource, please refer to the document of WorkflowRunActionResource
+// this example assumes you already have this WorkflowRunResource created on azure
+// for more information of creating WorkflowRunResource, please refer to the document of WorkflowRunResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string name = "test-name";
 string workflowName = "test-workflow";
 string runName = "08586676746934337772206998657CU22";
-string actionName = "HTTP";
-ResourceIdentifier workflowRunActionResourceId = WorkflowRunActionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName, actionName);
-WorkflowRunActionResource workflowRunAction = client.GetWorkflowRunActionResource(workflowRunActionResourceId);
+ResourceIdentifier workflowRunResourceId = WorkflowRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName);
+WorkflowRunResource workflowRun = client.GetWorkflowRunResource(workflowRunResourceId);
+
+// get the collection of this WorkflowRunActionResource
+WorkflowRunActionCollection collection = workflowRun.GetWorkflowRunActions();
 
 // invoke the operation
-WorkflowRunActionResource result = await workflowRunAction.GetAsync();
+string actionName = "HTTP";
+NullableResponse<WorkflowRunActionResource> response = await collection.GetIfExistsAsync(actionName);
+WorkflowRunActionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WorkflowRunActionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    WorkflowRunActionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

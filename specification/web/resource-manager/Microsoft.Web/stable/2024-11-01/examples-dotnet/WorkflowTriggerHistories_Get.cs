@@ -14,33 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkflowTriggerResource created on azure
-// for more information of creating WorkflowTriggerResource, please refer to the document of WorkflowTriggerResource
+// this example assumes you already have this WorkflowTriggerHistoryResource created on azure
+// for more information of creating WorkflowTriggerHistoryResource, please refer to the document of WorkflowTriggerHistoryResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string name = "test-name";
 string workflowName = "testWorkflowName";
 string triggerName = "testTriggerName";
-ResourceIdentifier workflowTriggerResourceId = WorkflowTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, triggerName);
-WorkflowTriggerResource workflowTrigger = client.GetWorkflowTriggerResource(workflowTriggerResourceId);
-
-// get the collection of this WorkflowTriggerHistoryResource
-WorkflowTriggerHistoryCollection collection = workflowTrigger.GetWorkflowTriggerHistories();
+string historyName = "08586676746934337772206998657CU22";
+ResourceIdentifier workflowTriggerHistoryResourceId = WorkflowTriggerHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, triggerName, historyName);
+WorkflowTriggerHistoryResource workflowTriggerHistory = client.GetWorkflowTriggerHistoryResource(workflowTriggerHistoryResourceId);
 
 // invoke the operation
-string historyName = "08586676746934337772206998657CU22";
-NullableResponse<WorkflowTriggerHistoryResource> response = await collection.GetIfExistsAsync(historyName);
-WorkflowTriggerHistoryResource result = response.HasValue ? response.Value : null;
+WorkflowTriggerHistoryResource result = await workflowTriggerHistory.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    WorkflowTriggerHistoryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WorkflowTriggerHistoryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

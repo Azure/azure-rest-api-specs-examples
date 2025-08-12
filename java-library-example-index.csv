@@ -5745,3 +5745,4 @@ id,name,language,tag,package,version,date_epoch,date
 5744,"Azure.ResourceManager.Compute,1.11.0",dotnet,Azure.ResourceManager.Compute_1.11.0,Azure.ResourceManager.Compute,1.11.0,1754982354,08/12/2025
 5745,"Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.2.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.1,1754981017,08/12/2025
 5746,"Azure.ResourceManager.DataMigration,1.0.0-beta.6",dotnet,Azure.ResourceManager.DataMigration_1.0.0-beta.6,Azure.ResourceManager.DataMigration,1.0.0-beta.6,1754980212,08/12/2025
+5747,"Azure.ResourceManager.MySql,1.1.2",dotnet,Azure.ResourceManager.MySql_1.1.2,Azure.ResourceManager.MySql,1.1.2,1754975839,08/12/2025

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkspacePrivateEndpointConnectionResource created on azure
-// for more information of creating WorkspacePrivateEndpointConnectionResource, please refer to the document of WorkspacePrivateEndpointConnectionResource
+// this example assumes you already have this VirtualWorkspaceResource created on azure
+// for more information of creating VirtualWorkspaceResource, please refer to the document of VirtualWorkspaceResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
 string workspaceName = "workspace1";
-string privateEndpointConnectionName = "workspace1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
-ResourceIdentifier workspacePrivateEndpointConnectionResourceId = WorkspacePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
-WorkspacePrivateEndpointConnectionResource workspacePrivateEndpointConnection = client.GetWorkspacePrivateEndpointConnectionResource(workspacePrivateEndpointConnectionResourceId);
+ResourceIdentifier virtualWorkspaceResourceId = VirtualWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+VirtualWorkspaceResource virtualWorkspace = client.GetVirtualWorkspaceResource(virtualWorkspaceResourceId);
+
+// get the collection of this WorkspacePrivateEndpointConnectionResource
+WorkspacePrivateEndpointConnectionCollection collection = virtualWorkspace.GetWorkspacePrivateEndpointConnections();
 
 // invoke the operation
-WorkspacePrivateEndpointConnectionResource result = await workspacePrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "workspace1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
+NullableResponse<WorkspacePrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+WorkspacePrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DesktopVirtualizationPrivateEndpointConnectionDataData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DesktopVirtualizationPrivateEndpointConnectionDataData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

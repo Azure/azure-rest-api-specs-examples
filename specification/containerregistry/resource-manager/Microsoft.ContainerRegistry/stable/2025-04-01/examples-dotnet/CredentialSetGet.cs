@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2025-04-01/examples/CredentialSetGet.json
@@ -16,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryResource created on azure
-// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
+// this example assumes you already have this ContainerRegistryCredentialSetResource created on azure
+// for more information of creating ContainerRegistryCredentialSetResource, please refer to the document of ContainerRegistryCredentialSetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
-ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
-
-// get the collection of this ContainerRegistryCredentialSetResource
-ContainerRegistryCredentialSetCollection collection = containerRegistry.GetContainerRegistryCredentialSets();
+string credentialSetName = "myCredentialSet";
+ResourceIdentifier containerRegistryCredentialSetResourceId = ContainerRegistryCredentialSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, credentialSetName);
+ContainerRegistryCredentialSetResource containerRegistryCredentialSet = client.GetContainerRegistryCredentialSetResource(containerRegistryCredentialSetResourceId);
 
 // invoke the operation
-string credentialSetName = "myCredentialSet";
-NullableResponse<ContainerRegistryCredentialSetResource> response = await collection.GetIfExistsAsync(credentialSetName);
-ContainerRegistryCredentialSetResource result = response.HasValue ? response.Value : null;
+ContainerRegistryCredentialSetResource result = await containerRegistryCredentialSet.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerRegistryCredentialSetData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerRegistryCredentialSetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

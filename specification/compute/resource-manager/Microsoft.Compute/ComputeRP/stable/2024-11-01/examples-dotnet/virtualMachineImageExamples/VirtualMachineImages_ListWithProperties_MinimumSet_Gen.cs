@@ -27,8 +27,8 @@ AzureLocation location = new AzureLocation("eastus");
 string publisherName = "MicrosoftWindowsServer";
 string offer = "WindowsServer";
 string skus = "2022-datacenter-azure-edition";
-GetVirtualMachineImagesWithPropertiesExpand expand = GetVirtualMachineImagesWithPropertiesExpand.Properties;
-SubscriptionResourceGetVirtualMachineImagesWithPropertiesOptions options = new SubscriptionResourceGetVirtualMachineImagesWithPropertiesOptions(location, publisherName, offer, skus, expand);
+string expandOption = "Properties";
+SubscriptionResourceGetVirtualMachineImagesWithPropertiesOptions options = new SubscriptionResourceGetVirtualMachineImagesWithPropertiesOptions(location, publisherName, offer, skus, expandOption);
 await foreach (VirtualMachineImage item in subscriptionResource.GetVirtualMachineImagesWithPropertiesAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");

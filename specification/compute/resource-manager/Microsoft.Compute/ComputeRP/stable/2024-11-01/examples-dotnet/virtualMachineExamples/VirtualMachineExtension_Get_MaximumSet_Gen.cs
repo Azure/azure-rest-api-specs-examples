@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/examples/virtualMachineExamples/VirtualMachineExtension_Get_MaximumSet_Gen.json
@@ -15,32 +16,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this VirtualMachineExtensionResource created on azure
+// for more information of creating VirtualMachineExtensionResource, please refer to the document of VirtualMachineExtensionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "rgcompute";
 string vmName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
-
-// get the collection of this VirtualMachineExtensionResource
-VirtualMachineExtensionCollection collection = virtualMachine.GetVirtualMachineExtensions();
+string vmExtensionName = "aaaaaaa";
+ResourceIdentifier virtualMachineExtensionResourceId = VirtualMachineExtensionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName, vmExtensionName);
+VirtualMachineExtensionResource virtualMachineExtension = client.GetVirtualMachineExtensionResource(virtualMachineExtensionResourceId);
 
 // invoke the operation
-string vmExtensionName = "aaaaaaa";
 string expand = "aaaaaa";
-NullableResponse<VirtualMachineExtensionResource> response = await collection.GetIfExistsAsync(vmExtensionName, expand: expand);
-VirtualMachineExtensionResource result = response.HasValue ? response.Value : null;
+VirtualMachineExtensionResource result = await virtualMachineExtension.GetAsync(expand: expand);
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VirtualMachineExtensionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualMachineExtensionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

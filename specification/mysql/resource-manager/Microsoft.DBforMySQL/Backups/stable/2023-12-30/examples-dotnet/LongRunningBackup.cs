@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerResource created on azure
-// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
+// this example assumes you already have this MySqlFlexibleServerBackupV2Resource created on azure
+// for more information of creating MySqlFlexibleServerBackupV2Resource, please refer to the document of MySqlFlexibleServerBackupV2Resource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "mysqltestserver";
-ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
-
-// get the collection of this MySqlFlexibleServerBackupV2Resource
-MySqlFlexibleServerBackupV2Collection collection = mySqlFlexibleServer.GetMySqlFlexibleServerBackupV2s();
+string backupName = "testback";
+ResourceIdentifier mySqlFlexibleServerBackupV2ResourceId = MySqlFlexibleServerBackupV2Resource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, backupName);
+MySqlFlexibleServerBackupV2Resource mySqlFlexibleServerBackupV2 = client.GetMySqlFlexibleServerBackupV2Resource(mySqlFlexibleServerBackupV2ResourceId);
 
 // invoke the operation
-string backupName = "testback";
 MySqlFlexibleServerBackupV2Data data = new MySqlFlexibleServerBackupV2Data();
-ArmOperation<MySqlFlexibleServerBackupV2Resource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupName, data);
+ArmOperation<MySqlFlexibleServerBackupV2Resource> lro = await mySqlFlexibleServerBackupV2.UpdateAsync(WaitUntil.Completed, data);
 MySqlFlexibleServerBackupV2Resource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.MySql.Models;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2018-06-01/examples/TopQueryStatisticsGet.json
@@ -14,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlQueryStatisticResource created on azure
-// for more information of creating MySqlQueryStatisticResource, please refer to the document of MySqlQueryStatisticResource
+// this example assumes you already have this MySqlServerResource created on azure
+// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testResourceGroupName";
 string serverName = "testServerName";
-string queryStatisticId = "66-636923268000000000-636923277000000000-avg-duration";
-ResourceIdentifier mySqlQueryStatisticResourceId = MySqlQueryStatisticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, queryStatisticId);
-MySqlQueryStatisticResource mySqlQueryStatistic = client.GetMySqlQueryStatisticResource(mySqlQueryStatisticResourceId);
+ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
+
+// get the collection of this MySqlQueryStatisticResource
+MySqlQueryStatisticCollection collection = mySqlServer.GetMySqlQueryStatistics();
 
 // invoke the operation
-MySqlQueryStatisticResource result = await mySqlQueryStatistic.GetAsync();
+string queryStatisticId = "66-636923268000000000-636923277000000000-avg-duration";
+NullableResponse<MySqlQueryStatisticResource> response = await collection.GetIfExistsAsync(queryStatisticId);
+MySqlQueryStatisticResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MySqlQueryStatisticData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MySqlQueryStatisticData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

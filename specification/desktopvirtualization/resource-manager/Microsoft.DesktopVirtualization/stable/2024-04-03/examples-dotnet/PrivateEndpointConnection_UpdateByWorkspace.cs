@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkspacePrivateEndpointConnectionResource created on azure
-// for more information of creating WorkspacePrivateEndpointConnectionResource, please refer to the document of WorkspacePrivateEndpointConnectionResource
+// this example assumes you already have this VirtualWorkspaceResource created on azure
+// for more information of creating VirtualWorkspaceResource, please refer to the document of VirtualWorkspaceResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
 string workspaceName = "workspace1";
-string privateEndpointConnectionName = "workspace1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
-ResourceIdentifier workspacePrivateEndpointConnectionResourceId = WorkspacePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
-WorkspacePrivateEndpointConnectionResource workspacePrivateEndpointConnection = client.GetWorkspacePrivateEndpointConnectionResource(workspacePrivateEndpointConnectionResourceId);
+ResourceIdentifier virtualWorkspaceResourceId = VirtualWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+VirtualWorkspaceResource virtualWorkspace = client.GetVirtualWorkspaceResource(virtualWorkspaceResourceId);
+
+// get the collection of this WorkspacePrivateEndpointConnectionResource
+WorkspacePrivateEndpointConnectionCollection collection = virtualWorkspace.GetWorkspacePrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "workspace1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
 DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection
 {
     ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState
@@ -34,7 +37,7 @@ DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualiz
         ActionsRequired = "None",
     },
 };
-ArmOperation<WorkspacePrivateEndpointConnectionResource> lro = await workspacePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, connection);
+ArmOperation<WorkspacePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, connection);
 WorkspacePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

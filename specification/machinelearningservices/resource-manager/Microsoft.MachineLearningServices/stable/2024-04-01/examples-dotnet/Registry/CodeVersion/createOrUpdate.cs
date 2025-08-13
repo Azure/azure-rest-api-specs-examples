@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryCodeVersionResource created on azure
-// for more information of creating MachineLearningRegistryCodeVersionResource, please refer to the document of MachineLearningRegistryCodeVersionResource
+// this example assumes you already have this MachineLearningRegistryCodeContainerResource created on azure
+// for more information of creating MachineLearningRegistryCodeContainerResource, please refer to the document of MachineLearningRegistryCodeContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
 string codeName = "string";
-string version = "string";
-ResourceIdentifier machineLearningRegistryCodeVersionResourceId = MachineLearningRegistryCodeVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, codeName, version);
-MachineLearningRegistryCodeVersionResource machineLearningRegistryCodeVersion = client.GetMachineLearningRegistryCodeVersionResource(machineLearningRegistryCodeVersionResourceId);
+ResourceIdentifier machineLearningRegistryCodeContainerResourceId = MachineLearningRegistryCodeContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, codeName);
+MachineLearningRegistryCodeContainerResource machineLearningRegistryCodeContainer = client.GetMachineLearningRegistryCodeContainerResource(machineLearningRegistryCodeContainerResourceId);
+
+// get the collection of this MachineLearningRegistryCodeVersionResource
+MachineLearningRegistryCodeVersionCollection collection = machineLearningRegistryCodeContainer.GetMachineLearningRegistryCodeVersions();
 
 // invoke the operation
+string version = "string";
 MachineLearningCodeVersionData data = new MachineLearningCodeVersionData(new MachineLearningCodeVersionProperties
 {
     CodeUri = new Uri("https://blobStorage/folderName"),
@@ -40,7 +43,7 @@ MachineLearningCodeVersionData data = new MachineLearningCodeVersionData(new Mac
     ["string"] = "string"
     },
 });
-ArmOperation<MachineLearningRegistryCodeVersionResource> lro = await machineLearningRegistryCodeVersion.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningRegistryCodeVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
 MachineLearningRegistryCodeVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

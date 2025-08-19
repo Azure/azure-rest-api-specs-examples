@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.msi import ManagedServiceIdentityClient
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.user_assigned_identities.delete(
+    client.user_assigned_identities.delete(
         resource_group_name="rgName",
         resource_name="resourceName",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/IdentityDelete.json

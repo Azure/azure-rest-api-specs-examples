@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.msi import ManagedServiceIdentityClient
 
 """

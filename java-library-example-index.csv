@@ -5756,3 +5756,4 @@ id,name,language,tag,package,version,date_epoch,date
 5755,azure-mgmt-containerregistry@14.1.0b2,python,azure-mgmt-containerregistry_14.1.0b2,azure-mgmt-containerregistry,14.1.0b2,1755485920,08/18/2025
 5756,azure-mgmt-msi@8.0.0b1,python,azure-mgmt-msi_8.0.0b1,azure-mgmt-msi,8.0.0b1,1755485906,08/18/2025
 5757,com.azure.resourcemanager:azure-resourcemanager-netapp:1.9.0,java,azure-resourcemanager-netapp_1.9.0,azure-resourcemanager-netapp,1.9.0,1755587572,08/19/2025
+5758,azure-mgmt-appcontainers@4.0.0b1,python,azure-mgmt-appcontainers_4.0.0b1,azure-mgmt-appcontainers,4.0.0b1,1755581994,08/19/2025

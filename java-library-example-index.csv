@@ -5761,3 +5761,4 @@ id,name,language,tag,package,version,date_epoch,date
 5760,"Azure.ResourceManager.Resources,1.11.1",dotnet,Azure.ResourceManager.Resources_1.11.1,Azure.ResourceManager.Resources,1.11.1,1755681477,08/20/2025
 5761,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/impactreporting/armimpactreporting@v0.2.0,go,sdk/resourcemanager/impactreporting/armimpactreporting/v0.2.0,sdk/resourcemanager/impactreporting/armimpactreporting,v0.2.0,1755698438,08/20/2025
 5762,@azure/arm-azurestackhcivm@1.0.0-beta.1,js,@azure/arm-azurestackhcivm_1.0.0-beta.1,@azure/arm-azurestackhcivm,1.0.0-beta.1,1755733078,08/20/2025
+5763,"Azure.ResourceManager.ResourceHealth,1.1.0-beta.5",dotnet,Azure.ResourceManager.ResourceHealth_1.1.0-beta.5,Azure.ResourceManager.ResourceHealth,1.1.0-beta.5,1755746844,08/21/2025

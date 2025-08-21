@@ -5759,3 +5759,4 @@ id,name,language,tag,package,version,date_epoch,date
 5758,azure-mgmt-appcontainers@4.0.0b1,python,azure-mgmt-appcontainers_4.0.0b1,azure-mgmt-appcontainers,4.0.0b1,1755581994,08/19/2025
 5759,azure-mgmt-workloadorchestration@1.0.0b1,python,azure-mgmt-workloadorchestration_1.0.0b1,azure-mgmt-workloadorchestration,1.0.0b1,1755581985,08/19/2025
 5760,"Azure.ResourceManager.Resources,1.11.1",dotnet,Azure.ResourceManager.Resources_1.11.1,Azure.ResourceManager.Resources,1.11.1,1755681477,08/20/2025
+5761,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/impactreporting/armimpactreporting@v0.2.0,go,sdk/resourcemanager/impactreporting/armimpactreporting/v0.2.0,sdk/resourcemanager/impactreporting/armimpactreporting,v0.2.0,1755698438,08/20/2025

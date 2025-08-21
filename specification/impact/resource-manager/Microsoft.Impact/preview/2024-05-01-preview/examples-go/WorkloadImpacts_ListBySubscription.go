@@ -44,7 +44,9 @@ func ExampleWorkloadImpactsClient_NewListBySubscriptionPager() {
 		// 					StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-06-15T05:59:46.6517821Z"); return t}()),
 		// 					ImpactDescription: to.Ptr(""),
 		// 					ImpactCategory: to.Ptr("Resource.Other"),
-		// 					AdditionalProperties: &armimpactreporting.WorkloadImpactPropertiesAdditionalProperties{
+		// 					AdditionalProperties: map[string]any{
+		// 						"errorCode": "504",
+		// 						"errorMessage": "Gateway timeout error",
 		// 					},
 		// 					Workload: &armimpactreporting.Workload{
 		// 						Context: to.Ptr("webapp/scenario1"),

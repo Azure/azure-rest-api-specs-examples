@@ -36,6 +36,7 @@ func ExampleWorkloadImpactsClient_BeginCreate_reportingPerformanceRelatedImpact(
 					MetricName: to.Ptr("CPU"),
 					Actual:     to.Ptr[float64](90),
 					Expected:   to.Ptr[float64](60),
+					Unit:       to.Ptr(armimpactreporting.MetricUnit("garbage")),
 				},
 			},
 			ClientIncidentDetails: &armimpactreporting.ClientIncidentDetails{
@@ -73,6 +74,7 @@ func ExampleWorkloadImpactsClient_BeginCreate_reportingPerformanceRelatedImpact(
 	// 					MetricName: to.Ptr("CPU"),
 	// 					Actual: to.Ptr[float64](90),
 	// 					Expected: to.Ptr[float64](60),
+	// 					Unit: to.Ptr(armimpactreporting.MetricUnit("garbage")),
 	// 				},
 	// 			},
 	// 			ClientIncidentDetails: &armimpactreporting.ClientIncidentDetails{

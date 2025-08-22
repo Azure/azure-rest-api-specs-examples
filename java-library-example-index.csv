@@ -5764,3 +5764,4 @@ id,name,language,tag,package,version,date_epoch,date
 5763,"Azure.ResourceManager.ResourceHealth,1.1.0-beta.5",dotnet,Azure.ResourceManager.ResourceHealth_1.1.0-beta.5,Azure.ResourceManager.ResourceHealth,1.1.0-beta.5,1755746844,08/21/2025
 5764,azure-mgmt-containerservice@39.1.0,python,azure-mgmt-containerservice_39.1.0,azure-mgmt-containerservice,39.1.0,1755749213,08/21/2025
 5765,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.7.0,go,sdk/resourcemanager/netapp/armnetapp/v7.7.0,sdk/resourcemanager/netapp/armnetapp,v7.7.0,1755835899,08/22/2025
+5766,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadorchestration/armworkloadorchestration@v0.1.0,go,sdk/resourcemanager/workloadorchestration/armworkloadorchestration/v0.1.0,sdk/resourcemanager/workloadorchestration/armworkloadorchestration,v0.1.0,1755835885,08/22/2025

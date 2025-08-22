@@ -5765,3 +5765,4 @@ id,name,language,tag,package,version,date_epoch,date
 5764,azure-mgmt-containerservice@39.1.0,python,azure-mgmt-containerservice_39.1.0,azure-mgmt-containerservice,39.1.0,1755749213,08/21/2025
 5765,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.7.0,go,sdk/resourcemanager/netapp/armnetapp/v7.7.0,sdk/resourcemanager/netapp/armnetapp,v7.7.0,1755835899,08/22/2025
 5766,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadorchestration/armworkloadorchestration@v0.1.0,go,sdk/resourcemanager/workloadorchestration/armworkloadorchestration/v0.1.0,sdk/resourcemanager/workloadorchestration/armworkloadorchestration,v0.1.0,1755835885,08/22/2025
+5767,@azure/arm-appcontainers@3.0.0-beta.1,js,@azure/arm-appcontainers_3.0.0-beta.1,@azure/arm-appcontainers,3.0.0-beta.1,1755853424,08/22/2025

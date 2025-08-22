@@ -14,19 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticCidrResource created on azure
-// for more information of creating StaticCidrResource, please refer to the document of StaticCidrResource
+// this example assumes you already have this IpamPoolResource created on azure
+// for more information of creating IpamPoolResource, please refer to the document of IpamPoolResource
 string subscriptionId = "11111111-1111-1111-1111-111111111111";
 string resourceGroupName = "rg1";
 string networkManagerName = "TestNetworkManager";
 string poolName = "TestPool";
-string staticCidrName = "TestStaticCidr";
-ResourceIdentifier staticCidrResourceId = StaticCidrResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, poolName, staticCidrName);
-StaticCidrResource staticCidr = client.GetStaticCidrResource(staticCidrResourceId);
+ResourceIdentifier ipamPoolResourceId = IpamPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, poolName);
+IpamPoolResource ipamPool = client.GetIpamPoolResource(ipamPoolResourceId);
+
+// get the collection of this StaticCidrResource
+StaticCidrCollection collection = ipamPool.GetStaticCidrs();
 
 // invoke the operation
+string staticCidrName = "TestStaticCidr";
 StaticCidrData data = new StaticCidrData();
-ArmOperation<StaticCidrResource> lro = await staticCidr.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StaticCidrResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, staticCidrName, data);
 StaticCidrResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

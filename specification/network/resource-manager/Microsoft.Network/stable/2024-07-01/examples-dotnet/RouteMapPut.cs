@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RouteMapResource created on azure
-// for more information of creating RouteMapResource, please refer to the document of RouteMapResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-string routeMapName = "routeMap1";
-ResourceIdentifier routeMapResourceId = RouteMapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routeMapName);
-RouteMapResource routeMap = client.GetRouteMapResource(routeMapResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this RouteMapResource
+RouteMapCollection collection = virtualHub.GetRouteMaps();
 
 // invoke the operation
+string routeMapName = "routeMap1";
 RouteMapData data = new RouteMapData
 {
     AssociatedInboundConnections = { "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1" },
@@ -52,7 +55,7 @@ RouteMapData data = new RouteMapData
     NextStepIfMatched = RouteMapNextStepBehavior.Continue,
     }},
 };
-ArmOperation<RouteMapResource> lro = await routeMap.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RouteMapResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeMapName, data);
 RouteMapResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

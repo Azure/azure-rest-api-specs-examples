@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.ManagementGroups;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/examples/NetworkManagerConnectionManagementGroupPut.json
@@ -14,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupNetworkManagerConnectionResource created on azure
-// for more information of creating ManagementGroupNetworkManagerConnectionResource, please refer to the document of ManagementGroupNetworkManagerConnectionResource
+// this example assumes you already have this ManagementGroupResource created on azure
+// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
 string managementGroupId = "managementGroupA";
-string networkManagerConnectionName = "TestNMConnection";
-ResourceIdentifier managementGroupNetworkManagerConnectionResourceId = ManagementGroupNetworkManagerConnectionResource.CreateResourceIdentifier(managementGroupId, networkManagerConnectionName);
-ManagementGroupNetworkManagerConnectionResource managementGroupNetworkManagerConnection = client.GetManagementGroupNetworkManagerConnectionResource(managementGroupNetworkManagerConnectionResourceId);
+ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(managementGroupId);
+ManagementGroupResource managementGroupResource = client.GetManagementGroupResource(managementGroupResourceId);
+
+// get the collection of this ManagementGroupNetworkManagerConnectionResource
+ManagementGroupNetworkManagerConnectionCollection collection = managementGroupResource.GetManagementGroupNetworkManagerConnections();
 
 // invoke the operation
+string networkManagerConnectionName = "TestNMConnection";
 NetworkManagerConnectionData data = new NetworkManagerConnectionData
 {
     NetworkManagerId = new ResourceIdentifier("/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager"),
 };
-ArmOperation<ManagementGroupNetworkManagerConnectionResource> lro = await managementGroupNetworkManagerConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagementGroupNetworkManagerConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkManagerConnectionName, data);
 ManagementGroupNetworkManagerConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

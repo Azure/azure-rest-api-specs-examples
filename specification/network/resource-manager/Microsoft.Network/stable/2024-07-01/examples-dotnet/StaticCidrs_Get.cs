@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticCidrResource created on azure
-// for more information of creating StaticCidrResource, please refer to the document of StaticCidrResource
+// this example assumes you already have this IpamPoolResource created on azure
+// for more information of creating IpamPoolResource, please refer to the document of IpamPoolResource
 string subscriptionId = "11111111-1111-1111-1111-111111111111";
 string resourceGroupName = "rg1";
 string networkManagerName = "TestNetworkManager";
 string poolName = "TestPool";
-string staticCidrName = "TestStaticCidr";
-ResourceIdentifier staticCidrResourceId = StaticCidrResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, poolName, staticCidrName);
-StaticCidrResource staticCidr = client.GetStaticCidrResource(staticCidrResourceId);
+ResourceIdentifier ipamPoolResourceId = IpamPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, poolName);
+IpamPoolResource ipamPool = client.GetIpamPoolResource(ipamPoolResourceId);
+
+// get the collection of this StaticCidrResource
+StaticCidrCollection collection = ipamPool.GetStaticCidrs();
 
 // invoke the operation
-StaticCidrResource result = await staticCidr.GetAsync();
+string staticCidrName = "TestStaticCidr";
+NullableResponse<StaticCidrResource> response = await collection.GetIfExistsAsync(staticCidrName);
+StaticCidrResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StaticCidrData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StaticCidrData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerSecurityUserConfigurationResource created on azure
-// for more information of creating NetworkManagerSecurityUserConfigurationResource, please refer to the document of NetworkManagerSecurityUserConfigurationResource
+// this example assumes you already have this NetworkManagerResource created on azure
+// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-string configurationName = "myTestSecurityConfig";
-ResourceIdentifier networkManagerSecurityUserConfigurationResourceId = NetworkManagerSecurityUserConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
-NetworkManagerSecurityUserConfigurationResource networkManagerSecurityUserConfiguration = client.GetNetworkManagerSecurityUserConfigurationResource(networkManagerSecurityUserConfigurationResourceId);
+ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
+NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
+
+// get the collection of this NetworkManagerSecurityUserConfigurationResource
+NetworkManagerSecurityUserConfigurationCollection collection = networkManager.GetNetworkManagerSecurityUserConfigurations();
 
 // invoke the operation
-NetworkManagerSecurityUserConfigurationResource result = await networkManagerSecurityUserConfiguration.GetAsync();
+string configurationName = "myTestSecurityConfig";
+NullableResponse<NetworkManagerSecurityUserConfigurationResource> response = await collection.GetIfExistsAsync(configurationName);
+NetworkManagerSecurityUserConfigurationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkManagerSecurityUserConfigurationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkManagerSecurityUserConfigurationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

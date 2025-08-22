@@ -5767,3 +5767,4 @@ id,name,language,tag,package,version,date_epoch,date
 5766,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadorchestration/armworkloadorchestration@v0.1.0,go,sdk/resourcemanager/workloadorchestration/armworkloadorchestration/v0.1.0,sdk/resourcemanager/workloadorchestration/armworkloadorchestration,v0.1.0,1755835885,08/22/2025
 5767,@azure/arm-appcontainers@3.0.0-beta.1,js,@azure/arm-appcontainers_3.0.0-beta.1,@azure/arm-appcontainers,3.0.0-beta.1,1755853424,08/22/2025
 5768,@azure/arm-dataprotection@3.0.0,js,@azure/arm-dataprotection_3.0.0,@azure/arm-dataprotection,3.0.0,1755853239,08/22/2025
+5769,"Azure.ResourceManager.Network,1.11.3",dotnet,Azure.ResourceManager.Network_1.11.3,Azure.ResourceManager.Network,1.11.3,1755844283,08/22/2025

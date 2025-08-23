@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
-// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
+// this example assumes you already have this NetworkSecurityPerimeterProfileResource created on azure
+// for more information of creating NetworkSecurityPerimeterProfileResource, please refer to the document of NetworkSecurityPerimeterProfileResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp1";
-ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
-NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
-
-// get the collection of this NetworkSecurityPerimeterProfileResource
-NetworkSecurityPerimeterProfileCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterProfiles();
+string profileName = "profile1";
+ResourceIdentifier networkSecurityPerimeterProfileResourceId = NetworkSecurityPerimeterProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, profileName);
+NetworkSecurityPerimeterProfileResource networkSecurityPerimeterProfile = client.GetNetworkSecurityPerimeterProfileResource(networkSecurityPerimeterProfileResourceId);
 
 // invoke the operation
-string profileName = "profile1";
 NetworkSecurityPerimeterProfileData data = new NetworkSecurityPerimeterProfileData();
-ArmOperation<NetworkSecurityPerimeterProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data);
+ArmOperation<NetworkSecurityPerimeterProfileResource> lro = await networkSecurityPerimeterProfile.UpdateAsync(WaitUntil.Completed, data);
 NetworkSecurityPerimeterProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

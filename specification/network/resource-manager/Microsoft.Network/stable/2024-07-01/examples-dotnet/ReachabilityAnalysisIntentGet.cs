@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ReachabilityAnalysisIntentResource created on azure
-// for more information of creating ReachabilityAnalysisIntentResource, please refer to the document of ReachabilityAnalysisIntentResource
+// this example assumes you already have this NetworkVerifierWorkspaceResource created on azure
+// for more information of creating NetworkVerifierWorkspaceResource, please refer to the document of NetworkVerifierWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string workspaceName = "testWorkspace";
-string reachabilityAnalysisIntentName = "testAnalysisIntentName";
-ResourceIdentifier reachabilityAnalysisIntentResourceId = ReachabilityAnalysisIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisIntentName);
-ReachabilityAnalysisIntentResource reachabilityAnalysisIntent = client.GetReachabilityAnalysisIntentResource(reachabilityAnalysisIntentResourceId);
+ResourceIdentifier networkVerifierWorkspaceResourceId = NetworkVerifierWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, workspaceName);
+NetworkVerifierWorkspaceResource networkVerifierWorkspace = client.GetNetworkVerifierWorkspaceResource(networkVerifierWorkspaceResourceId);
+
+// get the collection of this ReachabilityAnalysisIntentResource
+ReachabilityAnalysisIntentCollection collection = networkVerifierWorkspace.GetReachabilityAnalysisIntents();
 
 // invoke the operation
-ReachabilityAnalysisIntentResource result = await reachabilityAnalysisIntent.GetAsync();
+string reachabilityAnalysisIntentName = "testAnalysisIntentName";
+NullableResponse<ReachabilityAnalysisIntentResource> response = await collection.GetIfExistsAsync(reachabilityAnalysisIntentName);
+ReachabilityAnalysisIntentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ReachabilityAnalysisIntentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ReachabilityAnalysisIntentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

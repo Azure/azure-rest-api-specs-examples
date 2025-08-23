@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkSecurityPerimeterLinkReferenceResource created on azure
-// for more information of creating NetworkSecurityPerimeterLinkReferenceResource, please refer to the document of NetworkSecurityPerimeterLinkReferenceResource
+// this example assumes you already have this NetworkSecurityPerimeterResource created on azure
+// for more information of creating NetworkSecurityPerimeterResource, please refer to the document of NetworkSecurityPerimeterResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string networkSecurityPerimeterName = "nsp2";
-string linkReferenceName = "link1-guid";
-ResourceIdentifier networkSecurityPerimeterLinkReferenceResourceId = NetworkSecurityPerimeterLinkReferenceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName, linkReferenceName);
-NetworkSecurityPerimeterLinkReferenceResource networkSecurityPerimeterLinkReference = client.GetNetworkSecurityPerimeterLinkReferenceResource(networkSecurityPerimeterLinkReferenceResourceId);
+ResourceIdentifier networkSecurityPerimeterResourceId = NetworkSecurityPerimeterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityPerimeterName);
+NetworkSecurityPerimeterResource networkSecurityPerimeter = client.GetNetworkSecurityPerimeterResource(networkSecurityPerimeterResourceId);
+
+// get the collection of this NetworkSecurityPerimeterLinkReferenceResource
+NetworkSecurityPerimeterLinkReferenceCollection collection = networkSecurityPerimeter.GetNetworkSecurityPerimeterLinkReferences();
 
 // invoke the operation
-NetworkSecurityPerimeterLinkReferenceResource result = await networkSecurityPerimeterLinkReference.GetAsync();
+string linkReferenceName = "link1-guid";
+NullableResponse<NetworkSecurityPerimeterLinkReferenceResource> response = await collection.GetIfExistsAsync(linkReferenceName);
+NetworkSecurityPerimeterLinkReferenceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkSecurityPerimeterLinkReferenceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkSecurityPerimeterLinkReferenceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

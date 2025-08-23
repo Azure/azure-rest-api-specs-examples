@@ -1,11 +1,9 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/examples/VirtualHubBgpConnectionGet.json
@@ -16,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BgpConnectionResource created on azure
-// for more information of creating BgpConnectionResource, please refer to the document of BgpConnectionResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "hub1";
-string connectionName = "conn1";
-ResourceIdentifier bgpConnectionResourceId = BgpConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, connectionName);
-BgpConnectionResource bgpConnection = client.GetBgpConnectionResource(bgpConnectionResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this BgpConnectionResource
+BgpConnectionCollection collection = virtualHub.GetBgpConnections();
 
 // invoke the operation
-BgpConnectionResource result = await bgpConnection.GetAsync();
+string connectionName = "conn1";
+NullableResponse<BgpConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
+BgpConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BgpConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BgpConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

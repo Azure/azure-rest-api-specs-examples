@@ -5771,3 +5771,4 @@ id,name,language,tag,package,version,date_epoch,date
 5770,@azure/arm-netapp@21.7.0,js,@azure/arm-netapp_21.7.0,@azure/arm-netapp,21.7.0,1756042184,08/24/2025
 5771,azure-mgmt-security@8.0.0b1,python,azure-mgmt-security_8.0.0b1,azure-mgmt-security,8.0.0b1,1756099561,08/25/2025
 5772,azure-mgmt-web@10.0.0,python,azure-mgmt-web_10.0.0,azure-mgmt-web,10.0.0,1756092940,08/25/2025
+5773,azure-mgmt-compute@36.0.0,python,azure-mgmt-compute_36.0.0,azure-mgmt-compute,36.0.0,1756092940,08/25/2025

@@ -5768,3 +5768,4 @@ id,name,language,tag,package,version,date_epoch,date
 5767,@azure/arm-appcontainers@3.0.0-beta.1,js,@azure/arm-appcontainers_3.0.0-beta.1,@azure/arm-appcontainers,3.0.0-beta.1,1755853424,08/22/2025
 5768,@azure/arm-dataprotection@3.0.0,js,@azure/arm-dataprotection_3.0.0,@azure/arm-dataprotection,3.0.0,1755853239,08/22/2025
 5769,"Azure.ResourceManager.Network,1.11.3",dotnet,Azure.ResourceManager.Network_1.11.3,Azure.ResourceManager.Network,1.11.3,1755844283,08/22/2025
+5770,@azure/arm-netapp@21.7.0,js,@azure/arm-netapp_21.7.0,@azure/arm-netapp,21.7.0,1756042184,08/24/2025

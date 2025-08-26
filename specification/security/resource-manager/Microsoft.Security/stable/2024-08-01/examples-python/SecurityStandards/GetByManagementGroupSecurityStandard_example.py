@@ -1,0 +1,34 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.security import SecurityCenter
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-security
+# USAGE
+    python get_by_management_group_security_standard_example.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SecurityCenter(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.security_standards.get(
+        scope="providers/Microsoft.Management/managementGroups/contoso",
+        standard_id="1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2024-08-01/examples/SecurityStandards/GetByManagementGroupSecurityStandard_example.json
+if __name__ == "__main__":
+    main()

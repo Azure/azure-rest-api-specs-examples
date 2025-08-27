@@ -5772,3 +5772,4 @@ id,name,language,tag,package,version,date_epoch,date
 5771,azure-mgmt-security@8.0.0b1,python,azure-mgmt-security_8.0.0b1,azure-mgmt-security,8.0.0b1,1756099561,08/25/2025
 5772,azure-mgmt-web@10.0.0,python,azure-mgmt-web_10.0.0,azure-mgmt-web,10.0.0,1756092940,08/25/2025
 5773,azure-mgmt-compute@36.0.0,python,azure-mgmt-compute_36.0.0,azure-mgmt-compute,36.0.0,1756092940,08/25/2025
+5774,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadorchestration/armworkloadorchestration@v0.2.0,go,sdk/resourcemanager/workloadorchestration/armworkloadorchestration/v0.2.0,sdk/resourcemanager/workloadorchestration/armworkloadorchestration,v0.2.0,1756274354,08/27/2025

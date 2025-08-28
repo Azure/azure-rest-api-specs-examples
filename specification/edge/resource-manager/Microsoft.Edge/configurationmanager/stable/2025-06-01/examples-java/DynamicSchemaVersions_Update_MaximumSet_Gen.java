@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.workloadorchestration.models.DynamicSchemaVersion;
+import com.azure.resourcemanager.workloadorchestration.models.SchemaVersionProperties;
+
+/**
+ * Samples for DynamicSchemaVersions Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01/DynamicSchemaVersions_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: DynamicSchemaVersions_Update_MaximumSet.
+     * 
+     * @param manager Entry point to WorkloadOrchestrationManager.
+     */
+    public static void dynamicSchemaVersionsUpdateMaximumSet(
+        com.azure.resourcemanager.workloadorchestration.WorkloadOrchestrationManager manager) {
+        DynamicSchemaVersion resource = manager.dynamicSchemaVersions().getWithResponse("rgconfigurationmanager",
+            "testname", "testname", "1.0.0", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new SchemaVersionProperties().withValue("muezi")).apply();
+    }
+}

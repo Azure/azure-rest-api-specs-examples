@@ -5774,3 +5774,4 @@ id,name,language,tag,package,version,date_epoch,date
 5773,azure-mgmt-compute@36.0.0,python,azure-mgmt-compute_36.0.0,azure-mgmt-compute,36.0.0,1756092940,08/25/2025
 5774,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadorchestration/armworkloadorchestration@v0.2.0,go,sdk/resourcemanager/workloadorchestration/armworkloadorchestration/v0.2.0,sdk/resourcemanager/workloadorchestration/armworkloadorchestration,v0.2.0,1756274354,08/27/2025
 5775,com.azure.resourcemanager:azure-resourcemanager-workloadorchestration:1.0.0-beta.1,java,azure-resourcemanager-workloadorchestration_1.0.0-beta.1,azure-resourcemanager-workloadorchestration,1.0.0-beta.1,1756370973,08/28/2025
+5776,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.3.0-beta.1,java,azure-resourcemanager-containerservicefleet_1.3.0-beta.1,azure-resourcemanager-containerservicefleet,1.3.0-beta.1,1756352454,08/28/2025

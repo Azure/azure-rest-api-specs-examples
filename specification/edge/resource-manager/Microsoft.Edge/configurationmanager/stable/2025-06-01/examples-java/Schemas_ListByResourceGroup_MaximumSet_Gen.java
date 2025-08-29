@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Schemas ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01/Schemas_ListByResourceGroup_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Schemas_ListByResourceGroup_MaximumSet.
+     * 
+     * @param manager Entry point to WorkloadOrchestrationManager.
+     */
+    public static void schemasListByResourceGroupMaximumSet(
+        com.azure.resourcemanager.workloadorchestration.WorkloadOrchestrationManager manager) {
+        manager.schemas().listByResourceGroup("rgconfigurationmanager", com.azure.core.util.Context.NONE);
+    }
+}

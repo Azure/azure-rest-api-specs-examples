@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.azurestackhcivm import AzureStackHCIVmClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-azurestackhcivm
+# USAGE
+    python virtual_hard_disks_delete.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = AzureStackHCIVmClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.virtual_hard_disks.begin_delete(
+        resource_group_name="test-rg",
+        virtual_hard_disk_name="test-vhd",
+    ).result()
+
+
+# x-ms-original-file: 2025-06-01-preview/VirtualHardDisks_Delete.json
+if __name__ == "__main__":
+    main()

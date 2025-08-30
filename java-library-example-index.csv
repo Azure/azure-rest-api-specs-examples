@@ -5783,3 +5783,4 @@ id,name,language,tag,package,version,date_epoch,date
 5782,"Azure.ResourceManager.NetApp,1.12.0",dotnet,Azure.ResourceManager.NetApp_1.12.0,Azure.ResourceManager.NetApp,1.12.0,1756364091,08/28/2025
 5783,azure-mgmt-containerservicefleet@4.0.0b1,python,azure-mgmt-containerservicefleet_4.0.0b1,azure-mgmt-containerservicefleet,4.0.0b1,1756352466,08/28/2025
 5784,@azure/arm-computeschedule@1.2.0-beta.1,js,@azure/arm-computeschedule_1.2.0-beta.1,@azure/arm-computeschedule,1.2.0-beta.1,1756386503,08/28/2025
+5785,azure-mgmt-azurestackhcivm@1.0.0b1,python,azure-mgmt-azurestackhcivm_1.0.0b1,azure-mgmt-azurestackhcivm,1.0.0b1,1756511458,08/29/2025

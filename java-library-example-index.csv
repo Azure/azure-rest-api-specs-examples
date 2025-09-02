@@ -5785,3 +5785,4 @@ id,name,language,tag,package,version,date_epoch,date
 5784,@azure/arm-computeschedule@1.2.0-beta.1,js,@azure/arm-computeschedule_1.2.0-beta.1,@azure/arm-computeschedule,1.2.0-beta.1,1756386503,08/28/2025
 5785,azure-mgmt-azurestackhcivm@1.0.0b1,python,azure-mgmt-azurestackhcivm_1.0.0b1,azure-mgmt-azurestackhcivm,1.0.0b1,1756511458,08/29/2025
 5786,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cloudhealth/armcloudhealth@v0.1.0,go,sdk/resourcemanager/cloudhealth/armcloudhealth/v0.1.0,sdk/resourcemanager/cloudhealth/armcloudhealth,v0.1.0,1756794459,09/02/2025
+5787,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/playwright/armplaywright@v1.0.0,go,sdk/resourcemanager/playwright/armplaywright/v1.0.0,sdk/resourcemanager/playwright/armplaywright,v1.0.0,1756793055,09/02/2025

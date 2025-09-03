@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.EventGrid.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2025-04-01-preview/examples/PartnerTopics_Get.json
@@ -15,19 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PartnerTopicResource created on azure
-// for more information of creating PartnerTopicResource, please refer to the document of PartnerTopicResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
-string partnerTopicName = "examplePartnerTopicName1";
-ResourceIdentifier partnerTopicResourceId = PartnerTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, partnerTopicName);
-PartnerTopicResource partnerTopic = client.GetPartnerTopicResource(partnerTopicResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this PartnerTopicResource
+PartnerTopicCollection collection = resourceGroupResource.GetPartnerTopics();
 
 // invoke the operation
-PartnerTopicResource result = await partnerTopic.GetAsync();
+string partnerTopicName = "examplePartnerTopicName1";
+NullableResponse<PartnerTopicResource> response = await collection.GetIfExistsAsync(partnerTopicName);
+PartnerTopicResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PartnerTopicData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PartnerTopicData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DomainEventSubscriptionResource created on azure
-// for more information of creating DomainEventSubscriptionResource, please refer to the document of DomainEventSubscriptionResource
+// this example assumes you already have this EventGridDomainResource created on azure
+// for more information of creating EventGridDomainResource, please refer to the document of EventGridDomainResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string domainName = "exampleDomain1";
-string eventSubscriptionName = "examplesubscription1";
-ResourceIdentifier domainEventSubscriptionResourceId = DomainEventSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName, eventSubscriptionName);
-DomainEventSubscriptionResource domainEventSubscription = client.GetDomainEventSubscriptionResource(domainEventSubscriptionResourceId);
+ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName);
+EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
+
+// get the collection of this DomainEventSubscriptionResource
+DomainEventSubscriptionCollection collection = eventGridDomain.GetDomainEventSubscriptions();
 
 // invoke the operation
-DomainEventSubscriptionResource result = await domainEventSubscription.GetAsync();
+string eventSubscriptionName = "examplesubscription1";
+NullableResponse<DomainEventSubscriptionResource> response = await collection.GetIfExistsAsync(eventSubscriptionName);
+DomainEventSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventGridSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EventGridSubscriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

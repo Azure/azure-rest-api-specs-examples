@@ -5791,3 +5791,4 @@ id,name,language,tag,package,version,date_epoch,date
 5790,"Azure.ResourceManager.EventGrid,1.2.0-beta.2",dotnet,Azure.ResourceManager.EventGrid_1.2.0-beta.2,Azure.ResourceManager.EventGrid,1.2.0-beta.2,1756863383,09/03/2025
 5791,azure-mgmt-storagediscovery@1.0.0b2,python,azure-mgmt-storagediscovery_1.0.0b2,azure-mgmt-storagediscovery,1.0.0b2,1756886439,09/03/2025
 5792,"Azure.ResourceManager.Kusto,1.6.2",dotnet,Azure.ResourceManager.Kusto_1.6.2,Azure.ResourceManager.Kusto,1.6.2,1756971533,09/04/2025
+5793,com.azure.resourcemanager:azure-resourcemanager-containerservicesafeguards:1.0.0-beta.1,java,azure-resourcemanager-containerservicesafeguards_1.0.0-beta.1,azure-resourcemanager-containerservicesafeguards,1.0.0-beta.1,1757010621,09/04/2025

@@ -5795,3 +5795,4 @@ id,name,language,tag,package,version,date_epoch,date
 5794,@azure/arm-iotfirmwaredefense@2.0.0,js,@azure/arm-iotfirmwaredefense_2.0.0,@azure/arm-iotfirmwaredefense,2.0.0,1757020238,09/04/2025
 5795,@azure/arm-containerservicesafeguards@1.0.0-beta.1,js,@azure/arm-containerservicesafeguards_1.0.0-beta.1,@azure/arm-containerservicesafeguards,1.0.0-beta.1,1757009038,09/04/2025
 5796,"Azure.ResourceManager.Playwright,1.0.0",dotnet,Azure.ResourceManager.Playwright_1.0.0,Azure.ResourceManager.Playwright,1.0.0,1757042490,09/05/2025
+5797,azure-mgmt-iotfirmwaredefense@2.0.0,python,azure-mgmt-iotfirmwaredefense_2.0.0,azure-mgmt-iotfirmwaredefense,2.0.0,1757020230,09/04/2025

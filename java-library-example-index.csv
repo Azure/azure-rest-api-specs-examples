@@ -5790,3 +5790,4 @@ id,name,language,tag,package,version,date_epoch,date
 5789,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhcivm@v0.1.0,go,sdk/resourcemanager/azurestackhci/armazurestackhcivm/v0.1.0,sdk/resourcemanager/azurestackhci/armazurestackhcivm,v0.1.0,1756839505,09/02/2025
 5790,"Azure.ResourceManager.EventGrid,1.2.0-beta.2",dotnet,Azure.ResourceManager.EventGrid_1.2.0-beta.2,Azure.ResourceManager.EventGrid,1.2.0-beta.2,1756863383,09/03/2025
 5791,azure-mgmt-storagediscovery@1.0.0b2,python,azure-mgmt-storagediscovery_1.0.0b2,azure-mgmt-storagediscovery,1.0.0b2,1756886439,09/03/2025
+5792,"Azure.ResourceManager.Kusto,1.6.2",dotnet,Azure.ResourceManager.Kusto_1.6.2,Azure.ResourceManager.Kusto,1.6.2,1756971533,09/04/2025

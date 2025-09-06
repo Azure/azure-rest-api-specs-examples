@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.containerservicesafeguards.fluent.models.DeploymentSafeguardInner;
+import com.azure.resourcemanager.containerservicesafeguards.models.DeploymentSafeguardsLevel;
+import com.azure.resourcemanager.containerservicesafeguards.models.DeploymentSafeguardsProperties;
+import com.azure.resourcemanager.containerservicesafeguards.models.PodSecurityStandardsLevel;
+
+/**
+ * Samples for DeploymentSafeguards Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-02-preview/DeploymentSafeguards_Create.json
+     */
+    /**
+     * Sample code: Creates a DeploymentSafeguards resource with a long running operation.
+     * 
+     * @param manager Entry point to ContainerServiceSafeguardsManager.
+     */
+    public static void createsADeploymentSafeguardsResourceWithALongRunningOperation(
+        com.azure.resourcemanager.containerservicesafeguards.ContainerServiceSafeguardsManager manager) {
+        manager.deploymentSafeguards().create(
+            "subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.ContainerService/managedClusters/cluster1",
+            new DeploymentSafeguardInner()
+                .withProperties(new DeploymentSafeguardsProperties().withLevel(DeploymentSafeguardsLevel.WARN)
+                    .withPodSecurityStandardsLevel(PodSecurityStandardsLevel.POD_SECURITY_STANDARDS_BASELINE)),
+            com.azure.core.util.Context.NONE);
+    }
+}

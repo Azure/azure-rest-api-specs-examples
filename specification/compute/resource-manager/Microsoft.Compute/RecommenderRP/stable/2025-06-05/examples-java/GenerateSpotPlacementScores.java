@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.computerecommender.models.ResourceSize;
+import com.azure.resourcemanager.computerecommender.models.SpotPlacementScoresInput;
+import java.util.Arrays;
+
+/**
+ * Samples for SpotPlacementScores Post.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-05/GenerateSpotPlacementScores.json
+     */
+    /**
+     * Sample code: Returns spot VM placement scores for given configurations.
+     * 
+     * @param manager Entry point to ComputeRecommenderManager.
+     */
+    public static void returnsSpotVMPlacementScoresForGivenConfigurations(
+        com.azure.resourcemanager.computerecommender.ComputeRecommenderManager manager) {
+        manager.spotPlacementScores().postWithResponse("eastus",
+            new SpotPlacementScoresInput().withDesiredLocations(Arrays.asList("eastus", "eastus2"))
+                .withDesiredSizes(Arrays.asList(new ResourceSize().withSku("Standard_D2_v2"))).withDesiredCount(1)
+                .withAvailabilityZones(true),
+            com.azure.core.util.Context.NONE);
+    }
+}

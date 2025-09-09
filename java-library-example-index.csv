@@ -5799,3 +5799,4 @@ id,name,language,tag,package,version,date_epoch,date
 5798,com.azure.resourcemanager:azure-resourcemanager-computerecommender:1.0.0-beta.1,java,azure-resourcemanager-computerecommender_1.0.0-beta.1,azure-resourcemanager-computerecommender,1.0.0-beta.1,1757095320,09/05/2025
 5799,com.azure.resourcemanager:azure-resourcemanager-iotfirmwaredefense:2.0.0,java,azure-resourcemanager-iotfirmwaredefense_2.0.0,azure-resourcemanager-iotfirmwaredefense,2.0.0,1757085227,09/05/2025
 5800,azure-mgmt-computerecommender@1.0.0b1,python,azure-mgmt-computerecommender_1.0.0b1,azure-mgmt-computerecommender,1.0.0b1,1757107301,09/05/2025
+5801,com.azure.resourcemanager:azure-resourcemanager-playwrighttesting:1.1.0-beta.2,java,azure-resourcemanager-playwrighttesting_1.1.0-beta.2,azure-resourcemanager-playwrighttesting,1.1.0-beta.2,1757407228,09/09/2025

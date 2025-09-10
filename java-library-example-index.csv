@@ -5804,3 +5804,4 @@ id,name,language,tag,package,version,date_epoch,date
 5803,azure-mgmt-playwrighttesting@1.0.1,python,azure-mgmt-playwrighttesting_1.0.1,azure-mgmt-playwrighttesting,1.0.1,1757407167,09/09/2025
 5804,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computerecommender/armcomputerecommender@v0.1.0,go,sdk/resourcemanager/computerecommender/armcomputerecommender/v0.1.0,sdk/resourcemanager/computerecommender/armcomputerecommender,v0.1.0,1757438357,09/09/2025
 5805,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armbicep@v0.1.0,go,sdk/resourcemanager/resources/armbicep/v0.1.0,sdk/resourcemanager/resources/armbicep,v0.1.0,1757429114,09/09/2025
+5806,@azure/arm-playwrighttesting@1.0.1,js,@azure/arm-playwrighttesting_1.0.1,@azure/arm-playwrighttesting,1.0.1,1757416913,09/09/2025

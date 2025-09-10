@@ -5802,3 +5802,4 @@ id,name,language,tag,package,version,date_epoch,date
 5801,com.azure.resourcemanager:azure-resourcemanager-playwrighttesting:1.1.0-beta.2,java,azure-resourcemanager-playwrighttesting_1.1.0-beta.2,azure-resourcemanager-playwrighttesting,1.1.0-beta.2,1757407228,09/09/2025
 5802,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/playwrighttesting/armplaywrighttesting@v1.0.2,go,sdk/resourcemanager/playwrighttesting/armplaywrighttesting/v1.0.2,sdk/resourcemanager/playwrighttesting/armplaywrighttesting,v1.0.2,1757406388,09/09/2025
 5803,azure-mgmt-playwrighttesting@1.0.1,python,azure-mgmt-playwrighttesting_1.0.1,azure-mgmt-playwrighttesting,1.0.1,1757407167,09/09/2025
+5804,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computerecommender/armcomputerecommender@v0.1.0,go,sdk/resourcemanager/computerecommender/armcomputerecommender/v0.1.0,sdk/resourcemanager/computerecommender/armcomputerecommender,v0.1.0,1757438357,09/09/2025

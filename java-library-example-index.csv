@@ -5805,3 +5805,4 @@ id,name,language,tag,package,version,date_epoch,date
 5804,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computerecommender/armcomputerecommender@v0.1.0,go,sdk/resourcemanager/computerecommender/armcomputerecommender/v0.1.0,sdk/resourcemanager/computerecommender/armcomputerecommender,v0.1.0,1757438357,09/09/2025
 5805,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armbicep@v0.1.0,go,sdk/resourcemanager/resources/armbicep/v0.1.0,sdk/resourcemanager/resources/armbicep,v0.1.0,1757429114,09/09/2025
 5806,@azure/arm-playwrighttesting@1.0.1,js,@azure/arm-playwrighttesting_1.0.1,@azure/arm-playwrighttesting,1.0.1,1757416913,09/09/2025
+5807,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2@v2.0.0-beta.7,go,sdk/resourcemanager/sql/armsql/v2.0.0-beta.7,sdk/resourcemanager/sql/armsql,v2.0.0-beta.7,1757578899,09/11/2025

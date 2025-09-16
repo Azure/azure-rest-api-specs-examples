@@ -5810,3 +5810,4 @@ id,name,language,tag,package,version,date_epoch,date
 5809,"Azure.ResourceManager.ComputeSchedule,1.1.0",dotnet,Azure.ResourceManager.ComputeSchedule_1.1.0,Azure.ResourceManager.ComputeSchedule,1.1.0,1757580423,09/11/2025
 5810,azure-mgmt-sql@4.0.0b23,python,azure-mgmt-sql_4.0.0b23,azure-mgmt-sql,4.0.0b23,1757576770,09/11/2025
 5811,"Azure.ResourceManager.ComputeSchedule,1.2.0-beta.1",dotnet,Azure.ResourceManager.ComputeSchedule_1.2.0-beta.1,Azure.ResourceManager.ComputeSchedule,1.2.0-beta.1,1757666445,09/12/2025
+5812,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.2.0-beta.1,java,azure-resourcemanager-appcontainers_1.2.0-beta.1,azure-resourcemanager-appcontainers,1.2.0-beta.1,1758007687,09/16/2025

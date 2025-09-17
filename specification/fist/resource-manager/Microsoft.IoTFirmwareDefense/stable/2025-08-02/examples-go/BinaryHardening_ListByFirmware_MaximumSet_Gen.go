@@ -1,0 +1,70 @@
+package armiotfirmwaredefense_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotfirmwaredefense/armiotfirmwaredefense/v2"
+)
+
+// Generated from example definition: 2025-08-02/BinaryHardening_ListByFirmware_MaximumSet_Gen.json
+func ExampleBinaryHardeningClient_NewListByFirmwarePager_binaryHardeningListByFirmwareMaximumSetGenGeneratedByMaximumSetRule() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armiotfirmwaredefense.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewBinaryHardeningClient().NewListByFirmwarePager("rgiotfirmwaredefense", "exampleWorkspaceName", "00000000-0000-0000-0000-000000000000", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armiotfirmwaredefense.BinaryHardeningClientListByFirmwareResponse{
+		// 	BinaryHardeningResourceListResult: armiotfirmwaredefense.BinaryHardeningResourceListResult{
+		// 		Value: []*armiotfirmwaredefense.BinaryHardeningResource{
+		// 			{
+		// 				Properties: &armiotfirmwaredefense.BinaryHardeningResult{
+		// 					BinaryHardeningID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					FilePath: to.Ptr("test/arm_stripped_mostly.elf"),
+		// 					Runpath: to.Ptr("no"),
+		// 					Rpath: to.Ptr("yes"),
+		// 					ProvisioningState: to.Ptr(armiotfirmwaredefense.ProvisioningStateSucceeded),
+		// 					SecurityHardeningFeatures: &armiotfirmwaredefense.BinaryHardeningFeatures{
+		// 						NoExecute: to.Ptr(true),
+		// 						PositionIndependentExecutable: to.Ptr(true),
+		// 						RelocationReadOnly: to.Ptr(true),
+		// 						Canary: to.Ptr(true),
+		// 						Stripped: to.Ptr(true),
+		// 					},
+		// 					ExecutableClass: to.Ptr(armiotfirmwaredefense.ExecutableClassX86),
+		// 					ExecutableArchitecture: to.Ptr("ARM"),
+		// 				},
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/Microsoft.IoTFirmwareDefense/workspaces/WorkspaceName/firmwares/00000000-0000-0000-0000-000000000000/binaryHardening/00000000-0000-0000-0000-000000000000"),
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.IoTFirmwareDefense/workspaces/firmwares/binaryHardening"),
+		// 				SystemData: &armiotfirmwaredefense.SystemData{
+		// 					CreatedBy: to.Ptr("UserName"),
+		// 					CreatedByType: to.Ptr(armiotfirmwaredefense.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-13T15:22:45.940Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("UserName"),
+		// 					LastModifiedByType: to.Ptr(armiotfirmwaredefense.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-13T15:22:45.940Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://microsoft.com/a"),
+		// 	},
+		// }
+	}
+}

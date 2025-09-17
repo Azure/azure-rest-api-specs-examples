@@ -1,0 +1,87 @@
+package armiotfirmwaredefense_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotfirmwaredefense/armiotfirmwaredefense/v2"
+)
+
+// Generated from example definition: 2025-08-02/Cves_ListByFirmware_MaximumSet_Gen.json
+func ExampleCvesClient_NewListByFirmwarePager_cvesListByFirmwareMaximumSetGenGeneratedByMaximumSetRule() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armiotfirmwaredefense.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewCvesClient().NewListByFirmwarePager("rgiotfirmwaredefense", "exampleWorkspaceName", "00000000-0000-0000-0000-000000000000", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armiotfirmwaredefense.CvesClientListByFirmwareResponse{
+		// 	CveResourceListResult: armiotfirmwaredefense.CveResourceListResult{
+		// 		Value: []*armiotfirmwaredefense.CveResource{
+		// 			{
+		// 				Properties: &armiotfirmwaredefense.CveResult{
+		// 					CveID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					ComponentID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					ComponentVersion: to.Ptr("1.0.0"),
+		// 					ComponentName: to.Ptr("apache"),
+		// 					Severity: to.Ptr("Medium"),
+		// 					Links: []*armiotfirmwaredefense.CveLink{
+		// 						{
+		// 							Href: to.Ptr("https://httpd.apache.org/security/vulnerabilities_24.html"),
+		// 							Label: to.Ptr("https://httpd.apache.org/security/vulnerabilities_24.html"),
+		// 						},
+		// 					},
+		// 					ProvisioningState: to.Ptr(armiotfirmwaredefense.ProvisioningStateSucceeded),
+		// 					CveName: to.Ptr("CVE-2000-00001"),
+		// 					EffectiveCvssScore: to.Ptr[float32](7.4),
+		// 					EffectiveCvssVersion: to.Ptr[int32](3),
+		// 					CvssScores: []*armiotfirmwaredefense.CvssScore{
+		// 						{
+		// 							Version: to.Ptr[int32](3),
+		// 							Score: to.Ptr[float32](7.4),
+		// 						},
+		// 					},
+		// 					Component: &armiotfirmwaredefense.CveComponent{
+		// 						ComponentID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 						Name: to.Ptr("apache"),
+		// 						Version: to.Ptr("1.0.0"),
+		// 					},
+		// 					CvssScore: to.Ptr("7.4"),
+		// 					CvssV2Score: to.Ptr("7.2"),
+		// 					CvssV3Score: to.Ptr("7.4"),
+		// 					CvssVersion: to.Ptr("3"),
+		// 					Description: to.Ptr("This is a sample description of the vulnerability."),
+		// 				},
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/Microsoft.IoTFirmwareDefense/workspaces/WorkspaceName/firmwares/00000000-0000-0000-0000-000000000000/cves/00000000-0000-0000-0000-000000000000"),
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.IoTFirmwareDefense/workspaces/firmwares/cves"),
+		// 				SystemData: &armiotfirmwaredefense.SystemData{
+		// 					CreatedBy: to.Ptr("UserName"),
+		// 					CreatedByType: to.Ptr(armiotfirmwaredefense.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-13T15:22:45.940Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("UserName"),
+		// 					LastModifiedByType: to.Ptr(armiotfirmwaredefense.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-13T15:22:45.940Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://microsoft.com/a"),
+		// 	},
+		// }
+	}
+}

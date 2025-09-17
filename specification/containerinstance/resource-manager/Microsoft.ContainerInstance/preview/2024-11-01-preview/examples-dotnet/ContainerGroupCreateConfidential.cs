@@ -31,11 +31,13 @@ ContainerGroupCollection collection = resourceGroupResource.GetContainerGroups()
 string containerGroupName = "demo1";
 ContainerGroupData data = new ContainerGroupData(new AzureLocation("westeurope"), new ContainerInstanceContainer[]
 {
-new ContainerInstanceContainer("accdemo", "confiimage", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)))
+new ContainerInstanceContainer("accdemo")
 {
+Image = "confiimage",
 Command = {},
 Ports = {new ContainerPort(8000)},
 EnvironmentVariables = {},
+Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
 SecurityContext = new ContainerSecurityContextDefinition
 {
 IsPrivileged = false,
@@ -45,7 +47,7 @@ Add = {"CAP_NET_ADMIN"},
 },
 },
 }
-}, ContainerInstanceOperatingSystemType.Linux)
+})
 {
     ImageRegistryCredentials = { },
     IPAddress = new ContainerGroupIPAddress(new ContainerGroupPort[]
@@ -55,6 +57,7 @@ new ContainerGroupPort(8000)
 Protocol = ContainerGroupNetworkProtocol.Tcp,
 }
 }, ContainerGroupIPAddressType.Public),
+    ContainerGroupOSType = ContainerInstanceOperatingSystemType.Linux,
     Sku = ContainerGroupSku.Confidential,
     ConfidentialComputeCcePolicy = "eyJhbGxvd19hbGwiOiB0cnVlLCAiY29udGFpbmVycyI6IHsibGVuZ3RoIjogMCwgImVsZW1lbnRzIjogbnVsbH19",
 };

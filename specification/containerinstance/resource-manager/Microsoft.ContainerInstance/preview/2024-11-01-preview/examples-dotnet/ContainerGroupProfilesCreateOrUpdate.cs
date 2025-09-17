@@ -30,14 +30,16 @@ ContainerGroupProfileCollection collection = resourceGroupResource.GetContainerG
 string containerGroupProfileName = "demo1";
 ContainerGroupProfileData data = new ContainerGroupProfileData(new AzureLocation("west us"))
 {
-    Containers = {new ContainerInstanceContainer("demo1", "nginx", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)
+    Containers = {new ContainerInstanceContainer("demo1")
     {
-    Gpu = new ContainerGpuResourceInfo(1, ContainerGpuSku.K80),
-    }))
-    {
+    Image = "nginx",
     Command = {},
     Ports = {new ContainerPort(80)},
     EnvironmentVariables = {},
+    Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)
+    {
+    Gpu = new ContainerGpuResourceInfo(1, ContainerGpuSku.K80),
+    }),
     VolumeMounts = {new ContainerVolumeMount("volume1", "/mnt/volume1")
     {
     IsReadOnly = false,

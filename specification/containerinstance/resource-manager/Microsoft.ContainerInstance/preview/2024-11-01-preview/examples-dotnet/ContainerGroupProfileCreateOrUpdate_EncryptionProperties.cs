@@ -34,11 +34,13 @@ ContainerGroupProfileData data = new ContainerGroupProfileData(new AzureLocation
     {
         Identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/container-group-identity",
     },
-    Containers = {new ContainerInstanceContainer("demo1", "nginx", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)))
+    Containers = {new ContainerInstanceContainer("demo1")
     {
+    Image = "nginx",
     Command = {},
     Ports = {new ContainerPort(80)},
     EnvironmentVariables = {},
+    Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
     }},
     ImageRegistryCredentials = { },
     IPAddress = new ContainerGroupIPAddress(new ContainerGroupPort[]

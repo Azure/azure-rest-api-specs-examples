@@ -30,11 +30,13 @@ ContainerGroupProfileCollection collection = resourceGroupResource.GetContainerG
 string containerGroupProfileName = "demo1";
 ContainerGroupProfileData data = new ContainerGroupProfileData(new AzureLocation("eastus2"))
 {
-    Containers = {new ContainerInstanceContainer("demo1", "nginx", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)))
+    Containers = {new ContainerInstanceContainer("demo1")
     {
+    Image = "nginx",
     Command = {},
     Ports = {new ContainerPort(80)},
     EnvironmentVariables = {},
+    Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
     }},
     Extensions = {new DeploymentExtensionSpec("kube-proxy")
     {

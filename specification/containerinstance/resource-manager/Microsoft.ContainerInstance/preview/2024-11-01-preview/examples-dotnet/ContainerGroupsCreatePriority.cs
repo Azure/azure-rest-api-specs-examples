@@ -31,13 +31,16 @@ ContainerGroupCollection collection = resourceGroupResource.GetContainerGroups()
 string containerGroupName = "demo1";
 ContainerGroupData data = new ContainerGroupData(new AzureLocation("eastus"), new ContainerInstanceContainer[]
 {
-new ContainerInstanceContainer("test-container-001", "alpine:latest", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1, 1)))
+new ContainerInstanceContainer("test-container-001")
 {
+Image = "alpine:latest",
 Command = {"/bin/sh", "-c", "sleep 10"},
+Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1, 1)),
 }
-}, ContainerInstanceOperatingSystemType.Linux)
+})
 {
     RestartPolicy = ContainerGroupRestartPolicy.Never,
+    ContainerGroupOSType = ContainerInstanceOperatingSystemType.Linux,
     Sku = ContainerGroupSku.Standard,
     Priority = ContainerGroupPriority.Spot,
 };

@@ -31,13 +31,15 @@ ContainerGroupCollection collection = resourceGroupResource.GetContainerGroups()
 string containerGroupName = "demo1";
 ContainerGroupData data = new ContainerGroupData(new AzureLocation("eastus2"), new ContainerInstanceContainer[]
 {
-new ContainerInstanceContainer("demo1", "nginx", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)))
+new ContainerInstanceContainer("demo1")
 {
+Image = "nginx",
 Command = {},
 Ports = {new ContainerPort(80)},
 EnvironmentVariables = {},
+Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
 }
-}, ContainerInstanceOperatingSystemType.Linux)
+})
 {
     ImageRegistryCredentials = { },
     IPAddress = new ContainerGroupIPAddress(new ContainerGroupPort[]
@@ -47,6 +49,7 @@ new ContainerGroupPort(80)
 Protocol = ContainerGroupNetworkProtocol.Tcp,
 }
 }, ContainerGroupIPAddressType.Private),
+    ContainerGroupOSType = ContainerInstanceOperatingSystemType.Linux,
     SubnetIds = { new ContainerGroupSubnetId(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/test-subnet")) },
     Extensions = {new DeploymentExtensionSpec("kube-proxy")
     {

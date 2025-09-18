@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerGroupProfileRevisionResource created on azure
-// for more information of creating ContainerGroupProfileRevisionResource, please refer to the document of ContainerGroupProfileRevisionResource
+// this example assumes you already have this ContainerGroupProfileResource created on azure
+// for more information of creating ContainerGroupProfileResource, please refer to the document of ContainerGroupProfileResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "demo";
 string containerGroupProfileName = "demo1";
-string revisionNumber = "1";
-ResourceIdentifier containerGroupProfileRevisionResourceId = ContainerGroupProfileRevisionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerGroupProfileName, revisionNumber);
-ContainerGroupProfileRevisionResource containerGroupProfileRevision = client.GetContainerGroupProfileRevisionResource(containerGroupProfileRevisionResourceId);
+ResourceIdentifier containerGroupProfileResourceId = ContainerGroupProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerGroupProfileName);
+ContainerGroupProfileResource containerGroupProfile = client.GetContainerGroupProfileResource(containerGroupProfileResourceId);
+
+// get the collection of this ContainerGroupProfileRevisionResource
+ContainerGroupProfileRevisionCollection collection = containerGroupProfile.GetContainerGroupProfileRevisions();
 
 // invoke the operation
-ContainerGroupProfileRevisionResource result = await containerGroupProfileRevision.GetAsync();
+string revisionNumber = "1";
+NullableResponse<ContainerGroupProfileRevisionResource> response = await collection.GetIfExistsAsync(revisionNumber);
+ContainerGroupProfileRevisionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerGroupProfileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerGroupProfileData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

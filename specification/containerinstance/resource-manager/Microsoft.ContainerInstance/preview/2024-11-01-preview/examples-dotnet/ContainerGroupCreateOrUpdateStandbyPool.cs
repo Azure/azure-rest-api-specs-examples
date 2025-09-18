@@ -9,7 +9,7 @@ using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerInstance;
 
-// Generated from example definition: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2024-11-01-preview/examples/ContainerGroupEncryptionProperties.json
+// Generated from example definition: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2024-11-01-preview/examples/ContainerGroupCreateOrUpdateStandbyPool.json
 // this example is just showing the usage of "ContainerGroups_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -29,37 +29,25 @@ ContainerGroupCollection collection = resourceGroupResource.GetContainerGroups()
 
 // invoke the operation
 string containerGroupName = "demo1";
-ContainerGroupData data = new ContainerGroupData(new AzureLocation("eastus2"), new ContainerInstanceContainer[]
+ContainerGroupData data = new ContainerGroupData(new AzureLocation("west us"), new ContainerInstanceContainer[]
 {
 new ContainerInstanceContainer("demo1")
 {
-Image = "nginx",
-Command = {},
-Ports = {new ContainerPort(80)},
-EnvironmentVariables = {},
-Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
+ConfigMapKeyValuePairs =
+{
+["Newkey"] = "value"
+},
 }
 })
 {
-    Identity = new ManagedServiceIdentity("UserAssigned")
+    ContainerGroupProfile = new ContainerGroupProfileReferenceDefinition
     {
-        UserAssignedIdentities =
-        {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/container-group-identity")] = new UserAssignedIdentity()
-        },
+        Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroupProfiles/democgp"),
+        Revision = 1,
     },
-    ImageRegistryCredentials = { },
-    IPAddress = new ContainerGroupIPAddress(new ContainerGroupPort[]
-{
-new ContainerGroupPort(80)
-{
-Protocol = ContainerGroupNetworkProtocol.Tcp,
-}
-}, ContainerGroupIPAddressType.Public),
-    ContainerGroupOSType = ContainerInstanceOperatingSystemType.Linux,
-    EncryptionProperties = new ContainerGroupEncryptionProperties(new Uri("https://testkeyvault.vault.azure.net"), "test-key", "<key version>")
+    StandbyPoolProfile = new StandbyPoolProfileDefinition
     {
-        Identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/container-group-identity",
+        Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/demo/providers/Microsoft.StandbyPool/standbyContainerGroupPools/demopool"),
     },
 };
 ArmOperation<ContainerGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, containerGroupName, data);

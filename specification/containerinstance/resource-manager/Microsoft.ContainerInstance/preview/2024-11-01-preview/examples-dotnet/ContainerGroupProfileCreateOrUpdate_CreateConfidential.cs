@@ -31,11 +31,13 @@ string containerGroupProfileName = "demo1";
 ContainerGroupProfileData data = new ContainerGroupProfileData(new AzureLocation("westeurope"))
 {
     Sku = ContainerGroupSku.Confidential,
-    Containers = {new ContainerInstanceContainer("accdemo", "confiimage", new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)))
+    Containers = {new ContainerInstanceContainer("accdemo")
     {
+    Image = "confiimage",
     Command = {},
     Ports = {new ContainerPort(8000)},
     EnvironmentVariables = {},
+    Resources = new ContainerResourceRequirements(new ContainerResourceRequestsContent(1.5, 1)),
     SecurityContext = new ContainerSecurityContextDefinition
     {
     IsPrivileged = false,

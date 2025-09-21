@@ -5819,3 +5819,4 @@ id,name,language,tag,package,version,date_epoch,date
 5818,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v7@v7.3.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v7.3.0,sdk/resourcemanager/containerservice/armcontainerservice,v7.3.0,1758249767,09/19/2025
 5819,"Azure.ResourceManager.Hci.Vm,1.0.0-beta.1",dotnet,Azure.ResourceManager.Hci.Vm_1.0.0-beta.1,Azure.ResourceManager.Hci.Vm,1.0.0-beta.1,1758267726,09/19/2025
 5820,"Azure.ResourceManager.VirtualEnclaves,1.0.0-beta.1",dotnet,Azure.ResourceManager.VirtualEnclaves_1.0.0-beta.1,Azure.ResourceManager.VirtualEnclaves,1.0.0-beta.1,1758255523,09/19/2025
+5821,"Azure.ResourceManager.Quota,1.2.0-beta.1",dotnet,Azure.ResourceManager.Quota_1.2.0-beta.1,Azure.ResourceManager.Quota,1.2.0-beta.1,1758307008,09/19/2025

@@ -5825,3 +5825,4 @@ id,name,language,tag,package,version,date_epoch,date
 5824,azure-mgmt-storage@23.1.0,python,azure-mgmt-storage_23.1.0,azure-mgmt-storage,23.1.0,1758525796,09/22/2025
 5825,azure-mgmt-keyvault@12.1.0,python,azure-mgmt-keyvault_12.1.0,azure-mgmt-keyvault,12.1.0,1758521245,09/22/2025
 5826,azure-mgmt-datamigration@10.1.0,python,azure-mgmt-datamigration_10.1.0,azure-mgmt-datamigration,10.1.0,1758521207,09/22/2025
+5827,azure-mgmt-compute@37.0.0,python,azure-mgmt-compute_37.0.0,azure-mgmt-compute,37.0.0,1758519502,09/22/2025

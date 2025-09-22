@@ -5823,3 +5823,4 @@ id,name,language,tag,package,version,date_epoch,date
 5822,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.0.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.0.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v8.0.0-beta.1,1758531716,09/22/2025
 5823,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v4@v4.0.0-beta.1,go,sdk/resourcemanager/appcontainers/armappcontainers/v4.0.0-beta.1,sdk/resourcemanager/appcontainers/armappcontainers,v4.0.0-beta.1,1758526692,09/22/2025
 5824,azure-mgmt-storage@23.1.0,python,azure-mgmt-storage_23.1.0,azure-mgmt-storage,23.1.0,1758525796,09/22/2025
+5825,azure-mgmt-keyvault@12.1.0,python,azure-mgmt-keyvault_12.1.0,azure-mgmt-keyvault,12.1.0,1758521245,09/22/2025

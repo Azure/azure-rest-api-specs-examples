@@ -5830,3 +5830,4 @@ id,name,language,tag,package,version,date_epoch,date
 5829,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.1.0,java,azure-resourcemanager-datamigration_1.1.0,azure-resourcemanager-datamigration,1.1.0,1758606383,09/23/2025
 5830,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armrecommender@v0.1.0,go,sdk/resourcemanager/compute/armrecommender/v0.1.0,sdk/resourcemanager/compute/armrecommender,v0.1.0,1758598312,09/23/2025
 5831,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v2@v2.0.0,go,sdk/resourcemanager/storage/armstorage/v2.0.0,sdk/resourcemanager/storage/armstorage,v2.0.0,1758597498,09/23/2025
+5832,"Azure.ResourceManager.Network,1.12.0",dotnet,Azure.ResourceManager.Network_1.12.0,Azure.ResourceManager.Network,1.12.0,1758605611,09/23/2025

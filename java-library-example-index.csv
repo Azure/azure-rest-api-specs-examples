@@ -5832,3 +5832,4 @@ id,name,language,tag,package,version,date_epoch,date
 5831,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v2@v2.0.0,go,sdk/resourcemanager/storage/armstorage/v2.0.0,sdk/resourcemanager/storage/armstorage,v2.0.0,1758597498,09/23/2025
 5832,"Azure.ResourceManager.Network,1.12.0",dotnet,Azure.ResourceManager.Network_1.12.0,Azure.ResourceManager.Network,1.12.0,1758605611,09/23/2025
 5833,"Azure.ResourceManager.SignalR,1.1.4",dotnet,Azure.ResourceManager.SignalR_1.1.4,Azure.ResourceManager.SignalR,1.1.4,1758597484,09/23/2025
+5834,"Azure.ResourceManager.EventHubs,1.2.1",dotnet,Azure.ResourceManager.EventHubs_1.2.1,Azure.ResourceManager.EventHubs,1.2.1,1758597167,09/23/2025

@@ -1,4 +1,4 @@
-package armcomputerecommender_test
+package armrecommender_test
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computerecommender/armcomputerecommender"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armrecommender"
 )
 
 // Generated from example definition: 2025-06-05/GenerateSpotPlacementScores.json
@@ -16,18 +16,18 @@ func ExampleSpotPlacementScoresClient_Post() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcomputerecommender.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armrecommender.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewSpotPlacementScoresClient().Post(ctx, "eastus", armcomputerecommender.SpotPlacementScoresInput{
+	res, err := clientFactory.NewSpotPlacementScoresClient().Post(ctx, "eastus", armrecommender.SpotPlacementScoresInput{
 		AvailabilityZones: to.Ptr(true),
 		DesiredCount:      to.Ptr[int32](1),
 		DesiredLocations: []*string{
 			to.Ptr("eastus"),
 			to.Ptr("eastus2"),
 		},
-		DesiredSizes: []*armcomputerecommender.ResourceSize{
+		DesiredSizes: []*armrecommender.ResourceSize{
 			{
 				SKU: to.Ptr("Standard_D2_v2"),
 			},
@@ -39,20 +39,20 @@ func ExampleSpotPlacementScoresClient_Post() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res = armcomputerecommender.SpotPlacementScoresClientPostResponse{
-	// 	SpotPlacementScoresResponse: &armcomputerecommender.SpotPlacementScoresResponse{
+	// res = armrecommender.SpotPlacementScoresClientPostResponse{
+	// 	SpotPlacementScoresResponse: &armrecommender.SpotPlacementScoresResponse{
 	// 		AvailabilityZones: to.Ptr(true),
 	// 		DesiredCount: to.Ptr[int32](1),
 	// 		DesiredLocations: []*string{
 	// 			to.Ptr("eastus"),
 	// 			to.Ptr("eastus2"),
 	// 		},
-	// 		DesiredSizes: []*armcomputerecommender.ResourceSize{
+	// 		DesiredSizes: []*armrecommender.ResourceSize{
 	// 			{
 	// 				SKU: to.Ptr("Standard_D2_v2"),
 	// 			},
 	// 		},
-	// 		PlacementScores: []*armcomputerecommender.PlacementScore{
+	// 		PlacementScores: []*armrecommender.PlacementScore{
 	// 			{
 	// 				AvailabilityZone: to.Ptr("1"),
 	// 				IsQuotaAvailable: to.Ptr(true),

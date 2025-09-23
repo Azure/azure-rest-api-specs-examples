@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubsDisasterRecoveryResource created on azure
+// for more information of creating EventHubsDisasterRecoveryResource, please refer to the document of EventHubsDisasterRecoveryResource
 string subscriptionId = "exampleSubscriptionId";
 string resourceGroupName = "exampleResourceGroup";
 string namespaceName = "sdk-Namespace-8859";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubsDisasterRecoveryResource
-EventHubsDisasterRecoveryCollection collection = eventHubsNamespace.GetEventHubsDisasterRecoveries();
+string @alias = "sdk-DisasterRecovery-3814";
+ResourceIdentifier eventHubsDisasterRecoveryResourceId = EventHubsDisasterRecoveryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, @alias);
+EventHubsDisasterRecoveryResource eventHubsDisasterRecovery = client.GetEventHubsDisasterRecoveryResource(eventHubsDisasterRecoveryResourceId);
 
 // invoke the operation
-string @alias = "sdk-DisasterRecovery-3814";
 EventHubsDisasterRecoveryData data = new EventHubsDisasterRecoveryData
 {
     PartnerNamespace = "sdk-Namespace-37",
 };
-ArmOperation<EventHubsDisasterRecoveryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, @alias, data);
+ArmOperation<EventHubsDisasterRecoveryResource> lro = await eventHubsDisasterRecovery.UpdateAsync(WaitUntil.Completed, data);
 EventHubsDisasterRecoveryResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubResource created on azure
-// for more information of creating EventHubResource, please refer to the document of EventHubResource
+// this example assumes you already have this EventHubsNamespaceResource created on azure
+// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
 string subscriptionId = "e2f361f0-3b27-4503-a9cc-21cfba380093";
 string resourceGroupName = "Default-NotificationHubs-AustraliaEast";
 string namespaceName = "sdk-Namespace-716";
-string eventHubName = "sdk-EventHub-10";
-ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName);
-EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
+ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
+
+// get the collection of this EventHubResource
+EventHubCollection collection = eventHubsNamespace.GetEventHubs();
 
 // invoke the operation
-EventHubResource result = await eventHub.GetAsync();
+string eventHubName = "sdk-EventHub-10";
+NullableResponse<EventHubResource> response = await collection.GetIfExistsAsync(eventHubName);
+EventHubResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventHubData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EventHubData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -5820,3 +5820,9 @@ id,name,language,tag,package,version,date_epoch,date
 5819,"Azure.ResourceManager.Hci.Vm,1.0.0-beta.1",dotnet,Azure.ResourceManager.Hci.Vm_1.0.0-beta.1,Azure.ResourceManager.Hci.Vm,1.0.0-beta.1,1758267726,09/19/2025
 5820,"Azure.ResourceManager.VirtualEnclaves,1.0.0-beta.1",dotnet,Azure.ResourceManager.VirtualEnclaves_1.0.0-beta.1,Azure.ResourceManager.VirtualEnclaves,1.0.0-beta.1,1758255523,09/19/2025
 5821,"Azure.ResourceManager.Quota,1.2.0-beta.1",dotnet,Azure.ResourceManager.Quota_1.2.0-beta.1,Azure.ResourceManager.Quota,1.2.0-beta.1,1758307008,09/19/2025
+5822,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.0.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.0.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v8.0.0-beta.1,1758531716,09/22/2025
+5823,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v4@v4.0.0-beta.1,go,sdk/resourcemanager/appcontainers/armappcontainers/v4.0.0-beta.1,sdk/resourcemanager/appcontainers/armappcontainers,v4.0.0-beta.1,1758526692,09/22/2025
+5824,azure-mgmt-storage@23.1.0,python,azure-mgmt-storage_23.1.0,azure-mgmt-storage,23.1.0,1758525796,09/22/2025
+5825,azure-mgmt-keyvault@12.1.0,python,azure-mgmt-keyvault_12.1.0,azure-mgmt-keyvault,12.1.0,1758521245,09/22/2025
+5826,azure-mgmt-datamigration@10.1.0,python,azure-mgmt-datamigration_10.1.0,azure-mgmt-datamigration,10.1.0,1758521207,09/22/2025
+5827,azure-mgmt-compute@37.0.0,python,azure-mgmt-compute_37.0.0,azure-mgmt-compute,37.0.0,1758519502,09/22/2025

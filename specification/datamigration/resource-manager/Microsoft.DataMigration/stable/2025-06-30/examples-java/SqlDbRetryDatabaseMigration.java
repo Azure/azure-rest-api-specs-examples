@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.datamigration.models.MigrationOperationInput;
+import java.util.UUID;
+
+/**
+ * Samples for DatabaseMigrationsSqlDb Retry.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/datamigration/resource-manager/Microsoft.DataMigration/stable/2025-06-30/examples/
+     * SqlDbRetryDatabaseMigration.json
+     */
+    /**
+     * Sample code: Retry Database Migration resource.
+     * 
+     * @param manager Entry point to DataMigrationManager.
+     */
+    public static void
+        retryDatabaseMigrationResource(com.azure.resourcemanager.datamigration.DataMigrationManager manager) {
+        manager.databaseMigrationsSqlDbs().retry("testrg", "sqldbinstance", "db1", new MigrationOperationInput()
+            .withMigrationOperationId(UUID.fromString("9a90bb84-e70f-46f7-b0ae-1aef5b3b9f07")),
+            com.azure.core.util.Context.NONE);
+    }
+}

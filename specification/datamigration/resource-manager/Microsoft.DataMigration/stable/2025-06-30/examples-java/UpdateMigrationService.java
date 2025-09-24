@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.datamigration.models.MigrationService;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for MigrationServices Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/datamigration/resource-manager/Microsoft.DataMigration/stable/2025-06-30/examples/
+     * UpdateMigrationService.json
+     */
+    /**
+     * Sample code: Update Migration Service.
+     * 
+     * @param manager Entry point to DataMigrationManager.
+     */
+    public static void updateMigrationService(com.azure.resourcemanager.datamigration.DataMigrationManager manager) {
+        MigrationService resource = manager.migrationServices()
+            .getByResourceGroupWithResponse("testrg", "testagent", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("mytag", "myval")).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

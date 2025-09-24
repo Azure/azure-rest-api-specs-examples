@@ -1,11 +1,11 @@
-package armcomputerecommender_test
+package armrecommender_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computerecommender/armcomputerecommender"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armrecommender"
 )
 
 // Generated from example definition: 2025-06-05/Operations_List_MaximumSet_Gen.json
@@ -15,7 +15,7 @@ func ExampleOperationsClient_NewListPager_operationsListMaximumSetGen() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcomputerecommender.NewClientFactory("<subscriptionID>", cred, nil)
+	clientFactory, err := armrecommender.NewClientFactory("<subscriptionID>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,13 +30,13 @@ func ExampleOperationsClient_NewListPager_operationsListMaximumSetGen() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page = armcomputerecommender.OperationsClientListResponse{
-		// 	OperationListResult: armcomputerecommender.OperationListResult{
-		// 		Value: []*armcomputerecommender.Operation{
+		// page = armrecommender.OperationsClientListResponse{
+		// 	OperationListResult: armrecommender.OperationListResult{
+		// 		Value: []*armrecommender.Operation{
 		// 			{
-		// 				Origin: to.Ptr(armcomputerecommender.Origin("aaaaa")),
+		// 				Origin: to.Ptr(armrecommender.Origin("aaaaa")),
 		// 				Name: to.Ptr("aaaaaaaaaaaa"),
-		// 				Display: &armcomputerecommender.OperationDisplay{
+		// 				Display: &armrecommender.OperationDisplay{
 		// 					Operation: to.Ptr("aaaaaaaaaaaaaaaaaaaaaa"),
 		// 					Resource: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
 		// 					Description: to.Ptr("aaaaaaaaaaaaaaaaaaaaaa"),

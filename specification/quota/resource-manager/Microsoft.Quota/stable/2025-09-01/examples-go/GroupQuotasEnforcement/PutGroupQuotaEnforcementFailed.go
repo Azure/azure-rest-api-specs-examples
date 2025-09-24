@@ -1,0 +1,51 @@
+package armquota_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota/v2"
+)
+
+// Generated from example definition: 2025-09-01/GroupQuotasEnforcement/PutGroupQuotaEnforcementFailed.json
+func ExampleGroupQuotaLocationSettingsClient_BeginCreateOrUpdate_groupQuotaLocationSettingsCreateOrUpdateFailed() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armquota.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewGroupQuotaLocationSettingsClient().BeginCreateOrUpdate(ctx, "E7EC67B3-7657-4966-BFFC-41EFD36BAA09", "groupquota1", "Microsoft.Compute", "eastus", armquota.GroupQuotasEnforcementStatus{
+		Properties: &armquota.GroupQuotasEnforcementStatusProperties{
+			EnforcementEnabled: to.Ptr(armquota.EnforcementStateEnabled),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armquota.GroupQuotaLocationSettingsClientCreateOrUpdateResponse{
+	// 	GroupQuotasEnforcementStatus: &armquota.GroupQuotasEnforcementStatus{
+	// 		Name: to.Ptr("eastus"),
+	// 		Type: to.Ptr("Microsoft.Quota/groupQuotas/locationSettings"),
+	// 		ID: to.Ptr("/providers/Microsoft.Management/managementGroups/E7EC67B3-7657-4966-BFFC-41EFD36BAA09/providers/Microsoft.Quota/groupQuotas/groupquota1/resourceProviders/Microsoft.Compute/locationSettings/eastus"),
+	// 		Properties: &armquota.GroupQuotasEnforcementStatusProperties{
+	// 			EnforcedGroupName: to.Ptr("groupquota1-eastus"),
+	// 			EnforcementEnabled: to.Ptr(armquota.EnforcementStateEnabled),
+	// 			FaultCode: to.Ptr("RegionNotSupported"),
+	// 			ProvisioningState: to.Ptr(armquota.RequestStateFailed),
+	// 		},
+	// 	},
+	// }
+}

@@ -5826,3 +5826,10 @@ id,name,language,tag,package,version,date_epoch,date
 5825,azure-mgmt-keyvault@12.1.0,python,azure-mgmt-keyvault_12.1.0,azure-mgmt-keyvault,12.1.0,1758521245,09/22/2025
 5826,azure-mgmt-datamigration@10.1.0,python,azure-mgmt-datamigration_10.1.0,azure-mgmt-datamigration,10.1.0,1758521207,09/22/2025
 5827,azure-mgmt-compute@37.0.0,python,azure-mgmt-compute_37.0.0,azure-mgmt-compute,37.0.0,1758519502,09/22/2025
+5828,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0-beta.2,java,azure-resourcemanager-computefleet_1.1.0-beta.2,azure-resourcemanager-computefleet,1.1.0-beta.2,1758608548,09/23/2025
+5829,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.1.0,java,azure-resourcemanager-datamigration_1.1.0,azure-resourcemanager-datamigration,1.1.0,1758606383,09/23/2025
+5830,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armrecommender@v0.1.0,go,sdk/resourcemanager/compute/armrecommender/v0.1.0,sdk/resourcemanager/compute/armrecommender,v0.1.0,1758598312,09/23/2025
+5831,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v2@v2.0.0,go,sdk/resourcemanager/storage/armstorage/v2.0.0,sdk/resourcemanager/storage/armstorage,v2.0.0,1758597498,09/23/2025
+5832,"Azure.ResourceManager.Network,1.12.0",dotnet,Azure.ResourceManager.Network_1.12.0,Azure.ResourceManager.Network,1.12.0,1758605611,09/23/2025
+5833,"Azure.ResourceManager.SignalR,1.1.4",dotnet,Azure.ResourceManager.SignalR_1.1.4,Azure.ResourceManager.SignalR,1.1.4,1758597484,09/23/2025
+5834,"Azure.ResourceManager.EventHubs,1.2.1",dotnet,Azure.ResourceManager.EventHubs_1.2.1,Azure.ResourceManager.EventHubs,1.2.1,1758597167,09/23/2025

@@ -5834,3 +5834,4 @@ id,name,language,tag,package,version,date_epoch,date
 5833,"Azure.ResourceManager.SignalR,1.1.4",dotnet,Azure.ResourceManager.SignalR_1.1.4,Azure.ResourceManager.SignalR,1.1.4,1758597484,09/23/2025
 5834,"Azure.ResourceManager.EventHubs,1.2.1",dotnet,Azure.ResourceManager.EventHubs_1.2.1,Azure.ResourceManager.EventHubs,1.2.1,1758597167,09/23/2025
 5835,com.azure.resourcemanager:azure-resourcemanager-quota:2.0.0,java,azure-resourcemanager-quota_2.0.0,azure-resourcemanager-quota,2.0.0,1758649250,09/23/2025
+5836,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota/v2@v2.0.0,go,sdk/resourcemanager/quota/armquota/v2.0.0,sdk/resourcemanager/quota/armquota,v2.0.0,1758654770,09/23/2025

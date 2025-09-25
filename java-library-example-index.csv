@@ -5843,3 +5843,4 @@ id,name,language,tag,package,version,date_epoch,date
 5842,"Azure.ResourceManager.Storage,1.5.0",dotnet,Azure.ResourceManager.Storage_1.5.0,Azure.ResourceManager.Storage,1.5.0,1758768234,09/25/2025
 5843,azure-mgmt-storagecache@3.0.0,python,azure-mgmt-storagecache_3.0.0,azure-mgmt-storagecache,3.0.0,1758782345,09/25/2025
 5844,azure-mgmt-cognitiveservices@14.0.0,python,azure-mgmt-cognitiveservices_14.0.0,azure-mgmt-cognitiveservices,14.0.0,1758781367,09/25/2025
+5845,azure-mgmt-quota@3.0.0,python,azure-mgmt-quota_3.0.0,azure-mgmt-quota,3.0.0,1758757293,09/24/2025

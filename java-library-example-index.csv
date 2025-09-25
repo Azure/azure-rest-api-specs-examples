@@ -5837,3 +5837,4 @@ id,name,language,tag,package,version,date_epoch,date
 5836,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota/v2@v2.0.0,go,sdk/resourcemanager/quota/armquota/v2.0.0,sdk/resourcemanager/quota/armquota,v2.0.0,1758654770,09/23/2025
 5837,"Azure.ResourceManager.Compute,1.12.0",dotnet,Azure.ResourceManager.Compute_1.12.0,Azure.ResourceManager.Compute,1.12.0,1758687007,09/24/2025
 5838,"Azure.ResourceManager.Quota,1.2.0",dotnet,Azure.ResourceManager.Quota_1.2.0,Azure.ResourceManager.Quota,1.2.0,1758686476,09/24/2025
+5839,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.1.0,java,azure-resourcemanager-storagecache_1.1.0,azure-resourcemanager-storagecache,1.1.0,1758780548,09/25/2025

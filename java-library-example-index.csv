@@ -5839,3 +5839,4 @@ id,name,language,tag,package,version,date_epoch,date
 5838,"Azure.ResourceManager.Quota,1.2.0",dotnet,Azure.ResourceManager.Quota_1.2.0,Azure.ResourceManager.Quota,1.2.0,1758686476,09/24/2025
 5839,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.1.0,java,azure-resourcemanager-storagecache_1.1.0,azure-resourcemanager-storagecache,1.1.0,1758780548,09/25/2025
 5840,@azure/arm-containerservice@22.3.0,js,@azure/arm-containerservice_22.3.0,@azure/arm-containerservice,22.3.0,1758775549,09/25/2025
+5841,"Azure.ResourceManager.DisconnectedOperations,1.0.0-beta.1",dotnet,Azure.ResourceManager.DisconnectedOperations_1.0.0-beta.1,Azure.ResourceManager.DisconnectedOperations,1.0.0-beta.1,1758793748,09/25/2025

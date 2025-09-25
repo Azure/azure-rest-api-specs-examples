@@ -2,12 +2,6 @@ const { ContainerServiceClient } = require("@azure/arm-containerservice");
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
-/**
- * This sample demonstrates how to Creates or updates a managed namespace in the specified managed cluster.
- *
- * @summary Creates or updates a managed namespace in the specified managed cluster.
- * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2025-05-02-preview/examples/ManagedNamespacesCreate_Update.json
- */
 async function createOrUpdateManagedNamespace() {
   const subscriptionId =
     process.env["CONTAINERSERVICE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";

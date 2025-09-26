@@ -2,12 +2,6 @@ const { CognitiveServicesManagementClient } = require("@azure/arm-cognitiveservi
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
-/**
- * This sample demonstrates how to Lists all the available  Cognitive Services account connections under the specified account.
- *
- * @summary Lists all the available  Cognitive Services account connections under the specified account.
- * x-ms-original-file: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/preview/2025-04-01-preview/examples/AccountConnection/list.json
- */
 async function listAccountConnections() {
   const subscriptionId =
     process.env["COGNITIVESERVICES_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
@@ -19,7 +13,11 @@ async function listAccountConnections() {
   const credential = new DefaultAzureCredential();
   const client = new CognitiveServicesManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (const item of client.accountConnection.list(resourceGroupName, accountName, options)) {
+  for await (const item of client.accountConnections.list(
+    resourceGroupName,
+    accountName,
+    options,
+  )) {
     resArray.push(item);
   }
   console.log(resArray);

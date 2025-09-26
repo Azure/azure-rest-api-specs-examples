@@ -5854,3 +5854,4 @@ id,name,language,tag,package,version,date_epoch,date
 5853,@azure/arm-datamigration@3.0.0,js,@azure/arm-datamigration_3.0.0,@azure/arm-datamigration,3.0.0,1758868575,09/26/2025
 5854,@azure/arm-containerservice@23.0.0-beta.4,js,@azure/arm-containerservice_23.0.0-beta.4,@azure/arm-containerservice,23.0.0-beta.4,1758868419,09/26/2025
 5855,@azure/arm-sql@11.0.0-beta.4,js,@azure/arm-sql_11.0.0-beta.4,@azure/arm-sql,11.0.0-beta.4,1758863563,09/26/2025
+5856,@azure/arm-computerecommender@1.0.0,js,@azure/arm-computerecommender_1.0.0,@azure/arm-computerecommender,1.0.0,1758847194,09/26/2025

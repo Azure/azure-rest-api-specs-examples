@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists the target executions of a job step execution.
@@ -19,7 +20,7 @@ async function listJobStepTargetExecutions() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.jobTargetExecutions.listByStep(
+  for await (const item of client.jobTargetExecutions.listByStep(
     resourceGroupName,
     serverName,
     jobAgentName,

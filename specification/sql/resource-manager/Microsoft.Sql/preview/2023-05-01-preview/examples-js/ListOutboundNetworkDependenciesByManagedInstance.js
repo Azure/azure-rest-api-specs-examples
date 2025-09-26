@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the collection of outbound network dependencies for the given managed instance.
@@ -15,7 +16,7 @@ async function getsTheCollectionOfOutboundNetworkDependenciesForTheGivenManagedI
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedInstances.listOutboundNetworkDependenciesByManagedInstance(
+  for await (const item of client.managedInstances.listOutboundNetworkDependenciesByManagedInstance(
     resourceGroupName,
     managedInstanceName,
   )) {

@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all instance pool usage metrics
@@ -15,7 +16,7 @@ async function listInstancePoolUsages() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.usages.listByInstancePool(resourceGroupName, instancePoolName)) {
+  for await (const item of client.usages.listByInstancePool(resourceGroupName, instancePoolName)) {
     resArray.push(item);
   }
   console.log(resArray);

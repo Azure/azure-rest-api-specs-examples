@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a collection of sync group logs.
@@ -20,7 +21,7 @@ async function getSyncGroupLogs() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.syncGroups.listLogs(
+  for await (const item of client.syncGroups.listLogs(
     resourceGroupName,
     serverName,
     databaseName,

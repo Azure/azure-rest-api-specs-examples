@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists auditing settings of a database.
@@ -16,7 +17,7 @@ async function listAuditSettingsOfADatabase() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databaseBlobAuditingPolicies.listByDatabase(
+  for await (const item of client.databaseBlobAuditingPolicies.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

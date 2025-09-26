@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a server trust groups by instance name.
@@ -15,7 +16,7 @@ async function listServerTrustGroupsByManagedInstance() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.serverTrustGroups.listByInstance(
+  for await (const item of client.serverTrustGroups.listByInstance(
     resourceGroupName,
     managedInstanceName,
   )) {

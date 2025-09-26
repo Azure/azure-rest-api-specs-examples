@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a collection of sync database ids.
@@ -14,7 +15,7 @@ async function getASyncDatabaseId() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.syncGroups.listSyncDatabaseIds(locationName)) {
+  for await (const item of client.syncGroups.listSyncDatabaseIds(locationName)) {
     resArray.push(item);
   }
   console.log(resArray);

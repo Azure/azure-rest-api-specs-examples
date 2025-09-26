@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists managed database move operations.
@@ -19,7 +20,7 @@ async function getsTheLatestManagedDatabaseMoveOperationsForEachDatabaseUnderSpe
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedDatabaseMoveOperations.listByLocation(
+  for await (const item of client.managedDatabaseMoveOperations.listByLocation(
     resourceGroupName,
     locationName,
     options,

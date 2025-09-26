@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get query execution statistics by query id.
@@ -25,7 +26,7 @@ async function obtainQueryExecutionStatisticsExampleWithAllRequestParameters() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedDatabaseQueries.listByQuery(
+  for await (const item of client.managedDatabaseQueries.listByQuery(
     resourceGroupName,
     managedInstanceName,
     databaseName,

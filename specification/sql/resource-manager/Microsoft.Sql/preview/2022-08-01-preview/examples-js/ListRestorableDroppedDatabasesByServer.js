@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of restorable dropped databases.
@@ -15,7 +16,7 @@ async function getsAListOfRestorableDroppedDatabases() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.restorableDroppedDatabases.listByServer(
+  for await (const item of client.restorableDroppedDatabases.listByServer(
     resourceGroupName,
     serverName,
   )) {

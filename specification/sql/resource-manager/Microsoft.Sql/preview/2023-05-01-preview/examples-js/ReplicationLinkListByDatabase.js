@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of replication links on database.
@@ -16,7 +17,7 @@ async function listReplicationLinksOnServerOnDatabase() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.replicationLinks.listByDatabase(
+  for await (const item of client.replicationLinks.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

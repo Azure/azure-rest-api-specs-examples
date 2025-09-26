@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Returns elastic pool metric definitions.
@@ -16,7 +17,7 @@ async function listDatabaseUsageMetrics() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.elasticPools.listMetricDefinitions(
+  for await (const item of client.elasticPools.listMetricDefinitions(
     resourceGroupName,
     serverName,
     elasticPoolName,

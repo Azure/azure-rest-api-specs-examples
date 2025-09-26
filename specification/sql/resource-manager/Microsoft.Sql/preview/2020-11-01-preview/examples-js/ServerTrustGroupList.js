@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists a server trust group.
@@ -15,7 +16,10 @@ async function listServerTrustGroups() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.serverTrustGroups.listByLocation(resourceGroupName, locationName)) {
+  for await (const item of client.serverTrustGroups.listByLocation(
+    resourceGroupName,
+    locationName,
+  )) {
     resArray.push(item);
   }
   console.log(resArray);

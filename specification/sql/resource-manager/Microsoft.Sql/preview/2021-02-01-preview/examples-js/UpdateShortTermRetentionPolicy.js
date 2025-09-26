@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a database's short term retention policy.
@@ -20,7 +21,7 @@ async function updateTheShortTermRetentionPolicyForTheDatabase() {
   };
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
-  const result = await client.backupShortTermRetentionPolicies.beginUpdateAndWait(
+  const result = await client.backupShortTermRetentionPolicies.beginCreateOrUpdateAndWait(
     resourceGroupName,
     serverName,
     databaseName,

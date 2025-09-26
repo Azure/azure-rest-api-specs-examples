@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all subscription usage metrics in a given location.
@@ -14,7 +15,7 @@ async function listSubscriptionUsagesInTheGivenLocation() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.subscriptionUsages.listByLocation(locationName)) {
+  for await (const item of client.subscriptionUsages.listByLocation(locationName)) {
     resArray.push(item);
   }
   console.log(resArray);

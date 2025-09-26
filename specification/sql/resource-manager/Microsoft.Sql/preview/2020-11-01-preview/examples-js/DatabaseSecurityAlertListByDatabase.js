@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of database's security alert policies.
@@ -16,7 +17,7 @@ async function getTheDatabaseThreatDetectionPolicies() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databaseSecurityAlertPolicies.listByDatabase(
+  for await (const item of client.databaseSecurityAlertPolicies.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

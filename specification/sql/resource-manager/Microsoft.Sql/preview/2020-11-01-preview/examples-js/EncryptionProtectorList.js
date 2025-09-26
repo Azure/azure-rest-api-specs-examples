@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of server encryption protectors
@@ -15,7 +16,10 @@ async function listEncryptionProtectorsByServer() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.encryptionProtectors.listByServer(resourceGroupName, serverName)) {
+  for await (const item of client.encryptionProtectors.listByServer(
+    resourceGroupName,
+    serverName,
+  )) {
     resArray.push(item);
   }
   console.log(resArray);

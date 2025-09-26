@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of database's Advanced Threat Protection states.
@@ -16,7 +17,7 @@ async function listsTheDatabaseAdvancedThreatProtectionSettings() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databaseAdvancedThreatProtectionSettings.listByDatabase(
+  for await (const item of client.databaseAdvancedThreatProtectionSettings.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

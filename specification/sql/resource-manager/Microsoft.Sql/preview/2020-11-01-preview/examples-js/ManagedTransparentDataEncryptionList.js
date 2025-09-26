@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of managed database's transparent data encryptions.
@@ -16,7 +17,7 @@ async function getAListOfTheDatabaseTransparentDataEncryptions() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedDatabaseTransparentDataEncryption.listByDatabase(
+  for await (const item of client.managedDatabaseTransparentDataEncryption.listByDatabase(
     resourceGroupName,
     managedInstanceName,
     databaseName,

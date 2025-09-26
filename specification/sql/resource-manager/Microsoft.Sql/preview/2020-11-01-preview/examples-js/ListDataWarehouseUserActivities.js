@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List the user activities of a data warehouse which includes running and suspended queries
@@ -16,7 +17,7 @@ async function listOfTheUserActivitiesOfADataWarehouse() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.dataWarehouseUserActivitiesOperations.listByDatabase(
+  for await (const item of client.dataWarehouseUserActivitiesOperations.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

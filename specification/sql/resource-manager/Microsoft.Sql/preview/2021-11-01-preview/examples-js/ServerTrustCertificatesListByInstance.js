@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of server trust certificates that were uploaded from box to the given Sql Managed Instance.
@@ -15,7 +16,7 @@ async function getsAListOfServerTrustCertificatesOnAGivenServer() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.serverTrustCertificates.listByInstance(
+  for await (const item of client.serverTrustCertificates.listByInstance(
     resourceGroupName,
     managedInstanceName,
   )) {

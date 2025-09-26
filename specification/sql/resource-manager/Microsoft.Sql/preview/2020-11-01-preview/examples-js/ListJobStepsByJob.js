@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all job steps for a job's current version.
@@ -17,7 +18,7 @@ async function listJobStepsForTheLatestVersionOfAJob() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.jobSteps.listByJob(
+  for await (const item of client.jobSteps.listByJob(
     resourceGroupName,
     serverName,
     jobAgentName,

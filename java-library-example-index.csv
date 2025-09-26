@@ -5851,3 +5851,4 @@ id,name,language,tag,package,version,date_epoch,date
 5850,@azure/arm-storage@19.0.0,js,@azure/arm-storage_19.0.0,@azure/arm-storage,19.0.0,1758877299,09/26/2025
 5851,@azure/arm-compute@23.1.0,js,@azure/arm-compute_23.1.0,@azure/arm-compute,23.1.0,1758877265,09/26/2025
 5852,@azure/arm-cognitiveservices@8.0.0,js,@azure/arm-cognitiveservices_8.0.0,@azure/arm-cognitiveservices,8.0.0,1758868637,09/26/2025
+5853,@azure/arm-datamigration@3.0.0,js,@azure/arm-datamigration_3.0.0,@azure/arm-datamigration,3.0.0,1758868575,09/26/2025

@@ -2,12 +2,6 @@ const { ContainerServiceClient } = require("@azure/arm-containerservice");
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
-/**
- * This sample demonstrates how to Deletes a managed cluster snapshot.
- *
- * @summary Deletes a managed cluster snapshot.
- * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2025-05-02-preview/examples/ManagedClusterSnapshotsDelete.json
- */
 async function deleteManagedClusterSnapshot() {
   const subscriptionId =
     process.env["CONTAINERSERVICE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";

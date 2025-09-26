@@ -5856,3 +5856,4 @@ id,name,language,tag,package,version,date_epoch,date
 5855,@azure/arm-sql@11.0.0-beta.4,js,@azure/arm-sql_11.0.0-beta.4,@azure/arm-sql,11.0.0-beta.4,1758863563,09/26/2025
 5856,@azure/arm-computerecommender@1.0.0,js,@azure/arm-computerecommender_1.0.0,@azure/arm-computerecommender,1.0.0,1758847194,09/26/2025
 5857,"Azure.ResourceManager.DataMigration,1.0.0",dotnet,Azure.ResourceManager.DataMigration_1.0.0,Azure.ResourceManager.DataMigration,1.0.0,1758876954,09/26/2025
+5858,azure-mgmt-netapp@14.0.0b2,python,azure-mgmt-netapp_14.0.0b2,azure-mgmt-netapp,14.0.0b2,1758871803,09/26/2025

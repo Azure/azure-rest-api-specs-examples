@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of operations performed on the server.
@@ -15,7 +16,7 @@ async function listTheServerManagementOperations() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.serverOperations.listByServer(resourceGroupName, serverName)) {
+  for await (const item of client.serverOperations.listByServer(resourceGroupName, serverName)) {
     resArray.push(item);
   }
   console.log(resArray);

@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Enables sensitivity recommendations on a given column (recommendations are enabled by default on all columns)

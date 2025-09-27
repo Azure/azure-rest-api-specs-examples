@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the list of workload classifiers for a workload group
@@ -17,7 +18,7 @@ async function getTheListOfWorkloadClassifiersForAWorkloadGroup() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.workloadClassifiers.listByWorkloadGroup(
+  for await (const item of client.workloadClassifiers.listByWorkloadGroup(
     resourceGroupName,
     serverName,
     databaseName,

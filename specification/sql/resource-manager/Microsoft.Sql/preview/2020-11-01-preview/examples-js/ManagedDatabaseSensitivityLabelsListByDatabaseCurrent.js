@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the sensitivity labels of a given database
@@ -16,7 +17,7 @@ async function getsTheCurrentSensitivityLabelsOfAGivenDatabaseInAManagedDatabase
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedDatabaseSensitivityLabels.listCurrentByDatabase(
+  for await (const item of client.managedDatabaseSensitivityLabels.listCurrentByDatabase(
     resourceGroupName,
     managedInstanceName,
     databaseName,

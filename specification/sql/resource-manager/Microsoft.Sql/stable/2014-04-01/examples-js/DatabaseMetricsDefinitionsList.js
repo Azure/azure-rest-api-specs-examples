@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Returns database metric definitions.
@@ -16,7 +17,7 @@ async function listDatabaseUsageMetrics() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databases.listMetricDefinitions(
+  for await (const item of client.databases.listMetricDefinitions(
     resourceGroupName,
     serverName,
     databaseName,

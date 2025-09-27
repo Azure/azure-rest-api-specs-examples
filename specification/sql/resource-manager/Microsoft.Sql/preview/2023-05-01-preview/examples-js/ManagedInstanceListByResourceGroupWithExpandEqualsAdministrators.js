@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of managed instances in a resource group.
@@ -14,7 +15,7 @@ async function listManagedInstancesByResourceGroupWithExpandAdministratorsOrActi
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedInstances.listByResourceGroup(resourceGroupName)) {
+  for await (const item of client.managedInstances.listByResourceGroup(resourceGroupName)) {
     resArray.push(item);
   }
   console.log(resArray);

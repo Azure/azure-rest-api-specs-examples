@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a collection of hub database schemas.
@@ -17,7 +18,7 @@ async function getAHubDatabaseSchema() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.syncGroups.listHubSchemas(
+  for await (const item of client.syncGroups.listHubSchemas(
     resourceGroupName,
     serverName,
     databaseName,

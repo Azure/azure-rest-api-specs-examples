@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists the managed instance's Start/Stop schedules.
@@ -15,7 +16,7 @@ async function listsTheManagedInstanceStartOrStopSchedules() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.startStopManagedInstanceSchedules.listByInstance(
+  for await (const item of client.startStopManagedInstanceSchedules.listByInstance(
     resourceGroupName,
     managedInstanceName,
   )) {

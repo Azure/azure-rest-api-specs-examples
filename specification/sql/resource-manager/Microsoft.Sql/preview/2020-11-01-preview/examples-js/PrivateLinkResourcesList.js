@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the private link resources for SQL server.
@@ -15,7 +16,10 @@ async function getsPrivateLinkResourcesForSql() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.privateLinkResources.listByServer(resourceGroupName, serverName)) {
+  for await (const item of client.privateLinkResources.listByServer(
+    resourceGroupName,
+    serverName,
+  )) {
     resArray.push(item);
   }
   console.log(resArray);

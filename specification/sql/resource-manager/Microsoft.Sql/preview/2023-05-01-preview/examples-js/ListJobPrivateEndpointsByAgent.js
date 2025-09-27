@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of job agent private endpoints.
@@ -16,7 +17,7 @@ async function listPrivateEndpointsInAJobAgent() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.jobPrivateEndpoints.listByAgent(
+  for await (const item of client.jobPrivateEndpoints.listByAgent(
     resourceGroupName,
     serverName,
     jobAgentName,

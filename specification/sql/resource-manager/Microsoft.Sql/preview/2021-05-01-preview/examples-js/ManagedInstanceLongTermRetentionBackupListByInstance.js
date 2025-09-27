@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists the long term retention backups for a given managed instance.
@@ -15,7 +16,7 @@ async function getAllLongTermRetentionBackupsUnderTheManagedInstance() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.longTermRetentionManagedInstanceBackups.listByInstance(
+  for await (const item of client.longTermRetentionManagedInstanceBackups.listByInstance(
     locationName,
     managedInstanceName,
   )) {

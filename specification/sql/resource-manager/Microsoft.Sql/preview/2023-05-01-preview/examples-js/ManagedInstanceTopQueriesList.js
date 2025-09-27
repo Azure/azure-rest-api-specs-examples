@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get top resource consuming queries of a managed instance.
@@ -21,7 +22,7 @@ async function obtainListOfInstanceTopResourceConsumingQueries() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedInstances.listByManagedInstance(
+  for await (const item of client.managedInstances.listByManagedInstance(
     resourceGroupName,
     managedInstanceName,
     options,

@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of all managed instances in an instance pool.
@@ -15,7 +16,7 @@ async function listManagedInstancesByInstancePool() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedInstances.listByInstancePool(
+  for await (const item of client.managedInstances.listByInstancePool(
     resourceGroupName,
     instancePoolName,
   )) {

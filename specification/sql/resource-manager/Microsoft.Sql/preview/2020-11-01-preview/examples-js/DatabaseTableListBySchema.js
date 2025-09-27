@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List database tables
@@ -17,7 +18,7 @@ async function listDatabaseTables() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databaseTables.listBySchema(
+  for await (const item of client.databaseTables.listBySchema(
     resourceGroupName,
     serverName,
     databaseName,

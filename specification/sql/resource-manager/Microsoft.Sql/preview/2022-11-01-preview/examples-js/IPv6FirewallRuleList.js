@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of IPv6 firewall rules.
@@ -15,7 +16,7 @@ async function listIPv6FirewallRules() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.iPv6FirewallRules.listByServer(resourceGroupName, serverName)) {
+  for await (const item of client.iPv6FirewallRules.listByServer(resourceGroupName, serverName)) {
     resArray.push(item);
   }
   console.log(resArray);

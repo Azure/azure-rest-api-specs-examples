@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists databases linked to a sync agent.
@@ -16,7 +17,7 @@ async function getSyncAgentLinkedDatabases() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.syncAgents.listLinkedDatabases(
+  for await (const item of client.syncAgents.listLinkedDatabases(
     resourceGroupName,
     serverName,
     syncAgentName,

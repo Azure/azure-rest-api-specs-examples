@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all ledger digest upload settings on a database.
@@ -16,7 +17,7 @@ async function getsListOfLedgerDigestUploadSettingsOnADatabase() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedLedgerDigestUploadsOperations.listByDatabase(
+  for await (const item of client.managedLedgerDigestUploadsOperations.listByDatabase(
     resourceGroupName,
     managedInstanceName,
     databaseName,

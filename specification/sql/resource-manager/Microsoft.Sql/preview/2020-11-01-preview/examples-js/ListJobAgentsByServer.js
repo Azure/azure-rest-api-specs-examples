@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of job agents in a server.
@@ -15,7 +16,7 @@ async function listJobAgentsInAServer() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.jobAgents.listByServer(resourceGroupName, serverName)) {
+  for await (const item of client.jobAgents.listByServer(resourceGroupName, serverName)) {
     resArray.push(item);
   }
   console.log(resArray);

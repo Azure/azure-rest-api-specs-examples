@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of server Azure Active Directory only authentications.
@@ -15,7 +16,7 @@ async function getsAListOfAzureActiveDirectoryOnlyAuthenticationObject() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.serverAzureADOnlyAuthentications.listByServer(
+  for await (const item of client.serverAzureADOnlyAuthentications.listByServer(
     resourceGroupName,
     serverName,
   )) {

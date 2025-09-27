@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List database columns
@@ -26,7 +27,7 @@ async function filterDatabaseColumns() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.databaseColumns.listByDatabase(
+  for await (const item of client.databaseColumns.listByDatabase(
     resourceGroupName,
     serverName,
     databaseName,

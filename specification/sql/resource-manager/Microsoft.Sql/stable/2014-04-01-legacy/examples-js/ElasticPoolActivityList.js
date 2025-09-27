@@ -1,5 +1,6 @@
 const { SqlManagementClient } = require("@azure/arm-sql");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Returns elastic pool activities.
@@ -16,7 +17,7 @@ async function listElasticPoolActivity() {
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.elasticPoolActivities.listByElasticPool(
+  for await (const item of client.elasticPoolActivities.listByElasticPool(
     resourceGroupName,
     serverName,
     elasticPoolName,

@@ -2,12 +2,6 @@ const { CognitiveServicesManagementClient } = require("@azure/arm-cognitiveservi
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
-/**
- * This sample demonstrates how to Update Cognitive Services project connection under the specified project.
- *
- * @summary Update Cognitive Services project connection under the specified project.
- * x-ms-original-file: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/preview/2025-04-01-preview/examples/ProjectConnection/update.json
- */
 async function updateProjectConnection() {
   const subscriptionId =
     process.env["COGNITIVESERVICES_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
@@ -15,7 +9,7 @@ async function updateProjectConnection() {
   const accountName = "account-1";
   const projectName = "project-1";
   const connectionName = "connection-1";
-  const body = {
+  const connection = {
     properties: {
       authType: "AccessKey",
       category: "ADLSGen2",
@@ -28,10 +22,10 @@ async function updateProjectConnection() {
       target: "some_string",
     },
   };
-  const options = { body };
+  const options = { connection };
   const credential = new DefaultAzureCredential();
   const client = new CognitiveServicesManagementClient(credential, subscriptionId);
-  const result = await client.projectConnection.update(
+  const result = await client.projectConnections.update(
     resourceGroupName,
     accountName,
     projectName,

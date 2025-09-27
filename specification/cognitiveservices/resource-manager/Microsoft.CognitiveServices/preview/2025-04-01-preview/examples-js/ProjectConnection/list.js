@@ -2,12 +2,6 @@ const { CognitiveServicesManagementClient } = require("@azure/arm-cognitiveservi
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
-/**
- * This sample demonstrates how to Lists all the available Cognitive Services project connections under the specified project.
- *
- * @summary Lists all the available Cognitive Services project connections under the specified project.
- * x-ms-original-file: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/preview/2025-04-01-preview/examples/ProjectConnection/list.json
- */
 async function listProjectConnection() {
   const subscriptionId =
     process.env["COGNITIVESERVICES_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
@@ -20,7 +14,7 @@ async function listProjectConnection() {
   const credential = new DefaultAzureCredential();
   const client = new CognitiveServicesManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (const item of client.projectConnection.list(
+  for await (const item of client.projectConnections.list(
     resourceGroupName,
     accountName,
     projectName,

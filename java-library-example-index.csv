@@ -5860,3 +5860,4 @@ id,name,language,tag,package,version,date_epoch,date
 5859,com.azure.resourcemanager:azure-resourcemanager-sitemanager:1.0.0,java,azure-resourcemanager-sitemanager_1.0.0,azure-resourcemanager-sitemanager,1.0.0,1759127341,09/29/2025
 5860,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v2@v2.0.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v2.0.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v2.0.0,1759138634,09/29/2025
 5861,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sitemanager/armsitemanager@v1.0.0,go,sdk/resourcemanager/sitemanager/armsitemanager/v1.0.0,sdk/resourcemanager/sitemanager/armsitemanager,v1.0.0,1759127283,09/29/2025
+5862,@azure/arm-sitemanager@1.0.0,js,@azure/arm-sitemanager_1.0.0,@azure/arm-sitemanager,1.0.0,1759127239,09/29/2025

@@ -5857,3 +5857,10 @@ id,name,language,tag,package,version,date_epoch,date
 5856,@azure/arm-computerecommender@1.0.0,js,@azure/arm-computerecommender_1.0.0,@azure/arm-computerecommender,1.0.0,1758847194,09/26/2025
 5857,"Azure.ResourceManager.DataMigration,1.0.0",dotnet,Azure.ResourceManager.DataMigration_1.0.0,Azure.ResourceManager.DataMigration,1.0.0,1758876954,09/26/2025
 5858,azure-mgmt-netapp@14.0.0b2,python,azure-mgmt-netapp_14.0.0b2,azure-mgmt-netapp,14.0.0b2,1758871803,09/26/2025
+5859,com.azure.resourcemanager:azure-resourcemanager-sitemanager:1.0.0,java,azure-resourcemanager-sitemanager_1.0.0,azure-resourcemanager-sitemanager,1.0.0,1759127341,09/29/2025
+5860,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v2@v2.0.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v2.0.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v2.0.0,1759138634,09/29/2025
+5861,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sitemanager/armsitemanager@v1.0.0,go,sdk/resourcemanager/sitemanager/armsitemanager/v1.0.0,sdk/resourcemanager/sitemanager/armsitemanager,v1.0.0,1759127283,09/29/2025
+5862,@azure/arm-sitemanager@1.0.0,js,@azure/arm-sitemanager_1.0.0,@azure/arm-sitemanager,1.0.0,1759127239,09/29/2025
+5863,"Azure.ResourceManager.ContainerInstance,1.3.0",dotnet,Azure.ResourceManager.ContainerInstance_1.3.0,Azure.ResourceManager.ContainerInstance,1.3.0,1759120973,09/29/2025
+5864,"Azure.ResourceManager.SiteManager,1.0.0",dotnet,Azure.ResourceManager.SiteManager_1.0.0,Azure.ResourceManager.SiteManager,1.0.0,1759115126,09/29/2025
+5865,azure-mgmt-sitemanager@1.0.0,python,azure-mgmt-sitemanager_1.0.0,azure-mgmt-sitemanager,1.0.0,1759127291,09/29/2025

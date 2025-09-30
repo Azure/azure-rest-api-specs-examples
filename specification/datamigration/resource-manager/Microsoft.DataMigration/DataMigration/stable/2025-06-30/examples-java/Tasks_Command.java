@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.datamigration.models.MigrateSyncCompleteCommandInput;
+import com.azure.resourcemanager.datamigration.models.MigrateSyncCompleteCommandProperties;
+
+/**
+ * Samples for Tasks Command.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/datamigration/resource-manager/Microsoft.DataMigration/DataMigration/stable/2025-06-30/examples/
+     * Tasks_Command.json
+     */
+    /**
+     * Sample code: Tasks_Command.
+     * 
+     * @param manager Entry point to DataMigrationManager.
+     */
+    public static void tasksCommand(com.azure.resourcemanager.datamigration.DataMigrationManager manager) {
+        manager.tasks().commandWithResponse("DmsSdkRg", "DmsSdkService", "DmsSdkProject", "DmsSdkTask",
+            new MigrateSyncCompleteCommandProperties()
+                .withInput(new MigrateSyncCompleteCommandInput().withDatabaseName("TestDatabase")),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,20 @@
+
+/**
+ * Samples for SqlMigrationServices ListMonitoringData.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/datamigration/resource-manager/Microsoft.DataMigration/DataMigration/stable/2025-06-30/examples/
+     * GetMonitorDataSqlMigrationService.json
+     */
+    /**
+     * Sample code: Retrieve the Monitoring Data.
+     * 
+     * @param manager Entry point to DataMigrationManager.
+     */
+    public static void retrieveTheMonitoringData(com.azure.resourcemanager.datamigration.DataMigrationManager manager) {
+        manager.sqlMigrationServices().listMonitoringDataWithResponse("testrg", "service1",
+            com.azure.core.util.Context.NONE);
+    }
+}

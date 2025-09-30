@@ -5866,3 +5866,4 @@ id,name,language,tag,package,version,date_epoch,date
 5865,azure-mgmt-sitemanager@1.0.0,python,azure-mgmt-sitemanager_1.0.0,azure-mgmt-sitemanager,1.0.0,1759127291,09/29/2025
 5866,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.2.0,java,azure-resourcemanager-datamigration_1.2.0,azure-resourcemanager-datamigration,1.2.0,1759227857,09/30/2025
 5867,com.azure.resourcemanager:azure-resourcemanager:2.55.0,java,azure-resourcemanager_2.55.0,azure-resourcemanager,2.55.0,1759216102,09/30/2025
+5868,"Azure.ResourceManager.OracleDatabase,1.2.0",dotnet,Azure.ResourceManager.OracleDatabase_1.2.0,Azure.ResourceManager.OracleDatabase,1.2.0,1759222141,09/30/2025

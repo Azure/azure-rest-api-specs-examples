@@ -5868,3 +5868,4 @@ id,name,language,tag,package,version,date_epoch,date
 5867,com.azure.resourcemanager:azure-resourcemanager:2.55.0,java,azure-resourcemanager_2.55.0,azure-resourcemanager,2.55.0,1759216102,09/30/2025
 5868,"Azure.ResourceManager.OracleDatabase,1.2.0",dotnet,Azure.ResourceManager.OracleDatabase_1.2.0,Azure.ResourceManager.OracleDatabase,1.2.0,1759222141,09/30/2025
 5869,"Azure.ResourceManager.StorageCache,1.4.0",dotnet,Azure.ResourceManager.StorageCache_1.4.0,Azure.ResourceManager.StorageCache,1.4.0,1759219783,09/30/2025
+5870,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagediscovery/armstoragediscovery@v1.0.0,go,sdk/resourcemanager/storagediscovery/armstoragediscovery/v1.0.0,sdk/resourcemanager/storagediscovery/armstoragediscovery,v1.0.0,1759362962,10/01/2025

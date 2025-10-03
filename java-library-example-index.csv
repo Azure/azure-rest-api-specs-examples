@@ -5870,3 +5870,4 @@ id,name,language,tag,package,version,date_epoch,date
 5869,"Azure.ResourceManager.StorageCache,1.4.0",dotnet,Azure.ResourceManager.StorageCache_1.4.0,Azure.ResourceManager.StorageCache,1.4.0,1759219783,09/30/2025
 5870,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagediscovery/armstoragediscovery@v1.0.0,go,sdk/resourcemanager/storagediscovery/armstoragediscovery/v1.0.0,sdk/resourcemanager/storagediscovery/armstoragediscovery,v1.0.0,1759362962,10/01/2025
 5871,azure-mgmt-storagediscovery@1.0.0,python,azure-mgmt-storagediscovery_1.0.0,azure-mgmt-storagediscovery,1.0.0,1759363787,10/02/2025
+5872,com.azure.resourcemanager:azure-resourcemanager-storagediscovery:1.0.0,java,azure-resourcemanager-storagediscovery_1.0.0,azure-resourcemanager-storagediscovery,1.0.0,1759437592,10/02/2025

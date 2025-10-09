@@ -5887,3 +5887,4 @@ id,name,language,tag,package,version,date_epoch,date
 5886,azure-mgmt-compute@37.0.1,python,azure-mgmt-compute_37.0.1,azure-mgmt-compute,37.0.1,1759998928,10/09/2025
 5887,azure-mgmt-sitemanager@1.0.1,python,azure-mgmt-sitemanager_1.0.1,azure-mgmt-sitemanager,1.0.1,1759998866,10/09/2025
 5888,azure-mgmt-netapp@14.0.0b3,python,azure-mgmt-netapp_14.0.0b3,azure-mgmt-netapp,14.0.0b3,1759998865,10/09/2025
+5889,azure-mgmt-sql@4.0.0b24,python,azure-mgmt-sql_4.0.0b24,azure-mgmt-sql,4.0.0b24,1759998852,10/09/2025

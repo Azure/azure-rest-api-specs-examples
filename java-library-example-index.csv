@@ -5878,3 +5878,4 @@ id,name,language,tag,package,version,date_epoch,date
 5877,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v1.0.0,go,sdk/resourcemanager/durabletask/armdurabletask/v1.0.0,sdk/resourcemanager/durabletask/armdurabletask,v1.0.0,1759956719,10/08/2025
 5878,@azure/arm-durabletask@1.0.0,js,@azure/arm-durabletask_1.0.0,@azure/arm-durabletask,1.0.0,1759951092,10/08/2025
 5879,"Azure.ResourceManager.Authorization,1.1.6",dotnet,Azure.ResourceManager.Authorization_1.1.6,Azure.ResourceManager.Authorization,1.1.6,1759983087,10/09/2025
+5880,"Azure.ResourceManager.AppContainers,1.5.0",dotnet,Azure.ResourceManager.AppContainers_1.5.0,Azure.ResourceManager.AppContainers,1.5.0,1759983045,10/09/2025

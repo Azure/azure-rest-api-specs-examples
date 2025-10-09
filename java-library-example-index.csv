@@ -5880,3 +5880,4 @@ id,name,language,tag,package,version,date_epoch,date
 5879,"Azure.ResourceManager.Authorization,1.1.6",dotnet,Azure.ResourceManager.Authorization_1.1.6,Azure.ResourceManager.Authorization,1.1.6,1759983087,10/09/2025
 5880,"Azure.ResourceManager.AppContainers,1.5.0",dotnet,Azure.ResourceManager.AppContainers_1.5.0,Azure.ResourceManager.AppContainers,1.5.0,1759983045,10/09/2025
 5881,azure-mgmt-storagecache@3.0.1,python,azure-mgmt-storagecache_3.0.1,azure-mgmt-storagecache,3.0.1,1760002450,10/09/2025
+5882,azure-mgmt-keyvault@12.1.1,python,azure-mgmt-keyvault_12.1.1,azure-mgmt-keyvault,12.1.1,1760000380,10/09/2025

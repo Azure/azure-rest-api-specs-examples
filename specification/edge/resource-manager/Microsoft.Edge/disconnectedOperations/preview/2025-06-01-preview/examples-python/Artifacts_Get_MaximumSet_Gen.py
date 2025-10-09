@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.disconnectedoperations import DisconnectedOperationsMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-disconnectedoperations
+# USAGE
+    python artifacts_get_maximum_set_gen.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DisconnectedOperationsMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.artifacts.get(
+        resource_group_name="rgdisconnectedoperations",
+        name="J_3-_S--_-UM_-_7w11",
+        image_name="PMY-",
+        artifact_name="-8Y-Us1BNNG6-H5w6-2--RP",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-06-01-preview/Artifacts_Get_MaximumSet_Gen.json
+if __name__ == "__main__":
+    main()

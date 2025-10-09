@@ -5875,3 +5875,4 @@ id,name,language,tag,package,version,date_epoch,date
 5874,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.1.0-beta.2,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.1.0-beta.2,sdk/resourcemanager/mongocluster/armmongocluster,v1.1.0-beta.2,1759902572,10/08/2025
 5875,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.1.0-beta.2,java,azure-resourcemanager-mongocluster_1.1.0-beta.2,azure-resourcemanager-mongocluster,1.1.0-beta.2,1759956930,10/08/2025
 5876,com.azure.resourcemanager:azure-resourcemanager-durabletask:1.0.0,java,azure-resourcemanager-durabletask_1.0.0,azure-resourcemanager-durabletask,1.0.0,1759951655,10/08/2025
+5877,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v1.0.0,go,sdk/resourcemanager/durabletask/armdurabletask/v1.0.0,sdk/resourcemanager/durabletask/armdurabletask,v1.0.0,1759956719,10/08/2025

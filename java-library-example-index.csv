@@ -5883,3 +5883,4 @@ id,name,language,tag,package,version,date_epoch,date
 5882,azure-mgmt-keyvault@12.1.1,python,azure-mgmt-keyvault_12.1.1,azure-mgmt-keyvault,12.1.1,1760000380,10/09/2025
 5883,azure-mgmt-disconnectedoperations@1.0.0b2,python,azure-mgmt-disconnectedoperations_1.0.0b2,azure-mgmt-disconnectedoperations,1.0.0b2,1760000317,10/09/2025
 5884,azure-mgmt-mongocluster@1.1.0b3,python,azure-mgmt-mongocluster_1.1.0b3,azure-mgmt-mongocluster,1.1.0b3,1759998962,10/09/2025
+5885,azure-mgmt-dataprotection@2.0.1,python,azure-mgmt-dataprotection_2.0.1,azure-mgmt-dataprotection,2.0.1,1759998931,10/09/2025

@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.dataprotection import DataProtectionMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-dataprotection
+# USAGE
+    python trigger_export_jobs.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DataProtectionMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.export_jobs.begin_trigger(
+        resource_group_name="SwaggerTestRg",
+        vault_name="NetSDKTestRsVault",
+    ).result()
+
+
+# x-ms-original-file: 2025-07-01/JobCRUD/TriggerExportJobs.json
+if __name__ == "__main__":
+    main()

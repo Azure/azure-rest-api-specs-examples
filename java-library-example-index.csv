@@ -5873,3 +5873,4 @@ id,name,language,tag,package,version,date_epoch,date
 5872,com.azure.resourcemanager:azure-resourcemanager-storagediscovery:1.0.0,java,azure-resourcemanager-storagediscovery_1.0.0,azure-resourcemanager-storagediscovery,1.0.0,1759437592,10/02/2025
 5873,@azure/arm-storagediscovery@1.0.0,js,@azure/arm-storagediscovery_1.0.0,@azure/arm-storagediscovery,1.0.0,1759440716,10/02/2025
 5874,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.1.0-beta.2,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.1.0-beta.2,sdk/resourcemanager/mongocluster/armmongocluster,v1.1.0-beta.2,1759902572,10/08/2025
+5875,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.1.0-beta.2,java,azure-resourcemanager-mongocluster_1.1.0-beta.2,azure-resourcemanager-mongocluster,1.1.0-beta.2,1759956930,10/08/2025

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.durabletask import DurableTaskMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-durabletask
+# USAGE
+    python task_hubs_create_or_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DurableTaskMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.task_hubs.begin_create_or_update(
+        resource_group_name="rgopenapi",
+        scheduler_name="testscheduler",
+        task_hub_name="testtaskhub",
+        resource={"properties": {}},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-11-01/TaskHubs_CreateOrUpdate.json
+if __name__ == "__main__":
+    main()

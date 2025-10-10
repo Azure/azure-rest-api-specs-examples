@@ -5890,3 +5890,4 @@ id,name,language,tag,package,version,date_epoch,date
 5889,azure-mgmt-sql@4.0.0b24,python,azure-mgmt-sql_4.0.0b24,azure-mgmt-sql,4.0.0b24,1759998852,10/09/2025
 5890,azure-mgmt-storagediscovery@1.0.1,python,azure-mgmt-storagediscovery_1.0.1,azure-mgmt-storagediscovery,1.0.1,1759998844,10/09/2025
 5891,azure-mgmt-durabletask@1.0.0,python,azure-mgmt-durabletask_1.0.0,azure-mgmt-durabletask,1.0.0,1759964396,10/08/2025
+5892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.1.0,go,sdk/resourcemanager/compute/armcompute/v7.1.0,sdk/resourcemanager/compute/armcompute,v7.1.0,1760066708,10/10/2025

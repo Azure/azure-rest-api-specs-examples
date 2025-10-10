@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.mongocluster.models.DatabaseRole;
+import com.azure.resourcemanager.mongocluster.models.EntraIdentityProvider;
+import com.azure.resourcemanager.mongocluster.models.EntraIdentityProviderProperties;
+import com.azure.resourcemanager.mongocluster.models.EntraPrincipalType;
+import com.azure.resourcemanager.mongocluster.models.UserProperties;
+import com.azure.resourcemanager.mongocluster.models.UserRole;
+import java.util.Arrays;
+
+/**
+ * Samples for Users CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-08-01-preview/MongoClusters_UserCreateOrUpdate.json
+     */
+    /**
+     * Sample code: Creates a user on a Mongo Cluster resource.
+     * 
+     * @param manager Entry point to MongoClusterManager.
+     */
+    public static void
+        createsAUserOnAMongoClusterResource(com.azure.resourcemanager.mongocluster.MongoClusterManager manager) {
+        manager.users().define("uuuuuuuu-uuuu-uuuu-uuuu-uuuuuuuuuuuu")
+            .withExistingMongoCluster("TestGroup", "myMongoCluster")
+            .withProperties(new UserProperties()
+                .withIdentityProvider(new EntraIdentityProvider()
+                    .withProperties(new EntraIdentityProviderProperties().withPrincipalType(EntraPrincipalType.USER)))
+                .withRoles(Arrays.asList(new DatabaseRole().withDb("admin").withRole(UserRole.ROOT))))
+            .create();
+    }
+}

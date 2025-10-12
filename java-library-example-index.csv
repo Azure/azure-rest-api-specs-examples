@@ -5893,3 +5893,4 @@ id,name,language,tag,package,version,date_epoch,date
 5892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.1.0,go,sdk/resourcemanager/compute/armcompute/v7.1.0,sdk/resourcemanager/compute/armcompute,v7.1.0,1760066708,10/10/2025
 5893,@azure/arm-mongocluster@1.1.0-beta.2,js,@azure/arm-mongocluster_1.1.0-beta.2,@azure/arm-mongocluster,1.1.0-beta.2,1760052387,10/09/2025
 5894,azure-mgmt-containerservice@40.0.0,python,azure-mgmt-containerservice_40.0.0,azure-mgmt-containerservice,40.0.0,1760085641,10/10/2025
+5895,azure-mgmt-iothubprovisioningservices@1.2.0b3,python,azure-mgmt-iothubprovisioningservices_1.2.0b3,azure-mgmt-iothubprovisioningservices,1.2.0b3,1760095152,10/10/2025

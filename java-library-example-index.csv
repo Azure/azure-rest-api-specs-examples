@@ -5896,3 +5896,4 @@ id,name,language,tag,package,version,date_epoch,date
 5895,azure-mgmt-iothubprovisioningservices@1.2.0b3,python,azure-mgmt-iothubprovisioningservices_1.2.0b3,azure-mgmt-iothubprovisioningservices,1.2.0b3,1760095152,10/10/2025
 5896,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.4.0,java,azure-resourcemanager-storagemover_1.4.0,azure-resourcemanager-storagemover,1.4.0,1760438324,10/14/2025
 5897,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagemover/armstoragemover/v2@v2.3.0,go,sdk/resourcemanager/storagemover/armstoragemover/v2.3.0,sdk/resourcemanager/storagemover/armstoragemover,v2.3.0,1760438518,10/14/2025
+5898,"Azure.ResourceManager.DeviceProvisioningServices,1.3.0-beta.1",dotnet,Azure.ResourceManager.DeviceProvisioningServices_1.3.0-beta.1,Azure.ResourceManager.DeviceProvisioningServices,1.3.0-beta.1,1760428976,10/14/2025

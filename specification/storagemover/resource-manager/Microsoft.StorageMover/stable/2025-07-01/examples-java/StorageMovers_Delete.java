@@ -1,0 +1,17 @@
+
+/**
+ * Samples for StorageMovers Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/StorageMovers_Delete.json
+     */
+    /**
+     * Sample code: StorageMovers_Delete.
+     * 
+     * @param manager Entry point to StorageMoverManager.
+     */
+    public static void storageMoversDelete(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+        manager.storageMovers().delete("examples-rg", "examples-storageMoverName", com.azure.core.util.Context.NONE);
+    }
+}

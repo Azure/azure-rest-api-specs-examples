@@ -1,0 +1,49 @@
+package armdataprotection_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4"
+)
+
+// Generated from example definition: 2025-07-01/VaultCRUD/GetOperationResultPatch.json
+func ExampleBackupVaultOperationResultsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdataprotection.NewClientFactory("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewBackupVaultOperationResultsClient().Get(ctx, "SampleResourceGroup", "swaggerExample", "YWUzNDFkMzQtZmM5OS00MmUyLWEzNDMtZGJkMDIxZjlmZjgzOzdmYzBiMzhmLTc2NmItNDM5NS05OWQ1LTVmOGEzNzg4MWQzNA==", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armdataprotection.BackupVaultOperationResultsClientGetResponse{
+	// 	BackupVaultResource: &armdataprotection.BackupVaultResource{
+	// 		Name: to.Ptr("swaggerExample"),
+	// 		Type: to.Ptr("Microsoft.DataProtection/Backupvaults"),
+	// 		ID: to.Ptr("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/SampleResourceGroup/providers/Microsoft.DataProtection/Backupvaults/swaggerExample"),
+	// 		Location: to.Ptr("WestUS"),
+	// 		Properties: &armdataprotection.BackupVault{
+	// 			ProvisioningState: to.Ptr(armdataprotection.ProvisioningStateSucceeded),
+	// 			StorageSettings: []*armdataprotection.StorageSetting{
+	// 				{
+	// 					Type: to.Ptr(armdataprotection.StorageSettingTypesLocallyRedundant),
+	// 					DatastoreType: to.Ptr(armdataprotection.StorageSettingStoreTypesVaultStore),
+	// 				},
+	// 			},
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"key1": to.Ptr("val1"),
+	// 		},
+	// 	},
+	// }
+}

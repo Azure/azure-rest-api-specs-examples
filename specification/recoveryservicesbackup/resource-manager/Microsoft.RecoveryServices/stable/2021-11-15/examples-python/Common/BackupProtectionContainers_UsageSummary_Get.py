@@ -5,7 +5,7 @@ from azure.mgmt.recoveryservicesbackup.passivestamp import RecoveryServicesBacku
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-recoveryservicesbackup
+    pip install azure-mgmt-recoveryservicesbackup-passivestamp
 # USAGE
     python backup_protection_containers_usage_summary_get.py
 

@@ -5903,3 +5903,4 @@ id,name,language,tag,package,version,date_epoch,date
 5902,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.5.0,java,azure-resourcemanager-dataprotection_1.5.0,azure-resourcemanager-dataprotection,1.5.0,1760504717,10/15/2025
 5903,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.2.0,java,azure-resourcemanager-oracledatabase_1.2.0,azure-resourcemanager-oracledatabase,1.2.0,1760502868,10/15/2025
 5904,com.azure.resourcemanager:azure-resourcemanager-netapp:1.10.0-beta.1,java,azure-resourcemanager-netapp_1.10.0-beta.1,azure-resourcemanager-netapp,1.10.0-beta.1,1760497484,10/15/2025
+5905,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsight/armhdinsight@v1.3.0-beta.3,go,sdk/resourcemanager/hdinsight/armhdinsight/v1.3.0-beta.3,sdk/resourcemanager/hdinsight/armhdinsight,v1.3.0-beta.3,1760521150,10/15/2025

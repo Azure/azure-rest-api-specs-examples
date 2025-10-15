@@ -5906,3 +5906,4 @@ id,name,language,tag,package,version,date_epoch,date
 5905,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsight/armhdinsight@v1.3.0-beta.3,go,sdk/resourcemanager/hdinsight/armhdinsight/v1.3.0-beta.3,sdk/resourcemanager/hdinsight/armhdinsight,v1.3.0-beta.3,1760521150,10/15/2025
 5906,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.0.0,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.0.0,sdk/resourcemanager/dataprotection/armdataprotection,v4.0.0,1760499720,10/15/2025
 5907,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase/v2@v2.0.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v2.0.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v2.0.0,1760462199,10/14/2025
+5908,@azure/arm-oracledatabase@3.0.0,js,@azure/arm-oracledatabase_3.0.0,@azure/arm-oracledatabase,3.0.0,1760462209,10/14/2025

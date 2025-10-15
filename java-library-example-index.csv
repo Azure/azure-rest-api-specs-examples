@@ -5911,3 +5911,4 @@ id,name,language,tag,package,version,date_epoch,date
 5910,"Azure.ResourceManager.FrontDoor,1.4.1",dotnet,Azure.ResourceManager.FrontDoor_1.4.1,Azure.ResourceManager.FrontDoor,1.4.1,1760497922,10/15/2025
 5911,azure-mgmt-hdinsight@9.1.0b2,python,azure-mgmt-hdinsight_9.1.0b2,azure-mgmt-hdinsight,9.1.0b2,1760522515,10/15/2025
 5912,azure-mgmt-oracledatabase@3.0.0,python,azure-mgmt-oracledatabase_3.0.0,azure-mgmt-oracledatabase,3.0.0,1760514825,10/15/2025
+5913,azure-mgmt-recoveryservicesbackup-passivestamp@1.0.0b1,python,azure-mgmt-recoveryservicesbackup-passivestamp_1.0.0b1,azure-mgmt-recoveryservicesbackup-passivestamp,1.0.0b1,1760496905,10/15/2025

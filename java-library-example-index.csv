@@ -5909,3 +5909,4 @@ id,name,language,tag,package,version,date_epoch,date
 5908,@azure/arm-oracledatabase@3.0.0,js,@azure/arm-oracledatabase_3.0.0,@azure/arm-oracledatabase,3.0.0,1760462209,10/14/2025
 5909,"Azure.ResourceManager.HDInsight,1.2.0-beta.5",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.5,Azure.ResourceManager.HDInsight,1.2.0-beta.5,1760521852,10/15/2025
 5910,"Azure.ResourceManager.FrontDoor,1.4.1",dotnet,Azure.ResourceManager.FrontDoor_1.4.1,Azure.ResourceManager.FrontDoor,1.4.1,1760497922,10/15/2025
+5911,azure-mgmt-hdinsight@9.1.0b2,python,azure-mgmt-hdinsight_9.1.0b2,azure-mgmt-hdinsight,9.1.0b2,1760522515,10/15/2025

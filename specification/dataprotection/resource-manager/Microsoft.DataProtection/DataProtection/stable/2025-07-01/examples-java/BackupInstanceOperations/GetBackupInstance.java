@@ -1,0 +1,18 @@
+
+/**
+ * Samples for BackupInstances Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/BackupInstanceOperations/GetBackupInstance.json
+     */
+    /**
+     * Sample code: Get BackupInstance.
+     * 
+     * @param manager Entry point to DataProtectionManager.
+     */
+    public static void getBackupInstance(com.azure.resourcemanager.dataprotection.DataProtectionManager manager) {
+        manager.backupInstances().getWithResponse("000pikumar", "PratikPrivatePreviewVault1", "testInstance1",
+            com.azure.core.util.Context.NONE);
+    }
+}

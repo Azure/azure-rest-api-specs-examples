@@ -1,0 +1,59 @@
+
+import com.azure.resourcemanager.dataprotection.models.AzureOperationalStoreParameters;
+import com.azure.resourcemanager.dataprotection.models.BackupInstance;
+import com.azure.resourcemanager.dataprotection.models.DataStoreTypes;
+import com.azure.resourcemanager.dataprotection.models.Datasource;
+import com.azure.resourcemanager.dataprotection.models.DatasourceSet;
+import com.azure.resourcemanager.dataprotection.models.IdentityDetails;
+import com.azure.resourcemanager.dataprotection.models.PolicyInfo;
+import com.azure.resourcemanager.dataprotection.models.PolicyParameters;
+import com.azure.resourcemanager.dataprotection.models.SecretStoreBasedAuthCredentials;
+import com.azure.resourcemanager.dataprotection.models.SecretStoreResource;
+import com.azure.resourcemanager.dataprotection.models.SecretStoreType;
+import com.azure.resourcemanager.dataprotection.models.ValidationType;
+import java.util.Arrays;
+
+/**
+ * Samples for BackupInstances CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/BackupInstanceOperations/PutBackupInstance.json
+     */
+    /**
+     * Sample code: Create BackupInstance.
+     * 
+     * @param manager Entry point to DataProtectionManager.
+     */
+    public static void createBackupInstance(com.azure.resourcemanager.dataprotection.DataProtectionManager manager) {
+        manager.backupInstances().define("testInstance1")
+            .withExistingBackupVault("000pikumar", "PratikPrivatePreviewVault1")
+            .withProperties(new BackupInstance().withFriendlyName("harshitbi2").withDataSourceInfo(new Datasource()
+                .withDatasourceType("Microsoft.DBforPostgreSQL/servers/databases").withObjectType("Datasource")
+                .withResourceId(
+                    "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest/providers/Microsoft.DBforPostgreSQL/servers/viveksipgtest/databases/testdb")
+                .withResourceLocation("").withResourceName("testdb")
+                .withResourceType("Microsoft.DBforPostgreSQL/servers/databases").withResourceUri(""))
+                .withDataSourceSetInfo(new DatasourceSet()
+                    .withDatasourceType("Microsoft.DBforPostgreSQL/servers/databases").withObjectType("DatasourceSet")
+                    .withResourceId(
+                        "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest/providers/Microsoft.DBforPostgreSQL/servers/viveksipgtest")
+                    .withResourceLocation("").withResourceName("viveksipgtest")
+                    .withResourceType("Microsoft.DBforPostgreSQL/servers").withResourceUri(""))
+                .withPolicyInfo(new PolicyInfo().withPolicyId(
+                    "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1")
+                    .withPolicyParameters(new PolicyParameters()
+                        .withDataStoreParametersList(Arrays.asList(new AzureOperationalStoreParameters()
+                            .withDataStoreType(DataStoreTypes.OPERATIONAL_STORE).withResourceGroupId(
+                                "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest")))))
+                .withDatasourceAuthCredentials(new SecretStoreBasedAuthCredentials().withSecretStoreResource(
+                    new SecretStoreResource().withUri("https://samplevault.vault.azure.net/secrets/credentials")
+                        .withSecretStoreType(SecretStoreType.AZURE_KEY_VAULT)))
+                .withValidationType(ValidationType.SHALLOW_VALIDATION)
+                .withIdentityDetails(
+                    new IdentityDetails().withUseSystemAssignedIdentity(false).withUserAssignedIdentityArmUrl(
+                        "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourcegroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testUami"))
+                .withObjectType("BackupInstance"))
+            .create();
+    }
+}

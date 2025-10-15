@@ -1,0 +1,16 @@
+const { OracleDatabaseManagementClient } = require("@azure/arm-oracledatabase");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to list Cloud Account Details
+ *
+ * @summary list Cloud Account Details
+ * x-ms-original-file: 2025-09-01/OracleSubscriptions_ListCloudAccountDetails_MinimumSet_Gen.json
+ */
+async function listCloudAccountDetailsForTheOracleSubscriptionGeneratedByMinimumSetRule() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new OracleDatabaseManagementClient(credential, subscriptionId);
+  const result = await client.oracleSubscriptions.listCloudAccountDetails();
+  console.log(result);
+}

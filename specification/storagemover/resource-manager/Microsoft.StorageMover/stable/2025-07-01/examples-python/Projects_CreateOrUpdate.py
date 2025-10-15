@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.storagemover import StorageMoverMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-storagemover
+# USAGE
+    python projects_create_or_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = StorageMoverMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.projects.create_or_update(
+        resource_group_name="examples-rg",
+        storage_mover_name="examples-storageMoverName",
+        project_name="examples-projectName",
+        project={"properties": {"description": "Example Project Description"}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-07-01/Projects_CreateOrUpdate.json
+if __name__ == "__main__":
+    main()

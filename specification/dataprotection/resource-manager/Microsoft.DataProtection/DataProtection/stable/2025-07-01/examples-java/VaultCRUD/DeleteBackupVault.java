@@ -1,0 +1,17 @@
+
+/**
+ * Samples for BackupVaults Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/VaultCRUD/DeleteBackupVault.json
+     */
+    /**
+     * Sample code: Delete BackupVault.
+     * 
+     * @param manager Entry point to DataProtectionManager.
+     */
+    public static void deleteBackupVault(com.azure.resourcemanager.dataprotection.DataProtectionManager manager) {
+        manager.backupVaults().delete("SampleResourceGroup", "swaggerExample", com.azure.core.util.Context.NONE);
+    }
+}

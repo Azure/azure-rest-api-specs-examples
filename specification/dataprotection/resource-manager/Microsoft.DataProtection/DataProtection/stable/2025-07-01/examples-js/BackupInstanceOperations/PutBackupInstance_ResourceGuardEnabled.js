@@ -1,0 +1,71 @@
+const { DataProtectionClient } = require("@azure/arm-dataprotection");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to create or update a backup instance in a backup vault
+ *
+ * @summary create or update a backup instance in a backup vault
+ * x-ms-original-file: 2025-07-01/BackupInstanceOperations/PutBackupInstance_ResourceGuardEnabled.json
+ */
+async function createBackupInstanceToPerformCriticalOperationWithMUA() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "04cf684a-d41f-4550-9f70-7708a3a2283b";
+  const client = new DataProtectionClient(credential, subscriptionId);
+  const result = await client.backupInstances.createOrUpdate(
+    "000pikumar",
+    "PratikPrivatePreviewVault1",
+    "testInstance1",
+    {
+      properties: {
+        dataSourceInfo: {
+          datasourceType: "Microsoft.DBforPostgreSQL/servers/databases",
+          objectType: "Datasource",
+          resourceID:
+            "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest/providers/Microsoft.DBforPostgreSQL/servers/viveksipgtest/databases/testdb",
+          resourceLocation: "",
+          resourceName: "testdb",
+          resourceType: "Microsoft.DBforPostgreSQL/servers/databases",
+          resourceUri: "",
+        },
+        dataSourceSetInfo: {
+          datasourceType: "Microsoft.DBforPostgreSQL/servers/databases",
+          objectType: "DatasourceSet",
+          resourceID:
+            "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest/providers/Microsoft.DBforPostgreSQL/servers/viveksipgtest",
+          resourceLocation: "",
+          resourceName: "viveksipgtest",
+          resourceType: "Microsoft.DBforPostgreSQL/servers",
+          resourceUri: "",
+        },
+        datasourceAuthCredentials: {
+          objectType: "SecretStoreBasedAuthCredentials",
+          secretStoreResource: {
+            secretStoreType: "AzureKeyVault",
+            uri: "https://samplevault.vault.azure.net/secrets/credentials",
+          },
+        },
+        friendlyName: "harshitbi2",
+        objectType: "BackupInstance",
+        policyInfo: {
+          policyId:
+            "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/Backupvaults/PratikPrivatePreviewVault1/backupPolicies/PratikPolicy1",
+          policyParameters: {
+            dataStoreParametersList: [
+              {
+                dataStoreType: "OperationalStore",
+                objectType: "AzureOperationalStoreParameters",
+                resourceGroupId:
+                  "/subscriptions/f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4/resourceGroups/viveksipgtest",
+              },
+            ],
+          },
+        },
+        resourceGuardOperationRequests: [
+          "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/ankurResourceGuard1/providers/Microsoft.DataProtection/resourceGuards/ResourceGuard38-1/dppModifyPolicy/default",
+        ],
+        validationType: "ShallowValidation",
+      },
+    },
+  );
+  console.log(result);
+}

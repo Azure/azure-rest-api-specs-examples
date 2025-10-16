@@ -1,0 +1,50 @@
+package armdataprotection_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4"
+)
+
+// Generated from example definition: 2025-07-01/BackupInstanceOperations/FindRestorableTimeRanges.json
+func ExampleRestorableTimeRangesClient_Find() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdataprotection.NewClientFactory("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewRestorableTimeRangesClient().Find(ctx, "Blob-Backup", "ZBlobBackupVaultBVTD3", "zblobbackuptestsa58", armdataprotection.AzureBackupFindRestorableTimeRangesRequest{
+		EndTime:             to.Ptr("2021-02-24T00:35:17.6829685Z"),
+		SourceDataStoreType: to.Ptr(armdataprotection.RestoreSourceDataStoreTypeOperationalStore),
+		StartTime:           to.Ptr("2020-10-17T23:28:17.6829685Z"),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armdataprotection.RestorableTimeRangesClientFindResponse{
+	// 	AzureBackupFindRestorableTimeRangesResponseResource: &armdataprotection.AzureBackupFindRestorableTimeRangesResponseResource{
+	// 		Type: to.Ptr("Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges"),
+	// 		ID: to.Ptr("zblobbackuptestsa58"),
+	// 		Properties: &armdataprotection.AzureBackupFindRestorableTimeRangesResponse{
+	// 			ObjectType: to.Ptr("AzureBackupFindRestorableTimeRangesResponse"),
+	// 			RestorableTimeRanges: []*armdataprotection.RestorableTimeRange{
+	// 				{
+	// 					EndTime: to.Ptr("2021-02-24T00:35:17.0000000Z"),
+	// 					ObjectType: to.Ptr("RestorableTimeRange"),
+	// 					StartTime: to.Ptr("2021-02-23T18:33:51.6349708Z"),
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

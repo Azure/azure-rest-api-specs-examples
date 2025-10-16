@@ -5913,3 +5913,4 @@ id,name,language,tag,package,version,date_epoch,date
 5912,azure-mgmt-oracledatabase@3.0.0,python,azure-mgmt-oracledatabase_3.0.0,azure-mgmt-oracledatabase,3.0.0,1760514825,10/15/2025
 5913,azure-mgmt-recoveryservicesbackup-passivestamp@1.0.0b1,python,azure-mgmt-recoveryservicesbackup-passivestamp_1.0.0b1,azure-mgmt-recoveryservicesbackup-passivestamp,1.0.0b1,1760496905,10/15/2025
 5914,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.1.0,java,azure-resourcemanager-redisenterprise_2.1.0,azure-resourcemanager-redisenterprise,2.1.0,1760545084,10/15/2025
+5915,@azure/arm-hdinsight@1.3.0-beta.4,js,@azure/arm-hdinsight_1.3.0-beta.4,@azure/arm-hdinsight,1.3.0-beta.4,1760596942,10/16/2025

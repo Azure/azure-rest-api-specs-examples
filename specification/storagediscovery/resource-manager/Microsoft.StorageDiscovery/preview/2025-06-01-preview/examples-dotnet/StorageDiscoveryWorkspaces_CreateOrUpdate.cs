@@ -32,7 +32,7 @@ StorageDiscoveryWorkspaceData data = new StorageDiscoveryWorkspaceData(new Azure
 {
     Properties = new StorageDiscoveryWorkspaceProperties(new ResourceIdentifier[] { new ResourceIdentifier("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09") }, new StorageDiscoveryScope[]
 {
-new StorageDiscoveryScope("Sample-Collection", new StorageDiscoveryResourceType[]{new StorageDiscoveryResourceType("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount")})
+new StorageDiscoveryScope("Sample-Collection", new StorageDiscoveryResourceKind[]{new StorageDiscoveryResourceKind("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount")})
 {
 TagKeysOnly = {"filterTag1", "filterTag2"},
 Tags =
@@ -41,7 +41,7 @@ Tags =
 ["filterTag4"] = "value4"
 },
 },
-new StorageDiscoveryScope("Sample-Collection-2", new StorageDiscoveryResourceType[]{new StorageDiscoveryResourceType("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount")})
+new StorageDiscoveryScope("Sample-Collection-2", new StorageDiscoveryResourceKind[]{new StorageDiscoveryResourceKind("/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount")})
 {
 TagKeysOnly = {"filterTag5"},
 Tags =

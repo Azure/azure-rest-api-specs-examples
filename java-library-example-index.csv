@@ -5918,3 +5918,4 @@ id,name,language,tag,package,version,date_epoch,date
 5917,"Azure.ResourceManager.StorageDiscovery,1.0.0",dotnet,Azure.ResourceManager.StorageDiscovery_1.0.0,Azure.ResourceManager.StorageDiscovery,1.0.0,1760582799,10/16/2025
 5918,azure-mgmt-recoveryservicesbackup@10.0.0,python,azure-mgmt-recoveryservicesbackup_10.0.0,azure-mgmt-recoveryservicesbackup,10.0.0,1760602271,10/16/2025
 5919,"Azure.ResourceManager.ResourceGraph,1.1.0",dotnet,Azure.ResourceManager.ResourceGraph_1.1.0,Azure.ResourceManager.ResourceGraph,1.1.0,1760694044,10/17/2025
+5920,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.5,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.5,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.5,1760727753,10/17/2025

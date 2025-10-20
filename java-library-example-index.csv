@@ -5922,3 +5922,4 @@ id,name,language,tag,package,version,date_epoch,date
 5921,@azure/arm-storagemover@3.0.1,js,@azure/arm-storagemover_3.0.1,@azure/arm-storagemover,3.0.1,1760722598,10/17/2025
 5922,"Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.4",dotnet,Azure.ResourceManager.ServiceFabricManagedClusters_1.3.0-beta.4,Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.4,1760710179,10/17/2025
 5923,com.azure.resourcemanager:azure-resourcemanager-elastic:1.1.0,java,azure-resourcemanager-elastic_1.1.0,azure-resourcemanager-elastic,1.1.0,1760941101,10/20/2025
+5924,"Azure.ResourceManager.NewRelicObservability,1.2.0-beta.1",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0-beta.1,Azure.ResourceManager.NewRelicObservability,1.2.0-beta.1,1760933494,10/20/2025

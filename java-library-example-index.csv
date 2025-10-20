@@ -5924,3 +5924,4 @@ id,name,language,tag,package,version,date_epoch,date
 5923,com.azure.resourcemanager:azure-resourcemanager-elastic:1.1.0,java,azure-resourcemanager-elastic_1.1.0,azure-resourcemanager-elastic,1.1.0,1760941101,10/20/2025
 5924,"Azure.ResourceManager.NewRelicObservability,1.2.0-beta.1",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0-beta.1,Azure.ResourceManager.NewRelicObservability,1.2.0-beta.1,1760933494,10/20/2025
 5925,azure-mgmt-redisenterprise@3.1.0,python,azure-mgmt-redisenterprise_3.1.0,azure-mgmt-redisenterprise,3.1.0,1760946363,10/20/2025
+5926,azure-mgmt-iothub@5.0.0b2,python,azure-mgmt-iothub_5.0.0b2,azure-mgmt-iothub,5.0.0b2,1760946353,10/20/2025

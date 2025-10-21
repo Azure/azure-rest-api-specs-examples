@@ -5928,3 +5928,4 @@ id,name,language,tag,package,version,date_epoch,date
 5927,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters@v0.5.0,go,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters/v0.5.0,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters,v0.5.0,1760984468,10/20/2025
 5928,"Azure.ResourceManager.ProviderHub,1.2.0",dotnet,Azure.ResourceManager.ProviderHub_1.2.0,Azure.ResourceManager.ProviderHub,1.2.0,1761041936,10/21/2025
 5929,"Azure.ResourceManager.Network,1.13.0",dotnet,Azure.ResourceManager.Network_1.13.0,Azure.ResourceManager.Network,1.13.0,1761029056,10/21/2025
+5930,"Azure.ResourceManager.TrafficManager,1.2.0-beta.1",dotnet,Azure.ResourceManager.TrafficManager_1.2.0-beta.1,Azure.ResourceManager.TrafficManager,1.2.0-beta.1,1761026247,10/21/2025

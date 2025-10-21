@@ -5926,3 +5926,4 @@ id,name,language,tag,package,version,date_epoch,date
 5925,azure-mgmt-redisenterprise@3.1.0,python,azure-mgmt-redisenterprise_3.1.0,azure-mgmt-redisenterprise,3.1.0,1760946363,10/20/2025
 5926,azure-mgmt-iothub@5.0.0b2,python,azure-mgmt-iothub_5.0.0b2,azure-mgmt-iothub,5.0.0b2,1760946353,10/20/2025
 5927,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters@v0.5.0,go,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters/v0.5.0,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters,v0.5.0,1760984468,10/20/2025
+5928,"Azure.ResourceManager.ProviderHub,1.2.0",dotnet,Azure.ResourceManager.ProviderHub_1.2.0,Azure.ResourceManager.ProviderHub,1.2.0,1761041936,10/21/2025

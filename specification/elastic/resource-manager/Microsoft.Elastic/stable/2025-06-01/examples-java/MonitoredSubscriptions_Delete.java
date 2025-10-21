@@ -1,0 +1,20 @@
+
+/**
+ * Samples for MonitoredSubscriptions Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/MonitoredSubscriptions_Delete
+     * .json
+     */
+    /**
+     * Sample code: Monitors_DeleteMonitoredSubscriptions.
+     * 
+     * @param manager Entry point to ElasticManager.
+     */
+    public static void monitorsDeleteMonitoredSubscriptions(com.azure.resourcemanager.elastic.ElasticManager manager) {
+        manager.monitoredSubscriptions().delete("myResourceGroup", "myMonitor", "default",
+            com.azure.core.util.Context.NONE);
+    }
+}

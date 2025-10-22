@@ -5936,3 +5936,4 @@ id,name,language,tag,package,version,date_epoch,date
 5935,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v3@v3.0.0,go,sdk/resourcemanager/storage/armstorage/v3.0.0,sdk/resourcemanager/storage/armstorage,v3.0.0,1761118739,10/22/2025
 5936,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v3@v3.0.0,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v3.0.0,sdk/resourcemanager/redisenterprise/armredisenterprise,v3.0.0,1761110826,10/22/2025
 5937,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v7@v7.1.0,go,sdk/resourcemanager/network/armnetwork/v7.1.0,sdk/resourcemanager/network/armnetwork,v7.1.0,1761101984,10/22/2025
+5938,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.1.0,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.1.0,sdk/resourcemanager/mongocluster/armmongocluster,v1.1.0,1761093327,10/22/2025

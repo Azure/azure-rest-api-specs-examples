@@ -5932,3 +5932,4 @@ id,name,language,tag,package,version,date_epoch,date
 5931,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.2.0,java,azure-resourcemanager-dashboard_1.2.0,azure-resourcemanager-dashboard,1.2.0,1761085260,10/21/2025
 5932,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.1.0,java,azure-resourcemanager-mongocluster_1.1.0,azure-resourcemanager-mongocluster,1.1.0,1761069398,10/21/2025
 5933,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.2.0-beta.1,java,azure-resourcemanager-deviceprovisioningservices_1.2.0-beta.1,azure-resourcemanager-deviceprovisioningservices,1.2.0-beta.1,1761050411,10/21/2025
+5934,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v8@v8.0.0-beta.2,go,sdk/resourcemanager/netapp/armnetapp/v8.0.0-beta.2,sdk/resourcemanager/netapp/armnetapp,v8.0.0-beta.2,1761118801,10/22/2025

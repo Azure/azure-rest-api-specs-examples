@@ -1,0 +1,19 @@
+
+/**
+ * Samples for IotDpsResource ListPrivateLinkResources.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-02-01-preview/DPSListPrivateLinkResources.json
+     */
+    /**
+     * Sample code: PrivateLinkResources_List.
+     * 
+     * @param manager Entry point to IotDpsManager.
+     */
+    public static void
+        privateLinkResourcesList(com.azure.resourcemanager.deviceprovisioningservices.IotDpsManager manager) {
+        manager.iotDpsResources().listPrivateLinkResources("myResourceGroup", "myFirstProvisioningService",
+            com.azure.core.util.Context.NONE);
+    }
+}

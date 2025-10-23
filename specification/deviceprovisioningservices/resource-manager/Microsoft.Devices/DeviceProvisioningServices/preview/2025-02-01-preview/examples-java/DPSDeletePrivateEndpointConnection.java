@@ -1,0 +1,19 @@
+
+/**
+ * Samples for IotDpsResource DeletePrivateEndpointConnection.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-02-01-preview/DPSDeletePrivateEndpointConnection.json
+     */
+    /**
+     * Sample code: PrivateEndpointConnection_Delete.
+     * 
+     * @param manager Entry point to IotDpsManager.
+     */
+    public static void
+        privateEndpointConnectionDelete(com.azure.resourcemanager.deviceprovisioningservices.IotDpsManager manager) {
+        manager.iotDpsResources().deletePrivateEndpointConnection("myResourceGroup", "myFirstProvisioningService",
+            "myPrivateEndpointConnection", com.azure.core.util.Context.NONE);
+    }
+}

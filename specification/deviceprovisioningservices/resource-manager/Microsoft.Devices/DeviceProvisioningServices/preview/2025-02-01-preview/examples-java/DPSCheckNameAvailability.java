@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.deviceprovisioningservices.models.OperationInputs;
+
+/**
+ * Samples for IotDpsResource CheckProvisioningServiceNameAvailability.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-02-01-preview/DPSCheckNameAvailability.json
+     */
+    /**
+     * Sample code: DPSCheckName.
+     * 
+     * @param manager Entry point to IotDpsManager.
+     */
+    public static void dPSCheckName(com.azure.resourcemanager.deviceprovisioningservices.IotDpsManager manager) {
+        manager.iotDpsResources().checkProvisioningServiceNameAvailabilityWithResponse(
+            new OperationInputs().withName("test213123"), com.azure.core.util.Context.NONE);
+    }
+}

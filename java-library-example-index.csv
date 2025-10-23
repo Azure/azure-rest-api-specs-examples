@@ -5956,3 +5956,4 @@ id,name,language,tag,package,version,date_epoch,date
 5955,@azure/arm-network@34.1.0,js,@azure/arm-network_34.1.0,@azure/arm-network,34.1.0,1761209047,10/23/2025
 5956,@azure/arm-netapp@22.0.0-beta.1,js,@azure/arm-netapp_22.0.0-beta.1,@azure/arm-netapp,22.0.0-beta.1,1761202924,10/23/2025
 5957,"Azure.ResourceManager.ImpactReporting,1.0.0-beta.1",dotnet,Azure.ResourceManager.ImpactReporting_1.0.0-beta.1,Azure.ResourceManager.ImpactReporting,1.0.0-beta.1,1761201695,10/23/2025
+5958,"Azure.ResourceManager.Storage,1.6.0",dotnet,Azure.ResourceManager.Storage_1.6.0,Azure.ResourceManager.Storage,1.6.0,1761201635,10/23/2025

@@ -5954,3 +5954,4 @@ id,name,language,tag,package,version,date_epoch,date
 5953,@azure/arm-recoveryservices@7.0.0,js,@azure/arm-recoveryservices_7.0.0,@azure/arm-recoveryservices,7.0.0,1761209790,10/23/2025
 5954,@azure/arm-storage@19.1.0,js,@azure/arm-storage_19.1.0,@azure/arm-storage,19.1.0,1761209285,10/23/2025
 5955,@azure/arm-network@34.1.0,js,@azure/arm-network_34.1.0,@azure/arm-network,34.1.0,1761209047,10/23/2025
+5956,@azure/arm-netapp@22.0.0-beta.1,js,@azure/arm-netapp_22.0.0-beta.1,@azure/arm-netapp,22.0.0-beta.1,1761202924,10/23/2025

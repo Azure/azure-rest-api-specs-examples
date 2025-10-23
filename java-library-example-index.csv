@@ -5950,3 +5950,4 @@ id,name,language,tag,package,version,date_epoch,date
 5949,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.0.0,go,sdk/resourcemanager/keyvault/armkeyvault/v2.0.0,sdk/resourcemanager/keyvault/armkeyvault,v2.0.0,1761188550,10/23/2025
 5950,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.3.0-beta.2,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.3.0-beta.2,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.3.0-beta.2,1761148439,10/22/2025
 5951,@azure/arm-containerservice@24.0.0-beta.1,js,@azure/arm-containerservice_24.0.0-beta.1,@azure/arm-containerservice,24.0.0-beta.1,1761213440,10/23/2025
+5952,@azure/arm-redisenterprisecache@4.0.0,js,@azure/arm-redisenterprisecache_4.0.0,@azure/arm-redisenterprisecache,4.0.0,1761209911,10/23/2025

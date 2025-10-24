@@ -5946,3 +5946,16 @@ id,name,language,tag,package,version,date_epoch,date
 5945,"Azure.ResourceManager.MongoCluster,1.0.0",dotnet,Azure.ResourceManager.MongoCluster_1.0.0,Azure.ResourceManager.MongoCluster,1.0.0,1761071539,10/21/2025
 5946,azure-mgmt-dashboard@2.0.0,python,azure-mgmt-dashboard_2.0.0,azure-mgmt-dashboard,2.0.0,1761083511,10/21/2025
 5947,azure-mgmt-mongocluster@1.1.0,python,azure-mgmt-mongocluster_1.1.0,azure-mgmt-mongocluster,1.1.0,1761069410,10/21/2025
+5948,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v8.1.0-beta.1,1761204156,10/23/2025
+5949,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.0.0,go,sdk/resourcemanager/keyvault/armkeyvault/v2.0.0,sdk/resourcemanager/keyvault/armkeyvault,v2.0.0,1761188550,10/23/2025
+5950,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.3.0-beta.2,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.3.0-beta.2,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.3.0-beta.2,1761148439,10/22/2025
+5951,@azure/arm-containerservice@24.0.0-beta.1,js,@azure/arm-containerservice_24.0.0-beta.1,@azure/arm-containerservice,24.0.0-beta.1,1761213440,10/23/2025
+5952,@azure/arm-redisenterprisecache@4.0.0,js,@azure/arm-redisenterprisecache_4.0.0,@azure/arm-redisenterprisecache,4.0.0,1761209911,10/23/2025
+5953,@azure/arm-recoveryservices@7.0.0,js,@azure/arm-recoveryservices_7.0.0,@azure/arm-recoveryservices,7.0.0,1761209790,10/23/2025
+5954,@azure/arm-storage@19.1.0,js,@azure/arm-storage_19.1.0,@azure/arm-storage,19.1.0,1761209285,10/23/2025
+5955,@azure/arm-network@34.1.0,js,@azure/arm-network_34.1.0,@azure/arm-network,34.1.0,1761209047,10/23/2025
+5956,@azure/arm-netapp@22.0.0-beta.1,js,@azure/arm-netapp_22.0.0-beta.1,@azure/arm-netapp,22.0.0-beta.1,1761202924,10/23/2025
+5957,"Azure.ResourceManager.ImpactReporting,1.0.0-beta.1",dotnet,Azure.ResourceManager.ImpactReporting_1.0.0-beta.1,Azure.ResourceManager.ImpactReporting,1.0.0-beta.1,1761201695,10/23/2025
+5958,"Azure.ResourceManager.Storage,1.6.0",dotnet,Azure.ResourceManager.Storage_1.6.0,Azure.ResourceManager.Storage,1.6.0,1761201635,10/23/2025
+5959,"Azure.ResourceManager.NetApp,1.13.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.13.0-beta.1,Azure.ResourceManager.NetApp,1.13.0-beta.1,1761183307,10/23/2025
+5960,azure-mgmt-storage@24.0.0,python,azure-mgmt-storage_24.0.0,azure-mgmt-storage,24.0.0,1761190331,10/23/2025

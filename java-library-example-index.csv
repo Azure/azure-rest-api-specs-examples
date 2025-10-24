@@ -5963,3 +5963,4 @@ id,name,language,tag,package,version,date_epoch,date
 5962,azure-mgmt-containerservice@41.0.0b1,python,azure-mgmt-containerservice_41.0.0b1,azure-mgmt-containerservice,41.0.0b1,1761299236,10/24/2025
 5963,azure-mgmt-cognitiveservices@14.1.0,python,azure-mgmt-cognitiveservices_14.1.0,azure-mgmt-cognitiveservices,14.1.0,1761290802,10/24/2025
 5964,azure-mgmt-network@30.0.0,python,azure-mgmt-network_30.0.0,azure-mgmt-network,30.0.0,1761290794,10/24/2025
+5965,azure-mgmt-appcontainers@4.0.0,python,azure-mgmt-appcontainers_4.0.0,azure-mgmt-appcontainers,4.0.0,1761290785,10/24/2025

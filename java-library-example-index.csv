@@ -5968,3 +5968,4 @@ id,name,language,tag,package,version,date_epoch,date
 5967,azure-mgmt-recoveryservices@4.0.0,python,azure-mgmt-recoveryservices_4.0.0,azure-mgmt-recoveryservices,4.0.0,1761545288,10/27/2025
 5968,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.2.0,java,azure-resourcemanager-appcontainers_1.2.0,azure-resourcemanager-appcontainers,1.2.0,1761571086,10/27/2025
 5969,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.4.0,java,azure-resourcemanager-cognitiveservices_1.4.0,azure-resourcemanager-cognitiveservices,1.4.0,1761565267,10/27/2025
+5970,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceregistry/armdeviceregistry/v2@v2.0.0,go,sdk/resourcemanager/deviceregistry/armdeviceregistry/v2.0.0,sdk/resourcemanager/deviceregistry/armdeviceregistry,v2.0.0,1761604881,10/27/2025

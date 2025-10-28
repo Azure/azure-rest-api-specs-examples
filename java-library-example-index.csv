@@ -5966,3 +5966,4 @@ id,name,language,tag,package,version,date_epoch,date
 5965,azure-mgmt-appcontainers@4.0.0,python,azure-mgmt-appcontainers_4.0.0,azure-mgmt-appcontainers,4.0.0,1761290785,10/24/2025
 5966,azure-mgmt-deviceregistry@1.1.0,python,azure-mgmt-deviceregistry_1.1.0,azure-mgmt-deviceregistry,1.1.0,1761458043,10/26/2025
 5967,azure-mgmt-recoveryservices@4.0.0,python,azure-mgmt-recoveryservices_4.0.0,azure-mgmt-recoveryservices,4.0.0,1761545288,10/27/2025
+5968,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.2.0,java,azure-resourcemanager-appcontainers_1.2.0,azure-resourcemanager-appcontainers,1.2.0,1761571086,10/27/2025

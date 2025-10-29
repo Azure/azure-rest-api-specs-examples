@@ -19,7 +19,7 @@ from azure.mgmt.netapp import NetAppManagementClient
 def main():
     client = NetAppManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="D633CC2E-722B-4AE1-B636-BBD9E4C60ED9",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.net_app_resource_quota_limits_account.list(
@@ -30,6 +30,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2025-07-01-preview/examples/QuotaLimitsAccount_List.json
+# x-ms-original-file: 2025-07-01-preview/QuotaLimitsAccount_List.json
 if __name__ == "__main__":
     main()

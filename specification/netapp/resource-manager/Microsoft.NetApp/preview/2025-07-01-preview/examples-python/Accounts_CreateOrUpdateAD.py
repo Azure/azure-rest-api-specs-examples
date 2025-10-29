@@ -19,7 +19,7 @@ from azure.mgmt.netapp import NetAppManagementClient
 def main():
     client = NetAppManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.accounts.begin_create_or_update(
@@ -48,6 +48,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2025-07-01-preview/examples/Accounts_CreateOrUpdateAD.json
+# x-ms-original-file: 2025-07-01-preview/Accounts_CreateOrUpdateAD.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.netapp import NetAppManagementClient
 def main():
     client = NetAppManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="5275316f-a498-48d6-b324-2cbfdc4311b9",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.volume_quota_rules.list_by_volume(
@@ -32,6 +32,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2025-07-01-preview/examples/VolumeQuotaRules_List.json
+# x-ms-original-file: 2025-07-01-preview/VolumeQuotaRules_List.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.netapp import NetAppManagementClient
 def main():
     client = NetAppManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.volumes.begin_list_get_group_id_list_for_ldap_user(
@@ -32,6 +32,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2025-07-01-preview/examples/GroupIdListForLDAPUser.json
+# x-ms-original-file: 2025-07-01-preview/GroupIdListForLDAPUser.json
 if __name__ == "__main__":
     main()

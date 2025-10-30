@@ -5969,3 +5969,7 @@ id,name,language,tag,package,version,date_epoch,date
 5968,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.2.0,java,azure-resourcemanager-appcontainers_1.2.0,azure-resourcemanager-appcontainers,1.2.0,1761571086,10/27/2025
 5969,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.4.0,java,azure-resourcemanager-cognitiveservices_1.4.0,azure-resourcemanager-cognitiveservices,1.4.0,1761565267,10/27/2025
 5970,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceregistry/armdeviceregistry/v2@v2.0.0,go,sdk/resourcemanager/deviceregistry/armdeviceregistry/v2.0.0,sdk/resourcemanager/deviceregistry/armdeviceregistry,v2.0.0,1761604881,10/27/2025
+5971,@azure/arm-mongocluster@1.1.0,js,@azure/arm-mongocluster_1.1.0,@azure/arm-mongocluster,1.1.0,1761670352,10/28/2025
+5972,@azure/arm-dashboard@2.0.0,js,@azure/arm-dashboard_2.0.0,@azure/arm-dashboard,2.0.0,1761669011,10/28/2025
+5973,"Azure.ResourceManager.IotHub,1.2.0-beta.2",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.2,Azure.ResourceManager.IotHub,1.2.0-beta.2,1761728067,10/29/2025
+5974,azure-mgmt-netapp@14.0.0b4,python,azure-mgmt-netapp_14.0.0b4,azure-mgmt-netapp,14.0.0b4,1761708490,10/29/2025

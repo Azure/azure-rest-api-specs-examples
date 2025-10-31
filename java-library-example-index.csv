@@ -5975,3 +5975,4 @@ id,name,language,tag,package,version,date_epoch,date
 5974,azure-mgmt-netapp@14.0.0b4,python,azure-mgmt-netapp_14.0.0b4,azure-mgmt-netapp,14.0.0b4,1761708490,10/29/2025
 5975,com.azure.resourcemanager:azure-resourcemanager-deviceregistry:1.1.0,java,azure-resourcemanager-deviceregistry_1.1.0,azure-resourcemanager-deviceregistry,1.1.0,1761872226,10/31/2025
 5976,@azure/arm-subscriptions@6.0.0,js,@azure/arm-subscriptions_6.0.0,@azure/arm-subscriptions,6.0.0,1761901399,10/31/2025
+5977,azure-mgmt-containerservice@40.1.0,python,azure-mgmt-containerservice_40.1.0,azure-mgmt-containerservice,40.1.0,1761897403,10/31/2025

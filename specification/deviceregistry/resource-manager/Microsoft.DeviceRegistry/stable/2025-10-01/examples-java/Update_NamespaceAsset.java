@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.deviceregistry.models.NamespaceAsset;
+import com.azure.resourcemanager.deviceregistry.models.NamespaceAssetUpdateProperties;
+
+/**
+ * Samples for NamespaceAssets Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01/Update_NamespaceAsset.json
+     */
+    /**
+     * Sample code: Update_NamespaceAssets.
+     * 
+     * @param manager Entry point to DeviceRegistryManager.
+     */
+    public static void updateNamespaceAssets(com.azure.resourcemanager.deviceregistry.DeviceRegistryManager manager) {
+        NamespaceAsset resource = manager.namespaceAssets()
+            .getWithResponse("myResourceGroup", "my-namespace-1", "my-asset-1", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withProperties(new NamespaceAssetUpdateProperties().withEnabled(true)
+            .withDisplayName("AssetDisplayNameUpdate").withDescription("This is a sample updated Asset")).apply();
+    }
+}

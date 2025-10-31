@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create Alias Subscription.
@@ -29,5 +30,3 @@ async function createAlias() {
   const result = await client.alias.beginCreateAndWait(aliasName, body);
   console.log(result);
 }
-
-createAlias().catch(console.error);

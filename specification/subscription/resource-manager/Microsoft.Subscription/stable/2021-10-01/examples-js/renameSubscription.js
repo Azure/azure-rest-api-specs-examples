@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to The operation to rename a subscription
@@ -12,8 +13,6 @@ async function renameSubscription() {
   const body = { subscriptionName: "Test Sub" };
   const credential = new DefaultAzureCredential();
   const client = new SubscriptionClient(credential);
-  const result = await client.subscriptionOperations.rename(subscriptionId, body);
+  const result = await client.subscription.rename(subscriptionId, body);
   console.log(result);
 }
-
-renameSubscription().catch(console.error);

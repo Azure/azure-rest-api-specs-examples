@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create or Update Subscription tenant policy for user's tenant.
@@ -21,5 +22,3 @@ async function tenantPolicy() {
   const result = await client.subscriptionPolicy.addUpdatePolicyForTenant(body);
   console.log(result);
 }
-
-tenantPolicy().catch(console.error);

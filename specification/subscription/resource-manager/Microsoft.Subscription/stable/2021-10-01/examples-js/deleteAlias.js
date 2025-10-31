@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Delete Alias.
@@ -14,5 +15,3 @@ async function deleteAlias() {
   const result = await client.alias.delete(aliasName);
   console.log(result);
 }
-
-deleteAlias().catch(console.error);

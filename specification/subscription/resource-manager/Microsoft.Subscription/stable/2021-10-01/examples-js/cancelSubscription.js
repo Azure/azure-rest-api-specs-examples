@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to The operation to cancel a subscription
@@ -11,8 +12,6 @@ async function cancelSubscription() {
   const subscriptionId = "83aa47df-e3e9-49ff-877b-94304bf3d3ad";
   const credential = new DefaultAzureCredential();
   const client = new SubscriptionClient(credential);
-  const result = await client.subscriptionOperations.cancel(subscriptionId);
+  const result = await client.subscription.cancel(subscriptionId);
   console.log(result);
 }
-
-cancelSubscription().catch(console.error);

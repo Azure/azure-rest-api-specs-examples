@@ -5973,3 +5973,4 @@ id,name,language,tag,package,version,date_epoch,date
 5972,@azure/arm-dashboard@2.0.0,js,@azure/arm-dashboard_2.0.0,@azure/arm-dashboard,2.0.0,1761669011,10/28/2025
 5973,"Azure.ResourceManager.IotHub,1.2.0-beta.2",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.2,Azure.ResourceManager.IotHub,1.2.0-beta.2,1761728067,10/29/2025
 5974,azure-mgmt-netapp@14.0.0b4,python,azure-mgmt-netapp_14.0.0b4,azure-mgmt-netapp,14.0.0b4,1761708490,10/29/2025
+5975,com.azure.resourcemanager:azure-resourcemanager-deviceregistry:1.1.0,java,azure-resourcemanager-deviceregistry_1.1.0,azure-resourcemanager-deviceregistry,1.1.0,1761872226,10/31/2025

@@ -4,7 +4,7 @@ import com.azure.resourcemanager.sql.models.DiffBackupIntervalInHours;
 import com.azure.resourcemanager.sql.models.ShortTermRetentionPolicyName;
 
 /**
- * Samples for BackupShortTermRetentionPolicies CreateOrUpdate.
+ * Samples for BackupShortTermRetentionPolicies Update.
  */
 public final class Main {
     /*
@@ -18,10 +18,9 @@ public final class Main {
      */
     public static void
         updateTheShortTermRetentionPolicyForTheDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getBackupShortTermRetentionPolicies().createOrUpdate(
-            "resourceGroup", "testsvr", "testdb", ShortTermRetentionPolicyName.DEFAULT,
-            new BackupShortTermRetentionPolicyInner().withRetentionDays(7)
-                .withDiffBackupIntervalInHours(DiffBackupIntervalInHours.TWO_FOUR),
+        azure.sqlServers().manager().serviceClient().getBackupShortTermRetentionPolicies().update("resourceGroup",
+            "testsvr", "testdb", ShortTermRetentionPolicyName.DEFAULT, new BackupShortTermRetentionPolicyInner()
+                .withRetentionDays(7).withDiffBackupIntervalInHours(DiffBackupIntervalInHours.TWO_FOUR),
             com.azure.core.util.Context.NONE);
     }
 }

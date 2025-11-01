@@ -5976,3 +5976,4 @@ id,name,language,tag,package,version,date_epoch,date
 5975,com.azure.resourcemanager:azure-resourcemanager-deviceregistry:1.1.0,java,azure-resourcemanager-deviceregistry_1.1.0,azure-resourcemanager-deviceregistry,1.1.0,1761872226,10/31/2025
 5976,@azure/arm-subscriptions@6.0.0,js,@azure/arm-subscriptions_6.0.0,@azure/arm-subscriptions,6.0.0,1761901399,10/31/2025
 5977,azure-mgmt-containerservice@40.1.0,python,azure-mgmt-containerservice_40.1.0,azure-mgmt-containerservice,40.1.0,1761897403,10/31/2025
+5978,com.azure.resourcemanager:azure-resourcemanager:2.56.0,java,azure-resourcemanager_2.56.0,azure-resourcemanager,2.56.0,1761912916,10/31/2025

@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.deviceregistry.models.NamespaceDiscoveredAsset;
+import com.azure.resourcemanager.deviceregistry.models.NamespaceDiscoveredAssetUpdateProperties;
+
+/**
+ * Samples for NamespaceDiscoveredAssets Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01/Update_NamespaceDiscoveredAsset.json
+     */
+    /**
+     * Sample code: Update_NamespaceDiscoveredAsset.
+     * 
+     * @param manager Entry point to DeviceRegistryManager.
+     */
+    public static void
+        updateNamespaceDiscoveredAsset(com.azure.resourcemanager.deviceregistry.DeviceRegistryManager manager) {
+        NamespaceDiscoveredAsset resource = manager.namespaceDiscoveredAssets().getWithResponse("myResourceGroup",
+            "my-namespace-1", "my-discoveredasset-1", com.azure.core.util.Context.NONE).getValue();
+        resource.update()
+            .withProperties(
+                new NamespaceDiscoveredAssetUpdateProperties().withDocumentationUri("https://www.example.com/manual-2"))
+            .apply();
+    }
+}

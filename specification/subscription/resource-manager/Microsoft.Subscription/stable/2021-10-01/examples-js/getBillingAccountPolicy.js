@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get Billing Account Policy.
@@ -14,5 +15,3 @@ async function getBillingAccountPolicy() {
   const result = await client.billingAccount.getPolicy(billingAccountId);
   console.log(result);
 }
-
-getBillingAccountPolicy().catch(console.error);

@@ -1,5 +1,6 @@
 const { SubscriptionClient } = require("@azure/arm-subscriptions");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get Alias Subscription.
@@ -14,5 +15,3 @@ async function getAlias() {
   const result = await client.alias.get(aliasName);
   console.log(result);
 }
-
-getAlias().catch(console.error);

@@ -5980,3 +5980,4 @@ id,name,language,tag,package,version,date_epoch,date
 5979,"Azure.ResourceManager.DurableTask,1.0.0",dotnet,Azure.ResourceManager.DurableTask_1.0.0,Azure.ResourceManager.DurableTask,1.0.0,1762160923,11/03/2025
 5980,"Azure.ResourceManager.MySql,1.2.0",dotnet,Azure.ResourceManager.MySql_1.2.0,Azure.ResourceManager.MySql,1.2.0,1762160908,11/03/2025
 5981,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v2@v2.0.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v2.0.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v2.0.0,1762332914,11/05/2025
+5982,azure-mgmt-containerregistry@14.1.0b3,python,azure-mgmt-containerregistry_14.1.0b3,azure-mgmt-containerregistry,14.1.0b3,1762328624,11/05/2025

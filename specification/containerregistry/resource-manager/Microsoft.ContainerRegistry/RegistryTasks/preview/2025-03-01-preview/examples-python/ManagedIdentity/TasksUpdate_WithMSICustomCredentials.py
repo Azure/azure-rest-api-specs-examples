@@ -1,0 +1,54 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.containerregistry import ContainerRegistryManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-containerregistry
+# USAGE
+    python tasks_update_with_msi_custom_credentials.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ContainerRegistryManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="4385cf00-2d3a-425a-832f-f4285b1c9dce",
+    )
+
+    response = client.tasks.update(
+        resource_group_name="myResourceGroup",
+        registry_name="myRegistry",
+        task_name="myTask",
+        task_update_parameters={
+            "properties": {
+                "agentConfiguration": {"cpu": 3},
+                "credentials": {"customRegistries": {"myregistry.azurecr.io": {"identity": "[system]"}}},
+                "logTemplate": None,
+                "status": "Enabled",
+                "step": {"dockerFilePath": "src/DockerFile", "imageNames": ["azurerest:testtag1"], "type": "Docker"},
+                "trigger": {
+                    "sourceTriggers": [
+                        {
+                            "name": "mySourceTrigger",
+                            "sourceRepository": {"sourceControlAuthProperties": {"token": "xxxxx", "tokenType": "PAT"}},
+                            "sourceTriggerEvents": ["commit"],
+                        }
+                    ]
+                },
+            },
+            "tags": {"testkey": "value"},
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/ManagedIdentity/TasksUpdate_WithMSICustomCredentials.json
+if __name__ == "__main__":
+    main()

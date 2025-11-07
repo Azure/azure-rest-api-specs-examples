@@ -5981,3 +5981,5 @@ id,name,language,tag,package,version,date_epoch,date
 5980,"Azure.ResourceManager.MySql,1.2.0",dotnet,Azure.ResourceManager.MySql_1.2.0,Azure.ResourceManager.MySql,1.2.0,1762160908,11/03/2025
 5981,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v2@v2.0.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v2.0.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v2.0.0,1762332914,11/05/2025
 5982,azure-mgmt-containerregistry@14.1.0b3,python,azure-mgmt-containerregistry_14.1.0b3,azure-mgmt-containerregistry,14.1.0b3,1762328624,11/05/2025
+5983,@azure/arm-containerregistry@11.0.0,js,@azure/arm-containerregistry_11.0.0,@azure/arm-containerregistry,11.0.0,1762398586,11/06/2025
+5984,"Azure.ResourceManager.ContainerRegistry,1.4.0",dotnet,Azure.ResourceManager.ContainerRegistry_1.4.0,Azure.ResourceManager.ContainerRegistry,1.4.0,1762393083,11/06/2025

@@ -5984,3 +5984,5 @@ id,name,language,tag,package,version,date_epoch,date
 5983,@azure/arm-containerregistry@11.0.0,js,@azure/arm-containerregistry_11.0.0,@azure/arm-containerregistry,11.0.0,1762398586,11/06/2025
 5984,"Azure.ResourceManager.ContainerRegistry,1.4.0",dotnet,Azure.ResourceManager.ContainerRegistry_1.4.0,Azure.ResourceManager.ContainerRegistry,1.4.0,1762393083,11/06/2025
 5985,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.0.1,go,sdk/resourcemanager/keyvault/armkeyvault/v2.0.1,sdk/resourcemanager/keyvault/armkeyvault,v2.0.1,1762741813,11/10/2025
+5986,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub@v1.4.0-beta.1,go,sdk/resourcemanager/iothub/armiothub/v1.4.0-beta.1,sdk/resourcemanager/iothub/armiothub,v1.4.0-beta.1,1762844218,11/11/2025
+5987,@azure/arm-deviceregistry@1.1.0,js,@azure/arm-deviceregistry_1.1.0,@azure/arm-deviceregistry,1.1.0,1762851408,11/11/2025

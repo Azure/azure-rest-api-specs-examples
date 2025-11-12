@@ -5988,3 +5988,4 @@ id,name,language,tag,package,version,date_epoch,date
 5987,@azure/arm-deviceregistry@1.1.0,js,@azure/arm-deviceregistry_1.1.0,@azure/arm-deviceregistry,1.1.0,1762851408,11/11/2025
 5988,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.4.0-beta.1,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.4.0-beta.1,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.4.0-beta.1,1762931966,11/12/2025
 5989,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v7@v7.2.0,go,sdk/resourcemanager/network/armnetwork/v7.2.0,sdk/resourcemanager/network/armnetwork,v7.2.0,1762918031,11/12/2025
+5990,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.1.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.1.0,sdk/resourcemanager/containerservice/armcontainerservice,v8.1.0,1762917555,11/12/2025

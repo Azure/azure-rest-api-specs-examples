@@ -5994,3 +5994,4 @@ id,name,language,tag,package,version,date_epoch,date
 5993,@azure/arm-mysql-flexible@4.0.0-beta.4,js,@azure/arm-mysql-flexible_4.0.0-beta.4,@azure/arm-mysql-flexible,4.0.0-beta.4,1763003416,11/13/2025
 5994,"Azure.ResourceManager.Maintenance,1.1.3",dotnet,Azure.ResourceManager.Maintenance_1.1.3,Azure.ResourceManager.Maintenance,1.1.3,1763023778,11/13/2025
 5995,"Azure.ResourceManager.CognitiveServices,1.5.2",dotnet,Azure.ResourceManager.CognitiveServices_1.5.2,Azure.ResourceManager.CognitiveServices,1.5.2,1763017587,11/13/2025
+5996,azure-mgmt-hdinsightcontainers@1.0.0b4,python,azure-mgmt-hdinsightcontainers_1.0.0b4,azure-mgmt-hdinsightcontainers,1.0.0b4,1763020432,11/13/2025

@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Maintenance;
 using Azure.ResourceManager.Maintenance.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Maintenance;
 
 // Generated from example definition: specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/examples/ApplyUpdates_GetParent.json
 // this example is just showing the usage of "ApplyUpdates_GetParent" operation, for the dependent resources, they will have to be created separately.
@@ -23,7 +24,19 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-ResourceGroupResourceGetApplyUpdatesByParentOptions options = new ResourceGroupResourceGetApplyUpdatesByParentOptions(providerName: "Microsoft.Compute", resourceParentType: "virtualMachineScaleSets", resourceParentName: "smdtest1", resourceType: "virtualMachines", resourceName: "smdvm1", applyUpdateName: "e9b9685d-78e4-44c4-a81c-64a14f9b87b6") { };
+string providerName = "Microsoft.Compute";
+string resourceParentType = "virtualMachineScaleSets";
+string resourceParentName = "smdtest1";
+string resourceType = "virtualMachines";
+string resourceName = "smdvm1";
+string applyUpdateName = "e9b9685d-78e4-44c4-a81c-64a14f9b87b6";
+ResourceGroupResourceGetApplyUpdatesByParentOptions options = new ResourceGroupResourceGetApplyUpdatesByParentOptions(
+    providerName,
+    resourceParentType,
+    resourceParentName,
+    resourceType,
+    resourceName,
+    applyUpdateName);
 MaintenanceApplyUpdateResource result = await resourceGroupResource.GetApplyUpdatesByParentAsync(options);
 
 // the variable result is a resource, you could call other operations on this instance as well

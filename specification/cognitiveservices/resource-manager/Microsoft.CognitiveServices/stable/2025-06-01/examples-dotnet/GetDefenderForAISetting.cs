@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesAccountResource created on azure
-// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
+// this example assumes you already have this DefenderForAISettingResource created on azure
+// for more information of creating DefenderForAISettingResource, please refer to the document of DefenderForAISettingResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
-
-// get the collection of this DefenderForAISettingResource
-DefenderForAISettingCollection collection = cognitiveServicesAccount.GetDefenderForAISettings();
+string defenderForAISettingName = "Default";
+ResourceIdentifier defenderForAISettingResourceId = DefenderForAISettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, defenderForAISettingName);
+DefenderForAISettingResource defenderForAISetting = client.GetDefenderForAISettingResource(defenderForAISettingResourceId);
 
 // invoke the operation
-string defenderForAISettingName = "Default";
-NullableResponse<DefenderForAISettingResource> response = await collection.GetIfExistsAsync(defenderForAISettingName);
-DefenderForAISettingResource result = response.HasValue ? response.Value : null;
+DefenderForAISettingResource result = await defenderForAISetting.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DefenderForAISettingData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DefenderForAISettingData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

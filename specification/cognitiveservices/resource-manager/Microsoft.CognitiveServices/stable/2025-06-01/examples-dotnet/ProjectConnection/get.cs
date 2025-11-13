@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesProjectResource created on azure
-// for more information of creating CognitiveServicesProjectResource, please refer to the document of CognitiveServicesProjectResource
+// this example assumes you already have this CognitiveServicesProjectConnectionResource created on azure
+// for more information of creating CognitiveServicesProjectConnectionResource, please refer to the document of CognitiveServicesProjectConnectionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "resourceGroup-1";
 string accountName = "account-1";
 string projectName = "project-1";
-ResourceIdentifier cognitiveServicesProjectResourceId = CognitiveServicesProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, projectName);
-CognitiveServicesProjectResource cognitiveServicesProject = client.GetCognitiveServicesProjectResource(cognitiveServicesProjectResourceId);
-
-// get the collection of this CognitiveServicesProjectConnectionResource
-CognitiveServicesProjectConnectionCollection collection = cognitiveServicesProject.GetCognitiveServicesProjectConnections();
+string connectionName = "connection-1";
+ResourceIdentifier cognitiveServicesProjectConnectionResourceId = CognitiveServicesProjectConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, projectName, connectionName);
+CognitiveServicesProjectConnectionResource cognitiveServicesProjectConnection = client.GetCognitiveServicesProjectConnectionResource(cognitiveServicesProjectConnectionResourceId);
 
 // invoke the operation
-string connectionName = "connection-1";
-NullableResponse<CognitiveServicesProjectConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
-CognitiveServicesProjectConnectionResource result = response.HasValue ? response.Value : null;
+CognitiveServicesProjectConnectionResource result = await cognitiveServicesProjectConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CognitiveServicesConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CognitiveServicesConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesPrivateEndpointConnectionResource created on azure
-// for more information of creating CognitiveServicesPrivateEndpointConnectionResource, please refer to the document of CognitiveServicesPrivateEndpointConnectionResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "res6977";
 string accountName = "sto2527";
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
-ResourceIdentifier cognitiveServicesPrivateEndpointConnectionResourceId = CognitiveServicesPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
-CognitiveServicesPrivateEndpointConnectionResource cognitiveServicesPrivateEndpointConnection = client.GetCognitiveServicesPrivateEndpointConnectionResource(cognitiveServicesPrivateEndpointConnectionResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CognitiveServicesPrivateEndpointConnectionResource
+CognitiveServicesPrivateEndpointConnectionCollection collection = cognitiveServicesAccount.GetCognitiveServicesPrivateEndpointConnections();
 
 // invoke the operation
-CognitiveServicesPrivateEndpointConnectionResource result = await cognitiveServicesPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+NullableResponse<CognitiveServicesPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+CognitiveServicesPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CognitiveServicesPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CognitiveServicesPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

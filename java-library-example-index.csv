@@ -5991,3 +5991,4 @@ id,name,language,tag,package,version,date_epoch,date
 5990,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.1.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.1.0,sdk/resourcemanager/containerservice/armcontainerservice,v8.1.0,1762917555,11/12/2025
 5991,"Azure.ResourceManager.RedisEnterprise,1.3.0",dotnet,Azure.ResourceManager.RedisEnterprise_1.3.0,Azure.ResourceManager.RedisEnterprise,1.3.0,1762935195,11/12/2025
 5992,azure-mgmt-netapp@14.0.0,python,azure-mgmt-netapp_14.0.0,azure-mgmt-netapp,14.0.0,1762868360,11/11/2025
+5993,@azure/arm-mysql-flexible@4.0.0-beta.4,js,@azure/arm-mysql-flexible_4.0.0-beta.4,@azure/arm-mysql-flexible,4.0.0-beta.4,1763003416,11/13/2025

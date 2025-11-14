@@ -1,12 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Maintenance;
 using Azure.ResourceManager.Maintenance.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Maintenance;
 
 // Generated from example definition: specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/examples/MaintenanceConfigurations_CreateOrUpdateForResource.json
 // this example is just showing the usage of "MaintenanceConfigurations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -35,7 +36,7 @@ MaintenanceConfigurationData data = new MaintenanceConfigurationData(new AzureLo
     Visibility = MaintenanceConfigurationVisibility.Custom,
     StartOn = DateTimeOffset.Parse("2020-04-30 08:00"),
     ExpireOn = DateTimeOffset.Parse("9999-12-31 00:00"),
-    Duration = TimeSpan.Parse("05:00"),
+    Duration = XmlConvert.ToTimeSpan("05:00"),
     TimeZone = "Pacific Standard Time",
     RecurEvery = "Day",
 };

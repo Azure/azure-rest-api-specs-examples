@@ -5997,3 +5997,4 @@ id,name,language,tag,package,version,date_epoch,date
 5996,azure-mgmt-hdinsightcontainers@1.0.0b4,python,azure-mgmt-hdinsightcontainers_1.0.0b4,azure-mgmt-hdinsightcontainers,1.0.0b4,1763020432,11/13/2025
 5997,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v3@v3.0.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v3.0.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v3.0.0,1763096048,11/14/2025
 5998,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.2.0,go,sdk/resourcemanager/compute/armcompute/v7.2.0,sdk/resourcemanager/compute/armcompute,v7.2.0,1763088973,11/14/2025
+5999,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers@v0.4.1,go,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers/v0.4.1,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers,v0.4.1,1763088059,11/14/2025

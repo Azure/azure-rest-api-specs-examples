@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/fb90eb1bec64c6e8ad3e288a64c84cc18742a394/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePointCollection_Update_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7033e85e1f80ef5cd9ca664b538ed193a8fd815b/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePointCollection_Update_MaximumSet_Gen.json
 func ExampleRestorePointCollectionsClient_Update_restorePointCollectionUpdateMaximumSetGen() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -25,6 +25,7 @@ func ExampleRestorePointCollectionsClient_Update_restorePointCollectionUpdateMax
 			"key8536": to.Ptr("aaaaaaaaaaaaaaaaaaa"),
 		},
 		Properties: &armcompute.RestorePointCollectionProperties{
+			InstantAccess: to.Ptr(true),
 			Source: &armcompute.RestorePointCollectionSourceProperties{
 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
 			},
@@ -44,6 +45,7 @@ func ExampleRestorePointCollectionsClient_Update_restorePointCollectionUpdateMax
 	// 	Tags: map[string]*string{
 	// 	},
 	// 	Properties: &armcompute.RestorePointCollectionProperties{
+	// 		InstantAccess: to.Ptr(true),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		RestorePointCollectionID: to.Ptr("638f052b-a7c2-450c-89e7-6a3b8f1d6a7c"),
 	// 		RestorePoints: []*armcompute.RestorePoint{

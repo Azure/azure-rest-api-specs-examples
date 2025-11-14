@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/fb90eb1bec64c6e8ad3e288a64c84cc18742a394/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePointCollection_ListByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7033e85e1f80ef5cd9ca664b538ed193a8fd815b/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePointCollection_ListByResourceGroup.json
 func ExampleRestorePointCollectionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -41,10 +41,11 @@ func ExampleRestorePointCollectionsClient_NewListPager() {
 		// 				"myTag1": to.Ptr("tagValue1"),
 		// 			},
 		// 			Properties: &armcompute.RestorePointCollectionProperties{
+		// 				InstantAccess: to.Ptr(true),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				RestorePointCollectionID: to.Ptr("59f04a5d-f783-4200-a1bd-d3f464e8c4b4"),
 		// 				Source: &armcompute.RestorePointCollectionSourceProperties{
-		// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/restorePointCollection1"),
+		// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
 		// 					Location: to.Ptr("westus"),
 		// 				},
 		// 			},
@@ -61,7 +62,7 @@ func ExampleRestorePointCollectionsClient_NewListPager() {
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				RestorePointCollectionID: to.Ptr("2875c590-e337-4102-9668-4f5b7e3f98a4"),
 		// 				Source: &armcompute.RestorePointCollectionSourceProperties{
-		// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/restorePointCollection2"),
+		// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM2"),
 		// 					Location: to.Ptr("westus"),
 		// 				},
 		// 			},

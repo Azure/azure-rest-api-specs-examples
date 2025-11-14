@@ -10,13 +10,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
 async function checkNameAvailability() {
   const subscriptionId =
     process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const locationName = "SouthEastAsia";
   const nameAvailabilityRequest = {
     name: "name1",
     type: "Microsoft.DBforMySQL/flexibleServers",
   };
   const credential = new DefaultAzureCredential();
   const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
-  const result = await client.checkNameAvailability.execute(locationName, nameAvailabilityRequest);
+  const result = await client.checkNameAvailabilityWithoutLocation.execute(nameAvailabilityRequest);
   console.log(result);
 }

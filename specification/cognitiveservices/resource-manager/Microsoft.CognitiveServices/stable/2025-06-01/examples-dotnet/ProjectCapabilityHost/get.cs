@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesProjectResource created on azure
-// for more information of creating CognitiveServicesProjectResource, please refer to the document of CognitiveServicesProjectResource
+// this example assumes you already have this CognitiveServicesProjectCapabilityHostResource created on azure
+// for more information of creating CognitiveServicesProjectCapabilityHostResource, please refer to the document of CognitiveServicesProjectCapabilityHostResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string accountName = "account-1";
 string projectName = "project-1";
-ResourceIdentifier cognitiveServicesProjectResourceId = CognitiveServicesProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, projectName);
-CognitiveServicesProjectResource cognitiveServicesProject = client.GetCognitiveServicesProjectResource(cognitiveServicesProjectResourceId);
-
-// get the collection of this CognitiveServicesProjectCapabilityHostResource
-CognitiveServicesProjectCapabilityHostCollection collection = cognitiveServicesProject.GetCognitiveServicesProjectCapabilityHosts();
+string capabilityHostName = "capabilityHostName";
+ResourceIdentifier cognitiveServicesProjectCapabilityHostResourceId = CognitiveServicesProjectCapabilityHostResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, projectName, capabilityHostName);
+CognitiveServicesProjectCapabilityHostResource cognitiveServicesProjectCapabilityHost = client.GetCognitiveServicesProjectCapabilityHostResource(cognitiveServicesProjectCapabilityHostResourceId);
 
 // invoke the operation
-string capabilityHostName = "capabilityHostName";
-NullableResponse<CognitiveServicesProjectCapabilityHostResource> response = await collection.GetIfExistsAsync(capabilityHostName);
-CognitiveServicesProjectCapabilityHostResource result = response.HasValue ? response.Value : null;
+CognitiveServicesProjectCapabilityHostResource result = await cognitiveServicesProjectCapabilityHost.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CognitiveServicesCapabilityHostData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CognitiveServicesCapabilityHostData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

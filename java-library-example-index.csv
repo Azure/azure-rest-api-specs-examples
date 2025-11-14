@@ -5999,3 +5999,4 @@ id,name,language,tag,package,version,date_epoch,date
 5998,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.2.0,go,sdk/resourcemanager/compute/armcompute/v7.2.0,sdk/resourcemanager/compute/armcompute,v7.2.0,1763088973,11/14/2025
 5999,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers@v0.4.1,go,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers/v0.4.1,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers,v0.4.1,1763088059,11/14/2025
 6000,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.4.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.4.0,sdk/resourcemanager/cosmos/armcosmos,v3.4.0,1763087472,11/14/2025
+6001,@azure/arm-paloaltonetworksngfw@1.2.0,js,@azure/arm-paloaltonetworksngfw_1.2.0,@azure/arm-paloaltonetworksngfw,1.2.0,1763120129,11/14/2025

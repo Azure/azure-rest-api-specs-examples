@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/fb90eb1bec64c6e8ad3e288a64c84cc18742a394/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePoint_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7033e85e1f80ef5cd9ca664b538ed193a8fd815b/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/examples/restorePointExamples/RestorePoint_Get.json
 func ExampleRestorePointsClient_Get_getARestorePoint() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -35,6 +35,7 @@ func ExampleRestorePointsClient_Get_getARestorePoint() {
 	// 			{
 	// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm8768_disk2_fe6ffde4f69b491ca33fb984d5bcd89f"),
 	// 		}},
+	// 		InstantAccessDurationMinutes: to.Ptr[int32](120),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		SourceMetadata: &armcompute.RestorePointSourceMetadata{
 	// 			DiagnosticsProfile: &armcompute.DiagnosticsProfile{

@@ -6011,3 +6011,4 @@ id,name,language,tag,package,version,date_epoch,date
 6010,azure-mgmt-web@10.1.0,python,azure-mgmt-web_10.1.0,azure-mgmt-web,10.1.0,1763370655,11/17/2025
 6011,azure-mgmt-compute@37.1.0,python,azure-mgmt-compute_37.1.0,azure-mgmt-compute,37.1.0,1763370654,11/17/2025
 6012,azure-mgmt-newrelicobservability@2.0.0b1,python,azure-mgmt-newrelicobservability_2.0.0b1,azure-mgmt-newrelicobservability,2.0.0b1,1763369145,11/17/2025
+6013,azure-mgmt-containerservice@41.0.0b2,python,azure-mgmt-containerservice_41.0.0b2,azure-mgmt-containerservice,41.0.0b2,1763368410,11/17/2025

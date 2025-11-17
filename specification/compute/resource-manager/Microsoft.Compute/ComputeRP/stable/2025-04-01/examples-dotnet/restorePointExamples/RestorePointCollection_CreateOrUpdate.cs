@@ -34,6 +34,7 @@ RestorePointGroupData data = new RestorePointGroupData(new AzureLocation("norway
     {
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
     },
+    InstantAccess = true,
     Tags =
     {
     ["myTag1"] = "tagValue1"

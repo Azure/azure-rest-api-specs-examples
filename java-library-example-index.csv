@@ -6007,3 +6007,4 @@ id,name,language,tag,package,version,date_epoch,date
 6006,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.1,java,azure-resourcemanager-iothub_1.4.0-beta.1,azure-resourcemanager-iothub,1.4.0-beta.1,1763367143,11/17/2025
 6007,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.2.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.2.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v8.2.0-beta.1,1763350783,11/17/2025
 6008,@azure/arm-containerservice@24.0.0,js,@azure/arm-containerservice_24.0.0,@azure/arm-containerservice,24.0.0,1763369717,11/17/2025
+6009,"Azure.ResourceManager.Compute,1.13.0",dotnet,Azure.ResourceManager.Compute_1.13.0,Azure.ResourceManager.Compute,1.13.0,1763347548,11/17/2025

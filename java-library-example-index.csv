@@ -6014,3 +6014,4 @@ id,name,language,tag,package,version,date_epoch,date
 6013,azure-mgmt-containerservice@41.0.0b2,python,azure-mgmt-containerservice_41.0.0b2,azure-mgmt-containerservice,41.0.0b2,1763368410,11/17/2025
 6014,azure-mgmt-monitor@8.0.0b2,python,azure-mgmt-monitor_8.0.0b2,azure-mgmt-monitor,8.0.0b2,1763368409,11/17/2025
 6015,azure-mgmt-networkcloud@2.2.0b1,python,azure-mgmt-networkcloud_2.2.0b1,azure-mgmt-networkcloud,2.2.0b1,1763368404,11/17/2025
+6016,azure-mgmt-elastic@2.0.0,python,azure-mgmt-elastic_2.0.0,azure-mgmt-elastic,2.0.0,1763368395,11/17/2025

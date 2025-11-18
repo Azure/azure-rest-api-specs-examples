@@ -6017,3 +6017,4 @@ id,name,language,tag,package,version,date_epoch,date
 6016,azure-mgmt-elastic@2.0.0,python,azure-mgmt-elastic_2.0.0,azure-mgmt-elastic,2.0.0,1763368395,11/17/2025
 6017,com.azure.resourcemanager:azure-resourcemanager-networkcloud:2.1.0-beta.1,java,azure-resourcemanager-networkcloud_2.1.0-beta.1,azure-resourcemanager-networkcloud,2.1.0-beta.1,1763455270,11/18/2025
 6018,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.2.0-beta.1,java,azure-resourcemanager-dnsresolver_1.2.0-beta.1,azure-resourcemanager-dnsresolver,1.2.0-beta.1,1763423230,11/17/2025
+6019,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dnsresolver/armdnsresolver/v2@v2.0.0-beta.1,go,sdk/resourcemanager/dnsresolver/armdnsresolver/v2.0.0-beta.1,sdk/resourcemanager/dnsresolver/armdnsresolver,v2.0.0-beta.1,1763426731,11/18/2025

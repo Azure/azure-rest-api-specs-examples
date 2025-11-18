@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SharedGalleryImageResource created on azure
-// for more information of creating SharedGalleryImageResource, please refer to the document of SharedGalleryImageResource
+// this example assumes you already have this SharedGalleryResource created on azure
+// for more information of creating SharedGalleryResource, please refer to the document of SharedGalleryResource
 string subscriptionId = "{subscription-id}";
 AzureLocation location = new AzureLocation("myLocation");
 string galleryUniqueName = "galleryUniqueName";
-string galleryImageName = "myGalleryImageName";
-ResourceIdentifier sharedGalleryImageResourceId = SharedGalleryImageResource.CreateResourceIdentifier(subscriptionId, location, galleryUniqueName, galleryImageName);
-SharedGalleryImageResource sharedGalleryImage = client.GetSharedGalleryImageResource(sharedGalleryImageResourceId);
+ResourceIdentifier sharedGalleryResourceId = SharedGalleryResource.CreateResourceIdentifier(subscriptionId, location, galleryUniqueName);
+SharedGalleryResource sharedGallery = client.GetSharedGalleryResource(sharedGalleryResourceId);
+
+// get the collection of this SharedGalleryImageResource
+SharedGalleryImageCollection collection = sharedGallery.GetSharedGalleryImages();
 
 // invoke the operation
-SharedGalleryImageResource result = await sharedGalleryImage.GetAsync();
+string galleryImageName = "myGalleryImageName";
+NullableResponse<SharedGalleryImageResource> response = await collection.GetIfExistsAsync(galleryImageName);
+SharedGalleryImageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SharedGalleryImageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SharedGalleryImageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -30,6 +30,7 @@ RestorePointGroupPatch patch = new RestorePointGroupPatch
     {
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
     },
+    InstantAccess = true,
     Tags =
     {
     ["key8536"] = "aaaaaaaaaaaaaaaaaaa"

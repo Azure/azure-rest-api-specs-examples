@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.dnsresolver import DnsResolverManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-dnsresolver
+# USAGE
+    python forwarding_rule_patch.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DnsResolverManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.forwarding_rules.update(
+        resource_group_name="sampleResourceGroup",
+        dns_forwarding_ruleset_name="sampleDnsForwardingRuleset",
+        forwarding_rule_name="sampleForwardingRule",
+        parameters={"properties": {"forwardingRuleState": "Disabled", "metadata": {"additionalProp2": "value2"}}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-10-01-preview/ForwardingRule_Patch.json
+if __name__ == "__main__":
+    main()

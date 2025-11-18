@@ -1,0 +1,19 @@
+
+/**
+ * Samples for DnsResolverPolicyVirtualNetworkLinks Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/DnsResolverPolicyVirtualNetworkLink_Delete.json
+     */
+    /**
+     * Sample code: Delete DNS resolver policy virtual network link.
+     * 
+     * @param manager Entry point to DnsResolverManager.
+     */
+    public static void
+        deleteDNSResolverPolicyVirtualNetworkLink(com.azure.resourcemanager.dnsresolver.DnsResolverManager manager) {
+        manager.dnsResolverPolicyVirtualNetworkLinks().delete("sampleResourceGroup", "sampleDnsResolverPolicy",
+            "sampleVirtualNetworkLink", null, com.azure.core.util.Context.NONE);
+    }
+}

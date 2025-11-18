@@ -1,0 +1,18 @@
+
+/**
+ * Samples for DnsResolverPolicies Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/DnsResolverPolicy_Delete.json
+     */
+    /**
+     * Sample code: Delete DNS resolver policy.
+     * 
+     * @param manager Entry point to DnsResolverManager.
+     */
+    public static void deleteDNSResolverPolicy(com.azure.resourcemanager.dnsresolver.DnsResolverManager manager) {
+        manager.dnsResolverPolicies().delete("sampleResourceGroup", "sampleDnsResolverPolicy", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

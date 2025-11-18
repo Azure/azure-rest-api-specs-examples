@@ -6026,3 +6026,4 @@ id,name,language,tag,package,version,date_epoch,date
 6025,"Azure.ResourceManager.Cdn,1.5.1",dotnet,Azure.ResourceManager.Cdn_1.5.1,Azure.ResourceManager.Cdn,1.5.1,1763437712,11/18/2025
 6026,azure-mgmt-paloaltonetworksngfw@1.1.0,python,azure-mgmt-paloaltonetworksngfw_1.1.0,azure-mgmt-paloaltonetworksngfw,1.1.0,1763456316,11/18/2025
 6027,azure-mgmt-mysqlflexibleservers@1.0.0,python,azure-mgmt-mysqlflexibleservers_1.0.0,azure-mgmt-mysqlflexibleservers,1.0.0,1763452929,11/18/2025
+6028,azure-mgmt-dnsresolver@2.0.0b1,python,azure-mgmt-dnsresolver_2.0.0b1,azure-mgmt-dnsresolver,2.0.0b1,1763429415,11/18/2025

@@ -6004,3 +6004,14 @@ id,name,language,tag,package,version,date_epoch,date
 6003,@azure/arm-cosmosdb@16.4.0,js,@azure/arm-cosmosdb_16.4.0,@azure/arm-cosmosdb,16.4.0,1763107054,11/14/2025
 6004,"Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.2.0",dotnet,Azure.ResourceManager.PaloAltoNetworks.Ngfw_1.2.0,Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.2.0,1763098808,11/14/2025
 6005,azure-mgmt-cosmosdb@9.9.0,python,azure-mgmt-cosmosdb_9.9.0,azure-mgmt-cosmosdb,9.9.0,1763101588,11/14/2025
+6006,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.1,java,azure-resourcemanager-iothub_1.4.0-beta.1,azure-resourcemanager-iothub,1.4.0-beta.1,1763367143,11/17/2025
+6007,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.2.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.2.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v8.2.0-beta.1,1763350783,11/17/2025
+6008,@azure/arm-containerservice@24.0.0,js,@azure/arm-containerservice_24.0.0,@azure/arm-containerservice,24.0.0,1763369717,11/17/2025
+6009,"Azure.ResourceManager.Compute,1.13.0",dotnet,Azure.ResourceManager.Compute_1.13.0,Azure.ResourceManager.Compute,1.13.0,1763347548,11/17/2025
+6010,azure-mgmt-web@10.1.0,python,azure-mgmt-web_10.1.0,azure-mgmt-web,10.1.0,1763370655,11/17/2025
+6011,azure-mgmt-compute@37.1.0,python,azure-mgmt-compute_37.1.0,azure-mgmt-compute,37.1.0,1763370654,11/17/2025
+6012,azure-mgmt-newrelicobservability@2.0.0b1,python,azure-mgmt-newrelicobservability_2.0.0b1,azure-mgmt-newrelicobservability,2.0.0b1,1763369145,11/17/2025
+6013,azure-mgmt-containerservice@41.0.0b2,python,azure-mgmt-containerservice_41.0.0b2,azure-mgmt-containerservice,41.0.0b2,1763368410,11/17/2025
+6014,azure-mgmt-monitor@8.0.0b2,python,azure-mgmt-monitor_8.0.0b2,azure-mgmt-monitor,8.0.0b2,1763368409,11/17/2025
+6015,azure-mgmt-networkcloud@2.2.0b1,python,azure-mgmt-networkcloud_2.2.0b1,azure-mgmt-networkcloud,2.2.0b1,1763368404,11/17/2025
+6016,azure-mgmt-elastic@2.0.0,python,azure-mgmt-elastic_2.0.0,azure-mgmt-elastic,2.0.0,1763368395,11/17/2025

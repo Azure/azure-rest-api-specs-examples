@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProfileResource created on azure
-// for more information of creating ProfileResource, please refer to the document of ProfileResource
+// this example assumes you already have this FrontDoorCustomDomainResource created on azure
+// for more information of creating FrontDoorCustomDomainResource, please refer to the document of FrontDoorCustomDomainResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
-ProfileResource profile = client.GetProfileResource(profileResourceId);
-
-// get the collection of this FrontDoorCustomDomainResource
-FrontDoorCustomDomainCollection collection = profile.GetFrontDoorCustomDomains();
+string customDomainName = "domain1";
+ResourceIdentifier frontDoorCustomDomainResourceId = FrontDoorCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, customDomainName);
+FrontDoorCustomDomainResource frontDoorCustomDomain = client.GetFrontDoorCustomDomainResource(frontDoorCustomDomainResourceId);
 
 // invoke the operation
-string customDomainName = "domain1";
-NullableResponse<FrontDoorCustomDomainResource> response = await collection.GetIfExistsAsync(customDomainName);
-FrontDoorCustomDomainResource result = response.HasValue ? response.Value : null;
+FrontDoorCustomDomainResource result = await frontDoorCustomDomain.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FrontDoorCustomDomainData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontDoorCustomDomainData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

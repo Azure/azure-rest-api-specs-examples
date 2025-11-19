@@ -6033,3 +6033,4 @@ id,name,language,tag,package,version,date_epoch,date
 6032,@azure/arm-appservice@18.0.0,js,@azure/arm-appservice_18.0.0,@azure/arm-appservice,18.0.0,1763523179,11/19/2025
 6033,@azure/arm-cognitiveservices@8.1.0,js,@azure/arm-cognitiveservices_8.1.0,@azure/arm-cognitiveservices,8.1.0,1763521820,11/19/2025
 6034,@azure/arm-cosmosdb@17.0.0-beta.2,js,@azure/arm-cosmosdb_17.0.0-beta.2,@azure/arm-cosmosdb,17.0.0-beta.2,1763521804,11/19/2025
+6035,@azure/arm-network@34.2.0,js,@azure/arm-network_34.2.0,@azure/arm-network,34.2.0,1763521795,11/19/2025

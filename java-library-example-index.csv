@@ -6028,3 +6028,4 @@ id,name,language,tag,package,version,date_epoch,date
 6027,azure-mgmt-mysqlflexibleservers@1.0.0,python,azure-mgmt-mysqlflexibleservers_1.0.0,azure-mgmt-mysqlflexibleservers,1.0.0,1763452929,11/18/2025
 6028,azure-mgmt-dnsresolver@2.0.0b1,python,azure-mgmt-dnsresolver_2.0.0b1,azure-mgmt-dnsresolver,2.0.0b1,1763429415,11/18/2025
 6029,com.azure.resourcemanager:azure-resourcemanager-netapp:2.0.0,java,azure-resourcemanager-netapp_2.0.0,azure-resourcemanager-netapp,2.0.0,1763546913,11/19/2025
+6030,@azure/arm-netapp@22.0.0,js,@azure/arm-netapp_22.0.0,@azure/arm-netapp,22.0.0,1763551507,11/19/2025

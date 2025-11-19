@@ -6029,3 +6029,4 @@ id,name,language,tag,package,version,date_epoch,date
 6028,azure-mgmt-dnsresolver@2.0.0b1,python,azure-mgmt-dnsresolver_2.0.0b1,azure-mgmt-dnsresolver,2.0.0b1,1763429415,11/18/2025
 6029,com.azure.resourcemanager:azure-resourcemanager-netapp:2.0.0,java,azure-resourcemanager-netapp_2.0.0,azure-resourcemanager-netapp,2.0.0,1763546913,11/19/2025
 6030,@azure/arm-netapp@22.0.0,js,@azure/arm-netapp_22.0.0,@azure/arm-netapp,22.0.0,1763551507,11/19/2025
+6031,@azure/arm-containerservice@24.1.0-beta.1,js,@azure/arm-containerservice_24.1.0-beta.1,@azure/arm-containerservice,24.1.0-beta.1,1763523348,11/19/2025

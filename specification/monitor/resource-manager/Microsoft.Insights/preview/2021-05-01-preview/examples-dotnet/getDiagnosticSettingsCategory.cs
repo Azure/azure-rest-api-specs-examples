@@ -14,24 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this DiagnosticSettingsCategoryResource
+// this example assumes you already have this DiagnosticSettingsCategoryResource created on azure
+// for more information of creating DiagnosticSettingsCategoryResource, please refer to the document of DiagnosticSettingsCategoryResource
 string resourceUri = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6";
-DiagnosticSettingsCategoryCollection collection = client.GetDiagnosticSettingsCategories(new ResourceIdentifier(resourceUri));
+string name = "WorkflowRuntime";
+ResourceIdentifier diagnosticSettingsCategoryResourceId = DiagnosticSettingsCategoryResource.CreateResourceIdentifier(resourceUri, name);
+DiagnosticSettingsCategoryResource diagnosticSettingsCategory = client.GetDiagnosticSettingsCategoryResource(diagnosticSettingsCategoryResourceId);
 
 // invoke the operation
-string name = "WorkflowRuntime";
-NullableResponse<DiagnosticSettingsCategoryResource> response = await collection.GetIfExistsAsync(name);
-DiagnosticSettingsCategoryResource result = response.HasValue ? response.Value : null;
+DiagnosticSettingsCategoryResource result = await diagnosticSettingsCategory.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DiagnosticSettingsCategoryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DiagnosticSettingsCategoryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

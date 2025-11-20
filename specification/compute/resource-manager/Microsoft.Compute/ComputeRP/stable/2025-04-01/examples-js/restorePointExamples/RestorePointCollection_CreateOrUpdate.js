@@ -13,6 +13,7 @@ async function createOrUpdateARestorePointCollection() {
   const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const restorePointCollectionName = "myRpc";
   const parameters = {
+    instantAccess: true,
     location: "norwayeast",
     source: {
       id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

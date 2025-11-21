@@ -6038,3 +6038,4 @@ id,name,language,tag,package,version,date_epoch,date
 6037,"Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.5",dotnet,Azure.ResourceManager.ServiceFabricManagedClusters_1.3.0-beta.5,Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.5,1763523427,11/19/2025
 6038,"Azure.ResourceManager.NetworkCloud,1.3.0-beta.1",dotnet,Azure.ResourceManager.NetworkCloud_1.3.0-beta.1,Azure.ResourceManager.NetworkCloud,1.3.0-beta.1,1763518382,11/19/2025
 6039,azure-mgmt-netapp@14.0.1,python,azure-mgmt-netapp_14.0.1,azure-mgmt-netapp,14.0.1,1763546736,11/19/2025
+6040,azure-mgmt-network@30.1.0,python,azure-mgmt-network_30.1.0,azure-mgmt-network,30.1.0,1763629997,11/20/2025

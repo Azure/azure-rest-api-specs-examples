@@ -6042,3 +6042,4 @@ id,name,language,tag,package,version,date_epoch,date
 6041,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/newrelic/armnewrelicobservability/v2@v2.0.0-beta.1,go,sdk/resourcemanager/newrelic/armnewrelicobservability/v2.0.0-beta.1,sdk/resourcemanager/newrelic/armnewrelicobservability,v2.0.0-beta.1,1763977259,11/24/2025
 6042,@azure/arm-certificateregistration@1.0.0-beta.1,js,@azure/arm-certificateregistration_1.0.0-beta.1,@azure/arm-certificateregistration,1.0.0-beta.1,1763969920,11/24/2025
 6043,"Azure.ResourceManager.Datadog,1.0.0",dotnet,Azure.ResourceManager.Datadog_1.0.0,Azure.ResourceManager.Datadog,1.0.0,1763955934,11/24/2025
+6044,azure-mgmt-resourcegraph@8.0.1,python,azure-mgmt-resourcegraph_8.0.1,azure-mgmt-resourcegraph,8.0.1,1763971714,11/24/2025

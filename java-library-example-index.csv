@@ -6048,3 +6048,4 @@ id,name,language,tag,package,version,date_epoch,date
 6047,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.0.0-beta.1,java,azure-resourcemanager-computelimit_1.0.0-beta.1,azure-resourcemanager-computelimit,1.0.0-beta.1,1764013180,11/24/2025
 6048,@azure/arm-keyvault@4.0.0,js,@azure/arm-keyvault_4.0.0,@azure/arm-keyvault,4.0.0,1764063968,11/25/2025
 6049,@azure/arm-domainregistration@1.0.0-beta.1,js,@azure/arm-domainregistration_1.0.0-beta.1,@azure/arm-domainregistration,1.0.0-beta.1,1764038771,11/25/2025
+6050,@azure/arm-computelimit@1.0.0-beta.1,js,@azure/arm-computelimit_1.0.0-beta.1,@azure/arm-computelimit,1.0.0-beta.1,1764010395,11/24/2025

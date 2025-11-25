@@ -6049,3 +6049,4 @@ id,name,language,tag,package,version,date_epoch,date
 6048,@azure/arm-keyvault@4.0.0,js,@azure/arm-keyvault_4.0.0,@azure/arm-keyvault,4.0.0,1764063968,11/25/2025
 6049,@azure/arm-domainregistration@1.0.0-beta.1,js,@azure/arm-domainregistration_1.0.0-beta.1,@azure/arm-domainregistration,1.0.0-beta.1,1764038771,11/25/2025
 6050,@azure/arm-computelimit@1.0.0-beta.1,js,@azure/arm-computelimit_1.0.0-beta.1,@azure/arm-computelimit,1.0.0-beta.1,1764010395,11/24/2025
+6051,"Azure.ResourceManager.ComputeLimit,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeLimit_1.0.0-beta.1,Azure.ResourceManager.ComputeLimit,1.0.0-beta.1,1764017442,11/24/2025

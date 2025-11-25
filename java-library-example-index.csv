@@ -6051,3 +6051,4 @@ id,name,language,tag,package,version,date_epoch,date
 6050,@azure/arm-computelimit@1.0.0-beta.1,js,@azure/arm-computelimit_1.0.0-beta.1,@azure/arm-computelimit,1.0.0-beta.1,1764010395,11/24/2025
 6051,"Azure.ResourceManager.ComputeLimit,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeLimit_1.0.0-beta.1,Azure.ResourceManager.ComputeLimit,1.0.0-beta.1,1764017442,11/24/2025
 6052,azure-mgmt-postgresqlflexibleservers@2.0.0,python,azure-mgmt-postgresqlflexibleservers_2.0.0,azure-mgmt-postgresqlflexibleservers,2.0.0,1764058762,11/25/2025
+6053,azure-mgmt-mysqlflexibleservers@1.1.0b1,python,azure-mgmt-mysqlflexibleservers_1.1.0b1,azure-mgmt-mysqlflexibleservers,1.1.0b1,1764053149,11/25/2025

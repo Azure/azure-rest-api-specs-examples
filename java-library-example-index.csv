@@ -6055,3 +6055,4 @@ id,name,language,tag,package,version,date_epoch,date
 6054,azure-mgmt-computelimit@1.0.0b1,python,azure-mgmt-computelimit_1.0.0b1,azure-mgmt-computelimit,1.0.0b1,1764014890,11/24/2025
 6055,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.0.0,java,azure-resourcemanager-postgresqlflexibleserver_2.0.0,azure-resourcemanager-postgresqlflexibleserver,2.0.0,1764129612,11/26/2025
 6056,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5@v5.1.0,go,sdk/resourcemanager/appservice/armappservice/v5.1.0,sdk/resourcemanager/appservice/armappservice,v5.1.0,1764140093,11/26/2025
+6057,@azure/arm-network@35.0.0,js,@azure/arm-network_35.0.0,@azure/arm-network,35.0.0,1764073907,11/25/2025

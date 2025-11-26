@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.newrelicobservability.models.PlanData;
+import com.azure.resourcemanager.newrelicobservability.models.SwitchBillingRequest;
+import com.azure.resourcemanager.newrelicobservability.models.UsageType;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Monitors SwitchBilling.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/
+     * Monitors_SwitchBilling_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Monitors_SwitchBilling_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to NewRelicObservabilityManager.
+     */
+    public static void monitorsSwitchBillingMaximumSetGen(
+        com.azure.resourcemanager.newrelicobservability.NewRelicObservabilityManager manager) {
+        manager.monitors().switchBillingWithResponse("rgNewRelic", "fhcjxnxumkdlgpwanewtkdnyuz",
+            new SwitchBillingRequest().withAzureResourceId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz")
+                .withOrganizationId("k")
+                .withPlanData(new PlanData().withUsageType(UsageType.PAYG).withBillingCycle("Yearly")
+                    .withPlanDetails("tbbiaga").withEffectiveDate(OffsetDateTime.parse("2022-12-05T14:11:37.786Z")))
+                .withUserEmail("ruxvg@xqkmdhrnoo.hlmbpm"),
+            com.azure.core.util.Context.NONE);
+    }
+}

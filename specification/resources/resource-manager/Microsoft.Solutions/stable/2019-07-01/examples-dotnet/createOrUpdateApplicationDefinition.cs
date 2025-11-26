@@ -15,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ArmApplicationDefinitionResource created on azure
+// for more information of creating ArmApplicationDefinitionResource, please refer to the document of ArmApplicationDefinitionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ArmApplicationDefinitionResource
-ArmApplicationDefinitionCollection collection = resourceGroupResource.GetArmApplicationDefinitions();
+string applicationDefinitionName = "myManagedApplicationDef";
+ResourceIdentifier armApplicationDefinitionResourceId = ArmApplicationDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, applicationDefinitionName);
+ArmApplicationDefinitionResource armApplicationDefinition = client.GetArmApplicationDefinitionResource(armApplicationDefinitionResourceId);
 
 // invoke the operation
-string applicationDefinitionName = "myManagedApplicationDef";
 ArmApplicationDefinitionData data = new ArmApplicationDefinitionData(new AzureLocation("East US 2"), ArmApplicationLockLevel.None)
 {
     DisplayName = "myManagedApplicationDef",
@@ -34,7 +31,7 @@ ArmApplicationDefinitionData data = new ArmApplicationDefinitionData(new AzureLo
     Description = "myManagedApplicationDef description",
     PackageFileUri = new Uri("https://path/to/packagezipfile"),
 };
-ArmOperation<ArmApplicationDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationDefinitionName, data);
+ArmOperation<ArmApplicationDefinitionResource> lro = await armApplicationDefinition.UpdateAsync(WaitUntil.Completed, data);
 ArmApplicationDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

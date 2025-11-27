@@ -6053,3 +6053,8 @@ id,name,language,tag,package,version,date_epoch,date
 6052,azure-mgmt-postgresqlflexibleservers@2.0.0,python,azure-mgmt-postgresqlflexibleservers_2.0.0,azure-mgmt-postgresqlflexibleservers,2.0.0,1764058762,11/25/2025
 6053,azure-mgmt-mysqlflexibleservers@1.1.0b1,python,azure-mgmt-mysqlflexibleservers_1.1.0b1,azure-mgmt-mysqlflexibleservers,1.1.0b1,1764053149,11/25/2025
 6054,azure-mgmt-computelimit@1.0.0b1,python,azure-mgmt-computelimit_1.0.0b1,azure-mgmt-computelimit,1.0.0b1,1764014890,11/24/2025
+6055,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.0.0,java,azure-resourcemanager-postgresqlflexibleserver_2.0.0,azure-resourcemanager-postgresqlflexibleserver,2.0.0,1764129612,11/26/2025
+6056,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5@v5.1.0,go,sdk/resourcemanager/appservice/armappservice/v5.1.0,sdk/resourcemanager/appservice/armappservice,v5.1.0,1764140093,11/26/2025
+6057,@azure/arm-network@35.0.0,js,@azure/arm-network_35.0.0,@azure/arm-network,35.0.0,1764073907,11/25/2025
+6058,"Azure.ResourceManager.Resources,1.11.2",dotnet,Azure.ResourceManager.Resources_1.11.2,Azure.ResourceManager.Resources,1.11.2,1764144896,11/26/2025
+6059,"Azure.ResourceManager.NetApp,1.14.0",dotnet,Azure.ResourceManager.NetApp_1.14.0,Azure.ResourceManager.NetApp,1.14.0,1764144857,11/26/2025

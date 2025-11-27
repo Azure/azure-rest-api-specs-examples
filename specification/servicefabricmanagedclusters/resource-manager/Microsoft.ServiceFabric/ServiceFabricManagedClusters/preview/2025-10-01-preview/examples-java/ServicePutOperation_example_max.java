@@ -1,0 +1,65 @@
+
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.AveragePartitionLoadScalingTrigger;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.MoveCost;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.PartitionInstanceCountScaleMechanism;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ScalingPolicy;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServiceCorrelation;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServiceCorrelationScheme;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServiceLoadMetric;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServiceLoadMetricWeight;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServicePackageActivationMode;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ServicePlacementNonPartiallyPlaceServicePolicy;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.SingletonPartitionScheme;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.StatelessServiceProperties;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Services CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/ServicePutOperation_example_max.json
+     */
+    /**
+     * Sample code: Put a service with maximum parameters.
+     * 
+     * @param manager Entry point to ServiceFabricManagedClustersManager.
+     */
+    public static void putAServiceWithMaximumParameters(
+        com.azure.resourcemanager.servicefabricmanagedclusters.ServiceFabricManagedClustersManager manager) {
+        manager.services().define("myService").withExistingApplication("resRg", "myCluster", "myApp")
+            .withRegion("eastus").withTags(mapOf("a", "b"))
+            .withProperties(new StatelessServiceProperties().withPlacementConstraints("NodeType==frontend")
+                .withCorrelationScheme(Arrays.asList(
+                    new ServiceCorrelation().withScheme(ServiceCorrelationScheme.ALIGNED_AFFINITY).withServiceName(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applications/myApp/services/myService1")))
+                .withServiceLoadMetrics(Arrays.asList(new ServiceLoadMetric().withName("metric1")
+                    .withWeight(ServiceLoadMetricWeight.LOW).withDefaultLoad(3)))
+                .withServicePlacementPolicies(Arrays.asList(new ServicePlacementNonPartiallyPlaceServicePolicy()))
+                .withDefaultMoveCost(MoveCost.MEDIUM)
+                .withScalingPolicies(Arrays.asList(new ScalingPolicy()
+                    .withScalingMechanism(new PartitionInstanceCountScaleMechanism().withMinInstanceCount(3)
+                        .withMaxInstanceCount(9).withScaleIncrement(2))
+                    .withScalingTrigger(new AveragePartitionLoadScalingTrigger().withMetricName("metricName")
+                        .withLowerLoadThreshold(2.0).withUpperLoadThreshold(8.0).withScaleInterval("00:01:00"))))
+                .withServiceTypeName("myServiceType").withPartitionDescription(new SingletonPartitionScheme())
+                .withServicePackageActivationMode(ServicePackageActivationMode.SHARED_PROCESS)
+                .withServiceDnsName("myservicednsname.myApp").withInstanceCount(5).withMinInstanceCount(3)
+                .withMinInstancePercentage(30))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -6058,3 +6058,7 @@ id,name,language,tag,package,version,date_epoch,date
 6057,@azure/arm-network@35.0.0,js,@azure/arm-network_35.0.0,@azure/arm-network,35.0.0,1764073907,11/25/2025
 6058,"Azure.ResourceManager.Resources,1.11.2",dotnet,Azure.ResourceManager.Resources_1.11.2,Azure.ResourceManager.Resources,1.11.2,1764144896,11/26/2025
 6059,"Azure.ResourceManager.NetApp,1.14.0",dotnet,Azure.ResourceManager.NetApp_1.14.0,Azure.ResourceManager.NetApp,1.14.0,1764144857,11/26/2025
+6060,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.1.0-beta.3,java,azure-resourcemanager-servicefabricmanagedclusters_1.1.0-beta.3,azure-resourcemanager-servicefabricmanagedclusters,1.1.0-beta.3,1764182612,11/26/2025
+6061,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters@v0.6.0,go,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters/v0.6.0,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters,v0.6.0,1764182443,11/26/2025
+6062,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computelimit/armcomputelimit@v0.1.0,go,sdk/resourcemanager/computelimit/armcomputelimit/v0.1.0,sdk/resourcemanager/computelimit/armcomputelimit,v0.1.0,1764180904,11/26/2025
+6063,azure-mgmt-servicefabricmanagedclusters@2.1.0b5,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b5,azure-mgmt-servicefabricmanagedclusters,2.1.0b5,1764185313,11/26/2025

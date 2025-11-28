@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.servicefabricmanagedclusters import ServiceFabricManagedClustersManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-servicefabricmanagedclusters
+# USAGE
+    python service_list_operation_example.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ServiceFabricManagedClustersManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.services.list_by_applications(
+        resource_group_name="resRg",
+        cluster_name="myCluster",
+        application_name="myApp",
+    )
+    for item in response:
+        print(item)
+
+
+# x-ms-original-file: 2025-10-01-preview/ServiceListOperation_example.json
+if __name__ == "__main__":
+    main()

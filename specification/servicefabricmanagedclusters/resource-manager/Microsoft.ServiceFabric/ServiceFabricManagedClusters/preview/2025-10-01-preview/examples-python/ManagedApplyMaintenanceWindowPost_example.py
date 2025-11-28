@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.servicefabricmanagedclusters import ServiceFabricManagedClustersManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-servicefabricmanagedclusters
+# USAGE
+    python managed_apply_maintenance_window_post_example.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ServiceFabricManagedClustersManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.managed_apply_maintenance_window.post(
+        resource_group_name="resourceGroup1",
+        cluster_name="mycluster1",
+    )
+
+
+# x-ms-original-file: 2025-10-01-preview/ManagedApplyMaintenanceWindowPost_example.json
+if __name__ == "__main__":
+    main()

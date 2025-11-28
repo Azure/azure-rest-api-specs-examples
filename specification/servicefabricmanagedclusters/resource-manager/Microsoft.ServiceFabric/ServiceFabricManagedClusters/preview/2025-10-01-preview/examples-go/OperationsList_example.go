@@ -1,0 +1,121 @@
+package armservicefabricmanagedclusters_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters"
+)
+
+// Generated from example definition: 2025-10-01-preview/OperationsList_example.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armservicefabricmanagedclusters.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armservicefabricmanagedclusters.OperationsClientListResponse{
+		// 	OperationListResult: armservicefabricmanagedclusters.OperationListResult{
+		// 		Value: []*armservicefabricmanagedclusters.OperationResult{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/managedClusters/read"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("managedClusters"),
+		// 					Operation: to.Ptr("Read Cluster"),
+		// 					Description: to.Ptr("Read any Cluster"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/managedClusters/write"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("managedClusters"),
+		// 					Operation: to.Ptr("Create or Update Cluster"),
+		// 					Description: to.Ptr("Create or Update any Cluster"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/managedClusters/delete"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("managedClusters"),
+		// 					Operation: to.Ptr("Delete Cluster"),
+		// 					Description: to.Ptr("Delete any Cluster"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/read"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Read Node type"),
+		// 					Description: to.Ptr("Read any Node type"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/write"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Create or Update Node type"),
+		// 					Description: to.Ptr("Create or Update any Node type"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/delete"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Delete Node type"),
+		// 					Description: to.Ptr("Delete any Node type"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/restart/action"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Restart nodes from Node type"),
+		// 					Description: to.Ptr("Restart nodes from Node type"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/reimage/action"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Reimage nodes from Node type"),
+		// 					Description: to.Ptr("Reimage nodes from Node type"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ServiceFabric/nodeTypes/deleteNode/action"),
+		// 				Display: &armservicefabricmanagedclusters.AvailableOperationDisplay{
+		// 					Provider: to.Ptr("Microsoft ServiceFabric"),
+		// 					Resource: to.Ptr("nodeTypes"),
+		// 					Operation: to.Ptr("Delete nodes from Node type"),
+		// 					Description: to.Ptr("Delete nodes from Node type"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

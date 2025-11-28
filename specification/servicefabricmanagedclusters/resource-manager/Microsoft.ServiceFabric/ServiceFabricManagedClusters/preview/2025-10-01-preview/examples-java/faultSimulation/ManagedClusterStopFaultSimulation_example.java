@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.FaultSimulationIdContent;
+
+/**
+ * Samples for ManagedClusters StopFaultSimulation.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/faultSimulation/ManagedClusterStopFaultSimulation_example.json
+     */
+    /**
+     * Sample code: Stop Managed Cluster Fault Simulation.
+     * 
+     * @param manager Entry point to ServiceFabricManagedClustersManager.
+     */
+    public static void stopManagedClusterFaultSimulation(
+        com.azure.resourcemanager.servicefabricmanagedclusters.ServiceFabricManagedClustersManager manager) {
+        manager.managedClusters().stopFaultSimulation("resRg", "myCluster",
+            new FaultSimulationIdContent().withSimulationId("1bb61ba9-8a41-4d73-b5f0-7fc93b1edfe3"),
+            com.azure.core.util.Context.NONE);
+    }
+}

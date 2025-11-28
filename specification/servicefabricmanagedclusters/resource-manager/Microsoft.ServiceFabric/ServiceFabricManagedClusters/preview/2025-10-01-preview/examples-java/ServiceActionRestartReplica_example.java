@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.RestartKind;
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.RestartReplicaRequest;
+import java.util.Arrays;
+
+/**
+ * Samples for Services RestartReplica.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/ServiceActionRestartReplica_example.json
+     */
+    /**
+     * Sample code: Restart replicas.
+     * 
+     * @param manager Entry point to ServiceFabricManagedClustersManager.
+     */
+    public static void restartReplicas(
+        com.azure.resourcemanager.servicefabricmanagedclusters.ServiceFabricManagedClustersManager manager) {
+        manager.services().restartReplica("resRg", "myCluster", "myApp", "myService",
+            new RestartReplicaRequest().withPartitionId("00000000-0000-0000-0000-000000000000")
+                .withReplicaIds(Arrays.asList(123456789012345680L)).withRestartKind(RestartKind.SIMULTANEOUS)
+                .withForceRestart(false).withTimeout(60L),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,25 @@
+const { PostgreSQLManagementFlexibleServerClient } = require("@azure/arm-postgresql-flexible");
+const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
+
+/**
+ * This sample demonstrates how to Gets information of an on demand backup, given its name.
+ *
+ * @summary Gets information of an on demand backup, given its name.
+ * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01/examples/BackupsAutomaticAndOnDemandGet.json
+ */
+async function getAnOnDemandBackupGivenItsName() {
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "exampleresourcegroup";
+  const serverName = "exampleserver";
+  const backupName = "backup_638830782181266873";
+  const credential = new DefaultAzureCredential();
+  const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);
+  const result = await client.backupsAutomaticAndOnDemand.get(
+    resourceGroupName,
+    serverName,
+    backupName,
+  );
+  console.log(result);
+}

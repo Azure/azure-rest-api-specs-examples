@@ -6065,3 +6065,4 @@ id,name,language,tag,package,version,date_epoch,date
 6064,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/paloaltonetworksngfw/armpanngfw/v2@v2.0.0,go,sdk/resourcemanager/paloaltonetworksngfw/armpanngfw/v2.0.0,sdk/resourcemanager/paloaltonetworksngfw/armpanngfw,v2.0.0,1764576558,12/01/2025
 6065,@azure/arm-postgresql-flexible@9.0.0,js,@azure/arm-postgresql-flexible_9.0.0,@azure/arm-postgresql-flexible,9.0.0,1764652052,12/02/2025
 6066,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.6,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.6,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.6,1764612252,12/01/2025
+6067,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v2@v2.0.0,go,sdk/resourcemanager/elastic/armelastic/v2.0.0,sdk/resourcemanager/elastic/armelastic,v2.0.0,1764832917,12/04/2025

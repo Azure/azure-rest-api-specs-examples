@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Volumes Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/Volumes_ExtraLargeVolumes_Get.json
+     */
+    /**
+     * Sample code: Volumes_ExtralargeVolumeGet.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void volumesExtralargeVolumeGet(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.volumes().getWithResponse("myRG", "account1", "pool1", "volume1", com.azure.core.util.Context.NONE);
+    }
+}

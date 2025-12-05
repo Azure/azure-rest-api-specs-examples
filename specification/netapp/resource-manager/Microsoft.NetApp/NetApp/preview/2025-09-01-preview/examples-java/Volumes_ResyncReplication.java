@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Volumes ResyncReplication.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/Volumes_ResyncReplication.json
+     */
+    /**
+     * Sample code: Volumes_ResyncReplication.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void volumesResyncReplication(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.volumes().resyncReplication("myRG", "account1", "pool1", "volume1", com.azure.core.util.Context.NONE);
+    }
+}

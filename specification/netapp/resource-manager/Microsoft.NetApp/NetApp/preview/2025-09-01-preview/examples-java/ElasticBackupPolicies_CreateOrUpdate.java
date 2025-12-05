@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.netapp.models.ElasticBackupPolicyProperties;
+import com.azure.resourcemanager.netapp.models.ElasticBackupPolicyState;
+
+/**
+ * Samples for ElasticBackupPolicies CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/ElasticBackupPolicies_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: ElasticBackupPolicies_CreateOrUpdate.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void
+        elasticBackupPoliciesCreateOrUpdate(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.elasticBackupPolicies().define("backupPolicyName").withRegion("westus")
+            .withExistingElasticAccount("myRG", "account1")
+            .withProperties(new ElasticBackupPolicyProperties().withDailyBackupsToKeep(10).withWeeklyBackupsToKeep(10)
+                .withMonthlyBackupsToKeep(10).withPolicyState(ElasticBackupPolicyState.ENABLED))
+            .create();
+    }
+}

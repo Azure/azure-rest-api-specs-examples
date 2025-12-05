@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.netapp.models.ElasticBackupPolicy;
+import com.azure.resourcemanager.netapp.models.ElasticBackupPolicyState;
+import com.azure.resourcemanager.netapp.models.ElasticBackupPolicyUpdateProperties;
+
+/**
+ * Samples for ElasticBackupPolicies Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/ElasticBackupPolicies_Update.json
+     */
+    /**
+     * Sample code: ElasticBackupPolicies_Update.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void elasticBackupPoliciesUpdate(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        ElasticBackupPolicy resource = manager.elasticBackupPolicies()
+            .getWithResponse("myRG", "account1", "backupPolicyName", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new ElasticBackupPolicyUpdateProperties().withDailyBackupsToKeep(5)
+            .withWeeklyBackupsToKeep(10).withMonthlyBackupsToKeep(10).withPolicyState(ElasticBackupPolicyState.ENABLED))
+            .apply();
+    }
+}

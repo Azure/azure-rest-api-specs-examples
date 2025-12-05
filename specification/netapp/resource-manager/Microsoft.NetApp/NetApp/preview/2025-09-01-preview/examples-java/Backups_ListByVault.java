@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Backups ListByVault.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/Backups_ListByVault.json
+     */
+    /**
+     * Sample code: Backups_ListByVault.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void backupsListByVault(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.backups().listByVault("myRG", "account1", "backupVault1", null, com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,39 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.netapp import NetAppManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-netapp
+# USAGE
+    python backups_under_backup_vault_single_file_restore.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = NetAppManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.backups_under_backup_vault.begin_restore_files(
+        resource_group_name="myRG",
+        account_name="account1",
+        backup_vault_name="backupVault1",
+        backup_name="backup1",
+        body={
+            "destinationVolumeId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1",
+            "fileList": ["/dir1/customer1.db", "/dir1/customer2.db"],
+        },
+    ).result()
+
+
+# x-ms-original-file: 2025-09-01-preview/BackupsUnderBackupVault_SingleFileRestore.json
+if __name__ == "__main__":
+    main()

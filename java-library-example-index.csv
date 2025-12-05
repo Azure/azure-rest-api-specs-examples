@@ -6075,3 +6075,4 @@ id,name,language,tag,package,version,date_epoch,date
 6074,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5.0.0,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v5.0.0,1764837175,12/04/2025
 6075,"Azure.ResourceManager.ServiceBus,1.2.0-beta.1",dotnet,Azure.ResourceManager.ServiceBus_1.2.0-beta.1,Azure.ResourceManager.ServiceBus,1.2.0-beta.1,1764925545,12/05/2025
 6076,"Azure.ResourceManager.CosmosDB,1.4.0",dotnet,Azure.ResourceManager.CosmosDB_1.4.0,Azure.ResourceManager.CosmosDB,1.4.0,1764911253,12/05/2025
+6077,azure-mgmt-containerregistry@14.1.0b4,python,azure-mgmt-containerregistry_14.1.0b4,azure-mgmt-containerregistry,14.1.0b4,1764924841,12/05/2025

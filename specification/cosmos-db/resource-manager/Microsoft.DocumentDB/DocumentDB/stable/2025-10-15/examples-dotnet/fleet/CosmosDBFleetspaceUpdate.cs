@@ -1,0 +1,45 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.CosmosDB.Models;
+using Azure.ResourceManager.CosmosDB;
+
+// Generated from example definition: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/2025-10-15/examples/fleet/CosmosDBFleetspaceUpdate.json
+// this example is just showing the usage of "Fleetspace_Update" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this CosmosDBFleetspaceResource created on azure
+// for more information of creating CosmosDBFleetspaceResource, please refer to the document of CosmosDBFleetspaceResource
+string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+string resourceGroupName = "rg1";
+string fleetName = "fleet1";
+string fleetspaceName = "fleetspace1";
+ResourceIdentifier cosmosDBFleetspaceResourceId = CosmosDBFleetspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, fleetspaceName);
+CosmosDBFleetspaceResource cosmosDBFleetspace = client.GetCosmosDBFleetspaceResource(cosmosDBFleetspaceResourceId);
+
+// invoke the operation
+CosmosDBFleetspacePatch patch = new CosmosDBFleetspacePatch
+{
+    FleetspaceApiKind = CosmosDBFleetspaceApiKind.NoSQL,
+    DataRegions = { new AzureLocation("westus2") },
+    ThroughputPoolConfiguration = new CosmosDBFleetspaceThroughputPoolConfiguration
+    {
+        MinThroughput = 3000,
+        MaxThroughput = 4000,
+    },
+};
+ArmOperation<CosmosDBFleetspaceResource> lro = await cosmosDBFleetspace.UpdateAsync(WaitUntil.Completed, patch);
+CosmosDBFleetspaceResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBFleetspaceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,0 +1,47 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.CosmosDB.Models;
+using Azure.ResourceManager.CosmosDB;
+
+// Generated from example definition: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/2025-10-15/examples/fleet/CosmosDBFleetspaceAccountCreate.json
+// this example is just showing the usage of "FleetspaceAccount_Create" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this CosmosDBFleetspaceResource created on azure
+// for more information of creating CosmosDBFleetspaceResource, please refer to the document of CosmosDBFleetspaceResource
+string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+string resourceGroupName = "rg1";
+string fleetName = "fleet1";
+string fleetspaceName = "fleetspace1";
+ResourceIdentifier cosmosDBFleetspaceResourceId = CosmosDBFleetspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, fleetspaceName);
+CosmosDBFleetspaceResource cosmosDBFleetspace = client.GetCosmosDBFleetspaceResource(cosmosDBFleetspaceResourceId);
+
+// get the collection of this CosmosDBFleetspaceAccountResource
+CosmosDBFleetspaceAccountCollection collection = cosmosDBFleetspace.GetCosmosDBFleetspaceAccounts();
+
+// invoke the operation
+string fleetspaceAccountName = "db1";
+CosmosDBFleetspaceAccountData data = new CosmosDBFleetspaceAccountData
+{
+    GlobalDatabaseAccountProperties = new CosmosDBFleetspaceAccountConfiguration
+    {
+        ResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DocumentDB/resourceGroup/rg1/databaseAccounts/db1"),
+        ArmLocation = new AzureLocation("West US"),
+    },
+};
+ArmOperation<CosmosDBFleetspaceAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetspaceAccountName, data);
+CosmosDBFleetspaceAccountResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBFleetspaceAccountData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

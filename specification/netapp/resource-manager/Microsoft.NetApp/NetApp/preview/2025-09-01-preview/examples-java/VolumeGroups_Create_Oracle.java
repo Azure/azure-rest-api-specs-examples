@@ -1,0 +1,213 @@
+
+import com.azure.resourcemanager.netapp.models.ApplicationType;
+import com.azure.resourcemanager.netapp.models.ExportPolicyRule;
+import com.azure.resourcemanager.netapp.models.ServiceLevel;
+import com.azure.resourcemanager.netapp.models.VolumeGroupMetadata;
+import com.azure.resourcemanager.netapp.models.VolumeGroupVolumeProperties;
+import com.azure.resourcemanager.netapp.models.VolumePropertiesExportPolicy;
+import java.util.Arrays;
+
+/**
+ * Samples for VolumeGroups Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/VolumeGroups_Create_Oracle.json
+     */
+    /**
+     * Sample code: VolumeGroups_Create_Oracle.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void volumeGroupsCreateOracle(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager
+            .volumeGroups().define("group1").withExistingNetAppAccount("myRG", "account1").withRegion(
+                "westus")
+            .withGroupMetadata(
+                new VolumeGroupMetadata()
+                    .withGroupDescription("Volume group").withApplicationType(
+                        ApplicationType.ORACLE)
+                    .withApplicationIdentifier("OR2"))
+            .withVolumes(Arrays.asList(new VolumeGroupVolumeProperties().withName("test-ora-data1")
+                .withZones(Arrays.asList("1")).withCreationToken("fakeTokenPlaceholder")
+                .withServiceLevel(ServiceLevel.PREMIUM).withUsageThreshold(107374182400L)
+                .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                    .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                    .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                    .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                    .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                .withSubnetId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                .withThroughputMibps(10.0F)
+                .withCapacityPoolResourceId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                .withVolumeSpecName("ora-data1"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data2").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data2"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data3").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data3"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data4").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data4"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data5").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data5"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data6").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data6"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data7").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data7"),
+                new VolumeGroupVolumeProperties().withName("test-ora-data8").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-data8"),
+                new VolumeGroupVolumeProperties().withName("test-ora-log").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-log"),
+                new VolumeGroupVolumeProperties().withName("test-ora-log-mirror").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-log-mirror"),
+                new VolumeGroupVolumeProperties().withName("test-ora-binary").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-binary"),
+                new VolumeGroupVolumeProperties().withName("test-ora-backup").withZones(Arrays.asList("1"))
+                    .withCreationToken("fakeTokenPlaceholder").withServiceLevel(ServiceLevel.PREMIUM)
+                    .withUsageThreshold(107374182400L)
+                    .withExportPolicy(new VolumePropertiesExportPolicy().withRules(Arrays.asList(new ExportPolicyRule()
+                        .withRuleIndex(1).withUnixReadOnly(true).withUnixReadWrite(true).withKerberos5ReadOnly(false)
+                        .withKerberos5ReadWrite(false).withKerberos5IReadOnly(false).withKerberos5IReadWrite(false)
+                        .withKerberos5PReadOnly(false).withKerberos5PReadWrite(false).withCifs(false).withNfsv3(false)
+                        .withNfsv41(true).withAllowedClients("0.0.0.0/0").withHasRootAccess(true))))
+                    .withProtocolTypes(Arrays.asList("NFSv4.1"))
+                    .withSubnetId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3")
+                    .withThroughputMibps(10.0F)
+                    .withCapacityPoolResourceId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1")
+                    .withVolumeSpecName("ora-backup")))
+            .create();
+    }
+}

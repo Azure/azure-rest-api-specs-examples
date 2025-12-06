@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.netapp.models.BucketCredentialsExpiry;
+
+/**
+ * Samples for Buckets GenerateCredentials.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/Buckets_GenerateCredentials.json
+     */
+    /**
+     * Sample code: Buckets_GenerateCredentials.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void bucketsGenerateCredentials(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.buckets().generateCredentialsWithResponse("myRG", "account1", "pool1", "volume1", "bucket1",
+            new BucketCredentialsExpiry().withKeyPairExpiryDays(3), com.azure.core.util.Context.NONE);
+    }
+}

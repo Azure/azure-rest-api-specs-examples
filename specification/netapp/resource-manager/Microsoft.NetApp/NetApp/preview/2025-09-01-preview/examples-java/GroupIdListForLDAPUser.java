@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.netapp.models.GetGroupIdListForLdapUserRequest;
+
+/**
+ * Samples for Volumes ListGetGroupIdListForLdapUser.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01-preview/GroupIdListForLDAPUser.json
+     */
+    /**
+     * Sample code: GetGroupIdListForUser.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void getGroupIdListForUser(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.volumes().listGetGroupIdListForLdapUser("myRG", "account1", "pool1", "volume1",
+            new GetGroupIdListForLdapUserRequest().withUsername("user1"), com.azure.core.util.Context.NONE);
+    }
+}

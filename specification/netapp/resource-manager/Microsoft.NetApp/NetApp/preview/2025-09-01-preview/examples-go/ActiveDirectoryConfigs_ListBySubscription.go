@@ -1,0 +1,87 @@
+package armnetapp_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v8"
+)
+
+// Generated from example definition: 2025-09-01-preview/ActiveDirectoryConfigs_ListBySubscription.json
+func ExampleActiveDirectoryConfigsClient_NewListBySubscriptionPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetapp.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewActiveDirectoryConfigsClient().NewListBySubscriptionPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnetapp.ActiveDirectoryConfigsClientListBySubscriptionResponse{
+		// 	ActiveDirectoryConfigListResult: armnetapp.ActiveDirectoryConfigListResult{
+		// 		Value: []*armnetapp.ActiveDirectoryConfig{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/activeDirectoryConfigs/adconfig1"),
+		// 				Name: to.Ptr("adconfig1"),
+		// 				Type: to.Ptr("Microsoft.NetApp/activeDirectoryConfigs"),
+		// 				Location: to.Ptr("eastus"),
+		// 				Identity: &armnetapp.ManagedServiceIdentity{
+		// 					Type: to.Ptr(armnetapp.ManagedServiceIdentityTypeUserAssigned),
+		// 					UserAssignedIdentities: map[string]*armnetapp.UserAssignedIdentity{
+		// 						"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentity1": &armnetapp.UserAssignedIdentity{
+		// 							PrincipalID: to.Ptr("abdb541c-5355-4c0b-be43-abab330dd983"),
+		// 							ClientID: to.Ptr("9e0b65a1-4132-466a-a7fb-d69a83eea08a"),
+		// 						},
+		// 					},
+		// 				},
+		// 				Properties: &armnetapp.ActiveDirectoryConfigProperties{
+		// 					UserName: to.Ptr("admin1"),
+		// 					SecretPassword: &armnetapp.SecretPassword{
+		// 						KeyVaultProperties: &armnetapp.SecretPasswordKeyVaultProperties{
+		// 							KeyVaultURI: to.Ptr("https://example.vault.azure.net/"),
+		// 							SecretName: to.Ptr("activeDirectoryPassword"),
+		// 						},
+		// 						Identity: &armnetapp.SecretPasswordIdentity{
+		// 							UserAssignedIdentity: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentity1"),
+		// 							PrincipalID: to.Ptr("abdb541c-5355-4c0b-be43-abab330dd983"),
+		// 						},
+		// 					},
+		// 					Domain: to.Ptr("example.net"),
+		// 					DNS: []*string{
+		// 						to.Ptr("10.10.10.4"),
+		// 						to.Ptr("10.10.10.5"),
+		// 					},
+		// 					SmbServerName: to.Ptr("smbServer"),
+		// 					OrganizationalUnit: to.Ptr("OU=Computers,DC=corp,DC=contoso,DC=com"),
+		// 					Site: to.Ptr("Default-First-Site-Name"),
+		// 					BackupOperators: []*string{
+		// 						to.Ptr("backupOp1"),
+		// 					},
+		// 					Administrators: []*string{
+		// 						to.Ptr("admin1"),
+		// 					},
+		// 					SecurityOperators: []*string{
+		// 						to.Ptr("secOp1"),
+		// 					},
+		// 					ActiveDirectoryStatus: to.Ptr(armnetapp.ActiveDirectoryStatusInUse),
+		// 					ProvisioningState: to.Ptr(armnetapp.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

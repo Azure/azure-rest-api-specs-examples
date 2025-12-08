@@ -6078,3 +6078,4 @@ id,name,language,tag,package,version,date_epoch,date
 6077,azure-mgmt-containerregistry@14.1.0b4,python,azure-mgmt-containerregistry_14.1.0b4,azure-mgmt-containerregistry,14.1.0b4,1764924841,12/05/2025
 6078,azure-mgmt-netapp@14.1.0b1,python,azure-mgmt-netapp_14.1.0b1,azure-mgmt-netapp,14.1.0b1,1764858756,12/04/2025
 6079,@azure/arm-netapp@22.1.0-beta.1,js,@azure/arm-netapp_22.1.0-beta.1,@azure/arm-netapp,22.1.0-beta.1,1764958355,12/05/2025
+6080,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.0.0-beta.1,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.0.0-beta.1,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.0.0-beta.1,1765187219,12/08/2025

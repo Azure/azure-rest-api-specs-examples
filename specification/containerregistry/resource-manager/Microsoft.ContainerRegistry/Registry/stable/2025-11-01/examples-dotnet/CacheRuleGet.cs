@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.ContainerRegistry.Models;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/CacheRuleGet.json
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryCacheRuleResource created on azure
-// for more information of creating ContainerRegistryCacheRuleResource, please refer to the document of ContainerRegistryCacheRuleResource
+// this example assumes you already have this ContainerRegistryResource created on azure
+// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-string cacheRuleName = "myCacheRule";
-ResourceIdentifier containerRegistryCacheRuleResourceId = ContainerRegistryCacheRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, cacheRuleName);
-ContainerRegistryCacheRuleResource containerRegistryCacheRule = client.GetContainerRegistryCacheRuleResource(containerRegistryCacheRuleResourceId);
+ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
+
+// get the collection of this ContainerRegistryCacheRuleResource
+ContainerRegistryCacheRuleCollection collection = containerRegistry.GetContainerRegistryCacheRules();
 
 // invoke the operation
-ContainerRegistryCacheRuleResource result = await containerRegistryCacheRule.GetAsync();
+string cacheRuleName = "myCacheRule";
+NullableResponse<ContainerRegistryCacheRuleResource> response = await collection.GetIfExistsAsync(cacheRuleName);
+ContainerRegistryCacheRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerRegistryCacheRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerRegistryCacheRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

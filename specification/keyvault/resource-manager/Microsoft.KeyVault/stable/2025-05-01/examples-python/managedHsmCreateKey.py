@@ -19,7 +19,7 @@ from azure.mgmt.keyvault import KeyVaultManagementClient
 def main():
     client = KeyVaultManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.managed_hsm_keys.create_if_not_exist(
@@ -31,6 +31,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/examples/managedHsmCreateKey.json
+# x-ms-original-file: 2025-05-01/managedHsmCreateKey.json
 if __name__ == "__main__":
     main()

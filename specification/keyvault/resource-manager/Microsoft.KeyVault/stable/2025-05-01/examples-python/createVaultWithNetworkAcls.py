@@ -19,7 +19,7 @@ from azure.mgmt.keyvault import KeyVaultManagementClient
 def main():
     client = KeyVaultManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.vaults.begin_create_or_update(
@@ -49,6 +49,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/examples/createVaultWithNetworkAcls.json
+# x-ms-original-file: 2025-05-01/createVaultWithNetworkAcls.json
 if __name__ == "__main__":
     main()

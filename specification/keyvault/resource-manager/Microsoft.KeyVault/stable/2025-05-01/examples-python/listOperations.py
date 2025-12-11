@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/examples/listOperations.json
+# x-ms-original-file: 2025-05-01/listOperations.json
 if __name__ == "__main__":
     main()

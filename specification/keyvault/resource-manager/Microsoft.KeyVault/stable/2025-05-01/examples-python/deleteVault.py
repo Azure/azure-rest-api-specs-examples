@@ -19,7 +19,7 @@ from azure.mgmt.keyvault import KeyVaultManagementClient
 def main():
     client = KeyVaultManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.vaults.delete(
@@ -28,6 +28,6 @@ def main():
     )
 
 
-# x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/examples/deleteVault.json
+# x-ms-original-file: 2025-05-01/deleteVault.json
 if __name__ == "__main__":
     main()

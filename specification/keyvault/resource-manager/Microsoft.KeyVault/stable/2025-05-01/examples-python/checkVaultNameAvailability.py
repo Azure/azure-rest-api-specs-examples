@@ -19,7 +19,7 @@ from azure.mgmt.keyvault import KeyVaultManagementClient
 def main():
     client = KeyVaultManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.vaults.check_name_availability(
@@ -28,6 +28,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/examples/checkVaultNameAvailability.json
+# x-ms-original-file: 2025-05-01/checkVaultNameAvailability.json
 if __name__ == "__main__":
     main()

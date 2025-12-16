@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NginxDeploymentApiKeyResource created on azure
-// for more information of creating NginxDeploymentApiKeyResource, please refer to the document of NginxDeploymentApiKeyResource
+// this example assumes you already have this NginxDeploymentResource created on azure
+// for more information of creating NginxDeploymentResource, please refer to the document of NginxDeploymentResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string deploymentName = "myDeployment";
-string apiKeyName = "myApiKey";
-ResourceIdentifier nginxDeploymentApiKeyResourceId = NginxDeploymentApiKeyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deploymentName, apiKeyName);
-NginxDeploymentApiKeyResource nginxDeploymentApiKey = client.GetNginxDeploymentApiKeyResource(nginxDeploymentApiKeyResourceId);
+ResourceIdentifier nginxDeploymentResourceId = NginxDeploymentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deploymentName);
+NginxDeploymentResource nginxDeployment = client.GetNginxDeploymentResource(nginxDeploymentResourceId);
+
+// get the collection of this NginxDeploymentApiKeyResource
+NginxDeploymentApiKeyCollection collection = nginxDeployment.GetNginxDeploymentApiKeys();
 
 // invoke the operation
+string apiKeyName = "myApiKey";
 NginxDeploymentApiKeyCreateOrUpdateContent content = new NginxDeploymentApiKeyCreateOrUpdateContent();
-ArmOperation<NginxDeploymentApiKeyResource> lro = await nginxDeploymentApiKey.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<NginxDeploymentApiKeyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiKeyName, content);
 NginxDeploymentApiKeyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

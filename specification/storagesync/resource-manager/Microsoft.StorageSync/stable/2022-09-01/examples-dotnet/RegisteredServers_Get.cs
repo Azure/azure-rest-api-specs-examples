@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageSyncServiceResource created on azure
-// for more information of creating StorageSyncServiceResource, please refer to the document of StorageSyncServiceResource
+// this example assumes you already have this StorageSyncRegisteredServerResource created on azure
+// for more information of creating StorageSyncRegisteredServerResource, please refer to the document of StorageSyncRegisteredServerResource
 string subscriptionId = "52b8da2f-61e0-4a1f-8dde-336911f367fb";
 string resourceGroupName = "SampleResourceGroup_1";
 string storageSyncServiceName = "SampleStorageSyncService_1";
-ResourceIdentifier storageSyncServiceResourceId = StorageSyncServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName);
-StorageSyncServiceResource storageSyncService = client.GetStorageSyncServiceResource(storageSyncServiceResourceId);
-
-// get the collection of this StorageSyncRegisteredServerResource
-StorageSyncRegisteredServerCollection collection = storageSyncService.GetStorageSyncRegisteredServers();
+Guid serverId = Guid.Parse("080d4133-bdb5-40a0-96a0-71a6057bfe9a");
+ResourceIdentifier storageSyncRegisteredServerResourceId = StorageSyncRegisteredServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, serverId);
+StorageSyncRegisteredServerResource storageSyncRegisteredServer = client.GetStorageSyncRegisteredServerResource(storageSyncRegisteredServerResourceId);
 
 // invoke the operation
-Guid serverId = Guid.Parse("080d4133-bdb5-40a0-96a0-71a6057bfe9a");
-NullableResponse<StorageSyncRegisteredServerResource> response = await collection.GetIfExistsAsync(serverId);
-StorageSyncRegisteredServerResource result = response.HasValue ? response.Value : null;
+StorageSyncRegisteredServerResource result = await storageSyncRegisteredServer.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StorageSyncRegisteredServerData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageSyncRegisteredServerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

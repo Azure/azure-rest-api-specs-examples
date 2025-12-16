@@ -6083,3 +6083,4 @@ id,name,language,tag,package,version,date_epoch,date
 6082,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.1",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.1,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.1,1765296661,12/09/2025
 6083,azure-mgmt-keyvault@13.0.0,python,azure-mgmt-keyvault_13.0.0,azure-mgmt-keyvault,13.0.0,1765447926,12/11/2025
 6084,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments@v0.2.0,go,sdk/resourcemanager/resources/armdeployments/v0.2.0,sdk/resourcemanager/resources/armdeployments,v0.2.0,1765880932,12/16/2025
+6085,"Azure.ResourceManager.Nginx,1.1.0-beta.4",dotnet,Azure.ResourceManager.Nginx_1.1.0-beta.4,Azure.ResourceManager.Nginx,1.1.0-beta.4,1765879376,12/16/2025

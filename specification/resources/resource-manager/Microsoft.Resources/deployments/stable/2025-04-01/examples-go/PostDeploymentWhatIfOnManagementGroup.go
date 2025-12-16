@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/edacc3b43f9603efa119eabb6013d952d1dbe7d6/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentWhatIfOnManagementGroup.json
-func ExampleClient_BeginWhatIfAtManagementGroupScope() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/18609d68cf243ee3ce35d7c005ff3c7dd2cd9477/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentWhatIfOnManagementGroup.json
+func ExampleDeploymentsClient_BeginWhatIfAtManagementGroupScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleClient_BeginWhatIfAtManagementGroupScope() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginWhatIfAtManagementGroupScope(ctx, "myManagementGruop", "exampleDeploymentName", armdeployments.ScopedDeploymentWhatIf{
+	poller, err := clientFactory.NewDeploymentsClient().BeginWhatIfAtManagementGroupScope(ctx, "myManagementGruop", "exampleDeploymentName", armdeployments.ScopedDeploymentWhatIf{
 		Location: to.Ptr("eastus"),
 		Properties: &armdeployments.DeploymentWhatIfProperties{
 			Mode:       to.Ptr(armdeployments.DeploymentModeIncremental),

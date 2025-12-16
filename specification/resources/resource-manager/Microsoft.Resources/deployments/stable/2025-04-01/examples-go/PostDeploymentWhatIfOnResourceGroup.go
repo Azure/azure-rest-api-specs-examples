@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/edacc3b43f9603efa119eabb6013d952d1dbe7d6/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentWhatIfOnResourceGroup.json
-func ExampleClient_BeginWhatIf() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/18609d68cf243ee3ce35d7c005ff3c7dd2cd9477/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentWhatIfOnResourceGroup.json
+func ExampleDeploymentsClient_BeginWhatIf() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleClient_BeginWhatIf() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginWhatIf(ctx, "my-resource-group", "my-deployment", armdeployments.DeploymentWhatIf{
+	poller, err := clientFactory.NewDeploymentsClient().BeginWhatIf(ctx, "my-resource-group", "my-deployment", armdeployments.DeploymentWhatIf{
 		Properties: &armdeployments.DeploymentWhatIfProperties{
 			Mode:       to.Ptr(armdeployments.DeploymentModeIncremental),
 			Parameters: map[string]*armdeployments.DeploymentParameter{},

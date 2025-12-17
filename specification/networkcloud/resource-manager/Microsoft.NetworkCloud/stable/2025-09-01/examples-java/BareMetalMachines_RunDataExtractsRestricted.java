@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.networkcloud.models.BareMetalMachineCommandSpecification;
+import com.azure.resourcemanager.networkcloud.models.BareMetalMachineRunDataExtractsParameters;
+import java.util.Arrays;
+
+/**
+ * Samples for BareMetalMachines RunDataExtractsRestricted.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-09-01/examples/
+     * BareMetalMachines_RunDataExtractsRestricted.json
+     */
+    /**
+     * Sample code: Run restricted data extraction on bare metal machine.
+     * 
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void runRestrictedDataExtractionOnBareMetalMachine(
+        com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager.bareMetalMachines().runDataExtractsRestricted("resourceGroupName", "bareMetalMachineName",
+            new BareMetalMachineRunDataExtractsParameters()
+                .withCommands(Arrays.asList(new BareMetalMachineCommandSpecification()
+                    .withArguments(Arrays.asList("--min-severity=8")).withCommand("cluster-cve-report")))
+                .withLimitTimeSeconds(60L),
+            com.azure.core.util.Context.NONE);
+    }
+}

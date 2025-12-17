@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/edacc3b43f9603efa119eabb6013d952d1dbe7d6/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentAtScope.json
-func ExampleClient_BeginCreateOrUpdateAtScope() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/18609d68cf243ee3ce35d7c005ff3c7dd2cd9477/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentAtScope.json
+func ExampleDeploymentsClient_BeginCreateOrUpdateAtScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleClient_BeginCreateOrUpdateAtScope() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginCreateOrUpdateAtScope(ctx, "providers/Microsoft.Management/managementGroups/my-management-group-id", "my-deployment", armdeployments.Deployment{
+	poller, err := clientFactory.NewDeploymentsClient().BeginCreateOrUpdateAtScope(ctx, "providers/Microsoft.Management/managementGroups/my-management-group-id", "my-deployment", armdeployments.Deployment{
 		Location: to.Ptr("eastus"),
 		Properties: &armdeployments.DeploymentProperties{
 			Mode:       to.Ptr(armdeployments.DeploymentModeIncremental),

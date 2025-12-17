@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/edacc3b43f9603efa119eabb6013d952d1dbe7d6/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentValidateOnScope.json
-func ExampleClient_BeginValidateAtScope() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/18609d68cf243ee3ce35d7c005ff3c7dd2cd9477/specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentValidateOnScope.json
+func ExampleDeploymentsClient_BeginValidateAtScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleClient_BeginValidateAtScope() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginValidateAtScope(ctx, "subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group", "my-deployment", armdeployments.Deployment{
+	poller, err := clientFactory.NewDeploymentsClient().BeginValidateAtScope(ctx, "subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group", "my-deployment", armdeployments.Deployment{
 		Properties: &armdeployments.DeploymentProperties{
 			Mode:       to.Ptr(armdeployments.DeploymentModeIncremental),
 			Parameters: map[string]*armdeployments.DeploymentParameter{},

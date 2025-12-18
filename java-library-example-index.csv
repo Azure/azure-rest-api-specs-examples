@@ -6087,3 +6087,7 @@ id,name,language,tag,package,version,date_epoch,date
 6086,"Azure.ResourceManager.StorageSync,1.3.1",dotnet,Azure.ResourceManager.StorageSync_1.3.1,Azure.ResourceManager.StorageSync,1.3.1,1765868954,12/16/2025
 6087,azure-mgmt-mysqlflexibleservers@1.1.0b2,python,azure-mgmt-mysqlflexibleservers_1.1.0b2,azure-mgmt-mysqlflexibleservers,1.1.0b2,1765873874,12/16/2025
 6088,azure-mgmt-mobilenetwork@3.3.1,python,azure-mgmt-mobilenetwork_3.3.1,azure-mgmt-mobilenetwork,3.3.1,1765873872,12/16/2025
+6089,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.3.1,java,com.azure.resourcemanager+azure-resourcemanager-mobilenetwork_1.3.1,com.azure.resourcemanager+azure-resourcemanager-mobilenetwork,1.3.1,1765955305,12/17/2025
+6090,com.azure.resourcemanager:azure-resourcemanager-networkcloud:2.1.0,java,com.azure.resourcemanager+azure-resourcemanager-networkcloud_2.1.0,com.azure.resourcemanager+azure-resourcemanager-networkcloud,2.1.0,1765953770,12/17/2025
+6091,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v3@v3.0.1,go,sdk/resourcemanager/resources/armresources/v3.0.1,sdk/resourcemanager/resources/armresources,v3.0.1,1765969103,12/17/2025
+6092,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch/v3@v3.0.1,go,sdk/resourcemanager/batch/armbatch/v3.0.1,sdk/resourcemanager/batch/armbatch,v3.0.1,1765965937,12/17/2025

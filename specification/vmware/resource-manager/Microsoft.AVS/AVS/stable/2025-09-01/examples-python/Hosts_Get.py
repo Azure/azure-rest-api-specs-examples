@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.avs import AVSClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-avs
+# USAGE
+    python hosts_get.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = AVSClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.hosts.get(
+        resource_group_name="group1",
+        private_cloud_name="cloud1",
+        cluster_name="cluster1",
+        host_id="esx03-r52.1111111111111111111.westcentralus.prod.azure.com",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-09-01/Hosts_Get.json
+if __name__ == "__main__":
+    main()

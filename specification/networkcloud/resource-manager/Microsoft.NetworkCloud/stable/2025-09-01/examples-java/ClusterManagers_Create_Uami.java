@@ -1,0 +1,52 @@
+
+import com.azure.resourcemanager.networkcloud.models.ManagedResourceGroupConfiguration;
+import com.azure.resourcemanager.networkcloud.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.networkcloud.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.networkcloud.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ClusterManagers CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-09-01/examples/
+     * ClusterManagers_Create_Uami.json
+     */
+    /**
+     * Sample code: Create or update cluster manager with user assigned identity.
+     * 
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void createOrUpdateClusterManagerWithUserAssignedIdentity(
+        com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager.clusterManagers().define("clusterManagerName").withRegion("location")
+            .withExistingResourceGroup("resourceGroupName")
+            .withFabricControllerId(
+                "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/fabricControllerName")
+            .withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userIdentity1",
+                    new UserAssignedIdentity())))
+            .withAnalyticsWorkspaceId(
+                "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/microsoft.operationalInsights/workspaces/logAnalyticsWorkspaceName")
+            .withManagedResourceGroupConfiguration(
+                new ManagedResourceGroupConfiguration().withLocation("East US").withName("my-managed-rg"))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

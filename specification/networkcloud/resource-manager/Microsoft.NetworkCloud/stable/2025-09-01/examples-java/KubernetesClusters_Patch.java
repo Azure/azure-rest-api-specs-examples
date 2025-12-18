@@ -1,0 +1,48 @@
+
+import com.azure.resourcemanager.networkcloud.models.AdministratorConfigurationPatch;
+import com.azure.resourcemanager.networkcloud.models.ControlPlaneNodePatchConfiguration;
+import com.azure.resourcemanager.networkcloud.models.KubernetesCluster;
+import com.azure.resourcemanager.networkcloud.models.SshPublicKey;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for KubernetesClusters Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-09-01/examples/
+     * KubernetesClusters_Patch.json
+     */
+    /**
+     * Sample code: Patch Kubernetes cluster.
+     * 
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void patchKubernetesCluster(com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        KubernetesCluster resource = manager.kubernetesClusters().getByResourceGroupWithResponse("resourceGroupName",
+            "kubernetesClusterName", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder"))
+            .withAdministratorConfiguration(new AdministratorConfigurationPatch()
+                .withSshPublicKeys(Arrays.asList(new SshPublicKey().withKeyData("fakeTokenPlaceholder"))))
+            .withControlPlaneNodeConfiguration(new ControlPlaneNodePatchConfiguration()
+                .withAdministratorConfiguration(new AdministratorConfigurationPatch()
+                    .withSshPublicKeys(Arrays.asList(new SshPublicKey().withKeyData("fakeTokenPlaceholder"))))
+                .withCount(3L))
+            .withKubernetesVersion("1.XX.Y").apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

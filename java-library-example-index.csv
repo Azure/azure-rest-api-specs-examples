@@ -6092,3 +6092,4 @@ id,name,language,tag,package,version,date_epoch,date
 6091,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v3@v3.0.1,go,sdk/resourcemanager/resources/armresources/v3.0.1,sdk/resourcemanager/resources/armresources,v3.0.1,1765969103,12/17/2025
 6092,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch/v3@v3.0.1,go,sdk/resourcemanager/batch/armbatch/v3.0.1,sdk/resourcemanager/batch/armbatch,v3.0.1,1765965937,12/17/2025
 6093,"Azure.ResourceManager.ContainerService,1.3.0",dotnet,Azure.ResourceManager.ContainerService_1.3.0,Azure.ResourceManager.ContainerService,1.3.0,1766043427,12/18/2025
+6094,azure-mgmt-avs@10.0.0,python,azure-mgmt-avs_10.0.0,azure-mgmt-avs,10.0.0,1766006373,12/17/2025

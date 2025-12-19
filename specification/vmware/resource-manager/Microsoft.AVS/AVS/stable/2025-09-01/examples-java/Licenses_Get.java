@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.avs.models.LicenseName;
+
+/**
+ * Samples for Licenses Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/Licenses_Get.json
+     */
+    /**
+     * Sample code: Licenses_Get.
+     * 
+     * @param manager Entry point to AvsManager.
+     */
+    public static void licensesGet(com.azure.resourcemanager.avs.AvsManager manager) {
+        manager.licenses().getWithResponse("group1", "cloud1", LicenseName.VMWARE_FIREWALL,
+            com.azure.core.util.Context.NONE);
+    }
+}

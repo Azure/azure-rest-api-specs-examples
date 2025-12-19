@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.avs.models.MaintenanceSchedule;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Maintenances Schedule.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/Maintenances_Schedule.json
+     */
+    /**
+     * Sample code: Maintenances_Schedule.
+     * 
+     * @param manager Entry point to AvsManager.
+     */
+    public static void maintenancesSchedule(com.azure.resourcemanager.avs.AvsManager manager) {
+        manager.maintenances()
+            .scheduleWithResponse("group1", "cloud1", "maintenance1", new MaintenanceSchedule()
+                .withScheduleTime(OffsetDateTime.parse("2025-09-12T16:17:55.237Z")).withMessage("scheduled due to xyz"),
+                com.azure.core.util.Context.NONE);
+    }
+}

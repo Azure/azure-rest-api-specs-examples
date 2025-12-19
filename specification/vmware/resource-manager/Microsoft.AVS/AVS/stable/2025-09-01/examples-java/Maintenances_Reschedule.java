@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.avs.models.MaintenanceReschedule;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Maintenances Reschedule.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/Maintenances_Reschedule.json
+     */
+    /**
+     * Sample code: Maintenances_Reschedule.
+     * 
+     * @param manager Entry point to AvsManager.
+     */
+    public static void maintenancesReschedule(com.azure.resourcemanager.avs.AvsManager manager) {
+        manager.maintenances().rescheduleWithResponse("group1", "cloud1", "maintenance1", new MaintenanceReschedule()
+            .withRescheduleTime(OffsetDateTime.parse("2023-01-12T16:17:55.237Z")).withMessage("Rescheduled due to xyz"),
+            com.azure.core.util.Context.NONE);
+    }
+}

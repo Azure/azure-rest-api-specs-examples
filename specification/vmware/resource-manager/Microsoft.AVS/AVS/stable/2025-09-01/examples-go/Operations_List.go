@@ -1,0 +1,348 @@
+package armavs_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2"
+)
+
+// Generated from example definition: 2025-09-01/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armavs.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armavs.OperationsClientListResponse{
+		// 	OperationListResult: armavs.OperationListResult{
+		// 		Value: []*armavs.Operation{
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Lists operations available on Microsoft.AVS resource provider."),
+		// 					Operation: to.Ptr("List available Microsoft.AVS operations"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("operations"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/operations/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Register Subscription for Microsoft.AVS resource provider."),
+		// 					Operation: to.Ptr("Register Subscription for Microsoft.AVS"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr(""),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/register/action"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Unregister Subscription for Microsoft.AVS resource provider."),
+		// 					Operation: to.Ptr("Unregister Subscription for Microsoft.AVS"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr(""),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/unregister/action"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Checks if the privateCloud Name is available"),
+		// 					Operation: to.Ptr("Check Name Availability"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("checkNameAvailability"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/checkNameAvailability/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Checks if the privateCloud Name is available"),
+		// 					Operation: to.Ptr("Check Name Availability"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("locations/checkNameAvailability"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/locations/checkNameAvailability/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Checks if quota is available for the subscription"),
+		// 					Operation: to.Ptr("Check Quota Availability"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("locations/checkQuotaAvailability"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/locations/checkQuotaAvailability/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Checks if trial is available for the subscription"),
+		// 					Operation: to.Ptr("Check Trial Availability"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("locations/checkTrialAvailability"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/locations/checkTrialAvailability/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Registers the Microsoft Microsoft.AVS resource provider and enables creation of Private Clouds."),
+		// 					Operation: to.Ptr("Register Microsoft.AVS resource provider."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/register/action"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Creates or updates a PrivateCloud resource."),
+		// 					Operation: to.Ptr("Create or update a PrivateCloud."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/write"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Gets the settings for the specified PrivateCloud."),
+		// 					Operation: to.Ptr("Read PrivateCloud settings"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Delete a specific PrivateCloud."),
+		// 					Operation: to.Ptr("Delete a PrivateCloud."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/delete"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Reads privateClouds operationstatuses."),
+		// 					Operation: to.Ptr("Read privateClouds operationstatuses"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/operationstatuses"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/operationstatuses/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Gets the cluster settings for a PrivateCloud cluster."),
+		// 					Operation: to.Ptr("Read Cluster settings."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/clusters"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/clusters/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Create or update a PrivateCloud cluster resource."),
+		// 					Operation: to.Ptr("Create or update a PrivateCloud cluster."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/clusters"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/clusters/write"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Delete a specific PrivateCloud cluster."),
+		// 					Operation: to.Ptr("Delete a PriveCloud cluster."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/clusters"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/clusters/delete"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Reads privateClouds/clusters operationstatuses."),
+		// 					Operation: to.Ptr("Read privateClouds/clusters operationstatuses"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/clusters/operationstatuses"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/clusters/operationstatuses/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Reads privateClouds/clusters operationresults."),
+		// 					Operation: to.Ptr("Read privateClouds/clusters operationresults"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateclouds/clusters/operationresults"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateclouds/clusters/operationresults/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Reads privateClouds operationresults."),
+		// 					Operation: to.Ptr("Read privateClouds operationresults"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/operationresults"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/operationresults/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Gets the authorization settings for a PrivateCloud cluster."),
+		// 					Operation: to.Ptr("Read Authorization settings."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/authorizations"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/authorizations/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Create or update a PrivateCloud authorization resource."),
+		// 					Operation: to.Ptr("Create or update a PrivateCloud authorization."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/authorizations"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/authorizations/write"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Delete a specific PrivateCloud authorization."),
+		// 					Operation: to.Ptr("Delete a PriveCloud authorization."),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/authorizations"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/authorizations/delete"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Lists the AdminCredentials for privateClouds."),
+		// 					Operation: to.Ptr("List privateClouds AdminCredentials"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds"),
+		// 				},
+		// 				IsDataAction: to.Ptr(true),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/listAdminCredentials/action"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Gets the hcxEnterpriseSites for a PrivateCloud."),
+		// 					Operation: to.Ptr("Read hcxEnterpriseSites"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hcxEnterpriseSites"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hcxEnterpriseSites/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Create or update a hcxEnterpriseSites."),
+		// 					Operation: to.Ptr("Create or update a hcxEnterpriseSites"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hcxEnterpriseSites"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hcxEnterpriseSites/write"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Delete a specific hcxEnterpriseSites."),
+		// 					Operation: to.Ptr("Delete a hcxEnterpriseSites"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hcxEnterpriseSites"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hcxEnterpriseSites/delete"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Gets the hostInstances for a PrivateCloud."),
+		// 					Operation: to.Ptr("Read hostInstances"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hostInstances"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hostInstances/read"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Create or update a hostInstances."),
+		// 					Operation: to.Ptr("Create or update a hostInstances"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hostInstances"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hostInstances/write"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Display: &armavs.OperationDisplay{
+		// 					Description: to.Ptr("Delete a specific hostInstances."),
+		// 					Operation: to.Ptr("Delete a hostInstances"),
+		// 					Provider: to.Ptr("Microsoft.AVS"),
+		// 					Resource: to.Ptr("privateClouds/hostInstances"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 				Name: to.Ptr("Microsoft.AVS/privateClouds/hostInstances/delete"),
+		// 				Origin: to.Ptr(armavs.OriginUserSystem),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

@@ -6096,3 +6096,4 @@ id,name,language,tag,package,version,date_epoch,date
 6095,com.azure.resourcemanager:azure-resourcemanager-avs:1.4.0,java,com.azure.resourcemanager+azure-resourcemanager-avs_1.4.0,com.azure.resourcemanager+azure-resourcemanager-avs,1.4.0,1766082831,12/18/2025
 6096,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mobilenetwork/armmobilenetwork/v4@v4.1.1,go,sdk/resourcemanager/mobilenetwork/armmobilenetwork/v4.1.1,sdk/resourcemanager/mobilenetwork/armmobilenetwork,v4.1.1,1766119632,12/19/2025
 6097,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.2.0,go,sdk/resourcemanager/avs/armavs/v2.2.0,sdk/resourcemanager/avs/armavs,v2.2.0,1766080893,12/18/2025
+6098,com.azure.resourcemanager:azure-resourcemanager-loganalytics:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-loganalytics_2.0.0,com.azure.resourcemanager+azure-resourcemanager-loganalytics,2.0.0,1766390270,12/22/2025

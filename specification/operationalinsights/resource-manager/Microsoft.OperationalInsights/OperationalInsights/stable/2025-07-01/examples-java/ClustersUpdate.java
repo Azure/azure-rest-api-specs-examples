@@ -1,0 +1,52 @@
+
+import com.azure.resourcemanager.loganalytics.models.Cluster;
+import com.azure.resourcemanager.loganalytics.models.ClusterSku;
+import com.azure.resourcemanager.loganalytics.models.ClusterSkuNameEnum;
+import com.azure.resourcemanager.loganalytics.models.KeyVaultProperties;
+import com.azure.resourcemanager.loganalytics.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.loganalytics.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.loganalytics.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Clusters Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
+     * 07-01/examples/ClustersUpdate.json
+     */
+    /**
+     * Sample code: ClustersPatch.
+     * 
+     * @param manager Entry point to LogAnalyticsManager.
+     */
+    public static void clustersPatch(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
+        Cluster resource = manager.clusters()
+            .getByResourceGroupWithResponse("oiautorest6685", "oiautorest6685", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("tag1", "val1")).withIdentity(new ManagedServiceIdentity()
+            .withType(ManagedServiceIdentityType.USER_ASSIGNED)
+            .withUserAssignedIdentities(mapOf(
+                "/subscriptions/53bc36c5-91e1-4d09-92c9-63b89e571926/resourcegroups/oiautorest6685/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myidentity",
+                new UserAssignedIdentity())))
+            .withSku(new ClusterSku().withCapacity(1000L).withName(ClusterSkuNameEnum.CAPACITY_RESERVATION))
+            .withKeyVaultProperties(new KeyVaultProperties().withKeyVaultUri("fakeTokenPlaceholder")
+                .withKeyName("fakeTokenPlaceholder").withKeyVersion("fakeTokenPlaceholder").withKeyRsaSize(1024))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

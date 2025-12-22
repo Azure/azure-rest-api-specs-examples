@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.loganalytics.models.SummaryLogsRetryBin;
+import com.azure.resourcemanager.loganalytics.models.SummaryLogsRetryBinProperties;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for SummaryLogsOperation RetryBin.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
+     * 07-01/examples/SummaryLogsRetryBin.json
+     */
+    /**
+     * Sample code: SummaryLogsRetryBin.
+     * 
+     * @param manager Entry point to LogAnalyticsManager.
+     */
+    public static void summaryLogsRetryBin(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
+        manager.summaryLogsOperations().retryBin("oiautorest6685", "oiautorest6685", "summarylogs1",
+            new SummaryLogsRetryBin().withProperties(new SummaryLogsRetryBinProperties()
+                .withRetryBinStartTime(OffsetDateTime.parse("2020-02-03T04:00:00Z"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

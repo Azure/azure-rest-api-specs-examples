@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.loganalytics.fluent.models.LogAnalyticsQueryPackInner;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for QueryPacks CreateOrUpdateWithoutName.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
+     * 07-01/examples/QueryPackUpdateNoName.json
+     */
+    /**
+     * Sample code: QueryPackUpdateNoName.
+     * 
+     * @param manager Entry point to LogAnalyticsManager.
+     */
+    public static void queryPackUpdateNoName(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
+        manager.queryPacks().createOrUpdateWithoutNameWithResponse("my-resource-group",
+            new LogAnalyticsQueryPackInner().withLocation("South Central US").withTags(mapOf("Tag1", "Value1")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -6100,3 +6100,4 @@ id,name,language,tag,package,version,date_epoch,date
 6099,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v8@v8.2.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v8.2.0,sdk/resourcemanager/containerservice/armcontainerservice,v8.2.0,1766372460,12/22/2025
 6100,azure-mgmt-networkcloud@2.2.0,python,azure-mgmt-networkcloud_2.2.0,azure-mgmt-networkcloud,2.2.0,1766385279,12/22/2025
 6101,azure-mgmt-containerservice@41.0.0b3,python,azure-mgmt-containerservice_41.0.0b3,azure-mgmt-containerservice,41.0.0b3,1766383945,12/22/2025
+6102,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments@v1.0.0,go,sdk/resourcemanager/resources/armdeployments/v1.0.0,sdk/resourcemanager/resources/armdeployments,v1.0.0,1766474713,12/23/2025

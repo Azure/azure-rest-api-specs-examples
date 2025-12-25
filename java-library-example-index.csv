@@ -6109,3 +6109,4 @@ id,name,language,tag,package,version,date_epoch,date
 6108,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2@v2.0.1,go,sdk/resourcemanager/operationalinsights/armoperationalinsights/v2.0.1,sdk/resourcemanager/operationalinsights/armoperationalinsights,v2.0.1,1766565565,12/24/2025
 6109,@azure/arm-operationalinsights@10.0.0,js,@azure/arm-operationalinsights_10.0.0,@azure/arm-operationalinsights,10.0.0,1766644392,12/25/2025
 6110,@azure/arm-networkcloud@1.3.0,js,@azure/arm-networkcloud_1.3.0,@azure/arm-networkcloud,1.3.0,1766631736,12/25/2025
+6111,@azure/arm-containerservice@24.2.0-beta.1,js,@azure/arm-containerservice_24.2.0-beta.1,@azure/arm-containerservice,24.2.0-beta.1,1766628555,12/25/2025

@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.network.fluent.models.ReachabilityAnalysisIntentInner;
+import com.azure.resourcemanager.network.models.IpTraffic;
+import com.azure.resourcemanager.network.models.NetworkProtocol;
+import com.azure.resourcemanager.network.models.ReachabilityAnalysisIntentProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for ReachabilityAnalysisIntents Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/network/resource-manager/Microsoft.Network/stable/2025-03-01/examples/ReachabilityAnalysisIntentPut
+     * .json
+     */
+    /**
+     * Sample code: ReachabilityAnalysisIntentCreate.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void reachabilityAnalysisIntentCreate(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.networks().manager().serviceClient().getReachabilityAnalysisIntents().createWithResponse("rg1",
+            "testNetworkManager", "testWorkspace", "testAnalysisIntentName",
+            new ReachabilityAnalysisIntentInner().withProperties(new ReachabilityAnalysisIntentProperties()
+                .withDescription("A sample reachability analysis intent")
+                .withSourceResourceId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/testVmSrc")
+                .withDestinationResourceId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/testVmDest")
+                .withIpTraffic(new IpTraffic().withSourceIps(Arrays.asList("10.4.0.0"))
+                    .withDestinationIps(Arrays.asList("10.4.0.1")).withSourcePorts(Arrays.asList("0"))
+                    .withDestinationPorts(Arrays.asList("0")).withProtocols(Arrays.asList(NetworkProtocol.ANY)))),
+            com.azure.core.util.Context.NONE);
+    }
+}

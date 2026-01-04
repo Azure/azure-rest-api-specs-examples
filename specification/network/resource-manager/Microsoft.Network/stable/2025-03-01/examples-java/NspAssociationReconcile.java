@@ -1,0 +1,26 @@
+
+import com.azure.core.management.serializer.SerializerFactory;
+import com.azure.core.util.serializer.SerializerEncoding;
+import java.io.IOException;
+
+/**
+ * Samples for NetworkSecurityPerimeterAssociations Reconcile.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/network/resource-manager/Microsoft.Network/stable/2025-03-01/examples/NspAssociationReconcile.json
+     */
+    /**
+     * Sample code: NspAssociationReconcile.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void nspAssociationReconcile(com.azure.resourcemanager.AzureResourceManager azure)
+        throws IOException {
+        azure.networks().manager().serviceClient().getNetworkSecurityPerimeterAssociations().reconcileWithResponse(
+            "rg1", "nsp1", "association1", SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                "{\"properties\":{}}", Object.class, SerializerEncoding.JSON),
+            com.azure.core.util.Context.NONE);
+    }
+}

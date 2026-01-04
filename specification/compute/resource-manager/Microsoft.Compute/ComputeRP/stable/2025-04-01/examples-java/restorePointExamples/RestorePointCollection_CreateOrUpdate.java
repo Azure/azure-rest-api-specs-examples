@@ -23,7 +23,8 @@ public final class Main {
             "myResourceGroup", "myRpc",
             new RestorePointCollectionInner().withLocation("norwayeast").withTags(mapOf("myTag1", "tagValue1"))
                 .withSource(new RestorePointCollectionSourceProperties().withId(
-                    "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM")),
+                    "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"))
+                .withInstantAccess(true),
             com.azure.core.util.Context.NONE);
     }
 

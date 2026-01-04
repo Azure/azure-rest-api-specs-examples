@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.network.fluent.models.RoutingRuleCollectionInner;
+import com.azure.resourcemanager.network.models.NetworkManagerRoutingGroupItem;
+import java.util.Arrays;
+
+/**
+ * Samples for RoutingRuleCollections CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2025-03-01/examples/
+     * NetworkManagerRoutingRuleCollectionPut.json
+     */
+    /**
+     * Sample code: Create or Update a routing rule collection.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void createOrUpdateARoutingRuleCollection(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.networks().manager().serviceClient().getRoutingRuleCollections().createOrUpdateWithResponse("rg1",
+            "testNetworkManager", "myTestRoutingConfig", "testRuleCollection",
+            new RoutingRuleCollectionInner().withDescription("A sample policy")
+                .withAppliesTo(Arrays.asList(new NetworkManagerRoutingGroupItem().withNetworkGroupId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

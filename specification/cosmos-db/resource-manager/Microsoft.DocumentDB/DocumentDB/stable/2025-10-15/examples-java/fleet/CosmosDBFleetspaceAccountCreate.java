@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.cosmos.fluent.models.FleetspaceAccountResourceInner;
+import com.azure.resourcemanager.cosmos.models.FleetspaceAccountPropertiesGlobalDatabaseAccountProperties;
+
+/**
+ * Samples for FleetspaceAccount Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/2025-10-15/examples/fleet/
+     * CosmosDBFleetspaceAccountCreate.json
+     */
+    /**
+     * Sample code: CosmosDB FleetspaceAccount Create.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void cosmosDBFleetspaceAccountCreate(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.cosmosDBAccounts().manager().serviceClient().getFleetspaceAccounts().create("rg1", "fleet1",
+            "fleetspace1", "db1",
+            new FleetspaceAccountResourceInner().withGlobalDatabaseAccountProperties(
+                new FleetspaceAccountPropertiesGlobalDatabaseAccountProperties().withResourceId(
+                    "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DocumentDB/resourceGroup/rg1/databaseAccounts/db1")
+                    .withArmLocation("West US")),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -23,7 +23,8 @@ public final class Main {
             "aaaaaaaaaaaaaaaaaaaa",
             new RestorePointCollectionUpdate().withTags(mapOf("key8536", "fakeTokenPlaceholder"))
                 .withSource(new RestorePointCollectionSourceProperties().withId(
-                    "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM")),
+                    "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"))
+                .withInstantAccess(true),
             com.azure.core.util.Context.NONE);
     }
 

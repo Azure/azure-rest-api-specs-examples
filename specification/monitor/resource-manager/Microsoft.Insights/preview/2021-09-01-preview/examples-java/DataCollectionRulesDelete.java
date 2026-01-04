@@ -14,7 +14,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteDataCollectionRule(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getDataCollectionRules()
-            .deleteWithResponse("myResourceGroup", "myCollectionRule", com.azure.core.util.Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getDataCollectionRules().delete("myResourceGroup",
+            "myCollectionRule");
     }
 }

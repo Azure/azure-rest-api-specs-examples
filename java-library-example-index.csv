@@ -6112,3 +6112,4 @@ id,name,language,tag,package,version,date_epoch,date
 6111,@azure/arm-containerservice@24.2.0-beta.1,js,@azure/arm-containerservice_24.2.0-beta.1,@azure/arm-containerservice,24.2.0-beta.1,1766628555,12/25/2025
 6112,@azure/arm-containerregistry@12.0.0-beta.1,js,@azure/arm-containerregistry_12.0.0-beta.1,@azure/arm-containerregistry,12.0.0-beta.1,1766628495,12/25/2025
 6113,"Azure.ResourceManager.IotOperations,1.1.0-beta.1",dotnet,Azure.ResourceManager.IotOperations_1.1.0-beta.1,Azure.ResourceManager.IotOperations,1.1.0-beta.1,1767284169,01/01/2026
+6114,com.azure.resourcemanager:azure-resourcemanager:2.58.0,java,com.azure.resourcemanager+azure-resourcemanager_2.58.0,com.azure.resourcemanager+azure-resourcemanager,2.58.0,1766384640,12/22/2025

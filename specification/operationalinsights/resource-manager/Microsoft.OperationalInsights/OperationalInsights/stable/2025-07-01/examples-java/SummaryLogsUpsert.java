@@ -19,8 +19,10 @@ public final class Main {
      */
     public static void summaryLogsUpsert(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
         manager.summaryLogsOperations().define("summarylogs1").withExistingWorkspace("oiautorest6685", "oiautorest6685")
-            .withRuleType(RuleTypeEnum.USER).withRuleDefinition(new RuleDefinition().withQuery("MyTable_CL")
-                .withBinSize(180).withBinDelay(10).withBinStartTime(OffsetDateTime.parse("2020-02-03T04:05:06Z")))
+            .withRuleType(RuleTypeEnum.USER)
+            .withRuleDefinition(new RuleDefinition().withQuery("MyTable_CL").withBinSize(180).withBinDelay(10)
+                .withBinStartTime(OffsetDateTime.parse("2020-02-03T04:05:06Z"))
+                .withDestinationTable("MyDestinationTable_CL"))
             .create();
     }
 }

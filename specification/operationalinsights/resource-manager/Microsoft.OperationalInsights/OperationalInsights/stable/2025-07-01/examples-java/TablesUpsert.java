@@ -2,10 +2,11 @@
 import com.azure.resourcemanager.loganalytics.models.Column;
 import com.azure.resourcemanager.loganalytics.models.ColumnTypeEnum;
 import com.azure.resourcemanager.loganalytics.models.Schema;
+import com.azure.resourcemanager.loganalytics.models.Table;
 import java.util.Arrays;
 
 /**
- * Samples for Tables CreateOrUpdate.
+ * Samples for Tables Update.
  */
 public final class Main {
     /*
@@ -19,10 +20,12 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void tablesUpsert(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.tables().define("AzureNetworkFlow").withExistingWorkspace("oiautorest6685", "oiautorest6685")
-            .withRetentionInDays(45).withTotalRetentionInDays(70)
+        Table resource = manager.tables()
+            .getWithResponse("oiautorest6685", "oiautorest6685", "AzureNetworkFlow", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withRetentionInDays(45).withTotalRetentionInDays(70)
             .withSchema(new Schema().withName("AzureNetworkFlow")
                 .withColumns(Arrays.asList(new Column().withName("MyNewColumn").withType(ColumnTypeEnum.GUID))))
-            .create();
+            .apply();
     }
 }

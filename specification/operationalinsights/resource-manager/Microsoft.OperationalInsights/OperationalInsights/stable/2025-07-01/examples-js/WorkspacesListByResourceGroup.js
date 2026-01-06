@@ -3,9 +3,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets recently deleted workspaces in a resource group, available for recovery.
+ * This sample demonstrates how to Gets workspaces in a resource group.
  *
- * @summary Gets recently deleted workspaces in a resource group, available for recovery.
+ * @summary Gets workspaces in a resource group.
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesListByResourceGroup.json
  */
 async function workspacesGet() {
@@ -15,7 +15,7 @@ async function workspacesGet() {
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (const item of client.deletedWorkspaces.listByResourceGroup(resourceGroupName)) {
+  for await (const item of client.workspaces.listByResourceGroup(resourceGroupName)) {
     resArray.push(item);
   }
   console.log(resArray);

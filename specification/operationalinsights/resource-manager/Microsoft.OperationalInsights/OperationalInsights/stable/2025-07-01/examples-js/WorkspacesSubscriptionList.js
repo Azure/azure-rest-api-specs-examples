@@ -3,9 +3,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets recently deleted workspaces in a subscription, available for recovery.
+ * This sample demonstrates how to Gets the workspaces in a subscription.
  *
- * @summary Gets recently deleted workspaces in a subscription, available for recovery.
+ * @summary Gets the workspaces in a subscription.
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesSubscriptionList.json
  */
 async function workspacesSubscriptionList() {
@@ -14,7 +14,7 @@ async function workspacesSubscriptionList() {
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (const item of client.deletedWorkspaces.list()) {
+  for await (const item of client.workspaces.list()) {
     resArray.push(item);
   }
   console.log(resArray);

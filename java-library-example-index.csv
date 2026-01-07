@@ -6118,3 +6118,4 @@ id,name,language,tag,package,version,date_epoch,date
 6117,com.azure.resourcemanager:azure-resourcemanager-loganalytics:2.1.0,java,com.azure.resourcemanager+azure-resourcemanager-loganalytics_2.1.0,com.azure.resourcemanager+azure-resourcemanager-loganalytics,2.1.0,1767595395,01/05/2026
 6118,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2@v2.0.2,go,sdk/resourcemanager/operationalinsights/armoperationalinsights/v2.0.2,sdk/resourcemanager/operationalinsights/armoperationalinsights,v2.0.2,1767600492,01/05/2026
 6119,azure-mgmt-loganalytics@13.1.1,python,azure-mgmt-loganalytics_13.1.1,azure-mgmt-loganalytics,13.1.1,1767606359,01/05/2026
+6120,@azure/arm-operationalinsights@10.1.0,js,@azure/arm-operationalinsights_10.1.0,@azure/arm-operationalinsights,10.1.0,1767691611,01/06/2026

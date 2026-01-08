@@ -1,0 +1,45 @@
+
+import com.azure.resourcemanager.subscription.models.PutAliasRequest;
+import com.azure.resourcemanager.subscription.models.PutAliasRequestAdditionalProperties;
+import com.azure.resourcemanager.subscription.models.PutAliasRequestProperties;
+import com.azure.resourcemanager.subscription.models.Workload;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Alias Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/createAlias.json
+     */
+    /**
+     * Sample code: CreateAlias.
+     * 
+     * @param manager Entry point to SubscriptionManager.
+     */
+    public static void createAlias(com.azure.resourcemanager.subscription.SubscriptionManager manager) {
+        manager.alias().create("aliasForNewSub", new PutAliasRequest().withProperties(new PutAliasRequestProperties()
+            .withDisplayName("Test Subscription").withWorkload(Workload.PRODUCTION)
+            .withBillingScope(
+                "/billingAccounts/af6231a7-7f8d-4fcc-a993-dd8466108d07:c663dac6-a9a5-405a-8938-cd903e12ab5b_2019_05_31/billingProfiles/QWDQ-QWHI-AUW-SJDO-DJH/invoiceSections/FEUF-EUHE-ISJ-SKDW-DJH")
+            .withAdditionalProperties(new PutAliasRequestAdditionalProperties()
+                .withSubscriptionTenantId("66f6e4d6-07dc-4aea-94ea-e12d3026a3c8")
+                .withSubscriptionOwnerId("f09b39eb-c496-482c-9ab9-afd799572f4c")
+                .withTags(mapOf("tag1", "Messi", "tag2", "Ronaldo", "tag3", "Lebron")))),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

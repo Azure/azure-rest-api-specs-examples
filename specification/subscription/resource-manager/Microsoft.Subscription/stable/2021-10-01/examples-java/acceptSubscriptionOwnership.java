@@ -1,0 +1,40 @@
+
+import com.azure.resourcemanager.subscription.models.AcceptOwnershipRequest;
+import com.azure.resourcemanager.subscription.models.AcceptOwnershipRequestProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Subscription AcceptOwnership.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/
+     * acceptSubscriptionOwnership.json
+     */
+    /**
+     * Sample code: AcceptOwnership.
+     * 
+     * @param manager Entry point to SubscriptionManager.
+     */
+    public static void acceptOwnership(com.azure.resourcemanager.subscription.SubscriptionManager manager) {
+        manager.subscriptions().acceptOwnership("291bba3f-e0a5-47bc-a099-3bdcb2a50a05",
+            new AcceptOwnershipRequest()
+                .withProperties(new AcceptOwnershipRequestProperties().withDisplayName("Test Subscription")
+                    .withTags(mapOf("tag1", "Messi", "tag2", "Ronaldo", "tag3", "Lebron"))),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

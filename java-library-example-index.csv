@@ -6121,3 +6121,4 @@ id,name,language,tag,package,version,date_epoch,date
 6120,@azure/arm-operationalinsights@10.1.0,js,@azure/arm-operationalinsights_10.1.0,@azure/arm-operationalinsights,10.1.0,1767691611,01/06/2026
 6121,com.azure.resourcemanager:azure-resourcemanager-subscription:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-subscription_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-subscription,1.1.0-beta.1,1767855246,01/08/2026
 6122,@azure/arm-avs@7.1.0,js,@azure/arm-avs_7.1.0,@azure/arm-avs,7.1.0,1767899316,01/08/2026
+6123,"Azure.ResourceManager.ConnectedCache,1.0.0-beta.2",dotnet,Azure.ResourceManager.ConnectedCache_1.0.0-beta.2,Azure.ResourceManager.ConnectedCache,1.0.0-beta.2,1768366457,01/14/2026

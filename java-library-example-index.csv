@@ -6126,3 +6126,4 @@ id,name,language,tag,package,version,date_epoch,date
 6125,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourceconnector/armresourceconnector@v1.2.0-beta.1,go,sdk/resourcemanager/resourceconnector/armresourceconnector/v1.2.0-beta.1,sdk/resourcemanager/resourceconnector/armresourceconnector,v1.2.0-beta.1,1768437200,01/15/2026
 6126,azure-mgmt-resourceconnector@2.0.0b1,python,azure-mgmt-resourceconnector_2.0.0b1,azure-mgmt-resourceconnector,2.0.0b1,1768439122,01/15/2026
 6127,"Azure.ResourceManager.ResourceConnector,1.0.0-beta.4",dotnet,Azure.ResourceManager.ResourceConnector_1.0.0-beta.4,Azure.ResourceManager.ResourceConnector,1.0.0-beta.4,1768547661,01/16/2026
+6128,@azure/arm-resourceconnector@2.0.0-beta.1,js,@azure/arm-resourceconnector_2.0.0-beta.1,@azure/arm-resourceconnector,2.0.0-beta.1,1768586681,01/16/2026

@@ -6131,3 +6131,5 @@ id,name,language,tag,package,version,date_epoch,date
 6130,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v1.2.0-beta.1,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v1.2.0-beta.1,sdk/resourcemanager/computeschedule/armcomputeschedule,v1.2.0-beta.1,1768813003,01/19/2026
 6131,azure-mgmt-dellstorage@1.0.0,python,azure-mgmt-dellstorage_1.0.0,azure-mgmt-dellstorage,1.0.0,1768823576,01/19/2026
 6132,azure-mgmt-communication@2.2.0,python,azure-mgmt-communication_2.2.0,azure-mgmt-communication,2.2.0,1768808629,01/19/2026
+6133,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.3.0,go,sdk/resourcemanager/compute/armcompute/v7.3.0,sdk/resourcemanager/compute/armcompute,v7.3.0,1768891594,01/20/2026
+6134,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v2@v2.3.0,go,sdk/resourcemanager/communication/armcommunication/v2.3.0,sdk/resourcemanager/communication/armcommunication,v2.3.0,1768889351,01/20/2026

@@ -1,0 +1,32 @@
+const { StorageClient } = require("@azure/arm-dell-storage");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to update a FileSystemResource
+ *
+ * @summary update a FileSystemResource
+ * x-ms-original-file: 2025-03-21/FileSystems_Update_MaximumSet_Gen.json
+ */
+async function fileSystemsUpdateMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "4B6E265D-57CF-4A9D-8B35-3CC68ED9D208";
+  const client = new StorageClient(credential, subscriptionId);
+  const result = await client.fileSystems.update("rgDell", "abcd", {
+    identity: { type: "SystemAssigned,UserAssigned", userAssignedIdentities: { key7645: {} } },
+    tags: { key6099: "ursbxlphfcguvntuevleacwq" },
+    properties: {
+      delegatedSubnetId: "bfpuabdz",
+      capacity: { current: "5" },
+      encryption: {
+        encryptionType: "Customer-managed keys (CMK)",
+        keyUrl: "https://contoso.com/keyurl/keyVersion",
+        encryptionIdentityProperties: {
+          identityType: "UserAssigned",
+          identityResourceId:
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}",
+        },
+      },
+    },
+  });
+  console.log(result);
+}

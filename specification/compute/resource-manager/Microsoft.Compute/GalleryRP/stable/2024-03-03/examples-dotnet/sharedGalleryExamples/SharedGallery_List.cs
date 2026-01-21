@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
@@ -22,11 +21,18 @@ string subscriptionId = "{subscription-id}";
 ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
-// invoke the operation and iterate over the result
+// get the collection of this SharedGalleryResource
 AzureLocation location = new AzureLocation("myLocation");
-await foreach (SharedGalleryData item in subscriptionResource.GetSharedGalleriesAsync(location))
+SharedGalleryCollection collection = subscriptionResource.GetSharedGalleries(location);
+
+// invoke the operation and iterate over the result
+await foreach (SharedGalleryResource item in collection.GetAllAsync())
 {
-    Console.WriteLine($"Succeeded: {item}");
+    // the variable item is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SharedGalleryData resourceData = item.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
 Console.WriteLine("Succeeded");

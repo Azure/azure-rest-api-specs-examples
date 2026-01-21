@@ -6133,3 +6133,4 @@ id,name,language,tag,package,version,date_epoch,date
 6132,azure-mgmt-communication@2.2.0,python,azure-mgmt-communication_2.2.0,azure-mgmt-communication,2.2.0,1768808629,01/19/2026
 6133,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v7@v7.3.0,go,sdk/resourcemanager/compute/armcompute/v7.3.0,sdk/resourcemanager/compute/armcompute,v7.3.0,1768891594,01/20/2026
 6134,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v2@v2.3.0,go,sdk/resourcemanager/communication/armcommunication/v2.3.0,sdk/resourcemanager/communication/armcommunication,v2.3.0,1768889351,01/20/2026
+6135,@azure/arm-dell-storage@1.0.0,js,@azure/arm-dell-storage_1.0.0,@azure/arm-dell-storage,1.0.0,1768977127,01/21/2026

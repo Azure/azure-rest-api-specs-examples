@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineScaleSetResource created on azure
-// for more information of creating VirtualMachineScaleSetResource, please refer to the document of VirtualMachineScaleSetResource
+// this example assumes you already have this VirtualMachineScaleSetVmResource created on azure
+// for more information of creating VirtualMachineScaleSetVmResource, please refer to the document of VirtualMachineScaleSetVmResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "rgcompute";
 string virtualMachineScaleSetName = "aaaaaaaaaaaaaa";
-ResourceIdentifier virtualMachineScaleSetResourceId = VirtualMachineScaleSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName);
-VirtualMachineScaleSetResource virtualMachineScaleSet = client.GetVirtualMachineScaleSetResource(virtualMachineScaleSetResourceId);
-
-// get the collection of this VirtualMachineScaleSetVmResource
-VirtualMachineScaleSetVmCollection collection = virtualMachineScaleSet.GetVirtualMachineScaleSetVms();
+string instanceId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, instanceId);
+VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
 
 // invoke the operation
-string instanceId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLocation("westus"))
 {
     Properties = new VirtualMachineScaleSetVmProperties
@@ -301,7 +298,7 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
     },
     Tags = { },
 };
-ArmOperation<VirtualMachineScaleSetVmResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, instanceId, data);
+ArmOperation<VirtualMachineScaleSetVmResource> lro = await virtualMachineScaleSetVm.UpdateAsync(WaitUntil.Completed, data);
 VirtualMachineScaleSetVmResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

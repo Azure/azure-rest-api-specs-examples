@@ -4,8 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/examples/communityGalleryExamples/CommunityGalleryImageVersion_List.json
@@ -16,19 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this CommunityGalleryImageResource created on azure
+// for more information of creating CommunityGalleryImageResource, please refer to the document of CommunityGalleryImageResource
 string subscriptionId = "{subscription-id}";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("myLocation");
 string publicGalleryName = "publicGalleryName";
 string galleryImageName = "myGalleryImageName";
-await foreach (CommunityGalleryImageVersionData item in subscriptionResource.GetCommunityGalleryImageVersionsAsync(location, publicGalleryName, galleryImageName))
+ResourceIdentifier communityGalleryImageResourceId = CommunityGalleryImageResource.CreateResourceIdentifier(subscriptionId, location, publicGalleryName, galleryImageName);
+CommunityGalleryImageResource communityGalleryImage = client.GetCommunityGalleryImageResource(communityGalleryImageResourceId);
+
+// get the collection of this CommunityGalleryImageVersionResource
+CommunityGalleryImageVersionCollection collection = communityGalleryImage.GetCommunityGalleryImageVersions();
+
+// invoke the operation and iterate over the result
+await foreach (CommunityGalleryImageVersionResource item in collection.GetAllAsync())
 {
-    Console.WriteLine($"Succeeded: {item}");
+    // the variable item is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CommunityGalleryImageVersionData resourceData = item.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
 Console.WriteLine("Succeeded");

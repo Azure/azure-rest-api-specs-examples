@@ -6137,3 +6137,4 @@ id,name,language,tag,package,version,date_epoch,date
 6136,"Azure.ResourceManager.Compute,1.14.0",dotnet,Azure.ResourceManager.Compute_1.14.0,Azure.ResourceManager.Compute,1.14.0,1768988079,01/21/2026
 6137,com.azure.resourcemanager:azure-resourcemanager-communication:2.3.0,java,com.azure.resourcemanager+azure-resourcemanager-communication_2.3.0,com.azure.resourcemanager+azure-resourcemanager-communication,2.3.0,1769155184,01/23/2026
 6138,@azure/arm-communication@4.2.0,js,@azure/arm-communication_4.2.0,@azure/arm-communication,4.2.0,1769147780,01/23/2026
+6139,@azure/arm-compute@23.3.0,js,@azure/arm-compute_23.3.0,@azure/arm-compute,23.3.0,1769145304,01/23/2026

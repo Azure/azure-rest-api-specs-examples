@@ -1,0 +1,22 @@
+
+/**
+ * Samples for SuppressionListAddresses Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/suppressionLists/
+     * getAddress.json
+     */
+    /**
+     * Sample code: Get a SuppressionListAddress resource.
+     * 
+     * @param manager Entry point to CommunicationManager.
+     */
+    public static void
+        getASuppressionListAddressResource(com.azure.resourcemanager.communication.CommunicationManager manager) {
+        manager.suppressionListAddresses().getWithResponse("contosoResourceGroup", "contosoEmailService", "contoso.com",
+            "aaaa1111-bbbb-2222-3333-aaaa11112222", "11112222-3333-4444-5555-aaaabbbbcccc",
+            com.azure.core.util.Context.NONE);
+    }
+}

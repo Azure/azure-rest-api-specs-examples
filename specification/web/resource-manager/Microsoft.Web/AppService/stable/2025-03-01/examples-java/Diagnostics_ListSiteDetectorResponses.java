@@ -1,6 +1,6 @@
 
 /**
- * Samples for Diagnostics ListSiteDetectorResponses.
+ * Samples for Diagnostics ListSiteDetectorResponsesSlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAppDetectorResponses(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getDiagnostics()
-            .listSiteDetectorResponses("Sample-WestUSResourceGroup", "SampleApp", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getDiagnostics().listSiteDetectorResponsesSlot(
+            "Sample-WestUSResourceGroup", "SampleApp", "staging", com.azure.core.util.Context.NONE);
     }
 }

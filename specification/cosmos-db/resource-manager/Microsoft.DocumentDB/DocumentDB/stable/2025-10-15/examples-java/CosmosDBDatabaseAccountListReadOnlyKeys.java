@@ -1,6 +1,6 @@
 
 /**
- * Samples for DatabaseAccounts ListReadOnlyKeys.
+ * Samples for DatabaseAccounts GetReadOnlyKeys.
  */
 public final class Main {
     /*
@@ -14,7 +14,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBDatabaseAccountListReadOnlyKeys(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.cosmosDBAccounts().manager().serviceClient().getDatabaseAccounts().listReadOnlyKeysWithResponse("rg1",
+        azure.cosmosDBAccounts().manager().serviceClient().getDatabaseAccounts().getReadOnlyKeysWithResponse("rg1",
             "ddb1", com.azure.core.util.Context.NONE);
     }
 }

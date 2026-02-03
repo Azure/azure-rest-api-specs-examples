@@ -1,6 +1,6 @@
 
 /**
- * Samples for Diagnostics GetSiteDetectorResponse.
+ * Samples for Diagnostics GetSiteDetectorResponseSlot.
  */
 public final class Main {
     /*
@@ -13,8 +13,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAppSlotDetectorResponse(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getDiagnostics().getSiteDetectorResponseWithResponse(
-            "Sample-WestUSResourceGroup", "SampleApp", "runtimeavailability", null, null, null,
+        azure.webApps().manager().serviceClient().getDiagnostics().getSiteDetectorResponseSlotWithResponse(
+            "Sample-WestUSResourceGroup", "SampleApp", "runtimeavailability", "staging", null, null, null,
             com.azure.core.util.Context.NONE);
     }
 }

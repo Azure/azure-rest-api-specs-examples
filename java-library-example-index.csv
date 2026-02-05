@@ -6150,3 +6150,4 @@ id,name,language,tag,package,version,date_epoch,date
 6149,azure-mgmt-resource-features@1.0.0b1,python,azure-mgmt-resource-features_1.0.0b1,azure-mgmt-resource-features,1.0.0b1,1770285722,02/05/2026
 6150,azure-mgmt-resource-privatelinks@1.0.0b1,python,azure-mgmt-resource-privatelinks_1.0.0b1,azure-mgmt-resource-privatelinks,1.0.0b1,1770285646,02/05/2026
 6151,azure-mgmt-resource-databoundaries@1.0.0b1,python,azure-mgmt-resource-databoundaries_1.0.0b1,azure-mgmt-resource-databoundaries,1.0.0b1,1770285645,02/05/2026
+6152,azure-mgmt-resource-changes@1.0.0b1,python,azure-mgmt-resource-changes_1.0.0b1,azure-mgmt-resource-changes,1.0.0b1,1770285635,02/05/2026

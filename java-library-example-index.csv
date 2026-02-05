@@ -6152,3 +6152,4 @@ id,name,language,tag,package,version,date_epoch,date
 6151,azure-mgmt-resource-databoundaries@1.0.0b1,python,azure-mgmt-resource-databoundaries_1.0.0b1,azure-mgmt-resource-databoundaries,1.0.0b1,1770285645,02/05/2026
 6152,azure-mgmt-resource-changes@1.0.0b1,python,azure-mgmt-resource-changes_1.0.0b1,azure-mgmt-resource-changes,1.0.0b1,1770285635,02/05/2026
 6153,azure-mgmt-resource-subscriptions@1.0.0b1,python,azure-mgmt-resource-subscriptions_1.0.0b1,azure-mgmt-resource-subscriptions,1.0.0b1,1770285623,02/05/2026
+6154,azure-mgmt-resource-policy@1.0.0b1,python,azure-mgmt-resource-policy_1.0.0b1,azure-mgmt-resource-policy,1.0.0b1,1770285611,02/05/2026

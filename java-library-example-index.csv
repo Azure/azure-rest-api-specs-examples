@@ -6154,3 +6154,4 @@ id,name,language,tag,package,version,date_epoch,date
 6153,azure-mgmt-resource-subscriptions@1.0.0b1,python,azure-mgmt-resource-subscriptions_1.0.0b1,azure-mgmt-resource-subscriptions,1.0.0b1,1770285623,02/05/2026
 6154,azure-mgmt-resource-policy@1.0.0b1,python,azure-mgmt-resource-policy_1.0.0b1,azure-mgmt-resource-policy,1.0.0b1,1770285611,02/05/2026
 6155,azure-mgmt-resource-managedapplications@1.0.0b1,python,azure-mgmt-resource-managedapplications_1.0.0b1,azure-mgmt-resource-managedapplications,1.0.0b1,1770285607,02/05/2026
+6156,azure-mgmt-resource-locks@1.0.0b1,python,azure-mgmt-resource-locks_1.0.0b1,azure-mgmt-resource-locks,1.0.0b1,1770285530,02/05/2026

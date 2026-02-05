@@ -6148,3 +6148,4 @@ id,name,language,tag,package,version,date_epoch,date
 6147,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-appconfiguration_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-appconfiguration,1.2.0-beta.1,1770193061,02/04/2026
 6148,"Azure.ResourceManager.ServiceGroups,1.0.0-beta.1",dotnet,Azure.ResourceManager.ServiceGroups_1.0.0-beta.1,Azure.ResourceManager.ServiceGroups,1.0.0-beta.1,1770286631,02/05/2026
 6149,azure-mgmt-resource-features@1.0.0b1,python,azure-mgmt-resource-features_1.0.0b1,azure-mgmt-resource-features,1.0.0b1,1770285722,02/05/2026
+6150,azure-mgmt-resource-privatelinks@1.0.0b1,python,azure-mgmt-resource-privatelinks_1.0.0b1,azure-mgmt-resource-privatelinks,1.0.0b1,1770285646,02/05/2026

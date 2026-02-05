@@ -6145,3 +6145,4 @@ id,name,language,tag,package,version,date_epoch,date
 6144,"Azure.ResourceManager.PostgreSql,1.4.0",dotnet,Azure.ResourceManager.PostgreSql_1.4.0,Azure.ResourceManager.PostgreSql,1.4.0,1769749537,01/30/2026
 6145,com.azure.resourcemanager:azure-resourcemanager:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager_2.59.0,com.azure.resourcemanager+azure-resourcemanager,2.59.0,1769748591,01/30/2026
 6146,"Azure.ResourceManager.Network,1.15.0",dotnet,Azure.ResourceManager.Network_1.15.0,Azure.ResourceManager.Network,1.15.0,1770099518,02/03/2026
+6147,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-appconfiguration_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-appconfiguration,1.2.0-beta.1,1770193061,02/04/2026

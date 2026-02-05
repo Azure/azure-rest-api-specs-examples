@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ConfigurationStores ListKeys.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01-preview/ConfigurationStoresListKeys.json
+     */
+    /**
+     * Sample code: ConfigurationStores_ListKeys.
+     * 
+     * @param manager Entry point to AppConfigurationManager.
+     */
+    public static void
+        configurationStoresListKeys(com.azure.resourcemanager.appconfiguration.AppConfigurationManager manager) {
+        manager.configurationStores().listKeys("myResourceGroup", "contoso", null, com.azure.core.util.Context.NONE);
+    }
+}

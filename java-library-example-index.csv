@@ -6157,3 +6157,4 @@ id,name,language,tag,package,version,date_epoch,date
 6156,azure-mgmt-resource-locks@1.0.0b1,python,azure-mgmt-resource-locks_1.0.0b1,azure-mgmt-resource-locks,1.0.0b1,1770285530,02/05/2026
 6157,@azure/arm-appconfiguration@6.0.0-beta.1,js,@azure/arm-appconfiguration_6.0.0-beta.1,@azure/arm-appconfiguration,6.0.0-beta.1,1770297815,02/05/2026
 6158,azure-mgmt-resource@25.0.0,python,azure-mgmt-resource_25.0.0,azure-mgmt-resource,25.0.0,1770357296,02/06/2026
+6159,azure-mgmt-redhatopenshift@3.0.0,python,azure-mgmt-redhatopenshift_3.0.0,azure-mgmt-redhatopenshift,3.0.0,1770357268,02/06/2026

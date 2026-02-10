@@ -1,0 +1,138 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v9"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/72410da64f6e945db1e1f1af220e077ba5bdb857/specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/HubVirtualNetworkConnectionPut.json
+func ExampleHubVirtualNetworkConnectionsClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewHubVirtualNetworkConnectionsClient().BeginCreateOrUpdate(ctx, "rg1", "virtualHub1", "connection1", armnetwork.HubVirtualNetworkConnection{
+		Properties: &armnetwork.HubVirtualNetworkConnectionProperties{
+			EnableInternetSecurity: to.Ptr(false),
+			RemoteVirtualNetwork: &armnetwork.SubResource{
+				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"),
+			},
+			RoutingConfiguration: &armnetwork.RoutingConfiguration{
+				AssociatedRouteTable: &armnetwork.SubResource{
+					ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
+				},
+				InboundRouteMap: &armnetwork.SubResource{
+					ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
+				},
+				OutboundRouteMap: &armnetwork.SubResource{
+					ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),
+				},
+				PropagatedRouteTables: &armnetwork.PropagatedRouteTable{
+					IDs: []*armnetwork.SubResource{
+						{
+							ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
+						}},
+					Labels: []*string{
+						to.Ptr("label1"),
+						to.Ptr("label2")},
+				},
+				VnetRoutes: &armnetwork.VnetRoute{
+					StaticRoutes: []*armnetwork.StaticRoute{
+						{
+							Name: to.Ptr("route1"),
+							AddressPrefixes: []*string{
+								to.Ptr("10.1.0.0/16"),
+								to.Ptr("10.2.0.0/16")},
+							NextHopIPAddress: to.Ptr("10.0.0.68"),
+						},
+						{
+							Name: to.Ptr("route2"),
+							AddressPrefixes: []*string{
+								to.Ptr("10.3.0.0/16"),
+								to.Ptr("10.4.0.0/16")},
+							NextHopIPAddress: to.Ptr("10.0.0.65"),
+						}},
+					StaticRoutesConfig: &armnetwork.StaticRoutesConfig{
+						VnetLocalRouteOverrideCriteria: to.Ptr(armnetwork.VnetLocalRouteOverrideCriteriaEqual),
+					},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.HubVirtualNetworkConnection = armnetwork.HubVirtualNetworkConnection{
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/connection1"),
+	// 	Name: to.Ptr("connection1"),
+	// 	Etag: to.Ptr("w/\\00000000-0000-0000-0000-000000000000\\"),
+	// 	Properties: &armnetwork.HubVirtualNetworkConnectionProperties{
+	// 		EnableInternetSecurity: to.Ptr(false),
+	// 		ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+	// 		RemoteVirtualNetwork: &armnetwork.SubResource{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"),
+	// 		},
+	// 		RoutingConfiguration: &armnetwork.RoutingConfiguration{
+	// 			AssociatedRouteTable: &armnetwork.SubResource{
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
+	// 			},
+	// 			InboundRouteMap: &armnetwork.SubResource{
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
+	// 			},
+	// 			OutboundRouteMap: &armnetwork.SubResource{
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),
+	// 			},
+	// 			PropagatedRouteTables: &armnetwork.PropagatedRouteTable{
+	// 				IDs: []*armnetwork.SubResource{
+	// 					{
+	// 						ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
+	// 				}},
+	// 				Labels: []*string{
+	// 					to.Ptr("label1"),
+	// 					to.Ptr("label2")},
+	// 				},
+	// 				VnetRoutes: &armnetwork.VnetRoute{
+	// 					BgpConnections: []*armnetwork.SubResource{
+	// 						{
+	// 							ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/bgpConnections/bgpConn1"),
+	// 					}},
+	// 					StaticRoutes: []*armnetwork.StaticRoute{
+	// 						{
+	// 							Name: to.Ptr("route1"),
+	// 							AddressPrefixes: []*string{
+	// 								to.Ptr("10.1.0.0/16"),
+	// 								to.Ptr("10.2.0.0/16")},
+	// 								NextHopIPAddress: to.Ptr("10.0.0.68"),
+	// 							},
+	// 							{
+	// 								Name: to.Ptr("route2"),
+	// 								AddressPrefixes: []*string{
+	// 									to.Ptr("10.3.0.0/16"),
+	// 									to.Ptr("10.4.0.0/16")},
+	// 									NextHopIPAddress: to.Ptr("10.0.0.65"),
+	// 							}},
+	// 							StaticRoutesConfig: &armnetwork.StaticRoutesConfig{
+	// 								PropagateStaticRoutes: to.Ptr(true),
+	// 								VnetLocalRouteOverrideCriteria: to.Ptr(armnetwork.VnetLocalRouteOverrideCriteriaEqual),
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 			}
+}

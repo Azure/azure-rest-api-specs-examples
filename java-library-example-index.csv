@@ -6161,3 +6161,4 @@ id,name,language,tag,package,version,date_epoch,date
 6160,azure-mgmt-agricultureplatform@1.0.0b1,python,azure-mgmt-agricultureplatform_1.0.0b1,azure-mgmt-agricultureplatform,1.0.0b1,1770339301,02/06/2026
 6161,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v9@v9.0.0,go,sdk/resourcemanager/network/armnetwork/v9.0.0,sdk/resourcemanager/network/armnetwork,v9.0.0,1770617765,02/09/2026
 6162,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-nginx_1.1.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-nginx,1.1.0-beta.4,1770724353,02/10/2026
+6163,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.1,java,com.azure.resourcemanager+azure-resourcemanager-mixedreality_1.0.1,com.azure.resourcemanager+azure-resourcemanager-mixedreality,1.0.1,1770701530,02/10/2026

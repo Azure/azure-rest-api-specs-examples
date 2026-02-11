@@ -6167,3 +6167,4 @@ id,name,language,tag,package,version,date_epoch,date
 6166,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentstacks/v2@v2.0.0,go,sdk/resourcemanager/resources/armdeploymentstacks/v2.0.0,sdk/resourcemanager/resources/armdeploymentstacks,v2.0.0,1770759748,02/10/2026
 6167,"Azure.ResourceManager.Resources.DeploymentStacks,1.0.0",dotnet,Azure.ResourceManager.Resources.DeploymentStacks_1.0.0,Azure.ResourceManager.Resources.DeploymentStacks,1.0.0,1770759890,02/10/2026
 6168,"Azure.ResourceManager.EdgeActions,1.0.0-beta.2",dotnet,Azure.ResourceManager.EdgeActions_1.0.0-beta.2,Azure.ResourceManager.EdgeActions,1.0.0-beta.2,1770693038,02/10/2026
+6169,azure-mgmt-resource-deploymentstacks@1.0.0,python,azure-mgmt-resource-deploymentstacks_1.0.0,azure-mgmt-resource-deploymentstacks,1.0.0,1770753434,02/10/2026

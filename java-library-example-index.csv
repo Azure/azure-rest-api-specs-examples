@@ -6164,3 +6164,7 @@ id,name,language,tag,package,version,date_epoch,date
 6163,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.1,java,com.azure.resourcemanager+azure-resourcemanager-mixedreality_1.0.1,com.azure.resourcemanager+azure-resourcemanager-mixedreality,1.0.1,1770701530,02/10/2026
 6164,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration/v3@v3.1.0-beta.1,go,sdk/resourcemanager/appconfiguration/armappconfiguration/v3.1.0-beta.1,sdk/resourcemanager/appconfiguration/armappconfiguration,v3.1.0-beta.1,1770721562,02/10/2026
 6165,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/nginx/armnginx/v3@v3.1.0-beta.3,go,sdk/resourcemanager/nginx/armnginx/v3.1.0-beta.3,sdk/resourcemanager/nginx/armnginx,v3.1.0-beta.3,1770720224,02/10/2026
+6166,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentstacks/v2@v2.0.0,go,sdk/resourcemanager/resources/armdeploymentstacks/v2.0.0,sdk/resourcemanager/resources/armdeploymentstacks,v2.0.0,1770759748,02/10/2026
+6167,"Azure.ResourceManager.Resources.DeploymentStacks,1.0.0",dotnet,Azure.ResourceManager.Resources.DeploymentStacks_1.0.0,Azure.ResourceManager.Resources.DeploymentStacks,1.0.0,1770759890,02/10/2026
+6168,"Azure.ResourceManager.EdgeActions,1.0.0-beta.2",dotnet,Azure.ResourceManager.EdgeActions_1.0.0-beta.2,Azure.ResourceManager.EdgeActions,1.0.0-beta.2,1770693038,02/10/2026
+6169,azure-mgmt-resource-deploymentstacks@1.0.0,python,azure-mgmt-resource-deploymentstacks_1.0.0,azure-mgmt-resource-deploymentstacks,1.0.0,1770753434,02/10/2026

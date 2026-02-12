@@ -6169,3 +6169,4 @@ id,name,language,tag,package,version,date_epoch,date
 6168,"Azure.ResourceManager.EdgeActions,1.0.0-beta.2",dotnet,Azure.ResourceManager.EdgeActions_1.0.0-beta.2,Azure.ResourceManager.EdgeActions,1.0.0-beta.2,1770693038,02/10/2026
 6169,azure-mgmt-resource-deploymentstacks@1.0.0,python,azure-mgmt-resource-deploymentstacks_1.0.0,azure-mgmt-resource-deploymentstacks,1.0.0,1770753434,02/10/2026
 6170,com.azure.resourcemanager:azure-resourcemanager-disconnectedoperations:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-disconnectedoperations_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-disconnectedoperations,1.0.0-beta.1,1770876049,02/12/2026
+6171,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.0.0-beta.1,1770866124,02/12/2026

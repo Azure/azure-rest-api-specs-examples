@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServerThreatProtectionSettingsModelResource created on azure
-// for more information of creating ServerThreatProtectionSettingsModelResource, please refer to the document of ServerThreatProtectionSettingsModelResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
-ThreatProtectionName threatProtectionName = ThreatProtectionName.Default;
-ResourceIdentifier serverThreatProtectionSettingsModelResourceId = ServerThreatProtectionSettingsModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, threatProtectionName);
-ServerThreatProtectionSettingsModelResource serverThreatProtectionSettingsModel = client.GetServerThreatProtectionSettingsModelResource(serverThreatProtectionSettingsModelResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this ServerThreatProtectionSettingsModelResource
+ServerThreatProtectionSettingsModelCollection collection = postgreSqlFlexibleServer.GetServerThreatProtectionSettingsModels();
 
 // invoke the operation
+ThreatProtectionName threatProtectionName = ThreatProtectionName.Default;
 ServerThreatProtectionSettingsModelData data = new ServerThreatProtectionSettingsModelData
 {
     State = ThreatProtectionState.Enabled,
 };
-ArmOperation<ServerThreatProtectionSettingsModelResource> lro = await serverThreatProtectionSettingsModel.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServerThreatProtectionSettingsModelResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, threatProtectionName, data);
 ServerThreatProtectionSettingsModelResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,0 +1,108 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.network import NetworkManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-network
+# USAGE
+    python virtual_network_gateway_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = NetworkManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="subid",
+    )
+
+    response = client.virtual_network_gateways.begin_create_or_update(
+        resource_group_name="rg1",
+        virtual_network_gateway_name="vpngw",
+        parameters={
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1": {}
+                },
+            },
+            "location": "centralus",
+            "properties": {
+                "activeActive": False,
+                "allowRemoteVnetTraffic": False,
+                "allowVirtualWanTraffic": False,
+                "bgpSettings": {"asn": 65515, "bgpPeeringAddress": "10.0.1.30", "peerWeight": 0},
+                "customRoutes": {"addressPrefixes": ["101.168.0.6/32"]},
+                "disableIPSecReplayProtection": False,
+                "enableBgp": False,
+                "enableBgpRouteTranslationForNat": False,
+                "enableDnsForwarding": True,
+                "enableHighBandwidthVpnGateway": False,
+                "gatewayType": "Vpn",
+                "ipConfigurations": [
+                    {
+                        "name": "gwipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
+                            },
+                            "subnet": {
+                                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
+                            },
+                        },
+                    }
+                ],
+                "natRules": [
+                    {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1",
+                        "name": "natRule1",
+                        "properties": {
+                            "externalMappings": [{"addressSpace": "50.0.0.0/24"}],
+                            "internalMappings": [{"addressSpace": "10.10.0.0/24"}],
+                            "ipConfigurationId": "",
+                            "mode": "EgressSnat",
+                            "type": "Static",
+                        },
+                    },
+                    {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2",
+                        "name": "natRule2",
+                        "properties": {
+                            "externalMappings": [{"addressSpace": "30.0.0.0/24"}],
+                            "internalMappings": [{"addressSpace": "20.10.0.0/24"}],
+                            "ipConfigurationId": "",
+                            "mode": "IngressSnat",
+                            "type": "Static",
+                        },
+                    },
+                ],
+                "sku": {"name": "VpnGw1", "tier": "VpnGw1"},
+                "vpnClientConfiguration": {
+                    "radiusServers": [
+                        {
+                            "radiusServerAddress": "10.2.0.0",
+                            "radiusServerScore": 20,
+                            "radiusServerSecret": "radiusServerSecret",
+                        }
+                    ],
+                    "vpnClientProtocols": ["OpenVPN"],
+                    "vpnClientRevokedCertificates": [],
+                    "vpnClientRootCertificates": [],
+                },
+                "vpnType": "RouteBased",
+            },
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/VirtualNetworkGatewayUpdate.json
+if __name__ == "__main__":
+    main()

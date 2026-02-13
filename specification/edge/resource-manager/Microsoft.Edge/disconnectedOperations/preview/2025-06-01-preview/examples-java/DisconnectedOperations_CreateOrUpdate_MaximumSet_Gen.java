@@ -1,0 +1,38 @@
+
+import com.azure.resourcemanager.disconnectedoperations.models.ConnectionIntent;
+import com.azure.resourcemanager.disconnectedoperations.models.DisconnectedOperationProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for DisconnectedOperations CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01-preview/DisconnectedOperations_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: DisconnectedOperations_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DisconnectedOperationsManager.
+     */
+    public static void disconnectedOperationsCreateOrUpdate(
+        com.azure.resourcemanager.disconnectedoperations.DisconnectedOperationsManager manager) {
+        manager.disconnectedOperations().define("demo-resource").withRegion("eastus")
+            .withExistingResourceGroup("rgdisconnectedOperations").withTags(mapOf("key1", "fakeTokenPlaceholder"))
+            .withProperties(new DisconnectedOperationProperties().withConnectionIntent(ConnectionIntent.DISCONNECTED))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

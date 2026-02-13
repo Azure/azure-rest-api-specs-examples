@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Artifacts Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01-preview/Artifacts_Get_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Artifacts_Get.
+     * 
+     * @param manager Entry point to DisconnectedOperationsManager.
+     */
+    public static void
+        artifactsGet(com.azure.resourcemanager.disconnectedoperations.DisconnectedOperationsManager manager) {
+        manager.artifacts().getWithResponse("rgdisconnectedoperations", "J_3-_S--_-UM_-_7w11", "PMY-",
+            "-8Y-Us1BNNG6-H5w6-2--RP", com.azure.core.util.Context.NONE);
+    }
+}

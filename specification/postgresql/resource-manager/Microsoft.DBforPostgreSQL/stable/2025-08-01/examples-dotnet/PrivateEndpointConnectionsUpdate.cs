@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlFlexibleServersPrivateEndpointConnectionResource created on azure
-// for more information of creating PostgreSqlFlexibleServersPrivateEndpointConnectionResource, please refer to the document of PostgreSqlFlexibleServersPrivateEndpointConnectionResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
-string privateEndpointConnectionName = "private-endpoint-connection-name.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-ResourceIdentifier postgreSqlFlexibleServersPrivateEndpointConnectionResourceId = PostgreSqlFlexibleServersPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, privateEndpointConnectionName);
-PostgreSqlFlexibleServersPrivateEndpointConnectionResource postgreSqlFlexibleServersPrivateEndpointConnection = client.GetPostgreSqlFlexibleServersPrivateEndpointConnectionResource(postgreSqlFlexibleServersPrivateEndpointConnectionResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this PostgreSqlFlexibleServersPrivateEndpointConnectionResource
+PostgreSqlFlexibleServersPrivateEndpointConnectionCollection collection = postgreSqlFlexibleServer.GetPostgreSqlFlexibleServersPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "private-endpoint-connection-name.1fa229cd-bf3f-47f0-8c49-afb36723997e";
 PostgreSqlFlexibleServersPrivateEndpointConnectionData data = new PostgreSqlFlexibleServersPrivateEndpointConnectionData
 {
     ConnectionState = new PostgreSqlFlexibleServersPrivateLinkServiceConnectionState
@@ -33,7 +36,7 @@ PostgreSqlFlexibleServersPrivateEndpointConnectionData data = new PostgreSqlFlex
         Description = "Approved by johndoe@contoso.com",
     },
 };
-ArmOperation<PostgreSqlFlexibleServersPrivateEndpointConnectionResource> lro = await postgreSqlFlexibleServersPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PostgreSqlFlexibleServersPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 PostgreSqlFlexibleServersPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

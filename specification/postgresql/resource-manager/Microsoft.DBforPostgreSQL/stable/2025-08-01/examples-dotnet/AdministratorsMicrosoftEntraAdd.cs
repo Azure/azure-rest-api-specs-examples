@@ -15,23 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource created on azure
-// for more information of creating PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource, please refer to the document of PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource
+// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
+// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
-string objectId = "oooooooo-oooo-oooo-oooo-oooooooooooo";
-ResourceIdentifier postgreSqlFlexibleServerMicrosoftEntraAdministratorResourceId = PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, objectId);
-PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource postgreSqlFlexibleServerMicrosoftEntraAdministrator = client.GetPostgreSqlFlexibleServerMicrosoftEntraAdministratorResource(postgreSqlFlexibleServerMicrosoftEntraAdministratorResourceId);
+ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+
+// get the collection of this PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource
+PostgreSqlFlexibleServerMicrosoftEntraAdministratorCollection collection = postgreSqlFlexibleServer.GetPostgreSqlFlexibleServerMicrosoftEntraAdministrators();
 
 // invoke the operation
+string objectId = "oooooooo-oooo-oooo-oooo-oooooooooooo";
 PostgreSqlFlexibleServerMicrosoftEntraAdministratorCreateOrUpdateContent content = new PostgreSqlFlexibleServerMicrosoftEntraAdministratorCreateOrUpdateContent
 {
     PrincipalType = PostgreSqlFlexibleServerPrincipalType.User,
     PrincipalName = "exampleuser@contoso.com",
     TenantId = Guid.Parse("tttttttt-tttt-tttt-tttt-tttttttttttt"),
 };
-ArmOperation<PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource> lro = await postgreSqlFlexibleServerMicrosoftEntraAdministrator.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, objectId, content);
 PostgreSqlFlexibleServerMicrosoftEntraAdministratorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

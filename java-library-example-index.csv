@@ -6168,3 +6168,11 @@ id,name,language,tag,package,version,date_epoch,date
 6167,"Azure.ResourceManager.Resources.DeploymentStacks,1.0.0",dotnet,Azure.ResourceManager.Resources.DeploymentStacks_1.0.0,Azure.ResourceManager.Resources.DeploymentStacks,1.0.0,1770759890,02/10/2026
 6168,"Azure.ResourceManager.EdgeActions,1.0.0-beta.2",dotnet,Azure.ResourceManager.EdgeActions_1.0.0-beta.2,Azure.ResourceManager.EdgeActions,1.0.0-beta.2,1770693038,02/10/2026
 6169,azure-mgmt-resource-deploymentstacks@1.0.0,python,azure-mgmt-resource-deploymentstacks_1.0.0,azure-mgmt-resource-deploymentstacks,1.0.0,1770753434,02/10/2026
+6170,com.azure.resourcemanager:azure-resourcemanager-disconnectedoperations:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-disconnectedoperations_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-disconnectedoperations,1.0.0-beta.1,1770876049,02/12/2026
+6171,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.0.0-beta.1,1770866124,02/12/2026
+6172,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computebulkactions/armcomputebulkactions@v0.1.0,go,sdk/resourcemanager/computebulkactions/armcomputebulkactions/v0.1.0,sdk/resourcemanager/computebulkactions/armcomputebulkactions,v0.1.0,1770864323,02/12/2026
+6173,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations@v0.1.0,go,sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations/v0.1.0,sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations,v0.1.0,1770862642,02/12/2026
+6174,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeactions/armedgeactions@v0.1.0,go,sdk/resourcemanager/edgeactions/armedgeactions/v0.1.0,sdk/resourcemanager/edgeactions/armedgeactions,v0.1.0,1770851788,02/11/2026
+6175,@azure/arm-edgeactions@1.0.0-beta.1,js,@azure/arm-edgeactions_1.0.0-beta.1,@azure/arm-edgeactions,1.0.0-beta.1,1770865693,02/12/2026
+6176,"Azure.ResourceManager.PostgreSql,1.4.1",dotnet,Azure.ResourceManager.PostgreSql_1.4.1,Azure.ResourceManager.PostgreSql,1.4.1,1770883391,02/12/2026
+6177,azure-mgmt-edgeactions@1.0.0b1,python,azure-mgmt-edgeactions_1.0.0b1,azure-mgmt-edgeactions,1.0.0b1,1770863519,02/12/2026

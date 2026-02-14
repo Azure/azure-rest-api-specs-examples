@@ -6176,3 +6176,6 @@ id,name,language,tag,package,version,date_epoch,date
 6175,@azure/arm-edgeactions@1.0.0-beta.1,js,@azure/arm-edgeactions_1.0.0-beta.1,@azure/arm-edgeactions,1.0.0-beta.1,1770865693,02/12/2026
 6176,"Azure.ResourceManager.PostgreSql,1.4.1",dotnet,Azure.ResourceManager.PostgreSql_1.4.1,Azure.ResourceManager.PostgreSql,1.4.1,1770883391,02/12/2026
 6177,azure-mgmt-edgeactions@1.0.0b1,python,azure-mgmt-edgeactions_1.0.0b1,azure-mgmt-edgeactions,1.0.0b1,1770863519,02/12/2026
+6178,@azure/arm-network@36.0.0,js,@azure/arm-network_36.0.0,@azure/arm-network,36.0.0,1770958599,02/13/2026
+6179,azure-mgmt-network@30.2.0,python,azure-mgmt-network_30.2.0,azure-mgmt-network,30.2.0,1770954008,02/13/2026
+6180,azure-mgmt-managementgroups@1.1.0,python,azure-mgmt-managementgroups_1.1.0,azure-mgmt-managementgroups,1.1.0,1770954005,02/13/2026

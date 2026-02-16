@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.artifactsigning import ArtifactSigningMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-artifactsigning
+# USAGE
+    python code_signing_accounts_check_name_availability.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ArtifactSigningMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.code_signing_accounts.check_name_availability(
+        body={"name": "sample-account", "type": "Microsoft.CodeSigning/codeSigningAccounts"},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-10-13/CodeSigningAccounts_CheckNameAvailability.json
+if __name__ == "__main__":
+    main()

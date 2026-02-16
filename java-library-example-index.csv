@@ -6181,3 +6181,4 @@ id,name,language,tag,package,version,date_epoch,date
 6180,azure-mgmt-managementgroups@1.1.0,python,azure-mgmt-managementgroups_1.1.0,azure-mgmt-managementgroups,1.1.0,1770954005,02/13/2026
 6181,azure-mgmt-postgresqlflexibleservers@3.0.0b1,python,azure-mgmt-postgresqlflexibleservers_3.0.0b1,azure-mgmt-postgresqlflexibleservers,3.0.0b1,1771012387,02/13/2026
 6182,com.azure.resourcemanager:azure-resourcemanager-artifactsigning:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-artifactsigning_1.0.0,com.azure.resourcemanager+azure-resourcemanager-artifactsigning,1.0.0,1771167692,02/15/2026
+6183,@azure/arm-managedops@1.0.0-beta.1,js,@azure/arm-managedops_1.0.0-beta.1,@azure/arm-managedops,1.0.0-beta.1,1771221280,02/16/2026

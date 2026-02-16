@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.artifactsigning.models.ProfileType;
+
+/**
+ * Samples for CertificateProfiles Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-13/CertificateProfiles_Create.json
+     */
+    /**
+     * Sample code: Create a certificate profile.
+     * 
+     * @param manager Entry point to ArtifactSigningManager.
+     */
+    public static void
+        createACertificateProfile(com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        manager.certificateProfiles().define("profileA").withExistingCodeSigningAccount("MyResourceGroup", "MyAccount")
+            .withProfileType(ProfileType.PUBLIC_TRUST).withIncludeStreetAddress(false).withIncludePostalCode(true)
+            .withIdentityValidationId("00000000-1234-5678-3333-444444444444").create();
+    }
+}

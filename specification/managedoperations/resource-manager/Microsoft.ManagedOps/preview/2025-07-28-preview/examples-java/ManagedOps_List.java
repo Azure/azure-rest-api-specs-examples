@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ManagedOps List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-28-preview/ManagedOps_List.json
+     */
+    /**
+     * Sample code: ManagedOps_List.
+     * 
+     * @param manager Entry point to ManagedOpsManager.
+     */
+    public static void managedOpsList(com.azure.resourcemanager.managedops.ManagedOpsManager manager) {
+        manager.managedOps().list(com.azure.core.util.Context.NONE);
+    }
+}

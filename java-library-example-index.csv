@@ -6188,3 +6188,5 @@ id,name,language,tag,package,version,date_epoch,date
 6187,com.azure.resourcemanager:azure-resourcemanager-managedops:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-managedops_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-managedops,1.0.0-beta.1,1771373564,02/18/2026
 6188,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/artifactsigning/armartifactsigning@v0.1.0,go,sdk/resourcemanager/artifactsigning/armartifactsigning/v0.1.0,sdk/resourcemanager/artifactsigning/armartifactsigning,v0.1.0,1771338797,02/17/2026
 6189,@azure/arm-artifactsigning@1.0.0,js,@azure/arm-artifactsigning_1.0.0,@azure/arm-artifactsigning,1.0.0,1771403072,02/18/2026
+6190,com.azure.resourcemanager:azure-resourcemanager-computebulkactions:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-computebulkactions_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-computebulkactions,1.0.0-beta.1,1771520522,02/19/2026
+6191,azure-mgmt-computebulkactions@1.0.0b1,python,azure-mgmt-computebulkactions_1.0.0b1,azure-mgmt-computebulkactions,1.0.0b1,1771527293,02/19/2026

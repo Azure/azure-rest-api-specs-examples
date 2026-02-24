@@ -6190,3 +6190,4 @@ id,name,language,tag,package,version,date_epoch,date
 6189,@azure/arm-artifactsigning@1.0.0,js,@azure/arm-artifactsigning_1.0.0,@azure/arm-artifactsigning,1.0.0,1771403072,02/18/2026
 6190,com.azure.resourcemanager:azure-resourcemanager-computebulkactions:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-computebulkactions_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-computebulkactions,1.0.0-beta.1,1771520522,02/19/2026
 6191,azure-mgmt-computebulkactions@1.0.0b1,python,azure-mgmt-computebulkactions_1.0.0b1,azure-mgmt-computebulkactions,1.0.0b1,1771527293,02/19/2026
+6192,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-elasticsan_1.2.0,com.azure.resourcemanager+azure-resourcemanager-elasticsan,1.2.0,1771916617,02/24/2026

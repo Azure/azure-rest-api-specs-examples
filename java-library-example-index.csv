@@ -6194,3 +6194,4 @@ id,name,language,tag,package,version,date_epoch,date
 6193,azure-mgmt-mixedreality@1.1.0b2,python,azure-mgmt-mixedreality_1.1.0b2,azure-mgmt-mixedreality,1.1.0b2,1771928438,02/24/2026
 6194,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver_2.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver,2.1.0-beta.1,1771967177,02/24/2026
 6195,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.2.0,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.2.0,sdk/resourcemanager/elasticsan/armelasticsan,v1.2.0,1771989777,02/25/2026
+6196,"Azure.ResourceManager.ElasticSan,1.2.0",dotnet,Azure.ResourceManager.ElasticSan_1.2.0,Azure.ResourceManager.ElasticSan,1.2.0,1772005139,02/25/2026

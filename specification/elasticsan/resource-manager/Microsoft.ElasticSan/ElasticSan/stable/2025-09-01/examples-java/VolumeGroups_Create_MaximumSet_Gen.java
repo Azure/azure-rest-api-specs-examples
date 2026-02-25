@@ -1,0 +1,55 @@
+
+import com.azure.resourcemanager.elasticsan.models.Action;
+import com.azure.resourcemanager.elasticsan.models.EncryptionIdentity;
+import com.azure.resourcemanager.elasticsan.models.EncryptionProperties;
+import com.azure.resourcemanager.elasticsan.models.EncryptionType;
+import com.azure.resourcemanager.elasticsan.models.Identity;
+import com.azure.resourcemanager.elasticsan.models.IdentityType;
+import com.azure.resourcemanager.elasticsan.models.KeyVaultProperties;
+import com.azure.resourcemanager.elasticsan.models.NetworkRuleSet;
+import com.azure.resourcemanager.elasticsan.models.StorageTargetType;
+import com.azure.resourcemanager.elasticsan.models.UserAssignedIdentity;
+import com.azure.resourcemanager.elasticsan.models.VirtualNetworkRule;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for VolumeGroups Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/VolumeGroups_Create_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: VolumeGroups_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ElasticSanManager.
+     */
+    public static void volumeGroupsCreateMaximumSetGen(com.azure.resourcemanager.elasticsan.ElasticSanManager manager) {
+        manager.volumeGroups().define("volumegroupname").withExistingElasticSan("resourcegroupname", "elasticsanname")
+            .withIdentity(new Identity().withType(IdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key2350", new UserAssignedIdentity())))
+            .withProtocolType(StorageTargetType.ISCSI)
+            .withEncryption(EncryptionType.ENCRYPTION_AT_REST_WITH_PLATFORM_KEY)
+            .withEncryptionProperties(new EncryptionProperties()
+                .withKeyVaultProperties(new KeyVaultProperties().withKeyName("fakeTokenPlaceholder")
+                    .withKeyVersion("fakeTokenPlaceholder").withKeyVaultUri("fakeTokenPlaceholder"))
+                .withEncryptionIdentity(new EncryptionIdentity().withEncryptionUserAssignedIdentity("vgbeephfgecgg")))
+            .withNetworkAcls(new NetworkRuleSet().withVirtualNetworkRules(Arrays
+                .asList(new VirtualNetworkRule().withVirtualNetworkResourceId("fhhawhc").withAction(Action.ALLOW))))
+            .withEnforceDataIntegrityCheckForIscsi(true).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

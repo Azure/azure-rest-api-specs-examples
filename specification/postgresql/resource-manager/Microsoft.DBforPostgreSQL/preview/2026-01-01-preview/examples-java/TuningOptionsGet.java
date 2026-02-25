@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.postgresqlflexibleserver.models.TuningOptionParameterEnum;
+
+/**
+ * Samples for TuningOptionsOperation Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/TuningOptionsGet.json
+     */
+    /**
+     * Sample code: Get the tuning options of a server.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void
+        getTheTuningOptionsOfAServer(com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        manager.tuningOptionsOperations().getWithResponse("exampleresourcegroup", "exampleserver",
+            TuningOptionParameterEnum.INDEX, com.azure.core.util.Context.NONE);
+    }
+}

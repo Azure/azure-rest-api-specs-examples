@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.postgresqlflexibleserver.models.VirtualEndpoint;
+import com.azure.resourcemanager.postgresqlflexibleserver.models.VirtualEndpointType;
+import java.util.Arrays;
+
+/**
+ * Samples for VirtualEndpoints Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/VirtualEndpointUpdate.json
+     */
+    /**
+     * Sample code: Update a pair of virtual endpoints for a server.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void updateAPairOfVirtualEndpointsForAServer(
+        com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        VirtualEndpoint resource = manager.virtualEndpoints().getWithResponse("exampleresourcegroup", "exampleserver",
+            "examplebasename", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withEndpointType(VirtualEndpointType.READ_WRITE)
+            .withMembers(Arrays.asList("exampleprimaryserver")).apply();
+    }
+}

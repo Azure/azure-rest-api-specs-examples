@@ -1,0 +1,20 @@
+
+/**
+ * Samples for FirewallRules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/FirewallRulesCreateOrUpdate.json
+     */
+    /**
+     * Sample code: Create a new firewall rule or update an existing firewall rule.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void createANewFirewallRuleOrUpdateAnExistingFirewallRule(
+        com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        manager.firewallRules().define("examplefirewallrule")
+            .withExistingFlexibleServer("exampleresourcegroup", "exampleserver").withStartIpAddress("0.0.0.0")
+            .withEndIpAddress("255.255.255.255").create();
+    }
+}

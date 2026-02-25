@@ -1,0 +1,22 @@
+
+/**
+ * Samples for Configurations Put.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/ConfigurationsUpdateUsingPut.json
+     */
+    /**
+     * Sample code: Update, using Put verb, the value assigned to a specific modifiable configuration (also known as
+     * server parameter) of a server.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void
+        updateUsingPutVerbTheValueAssignedToASpecificModifiableConfigurationAlsoKnownAsServerParameterOfAServer(
+            com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        manager.configurations().define("constraint_exclusion")
+            .withExistingFlexibleServer("exampleresourcegroup", "exampleserver").withValue("on")
+            .withSource("user-override").create();
+    }
+}

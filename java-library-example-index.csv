@@ -6196,3 +6196,4 @@ id,name,language,tag,package,version,date_epoch,date
 6195,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.2.0,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.2.0,sdk/resourcemanager/elasticsan/armelasticsan,v1.2.0,1771989777,02/25/2026
 6196,"Azure.ResourceManager.ElasticSan,1.2.0",dotnet,Azure.ResourceManager.ElasticSan_1.2.0,Azure.ResourceManager.ElasticSan,1.2.0,1772005139,02/25/2026
 6197,azure-mgmt-elasticsan@2.0.0,python,azure-mgmt-elasticsan_2.0.0,azure-mgmt-elasticsan,2.0.0,1771989503,02/25/2026
+6198,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v0.2.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v0.2.0,sdk/resourcemanager/connectedcache/armconnectedcache,v0.2.0,1772076254,02/26/2026

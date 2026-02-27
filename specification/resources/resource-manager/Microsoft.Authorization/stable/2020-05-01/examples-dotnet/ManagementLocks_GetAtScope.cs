@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementLockResource created on azure
-// for more information of creating ManagementLockResource, please refer to the document of ManagementLockResource
+// get the collection of this ManagementLockResource
 string scope = "subscriptions/subscriptionId";
-string lockName = "testlock";
-ResourceIdentifier managementLockResourceId = ManagementLockResource.CreateResourceIdentifier(scope, lockName);
-ManagementLockResource managementLock = client.GetManagementLockResource(managementLockResourceId);
+ManagementLockCollection collection = client.GetGenericResource(new ResourceIdentifier(scope)).GetManagementLocks();
 
 // invoke the operation
-ManagementLockResource result = await managementLock.GetAsync();
+string lockName = "testlock";
+NullableResponse<ManagementLockResource> response = await collection.GetIfExistsAsync(lockName);
+ManagementLockResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagementLockData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagementLockData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

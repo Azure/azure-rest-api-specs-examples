@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/resources/resource-manager/Microsoft.Resources/stable/2022-12-01/examples/GetSubscription.json
@@ -14,25 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-TenantResource tenant = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this SubscriptionResource
-SubscriptionCollection collection = tenant.GetSubscriptions();
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+string subscriptionId = "291bba3f-e0a5-47bc-a099-3bdcb2a50a05";
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscription = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-string subscriptionId = "291bba3f-e0a5-47bc-a099-3bdcb2a50a05";
-NullableResponse<SubscriptionResource> response = await collection.GetIfExistsAsync(subscriptionId);
-SubscriptionResource result = response.HasValue ? response.Value : null;
+SubscriptionResource result = await subscription.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SubscriptionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

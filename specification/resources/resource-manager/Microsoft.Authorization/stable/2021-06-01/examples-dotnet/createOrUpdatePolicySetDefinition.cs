@@ -15,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SubscriptionPolicySetDefinitionResource created on azure
+// for more information of creating SubscriptionPolicySetDefinitionResource, please refer to the document of SubscriptionPolicySetDefinitionResource
 string subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscription = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SubscriptionPolicySetDefinitionResource
-SubscriptionPolicySetDefinitionCollection collection = subscription.GetSubscriptionPolicySetDefinitions();
+string policySetDefinitionName = "CostManagement";
+ResourceIdentifier subscriptionPolicySetDefinitionResourceId = SubscriptionPolicySetDefinitionResource.CreateResourceIdentifier(subscriptionId, policySetDefinitionName);
+SubscriptionPolicySetDefinitionResource subscriptionPolicySetDefinition = client.GetSubscriptionPolicySetDefinitionResource(subscriptionPolicySetDefinitionResourceId);
 
 // invoke the operation
-string policySetDefinitionName = "CostManagement";
 PolicySetDefinitionData data = new PolicySetDefinitionData
 {
     DisplayName = "Cost Management",
@@ -76,7 +73,7 @@ PolicySetDefinitionData data = new PolicySetDefinitionData
     PolicyDefinitionReferenceId = "Resource_Naming",
     }},
 };
-ArmOperation<SubscriptionPolicySetDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policySetDefinitionName, data);
+ArmOperation<SubscriptionPolicySetDefinitionResource> lro = await subscriptionPolicySetDefinition.UpdateAsync(WaitUntil.Completed, data);
 SubscriptionPolicySetDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

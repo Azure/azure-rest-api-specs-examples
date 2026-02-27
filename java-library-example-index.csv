@@ -6202,3 +6202,4 @@ id,name,language,tag,package,version,date_epoch,date
 6201,azure-mgmt-connectedcache@1.0.0b2,python,azure-mgmt-connectedcache_1.0.0b2,azure-mgmt-connectedcache,1.0.0b2,1772076107,02/26/2026
 6202,com.azure.resourcemanager:azure-resourcemanager:2.60.0,java,com.azure.resourcemanager+azure-resourcemanager_2.60.0,com.azure.resourcemanager+azure-resourcemanager,2.60.0,1772121642,02/26/2026
 6203,"Azure.ResourceManager,1.14.0",dotnet,Azure.ResourceManager_1.14.0,Azure.ResourceManager,1.14.0,1772160347,02/27/2026
+6204,"Azure.ResourceManager.Batch,1.6.0",dotnet,Azure.ResourceManager.Batch_1.6.0,Azure.ResourceManager.Batch,1.6.0,1772153281,02/27/2026

@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps DeletePrivateEndpointConnection.
+ * Samples for StaticSites DeletePrivateEndpointConnection.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAPrivateEndpointConnectionForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().deletePrivateEndpointConnection("rg", "testSite",
+        azure.webApps().manager().serviceClient().getStaticSites().deletePrivateEndpointConnection("rg", "testSite",
             "connection", com.azure.core.util.Context.NONE);
     }
 }

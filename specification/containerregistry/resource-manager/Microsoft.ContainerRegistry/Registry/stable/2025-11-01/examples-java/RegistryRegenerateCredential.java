@@ -7,9 +7,7 @@ import com.azure.resourcemanager.containerregistry.models.RegenerateCredentialPa
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * RegistryRegenerateCredential.json
+     * x-ms-original-file: 2025-11-01/RegistryRegenerateCredential.json
      */
     /**
      * Sample code: RegistryRegenerateCredential.

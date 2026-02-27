@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 /**
- * Samples for Table Create.
+ * Samples for Table Update.
  */
 public final class Main {
     /*
@@ -21,7 +21,7 @@ public final class Main {
      */
     public static void tableOperationPutOrPatchAcls(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.storageAccounts().manager().serviceClient().getTables()
-            .createWithResponse("res3376", "sto328", "table6185", new TableInner().withSignedIdentifiers(Arrays.asList(
+            .updateWithResponse("res3376", "sto328", "table6185", new TableInner().withSignedIdentifiers(Arrays.asList(
                 new TableSignedIdentifier().withId("MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI")
                     .withAccessPolicy(new TableAccessPolicy()
                         .withStartTime(OffsetDateTime.parse("2022-03-17T08:49:37.0000000Z"))

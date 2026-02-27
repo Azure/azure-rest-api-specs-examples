@@ -12,9 +12,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * ConnectedRegistryCreate.json
+     * x-ms-original-file: 2025-11-01/ConnectedRegistryCreate.json
      */
     /**
      * Sample code: ConnectedRegistryCreate.

@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SenderUsernameResource created on azure
-// for more information of creating SenderUsernameResource, please refer to the document of SenderUsernameResource
+// this example assumes you already have this CommunicationDomainResource created on azure
+// for more information of creating CommunicationDomainResource, please refer to the document of CommunicationDomainResource
 string subscriptionId = "11112222-3333-4444-5555-666677778888";
 string resourceGroupName = "contosoResourceGroup";
 string emailServiceName = "contosoEmailService";
 string domainName = "contoso.com";
-string senderUsername = "contosoNewsAlerts";
-ResourceIdentifier senderUsernameResourceId = SenderUsernameResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName, domainName, senderUsername);
-SenderUsernameResource senderUsernameResource = client.GetSenderUsernameResource(senderUsernameResourceId);
+ResourceIdentifier communicationDomainResourceId = CommunicationDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName, domainName);
+CommunicationDomainResource communicationDomainResource = client.GetCommunicationDomainResource(communicationDomainResourceId);
+
+// get the collection of this SenderUsernameResource
+SenderUsernameResourceCollection collection = communicationDomainResource.GetSenderUsernameResources();
 
 // invoke the operation
+string senderUsername = "contosoNewsAlerts";
 SenderUsernameResourceData data = new SenderUsernameResourceData
 {
     Username = "contosoNewsAlerts",
     DisplayName = "Contoso News Alerts",
 };
-ArmOperation<SenderUsernameResource> lro = await senderUsernameResource.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SenderUsernameResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, senderUsername, data);
 SenderUsernameResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

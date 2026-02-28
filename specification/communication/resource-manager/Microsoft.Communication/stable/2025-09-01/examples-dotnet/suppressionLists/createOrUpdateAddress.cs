@@ -14,24 +14,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EmailSuppressionListAddressResource created on azure
-// for more information of creating EmailSuppressionListAddressResource, please refer to the document of EmailSuppressionListAddressResource
+// this example assumes you already have this EmailSuppressionListResource created on azure
+// for more information of creating EmailSuppressionListResource, please refer to the document of EmailSuppressionListResource
 string subscriptionId = "11112222-3333-4444-5555-666677778888";
 string resourceGroupName = "contosoResourceGroup";
 string emailServiceName = "contosoEmailService";
 string domainName = "contoso.com";
 string suppressionListName = "aaaa1111-bbbb-2222-3333-aaaa11112222";
-string addressId = "11112222-3333-4444-5555-aaaabbbbcccc";
-ResourceIdentifier emailSuppressionListAddressResourceId = EmailSuppressionListAddressResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName, domainName, suppressionListName, addressId);
-EmailSuppressionListAddressResource emailSuppressionListAddress = client.GetEmailSuppressionListAddressResource(emailSuppressionListAddressResourceId);
+ResourceIdentifier emailSuppressionListResourceId = EmailSuppressionListResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName, domainName, suppressionListName);
+EmailSuppressionListResource emailSuppressionList = client.GetEmailSuppressionListResource(emailSuppressionListResourceId);
+
+// get the collection of this EmailSuppressionListAddressResource
+EmailSuppressionListAddressCollection collection = emailSuppressionList.GetEmailSuppressionListAddresses();
 
 // invoke the operation
+string addressId = "11112222-3333-4444-5555-aaaabbbbcccc";
 EmailSuppressionListAddressData data = new EmailSuppressionListAddressData
 {
     Email = "newuser1@fabrikam.com",
     FirstName = "updatedFirstName",
 };
-ArmOperation<EmailSuppressionListAddressResource> lro = await emailSuppressionListAddress.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<EmailSuppressionListAddressResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, addressId, data);
 EmailSuppressionListAddressResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

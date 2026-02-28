@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.ManagementGroups;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Resources;
 
@@ -16,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupResource created on azure
-// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
+// this example assumes you already have this ManagementGroupPolicySetDefinitionResource created on azure
+// for more information of creating ManagementGroupPolicySetDefinitionResource, please refer to the document of ManagementGroupPolicySetDefinitionResource
 string managementGroupId = "MyManagementGroup";
-ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(managementGroupId);
-ManagementGroupResource managementGroupResource = client.GetManagementGroupResource(managementGroupResourceId);
-
-// get the collection of this ManagementGroupPolicySetDefinitionResource
-ManagementGroupPolicySetDefinitionCollection collection = managementGroupResource.GetManagementGroupPolicySetDefinitions();
+string policySetDefinitionName = "CostManagement";
+ResourceIdentifier managementGroupPolicySetDefinitionResourceId = ManagementGroupPolicySetDefinitionResource.CreateResourceIdentifier(managementGroupId, policySetDefinitionName);
+ManagementGroupPolicySetDefinitionResource managementGroupPolicySetDefinition = client.GetManagementGroupPolicySetDefinitionResource(managementGroupPolicySetDefinitionResourceId);
 
 // invoke the operation
-string policySetDefinitionName = "CostManagement";
 PolicySetDefinitionData data = new PolicySetDefinitionData
 {
     DisplayName = "Cost Management",
@@ -76,7 +72,7 @@ PolicySetDefinitionData data = new PolicySetDefinitionData
     Description = "Policies that help enforce resource organization standards within a subscription.",
     }},
 };
-ArmOperation<ManagementGroupPolicySetDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policySetDefinitionName, data);
+ArmOperation<ManagementGroupPolicySetDefinitionResource> lro = await managementGroupPolicySetDefinition.UpdateAsync(WaitUntil.Completed, data);
 ManagementGroupPolicySetDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * ReplicationDelete.json
+     * x-ms-original-file: 2025-11-01/ReplicationDelete.json
      */
     /**
      * Sample code: ReplicationDelete.

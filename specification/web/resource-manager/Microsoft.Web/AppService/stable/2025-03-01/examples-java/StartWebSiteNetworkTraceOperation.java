@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps StartWebSiteNetworkTraceOperation.
+ * Samples for WebApps StartWebSiteNetworkTraceOperationSlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void startANewNetworkTraceOperationForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().startWebSiteNetworkTraceOperation("testrg123",
-            "SampleApp", 60, null, null, com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getWebApps().startWebSiteNetworkTraceOperationSlot("testrg123",
+            "SampleApp", "Production", 60, null, null, com.azure.core.util.Context.NONE);
     }
 }

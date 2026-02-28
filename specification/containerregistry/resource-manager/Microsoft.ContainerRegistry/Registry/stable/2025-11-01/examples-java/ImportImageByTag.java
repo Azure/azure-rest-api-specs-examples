@@ -9,9 +9,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * ImportImageByTag.json
+     * x-ms-original-file: 2025-11-01/ImportImageByTag.json
      */
     /**
      * Sample code: ImportImageByTag.

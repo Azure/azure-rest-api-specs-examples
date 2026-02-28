@@ -1,6 +1,6 @@
 
 /**
- * Samples for Diagnostics ExecuteSiteAnalysis.
+ * Samples for Diagnostics ExecuteSiteAnalysisSlot.
  */
 public final class Main {
     /*
@@ -13,8 +13,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void executeSiteSlotAnalysis(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getDiagnostics().executeSiteAnalysisWithResponse(
-            "Sample-WestUSResourceGroup", "SampleApp", "availability", "apprestartanalyses", null, null, null,
-            com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getDiagnostics().executeSiteAnalysisSlotWithResponse(
+            "Sample-WestUSResourceGroup", "SampleApp", "availability", "apprestartanalyses", "staging", null, null,
+            null, com.azure.core.util.Context.NONE);
     }
 }

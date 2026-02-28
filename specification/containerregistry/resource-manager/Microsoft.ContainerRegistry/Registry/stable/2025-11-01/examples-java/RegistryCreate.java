@@ -10,9 +10,7 @@ import java.util.Map;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * RegistryCreate.json
+     * x-ms-original-file: 2025-11-01/RegistryCreate.json
      */
     /**
      * Sample code: RegistryCreate.

@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.network.fluent.models.VerifierWorkspaceInner;
+import com.azure.resourcemanager.network.models.VerifierWorkspaceProperties;
+
+/**
+ * Samples for VerifierWorkspaces Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/VerifierWorkspacePut.json
+     */
+    /**
+     * Sample code: VerifierWorkspaceCreate.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void verifierWorkspaceCreate(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.networks().manager().serviceClient().getVerifierWorkspaces().createWithResponse("rg1",
+            "testNetworkManager", "testWorkspace",
+            new VerifierWorkspaceInner().withLocation("eastus")
+                .withProperties(new VerifierWorkspaceProperties().withDescription("A sample workspace")),
+            null, com.azure.core.util.Context.NONE);
+    }
+}

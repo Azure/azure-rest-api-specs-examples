@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.network.models.DisassociateCloudServicePublicIpRequest;
+
+/**
+ * Samples for PublicIpAddresses DisassociateCloudServiceReservedPublicIp.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/
+     * PublicIpAddressDisassociateCloudServiceReservedPublicIp.json
+     */
+    /**
+     * Sample code: Disassociate public IP address.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void disassociatePublicIPAddress(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.networks().manager().serviceClient().getPublicIpAddresses().disassociateCloudServiceReservedPublicIp(
+            "rg1", "pip1",
+            new DisassociateCloudServicePublicIpRequest().withPublicIpArmId(
+                "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.Network/publicIpAddresses/pip2"),
+            com.azure.core.util.Context.NONE);
+    }
+}

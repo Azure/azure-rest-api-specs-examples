@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps ListSiteBackups.
+ * Samples for WebApps ListSiteBackupsSlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listBackups(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().listSiteBackups("testrg123", "tests346",
+        azure.webApps().manager().serviceClient().getWebApps().listSiteBackupsSlot("testrg123", "tests346", "staging",
             com.azure.core.util.Context.NONE);
     }
 }

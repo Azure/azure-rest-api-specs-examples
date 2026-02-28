@@ -6,9 +6,7 @@ import com.azure.resourcemanager.containerregistry.fluent.models.CacheRuleInner;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/
-     * CacheRuleCreate.json
+     * x-ms-original-file: 2025-11-01/CacheRuleCreate.json
      */
     /**
      * Sample code: CacheRuleCreate.

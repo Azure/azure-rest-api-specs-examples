@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceAgentPoolResource created on azure
-// for more information of creating ContainerServiceAgentPoolResource, please refer to the document of ContainerServiceAgentPoolResource
+// this example assumes you already have this ContainerServiceMachineResource created on azure
+// for more information of creating ContainerServiceMachineResource, please refer to the document of ContainerServiceMachineResource
 string subscriptionId = "26fe00f8-9173-4872-9134-bb1d2e00343a";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
 string agentPoolName = "agentpool1";
-ResourceIdentifier containerServiceAgentPoolResourceId = ContainerServiceAgentPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, agentPoolName);
-ContainerServiceAgentPoolResource containerServiceAgentPool = client.GetContainerServiceAgentPoolResource(containerServiceAgentPoolResourceId);
-
-// get the collection of this ContainerServiceMachineResource
-ContainerServiceMachineCollection collection = containerServiceAgentPool.GetContainerServiceMachines();
+string machineName = "aks-nodepool1-42263519-vmss00000t";
+ResourceIdentifier containerServiceMachineResourceId = ContainerServiceMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, agentPoolName, machineName);
+ContainerServiceMachineResource containerServiceMachine = client.GetContainerServiceMachineResource(containerServiceMachineResourceId);
 
 // invoke the operation
-string machineName = "aks-nodepool1-42263519-vmss00000t";
-NullableResponse<ContainerServiceMachineResource> response = await collection.GetIfExistsAsync(machineName);
-ContainerServiceMachineResource result = response.HasValue ? response.Value : null;
+ContainerServiceMachineResource result = await containerServiceMachine.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerServiceMachineData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerServiceMachineData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceTrustedAccessRoleBindingResource created on azure
-// for more information of creating ContainerServiceTrustedAccessRoleBindingResource, please refer to the document of ContainerServiceTrustedAccessRoleBindingResource
+// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
+// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-string trustedAccessRoleBindingName = "binding1";
-ResourceIdentifier containerServiceTrustedAccessRoleBindingResourceId = ContainerServiceTrustedAccessRoleBindingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, trustedAccessRoleBindingName);
-ContainerServiceTrustedAccessRoleBindingResource containerServiceTrustedAccessRoleBinding = client.GetContainerServiceTrustedAccessRoleBindingResource(containerServiceTrustedAccessRoleBindingResourceId);
+ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
+
+// get the collection of this ContainerServiceTrustedAccessRoleBindingResource
+ContainerServiceTrustedAccessRoleBindingCollection collection = containerServiceManagedCluster.GetContainerServiceTrustedAccessRoleBindings();
 
 // invoke the operation
-ContainerServiceTrustedAccessRoleBindingResource result = await containerServiceTrustedAccessRoleBinding.GetAsync();
+string trustedAccessRoleBindingName = "binding1";
+NullableResponse<ContainerServiceTrustedAccessRoleBindingResource> response = await collection.GetIfExistsAsync(trustedAccessRoleBindingName);
+ContainerServiceTrustedAccessRoleBindingResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerServiceTrustedAccessRoleBindingData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerServiceTrustedAccessRoleBindingData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

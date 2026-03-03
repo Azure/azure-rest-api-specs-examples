@@ -6210,3 +6210,4 @@ id,name,language,tag,package,version,date_epoch,date
 6209,com.azure.resourcemanager:azure-resourcemanager-newrelicobservability:1.3.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-newrelicobservability_1.3.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-newrelicobservability,1.3.0-beta.2,1772530065,03/03/2026
 6210,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.6,java,com.azure.resourcemanager+azure-resourcemanager-selfhelp_1.1.0-beta.6,com.azure.resourcemanager+azure-resourcemanager-selfhelp,1.1.0-beta.6,1772519117,03/03/2026
 6211,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v9@v9.0.0,go,sdk/resourcemanager/netapp/armnetapp/v9.0.0,sdk/resourcemanager/netapp/armnetapp,v9.0.0,1772531462,03/03/2026
+6212,azure-mgmt-netapp@15.0.0,python,azure-mgmt-netapp_15.0.0,azure-mgmt-netapp,15.0.0,1772531666,03/03/2026

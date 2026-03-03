@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Operations List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2024-03-01-preview/ListOperations.json
+     */
+    /**
+     * Sample code: List All Operations.
+     * 
+     * @param manager Entry point to SelfHelpManager.
+     */
+    public static void listAllOperations(com.azure.resourcemanager.selfhelp.SelfHelpManager manager) {
+        manager.operations().list(com.azure.core.util.Context.NONE);
+    }
+}

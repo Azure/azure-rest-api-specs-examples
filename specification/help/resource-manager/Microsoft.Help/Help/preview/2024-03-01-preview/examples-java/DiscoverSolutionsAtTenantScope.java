@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.selfhelp.models.DiscoveryNlpRequest;
+
+/**
+ * Samples for DiscoverySolutionNlp DiscoverSolutions.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2024-03-01-preview/DiscoverSolutionsAtTenantScope.json
+     */
+    /**
+     * Sample code: Discovery Solutions using issue summary and service id.
+     * 
+     * @param manager Entry point to SelfHelpManager.
+     */
+    public static void
+        discoverySolutionsUsingIssueSummaryAndServiceId(com.azure.resourcemanager.selfhelp.SelfHelpManager manager) {
+        manager.discoverySolutionNlps().discoverSolutionsWithResponse(
+            new DiscoveryNlpRequest().withIssueSummary("how to retrieve certs from deleted keyvault.")
+                .withServiceId("0d0fcd2e-c4fd-4349-8497-200edb39s3ca"),
+            com.azure.core.util.Context.NONE);
+    }
+}

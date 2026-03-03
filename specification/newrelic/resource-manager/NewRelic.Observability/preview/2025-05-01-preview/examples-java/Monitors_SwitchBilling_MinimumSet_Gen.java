@@ -6,9 +6,7 @@ import com.azure.resourcemanager.newrelicobservability.models.SwitchBillingReque
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/
-     * Monitors_SwitchBilling_MinimumSet_Gen.json
+     * x-ms-original-file: 2025-05-01-preview/Monitors_SwitchBilling_MinimumSet_Gen.json
      */
     /**
      * Sample code: Monitors_SwitchBilling_MinimumSet_Gen.

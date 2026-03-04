@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/
-     * Monitors_ListBySubscription_MaximumSet_Gen.json
+     * x-ms-original-file: 2025-05-01-preview/Monitors_ListBySubscription_MaximumSet_Gen.json
      */
     /**
      * Sample code: Monitors_ListBySubscription_MaximumSet_Gen.

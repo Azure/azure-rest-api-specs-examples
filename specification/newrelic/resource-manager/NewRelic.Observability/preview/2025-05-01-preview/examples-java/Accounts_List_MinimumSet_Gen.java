@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/
-     * Accounts_List_MinimumSet_Gen.json
+     * x-ms-original-file: 2025-05-01-preview/Accounts_List_MinimumSet_Gen.json
      */
     /**
      * Sample code: Accounts_List_MinimumSet_Gen.

@@ -6,9 +6,7 @@ import com.azure.resourcemanager.newrelicobservability.models.ActivateSaaSParame
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/ActivateSaaS.
-     * json
+     * x-ms-original-file: 2025-05-01-preview/ActivateSaaS.json
      */
     /**
      * Sample code: ActivateSaaS.

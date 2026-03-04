@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/
-     * BillingInfo_Get.json
+     * x-ms-original-file: 2025-05-01-preview/BillingInfo_Get.json
      */
     /**
      * Sample code: BillingInfo_Get.

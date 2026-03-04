@@ -6219,3 +6219,4 @@ id,name,language,tag,package,version,date_epoch,date
 6218,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v6@v6.0.0,go,sdk/resourcemanager/appservice/armappservice/v6.0.0,sdk/resourcemanager/appservice/armappservice,v6.0.0,1772557021,03/03/2026
 6219,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/certificateregistration/armcertificateregistration@v0.1.0,go,sdk/resourcemanager/certificateregistration/armcertificateregistration/v0.1.0,sdk/resourcemanager/certificateregistration/armcertificateregistration,v0.1.0,1772554777,03/03/2026
 6220,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/domainregistration/armdomainregistration@v0.1.0,go,sdk/resourcemanager/domainregistration/armdomainregistration/v0.1.0,sdk/resourcemanager/domainregistration/armdomainregistration,v0.1.0,1772554757,03/03/2026
+6221,@azure/arm-netapp@23.0.0,js,@azure/arm-netapp_23.0.0,@azure/arm-netapp,23.0.0,1772565469,03/03/2026

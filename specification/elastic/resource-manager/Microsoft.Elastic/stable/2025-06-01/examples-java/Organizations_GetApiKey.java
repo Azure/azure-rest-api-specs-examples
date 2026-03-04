@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/Organizations_GetApiKey.json
+     * x-ms-original-file: 2025-06-01/Organizations_GetApiKey.json
      */
     /**
      * Sample code: Organizations_GetApiKey.

@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/MonitoredSubscriptions_Delete
-     * .json
+     * x-ms-original-file: 2025-06-01/MonitoredSubscriptions_Delete.json
      */
     /**
      * Sample code: Monitors_DeleteMonitoredSubscriptions.

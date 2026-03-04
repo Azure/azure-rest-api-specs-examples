@@ -6,9 +6,7 @@ import com.azure.resourcemanager.elastic.models.MonitoredSubscriptionProperties;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/MonitoredSubscriptions_Update
-     * .json
+     * x-ms-original-file: 2025-06-01/MonitoredSubscriptions_Update.json
      */
     /**
      * Sample code: Monitors_UpdateMonitoredSubscriptions.

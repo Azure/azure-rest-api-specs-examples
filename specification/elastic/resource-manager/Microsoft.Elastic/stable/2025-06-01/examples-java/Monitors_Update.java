@@ -6,8 +6,7 @@ import com.azure.resourcemanager.elastic.models.ElasticMonitorResource;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/Monitors_Update.json
+     * x-ms-original-file: 2025-06-01/Monitors_Update.json
      */
     /**
      * Sample code: Monitors_Update.

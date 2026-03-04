@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/
-     * PrivateLinkTrafficFilters_Create.json
+     * x-ms-original-file: 2025-06-01/PrivateLinkTrafficFilters_Create.json
      */
     /**
      * Sample code: createAndAssociatePLFilter_Create.

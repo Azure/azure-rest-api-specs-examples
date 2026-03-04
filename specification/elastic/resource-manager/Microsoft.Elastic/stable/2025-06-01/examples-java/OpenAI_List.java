@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/OpenAI_List.json
+     * x-ms-original-file: 2025-06-01/OpenAI_List.json
      */
     /**
      * Sample code: OpenAI_List.

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ConfigurationAssignmentsForSubscriptions Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2023-10-01-preview/ConfigurationAssignmentsForSubscriptions_Delete.json
+     */
+    /**
+     * Sample code: ConfigurationAssignmentsForSubscriptions_Delete.
+     * 
+     * @param manager Entry point to MaintenanceManager.
+     */
+    public static void configurationAssignmentsForSubscriptionsDelete(
+        com.azure.resourcemanager.maintenance.MaintenanceManager manager) {
+        manager.configurationAssignmentsForSubscriptions().deleteWithResponse("workervmConfiguration",
+            com.azure.core.util.Context.NONE);
+    }
+}

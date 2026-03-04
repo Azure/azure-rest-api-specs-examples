@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ApplyUpdates Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2023-10-01-preview/ApplyUpdates_Get.json
+     */
+    /**
+     * Sample code: ApplyUpdates_Get.
+     * 
+     * @param manager Entry point to MaintenanceManager.
+     */
+    public static void applyUpdatesGet(com.azure.resourcemanager.maintenance.MaintenanceManager manager) {
+        manager.applyUpdates().getWithResponse("examplerg", "Microsoft.Compute", "virtualMachineScaleSets", "smdtest1",
+            "e9b9685d-78e4-44c4-a81c-64a14f9b87b6", com.azure.core.util.Context.NONE);
+    }
+}

@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * ProviderMonitorSettings_ListByResourceGroup.json
+     * x-ms-original-file: 2024-09-01/ProviderMonitorSettings_ListByResourceGroup.json
      */
     /**
      * Sample code: ProviderMonitorSettings_ListByResourceGroup.

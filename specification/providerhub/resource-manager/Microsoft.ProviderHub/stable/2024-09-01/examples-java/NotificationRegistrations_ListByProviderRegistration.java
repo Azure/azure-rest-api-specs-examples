@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * NotificationRegistrations_ListByProviderRegistration.json
+     * x-ms-original-file: 2024-09-01/NotificationRegistrations_ListByProviderRegistration.json
      */
     /**
      * Sample code: NotificationRegistrations_ListByProviderRegistration.

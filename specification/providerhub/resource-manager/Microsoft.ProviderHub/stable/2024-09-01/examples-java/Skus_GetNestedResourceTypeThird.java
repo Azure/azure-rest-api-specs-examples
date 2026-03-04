@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * Skus_GetNestedResourceTypeThird.json
+     * x-ms-original-file: 2024-09-01/Skus_GetNestedResourceTypeThird.json
      */
     /**
      * Sample code: Skus_GetNestedResourceTypeThird.

@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/CustomRollouts_Get.
-     * json
+     * x-ms-original-file: 2024-09-01/CustomRollouts_Get.json
      */
     /**
      * Sample code: CustomRollouts_Get.

@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * AuthorizedApplications_List.json
+     * x-ms-original-file: 2024-09-01/AuthorizedApplications_List.json
      */
     /**
      * Sample code: AuthorizedApplications_List.

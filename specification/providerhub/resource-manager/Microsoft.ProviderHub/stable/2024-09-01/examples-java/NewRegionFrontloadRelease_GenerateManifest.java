@@ -1,6 +1,7 @@
 
 import com.azure.resourcemanager.providerhub.models.AvailableCheckInManifestEnvironment;
 import com.azure.resourcemanager.providerhub.models.EndpointType;
+import com.azure.resourcemanager.providerhub.models.FeaturesPolicy;
 import com.azure.resourcemanager.providerhub.models.FrontloadPayload;
 import com.azure.resourcemanager.providerhub.models.FrontloadPayloadProperties;
 import com.azure.resourcemanager.providerhub.models.FrontloadPayloadPropertiesOverrideEndpointLevelFields;
@@ -17,8 +18,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * NewRegionFrontloadRelease_GenerateManifest.json
+     * x-ms-original-file: 2024-09-01/NewRegionFrontloadRelease_GenerateManifest.json
      */
     /**
      * Sample code: NewRegionFrontloadRelease_GenerateManifest.
@@ -41,8 +41,9 @@ public final class Main {
                     .withEnabled(true).withApiVersions(Arrays.asList("2024-04-01-preview"))
                     .withEndpointUri("https://resource-endpoint.com/").withLocations(Arrays.asList("East US"))
                     .withRequiredFeatures(Arrays.asList("<feature flag>"))
-                    .withFeaturesRule(new ResourceTypeEndpointBaseFeaturesRule()).withTimeout(Duration.parse("PT20S"))
-                    .withEndpointType(EndpointType.PRODUCTION)
+                    .withFeaturesRule(
+                        new ResourceTypeEndpointBaseFeaturesRule().withRequiredFeaturesPolicy(FeaturesPolicy.ANY))
+                    .withTimeout(Duration.parse("PT20S")).withEndpointType(EndpointType.PRODUCTION)
                     .withDstsConfiguration(new ResourceTypeEndpointBaseDstsConfiguration()
                         .withServiceName("resourceprovider").withServiceDnsName("messaging.azure-ppe.net"))
                     .withSkuLink("http://endpointuri/westus/skus").withApiVersion("2024-04-01-preview")

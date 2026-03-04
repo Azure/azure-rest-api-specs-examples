@@ -1,4 +1,4 @@
-package armappservice_test
+package armcertificateregistration_test
 
 import (
 	"context"
@@ -6,25 +6,25 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/certificateregistration/armcertificateregistration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9f4cb2884f1948b879ecfb3f410e8cbc8805c213/specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/ValidateAppServiceCertificatePurchaseInformationBySubscription.json
-func ExampleCertificateOrdersClient_ValidatePurchaseInformation() {
+// Generated from example definition: 2024-11-01/ValidateAppServiceCertificatePurchaseInformationBySubscription.json
+func ExampleAppServiceCertificateOrdersClient_ValidatePurchaseInformation() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armappservice.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcertificateregistration.NewClientFactory("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = clientFactory.NewCertificateOrdersClient().ValidatePurchaseInformation(ctx, armappservice.CertificateOrder{
+	_, err = clientFactory.NewAppServiceCertificateOrdersClient().ValidatePurchaseInformation(ctx, armcertificateregistration.AppServiceCertificateOrder{
 		Location: to.Ptr("Global"),
-		Properties: &armappservice.CertificateOrderProperties{
+		Properties: &armcertificateregistration.AppServiceCertificateOrderProperties{
 			AutoRenew: to.Ptr(true),
-			Certificates: map[string]*armappservice.Certificate{
+			Certificates: map[string]*armcertificateregistration.AppServiceCertificate{
 				"SampleCertName1": {
 					KeyVaultID:         to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"),
 					KeyVaultSecretName: to.Ptr("SampleSecretName1"),
@@ -36,7 +36,7 @@ func ExampleCertificateOrdersClient_ValidatePurchaseInformation() {
 			},
 			DistinguishedName: to.Ptr("CN=SampleCustomDomain.com"),
 			KeySize:           to.Ptr[int32](2048),
-			ProductType:       to.Ptr(armappservice.CertificateProductTypeStandardDomainValidatedSSL),
+			ProductType:       to.Ptr(armcertificateregistration.CertificateProductTypeStandardDomainValidatedSSL),
 			ValidityInYears:   to.Ptr[int32](2),
 		},
 	}, nil)

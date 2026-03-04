@@ -1,4 +1,4 @@
-package armappservice_test
+package armcertificateregistration_test
 
 import (
 	"context"
@@ -6,22 +6,22 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/certificateregistration/armcertificateregistration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9f4cb2884f1948b879ecfb3f410e8cbc8805c213/specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/ReissueAppServiceCertificateOrder.json
-func ExampleCertificateOrdersClient_Reissue() {
+// Generated from example definition: 2024-11-01/ReissueAppServiceCertificateOrder.json
+func ExampleAppServiceCertificateOrdersClient_Reissue() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armappservice.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcertificateregistration.NewClientFactory("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = clientFactory.NewCertificateOrdersClient().Reissue(ctx, "testrg123", "SampleCertificateOrderName", armappservice.ReissueCertificateOrderRequest{
-		Properties: &armappservice.ReissueCertificateOrderRequestProperties{
+	_, err = clientFactory.NewAppServiceCertificateOrdersClient().Reissue(ctx, "testrg123", "SampleCertificateOrderName", armcertificateregistration.ReissueCertificateOrderRequest{
+		Properties: &armcertificateregistration.ReissueCertificateOrderRequestProperties{
 			Csr:                        to.Ptr("CSR1223238Value"),
 			DelayExistingRevokeInHours: to.Ptr[int32](2),
 			IsPrivateKeyExternal:       to.Ptr(false),

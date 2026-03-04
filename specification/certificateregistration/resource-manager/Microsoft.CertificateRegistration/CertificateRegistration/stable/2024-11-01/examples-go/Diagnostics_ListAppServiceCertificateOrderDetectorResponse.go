@@ -1,21 +1,21 @@
-package armappservice_test
+package armcertificateregistration_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/certificateregistration/armcertificateregistration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9f4cb2884f1948b879ecfb3f410e8cbc8805c213/specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/Diagnostics_ListAppServiceCertificateOrderDetectorResponse.json
+// Generated from example definition: 2024-11-01/Diagnostics_ListAppServiceCertificateOrderDetectorResponse.json
 func ExampleCertificateOrdersDiagnosticsClient_NewListAppServiceCertificateOrderDetectorResponsePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armappservice.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcertificateregistration.NewClientFactory("5700fc96-77b4-4f8d-afce-c353d8c443bd", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,25 +30,28 @@ func ExampleCertificateOrdersDiagnosticsClient_NewListAppServiceCertificateOrder
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.DetectorResponseCollection = armappservice.DetectorResponseCollection{
-		// 	Value: []*armappservice.DetectorResponse{
-		// 		{
-		// 			Name: to.Ptr("CertsImport"),
-		// 			Type: to.Ptr("Microsoft.Web/certificateOrders/detectors"),
-		// 			ID: to.Ptr("/subscriptions/5700fc96-77b4-4f8d-afce-c353d8c443bd/resourceGroups/Sample-WestUSResourceGroup/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName/detectors/CertsImport"),
-		// 			Properties: &armappservice.DetectorResponseProperties{
-		// 				Dataset: []*armappservice.DiagnosticData{
-		// 				},
-		// 				Metadata: &armappservice.DetectorInfo{
-		// 					Name: to.Ptr("Certificates Import/Upload"),
-		// 					Author: to.Ptr(""),
-		// 					ID: to.Ptr("CertsImport"),
-		// 				},
-		// 				Status: &armappservice.Status{
-		// 					StatusID: to.Ptr(armappservice.InsightStatusNone),
+		// page = armcertificateregistration.CertificateOrdersDiagnosticsClientListAppServiceCertificateOrderDetectorResponseResponse{
+		// 	DetectorResponseCollection: armcertificateregistration.DetectorResponseCollection{
+		// 		Value: []*armcertificateregistration.DetectorResponse{
+		// 			{
+		// 				Name: to.Ptr("CertsImport"),
+		// 				Type: to.Ptr("Microsoft.Web/certificateOrders/detectors"),
+		// 				ID: to.Ptr("/subscriptions/5700fc96-77b4-4f8d-afce-c353d8c443bd/resourceGroups/Sample-WestUSResourceGroup/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName/detectors/CertsImport"),
+		// 				Properties: &armcertificateregistration.DetectorResponseProperties{
+		// 					Dataset: []*armcertificateregistration.DiagnosticData{
+		// 					},
+		// 					Metadata: &armcertificateregistration.DetectorInfo{
+		// 						Name: to.Ptr("Certificates Import/Upload"),
+		// 						Author: to.Ptr(""),
+		// 						ID: to.Ptr("CertsImport"),
+		// 					},
+		// 					Status: &armcertificateregistration.Status{
+		// 						StatusID: to.Ptr(armcertificateregistration.InsightStatusNone),
+		// 					},
 		// 				},
 		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

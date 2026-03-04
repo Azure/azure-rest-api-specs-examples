@@ -1,4 +1,4 @@
-package armappservice_test
+package armcertificateregistration_test
 
 import (
 	"context"
@@ -6,23 +6,23 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/certificateregistration/armcertificateregistration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9f4cb2884f1948b879ecfb3f410e8cbc8805c213/specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/CreateAppServiceCertificate.json
-func ExampleCertificateOrdersClient_BeginCreateOrUpdateCertificate() {
+// Generated from example definition: 2024-11-01/CreateAppServiceCertificate.json
+func ExampleAppServiceCertificateOrdersClient_BeginCreateOrUpdateCertificate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armappservice.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcertificateregistration.NewClientFactory("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewCertificateOrdersClient().BeginCreateOrUpdateCertificate(ctx, "testrg123", "SampleCertificateOrderName", "SampleCertName1", armappservice.CertificateResource{
+	poller, err := clientFactory.NewAppServiceCertificateOrdersClient().BeginCreateOrUpdateCertificate(ctx, "testrg123", "SampleCertificateOrderName", "SampleCertName1", armcertificateregistration.AppServiceCertificateResource{
 		Location: to.Ptr("Global"),
-		Properties: &armappservice.Certificate{
+		Properties: &armcertificateregistration.AppServiceCertificate{
 			KeyVaultID:         to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"),
 			KeyVaultSecretName: to.Ptr("SampleSecretName1"),
 		},
@@ -37,15 +37,17 @@ func ExampleCertificateOrdersClient_BeginCreateOrUpdateCertificate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.CertificateResource = armappservice.CertificateResource{
-	// 	Name: to.Ptr("SampleCertName1"),
-	// 	Type: to.Ptr("Microsoft.CertificateRegistration/certificateOrders/certificates"),
-	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName/certificates/SampleCertName1"),
-	// 	Location: to.Ptr("Global"),
-	// 	Properties: &armappservice.Certificate{
-	// 		KeyVaultID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"),
-	// 		KeyVaultSecretName: to.Ptr("SampleSecretName1"),
-	// 		ProvisioningState: to.Ptr(armappservice.KeyVaultSecretStatusSucceeded),
+	// res = armcertificateregistration.AppServiceCertificateOrdersClientCreateOrUpdateCertificateResponse{
+	// 	AppServiceCertificateResource: &armcertificateregistration.AppServiceCertificateResource{
+	// 		Name: to.Ptr("SampleCertName1"),
+	// 		Type: to.Ptr("Microsoft.CertificateRegistration/certificateOrders/certificates"),
+	// 		ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName/certificates/SampleCertName1"),
+	// 		Location: to.Ptr("Global"),
+	// 		Properties: &armcertificateregistration.AppServiceCertificate{
+	// 			KeyVaultID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/microsoft.keyvault/vaults/SamplevaultName"),
+	// 			KeyVaultSecretName: to.Ptr("SampleSecretName1"),
+	// 			ProvisioningState: to.Ptr(armcertificateregistration.KeyVaultSecretStatusSucceeded),
+	// 		},
 	// 	},
 	// }
 }

@@ -1,4 +1,4 @@
-package armappservice_test
+package armdomainregistration_test
 
 import (
 	"context"
@@ -6,21 +6,21 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/domainregistration/armdomainregistration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9f4cb2884f1948b879ecfb3f410e8cbc8805c213/specification/domainregistration/resource-manager/Microsoft.DomainRegistration/DomainRegistration/stable/2024-11-01/examples/ListDomainRecommendations.json
+// Generated from example definition: 2024-11-01/ListDomainRecommendations.json
 func ExampleDomainsClient_NewListRecommendationsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armappservice.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armdomainregistration.NewClientFactory("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewDomainsClient().NewListRecommendationsPager(armappservice.DomainRecommendationSearchParameters{
+	pager := clientFactory.NewDomainsClient().NewListRecommendationsPager(armdomainregistration.DomainRecommendationSearchParameters{
 		Keywords:                 to.Ptr("example1"),
 		MaxDomainRecommendations: to.Ptr[int32](10),
 	}, nil)
@@ -34,17 +34,20 @@ func ExampleDomainsClient_NewListRecommendationsPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.NameIdentifierCollection = armappservice.NameIdentifierCollection{
-		// 	Value: []*armappservice.NameIdentifier{
-		// 		{
-		// 			Name: to.Ptr("domainnamesuggestion1"),
+		// page = armdomainregistration.DomainsClientListRecommendationsResponse{
+		// 	NameIdentifierCollection: armdomainregistration.NameIdentifierCollection{
+		// 		Value: []*armdomainregistration.NameIdentifier{
+		// 			{
+		// 				Name: to.Ptr("domainnamesuggestion1"),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("domainnamesuggestion2"),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("domainnamesuggestion3"),
+		// 			},
 		// 		},
-		// 		{
-		// 			Name: to.Ptr("domainnamesuggestion2"),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("domainnamesuggestion3"),
-		// 	}},
+		// 	},
 		// }
 	}
 }

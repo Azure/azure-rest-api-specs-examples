@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Configurations ListByServer.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2023-03-02-preview/ConfigurationListByServer.json
+     */
+    /**
+     * Sample code: List configurations of the server that in the cluster.
+     * 
+     * @param manager Entry point to CosmosDBForPostgreSqlManager.
+     */
+    public static void listConfigurationsOfTheServerThatInTheCluster(
+        com.azure.resourcemanager.cosmosdbforpostgresql.CosmosDBForPostgreSqlManager manager) {
+        manager.configurations().listByServer("TestResourceGroup", "testcluster", "testserver",
+            com.azure.core.util.Context.NONE);
+    }
+}

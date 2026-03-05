@@ -28,8 +28,7 @@ import java.util.Map;
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * ResourceTypeRegistrations_CreateOrUpdate.json
+     * x-ms-original-file: 2024-09-01/ResourceTypeRegistrations_CreateOrUpdate.json
      */
     /**
      * Sample code: ResourceTypeRegistrations_CreateOrUpdate.

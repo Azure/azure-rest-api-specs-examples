@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * ProviderMonitorSettings_Delete.json
+     * x-ms-original-file: 2024-09-01/ProviderMonitorSettings_Delete.json
      */
     /**
      * Sample code: ProviderMonitorSettings_Delete.

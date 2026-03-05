@@ -8,8 +8,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * ResourceActions_DeleteResources.json
+     * x-ms-original-file: 2024-09-01/ResourceActions_DeleteResources.json
      */
     /**
      * Sample code: ResourceActions_DeleteResources.

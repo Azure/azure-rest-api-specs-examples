@@ -6,8 +6,7 @@ import java.util.UUID;
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/
-     * AuthorizedApplications_Get.json
+     * x-ms-original-file: 2024-09-01/AuthorizedApplications_Get.json
      */
     /**
      * Sample code: AuthorizedApplications_Get.

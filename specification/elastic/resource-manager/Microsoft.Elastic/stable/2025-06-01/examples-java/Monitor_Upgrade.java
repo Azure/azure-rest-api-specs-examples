@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/Monitor_Upgrade.json
+     * x-ms-original-file: 2025-06-01/Monitor_Upgrade.json
      */
     /**
      * Sample code: Monitor_Upgrade.

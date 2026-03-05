@@ -1,11 +1,10 @@
 
 /**
- * Samples for CreateAndAssociateIpFilter Create.
+ * Samples for CreateAndAssociateIpFilters Create.
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/IPTrafficFilter_Create.json
+     * x-ms-original-file: 2025-06-01/IPTrafficFilter_Create.json
      */
     /**
      * Sample code: createAndAssociateIPFilter_Create.

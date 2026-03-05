@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/VMHost_List.json
+     * x-ms-original-file: 2025-06-01/VMHost_List.json
      */
     /**
      * Sample code: VMHost_List.

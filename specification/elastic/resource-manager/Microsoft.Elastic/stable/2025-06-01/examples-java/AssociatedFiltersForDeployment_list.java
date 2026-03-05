@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/
-     * AssociatedFiltersForDeployment_list.json
+     * x-ms-original-file: 2025-06-01/AssociatedFiltersForDeployment_list.json
      */
     /**
      * Sample code: listAssociatedTrafficFilters_list.

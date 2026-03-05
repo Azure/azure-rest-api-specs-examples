@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/TrafficFilters_Delete.json
+     * x-ms-original-file: 2025-06-01/TrafficFilters_Delete.json
      */
     /**
      * Sample code: TrafficFilters_Delete.

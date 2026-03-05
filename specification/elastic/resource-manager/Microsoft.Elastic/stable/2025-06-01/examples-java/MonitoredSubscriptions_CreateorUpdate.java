@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/
-     * MonitoredSubscriptions_CreateorUpdate.json
+     * x-ms-original-file: 2025-06-01/MonitoredSubscriptions_CreateorUpdate.json
      */
     /**
      * Sample code: Monitors_AddMonitoredSubscriptions.

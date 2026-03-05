@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/DetachTrafficFilters_Update.
-     * json
+     * x-ms-original-file: 2025-06-01/DetachTrafficFilters_Update.json
      */
     /**
      * Sample code: DetachTrafficFilter_Update.

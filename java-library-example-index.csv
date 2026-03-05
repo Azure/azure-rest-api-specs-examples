@@ -6222,3 +6222,4 @@ id,name,language,tag,package,version,date_epoch,date
 6221,@azure/arm-netapp@23.0.0,js,@azure/arm-netapp_23.0.0,@azure/arm-netapp,23.0.0,1772565469,03/03/2026
 6222,com.azure.resourcemanager:azure-resourcemanager-powerbidedicated:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-powerbidedicated_1.1.0,com.azure.resourcemanager+azure-resourcemanager-powerbidedicated,1.1.0,1772692985,03/05/2026
 6223,com.azure.resourcemanager:azure-resourcemanager-commerce:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-commerce_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-commerce,1.0.0-beta.3,1772626985,03/04/2026
+6224,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-maintenance_1.1.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-maintenance,1.1.0-beta.3,1772598096,03/04/2026

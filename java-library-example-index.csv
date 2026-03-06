@@ -6225,3 +6225,4 @@ id,name,language,tag,package,version,date_epoch,date
 6224,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-maintenance_1.1.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-maintenance,1.1.0-beta.3,1772598096,03/04/2026
 6225,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch/v4@v4.0.0,go,sdk/resourcemanager/batch/armbatch/v4.0.0,sdk/resourcemanager/batch/armbatch,v4.0.0,1772666035,03/04/2026
 6226,@azure/arm-disconnectedoperations@1.0.0-beta.1,js,@azure/arm-disconnectedoperations_1.0.0-beta.1,@azure/arm-disconnectedoperations,1.0.0-beta.1,1772770783,03/06/2026
+6227,azure-mgmt-resource-policy@1.0.0b2,python,azure-mgmt-resource-policy_1.0.0b2,azure-mgmt-resource-policy,1.0.0b2,1772766864,03/06/2026

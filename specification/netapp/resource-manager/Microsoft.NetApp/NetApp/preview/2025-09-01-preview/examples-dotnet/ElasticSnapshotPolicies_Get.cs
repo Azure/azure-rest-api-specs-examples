@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSnapshotPolicyResource created on azure
-// for more information of creating ElasticSnapshotPolicyResource, please refer to the document of ElasticSnapshotPolicyResource
+// this example assumes you already have this ElasticAccountResource created on azure
+// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-string snapshotPolicyName = "snapshotPolicyName";
-ResourceIdentifier elasticSnapshotPolicyResourceId = ElasticSnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
-ElasticSnapshotPolicyResource elasticSnapshotPolicy = client.GetElasticSnapshotPolicyResource(elasticSnapshotPolicyResourceId);
+ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
+
+// get the collection of this ElasticSnapshotPolicyResource
+ElasticSnapshotPolicyCollection collection = elasticAccount.GetElasticSnapshotPolicies();
 
 // invoke the operation
-ElasticSnapshotPolicyResource result = await elasticSnapshotPolicy.GetAsync();
+string snapshotPolicyName = "snapshotPolicyName";
+NullableResponse<ElasticSnapshotPolicyResource> response = await collection.GetIfExistsAsync(snapshotPolicyName);
+ElasticSnapshotPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ElasticSnapshotPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ElasticSnapshotPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

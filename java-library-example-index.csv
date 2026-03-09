@@ -6227,3 +6227,4 @@ id,name,language,tag,package,version,date_epoch,date
 6226,@azure/arm-disconnectedoperations@1.0.0-beta.1,js,@azure/arm-disconnectedoperations_1.0.0-beta.1,@azure/arm-disconnectedoperations,1.0.0-beta.1,1772770783,03/06/2026
 6227,azure-mgmt-resource-policy@1.0.0b2,python,azure-mgmt-resource-policy_1.0.0b2,azure-mgmt-resource-policy,1.0.0b2,1772766864,03/06/2026
 6228,com.azure.resourcemanager:azure-resourcemanager-connectedcache:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-connectedcache_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-connectedcache,1.0.0-beta.2,1772820173,03/06/2026
+6229,"Azure.ResourceManager.NetApp,1.15.0",dotnet,Azure.ResourceManager.NetApp_1.15.0,Azure.ResourceManager.NetApp,1.15.0,1772810748,03/06/2026

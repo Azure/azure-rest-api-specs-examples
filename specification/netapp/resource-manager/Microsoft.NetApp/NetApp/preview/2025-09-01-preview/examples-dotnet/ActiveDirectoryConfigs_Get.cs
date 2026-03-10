@@ -4,7 +4,9 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NetApp.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2025-09-01-preview/examples/ActiveDirectoryConfigs_Get.json
@@ -15,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ActiveDirectoryConfigResource created on azure
-// for more information of creating ActiveDirectoryConfigResource, please refer to the document of ActiveDirectoryConfigResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
-string activeDirectoryConfigName = "adconfig1";
-ResourceIdentifier activeDirectoryConfigResourceId = ActiveDirectoryConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, activeDirectoryConfigName);
-ActiveDirectoryConfigResource activeDirectoryConfig = client.GetActiveDirectoryConfigResource(activeDirectoryConfigResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ActiveDirectoryConfigResource
+ActiveDirectoryConfigCollection collection = resourceGroupResource.GetActiveDirectoryConfigs();
 
 // invoke the operation
-ActiveDirectoryConfigResource result = await activeDirectoryConfig.GetAsync();
+string activeDirectoryConfigName = "adconfig1";
+NullableResponse<ActiveDirectoryConfigResource> response = await collection.GetIfExistsAsync(activeDirectoryConfigName);
+ActiveDirectoryConfigResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ActiveDirectoryConfigData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ActiveDirectoryConfigData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

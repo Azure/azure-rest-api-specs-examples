@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.NetApp.Models;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2025-09-01-preview/examples/ElasticBackupVaults_Get.json
@@ -14,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticAccountResource created on azure
-// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
+// this example assumes you already have this ElasticBackupVaultResource created on azure
+// for more information of creating ElasticBackupVaultResource, please refer to the document of ElasticBackupVaultResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
-
-// get the collection of this ElasticBackupVaultResource
-ElasticBackupVaultCollection collection = elasticAccount.GetElasticBackupVaults();
+string backupVaultName = "backupVault1";
+ResourceIdentifier elasticBackupVaultResourceId = ElasticBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
+ElasticBackupVaultResource elasticBackupVault = client.GetElasticBackupVaultResource(elasticBackupVaultResourceId);
 
 // invoke the operation
-string backupVaultName = "backupVault1";
-NullableResponse<ElasticBackupVaultResource> response = await collection.GetIfExistsAsync(backupVaultName);
-ElasticBackupVaultResource result = response.HasValue ? response.Value : null;
+ElasticBackupVaultResource result = await elasticBackupVault.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ElasticBackupVaultData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ElasticBackupVaultData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -6236,3 +6236,4 @@ id,name,language,tag,package,version,date_epoch,date
 6235,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations@v1.0.0,go,sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations/v1.0.0,sdk/resourcemanager/disconnectedoperations/armdisconnectedoperations,v1.0.0,1773199825,03/11/2026
 6236,@azure/arm-disconnectedoperations@1.0.0,js,@azure/arm-disconnectedoperations_1.0.0,@azure/arm-disconnectedoperations,1.0.0,1773199972,03/11/2026
 6237,azure-mgmt-commerce@6.1.0b2,python,azure-mgmt-commerce_6.1.0b2,azure-mgmt-commerce,6.1.0b2,1773216809,03/11/2026
+6238,azure-mgmt-datafactory@9.3.0,python,azure-mgmt-datafactory_9.3.0,azure-mgmt-datafactory,9.3.0,1773215284,03/11/2026

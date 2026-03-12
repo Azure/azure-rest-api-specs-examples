@@ -1,0 +1,94 @@
+package armpurview_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview/v2"
+)
+
+// Generated from example definition: 2024-04-01-preview/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpurview.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armpurview.OperationsClientListResponse{
+		// 	OperationList: armpurview.OperationList{
+		// 		Value: []*armpurview.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/operations/read"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Reads all available operations in Purview Resource Provider."),
+		// 					Operation: to.Ptr("Read all operations"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Operations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/register/action"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Register the subscription for Purview Resource Provider"),
+		// 					Operation: to.Ptr("Register Purview Resource Provider"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Purview Resource Provider"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/unregister/action"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Unregister  the subscription for Purview Resource Provider"),
+		// 					Operation: to.Ptr("Unregister Purview Resource Provider"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Purview Resource Provider"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/accounts/read"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Read account resource for Purview Resource Provider."),
+		// 					Operation: to.Ptr("Read account resource"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Account"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/accounts/write"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Write account resource for Purview Resource Provider."),
+		// 					Operation: to.Ptr("Write account resource"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Account"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Purview/accounts/delete"),
+		// 				Display: &armpurview.OperationDisplay{
+		// 					Description: to.Ptr("Delete account resource for Purview Resource Provider."),
+		// 					Operation: to.Ptr("Delete account resource"),
+		// 					Provider: to.Ptr("Microsoft Purview"),
+		// 					Resource: to.Ptr("Account"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

@@ -1,0 +1,56 @@
+package armpurview_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview/v2"
+)
+
+// Generated from example definition: 2024-04-01-preview/KafkaConfigurations_Get.json
+func ExampleKafkaConfigurationsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpurview.NewClientFactory("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewKafkaConfigurationsClient().Get(ctx, "rgpurview", "account1", "kafkaConfigName", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armpurview.KafkaConfigurationsClientGetResponse{
+	// 	KafkaConfiguration: &armpurview.KafkaConfiguration{
+	// 		Name: to.Ptr("kafkaConfigName"),
+	// 		Type: to.Ptr("Microsoft.Purview/accounts/kafkaconfiguration"),
+	// 		ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1/kafkaConfigurations/default"),
+	// 		Properties: &armpurview.KafkaConfigurationProperties{
+	// 			ConsumerGroup: to.Ptr("consumerGroup"),
+	// 			Credentials: &armpurview.Credentials{
+	// 				Type: to.Ptr(armpurview.KafkaConfigurationIdentityTypeUserAssigned),
+	// 				IdentityID: to.Ptr("/subscriptions/47e8596d-ee73-4eb2-b6b4-cc13c2b87ssd/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testId"),
+	// 			},
+	// 			EventHubPartitionID: to.Ptr("partitionId"),
+	// 			EventHubResourceID: to.Ptr("/subscriptions/225be6fe-ec1c-4d51-a368-f69348d2e6c5/resourceGroups/testRG/providers/Microsoft.EventHub/namespaces/eventHubNameSpaceName"),
+	// 			EventHubType: to.Ptr(armpurview.EventHubTypeNotification),
+	// 			EventStreamingState: to.Ptr(armpurview.EventStreamingStateEnabled),
+	// 			EventStreamingType: to.Ptr(armpurview.EventStreamingTypeAzure),
+	// 		},
+	// 		SystemData: &armpurview.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-09T01:36:27.637Z"); return t}()),
+	// 			CreatedBy: to.Ptr("User@user"),
+	// 			CreatedByType: to.Ptr(armpurview.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-09T01:36:27.637Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("User"),
+	// 			LastModifiedByType: to.Ptr(armpurview.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

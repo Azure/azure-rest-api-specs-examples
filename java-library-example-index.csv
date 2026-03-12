@@ -6239,3 +6239,4 @@ id,name,language,tag,package,version,date_epoch,date
 6238,azure-mgmt-datafactory@9.3.0,python,azure-mgmt-datafactory_9.3.0,azure-mgmt-datafactory,9.3.0,1773215284,03/11/2026
 6239,azure-mgmt-disconnectedoperations@1.0.0,python,azure-mgmt-disconnectedoperations_1.0.0,azure-mgmt-disconnectedoperations,1.0.0,1773204307,03/11/2026
 6240,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2@v2.4.0-beta.2,go,sdk/resourcemanager/eventgrid/armeventgrid/v2.4.0-beta.2,sdk/resourcemanager/eventgrid/armeventgrid,v2.4.0-beta.2,1773297618,03/12/2026
+6241,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensiontypes@v0.2.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes/v0.2.0,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes,v0.2.0,1773297451,03/12/2026

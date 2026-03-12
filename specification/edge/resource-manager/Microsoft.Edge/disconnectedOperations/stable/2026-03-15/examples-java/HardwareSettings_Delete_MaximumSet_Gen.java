@@ -1,0 +1,19 @@
+
+/**
+ * Samples for HardwareSettings Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15/HardwareSettings_Delete_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: HardwareSettings_Delete_MaximumSet.
+     * 
+     * @param manager Entry point to DisconnectedOperationsManager.
+     */
+    public static void hardwareSettingsDeleteMaximumSet(
+        com.azure.resourcemanager.disconnectedoperations.DisconnectedOperationsManager manager) {
+        manager.hardwareSettings().delete("rgdisconnectedOperations", "demo-resource", "default",
+            com.azure.core.util.Context.NONE);
+    }
+}

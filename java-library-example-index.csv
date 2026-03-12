@@ -6246,3 +6246,4 @@ id,name,language,tag,package,version,date_epoch,date
 6245,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6@v6.0.0-beta.2,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6.0.0-beta.2,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v6.0.0-beta.2,1773282294,03/12/2026
 6246,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0-beta.3,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0-beta.3,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0-beta.3,1773282268,03/12/2026
 6247,azure-mgmt-communication@3.0.0b1,python,azure-mgmt-communication_3.0.0b1,azure-mgmt-communication,3.0.0b1,1773282417,03/12/2026
+6248,azure-mgmt-batch@19.0.0,python,azure-mgmt-batch_19.0.0,azure-mgmt-batch,19.0.0,1773276984,03/12/2026

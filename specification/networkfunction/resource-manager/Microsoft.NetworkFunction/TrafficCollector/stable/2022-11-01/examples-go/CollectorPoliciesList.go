@@ -1,0 +1,69 @@
+package armnetworkfunction_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkfunction/armnetworkfunction/v3"
+)
+
+// Generated from example definition: 2022-11-01/CollectorPoliciesList.json
+func ExampleCollectorPoliciesClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetworkfunction.NewClientFactory("subid", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewCollectorPoliciesClient().NewListPager("rg1", "atc", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnetworkfunction.CollectorPoliciesClientListResponse{
+		// 	CollectorPolicyListResult: armnetworkfunction.CollectorPolicyListResult{
+		// 		Value: []*armnetworkfunction.CollectorPolicy{
+		// 			{
+		// 				Name: to.Ptr("atc"),
+		// 				Type: to.Ptr("Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies"),
+		// 				Etag: to.Ptr("w/\\72090554-7e3b-43f2-80ad-99a9020dcb11\\"),
+		// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1"),
+		// 				Location: to.Ptr("westus"),
+		// 				Properties: &armnetworkfunction.CollectorPolicyPropertiesFormat{
+		// 					EmissionPolicies: []*armnetworkfunction.EmissionPoliciesPropertiesFormat{
+		// 						{
+		// 							EmissionDestinations: []*armnetworkfunction.EmissionPolicyDestination{
+		// 								{
+		// 									DestinationType: to.Ptr(armnetworkfunction.DestinationTypeAzureMonitor),
+		// 								},
+		// 							},
+		// 							EmissionType: to.Ptr(armnetworkfunction.EmissionTypeIPFIX),
+		// 						},
+		// 					},
+		// 					IngestionPolicy: &armnetworkfunction.IngestionPolicyPropertiesFormat{
+		// 						IngestionSources: []*armnetworkfunction.IngestionSourcesPropertiesFormat{
+		// 							{
+		// 								ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"),
+		// 								SourceType: to.Ptr(armnetworkfunction.SourceTypeResource),
+		// 							},
+		// 						},
+		// 						IngestionType: to.Ptr(armnetworkfunction.IngestionTypeIPFIX),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetworkfunction.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

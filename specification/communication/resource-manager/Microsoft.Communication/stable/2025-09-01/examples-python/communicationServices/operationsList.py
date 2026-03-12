@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/communicationServices/operationsList.json
+# x-ms-original-file: 2025-09-01/communicationServices/operationsList.json
 if __name__ == "__main__":
     main()

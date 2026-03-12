@@ -19,7 +19,7 @@ from azure.mgmt.communication import CommunicationServiceManagementClient
 def main():
     client = CommunicationServiceManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="11112222-3333-4444-5555-666677778888",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.suppression_list_addresses.create_or_update(
@@ -33,6 +33,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/suppressionLists/createOrUpdateAddress.json
+# x-ms-original-file: 2025-09-01/suppressionLists/createOrUpdateAddress.json
 if __name__ == "__main__":
     main()

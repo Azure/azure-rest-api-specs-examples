@@ -19,7 +19,7 @@ from azure.mgmt.communication import CommunicationServiceManagementClient
 def main():
     client = CommunicationServiceManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="11112222-3333-4444-5555-666677778888",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.sender_usernames.list_by_domains(
@@ -31,6 +31,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/senderUsernames/listByDomain.json
+# x-ms-original-file: 2025-09-01/senderUsernames/listByDomain.json
 if __name__ == "__main__":
     main()

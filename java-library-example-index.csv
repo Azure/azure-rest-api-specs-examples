@@ -6238,3 +6238,4 @@ id,name,language,tag,package,version,date_epoch,date
 6237,azure-mgmt-commerce@6.1.0b2,python,azure-mgmt-commerce_6.1.0b2,azure-mgmt-commerce,6.1.0b2,1773216809,03/11/2026
 6238,azure-mgmt-datafactory@9.3.0,python,azure-mgmt-datafactory_9.3.0,azure-mgmt-datafactory,9.3.0,1773215284,03/11/2026
 6239,azure-mgmt-disconnectedoperations@1.0.0,python,azure-mgmt-disconnectedoperations_1.0.0,azure-mgmt-disconnectedoperations,1.0.0,1773204307,03/11/2026
+6240,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2@v2.4.0-beta.2,go,sdk/resourcemanager/eventgrid/armeventgrid/v2.4.0-beta.2,sdk/resourcemanager/eventgrid/armeventgrid,v2.4.0-beta.2,1773297618,03/12/2026

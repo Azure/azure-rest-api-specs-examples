@@ -6238,3 +6238,12 @@ id,name,language,tag,package,version,date_epoch,date
 6237,azure-mgmt-commerce@6.1.0b2,python,azure-mgmt-commerce_6.1.0b2,azure-mgmt-commerce,6.1.0b2,1773216809,03/11/2026
 6238,azure-mgmt-datafactory@9.3.0,python,azure-mgmt-datafactory_9.3.0,azure-mgmt-datafactory,9.3.0,1773215284,03/11/2026
 6239,azure-mgmt-disconnectedoperations@1.0.0,python,azure-mgmt-disconnectedoperations_1.0.0,azure-mgmt-disconnectedoperations,1.0.0,1773204307,03/11/2026
+6240,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2@v2.4.0-beta.2,go,sdk/resourcemanager/eventgrid/armeventgrid/v2.4.0-beta.2,sdk/resourcemanager/eventgrid/armeventgrid,v2.4.0-beta.2,1773297618,03/12/2026
+6241,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensiontypes@v0.2.0,go,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes/v0.2.0,sdk/resourcemanager/kubernetesconfiguration/armextensiontypes,v0.2.0,1773297451,03/12/2026
+6242,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3@v3.0.0-beta.1,go,sdk/resourcemanager/azurestackhci/armazurestackhci/v3.0.0-beta.1,sdk/resourcemanager/azurestackhci/armazurestackhci,v3.0.0-beta.1,1773286486,03/12/2026
+6243,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps/v2@v2.0.0-beta.1,go,sdk/resourcemanager/maps/armmaps/v2.0.0-beta.1,sdk/resourcemanager/maps/armmaps,v2.0.0-beta.1,1773286469,03/12/2026
+6244,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes@v0.2.0,go,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes/v0.2.0,sdk/resourcemanager/kubernetesconfiguration/armprivatelinkscopes,v0.2.0,1773283256,03/12/2026
+6245,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6@v6.0.0-beta.2,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6.0.0-beta.2,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v6.0.0-beta.2,1773282294,03/12/2026
+6246,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0-beta.3,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0-beta.3,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0-beta.3,1773282268,03/12/2026
+6247,azure-mgmt-communication@3.0.0b1,python,azure-mgmt-communication_3.0.0b1,azure-mgmt-communication,3.0.0b1,1773282417,03/12/2026
+6248,azure-mgmt-batch@19.0.0,python,azure-mgmt-batch_19.0.0,azure-mgmt-batch,19.0.0,1773276984,03/12/2026

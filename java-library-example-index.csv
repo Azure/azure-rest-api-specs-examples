@@ -6247,3 +6247,4 @@ id,name,language,tag,package,version,date_epoch,date
 6246,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0-beta.3,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0-beta.3,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0-beta.3,1773282268,03/12/2026
 6247,azure-mgmt-communication@3.0.0b1,python,azure-mgmt-communication_3.0.0b1,azure-mgmt-communication,3.0.0b1,1773282417,03/12/2026
 6248,azure-mgmt-batch@19.0.0,python,azure-mgmt-batch_19.0.0,azure-mgmt-batch,19.0.0,1773276984,03/12/2026
+6249,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters_1.1.0,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters,1.1.0,1773352732,03/12/2026

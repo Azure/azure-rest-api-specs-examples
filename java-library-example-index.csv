@@ -6255,3 +6255,4 @@ id,name,language,tag,package,version,date_epoch,date
 6254,@azure/arm-servicefabricmanagedclusters@1.0.0,js,@azure/arm-servicefabricmanagedclusters_1.0.0,@azure/arm-servicefabricmanagedclusters,1.0.0,1773352575,03/12/2026
 6255,@azure/arm-managedops@1.0.0-beta.2,js,@azure/arm-managedops_1.0.0-beta.2,@azure/arm-managedops,1.0.0-beta.2,1773344863,03/12/2026
 6256,@azure/arm-postgresql-flexible@10.0.0-beta.1,js,@azure/arm-postgresql-flexible_10.0.0-beta.1,@azure/arm-postgresql-flexible,10.0.0-beta.1,1773330138,03/12/2026
+6257,"Azure.ResourceManager.DurableTask,1.1.0",dotnet,Azure.ResourceManager.DurableTask_1.1.0,Azure.ResourceManager.DurableTask,1.1.0,1773329104,03/12/2026

@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DurableTaskSchedulerResource created on azure
-// for more information of creating DurableTaskSchedulerResource, please refer to the document of DurableTaskSchedulerResource
+// this example assumes you already have this DurableTaskHubResource created on azure
+// for more information of creating DurableTaskHubResource, please refer to the document of DurableTaskHubResource
 string subscriptionId = "EE9BD735-67CE-4A90-89C4-439D3F6A4C93";
 string resourceGroupName = "rgopenapi";
 string schedulerName = "testscheduler";
-ResourceIdentifier durableTaskSchedulerResourceId = DurableTaskSchedulerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, schedulerName);
-DurableTaskSchedulerResource durableTaskScheduler = client.GetDurableTaskSchedulerResource(durableTaskSchedulerResourceId);
-
-// get the collection of this DurableTaskHubResource
-DurableTaskHubCollection collection = durableTaskScheduler.GetDurableTaskHubs();
+string taskHubName = "testtaskhub";
+ResourceIdentifier durableTaskHubResourceId = DurableTaskHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, schedulerName, taskHubName);
+DurableTaskHubResource durableTaskHub = client.GetDurableTaskHubResource(durableTaskHubResourceId);
 
 // invoke the operation
-string taskHubName = "testtaskhub";
 DurableTaskHubData data = new DurableTaskHubData
 {
     Properties = new DurableTaskHubProperties(),
 };
-ArmOperation<DurableTaskHubResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, taskHubName, data);
+ArmOperation<DurableTaskHubResource> lro = await durableTaskHub.UpdateAsync(WaitUntil.Completed, data);
 DurableTaskHubResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

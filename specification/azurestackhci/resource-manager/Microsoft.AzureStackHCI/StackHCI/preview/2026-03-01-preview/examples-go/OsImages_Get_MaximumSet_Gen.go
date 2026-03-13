@@ -1,0 +1,42 @@
+package armazurestackhci_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3"
+)
+
+// Generated from example definition: 2026-03-01-preview/OsImages_Get_MaximumSet_Gen.json
+func ExampleOsImagesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armazurestackhci.NewClientFactory("5233F7FA-C5BA-41FD-A07F-C65BA2084316", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewOsImagesClient().Get(ctx, "arowdcr", "10.2408.0.1", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armazurestackhci.OsImagesClientGetResponse{
+	// 	OsImage: &armazurestackhci.OsImage{
+	// 		Properties: &armazurestackhci.OsImageProperties{
+	// 			ValidatedSolutionRecipeVersion: to.Ptr("10.2408.0.1"),
+	// 			ComposedImageVersion: to.Ptr("10.2408.0.1"),
+	// 			ComposedImageIsoURL: to.Ptr("https://microsoft.com/a"),
+	// 			ComposedImageIsoHash: to.Ptr("9542EB842C768EC8215578A98C04C2FC0E1AAE750C8DECE362226C8C4488E8A6"),
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/b8d594e5-51f3-4c11-9c54-a7771b81c712/providers/Microsoft.AzureStackHCI/osImages/10.2408.0.1"),
+	// 		Name: to.Ptr("10.2408.0.1"),
+	// 		Type: to.Ptr("Microsoft.AzureStackHCI/OsImages"),
+	// 	},
+	// }
+}

@@ -1,0 +1,163 @@
+package armazurestackhci_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3"
+)
+
+// Generated from example definition: 2026-03-01-preview/CreateHciEdgeDevice.json
+func ExampleEdgeDevicesClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armazurestackhci.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewEdgeDevicesClient().BeginCreateOrUpdate(ctx, "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1", "default", &armazurestackhci.HciEdgeDevice{
+		Kind: to.Ptr(armazurestackhci.DeviceKindHCI),
+		Properties: &armazurestackhci.HciEdgeDeviceProperties{
+			DeviceConfiguration: &armazurestackhci.DeviceConfiguration{
+				DeviceMetadata: to.Ptr(""),
+				NicDetails: []*armazurestackhci.NicDetail{
+					{
+						AdapterName:        to.Ptr("ethernet"),
+						ComponentID:        to.Ptr("VMBUS{f8615163-df3e-46c5-913f-f2d2f965ed0g} "),
+						DefaultGateway:     to.Ptr("10.10.10.1"),
+						DefaultIsolationID: to.Ptr("0"),
+						DNSServers: []*string{
+							to.Ptr("100.10.10.1"),
+						},
+						DriverVersion:        to.Ptr("10.0.20348.1547 "),
+						InterfaceDescription: to.Ptr("NDIS 6.70 "),
+						Ip4Address:           to.Ptr("10.10.10.10"),
+						SubnetMask:           to.Ptr("255.255.255.0"),
+					},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armazurestackhci.EdgeDevicesClientCreateOrUpdateResponse{
+	// 	HciEdgeDevice: &armazurestackhci.HciEdgeDevice{
+	// 		Name: to.Ptr("default"),
+	// 		Type: to.Ptr("Microsoft.AzureStackHCI/edgeDevices"),
+	// 		ID: to.Ptr("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1/providers/Microsoft.AzureStackHCI/edgeDevices/default"),
+	// 		Kind: to.Ptr(armazurestackhci.DeviceKindHCI),
+	// 		Properties: &armazurestackhci.HciEdgeDeviceProperties{
+	// 			ProvisioningState: to.Ptr(armazurestackhci.ProvisioningStateSucceeded),
+	// 			ReportedProperties: &armazurestackhci.HciReportedProperties{
+	// 				DeviceState: to.Ptr(armazurestackhci.DeviceStateConnected),
+	// 				NetworkProfile: &armazurestackhci.HciNetworkProfile{
+	// 					HostNetwork: &armazurestackhci.HciEdgeDeviceHostNetwork{
+	// 						EnableStorageAutoIP: to.Ptr(false),
+	// 						Intents: []*armazurestackhci.HciEdgeDeviceIntents{
+	// 							{
+	// 								AdapterPropertyOverrides: &armazurestackhci.HciEdgeDeviceAdapterPropertyOverrides{
+	// 									NetworkDirect: to.Ptr("0"),
+	// 								},
+	// 								IntentAdapters: []*string{
+	// 									to.Ptr("ethernet"),
+	// 									to.Ptr("ethernet2"),
+	// 								},
+	// 								IntentName: to.Ptr("managementcomputestorage"),
+	// 								IntentType: to.Ptr[int64](14),
+	// 								IsComputeIntentSet: to.Ptr(true),
+	// 								IsManagementIntentSet: to.Ptr(true),
+	// 								IsNetworkIntentType: to.Ptr(true),
+	// 								IsOnlyStorage: to.Ptr(false),
+	// 								IsOnlyStretch: to.Ptr(false),
+	// 								IsStorageIntentSet: to.Ptr(true),
+	// 								IsStretchIntentSet: to.Ptr(false),
+	// 								OverrideAdapterProperty: to.Ptr(true),
+	// 								OverrideQosPolicy: to.Ptr(true),
+	// 								OverrideVirtualSwitchConfiguration: to.Ptr(true),
+	// 								QosPolicyOverrides: &armazurestackhci.QosPolicyOverrides{
+	// 								},
+	// 								Scope: to.Ptr[int64](0),
+	// 								VirtualSwitchConfigurationOverrides: &armazurestackhci.HciEdgeDeviceVirtualSwitchConfigurationOverrides{
+	// 									EnableIov: to.Ptr("True"),
+	// 									LoadBalancingAlgorithm: to.Ptr("HyperVPort"),
+	// 								},
+	// 							},
+	// 						},
+	// 						StorageConnectivitySwitchless: to.Ptr(false),
+	// 						StorageNetworks: []*armazurestackhci.HciEdgeDeviceStorageNetworks{
+	// 							{
+	// 								Name: to.Ptr("StorageIntent1"),
+	// 								NetworkAdapterName: to.Ptr("ethernet"),
+	// 								StorageAdapterIPInfo: []*armazurestackhci.HciEdgeDeviceStorageAdapterIPInfo{
+	// 									{
+	// 										IPv4Address: to.Ptr("192.168.120.192"),
+	// 										PhysicalNode: to.Ptr("v-host1"),
+	// 										SubnetMask: to.Ptr("255.255.244.0"),
+	// 									},
+	// 								},
+	// 								StorageVlanID: to.Ptr("8"),
+	// 							},
+	// 						},
+	// 					},
+	// 					NicDetails: []*armazurestackhci.HciNicDetail{
+	// 						{
+	// 							AdapterName: to.Ptr("vmanagement"),
+	// 							ComponentID: to.Ptr("vms_mp"),
+	// 							DefaultGateway: to.Ptr("192.168.200.1"),
+	// 							DefaultIsolationID: to.Ptr("0"),
+	// 							DNSServers: []*string{
+	// 								to.Ptr("192.168.200.222"),
+	// 							},
+	// 							DriverVersion: to.Ptr("10.0.25398.1"),
+	// 							InterfaceDescription: to.Ptr("Hyper-V Virtual Ethernet Adapter"),
+	// 							Ip4Address: to.Ptr("192.168.200.92"),
+	// 							MacAddress: to.Ptr("000000000041"),
+	// 							NicStatus: to.Ptr("Up"),
+	// 							NicType: to.Ptr("Virtual"),
+	// 							Slot: to.Ptr("0"),
+	// 							SubnetMask: to.Ptr("255.255.255.0"),
+	// 							VlanID: to.Ptr("0"),
+	// 						},
+	// 					},
+	// 					SwitchDetails: []*armazurestackhci.SwitchDetail{
+	// 						{
+	// 							SwitchName: to.Ptr("vmanagement"),
+	// 							SwitchType: to.Ptr("External"),
+	// 						},
+	// 					},
+	// 				},
+	// 				OSProfile: &armazurestackhci.HciOsProfile{
+	// 					AssemblyVersion: to.Ptr("2402.1"),
+	// 					BootType: to.Ptr("UEFI"),
+	// 				},
+	// 				SbeDeploymentPackageInfo: &armazurestackhci.SbeDeploymentPackageInfo{
+	// 					Code: to.Ptr("NewerThanLatestPublished"),
+	// 					Message: to.Ptr("The SBE package at path 'C:\\SBE' with version 4.1.2312.10 is published later than the latest SBE manifest published for online discovery. "),
+	// 					SbeManifest: to.Ptr("PEFwcGxpY2Fi"),
+	// 				},
+	// 			},
+	// 		},
+	// 		SystemData: &armazurestackhci.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

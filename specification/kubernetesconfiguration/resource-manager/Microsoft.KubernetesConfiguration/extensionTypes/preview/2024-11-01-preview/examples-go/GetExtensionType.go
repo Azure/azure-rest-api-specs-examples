@@ -8,14 +8,14 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armextensiontypes"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ba0c086df0ebe03a61579485c1c10de0d17804b2/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/extensionTypes/preview/2024-11-01-preview/examples/GetExtensionType.json
+// Generated from example definition: 2024-11-01-preview/GetExtensionType.json
 func ExampleClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armextensiontypes.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armextensiontypes.NewClientFactory("subId1", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,22 +26,24 @@ func ExampleClient_Get() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ExtensionType = armextensiontypes.ExtensionType{
-	// 	Name: to.Ptr("bbbb"),
-	// 	Type: to.Ptr("cccc"),
-	// 	ID: to.Ptr("aaaa"),
-	// 	Properties: &armextensiontypes.ExtensionTypeProperties{
-	// 		Description: to.Ptr("My extension type!"),
-	// 		IsManagedIdentityRequired: to.Ptr(true),
-	// 		IsSystemExtension: to.Ptr(false),
-	// 		PlanInfo: &armextensiontypes.ExtensionTypePropertiesPlanInfo{
-	// 			OfferID: to.Ptr("3333333"),
-	// 			PlanID: to.Ptr("222222"),
-	// 			PublisherID: to.Ptr("111111"),
-	// 		},
-	// 		Publisher: to.Ptr("Microsoft"),
-	// 		SupportedClusterTypes: []*string{
-	// 			to.Ptr("connectedClusters")},
+	// res = armextensiontypes.ClientGetResponse{
+	// 	ExtensionType: &armextensiontypes.ExtensionType{
+	// 		Name: to.Ptr("bbbb"),
+	// 		Type: to.Ptr("cccc"),
+	// 		ID: to.Ptr("aaaa"),
+	// 		Properties: &armextensiontypes.ExtensionTypeProperties{
+	// 			Description: to.Ptr("My extension type!"),
+	// 			IsManagedIdentityRequired: to.Ptr(true),
+	// 			IsSystemExtension: to.Ptr(false),
+	// 			PlanInfo: &armextensiontypes.ExtensionTypePropertiesPlanInfo{
+	// 				OfferID: to.Ptr("3333333"),
+	// 				PlanID: to.Ptr("222222"),
+	// 				PublisherID: to.Ptr("111111"),
+	// 			},
+	// 			Publisher: to.Ptr("Microsoft"),
+	// 			SupportedClusterTypes: []*string{
+	// 				to.Ptr("connectedClusters"),
+	// 			},
 	// 			SupportedScopes: &armextensiontypes.ExtensionTypePropertiesSupportedScopes{
 	// 				ClusterScopeSettings: &armextensiontypes.ClusterScopeSettings{
 	// 					Name: to.Ptr("bbbbbbbbbbbbb"),
@@ -55,5 +57,6 @@ func ExampleClient_Get() {
 	// 				DefaultScope: to.Ptr("cluster"),
 	// 			},
 	// 		},
-	// 	}
+	// 	},
+	// }
 }

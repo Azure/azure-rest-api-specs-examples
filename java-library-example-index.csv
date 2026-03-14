@@ -6247,3 +6247,14 @@ id,name,language,tag,package,version,date_epoch,date
 6246,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0-beta.3,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0-beta.3,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0-beta.3,1773282268,03/12/2026
 6247,azure-mgmt-communication@3.0.0b1,python,azure-mgmt-communication_3.0.0b1,azure-mgmt-communication,3.0.0b1,1773282417,03/12/2026
 6248,azure-mgmt-batch@19.0.0,python,azure-mgmt-batch_19.0.0,azure-mgmt-batch,19.0.0,1773276984,03/12/2026
+6249,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters_1.1.0,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters,1.1.0,1773352732,03/12/2026
+6250,com.azure.resourcemanager:azure-resourcemanager-durabletask:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-durabletask_1.1.0,com.azure.resourcemanager+azure-resourcemanager-durabletask,1.1.0,1773345114,03/12/2026
+6251,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commerce/armcommerce@v0.4.0,go,sdk/resourcemanager/commerce/armcommerce/v0.4.0,sdk/resourcemanager/commerce/armcommerce,v0.4.0,1773369896,03/13/2026
+6252,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v1.1.0,go,sdk/resourcemanager/durabletask/armdurabletask/v1.1.0,sdk/resourcemanager/durabletask/armdurabletask,v1.1.0,1773363706,03/13/2026
+6253,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters@v1.0.0,go,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters/v1.0.0,sdk/resourcemanager/servicefabricmanagedclusters/armservicefabricmanagedclusters,v1.0.0,1773349998,03/12/2026
+6254,@azure/arm-servicefabricmanagedclusters@1.0.0,js,@azure/arm-servicefabricmanagedclusters_1.0.0,@azure/arm-servicefabricmanagedclusters,1.0.0,1773352575,03/12/2026
+6255,@azure/arm-managedops@1.0.0-beta.2,js,@azure/arm-managedops_1.0.0-beta.2,@azure/arm-managedops,1.0.0-beta.2,1773344863,03/12/2026
+6256,@azure/arm-postgresql-flexible@10.0.0-beta.1,js,@azure/arm-postgresql-flexible_10.0.0-beta.1,@azure/arm-postgresql-flexible,10.0.0-beta.1,1773330138,03/12/2026
+6257,"Azure.ResourceManager.DurableTask,1.1.0",dotnet,Azure.ResourceManager.DurableTask_1.1.0,Azure.ResourceManager.DurableTask,1.1.0,1773329104,03/12/2026
+6258,azure-mgmt-managedops@1.0.0b2,python,azure-mgmt-managedops_1.0.0b2,azure-mgmt-managedops,1.0.0b2,1773360383,03/13/2026
+6259,azure-mgmt-servicefabricmanagedclusters@3.0.0,python,azure-mgmt-servicefabricmanagedclusters_3.0.0,azure-mgmt-servicefabricmanagedclusters,3.0.0,1773352683,03/12/2026

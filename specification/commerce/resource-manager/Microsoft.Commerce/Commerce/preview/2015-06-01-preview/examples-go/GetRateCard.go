@@ -1,0 +1,54 @@
+package armcommerce_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commerce/armcommerce"
+)
+
+// Generated from example definition: 2015-06-01-preview/GetRateCard.json
+func ExampleRateCardClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcommerce.NewClientFactory("6d61cc05-8f8f-4916-b1b9-f1d9c25aae27", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewRateCardClient().Get(ctx, "OfferDurableId eq 'MS-AZR-0003P' and Currency eq 'USD' and Locale eq 'en-US' and RegionInfo eq 'US'", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcommerce.RateCardClientGetResponse{
+	// 	ResourceRateCardInfo: &armcommerce.ResourceRateCardInfo{
+	// 		Meters: []*armcommerce.MeterInfo{
+	// 			{
+	// 				EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-01T00:00:00Z"); return t}()),
+	// 				IncludedQuantity: to.Ptr[float32](0),
+	// 				MeterCategory: to.Ptr("Test Category"),
+	// 				MeterID: to.Ptr("1d7518e5-bc2f-4a93-9057-1b3047856645"),
+	// 				MeterName: to.Ptr("Test Meter"),
+	// 				MeterRates: map[string]*float32{
+	// 					"0": to.Ptr[float32](1.99),
+	// 					"100": to.Ptr[float32](0.99),
+	// 				},
+	// 				MeterRegion: to.Ptr("US West"),
+	// 				MeterSubCategory: to.Ptr("Test Subcategory"),
+	// 				MeterTags: []*string{
+	// 					to.Ptr("Third Party"),
+	// 				},
+	// 				Unit: to.Ptr("Hours"),
+	// 			},
+	// 		},
+	// 		OfferTerms: []armcommerce.OfferTermInfoClassification{
+	// 		},
+	// 	},
+	// }
+}

@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7832c9e47b8998a1c994b98345eea24dbc2ac5b8/specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/smtpUsername/get.json
+// Generated from example definition: 2025-09-01/smtpUsername/get.json
 func ExampleSMTPUsernamesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcommunication.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcommunication.NewClientFactory("11112222-3333-4444-5555-666677778888", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,14 +26,16 @@ func ExampleSMTPUsernamesClient_Get() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.SMTPUsernameResource = armcommunication.SMTPUsernameResource{
-	// 	Name: to.Ptr("smtpusername1"),
-	// 	Type: to.Ptr("Microsoft.Communication/CommunicationServices/SmtpUsername"),
-	// 	ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/contosoResourceGroup/providers/Microsoft.Communication/CommunicationServices/contosoACSService/SmtpUsername/smtpusername1"),
-	// 	Properties: &armcommunication.SMTPUsernameProperties{
-	// 		EntraApplicationID: to.Ptr("aaaa1111-bbbb-2222-3333-aaaa1111abcd"),
-	// 		TenantID: to.Ptr("aaaa1111-bbbb-2222-3333-aaaa11112222"),
-	// 		Username: to.Ptr("newuser1@contoso.com"),
+	// res = armcommunication.SMTPUsernamesClientGetResponse{
+	// 	SMTPUsernameResource: &armcommunication.SMTPUsernameResource{
+	// 		Name: to.Ptr("smtpusername1"),
+	// 		Type: to.Ptr("Microsoft.Communication/CommunicationServices/SmtpUsername"),
+	// 		ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/contosoResourceGroup/providers/Microsoft.Communication/CommunicationServices/contosoACSService/SmtpUsername/smtpusername1"),
+	// 		Properties: &armcommunication.SMTPUsernameProperties{
+	// 			EntraApplicationID: to.Ptr("aaaa1111-bbbb-2222-3333-aaaa1111abcd"),
+	// 			TenantID: to.Ptr("aaaa1111-bbbb-2222-3333-aaaa11112222"),
+	// 			Username: to.Ptr("newuser1@contoso.com"),
+	// 		},
 	// 	},
 	// }
 }

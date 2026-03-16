@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7832c9e47b8998a1c994b98345eea24dbc2ac5b8/specification/communication/resource-manager/Microsoft.Communication/stable/2025-09-01/examples/domains/listByEmailService.json
+// Generated from example definition: 2025-09-01/domains/listByEmailService.json
 func ExampleDomainsClient_NewListByEmailServiceResourcePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcommunication.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcommunication.NewClientFactory("11112222-3333-4444-5555-666677778888", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,45 +30,48 @@ func ExampleDomainsClient_NewListByEmailServiceResourcePager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.DomainResourceList = armcommunication.DomainResourceList{
-		// 	Value: []*armcommunication.DomainResource{
-		// 		{
-		// 			Name: to.Ptr("mydomain.com"),
-		// 			Type: to.Ptr("Microsoft.Communication/EmailServices/Domains"),
-		// 			ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/MyResourceGroup/providers/Microsoft.Communication/EmailServices/MyEmailServiceResource/Domains/mydomain.com"),
-		// 			Location: to.Ptr("Global"),
-		// 			Properties: &armcommunication.DomainProperties{
-		// 				DataLocation: to.Ptr("United States"),
-		// 				DomainManagement: to.Ptr(armcommunication.DomainManagementCustomerManaged),
-		// 				FromSenderDomain: to.Ptr("mydomain.com"),
-		// 				MailFromSenderDomain: to.Ptr("mydomain.com"),
-		// 				ProvisioningState: to.Ptr(armcommunication.DomainsProvisioningStateSucceeded),
-		// 				VerificationRecords: &armcommunication.DomainPropertiesVerificationRecords{
-		// 					Domain: &armcommunication.DNSRecord{
-		// 						Name: to.Ptr("recordName"),
-		// 						Type: to.Ptr("TXT"),
-		// 						TTL: to.Ptr[int32](3600),
-		// 						Value: to.Ptr("recordValue"),
+		// page = armcommunication.DomainsClientListByEmailServiceResourceResponse{
+		// 	DomainResourceList: armcommunication.DomainResourceList{
+		// 		Value: []*armcommunication.DomainResource{
+		// 			{
+		// 				Name: to.Ptr("mydomain.com"),
+		// 				Type: to.Ptr("Microsoft.Communication/EmailServices/Domains"),
+		// 				ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/MyResourceGroup/providers/Microsoft.Communication/EmailServices/MyEmailServiceResource/Domains/mydomain.com"),
+		// 				Location: to.Ptr("Global"),
+		// 				Properties: &armcommunication.DomainProperties{
+		// 					DataLocation: to.Ptr("United States"),
+		// 					DomainManagement: to.Ptr(armcommunication.DomainManagementCustomerManaged),
+		// 					FromSenderDomain: to.Ptr("mydomain.com"),
+		// 					MailFromSenderDomain: to.Ptr("mydomain.com"),
+		// 					ProvisioningState: to.Ptr(armcommunication.DomainsProvisioningStateRunning),
+		// 					VerificationRecords: &armcommunication.DomainPropertiesVerificationRecords{
+		// 						Domain: &armcommunication.DNSRecord{
+		// 							Name: to.Ptr("recordName"),
+		// 							Type: to.Ptr("TXT"),
+		// 							TTL: to.Ptr[int32](3600),
+		// 							Value: to.Ptr("recordValue"),
+		// 						},
+		// 						SPF: &armcommunication.DNSRecord{
+		// 							Name: to.Ptr("recordName"),
+		// 							Type: to.Ptr("TXT"),
+		// 							TTL: to.Ptr[int32](3600),
+		// 							Value: to.Ptr("recordValue"),
+		// 						},
 		// 					},
-		// 					SPF: &armcommunication.DNSRecord{
-		// 						Name: to.Ptr("recordName"),
-		// 						Type: to.Ptr("TXT"),
-		// 						TTL: to.Ptr[int32](3600),
-		// 						Value: to.Ptr("recordValue"),
-		// 					},
-		// 				},
-		// 				VerificationStates: &armcommunication.DomainPropertiesVerificationStates{
-		// 					Domain: &armcommunication.VerificationStatusRecord{
-		// 						ErrorCode: to.Ptr(""),
-		// 						Status: to.Ptr(armcommunication.VerificationStatusVerified),
-		// 					},
-		// 					SPF: &armcommunication.VerificationStatusRecord{
-		// 						ErrorCode: to.Ptr(""),
-		// 						Status: to.Ptr(armcommunication.VerificationStatusNotStarted),
+		// 					VerificationStates: &armcommunication.DomainPropertiesVerificationStates{
+		// 						Domain: &armcommunication.VerificationStatusRecord{
+		// 							ErrorCode: to.Ptr(""),
+		// 							Status: to.Ptr(armcommunication.VerificationStatusVerified),
+		// 						},
+		// 						SPF: &armcommunication.VerificationStatusRecord{
+		// 							ErrorCode: to.Ptr(""),
+		// 							Status: to.Ptr(armcommunication.VerificationStatusNotStarted),
+		// 						},
 		// 					},
 		// 				},
 		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

@@ -6259,3 +6259,4 @@ id,name,language,tag,package,version,date_epoch,date
 6258,azure-mgmt-managedops@1.0.0b2,python,azure-mgmt-managedops_1.0.0b2,azure-mgmt-managedops,1.0.0b2,1773360383,03/13/2026
 6259,azure-mgmt-servicefabricmanagedclusters@3.0.0,python,azure-mgmt-servicefabricmanagedclusters_3.0.0,azure-mgmt-servicefabricmanagedclusters,3.0.0,1773352683,03/12/2026
 6260,com.azure.resourcemanager:azure-resourcemanager-managedops:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-managedops_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-managedops,1.0.0-beta.2,1773630738,03/16/2026
+6261,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0-beta.1,go,sdk/resourcemanager/search/armsearch/v2.0.0-beta.1,sdk/resourcemanager/search/armsearch,v2.0.0-beta.1,1773637825,03/16/2026

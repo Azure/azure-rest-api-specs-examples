@@ -6262,3 +6262,4 @@ id,name,language,tag,package,version,date_epoch,date
 6261,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0-beta.1,go,sdk/resourcemanager/search/armsearch/v2.0.0-beta.1,sdk/resourcemanager/search/armsearch,v2.0.0-beta.1,1773637825,03/16/2026
 6262,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v3@v3.0.0-beta.1,go,sdk/resourcemanager/communication/armcommunication/v3.0.0-beta.1,sdk/resourcemanager/communication/armcommunication,v3.0.0-beta.1,1773632527,03/16/2026
 6263,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/alertsmanagement/armalertsmanagement@v0.11.0,go,sdk/resourcemanager/alertsmanagement/armalertsmanagement/v0.11.0,sdk/resourcemanager/alertsmanagement/armalertsmanagement,v0.11.0,1773632013,03/16/2026
+6264,"Azure.ResourceManager.Storage,1.6.1",dotnet,Azure.ResourceManager.Storage_1.6.1,Azure.ResourceManager.Storage,1.6.1,1773655883,03/16/2026

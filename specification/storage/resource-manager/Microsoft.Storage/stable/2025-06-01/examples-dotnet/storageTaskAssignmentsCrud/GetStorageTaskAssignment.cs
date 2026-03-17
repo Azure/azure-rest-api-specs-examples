@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageTaskAssignmentResource created on azure
-// for more information of creating StorageTaskAssignmentResource, please refer to the document of StorageTaskAssignmentResource
+// this example assumes you already have this StorageAccountResource created on azure
+// for more information of creating StorageAccountResource, please refer to the document of StorageAccountResource
 string subscriptionId = "1f31ba14-ce16-4281-b9b4-3e78da6e1616";
 string resourceGroupName = "res4228";
 string accountName = "sto4445";
-string storageTaskAssignmentName = "myassignment1";
-ResourceIdentifier storageTaskAssignmentResourceId = StorageTaskAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, storageTaskAssignmentName);
-StorageTaskAssignmentResource storageTaskAssignment = client.GetStorageTaskAssignmentResource(storageTaskAssignmentResourceId);
+ResourceIdentifier storageAccountResourceId = StorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+StorageAccountResource storageAccount = client.GetStorageAccountResource(storageAccountResourceId);
+
+// get the collection of this StorageTaskAssignmentResource
+StorageTaskAssignmentCollection collection = storageAccount.GetStorageTaskAssignments();
 
 // invoke the operation
-StorageTaskAssignmentResource result = await storageTaskAssignment.GetAsync();
+string storageTaskAssignmentName = "myassignment1";
+NullableResponse<StorageTaskAssignmentResource> response = await collection.GetIfExistsAsync(storageTaskAssignmentName);
+StorageTaskAssignmentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StorageTaskAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StorageTaskAssignmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

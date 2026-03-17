@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2025-03-01/Organizations_GetPostgresVersions_MinimumSet_Gen.json
-func ExampleOrganizationsClient_GetPostgresVersions_organizationsGetPostgresVersionsMinimumSet() {
+func ExampleOrganizationsClient_GetPostgresVersions_organizationsGetPostgresVersionsMaximumSetGeneratedByMaximumSetRuleGeneratedByMinimumSetRule() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

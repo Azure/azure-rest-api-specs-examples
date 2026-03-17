@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: 2025-03-01/Organizations_GetPostgresVersions_MaximumSet_Gen.json
-func ExampleOrganizationsClient_GetPostgresVersions_organizationsGetPostgresVersionsMaximumSet() {
+func ExampleOrganizationsClient_GetPostgresVersions_organizationsGetPostgresVersionsMaximumSetGeneratedByMaximumSetRuleGeneratedByMaximumSetRule() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

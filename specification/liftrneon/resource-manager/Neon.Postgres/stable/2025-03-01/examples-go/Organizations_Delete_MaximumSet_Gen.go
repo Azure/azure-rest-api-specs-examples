@@ -19,7 +19,7 @@ func ExampleOrganizationsClient_BeginDelete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewOrganizationsClient().BeginDelete(ctx, "rgneon", "test-org", nil)
+	poller, err := clientFactory.NewOrganizationsClient().BeginDelete(ctx, "rgneon", "contoso-org", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

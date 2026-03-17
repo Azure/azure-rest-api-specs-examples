@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/neonpostgres/armneonpostgres"
 )
 
-// Generated from example definition: 2025-03-01/Operations_List_MinimumSet_Gen.json
-func ExampleOperationsClient_NewListPager_operationsListMaximumSetGeneratedByMaximumSetRuleGeneratedByMinimumSetRule() {
+// Generated from example definition: 2025-03-01/Organizations_ListBySubscription_MinimumSet_Gen.json
+func ExampleOrganizationsClient_NewListBySubscriptionPager_organizationsListBySubscriptionMaximumSetGeneratedByMaximumSetRuleGeneratedByMinimumSetRule() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armneonpostgres.NewClientFactory("<subscriptionID>", cred, nil)
+	clientFactory, err := armneonpostgres.NewClientFactory("9B8E3300-C5FA-442B-A259-3F6F614D5BD4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	pager := clientFactory.NewOrganizationsClient().NewListBySubscriptionPager(nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -30,8 +30,14 @@ func ExampleOperationsClient_NewListPager_operationsListMaximumSetGeneratedByMax
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page = armneonpostgres.OperationsClientListResponse{
-		// 	OperationListResult: armneonpostgres.OperationListResult{
+		// page = armneonpostgres.OrganizationsClientListBySubscriptionResponse{
+		// 	OrganizationResourceListResult: armneonpostgres.OrganizationResourceListResult{
+		// 		Value: []*armneonpostgres.OrganizationResource{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/9B8E3300-C5FA-442B-A259-3F6F614D5BD4/resourceGroups/rgneon/providers/Microsoft.Neon/organizations/contoso-org"),
+		// 				Location: to.Ptr("kcdph"),
+		// 			},
+		// 		},
 		// 	},
 		// }
 	}

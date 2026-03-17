@@ -19,7 +19,7 @@ func ExampleProjectsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewProjectsClient().NewListPager("rgneon", "test-org", nil)
+	pager := clientFactory.NewProjectsClient().NewListPager("rgneon", "contoso-org", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

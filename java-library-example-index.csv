@@ -6265,3 +6265,4 @@ id,name,language,tag,package,version,date_epoch,date
 6264,"Azure.ResourceManager.Storage,1.6.1",dotnet,Azure.ResourceManager.Storage_1.6.1,Azure.ResourceManager.Storage,1.6.1,1773655883,03/16/2026
 6265,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/neonpostgres/armneonpostgres@v1.0.1,go,sdk/resourcemanager/neonpostgres/armneonpostgres/v1.0.1,sdk/resourcemanager/neonpostgres/armneonpostgres,v1.0.1,1773731442,03/17/2026
 6266,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistrytasks@v0.1.0,go,sdk/resourcemanager/containerregistry/armcontainerregistrytasks/v0.1.0,sdk/resourcemanager/containerregistry/armcontainerregistrytasks,v0.1.0,1773680739,03/16/2026
+6267,azure-mgmt-containerservice@41.0.0,python,azure-mgmt-containerservice_41.0.0,azure-mgmt-containerservice,41.0.0,1773732025,03/17/2026

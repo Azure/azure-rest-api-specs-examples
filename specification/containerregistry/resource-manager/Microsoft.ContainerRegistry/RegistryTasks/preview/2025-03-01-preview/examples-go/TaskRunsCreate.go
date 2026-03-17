@@ -1,4 +1,4 @@
-package armcontainerregistry_test
+package armcontainerregistrytasks_test
 
 import (
 	"context"
@@ -6,33 +6,33 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistrytasks"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/523ccabf440d8cf1c5b0ea18a8ad1ffedf4902ac/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/TaskRunsCreate.json
+// Generated from example definition: 2025-03-01-preview/TaskRunsCreate.json
 func ExampleTaskRunsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcontainerregistrytasks.NewClientFactory("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewTaskRunsClient().BeginCreate(ctx, "myResourceGroup", "myRegistry", "myRun", armcontainerregistry.TaskRun{
-		Properties: &armcontainerregistry.TaskRunProperties{
+	poller, err := clientFactory.NewTaskRunsClient().BeginCreate(ctx, "myResourceGroup", "myRegistry", "myRun", armcontainerregistrytasks.TaskRun{
+		Properties: &armcontainerregistrytasks.TaskRunProperties{
 			ForceUpdateTag: to.Ptr("test"),
-			RunRequest: &armcontainerregistry.EncodedTaskRunRequest{
+			RunRequest: &armcontainerregistrytasks.EncodedTaskRunRequest{
 				Type:                 to.Ptr("EncodedTaskRunRequest"),
-				Credentials:          &armcontainerregistry.Credentials{},
+				Credentials:          &armcontainerregistrytasks.Credentials{},
 				EncodedTaskContent:   to.Ptr("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"),
 				EncodedValuesContent: to.Ptr("Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="),
-				Platform: &armcontainerregistry.PlatformProperties{
-					Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
-					OS:           to.Ptr(armcontainerregistry.OSLinux),
+				Platform: &armcontainerregistrytasks.PlatformProperties{
+					Architecture: to.Ptr(armcontainerregistrytasks.ArchitectureAmd64),
+					OS:           to.Ptr(armcontainerregistrytasks.OSLinux),
 				},
-				Values: []*armcontainerregistry.SetValue{},
+				Values: []*armcontainerregistrytasks.SetValue{},
 			},
 		},
 	}, nil)
@@ -46,45 +46,47 @@ func ExampleTaskRunsClient_BeginCreate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.TaskRun = armcontainerregistry.TaskRun{
-	// 	Name: to.Ptr("myrun"),
-	// 	Type: to.Ptr("Microsoft.ContainerRegistry/registries/TaskRuns"),
-	// 	ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/taskRuns/myRun"),
-	// 	Properties: &armcontainerregistry.TaskRunProperties{
-	// 		ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
-	// 		RunRequest: &armcontainerregistry.EncodedTaskRunRequest{
-	// 			Type: to.Ptr("EncodedTaskRunRequest"),
-	// 			IsArchiveEnabled: to.Ptr(true),
-	// 			Credentials: &armcontainerregistry.Credentials{
-	// 			},
-	// 			EncodedTaskContent: to.Ptr("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"),
-	// 			EncodedValuesContent: to.Ptr("Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="),
-	// 			Platform: &armcontainerregistry.PlatformProperties{
-	// 				Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
-	// 				OS: to.Ptr(armcontainerregistry.OSLinux),
-	// 			},
-	// 			Values: []*armcontainerregistry.SetValue{
-	// 			},
-	// 		},
-	// 		RunResult: &armcontainerregistry.Run{
-	// 			Name: to.Ptr("yd5"),
-	// 			Type: to.Ptr("Microsoft.ContainerRegistry/registries/runs"),
-	// 			ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/runs/yd5"),
-	// 			Properties: &armcontainerregistry.RunProperties{
-	// 				AgentConfiguration: &armcontainerregistry.AgentProperties{
-	// 					CPU: to.Ptr[int32](2),
+	// res = armcontainerregistrytasks.TaskRunsClientCreateResponse{
+	// 	TaskRun: &armcontainerregistrytasks.TaskRun{
+	// 		Name: to.Ptr("myrun"),
+	// 		Type: to.Ptr("Microsoft.ContainerRegistry/registries/TaskRuns"),
+	// 		ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/taskRuns/myRun"),
+	// 		Properties: &armcontainerregistrytasks.TaskRunProperties{
+	// 			ProvisioningState: to.Ptr(armcontainerregistrytasks.ProvisioningStateCreating),
+	// 			RunRequest: &armcontainerregistrytasks.EncodedTaskRunRequest{
+	// 				Type: to.Ptr("EncodedTaskRunRequest"),
+	// 				Credentials: &armcontainerregistrytasks.Credentials{
 	// 				},
-	// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-06T17:23:21.926Z"); return t}()),
+	// 				EncodedTaskContent: to.Ptr("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"),
+	// 				EncodedValuesContent: to.Ptr("Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="),
 	// 				IsArchiveEnabled: to.Ptr(true),
-	// 				LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-06T17:23:21.000Z"); return t}()),
-	// 				Platform: &armcontainerregistry.PlatformProperties{
-	// 					Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
-	// 					OS: to.Ptr(armcontainerregistry.OSLinux),
+	// 				Platform: &armcontainerregistrytasks.PlatformProperties{
+	// 					Architecture: to.Ptr(armcontainerregistrytasks.ArchitectureAmd64),
+	// 					OS: to.Ptr(armcontainerregistrytasks.OSLinux),
 	// 				},
-	// 				ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
-	// 				RunID: to.Ptr("yd5"),
-	// 				RunType: to.Ptr(armcontainerregistry.RunTypeQuickRun),
-	// 				Status: to.Ptr(armcontainerregistry.RunStatusQueued),
+	// 				Values: []*armcontainerregistrytasks.SetValue{
+	// 				},
+	// 			},
+	// 			RunResult: &armcontainerregistrytasks.Run{
+	// 				Name: to.Ptr("yd5"),
+	// 				Type: to.Ptr("Microsoft.ContainerRegistry/registries/runs"),
+	// 				ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/runs/yd5"),
+	// 				Properties: &armcontainerregistrytasks.RunProperties{
+	// 					AgentConfiguration: &armcontainerregistrytasks.AgentProperties{
+	// 						CPU: to.Ptr[int32](2),
+	// 					},
+	// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-06T17:23:21.9261521+00:00"); return t}()),
+	// 					IsArchiveEnabled: to.Ptr(true),
+	// 					LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-06T17:23:21+00:00"); return t}()),
+	// 					Platform: &armcontainerregistrytasks.PlatformProperties{
+	// 						Architecture: to.Ptr(armcontainerregistrytasks.ArchitectureAmd64),
+	// 						OS: to.Ptr(armcontainerregistrytasks.OSLinux),
+	// 					},
+	// 					ProvisioningState: to.Ptr(armcontainerregistrytasks.ProvisioningStateSucceeded),
+	// 					RunID: to.Ptr("yd5"),
+	// 					RunType: to.Ptr(armcontainerregistrytasks.RunTypeQuickRun),
+	// 					Status: to.Ptr(armcontainerregistrytasks.RunStatusQueued),
+	// 				},
 	// 			},
 	// 		},
 	// 	},

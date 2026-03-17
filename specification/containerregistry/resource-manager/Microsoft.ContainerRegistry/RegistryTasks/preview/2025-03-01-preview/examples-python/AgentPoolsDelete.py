@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.containerregistry import ContainerRegistryManagementClient
+from azure.mgmt.containerregistrytasks import ContainerRegistryTasksMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-containerregistry
+    pip install azure-mgmt-containerregistrytasks
 # USAGE
     python agent_pools_delete.py
 
@@ -17,9 +17,9 @@ from azure.mgmt.containerregistry import ContainerRegistryManagementClient
 
 
 def main():
-    client = ContainerRegistryManagementClient(
+    client = ContainerRegistryTasksMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="4385cf00-2d3a-425a-832f-f4285b1c9dce",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.agent_pools.begin_delete(
@@ -29,6 +29,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/AgentPoolsDelete.json
+# x-ms-original-file: 2025-03-01-preview/AgentPoolsDelete.json
 if __name__ == "__main__":
     main()

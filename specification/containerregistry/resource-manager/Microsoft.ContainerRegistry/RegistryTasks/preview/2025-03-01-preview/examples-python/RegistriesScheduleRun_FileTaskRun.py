@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.containerregistry import ContainerRegistryManagementClient
+from azure.mgmt.containerregistrytasks import ContainerRegistryTasksMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-containerregistry
+    pip install azure-mgmt-containerregistrytasks
 # USAGE
     python registries_schedule_run_file_task_run.py
 
@@ -17,9 +17,9 @@ from azure.mgmt.containerregistry import ContainerRegistryManagementClient
 
 
 def main():
-    client = ContainerRegistryManagementClient(
+    client = ContainerRegistryTasksMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="4385cf00-2d3a-425a-832f-f4285b1c9dce",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.registries.schedule_run(
@@ -41,6 +41,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/RegistriesScheduleRun_FileTaskRun.json
+# x-ms-original-file: 2025-03-01-preview/RegistriesScheduleRun_FileTaskRun.json
 if __name__ == "__main__":
     main()

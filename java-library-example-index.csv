@@ -6267,3 +6267,4 @@ id,name,language,tag,package,version,date_epoch,date
 6266,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistrytasks@v0.1.0,go,sdk/resourcemanager/containerregistry/armcontainerregistrytasks/v0.1.0,sdk/resourcemanager/containerregistry/armcontainerregistrytasks,v0.1.0,1773680739,03/16/2026
 6267,azure-mgmt-containerservice@41.0.0,python,azure-mgmt-containerservice_41.0.0,azure-mgmt-containerservice,41.0.0,1773732025,03/17/2026
 6268,azure-mgmt-containerregistrytasks@1.0.0b1,python,azure-mgmt-containerregistrytasks_1.0.0b1,azure-mgmt-containerregistrytasks,1.0.0b1,1773677585,03/16/2026
+6269,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/prometheusrulegroups/armprometheusrulegroups@v0.1.0,go,sdk/resourcemanager/prometheusrulegroups/armprometheusrulegroups/v0.1.0,sdk/resourcemanager/prometheusrulegroups/armprometheusrulegroups,v0.1.0,1773818641,03/18/2026

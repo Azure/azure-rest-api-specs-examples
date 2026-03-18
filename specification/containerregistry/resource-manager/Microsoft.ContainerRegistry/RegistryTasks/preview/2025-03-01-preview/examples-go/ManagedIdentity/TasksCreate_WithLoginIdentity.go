@@ -1,4 +1,4 @@
-package armcontainerregistry_test
+package armcontainerregistrytasks_test
 
 import (
 	"context"
@@ -6,47 +6,43 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistrytasks"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/523ccabf440d8cf1c5b0ea18a8ad1ffedf4902ac/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/ManagedIdentity/TasksCreate_WithLoginIdentity.json
+// Generated from example definition: 2025-03-01-preview/ManagedIdentity/TasksCreate_WithLoginIdentity.json
 func ExampleTasksClient_Create_tasksCreateWithLoginIdentity() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcontainerregistrytasks.NewClientFactory("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewTasksClient().Create(ctx, "myResourceGroup", "myRegistry", "mytTask", armcontainerregistry.Task{
+	res, err := clientFactory.NewTasksClient().Create(ctx, "myResourceGroup", "myRegistry", "mytTask", armcontainerregistrytasks.Task{
+		Identity: &armcontainerregistrytasks.IdentityProperties{
+			Type: to.Ptr(armcontainerregistrytasks.ResourceIdentityTypeSystemAssigned),
+		},
 		Location: to.Ptr("eastus"),
-		Tags: map[string]*string{
-			"testkey": to.Ptr("value"),
-		},
-		Identity: &armcontainerregistry.IdentityProperties{
-			Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
-		},
-		Properties: &armcontainerregistry.TaskProperties{
-			AgentConfiguration: &armcontainerregistry.AgentProperties{
+		Properties: &armcontainerregistrytasks.TaskProperties{
+			AgentConfiguration: &armcontainerregistrytasks.AgentProperties{
 				CPU: to.Ptr[int32](2),
 			},
-			Credentials: &armcontainerregistry.Credentials{
-				SourceRegistry: &armcontainerregistry.SourceRegistryCredentials{
+			Credentials: &armcontainerregistrytasks.Credentials{
+				SourceRegistry: &armcontainerregistrytasks.SourceRegistryCredentials{
 					Identity: to.Ptr("[system]"),
 				},
 			},
 			IsSystemTask: to.Ptr(false),
-			Platform: &armcontainerregistry.PlatformProperties{
-				Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
-				OS:           to.Ptr(armcontainerregistry.OSLinux),
+			Platform: &armcontainerregistrytasks.PlatformProperties{
+				Architecture: to.Ptr(armcontainerregistrytasks.ArchitectureAmd64),
+				OS:           to.Ptr(armcontainerregistrytasks.OSLinux),
 			},
-			Status: to.Ptr(armcontainerregistry.TaskStatusEnabled),
-			Step: &armcontainerregistry.DockerBuildStep{
-				Type:        to.Ptr(armcontainerregistry.StepTypeDocker),
-				ContextPath: to.Ptr("src"),
-				Arguments: []*armcontainerregistry.Argument{
+			Status: to.Ptr(armcontainerregistrytasks.TaskStatusEnabled),
+			Step: &armcontainerregistrytasks.DockerBuildStep{
+				Type: to.Ptr(armcontainerregistrytasks.StepTypeDocker),
+				Arguments: []*armcontainerregistrytasks.Argument{
 					{
 						Name:     to.Ptr("mytestargument"),
 						IsSecret: to.Ptr(false),
@@ -56,39 +52,48 @@ func ExampleTasksClient_Create_tasksCreateWithLoginIdentity() {
 						Name:     to.Ptr("mysecrettestargument"),
 						IsSecret: to.Ptr(true),
 						Value:    to.Ptr("mysecrettestvalue"),
-					}},
+					},
+				},
+				ContextPath:    to.Ptr("src"),
 				DockerFilePath: to.Ptr("src/DockerFile"),
 				ImageNames: []*string{
-					to.Ptr("azurerest:testtag")},
+					to.Ptr("azurerest:testtag"),
+				},
 				IsPushEnabled: to.Ptr(true),
 				NoCache:       to.Ptr(false),
 			},
-			Trigger: &armcontainerregistry.TriggerProperties{
-				BaseImageTrigger: &armcontainerregistry.BaseImageTrigger{
+			Trigger: &armcontainerregistrytasks.TriggerProperties{
+				BaseImageTrigger: &armcontainerregistrytasks.BaseImageTrigger{
 					Name:                 to.Ptr("myBaseImageTrigger"),
-					BaseImageTriggerType: to.Ptr(armcontainerregistry.BaseImageTriggerTypeRuntime),
+					BaseImageTriggerType: to.Ptr(armcontainerregistrytasks.BaseImageTriggerTypeRuntime),
 				},
-				SourceTriggers: []*armcontainerregistry.SourceTrigger{
+				SourceTriggers: []*armcontainerregistrytasks.SourceTrigger{
 					{
 						Name: to.Ptr("mySourceTrigger"),
-						SourceRepository: &armcontainerregistry.SourceProperties{
+						SourceRepository: &armcontainerregistrytasks.SourceProperties{
 							Branch:        to.Ptr("master"),
 							RepositoryURL: to.Ptr("https://github.com/Azure/azure-rest-api-specs"),
-							SourceControlAuthProperties: &armcontainerregistry.AuthInfo{
+							SourceControlAuthProperties: &armcontainerregistrytasks.AuthInfo{
 								Token:     to.Ptr("xxxxx"),
-								TokenType: to.Ptr(armcontainerregistry.TokenTypePAT),
+								TokenType: to.Ptr(armcontainerregistrytasks.TokenTypePAT),
 							},
-							SourceControlType: to.Ptr(armcontainerregistry.SourceControlTypeGithub),
+							SourceControlType: to.Ptr(armcontainerregistrytasks.SourceControlTypeGithub),
 						},
-						SourceTriggerEvents: []*armcontainerregistry.SourceTriggerEvent{
-							to.Ptr(armcontainerregistry.SourceTriggerEventCommit)},
-					}},
-				TimerTriggers: []*armcontainerregistry.TimerTrigger{
+						SourceTriggerEvents: []*armcontainerregistrytasks.SourceTriggerEvent{
+							to.Ptr(armcontainerregistrytasks.SourceTriggerEventCommit),
+						},
+					},
+				},
+				TimerTriggers: []*armcontainerregistrytasks.TimerTrigger{
 					{
 						Name:     to.Ptr("myTimerTrigger"),
 						Schedule: to.Ptr("30 9 * * 1-5"),
-					}},
+					},
+				},
 			},
+		},
+		Tags: map[string]*string{
+			"testkey": to.Ptr("value"),
 		},
 	}, nil)
 	if err != nil {
@@ -97,76 +102,83 @@ func ExampleTasksClient_Create_tasksCreateWithLoginIdentity() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.Task = armcontainerregistry.Task{
-	// 	Name: to.Ptr("myTask"),
-	// 	Type: to.Ptr("Microsoft.ContainerRegistry/registries/tasks"),
-	// 	ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tasks/myTask"),
-	// 	Location: to.Ptr("eastus"),
-	// 	Tags: map[string]*string{
-	// 		"testkey": to.Ptr("value"),
-	// 	},
-	// 	Identity: &armcontainerregistry.IdentityProperties{
-	// 		Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
-	// 		PrincipalID: to.Ptr("fa153151-b9fd-46f4-9088-5e6600f2689v"),
-	// 		TenantID: to.Ptr("f686d426-8d16-42db-81b7-abu4gm510ccd"),
-	// 	},
-	// 	Properties: &armcontainerregistry.TaskProperties{
-	// 		AgentConfiguration: &armcontainerregistry.AgentProperties{
-	// 			CPU: to.Ptr[int32](2),
+	// res = armcontainerregistrytasks.TasksClientCreateResponse{
+	// 	Task: &armcontainerregistrytasks.Task{
+	// 		Name: to.Ptr("myTask"),
+	// 		Type: to.Ptr("Microsoft.ContainerRegistry/registries/tasks"),
+	// 		ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tasks/myTask"),
+	// 		Identity: &armcontainerregistrytasks.IdentityProperties{
+	// 			Type: to.Ptr(armcontainerregistrytasks.ResourceIdentityTypeSystemAssigned),
+	// 			PrincipalID: to.Ptr("fa153151-b9fd-46f4-9088-5e6600f2689v"),
+	// 			TenantID: to.Ptr("f686d426-8d16-42db-81b7-abu4gm510ccd"),
 	// 		},
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-25T06:54:23.536Z"); return t}()),
-	// 		Credentials: &armcontainerregistry.Credentials{
-	// 			SourceRegistry: &armcontainerregistry.SourceRegistryCredentials{
-	// 				Identity: to.Ptr("[system]"),
+	// 		Location: to.Ptr("eastus"),
+	// 		Properties: &armcontainerregistrytasks.TaskProperties{
+	// 			AgentConfiguration: &armcontainerregistrytasks.AgentProperties{
+	// 				CPU: to.Ptr[int32](2),
 	// 			},
-	// 		},
-	// 		IsSystemTask: to.Ptr(false),
-	// 		Platform: &armcontainerregistry.PlatformProperties{
-	// 			Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
-	// 			OS: to.Ptr(armcontainerregistry.OSLinux),
-	// 		},
-	// 		ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
-	// 		Status: to.Ptr(armcontainerregistry.TaskStatusEnabled),
-	// 		Step: &armcontainerregistry.DockerBuildStep{
-	// 			Type: to.Ptr(armcontainerregistry.StepTypeDocker),
-	// 			ContextPath: to.Ptr("src"),
-	// 			Arguments: []*armcontainerregistry.Argument{
-	// 				{
-	// 					Name: to.Ptr("mytestargument"),
-	// 					IsSecret: to.Ptr(false),
-	// 					Value: to.Ptr("mytestvalue"),
-	// 			}},
-	// 			DockerFilePath: to.Ptr("src/DockerFile"),
-	// 			ImageNames: []*string{
-	// 				to.Ptr("azurerest:testtag")},
+	// 			CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-25T06:54:23.536Z"); return t}()),
+	// 			Credentials: &armcontainerregistrytasks.Credentials{
+	// 				SourceRegistry: &armcontainerregistrytasks.SourceRegistryCredentials{
+	// 					Identity: to.Ptr("[system]"),
+	// 				},
+	// 			},
+	// 			IsSystemTask: to.Ptr(false),
+	// 			Platform: &armcontainerregistrytasks.PlatformProperties{
+	// 				Architecture: to.Ptr(armcontainerregistrytasks.ArchitectureAmd64),
+	// 				OS: to.Ptr(armcontainerregistrytasks.OSLinux),
+	// 			},
+	// 			ProvisioningState: to.Ptr(armcontainerregistrytasks.ProvisioningStateSucceeded),
+	// 			Status: to.Ptr(armcontainerregistrytasks.TaskStatusEnabled),
+	// 			Step: &armcontainerregistrytasks.DockerBuildStep{
+	// 				Type: to.Ptr(armcontainerregistrytasks.StepTypeDocker),
+	// 				Arguments: []*armcontainerregistrytasks.Argument{
+	// 					{
+	// 						Name: to.Ptr("mytestargument"),
+	// 						IsSecret: to.Ptr(false),
+	// 						Value: to.Ptr("mytestvalue"),
+	// 					},
+	// 				},
+	// 				ContextPath: to.Ptr("src"),
+	// 				DockerFilePath: to.Ptr("src/DockerFile"),
+	// 				ImageNames: []*string{
+	// 					to.Ptr("azurerest:testtag"),
+	// 				},
 	// 				IsPushEnabled: to.Ptr(true),
 	// 				NoCache: to.Ptr(false),
 	// 			},
-	// 			Trigger: &armcontainerregistry.TriggerProperties{
-	// 				BaseImageTrigger: &armcontainerregistry.BaseImageTrigger{
+	// 			Trigger: &armcontainerregistrytasks.TriggerProperties{
+	// 				BaseImageTrigger: &armcontainerregistrytasks.BaseImageTrigger{
 	// 					Name: to.Ptr("myBaseImageTrigger"),
-	// 					BaseImageTriggerType: to.Ptr(armcontainerregistry.BaseImageTriggerTypeRuntime),
-	// 					Status: to.Ptr(armcontainerregistry.TriggerStatusEnabled),
+	// 					BaseImageTriggerType: to.Ptr(armcontainerregistrytasks.BaseImageTriggerTypeRuntime),
+	// 					Status: to.Ptr(armcontainerregistrytasks.TriggerStatusEnabled),
 	// 				},
-	// 				SourceTriggers: []*armcontainerregistry.SourceTrigger{
+	// 				SourceTriggers: []*armcontainerregistrytasks.SourceTrigger{
 	// 					{
 	// 						Name: to.Ptr("mySourceTrigger"),
-	// 						SourceRepository: &armcontainerregistry.SourceProperties{
+	// 						SourceRepository: &armcontainerregistrytasks.SourceProperties{
 	// 							Branch: to.Ptr("master"),
 	// 							RepositoryURL: to.Ptr("https://github.com/Azure/azure-rest-api-specs"),
-	// 							SourceControlType: to.Ptr(armcontainerregistry.SourceControlTypeGithub),
+	// 							SourceControlType: to.Ptr(armcontainerregistrytasks.SourceControlTypeGithub),
 	// 						},
-	// 						SourceTriggerEvents: []*armcontainerregistry.SourceTriggerEvent{
-	// 							to.Ptr(armcontainerregistry.SourceTriggerEventCommit)},
-	// 							Status: to.Ptr(armcontainerregistry.TriggerStatusEnabled),
-	// 					}},
-	// 					TimerTriggers: []*armcontainerregistry.TimerTrigger{
-	// 						{
-	// 							Name: to.Ptr("myTimerTrigger"),
-	// 							Schedule: to.Ptr("30 9 * * 1-5"),
-	// 							Status: to.Ptr(armcontainerregistry.TriggerStatusEnabled),
-	// 					}},
+	// 						SourceTriggerEvents: []*armcontainerregistrytasks.SourceTriggerEvent{
+	// 							to.Ptr(armcontainerregistrytasks.SourceTriggerEventCommit),
+	// 						},
+	// 						Status: to.Ptr(armcontainerregistrytasks.TriggerStatusEnabled),
+	// 					},
+	// 				},
+	// 				TimerTriggers: []*armcontainerregistrytasks.TimerTrigger{
+	// 					{
+	// 						Name: to.Ptr("myTimerTrigger"),
+	// 						Schedule: to.Ptr("30 9 * * 1-5"),
+	// 						Status: to.Ptr(armcontainerregistrytasks.TriggerStatusEnabled),
+	// 					},
 	// 				},
 	// 			},
-	// 		}
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"testkey": to.Ptr("value"),
+	// 		},
+	// 	},
+	// }
 }

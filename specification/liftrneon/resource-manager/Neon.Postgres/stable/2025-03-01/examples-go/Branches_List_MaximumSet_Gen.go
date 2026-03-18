@@ -19,7 +19,7 @@ func ExampleBranchesClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewBranchesClient().NewListPager("rgneon", "test-org", "entity-name", nil)
+	pager := clientFactory.NewBranchesClient().NewListPager("rgneon", "contoso-org", "sample-resource", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

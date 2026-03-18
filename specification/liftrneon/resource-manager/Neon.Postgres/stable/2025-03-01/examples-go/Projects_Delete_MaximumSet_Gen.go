@@ -19,7 +19,7 @@ func ExampleProjectsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewProjectsClient().Delete(ctx, "rgneon", "test-org", "entity-name", nil)
+	res, err := clientFactory.NewProjectsClient().Delete(ctx, "rgneon", "contoso-org", "sample-resource", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

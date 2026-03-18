@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2025-03-01/Organizations_ListByResourceGroup_MaximumSet_Gen.json
-func ExampleOrganizationsClient_NewListByResourceGroupPager() {
+func ExampleOrganizationsClient_NewListByResourceGroupPager_organizationsListByResourceGroupMaximumSetGeneratedByMaximumSetRuleGeneratedByMaximumSetRule() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -217,10 +217,9 @@ func ExampleOrganizationsClient_NewListByResourceGroupPager() {
 		// 					},
 		// 				},
 		// 				Tags: map[string]*string{
-		// 					"key8832": to.Ptr("rvukepuxkykdtqjtwk"),
 		// 				},
 		// 				Location: to.Ptr("kcdph"),
-		// 				ID: to.Ptr("/subscriptions/9B8E3300-C5FA-442B-A259-3F6F614D5BD4/resourceGroups/rgneon/providers/Microsoft.Neon/organizations/organization-name"),
+		// 				ID: to.Ptr("/subscriptions/9B8E3300-C5FA-442B-A259-3F6F614D5BD4/resourceGroups/rg/providers/Microsoft.Neon/organizations/organizationId"),
 		// 				Name: to.Ptr("aocvhndykwhgolfixbqhwtmhiriu"),
 		// 				Type: to.Ptr("bvtwhithilvtizpde"),
 		// 				SystemData: &armneonpostgres.SystemData{

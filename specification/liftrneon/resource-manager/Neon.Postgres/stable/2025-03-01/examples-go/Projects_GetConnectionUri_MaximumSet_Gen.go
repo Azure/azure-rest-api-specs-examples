@@ -20,7 +20,7 @@ func ExampleProjectsClient_GetConnectionURI() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewProjectsClient().GetConnectionURI(ctx, "rgneon", "test-org", "entity-name", armneonpostgres.ConnectionURIProperties{
+	res, err := clientFactory.NewProjectsClient().GetConnectionURI(ctx, "rgneon", "contoso-org", "sample-resource", armneonpostgres.ConnectionURIProperties{
 		ProjectID:    to.Ptr("riuifmoqtorrcffgksvfcobia"),
 		BranchID:     to.Ptr("iimmlbqv"),
 		DatabaseName: to.Ptr("xc"),

@@ -1,20 +1,17 @@
-const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
+const { ContainerRegistryTasksManagementClient } = require("@azure/arm-containerregistrytasks");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Updates a task run with the specified parameters.
+ * This sample demonstrates how to updates a task run with the specified parameters.
  *
- * @summary Updates a task run with the specified parameters.
- * x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/RegistryTasks/preview/2025-03-01-preview/examples/TaskRunsUpdate.json
+ * @summary updates a task run with the specified parameters.
+ * x-ms-original-file: 2025-03-01-preview/TaskRunsUpdate.json
  */
 async function taskRunsUpdate() {
-  const subscriptionId =
-    process.env["CONTAINERREGISTRY_SUBSCRIPTION_ID"] || "4385cf00-2d3a-425a-832f-f4285b1c9dce";
-  const resourceGroupName = process.env["CONTAINERREGISTRY_RESOURCE_GROUP"] || "myResourceGroup";
-  const registryName = "myRegistry";
-  const taskRunName = "myRun";
-  const updateParameters = {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
+  const client = new ContainerRegistryTasksManagementClient(credential, subscriptionId);
+  const result = await client.taskRuns.update("myResourceGroup", "myRegistry", "myRun", {
     forceUpdateTag: "test",
     runRequest: {
       type: "EncodedTaskRunRequest",
@@ -25,14 +22,6 @@ async function taskRunsUpdate() {
       platform: { architecture: "amd64", os: "Linux" },
       values: [],
     },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new ContainerRegistryManagementClient(credential, subscriptionId);
-  const result = await client.taskRuns.beginUpdateAndWait(
-    resourceGroupName,
-    registryName,
-    taskRunName,
-    updateParameters,
-  );
+  });
   console.log(result);
 }

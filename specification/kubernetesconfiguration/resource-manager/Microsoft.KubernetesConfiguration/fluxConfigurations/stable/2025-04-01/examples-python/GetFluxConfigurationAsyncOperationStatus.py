@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.fluxconfigurations import KubernetesConf
 def main():
     client = KubernetesConfigurationFluxConfigurationsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="subId1",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.flux_config_operation_status.get(
@@ -33,6 +33,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/fluxConfigurations/stable/2025-04-01/examples/GetFluxConfigurationAsyncOperationStatus.json
+# x-ms-original-file: 2025-04-01/GetFluxConfigurationAsyncOperationStatus.json
 if __name__ == "__main__":
     main()

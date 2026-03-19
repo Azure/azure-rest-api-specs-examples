@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.fluxconfigurations import KubernetesConf
 def main():
     client = KubernetesConfigurationFluxConfigurationsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="subId1",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.flux_configurations.begin_delete(
@@ -31,6 +31,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/fluxConfigurations/stable/2025-04-01/examples/DeleteFluxConfiguration.json
+# x-ms-original-file: 2025-04-01/DeleteFluxConfiguration.json
 if __name__ == "__main__":
     main()

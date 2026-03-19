@@ -6282,3 +6282,4 @@ id,name,language,tag,package,version,date_epoch,date
 6281,azure-mgmt-kubernetesconfiguration-privatelinkscopes@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-privatelinkscopes_1.0.0b2,azure-mgmt-kubernetesconfiguration-privatelinkscopes,1.0.0b2,1773891326,03/19/2026
 6282,azure-mgmt-kubernetesconfiguration-extensions@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-extensions_1.0.0b2,azure-mgmt-kubernetesconfiguration-extensions,1.0.0b2,1773891320,03/19/2026
 6283,azure-mgmt-kubernetesconfiguration-extensiontypes@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-extensiontypes_1.0.0b2,azure-mgmt-kubernetesconfiguration-extensiontypes,1.0.0b2,1773891314,03/19/2026
+6284,azure-mgmt-kubernetesconfiguration-fluxconfigurations@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-fluxconfigurations_1.0.0b2,azure-mgmt-kubernetesconfiguration-fluxconfigurations,1.0.0b2,1773891289,03/19/2026

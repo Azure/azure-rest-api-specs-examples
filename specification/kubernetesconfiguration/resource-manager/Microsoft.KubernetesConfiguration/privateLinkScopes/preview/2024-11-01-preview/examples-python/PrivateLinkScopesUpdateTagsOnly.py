@@ -7,7 +7,7 @@ from azure.mgmt.kubernetesconfiguration.privatelinkscopes import KubernetesConfi
     pip install azure-identity
     pip install azure-mgmt-kubernetesconfiguration-privatelinkscopes
 # USAGE
-    python private_link_scopes_update.py
+    python private_link_scopes_update_tags_only.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,14 +22,14 @@ def main():
         subscription_id="SUBSCRIPTION_ID",
     )
 
-    response = client.private_link_scopes.create_or_update(
+    response = client.private_link_scopes.update_tags(
         resource_group_name="my-resource-group",
         scope_name="my-privatelinkscope",
-        parameters={"location": "westus", "tags": {"Tag1": "Value1"}},
+        private_link_scope_tags={"tags": {"Tag1": "Value1", "Tag2": "Value2"}},
     )
     print(response)
 
 
-# x-ms-original-file: 2024-11-01-preview/PrivateLinkScopesUpdate.json
+# x-ms-original-file: 2024-11-01-preview/PrivateLinkScopesUpdateTagsOnly.json
 if __name__ == "__main__":
     main()

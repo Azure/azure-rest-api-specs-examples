@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.privatelinkscopes import KubernetesConfi
 def main():
     client = KubernetesConfigurationPrivateLinkScopesMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-1111-2222-3333-444444444444",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.private_link_resources.list_by_private_link_scope(
@@ -29,6 +29,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/privateLinkScopes/preview/2024-11-01-preview/examples/PrivateLinkScopePrivateLinkResourceListGet.json
+# x-ms-original-file: 2024-11-01-preview/PrivateLinkScopePrivateLinkResourceListGet.json
 if __name__ == "__main__":
     main()

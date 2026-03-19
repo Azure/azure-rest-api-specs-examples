@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.privatelinkscopes import KubernetesConfi
 def main():
     client = KubernetesConfigurationPrivateLinkScopesMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-1111-2222-3333-444444444444",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.private_endpoint_connections.begin_create_or_update(
@@ -29,7 +29,7 @@ def main():
         properties={
             "properties": {
                 "privateLinkServiceConnectionState": {
-                    "description": "Approved by johndoe@contoso.com",
+                    "description": "Approved by `johndoe@contoso.com <mailto:johndoe@contoso.com>`_",
                     "status": "Approved",
                 }
             }
@@ -38,6 +38,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/privateLinkScopes/preview/2024-11-01-preview/examples/PrivateEndpointConnectionUpdate.json
+# x-ms-original-file: 2024-11-01-preview/PrivateEndpointConnectionUpdate.json
 if __name__ == "__main__":
     main()

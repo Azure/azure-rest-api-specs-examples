@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.extensions import KubernetesConfiguratio
 def main():
     client = KubernetesConfigurationExtensionsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="subId1",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.operation_status.get(
@@ -33,6 +33,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/extensions/stable/2024-11-01/examples/GetExtensionAsyncOperationStatus.json
+# x-ms-original-file: 2024-11-01/GetExtensionAsyncOperationStatus.json
 if __name__ == "__main__":
     main()

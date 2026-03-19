@@ -6277,3 +6277,4 @@ id,name,language,tag,package,version,date_epoch,date
 6276,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy@v1.0.0,go,sdk/resourcemanager/resources/armpolicy/v1.0.0,sdk/resourcemanager/resources/armpolicy,v1.0.0,1773905544,03/19/2026
 6277,@azure/arm-kubernetesconfiguration-privatelinkscopes@1.0.0-beta.2,js,@azure/arm-kubernetesconfiguration-privatelinkscopes_1.0.0-beta.2,@azure/arm-kubernetesconfiguration-privatelinkscopes,1.0.0-beta.2,1773903183,03/19/2026
 6278,@azure/arm-kubernetesconfiguration-extensions@1.0.0-beta.2,js,@azure/arm-kubernetesconfiguration-extensions_1.0.0-beta.2,@azure/arm-kubernetesconfiguration-extensions,1.0.0-beta.2,1773903149,03/19/2026
+6279,@azure/arm-storagecache@8.2.0,js,@azure/arm-storagecache_8.2.0,@azure/arm-storagecache,8.2.0,1773899158,03/19/2026

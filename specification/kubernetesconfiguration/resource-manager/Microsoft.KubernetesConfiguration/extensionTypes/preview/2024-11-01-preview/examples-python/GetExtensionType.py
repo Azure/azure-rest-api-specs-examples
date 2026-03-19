@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.extensiontypes import KubernetesConfigur
 def main():
     client = KubernetesConfigurationExtensionTypesMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="subId1",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.extension_types.get(
@@ -32,6 +32,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/extensionTypes/preview/2024-11-01-preview/examples/GetExtensionType.json
+# x-ms-original-file: 2024-11-01-preview/GetExtensionType.json
 if __name__ == "__main__":
     main()

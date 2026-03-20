@@ -6290,3 +6290,4 @@ id,name,language,tag,package,version,date_epoch,date
 6289,@azure/arm-marketplace@1.0.0-beta.1,js,@azure/arm-marketplace_1.0.0-beta.1,@azure/arm-marketplace,1.0.0-beta.1,1773976278,03/20/2026
 6290,@azure/arm-containerservice@25.0.0,js,@azure/arm-containerservice_25.0.0,@azure/arm-containerservice,25.0.0,1773975481,03/20/2026
 6291,@azure/arm-containerregistry@12.0.0,js,@azure/arm-containerregistry_12.0.0,@azure/arm-containerregistry,12.0.0,1773948977,03/19/2026
+6292,"Azure.ResourceManager.RecoveryServices,1.2.0",dotnet,Azure.ResourceManager.RecoveryServices_1.2.0,Azure.ResourceManager.RecoveryServices,1.2.0,1773999406,03/20/2026

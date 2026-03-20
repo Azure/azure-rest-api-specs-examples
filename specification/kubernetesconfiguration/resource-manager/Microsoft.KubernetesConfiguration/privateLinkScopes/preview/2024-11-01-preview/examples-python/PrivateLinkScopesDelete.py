@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.privatelinkscopes import KubernetesConfi
 def main():
     client = KubernetesConfigurationPrivateLinkScopesMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="86dc51d3-92ed-4d7e-947a-775ea79b4919",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.private_link_scopes.delete(
@@ -28,6 +28,6 @@ def main():
     )
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/privateLinkScopes/preview/2024-11-01-preview/examples/PrivateLinkScopesDelete.json
+# x-ms-original-file: 2024-11-01-preview/PrivateLinkScopesDelete.json
 if __name__ == "__main__":
     main()

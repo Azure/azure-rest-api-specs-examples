@@ -1,0 +1,22 @@
+const { EventGridManagementClient } = require("@azure/arm-eventgrid");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a specific network security perimeter configuration with a topic or domain.
+ *
+ * @summary get a specific network security perimeter configuration with a topic or domain.
+ * x-ms-original-file: 2025-07-15-preview/NetworkSecurityPerimeterConfigurations_Get.json
+ */
+async function networkSecurityPerimeterConfigurationsGet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
+  const client = new EventGridManagementClient(credential, subscriptionId);
+  const result = await client.networkSecurityPerimeterConfigurations.get(
+    "examplerg",
+    "topics",
+    "exampleResourceName",
+    "8f6b6269-84f2-4d09-9e31-1127efcd1e40perimeter",
+    "someAssociation",
+  );
+  console.log(result);
+}

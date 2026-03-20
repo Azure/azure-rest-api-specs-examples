@@ -1,0 +1,19 @@
+const { EventGridManagementClient } = require("@azure/arm-eventgrid");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a list of all verified partners.
+ *
+ * @summary get a list of all verified partners.
+ * x-ms-original-file: 2025-07-15-preview/VerifiedPartners_List.json
+ */
+async function verifiedPartnersList() {
+  const credential = new DefaultAzureCredential();
+  const client = new EventGridManagementClient(credential);
+  const resArray = new Array();
+  for await (const item of client.verifiedPartners.list()) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

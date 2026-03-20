@@ -6288,3 +6288,4 @@ id,name,language,tag,package,version,date_epoch,date
 6287,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.0.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.0.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.0.0,1773948349,03/19/2026
 6288,@azure/arm-policy@7.0.0,js,@azure/arm-policy_7.0.0,@azure/arm-policy,7.0.0,1773992221,03/20/2026
 6289,@azure/arm-marketplace@1.0.0-beta.1,js,@azure/arm-marketplace_1.0.0-beta.1,@azure/arm-marketplace,1.0.0-beta.1,1773976278,03/20/2026
+6290,@azure/arm-containerservice@25.0.0,js,@azure/arm-containerservice_25.0.0,@azure/arm-containerservice,25.0.0,1773975481,03/20/2026

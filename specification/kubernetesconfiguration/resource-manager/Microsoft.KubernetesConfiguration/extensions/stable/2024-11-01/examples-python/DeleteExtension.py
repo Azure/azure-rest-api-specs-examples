@@ -19,7 +19,7 @@ from azure.mgmt.kubernetesconfiguration.extensions import KubernetesConfiguratio
 def main():
     client = KubernetesConfigurationExtensionsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="subId1",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.extensions.begin_delete(
@@ -31,6 +31,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/extensions/stable/2024-11-01/examples/DeleteExtension.json
+# x-ms-original-file: 2024-11-01/DeleteExtension.json
 if __name__ == "__main__":
     main()

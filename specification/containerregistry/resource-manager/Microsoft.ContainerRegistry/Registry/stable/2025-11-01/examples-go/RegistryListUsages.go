@@ -8,14 +8,14 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/523ccabf440d8cf1c5b0ea18a8ad1ffedf4902ac/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/RegistryListUsages.json
+// Generated from example definition: 2025-11-01/RegistryListUsages.json
 func ExampleRegistriesClient_ListUsages() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcontainerregistry.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,19 +26,22 @@ func ExampleRegistriesClient_ListUsages() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.RegistryUsageListResult = armcontainerregistry.RegistryUsageListResult{
-	// 	Value: []*armcontainerregistry.RegistryUsage{
-	// 		{
-	// 			Name: to.Ptr("Size"),
-	// 			CurrentValue: to.Ptr[int64](12345678),
-	// 			Limit: to.Ptr[int64](107374182400),
-	// 			Unit: to.Ptr(armcontainerregistry.RegistryUsageUnitBytes),
+	// res = armcontainerregistry.RegistriesClientListUsagesResponse{
+	// 	RegistryUsageListResult: &armcontainerregistry.RegistryUsageListResult{
+	// 		Value: []*armcontainerregistry.RegistryUsage{
+	// 			{
+	// 				Name: to.Ptr("Size"),
+	// 				Limit: to.Ptr[int64](107374182400),
+	// 				CurrentValue: to.Ptr[int64](12345678),
+	// 				Unit: to.Ptr(armcontainerregistry.RegistryUsageUnitBytes),
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Webhooks"),
+	// 				Limit: to.Ptr[int64](10),
+	// 				CurrentValue: to.Ptr[int64](2),
+	// 				Unit: to.Ptr(armcontainerregistry.RegistryUsageUnitCount),
+	// 			},
 	// 		},
-	// 		{
-	// 			Name: to.Ptr("Webhooks"),
-	// 			CurrentValue: to.Ptr[int64](2),
-	// 			Limit: to.Ptr[int64](10),
-	// 			Unit: to.Ptr(armcontainerregistry.RegistryUsageUnitCount),
-	// 	}},
+	// 	},
 	// }
 }

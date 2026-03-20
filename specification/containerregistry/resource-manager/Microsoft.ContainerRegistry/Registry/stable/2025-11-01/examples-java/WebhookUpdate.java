@@ -16,11 +16,10 @@ public final class Main {
     /**
      * Sample code: WebhookUpdate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void webhookUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getWebhooks().update("myResourceGroup", "myRegistry",
-            "myWebhook",
+    public static void webhookUpdate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getWebhooks().update("myResourceGroup", "myRegistry", "myWebhook",
             new WebhookUpdateParameters().withTags(mapOf("key", "fakeTokenPlaceholder"))
                 .withServiceUri("http://myservice.com")
                 .withCustomHeaders(mapOf("Authorization", "fakeTokenPlaceholder")).withStatus(WebhookStatus.ENABLED)

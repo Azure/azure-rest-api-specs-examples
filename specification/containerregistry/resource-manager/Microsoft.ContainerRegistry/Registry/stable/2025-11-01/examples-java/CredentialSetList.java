@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: CredentialSetList.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void credentialSetList(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCredentialSets().list("myResourceGroup", "myRegistry",
+    public static void credentialSetList(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCredentialSets().list("myResourceGroup", "myRegistry",
             com.azure.core.util.Context.NONE);
     }
 }

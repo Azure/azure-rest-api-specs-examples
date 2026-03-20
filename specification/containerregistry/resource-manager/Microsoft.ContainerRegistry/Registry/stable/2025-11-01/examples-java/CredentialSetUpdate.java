@@ -14,11 +14,11 @@ public final class Main {
     /**
      * Sample code: CredentialSetUpdate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void credentialSetUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCredentialSets().update("myResourceGroup",
-            "myRegistry", "myCredentialSet",
+    public static void
+        credentialSetUpdate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCredentialSets().update("myResourceGroup", "myRegistry", "myCredentialSet",
             new CredentialSetUpdateParameters().withAuthCredentials(Arrays.asList(new AuthCredential()
                 .withName(CredentialName.CREDENTIAL1).withUsernameSecretIdentifier("fakeTokenPlaceholder")
                 .withPasswordSecretIdentifier("fakeTokenPlaceholder"))),

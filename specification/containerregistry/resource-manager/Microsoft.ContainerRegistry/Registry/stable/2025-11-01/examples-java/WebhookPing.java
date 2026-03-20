@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: WebhookPing.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void webhookPing(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getWebhooks().pingWithResponse("myResourceGroup",
-            "myRegistry", "myWebhook", com.azure.core.util.Context.NONE);
+    public static void webhookPing(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getWebhooks().pingWithResponse("myResourceGroup", "myRegistry", "myWebhook",
+            com.azure.core.util.Context.NONE);
     }
 }

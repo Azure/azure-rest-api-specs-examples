@@ -12,10 +12,11 @@ public final class Main {
     /**
      * Sample code: RegistryGenerateCredentials.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryGenerateCredentials(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries()
+    public static void
+        registryGenerateCredentials(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries()
             .generateCredentials(
                 "myResourceGroup", "myRegistry", new GenerateCredentialsParameters().withTokenId("fakeTokenPlaceholder")
                     .withExpiry(OffsetDateTime.parse("2020-12-31T15:59:59.0707808Z")),

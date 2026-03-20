@@ -11,10 +11,11 @@ public final class Main {
     /**
      * Sample code: RegistryCheckNameNotAvailable.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryCheckNameNotAvailable(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().checkNameAvailabilityWithResponse(
+    public static void
+        registryCheckNameNotAvailable(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().checkNameAvailabilityWithResponse(
             new RegistryNameCheckRequest().withName("myRegistry"), com.azure.core.util.Context.NONE);
     }
 }

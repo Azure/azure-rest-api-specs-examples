@@ -16,11 +16,11 @@ public final class Main {
     /**
      * Sample code: CredentialSetCreate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void credentialSetCreate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCredentialSets().create("myResourceGroup",
-            "myRegistry", "myCredentialSet",
+    public static void
+        credentialSetCreate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCredentialSets().create("myResourceGroup", "myRegistry", "myCredentialSet",
             new CredentialSetInner()
                 .withIdentity(new IdentityProperties().withType(ResourceIdentityType.SYSTEM_ASSIGNED))
                 .withLoginServer("docker.io")

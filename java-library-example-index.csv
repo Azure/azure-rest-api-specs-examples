@@ -6292,3 +6292,4 @@ id,name,language,tag,package,version,date_epoch,date
 6291,@azure/arm-containerregistry@12.0.0,js,@azure/arm-containerregistry_12.0.0,@azure/arm-containerregistry,12.0.0,1773948977,03/19/2026
 6292,"Azure.ResourceManager.RecoveryServices,1.2.0",dotnet,Azure.ResourceManager.RecoveryServices_1.2.0,Azure.ResourceManager.RecoveryServices,1.2.0,1773999406,03/20/2026
 6293,"Azure.ResourceManager.Nginx,1.1.0",dotnet,Azure.ResourceManager.Nginx_1.1.0,Azure.ResourceManager.Nginx,1.1.0,1773989847,03/20/2026
+6294,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.2,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2,1773919769,03/19/2026

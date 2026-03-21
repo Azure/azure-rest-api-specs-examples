@@ -6283,3 +6283,14 @@ id,name,language,tag,package,version,date_epoch,date
 6282,azure-mgmt-kubernetesconfiguration-extensions@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-extensions_1.0.0b2,azure-mgmt-kubernetesconfiguration-extensions,1.0.0b2,1773891320,03/19/2026
 6283,azure-mgmt-kubernetesconfiguration-extensiontypes@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-extensiontypes_1.0.0b2,azure-mgmt-kubernetesconfiguration-extensiontypes,1.0.0b2,1773891314,03/19/2026
 6284,azure-mgmt-kubernetesconfiguration-fluxconfigurations@1.0.0b2,python,azure-mgmt-kubernetesconfiguration-fluxconfigurations_1.0.0b2,azure-mgmt-kubernetesconfiguration-fluxconfigurations,1.0.0b2,1773891289,03/19/2026
+6285,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.0,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.0,1773961275,03/19/2026
+6286,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.0.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.0.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.0.0,1773968833,03/20/2026
+6287,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.0.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.0.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.0.0,1773948349,03/19/2026
+6288,@azure/arm-policy@7.0.0,js,@azure/arm-policy_7.0.0,@azure/arm-policy,7.0.0,1773992221,03/20/2026
+6289,@azure/arm-marketplace@1.0.0-beta.1,js,@azure/arm-marketplace_1.0.0-beta.1,@azure/arm-marketplace,1.0.0-beta.1,1773976278,03/20/2026
+6290,@azure/arm-containerservice@25.0.0,js,@azure/arm-containerservice_25.0.0,@azure/arm-containerservice,25.0.0,1773975481,03/20/2026
+6291,@azure/arm-containerregistry@12.0.0,js,@azure/arm-containerregistry_12.0.0,@azure/arm-containerregistry,12.0.0,1773948977,03/19/2026
+6292,"Azure.ResourceManager.RecoveryServices,1.2.0",dotnet,Azure.ResourceManager.RecoveryServices_1.2.0,Azure.ResourceManager.RecoveryServices,1.2.0,1773999406,03/20/2026
+6293,"Azure.ResourceManager.Nginx,1.1.0",dotnet,Azure.ResourceManager.Nginx_1.1.0,Azure.ResourceManager.Nginx,1.1.0,1773989847,03/20/2026
+6294,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.2,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2,1773919769,03/19/2026
+6295,azure-mgmt-containerregistry@15.0.0,python,azure-mgmt-containerregistry_15.0.0,azure-mgmt-containerregistry,15.0.0,1773960864,03/19/2026

@@ -14,11 +14,11 @@ public final class Main {
     /**
      * Sample code: ReplicationCreateZoneRedundant.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void replicationCreateZoneRedundant(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getReplications().create("myResourceGroup", "myRegistry",
-            "myReplication",
+    public static void
+        replicationCreateZoneRedundant(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getReplications().create("myResourceGroup", "myRegistry", "myReplication",
             new ReplicationInner().withLocation("eastus").withTags(mapOf("key", "fakeTokenPlaceholder"))
                 .withRegionEndpointEnabled(true).withZoneRedundancy(ZoneRedundancy.ENABLED),
             com.azure.core.util.Context.NONE);

@@ -9,9 +9,9 @@ public final class Main {
     /**
      * Sample code: RegistryList.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryList(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().list(com.azure.core.util.Context.NONE);
+    public static void registryList(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().list(com.azure.core.util.Context.NONE);
     }
 }

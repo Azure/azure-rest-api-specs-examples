@@ -9,10 +9,9 @@ public final class Main {
     /**
      * Sample code: ScopeMapList.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void scopeMapList(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getScopeMaps().list("myResourceGroup", "myRegistry",
-            com.azure.core.util.Context.NONE);
+    public static void scopeMapList(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getScopeMaps().list("myResourceGroup", "myRegistry", com.azure.core.util.Context.NONE);
     }
 }

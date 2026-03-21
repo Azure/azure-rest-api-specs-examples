@@ -16,10 +16,10 @@ public final class Main {
     /**
      * Sample code: RegistryUpdate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().update("myResourceGroup", "myRegistry",
+    public static void registryUpdate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().update("myResourceGroup", "myRegistry",
             new RegistryUpdateParameters().withTags(mapOf("key", "fakeTokenPlaceholder"))
                 .withSku(new Sku().withName(SkuName.STANDARD)).withAdminUserEnabled(true).withRoleAssignmentMode(
                     RoleAssignmentMode.ABAC_REPOSITORY_PERMISSIONS),

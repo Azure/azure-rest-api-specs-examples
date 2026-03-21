@@ -14,15 +14,15 @@ public final class Main {
     /**
      * Sample code: ImportImageFromPublicRegistry.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void importImageFromPublicRegistry(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries()
-            .importImage("myResourceGroup", "myRegistry", new ImportImageParameters()
-                .withSource(new ImportSource().withRegistryUri("registry.hub.docker.com")
-                    .withSourceImage("library/hello-world"))
-                .withTargetTags(Arrays.asList("targetRepository:targetTag"))
-                .withUntaggedTargetRepositories(Arrays.asList("targetRepository1")).withMode(ImportMode.FORCE),
-                com.azure.core.util.Context.NONE);
+    public static void
+        importImageFromPublicRegistry(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().importImage("myResourceGroup", "myRegistry", new ImportImageParameters()
+            .withSource(
+                new ImportSource().withRegistryUri("registry.hub.docker.com").withSourceImage("library/hello-world"))
+            .withTargetTags(Arrays.asList("targetRepository:targetTag"))
+            .withUntaggedTargetRepositories(Arrays.asList("targetRepository1")).withMode(ImportMode.FORCE),
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -18,11 +18,12 @@ public final class Main {
     /**
      * Sample code: ConnectedRegistryUpdate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void connectedRegistryUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getConnectedRegistries()
-            .update("myResourceGroup", "myRegistry", "myScopeMap", new ConnectedRegistryUpdateParameters()
+    public static void
+        connectedRegistryUpdate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getConnectedRegistries().update("myResourceGroup", "myRegistry", "myScopeMap",
+            new ConnectedRegistryUpdateParameters()
                 .withSyncProperties(new SyncUpdateProperties().withSchedule("0 0 */10 * *")
                     .withSyncWindow(Duration.parse("P2D")).withMessageTtl(Duration.parse("P30D")))
                 .withLogging(
@@ -32,6 +33,6 @@ public final class Main {
                     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tokens/client2Token"))
                 .withNotificationsList(Arrays.asList("hello-world:*:*", "sample/repo/*:1.0:*"))
                 .withGarbageCollection(new GarbageCollectionProperties().withEnabled(true).withSchedule("0 5 * * *")),
-                com.azure.core.util.Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

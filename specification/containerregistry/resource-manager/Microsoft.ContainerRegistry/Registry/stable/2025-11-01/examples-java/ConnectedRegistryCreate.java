@@ -17,11 +17,11 @@ public final class Main {
     /**
      * Sample code: ConnectedRegistryCreate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void connectedRegistryCreate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getConnectedRegistries().create("myResourceGroup",
-            "myRegistry", "myConnectedRegistry",
+    public static void
+        connectedRegistryCreate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getConnectedRegistries().create("myResourceGroup", "myRegistry", "myConnectedRegistry",
             new ConnectedRegistryInner().withMode(ConnectedRegistryMode.READ_WRITE)
                 .withParent(new ParentProperties().withSyncProperties(
                     new SyncProperties().withTokenId("fakeTokenPlaceholder").withSchedule("0 9 * * *")

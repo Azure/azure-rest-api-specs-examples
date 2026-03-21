@@ -11,11 +11,10 @@ public final class Main {
     /**
      * Sample code: CacheRuleCreate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void cacheRuleCreate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCacheRules().create("myResourceGroup", "myRegistry",
-            "myCacheRule",
+    public static void cacheRuleCreate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCacheRules().create("myResourceGroup", "myRegistry", "myCacheRule",
             new CacheRuleInner().withCredentialSetResourceId("fakeTokenPlaceholder")
                 .withSourceRepository("docker.io/library/hello-world")
                 .withTargetRepository("cached-docker-hub/hello-world"),

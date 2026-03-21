@@ -9,10 +9,11 @@ public final class Main {
     /**
      * Sample code: CredentialSetDelete.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void credentialSetDelete(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCredentialSets().delete("myResourceGroup",
-            "myRegistry", "myCredentialSet", com.azure.core.util.Context.NONE);
+    public static void
+        credentialSetDelete(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCredentialSets().delete("myResourceGroup", "myRegistry", "myCredentialSet",
+            com.azure.core.util.Context.NONE);
     }
 }

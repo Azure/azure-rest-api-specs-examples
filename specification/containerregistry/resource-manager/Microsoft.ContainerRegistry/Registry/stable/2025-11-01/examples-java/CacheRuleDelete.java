@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: CacheRuleDelete.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void cacheRuleDelete(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getCacheRules().delete("myResourceGroup", "myRegistry",
-            "myCacheRule", com.azure.core.util.Context.NONE);
+    public static void cacheRuleDelete(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCacheRules().delete("myResourceGroup", "myRegistry", "myCacheRule",
+            com.azure.core.util.Context.NONE);
     }
 }

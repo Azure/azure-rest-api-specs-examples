@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: RegistryDelete.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryDelete(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().delete("myResourceGroup", "myRegistry",
+    public static void registryDelete(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().delete("myResourceGroup", "myRegistry",
             com.azure.core.util.Context.NONE);
     }
 }

@@ -15,10 +15,10 @@ public final class Main {
     /**
      * Sample code: RegistryCreate.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void registryCreate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().create("myResourceGroup", "myRegistry",
+    public static void registryCreate(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().create("myResourceGroup", "myRegistry",
             new RegistryInner().withLocation("westus").withTags(mapOf("key", "fakeTokenPlaceholder"))
                 .withSku(new Sku().withName(SkuName.STANDARD)).withAdminUserEnabled(true),
             com.azure.core.util.Context.NONE);

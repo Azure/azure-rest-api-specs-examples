@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: ScopeMapDelete.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void scopeMapDelete(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getScopeMaps().delete("myResourceGroup", "myRegistry",
-            "myScopeMap", com.azure.core.util.Context.NONE);
+    public static void scopeMapDelete(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getScopeMaps().delete("myResourceGroup", "myRegistry", "myScopeMap",
+            com.azure.core.util.Context.NONE);
     }
 }

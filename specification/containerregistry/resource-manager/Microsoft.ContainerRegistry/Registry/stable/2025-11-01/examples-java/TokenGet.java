@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: TokenGet.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void tokenGet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getTokens().getWithResponse("myResourceGroup",
-            "myRegistry", "myToken", com.azure.core.util.Context.NONE);
+    public static void tokenGet(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getTokens().getWithResponse("myResourceGroup", "myRegistry", "myToken",
+            com.azure.core.util.Context.NONE);
     }
 }

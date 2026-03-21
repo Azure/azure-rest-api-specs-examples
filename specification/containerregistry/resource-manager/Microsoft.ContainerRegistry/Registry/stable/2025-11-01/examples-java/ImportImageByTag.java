@@ -14,11 +14,10 @@ public final class Main {
     /**
      * Sample code: ImportImageByTag.
      * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
+     * @param manager Entry point to ContainerRegistryManager.
      */
-    public static void importImageByTag(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.containerRegistries().manager().serviceClient().getRegistries().importImage("myResourceGroup",
-            "myRegistry",
+    public static void importImageByTag(com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getRegistries().importImage("myResourceGroup", "myRegistry",
             new ImportImageParameters().withSource(new ImportSource().withResourceId(
                 "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/sourceRegistry")
                 .withSourceImage("sourceRepository:sourceTag"))

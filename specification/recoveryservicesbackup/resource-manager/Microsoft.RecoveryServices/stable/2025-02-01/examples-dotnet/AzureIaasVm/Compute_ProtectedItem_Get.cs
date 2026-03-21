@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupProtectedItemResource created on azure
-// for more information of creating BackupProtectedItemResource, please refer to the document of BackupProtectedItemResource
+// this example assumes you already have this BackupProtectionContainerResource created on azure
+// for more information of creating BackupProtectionContainerResource, please refer to the document of BackupProtectionContainerResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "PythonSDKBackupTestRg";
 string vaultName = "PySDKBackupTestRsVault";
 string fabricName = "Azure";
 string containerName = "iaasvmcontainer;iaasvmcontainerv2;iaasvm-rg;iaasvm-1";
-string protectedItemName = "vm;iaasvmcontainerv2;iaasvm-rg;iaasvm-1";
-ResourceIdentifier backupProtectedItemResourceId = BackupProtectedItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, containerName, protectedItemName);
-BackupProtectedItemResource backupProtectedItem = client.GetBackupProtectedItemResource(backupProtectedItemResourceId);
+ResourceIdentifier backupProtectionContainerResourceId = BackupProtectionContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, containerName);
+BackupProtectionContainerResource backupProtectionContainer = client.GetBackupProtectionContainerResource(backupProtectionContainerResourceId);
+
+// get the collection of this BackupProtectedItemResource
+BackupProtectedItemCollection collection = backupProtectionContainer.GetBackupProtectedItems();
 
 // invoke the operation
-BackupProtectedItemResource result = await backupProtectedItem.GetAsync();
+string protectedItemName = "vm;iaasvmcontainerv2;iaasvm-rg;iaasvm-1";
+NullableResponse<BackupProtectedItemResource> response = await collection.GetIfExistsAsync(protectedItemName);
+BackupProtectedItemResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BackupProtectedItemData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BackupProtectedItemData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -6295,3 +6295,4 @@ id,name,language,tag,package,version,date_epoch,date
 6294,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.2,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.2,1773919769,03/19/2026
 6295,azure-mgmt-containerregistry@15.0.0,python,azure-mgmt-containerregistry_15.0.0,azure-mgmt-containerregistry,15.0.0,1773960864,03/19/2026
 6296,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.0,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.0,1774046597,03/20/2026
+6297,@azure/arm-keyvault@5.0.0,js,@azure/arm-keyvault_5.0.0,@azure/arm-keyvault,5.0.0,1774031253,03/20/2026

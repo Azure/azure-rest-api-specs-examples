@@ -6297,3 +6297,4 @@ id,name,language,tag,package,version,date_epoch,date
 6296,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.0,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.0,1774046597,03/20/2026
 6297,@azure/arm-keyvault@5.0.0,js,@azure/arm-keyvault_5.0.0,@azure/arm-keyvault,5.0.0,1774031253,03/20/2026
 6298,"Azure.ResourceManager.RecoveryServicesBackup,1.3.1",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.3.1,Azure.ResourceManager.RecoveryServicesBackup,1.3.1,1774025540,03/20/2026
+6299,azure-mgmt-keyvault@14.0.0,python,azure-mgmt-keyvault_14.0.0,azure-mgmt-keyvault,14.0.0,1774046409,03/20/2026

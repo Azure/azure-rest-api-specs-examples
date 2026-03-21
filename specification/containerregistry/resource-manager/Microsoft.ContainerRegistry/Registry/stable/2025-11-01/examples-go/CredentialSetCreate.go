@@ -9,29 +9,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/523ccabf440d8cf1c5b0ea18a8ad1ffedf4902ac/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/CredentialSetCreate.json
+// Generated from example definition: 2025-11-01/CredentialSetCreate.json
 func ExampleCredentialSetsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armcontainerregistry.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	poller, err := clientFactory.NewCredentialSetsClient().BeginCreate(ctx, "myResourceGroup", "myRegistry", "myCredentialSet", armcontainerregistry.CredentialSet{
-		Identity: &armcontainerregistry.IdentityProperties{
-			Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
-		},
 		Properties: &armcontainerregistry.CredentialSetProperties{
+			LoginServer: to.Ptr("docker.io"),
 			AuthCredentials: []*armcontainerregistry.AuthCredential{
 				{
 					Name:                     to.Ptr(armcontainerregistry.CredentialNameCredential1),
-					PasswordSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/password"),
 					UsernameSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/username"),
-				}},
-			LoginServer: to.Ptr("docker.io"),
+					PasswordSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/password"),
+				},
+			},
+		},
+		Identity: &armcontainerregistry.IdentityProperties{
+			Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
 		},
 	}, nil)
 	if err != nil {
@@ -44,28 +45,31 @@ func ExampleCredentialSetsClient_BeginCreate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.CredentialSet = armcontainerregistry.CredentialSet{
-	// 	Name: to.Ptr("myCredentialSet"),
-	// 	Type: to.Ptr("Microsoft.ContainerRegistry/registries/credentialSets"),
-	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/credentialSets/myCredentialSet"),
-	// 	Identity: &armcontainerregistry.IdentityProperties{
-	// 		Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
-	// 		PrincipalID: to.Ptr("00000000-0000-0000-0000-000000000000"),
-	// 		TenantID: to.Ptr("00000000-0000-0000-0000-000000000000"),
-	// 	},
-	// 	Properties: &armcontainerregistry.CredentialSetProperties{
-	// 		AuthCredentials: []*armcontainerregistry.AuthCredential{
-	// 			{
-	// 				Name: to.Ptr(armcontainerregistry.CredentialNameCredential1),
-	// 				CredentialHealth: &armcontainerregistry.CredentialHealth{
-	// 					Status: to.Ptr(armcontainerregistry.CredentialHealthStatusHealthy),
+	// res = armcontainerregistry.CredentialSetsClientCreateResponse{
+	// 	CredentialSet: &armcontainerregistry.CredentialSet{
+	// 		Type: to.Ptr("Microsoft.ContainerRegistry/registries/credentialSets"),
+	// 		Identity: &armcontainerregistry.IdentityProperties{
+	// 			PrincipalID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			TenantID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			Type: to.Ptr(armcontainerregistry.ResourceIdentityTypeSystemAssigned),
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/credentialSets/myCredentialSet"),
+	// 		Name: to.Ptr("myCredentialSet"),
+	// 		Properties: &armcontainerregistry.CredentialSetProperties{
+	// 			LoginServer: to.Ptr("docker.io"),
+	// 			AuthCredentials: []*armcontainerregistry.AuthCredential{
+	// 				{
+	// 					Name: to.Ptr(armcontainerregistry.CredentialNameCredential1),
+	// 					UsernameSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/username"),
+	// 					PasswordSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/password"),
+	// 					CredentialHealth: &armcontainerregistry.CredentialHealth{
+	// 						Status: to.Ptr(armcontainerregistry.CredentialHealthStatusHealthy),
+	// 					},
 	// 				},
-	// 				PasswordSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/password"),
-	// 				UsernameSecretIdentifier: to.Ptr("https://myvault.vault.azure.net/secrets/username"),
-	// 		}},
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-07T18:20:08.012Z"); return t}()),
-	// 		LoginServer: to.Ptr("docker.io"),
-	// 		ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
+	// 			},
+	// 			CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-07T18:20:08.012276+00:00"); return t}()),
+	// 			ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
+	// 		},
 	// 	},
 	// }
 }

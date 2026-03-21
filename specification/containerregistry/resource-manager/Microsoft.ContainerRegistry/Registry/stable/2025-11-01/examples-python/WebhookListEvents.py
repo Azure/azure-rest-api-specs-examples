@@ -19,7 +19,7 @@ from azure.mgmt.containerregistry import ContainerRegistryManagementClient
 def main():
     client = ContainerRegistryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.webhooks.list_events(
@@ -31,6 +31,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/examples/WebhookListEvents.json
+# x-ms-original-file: 2025-11-01/WebhookListEvents.json
 if __name__ == "__main__":
     main()

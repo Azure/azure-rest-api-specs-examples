@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Secrets List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01/listSecrets.json
+     */
+    /**
+     * Sample code: List secrets in the vault.
+     * 
+     * @param manager Entry point to KeyVaultManager.
+     */
+    public static void listSecretsInTheVault(com.azure.resourcemanager.keyvault.KeyVaultManager manager) {
+        manager.serviceClient().getSecrets().list("sample-group", "sample-vault", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

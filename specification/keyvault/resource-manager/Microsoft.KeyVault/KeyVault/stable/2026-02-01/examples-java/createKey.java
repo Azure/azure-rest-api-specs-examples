@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.keyvault.fluent.models.KeyProperties;
+import com.azure.resourcemanager.keyvault.models.JsonWebKeyType;
+import com.azure.resourcemanager.keyvault.models.KeyCreateParameters;
+
+/**
+ * Samples for Keys CreateIfNotExist.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01/createKey.json
+     */
+    /**
+     * Sample code: Create a key.
+     * 
+     * @param manager Entry point to KeyVaultManager.
+     */
+    public static void createAKey(com.azure.resourcemanager.keyvault.KeyVaultManager manager) {
+        manager.serviceClient().getKeys().createIfNotExistWithResponse("sample-group", "sample-vault-name",
+            "sample-key-name",
+            new KeyCreateParameters().withProperties(new KeyProperties().withKty(JsonWebKeyType.RSA)),
+            com.azure.core.util.Context.NONE);
+    }
+}

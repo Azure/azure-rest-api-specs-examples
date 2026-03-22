@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2025-02-01/examples/AzureIaasVm/ProtectionPolicies_CreateOrUpdate_Simple.json
@@ -15,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupProtectionPolicyResource created on azure
-// for more information of creating BackupProtectionPolicyResource, please refer to the document of BackupProtectionPolicyResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "SwaggerTestRg";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this BackupProtectionPolicyResource
 string vaultName = "NetSDKTestRsVault";
-string policyName = "testPolicy1";
-ResourceIdentifier backupProtectionPolicyResourceId = BackupProtectionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, policyName);
-BackupProtectionPolicyResource backupProtectionPolicy = client.GetBackupProtectionPolicyResource(backupProtectionPolicyResourceId);
+BackupProtectionPolicyCollection collection = resourceGroupResource.GetBackupProtectionPolicies(vaultName);
 
 // invoke the operation
+string policyName = "testPolicy1";
 BackupProtectionPolicyData data = new BackupProtectionPolicyData(default)
 {
     Properties = new IaasVmProtectionPolicy
@@ -49,7 +53,7 @@ BackupProtectionPolicyData data = new BackupProtectionPolicyData(default)
         TimeZone = "Pacific Standard Time",
     },
 };
-ArmOperation<BackupProtectionPolicyResource> lro = await backupProtectionPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BackupProtectionPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
 BackupProtectionPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

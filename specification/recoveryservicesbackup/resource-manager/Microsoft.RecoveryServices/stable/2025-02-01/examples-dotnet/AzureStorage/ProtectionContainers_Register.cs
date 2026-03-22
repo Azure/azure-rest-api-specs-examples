@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RecoveryServicesBackup;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2025-02-01/examples/AzureStorage/ProtectionContainers_Register.json
@@ -15,17 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupProtectionContainerResource created on azure
-// for more information of creating BackupProtectionContainerResource, please refer to the document of BackupProtectionContainerResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "SwaggerTestRg";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this BackupProtectionContainerResource
+BackupProtectionContainerCollection collection = resourceGroupResource.GetBackupProtectionContainers();
+
+// invoke the operation
 string vaultName = "swaggertestvault";
 string fabricName = "Azure";
 string containerName = "StorageContainer;Storage;SwaggerTestRg;swaggertestsa";
-ResourceIdentifier backupProtectionContainerResourceId = BackupProtectionContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, containerName);
-BackupProtectionContainerResource backupProtectionContainer = client.GetBackupProtectionContainerResource(backupProtectionContainerResourceId);
-
-// invoke the operation
 BackupProtectionContainerData data = new BackupProtectionContainerData(default)
 {
     Properties = new StorageContainer
@@ -36,7 +40,7 @@ BackupProtectionContainerData data = new BackupProtectionContainerData(default)
         BackupManagementType = BackupManagementType.AzureStorage,
     },
 };
-ArmOperation<BackupProtectionContainerResource> lro = await backupProtectionContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BackupProtectionContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, fabricName, containerName, data);
 BackupProtectionContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

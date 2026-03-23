@@ -1,0 +1,71 @@
+package armsubscription_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription/v2"
+)
+
+// Generated from example definition: 2025-11-01-preview/createAlias.json
+func ExampleAliasClient_BeginCreate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsubscription.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewAliasClient().BeginCreate(ctx, "dummyalias", armsubscription.PutAliasRequest{
+		Properties: &armsubscription.PutAliasRequestProperties{
+			AdditionalProperties: &armsubscription.PutAliasRequestAdditionalProperties{
+				SubscriptionOwnerID:  to.Ptr("f09b39eb-c496-482c-9ab9-afd799572f4c"),
+				SubscriptionTenantID: to.Ptr("66f6e4d6-07dc-4aea-94ea-e12d3026a3c8"),
+				Tags: map[string]*string{
+					"tag1": to.Ptr("Messi"),
+					"tag2": to.Ptr("Ronaldo"),
+					"tag3": to.Ptr("Lebron"),
+				},
+			},
+			BillingScope: to.Ptr("/billingAccounts/af6231a7-7f8d-4fcc-a993-dd8466108d07:c663dac6-a9a5-405a-8938-cd903e12ab5b_2019_05_31/billingProfiles/QWDQ-QWHI-AUW-SJDO-DJH/invoiceSections/FEUF-EUHE-ISJ-SKDW-DJH"),
+			DisplayName:  to.Ptr("Test Subscription"),
+			Workload:     to.Ptr(armsubscription.WorkloadProduction),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsubscription.AliasClientCreateResponse{
+	// 	AliasResponse: &armsubscription.AliasResponse{
+	// 		Name: to.Ptr("string"),
+	// 		Type: to.Ptr("string"),
+	// 		ID: to.Ptr("/providers/Microsoft.Subscription/aliases/dummyalias"),
+	// 		Properties: &armsubscription.AliasResponseProperties{
+	// 			AcceptOwnershipState: to.Ptr(armsubscription.AcceptOwnershipPending),
+	// 			AcceptOwnershipURL: to.Ptr("/providers/Microsoft.Subscription/e2283d0f-acad-4904-b803-627dd74cc072/acceptOwnership"),
+	// 			BillingScope: to.Ptr("/billingAccounts/af6231a7-7f8d-4fcc-a993-dd8466108d07:c663dac6-a9a5-405a-8938-cd903e12ab5b_2019_05_31/billingProfiles/QWDQ-QWHI-AUW-SJDO-DJH/invoiceSections/FEUF-EUHE-ISJ-SKDW-DJH"),
+	// 			DisplayName: to.Ptr("Test Subscription"),
+	// 			ProvisioningState: to.Ptr(armsubscription.ProvisioningStateAccepted),
+	// 			SubscriptionID: to.Ptr("e2283d0f-acad-4904-b803-627dd74cc072"),
+	// 			SubscriptionOwnerID: to.Ptr("f09b39eb-c496-482c-9ab9-afd799572f4c"),
+	// 			Tags: map[string]*string{
+	// 				"tag1": to.Ptr("Messi"),
+	// 				"tag2": to.Ptr("Ronaldo"),
+	// 				"tag3": to.Ptr("Lebron"),
+	// 			},
+	// 			Workload: to.Ptr(armsubscription.WorkloadProduction),
+	// 		},
+	// 	},
+	// }
+}

@@ -1,0 +1,54 @@
+package armsubscription_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription/v2"
+)
+
+// Generated from example definition: 2025-11-01-preview/getTenantPolicyList.json
+func ExamplePolicyClient_NewListPolicyForTenantPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsubscription.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewPolicyClient().NewListPolicyForTenantPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armsubscription.PolicyClientListPolicyForTenantResponse{
+		// 	GetTenantPolicyListResponse: armsubscription.GetTenantPolicyListResponse{
+		// 		Value: []*armsubscription.GetTenantPolicyResponse{
+		// 			{
+		// 				Name: to.Ptr("default"),
+		// 				Type: to.Ptr("providers/Microsoft.Subscription/policies"),
+		// 				ID: to.Ptr("/providers/Microsoft.Subscription/policies/default"),
+		// 				Properties: &armsubscription.TenantPolicy{
+		// 					BlockSubscriptionsIntoTenant: to.Ptr(true),
+		// 					BlockSubscriptionsLeavingTenant: to.Ptr(true),
+		// 					ExemptedPrincipals: []*string{
+		// 						to.Ptr("e879cf0f-2b4d-5431-109a-f72fc9868693"),
+		// 						to.Ptr("9792da87-c97b-410d-a97d-27021ba09ce6"),
+		// 					},
+		// 					PolicyID: to.Ptr("291bba3f-e0a5-47bc-a099-3bdcb2a50a05"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

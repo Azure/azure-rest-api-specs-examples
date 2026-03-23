@@ -6303,3 +6303,4 @@ id,name,language,tag,package,version,date_epoch,date
 6302,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription/v2@v2.0.0-beta.1,go,sdk/resourcemanager/subscription/armsubscription/v2.0.0-beta.1,sdk/resourcemanager/subscription/armsubscription,v2.0.0-beta.1,1774260217,03/23/2026
 6303,@azure/arm-netapp@23.1.0-beta.1,js,@azure/arm-netapp_23.1.0-beta.1,@azure/arm-netapp,23.1.0-beta.1,1774179178,03/22/2026
 6304,"Azure.ResourceManager.NetApp,1.16.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.16.0-beta.1,Azure.ResourceManager.NetApp,1.16.0-beta.1,1774202706,03/22/2026
+6305,azure-mgmt-netapp@15.1.0b1,python,azure-mgmt-netapp_15.1.0b1,azure-mgmt-netapp,15.1.0b1,1774180511,03/22/2026

@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppBucketResource created on azure
-// for more information of creating NetAppBucketResource, please refer to the document of NetAppBucketResource
+// this example assumes you already have this NetAppVolumeResource created on azure
+// for more information of creating NetAppVolumeResource, please refer to the document of NetAppVolumeResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
-string bucketName = "bucket1";
-ResourceIdentifier netAppBucketResourceId = NetAppBucketResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, bucketName);
-NetAppBucketResource netAppBucket = client.GetNetAppBucketResource(netAppBucketResourceId);
+ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
+NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
+
+// get the collection of this NetAppBucketResource
+NetAppBucketCollection collection = netAppVolume.GetNetAppBuckets();
 
 // invoke the operation
-NetAppBucketResource result = await netAppBucket.GetAsync();
+string bucketName = "bucket1";
+NullableResponse<NetAppBucketResource> response = await collection.GetIfExistsAsync(bucketName);
+NetAppBucketResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppBucketData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppBucketData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

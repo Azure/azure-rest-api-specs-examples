@@ -6299,3 +6299,4 @@ id,name,language,tag,package,version,date_epoch,date
 6298,"Azure.ResourceManager.RecoveryServicesBackup,1.3.1",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.3.1,Azure.ResourceManager.RecoveryServicesBackup,1.3.1,1774025540,03/20/2026
 6299,azure-mgmt-keyvault@14.0.0,python,azure-mgmt-keyvault_14.0.0,azure-mgmt-keyvault,14.0.0,1774046409,03/20/2026
 6300,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.0.2,go,sdk/resourcemanager/keyvault/armkeyvault/v2.0.2,sdk/resourcemanager/keyvault/armkeyvault,v2.0.2,1774031401,03/20/2026
+6301,com.azure.resourcemanager:azure-resourcemanager-netapp:2.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.2.0-beta.1,1774180614,03/22/2026

@@ -6306,3 +6306,4 @@ id,name,language,tag,package,version,date_epoch,date
 6305,azure-mgmt-netapp@15.1.0b1,python,azure-mgmt-netapp_15.1.0b1,azure-mgmt-netapp,15.1.0b1,1774180511,03/22/2026
 6306,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.3.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-datafactory_1.3.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-datafactory,1.3.0-beta.1,1774342812,03/24/2026
 6307,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.56.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.56.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.56.0-beta.1,1774287134,03/23/2026
+6308,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-nginx_1.1.0,com.azure.resourcemanager+azure-resourcemanager-nginx,1.1.0,1774267210,03/23/2026

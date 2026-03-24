@@ -6299,3 +6299,8 @@ id,name,language,tag,package,version,date_epoch,date
 6298,"Azure.ResourceManager.RecoveryServicesBackup,1.3.1",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.3.1,Azure.ResourceManager.RecoveryServicesBackup,1.3.1,1774025540,03/20/2026
 6299,azure-mgmt-keyvault@14.0.0,python,azure-mgmt-keyvault_14.0.0,azure-mgmt-keyvault,14.0.0,1774046409,03/20/2026
 6300,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.0.2,go,sdk/resourcemanager/keyvault/armkeyvault/v2.0.2,sdk/resourcemanager/keyvault/armkeyvault,v2.0.2,1774031401,03/20/2026
+6301,com.azure.resourcemanager:azure-resourcemanager-netapp:2.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.2.0-beta.1,1774180614,03/22/2026
+6302,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription/v2@v2.0.0-beta.1,go,sdk/resourcemanager/subscription/armsubscription/v2.0.0-beta.1,sdk/resourcemanager/subscription/armsubscription,v2.0.0-beta.1,1774260217,03/23/2026
+6303,@azure/arm-netapp@23.1.0-beta.1,js,@azure/arm-netapp_23.1.0-beta.1,@azure/arm-netapp,23.1.0-beta.1,1774179178,03/22/2026
+6304,"Azure.ResourceManager.NetApp,1.16.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.16.0-beta.1,Azure.ResourceManager.NetApp,1.16.0-beta.1,1774202706,03/22/2026
+6305,azure-mgmt-netapp@15.1.0b1,python,azure-mgmt-netapp_15.1.0b1,azure-mgmt-netapp,15.1.0b1,1774180511,03/22/2026

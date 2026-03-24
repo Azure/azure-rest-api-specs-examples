@@ -1,0 +1,42 @@
+
+import com.azure.core.management.serializer.SerializerFactory;
+import com.azure.core.util.serializer.SerializerEncoding;
+import com.azure.resourcemanager.datafactory.models.DataFlowDebugPackage;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for DataFlowDebugSession AddDataFlow.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-06-01/DataFlowDebugSession_AddDataFlow.json
+     */
+    /**
+     * Sample code: DataFlowDebugSession_AddDataFlow.
+     * 
+     * @param manager Entry point to DataFactoryManager.
+     */
+    public static void dataFlowDebugSessionAddDataFlow(com.azure.resourcemanager.datafactory.DataFactoryManager manager)
+        throws IOException {
+        manager.dataFlowDebugSessions().addDataFlowWithResponse("exampleResourceGroup", "exampleFactoryName",
+            new DataFlowDebugPackage().withAdditionalProperties(mapOf("properties",
+                SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                    "{\"dataFlow\":{\"name\":\"dataflow1\",\"properties\":{\"type\":\"MappingDataFlow\",\"typeProperties\":{\"script\":\"\\n\\nsource(output(\\n\\t\\tColumn_1 as string\\n\\t),\\n\\tallowSchemaDrift: true,\\n\\tvalidateSchema: false) ~> source1\",\"sinks\":[],\"sources\":[{\"name\":\"source1\",\"dataset\":{\"type\":\"DatasetReference\",\"referenceName\":\"DelimitedText2\"}}],\"transformations\":[]}}},\"datasets\":[{\"name\":\"dataset1\",\"properties\":{\"type\":\"DelimitedText\",\"schema\":[{\"type\":\"String\"}],\"annotations\":[],\"linkedServiceName\":{\"type\":\"LinkedServiceReference\",\"referenceName\":\"linkedService5\"},\"typeProperties\":{\"columnDelimiter\":\",\",\"escapeChar\":\"\\\\\",\"firstRowAsHeader\":true,\"location\":{\"type\":\"AzureBlobStorageLocation\",\"container\":\"dataflow-sample-data\",\"fileName\":\"Ansiencoding.csv\"},\"quoteChar\":\"\\\"\"}}}],\"debugSettings\":{\"datasetParameters\":{\"Movies\":{\"path\":\"abc\"},\"Output\":{\"time\":\"def\"}},\"parameters\":{\"sourcePath\":\"Toy\"},\"sourceSettings\":[{\"rowLimit\":1000,\"sourceName\":\"source1\"},{\"rowLimit\":222,\"sourceName\":\"source2\"}]},\"linkedServices\":[{\"name\":\"linkedService1\",\"properties\":{\"type\":\"AzureBlobStorage\",\"annotations\":[],\"typeProperties\":{\"connectionString\":\"DefaultEndpointsProtocol=https;AccountName=<storageName>;EndpointSuffix=core.windows.net;\",\"encryptedCredential\":\"<credential>\"}}}],\"sessionId\":\"f06ed247-9d07-49b2-b05e-2cb4a2fc871e\"}",
+                    Object.class, SerializerEncoding.JSON))),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for GlobalParameters Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-06-01/GlobalParameters_Delete.json
+     */
+    /**
+     * Sample code: GlobalParameters_Delete.
+     * 
+     * @param manager Entry point to DataFactoryManager.
+     */
+    public static void globalParametersDelete(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
+        manager.globalParameters().deleteWithResponse("exampleResourceGroup", "exampleFactoryName", "default",
+            com.azure.core.util.Context.NONE);
+    }
+}

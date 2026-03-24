@@ -1,0 +1,18 @@
+
+/**
+ * Samples for IntegrationRuntimeNodes Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-06-01/IntegrationRuntimeNodes_Get.json
+     */
+    /**
+     * Sample code: IntegrationRuntimeNodes_Get.
+     * 
+     * @param manager Entry point to DataFactoryManager.
+     */
+    public static void integrationRuntimeNodesGet(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
+        manager.integrationRuntimeNodes().getWithResponse("exampleResourceGroup", "exampleFactoryName",
+            "exampleIntegrationRuntime", "Node_1", com.azure.core.util.Context.NONE);
+    }
+}

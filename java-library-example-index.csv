@@ -6304,3 +6304,4 @@ id,name,language,tag,package,version,date_epoch,date
 6303,@azure/arm-netapp@23.1.0-beta.1,js,@azure/arm-netapp_23.1.0-beta.1,@azure/arm-netapp,23.1.0-beta.1,1774179178,03/22/2026
 6304,"Azure.ResourceManager.NetApp,1.16.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.16.0-beta.1,Azure.ResourceManager.NetApp,1.16.0-beta.1,1774202706,03/22/2026
 6305,azure-mgmt-netapp@15.1.0b1,python,azure-mgmt-netapp_15.1.0b1,azure-mgmt-netapp,15.1.0b1,1774180511,03/22/2026
+6306,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.3.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-datafactory_1.3.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-datafactory,1.3.0-beta.1,1774342812,03/24/2026

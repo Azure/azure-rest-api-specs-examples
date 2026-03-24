@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NginxDeploymentWafPolicies Analysis.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-11-01/NginxDeploymentWafPolicies_Analysis.json
+     */
+    /**
+     * Sample code: NginxDeploymentWafPolicies_Analysis.
+     * 
+     * @param manager Entry point to NginxManager.
+     */
+    public static void nginxDeploymentWafPoliciesAnalysis(com.azure.resourcemanager.nginx.NginxManager manager) {
+        manager.nginxDeploymentWafPolicies().analysisWithResponse("myResourceGroup", "myDeployment", "myWafPolicy",
+            null, com.azure.core.util.Context.NONE);
+    }
+}

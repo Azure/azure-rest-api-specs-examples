@@ -6311,3 +6311,4 @@ id,name,language,tag,package,version,date_epoch,date
 6310,@azure/arm-containerregistry@12.1.0-beta.1,js,@azure/arm-containerregistry_12.1.0-beta.1,@azure/arm-containerregistry,12.1.0-beta.1,1774284425,03/23/2026
 6311,@azure/arm-nginx@4.0.0,js,@azure/arm-nginx_4.0.0,@azure/arm-nginx,4.0.0,1774265790,03/23/2026
 6312,azure-mgmt-storage@24.0.1,python,azure-mgmt-storage_24.0.1,azure-mgmt-storage,24.0.1,1774338921,03/24/2026
+6313,azure-mgmt-containerregistry@15.1.0b1,python,azure-mgmt-containerregistry_15.1.0b1,azure-mgmt-containerregistry,15.1.0b1,1774287022,03/23/2026

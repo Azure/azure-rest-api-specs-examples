@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Gates ListByFleet.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01-preview/Gates_ListByFleet.json
+     */
+    /**
+     * Sample code: Lists the Gates of a Fleet.
+     * 
+     * @param manager Entry point to ContainerServiceFleetManager.
+     */
+    public static void
+        listsTheGatesOfAFleet(com.azure.resourcemanager.containerservicefleet.ContainerServiceFleetManager manager) {
+        manager.gates().listByFleet("rg1", "fleet1", null, null, null, com.azure.core.util.Context.NONE);
+    }
+}

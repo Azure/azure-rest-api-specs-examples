@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.containerservicefleet.models.AutoUpgradeNodeImageSelection;
+import com.azure.resourcemanager.containerservicefleet.models.AutoUpgradeNodeImageSelectionType;
+import com.azure.resourcemanager.containerservicefleet.models.UpgradeChannel;
+
+/**
+ * Samples for AutoUpgradeProfiles CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01-preview/AutoUpgradeProfiles_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Create an AutoUpgradeProfile.
+     * 
+     * @param manager Entry point to ContainerServiceFleetManager.
+     */
+    public static void createAnAutoUpgradeProfile(
+        com.azure.resourcemanager.containerservicefleet.ContainerServiceFleetManager manager) {
+        manager.autoUpgradeProfiles().define("autoupgradeprofile1").withExistingFleet("rgfleets", "fleet1")
+            .withUpdateStrategyId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgfleets/providers/Microsoft.ContainerService/fleets/fleet1/updateStrategies/strategy1")
+            .withChannel(UpgradeChannel.STABLE)
+            .withNodeImageSelection(
+                new AutoUpgradeNodeImageSelection().withType(AutoUpgradeNodeImageSelectionType.LATEST))
+            .withDisabled(true).withIfMatch("uktvayathbu").withIfNoneMatch("vdjolwxnefqamimybcvxxva").create();
+    }
+}

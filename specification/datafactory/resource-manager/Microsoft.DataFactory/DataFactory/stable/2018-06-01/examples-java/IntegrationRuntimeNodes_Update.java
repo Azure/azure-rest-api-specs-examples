@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.datafactory.models.UpdateIntegrationRuntimeNodeRequest;
+
+/**
+ * Samples for IntegrationRuntimeNodes Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-06-01/IntegrationRuntimeNodes_Update.json
+     */
+    /**
+     * Sample code: IntegrationRuntimeNodes_Update.
+     * 
+     * @param manager Entry point to DataFactoryManager.
+     */
+    public static void integrationRuntimeNodesUpdate(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
+        manager.integrationRuntimeNodes().updateWithResponse("exampleResourceGroup", "exampleFactoryName",
+            "exampleIntegrationRuntime", "Node_1", new UpdateIntegrationRuntimeNodeRequest().withConcurrentJobsLimit(2),
+            com.azure.core.util.Context.NONE);
+    }
+}

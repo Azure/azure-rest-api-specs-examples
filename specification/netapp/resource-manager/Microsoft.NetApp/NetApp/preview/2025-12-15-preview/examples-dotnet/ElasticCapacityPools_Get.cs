@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticAccountResource created on azure
-// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
+// this example assumes you already have this NetAppElasticCapacityPoolResource created on azure
+// for more information of creating NetAppElasticCapacityPoolResource, please refer to the document of NetAppElasticCapacityPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
-
-// get the collection of this ElasticCapacityPoolResource
-ElasticCapacityPoolCollection collection = elasticAccount.GetElasticCapacityPools();
+string poolName = "pool1";
+ResourceIdentifier netAppElasticCapacityPoolResourceId = NetAppElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
+NetAppElasticCapacityPoolResource netAppElasticCapacityPool = client.GetNetAppElasticCapacityPoolResource(netAppElasticCapacityPoolResourceId);
 
 // invoke the operation
-string poolName = "pool1";
-NullableResponse<ElasticCapacityPoolResource> response = await collection.GetIfExistsAsync(poolName);
-ElasticCapacityPoolResource result = response.HasValue ? response.Value : null;
+NetAppElasticCapacityPoolResource result = await netAppElasticCapacityPool.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ElasticCapacityPoolData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetAppElasticCapacityPoolData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -24,15 +24,15 @@ string poolName = "pool1";
 ResourceIdentifier capacityPoolResourceId = CapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
 CapacityPoolResource capacityPool = client.GetCapacityPoolResource(capacityPoolResourceId);
 
-// get the collection of this CacheResource
-CacheCollection collection = capacityPool.GetCaches();
+// get the collection of this NetAppCacheResource
+NetAppCacheCollection collection = capacityPool.GetNetAppCaches();
 
 // invoke the operation and iterate over the result
-await foreach (CacheResource item in collection.GetAllAsync())
+await foreach (NetAppCacheResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    CacheData resourceData = item.Data;
+    NetAppCacheData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

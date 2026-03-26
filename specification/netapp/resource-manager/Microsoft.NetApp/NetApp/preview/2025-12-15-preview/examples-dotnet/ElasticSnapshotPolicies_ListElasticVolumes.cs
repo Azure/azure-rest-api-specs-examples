@@ -15,21 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSnapshotPolicyResource created on azure
-// for more information of creating ElasticSnapshotPolicyResource, please refer to the document of ElasticSnapshotPolicyResource
+// this example assumes you already have this NetAppElasticSnapshotPolicyResource created on azure
+// for more information of creating NetAppElasticSnapshotPolicyResource, please refer to the document of NetAppElasticSnapshotPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string snapshotPolicyName = "snapshotPolicyName";
-ResourceIdentifier elasticSnapshotPolicyResourceId = ElasticSnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
-ElasticSnapshotPolicyResource elasticSnapshotPolicy = client.GetElasticSnapshotPolicyResource(elasticSnapshotPolicyResourceId);
+ResourceIdentifier netAppElasticSnapshotPolicyResourceId = NetAppElasticSnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
+NetAppElasticSnapshotPolicyResource netAppElasticSnapshotPolicy = client.GetNetAppElasticSnapshotPolicyResource(netAppElasticSnapshotPolicyResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (ElasticVolumeResource item in elasticSnapshotPolicy.GetElasticVolumesAsync())
+await foreach (NetAppElasticVolumeResource item in netAppElasticSnapshotPolicy.GetElasticVolumesAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    ElasticVolumeData resourceData = item.Data;
+    NetAppElasticVolumeData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

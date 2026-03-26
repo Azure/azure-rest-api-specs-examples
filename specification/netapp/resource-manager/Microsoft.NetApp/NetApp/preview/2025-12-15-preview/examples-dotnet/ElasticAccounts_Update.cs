@@ -15,27 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticAccountResource created on azure
-// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
+// this example assumes you already have this NetAppElasticAccountResource created on azure
+// for more information of creating NetAppElasticAccountResource, please refer to the document of NetAppElasticAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
+ResourceIdentifier netAppElasticAccountResourceId = NetAppElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+NetAppElasticAccountResource netAppElasticAccount = client.GetNetAppElasticAccountResource(netAppElasticAccountResourceId);
 
 // invoke the operation
-ElasticAccountPatch patch = new ElasticAccountPatch
+NetAppElasticAccountPatch patch = new NetAppElasticAccountPatch
 {
     Tags =
     {
     ["Tag1"] = "Value1"
     },
 };
-ArmOperation<ElasticAccountResource> lro = await elasticAccount.UpdateAsync(WaitUntil.Completed, patch);
-ElasticAccountResource result = lro.Value;
+ArmOperation<NetAppElasticAccountResource> lro = await netAppElasticAccount.UpdateAsync(WaitUntil.Completed, patch);
+NetAppElasticAccountResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticAccountData resourceData = result.Data;
+NetAppElasticAccountData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

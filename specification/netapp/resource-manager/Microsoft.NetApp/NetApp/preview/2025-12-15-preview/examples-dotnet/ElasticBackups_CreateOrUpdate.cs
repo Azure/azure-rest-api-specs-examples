@@ -15,34 +15,34 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticBackupVaultResource created on azure
-// for more information of creating ElasticBackupVaultResource, please refer to the document of ElasticBackupVaultResource
+// this example assumes you already have this NetAppElasticBackupVaultResource created on azure
+// for more information of creating NetAppElasticBackupVaultResource, please refer to the document of NetAppElasticBackupVaultResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string backupVaultName = "backupVault1";
-ResourceIdentifier elasticBackupVaultResourceId = ElasticBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
-ElasticBackupVaultResource elasticBackupVault = client.GetElasticBackupVaultResource(elasticBackupVaultResourceId);
+ResourceIdentifier netAppElasticBackupVaultResourceId = NetAppElasticBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
+NetAppElasticBackupVaultResource netAppElasticBackupVault = client.GetNetAppElasticBackupVaultResource(netAppElasticBackupVaultResourceId);
 
-// get the collection of this ElasticBackupResource
-ElasticBackupCollection collection = elasticBackupVault.GetElasticBackups();
+// get the collection of this NetAppElasticBackupResource
+NetAppElasticBackupCollection collection = netAppElasticBackupVault.GetNetAppElasticBackups();
 
 // invoke the operation
 string backupName = "backup1";
-ElasticBackupData data = new ElasticBackupData
+NetAppElasticBackupData data = new NetAppElasticBackupData
 {
-    Properties = new ElasticBackupProperties(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticCapacityPools/pool1/elasticVolumes/volume1"))
+    Properties = new NetAppElasticBackupProperties(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticCapacityPools/pool1/elasticVolumes/volume1"))
     {
         Label = "myLabel",
-        SnapshotUsage = SnapshotUsage.UseExistingSnapshot,
+        SnapshotUsage = NetAppSnapshotUsage.UseExistingSnapshot,
         ElasticSnapshotResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/elasticAccounts/account1/elasticCapacityPools/pool1/elasticVolumes/volume1/elasticSnapshots/snap1"),
     },
 };
-ArmOperation<ElasticBackupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupName, data);
-ElasticBackupResource result = lro.Value;
+ArmOperation<NetAppElasticBackupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupName, data);
+NetAppElasticBackupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticBackupData resourceData = result.Data;
+NetAppElasticBackupData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

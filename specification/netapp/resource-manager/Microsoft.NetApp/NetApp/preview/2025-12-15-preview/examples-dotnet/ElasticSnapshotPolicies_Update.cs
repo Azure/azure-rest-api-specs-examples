@@ -15,19 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSnapshotPolicyResource created on azure
-// for more information of creating ElasticSnapshotPolicyResource, please refer to the document of ElasticSnapshotPolicyResource
+// this example assumes you already have this NetAppElasticSnapshotPolicyResource created on azure
+// for more information of creating NetAppElasticSnapshotPolicyResource, please refer to the document of NetAppElasticSnapshotPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string snapshotPolicyName = "snapshotPolicyName";
-ResourceIdentifier elasticSnapshotPolicyResourceId = ElasticSnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
-ElasticSnapshotPolicyResource elasticSnapshotPolicy = client.GetElasticSnapshotPolicyResource(elasticSnapshotPolicyResourceId);
+ResourceIdentifier netAppElasticSnapshotPolicyResourceId = NetAppElasticSnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
+NetAppElasticSnapshotPolicyResource netAppElasticSnapshotPolicy = client.GetNetAppElasticSnapshotPolicyResource(netAppElasticSnapshotPolicyResourceId);
 
 // invoke the operation
-ElasticSnapshotPolicyPatch patch = new ElasticSnapshotPolicyPatch
+NetAppElasticSnapshotPolicyPatch patch = new NetAppElasticSnapshotPolicyPatch
 {
-    Properties = new ElasticSnapshotPolicyUpdateProperties
+    Properties = new NetAppElasticSnapshotPolicyPatchProperties
     {
         HourlySchedule = new ElasticSnapshotPolicyHourlySchedule
         {
@@ -43,7 +43,7 @@ ElasticSnapshotPolicyPatch patch = new ElasticSnapshotPolicyPatch
         WeeklySchedule = new ElasticSnapshotPolicyWeeklySchedule
         {
             SnapshotsToKeep = 3,
-            Days = { Models.DayOfWeek.Wednesday },
+            Days = { NetAppDayOfWeek.Wednesday },
             Hour = 14,
             Minute = 45,
         },
@@ -54,14 +54,14 @@ ElasticSnapshotPolicyPatch patch = new ElasticSnapshotPolicyPatch
             Hour = 14,
             Minute = 15,
         },
-        PolicyStatus = PolicyStatus.Enabled,
+        PolicyStatus = NetAppPolicyStatus.Enabled,
     },
 };
-ArmOperation<ElasticSnapshotPolicyResource> lro = await elasticSnapshotPolicy.UpdateAsync(WaitUntil.Completed, patch);
-ElasticSnapshotPolicyResource result = lro.Value;
+ArmOperation<NetAppElasticSnapshotPolicyResource> lro = await netAppElasticSnapshotPolicy.UpdateAsync(WaitUntil.Completed, patch);
+NetAppElasticSnapshotPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticSnapshotPolicyData resourceData = result.Data;
+NetAppElasticSnapshotPolicyData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

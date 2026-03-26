@@ -15,45 +15,45 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BucketResource created on azure
-// for more information of creating BucketResource, please refer to the document of BucketResource
+// this example assumes you already have this NetAppBucketResource created on azure
+// for more information of creating NetAppBucketResource, please refer to the document of NetAppBucketResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
 string bucketName = "bucket1";
-ResourceIdentifier bucketResourceId = BucketResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, bucketName);
-BucketResource bucket = client.GetBucketResource(bucketResourceId);
+ResourceIdentifier netAppBucketResourceId = NetAppBucketResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, bucketName);
+NetAppBucketResource netAppBucket = client.GetNetAppBucketResource(netAppBucketResourceId);
 
 // invoke the operation
-BucketPatch patch = new BucketPatch
+NetAppBucketPatch patch = new NetAppBucketPatch
 {
-    Server = new BucketServerPatchProperties
+    Server = new NetAppBucketServerPatchProperties
     {
         Fqdn = "fullyqualified.domainname.com",
-        OnCertificateConflictAction = OnCertificateConflictAction.Fail,
+        OnCertificateConflictAction = NetAppOnCertificateConflictAction.Fail,
     },
-    Permissions = BucketPatchPermission.ReadOnly,
-    AkvDetails = new AzureKeyVaultDetails
+    Permissions = NetAppBucketPatchPermission.ReadOnly,
+    KeyVaultDetails = new NetAppKeyVaultDetails
     {
-        CertificateAkvDetails = new CertificateAkvDetails
+        CertificateKeyVaultDetails = new CertificateKeyVaultDetails
         {
             CertificateKeyVaultUri = new Uri("https://REDACTED.vault.azure.net/"),
             CertificateName = "my-certificate",
         },
-        CredentialsAkvDetails = new CredentialsAkvDetails
+        CredentialsKeyVaultDetails = new CredentialsKeyVaultDetails
         {
             CredentialsKeyVaultUri = new Uri("https://REDACTED.vault.azure.net/"),
             SecretName = "my-secret",
         },
     },
 };
-ArmOperation<BucketResource> lro = await bucket.UpdateAsync(WaitUntil.Completed, patch);
-BucketResource result = lro.Value;
+ArmOperation<NetAppBucketResource> lro = await netAppBucket.UpdateAsync(WaitUntil.Completed, patch);
+NetAppBucketResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-BucketData resourceData = result.Data;
+NetAppBucketData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

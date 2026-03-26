@@ -24,27 +24,27 @@ string poolName = "pool1";
 ResourceIdentifier capacityPoolResourceId = CapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
 CapacityPoolResource capacityPool = client.GetCapacityPoolResource(capacityPoolResourceId);
 
-// get the collection of this CacheResource
-CacheCollection collection = capacityPool.GetCaches();
+// get the collection of this NetAppCacheResource
+NetAppCacheCollection collection = capacityPool.GetNetAppCaches();
 
 // invoke the operation
 string cacheName = "cache1";
-CacheData data = new CacheData(new AzureLocation("eastus"), new CacheProperties(
+NetAppCacheData data = new NetAppCacheData(new AzureLocation("eastus"), new NetAppCacheProperties(
     "cache-west-us2-01",
     107374182400L,
     new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/cacheVnet/subnets/cacheSubnet1"),
     new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/icLifVnet/subnets/peeringSubnet1"),
     NetAppEncryptionKeySource.MicrosoftNetApp,
-    new OriginClusterInformation("cluster1", new string[] { "192.0.2.10", "192.0.2.11" }, "vserver1", "originvol1"))
+    new NetAppOriginClusterInformation("cluster1", new string[] { "192.0.2.10", "192.0.2.11" }, "vserver1", "originvol1"))
 {
-    Ldap = LdapState.Enabled,
-    LdapServerType = LdapServerType.OpenLdap,
+    Ldap = NetAppLdapState.Enabled,
+    LdapServerType = NetAppLdapServerType.OpenLdap,
 });
-ArmOperation<CacheResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cacheName, data);
-CacheResource result = lro.Value;
+ArmOperation<NetAppCacheResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cacheName, data);
+NetAppCacheResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-CacheData resourceData = result.Data;
+NetAppCacheData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

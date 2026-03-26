@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CacheResource created on azure
-// for more information of creating CacheResource, please refer to the document of CacheResource
+// this example assumes you already have this CapacityPoolResource created on azure
+// for more information of creating CapacityPoolResource, please refer to the document of CapacityPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
-string cacheName = "cache1";
-ResourceIdentifier cacheResourceId = CacheResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, cacheName);
-CacheResource cache = client.GetCacheResource(cacheResourceId);
+ResourceIdentifier capacityPoolResourceId = CapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
+CapacityPoolResource capacityPool = client.GetCapacityPoolResource(capacityPoolResourceId);
+
+// get the collection of this NetAppCacheResource
+NetAppCacheCollection collection = capacityPool.GetNetAppCaches();
 
 // invoke the operation
-CacheResource result = await cache.GetAsync();
+string cacheName = "cache1";
+NullableResponse<NetAppCacheResource> response = await collection.GetIfExistsAsync(cacheName);
+NetAppCacheResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CacheData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppCacheData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

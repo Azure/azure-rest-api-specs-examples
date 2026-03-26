@@ -15,19 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticBackupPolicyResource created on azure
-// for more information of creating ElasticBackupPolicyResource, please refer to the document of ElasticBackupPolicyResource
+// this example assumes you already have this NetAppElasticBackupPolicyResource created on azure
+// for more information of creating NetAppElasticBackupPolicyResource, please refer to the document of NetAppElasticBackupPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string backupPolicyName = "backupPolicyName";
-ResourceIdentifier elasticBackupPolicyResourceId = ElasticBackupPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupPolicyName);
-ElasticBackupPolicyResource elasticBackupPolicy = client.GetElasticBackupPolicyResource(elasticBackupPolicyResourceId);
+ResourceIdentifier netAppElasticBackupPolicyResourceId = NetAppElasticBackupPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupPolicyName);
+NetAppElasticBackupPolicyResource netAppElasticBackupPolicy = client.GetNetAppElasticBackupPolicyResource(netAppElasticBackupPolicyResourceId);
 
 // invoke the operation
-ElasticBackupPolicyPatch patch = new ElasticBackupPolicyPatch
+NetAppElasticBackupPolicyPatch patch = new NetAppElasticBackupPolicyPatch
 {
-    Properties = new ElasticBackupPolicyUpdateProperties
+    Properties = new NetAppElasticBackupPolicyPatchProperties
     {
         DailyBackupsToKeep = 5,
         WeeklyBackupsToKeep = 10,
@@ -35,11 +35,11 @@ ElasticBackupPolicyPatch patch = new ElasticBackupPolicyPatch
         PolicyState = ElasticBackupPolicyState.Enabled,
     },
 };
-ArmOperation<ElasticBackupPolicyResource> lro = await elasticBackupPolicy.UpdateAsync(WaitUntil.Completed, patch);
-ElasticBackupPolicyResource result = lro.Value;
+ArmOperation<NetAppElasticBackupPolicyResource> lro = await netAppElasticBackupPolicy.UpdateAsync(WaitUntil.Completed, patch);
+NetAppElasticBackupPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticBackupPolicyData resourceData = result.Data;
+NetAppElasticBackupPolicyData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

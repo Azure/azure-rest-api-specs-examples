@@ -25,35 +25,35 @@ string volumeName = "volume1";
 ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
 NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
-// get the collection of this BucketResource
-BucketCollection collection = netAppVolume.GetBuckets();
+// get the collection of this NetAppBucketResource
+NetAppBucketCollection collection = netAppVolume.GetNetAppBuckets();
 
 // invoke the operation
 string bucketName = "bucket1";
-BucketData data = new BucketData
+NetAppBucketData data = new NetAppBucketData
 {
     Path = "/path",
-    FileSystemUser = new FileSystemUser
+    FileSystemUser = new NetAppFileSystemUser
     {
-        NfsUser = new NfsUser
+        NfsUser = new NetAppNfsUser
         {
             UserId = 1001L,
             GroupId = 1000L,
         },
     },
-    Server = new BucketServerProperties
+    Server = new NetAppBucketServerProperties
     {
         Fqdn = "fullyqualified.domainname.com",
         CertificateObject = "<REDACTED>",
-        OnCertificateConflictAction = OnCertificateConflictAction.Update,
+        OnCertificateConflictAction = NetAppOnCertificateConflictAction.Update,
     },
-    Permissions = BucketPermission.ReadOnly,
+    Permissions = NetAppBucketPermission.ReadOnly,
 };
-ArmOperation<BucketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bucketName, data);
-BucketResource result = lro.Value;
+ArmOperation<NetAppBucketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bucketName, data);
+NetAppBucketResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-BucketData resourceData = result.Data;
+NetAppBucketData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -6313,3 +6313,10 @@ id,name,language,tag,package,version,date_epoch,date
 6312,azure-mgmt-storage@24.0.1,python,azure-mgmt-storage_24.0.1,azure-mgmt-storage,24.0.1,1774338921,03/24/2026
 6313,azure-mgmt-containerregistry@15.1.0b1,python,azure-mgmt-containerregistry_15.1.0b1,azure-mgmt-containerregistry,15.1.0b1,1774287022,03/23/2026
 6314,azure-mgmt-nginx@4.0.0,python,azure-mgmt-nginx_4.0.0,azure-mgmt-nginx,4.0.0,1774267311,03/23/2026
+6315,com.azure.resourcemanager:azure-resourcemanager-servicegroups:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-servicegroups_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-servicegroups,1.0.0-beta.1,1774429854,03/25/2026
+6316,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.3.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet_1.3.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet,1.3.0-beta.3,1774422665,03/25/2026
+6317,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.58.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.58.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.58.0,1774411033,03/25/2026
+6318,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.0.0-beta.1,go,sdk/resourcemanager/netapp/armnetapp/v10.0.0-beta.1,sdk/resourcemanager/netapp/armnetapp,v10.0.0-beta.1,1774433632,03/25/2026
+6319,@azure/arm-kubernetesconfiguration-fluxconfigurations@1.0.0-beta.2,js,@azure/arm-kubernetesconfiguration-fluxconfigurations_1.0.0-beta.2,@azure/arm-kubernetesconfiguration-fluxconfigurations,1.0.0-beta.2,1774408877,03/25/2026
+6320,@azure/arm-kubernetesconfiguration-extensiontypes@1.0.0-beta.2,js,@azure/arm-kubernetesconfiguration-extensiontypes_1.0.0-beta.2,@azure/arm-kubernetesconfiguration-extensiontypes,1.0.0-beta.2,1774408874,03/25/2026
+6321,@azure/arm-batch@11.0.0,js,@azure/arm-batch_11.0.0,@azure/arm-batch,11.0.0,1774377791,03/24/2026

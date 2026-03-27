@@ -24,17 +24,17 @@ string resourceGroupName = "myRG";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this ActiveDirectoryConfigResource
-ActiveDirectoryConfigCollection collection = resourceGroupResource.GetActiveDirectoryConfigs();
+// get the collection of this NetAppActiveDirectoryConfigResource
+NetAppActiveDirectoryConfigCollection collection = resourceGroupResource.GetNetAppActiveDirectoryConfigs();
 
 // invoke the operation
 string activeDirectoryConfigName = "adconfig1";
-ActiveDirectoryConfigData data = new ActiveDirectoryConfigData(new AzureLocation("eastus"))
+NetAppActiveDirectoryConfigData data = new NetAppActiveDirectoryConfigData(new AzureLocation("eastus"))
 {
-    Properties = new ActiveDirectoryConfigProperties("example.net", new SecretPassword
+    Properties = new NetAppActiveDirectoryConfigProperties("example.net", new NetAppSecretPassword
     {
-        KeyVaultProperties = new SecretPasswordKeyVaultProperties(new Uri("https://example.vault.azure.net/"), "activeDirectoryPassword"),
-        Identity = new SecretPasswordIdentity
+        KeyVaultProperties = new NetAppSecretPasswordKeyVaultProperties(new Uri("https://example.vault.azure.net/"), "activeDirectoryPassword"),
+        Identity = new NetAppSecretPasswordIdentity
         {
             UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentity1",
         },
@@ -61,11 +61,11 @@ ActiveDirectoryConfigData data = new ActiveDirectoryConfigData(new AzureLocation
     ["ac-tag1"] = "activeDirectoryConfig1"
     },
 };
-ArmOperation<ActiveDirectoryConfigResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, activeDirectoryConfigName, data);
-ActiveDirectoryConfigResource result = lro.Value;
+ArmOperation<NetAppActiveDirectoryConfigResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, activeDirectoryConfigName, data);
+NetAppActiveDirectoryConfigResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ActiveDirectoryConfigData resourceData = result.Data;
+NetAppActiveDirectoryConfigData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

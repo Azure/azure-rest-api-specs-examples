@@ -23,24 +23,24 @@ string resourceGroupName = "myRG";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this ElasticAccountResource
-ElasticAccountCollection collection = resourceGroupResource.GetElasticAccounts();
+// get the collection of this NetAppElasticAccountResource
+NetAppElasticAccountCollection collection = resourceGroupResource.GetNetAppElasticAccounts();
 
 // invoke the operation
 string accountName = "account1";
-ElasticAccountData data = new ElasticAccountData(new AzureLocation("eastus"))
+NetAppElasticAccountData data = new NetAppElasticAccountData(new AzureLocation("eastus"))
 {
-    Properties = new ElasticAccountProperties(),
+    Properties = new NetAppElasticAccountProperties(),
     Tags =
     {
     ["ac-tag1"] = "account1"
     },
 };
-ArmOperation<ElasticAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);
-ElasticAccountResource result = lro.Value;
+ArmOperation<NetAppElasticAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);
+NetAppElasticAccountResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticAccountData resourceData = result.Data;
+NetAppElasticAccountData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

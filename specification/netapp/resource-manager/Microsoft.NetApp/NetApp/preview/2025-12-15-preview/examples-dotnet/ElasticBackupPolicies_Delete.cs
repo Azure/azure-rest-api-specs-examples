@@ -15,16 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticBackupPolicyResource created on azure
-// for more information of creating ElasticBackupPolicyResource, please refer to the document of ElasticBackupPolicyResource
+// this example assumes you already have this NetAppElasticBackupPolicyResource created on azure
+// for more information of creating NetAppElasticBackupPolicyResource, please refer to the document of NetAppElasticBackupPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resourceGroup";
 string accountName = "accountName";
 string backupPolicyName = "backupPolicyName";
-ResourceIdentifier elasticBackupPolicyResourceId = ElasticBackupPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupPolicyName);
-ElasticBackupPolicyResource elasticBackupPolicy = client.GetElasticBackupPolicyResource(elasticBackupPolicyResourceId);
+ResourceIdentifier netAppElasticBackupPolicyResourceId = NetAppElasticBackupPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupPolicyName);
+NetAppElasticBackupPolicyResource netAppElasticBackupPolicy = client.GetNetAppElasticBackupPolicyResource(netAppElasticBackupPolicyResourceId);
 
 // invoke the operation
-await elasticBackupPolicy.DeleteAsync(WaitUntil.Completed);
+await netAppElasticBackupPolicy.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

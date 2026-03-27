@@ -15,17 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticCapacityPoolResource created on azure
-// for more information of creating ElasticCapacityPoolResource, please refer to the document of ElasticCapacityPoolResource
+// this example assumes you already have this NetAppElasticCapacityPoolResource created on azure
+// for more information of creating NetAppElasticCapacityPoolResource, please refer to the document of NetAppElasticCapacityPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
-ResourceIdentifier elasticCapacityPoolResourceId = ElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
-ElasticCapacityPoolResource elasticCapacityPool = client.GetElasticCapacityPoolResource(elasticCapacityPoolResourceId);
+ResourceIdentifier netAppElasticCapacityPoolResourceId = NetAppElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
+NetAppElasticCapacityPoolResource netAppElasticCapacityPool = client.GetNetAppElasticCapacityPoolResource(netAppElasticCapacityPoolResourceId);
 
 // invoke the operation
-CheckElasticVolumeFilePathAvailabilityContent content = new CheckElasticVolumeFilePathAvailabilityContent("my-exact-filepath");
-CheckElasticResourceAvailabilityResponseResult result = await elasticCapacityPool.CheckVolumeFilePathAvailabilityAsync(content);
+ElasticVolumeFilePathAvailabilityContent content = new ElasticVolumeFilePathAvailabilityContent("my-exact-filepath");
+ElasticResourceAvailabilityResult result = await netAppElasticCapacityPool.CheckElasticVolumeFilePathAvailabilityAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

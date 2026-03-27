@@ -24,15 +24,15 @@ string resourceGroupName = "myRG";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this ActiveDirectoryConfigResource
-ActiveDirectoryConfigCollection collection = resourceGroupResource.GetActiveDirectoryConfigs();
+// get the collection of this NetAppActiveDirectoryConfigResource
+NetAppActiveDirectoryConfigCollection collection = resourceGroupResource.GetNetAppActiveDirectoryConfigs();
 
 // invoke the operation and iterate over the result
-await foreach (ActiveDirectoryConfigResource item in collection.GetAllAsync())
+await foreach (NetAppActiveDirectoryConfigResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    ActiveDirectoryConfigData resourceData = item.Data;
+    NetAppActiveDirectoryConfigData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

@@ -15,24 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticCapacityPoolResource created on azure
-// for more information of creating ElasticCapacityPoolResource, please refer to the document of ElasticCapacityPoolResource
+// this example assumes you already have this NetAppElasticCapacityPoolResource created on azure
+// for more information of creating NetAppElasticCapacityPoolResource, please refer to the document of NetAppElasticCapacityPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
-ResourceIdentifier elasticCapacityPoolResourceId = ElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
-ElasticCapacityPoolResource elasticCapacityPool = client.GetElasticCapacityPoolResource(elasticCapacityPoolResourceId);
+ResourceIdentifier netAppElasticCapacityPoolResourceId = NetAppElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
+NetAppElasticCapacityPoolResource netAppElasticCapacityPool = client.GetNetAppElasticCapacityPoolResource(netAppElasticCapacityPoolResourceId);
 
-// get the collection of this ElasticVolumeResource
-ElasticVolumeCollection collection = elasticCapacityPool.GetElasticVolumes();
+// get the collection of this NetAppElasticVolumeResource
+NetAppElasticVolumeCollection collection = netAppElasticCapacityPool.GetNetAppElasticVolumes();
 
 // invoke the operation and iterate over the result
-await foreach (ElasticVolumeResource item in collection.GetAllAsync())
+await foreach (NetAppElasticVolumeResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    ElasticVolumeData resourceData = item.Data;
+    NetAppElasticVolumeData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

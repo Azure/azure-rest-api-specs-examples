@@ -15,32 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticAccountResource created on azure
-// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
+// this example assumes you already have this NetAppElasticAccountResource created on azure
+// for more information of creating NetAppElasticAccountResource, please refer to the document of NetAppElasticAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
+ResourceIdentifier netAppElasticAccountResourceId = NetAppElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+NetAppElasticAccountResource netAppElasticAccount = client.GetNetAppElasticAccountResource(netAppElasticAccountResourceId);
 
-// get the collection of this ElasticCapacityPoolResource
-ElasticCapacityPoolCollection collection = elasticAccount.GetElasticCapacityPools();
+// get the collection of this NetAppElasticCapacityPoolResource
+NetAppElasticCapacityPoolCollection collection = netAppElasticAccount.GetNetAppElasticCapacityPools();
 
 // invoke the operation
 string poolName = "pool1";
-ElasticCapacityPoolData data = new ElasticCapacityPoolData(new AzureLocation("eastus"))
+NetAppElasticCapacityPoolData data = new NetAppElasticCapacityPoolData(new AzureLocation("eastus"))
 {
-    Properties = new ElasticCapacityPoolProperties(4398046511104L, ElasticServiceLevel.ZoneRedundant, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"))
+    Properties = new NetAppElasticCapacityPoolProperties(4398046511104L, ElasticServiceLevel.ZoneRedundant, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"))
     {
         ActiveDirectoryConfigResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/activeDirectoryConfigs/activeDirectoryConfig1"),
     },
     Zones = { "1", "2", "3" },
 };
-ArmOperation<ElasticCapacityPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, poolName, data);
-ElasticCapacityPoolResource result = lro.Value;
+ArmOperation<NetAppElasticCapacityPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, poolName, data);
+NetAppElasticCapacityPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticCapacityPoolData resourceData = result.Data;
+NetAppElasticCapacityPoolData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

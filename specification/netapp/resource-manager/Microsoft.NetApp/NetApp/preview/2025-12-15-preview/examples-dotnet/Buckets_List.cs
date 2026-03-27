@@ -25,15 +25,15 @@ string volumeName = "volume1";
 ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
 NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
-// get the collection of this BucketResource
-BucketCollection collection = netAppVolume.GetBuckets();
+// get the collection of this NetAppBucketResource
+NetAppBucketCollection collection = netAppVolume.GetNetAppBuckets();
 
 // invoke the operation and iterate over the result
-await foreach (BucketResource item in collection.GetAllAsync())
+await foreach (NetAppBucketResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    BucketData resourceData = item.Data;
+    NetAppBucketData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

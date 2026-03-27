@@ -15,29 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticCapacityPoolResource created on azure
-// for more information of creating ElasticCapacityPoolResource, please refer to the document of ElasticCapacityPoolResource
+// this example assumes you already have this NetAppElasticCapacityPoolResource created on azure
+// for more information of creating NetAppElasticCapacityPoolResource, please refer to the document of NetAppElasticCapacityPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
-ResourceIdentifier elasticCapacityPoolResourceId = ElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
-ElasticCapacityPoolResource elasticCapacityPool = client.GetElasticCapacityPoolResource(elasticCapacityPoolResourceId);
+ResourceIdentifier netAppElasticCapacityPoolResourceId = NetAppElasticCapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
+NetAppElasticCapacityPoolResource netAppElasticCapacityPool = client.GetNetAppElasticCapacityPoolResource(netAppElasticCapacityPoolResourceId);
 
 // invoke the operation
-ElasticCapacityPoolPatch patch = new ElasticCapacityPoolPatch
+NetAppElasticCapacityPoolPatch patch = new NetAppElasticCapacityPoolPatch
 {
-    Properties = new ElasticCapacityPoolUpdateProperties
+    Properties = new NetAppElasticCapacityPoolPatchProperties
     {
         Size = 4398046511104L,
         ActiveDirectoryConfigResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/activeDirectoryConfigs/activeDirectoryConfig1"),
     },
 };
-ArmOperation<ElasticCapacityPoolResource> lro = await elasticCapacityPool.UpdateAsync(WaitUntil.Completed, patch);
-ElasticCapacityPoolResource result = lro.Value;
+ArmOperation<NetAppElasticCapacityPoolResource> lro = await netAppElasticCapacityPool.UpdateAsync(WaitUntil.Completed, patch);
+NetAppElasticCapacityPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticCapacityPoolData resourceData = result.Data;
+NetAppElasticCapacityPoolData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

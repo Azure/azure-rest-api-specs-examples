@@ -15,15 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ActiveDirectoryConfigResource created on azure
-// for more information of creating ActiveDirectoryConfigResource, please refer to the document of ActiveDirectoryConfigResource
+// this example assumes you already have this NetAppActiveDirectoryConfigResource created on azure
+// for more information of creating NetAppActiveDirectoryConfigResource, please refer to the document of NetAppActiveDirectoryConfigResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string activeDirectoryConfigName = "adconfig1";
-ResourceIdentifier activeDirectoryConfigResourceId = ActiveDirectoryConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, activeDirectoryConfigName);
-ActiveDirectoryConfigResource activeDirectoryConfig = client.GetActiveDirectoryConfigResource(activeDirectoryConfigResourceId);
+ResourceIdentifier netAppActiveDirectoryConfigResourceId = NetAppActiveDirectoryConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, activeDirectoryConfigName);
+NetAppActiveDirectoryConfigResource netAppActiveDirectoryConfig = client.GetNetAppActiveDirectoryConfigResource(netAppActiveDirectoryConfigResourceId);
 
 // invoke the operation
-await activeDirectoryConfig.DeleteAsync(WaitUntil.Completed);
+await netAppActiveDirectoryConfig.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

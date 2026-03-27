@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NetApp.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2025-12-15-preview/examples/ElasticAccounts_Get.json
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this NetAppElasticAccountResource created on azure
+// for more information of creating NetAppElasticAccountResource, please refer to the document of NetAppElasticAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ElasticAccountResource
-ElasticAccountCollection collection = resourceGroupResource.GetElasticAccounts();
+string accountName = "account1";
+ResourceIdentifier netAppElasticAccountResourceId = NetAppElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+NetAppElasticAccountResource netAppElasticAccount = client.GetNetAppElasticAccountResource(netAppElasticAccountResourceId);
 
 // invoke the operation
-string accountName = "account1";
-NullableResponse<ElasticAccountResource> response = await collection.GetIfExistsAsync(accountName);
-ElasticAccountResource result = response.HasValue ? response.Value : null;
+NetAppElasticAccountResource result = await netAppElasticAccount.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ElasticAccountData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetAppElasticAccountData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

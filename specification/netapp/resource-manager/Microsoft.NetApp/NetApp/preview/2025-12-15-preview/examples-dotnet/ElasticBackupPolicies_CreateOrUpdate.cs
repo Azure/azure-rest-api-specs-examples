@@ -15,22 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticAccountResource created on azure
-// for more information of creating ElasticAccountResource, please refer to the document of ElasticAccountResource
+// this example assumes you already have this NetAppElasticAccountResource created on azure
+// for more information of creating NetAppElasticAccountResource, please refer to the document of NetAppElasticAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier elasticAccountResourceId = ElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-ElasticAccountResource elasticAccount = client.GetElasticAccountResource(elasticAccountResourceId);
+ResourceIdentifier netAppElasticAccountResourceId = NetAppElasticAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+NetAppElasticAccountResource netAppElasticAccount = client.GetNetAppElasticAccountResource(netAppElasticAccountResourceId);
 
-// get the collection of this ElasticBackupPolicyResource
-ElasticBackupPolicyCollection collection = elasticAccount.GetElasticBackupPolicies();
+// get the collection of this NetAppElasticBackupPolicyResource
+NetAppElasticBackupPolicyCollection collection = netAppElasticAccount.GetNetAppElasticBackupPolicies();
 
 // invoke the operation
 string backupPolicyName = "backupPolicyName";
-ElasticBackupPolicyData data = new ElasticBackupPolicyData(new AzureLocation("westus"))
+NetAppElasticBackupPolicyData data = new NetAppElasticBackupPolicyData(new AzureLocation("westus"))
 {
-    Properties = new ElasticBackupPolicyProperties
+    Properties = new NetAppElasticBackupPolicyProperties
     {
         DailyBackupsToKeep = 10,
         WeeklyBackupsToKeep = 10,
@@ -38,11 +38,11 @@ ElasticBackupPolicyData data = new ElasticBackupPolicyData(new AzureLocation("we
         PolicyState = ElasticBackupPolicyState.Enabled,
     },
 };
-ArmOperation<ElasticBackupPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupPolicyName, data);
-ElasticBackupPolicyResource result = lro.Value;
+ArmOperation<NetAppElasticBackupPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backupPolicyName, data);
+NetAppElasticBackupPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ElasticBackupPolicyData resourceData = result.Data;
+NetAppElasticBackupPolicyData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

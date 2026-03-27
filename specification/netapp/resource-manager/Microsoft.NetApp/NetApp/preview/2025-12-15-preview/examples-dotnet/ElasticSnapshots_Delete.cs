@@ -14,18 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSnapshotResource created on azure
-// for more information of creating ElasticSnapshotResource, please refer to the document of ElasticSnapshotResource
+// this example assumes you already have this NetAppElasticSnapshotResource created on azure
+// for more information of creating NetAppElasticSnapshotResource, please refer to the document of NetAppElasticSnapshotResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
 string snapshotName = "snapshot1";
-ResourceIdentifier elasticSnapshotResourceId = ElasticSnapshotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, snapshotName);
-ElasticSnapshotResource elasticSnapshot = client.GetElasticSnapshotResource(elasticSnapshotResourceId);
+ResourceIdentifier netAppElasticSnapshotResourceId = NetAppElasticSnapshotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, snapshotName);
+NetAppElasticSnapshotResource netAppElasticSnapshot = client.GetNetAppElasticSnapshotResource(netAppElasticSnapshotResourceId);
 
 // invoke the operation
-await elasticSnapshot.DeleteAsync(WaitUntil.Completed);
+await netAppElasticSnapshot.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

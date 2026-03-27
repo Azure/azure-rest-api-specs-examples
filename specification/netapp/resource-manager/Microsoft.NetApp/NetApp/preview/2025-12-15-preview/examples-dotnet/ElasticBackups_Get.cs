@@ -15,22 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticBackupVaultResource created on azure
-// for more information of creating ElasticBackupVaultResource, please refer to the document of ElasticBackupVaultResource
+// this example assumes you already have this NetAppElasticBackupVaultResource created on azure
+// for more information of creating NetAppElasticBackupVaultResource, please refer to the document of NetAppElasticBackupVaultResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string backupVaultName = "backupVault1";
-ResourceIdentifier elasticBackupVaultResourceId = ElasticBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
-ElasticBackupVaultResource elasticBackupVault = client.GetElasticBackupVaultResource(elasticBackupVaultResourceId);
+ResourceIdentifier netAppElasticBackupVaultResourceId = NetAppElasticBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
+NetAppElasticBackupVaultResource netAppElasticBackupVault = client.GetNetAppElasticBackupVaultResource(netAppElasticBackupVaultResourceId);
 
-// get the collection of this ElasticBackupResource
-ElasticBackupCollection collection = elasticBackupVault.GetElasticBackups();
+// get the collection of this NetAppElasticBackupResource
+NetAppElasticBackupCollection collection = netAppElasticBackupVault.GetNetAppElasticBackups();
 
 // invoke the operation
 string backupName = "backup1";
-NullableResponse<ElasticBackupResource> response = await collection.GetIfExistsAsync(backupName);
-ElasticBackupResource result = response.HasValue ? response.Value : null;
+NullableResponse<NetAppElasticBackupResource> response = await collection.GetIfExistsAsync(backupName);
+NetAppElasticBackupResource result = response.HasValue ? response.Value : null;
 
 if (result == null)
 {
@@ -40,7 +40,7 @@ else
 {
     // the variable result is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    ElasticBackupData resourceData = result.Data;
+    NetAppElasticBackupData resourceData = result.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

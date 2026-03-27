@@ -15,22 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BucketResource created on azure
-// for more information of creating BucketResource, please refer to the document of BucketResource
+// this example assumes you already have this NetAppBucketResource created on azure
+// for more information of creating NetAppBucketResource, please refer to the document of NetAppBucketResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
 string bucketName = "bucket1";
-ResourceIdentifier bucketResourceId = BucketResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, bucketName);
-BucketResource bucket = client.GetBucketResource(bucketResourceId);
+ResourceIdentifier netAppBucketResourceId = NetAppBucketResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, bucketName);
+NetAppBucketResource netAppBucket = client.GetNetAppBucketResource(netAppBucketResourceId);
 
 // invoke the operation
-BucketCredentialsExpiry body = new BucketCredentialsExpiry
+NetAppBucketCredentialsExpiry body = new NetAppBucketCredentialsExpiry
 {
     KeyPairExpiryDays = 3,
 };
-await bucket.GenerateAkvCredentialsAsync(WaitUntil.Completed, body);
+await netAppBucket.GenerateKeyVaultCredentialsAsync(WaitUntil.Completed, body);
 
 Console.WriteLine("Succeeded");

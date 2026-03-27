@@ -15,27 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ActiveDirectoryConfigResource created on azure
-// for more information of creating ActiveDirectoryConfigResource, please refer to the document of ActiveDirectoryConfigResource
+// this example assumes you already have this NetAppActiveDirectoryConfigResource created on azure
+// for more information of creating NetAppActiveDirectoryConfigResource, please refer to the document of NetAppActiveDirectoryConfigResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string activeDirectoryConfigName = "adconfig1";
-ResourceIdentifier activeDirectoryConfigResourceId = ActiveDirectoryConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, activeDirectoryConfigName);
-ActiveDirectoryConfigResource activeDirectoryConfig = client.GetActiveDirectoryConfigResource(activeDirectoryConfigResourceId);
+ResourceIdentifier netAppActiveDirectoryConfigResourceId = NetAppActiveDirectoryConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, activeDirectoryConfigName);
+NetAppActiveDirectoryConfigResource netAppActiveDirectoryConfig = client.GetNetAppActiveDirectoryConfigResource(netAppActiveDirectoryConfigResourceId);
 
 // invoke the operation
-ActiveDirectoryConfigPatch patch = new ActiveDirectoryConfigPatch
+NetAppActiveDirectoryConfigPatch patch = new NetAppActiveDirectoryConfigPatch
 {
-    Properties = new ActiveDirectoryConfigUpdateProperties
+    Properties = new NetAppActiveDirectoryConfigPatchProperties
     {
         SmbServerName = "smbServer2",
     },
 };
-ArmOperation<ActiveDirectoryConfigResource> lro = await activeDirectoryConfig.UpdateAsync(WaitUntil.Completed, patch);
-ActiveDirectoryConfigResource result = lro.Value;
+ArmOperation<NetAppActiveDirectoryConfigResource> lro = await netAppActiveDirectoryConfig.UpdateAsync(WaitUntil.Completed, patch);
+NetAppActiveDirectoryConfigResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-ActiveDirectoryConfigData resourceData = result.Data;
+NetAppActiveDirectoryConfigData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

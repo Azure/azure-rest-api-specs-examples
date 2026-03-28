@@ -6324,3 +6324,5 @@ id,name,language,tag,package,version,date_epoch,date
 6323,"Azure.ResourceManager.NetApp,1.16.0-beta.2",dotnet,Azure.ResourceManager.NetApp_1.16.0-beta.2,Azure.ResourceManager.NetApp,1.16.0-beta.2,1774446916,03/25/2026
 6324,azure-mgmt-redisenterprise@4.0.0b1,python,azure-mgmt-redisenterprise_4.0.0b1,azure-mgmt-redisenterprise,4.0.0b1,1774509054,03/26/2026
 6325,azure-mgmt-frontdoor@2.0.0b1,python,azure-mgmt-frontdoor_2.0.0b1,azure-mgmt-frontdoor,2.0.0b1,1774492397,03/26/2026
+6326,azure-mgmt-keyvault@14.0.1,python,azure-mgmt-keyvault_14.0.1,azure-mgmt-keyvault,14.0.1,1774598180,03/27/2026
+6327,azure-mgmt-containerservicefleet@4.0.0b3,python,azure-mgmt-containerservicefleet_4.0.0b3,azure-mgmt-containerservicefleet,4.0.0b3,1774553712,03/26/2026

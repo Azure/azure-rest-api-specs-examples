@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.appservice.models.KeyType;
+import com.azure.resourcemanager.appservice.models.RegenerateActionParameter;
+
+/**
+ * Samples for Workflows RegenerateAccessKey.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/Workflows_RegenerateAccessKey.json
+     */
+    /**
+     * Sample code: Regenerate the callback URL access key for request triggers.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void regenerateTheCallbackURLAccessKeyForRequestTriggers(
+        com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getWorkflows().regenerateAccessKeyWithResponse("testResourceGroup", "test-name",
+            "testWorkflowName", new RegenerateActionParameter().withKeyType(KeyType.PRIMARY),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.appservice.fluent.models.StringDictionaryInner;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for StaticSites CreateOrUpdateStaticSiteBuildFunctionAppSettings.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/CreateOrUpdateStaticSiteBuildFunctionAppSettings.json
+     */
+    /**
+     * Sample code: Creates or updates the function app settings of a static site build.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void createsOrUpdatesTheFunctionAppSettingsOfAStaticSiteBuild(
+        com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getStaticSites().createOrUpdateStaticSiteBuildFunctionAppSettingsWithResponse("rg",
+            "testStaticSite0", "12",
+            new StringDictionaryInner().withProperties(mapOf("setting1", "someval", "setting2", "someval2")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.appservice.models.CsmSlotEntity;
+
+/**
+ * Samples for WebApps ApplySlotConfigToProduction.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/ApplySlotConfig.json
+     */
+    /**
+     * Sample code: Apply web app slot config.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void applyWebAppSlotConfig(com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getWebApps().applySlotConfigToProductionWithResponse("testrg123", "sitef6141",
+            new CsmSlotEntity().withTargetSlot("staging").withPreserveVnet(true), com.azure.core.util.Context.NONE);
+    }
+}

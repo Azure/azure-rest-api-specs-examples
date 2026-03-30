@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.appservice.fluent.models.StaticSiteLinkedBackendArmResourceInner;
+
+/**
+ * Samples for StaticSites ValidateBackendForBuild.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/ValidateLinkedBackendForStaticSiteBuild.json
+     */
+    /**
+     * Sample code: Validate if backend can be linked to static site build.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void
+        validateIfBackendCanBeLinkedToStaticSiteBuild(com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getStaticSites().validateBackendForBuild("rg", "testStaticSite0", "default",
+            "testBackend",
+            new StaticSiteLinkedBackendArmResourceInner().withBackendResourceId(
+                "/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend")
+                .withRegion("West US 2"),
+            com.azure.core.util.Context.NONE);
+    }
+}

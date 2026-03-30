@@ -6327,3 +6327,4 @@ id,name,language,tag,package,version,date_epoch,date
 6326,azure-mgmt-keyvault@14.0.1,python,azure-mgmt-keyvault_14.0.1,azure-mgmt-keyvault,14.0.1,1774598180,03/27/2026
 6327,azure-mgmt-containerservicefleet@4.0.0b3,python,azure-mgmt-containerservicefleet_4.0.0b3,azure-mgmt-containerservicefleet,4.0.0b3,1774553712,03/26/2026
 6328,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.0,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.0,1774853620,03/30/2026
+6329,"Azure.ResourceManager.StandbyPool,1.2.0",dotnet,Azure.ResourceManager.StandbyPool_1.2.0,Azure.ResourceManager.StandbyPool,1.2.0,1774866058,03/30/2026

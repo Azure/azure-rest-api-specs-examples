@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.appservice.fluent.models.CsmPublishingCredentialsPoliciesEntityInner;
+
+/**
+ * Samples for WebApps UpdateFtpAllowedSlot.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/UpdatePublishingCredentialsPolicySlot_UpdateFtpAllowedSlot.json
+     */
+    /**
+     * Sample code: Update FTP Allowed.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void updateFTPAllowed(com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getWebApps().updateFtpAllowedSlotWithResponse("rg", "testSite", "stage",
+            new CsmPublishingCredentialsPoliciesEntityInner().withAllow(true), com.azure.core.util.Context.NONE);
+    }
+}

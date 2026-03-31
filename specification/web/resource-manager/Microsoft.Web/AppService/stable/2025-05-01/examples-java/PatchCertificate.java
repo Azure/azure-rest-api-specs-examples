@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.appservice.models.CertificatePatchResource;
+
+/**
+ * Samples for Certificates Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/PatchCertificate.json
+     */
+    /**
+     * Sample code: Patch Certificate.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void patchCertificate(com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getCertificates().updateWithResponse("testrg123", "testc6282",
+            new CertificatePatchResource().withKeyVaultId("fakeTokenPlaceholder"), com.azure.core.util.Context.NONE);
+    }
+}

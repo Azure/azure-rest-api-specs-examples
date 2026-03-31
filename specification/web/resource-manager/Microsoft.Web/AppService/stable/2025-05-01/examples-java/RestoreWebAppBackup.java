@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.appservice.fluent.models.RestoreRequestInner;
+import com.azure.resourcemanager.appservice.models.DatabaseBackupSetting;
+import com.azure.resourcemanager.appservice.models.DatabaseType;
+import java.util.Arrays;
+
+/**
+ * Samples for WebApps Restore.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-05-01/RestoreWebAppBackup.json
+     */
+    /**
+     * Sample code: Restore web app from backup.
+     * 
+     * @param manager Entry point to AppServiceManager.
+     */
+    public static void restoreWebAppFromBackup(com.azure.resourcemanager.appservice.AppServiceManager manager) {
+        manager.serviceClient().getWebApps().restore("testrg123", "sitef6141", "123244", new RestoreRequestInner()
+            .withStorageAccountUrl("DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>")
+            .withOverwrite(true).withSiteName("sitef6141")
+            .withDatabases(Arrays.asList(
+                new DatabaseBackupSetting().withDatabaseType(DatabaseType.SQL_AZURE).withName("backenddb")
+                    .withConnectionStringName("backend").withConnectionString(
+                        "DSN=data-source-name[;SERVER=value] [;PWD=value] [;UID=value] [;<Attribute>=<value>]"),
+                new DatabaseBackupSetting().withDatabaseType(DatabaseType.SQL_AZURE).withName("statsdb")
+                    .withConnectionStringName("stats").withConnectionString(
+                        "DSN=data-source-name[;SERVER=value] [;PWD=value] [;UID=value] [;<Attribute>=<value>]"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -6335,3 +6335,4 @@ id,name,language,tag,package,version,date_epoch,date
 6334,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.1,1774914274,03/30/2026
 6335,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.1,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.1,1774914233,03/30/2026
 6336,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v9.1.0-beta.1,1774916180,03/31/2026
+6337,@azure/arm-containerservicefleet@2.1.0-beta.3,js,@azure/arm-containerservicefleet_2.1.0-beta.3,@azure/arm-containerservicefleet,2.1.0-beta.3,1774906800,03/30/2026

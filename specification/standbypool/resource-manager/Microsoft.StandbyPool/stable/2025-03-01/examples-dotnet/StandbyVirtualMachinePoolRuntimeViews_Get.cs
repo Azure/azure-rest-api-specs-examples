@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StandbyVirtualMachinePoolResource created on azure
-// for more information of creating StandbyVirtualMachinePoolResource, please refer to the document of StandbyVirtualMachinePoolResource
+// this example assumes you already have this StandbyVirtualMachinePoolRuntimeViewResource created on azure
+// for more information of creating StandbyVirtualMachinePoolRuntimeViewResource, please refer to the document of StandbyVirtualMachinePoolRuntimeViewResource
 string subscriptionId = "00000000-0000-0000-0000-000000000009";
 string resourceGroupName = "rgstandbypool";
 string standbyVirtualMachinePoolName = "pool";
-ResourceIdentifier standbyVirtualMachinePoolResourceId = StandbyVirtualMachinePoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, standbyVirtualMachinePoolName);
-StandbyVirtualMachinePoolResource standbyVirtualMachinePool = client.GetStandbyVirtualMachinePoolResource(standbyVirtualMachinePoolResourceId);
-
-// get the collection of this StandbyVirtualMachinePoolRuntimeViewResource
-StandbyVirtualMachinePoolRuntimeViewCollection collection = standbyVirtualMachinePool.GetStandbyVirtualMachinePoolRuntimeViews();
+string runtimeView = "latest";
+ResourceIdentifier standbyVirtualMachinePoolRuntimeViewResourceId = StandbyVirtualMachinePoolRuntimeViewResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, standbyVirtualMachinePoolName, runtimeView);
+StandbyVirtualMachinePoolRuntimeViewResource standbyVirtualMachinePoolRuntimeView = client.GetStandbyVirtualMachinePoolRuntimeViewResource(standbyVirtualMachinePoolRuntimeViewResourceId);
 
 // invoke the operation
-string runtimeView = "latest";
-NullableResponse<StandbyVirtualMachinePoolRuntimeViewResource> response = await collection.GetIfExistsAsync(runtimeView);
-StandbyVirtualMachinePoolRuntimeViewResource result = response.HasValue ? response.Value : null;
+StandbyVirtualMachinePoolRuntimeViewResource result = await standbyVirtualMachinePoolRuntimeView.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StandbyVirtualMachinePoolRuntimeViewData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StandbyVirtualMachinePoolRuntimeViewData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -6339,3 +6339,4 @@ id,name,language,tag,package,version,date_epoch,date
 6338,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0-beta.2,go,sdk/resourcemanager/search/armsearch/v2.0.0-beta.2,sdk/resourcemanager/search/armsearch,v2.0.0-beta.2,1774973840,03/31/2026
 6339,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v9.1.0-beta.1,1774916180,03/31/2026
 6340,@azure/arm-maps@4.0.0-beta.1,js,@azure/arm-maps_4.0.0-beta.1,@azure/arm-maps,4.0.0-beta.1,1775008902,04/01/2026
+6341,@azure/arm-containerservicefleet@2.1.0-beta.3,js,@azure/arm-containerservicefleet_2.1.0-beta.3,@azure/arm-containerservicefleet,2.1.0-beta.3,1774906800,03/30/2026

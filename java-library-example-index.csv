@@ -6333,3 +6333,4 @@ id,name,language,tag,package,version,date_epoch,date
 6332,azure-mgmt-apimanagement@6.0.0b1,python,azure-mgmt-apimanagement_6.0.0b1,azure-mgmt-apimanagement,6.0.0b1,1774865037,03/30/2026
 6333,com.azure.resourcemanager:azure-resourcemanager-search:2.55.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-search_2.55.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-search,2.55.0-beta.1,1774977451,03/31/2026
 6334,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.1,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.1,1774914301,03/30/2026
+6335,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.1,1774914274,03/30/2026

@@ -6345,3 +6345,4 @@ id,name,language,tag,package,version,date_epoch,date
 6344,azure-mgmt-billingbenefits@1.0.0b2,python,azure-mgmt-billingbenefits_1.0.0b2,azure-mgmt-billingbenefits,1.0.0b2,1775012811,04/01/2026
 6345,azure-mgmt-search@10.0.0b1,python,azure-mgmt-search_10.0.0b1,azure-mgmt-search,10.0.0b1,1774976715,03/31/2026
 6346,azure-mgmt-deviceregistry@1.2.0b1,python,azure-mgmt-deviceregistry_1.2.0b1,azure-mgmt-deviceregistry,1.2.0b1,1774974064,03/31/2026
+6347,azure-mgmt-peering@2.0.0b2,python,azure-mgmt-peering_2.0.0b2,azure-mgmt-peering,2.0.0b2,1774926073,03/31/2026

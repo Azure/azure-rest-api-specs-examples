@@ -6342,3 +6342,4 @@ id,name,language,tag,package,version,date_epoch,date
 6341,@azure/arm-containerservicefleet@2.1.0-beta.3,js,@azure/arm-containerservicefleet_2.1.0-beta.3,@azure/arm-containerservicefleet,2.1.0-beta.3,1774906800,03/30/2026
 6342,azure-mgmt-azurestackhci@8.0.0,python,azure-mgmt-azurestackhci_8.0.0,azure-mgmt-azurestackhci,8.0.0,1775040235,04/01/2026
 6343,azure-mgmt-containerservice@41.1.0b1,python,azure-mgmt-containerservice_41.1.0b1,azure-mgmt-containerservice,41.1.0b1,1775019456,04/01/2026
+6344,azure-mgmt-billingbenefits@1.0.0b2,python,azure-mgmt-billingbenefits_1.0.0b2,azure-mgmt-billingbenefits,1.0.0b2,1775012811,04/01/2026

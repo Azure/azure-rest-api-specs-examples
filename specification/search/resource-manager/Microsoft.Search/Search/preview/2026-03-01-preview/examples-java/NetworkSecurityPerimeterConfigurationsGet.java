@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkSecurityPerimeterConfigurations Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/NetworkSecurityPerimeterConfigurationsGet.json
+     */
+    /**
+     * Sample code: Get an NSP config by name.
+     * 
+     * @param manager Entry point to SearchServiceManager.
+     */
+    public static void getAnNSPConfigByName(com.azure.resourcemanager.search.SearchServiceManager manager) {
+        manager.serviceClient().getNetworkSecurityPerimeterConfigurations().getWithResponse("rg1", "mysearchservice",
+            "00000001-2222-3333-4444-111144444444.assoc1", com.azure.core.util.Context.NONE);
+    }
+}

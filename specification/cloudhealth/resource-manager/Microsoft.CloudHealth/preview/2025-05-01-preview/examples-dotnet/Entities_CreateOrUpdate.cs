@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelEntityResource created on azure
-// for more information of creating HealthModelEntityResource, please refer to the document of HealthModelEntityResource
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
 string subscriptionId = "4980D7D5-4E07-47AD-AD34-E76C6BC9F061";
 string resourceGroupName = "rgopenapi";
 string healthModelName = "myHealthModel";
-string entityName = "uszrxbdkxesdrxhmagmzywebgbjj";
-ResourceIdentifier healthModelEntityResourceId = HealthModelEntityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, entityName);
-HealthModelEntityResource healthModelEntity = client.GetHealthModelEntityResource(healthModelEntityResourceId);
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelEntityResource
+HealthModelEntityCollection collection = healthModel.GetHealthModelEntities();
 
 // invoke the operation
+string entityName = "uszrxbdkxesdrxhmagmzywebgbjj";
 HealthModelEntityData data = new HealthModelEntityData
 {
     Properties = new HealthModelEntityProperties
@@ -72,7 +75,7 @@ HealthModelEntityData data = new HealthModelEntityData
         },
     },
 };
-ArmOperation<HealthModelEntityResource> lro = await healthModelEntity.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HealthModelEntityResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, entityName, data);
 HealthModelEntityResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

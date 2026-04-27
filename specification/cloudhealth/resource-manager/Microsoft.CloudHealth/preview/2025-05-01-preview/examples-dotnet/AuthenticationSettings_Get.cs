@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelAuthenticationSettingResource created on azure
-// for more information of creating HealthModelAuthenticationSettingResource, please refer to the document of HealthModelAuthenticationSettingResource
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "my-resource-group";
 string healthModelName = "my-health-model";
-string authenticationSettingName = "my-auth-setting";
-ResourceIdentifier healthModelAuthenticationSettingResourceId = HealthModelAuthenticationSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, authenticationSettingName);
-HealthModelAuthenticationSettingResource healthModelAuthenticationSetting = client.GetHealthModelAuthenticationSettingResource(healthModelAuthenticationSettingResourceId);
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelAuthenticationSettingResource
+HealthModelAuthenticationSettingCollection collection = healthModel.GetHealthModelAuthenticationSettings();
 
 // invoke the operation
-HealthModelAuthenticationSettingResource result = await healthModelAuthenticationSetting.GetAsync();
+string authenticationSettingName = "my-auth-setting";
+NullableResponse<HealthModelAuthenticationSettingResource> response = await collection.GetIfExistsAsync(authenticationSettingName);
+HealthModelAuthenticationSettingResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HealthModelAuthenticationSettingData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HealthModelAuthenticationSettingData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

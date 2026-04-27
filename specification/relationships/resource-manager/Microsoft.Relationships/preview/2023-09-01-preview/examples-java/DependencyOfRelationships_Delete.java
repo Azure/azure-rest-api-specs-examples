@@ -1,0 +1,20 @@
+
+/**
+ * Samples for DependencyOfRelationships Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2023-09-01-preview/DependencyOfRelationships_Delete.json
+     */
+    /**
+     * Sample code: DependencyOfRelationships_Delete.
+     * 
+     * @param manager Entry point to RelationshipsManager.
+     */
+    public static void
+        dependencyOfRelationshipsDelete(com.azure.resourcemanager.relationships.RelationshipsManager manager) {
+        manager.dependencyOfRelationships().delete(
+            "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg/providers/Microsoft.DocumentDb/databaseAccounts/test-db-account",
+            "relationshipOne", com.azure.core.util.Context.NONE);
+    }
+}

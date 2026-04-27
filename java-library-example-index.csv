@@ -6366,3 +6366,4 @@ id,name,language,tag,package,version,date_epoch,date
 6365,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appnetwork/armappnetwork@v0.1.0,go,sdk/resourcemanager/appnetwork/armappnetwork/v0.1.0,sdk/resourcemanager/appnetwork/armappnetwork,v0.1.0,1775200967,04/03/2026
 6366,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/confluent/armconfluent/v2@v2.0.0-beta.1,go,sdk/resourcemanager/confluent/armconfluent/v2.0.0-beta.1,sdk/resourcemanager/confluent/armconfluent,v2.0.0-beta.1,1775112348,04/02/2026
 6367,@azure/arm-servicegroups@1.0.0-beta.1,js,@azure/arm-servicegroups_1.0.0-beta.1,@azure/arm-servicegroups,1.0.0-beta.1,1777076074,04/25/2026
+6368,@azure/arm-relationships@1.0.0-beta.1,js,@azure/arm-relationships_1.0.0-beta.1,@azure/arm-relationships,1.0.0-beta.1,1777062013,04/24/2026

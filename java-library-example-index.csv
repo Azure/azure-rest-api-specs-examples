@@ -6371,3 +6371,4 @@ id,name,language,tag,package,version,date_epoch,date
 6370,@azure/arm-computelimit@1.0.0,js,@azure/arm-computelimit_1.0.0,@azure/arm-computelimit,1.0.0,1776962085,04/23/2026
 6371,@azure/arm-azurestackhci@4.1.0-beta.1,js,@azure/arm-azurestackhci_4.1.0-beta.1,@azure/arm-azurestackhci,4.1.0-beta.1,1776936524,04/23/2026
 6372,@azure/arm-kubernetesconfiguration-extensions@1.0.0,js,@azure/arm-kubernetesconfiguration-extensions_1.0.0,@azure/arm-kubernetesconfiguration-extensions,1.0.0,1776669497,04/20/2026
+6373,@azure/arm-appnetwork@1.0.0-beta.1,js,@azure/arm-appnetwork_1.0.0-beta.1,@azure/arm-appnetwork,1.0.0-beta.1,1775865735,04/11/2026

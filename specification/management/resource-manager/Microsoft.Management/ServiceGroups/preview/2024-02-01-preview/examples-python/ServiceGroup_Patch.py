@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.servicegroups import ServiceGroupsMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-servicegroups
+# USAGE
+    python service_group_patch.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ServiceGroupsMgmtClient(
+        credential=DefaultAzureCredential(),
+    )
+
+    response = client.begin_update_service_group(
+        service_group_name="ServiceGroup1",
+        update_service_group_request={
+            "properties": {"displayName": "ServiceGroup 1 Name"},
+            "tags": {"tag1": "value1", "tag2": "value2"},
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2024-02-01-preview/ServiceGroup_Patch.json
+if __name__ == "__main__":
+    main()

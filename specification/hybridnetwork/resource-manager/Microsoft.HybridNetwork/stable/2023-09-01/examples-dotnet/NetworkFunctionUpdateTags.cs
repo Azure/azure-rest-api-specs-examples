@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/NetworkFunctionUpdateTags.json
 // this example is just showing the usage of "NetworkFunctions_UpdateTags" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier networkFunctionResourceId = NetworkFunctionResource.CreateRes
 NetworkFunctionResource networkFunction = client.GetNetworkFunctionResource(networkFunctionResourceId);
 
 // invoke the operation
-TagsObject tagsObject = new TagsObject()
+TagsObject tagsObject = new TagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 NetworkFunctionResource result = await networkFunction.UpdateAsync(tagsObject);

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/SiteCreate.json
 // this example is just showing the usage of "Sites_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,24 +30,21 @@ SiteCollection collection = resourceGroupResource.GetSites();
 string siteName = "testSite";
 SiteData data = new SiteData(new AzureLocation("westUs2"))
 {
-    Properties = new SitePropertiesFormat()
+    Properties = new SitePropertiesFormat
     {
-        Nfvis =
-        {
-        new AzureCoreNfviDetails()
+        Nfvis = {new AzureCoreNfviDetails
         {
         Location = new AzureLocation("westUs2"),
         Name = "nfvi1",
-        },new AzureArcK8SClusterNfviDetails()
+        }, new AzureArcK8SClusterNfviDetails
         {
         CustomLocationReferenceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1"),
         Name = "nfvi2",
-        },new AzureOperatorNexusClusterNfviDetails()
+        }, new AzureOperatorNexusClusterNfviDetails
         {
         CustomLocationReferenceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2"),
         Name = "nfvi3",
-        }
-        },
+        }},
     },
 };
 ArmOperation<SiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, siteName, data);

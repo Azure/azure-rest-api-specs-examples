@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/ConfigurationGroupSchemaCreate.json
 // this example is just showing the usage of "ConfigurationGroupSchemas_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,7 +30,7 @@ ConfigurationGroupSchemaCollection collection = publisher.GetConfigurationGroupS
 string configurationGroupSchemaName = "testConfigurationGroupSchema";
 ConfigurationGroupSchemaData data = new ConfigurationGroupSchemaData(new AzureLocation("westUs2"))
 {
-    Properties = new ConfigurationGroupSchemaPropertiesFormat()
+    Properties = new ConfigurationGroupSchemaPropertiesFormat
     {
         Description = "Schema with no secrets",
         SchemaDefinition = "{\"type\":\"object\",\"properties\":{\"interconnect-groups\":{\"type\":\"object\",\"properties\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"international-interconnects\":{\"type\":\"array\",\"item\":{\"type\":\"string\"}},\"domestic-interconnects\":{\"type\":\"array\",\"item\":{\"type\":\"string\"}}}}},\"interconnect-group-assignments\":{\"type\":\"object\",\"properties\":{\"type\":\"object\",\"properties\":{\"ssc\":{\"type\":\"string\"},\"interconnects-interconnects\":{\"type\":\"string\"}}}}},\"required\":[\"interconnect-groups\",\"interconnect-group-assignments\"]}",

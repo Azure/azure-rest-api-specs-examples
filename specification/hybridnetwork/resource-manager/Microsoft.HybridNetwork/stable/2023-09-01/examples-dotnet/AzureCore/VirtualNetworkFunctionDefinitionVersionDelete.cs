@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/AzureCore/VirtualNetworkFunctionDefinitionVersionDelete.json
 // this example is just showing the usage of "NetworkFunctionDefinitionVersions_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +28,4 @@ NetworkFunctionDefinitionVersionResource networkFunctionDefinitionVersion = clie
 // invoke the operation
 await networkFunctionDefinitionVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

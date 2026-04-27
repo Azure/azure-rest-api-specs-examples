@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/NetworkFunctionCreateSecret.json
 // this example is just showing the usage of "NetworkFunctions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,20 +30,17 @@ NetworkFunctionCollection collection = resourceGroupResource.GetNetworkFunctions
 string networkFunctionName = "testNf";
 NetworkFunctionData data = new NetworkFunctionData(new AzureLocation("eastus"))
 {
-    Properties = new NetworkFunctionValueWithSecrets()
+    Properties = new NetworkFunctionValueWithSecrets
     {
         SecretDeploymentValues = "{\"adminPassword\":\"password1\",\"userPassword\":\"password2\"}",
-        NetworkFunctionDefinitionVersionResourceReference = new OpenDeploymentResourceReference()
+        NetworkFunctionDefinitionVersionResourceReference = new OpenDeploymentResourceReference
         {
             Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/testVendor/networkFunctionDefinitionGroups/testnetworkFunctionDefinitionGroupName/networkFunctionDefinitionVersions/1.0.1"),
         },
         NfviType = NfviType.AzureArcKubernetes,
         NfviId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation"),
         AllowSoftwareUpdate = false,
-        RoleOverrideValues =
-        {
-        "{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}","{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}"
-        },
+        RoleOverrideValues = { "{\"name\":\"testRoleOne\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"helmPackageVersion\":\"2.1.3\",\"values\":\"{\\\"roleOneParam\\\":\\\"roleOneOverrideValue\\\"}\"}}}", "{\"name\":\"testRoleTwo\",\"deployParametersMappingRuleProfile\":{\"helmMappingRuleProfile\":{\"releaseName\":\"overrideReleaseName\",\"releaseNamespace\":\"overrideNamespace\",\"values\":\"{\\\"roleTwoParam\\\":\\\"roleTwoOverrideValue\\\"}\"}}}" },
     },
 };
 ArmOperation<NetworkFunctionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkFunctionName, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/NetworkFunctionDefinitionVersionCreate.json
 // this example is just showing the usage of "NetworkFunctionDefinitionVersions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,48 +31,40 @@ NetworkFunctionDefinitionVersionCollection collection = networkFunctionDefinitio
 string networkFunctionDefinitionVersionName = "1.0.0";
 NetworkFunctionDefinitionVersionData data = new NetworkFunctionDefinitionVersionData(new AzureLocation("eastus"))
 {
-    Properties = new ContainerizedNetworkFunctionDefinitionVersion()
+    Properties = new ContainerizedNetworkFunctionDefinitionVersion
     {
-        NetworkFunctionTemplate = new AzureArcKubernetesNetworkFunctionTemplate()
+        NetworkFunctionTemplate = new AzureArcKubernetesNetworkFunctionTemplate
         {
-            NetworkFunctionApplications =
+            NetworkFunctionApplications = {new AzureArcKubernetesHelmApplication
             {
-            new AzureArcKubernetesHelmApplication()
+            ArtifactProfile = new AzureArcKubernetesArtifactProfile
             {
-            ArtifactProfile = new AzureArcKubernetesArtifactProfile()
-            {
-            HelmArtifactProfile = new HelmArtifactProfile()
+            HelmArtifactProfile = new HelmArtifactProfile
             {
             HelmPackageName = "fed-rbac",
             HelmPackageVersionRange = "~2.1.3",
-            RegistryValuesPaths =
-            {
-            "global.registry.docker.repoPath"
-            },
-            ImagePullSecretsValuesPaths =
-            {
-            "global.imagePullSecrets"
-            },
+            RegistryValuesPaths = {"global.registry.docker.repoPath"},
+            ImagePullSecretsValuesPaths = {"global.imagePullSecrets"},
             },
             ArtifactStoreId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/testArtifactStore"),
             },
-            DeployParametersMappingRuleProfile = new AzureArcKubernetesDeployMappingRuleProfile()
+            DeployParametersMappingRuleProfile = new AzureArcKubernetesDeployMappingRuleProfile
             {
-            HelmMappingRuleProfile = new HelmMappingRuleProfile()
+            HelmMappingRuleProfile = new HelmMappingRuleProfile
             {
             ReleaseNamespace = "{deployParameters.namesapce}",
             ReleaseName = "{deployParameters.releaseName}",
             HelmPackageVersion = "2.1.3",
             Values = "",
-            Options = new HelmMappingRuleProfileConfig()
+            Options = new HelmMappingRuleProfileConfig
             {
-            InstallOptions = new HelmInstallConfig()
+            InstallOptions = new HelmInstallConfig
             {
             Atomic = "true",
             Wait = "waitValue",
             Timeout = "30",
             },
-            UpgradeOptions = new HelmUpgradeConfig()
+            UpgradeOptions = new HelmUpgradeConfig
             {
             Atomic = "true",
             Wait = "waitValue",
@@ -83,20 +75,13 @@ NetworkFunctionDefinitionVersionData data = new NetworkFunctionDefinitionVersion
             ApplicationEnablement = ApplicationEnablement.Enabled,
             },
             Name = "fedrbac",
-            DependsOnProfile = new DependsOnProfile()
+            DependsOnProfile = new DependsOnProfile
             {
-            InstallDependsOn =
-            {
+            InstallDependsOn = {},
+            UninstallDependsOn = {},
+            UpdateDependsOn = {},
             },
-            UninstallDependsOn =
-            {
-            },
-            UpdateDependsOn =
-            {
-            },
-            },
-            }
-            },
+            }},
         },
         DeployParameters = "{\"type\":\"object\",\"properties\":{\"releaseName\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"}}}",
     },

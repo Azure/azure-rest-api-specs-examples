@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/SiteGet.json
 // this example is just showing the usage of "Sites_Get" operation, for the dependent resources, they will have to be created separately.
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this SiteResource created on azure
+// for more information of creating SiteResource, please refer to the document of SiteResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this SiteResource
-SiteCollection collection = resourceGroupResource.GetSites();
+string siteName = "testSite";
+ResourceIdentifier siteResourceId = SiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName);
+SiteResource site = client.GetSiteResource(siteResourceId);
 
 // invoke the operation
-string siteName = "testSite";
-NullableResponse<SiteResource> response = await collection.GetIfExistsAsync(siteName);
-SiteResource result = response.HasValue ? response.Value : null;
+SiteResource result = await site.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SiteData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SiteData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

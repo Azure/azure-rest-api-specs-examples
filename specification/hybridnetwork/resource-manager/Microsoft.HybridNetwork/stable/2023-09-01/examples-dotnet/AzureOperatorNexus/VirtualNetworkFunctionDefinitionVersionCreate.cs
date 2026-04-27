@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/AzureOperatorNexus/VirtualNetworkFunctionDefinitionVersionCreate.json
 // this example is just showing the usage of "NetworkFunctionDefinitionVersions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,75 +31,57 @@ NetworkFunctionDefinitionVersionCollection collection = networkFunctionDefinitio
 string networkFunctionDefinitionVersionName = "1.0.0";
 NetworkFunctionDefinitionVersionData data = new NetworkFunctionDefinitionVersionData(new AzureLocation("eastus"))
 {
-    Properties = new VirtualNetworkFunctionDefinitionVersion()
+    Properties = new VirtualNetworkFunctionDefinitionVersion
     {
-        NetworkFunctionTemplate = new AzureOperatorNexusNetworkFunctionTemplate()
+        NetworkFunctionTemplate = new AzureOperatorNexusNetworkFunctionTemplate
         {
-            NetworkFunctionApplications =
+            NetworkFunctionApplications = {new AzureOperatorNexusNetworkFunctionImageApplication
             {
-            new AzureOperatorNexusNetworkFunctionImageApplication()
+            ArtifactProfile = new AzureOperatorNexusImageArtifactProfile
             {
-            ArtifactProfile = new AzureOperatorNexusImageArtifactProfile()
-            {
-            ImageArtifactProfile = new ImageArtifactProfile()
+            ImageArtifactProfile = new ImageArtifactProfile
             {
             ImageName = "test-image",
             ImageVersion = "1.0.0",
             },
             ArtifactStoreId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
             },
-            DeployParametersMappingRuleProfile = new AzureOperatorNexusImageDeployMappingRuleProfile()
+            DeployParametersMappingRuleProfile = new AzureOperatorNexusImageDeployMappingRuleProfile
             {
             ImageMappingRuleUserConfiguration = "",
             ApplicationEnablement = ApplicationEnablement.Unknown,
             },
             Name = "testImageRole",
-            DependsOnProfile = new DependsOnProfile()
+            DependsOnProfile = new DependsOnProfile
             {
-            InstallDependsOn =
-            {
+            InstallDependsOn = {},
+            UninstallDependsOn = {},
+            UpdateDependsOn = {},
             },
-            UninstallDependsOn =
+            }, new AzureOperatorNexusNetworkFunctionArmTemplateApplication
             {
-            },
-            UpdateDependsOn =
+            ArtifactProfile = new AzureOperatorNexusArmTemplateArtifactProfile
             {
-            },
-            },
-            },new AzureOperatorNexusNetworkFunctionArmTemplateApplication()
-            {
-            ArtifactProfile = new AzureOperatorNexusArmTemplateArtifactProfile()
-            {
-            TemplateArtifactProfile = new ArmTemplateArtifactProfile()
+            TemplateArtifactProfile = new ArmTemplateArtifactProfile
             {
             TemplateName = "test-template",
             TemplateVersion = "1.0.0",
             },
             ArtifactStoreId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg/providers/microsoft.hybridnetwork/publishers/TestPublisher/artifactStores/TestArtifactStore"),
             },
-            DeployParametersMappingRuleProfile = new AzureOperatorNexusArmTemplateDeployMappingRuleProfile()
+            DeployParametersMappingRuleProfile = new AzureOperatorNexusArmTemplateDeployMappingRuleProfile
             {
             TemplateParameters = "{\"virtualMachineName\":\"{deployParameters.virtualMachineName}\",\"extendedLocationName\":\"{deployParameters.extendedLocationName}\",\"cpuCores\":\"{deployParameters.cpuCores}\",\"memorySizeGB\":\"{deployParameters.memorySizeGB}\",\"cloudServicesNetworkAttachment\":\"{deployParameters.cloudServicesNetworkAttachment}\",\"networkAttachments\":\"{deployParameters.networkAttachments}\",\"sshPublicKeys\":\"{deployParameters.sshPublicKeys}\",\"storageProfile\":\"{deployParameters.storageProfile}\",\"isolateEmulatorThread\":\"{deployParameters.isolateEmulatorThread}\",\"virtioInterface\":\"{deployParameters.virtioInterface}\",\"userData\":\"{deployParameters.userData}\",\"adminUsername\":\"{deployParameters.adminUsername}\",\"bootMethod\":\"{deployParameters.bootMethod}\",\"placementHints\":\"{deployParameters.placementHints}\"}",
             ApplicationEnablement = ApplicationEnablement.Unknown,
             },
             Name = "testTemplateRole",
-            DependsOnProfile = new DependsOnProfile()
+            DependsOnProfile = new DependsOnProfile
             {
-            InstallDependsOn =
-            {
-            "testImageRole"
+            InstallDependsOn = {"testImageRole"},
+            UninstallDependsOn = {"testImageRole"},
+            UpdateDependsOn = {"testImageRole"},
             },
-            UninstallDependsOn =
-            {
-            "testImageRole"
-            },
-            UpdateDependsOn =
-            {
-            "testImageRole"
-            },
-            },
-            }
-            },
+            }},
         },
         Description = "test NFDV for AzureOperatorNexus",
         DeployParameters = "{\"virtualMachineName\":{\"type\":\"string\"},\"extendedLocationName\":{\"type\":\"string\"},\"cpuCores\":{\"type\":\"int\"},\"memorySizeGB\":{\"type\":\"int\"},\"cloudServicesNetworkAttachment\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]},\"networkAttachments\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"networkAttachmentName\":{\"type\":\"string\"},\"attachedNetworkId\":{\"type\":\"string\"},\"ipAllocationMethod\":{\"type\":\"string\"},\"ipv4Address\":{\"type\":\"string\"},\"ipv6Address\":{\"type\":\"string\"},\"defaultGateway\":{\"type\":\"string\"}},\"required\":[\"attachedNetworkId\",\"ipAllocationMethod\"]}},\"storageProfile\":{\"type\":\"object\",\"properties\":{\"osDisk\":{\"type\":\"object\",\"properties\":{\"createOption\":{\"type\":\"string\"},\"deleteOption\":{\"type\":\"string\"},\"diskSizeGB\":{\"type\":\"integer\"}},\"required\":[\"diskSizeGB\"]}},\"required\":[\"osDisk\"]},\"sshPublicKeys\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"keyData\":{\"type\":\"string\"}},\"required\":[\"keyData\"]}},\"userData\":{\"type\":\"string\"},\"adminUsername\":{\"type\":\"string\"},\"bootMethod\":{\"type\":\"string\",\"default\":\"UEFI\",\"enum\":[\"UEFI\",\"BIOS\"]},\"isolateEmulatorThread\":{\"type\":\"string\"},\"virtioInterface\":{\"type\":\"string\"},\"placementHints\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"hintType\":{\"type\":\"string\",\"enum\":[\"Affinity\",\"AntiAffinity\"]},\"resourceId\":{\"type\":\"string\"},\"schedulingExecution\":{\"type\":\"string\",\"enum\":[\"Soft\",\"Hard\"]},\"scope\":{\"type\":\"string\"}},\"required\":[\"hintType\",\"schedulingExecution\",\"resourceId\",\"scope\"]}}}",

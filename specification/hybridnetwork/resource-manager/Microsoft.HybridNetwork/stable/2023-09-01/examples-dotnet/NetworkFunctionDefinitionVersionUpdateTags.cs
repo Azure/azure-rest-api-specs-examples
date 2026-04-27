@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/NetworkFunctionDefinitionVersionUpdateTags.json
 // this example is just showing the usage of "NetworkFunctionDefinitionVersions_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,12 +26,12 @@ ResourceIdentifier networkFunctionDefinitionVersionResourceId = NetworkFunctionD
 NetworkFunctionDefinitionVersionResource networkFunctionDefinitionVersion = client.GetNetworkFunctionDefinitionVersionResource(networkFunctionDefinitionVersionResourceId);
 
 // invoke the operation
-TagsObject tagsObject = new TagsObject()
+TagsObject tagsObject = new TagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 NetworkFunctionDefinitionVersionResource result = await networkFunctionDefinitionVersion.UpdateAsync(tagsObject);

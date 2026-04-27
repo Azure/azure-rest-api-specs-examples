@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBForPostgreSqlClusterResource created on azure
-// for more information of creating CosmosDBForPostgreSqlClusterResource, please refer to the document of CosmosDBForPostgreSqlClusterResource
+// this example assumes you already have this CosmosDBForPostgreSqlRoleResource created on azure
+// for more information of creating CosmosDBForPostgreSqlRoleResource, please refer to the document of CosmosDBForPostgreSqlRoleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string clusterName = "pgtestsvc4";
-ResourceIdentifier cosmosDBForPostgreSqlClusterResourceId = CosmosDBForPostgreSqlClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-CosmosDBForPostgreSqlClusterResource cosmosDBForPostgreSqlCluster = client.GetCosmosDBForPostgreSqlClusterResource(cosmosDBForPostgreSqlClusterResourceId);
-
-// get the collection of this CosmosDBForPostgreSqlRoleResource
-CosmosDBForPostgreSqlRoleCollection collection = cosmosDBForPostgreSqlCluster.GetCosmosDBForPostgreSqlRoles();
+string roleName = "role1";
+ResourceIdentifier cosmosDBForPostgreSqlRoleResourceId = CosmosDBForPostgreSqlRoleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, roleName);
+CosmosDBForPostgreSqlRoleResource cosmosDBForPostgreSqlRole = client.GetCosmosDBForPostgreSqlRoleResource(cosmosDBForPostgreSqlRoleResourceId);
 
 // invoke the operation
-string roleName = "role1";
 CosmosDBForPostgreSqlRoleData data = new CosmosDBForPostgreSqlRoleData("password");
-ArmOperation<CosmosDBForPostgreSqlRoleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleName, data);
+ArmOperation<CosmosDBForPostgreSqlRoleResource> lro = await cosmosDBForPostgreSqlRole.UpdateAsync(WaitUntil.Completed, data);
 CosmosDBForPostgreSqlRoleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

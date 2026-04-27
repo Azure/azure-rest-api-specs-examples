@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceUpdateAccountResource created on azure
-// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
+// this example assumes you already have this DeviceUpdatePrivateEndpointConnectionResource created on azure
+// for more information of creating DeviceUpdatePrivateEndpointConnectionResource, please refer to the document of DeviceUpdatePrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
-
-// get the collection of this DeviceUpdatePrivateEndpointConnectionResource
-DeviceUpdatePrivateEndpointConnectionCollection collection = deviceUpdateAccount.GetDeviceUpdatePrivateEndpointConnections();
+string privateEndpointConnectionName = "peexample01";
+ResourceIdentifier deviceUpdatePrivateEndpointConnectionResourceId = DeviceUpdatePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
+DeviceUpdatePrivateEndpointConnectionResource deviceUpdatePrivateEndpointConnection = client.GetDeviceUpdatePrivateEndpointConnectionResource(deviceUpdatePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "peexample01";
 DeviceUpdatePrivateEndpointConnectionData data = new DeviceUpdatePrivateEndpointConnectionData(new DeviceUpdatePrivateLinkServiceConnectionState
 {
     Status = DeviceUpdatePrivateEndpointServiceConnectionStatus.Approved,
     Description = "Auto-Approved",
 });
-ArmOperation<DeviceUpdatePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<DeviceUpdatePrivateEndpointConnectionResource> lro = await deviceUpdatePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 DeviceUpdatePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

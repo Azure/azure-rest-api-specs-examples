@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AuthorizationProviderContractResource created on azure
-// for more information of creating AuthorizationProviderContractResource, please refer to the document of AuthorizationProviderContractResource
+// this example assumes you already have this AuthorizationContractResource created on azure
+// for more information of creating AuthorizationContractResource, please refer to the document of AuthorizationContractResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string authorizationProviderId = "aadwithauthcode";
-ResourceIdentifier authorizationProviderContractResourceId = AuthorizationProviderContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, authorizationProviderId);
-AuthorizationProviderContractResource authorizationProviderContract = client.GetAuthorizationProviderContractResource(authorizationProviderContractResourceId);
-
-// get the collection of this AuthorizationContractResource
-AuthorizationContractCollection collection = authorizationProviderContract.GetAuthorizationContracts();
+string authorizationId = "authz1";
+ResourceIdentifier authorizationContractResourceId = AuthorizationContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, authorizationProviderId, authorizationId);
+AuthorizationContractResource authorizationContract = client.GetAuthorizationContractResource(authorizationContractResourceId);
 
 // invoke the operation
-string authorizationId = "authz1";
-NullableResponse<AuthorizationContractResource> response = await collection.GetIfExistsAsync(authorizationId);
-AuthorizationContractResource result = response.HasValue ? response.Value : null;
+AuthorizationContractResource result = await authorizationContract.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AuthorizationContractData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AuthorizationContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

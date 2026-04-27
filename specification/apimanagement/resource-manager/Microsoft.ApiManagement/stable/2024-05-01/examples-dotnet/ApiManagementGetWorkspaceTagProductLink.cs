@@ -14,33 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceTagResource created on azure
-// for more information of creating ServiceWorkspaceTagResource, please refer to the document of ServiceWorkspaceTagResource
+// this example assumes you already have this ServiceWorkspaceTagProductLinkResource created on azure
+// for more information of creating ServiceWorkspaceTagProductLinkResource, please refer to the document of ServiceWorkspaceTagProductLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string tagId = "tag1";
-ResourceIdentifier serviceWorkspaceTagResourceId = ServiceWorkspaceTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId);
-ServiceWorkspaceTagResource serviceWorkspaceTag = client.GetServiceWorkspaceTagResource(serviceWorkspaceTagResourceId);
-
-// get the collection of this ServiceWorkspaceTagProductLinkResource
-ServiceWorkspaceTagProductLinkCollection collection = serviceWorkspaceTag.GetServiceWorkspaceTagProductLinks();
+string productLinkId = "link1";
+ResourceIdentifier serviceWorkspaceTagProductLinkResourceId = ServiceWorkspaceTagProductLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId, productLinkId);
+ServiceWorkspaceTagProductLinkResource serviceWorkspaceTagProductLink = client.GetServiceWorkspaceTagProductLinkResource(serviceWorkspaceTagProductLinkResourceId);
 
 // invoke the operation
-string productLinkId = "link1";
-NullableResponse<ServiceWorkspaceTagProductLinkResource> response = await collection.GetIfExistsAsync(productLinkId);
-ServiceWorkspaceTagProductLinkResource result = response.HasValue ? response.Value : null;
+ServiceWorkspaceTagProductLinkResource result = await serviceWorkspaceTagProductLink.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    TagProductLinkContractData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+TagProductLinkContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

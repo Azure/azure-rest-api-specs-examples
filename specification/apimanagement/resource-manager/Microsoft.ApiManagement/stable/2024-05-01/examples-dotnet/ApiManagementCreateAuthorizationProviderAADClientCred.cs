@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AuthorizationProviderContractResource created on azure
-// for more information of creating AuthorizationProviderContractResource, please refer to the document of AuthorizationProviderContractResource
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-string authorizationProviderId = "aadwithclientcred";
-ResourceIdentifier authorizationProviderContractResourceId = AuthorizationProviderContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, authorizationProviderId);
-AuthorizationProviderContractResource authorizationProviderContract = client.GetAuthorizationProviderContractResource(authorizationProviderContractResourceId);
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this AuthorizationProviderContractResource
+AuthorizationProviderContractCollection collection = apiManagementService.GetAuthorizationProviderContracts();
 
 // invoke the operation
+string authorizationProviderId = "aadwithclientcred";
 AuthorizationProviderContractData data = new AuthorizationProviderContractData
 {
     DisplayName = "aadwithclientcred",
@@ -42,7 +45,7 @@ AuthorizationProviderContractData data = new AuthorizationProviderContractData
         },
     },
 };
-ArmOperation<AuthorizationProviderContractResource> lro = await authorizationProviderContract.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AuthorizationProviderContractResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationProviderId, data);
 AuthorizationProviderContractResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementProductResource created on azure
-// for more information of creating ApiManagementProductResource, please refer to the document of ApiManagementProductResource
+// this example assumes you already have this ServiceProductApiLinkResource created on azure
+// for more information of creating ServiceProductApiLinkResource, please refer to the document of ServiceProductApiLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string productId = "testproduct";
-ResourceIdentifier apiManagementProductResourceId = ApiManagementProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId);
-ApiManagementProductResource apiManagementProduct = client.GetApiManagementProductResource(apiManagementProductResourceId);
-
-// get the collection of this ServiceProductApiLinkResource
-ServiceProductApiLinkCollection collection = apiManagementProduct.GetServiceProductApiLinks();
+string apiLinkId = "link1";
+ResourceIdentifier serviceProductApiLinkResourceId = ServiceProductApiLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId, apiLinkId);
+ServiceProductApiLinkResource serviceProductApiLink = client.GetServiceProductApiLinkResource(serviceProductApiLinkResourceId);
 
 // invoke the operation
-string apiLinkId = "link1";
-NullableResponse<ServiceProductApiLinkResource> response = await collection.GetIfExistsAsync(apiLinkId);
-ServiceProductApiLinkResource result = response.HasValue ? response.Value : null;
+ServiceProductApiLinkResource result = await serviceProductApiLink.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ProductApiLinkContractData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ProductApiLinkContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

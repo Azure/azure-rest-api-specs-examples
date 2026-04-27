@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceProductGroupLinkResource created on azure
-// for more information of creating ServiceProductGroupLinkResource, please refer to the document of ServiceProductGroupLinkResource
+// this example assumes you already have this ApiManagementProductResource created on azure
+// for more information of creating ApiManagementProductResource, please refer to the document of ApiManagementProductResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string productId = "testproduct";
-string groupLinkId = "link1";
-ResourceIdentifier serviceProductGroupLinkResourceId = ServiceProductGroupLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId, groupLinkId);
-ServiceProductGroupLinkResource serviceProductGroupLink = client.GetServiceProductGroupLinkResource(serviceProductGroupLinkResourceId);
+ResourceIdentifier apiManagementProductResourceId = ApiManagementProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId);
+ApiManagementProductResource apiManagementProduct = client.GetApiManagementProductResource(apiManagementProductResourceId);
+
+// get the collection of this ServiceProductGroupLinkResource
+ServiceProductGroupLinkCollection collection = apiManagementProduct.GetServiceProductGroupLinks();
 
 // invoke the operation
+string groupLinkId = "link1";
 ProductGroupLinkContractData data = new ProductGroupLinkContractData
 {
     GroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/groups/group1",
 };
-ArmOperation<ServiceProductGroupLinkResource> lro = await serviceProductGroupLink.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceProductGroupLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, groupLinkId, data);
 ServiceProductGroupLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

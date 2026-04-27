@@ -15,34 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceApiOperationResource created on azure
-// for more information of creating ServiceWorkspaceApiOperationResource, please refer to the document of ServiceWorkspaceApiOperationResource
+// this example assumes you already have this ServiceWorkspaceApiOperationPolicyResource created on azure
+// for more information of creating ServiceWorkspaceApiOperationPolicyResource, please refer to the document of ServiceWorkspaceApiOperationPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string apiId = "5600b539c53f5b0062040001";
 string operationId = "5600b53ac53f5b0062080006";
-ResourceIdentifier serviceWorkspaceApiOperationResourceId = ServiceWorkspaceApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId, operationId);
-ServiceWorkspaceApiOperationResource serviceWorkspaceApiOperation = client.GetServiceWorkspaceApiOperationResource(serviceWorkspaceApiOperationResourceId);
-
-// get the collection of this ServiceWorkspaceApiOperationPolicyResource
-ServiceWorkspaceApiOperationPolicyCollection collection = serviceWorkspaceApiOperation.GetServiceWorkspaceApiOperationPolicies();
+PolicyName policyId = PolicyName.Policy;
+ResourceIdentifier serviceWorkspaceApiOperationPolicyResourceId = ServiceWorkspaceApiOperationPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId, operationId, policyId);
+ServiceWorkspaceApiOperationPolicyResource serviceWorkspaceApiOperationPolicy = client.GetServiceWorkspaceApiOperationPolicyResource(serviceWorkspaceApiOperationPolicyResourceId);
 
 // invoke the operation
-PolicyName policyId = PolicyName.Policy;
-NullableResponse<ServiceWorkspaceApiOperationPolicyResource> response = await collection.GetIfExistsAsync(policyId);
-ServiceWorkspaceApiOperationPolicyResource result = response.HasValue ? response.Value : null;
+ServiceWorkspaceApiOperationPolicyResource result = await serviceWorkspaceApiOperationPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PolicyContractData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PolicyContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

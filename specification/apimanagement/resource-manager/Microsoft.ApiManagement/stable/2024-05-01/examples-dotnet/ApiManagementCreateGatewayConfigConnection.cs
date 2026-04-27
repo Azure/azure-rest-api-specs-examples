@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiGatewayResource created on azure
-// for more information of creating ApiGatewayResource, please refer to the document of ApiGatewayResource
+// this example assumes you already have this ApiGatewayConfigConnectionResource created on azure
+// for more information of creating ApiGatewayConfigConnectionResource, please refer to the document of ApiGatewayConfigConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string gatewayName = "standard-gw-01";
-ResourceIdentifier apiGatewayResourceId = ApiGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
-ApiGatewayResource apiGateway = client.GetApiGatewayResource(apiGatewayResourceId);
-
-// get the collection of this ApiGatewayConfigConnectionResource
-ApiGatewayConfigConnectionCollection collection = apiGateway.GetApiGatewayConfigConnections();
+string configConnectionName = "gcc-01";
+ResourceIdentifier apiGatewayConfigConnectionResourceId = ApiGatewayConfigConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, configConnectionName);
+ApiGatewayConfigConnectionResource apiGatewayConfigConnection = client.GetApiGatewayConfigConnectionResource(apiGatewayConfigConnectionResourceId);
 
 // invoke the operation
-string configConnectionName = "gcc-01";
 ApiGatewayConfigConnectionData data = new ApiGatewayConfigConnectionData
 {
     SourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/services/apim-service-1/workspaces/ws-001"),
 };
-ArmOperation<ApiGatewayConfigConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configConnectionName, data);
+ArmOperation<ApiGatewayConfigConnectionResource> lro = await apiGatewayConfigConnection.UpdateAsync(WaitUntil.Completed, data);
 ApiGatewayConfigConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

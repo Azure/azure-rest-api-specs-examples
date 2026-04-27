@@ -6433,3 +6433,4 @@ id,name,language,tag,package,version,date_epoch,date
 6432,azure-mgmt-compute@38.0.0b1,python,azure-mgmt-compute_38.0.0b1,azure-mgmt-compute,38.0.0b1,1776412764,04/17/2026
 6433,azure-mgmt-playwright@1.1.0b1,python,azure-mgmt-playwright_1.1.0b1,azure-mgmt-playwright,1.1.0b1,1775456588,04/06/2026
 6434,azure-mgmt-maps@3.0.0b1,python,azure-mgmt-maps_3.0.0b1,azure-mgmt-maps,3.0.0b1,1775206230,04/03/2026
+6435,azure-mgmt-purview@1.1.0b2,python,azure-mgmt-purview_1.1.0b2,azure-mgmt-purview,1.1.0b2,1775205547,04/03/2026

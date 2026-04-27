@@ -6408,3 +6408,4 @@ id,name,language,tag,package,version,date_epoch,date
 6407,"Azure.ResourceManager.Chaos,1.1.1",dotnet,Azure.ResourceManager.Chaos_1.1.1,Azure.ResourceManager.Chaos,1.1.1,1776750025,04/21/2026
 6408,"Azure.ResourceManager.BotService,1.2.0-beta.1",dotnet,Azure.ResourceManager.BotService_1.2.0-beta.1,Azure.ResourceManager.BotService,1.2.0-beta.1,1776743885,04/21/2026
 6409,"Azure.ResourceManager.CloudHealth,1.0.0-beta.2",dotnet,Azure.ResourceManager.CloudHealth_1.0.0-beta.2,Azure.ResourceManager.CloudHealth,1.0.0-beta.2,1776743876,04/21/2026
+6410,"Azure.ResourceManager.Blueprint,1.0.0-beta.6",dotnet,Azure.ResourceManager.Blueprint_1.0.0-beta.6,Azure.ResourceManager.Blueprint,1.0.0-beta.6,1776743875,04/21/2026

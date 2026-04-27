@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomanageVmConfigurationProfileAssignmentReportResource created on azure
-// for more information of creating AutomanageVmConfigurationProfileAssignmentReportResource, please refer to the document of AutomanageVmConfigurationProfileAssignmentReportResource
+// this example assumes you already have this AutomanageVmConfigurationProfileAssignmentResource created on azure
+// for more information of creating AutomanageVmConfigurationProfileAssignmentResource, please refer to the document of AutomanageVmConfigurationProfileAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmName = "myVMName";
 string configurationProfileAssignmentName = "default";
-string reportName = "b4e9ee6b-1717-4ff0-a8d2-e6d72c33d5f4";
-ResourceIdentifier automanageVmConfigurationProfileAssignmentReportResourceId = AutomanageVmConfigurationProfileAssignmentReportResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName, configurationProfileAssignmentName, reportName);
-AutomanageVmConfigurationProfileAssignmentReportResource automanageVmConfigurationProfileAssignmentReport = client.GetAutomanageVmConfigurationProfileAssignmentReportResource(automanageVmConfigurationProfileAssignmentReportResourceId);
+ResourceIdentifier automanageVmConfigurationProfileAssignmentResourceId = AutomanageVmConfigurationProfileAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName, configurationProfileAssignmentName);
+AutomanageVmConfigurationProfileAssignmentResource automanageVmConfigurationProfileAssignment = client.GetAutomanageVmConfigurationProfileAssignmentResource(automanageVmConfigurationProfileAssignmentResourceId);
+
+// get the collection of this AutomanageVmConfigurationProfileAssignmentReportResource
+AutomanageVmConfigurationProfileAssignmentReportCollection collection = automanageVmConfigurationProfileAssignment.GetAutomanageVmConfigurationProfileAssignmentReports();
 
 // invoke the operation
-AutomanageVmConfigurationProfileAssignmentReportResource result = await automanageVmConfigurationProfileAssignmentReport.GetAsync();
+string reportName = "b4e9ee6b-1717-4ff0-a8d2-e6d72c33d5f4";
+NullableResponse<AutomanageVmConfigurationProfileAssignmentReportResource> response = await collection.GetIfExistsAsync(reportName);
+AutomanageVmConfigurationProfileAssignmentReportResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AutomanageConfigurationProfileAssignmentReportData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AutomanageConfigurationProfileAssignmentReportData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

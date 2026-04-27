@@ -6348,3 +6348,4 @@ id,name,language,tag,package,version,date_epoch,date
 6347,azure-mgmt-peering@2.0.0b2,python,azure-mgmt-peering_2.0.0b2,azure-mgmt-peering,2.0.0b2,1774926073,03/31/2026
 6348,com.azure.resourcemanager:azure-resourcemanager-servicegroups:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-servicegroups_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-servicegroups,1.0.0-beta.2,1777076033,04/25/2026
 6349,com.azure.resourcemanager:azure-resourcemanager-relationships:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-relationships_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-relationships,1.0.0-beta.1,1777072381,04/24/2026
+6350,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.0.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.0.0,1776985494,04/23/2026

@@ -6418,3 +6418,4 @@ id,name,language,tag,package,version,date_epoch,date
 6417,"Azure.ResourceManager.ApiCenter,1.1.0-beta.1",dotnet,Azure.ResourceManager.ApiCenter_1.1.0-beta.1,Azure.ResourceManager.ApiCenter,1.1.0-beta.1,1776668697,04/20/2026
 6418,"Azure.ResourceManager.Attestation,1.0.0-beta.6",dotnet,Azure.ResourceManager.Attestation_1.0.0-beta.6,Azure.ResourceManager.Attestation,1.0.0-beta.6,1776668618,04/20/2026
 6419,"Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.3",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.2.0-beta.3,Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.3,1776155065,04/14/2026
+6420,"Azure.ResourceManager.DesktopVirtualization,1.4.0-beta.1",dotnet,Azure.ResourceManager.DesktopVirtualization_1.4.0-beta.1,Azure.ResourceManager.DesktopVirtualization,1.4.0-beta.1,1775804460,04/10/2026

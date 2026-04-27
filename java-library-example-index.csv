@@ -6391,3 +6391,4 @@ id,name,language,tag,package,version,date_epoch,date
 6390,"Azure.ResourceManager.DeviceUpdate,1.0.2",dotnet,Azure.ResourceManager.DeviceUpdate_1.0.2,Azure.ResourceManager.DeviceUpdate,1.0.2,1776933834,04/23/2026
 6391,"Azure.ResourceManager.DefenderEasm,1.0.0-beta.4",dotnet,Azure.ResourceManager.DefenderEasm_1.0.0-beta.4,Azure.ResourceManager.DefenderEasm,1.0.0-beta.4,1776930298,04/23/2026
 6392,"Azure.ResourceManager.DevCenter,1.1.0-beta.1",dotnet,Azure.ResourceManager.DevCenter_1.1.0-beta.1,Azure.ResourceManager.DevCenter,1.1.0-beta.1,1776930160,04/23/2026
+6393,"Azure.ResourceManager.ConfidentialLedger,1.1.0",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0,Azure.ResourceManager.ConfidentialLedger,1.1.0,1776924495,04/23/2026

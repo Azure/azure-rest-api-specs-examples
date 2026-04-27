@@ -6428,3 +6428,4 @@ id,name,language,tag,package,version,date_epoch,date
 6427,azure-mgmt-containerservice@41.2.0b1,python,azure-mgmt-containerservice_41.2.0b1,azure-mgmt-containerservice,41.2.0b1,1777019327,04/24/2026
 6428,azure-mgmt-azurestackhci@8.1.0b1,python,azure-mgmt-azurestackhci_8.1.0b1,azure-mgmt-azurestackhci,8.1.0b1,1776936502,04/23/2026
 6429,azure-mgmt-hybridkubernetes@1.2.0,python,azure-mgmt-hybridkubernetes_1.2.0,azure-mgmt-hybridkubernetes,1.2.0,1776924436,04/23/2026
+6430,azure-mgmt-computelimit@1.0.0,python,azure-mgmt-computelimit_1.0.0,azure-mgmt-computelimit,1.0.0,1776880962,04/22/2026

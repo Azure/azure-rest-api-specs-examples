@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProfileResourceFormatResource created on azure
-// for more information of creating ProfileResourceFormatResource, please refer to the document of ProfileResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string profileName = "TestProfileType396";
-ResourceIdentifier profileResourceFormatResourceId = ProfileResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, profileName);
-ProfileResourceFormatResource profileResourceFormat = client.GetProfileResourceFormatResource(profileResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this ProfileResourceFormatResource
+ProfileResourceFormatCollection collection = hub.GetProfileResourceFormats();
 
 // invoke the operation
+string profileName = "TestProfileType396";
 ProfileResourceFormatData data = new ProfileResourceFormatData
 {
     SmallImage = "\\\\Images\\\\smallImage",
@@ -55,7 +58,7 @@ ProfileResourceFormatData data = new ProfileResourceFormatData
     SchemaItemTypeLink = "SchemaItemTypeLink",
     StrongIds = { new StrongId(new string[] { "Id", "SavingAccountBalance" }, "Id"), new StrongId(new string[] { "ProfileId", "LastName" }, "ProfileId") },
 };
-ArmOperation<ProfileResourceFormatResource> lro = await profileResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ProfileResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data);
 ProfileResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

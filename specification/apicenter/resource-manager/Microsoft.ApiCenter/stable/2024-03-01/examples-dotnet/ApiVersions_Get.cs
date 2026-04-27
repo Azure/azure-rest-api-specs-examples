@@ -14,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiCenterApiVersionResource created on azure
-// for more information of creating ApiCenterApiVersionResource, please refer to the document of ApiCenterApiVersionResource
+// this example assumes you already have this ApiCenterApiResource created on azure
+// for more information of creating ApiCenterApiResource, please refer to the document of ApiCenterApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contoso-resources";
 string serviceName = "contoso";
 string workspaceName = "default";
 string apiName = "echo-api";
-string versionName = "2023-01-01";
-ResourceIdentifier apiCenterApiVersionResourceId = ApiCenterApiVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName, versionName);
-ApiCenterApiVersionResource apiCenterApiVersion = client.GetApiCenterApiVersionResource(apiCenterApiVersionResourceId);
+ResourceIdentifier apiCenterApiResourceId = ApiCenterApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName);
+ApiCenterApiResource apiCenterApi = client.GetApiCenterApiResource(apiCenterApiResourceId);
+
+// get the collection of this ApiCenterApiVersionResource
+ApiCenterApiVersionCollection collection = apiCenterApi.GetApiCenterApiVersions();
 
 // invoke the operation
-ApiCenterApiVersionResource result = await apiCenterApiVersion.GetAsync();
+string versionName = "2023-01-01";
+NullableResponse<ApiCenterApiVersionResource> response = await collection.GetIfExistsAsync(versionName);
+ApiCenterApiVersionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiCenterApiVersionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiCenterApiVersionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

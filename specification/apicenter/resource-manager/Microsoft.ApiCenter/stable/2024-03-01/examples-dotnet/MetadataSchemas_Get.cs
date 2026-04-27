@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiCenterServiceResource created on azure
-// for more information of creating ApiCenterServiceResource, please refer to the document of ApiCenterServiceResource
+// this example assumes you already have this ApiCenterMetadataSchemaResource created on azure
+// for more information of creating ApiCenterMetadataSchemaResource, please refer to the document of ApiCenterMetadataSchemaResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contoso-resources";
 string serviceName = "contoso";
-ResourceIdentifier apiCenterServiceResourceId = ApiCenterServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiCenterServiceResource apiCenterService = client.GetApiCenterServiceResource(apiCenterServiceResourceId);
-
-// get the collection of this ApiCenterMetadataSchemaResource
-ApiCenterMetadataSchemaCollection collection = apiCenterService.GetApiCenterMetadataSchemas();
+string metadataSchemaName = "lastName";
+ResourceIdentifier apiCenterMetadataSchemaResourceId = ApiCenterMetadataSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, metadataSchemaName);
+ApiCenterMetadataSchemaResource apiCenterMetadataSchema = client.GetApiCenterMetadataSchemaResource(apiCenterMetadataSchemaResourceId);
 
 // invoke the operation
-string metadataSchemaName = "lastName";
-NullableResponse<ApiCenterMetadataSchemaResource> response = await collection.GetIfExistsAsync(metadataSchemaName);
-ApiCenterMetadataSchemaResource result = response.HasValue ? response.Value : null;
+ApiCenterMetadataSchemaResource result = await apiCenterMetadataSchema.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiCenterMetadataSchemaData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiCenterMetadataSchemaData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

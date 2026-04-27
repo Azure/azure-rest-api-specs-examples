@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiCenterWorkspaceResource created on azure
-// for more information of creating ApiCenterWorkspaceResource, please refer to the document of ApiCenterWorkspaceResource
+// this example assumes you already have this ApiCenterApiResource created on azure
+// for more information of creating ApiCenterApiResource, please refer to the document of ApiCenterApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contoso-resources";
 string serviceName = "contoso";
 string workspaceName = "default";
-ResourceIdentifier apiCenterWorkspaceResourceId = ApiCenterWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName);
-ApiCenterWorkspaceResource apiCenterWorkspace = client.GetApiCenterWorkspaceResource(apiCenterWorkspaceResourceId);
-
-// get the collection of this ApiCenterApiResource
-ApiCenterApiCollection collection = apiCenterWorkspace.GetApiCenterApis();
+string apiName = "echo-api";
+ResourceIdentifier apiCenterApiResourceId = ApiCenterApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName);
+ApiCenterApiResource apiCenterApi = client.GetApiCenterApiResource(apiCenterApiResourceId);
 
 // invoke the operation
-string apiName = "echo-api";
-NullableResponse<ApiCenterApiResource> response = await collection.GetIfExistsAsync(apiName);
-ApiCenterApiResource result = response.HasValue ? response.Value : null;
+ApiCenterApiResource result = await apiCenterApi.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiCenterApiData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiCenterApiData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

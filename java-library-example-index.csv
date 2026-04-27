@@ -6447,3 +6447,4 @@ id,name,language,tag,package,version,date_epoch,date
 6446,"Azure.ResourceManager.HybridContainerService,1.0.2",dotnet,Azure.ResourceManager.HybridContainerService_1.0.2,Azure.ResourceManager.HybridContainerService,1.0.2,1777285826,04/27/2026
 6447,"Azure.ResourceManager.KubernetesConfiguration,1.2.1",dotnet,Azure.ResourceManager.KubernetesConfiguration_1.2.1,Azure.ResourceManager.KubernetesConfiguration,1.2.1,1777285821,04/27/2026
 6448,"Azure.ResourceManager.HybridCompute,1.1.0-beta.2",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.2,Azure.ResourceManager.HybridCompute,1.1.0-beta.2,1777283764,04/27/2026
+6449,"Azure.ResourceManager.IotCentral,1.1.0-beta.4",dotnet,Azure.ResourceManager.IotCentral_1.1.0-beta.4,Azure.ResourceManager.IotCentral,1.1.0-beta.4,1777283686,04/27/2026

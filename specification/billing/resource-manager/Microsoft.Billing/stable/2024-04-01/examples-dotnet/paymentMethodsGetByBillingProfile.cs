@@ -14,30 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingProfileResource created on azure
-// for more information of creating BillingProfileResource, please refer to the document of BillingProfileResource
+// this example assumes you already have this BillingPaymentMethodLinkResource created on azure
+// for more information of creating BillingPaymentMethodLinkResource, please refer to the document of BillingPaymentMethodLinkResource
 string billingAccountName = "00000000-0000-0000-0000-000000000032:00000000-0000-0000-0000-000000000099_2019-05-31";
 string billingProfileName = "ABC1-A1CD-AB1-BP1";
-ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResourceIdentifier(billingAccountName, billingProfileName);
-BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
-
-// get the collection of this BillingPaymentMethodLinkResource
-BillingPaymentMethodLinkCollection collection = billingProfile.GetBillingPaymentMethodLinks();
+string paymentMethodName = "ABCDABCDABC0";
+ResourceIdentifier billingPaymentMethodLinkResourceId = BillingPaymentMethodLinkResource.CreateResourceIdentifier(billingAccountName, billingProfileName, paymentMethodName);
+BillingPaymentMethodLinkResource billingPaymentMethodLink = client.GetBillingPaymentMethodLinkResource(billingPaymentMethodLinkResourceId);
 
 // invoke the operation
-string paymentMethodName = "ABCDABCDABC0";
-NullableResponse<BillingPaymentMethodLinkResource> response = await collection.GetIfExistsAsync(paymentMethodName);
-BillingPaymentMethodLinkResource result = response.HasValue ? response.Value : null;
+BillingPaymentMethodLinkResource result = await billingPaymentMethodLink.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingPaymentMethodLinkData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingPaymentMethodLinkData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

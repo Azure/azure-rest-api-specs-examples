@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Billing.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Billing;
 
 // Generated from example definition: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingRequestsCreateOrUpdate.json
@@ -15,13 +16,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingRequestResource created on azure
-// for more information of creating BillingRequestResource, please refer to the document of BillingRequestResource
-string billingRequestName = "00000000-0000-0000-0000-000000000000";
-ResourceIdentifier billingRequestResourceId = BillingRequestResource.CreateResourceIdentifier(billingRequestName);
-BillingRequestResource billingRequest = client.GetBillingRequestResource(billingRequestResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this BillingRequestResource
+BillingRequestCollection collection = tenantResource.GetBillingRequests();
 
 // invoke the operation
+string billingRequestName = "00000000-0000-0000-0000-000000000000";
 BillingRequestData data = new BillingRequestData
 {
     Properties = new BillingRequestProperties
@@ -36,7 +37,7 @@ BillingRequestData data = new BillingRequestData
         RequestType = BillingRequestType.RoleAssignment,
     },
 };
-ArmOperation<BillingRequestResource> lro = await billingRequest.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BillingRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, billingRequestName, data);
 BillingRequestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

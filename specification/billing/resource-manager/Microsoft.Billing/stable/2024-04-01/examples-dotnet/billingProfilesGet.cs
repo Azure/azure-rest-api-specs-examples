@@ -15,29 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingAccountResource created on azure
-// for more information of creating BillingAccountResource, please refer to the document of BillingAccountResource
+// this example assumes you already have this BillingProfileResource created on azure
+// for more information of creating BillingProfileResource, please refer to the document of BillingProfileResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
-ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResourceIdentifier(billingAccountName);
-BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
-
-// get the collection of this BillingProfileResource
-BillingProfileCollection collection = billingAccount.GetBillingProfiles();
+string billingProfileName = "xxxx-xxxx-xxx-xxx";
+ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResourceIdentifier(billingAccountName, billingProfileName);
+BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
 
 // invoke the operation
-string billingProfileName = "xxxx-xxxx-xxx-xxx";
-NullableResponse<BillingProfileResource> response = await collection.GetIfExistsAsync(billingProfileName);
-BillingProfileResource result = response.HasValue ? response.Value : null;
+BillingProfileResource result = await billingProfile.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingProfileData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingProfileData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

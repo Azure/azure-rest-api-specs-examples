@@ -15,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingAccountResource created on azure
-// for more information of creating BillingAccountResource, please refer to the document of BillingAccountResource
+// this example assumes you already have this BillingProfileResource created on azure
+// for more information of creating BillingProfileResource, please refer to the document of BillingProfileResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
-ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResourceIdentifier(billingAccountName);
-BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
-
-// get the collection of this BillingProfileResource
-BillingProfileCollection collection = billingAccount.GetBillingProfiles();
+string billingProfileName = "xxxx-xxxx-xxx-xxx";
+ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResourceIdentifier(billingAccountName, billingProfileName);
+BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
 
 // invoke the operation
-string billingProfileName = "xxxx-xxxx-xxx-xxx";
 BillingProfileData data = new BillingProfileData
 {
     Properties = new BillingProfileProperties
@@ -70,7 +67,7 @@ BillingProfileData data = new BillingProfileData
         },
     },
 };
-ArmOperation<BillingProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, billingProfileName, data);
+ArmOperation<BillingProfileResource> lro = await billingProfile.UpdateAsync(WaitUntil.Completed, data);
 BillingProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

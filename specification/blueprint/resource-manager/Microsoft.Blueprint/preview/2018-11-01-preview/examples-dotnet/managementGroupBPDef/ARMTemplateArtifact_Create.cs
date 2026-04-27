@@ -16,18 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlueprintResource created on azure
-// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+// this example assumes you already have this BlueprintArtifactResource created on azure
+// for more information of creating BlueprintArtifactResource, please refer to the document of BlueprintArtifactResource
 string resourceScope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup";
 string blueprintName = "simpleBlueprint";
-ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
-BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
-
-// get the collection of this BlueprintArtifactResource
-BlueprintArtifactCollection collection = blueprint.GetBlueprintArtifacts();
+string artifactName = "storageTemplate";
+ResourceIdentifier blueprintArtifactResourceId = BlueprintArtifactResource.CreateResourceIdentifier(resourceScope, blueprintName, artifactName);
+BlueprintArtifactResource blueprintArtifact = client.GetBlueprintArtifactResource(blueprintArtifactResourceId);
 
 // invoke the operation
-string artifactName = "storageTemplate";
 ArtifactData data = new TemplateArtifact(BinaryData.FromObjectAsJson(new
 {
     contentVersion = "1.0.0.0",
@@ -88,7 +85,7 @@ name = "[parameters('storageAccountType')]",
 {
     ResourceGroup = "storageRG",
 };
-ArmOperation<BlueprintArtifactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, artifactName, data);
+ArmOperation<BlueprintArtifactResource> lro = await blueprintArtifact.UpdateAsync(WaitUntil.Completed, data);
 BlueprintArtifactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

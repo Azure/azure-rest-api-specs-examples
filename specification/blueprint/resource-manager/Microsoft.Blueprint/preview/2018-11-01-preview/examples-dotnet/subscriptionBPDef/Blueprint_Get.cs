@@ -15,24 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this BlueprintResource
+// this example assumes you already have this BlueprintResource created on azure
+// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
-BlueprintCollection collection = client.GetBlueprints(new ResourceIdentifier(resourceScope));
+string blueprintName = "simpleBlueprint";
+ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
+BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
 
 // invoke the operation
-string blueprintName = "simpleBlueprint";
-NullableResponse<BlueprintResource> response = await collection.GetIfExistsAsync(blueprintName);
-BlueprintResource result = response.HasValue ? response.Value : null;
+BlueprintResource result = await blueprint.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BlueprintData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BlueprintData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

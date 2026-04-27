@@ -16,23 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlueprintResource created on azure
-// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+// this example assumes you already have this BlueprintArtifactResource created on azure
+// for more information of creating BlueprintArtifactResource, please refer to the document of BlueprintArtifactResource
 string resourceScope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup";
 string blueprintName = "simpleBlueprint";
-ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
-BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
-
-// get the collection of this BlueprintArtifactResource
-BlueprintArtifactCollection collection = blueprint.GetBlueprintArtifacts();
+string artifactName = "ownerAssignment";
+ResourceIdentifier blueprintArtifactResourceId = BlueprintArtifactResource.CreateResourceIdentifier(resourceScope, blueprintName, artifactName);
+BlueprintArtifactResource blueprintArtifact = client.GetBlueprintArtifactResource(blueprintArtifactResourceId);
 
 // invoke the operation
-string artifactName = "ownerAssignment";
 ArtifactData data = new RoleAssignmentArtifact("/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7", BinaryData.FromObjectAsJson("[parameters('owners')]"))
 {
     DisplayName = "enforce owners of given subscription",
 };
-ArmOperation<BlueprintArtifactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, artifactName, data);
+ArmOperation<BlueprintArtifactResource> lro = await blueprintArtifact.UpdateAsync(WaitUntil.Completed, data);
 BlueprintArtifactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

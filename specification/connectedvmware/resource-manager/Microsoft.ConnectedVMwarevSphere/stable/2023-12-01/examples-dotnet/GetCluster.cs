@@ -4,8 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.ConnectedVMwarevSphere.Models;
 using Azure.ResourceManager.ConnectedVMwarevSphere;
 
 // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/GetCluster.json
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this VMwareClusterResource created on azure
+// for more information of creating VMwareClusterResource, please refer to the document of VMwareClusterResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this VMwareClusterResource
-VMwareClusterCollection collection = resourceGroupResource.GetVMwareClusters();
+string clusterName = "HRCluster";
+ResourceIdentifier vMwareClusterResourceId = VMwareClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+VMwareClusterResource vMwareCluster = client.GetVMwareClusterResource(vMwareClusterResourceId);
 
 // invoke the operation
-string clusterName = "HRCluster";
-NullableResponse<VMwareClusterResource> response = await collection.GetIfExistsAsync(clusterName);
-VMwareClusterResource result = response.HasValue ? response.Value : null;
+VMwareClusterResource result = await vMwareCluster.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VMwareClusterData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VMwareClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

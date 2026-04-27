@@ -6422,3 +6422,4 @@ id,name,language,tag,package,version,date_epoch,date
 6421,"Azure.ResourceManager.Sql,1.4.0",dotnet,Azure.ResourceManager.Sql_1.4.0,Azure.ResourceManager.Sql,1.4.0,1775728316,04/09/2026
 6422,"Azure.ResourceManager.Playwright,1.1.0-beta.1",dotnet,Azure.ResourceManager.Playwright_1.1.0-beta.1,Azure.ResourceManager.Playwright,1.1.0-beta.1,1775452898,04/06/2026
 6423,"Azure.ResourceManager.Storage,1.6.2",dotnet,Azure.ResourceManager.Storage_1.6.2,Azure.ResourceManager.Storage,1.6.2,1775099426,04/02/2026
+6424,azure-mgmt-servicegroups@1.0.0b1,python,azure-mgmt-servicegroups_1.0.0b1,azure-mgmt-servicegroups,1.0.0b1,1777090238,04/25/2026

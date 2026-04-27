@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelDiscoveryRuleResource created on azure
-// for more information of creating HealthModelDiscoveryRuleResource, please refer to the document of HealthModelDiscoveryRuleResource
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string healthModelName = "myHealthModel";
-string discoveryRuleName = "myDiscoveryRule";
-ResourceIdentifier healthModelDiscoveryRuleResourceId = HealthModelDiscoveryRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, discoveryRuleName);
-HealthModelDiscoveryRuleResource healthModelDiscoveryRule = client.GetHealthModelDiscoveryRuleResource(healthModelDiscoveryRuleResourceId);
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelDiscoveryRuleResource
+HealthModelDiscoveryRuleCollection collection = healthModel.GetHealthModelDiscoveryRules();
 
 // invoke the operation
-HealthModelDiscoveryRuleResource result = await healthModelDiscoveryRule.GetAsync();
+string discoveryRuleName = "myDiscoveryRule";
+NullableResponse<HealthModelDiscoveryRuleResource> response = await collection.GetIfExistsAsync(discoveryRuleName);
+HealthModelDiscoveryRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HealthModelDiscoveryRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HealthModelDiscoveryRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

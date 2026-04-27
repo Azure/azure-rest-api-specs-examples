@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelDiscoveryRuleResource created on azure
-// for more information of creating HealthModelDiscoveryRuleResource, please refer to the document of HealthModelDiscoveryRuleResource
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string healthModelName = "myHealthModel";
-string discoveryRuleName = "myDiscoveryRule";
-ResourceIdentifier healthModelDiscoveryRuleResourceId = HealthModelDiscoveryRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, discoveryRuleName);
-HealthModelDiscoveryRuleResource healthModelDiscoveryRule = client.GetHealthModelDiscoveryRuleResource(healthModelDiscoveryRuleResourceId);
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelDiscoveryRuleResource
+HealthModelDiscoveryRuleCollection collection = healthModel.GetHealthModelDiscoveryRules();
 
 // invoke the operation
+string discoveryRuleName = "myDiscoveryRule";
 HealthModelDiscoveryRuleData data = new HealthModelDiscoveryRuleData
 {
-    Properties = new HealthModelDiscoveryRuleProperties("resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'", "authSetting1", DiscoveryRuleRelationshipDiscoveryBehavior.Enabled, DiscoveryRuleRecommendedSignalsBehavior.Enabled, null)
+    Properties = new HealthModelDiscoveryRuleProperties("resources | where subscriptionId == '7ddfffd7-9b32-40df-1234-828cbd55d6f4' | where resourceGroup == 'my-rg'", "authSetting1", DiscoveryRuleRelationshipDiscoveryBehavior.Enabled, DiscoveryRuleRecommendedSignalsBehavior.Enabled)
     {
         DisplayName = "myDisplayName",
     },
 };
-ArmOperation<HealthModelDiscoveryRuleResource> lro = await healthModelDiscoveryRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HealthModelDiscoveryRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, discoveryRuleName, data);
 HealthModelDiscoveryRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelResource created on azure
-// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
+// this example assumes you already have this HealthModelRelationshipResource created on azure
+// for more information of creating HealthModelRelationshipResource, please refer to the document of HealthModelRelationshipResource
 string subscriptionId = "4980D7D5-4E07-47AD-AD34-E76C6BC9F061";
 string resourceGroupName = "rgopenapi";
 string healthModelName = "model1";
-ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
-HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
-
-// get the collection of this HealthModelRelationshipResource
-HealthModelRelationshipCollection collection = healthModel.GetHealthModelRelationships();
+string relationshipName = "rel1";
+ResourceIdentifier healthModelRelationshipResourceId = HealthModelRelationshipResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, relationshipName);
+HealthModelRelationshipResource healthModelRelationship = client.GetHealthModelRelationshipResource(healthModelRelationshipResourceId);
 
 // invoke the operation
-string relationshipName = "rel1";
 HealthModelRelationshipData data = new HealthModelRelationshipData
 {
     Properties = new HealthModelRelationshipProperties("Entity1", "Entity2")
@@ -39,7 +36,7 @@ HealthModelRelationshipData data = new HealthModelRelationshipData
         },
     },
 };
-ArmOperation<HealthModelRelationshipResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, relationshipName, data);
+ArmOperation<HealthModelRelationshipResource> lro = await healthModelRelationship.UpdateAsync(WaitUntil.Completed, data);
 HealthModelRelationshipResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

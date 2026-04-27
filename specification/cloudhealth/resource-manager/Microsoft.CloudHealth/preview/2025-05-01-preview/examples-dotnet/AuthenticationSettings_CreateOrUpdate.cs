@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelAuthenticationSettingResource created on azure
-// for more information of creating HealthModelAuthenticationSettingResource, please refer to the document of HealthModelAuthenticationSettingResource
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string healthModelName = "myHealthModel";
-string authenticationSettingName = "myAuthSetting";
-ResourceIdentifier healthModelAuthenticationSettingResourceId = HealthModelAuthenticationSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, authenticationSettingName);
-HealthModelAuthenticationSettingResource healthModelAuthenticationSetting = client.GetHealthModelAuthenticationSettingResource(healthModelAuthenticationSettingResourceId);
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelAuthenticationSettingResource
+HealthModelAuthenticationSettingCollection collection = healthModel.GetHealthModelAuthenticationSettings();
 
 // invoke the operation
+string authenticationSettingName = "myAuthSetting";
 HealthModelAuthenticationSettingData data = new HealthModelAuthenticationSettingData
 {
     Properties = new ManagedIdentityAuthenticationSettingProperties("SystemAssigned")
@@ -32,7 +35,7 @@ HealthModelAuthenticationSettingData data = new HealthModelAuthenticationSetting
         DisplayName = "myDisplayName",
     },
 };
-ArmOperation<HealthModelAuthenticationSettingResource> lro = await healthModelAuthenticationSetting.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HealthModelAuthenticationSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authenticationSettingName, data);
 HealthModelAuthenticationSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

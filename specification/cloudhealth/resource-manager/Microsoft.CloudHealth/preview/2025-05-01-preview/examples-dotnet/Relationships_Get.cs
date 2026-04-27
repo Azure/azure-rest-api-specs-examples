@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthModelResource created on azure
-// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
+// this example assumes you already have this HealthModelRelationshipResource created on azure
+// for more information of creating HealthModelRelationshipResource, please refer to the document of HealthModelRelationshipResource
 string subscriptionId = "4980D7D5-4E07-47AD-AD34-E76C6BC9F061";
 string resourceGroupName = "rgopenapi";
 string healthModelName = "myHealthModel";
-ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
-HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
-
-// get the collection of this HealthModelRelationshipResource
-HealthModelRelationshipCollection collection = healthModel.GetHealthModelRelationships();
+string relationshipName = "Ue-21-F3M12V3w-13x18F8H-7HOk--kq6tP-HB";
+ResourceIdentifier healthModelRelationshipResourceId = HealthModelRelationshipResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName, relationshipName);
+HealthModelRelationshipResource healthModelRelationship = client.GetHealthModelRelationshipResource(healthModelRelationshipResourceId);
 
 // invoke the operation
-string relationshipName = "Ue-21-F3M12V3w-13x18F8H-7HOk--kq6tP-HB";
-NullableResponse<HealthModelRelationshipResource> response = await collection.GetIfExistsAsync(relationshipName);
-HealthModelRelationshipResource result = response.HasValue ? response.Value : null;
+HealthModelRelationshipResource result = await healthModelRelationship.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    HealthModelRelationshipData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HealthModelRelationshipData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

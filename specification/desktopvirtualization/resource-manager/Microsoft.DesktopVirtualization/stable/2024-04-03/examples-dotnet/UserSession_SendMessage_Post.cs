@@ -31,6 +31,6 @@ UserSessionMessage sendMessage = new UserSessionMessage
     MessageTitle = "title",
     MessageBody = "body",
 };
-await userSession.SendMessageAsync(sendMessage: sendMessage);
+await userSession.SendMessageAsync(sendMessage);
 
 Console.WriteLine("Succeeded");

@@ -6395,3 +6395,4 @@ id,name,language,tag,package,version,date_epoch,date
 6394,"Azure.ResourceManager.Consumption,1.1.0",dotnet,Azure.ResourceManager.Consumption_1.1.0,Azure.ResourceManager.Consumption,1.1.0,1776909559,04/23/2026
 6395,"Azure.ResourceManager.ComputeFleet,1.1.0-beta.1",dotnet,Azure.ResourceManager.ComputeFleet_1.1.0-beta.1,Azure.ResourceManager.ComputeFleet,1.1.0-beta.1,1776849728,04/22/2026
 6396,"Azure.ResourceManager.CostManagement,1.0.3",dotnet,Azure.ResourceManager.CostManagement_1.0.3,Azure.ResourceManager.CostManagement,1.0.3,1776849708,04/22/2026
+6397,"Azure.ResourceManager.DataBox,1.1.1",dotnet,Azure.ResourceManager.DataBox_1.1.1,Azure.ResourceManager.DataBox,1.1.1,1776849693,04/22/2026

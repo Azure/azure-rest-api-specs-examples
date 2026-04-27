@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Attestation.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Attestation;
 

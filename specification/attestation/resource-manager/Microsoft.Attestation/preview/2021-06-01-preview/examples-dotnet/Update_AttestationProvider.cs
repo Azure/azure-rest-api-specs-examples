@@ -32,7 +32,10 @@ AttestationProviderPatch patch = new AttestationProviderPatch
     ["Property2"] = "Value2",
     ["Property3"] = "Value3"
     },
-    AttestationServicePatchSpecificParamsPublicNetworkAccess = PublicNetworkAccessType.Disabled,
+    Properties = new AttestationProviderPatchProperties
+    {
+        PublicNetworkAccess = AttestationPublicNetworkAccessType.Disabled,
+    },
 };
 AttestationProviderResource result = await attestationProvider.UpdateAsync(patch);
 

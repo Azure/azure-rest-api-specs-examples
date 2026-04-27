@@ -36,7 +36,7 @@ ContainerServiceFleetPatch patch = new ContainerServiceFleetPatch
         },
     },
 };
-string ifMatch = "lgoeir";
+ETag ifMatch = new ETag("lgoeir");
 ArmOperation<ContainerServiceFleetResource> lro = await containerServiceFleet.UpdateAsync(WaitUntil.Completed, patch, ifMatch: ifMatch);
 ContainerServiceFleetResource result = lro.Value;
 

@@ -30,7 +30,7 @@ ContainerServiceFleetSkipProperties body = new ContainerServiceFleetSkipProperti
 new ContainerServiceFleetSkipTarget(ContainerServiceFleetTargetType.Member, "member-one"),
 new ContainerServiceFleetSkipTarget(ContainerServiceFleetTargetType.AfterStageWait, "stage1")
 });
-string ifMatch = "rncfubdzrhcihvpqflbsjvoau";
+ETag ifMatch = new ETag("rncfubdzrhcihvpqflbsjvoau");
 ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.SkipAsync(WaitUntil.Completed, body, ifMatch: ifMatch);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 

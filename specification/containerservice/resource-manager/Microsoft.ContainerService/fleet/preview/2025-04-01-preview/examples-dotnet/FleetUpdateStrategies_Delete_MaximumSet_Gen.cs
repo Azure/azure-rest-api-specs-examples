@@ -25,7 +25,7 @@ ResourceIdentifier fleetUpdateStrategyResourceId = FleetUpdateStrategyResource.C
 FleetUpdateStrategyResource fleetUpdateStrategy = client.GetFleetUpdateStrategyResource(fleetUpdateStrategyResourceId);
 
 // invoke the operation
-string ifMatch = "saqprswlk";
+ETag ifMatch = new ETag("saqprswlk");
 await fleetUpdateStrategy.DeleteAsync(WaitUntil.Completed, ifMatch: ifMatch);
 
 Console.WriteLine("Succeeded");

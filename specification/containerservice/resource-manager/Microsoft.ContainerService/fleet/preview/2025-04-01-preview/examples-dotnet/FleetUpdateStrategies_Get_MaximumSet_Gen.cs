@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FleetUpdateStrategyResource created on azure
-// for more information of creating FleetUpdateStrategyResource, please refer to the document of FleetUpdateStrategyResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rgfleets";
 string fleetName = "fleet1";
-string updateStrategyName = "fleet1";
-ResourceIdentifier fleetUpdateStrategyResourceId = FleetUpdateStrategyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateStrategyName);
-FleetUpdateStrategyResource fleetUpdateStrategy = client.GetFleetUpdateStrategyResource(fleetUpdateStrategyResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this FleetUpdateStrategyResource
+FleetUpdateStrategyCollection collection = containerServiceFleet.GetFleetUpdateStrategies();
 
 // invoke the operation
-FleetUpdateStrategyResource result = await fleetUpdateStrategy.GetAsync();
+string updateStrategyName = "fleet1";
+NullableResponse<FleetUpdateStrategyResource> response = await collection.GetIfExistsAsync(updateStrategyName);
+FleetUpdateStrategyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FleetUpdateStrategyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    FleetUpdateStrategyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

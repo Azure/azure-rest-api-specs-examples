@@ -25,6 +25,6 @@ ResourceIdentifier autoUpgradeProfileResourceId = AutoUpgradeProfileResource.Cre
 AutoUpgradeProfileResource autoUpgradeProfile = client.GetAutoUpgradeProfileResource(autoUpgradeProfileResourceId);
 
 // invoke the operation
-await autoUpgradeProfile.DeleteAsync(WaitUntil.Completed);
+await autoUpgradeProfile.DeleteAsync(WaitUntil.Completed, ifMatch: (ETag?)null);
 
 Console.WriteLine("Succeeded");

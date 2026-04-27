@@ -33,7 +33,7 @@ ContainerServiceFleetPatch patch = new ContainerServiceFleetPatch
     ["tier"] = "secure"
     },
 };
-string ifMatch = "dfjkwelr7384";
+ETag ifMatch = new ETag("dfjkwelr7384");
 ArmOperation<ContainerServiceFleetResource> lro = await containerServiceFleet.UpdateAsync(WaitUntil.Completed, patch, ifMatch: ifMatch);
 ContainerServiceFleetResource result = lro.Value;
 

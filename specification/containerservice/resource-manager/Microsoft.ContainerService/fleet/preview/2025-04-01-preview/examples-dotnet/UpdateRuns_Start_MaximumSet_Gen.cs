@@ -25,7 +25,7 @@ ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFl
 ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
 
 // invoke the operation
-string ifMatch = "bvhjlqeindkmljbbiypbqiaqgtkhlu";
+ETag ifMatch = new ETag("bvhjlqeindkmljbbiypbqiaqgtkhlu");
 ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.StartAsync(WaitUntil.Completed, ifMatch: ifMatch);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 

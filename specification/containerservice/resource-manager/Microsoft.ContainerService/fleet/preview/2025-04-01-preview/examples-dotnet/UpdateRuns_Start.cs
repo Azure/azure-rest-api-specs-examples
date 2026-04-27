@@ -25,7 +25,7 @@ ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFl
 ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
 
 // invoke the operation
-ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.StartAsync(WaitUntil.Completed);
+ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.StartAsync(WaitUntil.Completed, ifMatch: (ETag?)null);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

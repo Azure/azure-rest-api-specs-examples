@@ -29,7 +29,7 @@ ContainerServiceFleetMemberPatch patch = new ContainerServiceFleetMemberPatch
 {
     Group = "staging",
 };
-ArmOperation<ContainerServiceFleetMemberResource> lro = await containerServiceFleetMember.UpdateAsync(WaitUntil.Completed, patch);
+ArmOperation<ContainerServiceFleetMemberResource> lro = await containerServiceFleetMember.UpdateAsync(WaitUntil.Completed, patch, ifMatch: (ETag?)null);
 ContainerServiceFleetMemberResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

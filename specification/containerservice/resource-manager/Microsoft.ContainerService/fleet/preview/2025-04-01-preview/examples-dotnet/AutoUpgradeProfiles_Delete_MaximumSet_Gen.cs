@@ -25,7 +25,7 @@ ResourceIdentifier autoUpgradeProfileResourceId = AutoUpgradeProfileResource.Cre
 AutoUpgradeProfileResource autoUpgradeProfile = client.GetAutoUpgradeProfileResource(autoUpgradeProfileResourceId);
 
 // invoke the operation
-string ifMatch = "tmlfhgsu";
+ETag ifMatch = new ETag("tmlfhgsu");
 await autoUpgradeProfile.DeleteAsync(WaitUntil.Completed, ifMatch: ifMatch);
 
 Console.WriteLine("Succeeded");

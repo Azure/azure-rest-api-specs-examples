@@ -31,7 +31,7 @@ ContainerServiceFleetMemberData data = new ContainerServiceFleetMemberData
 {
     ClusterResourceId = new ResourceIdentifier("/subscriptions/subid1/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/cluster-1"),
 };
-ArmOperation<ContainerServiceFleetMemberResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetMemberName, data);
+ArmOperation<ContainerServiceFleetMemberResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetMemberName, data, matchConditions: null);
 ContainerServiceFleetMemberResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

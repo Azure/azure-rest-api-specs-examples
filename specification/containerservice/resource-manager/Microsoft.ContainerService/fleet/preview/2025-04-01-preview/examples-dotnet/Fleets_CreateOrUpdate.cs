@@ -45,7 +45,7 @@ ContainerServiceFleetData data = new ContainerServiceFleetData(new AzureLocation
     ["tier"] = "production"
     },
 };
-ArmOperation<ContainerServiceFleetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetName, data);
+ArmOperation<ContainerServiceFleetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetName, data, matchConditions: null);
 ContainerServiceFleetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

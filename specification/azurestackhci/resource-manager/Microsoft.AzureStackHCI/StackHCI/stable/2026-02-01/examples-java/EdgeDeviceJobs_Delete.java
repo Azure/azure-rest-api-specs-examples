@@ -1,0 +1,19 @@
+
+/**
+ * Samples for EdgeDeviceJobs Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01/EdgeDeviceJobs_Delete.json
+     */
+    /**
+     * Sample code: EdgeDeviceJobs_Delete.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void edgeDeviceJobsDelete(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.edgeDeviceJobs().delete(
+            "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1",
+            "lAq", "Ihlm3R-bZ4vTC4ABA456", com.azure.core.util.Context.NONE);
+    }
+}

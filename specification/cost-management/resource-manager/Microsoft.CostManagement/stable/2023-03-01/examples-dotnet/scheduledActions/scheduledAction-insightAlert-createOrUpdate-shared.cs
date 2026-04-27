@@ -15,12 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this ScheduledActionResource
+// this example assumes you already have this ScheduledActionResource created on azure
+// for more information of creating ScheduledActionResource, please refer to the document of ScheduledActionResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ScheduledActionCollection collection = client.GetScheduledActions(new ResourceIdentifier(scope));
+string name = "dailyAnomalyByResource";
+ResourceIdentifier scheduledActionResourceId = ScheduledActionResource.CreateResourceIdentifier(scope, name);
+ScheduledActionResource scheduledAction = client.GetScheduledActionResource(scheduledActionResourceId);
 
 // invoke the operation
-string name = "dailyAnomalyByResource";
 ScheduledActionData data = new ScheduledActionData
 {
     DisplayName = "Daily anomaly by resource",
@@ -31,7 +33,7 @@ ScheduledActionData data = new ScheduledActionData
     Kind = ScheduledActionKind.InsightAlert,
 };
 string ifMatch = "";
-ArmOperation<ScheduledActionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data, ifMatch: ifMatch);
+ArmOperation<ScheduledActionResource> lro = await scheduledAction.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
 ScheduledActionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

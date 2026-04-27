@@ -15,14 +15,12 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CostManagementExportResource created on azure
-// for more information of creating CostManagementExportResource, please refer to the document of CostManagementExportResource
+// get the collection of this CostManagementExportResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-string exportName = "TestExport";
-ResourceIdentifier costManagementExportResourceId = CostManagementExportResource.CreateResourceIdentifier(scope, exportName);
-CostManagementExportResource costManagementExport = client.GetCostManagementExportResource(costManagementExportResourceId);
+CostManagementExportCollection collection = client.GetCostManagementExports(new ResourceIdentifier(scope));
 
 // invoke the operation
+string exportName = "TestExport";
 CostManagementExportData data = new CostManagementExportData
 {
     Format = ExportFormatType.Csv,
@@ -49,7 +47,7 @@ CostManagementExportData data = new CostManagementExportData
         },
     },
 };
-ArmOperation<CostManagementExportResource> lro = await costManagementExport.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<CostManagementExportResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, exportName, data);
 CostManagementExportResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

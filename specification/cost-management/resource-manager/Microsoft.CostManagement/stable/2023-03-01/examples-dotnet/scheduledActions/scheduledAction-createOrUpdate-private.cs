@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.CostManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/scheduledActions/scheduledAction-createOrUpdate-private.json
@@ -16,13 +15,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this TenantScheduledActionResource
-TenantScheduledActionCollection collection = tenantResource.GetTenantScheduledActions();
+// this example assumes you already have this TenantScheduledActionResource created on azure
+// for more information of creating TenantScheduledActionResource, please refer to the document of TenantScheduledActionResource
+string name = "monthlyCostByResource";
+ResourceIdentifier tenantScheduledActionResourceId = TenantScheduledActionResource.CreateResourceIdentifier(name);
+TenantScheduledActionResource tenantScheduledAction = client.GetTenantScheduledActionResource(tenantScheduledActionResourceId);
 
 // invoke the operation
-string name = "monthlyCostByResource";
 ScheduledActionData data = new ScheduledActionData
 {
     DisplayName = "Monthly Cost By Resource",
@@ -38,7 +37,7 @@ ScheduledActionData data = new ScheduledActionData
     Kind = ScheduledActionKind.Email,
 };
 string ifMatch = "";
-ArmOperation<TenantScheduledActionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data, ifMatch: ifMatch);
+ArmOperation<TenantScheduledActionResource> lro = await tenantScheduledAction.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
 TenantScheduledActionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

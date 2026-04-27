@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.CostManagement.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/PrivateViewCreateOrUpdate.json
@@ -15,13 +16,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantsCostManagementViewsResource created on azure
-// for more information of creating TenantsCostManagementViewsResource, please refer to the document of TenantsCostManagementViewsResource
-string viewName = "swaggerExample";
-ResourceIdentifier tenantsCostManagementViewsResourceId = TenantsCostManagementViewsResource.CreateResourceIdentifier(viewName);
-TenantsCostManagementViewsResource tenantsCostManagementViews = client.GetTenantsCostManagementViewsResource(tenantsCostManagementViewsResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this TenantsCostManagementViewsResource
+TenantsCostManagementViewsCollection collection = tenantResource.GetAllTenantsCostManagementViews();
 
 // invoke the operation
+string viewName = "swaggerExample";
 CostManagementViewData data = new CostManagementViewData
 {
     DisplayName = "swagger Example",
@@ -69,7 +70,7 @@ CostManagementViewData data = new CostManagementViewData
     },
     ETag = new ETag("\"1d4ff9fe66f1d10\""),
 };
-ArmOperation<TenantsCostManagementViewsResource> lro = await tenantsCostManagementViews.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<TenantsCostManagementViewsResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, viewName, data);
 TenantsCostManagementViewsResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

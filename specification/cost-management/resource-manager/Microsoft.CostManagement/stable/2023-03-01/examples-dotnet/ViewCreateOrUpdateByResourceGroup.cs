@@ -15,12 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this CostManagementViewsResource
+// this example assumes you already have this CostManagementViewsResource created on azure
+// for more information of creating CostManagementViewsResource, please refer to the document of CostManagementViewsResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG";
-CostManagementViewsCollection collection = client.GetAllCostManagementViews(new ResourceIdentifier(scope));
+string viewName = "swaggerExample";
+ResourceIdentifier costManagementViewsResourceId = CostManagementViewsResource.CreateResourceIdentifier(scope, viewName);
+CostManagementViewsResource costManagementViews = client.GetCostManagementViewsResource(costManagementViewsResourceId);
 
 // invoke the operation
-string viewName = "swaggerExample";
 CostManagementViewData data = new CostManagementViewData
 {
     DisplayName = "swagger Example",
@@ -68,7 +70,7 @@ CostManagementViewData data = new CostManagementViewData
     },
     ETag = new ETag("\"1d4ff9fe66f1d10\""),
 };
-ArmOperation<CostManagementViewsResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, viewName, data);
+ArmOperation<CostManagementViewsResource> lro = await costManagementViews.UpdateAsync(WaitUntil.Completed, data);
 CostManagementViewsResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

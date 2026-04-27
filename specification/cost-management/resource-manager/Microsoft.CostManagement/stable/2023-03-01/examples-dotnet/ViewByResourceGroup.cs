@@ -15,24 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this CostManagementViewsResource
+// this example assumes you already have this CostManagementViewsResource created on azure
+// for more information of creating CostManagementViewsResource, please refer to the document of CostManagementViewsResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG";
-CostManagementViewsCollection collection = client.GetAllCostManagementViews(new ResourceIdentifier(scope));
+string viewName = "swaggerExample";
+ResourceIdentifier costManagementViewsResourceId = CostManagementViewsResource.CreateResourceIdentifier(scope, viewName);
+CostManagementViewsResource costManagementViews = client.GetCostManagementViewsResource(costManagementViewsResourceId);
 
 // invoke the operation
-string viewName = "swaggerExample";
-NullableResponse<CostManagementViewsResource> response = await collection.GetIfExistsAsync(viewName);
-CostManagementViewsResource result = response.HasValue ? response.Value : null;
+CostManagementViewsResource result = await costManagementViews.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CostManagementViewData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CostManagementViewData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

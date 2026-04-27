@@ -8,9 +8,7 @@ import com.azure.resourcemanager.servicegroups.models.ServiceGroupProperties;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/management/resource-manager/Microsoft.Management/ServiceGroups/preview/2024-02-01-preview/examples/
-     * ServiceGroup_Put.json
+     * x-ms-original-file: 2024-02-01-preview/ServiceGroup_Put.json
      */
     /**
      * Sample code: PutServiceGroup.

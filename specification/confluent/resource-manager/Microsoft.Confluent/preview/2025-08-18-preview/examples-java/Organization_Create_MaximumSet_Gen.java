@@ -1,0 +1,50 @@
+
+import com.azure.resourcemanager.confluent.models.LinkOrganization;
+import com.azure.resourcemanager.confluent.models.OfferDetail;
+import com.azure.resourcemanager.confluent.models.SaaSOfferStatus;
+import com.azure.resourcemanager.confluent.models.UserDetail;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Organization Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-08-18-preview/Organization_Create_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Organization_Create_MaximumSet.
+     * 
+     * @param manager Entry point to ConfluentManager.
+     */
+    public static void organizationCreateMaximumSet(com.azure.resourcemanager.confluent.ConfluentManager manager) {
+        manager.organizations().define("qcqrbyx").withRegion("ogifpylahax").withExistingResourceGroup("rgconfluent")
+            .withOfferDetail(new OfferDetail().withPublisherId("jvmchwpbqvavlgmuwquhqrnacgpvlobkkavwppwvhjfqcy")
+                .withId("ufewkfngssvswmxfurnchnvgmnjuzzsoys").withPlanId("l")
+                .withPlanName(
+                    "ycpeesrtyybhvmkdenugbkffjwistugfertrprgevcczlsnbcinotsdtsmealomyzsinypzimyyubepkuewirtcxhvxhsmwhwptvzuhirckvrgogahfwchvxnfkgfwqxqy")
+                .withTermUnit("ipefrkgclpjaswyxpyjkppo").withTermId("vujdve")
+                .withPrivateOfferId(
+                    "goshpcnjukfzfhubmynjxiulurrwplzcjpjstebtsiigbkovchcrlfmgoymqfuayhihnxruthwjywtedlcsqqsgaelqthvfzvafyjhsfzfjwotsiajpcogwrwylgcphxfhvvwemynoyovnvqcetftiofkthgdzfvybvhpviqlwlslaupndcxlvjssdap")
+                .withPrivateOfferIds(Arrays.asList("nrbzkbcpvsakewlgubfmej")).withStatus(SaaSOfferStatus.STARTED))
+            .withUserDetail(new UserDetail().withFirstName("gqxqhtniapwvnsliaifhvmbtvvrciebktpeadanapfcqzflomz")
+                .withLastName("vhdbyshxnnxivxbgzxscscdsvlwbsukqmcw").withEmailAddress("user@example.com")
+                .withUserPrincipalName("g").withAadEmail("swugcwecfnkp"))
+            .withTags(mapOf("key2047", "fakeTokenPlaceholder"))
+            .withLinkOrganization(new LinkOrganization().withToken("fakeTokenPlaceholder")).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

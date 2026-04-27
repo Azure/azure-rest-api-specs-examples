@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.maps import AzureMapsManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-maps
+# USAGE
+    python get_operation_result.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = AzureMapsManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.operation_result.begin_get(
+        location="eastus",
+        operation_id="01234567-89ab-4def-0123-456789abcdef",
+    ).result()
+
+
+# x-ms-original-file: 2025-10-01-preview/GetOperationResult.json
+if __name__ == "__main__":
+    main()

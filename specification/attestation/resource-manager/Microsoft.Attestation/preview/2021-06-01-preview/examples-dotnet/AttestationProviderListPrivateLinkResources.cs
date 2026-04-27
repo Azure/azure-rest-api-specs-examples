@@ -24,7 +24,7 @@ ResourceIdentifier attestationProviderResourceId = AttestationProviderResource.C
 AttestationProviderResource attestationProvider = client.GetAttestationProviderResource(attestationProviderResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (AttestationPrivateLinkResource item in attestationProvider.GetPrivateLinkResourcesByProviderAsync())
+await foreach (AttestationPrivateLinkResource item in attestationProvider.GetPrivateLinkResourcesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

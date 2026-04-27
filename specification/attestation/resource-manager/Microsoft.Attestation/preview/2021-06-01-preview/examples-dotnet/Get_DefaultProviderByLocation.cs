@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Attestation.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Attestation;
 
@@ -22,8 +23,8 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-AzureLocation location = new AzureLocation("Central US");
-AttestationProviderResource result = await subscriptionResource.GetDefaultByLocationAttestationProviderAsync(location);
+string location = "Central US";
+AttestationProviderResource result = await subscriptionResource.GetDefaultAttestationProviderByLocationAsync(location);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance

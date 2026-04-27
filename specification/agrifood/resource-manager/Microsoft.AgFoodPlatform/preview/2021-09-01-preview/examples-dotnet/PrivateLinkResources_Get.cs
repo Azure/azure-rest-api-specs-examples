@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FarmBeatResource created on azure
-// for more information of creating FarmBeatResource, please refer to the document of FarmBeatResource
+// this example assumes you already have this AgFoodPlatformPrivateLinkResource created on azure
+// for more information of creating AgFoodPlatformPrivateLinkResource, please refer to the document of AgFoodPlatformPrivateLinkResource
 string subscriptionId = "11111111-2222-3333-4444-555555555555";
 string resourceGroupName = "examples-rg";
 string farmBeatsResourceName = "examples-farmbeatsResourceName";
-ResourceIdentifier farmBeatResourceId = FarmBeatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName);
-FarmBeatResource farmBeat = client.GetFarmBeatResource(farmBeatResourceId);
-
-// get the collection of this AgFoodPlatformPrivateLinkResource
-AgFoodPlatformPrivateLinkResourceCollection collection = farmBeat.GetAgFoodPlatformPrivateLinkResources();
+string subResourceName = "farmbeats";
+ResourceIdentifier agFoodPlatformPrivateLinkResourceId = AgFoodPlatformPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName, subResourceName);
+AgFoodPlatformPrivateLinkResource agFoodPlatformPrivateLinkResource = client.GetAgFoodPlatformPrivateLinkResource(agFoodPlatformPrivateLinkResourceId);
 
 // invoke the operation
-string subResourceName = "farmbeats";
-NullableResponse<AgFoodPlatformPrivateLinkResource> response = await collection.GetIfExistsAsync(subResourceName);
-AgFoodPlatformPrivateLinkResource result = response.HasValue ? response.Value : null;
+AgFoodPlatformPrivateLinkResource result = await agFoodPlatformPrivateLinkResource.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AgFoodPlatformPrivateLinkResourceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AgFoodPlatformPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

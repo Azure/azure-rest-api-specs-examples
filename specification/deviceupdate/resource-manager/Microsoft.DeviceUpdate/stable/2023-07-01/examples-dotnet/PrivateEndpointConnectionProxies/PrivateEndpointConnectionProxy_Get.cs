@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceUpdatePrivateEndpointConnectionProxyResource created on azure
-// for more information of creating DeviceUpdatePrivateEndpointConnectionProxyResource, please refer to the document of DeviceUpdatePrivateEndpointConnectionProxyResource
+// this example assumes you already have this DeviceUpdateAccountResource created on azure
+// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-string privateEndpointConnectionProxyId = "peexample01";
-ResourceIdentifier deviceUpdatePrivateEndpointConnectionProxyResourceId = DeviceUpdatePrivateEndpointConnectionProxyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionProxyId);
-DeviceUpdatePrivateEndpointConnectionProxyResource deviceUpdatePrivateEndpointConnectionProxy = client.GetDeviceUpdatePrivateEndpointConnectionProxyResource(deviceUpdatePrivateEndpointConnectionProxyResourceId);
+ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
+
+// get the collection of this DeviceUpdatePrivateEndpointConnectionProxyResource
+DeviceUpdatePrivateEndpointConnectionProxyCollection collection = deviceUpdateAccount.GetDeviceUpdatePrivateEndpointConnectionProxies();
 
 // invoke the operation
-DeviceUpdatePrivateEndpointConnectionProxyResource result = await deviceUpdatePrivateEndpointConnectionProxy.GetAsync();
+string privateEndpointConnectionProxyId = "peexample01";
+NullableResponse<DeviceUpdatePrivateEndpointConnectionProxyResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionProxyId);
+DeviceUpdatePrivateEndpointConnectionProxyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeviceUpdatePrivateEndpointConnectionProxyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DeviceUpdatePrivateEndpointConnectionProxyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

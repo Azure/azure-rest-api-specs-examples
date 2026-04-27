@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceUpdateAccountResource created on azure
-// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
+// this example assumes you already have this DeviceUpdatePrivateEndpointConnectionResource created on azure
+// for more information of creating DeviceUpdatePrivateEndpointConnectionResource, please refer to the document of DeviceUpdatePrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
-
-// get the collection of this DeviceUpdatePrivateEndpointConnectionResource
-DeviceUpdatePrivateEndpointConnectionCollection collection = deviceUpdateAccount.GetDeviceUpdatePrivateEndpointConnections();
+string privateEndpointConnectionName = "peexample01";
+ResourceIdentifier deviceUpdatePrivateEndpointConnectionResourceId = DeviceUpdatePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
+DeviceUpdatePrivateEndpointConnectionResource deviceUpdatePrivateEndpointConnection = client.GetDeviceUpdatePrivateEndpointConnectionResource(deviceUpdatePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "peexample01";
-NullableResponse<DeviceUpdatePrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
-DeviceUpdatePrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
+DeviceUpdatePrivateEndpointConnectionResource result = await deviceUpdatePrivateEndpointConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DeviceUpdatePrivateEndpointConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DeviceUpdatePrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

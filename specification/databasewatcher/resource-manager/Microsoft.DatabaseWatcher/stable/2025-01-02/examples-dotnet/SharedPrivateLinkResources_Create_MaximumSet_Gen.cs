@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseWatcherResource created on azure
-// for more information of creating DatabaseWatcherResource, please refer to the document of DatabaseWatcherResource
+// this example assumes you already have this DatabaseWatcherSharedPrivateLinkResource created on azure
+// for more information of creating DatabaseWatcherSharedPrivateLinkResource, please refer to the document of DatabaseWatcherSharedPrivateLinkResource
 string subscriptionId = "49e0fbd3-75e8-44e7-96fd-5b64d9ad818d";
 string resourceGroupName = "apiTest-ddat4p";
 string watcherName = "databasemo3ej9ih";
-ResourceIdentifier databaseWatcherResourceId = DatabaseWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName);
-DatabaseWatcherResource databaseWatcher = client.GetDatabaseWatcherResource(databaseWatcherResourceId);
-
-// get the collection of this DatabaseWatcherSharedPrivateLinkResource
-DatabaseWatcherSharedPrivateLinkResourceCollection collection = databaseWatcher.GetDatabaseWatcherSharedPrivateLinkResources();
+string sharedPrivateLinkResourceName = "monitoringh22eed";
+ResourceIdentifier databaseWatcherSharedPrivateLinkResourceId = DatabaseWatcherSharedPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName, sharedPrivateLinkResourceName);
+DatabaseWatcherSharedPrivateLinkResource databaseWatcherSharedPrivateLinkResource = client.GetDatabaseWatcherSharedPrivateLinkResource(databaseWatcherSharedPrivateLinkResourceId);
 
 // invoke the operation
-string sharedPrivateLinkResourceName = "monitoringh22eed";
 DatabaseWatcherSharedPrivateLinkResourceData data = new DatabaseWatcherSharedPrivateLinkResourceData
 {
     Properties = new DatabaseWatcherSharedPrivateLinkResourceProperties(new ResourceIdentifier("/subscriptions/49e0fbd3-75e8-44e7-96fd-5b64d9ad818d/resourceGroups/apiTest-ddat4p/providers/Microsoft.KeyVault/vaults/kvmo3ej9ih"), "vault", "request message")
@@ -35,7 +32,7 @@ DatabaseWatcherSharedPrivateLinkResourceData data = new DatabaseWatcherSharedPri
         DnsZone = "ec3ae9d410ba",
     },
 };
-ArmOperation<DatabaseWatcherSharedPrivateLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sharedPrivateLinkResourceName, data);
+ArmOperation<DatabaseWatcherSharedPrivateLinkResource> lro = await databaseWatcherSharedPrivateLinkResource.UpdateAsync(WaitUntil.Completed, data);
 DatabaseWatcherSharedPrivateLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

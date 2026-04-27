@@ -6406,3 +6406,4 @@ id,name,language,tag,package,version,date_epoch,date
 6405,"Azure.ResourceManager.Automation,1.1.2",dotnet,Azure.ResourceManager.Automation_1.1.2,Azure.ResourceManager.Automation,1.1.2,1776752985,04/21/2026
 6406,"Azure.ResourceManager.Automanage,1.1.2",dotnet,Azure.ResourceManager.Automanage_1.1.2,Azure.ResourceManager.Automanage,1.1.2,1776750051,04/21/2026
 6407,"Azure.ResourceManager.Chaos,1.1.1",dotnet,Azure.ResourceManager.Chaos_1.1.1,Azure.ResourceManager.Chaos,1.1.1,1776750025,04/21/2026
+6408,"Azure.ResourceManager.BotService,1.2.0-beta.1",dotnet,Azure.ResourceManager.BotService_1.2.0-beta.1,Azure.ResourceManager.BotService,1.2.0-beta.1,1776743885,04/21/2026

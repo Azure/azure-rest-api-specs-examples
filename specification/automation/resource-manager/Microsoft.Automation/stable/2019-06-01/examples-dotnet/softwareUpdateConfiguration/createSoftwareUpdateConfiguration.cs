@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this SoftwareUpdateConfigurationResource created on azure
+// for more information of creating SoftwareUpdateConfigurationResource, please refer to the document of SoftwareUpdateConfigurationResource
 string subscriptionId = "51766542-3ed7-4a72-a187-0c8ab644ddab";
 string resourceGroupName = "mygroup";
 string automationAccountName = "myaccount";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this SoftwareUpdateConfigurationResource
-SoftwareUpdateConfigurationCollection collection = automationAccount.GetSoftwareUpdateConfigurations();
+string softwareUpdateConfigurationName = "testpatch";
+ResourceIdentifier softwareUpdateConfigurationResourceId = SoftwareUpdateConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, softwareUpdateConfigurationName);
+SoftwareUpdateConfigurationResource softwareUpdateConfiguration = client.GetSoftwareUpdateConfigurationResource(softwareUpdateConfigurationResourceId);
 
 // invoke the operation
-string softwareUpdateConfigurationName = "testpatch";
 SoftwareUpdateConfigurationData data = new SoftwareUpdateConfigurationData(new SoftwareUpdateConfigurationSpecificProperties(SoftwareUpdateConfigurationOperatingSystemType.Windows)
 {
     Windows = new WindowsUpdateConfigurationProperties
@@ -96,7 +93,7 @@ SoftwareUpdateConfigurationData data = new SoftwareUpdateConfigurationData(new S
         },
     },
 };
-ArmOperation<SoftwareUpdateConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, softwareUpdateConfigurationName, data);
+ArmOperation<SoftwareUpdateConfigurationResource> lro = await softwareUpdateConfiguration.UpdateAsync(WaitUntil.Completed, data);
 SoftwareUpdateConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

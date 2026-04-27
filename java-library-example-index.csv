@@ -6346,3 +6346,4 @@ id,name,language,tag,package,version,date_epoch,date
 6345,azure-mgmt-search@10.0.0b1,python,azure-mgmt-search_10.0.0b1,azure-mgmt-search,10.0.0b1,1774976715,03/31/2026
 6346,azure-mgmt-deviceregistry@1.2.0b1,python,azure-mgmt-deviceregistry_1.2.0b1,azure-mgmt-deviceregistry,1.2.0b1,1774974064,03/31/2026
 6347,azure-mgmt-peering@2.0.0b2,python,azure-mgmt-peering_2.0.0b2,azure-mgmt-peering,2.0.0b2,1774926073,03/31/2026
+6348,com.azure.resourcemanager:azure-resourcemanager-servicegroups:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-servicegroups_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-servicegroups,1.0.0-beta.2,1777076033,04/25/2026

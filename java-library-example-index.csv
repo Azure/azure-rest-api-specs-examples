@@ -6393,3 +6393,4 @@ id,name,language,tag,package,version,date_epoch,date
 6392,"Azure.ResourceManager.DevCenter,1.1.0-beta.1",dotnet,Azure.ResourceManager.DevCenter_1.1.0-beta.1,Azure.ResourceManager.DevCenter,1.1.0-beta.1,1776930160,04/23/2026
 6393,"Azure.ResourceManager.ConfidentialLedger,1.1.0",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0,Azure.ResourceManager.ConfidentialLedger,1.1.0,1776924495,04/23/2026
 6394,"Azure.ResourceManager.Consumption,1.1.0",dotnet,Azure.ResourceManager.Consumption_1.1.0,Azure.ResourceManager.Consumption,1.1.0,1776909559,04/23/2026
+6395,"Azure.ResourceManager.ComputeFleet,1.1.0-beta.1",dotnet,Azure.ResourceManager.ComputeFleet_1.1.0-beta.1,Azure.ResourceManager.ComputeFleet,1.1.0-beta.1,1776849728,04/22/2026

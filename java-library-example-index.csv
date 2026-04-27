@@ -6444,3 +6444,4 @@ id,name,language,tag,package,version,date_epoch,date
 6443,"Azure.ResourceManager.LabServices,1.1.2",dotnet,Azure.ResourceManager.LabServices_1.1.2,Azure.ResourceManager.LabServices,1.1.2,1777285838,04/27/2026
 6444,"Azure.ResourceManager.HybridConnectivity,1.1.1",dotnet,Azure.ResourceManager.HybridConnectivity_1.1.1,Azure.ResourceManager.HybridConnectivity,1.1.1,1777285833,04/27/2026
 6445,"Azure.ResourceManager.InformaticaDataManagement,1.0.0",dotnet,Azure.ResourceManager.InformaticaDataManagement_1.0.0,Azure.ResourceManager.InformaticaDataManagement,1.0.0,1777285831,04/27/2026
+6446,"Azure.ResourceManager.HybridContainerService,1.0.2",dotnet,Azure.ResourceManager.HybridContainerService_1.0.2,Azure.ResourceManager.HybridContainerService,1.0.2,1777285826,04/27/2026

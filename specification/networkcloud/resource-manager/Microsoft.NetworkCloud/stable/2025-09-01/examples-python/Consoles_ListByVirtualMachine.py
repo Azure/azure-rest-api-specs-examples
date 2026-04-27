@@ -19,7 +19,7 @@ from azure.mgmt.networkcloud import NetworkCloudMgmtClient
 def main():
     client = NetworkCloudMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="123e4567-e89b-12d3-a456-426655440000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.consoles.list_by_virtual_machine(
@@ -30,6 +30,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-09-01/examples/Consoles_ListByVirtualMachine.json
+# x-ms-original-file: 2025-09-01/Consoles_ListByVirtualMachine.json
 if __name__ == "__main__":
     main()

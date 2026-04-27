@@ -6369,3 +6369,4 @@ id,name,language,tag,package,version,date_epoch,date
 6368,@azure/arm-relationships@1.0.0-beta.1,js,@azure/arm-relationships_1.0.0-beta.1,@azure/arm-relationships,1.0.0-beta.1,1777062013,04/24/2026
 6369,@azure/arm-containerservice@25.1.0,js,@azure/arm-containerservice_25.1.0,@azure/arm-containerservice,25.1.0,1777011723,04/24/2026
 6370,@azure/arm-computelimit@1.0.0,js,@azure/arm-computelimit_1.0.0,@azure/arm-computelimit,1.0.0,1776962085,04/23/2026
+6371,@azure/arm-azurestackhci@4.1.0-beta.1,js,@azure/arm-azurestackhci_4.1.0-beta.1,@azure/arm-azurestackhci,4.1.0-beta.1,1776936524,04/23/2026

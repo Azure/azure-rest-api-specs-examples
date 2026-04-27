@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataLakeAnalyticsStorageAccountInformationResource created on azure
-// for more information of creating DataLakeAnalyticsStorageAccountInformationResource, please refer to the document of DataLakeAnalyticsStorageAccountInformationResource
+// this example assumes you already have this DataLakeAnalyticsAccountResource created on azure
+// for more information of creating DataLakeAnalyticsAccountResource, please refer to the document of DataLakeAnalyticsAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "contosorg";
 string accountName = "contosoadla";
-string storageAccountName = "test_storage";
-ResourceIdentifier dataLakeAnalyticsStorageAccountInformationResourceId = DataLakeAnalyticsStorageAccountInformationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, storageAccountName);
-DataLakeAnalyticsStorageAccountInformationResource dataLakeAnalyticsStorageAccountInformation = client.GetDataLakeAnalyticsStorageAccountInformationResource(dataLakeAnalyticsStorageAccountInformationResourceId);
+ResourceIdentifier dataLakeAnalyticsAccountResourceId = DataLakeAnalyticsAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DataLakeAnalyticsAccountResource dataLakeAnalyticsAccount = client.GetDataLakeAnalyticsAccountResource(dataLakeAnalyticsAccountResourceId);
+
+// get the collection of this DataLakeAnalyticsStorageAccountInformationResource
+DataLakeAnalyticsStorageAccountInformationCollection collection = dataLakeAnalyticsAccount.GetAllDataLakeAnalyticsStorageAccountInformation();
 
 // invoke the operation
-DataLakeAnalyticsStorageAccountInformationResource result = await dataLakeAnalyticsStorageAccountInformation.GetAsync();
+string storageAccountName = "test_storage";
+NullableResponse<DataLakeAnalyticsStorageAccountInformationResource> response = await collection.GetIfExistsAsync(storageAccountName);
+DataLakeAnalyticsStorageAccountInformationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataLakeAnalyticsStorageAccountInformationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataLakeAnalyticsStorageAccountInformationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

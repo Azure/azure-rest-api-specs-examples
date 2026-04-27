@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FluidRelayContainerResource created on azure
-// for more information of creating FluidRelayContainerResource, please refer to the document of FluidRelayContainerResource
+// this example assumes you already have this FluidRelayServerResource created on azure
+// for more information of creating FluidRelayServerResource, please refer to the document of FluidRelayServerResource
 string subscriptionId = "xxxx-xxxx-xxxx-xxxx";
 string resourceGroup = "myResourceGroup";
 string fluidRelayServerName = "myFluidRelayServer";
-string fluidRelayContainerName = "myFluidRelayContainer";
-ResourceIdentifier fluidRelayContainerResourceId = FluidRelayContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroup, fluidRelayServerName, fluidRelayContainerName);
-FluidRelayContainerResource fluidRelayContainer = client.GetFluidRelayContainerResource(fluidRelayContainerResourceId);
+ResourceIdentifier fluidRelayServerResourceId = FluidRelayServerResource.CreateResourceIdentifier(subscriptionId, resourceGroup, fluidRelayServerName);
+FluidRelayServerResource fluidRelayServer = client.GetFluidRelayServerResource(fluidRelayServerResourceId);
+
+// get the collection of this FluidRelayContainerResource
+FluidRelayContainerCollection collection = fluidRelayServer.GetFluidRelayContainers();
 
 // invoke the operation
-FluidRelayContainerResource result = await fluidRelayContainer.GetAsync();
+string fluidRelayContainerName = "myFluidRelayContainer";
+NullableResponse<FluidRelayContainerResource> response = await collection.GetIfExistsAsync(fluidRelayContainerName);
+FluidRelayContainerResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FluidRelayContainerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    FluidRelayContainerData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

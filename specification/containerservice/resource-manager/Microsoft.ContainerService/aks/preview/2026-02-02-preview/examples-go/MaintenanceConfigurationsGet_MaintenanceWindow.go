@@ -1,0 +1,66 @@
+package armcontainerservice_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9"
+)
+
+// Generated from example definition: 2026-02-02-preview/MaintenanceConfigurationsGet_MaintenanceWindow.json
+func ExampleMaintenanceConfigurationsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcontainerservice.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewMaintenanceConfigurationsClient().Get(ctx, "rg1", "clustername1", "aksManagedNodeOSUpgradeSchedule", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcontainerservice.MaintenanceConfigurationsClientGetResponse{
+	// 	MaintenanceConfiguration: &armcontainerservice.MaintenanceConfiguration{
+	// 		Name: to.Ptr("aksManagedNodeOSUpgradeSchedule"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ContainerService/managedClusters/clustername1/maintenanceConfigurations/default"),
+	// 		Properties: &armcontainerservice.MaintenanceConfigurationProperties{
+	// 			MaintenanceWindow: &armcontainerservice.MaintenanceWindow{
+	// 				DurationHours: to.Ptr[int32](4),
+	// 				NotAllowedDates: []*armcontainerservice.DateSpan{
+	// 					{
+	// 						End: to.Ptr(func() time.Time { t, _ := time.Parse(time.DateOnly, "2023-02-25"); return t}()),
+	// 						Start: to.Ptr(func() time.Time { t, _ := time.Parse(time.DateOnly, "2023-02-18"); return t}()),
+	// 					},
+	// 					{
+	// 						End: to.Ptr(func() time.Time { t, _ := time.Parse(time.DateOnly, "2024-01-05"); return t}()),
+	// 						Start: to.Ptr(func() time.Time { t, _ := time.Parse(time.DateOnly, "2023-12-23"); return t}()),
+	// 					},
+	// 				},
+	// 				Schedule: &armcontainerservice.Schedule{
+	// 					Daily: &armcontainerservice.DailySchedule{
+	// 						IntervalDays: to.Ptr[int32](3),
+	// 					},
+	// 				},
+	// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.DateOnly, "2023-01-01"); return t}()),
+	// 				StartTime: to.Ptr("09:30"),
+	// 				UTCOffset: to.Ptr("-07:00"),
+	// 			},
+	// 		},
+	// 		SystemData: &armcontainerservice.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armcontainerservice.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armcontainerservice.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

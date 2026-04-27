@@ -1,0 +1,72 @@
+package armcognitiveservices_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4"
+)
+
+// Generated from example definition: 2026-01-15-preview/AgentApplication/list.json
+func ExampleAgentApplicationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcognitiveservices.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewAgentApplicationsClient().NewListPager("test-rg", "my-cognitive-services-account", "my-project", &armcognitiveservices.AgentApplicationsClientListOptions{
+		SkipToken: to.Ptr("string"),
+		Count:     to.Ptr[int32](30),
+		Names: []string{
+			"agent-app-1",
+			"agent-app-2",
+		},
+		OrderBy:    to.Ptr("name"),
+		OrderByAsc: to.Ptr(true),
+		SearchText: to.Ptr("test")})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcognitiveservices.AgentApplicationsClientListResponse{
+		// 	AgentApplicationResourceArmPaginatedResult: armcognitiveservices.AgentApplicationResourceArmPaginatedResult{
+		// 		NextLink: to.Ptr("string"),
+		// 		Value: []*armcognitiveservices.AgentApplication{
+		// 			{
+		// 				Name: to.Ptr("agent-app-1"),
+		// 				Type: to.Ptr("Microsoft.CognitiveServices/accounts/projects/applications"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/my-cognitive-services-account/projects/my-project/applications/agent-app-1"),
+		// 				Properties: &armcognitiveservices.AgenticApplicationProperties{
+		// 					Description: to.Ptr("Sample agent application for customer support"),
+		// 					DisplayName: to.Ptr("Customer Support Agent"),
+		// 					Tags: map[string]*string{
+		// 						"environment": to.Ptr("production"),
+		// 						"team": to.Ptr("ai-platform"),
+		// 					},
+		// 				},
+		// 				SystemData: &armcognitiveservices.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-09-29T12:34:56.999Z"); return t}()),
+		// 					CreatedBy: to.Ptr("user@contoso.com"),
+		// 					CreatedByType: to.Ptr(armcognitiveservices.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-09-29T12:34:56.999Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("user@contoso.com"),
+		// 					LastModifiedByType: to.Ptr(armcognitiveservices.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

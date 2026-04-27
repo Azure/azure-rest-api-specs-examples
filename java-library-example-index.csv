@@ -6435,3 +6435,4 @@ id,name,language,tag,package,version,date_epoch,date
 6434,azure-mgmt-maps@3.0.0b1,python,azure-mgmt-maps_3.0.0b1,azure-mgmt-maps,3.0.0b1,1775206230,04/03/2026
 6435,azure-mgmt-purview@1.1.0b2,python,azure-mgmt-purview_1.1.0b2,azure-mgmt-purview,1.1.0b2,1775205547,04/03/2026
 6436,azure-mgmt-networkcloud@3.0.0b1,python,azure-mgmt-networkcloud_3.0.0b1,azure-mgmt-networkcloud,3.0.0b1,1775195921,04/03/2026
+6437,azure-mgmt-managementgroups@2.0.0b1,python,azure-mgmt-managementgroups_2.0.0b1,azure-mgmt-managementgroups,2.0.0b1,1775114648,04/02/2026

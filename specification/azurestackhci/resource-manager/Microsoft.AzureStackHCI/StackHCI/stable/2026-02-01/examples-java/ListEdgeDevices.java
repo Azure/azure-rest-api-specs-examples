@@ -1,0 +1,19 @@
+
+/**
+ * Samples for EdgeDevices List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-01/ListEdgeDevices.json
+     */
+    /**
+     * Sample code: List Edge Devices.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void listEdgeDevices(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.edgeDevices().list(
+            "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1",
+            com.azure.core.util.Context.NONE);
+    }
+}

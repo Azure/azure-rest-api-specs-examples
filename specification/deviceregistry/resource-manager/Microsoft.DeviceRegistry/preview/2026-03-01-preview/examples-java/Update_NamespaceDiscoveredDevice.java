@@ -1,0 +1,44 @@
+
+import com.azure.resourcemanager.deviceregistry.models.DeviceMessagingEndpoint;
+import com.azure.resourcemanager.deviceregistry.models.DiscoveredMessagingEndpoints;
+import com.azure.resourcemanager.deviceregistry.models.DiscoveredOutboundEndpoints;
+import com.azure.resourcemanager.deviceregistry.models.NamespaceDiscoveredDevice;
+import com.azure.resourcemanager.deviceregistry.models.NamespaceDiscoveredDeviceUpdateProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NamespaceDiscoveredDevices Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/Update_NamespaceDiscoveredDevice.json
+     */
+    /**
+     * Sample code: Update_NamespaceDiscoveredDevice.
+     * 
+     * @param manager Entry point to DeviceRegistryManager.
+     */
+    public static void
+        updateNamespaceDiscoveredDevice(com.azure.resourcemanager.deviceregistry.DeviceRegistryManager manager) {
+        NamespaceDiscoveredDevice resource = manager.namespaceDiscoveredDevices().getWithResponse("myResourceGroup",
+            "my-namespace-1", "my-discovereddevice-1", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new NamespaceDiscoveredDeviceUpdateProperties().withEndpoints(
+            new DiscoveredMessagingEndpoints().withOutbound(new DiscoveredOutboundEndpoints().withAssigned(
+                mapOf("newIothubEndpoint", new DeviceMessagingEndpoint().withEndpointType("Microsoft.Devices/IotHubs")
+                    .withAddress("https://iothub-for-dps.azure-devices.net"))))))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

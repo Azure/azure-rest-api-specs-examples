@@ -6440,3 +6440,4 @@ id,name,language,tag,package,version,date_epoch,date
 6439,azure-mgmt-cognitiveservices@15.0.0b1,python,azure-mgmt-cognitiveservices_15.0.0b1,azure-mgmt-cognitiveservices,15.0.0b1,1775077819,04/01/2026
 6440,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-azurestackhci_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-azurestackhci,1.1.0-beta.1,1777282364,04/27/2026
 6441,"Azure.ResourceManager.HybridNetwork,1.0.0-beta.3",dotnet,Azure.ResourceManager.HybridNetwork_1.0.0-beta.3,Azure.ResourceManager.HybridNetwork,1.0.0-beta.3,1777287536,04/27/2026
+6442,"Azure.ResourceManager.HealthDataAIServices,1.0.1",dotnet,Azure.ResourceManager.HealthDataAIServices_1.0.1,Azure.ResourceManager.HealthDataAIServices,1.0.1,1777286265,04/27/2026

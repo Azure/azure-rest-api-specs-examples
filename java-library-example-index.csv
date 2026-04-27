@@ -6402,3 +6402,4 @@ id,name,language,tag,package,version,date_epoch,date
 6401,"Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.2",dotnet,Azure.ResourceManager.DatabaseWatcher_1.0.0-beta.2,Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.2,1776843339,04/22/2026
 6402,"Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.2",dotnet,Azure.ResourceManager.ContainerOrchestratorRuntime_1.0.0-beta.2,Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.2,1776843316,04/22/2026
 6403,"Azure.ResourceManager.StorageMover,1.4.0",dotnet,Azure.ResourceManager.StorageMover_1.4.0,Azure.ResourceManager.StorageMover,1.4.0,1776830272,04/22/2026
+6404,"Azure.ResourceManager.Billing,1.2.2",dotnet,Azure.ResourceManager.Billing_1.2.2,Azure.ResourceManager.Billing,1.2.2,1776752994,04/21/2026

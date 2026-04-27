@@ -17,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeidServiceResource created on azure
-// for more information of creating DeidServiceResource, please refer to the document of DeidServiceResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "F21BB31B-C214-42C0-ACF0-DACCA05D3011";
 string resourceGroupName = "rgopenapi";
-string deidServiceName = "deidTest";
-ResourceIdentifier deidServiceResourceId = DeidServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deidServiceName);
-DeidServiceResource deidService = client.GetDeidServiceResource(deidServiceResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DeidServiceResource
+DeidServiceCollection collection = resourceGroupResource.GetDeidServices();
 
 // invoke the operation
-DeidServiceResource result = await deidService.GetAsync();
+string deidServiceName = "deidTest";
+NullableResponse<DeidServiceResource> response = await collection.GetIfExistsAsync(deidServiceName);
+DeidServiceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeidServiceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DeidServiceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

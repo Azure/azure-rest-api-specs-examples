@@ -25,9 +25,9 @@ ResourceIdentifier healthDataAIServicesPrivateEndpointConnectionResourceId = Hea
 HealthDataAIServicesPrivateEndpointConnectionResource healthDataAIServicesPrivateEndpointConnectionResource = client.GetHealthDataAIServicesPrivateEndpointConnectionResource(healthDataAIServicesPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-HealthDataAIServicesPrivateEndpointConnectionResourceData data = new HealthDataAIServicesPrivateEndpointConnectionResourceData()
+HealthDataAIServicesPrivateEndpointConnectionResourceData data = new HealthDataAIServicesPrivateEndpointConnectionResourceData
 {
-    Properties = new PrivateEndpointConnectionProperties(new HealthDataAIServicesPrivateLinkServiceConnectionState()
+    Properties = new PrivateEndpointConnectionProperties(new HealthDataAIServicesPrivateLinkServiceConnectionState
     {
         Status = HealthDataAIServicesPrivateEndpointServiceConnectionStatus.Pending,
         Description = "xr",

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HealthDataAIServices.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HealthDataAIServices;
 
 // Generated from example definition: 2024-09-20/DeidServices_Update_MaximumSet_Gen.json
@@ -26,12 +25,10 @@ ResourceIdentifier deidServiceResourceId = DeidServiceResource.CreateResourceIde
 DeidServiceResource deidService = client.GetDeidServiceResource(deidServiceResourceId);
 
 // invoke the operation
-DeidServicePatch patch = new DeidServicePatch()
+DeidServicePatch patch = new DeidServicePatch
 {
-    Tags =
-    {
-    },
-    Identity = new ManagedServiceIdentity(default),
+    Tags = { },
+    Identity = (ManagedServiceIdentity)null,
     DeidPropertiesUpdatePublicNetworkAccess = HealthDataAIServicesPublicNetworkAccess.Enabled,
 };
 ArmOperation<DeidServiceResource> lro = await deidService.UpdateAsync(WaitUntil.Completed, patch);

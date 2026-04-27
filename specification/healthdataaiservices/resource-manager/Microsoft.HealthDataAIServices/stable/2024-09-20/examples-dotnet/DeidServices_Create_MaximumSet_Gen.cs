@@ -31,19 +31,15 @@ DeidServiceCollection collection = resourceGroupResource.GetDeidServices();
 string deidServiceName = "deidTest";
 DeidServiceData data = new DeidServiceData(new AzureLocation("qwyhvdwcsjulggagdqxlmazcl"))
 {
-    Properties = new DeidServiceProperties()
+    Properties = new DeidServiceProperties
     {
         PublicNetworkAccess = HealthDataAIServicesPublicNetworkAccess.Enabled,
     },
     Identity = new ManagedServiceIdentity("None")
     {
-        UserAssignedIdentities =
-        {
-        },
+        UserAssignedIdentities = { },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<DeidServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deidServiceName, data);
 DeidServiceResource result = lro.Value;

@@ -1,0 +1,43 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Compute;
+
+// Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetLifeCycleHookEvent_Update.json
+// this example is just showing the usage of "VirtualMachineScaleSetLifeCycleHookEvents_Update" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this VmScaleSetLifecycleHookEventResource created on azure
+// for more information of creating VmScaleSetLifecycleHookEventResource, please refer to the document of VmScaleSetLifecycleHookEventResource
+string subscriptionId = "2167b012-c9f9-4b04-83b2-0ff304e7d51d";
+string resourceGroupName = "RG01";
+string virtualMachineScaleSetName = "VMSS01";
+string lifecycleHookEventName = "445c0a08-cfc5-4ef6-bb89-fe77c5178628";
+ResourceIdentifier virtualMachineScaleSetLifecycleHookEventResourceId = VmScaleSetLifecycleHookEventResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, lifecycleHookEventName);
+VmScaleSetLifecycleHookEventResource vmScaleSetLifecycleHookEvent = client.GetVmScaleSetLifecycleHookEventResource(virtualMachineScaleSetLifecycleHookEventResourceId);
+
+// invoke the operation
+VirtualMachineScaleSetLifecycleHookEventPatch patch = new VirtualMachineScaleSetLifecycleHookEventPatch
+{
+    WaitUntil = "2025-05-08T11:17:55.6844555+00:00",
+    TargetResources = {new VirtualMachineScaleSetLifecycleHookEventTarget
+    {
+    ResourceId = new ResourceIdentifier("/subscriptions/2167b012-c9f9-4b04-83b2-0ff304e7d51d/resourceGroups/RG01/providers/Microsoft.Compute/virtualMachineScaleSets/VMSS01/virtualMachines/2"),
+    ActionState = LifecycleHookActionState.Approved,
+    }},
+};
+VmScaleSetLifecycleHookEventResource result = await vmScaleSetLifecycleHookEvent.UpdateAsync(patch);
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VmScaleSetLifecycleHookEventData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

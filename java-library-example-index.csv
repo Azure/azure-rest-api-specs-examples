@@ -6425,3 +6425,4 @@ id,name,language,tag,package,version,date_epoch,date
 6424,azure-mgmt-servicegroups@1.0.0b1,python,azure-mgmt-servicegroups_1.0.0b1,azure-mgmt-servicegroups,1.0.0b1,1777090238,04/25/2026
 6425,azure-mgmt-relationships@1.0.0b1,python,azure-mgmt-relationships_1.0.0b1,azure-mgmt-relationships,1.0.0b1,1777072727,04/24/2026
 6426,azure-mgmt-horizondb@1.0.0b1,python,azure-mgmt-horizondb_1.0.0b1,azure-mgmt-horizondb,1.0.0b1,1777070985,04/24/2026
+6427,azure-mgmt-containerservice@41.2.0b1,python,azure-mgmt-containerservice_41.2.0b1,azure-mgmt-containerservice,41.2.0b1,1777019327,04/24/2026

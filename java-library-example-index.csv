@@ -6448,3 +6448,4 @@ id,name,language,tag,package,version,date_epoch,date
 6447,"Azure.ResourceManager.KubernetesConfiguration,1.2.1",dotnet,Azure.ResourceManager.KubernetesConfiguration_1.2.1,Azure.ResourceManager.KubernetesConfiguration,1.2.1,1777285821,04/27/2026
 6448,"Azure.ResourceManager.HybridCompute,1.1.0-beta.2",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.2,Azure.ResourceManager.HybridCompute,1.1.0-beta.2,1777283764,04/27/2026
 6449,"Azure.ResourceManager.IotCentral,1.1.0-beta.4",dotnet,Azure.ResourceManager.IotCentral_1.1.0-beta.4,Azure.ResourceManager.IotCentral,1.1.0-beta.4,1777283686,04/27/2026
+6450,azure-mgmt-recoveryservicessiterecovery@2.0.0b1,python,azure-mgmt-recoveryservicessiterecovery_2.0.0b1,azure-mgmt-recoveryservicessiterecovery,2.0.0b1,1777281472,04/27/2026

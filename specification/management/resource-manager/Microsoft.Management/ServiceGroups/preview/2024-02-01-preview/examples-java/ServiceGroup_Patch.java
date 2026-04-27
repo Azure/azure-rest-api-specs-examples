@@ -9,9 +9,7 @@ import java.util.Map;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/management/resource-manager/Microsoft.Management/ServiceGroups/preview/2024-02-01-preview/examples/
-     * ServiceGroup_Patch.json
+     * x-ms-original-file: 2024-02-01-preview/ServiceGroup_Patch.json
      */
     /**
      * Sample code: PatchServiceGroup.
@@ -19,11 +17,10 @@ public final class Main {
      * @param manager Entry point to ServiceGroupsManager.
      */
     public static void patchServiceGroup(com.azure.resourcemanager.servicegroups.ServiceGroupsManager manager) {
-        manager.resourceProviders()
-            .updateServiceGroup("ServiceGroup1",
-                new ServiceGroupInner().withTags(mapOf("tag1", "value1", "tag2", "value2"))
-                    .withProperties(new ServiceGroupProperties().withDisplayName("ServiceGroup 1 Name")),
-                com.azure.core.util.Context.NONE);
+        manager.resourceProviders().updateServiceGroup("ServiceGroup1",
+            new ServiceGroupInner().withProperties(new ServiceGroupProperties().withDisplayName("ServiceGroup 1 Name"))
+                .withTags(mapOf("tag1", "value1", "tag2", "value2")),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

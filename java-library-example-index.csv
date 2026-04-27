@@ -6431,3 +6431,4 @@ id,name,language,tag,package,version,date_epoch,date
 6430,azure-mgmt-computelimit@1.0.0,python,azure-mgmt-computelimit_1.0.0,azure-mgmt-computelimit,1.0.0,1776880962,04/22/2026
 6431,azure-mgmt-kubernetesconfiguration-extensions@1.0.0,python,azure-mgmt-kubernetesconfiguration-extensions_1.0.0,azure-mgmt-kubernetesconfiguration-extensions,1.0.0,1776762722,04/21/2026
 6432,azure-mgmt-compute@38.0.0b1,python,azure-mgmt-compute_38.0.0b1,azure-mgmt-compute,38.0.0b1,1776412764,04/17/2026
+6433,azure-mgmt-playwright@1.1.0b1,python,azure-mgmt-playwright_1.1.0b1,azure-mgmt-playwright,1.1.0b1,1775456588,04/06/2026

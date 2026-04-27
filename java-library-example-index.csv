@@ -6438,3 +6438,4 @@ id,name,language,tag,package,version,date_epoch,date
 6437,azure-mgmt-managementgroups@2.0.0b1,python,azure-mgmt-managementgroups_2.0.0b1,azure-mgmt-managementgroups,2.0.0b1,1775114648,04/02/2026
 6438,azure-mgmt-confluent@3.0.0b1,python,azure-mgmt-confluent_3.0.0b1,azure-mgmt-confluent,3.0.0b1,1775113673,04/02/2026
 6439,azure-mgmt-cognitiveservices@15.0.0b1,python,azure-mgmt-cognitiveservices_15.0.0b1,azure-mgmt-cognitiveservices,15.0.0b1,1775077819,04/01/2026
+6440,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-azurestackhci_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-azurestackhci,1.1.0-beta.1,1777282364,04/27/2026

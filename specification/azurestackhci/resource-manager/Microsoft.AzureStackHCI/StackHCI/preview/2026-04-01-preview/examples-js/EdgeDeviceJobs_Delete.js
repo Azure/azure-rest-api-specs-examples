@@ -1,0 +1,18 @@
+const { AzureStackHCIClient } = require("@azure/arm-azurestackhci");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to delete a EdgeDeviceJob
+ *
+ * @summary delete a EdgeDeviceJob
+ * x-ms-original-file: 2026-04-01-preview/EdgeDeviceJobs_Delete.json
+ */
+async function edgeDeviceJobsDelete() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureStackHCIClient(credential);
+  await client.edgeDeviceJobs.delete(
+    "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1",
+    "lAq",
+    "Ihlm3R-bZ4vTC4ABA456",
+  );
+}

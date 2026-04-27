@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PlaywrightWorkspaceQuotaResource created on azure
-// for more information of creating PlaywrightWorkspaceQuotaResource, please refer to the document of PlaywrightWorkspaceQuotaResource
+// this example assumes you already have this PlaywrightWorkspaceResource created on azure
+// for more information of creating PlaywrightWorkspaceResource, please refer to the document of PlaywrightWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "dummyrg";
 string playwrightWorkspaceName = "myWorkspace";
-PlaywrightQuotaName quotaName = PlaywrightQuotaName.ExecutionMinutes;
-ResourceIdentifier playwrightWorkspaceQuotaResourceId = PlaywrightWorkspaceQuotaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, playwrightWorkspaceName, quotaName);
-PlaywrightWorkspaceQuotaResource playwrightWorkspaceQuota = client.GetPlaywrightWorkspaceQuotaResource(playwrightWorkspaceQuotaResourceId);
+ResourceIdentifier playwrightWorkspaceResourceId = PlaywrightWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, playwrightWorkspaceName);
+PlaywrightWorkspaceResource playwrightWorkspace = client.GetPlaywrightWorkspaceResource(playwrightWorkspaceResourceId);
+
+// get the collection of this PlaywrightWorkspaceQuotaResource
+PlaywrightWorkspaceQuotaCollection collection = playwrightWorkspace.GetAllPlaywrightWorkspaceQuota();
 
 // invoke the operation
-PlaywrightWorkspaceQuotaResource result = await playwrightWorkspaceQuota.GetAsync();
+PlaywrightQuotaName quotaName = PlaywrightQuotaName.ExecutionMinutes;
+NullableResponse<PlaywrightWorkspaceQuotaResource> response = await collection.GetIfExistsAsync(quotaName);
+PlaywrightWorkspaceQuotaResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PlaywrightWorkspaceQuotaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PlaywrightWorkspaceQuotaData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

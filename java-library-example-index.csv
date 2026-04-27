@@ -6398,3 +6398,4 @@ id,name,language,tag,package,version,date_epoch,date
 6397,"Azure.ResourceManager.DataBox,1.1.1",dotnet,Azure.ResourceManager.DataBox_1.1.1,Azure.ResourceManager.DataBox,1.1.1,1776849693,04/22/2026
 6398,"Azure.ResourceManager.CustomerInsights,1.0.0",dotnet,Azure.ResourceManager.CustomerInsights_1.0.0,Azure.ResourceManager.CustomerInsights,1.0.0,1776846789,04/22/2026
 6399,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.2",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.2,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.2,1776846789,04/22/2026
+6400,"Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.3",dotnet,Azure.ResourceManager.CosmosDBForPostgreSql_1.1.0-beta.3,Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.3,1776843376,04/22/2026

@@ -14,22 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiCenterWorkspaceResource created on azure
-// for more information of creating ApiCenterWorkspaceResource, please refer to the document of ApiCenterWorkspaceResource
+// this example assumes you already have this ApiCenterApiResource created on azure
+// for more information of creating ApiCenterApiResource, please refer to the document of ApiCenterApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contoso-resources";
 string serviceName = "contoso";
 string workspaceName = "default";
-ResourceIdentifier apiCenterWorkspaceResourceId = ApiCenterWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName);
-ApiCenterWorkspaceResource apiCenterWorkspace = client.GetApiCenterWorkspaceResource(apiCenterWorkspaceResourceId);
-
-// get the collection of this ApiCenterApiResource
-ApiCenterApiCollection collection = apiCenterWorkspace.GetApiCenterApis();
+string apiName = "echo-api";
+ResourceIdentifier apiCenterApiResourceId = ApiCenterApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName);
+ApiCenterApiResource apiCenterApi = client.GetApiCenterApiResource(apiCenterApiResourceId);
 
 // invoke the operation
-string apiName = "echo-api";
 ApiCenterApiData data = new ApiCenterApiData();
-ArmOperation<ApiCenterApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiName, data);
+ArmOperation<ApiCenterApiResource> lro = await apiCenterApi.UpdateAsync(WaitUntil.Completed, data);
 ApiCenterApiResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

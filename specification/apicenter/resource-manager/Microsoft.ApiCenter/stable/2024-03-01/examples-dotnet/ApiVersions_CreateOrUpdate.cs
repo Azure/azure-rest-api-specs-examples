@@ -14,20 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiCenterApiVersionResource created on azure
-// for more information of creating ApiCenterApiVersionResource, please refer to the document of ApiCenterApiVersionResource
+// this example assumes you already have this ApiCenterApiResource created on azure
+// for more information of creating ApiCenterApiResource, please refer to the document of ApiCenterApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contoso-resources";
 string serviceName = "contoso";
 string workspaceName = "default";
 string apiName = "echo-api";
-string versionName = "2023-01-01";
-ResourceIdentifier apiCenterApiVersionResourceId = ApiCenterApiVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName, versionName);
-ApiCenterApiVersionResource apiCenterApiVersion = client.GetApiCenterApiVersionResource(apiCenterApiVersionResourceId);
+ResourceIdentifier apiCenterApiResourceId = ApiCenterApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceName, apiName);
+ApiCenterApiResource apiCenterApi = client.GetApiCenterApiResource(apiCenterApiResourceId);
+
+// get the collection of this ApiCenterApiVersionResource
+ApiCenterApiVersionCollection collection = apiCenterApi.GetApiCenterApiVersions();
 
 // invoke the operation
+string versionName = "2023-01-01";
 ApiCenterApiVersionData data = new ApiCenterApiVersionData();
-ArmOperation<ApiCenterApiVersionResource> lro = await apiCenterApiVersion.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ApiCenterApiVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, versionName, data);
 ApiCenterApiVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -6437,3 +6437,4 @@ id,name,language,tag,package,version,date_epoch,date
 6436,azure-mgmt-networkcloud@3.0.0b1,python,azure-mgmt-networkcloud_3.0.0b1,azure-mgmt-networkcloud,3.0.0b1,1775195921,04/03/2026
 6437,azure-mgmt-managementgroups@2.0.0b1,python,azure-mgmt-managementgroups_2.0.0b1,azure-mgmt-managementgroups,2.0.0b1,1775114648,04/02/2026
 6438,azure-mgmt-confluent@3.0.0b1,python,azure-mgmt-confluent_3.0.0b1,azure-mgmt-confluent,3.0.0b1,1775113673,04/02/2026
+6439,azure-mgmt-cognitiveservices@15.0.0b1,python,azure-mgmt-cognitiveservices_15.0.0b1,azure-mgmt-cognitiveservices,15.0.0b1,1775077819,04/01/2026

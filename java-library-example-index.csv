@@ -6417,3 +6417,4 @@ id,name,language,tag,package,version,date_epoch,date
 6416,"Azure.ResourceManager.AgriculturePlatform,1.0.0-beta.2",dotnet,Azure.ResourceManager.AgriculturePlatform_1.0.0-beta.2,Azure.ResourceManager.AgriculturePlatform,1.0.0-beta.2,1776668873,04/20/2026
 6417,"Azure.ResourceManager.ApiCenter,1.1.0-beta.1",dotnet,Azure.ResourceManager.ApiCenter_1.1.0-beta.1,Azure.ResourceManager.ApiCenter,1.1.0-beta.1,1776668697,04/20/2026
 6418,"Azure.ResourceManager.Attestation,1.0.0-beta.6",dotnet,Azure.ResourceManager.Attestation_1.0.0-beta.6,Azure.ResourceManager.Attestation,1.0.0-beta.6,1776668618,04/20/2026
+6419,"Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.3",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.2.0-beta.3,Azure.ResourceManager.ContainerServiceFleet,1.2.0-beta.3,1776155065,04/14/2026

@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotCentralAppResource created on azure
-// for more information of creating IotCentralAppResource, please refer to the document of IotCentralAppResource
+// this example assumes you already have this IotCentralPrivateEndpointConnectionResource created on azure
+// for more information of creating IotCentralPrivateEndpointConnectionResource, please refer to the document of IotCentralPrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string resourceName = "myIoTCentralApp";
-ResourceIdentifier iotCentralAppResourceId = IotCentralAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-IotCentralAppResource iotCentralApp = client.GetIotCentralAppResource(iotCentralAppResourceId);
-
-// get the collection of this IotCentralPrivateEndpointConnectionResource
-IotCentralPrivateEndpointConnectionCollection collection = iotCentralApp.GetIotCentralPrivateEndpointConnections();
+string privateEndpointConnectionName = "myIoTCentralAppEndpoint";
+ResourceIdentifier iotCentralPrivateEndpointConnectionResourceId = IotCentralPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+IotCentralPrivateEndpointConnectionResource iotCentralPrivateEndpointConnection = client.GetIotCentralPrivateEndpointConnectionResource(iotCentralPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "myIoTCentralAppEndpoint";
 IotCentralPrivateEndpointConnectionData data = new IotCentralPrivateEndpointConnectionData
 {
     ConnectionState = new IotCentralPrivateLinkServiceConnectionState
@@ -37,7 +34,7 @@ IotCentralPrivateEndpointConnectionData data = new IotCentralPrivateEndpointConn
         ActionsRequired = "None",
     },
 };
-ArmOperation<IotCentralPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<IotCentralPrivateEndpointConnectionResource> lro = await iotCentralPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 IotCentralPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

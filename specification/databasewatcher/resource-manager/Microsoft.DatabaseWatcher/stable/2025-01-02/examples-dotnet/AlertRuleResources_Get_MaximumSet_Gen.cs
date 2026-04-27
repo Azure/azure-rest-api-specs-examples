@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseWatcherResource created on azure
-// for more information of creating DatabaseWatcherResource, please refer to the document of DatabaseWatcherResource
+// this example assumes you already have this DatabaseWatcherAlertRuleResource created on azure
+// for more information of creating DatabaseWatcherAlertRuleResource, please refer to the document of DatabaseWatcherAlertRuleResource
 string subscriptionId = "A76F9850-996B-40B3-94D4-C98110A0EEC9";
 string resourceGroupName = "rgWatcher";
 string watcherName = "testWatcher";
-ResourceIdentifier databaseWatcherResourceId = DatabaseWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName);
-DatabaseWatcherResource databaseWatcher = client.GetDatabaseWatcherResource(databaseWatcherResourceId);
-
-// get the collection of this DatabaseWatcherAlertRuleResource
-DatabaseWatcherAlertRuleCollection collection = databaseWatcher.GetDatabaseWatcherAlertRules();
+string alertRuleResourceName = "testAlert";
+ResourceIdentifier databaseWatcherAlertRuleResourceId = DatabaseWatcherAlertRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName, alertRuleResourceName);
+DatabaseWatcherAlertRuleResource databaseWatcherAlertRule = client.GetDatabaseWatcherAlertRuleResource(databaseWatcherAlertRuleResourceId);
 
 // invoke the operation
-string alertRuleResourceName = "testAlert";
-NullableResponse<DatabaseWatcherAlertRuleResource> response = await collection.GetIfExistsAsync(alertRuleResourceName);
-DatabaseWatcherAlertRuleResource result = response.HasValue ? response.Value : null;
+DatabaseWatcherAlertRuleResource result = await databaseWatcherAlertRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DatabaseWatcherAlertRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DatabaseWatcherAlertRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

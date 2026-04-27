@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseWatcherResource created on azure
-// for more information of creating DatabaseWatcherResource, please refer to the document of DatabaseWatcherResource
+// this example assumes you already have this DatabaseWatcherAlertRuleResource created on azure
+// for more information of creating DatabaseWatcherAlertRuleResource, please refer to the document of DatabaseWatcherAlertRuleResource
 string subscriptionId = "A76F9850-996B-40B3-94D4-C98110A0EEC9";
 string resourceGroupName = "rgWatcher";
 string watcherName = "testWatcher";
-ResourceIdentifier databaseWatcherResourceId = DatabaseWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName);
-DatabaseWatcherResource databaseWatcher = client.GetDatabaseWatcherResource(databaseWatcherResourceId);
-
-// get the collection of this DatabaseWatcherAlertRuleResource
-DatabaseWatcherAlertRuleCollection collection = databaseWatcher.GetDatabaseWatcherAlertRules();
+string alertRuleResourceName = "testAlert";
+ResourceIdentifier databaseWatcherAlertRuleResourceId = DatabaseWatcherAlertRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, watcherName, alertRuleResourceName);
+DatabaseWatcherAlertRuleResource databaseWatcherAlertRule = client.GetDatabaseWatcherAlertRuleResource(databaseWatcherAlertRuleResourceId);
 
 // invoke the operation
-string alertRuleResourceName = "testAlert";
 DatabaseWatcherAlertRuleData data = new DatabaseWatcherAlertRuleData
 {
     Properties = new DatabaseWatcherAlertRuleProperties(new ResourceIdentifier("/subscriptions/469DD77C-C8DB-47B7-B9E1-72D29F8C878Be/resourceGroups/rgWatcher/providers/microsoft.insights/scheduledqueryrules/alerts-demo"), AlertRuleCreationProperty.CreatedWithActionGroup, DateTimeOffset.Parse("2024-07-25T15:38:47.798Z"), "someTemplateId", "1.0"),
 };
-ArmOperation<DatabaseWatcherAlertRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertRuleResourceName, data);
+ArmOperation<DatabaseWatcherAlertRuleResource> lro = await databaseWatcherAlertRule.UpdateAsync(WaitUntil.Completed, data);
 DatabaseWatcherAlertRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

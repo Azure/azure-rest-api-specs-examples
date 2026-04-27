@@ -8,8 +8,8 @@ using Azure.ResourceManager.InformaticaDataManagement.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.InformaticaDataManagement;
 
-// Generated from example definition: specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_CreateOrUpdate_MaximumSet_Gen.json
-// this example is just showing the usage of "Organizations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2024-05-08/Organizations_CreateOrUpdate_MaximumSet_Gen.json
+// this example is just showing the usage of "InformaticaOrganizationResource_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -30,9 +30,9 @@ InformaticaOrganizationCollection collection = resourceGroupResource.GetInformat
 string organizationName = "C";
 InformaticaOrganizationData data = new InformaticaOrganizationData(new AzureLocation("pamjoudtssthlbhrnfjidr"))
 {
-    Properties = new InformaticaOrganizationProperties()
+    Properties = new InformaticaOrganizationProperties
     {
-        InformaticaProperties = new InformaticaProperties()
+        InformaticaProperties = new InformaticaProperties
         {
             OrganizationId = "wtdmhlwhkvgqdumaehgfgiqcxgnqpx",
             OrganizationName = "nomzbvwe",
@@ -46,7 +46,7 @@ InformaticaOrganizationData data = new InformaticaOrganizationData(new AzureLoca
         {
             MarketplaceSubscriptionId = "ovenlecocg",
         },
-        UserDetails = new InformaticaUserDetails()
+        UserDetails = new InformaticaUserDetails
         {
             FirstName = "appvdclawzfjntdfdftjevlhvzropnxqtnypid",
             LastName = "nzirbvzmkxtbrlamyatlcszebxgcyncxoascojsmacwvjsjvn",
@@ -54,7 +54,7 @@ InformaticaOrganizationData data = new InformaticaOrganizationData(new AzureLoca
             Upn = "undljch",
             PhoneNumber = "fvcjylxlmhdnshsgywnzlyvshu",
         },
-        CompanyDetails = new InformaticaCompanyDetails()
+        CompanyDetails = new InformaticaCompanyDetails
         {
             CompanyName = "xszcggknokhw",
             OfficeAddress = "sbttzwyajgdbsvipuiclbzvkcvwyil",
@@ -67,7 +67,7 @@ InformaticaOrganizationData data = new InformaticaOrganizationData(new AzureLoca
     },
     Tags =
     {
-    ["key8430"] = "cagshqtjlxtqqhdwtchokvxszybp",
+    ["key8430"] = "cagshqtjlxtqqhdwtchokvxszybp"
     },
 };
 ArmOperation<InformaticaOrganizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, organizationName, data);

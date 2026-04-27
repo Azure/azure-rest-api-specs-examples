@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.InformaticaDataManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.InformaticaDataManagement;
 
-// Generated from example definition: specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_Update_MaximumSet_Gen.json
-// this example is just showing the usage of "Organizations_Update" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2024-05-08/Organizations_Update_MaximumSet_Gen.json
+// this example is just showing the usage of "InformaticaOrganizationResource_Update" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -25,18 +24,18 @@ ResourceIdentifier informaticaOrganizationResourceId = InformaticaOrganizationRe
 InformaticaOrganizationResource informaticaOrganization = client.GetInformaticaOrganizationResource(informaticaOrganizationResourceId);
 
 // invoke the operation
-InformaticaOrganizationPatch patch = new InformaticaOrganizationPatch()
+InformaticaOrganizationPatch patch = new InformaticaOrganizationPatch
 {
     Tags =
     {
-    ["key1918"] = "fbjvtuvzsghpl",
+    ["key1918"] = "fbjvtuvzsghpl"
     },
-    Properties = new InformaticaOrganizationPropertiesUpdate()
+    Properties = new InformaticaOrganizationPropertiesUpdate
     {
-        MarketplaceDetails = new InformaticaMarketplaceDetailsUpdate()
+        MarketplaceDetails = new InformaticaMarketplaceDetailsUpdate
         {
             MarketplaceSubscriptionId = "szhyxzgjtssjmlguivepc",
-            OfferDetails = new InformaticaOfferDetailsUpdate()
+            OfferDetails = new InformaticaOfferDetailsUpdate
             {
                 PublisherId = "ktzfghsyjqbsswhltoaemgotmnorhdogvkaxplutbjjqzuepxizliynyakersobagvpwvpzwjtjjxigsqgcyqaahaxdijghnexliofhfjlqzjmmbvrhcvjxdodnexxizbgfhjopbwzjojxsluasnwwsgcajefglbcvzpaeblanhmurcculndtfwnfjyxol",
                 OfferId = "idaxbflabvjsippplyenvrpgeydsjxcmyubgukffkcdvlvrtwpdhnvdblxjsldiuswrchsibk",
@@ -46,7 +45,7 @@ InformaticaOrganizationPatch patch = new InformaticaOrganizationPatch()
                 TermId = "eolmwogtgpdncqoigqcdomupwummaicwvdxgbskpdsmjizdfbdgbxbuekcpwmenqzbhqxpdnjtup",
             },
         },
-        UserDetails = new InformaticaUserDetailsUpdate()
+        UserDetails = new InformaticaUserDetailsUpdate
         {
             FirstName = "qguqrmanyupoi",
             LastName = "ugzg",
@@ -54,7 +53,7 @@ InformaticaOrganizationPatch patch = new InformaticaOrganizationPatch()
             Upn = "viwjrkn",
             PhoneNumber = "uxa",
         },
-        CompanyDetails = new InformaticaCompanyDetailsUpdate()
+        CompanyDetails = new InformaticaCompanyDetailsUpdate
         {
             CompanyName = "xkrvbozrjcvappqeeyt",
             OfficeAddress = "sfcx",

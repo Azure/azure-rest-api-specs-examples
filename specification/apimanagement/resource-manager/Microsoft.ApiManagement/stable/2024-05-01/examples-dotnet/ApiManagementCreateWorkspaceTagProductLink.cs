@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceTagResource created on azure
-// for more information of creating ServiceWorkspaceTagResource, please refer to the document of ServiceWorkspaceTagResource
+// this example assumes you already have this ServiceWorkspaceTagProductLinkResource created on azure
+// for more information of creating ServiceWorkspaceTagProductLinkResource, please refer to the document of ServiceWorkspaceTagProductLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string tagId = "tag1";
-ResourceIdentifier serviceWorkspaceTagResourceId = ServiceWorkspaceTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId);
-ServiceWorkspaceTagResource serviceWorkspaceTag = client.GetServiceWorkspaceTagResource(serviceWorkspaceTagResourceId);
-
-// get the collection of this ServiceWorkspaceTagProductLinkResource
-ServiceWorkspaceTagProductLinkCollection collection = serviceWorkspaceTag.GetServiceWorkspaceTagProductLinks();
+string productLinkId = "link1";
+ResourceIdentifier serviceWorkspaceTagProductLinkResourceId = ServiceWorkspaceTagProductLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId, productLinkId);
+ServiceWorkspaceTagProductLinkResource serviceWorkspaceTagProductLink = client.GetServiceWorkspaceTagProductLinkResource(serviceWorkspaceTagProductLinkResourceId);
 
 // invoke the operation
-string productLinkId = "link1";
 TagProductLinkContractData data = new TagProductLinkContractData
 {
     ProductId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/product1",
 };
-ArmOperation<ServiceWorkspaceTagProductLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, productLinkId, data);
+ArmOperation<ServiceWorkspaceTagProductLinkResource> lro = await serviceWorkspaceTagProductLink.UpdateAsync(WaitUntil.Completed, data);
 ServiceWorkspaceTagProductLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

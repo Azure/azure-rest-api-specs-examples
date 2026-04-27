@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiGatewayResource created on azure
-// for more information of creating ApiGatewayResource, please refer to the document of ApiGatewayResource
+// this example assumes you already have this ApiGatewayConfigConnectionResource created on azure
+// for more information of creating ApiGatewayConfigConnectionResource, please refer to the document of ApiGatewayConfigConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string gatewayName = "standard-gw-01";
-ResourceIdentifier apiGatewayResourceId = ApiGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
-ApiGatewayResource apiGateway = client.GetApiGatewayResource(apiGatewayResourceId);
-
-// get the collection of this ApiGatewayConfigConnectionResource
-ApiGatewayConfigConnectionCollection collection = apiGateway.GetApiGatewayConfigConnections();
+string configConnectionName = "gcc-01";
+ResourceIdentifier apiGatewayConfigConnectionResourceId = ApiGatewayConfigConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, configConnectionName);
+ApiGatewayConfigConnectionResource apiGatewayConfigConnection = client.GetApiGatewayConfigConnectionResource(apiGatewayConfigConnectionResourceId);
 
 // invoke the operation
-string configConnectionName = "gcc-01";
-NullableResponse<ApiGatewayConfigConnectionResource> response = await collection.GetIfExistsAsync(configConnectionName);
-ApiGatewayConfigConnectionResource result = response.HasValue ? response.Value : null;
+ApiGatewayConfigConnectionResource result = await apiGatewayConfigConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiGatewayConfigConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiGatewayConfigConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBForPostgreSqlClusterResource created on azure
-// for more information of creating CosmosDBForPostgreSqlClusterResource, please refer to the document of CosmosDBForPostgreSqlClusterResource
+// this example assumes you already have this CosmosDBForPostgreSqlConfigurationResource created on azure
+// for more information of creating CosmosDBForPostgreSqlConfigurationResource, please refer to the document of CosmosDBForPostgreSqlConfigurationResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestResourceGroup";
 string clusterName = "testcluster";
-ResourceIdentifier cosmosDBForPostgreSqlClusterResourceId = CosmosDBForPostgreSqlClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-CosmosDBForPostgreSqlClusterResource cosmosDBForPostgreSqlCluster = client.GetCosmosDBForPostgreSqlClusterResource(cosmosDBForPostgreSqlClusterResourceId);
-
-// get the collection of this CosmosDBForPostgreSqlConfigurationResource
-CosmosDBForPostgreSqlConfigurationCollection collection = cosmosDBForPostgreSqlCluster.GetCosmosDBForPostgreSqlConfigurations();
+string configurationName = "client_encoding";
+ResourceIdentifier cosmosDBForPostgreSqlConfigurationResourceId = CosmosDBForPostgreSqlConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, configurationName);
+CosmosDBForPostgreSqlConfigurationResource cosmosDBForPostgreSqlConfiguration = client.GetCosmosDBForPostgreSqlConfigurationResource(cosmosDBForPostgreSqlConfigurationResourceId);
 
 // invoke the operation
-string configurationName = "client_encoding";
-NullableResponse<CosmosDBForPostgreSqlConfigurationResource> response = await collection.GetIfExistsAsync(configurationName);
-CosmosDBForPostgreSqlConfigurationResource result = response.HasValue ? response.Value : null;
+CosmosDBForPostgreSqlConfigurationResource result = await cosmosDBForPostgreSqlConfiguration.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CosmosDBForPostgreSqlConfigurationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBForPostgreSqlConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

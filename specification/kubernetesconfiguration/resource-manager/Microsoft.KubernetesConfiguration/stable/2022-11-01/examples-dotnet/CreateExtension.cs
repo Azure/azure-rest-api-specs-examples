@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.KubernetesConfiguration;
 using Azure.ResourceManager.KubernetesConfiguration.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.KubernetesConfiguration;
 
 // Generated from example definition: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/examples/CreateExtension.json
 // this example is just showing the usage of "Extensions_Create" operation, for the dependent resources, they will have to be created separately.
@@ -32,23 +32,23 @@ KubernetesClusterExtensionCollection collection = resourceGroupResource.GetKuber
 
 // invoke the operation
 string extensionName = "ClusterMonitor";
-KubernetesClusterExtensionData data = new KubernetesClusterExtensionData()
+KubernetesClusterExtensionData data = new KubernetesClusterExtensionData
 {
     ExtensionType = "azuremonitor-containers",
     AutoUpgradeMinorVersion = true,
     ReleaseTrain = "Preview",
-    Scope = new KubernetesClusterExtensionScope()
+    Scope = new KubernetesClusterExtensionScope
     {
         ClusterReleaseNamespace = "kube-system",
     },
     ConfigurationSettings =
     {
     ["omsagent.env.clusterName"] = "clusterName1",
-    ["omsagent.secret.wsid"] = "a38cef99-5a89-52ed-b6db-22095c23664b",
+    ["omsagent.secret.wsid"] = "a38cef99-5a89-52ed-b6db-22095c23664b"
     },
     ConfigurationProtectedSettings =
     {
-    ["omsagent.secret.key"] = "secretKeyValue01",
+    ["omsagent.secret.key"] = "secretKeyValue01"
     },
 };
 ArmOperation<KubernetesClusterExtensionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, extensionName, data);

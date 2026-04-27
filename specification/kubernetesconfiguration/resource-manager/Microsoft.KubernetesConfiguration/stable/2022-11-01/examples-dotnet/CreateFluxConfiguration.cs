@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.KubernetesConfiguration;
 using Azure.ResourceManager.KubernetesConfiguration.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.KubernetesConfiguration;
 
 // Generated from example definition: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/examples/CreateFluxConfiguration.json
 // this example is just showing the usage of "FluxConfigurations_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,18 +31,18 @@ KubernetesFluxConfigurationCollection collection = resourceGroupResource.GetKube
 
 // invoke the operation
 string fluxConfigurationName = "srs-fluxconfig";
-KubernetesFluxConfigurationData data = new KubernetesFluxConfigurationData()
+KubernetesFluxConfigurationData data = new KubernetesFluxConfigurationData
 {
     Scope = KubernetesConfigurationScope.Cluster,
     Namespace = "srs-namespace",
     SourceKind = KubernetesConfigurationSourceKind.GitRepository,
     IsReconciliationSuspended = false,
-    GitRepository = new KubernetesGitRepository()
+    GitRepository = new KubernetesGitRepository
     {
         Uri = new Uri("https://github.com/Azure/arc-k8s-demo"),
-        TimeoutInSeconds = 600,
-        SyncIntervalInSeconds = 600,
-        RepositoryRef = new KubernetesGitRepositoryRef()
+        TimeoutInSeconds = 600L,
+        SyncIntervalInSeconds = 600L,
+        RepositoryRef = new KubernetesGitRepositoryRef
         {
             Branch = "master",
         },
@@ -50,27 +50,22 @@ KubernetesFluxConfigurationData data = new KubernetesFluxConfigurationData()
     },
     Kustomizations =
     {
-    ["srs-kustomization1"] = new Kustomization()
+    ["srs-kustomization1"] = new Kustomization
     {
     Path = "./test/path",
-    DependsOn =
-    {
+    DependsOn = {},
+    TimeoutInSeconds = 600L,
+    SyncIntervalInSeconds = 600L,
     },
-    TimeoutInSeconds = 600,
-    SyncIntervalInSeconds = 600,
-    },
-    ["srs-kustomization2"] = new Kustomization()
+    ["srs-kustomization2"] = new Kustomization
     {
     Path = "./other/test/path",
-    DependsOn =
-    {
-    "srs-kustomization1"
-    },
-    TimeoutInSeconds = 600,
-    SyncIntervalInSeconds = 600,
-    RetryIntervalInSeconds = 600,
+    DependsOn = {"srs-kustomization1"},
+    TimeoutInSeconds = 600L,
+    SyncIntervalInSeconds = 600L,
+    RetryIntervalInSeconds = 600L,
     Prune = false,
-    },
+    }
     },
 };
 ArmOperation<KubernetesFluxConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fluxConfigurationName, data);

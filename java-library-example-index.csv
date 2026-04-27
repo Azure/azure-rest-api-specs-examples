@@ -6373,3 +6373,4 @@ id,name,language,tag,package,version,date_epoch,date
 6372,@azure/arm-kubernetesconfiguration-extensions@1.0.0,js,@azure/arm-kubernetesconfiguration-extensions_1.0.0,@azure/arm-kubernetesconfiguration-extensions,1.0.0,1776669497,04/20/2026
 6373,@azure/arm-appnetwork@1.0.0-beta.1,js,@azure/arm-appnetwork_1.0.0-beta.1,@azure/arm-appnetwork,1.0.0-beta.1,1775865735,04/11/2026
 6374,@azure/arm-deviceregistry@1.2.0-beta.1,js,@azure/arm-deviceregistry_1.2.0-beta.1,@azure/arm-deviceregistry,1.2.0-beta.1,1775829855,04/10/2026
+6375,@azure/arm-search@4.0.0-beta.2,js,@azure/arm-search_4.0.0-beta.2,@azure/arm-search,4.0.0-beta.2,1775496781,04/06/2026

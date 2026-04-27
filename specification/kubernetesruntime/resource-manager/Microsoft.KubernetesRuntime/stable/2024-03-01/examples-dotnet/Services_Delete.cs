@@ -25,4 +25,4 @@ ConnectedClusterServiceResource connectedClusterService = client.GetConnectedClu
 // invoke the operation
 await connectedClusterService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

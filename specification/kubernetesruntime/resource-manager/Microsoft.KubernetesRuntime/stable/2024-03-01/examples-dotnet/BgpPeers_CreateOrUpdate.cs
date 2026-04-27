@@ -23,7 +23,7 @@ ResourceIdentifier connectedClusterBgpPeerResourceId = ConnectedClusterBgpPeerRe
 ConnectedClusterBgpPeerResource connectedClusterBgpPeer = client.GetConnectedClusterBgpPeerResource(connectedClusterBgpPeerResourceId);
 
 // invoke the operation
-ConnectedClusterBgpPeerData data = new ConnectedClusterBgpPeerData()
+ConnectedClusterBgpPeerData data = new ConnectedClusterBgpPeerData
 {
     Properties = new ConnectedClusterBgpPeerProperties(64500, 64501, "10.0.0.1"),
 };

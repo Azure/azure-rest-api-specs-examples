@@ -15,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this ConnectedClusterBgpPeerResource
 string resourceUri = "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-ConnectedClusterBgpPeerCollection collection = client.GetConnectedClusterBgpPeers(scopeId);
+ConnectedClusterBgpPeerCollection collection = client.GetConnectedClusterBgpPeers(new ResourceIdentifier(resourceUri));
 
 // invoke the operation and iterate over the result
 await foreach (ConnectedClusterBgpPeerResource item in collection.GetAllAsync())
@@ -33,4 +29,4 @@ await foreach (ConnectedClusterBgpPeerResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

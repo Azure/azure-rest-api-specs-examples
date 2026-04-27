@@ -25,4 +25,4 @@ ConnectedClusterStorageClassResource connectedClusterStorageClass = client.GetCo
 // invoke the operation
 await connectedClusterStorageClass.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

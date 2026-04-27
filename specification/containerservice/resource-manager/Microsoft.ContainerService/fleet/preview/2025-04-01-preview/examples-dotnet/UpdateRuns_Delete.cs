@@ -25,6 +25,6 @@ ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFl
 ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
 
 // invoke the operation
-await containerServiceFleetUpdateRun.DeleteAsync(WaitUntil.Completed);
+await containerServiceFleetUpdateRun.DeleteAsync(WaitUntil.Completed, ifMatch: (ETag?)null);
 
 Console.WriteLine("Succeeded");

@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FleetUpdateStrategyResource created on azure
-// for more information of creating FleetUpdateStrategyResource, please refer to the document of FleetUpdateStrategyResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-string updateStrategyName = "strategy1";
-ResourceIdentifier fleetUpdateStrategyResourceId = FleetUpdateStrategyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateStrategyName);
-FleetUpdateStrategyResource fleetUpdateStrategy = client.GetFleetUpdateStrategyResource(fleetUpdateStrategyResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this FleetUpdateStrategyResource
+FleetUpdateStrategyCollection collection = containerServiceFleet.GetFleetUpdateStrategies();
 
 // invoke the operation
+string updateStrategyName = "strategy1";
 FleetUpdateStrategyData data = new FleetUpdateStrategyData
 {
     StrategyStages = {new ContainerServiceFleetUpdateStage("stage1")
@@ -51,7 +54,7 @@ FleetUpdateStrategyData data = new FleetUpdateStrategyData
     }},
     }},
 };
-ArmOperation<FleetUpdateStrategyResource> lro = await fleetUpdateStrategy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<FleetUpdateStrategyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateStrategyName, data, matchConditions: null);
 FleetUpdateStrategyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

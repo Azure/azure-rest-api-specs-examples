@@ -25,6 +25,6 @@ ResourceIdentifier containerServiceFleetMemberResourceId = ContainerServiceFleet
 ContainerServiceFleetMemberResource containerServiceFleetMember = client.GetContainerServiceFleetMemberResource(containerServiceFleetMemberResourceId);
 
 // invoke the operation
-await containerServiceFleetMember.DeleteAsync(WaitUntil.Completed);
+await containerServiceFleetMember.DeleteAsync(WaitUntil.Completed, ifMatch: (ETag?)null);
 
 Console.WriteLine("Succeeded");

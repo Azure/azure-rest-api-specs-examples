@@ -29,7 +29,7 @@ ContainerServiceFleetMemberPatch patch = new ContainerServiceFleetMemberPatch
 {
     Group = "staging",
 };
-string ifMatch = "bjyjzzxvbs";
+ETag ifMatch = new ETag("bjyjzzxvbs");
 ArmOperation<ContainerServiceFleetMemberResource> lro = await containerServiceFleetMember.UpdateAsync(WaitUntil.Completed, patch, ifMatch: ifMatch);
 ContainerServiceFleetMemberResource result = lro.Value;
 

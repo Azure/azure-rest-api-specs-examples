@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetResource created on azure
-// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
+// this example assumes you already have this AutoUpgradeProfileResource created on azure
+// for more information of creating AutoUpgradeProfileResource, please refer to the document of AutoUpgradeProfileResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
-ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
-
-// get the collection of this AutoUpgradeProfileResource
-AutoUpgradeProfileCollection collection = containerServiceFleet.GetAutoUpgradeProfiles();
+string autoUpgradeProfileName = "autoupgradeprofile1";
+ResourceIdentifier autoUpgradeProfileResourceId = AutoUpgradeProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, autoUpgradeProfileName);
+AutoUpgradeProfileResource autoUpgradeProfile = client.GetAutoUpgradeProfileResource(autoUpgradeProfileResourceId);
 
 // invoke the operation
-string autoUpgradeProfileName = "autoupgradeprofile1";
 AutoUpgradeProfileData data = new AutoUpgradeProfileData
 {
     Channel = ContainerServiceFleetUpgradeChannel.Stable,
     TargetKubernetesVersion = "",
     LongTermSupport = false,
 };
-ArmOperation<AutoUpgradeProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, autoUpgradeProfileName, data);
+ArmOperation<AutoUpgradeProfileResource> lro = await autoUpgradeProfile.UpdateAsync(WaitUntil.Completed, data, matchConditions: null);
 AutoUpgradeProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

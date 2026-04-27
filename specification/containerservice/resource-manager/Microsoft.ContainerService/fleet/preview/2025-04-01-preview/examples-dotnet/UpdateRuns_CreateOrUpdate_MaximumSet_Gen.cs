@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetUpdateRunResource created on azure
-// for more information of creating ContainerServiceFleetUpdateRunResource, please refer to the document of ContainerServiceFleetUpdateRunResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rgfleets";
 string fleetName = "fleet1";
-string updateRunName = "fleet1";
-ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFleetUpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateRunName);
-ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this ContainerServiceFleetUpdateRunResource
+ContainerServiceFleetUpdateRunCollection collection = containerServiceFleet.GetContainerServiceFleetUpdateRuns();
 
 // invoke the operation
+string updateRunName = "fleet1";
 ContainerServiceFleetUpdateRunData data = new ContainerServiceFleetUpdateRunData
 {
     UpdateStrategyId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ContainerService/fleets/myFleet/updateStrategies/strategy1"),
@@ -44,9 +47,12 @@ ContainerServiceFleetUpdateRunData data = new ContainerServiceFleetUpdateRunData
         },
     },
 };
-string ifMatch = "wyolpuaxgybeygcbz";
-string ifNoneMatch = "rwrhonlormgshamadufoo";
-ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch, ifNoneMatch: ifNoneMatch);
+MatchConditions matchConditions = new MatchConditions
+{
+    IfMatch = new ETag("wyolpuaxgybeygcbz"),
+    IfNoneMatch = new ETag("rwrhonlormgshamadufoo")
+};
+ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateRunName, data, matchConditions: matchConditions);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

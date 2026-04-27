@@ -30,7 +30,7 @@ ContainerServiceFleetSkipProperties body = new ContainerServiceFleetSkipProperti
 new ContainerServiceFleetSkipTarget(ContainerServiceFleetTargetType.Member, "member-one"),
 new ContainerServiceFleetSkipTarget(ContainerServiceFleetTargetType.AfterStageWait, "stage1")
 });
-ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.SkipAsync(WaitUntil.Completed, body);
+ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.SkipAsync(WaitUntil.Completed, body, ifMatch: (ETag?)null);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

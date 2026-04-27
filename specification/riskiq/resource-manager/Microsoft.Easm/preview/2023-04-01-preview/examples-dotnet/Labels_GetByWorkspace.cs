@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.DefenderEasm.Models;
 using Azure.ResourceManager.DefenderEasm;
 
 // Generated from example definition: specification/riskiq/resource-manager/Microsoft.Easm/preview/2023-04-01-preview/examples/Labels_GetByWorkspace.json
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EasmLabelResource created on azure
-// for more information of creating EasmLabelResource, please refer to the document of EasmLabelResource
+// this example assumes you already have this EasmWorkspaceResource created on azure
+// for more information of creating EasmWorkspaceResource, please refer to the document of EasmWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "dummyrg";
 string workspaceName = "ThisisaWorkspace";
-string labelName = "ThisisaLabel";
-ResourceIdentifier easmLabelResourceId = EasmLabelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, labelName);
-EasmLabelResource easmLabel = client.GetEasmLabelResource(easmLabelResourceId);
+ResourceIdentifier easmWorkspaceResourceId = EasmWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+EasmWorkspaceResource easmWorkspace = client.GetEasmWorkspaceResource(easmWorkspaceResourceId);
+
+// get the collection of this EasmLabelResource
+EasmLabelCollection collection = easmWorkspace.GetEasmLabels();
 
 // invoke the operation
-EasmLabelResource result = await easmLabel.GetAsync();
+string labelName = "ThisisaLabel";
+NullableResponse<EasmLabelResource> response = await collection.GetIfExistsAsync(labelName);
+EasmLabelResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EasmLabelData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EasmLabelData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

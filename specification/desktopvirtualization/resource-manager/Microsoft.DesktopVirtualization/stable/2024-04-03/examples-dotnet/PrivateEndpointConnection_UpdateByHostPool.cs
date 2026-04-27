@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HostPoolResource created on azure
-// for more information of creating HostPoolResource, please refer to the document of HostPoolResource
+// this example assumes you already have this HostPoolPrivateEndpointConnectionResource created on azure
+// for more information of creating HostPoolPrivateEndpointConnectionResource, please refer to the document of HostPoolPrivateEndpointConnectionResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
 string hostPoolName = "hostPool1";
-ResourceIdentifier hostPoolResourceId = HostPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hostPoolName);
-HostPoolResource hostPool = client.GetHostPoolResource(hostPoolResourceId);
-
-// get the collection of this HostPoolPrivateEndpointConnectionResource
-HostPoolPrivateEndpointConnectionCollection collection = hostPool.GetHostPoolPrivateEndpointConnections();
+string privateEndpointConnectionName = "hostPool1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
+ResourceIdentifier hostPoolPrivateEndpointConnectionResourceId = HostPoolPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hostPoolName, privateEndpointConnectionName);
+HostPoolPrivateEndpointConnectionResource hostPoolPrivateEndpointConnection = client.GetHostPoolPrivateEndpointConnectionResource(hostPoolPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "hostPool1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
 DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection
 {
     ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState
@@ -37,7 +34,7 @@ DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualiz
         ActionsRequired = "None",
     },
 };
-ArmOperation<HostPoolPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, connection);
+ArmOperation<HostPoolPrivateEndpointConnectionResource> lro = await hostPoolPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, connection);
 HostPoolPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

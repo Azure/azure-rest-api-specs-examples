@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualApplicationResource created on azure
-// for more information of creating VirtualApplicationResource, please refer to the document of VirtualApplicationResource
+// this example assumes you already have this VirtualApplicationGroupResource created on azure
+// for more information of creating VirtualApplicationGroupResource, please refer to the document of VirtualApplicationGroupResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
 string applicationGroupName = "applicationGroup1";
-string applicationName = "application1";
-ResourceIdentifier virtualApplicationResourceId = VirtualApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, applicationGroupName, applicationName);
-VirtualApplicationResource virtualApplication = client.GetVirtualApplicationResource(virtualApplicationResourceId);
+ResourceIdentifier virtualApplicationGroupResourceId = VirtualApplicationGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, applicationGroupName);
+VirtualApplicationGroupResource virtualApplicationGroup = client.GetVirtualApplicationGroupResource(virtualApplicationGroupResourceId);
+
+// get the collection of this VirtualApplicationResource
+VirtualApplicationCollection collection = virtualApplicationGroup.GetVirtualApplications();
 
 // invoke the operation
-VirtualApplicationResource result = await virtualApplication.GetAsync();
+string applicationName = "application1";
+NullableResponse<VirtualApplicationResource> response = await collection.GetIfExistsAsync(applicationName);
+VirtualApplicationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VirtualApplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VirtualApplicationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

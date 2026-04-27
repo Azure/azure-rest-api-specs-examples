@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Billing.Models;
 using Azure.ResourceManager.Billing;
 
 // Generated from example definition: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/savingsPlanGetByBillingAccount.json
@@ -14,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SavingsPlanOrderModelResource created on azure
-// for more information of creating SavingsPlanOrderModelResource, please refer to the document of SavingsPlanOrderModelResource
+// this example assumes you already have this BillingSavingsPlanModelResource created on azure
+// for more information of creating BillingSavingsPlanModelResource, please refer to the document of BillingSavingsPlanModelResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
 string savingsPlanOrderId = "20000000-0000-0000-0000-000000000000";
-ResourceIdentifier savingsPlanOrderModelResourceId = SavingsPlanOrderModelResource.CreateResourceIdentifier(billingAccountName, savingsPlanOrderId);
-SavingsPlanOrderModelResource savingsPlanOrderModel = client.GetSavingsPlanOrderModelResource(savingsPlanOrderModelResourceId);
-
-// get the collection of this BillingSavingsPlanModelResource
-BillingSavingsPlanModelCollection collection = savingsPlanOrderModel.GetBillingSavingsPlanModels();
+string savingsPlanId = "30000000-0000-0000-0000-000000000000";
+ResourceIdentifier billingSavingsPlanModelResourceId = BillingSavingsPlanModelResource.CreateResourceIdentifier(billingAccountName, savingsPlanOrderId, savingsPlanId);
+BillingSavingsPlanModelResource billingSavingsPlanModel = client.GetBillingSavingsPlanModelResource(billingSavingsPlanModelResourceId);
 
 // invoke the operation
-string savingsPlanId = "30000000-0000-0000-0000-000000000000";
-NullableResponse<BillingSavingsPlanModelResource> response = await collection.GetIfExistsAsync(savingsPlanId);
-BillingSavingsPlanModelResource result = response.HasValue ? response.Value : null;
+BillingSavingsPlanModelResource result = await billingSavingsPlanModel.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingSavingsPlanModelData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingSavingsPlanModelData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

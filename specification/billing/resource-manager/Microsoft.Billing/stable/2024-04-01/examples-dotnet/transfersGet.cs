@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingTransferDetailResource created on azure
-// for more information of creating BillingTransferDetailResource, please refer to the document of BillingTransferDetailResource
+// this example assumes you already have this BillingInvoiceSectionResource created on azure
+// for more information of creating BillingInvoiceSectionResource, please refer to the document of BillingInvoiceSectionResource
 string billingAccountName = "10000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
 string invoiceSectionName = "yyyy-yyyy-yyy-yyy";
-string transferName = "aabb123";
-ResourceIdentifier billingTransferDetailResourceId = BillingTransferDetailResource.CreateResourceIdentifier(billingAccountName, billingProfileName, invoiceSectionName, transferName);
-BillingTransferDetailResource billingTransferDetail = client.GetBillingTransferDetailResource(billingTransferDetailResourceId);
+ResourceIdentifier billingInvoiceSectionResourceId = BillingInvoiceSectionResource.CreateResourceIdentifier(billingAccountName, billingProfileName, invoiceSectionName);
+BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSectionResource(billingInvoiceSectionResourceId);
+
+// get the collection of this BillingTransferDetailResource
+BillingTransferDetailCollection collection = billingInvoiceSection.GetBillingTransferDetails();
 
 // invoke the operation
-BillingTransferDetailResource result = await billingTransferDetail.GetAsync();
+string transferName = "aabb123";
+NullableResponse<BillingTransferDetailResource> response = await collection.GetIfExistsAsync(transferName);
+BillingTransferDetailResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingTransferDetailData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingTransferDetailData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

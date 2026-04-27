@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Billing.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Billing;
 
 // Generated from example definition: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/recipientTransfersGet.json
@@ -15,17 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RecipientTransferDetailResource created on azure
-// for more information of creating RecipientTransferDetailResource, please refer to the document of RecipientTransferDetailResource
-string transferName = "aabb123";
-ResourceIdentifier recipientTransferDetailResourceId = RecipientTransferDetailResource.CreateResourceIdentifier(transferName);
-RecipientTransferDetailResource recipientTransferDetail = client.GetRecipientTransferDetailResource(recipientTransferDetailResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this RecipientTransferDetailResource
+RecipientTransferDetailCollection collection = tenantResource.GetRecipientTransferDetails();
 
 // invoke the operation
-RecipientTransferDetailResource result = await recipientTransferDetail.GetAsync();
+string transferName = "aabb123";
+NullableResponse<RecipientTransferDetailResource> response = await collection.GetIfExistsAsync(transferName);
+RecipientTransferDetailResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RecipientTransferDetailData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RecipientTransferDetailData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

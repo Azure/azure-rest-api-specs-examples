@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingProfileCustomerResource created on azure
-// for more information of creating BillingProfileCustomerResource, please refer to the document of BillingProfileCustomerResource
+// this example assumes you already have this BillingProfileCustomerPolicyResource created on azure
+// for more information of creating BillingProfileCustomerPolicyResource, please refer to the document of BillingProfileCustomerPolicyResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
 string customerName = "11111111-1111-1111-1111-111111111111";
-ResourceIdentifier billingProfileCustomerResourceId = BillingProfileCustomerResource.CreateResourceIdentifier(billingAccountName, billingProfileName, customerName);
-BillingProfileCustomerResource billingProfileCustomer = client.GetBillingProfileCustomerResource(billingProfileCustomerResourceId);
-
-// get the collection of this BillingProfileCustomerPolicyResource
-BillingProfileCustomerPolicyCollection collection = billingProfileCustomer.GetBillingProfileCustomerPolicies();
+ServiceDefinedResourceName policyName = ServiceDefinedResourceName.Default;
+ResourceIdentifier billingProfileCustomerPolicyResourceId = BillingProfileCustomerPolicyResource.CreateResourceIdentifier(billingAccountName, billingProfileName, customerName, policyName);
+BillingProfileCustomerPolicyResource billingProfileCustomerPolicy = client.GetBillingProfileCustomerPolicyResource(billingProfileCustomerPolicyResourceId);
 
 // invoke the operation
-ServiceDefinedResourceName policyName = ServiceDefinedResourceName.Default;
-NullableResponse<BillingProfileCustomerPolicyResource> response = await collection.GetIfExistsAsync(policyName);
-BillingProfileCustomerPolicyResource result = response.HasValue ? response.Value : null;
+BillingProfileCustomerPolicyResource result = await billingProfileCustomerPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingCustomerPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingCustomerPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

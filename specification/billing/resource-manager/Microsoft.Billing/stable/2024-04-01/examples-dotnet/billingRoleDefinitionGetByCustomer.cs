@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingCustomerRoleDefinitionResource created on azure
-// for more information of creating BillingCustomerRoleDefinitionResource, please refer to the document of BillingCustomerRoleDefinitionResource
+// this example assumes you already have this BillingProfileCustomerResource created on azure
+// for more information of creating BillingProfileCustomerResource, please refer to the document of BillingProfileCustomerResource
 string billingAccountName = "10000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
 string customerName = "11111111-1111-1111-1111-111111111111";
-string roleDefinitionName = "30000000-aaaa-bbbb-cccc-100000000000";
-ResourceIdentifier billingCustomerRoleDefinitionResourceId = BillingCustomerRoleDefinitionResource.CreateResourceIdentifier(billingAccountName, billingProfileName, customerName, roleDefinitionName);
-BillingCustomerRoleDefinitionResource billingCustomerRoleDefinition = client.GetBillingCustomerRoleDefinitionResource(billingCustomerRoleDefinitionResourceId);
+ResourceIdentifier billingProfileCustomerResourceId = BillingProfileCustomerResource.CreateResourceIdentifier(billingAccountName, billingProfileName, customerName);
+BillingProfileCustomerResource billingProfileCustomer = client.GetBillingProfileCustomerResource(billingProfileCustomerResourceId);
+
+// get the collection of this BillingCustomerRoleDefinitionResource
+BillingCustomerRoleDefinitionCollection collection = billingProfileCustomer.GetBillingCustomerRoleDefinitions();
 
 // invoke the operation
-BillingCustomerRoleDefinitionResource result = await billingCustomerRoleDefinition.GetAsync();
+string roleDefinitionName = "30000000-aaaa-bbbb-cccc-100000000000";
+NullableResponse<BillingCustomerRoleDefinitionResource> response = await collection.GetIfExistsAsync(roleDefinitionName);
+BillingCustomerRoleDefinitionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingRoleDefinitionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingRoleDefinitionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

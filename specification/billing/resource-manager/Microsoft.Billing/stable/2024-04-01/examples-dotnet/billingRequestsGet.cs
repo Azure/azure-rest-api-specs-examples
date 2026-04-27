@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Billing.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Billing;
 
 // Generated from example definition: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingRequestsGet.json
@@ -15,17 +16,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingRequestResource created on azure
-// for more information of creating BillingRequestResource, please refer to the document of BillingRequestResource
-string billingRequestName = "00000000-0000-0000-0000-000000000000";
-ResourceIdentifier billingRequestResourceId = BillingRequestResource.CreateResourceIdentifier(billingRequestName);
-BillingRequestResource billingRequest = client.GetBillingRequestResource(billingRequestResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this BillingRequestResource
+BillingRequestCollection collection = tenantResource.GetBillingRequests();
 
 // invoke the operation
-BillingRequestResource result = await billingRequest.GetAsync();
+string billingRequestName = "00000000-0000-0000-0000-000000000000";
+NullableResponse<BillingRequestResource> response = await collection.GetIfExistsAsync(billingRequestName);
+BillingRequestResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingRequestData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingRequestData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

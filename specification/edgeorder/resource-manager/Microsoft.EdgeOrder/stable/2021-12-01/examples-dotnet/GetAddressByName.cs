@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EdgeOrder.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EdgeOrder;
 
 // Generated from example definition: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/GetAddressByName.json
@@ -15,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EdgeOrderAddressResource created on azure
-// for more information of creating EdgeOrderAddressResource, please refer to the document of EdgeOrderAddressResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "fa68082f-8ff7-4a25-95c7-ce9da541242f";
 string resourceGroupName = "TestRG";
-string addressName = "TestMSAddressName";
-ResourceIdentifier edgeOrderAddressResourceId = EdgeOrderAddressResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, addressName);
-EdgeOrderAddressResource edgeOrderAddress = client.GetEdgeOrderAddressResource(edgeOrderAddressResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this EdgeOrderAddressResource
+EdgeOrderAddressCollection collection = resourceGroupResource.GetEdgeOrderAddresses();
 
 // invoke the operation
-EdgeOrderAddressResource result = await edgeOrderAddress.GetAsync();
+string addressName = "TestMSAddressName";
+NullableResponse<EdgeOrderAddressResource> response = await collection.GetIfExistsAsync(addressName);
+EdgeOrderAddressResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EdgeOrderAddressData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EdgeOrderAddressData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -23,11 +23,11 @@ ResourceIdentifier connectedClusterStorageClassResourceId = ConnectedClusterStor
 ConnectedClusterStorageClassResource connectedClusterStorageClass = client.GetConnectedClusterStorageClassResource(connectedClusterStorageClassResourceId);
 
 // invoke the operation
-ConnectedClusterStorageClassPatch patch = new ConnectedClusterStorageClassPatch()
+ConnectedClusterStorageClassPatch patch = new ConnectedClusterStorageClassPatch
 {
-    Properties = new StorageClassPropertiesUpdate()
+    Properties = new StorageClassPropertiesUpdate
     {
-        TypeProperties = new StorageClassTypePropertiesUpdate()
+        TypeProperties = new StorageClassTypePropertiesUpdate
         {
             BackingStorageClassName = "default",
         },

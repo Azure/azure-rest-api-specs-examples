@@ -15,28 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ConnectedClusterStorageClassResource
+// this example assumes you already have this ConnectedClusterStorageClassResource created on azure
+// for more information of creating ConnectedClusterStorageClassResource, please refer to the document of ConnectedClusterStorageClassResource
 string resourceUri = "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-ConnectedClusterStorageClassCollection collection = client.GetConnectedClusterStorageClasses(scopeId);
+string storageClassName = "testrwx";
+ResourceIdentifier connectedClusterStorageClassResourceId = ConnectedClusterStorageClassResource.CreateResourceIdentifier(resourceUri, storageClassName);
+ConnectedClusterStorageClassResource connectedClusterStorageClass = client.GetConnectedClusterStorageClassResource(connectedClusterStorageClassResourceId);
 
 // invoke the operation
-string storageClassName = "testrwx";
-NullableResponse<ConnectedClusterStorageClassResource> response = await collection.GetIfExistsAsync(storageClassName);
-ConnectedClusterStorageClassResource result = response.HasValue ? response.Value : null;
+ConnectedClusterStorageClassResource result = await connectedClusterStorageClass.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ConnectedClusterStorageClassData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ConnectedClusterStorageClassData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

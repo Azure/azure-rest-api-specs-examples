@@ -25,4 +25,4 @@ ConnectedClusterBgpPeerResource connectedClusterBgpPeer = client.GetConnectedClu
 // invoke the operation
 await connectedClusterBgpPeer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

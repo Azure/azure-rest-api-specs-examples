@@ -25,4 +25,4 @@ ConnectedClusterLoadBalancerResource connectedClusterLoadBalancer = client.GetCo
 // invoke the operation
 await connectedClusterLoadBalancer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

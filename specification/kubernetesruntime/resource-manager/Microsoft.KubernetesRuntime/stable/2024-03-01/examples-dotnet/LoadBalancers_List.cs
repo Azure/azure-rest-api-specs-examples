@@ -15,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this ConnectedClusterLoadBalancerResource
 string resourceUri = "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-ConnectedClusterLoadBalancerCollection collection = client.GetConnectedClusterLoadBalancers(scopeId);
+ConnectedClusterLoadBalancerCollection collection = client.GetConnectedClusterLoadBalancers(new ResourceIdentifier(resourceUri));
 
 // invoke the operation and iterate over the result
 await foreach (ConnectedClusterLoadBalancerResource item in collection.GetAllAsync())
@@ -33,4 +29,4 @@ await foreach (ConnectedClusterLoadBalancerResource item in collection.GetAllAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -23,16 +23,13 @@ ResourceIdentifier connectedClusterLoadBalancerResourceId = ConnectedClusterLoad
 ConnectedClusterLoadBalancerResource connectedClusterLoadBalancer = client.GetConnectedClusterLoadBalancerResource(connectedClusterLoadBalancerResourceId);
 
 // invoke the operation
-ConnectedClusterLoadBalancerData data = new ConnectedClusterLoadBalancerData()
+ConnectedClusterLoadBalancerData data = new ConnectedClusterLoadBalancerData
 {
-    Properties = new ConnectedClusterLoadBalancerProperties(new string[]
-{
-"192.168.50.1/24","192.168.51.2-192.168.51.10"
-}, AdvertiseMode.Arp)
+    Properties = new ConnectedClusterLoadBalancerProperties(new string[] { "192.168.50.1/24", "192.168.51.2-192.168.51.10" }, AdvertiseMode.Arp)
     {
         ServiceSelector =
         {
-        ["app"] = "frontend",
+        ["app"] = "frontend"
         },
     },
 };

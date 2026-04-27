@@ -16,18 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlueprintResource created on azure
-// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+// this example assumes you already have this BlueprintArtifactResource created on azure
+// for more information of creating BlueprintArtifactResource, please refer to the document of BlueprintArtifactResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
 string blueprintName = "simpleBlueprint";
-ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
-BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
-
-// get the collection of this BlueprintArtifactResource
-BlueprintArtifactCollection collection = blueprint.GetBlueprintArtifacts();
+string artifactName = "costCenterPolicy";
+ResourceIdentifier blueprintArtifactResourceId = BlueprintArtifactResource.CreateResourceIdentifier(resourceScope, blueprintName, artifactName);
+BlueprintArtifactResource blueprintArtifact = client.GetBlueprintArtifactResource(blueprintArtifactResourceId);
 
 // invoke the operation
-string artifactName = "costCenterPolicy";
 ArtifactData data = new PolicyAssignmentArtifact("/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62", new Dictionary<string, ParameterValue>
 {
     ["tagName"] = new ParameterValue
@@ -42,7 +39,7 @@ ArtifactData data = new PolicyAssignmentArtifact("/providers/Microsoft.Authoriza
 {
     DisplayName = "force costCenter tag on all resources",
 };
-ArmOperation<BlueprintArtifactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, artifactName, data);
+ArmOperation<BlueprintArtifactResource> lro = await blueprintArtifact.UpdateAsync(WaitUntil.Completed, data);
 BlueprintArtifactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

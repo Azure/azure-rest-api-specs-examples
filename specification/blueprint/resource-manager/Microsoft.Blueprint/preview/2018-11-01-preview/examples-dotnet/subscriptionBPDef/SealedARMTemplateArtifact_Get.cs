@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PublishedBlueprintResource created on azure
-// for more information of creating PublishedBlueprintResource, please refer to the document of PublishedBlueprintResource
+// this example assumes you already have this BlueprintVersionArtifactResource created on azure
+// for more information of creating BlueprintVersionArtifactResource, please refer to the document of BlueprintVersionArtifactResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
 string blueprintName = "simpleBlueprint";
 string versionId = "V2";
-ResourceIdentifier publishedBlueprintResourceId = PublishedBlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName, versionId);
-PublishedBlueprintResource publishedBlueprint = client.GetPublishedBlueprintResource(publishedBlueprintResourceId);
-
-// get the collection of this BlueprintVersionArtifactResource
-BlueprintVersionArtifactCollection collection = publishedBlueprint.GetBlueprintVersionArtifacts();
+string artifactName = "storageTemplate";
+ResourceIdentifier blueprintVersionArtifactResourceId = BlueprintVersionArtifactResource.CreateResourceIdentifier(resourceScope, blueprintName, versionId, artifactName);
+BlueprintVersionArtifactResource blueprintVersionArtifact = client.GetBlueprintVersionArtifactResource(blueprintVersionArtifactResourceId);
 
 // invoke the operation
-string artifactName = "storageTemplate";
-NullableResponse<BlueprintVersionArtifactResource> response = await collection.GetIfExistsAsync(artifactName);
-BlueprintVersionArtifactResource result = response.HasValue ? response.Value : null;
+BlueprintVersionArtifactResource result = await blueprintVersionArtifact.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ArtifactData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ArtifactData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

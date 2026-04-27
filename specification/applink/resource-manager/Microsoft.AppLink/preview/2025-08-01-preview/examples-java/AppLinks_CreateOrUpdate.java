@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.appnetwork.models.AppLinkProperties;
+import com.azure.resourcemanager.appnetwork.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.appnetwork.models.ManagedServiceIdentityType;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for AppLinks CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-08-01-preview/AppLinks_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: AppLinks_CreateOrUpdate.
+     * 
+     * @param manager Entry point to AppnetworkManager.
+     */
+    public static void appLinksCreateOrUpdate(com.azure.resourcemanager.appnetwork.AppnetworkManager manager) {
+        manager.appLinks().define("applink-test-01").withRegion("westus2").withExistingResourceGroup("test_rg")
+            .withTags(mapOf("key2913", "fakeTokenPlaceholder")).withProperties(new AppLinkProperties())
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED)).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

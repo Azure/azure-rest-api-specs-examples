@@ -6385,3 +6385,4 @@ id,name,language,tag,package,version,date_epoch,date
 6384,"Azure.ResourceManager.Compute,1.15.0-beta.1",dotnet,Azure.ResourceManager.Compute_1.15.0-beta.1,Azure.ResourceManager.Compute,1.15.0-beta.1,1777013014,04/24/2026
 6385,"Azure.ResourceManager.EdgeZones,1.0.0-beta.3",dotnet,Azure.ResourceManager.EdgeZones_1.0.0-beta.3,Azure.ResourceManager.EdgeZones,1.0.0-beta.3,1777013013,04/24/2026
 6386,"Azure.ResourceManager.DataLakeAnalytics,1.1.2",dotnet,Azure.ResourceManager.DataLakeAnalytics_1.1.2,Azure.ResourceManager.DataLakeAnalytics,1.1.2,1776934073,04/23/2026
+6387,"Azure.ResourceManager.DevSpaces,1.0.0",dotnet,Azure.ResourceManager.DevSpaces_1.0.0,Azure.ResourceManager.DevSpaces,1.0.0,1776934055,04/23/2026

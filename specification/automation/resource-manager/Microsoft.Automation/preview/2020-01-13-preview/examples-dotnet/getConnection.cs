@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationConnectionResource created on azure
-// for more information of creating AutomationConnectionResource, please refer to the document of AutomationConnectionResource
+// this example assumes you already have this AutomationAccountResource created on azure
+// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount28";
-string connectionName = "myConnection";
-ResourceIdentifier automationConnectionResourceId = AutomationConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, connectionName);
-AutomationConnectionResource automationConnection = client.GetAutomationConnectionResource(automationConnectionResourceId);
+ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
+AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
+
+// get the collection of this AutomationConnectionResource
+AutomationConnectionCollection collection = automationAccount.GetAutomationConnections();
 
 // invoke the operation
-AutomationConnectionResource result = await automationConnection.GetAsync();
+string connectionName = "myConnection";
+NullableResponse<AutomationConnectionResource> response = await collection.GetIfExistsAsync(connectionName);
+AutomationConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AutomationConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AutomationConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

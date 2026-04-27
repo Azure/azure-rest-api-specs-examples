@@ -23,7 +23,10 @@ ResourceIdentifier hybridConnectivityEndpointResourceId = HybridConnectivityEndp
 HybridConnectivityEndpointResource hybridConnectivityEndpoint = client.GetHybridConnectivityEndpointResource(hybridConnectivityEndpointResourceId);
 
 // invoke the operation
-HybridConnectivityEndpointData data = new HybridConnectivityEndpointData();
+HybridConnectivityEndpointData data = new HybridConnectivityEndpointData
+{
+    Properties = new HybridConnectivityEndpointProperties(HybridConnectivityEndpointType.Default),
+};
 HybridConnectivityEndpointResource result = await hybridConnectivityEndpoint.UpdateAsync(data);
 
 // the variable result is a resource, you could call other operations on this instance as well

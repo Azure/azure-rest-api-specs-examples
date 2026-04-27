@@ -6400,3 +6400,4 @@ id,name,language,tag,package,version,date_epoch,date
 6399,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.2",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.2,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.2,1776846789,04/22/2026
 6400,"Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.3",dotnet,Azure.ResourceManager.CosmosDBForPostgreSql_1.1.0-beta.3,Azure.ResourceManager.CosmosDBForPostgreSql,1.1.0-beta.3,1776843376,04/22/2026
 6401,"Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.2",dotnet,Azure.ResourceManager.DatabaseWatcher_1.0.0-beta.2,Azure.ResourceManager.DatabaseWatcher,1.0.0-beta.2,1776843339,04/22/2026
+6402,"Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.2",dotnet,Azure.ResourceManager.ContainerOrchestratorRuntime_1.0.0-beta.2,Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.2,1776843316,04/22/2026

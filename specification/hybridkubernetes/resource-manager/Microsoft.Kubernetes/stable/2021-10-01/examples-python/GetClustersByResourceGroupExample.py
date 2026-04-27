@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hybridkubernetes import ConnectedKubernetesClient
 
 """
@@ -6,7 +7,7 @@ from azure.mgmt.hybridkubernetes import ConnectedKubernetesClient
     pip install azure-identity
     pip install azure-mgmt-hybridkubernetes
 # USAGE
-    python get_clusters_example.py
+    python get_clusters_by_resource_group_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.CostManagement.Models;
 using Azure.ResourceManager.CostManagement;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/SingleSubscriptionAlert.json
@@ -15,18 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CostManagementAlertResource created on azure
-// for more information of creating CostManagementAlertResource, please refer to the document of CostManagementAlertResource
+// get the collection of this CostManagementAlertResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-string alertId = "22222222-2222-2222-2222-222222222222";
-ResourceIdentifier costManagementAlertResourceId = CostManagementAlertResource.CreateResourceIdentifier(scope, alertId);
-CostManagementAlertResource costManagementAlert = client.GetCostManagementAlertResource(costManagementAlertResourceId);
+CostManagementAlertCollection collection = client.GetCostManagementAlerts(new ResourceIdentifier(scope));
 
 // invoke the operation
-CostManagementAlertResource result = await costManagementAlert.GetAsync();
+string alertId = "22222222-2222-2222-2222-222222222222";
+NullableResponse<CostManagementAlertResource> response = await collection.GetIfExistsAsync(alertId);
+CostManagementAlertResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CostManagementAlertData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CostManagementAlertData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

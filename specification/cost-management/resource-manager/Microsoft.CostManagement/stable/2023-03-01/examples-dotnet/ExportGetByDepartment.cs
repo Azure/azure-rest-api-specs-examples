@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CostManagementExportResource created on azure
-// for more information of creating CostManagementExportResource, please refer to the document of CostManagementExportResource
+// get the collection of this CostManagementExportResource
 string scope = "providers/Microsoft.Billing/billingAccounts/12/departments/1234";
-string exportName = "TestExport";
-ResourceIdentifier costManagementExportResourceId = CostManagementExportResource.CreateResourceIdentifier(scope, exportName);
-CostManagementExportResource costManagementExport = client.GetCostManagementExportResource(costManagementExportResourceId);
+CostManagementExportCollection collection = client.GetCostManagementExports(new ResourceIdentifier(scope));
 
 // invoke the operation
-CostManagementExportResource result = await costManagementExport.GetAsync();
+string exportName = "TestExport";
+NullableResponse<CostManagementExportResource> response = await collection.GetIfExistsAsync(exportName);
+CostManagementExportResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CostManagementExportData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CostManagementExportData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

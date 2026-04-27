@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.azurestackhci.models.EdgeMachine;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for EdgeMachines Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/EdgeMachines_Update.json
+     */
+    /**
+     * Sample code: EdgeMachines_Update.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void edgeMachinesUpdate(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        EdgeMachine resource = manager.edgeMachines()
+            .getByResourceGroupWithResponse("ArcInstance-rg", "machine-1", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("key2335", "fakeTokenPlaceholder")).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

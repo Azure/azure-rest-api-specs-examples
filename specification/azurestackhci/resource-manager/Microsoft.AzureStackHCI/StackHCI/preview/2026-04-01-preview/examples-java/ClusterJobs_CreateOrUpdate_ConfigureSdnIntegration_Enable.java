@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.azurestackhci.models.DeploymentMode;
+import com.azure.resourcemanager.azurestackhci.models.HciConfigureSdnIntegrationJobProperties;
+import com.azure.resourcemanager.azurestackhci.models.SdnIntegrationIntent;
+
+/**
+ * Samples for ClusterJobs CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/ClusterJobs_CreateOrUpdate_ConfigureSdnIntegration_Enable.json
+     */
+    /**
+     * Sample code: ClusterJobs_CreateOrUpdate_ConfigureSdnIntegration_Enable.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void clusterJobsCreateOrUpdateConfigureSdnIntegrationEnable(
+        com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.clusterJobs().define("configureSdnIntegration").withExistingCluster("test-rg", "myCluster")
+            .withProperties(new HciConfigureSdnIntegrationJobProperties().withDeploymentMode(DeploymentMode.DEPLOY)
+                .withSdnIntegrationIntent(SdnIntegrationIntent.ENABLE))
+            .create();
+    }
+}

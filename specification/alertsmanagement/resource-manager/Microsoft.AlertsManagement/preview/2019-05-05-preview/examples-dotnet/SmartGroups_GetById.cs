@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.AlertsManagement.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AlertsManagement;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/SmartGroups_GetById.json
@@ -15,18 +16,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SmartGroupResource created on azure
-// for more information of creating SmartGroupResource, please refer to the document of SmartGroupResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "9e261de7-c804-4b9d-9ebf-6f50fe350a9a";
-Guid smartGroupId = Guid.Parse("603675da-9851-4b26-854a-49fc53d32715");
-ResourceIdentifier smartGroupResourceId = SmartGroupResource.CreateResourceIdentifier(subscriptionId, smartGroupId);
-SmartGroupResource smartGroup = client.GetSmartGroupResource(smartGroupResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this SmartGroupResource
+SmartGroupCollection collection = subscriptionResource.GetSmartGroups();
 
 // invoke the operation
-SmartGroupResource result = await smartGroup.GetAsync();
+Guid smartGroupId = Guid.Parse("603675da-9851-4b26-854a-49fc53d32715");
+NullableResponse<SmartGroupResource> response = await collection.GetIfExistsAsync(smartGroupId);
+SmartGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SmartGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SmartGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

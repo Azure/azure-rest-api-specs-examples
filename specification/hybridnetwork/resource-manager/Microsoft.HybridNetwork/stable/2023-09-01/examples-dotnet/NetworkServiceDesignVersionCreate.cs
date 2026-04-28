@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/NetworkServiceDesignVersionCreate.json
 // this example is just showing the usage of "NetworkServiceDesignVersions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,24 +32,22 @@ NetworkServiceDesignVersionCollection collection = networkServiceDesignGroup.Get
 string networkServiceDesignVersionName = "1.0.0";
 NetworkServiceDesignVersionData data = new NetworkServiceDesignVersionData(new AzureLocation("eastus"))
 {
-    Properties = new NetworkServiceDesignVersionPropertiesFormat()
+    Properties = new NetworkServiceDesignVersionPropertiesFormat
     {
         ConfigurationGroupSchemaReferences =
         {
-        ["MyVM_Configuration"] = new WritableSubResource()
+        ["MyVM_Configuration"] = new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/publishers/contosoGroup/networkServiceDesignGroups/NSD_contoso/configurationGroupSchemas/MyVM_Configuration_Schema"),
+        }
         },
-        },
-        ResourceElementTemplates =
+        ResourceElementTemplates = {new ArmResourceDefinitionResourceElementTemplateDetails
         {
-        new ArmResourceDefinitionResourceElementTemplateDetails()
-        {
-        Configuration = new ArmResourceDefinitionResourceElementTemplate()
+        Configuration = new ArmResourceDefinitionResourceElementTemplate
         {
         TemplateType = TemplateType.ArmTemplate,
         ParameterValues = "{\"publisherName\":\"{configurationparameters('MyVM_Configuration').publisherName}\",\"skuGroupName\":\"{configurationparameters('MyVM_Configuration').skuGroupName}\",\"skuVersion\":\"{configurationparameters('MyVM_Configuration').skuVersion}\",\"skuOfferingLocation\":\"{configurationparameters('MyVM_Configuration').skuOfferingLocation}\",\"nfviType\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviType}\",\"nfviId\":\"{nfvis().nfvisFromSitePerNfviType.AzureCore.nfviAlias1.nfviId}\",\"allowSoftwareUpdates\":\"{configurationparameters('MyVM_Configuration').allowSoftwareUpdates}\",\"virtualNetworkName\":\"{configurationparameters('MyVM_Configuration').vnetName}\",\"subnetName\":\"{configurationparameters('MyVM_Configuration').subnetName}\",\"subnetAddressPrefix\":\"{configurationparameters('MyVM_Configuration').subnetAddressPrefix}\",\"managedResourceGroup\":\"{configurationparameters('SNSSelf').managedResourceGroupName}\",\"adminPassword\":\"{secretparameters('MyVM_Configuration').adminPassword}\"}",
-        ArtifactProfile = new NSDArtifactProfile()
+        ArtifactProfile = new NSDArtifactProfile
         {
         ArtifactStoreReferenceId = new ResourceIdentifier("/subscriptions/subid/providers/Microsoft.HybridNetwork/publishers/contosoGroup/artifactStoreReference/store1"),
         ArtifactName = "MyVMArmTemplate",
@@ -57,14 +55,11 @@ NetworkServiceDesignVersionData data = new NetworkServiceDesignVersionData(new A
         },
         },
         Name = "MyVM",
-        DependsOnProfile = new DependsOnProfile()
+        DependsOnProfile = new DependsOnProfile
         {
-        InstallDependsOn =
-        {
+        InstallDependsOn = {},
         },
-        },
-        }
-        },
+        }},
     },
 };
 ArmOperation<NetworkServiceDesignVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkServiceDesignVersionName, data);

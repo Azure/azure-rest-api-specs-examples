@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridNetwork;
 using Azure.ResourceManager.HybridNetwork.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridNetwork;
 
 // Generated from example definition: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/ConfigurationGroupValueFirstPartyCreate.json
 // this example is just showing the usage of "ConfigurationGroupValues_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,10 +30,10 @@ ConfigurationGroupValueCollection collection = resourceGroupResource.GetConfigur
 string configurationGroupValueName = "testConfigurationGroupValue";
 ConfigurationGroupValueData data = new ConfigurationGroupValueData(new AzureLocation("eastus"))
 {
-    Properties = new ConfigurationValueWithoutSecrets()
+    Properties = new ConfigurationValueWithoutSecrets
     {
         ConfigurationValue = "{\"interconnect-groups\":{\"stripe-one\":{\"name\":\"Stripe one\",\"international-interconnects\":[\"france\",\"germany\"],\"domestic-interconnects\":[\"birmingham\",\"edinburgh\"]},\"stripe-two\":{\"name\":\"Stripe two\",\"international-interconnects\":[\"germany\",\"italy\"],\"domestic-interconnects\":[\"edinburgh\",\"london\"]}},\"interconnect-group-assignments\":{\"ssc-one\":{\"ssc\":\"SSC 1\",\"interconnects\":\"stripe-one\"},\"ssc-two\":{\"ssc\":\"SSC 2\",\"interconnects\":\"stripe-two\"}}}",
-        ConfigurationGroupSchemaResourceReference = new SecretDeploymentResourceReference()
+        ConfigurationGroupSchemaResourceReference = new SecretDeploymentResourceReference
         {
             Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/testRG/providers/microsoft.hybridnetwork/publishers/testPublisher/configurationGroupSchemas/testConfigurationGroupSchemaName"),
         },

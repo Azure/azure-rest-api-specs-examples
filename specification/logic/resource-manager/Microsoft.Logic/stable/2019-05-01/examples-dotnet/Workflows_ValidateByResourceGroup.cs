@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/Workflows_ValidateByResourceGroup.json
@@ -28,31 +27,21 @@ LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkf
 // invoke the operation
 LogicWorkflowData data = new LogicWorkflowData(new AzureLocation("brazilsouth"))
 {
-    IntegrationAccount = new LogicResourceReference()
+    IntegrationAccount = new LogicResourceReference
     {
         Id = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Logic/integrationAccounts/test-integration-account"),
     },
-    Definition = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Definition = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["$schema"] = "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-        ["actions"] = new Dictionary<string, object>()
-        {
-        },
+        ["actions"] = new object(),
         ["contentVersion"] = "1.0.0.0",
-        ["outputs"] = new Dictionary<string, object>()
-        {
-        },
-        ["parameters"] = new Dictionary<string, object>()
-        {
-        },
-        ["triggers"] = new Dictionary<string, object>()
-        {
-        }
+        ["outputs"] = new object(),
+        ["parameters"] = new object(),
+        ["triggers"] = new object()
     }),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 await logicWorkflow.ValidateByResourceGroupAsync(data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

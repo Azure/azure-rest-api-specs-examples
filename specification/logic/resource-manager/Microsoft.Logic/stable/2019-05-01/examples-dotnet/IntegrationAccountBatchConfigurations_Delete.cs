@@ -27,4 +27,4 @@ IntegrationAccountBatchConfigurationResource integrationAccountBatchConfiguratio
 // invoke the operation
 await integrationAccountBatchConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

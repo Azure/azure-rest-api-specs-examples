@@ -1,12 +1,10 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_ListKeyVaultKeys.json
@@ -26,7 +24,7 @@ ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.Cre
 IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
 
 // invoke the operation and iterate over the result
-IntegrationAccountListKeyVaultKeyContent content = new IntegrationAccountListKeyVaultKeyContent(new IntegrationAccountKeyVaultNameReference()
+IntegrationAccountListKeyVaultKeyContent content = new IntegrationAccountListKeyVaultKeyContent(new IntegrationAccountKeyVaultNameReference
 {
     Id = new ResourceIdentifier("subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.KeyVault/vaults/testKeyVault"),
 })
@@ -38,4 +36,4 @@ await foreach (IntegrationAccountKeyVaultKey item in integrationAccount.GetKeyVa
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

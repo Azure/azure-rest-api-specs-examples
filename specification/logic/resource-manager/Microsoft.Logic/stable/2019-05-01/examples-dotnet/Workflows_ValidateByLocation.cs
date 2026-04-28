@@ -29,31 +29,21 @@ AzureLocation location = new AzureLocation("brazilsouth");
 string workflowName = "test-workflow";
 LogicWorkflowData data = new LogicWorkflowData(new AzureLocation("brazilsouth"))
 {
-    IntegrationAccount = new LogicResourceReference()
+    IntegrationAccount = new LogicResourceReference
     {
         Id = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Logic/integrationAccounts/test-integration-account"),
     },
-    Definition = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Definition = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["$schema"] = "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-        ["actions"] = new Dictionary<string, object>()
-        {
-        },
+        ["actions"] = new object(),
         ["contentVersion"] = "1.0.0.0",
-        ["outputs"] = new Dictionary<string, object>()
-        {
-        },
-        ["parameters"] = new Dictionary<string, object>()
-        {
-        },
-        ["triggers"] = new Dictionary<string, object>()
-        {
-        }
+        ["outputs"] = new object(),
+        ["parameters"] = new object(),
+        ["triggers"] = new object()
     }),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 await resourceGroupResource.ValidateByLocationWorkflowAsync(location, workflowName, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

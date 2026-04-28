@@ -27,4 +27,4 @@ IntegrationAccountCertificateResource integrationAccountCertificate = client.Get
 // invoke the operation
 await integrationAccountCertificate.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

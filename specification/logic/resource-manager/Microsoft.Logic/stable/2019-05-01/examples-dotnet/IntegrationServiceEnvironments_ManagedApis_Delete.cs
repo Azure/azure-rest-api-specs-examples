@@ -27,4 +27,4 @@ IntegrationServiceEnvironmentManagedApiResource integrationServiceEnvironmentMan
 // invoke the operation
 await integrationServiceEnvironmentManagedApi.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

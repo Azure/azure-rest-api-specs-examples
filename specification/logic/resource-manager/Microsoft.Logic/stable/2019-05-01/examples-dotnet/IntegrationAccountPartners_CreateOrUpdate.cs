@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -16,35 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountResource created on azure
-// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
+// this example assumes you already have this IntegrationAccountPartnerResource created on azure
+// for more information of creating IntegrationAccountPartnerResource, please refer to the document of IntegrationAccountPartnerResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
-IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
-
-// get the collection of this IntegrationAccountPartnerResource
-IntegrationAccountPartnerCollection collection = integrationAccount.GetIntegrationAccountPartners();
+string partnerName = "testPartner";
+ResourceIdentifier integrationAccountPartnerResourceId = IntegrationAccountPartnerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, partnerName);
+IntegrationAccountPartnerResource integrationAccountPartner = client.GetIntegrationAccountPartnerResource(integrationAccountPartnerResourceId);
 
 // invoke the operation
-string partnerName = "testPartner";
-IntegrationAccountPartnerData data = new IntegrationAccountPartnerData(new AzureLocation("westus"), IntegrationAccountPartnerType.B2B, new IntegrationAccountPartnerContent()
+IntegrationAccountPartnerData data = new IntegrationAccountPartnerData(new AzureLocation("westus"), IntegrationAccountPartnerType.B2B, new IntegrationAccountPartnerContent
 {
-    B2BBusinessIdentities =
-    {
-    new IntegrationAccountBusinessIdentity("AA","ZZ")
-    },
+    B2BBusinessIdentities = { new IntegrationAccountBusinessIdentity("AA", "ZZ") },
 })
 {
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    Tags =
-    {
-    },
+    Metadata = BinaryData.FromObjectAsJson(new object()),
+    Tags = { },
 };
-ArmOperation<IntegrationAccountPartnerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, partnerName, data);
+ArmOperation<IntegrationAccountPartnerResource> lro = await integrationAccountPartner.UpdateAsync(WaitUntil.Completed, data);
 IntegrationAccountPartnerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

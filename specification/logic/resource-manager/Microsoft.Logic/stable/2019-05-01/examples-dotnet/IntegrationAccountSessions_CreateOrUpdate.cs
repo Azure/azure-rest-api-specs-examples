@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -15,28 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountResource created on azure
-// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
+// this example assumes you already have this IntegrationAccountSessionResource created on azure
+// for more information of creating IntegrationAccountSessionResource, please refer to the document of IntegrationAccountSessionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string integrationAccountName = "testia123";
-ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
-IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
-
-// get the collection of this IntegrationAccountSessionResource
-IntegrationAccountSessionCollection collection = integrationAccount.GetIntegrationAccountSessions();
+string sessionName = "testsession123-ICN";
+ResourceIdentifier integrationAccountSessionResourceId = IntegrationAccountSessionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, sessionName);
+IntegrationAccountSessionResource integrationAccountSession = client.GetIntegrationAccountSessionResource(integrationAccountSessionResourceId);
 
 // invoke the operation
-string sessionName = "testsession123-ICN";
-IntegrationAccountSessionData data = new IntegrationAccountSessionData(new AzureLocation("placeholder"))
+IntegrationAccountSessionData data = new IntegrationAccountSessionData(default)
 {
-    Content = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Content = BinaryData.FromObjectAsJson(new
     {
-        ["controlNumber"] = "1234",
-        ["controlNumberChangedTime"] = "2017-02-21T22:30:11.9923759Z"
+        controlNumber = "1234",
+        controlNumberChangedTime = "2017-02-21T22:30:11.9923759Z",
     }),
 };
-ArmOperation<IntegrationAccountSessionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sessionName, data);
+ArmOperation<IntegrationAccountSessionResource> lro = await integrationAccountSession.UpdateAsync(WaitUntil.Completed, data);
 IntegrationAccountSessionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

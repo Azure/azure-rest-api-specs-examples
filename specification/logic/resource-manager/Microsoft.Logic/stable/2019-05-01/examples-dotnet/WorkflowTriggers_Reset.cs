@@ -27,4 +27,4 @@ LogicWorkflowTriggerResource logicWorkflowTrigger = client.GetLogicWorkflowTrigg
 // invoke the operation
 await logicWorkflowTrigger.ResetAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

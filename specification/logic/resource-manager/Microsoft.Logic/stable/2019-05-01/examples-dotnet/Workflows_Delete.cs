@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/Workflows_Delete.json
@@ -28,4 +27,4 @@ LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkf
 // invoke the operation
 await logicWorkflow.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

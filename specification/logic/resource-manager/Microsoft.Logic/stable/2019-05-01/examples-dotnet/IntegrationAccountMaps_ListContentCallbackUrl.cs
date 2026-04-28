@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,7 +25,7 @@ ResourceIdentifier integrationAccountMapResourceId = IntegrationAccountMapResour
 IntegrationAccountMapResource integrationAccountMap = client.GetIntegrationAccountMapResource(integrationAccountMapResourceId);
 
 // invoke the operation
-ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo()
+ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo
 {
     NotAfter = DateTimeOffset.Parse("2018-04-19T16:00:00Z"),
     KeyType = LogicKeyType.Primary,

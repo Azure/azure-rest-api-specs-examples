@@ -30,4 +30,4 @@ await foreach (LogicApiOperationInfo item in integrationServiceEnvironmentManage
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

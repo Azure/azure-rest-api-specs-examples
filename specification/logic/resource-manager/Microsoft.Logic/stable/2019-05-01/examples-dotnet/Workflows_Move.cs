@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/Workflows_Move.json
@@ -26,10 +25,10 @@ ResourceIdentifier logicWorkflowResourceId = LogicWorkflowResource.CreateResourc
 LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkflowResourceId);
 
 // invoke the operation
-LogicWorkflowReference move = new LogicWorkflowReference()
+LogicWorkflowReference move = new LogicWorkflowReference
 {
     Id = new ResourceIdentifier("subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/newResourceGroup/providers/Microsoft.Logic/workflows/newWorkflowName"),
 };
 await logicWorkflow.MoveAsync(WaitUntil.Completed, move);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

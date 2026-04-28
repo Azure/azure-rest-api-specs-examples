@@ -26,7 +26,7 @@ LogicWorkflowVersionResource logicWorkflowVersion = client.GetLogicWorkflowVersi
 
 // invoke the operation
 string triggerName = "testTriggerName";
-ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo()
+ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo
 {
     NotAfter = DateTimeOffset.Parse("2017-03-05T08:00:00Z"),
     KeyType = LogicKeyType.Primary,

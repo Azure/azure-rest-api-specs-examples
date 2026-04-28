@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationServiceEnvironments_Patch.json
@@ -26,16 +25,16 @@ ResourceIdentifier integrationServiceEnvironmentResourceId = IntegrationServiceE
 IntegrationServiceEnvironmentResource integrationServiceEnvironment = client.GetIntegrationServiceEnvironmentResource(integrationServiceEnvironmentResourceId);
 
 // invoke the operation
-IntegrationServiceEnvironmentData data = new IntegrationServiceEnvironmentData(new AzureLocation("placeholder"))
+IntegrationServiceEnvironmentData data = new IntegrationServiceEnvironmentData(default)
 {
-    Sku = new IntegrationServiceEnvironmentSku()
+    Sku = new IntegrationServiceEnvironmentSku
     {
         Name = IntegrationServiceEnvironmentSkuName.Developer,
         Capacity = 0,
     },
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 ArmOperation<IntegrationServiceEnvironmentResource> lro = await integrationServiceEnvironment.UpdateAsync(WaitUntil.Completed, data);

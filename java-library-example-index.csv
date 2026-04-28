@@ -6459,3 +6459,4 @@ id,name,language,tag,package,version,date_epoch,date
 6458,"Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.6",dotnet,Azure.ResourceManager.MachineLearningCompute_1.0.0-beta.6,Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.6,1777364280,04/28/2026
 6459,"Azure.ResourceManager.ManagementPartner,1.0.0-beta.6",dotnet,Azure.ResourceManager.ManagementPartner_1.0.0-beta.6,Azure.ResourceManager.ManagementPartner,1.0.0-beta.6,1777364230,04/28/2026
 6460,"Azure.ResourceManager.Maintenance,1.2.0-beta.10",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.10,Azure.ResourceManager.Maintenance,1.2.0-beta.10,1777364213,04/28/2026
+6461,"Azure.ResourceManager.ManagedNetwork,1.0.0-beta.6",dotnet,Azure.ResourceManager.ManagedNetwork_1.0.0-beta.6,Azure.ResourceManager.ManagedNetwork,1.0.0-beta.6,1777364161,04/28/2026

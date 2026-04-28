@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkFabricInternalNetworkResource created on azure
-// for more information of creating NetworkFabricInternalNetworkResource, please refer to the document of NetworkFabricInternalNetworkResource
+// this example assumes you already have this NetworkFabricL3IsolationDomainResource created on azure
+// for more information of creating NetworkFabricL3IsolationDomainResource, please refer to the document of NetworkFabricL3IsolationDomainResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
 string resourceGroupName = "example-rg";
 string l3IsolationDomainName = "example-l3domain";
-string internalNetworkName = "example-internalnetwork";
-ResourceIdentifier networkFabricInternalNetworkResourceId = NetworkFabricInternalNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, l3IsolationDomainName, internalNetworkName);
-NetworkFabricInternalNetworkResource networkFabricInternalNetwork = client.GetNetworkFabricInternalNetworkResource(networkFabricInternalNetworkResourceId);
+ResourceIdentifier networkFabricL3IsolationDomainResourceId = NetworkFabricL3IsolationDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, l3IsolationDomainName);
+NetworkFabricL3IsolationDomainResource networkFabricL3IsolationDomain = client.GetNetworkFabricL3IsolationDomainResource(networkFabricL3IsolationDomainResourceId);
+
+// get the collection of this NetworkFabricInternalNetworkResource
+NetworkFabricInternalNetworkCollection collection = networkFabricL3IsolationDomain.GetNetworkFabricInternalNetworks();
 
 // invoke the operation
-NetworkFabricInternalNetworkResource result = await networkFabricInternalNetwork.GetAsync();
+string internalNetworkName = "example-internalnetwork";
+NullableResponse<NetworkFabricInternalNetworkResource> response = await collection.GetIfExistsAsync(internalNetworkName);
+NetworkFabricInternalNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkFabricInternalNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkFabricInternalNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

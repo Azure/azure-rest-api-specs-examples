@@ -7,8 +7,8 @@ using Azure.Identity;
 using Azure.ResourceManager.InformaticaDataManagement.Models;
 using Azure.ResourceManager.InformaticaDataManagement;
 
-// Generated from example definition: specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/ServerlessRuntimes_CreateOrUpdate_MaximumSet_Gen.json
-// this example is just showing the usage of "ServerlessRuntimes_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2024-05-08/ServerlessRuntimes_CreateOrUpdate_MaximumSet_Gen.json
+// this example is just showing the usage of "InformaticaServerlessRuntimeResource_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -28,7 +28,7 @@ InformaticaServerlessRuntimeCollection collection = informaticaOrganization.GetI
 
 // invoke the operation
 string serverlessRuntimeName = "0j-__";
-InformaticaServerlessRuntimeData data = new InformaticaServerlessRuntimeData()
+InformaticaServerlessRuntimeData data = new InformaticaServerlessRuntimeData
 {
     Properties = new InformaticaServerlessRuntimeProperties("bkxdfopapbqucyhduewrubjpaei")
     {
@@ -41,40 +41,40 @@ InformaticaServerlessRuntimeData data = new InformaticaServerlessRuntimeData()
         {
             VnetResourceGuid = "5328d299-1462-4be0-bef1-303a28e556a0",
         },
-        AdvancedCustomProperties =
-        {
-        new AdvancedCustomProperties()
+        AdvancedCustomProperties = {new AdvancedCustomProperties
         {
         Key = "qcmc",
         Value = "unraxmnohdmvutt",
-        }
-        },
+        }},
         SupplementaryFileLocation = "zmlqtkncwgqhhupsnqluumz",
-        ServerlessRuntimeConfig = new ServerlessRuntimeConfigProperties()
+        ServerlessRuntimeConfig = new ServerlessRuntimeConfigProperties
         {
-            CdiConfigProps =
+            CdiConfigProps = {new CdiConfigProperties("hngsdqvtjdhwqlbqfotipaiwjuys", "zlrlbg", new InformaticaApplicationConfigs[]
             {
-            new CdiConfigProperties("hngsdqvtjdhwqlbqfotipaiwjuys","zlrlbg",new InformaticaApplicationConfigs[]
+            new InformaticaApplicationConfigs(
+                "lw",
+                "upfvjrqcrwwedfujkmsodeinw",
+                "mozgsetpwjmtyl",
+                "dixfyeobngivyvf",
+                "j",
+                "zvgkqwmi")
+            })},
+            CdieConfigProps = {new CdiConfigProperties("hngsdqvtjdhwqlbqfotipaiwjuys", "zlrlbg", new InformaticaApplicationConfigs[]
             {
-            new InformaticaApplicationConfigs("lw","upfvjrqcrwwedfujkmsodeinw","mozgsetpwjmtyl","dixfyeobngivyvf","j","zvgkqwmi")
-            })
-            },
-            CdieConfigProps =
-            {
-            new CdiConfigProperties("hngsdqvtjdhwqlbqfotipaiwjuys","zlrlbg",new InformaticaApplicationConfigs[]
-            {
-            new InformaticaApplicationConfigs("lw","upfvjrqcrwwedfujkmsodeinw","mozgsetpwjmtyl","dixfyeobngivyvf","j","zvgkqwmi")
-            })
-            },
+            new InformaticaApplicationConfigs(
+                "lw",
+                "upfvjrqcrwwedfujkmsodeinw",
+                "mozgsetpwjmtyl",
+                "dixfyeobngivyvf",
+                "j",
+                "zvgkqwmi")
+            })},
         },
-        ServerlessRuntimeTags =
-        {
-        new ServerlessRuntimeTag()
+        ServerlessRuntimeTags = {new ServerlessRuntimeTag
         {
         Name = "korveuycuwhs",
         Value = "uyiuegxnkgp",
-        }
-        },
+        }},
         UserContextToken = "oludf",
     },
 };

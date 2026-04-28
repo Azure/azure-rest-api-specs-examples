@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HealthDataAIServices.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HealthDataAIServices;
 
 // Generated from example definition: 2024-09-20/PrivateLinks_ListByDeidService_MaximumSet_Gen.json

@@ -6451,3 +6451,4 @@ id,name,language,tag,package,version,date_epoch,date
 6450,azure-mgmt-recoveryservicessiterecovery@2.0.0b1,python,azure-mgmt-recoveryservicessiterecovery_2.0.0b1,azure-mgmt-recoveryservicessiterecovery,2.0.0b1,1777281472,04/27/2026
 6451,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicegroups/armservicegroups@v0.1.0,go,sdk/resourcemanager/servicegroups/armservicegroups/v0.1.0,sdk/resourcemanager/servicegroups/armservicegroups,v0.1.0,1777298867,04/27/2026
 6452,@azure/arm-monitorslis@1.0.0-beta.1,js,@azure/arm-monitorslis_1.0.0-beta.1,@azure/arm-monitorslis,1.0.0-beta.1,1777323070,04/27/2026
+6453,"Azure.ResourceManager.AppConfiguration,1.5.0-beta.1",dotnet,Azure.ResourceManager.AppConfiguration_1.5.0-beta.1,Azure.ResourceManager.AppConfiguration,1.5.0-beta.1,1777370299,04/28/2026

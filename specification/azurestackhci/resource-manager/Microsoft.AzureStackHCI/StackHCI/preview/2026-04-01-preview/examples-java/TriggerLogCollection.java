@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.azurestackhci.models.LogCollectionRequest;
+import com.azure.resourcemanager.azurestackhci.models.LogCollectionRequestProperties;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Clusters TriggerLogCollection.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/TriggerLogCollection.json
+     */
+    /**
+     * Sample code: Trigger Log Collection.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void triggerLogCollection(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.clusters().triggerLogCollection("test-rg", "mycluster",
+            new LogCollectionRequest().withProperties(
+                new LogCollectionRequestProperties().withFromDate(OffsetDateTime.parse("2020-01-01T17:18:19.1234567Z"))
+                    .withToDate(OffsetDateTime.parse("2021-01-01T17:18:19.1234567Z"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

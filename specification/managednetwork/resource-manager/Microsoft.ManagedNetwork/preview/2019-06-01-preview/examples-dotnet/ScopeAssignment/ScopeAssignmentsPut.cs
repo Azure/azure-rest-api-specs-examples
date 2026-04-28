@@ -14,17 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this ScopeAssignmentResource
+// this example assumes you already have this ScopeAssignmentResource created on azure
+// for more information of creating ScopeAssignmentResource, please refer to the document of ScopeAssignmentResource
 string scope = "subscriptions/subscriptionC";
-ScopeAssignmentCollection collection = client.GetScopeAssignments(new ResourceIdentifier(scope));
+string scopeAssignmentName = "subscriptionCAssignment";
+ResourceIdentifier scopeAssignmentResourceId = ScopeAssignmentResource.CreateResourceIdentifier(scope, scopeAssignmentName);
+ScopeAssignmentResource scopeAssignment = client.GetScopeAssignmentResource(scopeAssignmentResourceId);
 
 // invoke the operation
-string scopeAssignmentName = "subscriptionCAssignment";
 ScopeAssignmentData data = new ScopeAssignmentData
 {
     AssignedManagedNetwork = "/subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork",
 };
-ArmOperation<ScopeAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scopeAssignmentName, data);
+ArmOperation<ScopeAssignmentResource> lro = await scopeAssignment.UpdateAsync(WaitUntil.Completed, data);
 ScopeAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

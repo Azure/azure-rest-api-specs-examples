@@ -6,6 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.LambdaTestHyperExecute.Models;
 using Azure.ResourceManager.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.LambdaTestHyperExecute;
 
 // Generated from example definition: 2024-02-01/Organizations_Get_MaximumSet_Gen.json
@@ -16,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LambdaTestHyperExecuteOrganizationResource created on azure
-// for more information of creating LambdaTestHyperExecuteOrganizationResource, please refer to the document of LambdaTestHyperExecuteOrganizationResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "171E7A75-341B-4472-BC4C-7603C5AB9F32";
 string resourceGroupName = "rgopenapi";
-string organizationname = "testorg";
-ResourceIdentifier lambdaTestHyperExecuteOrganizationResourceId = LambdaTestHyperExecuteOrganizationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, organizationname);
-LambdaTestHyperExecuteOrganizationResource lambdaTestHyperExecuteOrganization = client.GetLambdaTestHyperExecuteOrganizationResource(lambdaTestHyperExecuteOrganizationResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this LambdaTestHyperExecuteOrganizationResource
+LambdaTestHyperExecuteOrganizationCollection collection = resourceGroupResource.GetLambdaTestHyperExecuteOrganizations();
 
 // invoke the operation
-LambdaTestHyperExecuteOrganizationResource result = await lambdaTestHyperExecuteOrganization.GetAsync();
+string organizationname = "testorg";
+NullableResponse<LambdaTestHyperExecuteOrganizationResource> response = await collection.GetIfExistsAsync(organizationname);
+LambdaTestHyperExecuteOrganizationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LambdaTestHyperExecuteOrganizationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LambdaTestHyperExecuteOrganizationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

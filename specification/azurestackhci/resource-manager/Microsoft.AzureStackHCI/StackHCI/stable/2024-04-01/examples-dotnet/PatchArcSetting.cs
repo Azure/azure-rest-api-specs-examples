@@ -27,18 +27,10 @@ ArcSettingResource arcSetting = client.GetArcSettingResource(arcSettingResourceI
 // invoke the operation
 ArcSettingPatch patch = new ArcSettingPatch
 {
-    ConnectivityProperties = BinaryData.FromObjectAsJson(new
+    Properties = new ArcSettingsPatchProperties
     {
-        enabled = "true",
-        serviceConfigurations = new object[]
-{
-new
-{
-port = "6516",
-serviceName = "WAC",
-}
-},
-    }),
+        ConnectivityProperties = BinaryData.FromObjectAsJson(new { enabled = true }),
+    },
 };
 ArcSettingResource result = await arcSetting.UpdateAsync(patch);
 

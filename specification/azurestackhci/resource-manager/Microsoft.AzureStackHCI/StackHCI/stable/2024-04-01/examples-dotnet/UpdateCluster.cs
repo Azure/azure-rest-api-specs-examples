@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/UpdateCluster.json
@@ -37,7 +38,7 @@ HciClusterPatch patch = new HciClusterPatch
         WindowsServerSubscription = WindowsServerSubscription.Enabled,
         DiagnosticLevel = HciClusterDiagnosticLevel.Basic,
     },
-    ManagedServiceIdentityType = HciManagedServiceIdentityType.SystemAssigned,
+    Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned),
 };
 HciClusterResource result = await hciCluster.UpdateAsync(patch);
 

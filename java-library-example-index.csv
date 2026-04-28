@@ -6449,3 +6449,4 @@ id,name,language,tag,package,version,date_epoch,date
 6448,"Azure.ResourceManager.HybridCompute,1.1.0-beta.2",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.2,Azure.ResourceManager.HybridCompute,1.1.0-beta.2,1777283764,04/27/2026
 6449,"Azure.ResourceManager.IotCentral,1.1.0-beta.4",dotnet,Azure.ResourceManager.IotCentral_1.1.0-beta.4,Azure.ResourceManager.IotCentral,1.1.0-beta.4,1777283686,04/27/2026
 6450,azure-mgmt-recoveryservicessiterecovery@2.0.0b1,python,azure-mgmt-recoveryservicessiterecovery_2.0.0b1,azure-mgmt-recoveryservicessiterecovery,2.0.0b1,1777281472,04/27/2026
+6451,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicegroups/armservicegroups@v0.1.0,go,sdk/resourcemanager/servicegroups/armservicegroups/v0.1.0,sdk/resourcemanager/servicegroups/armservicegroups,v0.1.0,1777298867,04/27/2026

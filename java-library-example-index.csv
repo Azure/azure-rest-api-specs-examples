@@ -6456,3 +6456,4 @@ id,name,language,tag,package,version,date_epoch,date
 6455,"Azure.ResourceManager.Logic,1.2.0",dotnet,Azure.ResourceManager.Logic_1.2.0,Azure.ResourceManager.Logic,1.2.0,1777370038,04/28/2026
 6456,"Azure.ResourceManager.LambdaTestHyperExecute,1.0.1",dotnet,Azure.ResourceManager.LambdaTestHyperExecute_1.0.1,Azure.ResourceManager.LambdaTestHyperExecute,1.0.1,1777370023,04/28/2026
 6457,"Azure.ResourceManager.ManagedServiceIdentities,1.4.1",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.4.1,Azure.ResourceManager.ManagedServiceIdentities,1.4.1,1777370018,04/28/2026
+6458,"Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.6",dotnet,Azure.ResourceManager.MachineLearningCompute_1.0.0-beta.6,Azure.ResourceManager.MachineLearningCompute,1.0.0-beta.6,1777364280,04/28/2026

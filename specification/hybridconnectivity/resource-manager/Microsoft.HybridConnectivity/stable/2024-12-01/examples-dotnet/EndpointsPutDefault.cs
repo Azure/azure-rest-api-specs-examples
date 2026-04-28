@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.HybridConnectivity.Models;
 using Azure.ResourceManager.HybridConnectivity;
 
 // Generated from example definition: 2024-12-01/EndpointsPutDefault.json
@@ -20,7 +21,10 @@ HybridConnectivityEndpointCollection collection = client.GetHybridConnectivityEn
 
 // invoke the operation
 string endpointName = "default";
-HybridConnectivityEndpointData data = new HybridConnectivityEndpointData();
+HybridConnectivityEndpointData data = new HybridConnectivityEndpointData
+{
+    Properties = new HybridConnectivityEndpointProperties(HybridConnectivityEndpointType.Default),
+};
 ArmOperation<HybridConnectivityEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 HybridConnectivityEndpointResource result = lro.Value;
 

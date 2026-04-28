@@ -23,7 +23,11 @@ ResourceIdentifier hybridConnectivityEndpointResourceId = HybridConnectivityEndp
 HybridConnectivityEndpointResource hybridConnectivityEndpoint = client.GetHybridConnectivityEndpointResource(hybridConnectivityEndpointResourceId);
 
 // invoke the operation
-ManagedProxyContent content = new ManagedProxyContent(null);
+ManagedProxyContent content = new ManagedProxyContent("127.0.0.1:65035")
+{
+    Hostname = "r.proxy.arc.com",
+    ServiceName = HybridConnectivityServiceName.WAC,
+};
 ManagedProxyAsset result = await hybridConnectivityEndpoint.GetManagedProxyDetailsAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

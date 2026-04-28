@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.HybridConnectivity.Models;
 using Azure.ResourceManager.HybridConnectivity;
 
 // Generated from example definition: 2024-12-01/EndpointsPutCustom.json
@@ -20,7 +21,13 @@ HybridConnectivityEndpointCollection collection = client.GetHybridConnectivityEn
 
 // invoke the operation
 string endpointName = "custom";
-HybridConnectivityEndpointData data = new HybridConnectivityEndpointData();
+HybridConnectivityEndpointData data = new HybridConnectivityEndpointData
+{
+    Properties = new HybridConnectivityEndpointProperties(HybridConnectivityEndpointType.Custom)
+    {
+        ResourceId = new ResourceIdentifier("/subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.Relay/namespaces/custom-relay-namespace"),
+    },
+};
 ArmOperation<HybridConnectivityEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 HybridConnectivityEndpointResource result = lro.Value;
 

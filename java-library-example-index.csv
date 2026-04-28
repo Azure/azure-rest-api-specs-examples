@@ -6438,3 +6438,14 @@ id,name,language,tag,package,version,date_epoch,date
 6437,azure-mgmt-managementgroups@2.0.0b1,python,azure-mgmt-managementgroups_2.0.0b1,azure-mgmt-managementgroups,2.0.0b1,1775114648,04/02/2026
 6438,azure-mgmt-confluent@3.0.0b1,python,azure-mgmt-confluent_3.0.0b1,azure-mgmt-confluent,3.0.0b1,1775113673,04/02/2026
 6439,azure-mgmt-cognitiveservices@15.0.0b1,python,azure-mgmt-cognitiveservices_15.0.0b1,azure-mgmt-cognitiveservices,15.0.0b1,1775077819,04/01/2026
+6440,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-azurestackhci_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-azurestackhci,1.1.0-beta.1,1777282364,04/27/2026
+6441,"Azure.ResourceManager.HybridNetwork,1.0.0-beta.3",dotnet,Azure.ResourceManager.HybridNetwork_1.0.0-beta.3,Azure.ResourceManager.HybridNetwork,1.0.0-beta.3,1777287536,04/27/2026
+6442,"Azure.ResourceManager.HealthDataAIServices,1.0.1",dotnet,Azure.ResourceManager.HealthDataAIServices_1.0.1,Azure.ResourceManager.HealthDataAIServices,1.0.1,1777286265,04/27/2026
+6443,"Azure.ResourceManager.LabServices,1.1.2",dotnet,Azure.ResourceManager.LabServices_1.1.2,Azure.ResourceManager.LabServices,1.1.2,1777285838,04/27/2026
+6444,"Azure.ResourceManager.HybridConnectivity,1.1.1",dotnet,Azure.ResourceManager.HybridConnectivity_1.1.1,Azure.ResourceManager.HybridConnectivity,1.1.1,1777285833,04/27/2026
+6445,"Azure.ResourceManager.InformaticaDataManagement,1.0.0",dotnet,Azure.ResourceManager.InformaticaDataManagement_1.0.0,Azure.ResourceManager.InformaticaDataManagement,1.0.0,1777285831,04/27/2026
+6446,"Azure.ResourceManager.HybridContainerService,1.0.2",dotnet,Azure.ResourceManager.HybridContainerService_1.0.2,Azure.ResourceManager.HybridContainerService,1.0.2,1777285826,04/27/2026
+6447,"Azure.ResourceManager.KubernetesConfiguration,1.2.1",dotnet,Azure.ResourceManager.KubernetesConfiguration_1.2.1,Azure.ResourceManager.KubernetesConfiguration,1.2.1,1777285821,04/27/2026
+6448,"Azure.ResourceManager.HybridCompute,1.1.0-beta.2",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.2,Azure.ResourceManager.HybridCompute,1.1.0-beta.2,1777283764,04/27/2026
+6449,"Azure.ResourceManager.IotCentral,1.1.0-beta.4",dotnet,Azure.ResourceManager.IotCentral_1.1.0-beta.4,Azure.ResourceManager.IotCentral,1.1.0-beta.4,1777283686,04/27/2026
+6450,azure-mgmt-recoveryservicessiterecovery@2.0.0b1,python,azure-mgmt-recoveryservicessiterecovery_2.0.0b1,azure-mgmt-recoveryservicessiterecovery,2.0.0b1,1777281472,04/27/2026

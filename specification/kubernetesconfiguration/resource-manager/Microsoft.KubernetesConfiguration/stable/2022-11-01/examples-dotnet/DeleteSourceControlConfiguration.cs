@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.KubernetesConfiguration;
 using Azure.ResourceManager.KubernetesConfiguration.Models;
+using Azure.ResourceManager.KubernetesConfiguration;
 
 // Generated from example definition: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/examples/DeleteSourceControlConfiguration.json
 // this example is just showing the usage of "SourceControlConfigurations_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -29,4 +29,4 @@ KubernetesSourceControlConfigurationResource kubernetesSourceControlConfiguratio
 // invoke the operation
 await kubernetesSourceControlConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

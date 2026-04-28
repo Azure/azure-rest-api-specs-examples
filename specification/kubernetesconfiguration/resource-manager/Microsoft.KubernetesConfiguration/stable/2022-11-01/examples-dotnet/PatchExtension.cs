@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.KubernetesConfiguration;
 using Azure.ResourceManager.KubernetesConfiguration.Models;
+using Azure.ResourceManager.KubernetesConfiguration;
 
 // Generated from example definition: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/examples/PatchExtension.json
 // this example is just showing the usage of "Extensions_Update" operation, for the dependent resources, they will have to be created separately.
@@ -27,18 +27,18 @@ ResourceIdentifier kubernetesClusterExtensionResourceId = KubernetesClusterExten
 KubernetesClusterExtensionResource kubernetesClusterExtension = client.GetKubernetesClusterExtensionResource(kubernetesClusterExtensionResourceId);
 
 // invoke the operation
-KubernetesClusterExtensionPatch patch = new KubernetesClusterExtensionPatch()
+KubernetesClusterExtensionPatch patch = new KubernetesClusterExtensionPatch
 {
     AutoUpgradeMinorVersion = true,
     ReleaseTrain = "Preview",
     ConfigurationSettings =
     {
     ["omsagent.env.clusterName"] = "clusterName1",
-    ["omsagent.secret.wsid"] = "a38cef99-5a89-52ed-b6db-22095c23664b",
+    ["omsagent.secret.wsid"] = "a38cef99-5a89-52ed-b6db-22095c23664b"
     },
     ConfigurationProtectedSettings =
     {
-    ["omsagent.secret.key"] = "secretKeyValue01",
+    ["omsagent.secret.key"] = "secretKeyValue01"
     },
 };
 ArmOperation<KubernetesClusterExtensionResource> lro = await kubernetesClusterExtension.UpdateAsync(WaitUntil.Completed, patch);

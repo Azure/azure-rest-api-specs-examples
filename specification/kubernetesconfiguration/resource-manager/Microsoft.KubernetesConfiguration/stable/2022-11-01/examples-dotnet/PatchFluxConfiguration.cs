@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.KubernetesConfiguration;
 using Azure.ResourceManager.KubernetesConfiguration.Models;
+using Azure.ResourceManager.KubernetesConfiguration;
 
 // Generated from example definition: specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/examples/PatchFluxConfiguration.json
 // this example is just showing the usage of "FluxConfigurations_Update" operation, for the dependent resources, they will have to be created separately.
@@ -27,29 +27,27 @@ ResourceIdentifier kubernetesFluxConfigurationResourceId = KubernetesFluxConfigu
 KubernetesFluxConfigurationResource kubernetesFluxConfiguration = client.GetKubernetesFluxConfigurationResource(kubernetesFluxConfigurationResourceId);
 
 // invoke the operation
-KubernetesFluxConfigurationPatch patch = new KubernetesFluxConfigurationPatch()
+KubernetesFluxConfigurationPatch patch = new KubernetesFluxConfigurationPatch
 {
     Suspend = true,
-    GitRepository = new KubernetesGitRepositoryUpdateContent()
+    GitRepository = new KubernetesGitRepositoryUpdateContent
     {
         Uri = new Uri("https://github.com/jonathan-innis/flux2-kustomize-helm-example.git"),
     },
     Kustomizations =
     {
-    ["srs-kustomization1"] = null,
-    ["srs-kustomization2"] = new KustomizationUpdateContent()
+    ["srs-kustomization1"] = default,
+    ["srs-kustomization2"] = new KustomizationUpdateContent
     {
     Path = "./test/alt-path",
-    DependsOn =
-    {
+    DependsOn = {},
+    SyncIntervalInSeconds = 300L,
     },
-    SyncIntervalInSeconds = 300,
-    },
-    ["srs-kustomization3"] = new KustomizationUpdateContent()
+    ["srs-kustomization3"] = new KustomizationUpdateContent
     {
     Path = "./test/another-path",
-    SyncIntervalInSeconds = 300,
-    },
+    SyncIntervalInSeconds = 300L,
+    }
     },
 };
 ArmOperation<KubernetesFluxConfigurationResource> lro = await kubernetesFluxConfiguration.UpdateAsync(WaitUntil.Completed, patch);

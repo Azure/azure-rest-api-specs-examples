@@ -1,0 +1,18 @@
+
+/**
+ * Samples for GalleryScripts Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-03-03/galleryScriptExamples/GalleryScript_Get.json
+     */
+    /**
+     * Sample code: Get a gallery Script.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void getAGalleryScript(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getGalleryScripts().getWithResponse("myResourceGroup", "myGalleryName",
+            "myGalleryScriptName", com.azure.core.util.Context.NONE);
+    }
+}

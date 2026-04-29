@@ -6473,3 +6473,4 @@ id,name,language,tag,package,version,date_epoch,date
 6472,@azure/arm-alertrulerecommendations@1.0.0-beta.1,js,@azure/arm-alertrulerecommendations_1.0.0-beta.1,@azure/arm-alertrulerecommendations,1.0.0-beta.1,1777430407,04/29/2026
 6473,"Azure.ResourceManager.Orbital,1.1.2",dotnet,Azure.ResourceManager.Orbital_1.1.2,Azure.ResourceManager.Orbital,1.1.2,1777450027,04/29/2026
 6474,"Azure.ResourceManager.Peering,1.2.3",dotnet,Azure.ResourceManager.Peering_1.2.3,Azure.ResourceManager.Peering,1.2.3,1777450023,04/29/2026
+6475,"Azure.ResourceManager.MongoDBAtlas,1.0.1",dotnet,Azure.ResourceManager.MongoDBAtlas_1.0.1,Azure.ResourceManager.MongoDBAtlas,1.0.1,1777450022,04/29/2026

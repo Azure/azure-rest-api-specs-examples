@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Marketplace.Models;
 using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/CreatePrivateStoreCollection.json
@@ -14,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateStoreResource created on azure
-// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
+// this example assumes you already have this PrivateStoreCollectionInfoResource created on azure
+// for more information of creating PrivateStoreCollectionInfoResource, please refer to the document of PrivateStoreCollectionInfoResource
 Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
-ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
-PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
-
-// get the collection of this PrivateStoreCollectionInfoResource
-PrivateStoreCollectionInfoCollection collection = privateStore.GetPrivateStoreCollectionInfos();
+Guid collectionId = Guid.Parse("d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1");
+ResourceIdentifier privateStoreCollectionInfoResourceId = PrivateStoreCollectionInfoResource.CreateResourceIdentifier(privateStoreId, collectionId);
+PrivateStoreCollectionInfoResource privateStoreCollectionInfo = client.GetPrivateStoreCollectionInfoResource(privateStoreCollectionInfoResourceId);
 
 // invoke the operation
-Guid collectionId = Guid.Parse("d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1");
 PrivateStoreCollectionInfoData info = new PrivateStoreCollectionInfoData
 {
     CollectionName = "Test Collection",
@@ -32,7 +30,7 @@ PrivateStoreCollectionInfoData info = new PrivateStoreCollectionInfoData
     AreAllSubscriptionsSelected = false,
     SubscriptionsList = { "b340914e-353d-453a-85fb-8f9b65b51f91", "f2baa04d-5bfc-461b-b6d8-61b403c9ec48" },
 };
-ArmOperation<PrivateStoreCollectionInfoResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, collectionId, info);
+ArmOperation<PrivateStoreCollectionInfoResource> lro = await privateStoreCollectionInfo.UpdateAsync(WaitUntil.Completed, info);
 PrivateStoreCollectionInfoResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

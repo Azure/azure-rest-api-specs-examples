@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ManagedNetworkFabric;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NeighborGroups_Get_MaximumSet_Gen.json
@@ -16,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkFabricNeighborGroupResource created on azure
-// for more information of creating NetworkFabricNeighborGroupResource, please refer to the document of NetworkFabricNeighborGroupResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
 string resourceGroupName = "example-rg";
-string neighborGroupName = "example-neighborGroup";
-ResourceIdentifier networkFabricNeighborGroupResourceId = NetworkFabricNeighborGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, neighborGroupName);
-NetworkFabricNeighborGroupResource networkFabricNeighborGroup = client.GetNetworkFabricNeighborGroupResource(networkFabricNeighborGroupResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkFabricNeighborGroupResource
+NetworkFabricNeighborGroupCollection collection = resourceGroupResource.GetNetworkFabricNeighborGroups();
 
 // invoke the operation
-NetworkFabricNeighborGroupResource result = await networkFabricNeighborGroup.GetAsync();
+string neighborGroupName = "example-neighborGroup";
+NullableResponse<NetworkFabricNeighborGroupResource> response = await collection.GetIfExistsAsync(neighborGroupName);
+NetworkFabricNeighborGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkFabricNeighborGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkFabricNeighborGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkFabricExternalNetworkResource created on azure
-// for more information of creating NetworkFabricExternalNetworkResource, please refer to the document of NetworkFabricExternalNetworkResource
+// this example assumes you already have this NetworkFabricL3IsolationDomainResource created on azure
+// for more information of creating NetworkFabricL3IsolationDomainResource, please refer to the document of NetworkFabricL3IsolationDomainResource
 string subscriptionId = "42EEDB3B-8E17-46E3-B0B4-B1CD9842D90D";
 string resourceGroupName = "rgL3IsolationDomains";
 string l3IsolationDomainName = "yhtr";
-string externalNetworkName = "fltpszzikbalrzaqq";
-ResourceIdentifier networkFabricExternalNetworkResourceId = NetworkFabricExternalNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, l3IsolationDomainName, externalNetworkName);
-NetworkFabricExternalNetworkResource networkFabricExternalNetwork = client.GetNetworkFabricExternalNetworkResource(networkFabricExternalNetworkResourceId);
+ResourceIdentifier networkFabricL3IsolationDomainResourceId = NetworkFabricL3IsolationDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, l3IsolationDomainName);
+NetworkFabricL3IsolationDomainResource networkFabricL3IsolationDomain = client.GetNetworkFabricL3IsolationDomainResource(networkFabricL3IsolationDomainResourceId);
+
+// get the collection of this NetworkFabricExternalNetworkResource
+NetworkFabricExternalNetworkCollection collection = networkFabricL3IsolationDomain.GetNetworkFabricExternalNetworks();
 
 // invoke the operation
-NetworkFabricExternalNetworkResource result = await networkFabricExternalNetwork.GetAsync();
+string externalNetworkName = "fltpszzikbalrzaqq";
+NullableResponse<NetworkFabricExternalNetworkResource> response = await collection.GetIfExistsAsync(externalNetworkName);
+NetworkFabricExternalNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkFabricExternalNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkFabricExternalNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

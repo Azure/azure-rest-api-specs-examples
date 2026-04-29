@@ -6484,3 +6484,4 @@ id,name,language,tag,package,version,date_epoch,date
 6483,"Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.3",dotnet,Azure.ResourceManager.MigrationDiscoverySap_1.0.0-beta.3,Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.3,1777446200,04/29/2026
 6484,"Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.2",dotnet,Azure.ResourceManager.OnlineExperimentation_1.0.0-beta.2,Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.2,1777446185,04/29/2026
 6485,"Azure.ResourceManager.Quantum,1.0.0-beta.7",dotnet,Azure.ResourceManager.Quantum_1.0.0-beta.7,Azure.ResourceManager.Quantum,1.0.0-beta.7,1777446184,04/29/2026
+6486,"Azure.ResourceManager.PineconeVectorDB,1.0.0-beta.2",dotnet,Azure.ResourceManager.PineconeVectorDB_1.0.0-beta.2,Azure.ResourceManager.PineconeVectorDB,1.0.0-beta.2,1777446179,04/29/2026

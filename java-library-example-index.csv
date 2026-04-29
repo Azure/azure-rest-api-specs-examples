@@ -6491,3 +6491,4 @@ id,name,language,tag,package,version,date_epoch,date
 6490,azure-mgmt-certificateregistration@1.0.0b1,python,azure-mgmt-certificateregistration_1.0.0b1,azure-mgmt-certificateregistration,1.0.0b1,1777429107,04/29/2026
 6491,azure-mgmt-domainregistration@1.0.0b1,python,azure-mgmt-domainregistration_1.0.0b1,azure-mgmt-domainregistration,1.0.0b1,1777429090,04/29/2026
 6492,azure-mgmt-appnetwork@1.0.0b1,python,azure-mgmt-appnetwork_1.0.0b1,azure-mgmt-appnetwork,1.0.0b1,1777429044,04/29/2026
+6493,azure-mgmt-compute@38.0.0,python,azure-mgmt-compute_38.0.0,azure-mgmt-compute,38.0.0,1777405048,04/28/2026

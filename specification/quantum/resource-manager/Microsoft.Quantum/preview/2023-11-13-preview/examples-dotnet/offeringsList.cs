@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 string locationName = "westus2";
-await foreach (QuantumProviderDescription item in subscriptionResource.GetOfferingsAsync(locationName))
+await foreach (QuantumProviderOffer item in subscriptionResource.GetProviderOfferingsAsync(new AzureLocation(locationName)))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

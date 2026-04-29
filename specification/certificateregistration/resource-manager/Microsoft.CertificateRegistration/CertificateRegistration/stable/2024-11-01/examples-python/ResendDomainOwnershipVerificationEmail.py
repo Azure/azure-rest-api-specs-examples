@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.web import WebSiteManagementClient
+from azure.mgmt.certificateregistration import CertificateRegistrationMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-web
+    pip install azure-mgmt-certificateregistration
 # USAGE
     python resend_domain_ownership_verification_email.py
 
@@ -17,9 +17,9 @@ from azure.mgmt.web import WebSiteManagementClient
 
 
 def main():
-    client = WebSiteManagementClient(
+    client = CertificateRegistrationMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.app_service_certificate_orders.resend_request_emails(
@@ -29,6 +29,6 @@ def main():
     )
 
 
-# x-ms-original-file: specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/ResendDomainOwnershipVerificationEmail.json
+# x-ms-original-file: 2024-11-01/ResendDomainOwnershipVerificationEmail.json
 if __name__ == "__main__":
     main()

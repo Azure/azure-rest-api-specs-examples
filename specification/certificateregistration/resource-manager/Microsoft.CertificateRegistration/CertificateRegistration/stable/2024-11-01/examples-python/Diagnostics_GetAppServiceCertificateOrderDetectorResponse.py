@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.web import WebSiteManagementClient
+from azure.mgmt.certificateregistration import CertificateRegistrationMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-web
+    pip install azure-mgmt-certificateregistration
 # USAGE
     python diagnostics_get_app_service_certificate_order_detector_response.py
 
@@ -17,9 +17,9 @@ from azure.mgmt.web import WebSiteManagementClient
 
 
 def main():
-    client = WebSiteManagementClient(
+    client = CertificateRegistrationMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="5700fc96-77b4-4f8d-afce-c353d8c443bd",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.certificate_orders_diagnostics.get_app_service_certificate_order_detector_response(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/certificateregistration/resource-manager/Microsoft.CertificateRegistration/CertificateRegistration/stable/2024-11-01/examples/Diagnostics_GetAppServiceCertificateOrderDetectorResponse.json
+# x-ms-original-file: 2024-11-01/Diagnostics_GetAppServiceCertificateOrderDetectorResponse.json
 if __name__ == "__main__":
     main()

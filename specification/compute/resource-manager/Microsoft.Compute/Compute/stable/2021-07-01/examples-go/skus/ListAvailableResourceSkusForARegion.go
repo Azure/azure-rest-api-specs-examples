@@ -1,0 +1,218 @@
+package armcompute_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+)
+
+// Generated from example definition: 2021-07-01/skus/ListAvailableResourceSkusForARegion.json
+func ExampleResourceSKUsClient_NewListPager_listsAllAvailableResourceSkUsForTheSpecifiedRegion() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcompute.NewClientFactory("{subscription-id}", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewResourceSKUsClient().NewListPager(&armcompute.ResourceSKUsClientListOptions{
+		Filter: to.Ptr("location eq 'westus'")})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcompute.ResourceSKUsClientListResponse{
+		// 	ResourceSKUsResult: armcompute.ResourceSKUsResult{
+		// 		Value: []*armcompute.ResourceSKU{
+		// 			{
+		// 				ResourceType: to.Ptr("virtualMachines"),
+		// 				Locations: []*string{
+		// 					to.Ptr("westus"),
+		// 				},
+		// 				Capabilities: []*armcompute.ResourceSKUCapabilities{
+		// 					{
+		// 						Name: to.Ptr("MaxResourceVolumeMB"),
+		// 						Value: to.Ptr("20480"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("OSVhdSizeMB"),
+		// 						Value: to.Ptr("1047552"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUs"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("HyperVGenerations"),
+		// 						Value: to.Ptr("V1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MemoryGB"),
+		// 						Value: to.Ptr("0.75"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MaxDataDiskCount"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("LowPriorityCapable"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("PremiumIO"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUsAvailable"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("ACUs"),
+		// 						Value: to.Ptr("50"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUsPerCore"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("EphemeralOSDiskSupported"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("AcceleratedNetworkingEnabled"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("RdmaEnabled"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MaxNetworkInterfaces"),
+		// 						Value: to.Ptr("2"),
+		// 					},
+		// 				},
+		// 				LocationInfo: []*armcompute.ResourceSKULocationInfo{
+		// 					{
+		// 						Location: to.Ptr("westus"),
+		// 						Zones: []*string{
+		// 							to.Ptr("2"),
+		// 							to.Ptr("1"),
+		// 						},
+		// 						ZoneDetails: []*armcompute.ResourceSKUZoneDetails{
+		// 							{
+		// 								Name: []*string{
+		// 									to.Ptr("2"),
+		// 								},
+		// 								Capabilities: []*armcompute.ResourceSKUCapabilities{
+		// 									{
+		// 										Name: to.Ptr("UltraSSDAvailable"),
+		// 										Value: to.Ptr("True"),
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 				},
+		// 				Name: to.Ptr("Standard_A0"),
+		// 				Tier: to.Ptr("Standard"),
+		// 				Size: to.Ptr("A0"),
+		// 				Family: to.Ptr("standardA0_A7Family"),
+		// 			},
+		// 			{
+		// 				ResourceType: to.Ptr("virtualMachines"),
+		// 				Locations: []*string{
+		// 					to.Ptr("westus"),
+		// 				},
+		// 				Capabilities: []*armcompute.ResourceSKUCapabilities{
+		// 					{
+		// 						Name: to.Ptr("MaxResourceVolumeMB"),
+		// 						Value: to.Ptr("71680"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("OSVhdSizeMB"),
+		// 						Value: to.Ptr("1047552"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUs"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("HyperVGenerations"),
+		// 						Value: to.Ptr("V1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MemoryGB"),
+		// 						Value: to.Ptr("1.75"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MaxDataDiskCount"),
+		// 						Value: to.Ptr("2"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("LowPriorityCapable"),
+		// 						Value: to.Ptr("True"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("PremiumIO"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUsAvailable"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("ACUs"),
+		// 						Value: to.Ptr("100"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("vCPUsPerCore"),
+		// 						Value: to.Ptr("1"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("EphemeralOSDiskSupported"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("AcceleratedNetworkingEnabled"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("RdmaEnabled"),
+		// 						Value: to.Ptr("False"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("MaxNetworkInterfaces"),
+		// 						Value: to.Ptr("2"),
+		// 					},
+		// 				},
+		// 				LocationInfo: []*armcompute.ResourceSKULocationInfo{
+		// 					{
+		// 						Location: to.Ptr("westus"),
+		// 						Zones: []*string{
+		// 							to.Ptr("1"),
+		// 							to.Ptr("2"),
+		// 							to.Ptr("3"),
+		// 						},
+		// 					},
+		// 				},
+		// 				Name: to.Ptr("Standard_A1"),
+		// 				Tier: to.Ptr("Standard"),
+		// 				Size: to.Ptr("A1"),
+		// 				Family: to.Ptr("standardA0_A7Family"),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

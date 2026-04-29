@@ -1,0 +1,80 @@
+package armcompute_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+)
+
+// Generated from example definition: 2025-11-01/virtualMachineScaleSetExamples/VirtualMachineScaleSetRollingUpgrade_GetLatest_MaximumSet_Gen.json
+func ExampleVirtualMachineScaleSetRollingUpgradesClient_GetLatest_virtualMachineScaleSetRollingUpgradeGetLatestMaximumSetGen() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcompute.NewClientFactory("{subscription-id}", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewVirtualMachineScaleSetRollingUpgradesClient().GetLatest(ctx, "rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaa", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcompute.VirtualMachineScaleSetRollingUpgradesClientGetLatestResponse{
+	// 	RollingUpgradeStatusInfo: &armcompute.RollingUpgradeStatusInfo{
+	// 		Properties: &armcompute.RollingUpgradeStatusInfoProperties{
+	// 			Policy: &armcompute.RollingUpgradePolicy{
+	// 				MaxBatchInstancePercent: to.Ptr[int32](49),
+	// 				MaxUnhealthyInstancePercent: to.Ptr[int32](81),
+	// 				MaxUnhealthyUpgradedInstancePercent: to.Ptr[int32](98),
+	// 				PauseTimeBetweenBatches: to.Ptr("aaaaaaaaaaaaaaa"),
+	// 				EnableCrossZoneUpgrade: to.Ptr(true),
+	// 				PrioritizeUnhealthyInstances: to.Ptr(true),
+	// 				RollbackFailedInstancesOnPolicyBreach: to.Ptr(true),
+	// 				MaxSurge: to.Ptr(true),
+	// 			},
+	// 			RunningStatus: &armcompute.RollingUpgradeRunningStatus{
+	// 				Code: to.Ptr(armcompute.RollingUpgradeStatusCodeRollingForward),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T13:06:23.362Z"); return t}()),
+	// 				LastAction: to.Ptr(armcompute.RollingUpgradeActionTypeStart),
+	// 				LastActionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T13:06:23.362Z"); return t}()),
+	// 			},
+	// 			Progress: &armcompute.RollingUpgradeProgressInfo{
+	// 				SuccessfulInstanceCount: to.Ptr[int32](6),
+	// 				FailedInstanceCount: to.Ptr[int32](25),
+	// 				InProgressInstanceCount: to.Ptr[int32](20),
+	// 				PendingInstanceCount: to.Ptr[int32](27),
+	// 			},
+	// 			Error: &armcompute.APIError{
+	// 				Details: []*armcompute.APIErrorBase{
+	// 					{
+	// 						Code: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaa"),
+	// 						Target: to.Ptr("aaaa"),
+	// 						Message: to.Ptr("aa"),
+	// 					},
+	// 				},
+	// 				Innererror: &armcompute.InnerError{
+	// 					Exceptiontype: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
+	// 					Errordetail: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaa"),
+	// 				},
+	// 				Code: to.Ptr("aaaaaaa"),
+	// 				Target: to.Ptr("aaaaaaa"),
+	// 				Message: to.Ptr("aaaaaaaaa"),
+	// 			},
+	// 		},
+	// 		ID: to.Ptr("aaaaaaaaaa"),
+	// 		Name: to.Ptr("aaaaaaaaaaaaaaaaaaa"),
+	// 		Type: to.Ptr("aaaaaaaaaaaaaaaaaaaaa"),
+	// 		Location: to.Ptr("aaaaaa"),
+	// 		Tags: map[string]*string{
+	// 			"key8533": to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaa"),
+	// 		},
+	// 	},
+	// }
+}

@@ -6470,3 +6470,4 @@ id,name,language,tag,package,version,date_epoch,date
 6469,@azure/arm-tenantactivitylogalerts@1.0.0-beta.1,js,@azure/arm-tenantactivitylogalerts_1.0.0-beta.1,@azure/arm-tenantactivitylogalerts,1.0.0-beta.1,1777434736,04/29/2026
 6470,@azure/arm-previewalertrule@1.0.0-beta.1,js,@azure/arm-previewalertrule_1.0.0-beta.1,@azure/arm-previewalertrule,1.0.0-beta.1,1777432393,04/29/2026
 6471,@azure/arm-alertprocessingrules@1.0.0-beta.1,js,@azure/arm-alertprocessingrules_1.0.0-beta.1,@azure/arm-alertprocessingrules,1.0.0-beta.1,1777432318,04/29/2026
+6472,@azure/arm-alertrulerecommendations@1.0.0-beta.1,js,@azure/arm-alertrulerecommendations_1.0.0-beta.1,@azure/arm-alertrulerecommendations,1.0.0-beta.1,1777430407,04/29/2026

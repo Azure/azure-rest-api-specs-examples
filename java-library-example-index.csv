@@ -6482,3 +6482,4 @@ id,name,language,tag,package,version,date_epoch,date
 6481,"Azure.ResourceManager.Migration.Assessment,1.0.0-beta.2",dotnet,Azure.ResourceManager.Migration.Assessment_1.0.0-beta.2,Azure.ResourceManager.Migration.Assessment,1.0.0-beta.2,1777446204,04/29/2026
 6482,"Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.2",dotnet,Azure.ResourceManager.PortalServicesCopilot_1.0.0-beta.2,Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.2,1777446201,04/29/2026
 6483,"Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.3",dotnet,Azure.ResourceManager.MigrationDiscoverySap_1.0.0-beta.3,Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.3,1777446200,04/29/2026
+6484,"Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.2",dotnet,Azure.ResourceManager.OnlineExperimentation_1.0.0-beta.2,Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.2,1777446185,04/29/2026

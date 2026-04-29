@@ -6480,3 +6480,4 @@ id,name,language,tag,package,version,date_epoch,date
 6479,"Azure.ResourceManager.PostgreSql,1.4.2",dotnet,Azure.ResourceManager.PostgreSql_1.4.2,Azure.ResourceManager.PostgreSql,1.4.2,1777446245,04/29/2026
 6480,"Azure.ResourceManager.PlanetaryComputer,1.0.0-beta.2",dotnet,Azure.ResourceManager.PlanetaryComputer_1.0.0-beta.2,Azure.ResourceManager.PlanetaryComputer,1.0.0-beta.2,1777446209,04/29/2026
 6481,"Azure.ResourceManager.Migration.Assessment,1.0.0-beta.2",dotnet,Azure.ResourceManager.Migration.Assessment_1.0.0-beta.2,Azure.ResourceManager.Migration.Assessment,1.0.0-beta.2,1777446204,04/29/2026
+6482,"Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.2",dotnet,Azure.ResourceManager.PortalServicesCopilot_1.0.0-beta.2,Azure.ResourceManager.PortalServicesCopilot,1.0.0-beta.2,1777446201,04/29/2026

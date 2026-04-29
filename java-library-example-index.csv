@@ -6464,3 +6464,4 @@ id,name,language,tag,package,version,date_epoch,date
 6463,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.7.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup_1.7.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup,1.7.0-beta.1,1777453698,04/29/2026
 6464,com.azure.resourcemanager:azure-resourcemanager-compute:2.57.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.57.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.57.0,1777405161,04/28/2026
 6465,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armslis@v0.1.0,go,sdk/resourcemanager/monitor/armslis/v0.1.0,sdk/resourcemanager/monitor/armslis,v0.1.0,1777441546,04/29/2026
+6466,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.0.0,go,sdk/resourcemanager/compute/armcompute/v8.0.0,sdk/resourcemanager/compute/armcompute,v8.0.0,1777397433,04/28/2026

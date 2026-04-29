@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Hci.Models;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/GetExtension.json
@@ -14,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArcSettingResource created on azure
-// for more information of creating ArcSettingResource, please refer to the document of ArcSettingResource
+// this example assumes you already have this ArcExtensionResource created on azure
+// for more information of creating ArcExtensionResource, please refer to the document of ArcExtensionResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "test-rg";
 string clusterName = "myCluster";
 string arcSettingName = "default";
-ResourceIdentifier arcSettingResourceId = ArcSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, arcSettingName);
-ArcSettingResource arcSetting = client.GetArcSettingResource(arcSettingResourceId);
-
-// get the collection of this ArcExtensionResource
-ArcExtensionCollection collection = arcSetting.GetArcExtensions();
+string extensionName = "MicrosoftMonitoringAgent";
+ResourceIdentifier arcExtensionResourceId = ArcExtensionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, arcSettingName, extensionName);
+ArcExtensionResource arcExtension = client.GetArcExtensionResource(arcExtensionResourceId);
 
 // invoke the operation
-string extensionName = "MicrosoftMonitoringAgent";
-NullableResponse<ArcExtensionResource> response = await collection.GetIfExistsAsync(extensionName);
-ArcExtensionResource result = response.HasValue ? response.Value : null;
+ArcExtensionResource result = await arcExtension.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ArcExtensionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ArcExtensionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

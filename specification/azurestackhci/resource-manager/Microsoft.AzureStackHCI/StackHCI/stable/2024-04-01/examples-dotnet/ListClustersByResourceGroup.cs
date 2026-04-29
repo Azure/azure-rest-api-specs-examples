@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 

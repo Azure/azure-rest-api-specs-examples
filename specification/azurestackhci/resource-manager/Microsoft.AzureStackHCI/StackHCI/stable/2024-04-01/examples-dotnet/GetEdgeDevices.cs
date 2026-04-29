@@ -15,24 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this HciEdgeDeviceResource
+// this example assumes you already have this HciEdgeDeviceResource created on azure
+// for more information of creating HciEdgeDeviceResource, please refer to the document of HciEdgeDeviceResource
 string resourceUri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1";
-HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(new ResourceIdentifier(resourceUri));
+string edgeDeviceName = "default";
+ResourceIdentifier hciEdgeDeviceResourceId = HciEdgeDeviceResource.CreateResourceIdentifier(resourceUri, edgeDeviceName);
+HciEdgeDeviceResource hciEdgeDevice = client.GetHciEdgeDeviceResource(hciEdgeDeviceResourceId);
 
 // invoke the operation
-string edgeDeviceName = "default";
-NullableResponse<HciEdgeDeviceResource> response = await collection.GetIfExistsAsync(edgeDeviceName);
-HciEdgeDeviceResource result = response.HasValue ? response.Value : null;
+HciEdgeDeviceResource result = await hciEdgeDevice.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    HciEdgeDeviceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HciEdgeDeviceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

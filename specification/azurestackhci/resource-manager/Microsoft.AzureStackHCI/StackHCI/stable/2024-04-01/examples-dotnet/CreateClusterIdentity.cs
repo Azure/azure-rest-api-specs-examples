@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/CreateClusterIdentity.json

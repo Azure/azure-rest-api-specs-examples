@@ -6466,3 +6466,4 @@ id,name,language,tag,package,version,date_epoch,date
 6465,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armslis@v0.1.0,go,sdk/resourcemanager/monitor/armslis/v0.1.0,sdk/resourcemanager/monitor/armslis,v0.1.0,1777441546,04/29/2026
 6466,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.0.0,go,sdk/resourcemanager/compute/armcompute/v8.0.0,sdk/resourcemanager/compute/armcompute,v8.0.0,1777397433,04/28/2026
 6467,@azure/arm-recoveryservices-siterecovery@6.0.0-beta.1,js,@azure/arm-recoveryservices-siterecovery_6.0.0-beta.1,@azure/arm-recoveryservices-siterecovery,6.0.0-beta.1,1777458829,04/29/2026
+6468,@azure/arm-commerce@4.0.0-beta.4,js,@azure/arm-commerce_4.0.0-beta.4,@azure/arm-commerce,4.0.0-beta.4,1777441931,04/29/2026

@@ -6490,3 +6490,4 @@ id,name,language,tag,package,version,date_epoch,date
 6489,azure-mgmt-recoveryservicesbackup@11.0.0b1,python,azure-mgmt-recoveryservicesbackup_11.0.0b1,azure-mgmt-recoveryservicesbackup,11.0.0b1,1777450657,04/29/2026
 6490,azure-mgmt-certificateregistration@1.0.0b1,python,azure-mgmt-certificateregistration_1.0.0b1,azure-mgmt-certificateregistration,1.0.0b1,1777429107,04/29/2026
 6491,azure-mgmt-domainregistration@1.0.0b1,python,azure-mgmt-domainregistration_1.0.0b1,azure-mgmt-domainregistration,1.0.0b1,1777429090,04/29/2026
+6492,azure-mgmt-appnetwork@1.0.0b1,python,azure-mgmt-appnetwork_1.0.0b1,azure-mgmt-appnetwork,1.0.0b1,1777429044,04/29/2026

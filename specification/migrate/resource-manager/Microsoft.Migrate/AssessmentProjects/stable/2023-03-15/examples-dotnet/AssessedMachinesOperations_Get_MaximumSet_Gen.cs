@@ -14,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessedMachineResource created on azure
-// for more information of creating MigrationAssessedMachineResource, please refer to the document of MigrationAssessedMachineResource
+// this example assumes you already have this MigrationAssessmentResource created on azure
+// for more information of creating MigrationAssessmentResource, please refer to the document of MigrationAssessmentResource
 string subscriptionId = "D8E1C413-E65F-40C0-8A7E-743D6B7A6AE9";
 string resourceGroupName = "rgopenapi";
 string projectName = "pavqtntysjn";
 string groupName = "smawqdmhfngray";
 string assessmentName = "qjlumxyqsitd";
-string assessedMachineName = "oqxjeheiipjmuo";
-ResourceIdentifier migrationAssessedMachineResourceId = MigrationAssessedMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName, assessmentName, assessedMachineName);
-MigrationAssessedMachineResource migrationAssessedMachine = client.GetMigrationAssessedMachineResource(migrationAssessedMachineResourceId);
+ResourceIdentifier migrationAssessmentResourceId = MigrationAssessmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName, assessmentName);
+MigrationAssessmentResource migrationAssessment = client.GetMigrationAssessmentResource(migrationAssessmentResourceId);
+
+// get the collection of this MigrationAssessedMachineResource
+MigrationAssessedMachineCollection collection = migrationAssessment.GetMigrationAssessedMachines();
 
 // invoke the operation
-MigrationAssessedMachineResource result = await migrationAssessedMachine.GetAsync();
+string assessedMachineName = "oqxjeheiipjmuo";
+NullableResponse<MigrationAssessedMachineResource> response = await collection.GetIfExistsAsync(assessedMachineName);
+MigrationAssessedMachineResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MigrationAssessedMachineData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MigrationAssessedMachineData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

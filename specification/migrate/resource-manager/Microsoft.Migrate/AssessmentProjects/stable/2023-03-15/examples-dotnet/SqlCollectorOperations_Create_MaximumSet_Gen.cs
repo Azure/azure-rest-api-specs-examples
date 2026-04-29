@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentSqlCollectorResource created on azure
-// for more information of creating MigrationAssessmentSqlCollectorResource, please refer to the document of MigrationAssessmentSqlCollectorResource
+// this example assumes you already have this MigrationAssessmentProjectResource created on azure
+// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "rgmigrate";
 string projectName = "fci-test6904project";
-string collectorName = "fci-test0c1esqlsitecollector";
-ResourceIdentifier migrationAssessmentSqlCollectorResourceId = MigrationAssessmentSqlCollectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, collectorName);
-MigrationAssessmentSqlCollectorResource migrationAssessmentSqlCollector = client.GetMigrationAssessmentSqlCollectorResource(migrationAssessmentSqlCollectorResourceId);
+ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
+MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
+
+// get the collection of this MigrationAssessmentSqlCollectorResource
+MigrationAssessmentSqlCollectorCollection collection = migrationAssessmentProject.GetMigrationAssessmentSqlCollectors();
 
 // invoke the operation
+string collectorName = "fci-test0c1esqlsitecollector";
 MigrationAssessmentSqlCollectorData data = new MigrationAssessmentSqlCollectorData
 {
     AgentProperties = new CollectorAgentPropertiesBase
@@ -43,7 +46,7 @@ MigrationAssessmentSqlCollectorData data = new MigrationAssessmentSqlCollectorDa
     },
     DiscoverySiteId = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/bansalankit-rg/providers/Microsoft.OffAzure/MasterSites/fci-ankit-test6065mastersite/SqlSites/fci-ankit-test6065sqlsites",
 };
-ArmOperation<MigrationAssessmentSqlCollectorResource> lro = await migrationAssessmentSqlCollector.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MigrationAssessmentSqlCollectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, collectorName, data);
 MigrationAssessmentSqlCollectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

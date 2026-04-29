@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentGroupResource created on azure
-// for more information of creating MigrationAssessmentGroupResource, please refer to the document of MigrationAssessmentGroupResource
+// this example assumes you already have this MigrationSqlAssessmentV2Resource created on azure
+// for more information of creating MigrationSqlAssessmentV2Resource, please refer to the document of MigrationSqlAssessmentV2Resource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "rgmigrate";
 string projectName = "fci-test6904project";
 string groupName = "test_fci_hadr";
-ResourceIdentifier migrationAssessmentGroupResourceId = MigrationAssessmentGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName);
-MigrationAssessmentGroupResource migrationAssessmentGroup = client.GetMigrationAssessmentGroupResource(migrationAssessmentGroupResourceId);
-
-// get the collection of this MigrationSqlAssessmentV2Resource
-MigrationSqlAssessmentV2Collection collection = migrationAssessmentGroup.GetMigrationSqlAssessmentV2s();
+string assessmentName = "test_swagger_1";
+ResourceIdentifier migrationSqlAssessmentV2ResourceId = MigrationSqlAssessmentV2Resource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName, assessmentName);
+MigrationSqlAssessmentV2Resource migrationSqlAssessmentV2 = client.GetMigrationSqlAssessmentV2Resource(migrationSqlAssessmentV2ResourceId);
 
 // invoke the operation
-string assessmentName = "test_swagger_1";
-NullableResponse<MigrationSqlAssessmentV2Resource> response = await collection.GetIfExistsAsync(assessmentName);
-MigrationSqlAssessmentV2Resource result = response.HasValue ? response.Value : null;
+MigrationSqlAssessmentV2Resource result = await migrationSqlAssessmentV2.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MigrationSqlAssessmentV2Data resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MigrationSqlAssessmentV2Data resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

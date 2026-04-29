@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentProjectResource created on azure
-// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
+// this example assumes you already have this MigrationAssessmentVMwareCollectorResource created on azure
+// for more information of creating MigrationAssessmentVMwareCollectorResource, please refer to the document of MigrationAssessmentVMwareCollectorResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawRG";
 string projectName = "app18700project";
-ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
-
-// get the collection of this MigrationAssessmentVMwareCollectorResource
-MigrationAssessmentVMwareCollectorCollection collection = migrationAssessmentProject.GetMigrationAssessmentVMwareCollectors();
+string vmWareCollectorName = "Vmware2258collector";
+ResourceIdentifier migrationAssessmentVMwareCollectorResourceId = MigrationAssessmentVMwareCollectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, vmWareCollectorName);
+MigrationAssessmentVMwareCollectorResource migrationAssessmentVMwareCollector = client.GetMigrationAssessmentVMwareCollectorResource(migrationAssessmentVMwareCollectorResourceId);
 
 // invoke the operation
-string vmWareCollectorName = "Vmware2258collector";
 MigrationAssessmentVMwareCollectorData data = new MigrationAssessmentVMwareCollectorData
 {
     ProvisioningState = MigrationAssessmentProvisioningState.Succeeded,
@@ -47,7 +44,7 @@ MigrationAssessmentVMwareCollectorData data = new MigrationAssessmentVMwareColle
     },
     DiscoverySiteId = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/ayagrawRG/providers/Microsoft.OffAzure/VMwareSites/Vmware2744site",
 };
-ArmOperation<MigrationAssessmentVMwareCollectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmWareCollectorName, data);
+ArmOperation<MigrationAssessmentVMwareCollectorResource> lro = await migrationAssessmentVMwareCollector.UpdateAsync(WaitUntil.Completed, data);
 MigrationAssessmentVMwareCollectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

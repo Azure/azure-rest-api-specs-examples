@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentProjectResource created on azure
-// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
+// this example assumes you already have this MigrationAssessmentGroupResource created on azure
+// for more information of creating MigrationAssessmentGroupResource, please refer to the document of MigrationAssessmentGroupResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawrg";
 string projectName = "app18700project";
-ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
-
-// get the collection of this MigrationAssessmentGroupResource
-MigrationAssessmentGroupCollection collection = migrationAssessmentProject.GetMigrationAssessmentGroups();
+string groupName = "kuchatur-test";
+ResourceIdentifier migrationAssessmentGroupResourceId = MigrationAssessmentGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName);
+MigrationAssessmentGroupResource migrationAssessmentGroup = client.GetMigrationAssessmentGroupResource(migrationAssessmentGroupResourceId);
 
 // invoke the operation
-string groupName = "kuchatur-test";
 MigrationAssessmentGroupData data = new MigrationAssessmentGroupData
 {
     ProvisioningState = MigrationAssessmentProvisioningState.Succeeded,
     GroupType = MigrationAssessmentGroupType.Default,
 };
-ArmOperation<MigrationAssessmentGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, groupName, data);
+ArmOperation<MigrationAssessmentGroupResource> lro = await migrationAssessmentGroup.UpdateAsync(WaitUntil.Completed, data);
 MigrationAssessmentGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

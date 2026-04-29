@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentProjectResource created on azure
-// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
+// this example assumes you already have this MigrationAssessmentImportCollectorResource created on azure
+// for more information of creating MigrationAssessmentImportCollectorResource, please refer to the document of MigrationAssessmentImportCollectorResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawRG";
 string projectName = "app18700project";
-ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
-
-// get the collection of this MigrationAssessmentImportCollectorResource
-MigrationAssessmentImportCollectorCollection collection = migrationAssessmentProject.GetMigrationAssessmentImportCollectors();
+string importCollectorName = "importCollectore7d5";
+ResourceIdentifier migrationAssessmentImportCollectorResourceId = MigrationAssessmentImportCollectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, importCollectorName);
+MigrationAssessmentImportCollectorResource migrationAssessmentImportCollector = client.GetMigrationAssessmentImportCollectorResource(migrationAssessmentImportCollectorResourceId);
 
 // invoke the operation
-string importCollectorName = "importCollectore7d5";
 MigrationAssessmentImportCollectorData data = new MigrationAssessmentImportCollectorData
 {
     ProvisioningState = MigrationAssessmentProvisioningState.Succeeded,
     DiscoverySiteId = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourcegroups/ayagrawRG/providers/microsoft.offazure/importsites/actualSEA37d4importSite",
 };
-ArmOperation<MigrationAssessmentImportCollectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, importCollectorName, data);
+ArmOperation<MigrationAssessmentImportCollectorResource> lro = await migrationAssessmentImportCollector.UpdateAsync(WaitUntil.Completed, data);
 MigrationAssessmentImportCollectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

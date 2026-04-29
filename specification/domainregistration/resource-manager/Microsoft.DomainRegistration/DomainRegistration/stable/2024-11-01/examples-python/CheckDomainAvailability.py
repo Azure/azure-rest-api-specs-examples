@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.web import WebSiteManagementClient
+from azure.mgmt.domainregistration import DomainRegistrationMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-web
+    pip install azure-mgmt-domainregistration
 # USAGE
     python check_domain_availability.py
 
@@ -17,9 +17,9 @@ from azure.mgmt.web import WebSiteManagementClient
 
 
 def main():
-    client = WebSiteManagementClient(
+    client = DomainRegistrationMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.domains.check_availability(
@@ -28,6 +28,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/domainregistration/resource-manager/Microsoft.DomainRegistration/DomainRegistration/stable/2024-11-01/examples/CheckDomainAvailability.json
+# x-ms-original-file: 2024-11-01/CheckDomainAvailability.json
 if __name__ == "__main__":
     main()

@@ -32,4 +32,4 @@ await foreach (LogicExpressionRoot item in logicWorkflowRunActionRepetition.GetE
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

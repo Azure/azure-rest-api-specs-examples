@@ -26,4 +26,4 @@ LogicWorkflowRunResource logicWorkflowRun = client.GetLogicWorkflowRunResource(l
 // invoke the operation
 await logicWorkflowRun.CancelAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

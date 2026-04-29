@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -28,10 +27,8 @@ IntegrationAccountAssemblyDefinitionResource integrationAccountAssemblyDefinitio
 // invoke the operation
 IntegrationAccountAssemblyDefinitionData data = new IntegrationAccountAssemblyDefinitionData(new AzureLocation("westus"), new IntegrationAccountAssemblyProperties("System.IdentityModel.Tokens.Jwt")
 {
-    Content = BinaryData.FromString("\"Base64 encoded Assembly Content\""),
-    Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
+    Content = BinaryData.FromObjectAsJson("Base64 encoded Assembly Content"),
+    Metadata = BinaryData.FromObjectAsJson(new object()),
 });
 ArmOperation<IntegrationAccountAssemblyDefinitionResource> lro = await integrationAccountAssemblyDefinition.UpdateAsync(WaitUntil.Completed, data);
 IntegrationAccountAssemblyDefinitionResource result = lro.Value;

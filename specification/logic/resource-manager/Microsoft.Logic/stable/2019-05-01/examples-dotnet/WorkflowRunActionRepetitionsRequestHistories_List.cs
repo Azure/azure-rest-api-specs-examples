@@ -38,4 +38,4 @@ await foreach (LogicWorkflowRunActionRepetitionRequestHistoryResource item in co
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

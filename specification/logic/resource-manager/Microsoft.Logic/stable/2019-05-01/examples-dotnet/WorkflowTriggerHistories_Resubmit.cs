@@ -27,4 +27,4 @@ LogicWorkflowTriggerHistoryResource logicWorkflowTriggerHistory = client.GetLogi
 // invoke the operation
 await logicWorkflowTriggerHistory.ResubmitAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

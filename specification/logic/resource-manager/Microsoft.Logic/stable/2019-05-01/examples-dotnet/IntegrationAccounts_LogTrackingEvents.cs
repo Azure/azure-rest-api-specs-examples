@@ -1,12 +1,10 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_LogTrackingEvents.json
@@ -28,32 +26,35 @@ IntegrationAccountResource integrationAccount = client.GetIntegrationAccountReso
 // invoke the operation
 IntegrationAccountTrackingEventsContent content = new IntegrationAccountTrackingEventsContent("Microsoft.Logic/workflows", new IntegrationAccountTrackingEvent[]
 {
-new IntegrationAccountTrackingEvent(IntegrationAccountEventLevel.Informational,DateTimeOffset.Parse("2016-08-05T01:54:49.505567Z"),IntegrationAccountTrackingRecordType.AS2Message)
+new IntegrationAccountTrackingEvent(IntegrationAccountEventLevel.Informational, DateTimeOffset.Parse("2016-08-05T01:54:49.505567Z"), IntegrationAccountTrackingRecordType.AS2Message)
 {
-Record = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+Record = BinaryData.FromObjectAsJson(new
 {
-["agreementProperties"] = new Dictionary<string, object>()
+agreementProperties = new
 {
-["agreementName"] = "testAgreement",
-["as2From"] = "testas2from",
-["as2To"] = "testas2to",
-["receiverPartnerName"] = "testPartner2",
-["senderPartnerName"] = "testPartner1"},
-["messageProperties"] = new Dictionary<string, object>()
+agreementName = "testAgreement",
+as2From = "testas2from",
+as2To = "testas2to",
+receiverPartnerName = "testPartner2",
+senderPartnerName = "testPartner1",
+},
+messageProperties = new
 {
-["IsMessageEncrypted"] = "false",
-["IsMessageSigned"] = "false",
-["correlationMessageId"] = "Unique message identifier",
-["direction"] = "Receive",
-["dispositionType"] = "received-success",
-["fileName"] = "test",
-["isMdnExpected"] = "true",
-["isMessageCompressed"] = "false",
-["isMessageFailed"] = "false",
-["isNrrEnabled"] = "true",
-["mdnType"] = "Async",
-["messageId"] = "12345"}}),
-Error = new IntegrationAccountTrackingEventErrorInfo()
+IsMessageEncrypted = "false",
+IsMessageSigned = "false",
+correlationMessageId = "Unique message identifier",
+direction = "Receive",
+dispositionType = "received-success",
+fileName = "test",
+isMdnExpected = "true",
+isMessageCompressed = "false",
+isMessageFailed = "false",
+isNrrEnabled = "true",
+mdnType = "Async",
+messageId = "12345",
+},
+}),
+Error = new IntegrationAccountTrackingEventErrorInfo
 {
 Message = "Some error occurred",
 Code = "NotFound",
@@ -62,4 +63,4 @@ Code = "NotFound",
 });
 await integrationAccount.LogTrackingEventsAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

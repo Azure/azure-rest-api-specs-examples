@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -28,4 +27,4 @@ IntegrationAccountSchemaResource integrationAccountSchema = client.GetIntegratio
 // invoke the operation
 await integrationAccountSchema.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Logic.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/Workflows_ListCallbackUrl.json
@@ -26,7 +25,7 @@ ResourceIdentifier logicWorkflowResourceId = LogicWorkflowResource.CreateResourc
 LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkflowResourceId);
 
 // invoke the operation
-ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo()
+ListOperationCallbackUrlParameterInfo info = new ListOperationCallbackUrlParameterInfo
 {
     NotAfter = DateTimeOffset.Parse("2018-04-19T16:00:00Z"),
     KeyType = LogicKeyType.Primary,

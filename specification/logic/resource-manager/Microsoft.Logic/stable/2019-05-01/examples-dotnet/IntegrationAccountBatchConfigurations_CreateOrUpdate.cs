@@ -28,11 +28,11 @@ IntegrationAccountBatchConfigurationCollection collection = integrationAccount.G
 
 // invoke the operation
 string batchConfigurationName = "testBatchConfiguration";
-IntegrationAccountBatchConfigurationData data = new IntegrationAccountBatchConfigurationData(new AzureLocation("westus"), new IntegrationAccountBatchConfigurationProperties("DEFAULT", new IntegrationAccountBatchReleaseCriteria()
+IntegrationAccountBatchConfigurationData data = new IntegrationAccountBatchConfigurationData(new AzureLocation("westus"), new IntegrationAccountBatchConfigurationProperties("DEFAULT", new IntegrationAccountBatchReleaseCriteria
 {
     MessageCount = 10,
     BatchSize = 234567,
-    Recurrence = new LogicWorkflowTriggerRecurrence()
+    Recurrence = new LogicWorkflowTriggerRecurrence
     {
         Frequency = LogicWorkflowRecurrenceFrequency.Minute,
         Interval = 1,

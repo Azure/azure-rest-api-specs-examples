@@ -30,31 +30,28 @@ IntegrationServiceEnvironmentCollection collection = resourceGroupResource.GetIn
 string integrationServiceEnvironmentName = "testIntegrationServiceEnvironment";
 IntegrationServiceEnvironmentData data = new IntegrationServiceEnvironmentData(new AzureLocation("brazilsouth"))
 {
-    Properties = new IntegrationServiceEnvironmentProperties()
+    Properties = new IntegrationServiceEnvironmentProperties
     {
-        NetworkConfiguration = new IntegrationServiceNetworkConfiguration()
+        NetworkConfiguration = new IntegrationServiceNetworkConfiguration
         {
             EndpointType = IntegrationServiceEnvironmentAccessEndpointType.Internal,
-            Subnets =
-            {
-            new LogicResourceReference()
+            Subnets = {new LogicResourceReference
             {
             Id = new ResourceIdentifier("/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s1"),
-            },new LogicResourceReference()
+            }, new LogicResourceReference
             {
             Id = new ResourceIdentifier("/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s2"),
-            },new LogicResourceReference()
+            }, new LogicResourceReference
             {
             Id = new ResourceIdentifier("/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s3"),
-            },new LogicResourceReference()
+            }, new LogicResourceReference
             {
             Id = new ResourceIdentifier("/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s4"),
-            }
-            },
+            }},
         },
-        EncryptionKeyReference = new IntegrationServiceEnvironmenEncryptionKeyReference()
+        EncryptionKeyReference = new IntegrationServiceEnvironmenEncryptionKeyReference
         {
-            KeyVault = new LogicResourceReference()
+            KeyVault = new LogicResourceReference
             {
                 Id = new ResourceIdentifier("/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.KeyVault/vaults/testKeyVault"),
             },
@@ -62,7 +59,7 @@ IntegrationServiceEnvironmentData data = new IntegrationServiceEnvironmentData(n
             KeyVersion = "13b261d30b984753869902d7f47f4d55",
         },
     },
-    Sku = new IntegrationServiceEnvironmentSku()
+    Sku = new IntegrationServiceEnvironmentSku
     {
         Name = IntegrationServiceEnvironmentSkuName.Premium,
         Capacity = 2,

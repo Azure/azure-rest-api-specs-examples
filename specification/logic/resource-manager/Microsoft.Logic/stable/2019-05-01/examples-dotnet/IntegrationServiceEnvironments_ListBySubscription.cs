@@ -1,11 +1,9 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Logic.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Logic;
 
@@ -33,4 +31,4 @@ await foreach (IntegrationServiceEnvironmentResource item in subscriptionResourc
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

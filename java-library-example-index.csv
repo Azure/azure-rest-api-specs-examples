@@ -6520,3 +6520,4 @@ id,name,language,tag,package,version,date_epoch,date
 6519,"Azure.ResourceManager.StoragePool,1.1.2",dotnet,Azure.ResourceManager.StoragePool_1.1.2,Azure.ResourceManager.StoragePool,1.1.2,1777525488,04/30/2026
 6520,"Azure.ResourceManager.ServiceLinker,1.1.2",dotnet,Azure.ResourceManager.ServiceLinker_1.1.2,Azure.ResourceManager.ServiceLinker,1.1.2,1777525464,04/30/2026
 6521,"Azure.ResourceManager.ResourceMover,1.1.2-beta.3",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.3,Azure.ResourceManager.ResourceMover,1.1.2-beta.3,1777517185,04/30/2026
+6522,"Azure.ResourceManager.WorkloadMonitor,1.0.0-beta.6",dotnet,Azure.ResourceManager.WorkloadMonitor_1.0.0-beta.6,Azure.ResourceManager.WorkloadMonitor,1.0.0-beta.6,1777517083,04/30/2026

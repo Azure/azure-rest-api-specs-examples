@@ -1,24 +1,15 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Deletes service with the given serviceName.
+ * This sample demonstrates how to deletes service with the given serviceName.
  *
- * @summary Deletes service with the given serviceName.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBGraphAPIComputeServiceDelete.json
+ * @summary deletes service with the given serviceName.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBGraphAPIComputeServiceDelete.json
  */
-async function graphApiComputeServiceDelete() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const serviceName = "GraphAPICompute";
+async function graphAPIComputeServiceDelete() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.service.beginDeleteAndWait(
-    resourceGroupName,
-    accountName,
-    serviceName,
-  );
-  console.log(result);
+  await client.service.delete("rg1", "ddb1", "GraphAPICompute");
 }

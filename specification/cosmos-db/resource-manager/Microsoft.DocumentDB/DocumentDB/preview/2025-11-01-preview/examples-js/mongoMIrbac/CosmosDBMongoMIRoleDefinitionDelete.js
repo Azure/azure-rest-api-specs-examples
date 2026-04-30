@@ -1,25 +1,19 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Deletes an existing Azure Cosmos DB MongoMI Role Definition.
+ * This sample demonstrates how to deletes an existing Azure Cosmos DB MongoMI Role Definition.
  *
- * @summary Deletes an existing Azure Cosmos DB MongoMI Role Definition.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/mongoMIrbac/CosmosDBMongoMIRoleDefinitionDelete.json
+ * @summary deletes an existing Azure Cosmos DB MongoMI Role Definition.
+ * x-ms-original-file: 2025-11-01-preview/mongoMIrbac/CosmosDBMongoMIRoleDefinitionDelete.json
  */
-async function cosmosDbMongoMiroleDefinitionDelete() {
-  const subscriptionId =
-    process.env["COSMOSDB_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
-  const accountName = "myAccountName";
-  const roleDefinitionId = "myRoleDefinitionId";
+async function cosmosDBMongoMIRoleDefinitionDelete() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoMIResources.beginDeleteMongoMIRoleDefinitionAndWait(
-    resourceGroupName,
-    accountName,
-    roleDefinitionId,
+  await client.mongoMIResources.deleteMongoMIRoleDefinition(
+    "myResourceGroupName",
+    "myAccountName",
+    "myRoleDefinitionId",
   );
-  console.log(result);
 }

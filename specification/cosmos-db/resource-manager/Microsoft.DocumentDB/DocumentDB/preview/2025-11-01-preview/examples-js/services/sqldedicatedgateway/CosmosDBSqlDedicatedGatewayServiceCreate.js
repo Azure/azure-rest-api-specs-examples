@@ -1,33 +1,23 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Creates a service.
+ * This sample demonstrates how to creates a service.
  *
- * @summary Creates a service.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/services/sqldedicatedgateway/CosmosDBSqlDedicatedGatewayServiceCreate.json
+ * @summary creates a service.
+ * x-ms-original-file: 2025-11-01-preview/services/sqldedicatedgateway/CosmosDBSqlDedicatedGatewayServiceCreate.json
  */
 async function sqlDedicatedGatewayServiceCreate() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const serviceName = "SqlDedicatedGateway";
-  const createUpdateParameters = {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new CosmosDBManagementClient(credential, subscriptionId);
+  const result = await client.service.create("rg1", "ddb1", "SqlDedicatedGateway", {
     properties: {
       dedicatedGatewayType: "IntegratedCache",
       instanceCount: 1,
       instanceSize: "Cosmos.D4s",
       serviceType: "SqlDedicatedGateway",
     },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.service.beginCreateAndWait(
-    resourceGroupName,
-    accountName,
-    serviceName,
-    createUpdateParameters,
-  );
+  });
   console.log(result);
 }

@@ -1,44 +1,35 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Create or update an Azure Cosmos DB MongoDB Collection
+ * This sample demonstrates how to create or update an Azure Cosmos DB MongoDB Collection
  *
- * @summary Create or update an Azure Cosmos DB MongoDB Collection
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionCreateUpdate.json
+ * @summary create or update an Azure Cosmos DB MongoDB Collection
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionCreateUpdate.json
  */
-async function cosmosDbMongoDbcollectionCreateUpdate() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
-  const createUpdateMongoDBCollectionParameters = {
-    location: "West US",
-    options: {},
-    resource: {
-      analyticalStorageTtl: 500,
-      id: "collectionName",
-      indexes: [
-        {
-          key: { keys: ["_ts"] },
-          options: { expireAfterSeconds: 100, unique: true },
-        },
-        { key: { keys: ["_id"] } },
-      ],
-      shardKey: { testKey: "Hash" },
-    },
-    tags: {},
-  };
+async function cosmosDBMongoDBCollectionCreateUpdate() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginCreateUpdateMongoDBCollectionAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    collectionName,
-    createUpdateMongoDBCollectionParameters,
+  const result = await client.mongoDBResources.createUpdateMongoDBCollection(
+    "rg1",
+    "ddb1",
+    "databaseName",
+    "collectionName",
+    {
+      location: "West US",
+      options: {},
+      resource: {
+        analyticalStorageTtl: 500,
+        id: "collectionName",
+        indexes: [
+          { key: { keys: ["_ts"] }, options: { expireAfterSeconds: 100, unique: true } },
+          { key: { keys: ["_id"] } },
+        ],
+        shardKey: { testKey: "Hash" },
+      },
+      tags: {},
+    },
   );
   console.log(result);
 }

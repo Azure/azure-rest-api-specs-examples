@@ -1,36 +1,26 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Creates or updates an Azure Cosmos DB Mongo Role Definition.
+ * This sample demonstrates how to creates or updates an Azure Cosmos DB Mongo Role Definition.
  *
- * @summary Creates or updates an Azure Cosmos DB Mongo Role Definition.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBRoleDefinitionCreateUpdate.json
+ * @summary creates or updates an Azure Cosmos DB Mongo Role Definition.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBRoleDefinitionCreateUpdate.json
  */
-async function cosmosDbMongoDbroleDefinitionCreateUpdate() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "mySubscriptionId";
-  const mongoRoleDefinitionId = "myMongoRoleDefinitionId";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
-  const accountName = "myAccountName";
-  const createUpdateMongoRoleDefinitionParameters = {
-    databaseName: "sales",
-    privileges: [
-      {
-        actions: ["insert", "find"],
-        resource: { collection: "sales", db: "sales" },
-      },
-    ],
-    roleName: "myRoleName",
-    roles: [{ db: "sales", role: "myInheritedRole" }],
-  };
+async function cosmosDBMongoDBRoleDefinitionCreateUpdate() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginCreateUpdateMongoRoleDefinitionAndWait(
-    mongoRoleDefinitionId,
-    resourceGroupName,
-    accountName,
-    createUpdateMongoRoleDefinitionParameters,
+  const result = await client.mongoDBResources.createUpdateMongoRoleDefinition(
+    "myResourceGroupName",
+    "myAccountName",
+    "myMongoRoleDefinitionId",
+    {
+      databaseName: "sales",
+      privileges: [{ actions: ["insert", "find"], resource: { collection: "sales", db: "sales" } }],
+      roleName: "myRoleName",
+      roles: [{ db: "sales", role: "myInheritedRole" }],
+    },
   );
   console.log(result);
 }

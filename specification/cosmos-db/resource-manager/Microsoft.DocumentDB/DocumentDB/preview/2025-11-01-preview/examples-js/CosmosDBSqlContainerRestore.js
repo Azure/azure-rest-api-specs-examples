@@ -1,42 +1,36 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Create or update an Azure Cosmos DB SQL container
+ * This sample demonstrates how to create or update an Azure Cosmos DB SQL container
  *
- * @summary Create or update an Azure Cosmos DB SQL container
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBSqlContainerRestore.json
+ * @summary create or update an Azure Cosmos DB SQL container
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBSqlContainerRestore.json
  */
-async function cosmosDbSqlContainerRestore() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const containerName = "containerName";
-  const createUpdateSqlContainerParameters = {
-    location: "West US",
-    options: {},
-    resource: {
-      createMode: "Restore",
-      id: "containerName",
-      restoreParameters: {
-        restoreSource:
-          "/subscriptions/subid/providers/Microsoft.DocumentDB/locations/WestUS/restorableDatabaseAccounts/restorableDatabaseAccountId",
-        restoreTimestampInUtc: new Date("2022-07-20T18:28:00Z"),
-        restoreWithTtlDisabled: true,
-      },
-    },
-    tags: {},
-  };
+async function cosmosDBSqlContainerRestore() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.sqlResources.beginCreateUpdateSqlContainerAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    containerName,
-    createUpdateSqlContainerParameters,
+  const result = await client.sqlResources.createUpdateSqlContainer(
+    "rg1",
+    "ddb1",
+    "databaseName",
+    "containerName",
+    {
+      location: "West US",
+      options: {},
+      resource: {
+        createMode: "Restore",
+        id: "containerName",
+        restoreParameters: {
+          restoreSource:
+            "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.DocumentDB/locations/WestUS/restorableDatabaseAccounts/restorableDatabaseAccountId",
+          restoreTimestampInUtc: new Date("2022-07-20T18:28:00Z"),
+          restoreWithTtlDisabled: true,
+        },
+      },
+      tags: {},
+    },
   );
   console.log(result);
 }

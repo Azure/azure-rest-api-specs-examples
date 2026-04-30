@@ -1,33 +1,28 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Creates or updates an Azure Cosmos DB Mongo User Definition.
+ * This sample demonstrates how to creates or updates an Azure Cosmos DB Mongo User Definition.
  *
- * @summary Creates or updates an Azure Cosmos DB Mongo User Definition.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBUserDefinitionCreateUpdate.json
+ * @summary creates or updates an Azure Cosmos DB Mongo User Definition.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBUserDefinitionCreateUpdate.json
  */
-async function cosmosDbMongoDbuserDefinitionCreateUpdate() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "mySubscriptionId";
-  const mongoUserDefinitionId = "myMongoUserDefinitionId";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
-  const accountName = "myAccountName";
-  const createUpdateMongoUserDefinitionParameters = {
-    customData: "My custom data",
-    databaseName: "sales",
-    mechanisms: "SCRAM-SHA-256",
-    password: "myPassword",
-    roles: [{ db: "sales", role: "myReadRole" }],
-    userName: "myUserName",
-  };
+async function cosmosDBMongoDBUserDefinitionCreateUpdate() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginCreateUpdateMongoUserDefinitionAndWait(
-    mongoUserDefinitionId,
-    resourceGroupName,
-    accountName,
-    createUpdateMongoUserDefinitionParameters,
+  const result = await client.mongoDBResources.createUpdateMongoUserDefinition(
+    "myResourceGroupName",
+    "myAccountName",
+    "myMongoUserDefinitionId",
+    {
+      customData: "My custom data",
+      databaseName: "sales",
+      mechanisms: "SCRAM-SHA-256",
+      password: "myPassword",
+      roles: [{ db: "sales", role: "myReadRole" }],
+      userName: "myUserName",
+    },
   );
   console.log(result);
 }

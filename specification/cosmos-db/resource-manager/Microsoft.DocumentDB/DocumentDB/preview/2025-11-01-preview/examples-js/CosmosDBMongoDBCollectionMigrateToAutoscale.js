@@ -1,26 +1,21 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+ * This sample demonstrates how to migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
  *
- * @summary Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionMigrateToAutoscale.json
+ * @summary migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionMigrateToAutoscale.json
  */
-async function cosmosDbMongoDbcollectionMigrateToAutoscale() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
+async function cosmosDBMongoDBCollectionMigrateToAutoscale() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginMigrateMongoDBCollectionToAutoscaleAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    collectionName,
+  const result = await client.mongoDBResources.migrateMongoDBCollectionToAutoscale(
+    "rg1",
+    "ddb1",
+    "databaseName",
+    "collectionName",
   );
   console.log(result);
 }

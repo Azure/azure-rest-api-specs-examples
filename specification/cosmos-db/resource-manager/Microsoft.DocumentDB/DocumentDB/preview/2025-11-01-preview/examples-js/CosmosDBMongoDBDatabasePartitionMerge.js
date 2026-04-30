@@ -1,26 +1,21 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Merges the partitions of a MongoDB database
+ * This sample demonstrates how to merges the partitions of a MongoDB database
  *
- * @summary Merges the partitions of a MongoDB database
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBDatabasePartitionMerge.json
+ * @summary merges the partitions of a MongoDB database
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBDatabasePartitionMerge.json
  */
-async function cosmosDbMongoDbdatabasePartitionMerge() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const mergeParameters = { isDryRun: false };
+async function cosmosDBMongoDBDatabasePartitionMerge() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginMongoDBDatabasePartitionMergeAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    mergeParameters,
+  const result = await client.mongoDBResources.mongoDBDatabasePartitionMerge(
+    "rgName",
+    "ddb1",
+    "databaseName",
+    { isDryRun: false },
   );
   console.log(result);
 }

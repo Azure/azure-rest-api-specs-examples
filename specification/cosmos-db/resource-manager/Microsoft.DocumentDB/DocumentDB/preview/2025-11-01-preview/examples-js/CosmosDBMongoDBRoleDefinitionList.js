@@ -1,25 +1,23 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
+ * This sample demonstrates how to retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
  *
- * @summary Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBRoleDefinitionList.json
+ * @summary retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBRoleDefinitionList.json
  */
-async function cosmosDbMongoDbroleDefinitionList() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "mySubscriptionId";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
-  const accountName = "myAccountName";
+async function cosmosDBMongoDBRoleDefinitionList() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const resArray = new Array();
   for await (const item of client.mongoDBResources.listMongoRoleDefinitions(
-    resourceGroupName,
-    accountName,
+    "myResourceGroupName",
+    "myAccountName",
   )) {
     resArray.push(item);
   }
+
   console.log(resArray);
 }

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AzureDevOpsOrgResource created on azure
-// for more information of creating AzureDevOpsOrgResource, please refer to the document of AzureDevOpsOrgResource
+// this example assumes you already have this AzureDevOpsConnectorResource created on azure
+// for more information of creating AzureDevOpsConnectorResource, please refer to the document of AzureDevOpsConnectorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "westusrg";
 string azureDevOpsConnectorName = "testconnector";
-string azureDevOpsOrgName = "myOrg";
-ResourceIdentifier azureDevOpsOrgResourceId = AzureDevOpsOrgResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, azureDevOpsConnectorName, azureDevOpsOrgName);
-AzureDevOpsOrgResource azureDevOpsOrg = client.GetAzureDevOpsOrgResource(azureDevOpsOrgResourceId);
+ResourceIdentifier azureDevOpsConnectorResourceId = AzureDevOpsConnectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, azureDevOpsConnectorName);
+AzureDevOpsConnectorResource azureDevOpsConnector = client.GetAzureDevOpsConnectorResource(azureDevOpsConnectorResourceId);
+
+// get the collection of this AzureDevOpsOrgResource
+AzureDevOpsOrgCollection collection = azureDevOpsConnector.GetAzureDevOpsOrgs();
 
 // invoke the operation
-AzureDevOpsOrgResource result = await azureDevOpsOrg.GetAsync();
+string azureDevOpsOrgName = "myOrg";
+NullableResponse<AzureDevOpsOrgResource> response = await collection.GetIfExistsAsync(azureDevOpsOrgName);
+AzureDevOpsOrgResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AzureDevOpsOrgData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AzureDevOpsOrgData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

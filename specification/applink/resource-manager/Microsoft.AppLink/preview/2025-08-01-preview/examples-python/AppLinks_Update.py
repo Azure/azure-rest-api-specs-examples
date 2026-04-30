@@ -1,0 +1,44 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.appnetwork import AppNetworkMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-appnetwork
+# USAGE
+    python app_links_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = AppNetworkMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.app_links.begin_update(
+        resource_group_name="test_rg",
+        app_link_name="applink-test-01",
+        properties={
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/11809CA1-E126-4017-945E-AA795CD5C5A9/resourceGroups/test_rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/applink-identity": {}
+                },
+            },
+            "properties": {},
+            "tags": {"cost-center": "platform", "environment": "production"},
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-08-01-preview/AppLinks_Update.json
+if __name__ == "__main__":
+    main()

@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StreamAnalyticsClusterResource created on azure
-// for more information of creating StreamAnalyticsClusterResource, please refer to the document of StreamAnalyticsClusterResource
+// this example assumes you already have this StreamAnalyticsPrivateEndpointResource created on azure
+// for more information of creating StreamAnalyticsPrivateEndpointResource, please refer to the document of StreamAnalyticsPrivateEndpointResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "sjrg";
 string clusterName = "testcluster";
-ResourceIdentifier streamAnalyticsClusterResourceId = StreamAnalyticsClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-StreamAnalyticsClusterResource streamAnalyticsCluster = client.GetStreamAnalyticsClusterResource(streamAnalyticsClusterResourceId);
-
-// get the collection of this StreamAnalyticsPrivateEndpointResource
-StreamAnalyticsPrivateEndpointCollection collection = streamAnalyticsCluster.GetStreamAnalyticsPrivateEndpoints();
+string privateEndpointName = "testpe";
+ResourceIdentifier streamAnalyticsPrivateEndpointResourceId = StreamAnalyticsPrivateEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointName);
+StreamAnalyticsPrivateEndpointResource streamAnalyticsPrivateEndpoint = client.GetStreamAnalyticsPrivateEndpointResource(streamAnalyticsPrivateEndpointResourceId);
 
 // invoke the operation
-string privateEndpointName = "testpe";
-NullableResponse<StreamAnalyticsPrivateEndpointResource> response = await collection.GetIfExistsAsync(privateEndpointName);
-StreamAnalyticsPrivateEndpointResource result = response.HasValue ? response.Value : null;
+StreamAnalyticsPrivateEndpointResource result = await streamAnalyticsPrivateEndpoint.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StreamAnalyticsPrivateEndpointData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StreamAnalyticsPrivateEndpointData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

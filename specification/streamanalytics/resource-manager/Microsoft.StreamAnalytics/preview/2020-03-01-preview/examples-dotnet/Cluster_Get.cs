@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.StreamAnalytics.Models;
 using Azure.ResourceManager.StreamAnalytics;
 
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this StreamAnalyticsClusterResource created on azure
+// for more information of creating StreamAnalyticsClusterResource, please refer to the document of StreamAnalyticsClusterResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "sjrg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this StreamAnalyticsClusterResource
-StreamAnalyticsClusterCollection collection = resourceGroupResource.GetStreamAnalyticsClusters();
+string clusterName = "testcluster";
+ResourceIdentifier streamAnalyticsClusterResourceId = StreamAnalyticsClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+StreamAnalyticsClusterResource streamAnalyticsCluster = client.GetStreamAnalyticsClusterResource(streamAnalyticsClusterResourceId);
 
 // invoke the operation
-string clusterName = "testcluster";
-NullableResponse<StreamAnalyticsClusterResource> response = await collection.GetIfExistsAsync(clusterName);
-StreamAnalyticsClusterResource result = response.HasValue ? response.Value : null;
+StreamAnalyticsClusterResource result = await streamAnalyticsCluster.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StreamAnalyticsClusterData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StreamAnalyticsClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

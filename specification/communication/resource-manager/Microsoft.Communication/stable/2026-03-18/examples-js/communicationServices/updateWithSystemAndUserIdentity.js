@@ -1,0 +1,26 @@
+const { CommunicationServiceManagementClient } = require("@azure/arm-communication");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to operation to update an existing CommunicationService.
+ *
+ * @summary operation to update an existing CommunicationService.
+ * x-ms-original-file: 2026-03-18/communicationServices/updateWithSystemAndUserIdentity.json
+ */
+async function updateResourceToAddSystemAndUserManagedIdentities() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "11112222-3333-4444-5555-666677778888";
+  const client = new CommunicationServiceManagementClient(credential, subscriptionId);
+  const result = await client.communicationServices.update(
+    "MyResourceGroup",
+    "MyCommunicationResource",
+    {
+      identity: {
+        type: "SystemAssigned,UserAssigned",
+        userAssignedIdentities: { "/user/assigned/resource/id": {} },
+      },
+      tags: { newTag: "newVal" },
+    },
+  );
+  console.log(result);
+}

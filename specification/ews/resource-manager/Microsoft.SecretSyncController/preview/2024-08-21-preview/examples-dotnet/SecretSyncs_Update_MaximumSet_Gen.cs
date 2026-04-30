@@ -34,7 +34,6 @@ SecretSyncPatch patch = new SecretSyncPatch
     {
         SecretProviderClassName = "jttlpenhtpxfrrlxdsmqqvmvtmgqrficvqngkggjwciilrexenlstxncyvkqcydxrivkioujssncoaiysdklfouukczzdbxniipbyiqsarqaespuqrbbydwtdaulllostoomntkadklihemfpeffvuyvyilequiqewzspaootvkibrynbqrsbiptjdhywynvydaadprdc",
         ServiceAccountName = "fcldqfdfpktndlntuoxicsftelhefevovmlycflfwzckvamiqjnjugandqaqqeccsbzztfmmeunvhsafgerbcsdbnmsyqivygornebbkusuvphwghgouxvcbvmbydqjzoxextnyowsnyymadniwdrrxtogeveldpejixmsrzzfqkquaxdpzwvecevqwasxgxxchrfa",
-        KubernetesSecretType = KubernetesSecretType.Opaque,
         ForceSynchronization = "arbitrarystring",
         ObjectSecretMapping = { new KubernetesSecretObjectMapping("ssrzmbvdiomkvzrdsyilwlfzicfydnbjwjsnohrppkukjddrunfslkrnexunuckmghixdssposvndpiqchpqrkjuqbapoisvqdvgstvdonsmlpsmticfvuhqlofpaxfdg", "lojegeqiqfjxyblfxhxloccqzwgpgcelrwqwsbsltcjvjvceejgdrmxhenokxrylhynkltvqntjcvujjrppzvcxyivxeksgmzhifrcklizbpntdepzdl") },
     },

@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.SecretsStoreExtension.Models;
 using Azure.ResourceManager.SecretsStoreExtension;
 
@@ -15,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecretSyncResource created on azure
-// for more information of creating SecretSyncResource, please refer to the document of SecretSyncResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg-ssc-example";
-string secretSyncName = "secretsync-ssc-example";
-ResourceIdentifier secretSyncResourceId = SecretSyncResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, secretSyncName);
-SecretSyncResource secretSync = client.GetSecretSyncResource(secretSyncResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SecretSyncResource
+SecretSyncCollection collection = resourceGroupResource.GetSecretSyncs();
 
 // invoke the operation
-SecretSyncResource result = await secretSync.GetAsync();
+string secretSyncName = "secretsync-ssc-example";
+NullableResponse<SecretSyncResource> response = await collection.GetIfExistsAsync(secretSyncName);
+SecretSyncResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecretSyncData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecretSyncData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

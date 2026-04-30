@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubAuthorizationRuleResource created on azure
-// for more information of creating NotificationHubAuthorizationRuleResource, please refer to the document of NotificationHubAuthorizationRuleResource
+// this example assumes you already have this NotificationHubResource created on azure
+// for more information of creating NotificationHubResource, please refer to the document of NotificationHubResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
 string namespaceName = "nh-sdk-ns";
 string notificationHubName = "nh-sdk-hub";
-string authorizationRuleName = "MyManageSharedAccessKey";
-ResourceIdentifier notificationHubAuthorizationRuleResourceId = NotificationHubAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, notificationHubName, authorizationRuleName);
-NotificationHubAuthorizationRuleResource notificationHubAuthorizationRule = client.GetNotificationHubAuthorizationRuleResource(notificationHubAuthorizationRuleResourceId);
+ResourceIdentifier notificationHubResourceId = NotificationHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, notificationHubName);
+NotificationHubResource notificationHub = client.GetNotificationHubResource(notificationHubResourceId);
+
+// get the collection of this NotificationHubAuthorizationRuleResource
+NotificationHubAuthorizationRuleCollection collection = notificationHub.GetNotificationHubAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "MyManageSharedAccessKey";
 NotificationHubAuthorizationRuleData data = new NotificationHubAuthorizationRuleData(default)
 {
     AccessRights = { AuthorizationRuleAccessRightExt.Listen, AuthorizationRuleAccessRightExt.Send },
 };
-ArmOperation<NotificationHubAuthorizationRuleResource> lro = await notificationHubAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NotificationHubAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 NotificationHubAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -32,7 +32,7 @@ NotificationHubPrivateEndpointConnectionData data = new NotificationHubPrivateEn
 {
     Properties = new NotificationHubPrivateEndpointConnectionProperties
     {
-        ConnectionState = new RemotePrivateLinkServiceConnectionState
+        PrivateLinkServiceConnectionState = new RemotePrivateLinkServiceConnectionState
         {
             Status = NotificationHubPrivateLinkConnectionStatus.Approved,
         },

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for GetTieringCostOperationResult Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-31-preview/TieringCost/GetTieringCostOperationResult.json
+     */
+    /**
+     * Sample code: Fetch Tiering Cost Operation Result.
+     * 
+     * @param manager Entry point to RecoveryServicesBackupManager.
+     */
+    public static void fetchTieringCostOperationResult(
+        com.azure.resourcemanager.recoveryservicesbackup.RecoveryServicesBackupManager manager) {
+        manager.getTieringCostOperationResults().getWithResponse("gaallaRG", "gaallavaultbvtd2msi",
+            "0f48183b-0a44-4dca-aec1-bba5daab888a", com.azure.core.util.Context.NONE);
+    }
+}

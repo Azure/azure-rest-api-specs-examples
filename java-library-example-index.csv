@@ -6492,3 +6492,4 @@ id,name,language,tag,package,version,date_epoch,date
 6491,azure-mgmt-domainregistration@1.0.0b1,python,azure-mgmt-domainregistration_1.0.0b1,azure-mgmt-domainregistration,1.0.0b1,1777429090,04/29/2026
 6492,azure-mgmt-appnetwork@1.0.0b1,python,azure-mgmt-appnetwork_1.0.0b1,azure-mgmt-appnetwork,1.0.0b1,1777429044,04/29/2026
 6493,azure-mgmt-compute@38.0.0,python,azure-mgmt-compute_38.0.0,azure-mgmt-compute,38.0.0,1777405048,04/28/2026
+6494,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration/v3@v3.1.0-beta.2,go,sdk/resourcemanager/appconfiguration/armappconfiguration/v3.1.0-beta.2,sdk/resourcemanager/appconfiguration/armappconfiguration,v3.1.0-beta.2,1777544836,04/30/2026

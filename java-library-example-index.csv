@@ -6499,3 +6499,4 @@ id,name,language,tag,package,version,date_epoch,date
 6498,@azure/arm-alertsmanagement@1.0.0-beta.1,js,@azure/arm-alertsmanagement_1.0.0-beta.1,@azure/arm-alertsmanagement,1.0.0-beta.1,1777514515,04/30/2026
 6499,@azure/arm-prometheusrulegroups@1.0.0-beta.1,js,@azure/arm-prometheusrulegroups_1.0.0-beta.1,@azure/arm-prometheusrulegroups,1.0.0-beta.1,1777462060,04/29/2026
 6500,@azure/arm-datafactory@20.0.0-beta.1,js,@azure/arm-datafactory_20.0.0-beta.1,@azure/arm-datafactory,20.0.0-beta.1,1777462050,04/29/2026
+6501,@azure/arm-cosmosdb@17.0.0-beta.3,js,@azure/arm-cosmosdb_17.0.0-beta.3,@azure/arm-cosmosdb,17.0.0-beta.3,1777462042,04/29/2026

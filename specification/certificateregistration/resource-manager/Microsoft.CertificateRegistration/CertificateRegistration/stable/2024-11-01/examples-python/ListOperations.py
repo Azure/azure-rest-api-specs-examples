@@ -7,7 +7,7 @@ from azure.mgmt.certificateregistration import CertificateRegistrationMgmtClient
     pip install azure-identity
     pip install azure-mgmt-certificateregistration
 # USAGE
-    python diagnostics_list_app_service_certificate_order_detector_response.py
+    python list_operations.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,14 +22,11 @@ def main():
         subscription_id="SUBSCRIPTION_ID",
     )
 
-    response = client.certificate_orders_diagnostics.list_app_service_certificate_order_detector_response(
-        resource_group_name="Sample-WestUSResourceGroup",
-        certificate_order_name="SampleCertificateOrderName",
-    )
+    response = client.certificate_registration_provider.list_operations()
     for item in response:
         print(item)
 
 
-# x-ms-original-file: 2024-11-01/Diagnostics_ListAppServiceCertificateOrderDetectorResponse.json
+# x-ms-original-file: 2024-11-01/ListOperations.json
 if __name__ == "__main__":
     main()

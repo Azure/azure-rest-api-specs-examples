@@ -15,15 +15,12 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DefenderForStorageSettingResource created on azure
-// for more information of creating DefenderForStorageSettingResource, please refer to the document of DefenderForStorageSettingResource
+// get the collection of this DefenderForStorageSettingResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Storage/storageAccounts/samplestorageaccount";
-DefenderForStorageSettingName settingName = DefenderForStorageSettingName.Current;
-ResourceIdentifier defenderForStorageSettingResourceId = DefenderForStorageSettingResource.CreateResourceIdentifier(resourceId, settingName);
-DefenderForStorageSettingResource defenderForStorageSetting = client.GetDefenderForStorageSettingResource(defenderForStorageSettingResourceId);
+DefenderForStorageSettingCollection collection = client.GetDefenderForStorageSettings(new ResourceIdentifier(resourceId));
 
 // invoke the operation
-DefenderForStorageSettingName settingName0 = DefenderForStorageSettingName.Current;
+DefenderForStorageSettingName settingName = DefenderForStorageSettingName.Current;
 DefenderForStorageSettingData data = new DefenderForStorageSettingData
 {
     IsEnabled = true,
@@ -33,7 +30,7 @@ DefenderForStorageSettingData data = new DefenderForStorageSettingData
     IsMalwareScanningOnUploadEnabled = true,
     CapGBPerMonth = -1,
 };
-ArmOperation<DefenderForStorageSettingResource> lro = await defenderForStorageSetting.UpdateAsync(WaitUntil.Completed, settingName0, data);
+ArmOperation<DefenderForStorageSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, settingName, data);
 DefenderForStorageSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,19 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityCenterPricingResource created on azure
-// for more information of creating SecurityCenterPricingResource, please refer to the document of SecurityCenterPricingResource
+// this example assumes you already have this SecurityOperatorResource created on azure
+// for more information of creating SecurityOperatorResource, please refer to the document of SecurityOperatorResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string pricingName = "CloudPosture";
-ResourceIdentifier securityCenterPricingResourceId = SecurityCenterPricingResource.CreateResourceIdentifier(subscriptionId, pricingName);
-SecurityCenterPricingResource securityCenterPricing = client.GetSecurityCenterPricingResource(securityCenterPricingResourceId);
-
-// get the collection of this SecurityOperatorResource
-SecurityOperatorCollection collection = securityCenterPricing.GetSecurityOperators();
+string securityOperatorName = "DefenderCSPMSecurityOperator";
+ResourceIdentifier securityOperatorResourceId = SecurityOperatorResource.CreateResourceIdentifier(subscriptionId, pricingName, securityOperatorName);
+SecurityOperatorResource securityOperator = client.GetSecurityOperatorResource(securityOperatorResourceId);
 
 // invoke the operation
-string securityOperatorName = "DefenderCSPMSecurityOperator";
-ArmOperation<SecurityOperatorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityOperatorName);
+ArmOperation<SecurityOperatorResource> lro = await securityOperator.UpdateAsync(WaitUntil.Completed);
 SecurityOperatorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

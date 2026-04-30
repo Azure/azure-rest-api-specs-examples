@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityConnectorGitLabGroupResource created on azure
-// for more information of creating SecurityConnectorGitLabGroupResource, please refer to the document of SecurityConnectorGitLabGroupResource
+// this example assumes you already have this DevOpsConfigurationResource created on azure
+// for more information of creating DevOpsConfigurationResource, please refer to the document of DevOpsConfigurationResource
 string subscriptionId = "0806e1cd-cfda-4ff8-b99c-2b0af42cffd3";
 string resourceGroupName = "myRg";
 string securityConnectorName = "mySecurityConnectorName";
-string groupFQName = "myGitLabGroup$mySubGroup";
-ResourceIdentifier securityConnectorGitLabGroupResourceId = SecurityConnectorGitLabGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName, groupFQName);
-SecurityConnectorGitLabGroupResource securityConnectorGitLabGroup = client.GetSecurityConnectorGitLabGroupResource(securityConnectorGitLabGroupResourceId);
+ResourceIdentifier devOpsConfigurationResourceId = DevOpsConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName);
+DevOpsConfigurationResource devOpsConfiguration = client.GetDevOpsConfigurationResource(devOpsConfigurationResourceId);
+
+// get the collection of this SecurityConnectorGitLabGroupResource
+SecurityConnectorGitLabGroupCollection collection = devOpsConfiguration.GetSecurityConnectorGitLabGroups();
 
 // invoke the operation
-SecurityConnectorGitLabGroupResource result = await securityConnectorGitLabGroup.GetAsync();
+string groupFQName = "myGitLabGroup$mySubGroup";
+NullableResponse<SecurityConnectorGitLabGroupResource> response = await collection.GetIfExistsAsync(groupFQName);
+SecurityConnectorGitLabGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityConnectorGitLabGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecurityConnectorGitLabGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

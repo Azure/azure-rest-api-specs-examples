@@ -7,7 +7,7 @@ from azure.mgmt.domainregistration import DomainRegistrationMgmtClient
     pip install azure-identity
     pip install azure-mgmt-domainregistration
 # USAGE
-    python get_domain_control_center_sso_request.py
+    python list_operations.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,10 +22,11 @@ def main():
         subscription_id="SUBSCRIPTION_ID",
     )
 
-    response = client.domains.get_control_center_sso_request()
-    print(response)
+    response = client.domain_registration_provider.list_operations()
+    for item in response:
+        print(item)
 
 
-# x-ms-original-file: 2024-11-01/GetDomainControlCenterSsoRequest.json
+# x-ms-original-file: 2024-11-01/ListOperations.json
 if __name__ == "__main__":
     main()

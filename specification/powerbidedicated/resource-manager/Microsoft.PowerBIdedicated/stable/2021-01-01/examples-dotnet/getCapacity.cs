@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.PowerBIDedicated.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PowerBIDedicated;
 
 // Generated from example definition: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/getCapacity.json
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DedicatedCapacityResource created on azure
+// for more information of creating DedicatedCapacityResource, please refer to the document of DedicatedCapacityResource
 string subscriptionId = "613192d7-503f-477a-9cfe-4efc3ee2bd60";
 string resourceGroupName = "TestRG";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DedicatedCapacityResource
-DedicatedCapacityCollection collection = resourceGroupResource.GetDedicatedCapacities();
+string dedicatedCapacityName = "azsdktest";
+ResourceIdentifier dedicatedCapacityResourceId = DedicatedCapacityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dedicatedCapacityName);
+DedicatedCapacityResource dedicatedCapacity = client.GetDedicatedCapacityResource(dedicatedCapacityResourceId);
 
 // invoke the operation
-string dedicatedCapacityName = "azsdktest";
-NullableResponse<DedicatedCapacityResource> response = await collection.GetIfExistsAsync(dedicatedCapacityName);
-DedicatedCapacityResource result = response.HasValue ? response.Value : null;
+DedicatedCapacityResource result = await dedicatedCapacity.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DedicatedCapacityData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DedicatedCapacityData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

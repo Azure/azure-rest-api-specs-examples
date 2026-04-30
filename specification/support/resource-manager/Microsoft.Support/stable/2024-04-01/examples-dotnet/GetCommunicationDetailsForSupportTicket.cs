@@ -14,18 +14,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SupportTicketNoSubCommunicationResource created on azure
-// for more information of creating SupportTicketNoSubCommunicationResource, please refer to the document of SupportTicketNoSubCommunicationResource
+// this example assumes you already have this TenantSupportTicketResource created on azure
+// for more information of creating TenantSupportTicketResource, please refer to the document of TenantSupportTicketResource
 string supportTicketName = "testticket";
-string communicationName = "testmessage";
-ResourceIdentifier supportTicketNoSubCommunicationResourceId = SupportTicketNoSubCommunicationResource.CreateResourceIdentifier(supportTicketName, communicationName);
-SupportTicketNoSubCommunicationResource supportTicketNoSubCommunication = client.GetSupportTicketNoSubCommunicationResource(supportTicketNoSubCommunicationResourceId);
+ResourceIdentifier tenantSupportTicketResourceId = TenantSupportTicketResource.CreateResourceIdentifier(supportTicketName);
+TenantSupportTicketResource tenantSupportTicket = client.GetTenantSupportTicketResource(tenantSupportTicketResourceId);
+
+// get the collection of this SupportTicketNoSubCommunicationResource
+SupportTicketNoSubCommunicationCollection collection = tenantSupportTicket.GetSupportTicketNoSubCommunications();
 
 // invoke the operation
-SupportTicketNoSubCommunicationResource result = await supportTicketNoSubCommunication.GetAsync();
+string communicationName = "testmessage";
+NullableResponse<SupportTicketNoSubCommunicationResource> response = await collection.GetIfExistsAsync(communicationName);
+SupportTicketNoSubCommunicationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SupportTicketCommunicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SupportTicketCommunicationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

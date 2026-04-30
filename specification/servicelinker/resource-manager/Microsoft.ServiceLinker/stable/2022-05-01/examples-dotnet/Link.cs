@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LinkerResource created on azure
-// for more information of creating LinkerResource, please refer to the document of LinkerResource
+// get the collection of this LinkerResource
 string resourceUri = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app";
-string linkerName = "linkName";
-ResourceIdentifier linkerResourceId = LinkerResource.CreateResourceIdentifier(resourceUri, linkerName);
-LinkerResource linkerResource = client.GetLinkerResource(linkerResourceId);
+LinkerResourceCollection collection = client.GetLinkerResources(new ResourceIdentifier(resourceUri));
 
 // invoke the operation
-LinkerResource result = await linkerResource.GetAsync();
+string linkerName = "linkName";
+NullableResponse<LinkerResource> response = await collection.GetIfExistsAsync(linkerName);
+LinkerResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LinkerResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LinkerResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

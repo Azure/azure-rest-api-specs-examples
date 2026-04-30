@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.compute.fluent.models.GalleryScriptInner;
+import com.azure.resourcemanager.compute.fluent.models.GalleryScriptProperties;
+import com.azure.resourcemanager.compute.models.OperatingSystemTypes;
+
+/**
+ * Samples for GalleryScripts CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-03-03/galleryScriptExamples/GalleryScript_Create.json
+     */
+    /**
+     * Sample code: Create or update a simple gallery Script.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void createOrUpdateASimpleGalleryScript(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getGalleryScripts().createOrUpdate("myResourceGroup", "myGalleryName",
+            "myGalleryScriptName",
+            new GalleryScriptInner().withLocation("West US")
+                .withProperties(new GalleryScriptProperties().withDescription("This is the gallery script description.")
+                    .withEula("This is the gallery script EULA.").withPrivacyStatementUri("{myPrivacyStatementUri}")
+                    .withReleaseNoteUri("{myReleaseNoteUri}").withSupportedOSType(OperatingSystemTypes.WINDOWS)),
+            com.azure.core.util.Context.NONE);
+    }
+}

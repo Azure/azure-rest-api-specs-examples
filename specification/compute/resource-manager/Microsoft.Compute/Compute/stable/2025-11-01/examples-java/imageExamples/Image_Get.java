@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Images GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-11-01/imageExamples/Image_Get.json
+     */
+    /**
+     * Sample code: Get information about a virtual machine image.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void
+        getInformationAboutAVirtualMachineImage(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getImages().getByResourceGroupWithResponse("myResourceGroup", "myImage", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

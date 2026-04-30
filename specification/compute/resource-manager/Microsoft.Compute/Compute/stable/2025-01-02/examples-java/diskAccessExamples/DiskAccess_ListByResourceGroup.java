@@ -1,0 +1,19 @@
+
+/**
+ * Samples for DiskAccesses ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-02/diskAccessExamples/DiskAccess_ListByResourceGroup.json
+     */
+    /**
+     * Sample code: list all disk access resources in a resource group.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void
+        listAllDiskAccessResourcesInAResourceGroup(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getDiskAccesses().listByResourceGroup("myResourceGroup",
+            com.azure.core.util.Context.NONE);
+    }
+}

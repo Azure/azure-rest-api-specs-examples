@@ -6528,3 +6528,4 @@ id,name,language,tag,package,version,date_epoch,date
 6527,"Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.3",dotnet,Azure.ResourceManager.SpringAppDiscovery_1.0.0-beta.3,Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.3,1777516722,04/30/2026
 6528,"Azure.ResourceManager.ServiceFabric,1.2.0-beta.3",dotnet,Azure.ResourceManager.ServiceFabric_1.2.0-beta.3,Azure.ResourceManager.ServiceFabric,1.2.0-beta.3,1777516492,04/30/2026
 6529,"Azure.ResourceManager.SecurityCenter,1.2.0-beta.7",dotnet,Azure.ResourceManager.SecurityCenter_1.2.0-beta.7,Azure.ResourceManager.SecurityCenter,1.2.0-beta.7,1777516489,04/30/2026
+6530,"Azure.ResourceManager.SelfHelp,1.1.0-beta.6",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.6,Azure.ResourceManager.SelfHelp,1.1.0-beta.6,1777516485,04/30/2026

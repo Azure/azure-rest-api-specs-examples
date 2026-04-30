@@ -6526,3 +6526,4 @@ id,name,language,tag,package,version,date_epoch,date
 6525,"Azure.ResourceManager.Terraform,1.0.0-beta.3",dotnet,Azure.ResourceManager.Terraform_1.0.0-beta.3,Azure.ResourceManager.Terraform,1.0.0-beta.3,1777516919,04/30/2026
 6526,"Azure.ResourceManager.ServiceNetworking,1.2.0-beta.1",dotnet,Azure.ResourceManager.ServiceNetworking_1.2.0-beta.1,Azure.ResourceManager.ServiceNetworking,1.2.0-beta.1,1777516730,04/30/2026
 6527,"Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.3",dotnet,Azure.ResourceManager.SpringAppDiscovery_1.0.0-beta.3,Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.3,1777516722,04/30/2026
+6528,"Azure.ResourceManager.ServiceFabric,1.2.0-beta.3",dotnet,Azure.ResourceManager.ServiceFabric_1.2.0-beta.3,Azure.ResourceManager.ServiceFabric,1.2.0-beta.3,1777516492,04/30/2026

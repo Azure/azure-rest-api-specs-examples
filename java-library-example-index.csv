@@ -6497,3 +6497,4 @@ id,name,language,tag,package,version,date_epoch,date
 6496,@azure/arm-compute@24.0.0,js,@azure/arm-compute_24.0.0,@azure/arm-compute,24.0.0,1777528235,04/30/2026
 6497,@azure/arm-communication@5.0.0-beta.1,js,@azure/arm-communication_5.0.0-beta.1,@azure/arm-communication,5.0.0-beta.1,1777515659,04/30/2026
 6498,@azure/arm-alertsmanagement@1.0.0-beta.1,js,@azure/arm-alertsmanagement_1.0.0-beta.1,@azure/arm-alertsmanagement,1.0.0-beta.1,1777514515,04/30/2026
+6499,@azure/arm-prometheusrulegroups@1.0.0-beta.1,js,@azure/arm-prometheusrulegroups_1.0.0-beta.1,@azure/arm-prometheusrulegroups,1.0.0-beta.1,1777462060,04/29/2026

@@ -6502,3 +6502,4 @@ id,name,language,tag,package,version,date_epoch,date
 6501,@azure/arm-cosmosdb@17.0.0-beta.3,js,@azure/arm-cosmosdb_17.0.0-beta.3,@azure/arm-cosmosdb,17.0.0-beta.3,1777462042,04/29/2026
 6502,"Azure.ResourceManager.PlanetaryComputer,1.0.0",dotnet,Azure.ResourceManager.PlanetaryComputer_1.0.0,Azure.ResourceManager.PlanetaryComputer,1.0.0,1777543048,04/30/2026
 6503,"Azure.ResourceManager.PureStorageBlock,1.0.1",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.1,Azure.ResourceManager.PureStorageBlock,1.0.1,1777540013,04/30/2026
+6504,"Azure.ResourceManager.Sphere,1.0.2",dotnet,Azure.ResourceManager.Sphere_1.0.2,Azure.ResourceManager.Sphere,1.0.2,1777537608,04/30/2026

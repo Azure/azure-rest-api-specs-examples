@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Marketplace.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Marketplace;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/PrivateStores_update.json
@@ -16,18 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this PrivateStoreResource
-PrivateStoreCollection collection = tenantResource.GetPrivateStores();
+// this example assumes you already have this PrivateStoreResource created on azure
+// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
+Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
+ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
+PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
 
 // invoke the operation
-Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
 PrivateStoreData data = new PrivateStoreData
 {
     Availability = PrivateStoreAvailability.Disabled,
     ETag = new ETag("\"9301f4fd-0000-0100-0000-5e248b350345\""),
 };
-await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateStoreId, data);
+await privateStore.UpdateAsync(WaitUntil.Completed, data);
 
 Console.WriteLine("Succeeded");

@@ -1,0 +1,32 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to update an extension.
+ *
+ * @summary the operation to update an extension.
+ * x-ms-original-file: 2025-11-01/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtension_Update_MaximumSet_Gen.json
+ */
+async function virtualMachineScaleSetExtensionUpdateMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineScaleSetExtensions.update(
+    "rgcompute",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "aaaa",
+    {
+      autoUpgradeMinorVersion: true,
+      publisher: "{extension-Publisher}",
+      typePropertiesType: "{extension-Type}",
+      typeHandlerVersion: "{handler-version}",
+      settings: {},
+      forceUpdateTag: "aaaaaaaaa",
+      enableAutomaticUpgrade: true,
+      protectedSettings: {},
+      provisionAfterExtensions: ["aa"],
+      suppressFailures: true,
+    },
+  );
+  console.log(result);
+}

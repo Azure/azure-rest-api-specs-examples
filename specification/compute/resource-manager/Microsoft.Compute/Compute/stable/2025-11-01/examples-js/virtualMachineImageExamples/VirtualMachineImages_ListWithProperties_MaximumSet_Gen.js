@@ -1,0 +1,23 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to execute listWithProperties
+ *
+ * @summary execute listWithProperties
+ * x-ms-original-file: 2025-11-01/virtualMachineImageExamples/VirtualMachineImages_ListWithProperties_MaximumSet_Gen.json
+ */
+async function virtualMachineImagesListWithPropertiesMaximumSet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineImages.listWithProperties(
+    "eastus",
+    "MicrosoftWindowsServer",
+    "WindowsServer",
+    "2022-datacenter-azure-edition",
+    "Properties",
+    { top: 4, orderby: "aa" },
+  );
+  console.log(result);
+}

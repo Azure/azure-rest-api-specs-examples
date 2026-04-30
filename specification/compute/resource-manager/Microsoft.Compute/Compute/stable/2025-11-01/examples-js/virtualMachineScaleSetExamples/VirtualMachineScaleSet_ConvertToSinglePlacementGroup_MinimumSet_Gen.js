@@ -1,0 +1,19 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to converts SinglePlacementGroup property to false for a existing virtual machine scale set.
+ *
+ * @summary converts SinglePlacementGroup property to false for a existing virtual machine scale set.
+ * x-ms-original-file: 2025-11-01/virtualMachineScaleSetExamples/VirtualMachineScaleSet_ConvertToSinglePlacementGroup_MinimumSet_Gen.json
+ */
+async function virtualMachineScaleSetConvertToSinglePlacementGroupMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  await client.virtualMachineScaleSets.convertToSinglePlacementGroup(
+    "rgcompute",
+    "aaaaaaaaaaaaa",
+    {},
+  );
+}

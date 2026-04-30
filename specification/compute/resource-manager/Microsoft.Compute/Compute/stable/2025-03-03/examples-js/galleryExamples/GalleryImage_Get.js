@@ -1,0 +1,20 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to retrieves information about a gallery image definition.
+ *
+ * @summary retrieves information about a gallery image definition.
+ * x-ms-original-file: 2025-03-03/galleryExamples/GalleryImage_Get.json
+ */
+async function getAGalleryImage() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.galleryImages.get(
+    "myResourceGroup",
+    "myGalleryName",
+    "myGalleryImageName",
+  );
+  console.log(result);
+}

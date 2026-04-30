@@ -4,8 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Workloads.Models;
 using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPDatabaseInstances_Get.json
@@ -16,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SapDatabaseInstanceResource created on azure
-// for more information of creating SapDatabaseInstanceResource, please refer to the document of SapDatabaseInstanceResource
+// this example assumes you already have this SapVirtualInstanceResource created on azure
+// for more information of creating SapVirtualInstanceResource, please refer to the document of SapVirtualInstanceResource
 string subscriptionId = "6d875e77-e412-4d7d-9af4-8895278b4443";
 string resourceGroupName = "test-rg";
 string sapVirtualInstanceName = "X00";
-string databaseInstanceName = "databaseServer";
-ResourceIdentifier sapDatabaseInstanceResourceId = SapDatabaseInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sapVirtualInstanceName, databaseInstanceName);
-SapDatabaseInstanceResource sapDatabaseInstance = client.GetSapDatabaseInstanceResource(sapDatabaseInstanceResourceId);
+ResourceIdentifier sapVirtualInstanceResourceId = SapVirtualInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sapVirtualInstanceName);
+SapVirtualInstanceResource sapVirtualInstance = client.GetSapVirtualInstanceResource(sapVirtualInstanceResourceId);
+
+// get the collection of this SapDatabaseInstanceResource
+SapDatabaseInstanceCollection collection = sapVirtualInstance.GetSapDatabaseInstances();
 
 // invoke the operation
-SapDatabaseInstanceResource result = await sapDatabaseInstance.GetAsync();
+string databaseInstanceName = "databaseServer";
+NullableResponse<SapDatabaseInstanceResource> response = await collection.GetIfExistsAsync(databaseInstanceName);
+SapDatabaseInstanceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SapDatabaseInstanceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SapDatabaseInstanceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

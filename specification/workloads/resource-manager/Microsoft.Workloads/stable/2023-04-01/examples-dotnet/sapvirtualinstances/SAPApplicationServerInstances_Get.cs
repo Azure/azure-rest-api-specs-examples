@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Models;
+using Azure.ResourceManager.Workloads.Models;
 using Azure.ResourceManager.Workloads;
 
 // Generated from example definition: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPApplicationServerInstances_Get.json
@@ -14,31 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SapVirtualInstanceResource created on azure
-// for more information of creating SapVirtualInstanceResource, please refer to the document of SapVirtualInstanceResource
+// this example assumes you already have this SapApplicationServerInstanceResource created on azure
+// for more information of creating SapApplicationServerInstanceResource, please refer to the document of SapApplicationServerInstanceResource
 string subscriptionId = "6d875e77-e412-4d7d-9af4-8895278b4443";
 string resourceGroupName = "test-rg";
 string sapVirtualInstanceName = "X00";
-ResourceIdentifier sapVirtualInstanceResourceId = SapVirtualInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sapVirtualInstanceName);
-SapVirtualInstanceResource sapVirtualInstance = client.GetSapVirtualInstanceResource(sapVirtualInstanceResourceId);
-
-// get the collection of this SapApplicationServerInstanceResource
-SapApplicationServerInstanceCollection collection = sapVirtualInstance.GetSapApplicationServerInstances();
+string applicationInstanceName = "app01";
+ResourceIdentifier sapApplicationServerInstanceResourceId = SapApplicationServerInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sapVirtualInstanceName, applicationInstanceName);
+SapApplicationServerInstanceResource sapApplicationServerInstance = client.GetSapApplicationServerInstanceResource(sapApplicationServerInstanceResourceId);
 
 // invoke the operation
-string applicationInstanceName = "app01";
-NullableResponse<SapApplicationServerInstanceResource> response = await collection.GetIfExistsAsync(applicationInstanceName);
-SapApplicationServerInstanceResource result = response.HasValue ? response.Value : null;
+SapApplicationServerInstanceResource result = await sapApplicationServerInstance.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SapApplicationServerInstanceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SapApplicationServerInstanceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

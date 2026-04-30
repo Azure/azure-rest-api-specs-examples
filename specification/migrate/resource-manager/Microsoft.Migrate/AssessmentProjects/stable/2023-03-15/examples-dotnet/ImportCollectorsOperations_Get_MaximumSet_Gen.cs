@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentProjectResource created on azure
-// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
+// this example assumes you already have this MigrationAssessmentImportCollectorResource created on azure
+// for more information of creating MigrationAssessmentImportCollectorResource, please refer to the document of MigrationAssessmentImportCollectorResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawRG";
 string projectName = "app18700project";
-ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
-
-// get the collection of this MigrationAssessmentImportCollectorResource
-MigrationAssessmentImportCollectorCollection collection = migrationAssessmentProject.GetMigrationAssessmentImportCollectors();
+string importCollectorName = "importCollectore7d5";
+ResourceIdentifier migrationAssessmentImportCollectorResourceId = MigrationAssessmentImportCollectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, importCollectorName);
+MigrationAssessmentImportCollectorResource migrationAssessmentImportCollector = client.GetMigrationAssessmentImportCollectorResource(migrationAssessmentImportCollectorResourceId);
 
 // invoke the operation
-string importCollectorName = "importCollectore7d5";
-NullableResponse<MigrationAssessmentImportCollectorResource> response = await collection.GetIfExistsAsync(importCollectorName);
-MigrationAssessmentImportCollectorResource result = response.HasValue ? response.Value : null;
+MigrationAssessmentImportCollectorResource result = await migrationAssessmentImportCollector.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MigrationAssessmentImportCollectorData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MigrationAssessmentImportCollectorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

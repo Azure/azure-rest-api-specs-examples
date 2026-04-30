@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAssessmentProjectResource created on azure
-// for more information of creating MigrationAssessmentProjectResource, please refer to the document of MigrationAssessmentProjectResource
+// this example assumes you already have this MigrationAssessmentVMwareCollectorResource created on azure
+// for more information of creating MigrationAssessmentVMwareCollectorResource, please refer to the document of MigrationAssessmentVMwareCollectorResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawRG";
 string projectName = "app18700project";
-ResourceIdentifier migrationAssessmentProjectResourceId = MigrationAssessmentProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-MigrationAssessmentProjectResource migrationAssessmentProject = client.GetMigrationAssessmentProjectResource(migrationAssessmentProjectResourceId);
-
-// get the collection of this MigrationAssessmentVMwareCollectorResource
-MigrationAssessmentVMwareCollectorCollection collection = migrationAssessmentProject.GetMigrationAssessmentVMwareCollectors();
+string vmWareCollectorName = "Vmware2258collector";
+ResourceIdentifier migrationAssessmentVMwareCollectorResourceId = MigrationAssessmentVMwareCollectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, vmWareCollectorName);
+MigrationAssessmentVMwareCollectorResource migrationAssessmentVMwareCollector = client.GetMigrationAssessmentVMwareCollectorResource(migrationAssessmentVMwareCollectorResourceId);
 
 // invoke the operation
-string vmWareCollectorName = "Vmware2258collector";
-NullableResponse<MigrationAssessmentVMwareCollectorResource> response = await collection.GetIfExistsAsync(vmWareCollectorName);
-MigrationAssessmentVMwareCollectorResource result = response.HasValue ? response.Value : null;
+MigrationAssessmentVMwareCollectorResource result = await migrationAssessmentVMwareCollector.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MigrationAssessmentVMwareCollectorData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MigrationAssessmentVMwareCollectorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

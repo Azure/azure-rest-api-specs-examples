@@ -14,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MigrationAvsAssessedMachineResource created on azure
-// for more information of creating MigrationAvsAssessedMachineResource, please refer to the document of MigrationAvsAssessedMachineResource
+// this example assumes you already have this MigrationAvsAssessmentResource created on azure
+// for more information of creating MigrationAvsAssessmentResource, please refer to the document of MigrationAvsAssessmentResource
 string subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
 string resourceGroupName = "ayagrawrg";
 string projectName = "app18700project";
 string groupName = "kuchatur-test";
 string assessmentName = "asm2";
-string avsAssessedMachineName = "b6d6fc6f-796f-4c16-96af-a6d22e0f12f7";
-ResourceIdentifier migrationAvsAssessedMachineResourceId = MigrationAvsAssessedMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName, assessmentName, avsAssessedMachineName);
-MigrationAvsAssessedMachineResource migrationAvsAssessedMachine = client.GetMigrationAvsAssessedMachineResource(migrationAvsAssessedMachineResourceId);
+ResourceIdentifier migrationAvsAssessmentResourceId = MigrationAvsAssessmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, groupName, assessmentName);
+MigrationAvsAssessmentResource migrationAvsAssessment = client.GetMigrationAvsAssessmentResource(migrationAvsAssessmentResourceId);
+
+// get the collection of this MigrationAvsAssessedMachineResource
+MigrationAvsAssessedMachineCollection collection = migrationAvsAssessment.GetMigrationAvsAssessedMachines();
 
 // invoke the operation
-MigrationAvsAssessedMachineResource result = await migrationAvsAssessedMachine.GetAsync();
+string avsAssessedMachineName = "b6d6fc6f-796f-4c16-96af-a6d22e0f12f7";
+NullableResponse<MigrationAvsAssessedMachineResource> response = await collection.GetIfExistsAsync(avsAssessedMachineName);
+MigrationAvsAssessedMachineResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MigrationAvsAssessedMachineData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MigrationAvsAssessedMachineData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

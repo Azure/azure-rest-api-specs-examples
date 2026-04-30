@@ -6496,3 +6496,4 @@ id,name,language,tag,package,version,date_epoch,date
 6495,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v4@v4.0.0-beta.1,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v4.0.0-beta.1,sdk/resourcemanager/redisenterprise/armredisenterprise,v4.0.0-beta.1,1777529638,04/30/2026
 6496,@azure/arm-compute@24.0.0,js,@azure/arm-compute_24.0.0,@azure/arm-compute,24.0.0,1777528235,04/30/2026
 6497,@azure/arm-communication@5.0.0-beta.1,js,@azure/arm-communication_5.0.0-beta.1,@azure/arm-communication,5.0.0-beta.1,1777515659,04/30/2026
+6498,@azure/arm-alertsmanagement@1.0.0-beta.1,js,@azure/arm-alertsmanagement_1.0.0-beta.1,@azure/arm-alertsmanagement,1.0.0-beta.1,1777514515,04/30/2026

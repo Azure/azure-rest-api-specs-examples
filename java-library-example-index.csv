@@ -6509,3 +6509,4 @@ id,name,language,tag,package,version,date_epoch,date
 6508,"Azure.ResourceManager.StorageActions,1.0.1",dotnet,Azure.ResourceManager.StorageActions_1.0.1,Azure.ResourceManager.StorageActions,1.0.1,1777525556,04/30/2026
 6509,"Azure.ResourceManager.Synapse,1.2.2",dotnet,Azure.ResourceManager.Synapse_1.2.2,Azure.ResourceManager.Synapse,1.2.2,1777525554,04/30/2026
 6510,"Azure.ResourceManager.Subscription,1.1.2",dotnet,Azure.ResourceManager.Subscription_1.1.2,Azure.ResourceManager.Subscription,1.1.2,1777525538,04/30/2026
+6511,"Azure.ResourceManager.WorkloadsSapVirtualInstance,1.0.0",dotnet,Azure.ResourceManager.WorkloadsSapVirtualInstance_1.0.0,Azure.ResourceManager.WorkloadsSapVirtualInstance,1.0.0,1777525535,04/30/2026

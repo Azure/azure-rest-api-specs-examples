@@ -6513,3 +6513,4 @@ id,name,language,tag,package,version,date_epoch,date
 6512,"Azure.ResourceManager.Reservations,1.4.2",dotnet,Azure.ResourceManager.Reservations_1.4.2,Azure.ResourceManager.Reservations,1.4.2,1777525532,04/30/2026
 6513,"Azure.ResourceManager.TrustedSigning,1.0.0",dotnet,Azure.ResourceManager.TrustedSigning_1.0.0,Azure.ResourceManager.TrustedSigning,1.0.0,1777525522,04/30/2026
 6514,"Azure.ResourceManager.SqlVirtualMachine,1.1.2",dotnet,Azure.ResourceManager.SqlVirtualMachine_1.1.2,Azure.ResourceManager.SqlVirtualMachine,1.1.2,1777525522,04/30/2026
+6515,"Azure.ResourceManager.Relay,1.2.2",dotnet,Azure.ResourceManager.Relay_1.2.2,Azure.ResourceManager.Relay,1.2.2,1777525505,04/30/2026

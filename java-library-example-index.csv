@@ -6503,3 +6503,4 @@ id,name,language,tag,package,version,date_epoch,date
 6502,"Azure.ResourceManager.PlanetaryComputer,1.0.0",dotnet,Azure.ResourceManager.PlanetaryComputer_1.0.0,Azure.ResourceManager.PlanetaryComputer,1.0.0,1777543048,04/30/2026
 6503,"Azure.ResourceManager.PureStorageBlock,1.0.1",dotnet,Azure.ResourceManager.PureStorageBlock_1.0.1,Azure.ResourceManager.PureStorageBlock,1.0.1,1777540013,04/30/2026
 6504,"Azure.ResourceManager.Sphere,1.0.2",dotnet,Azure.ResourceManager.Sphere_1.0.2,Azure.ResourceManager.Sphere,1.0.2,1777537608,04/30/2026
+6505,"Azure.ResourceManager.ManagedServices,1.1.2",dotnet,Azure.ResourceManager.ManagedServices_1.1.2,Azure.ResourceManager.ManagedServices,1.1.2,1777536928,04/30/2026

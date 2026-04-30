@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseDataMaskingRuleResource created on azure
-// for more information of creating SynapseDataMaskingRuleResource, please refer to the document of SynapseDataMaskingRuleResource
+// this example assumes you already have this SynapseDataMaskingPolicyResource created on azure
+// for more information of creating SynapseDataMaskingPolicyResource, please refer to the document of SynapseDataMaskingPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-6852";
 string workspaceName = "sqlcrudtest-2080";
 string sqlPoolName = "sqlcrudtest-331";
-string dataMaskingRuleName = "rule1";
-ResourceIdentifier synapseDataMaskingRuleResourceId = SynapseDataMaskingRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, dataMaskingRuleName);
-SynapseDataMaskingRuleResource synapseDataMaskingRule = client.GetSynapseDataMaskingRuleResource(synapseDataMaskingRuleResourceId);
+ResourceIdentifier synapseDataMaskingPolicyResourceId = SynapseDataMaskingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
+SynapseDataMaskingPolicyResource synapseDataMaskingPolicy = client.GetSynapseDataMaskingPolicyResource(synapseDataMaskingPolicyResourceId);
+
+// get the collection of this SynapseDataMaskingRuleResource
+SynapseDataMaskingRuleCollection collection = synapseDataMaskingPolicy.GetSynapseDataMaskingRules();
 
 // invoke the operation
+string dataMaskingRuleName = "rule1";
 SynapseDataMaskingRuleData data = new SynapseDataMaskingRuleData
 {
     SchemaName = "dbo",
@@ -36,7 +39,7 @@ SynapseDataMaskingRuleData data = new SynapseDataMaskingRuleData
     SuffixSize = "0",
     ReplacementString = "asdf",
 };
-ArmOperation<SynapseDataMaskingRuleResource> lro = await synapseDataMaskingRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseDataMaskingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataMaskingRuleName, data);
 SynapseDataMaskingRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

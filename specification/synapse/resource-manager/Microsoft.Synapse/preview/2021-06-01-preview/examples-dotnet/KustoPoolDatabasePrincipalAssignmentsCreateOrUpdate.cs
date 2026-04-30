@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseDatabaseResource created on azure
-// for more information of creating SynapseDatabaseResource, please refer to the document of SynapseDatabaseResource
+// this example assumes you already have this SynapseDatabasePrincipalAssignmentResource created on azure
+// for more information of creating SynapseDatabasePrincipalAssignmentResource, please refer to the document of SynapseDatabasePrincipalAssignmentResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
 string kustoPoolName = "kustoclusterrptest4";
 string databaseName = "Kustodatabase8";
-ResourceIdentifier synapseDatabaseResourceId = SynapseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, databaseName);
-SynapseDatabaseResource synapseDatabase = client.GetSynapseDatabaseResource(synapseDatabaseResourceId);
-
-// get the collection of this SynapseDatabasePrincipalAssignmentResource
-SynapseDatabasePrincipalAssignmentCollection collection = synapseDatabase.GetSynapseDatabasePrincipalAssignments();
+string principalAssignmentName = "kustoprincipal1";
+ResourceIdentifier synapseDatabasePrincipalAssignmentResourceId = SynapseDatabasePrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, databaseName, principalAssignmentName);
+SynapseDatabasePrincipalAssignmentResource synapseDatabasePrincipalAssignment = client.GetSynapseDatabasePrincipalAssignmentResource(synapseDatabasePrincipalAssignmentResourceId);
 
 // invoke the operation
-string principalAssignmentName = "kustoprincipal1";
 SynapseDatabasePrincipalAssignmentData data = new SynapseDatabasePrincipalAssignmentData
 {
     PrincipalId = "87654321-1234-1234-1234-123456789123",
@@ -37,7 +34,7 @@ SynapseDatabasePrincipalAssignmentData data = new SynapseDatabasePrincipalAssign
     TenantId = Guid.Parse("12345678-1234-1234-1234-123456789123"),
     PrincipalType = SynapsePrincipalType.App,
 };
-ArmOperation<SynapseDatabasePrincipalAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, principalAssignmentName, data);
+ArmOperation<SynapseDatabasePrincipalAssignmentResource> lro = await synapseDatabasePrincipalAssignment.UpdateAsync(WaitUntil.Completed, data);
 SynapseDatabasePrincipalAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2025-01-01/examples/ReplicationRecoveryPlans_Get.json
@@ -16,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this SiteRecoveryRecoveryPlanResource created on azure
+// for more information of creating SiteRecoveryRecoveryPlanResource, please refer to the document of SiteRecoveryRecoveryPlanResource
 string subscriptionId = "c183865e-6077-46f2-a3b1-deb0f4f4650a";
 string resourceGroupName = "resourceGroupPS1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this SiteRecoveryRecoveryPlanResource
 string resourceName = "vault1";
-SiteRecoveryRecoveryPlanCollection collection = resourceGroupResource.GetSiteRecoveryRecoveryPlans(resourceName);
+string recoveryPlanName = "RPtest1";
+ResourceIdentifier siteRecoveryRecoveryPlanResourceId = SiteRecoveryRecoveryPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, recoveryPlanName);
+SiteRecoveryRecoveryPlanResource siteRecoveryRecoveryPlan = client.GetSiteRecoveryRecoveryPlanResource(siteRecoveryRecoveryPlanResourceId);
 
 // invoke the operation
-string recoveryPlanName = "RPtest1";
-NullableResponse<SiteRecoveryRecoveryPlanResource> response = await collection.GetIfExistsAsync(recoveryPlanName);
-SiteRecoveryRecoveryPlanResource result = response.HasValue ? response.Value : null;
+SiteRecoveryRecoveryPlanResource result = await siteRecoveryRecoveryPlan.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SiteRecoveryRecoveryPlanData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SiteRecoveryRecoveryPlanData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2025-01-01/examples/ReplicationProtectionIntents_Create.json
@@ -15,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ReplicationProtectionIntentResource created on azure
-// for more information of creating ReplicationProtectionIntentResource, please refer to the document of ReplicationProtectionIntentResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "509099b2-9d2c-4636-b43e-bd5cafb6be69";
 string resourceGroupName = "resourceGroupPS1";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ReplicationProtectionIntentResource
 string resourceName = "vault1";
-string intentObjectName = "vm1";
-ResourceIdentifier replicationProtectionIntentResourceId = ReplicationProtectionIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, intentObjectName);
-ReplicationProtectionIntentResource replicationProtectionIntent = client.GetReplicationProtectionIntentResource(replicationProtectionIntentResourceId);
+ReplicationProtectionIntentCollection collection = resourceGroupResource.GetReplicationProtectionIntents(resourceName);
 
 // invoke the operation
+string intentObjectName = "vm1";
 ReplicationProtectionIntentCreateOrUpdateContent content = new ReplicationProtectionIntentCreateOrUpdateContent
 {
     SiteRecoveryCreateProtectionIntentProviderSpecificDetails = new A2ACreateProtectionIntentContent(
@@ -35,7 +39,7 @@ ReplicationProtectionIntentCreateOrUpdateContent content = new ReplicationProtec
     A2ARecoveryAvailabilityType.Single,
     new ResourceIdentifier("/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/removeOne-asr")),
 };
-ArmOperation<ReplicationProtectionIntentResource> lro = await replicationProtectionIntent.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<ReplicationProtectionIntentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, intentObjectName, content);
 ReplicationProtectionIntentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2025-01-01/examples/ReplicationAlertSettings_Create.json
@@ -15,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteRecoveryAlertResource created on azure
-// for more information of creating SiteRecoveryAlertResource, please refer to the document of SiteRecoveryAlertResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "c183865e-6077-46f2-a3b1-deb0f4f4650a";
 string resourceGroupName = "resourceGroupPS1";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SiteRecoveryAlertResource
 string resourceName = "vault1";
-string alertSettingName = "defaultAlertSetting";
-ResourceIdentifier siteRecoveryAlertResourceId = SiteRecoveryAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, alertSettingName);
-SiteRecoveryAlertResource siteRecoveryAlert = client.GetSiteRecoveryAlertResource(siteRecoveryAlertResourceId);
+SiteRecoveryAlertCollection collection = resourceGroupResource.GetSiteRecoveryAlerts(resourceName);
 
 // invoke the operation
+string alertSettingName = "defaultAlertSetting";
 SiteRecoveryAlertCreateOrUpdateContent content = new SiteRecoveryAlertCreateOrUpdateContent
 {
     Properties = new SiteRecoveryConfigureAlertProperties
@@ -34,7 +38,7 @@ SiteRecoveryAlertCreateOrUpdateContent content = new SiteRecoveryAlertCreateOrUp
         Locale = "",
     },
 };
-ArmOperation<SiteRecoveryAlertResource> lro = await siteRecoveryAlert.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<SiteRecoveryAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertSettingName, content);
 SiteRecoveryAlertResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

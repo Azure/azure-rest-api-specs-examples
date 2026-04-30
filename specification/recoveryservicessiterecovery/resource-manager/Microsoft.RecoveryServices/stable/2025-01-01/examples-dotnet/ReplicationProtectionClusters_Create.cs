@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteRecoveryReplicationProtectionClusterResource created on azure
-// for more information of creating SiteRecoveryReplicationProtectionClusterResource, please refer to the document of SiteRecoveryReplicationProtectionClusterResource
+// this example assumes you already have this SiteRecoveryProtectionContainerResource created on azure
+// for more information of creating SiteRecoveryProtectionContainerResource, please refer to the document of SiteRecoveryProtectionContainerResource
 string subscriptionId = "c183865e-6077-46f2-a3b1-deb0f4f4650a";
 string resourceGroupName = "resourceGroupPS1";
 string resourceName = "vault1";
 string fabricName = "eastus";
 string protectionContainerName = "eastus-container";
-string replicationProtectionClusterName = "cluster12";
-ResourceIdentifier siteRecoveryReplicationProtectionClusterResourceId = SiteRecoveryReplicationProtectionClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName, protectionContainerName, replicationProtectionClusterName);
-SiteRecoveryReplicationProtectionClusterResource siteRecoveryReplicationProtectionClusterResource = client.GetSiteRecoveryReplicationProtectionClusterResource(siteRecoveryReplicationProtectionClusterResourceId);
+ResourceIdentifier siteRecoveryProtectionContainerResourceId = SiteRecoveryProtectionContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName, protectionContainerName);
+SiteRecoveryProtectionContainerResource siteRecoveryProtectionContainer = client.GetSiteRecoveryProtectionContainerResource(siteRecoveryProtectionContainerResourceId);
+
+// get the collection of this SiteRecoveryReplicationProtectionClusterResource
+SiteRecoveryReplicationProtectionClusterResourceCollection collection = siteRecoveryProtectionContainer.GetSiteRecoveryReplicationProtectionClusterResources();
 
 // invoke the operation
+string replicationProtectionClusterName = "cluster12";
 SiteRecoveryReplicationProtectionClusterData data = new SiteRecoveryReplicationProtectionClusterData
 {
     Properties = new SiteRecoveryReplicationProtectionClusterProperties
@@ -36,7 +39,7 @@ SiteRecoveryReplicationProtectionClusterData data = new SiteRecoveryReplicationP
         PolicyId = new ResourceIdentifier("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/24-hour-retention-policy"),
     },
 };
-ArmOperation<SiteRecoveryReplicationProtectionClusterResource> lro = await siteRecoveryReplicationProtectionClusterResource.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SiteRecoveryReplicationProtectionClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, replicationProtectionClusterName, data);
 SiteRecoveryReplicationProtectionClusterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

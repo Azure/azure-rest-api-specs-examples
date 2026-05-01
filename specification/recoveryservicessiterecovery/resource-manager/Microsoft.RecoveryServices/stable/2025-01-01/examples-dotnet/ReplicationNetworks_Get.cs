@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteRecoveryNetworkResource created on azure
-// for more information of creating SiteRecoveryNetworkResource, please refer to the document of SiteRecoveryNetworkResource
+// this example assumes you already have this SiteRecoveryFabricResource created on azure
+// for more information of creating SiteRecoveryFabricResource, please refer to the document of SiteRecoveryFabricResource
 string subscriptionId = "9112a37f-0f3e-46ec-9c00-060c6edca071";
 string resourceGroupName = "srcBvte2a14C27";
 string resourceName = "srce2avaultbvtaC27";
 string fabricName = "b0cef6e9a4437b81803d0b55ada4f700ab66caae59c35d62723a1589c0cd13ac";
-string networkName = "93ce99d7-1219-4914-aa61-73fe5023988e";
-ResourceIdentifier siteRecoveryNetworkResourceId = SiteRecoveryNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName, networkName);
-SiteRecoveryNetworkResource siteRecoveryNetwork = client.GetSiteRecoveryNetworkResource(siteRecoveryNetworkResourceId);
+ResourceIdentifier siteRecoveryFabricResourceId = SiteRecoveryFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName);
+SiteRecoveryFabricResource siteRecoveryFabric = client.GetSiteRecoveryFabricResource(siteRecoveryFabricResourceId);
+
+// get the collection of this SiteRecoveryNetworkResource
+SiteRecoveryNetworkCollection collection = siteRecoveryFabric.GetSiteRecoveryNetworks();
 
 // invoke the operation
-SiteRecoveryNetworkResource result = await siteRecoveryNetwork.GetAsync();
+string networkName = "93ce99d7-1219-4914-aa61-73fe5023988e";
+NullableResponse<SiteRecoveryNetworkResource> response = await collection.GetIfExistsAsync(networkName);
+SiteRecoveryNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SiteRecoveryNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SiteRecoveryNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

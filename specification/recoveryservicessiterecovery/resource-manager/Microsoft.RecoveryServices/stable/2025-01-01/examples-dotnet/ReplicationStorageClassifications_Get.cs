@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteRecoveryFabricResource created on azure
-// for more information of creating SiteRecoveryFabricResource, please refer to the document of SiteRecoveryFabricResource
+// this example assumes you already have this StorageClassificationResource created on azure
+// for more information of creating StorageClassificationResource, please refer to the document of StorageClassificationResource
 string subscriptionId = "9112a37f-0f3e-46ec-9c00-060c6edca071";
 string resourceGroupName = "resourceGroupPS1";
 string resourceName = "vault1";
 string fabricName = "2a48e3770ac08aa2be8bfbd94fcfb1cbf2dcc487b78fb9d3bd778304441b06a0";
-ResourceIdentifier siteRecoveryFabricResourceId = SiteRecoveryFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName);
-SiteRecoveryFabricResource siteRecoveryFabric = client.GetSiteRecoveryFabricResource(siteRecoveryFabricResourceId);
-
-// get the collection of this StorageClassificationResource
-StorageClassificationCollection collection = siteRecoveryFabric.GetStorageClassifications();
+string storageClassificationName = "8891569e-aaef-4a46-a4a0-78c14f2d7b09";
+ResourceIdentifier storageClassificationResourceId = StorageClassificationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName, storageClassificationName);
+StorageClassificationResource storageClassification = client.GetStorageClassificationResource(storageClassificationResourceId);
 
 // invoke the operation
-string storageClassificationName = "8891569e-aaef-4a46-a4a0-78c14f2d7b09";
-NullableResponse<StorageClassificationResource> response = await collection.GetIfExistsAsync(storageClassificationName);
-StorageClassificationResource result = response.HasValue ? response.Value : null;
+StorageClassificationResource result = await storageClassification.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StorageClassificationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageClassificationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

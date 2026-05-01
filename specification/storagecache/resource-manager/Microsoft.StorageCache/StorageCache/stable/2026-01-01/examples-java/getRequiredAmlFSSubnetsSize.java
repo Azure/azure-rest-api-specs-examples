@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ResourceProvider GetRequiredAmlFSSubnetsSize.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/getRequiredAmlFSSubnetsSize.json
+     */
+    /**
+     * Sample code: getRequiredAmlFilesystemSubnetsSize.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void
+        getRequiredAmlFilesystemSubnetsSize(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.resourceProviders().getRequiredAmlFSSubnetsSizeWithResponse(null, com.azure.core.util.Context.NONE);
+    }
+}

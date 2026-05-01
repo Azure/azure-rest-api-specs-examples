@@ -1,0 +1,17 @@
+
+/**
+ * Samples for StorageTargetOperation Flush.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/StorageTargets_Flush.json
+     */
+    /**
+     * Sample code: StorageTargets_Flush.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void storageTargetsFlush(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.storageTargetOperations().flush("scgroup", "sc", "st1", com.azure.core.util.Context.NONE);
+    }
+}

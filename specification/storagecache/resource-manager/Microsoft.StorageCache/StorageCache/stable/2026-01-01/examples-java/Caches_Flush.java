@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Caches Flush.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/Caches_Flush.json
+     */
+    /**
+     * Sample code: Caches_Flush.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void cachesFlush(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.caches().flush("scgroup", "sc", com.azure.core.util.Context.NONE);
+    }
+}

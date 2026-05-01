@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ExpansionJobs Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/expansionJobs_Delete.json
+     */
+    /**
+     * Sample code: expansionJobs_Delete.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void expansionJobsDelete(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.expansionJobs().delete("scgroup", "fs1", "expansionjob1", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.storagecache.models.ConflictResolutionMode;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ImportJobs CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/importJobs_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: importJobs_CreateOrUpdate.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void importJobsCreateOrUpdate(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.importJobs().define("job1").withRegion("eastus").withExistingAmlFilesystem("scgroup", "fs1")
+            .withTags(mapOf("Dept", "ContosoAds")).withImportPrefixes(Arrays.asList("/"))
+            .withConflictResolutionMode(ConflictResolutionMode.OVERWRITE_ALWAYS).withMaximumErrors(0).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

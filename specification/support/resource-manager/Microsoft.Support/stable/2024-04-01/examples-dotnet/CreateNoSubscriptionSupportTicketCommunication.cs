@@ -14,19 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SupportTicketNoSubCommunicationResource created on azure
-// for more information of creating SupportTicketNoSubCommunicationResource, please refer to the document of SupportTicketNoSubCommunicationResource
+// this example assumes you already have this TenantSupportTicketResource created on azure
+// for more information of creating TenantSupportTicketResource, please refer to the document of TenantSupportTicketResource
 string supportTicketName = "testticket";
-string communicationName = "testcommunication";
-ResourceIdentifier supportTicketNoSubCommunicationResourceId = SupportTicketNoSubCommunicationResource.CreateResourceIdentifier(supportTicketName, communicationName);
-SupportTicketNoSubCommunicationResource supportTicketNoSubCommunication = client.GetSupportTicketNoSubCommunicationResource(supportTicketNoSubCommunicationResourceId);
+ResourceIdentifier tenantSupportTicketResourceId = TenantSupportTicketResource.CreateResourceIdentifier(supportTicketName);
+TenantSupportTicketResource tenantSupportTicket = client.GetTenantSupportTicketResource(tenantSupportTicketResourceId);
+
+// get the collection of this SupportTicketNoSubCommunicationResource
+SupportTicketNoSubCommunicationCollection collection = tenantSupportTicket.GetSupportTicketNoSubCommunications();
 
 // invoke the operation
+string communicationName = "testcommunication";
 SupportTicketCommunicationData data = new SupportTicketCommunicationData("This is a test message from a customer!", "This is a test message from a customer!")
 {
     Sender = "user@contoso.com",
 };
-ArmOperation<SupportTicketNoSubCommunicationResource> lro = await supportTicketNoSubCommunication.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SupportTicketNoSubCommunicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, communicationName, data);
 SupportTicketNoSubCommunicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

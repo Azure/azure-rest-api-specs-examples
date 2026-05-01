@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.ResourceMover.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ResourceMover;
 
 // Generated from example definition: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01/examples/MoveCollections_Get.json
@@ -17,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this MoverResourceSetResource created on azure
+// for more information of creating MoverResourceSetResource, please refer to the document of MoverResourceSetResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this MoverResourceSetResource
-MoverResourceSetCollection collection = resourceGroupResource.GetMoverResourceSets();
+string moverResourceSetName = "movecollection1";
+ResourceIdentifier moverResourceSetResourceId = MoverResourceSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, moverResourceSetName);
+MoverResourceSetResource moverResourceSet = client.GetMoverResourceSetResource(moverResourceSetResourceId);
 
 // invoke the operation
-string moverResourceSetName = "movecollection1";
-NullableResponse<MoverResourceSetResource> response = await collection.GetIfExistsAsync(moverResourceSetName);
-MoverResourceSetResource result = response.HasValue ? response.Value : null;
+MoverResourceSetResource result = await moverResourceSet.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MoverResourceSetData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MoverResourceSetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

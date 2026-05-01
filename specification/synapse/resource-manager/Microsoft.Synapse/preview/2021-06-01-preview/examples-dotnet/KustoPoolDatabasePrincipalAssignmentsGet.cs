@@ -15,33 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseDatabaseResource created on azure
-// for more information of creating SynapseDatabaseResource, please refer to the document of SynapseDatabaseResource
+// this example assumes you already have this SynapseDatabasePrincipalAssignmentResource created on azure
+// for more information of creating SynapseDatabasePrincipalAssignmentResource, please refer to the document of SynapseDatabasePrincipalAssignmentResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
 string kustoPoolName = "kustoclusterrptest4";
 string databaseName = "Kustodatabase8";
-ResourceIdentifier synapseDatabaseResourceId = SynapseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, databaseName);
-SynapseDatabaseResource synapseDatabase = client.GetSynapseDatabaseResource(synapseDatabaseResourceId);
-
-// get the collection of this SynapseDatabasePrincipalAssignmentResource
-SynapseDatabasePrincipalAssignmentCollection collection = synapseDatabase.GetSynapseDatabasePrincipalAssignments();
+string principalAssignmentName = "kustoprincipal1";
+ResourceIdentifier synapseDatabasePrincipalAssignmentResourceId = SynapseDatabasePrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, databaseName, principalAssignmentName);
+SynapseDatabasePrincipalAssignmentResource synapseDatabasePrincipalAssignment = client.GetSynapseDatabasePrincipalAssignmentResource(synapseDatabasePrincipalAssignmentResourceId);
 
 // invoke the operation
-string principalAssignmentName = "kustoprincipal1";
-NullableResponse<SynapseDatabasePrincipalAssignmentResource> response = await collection.GetIfExistsAsync(principalAssignmentName);
-SynapseDatabasePrincipalAssignmentResource result = response.HasValue ? response.Value : null;
+SynapseDatabasePrincipalAssignmentResource result = await synapseDatabasePrincipalAssignment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SynapseDatabasePrincipalAssignmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseDatabasePrincipalAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

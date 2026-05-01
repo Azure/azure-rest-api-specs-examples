@@ -16,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseDatabaseResource created on azure
-// for more information of creating SynapseDatabaseResource, please refer to the document of SynapseDatabaseResource
+// this example assumes you already have this SynapseKustoPoolResource created on azure
+// for more information of creating SynapseKustoPoolResource, please refer to the document of SynapseKustoPoolResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
 string kustoPoolName = "kustoclusterrptest4";
-string databaseName = "KustoDatabase8";
-ResourceIdentifier synapseDatabaseResourceId = SynapseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, databaseName);
-SynapseDatabaseResource synapseDatabase = client.GetSynapseDatabaseResource(synapseDatabaseResourceId);
+ResourceIdentifier synapseKustoPoolResourceId = SynapseKustoPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName);
+SynapseKustoPoolResource synapseKustoPool = client.GetSynapseKustoPoolResource(synapseKustoPoolResourceId);
+
+// get the collection of this SynapseDatabaseResource
+SynapseDatabaseCollection collection = synapseKustoPool.GetSynapseDatabases();
 
 // invoke the operation
-SynapseDatabaseResource result = await synapseDatabase.GetAsync();
+string databaseName = "KustoDatabase8";
+NullableResponse<SynapseDatabaseResource> response = await collection.GetIfExistsAsync(databaseName);
+SynapseDatabaseResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseDatabaseData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseDatabaseData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SpringBootSiteResource created on azure
-// for more information of creating SpringBootSiteResource, please refer to the document of SpringBootSiteResource
+// this example assumes you already have this SpringBootSiteErrorSummaryResource created on azure
+// for more information of creating SpringBootSiteErrorSummaryResource, please refer to the document of SpringBootSiteErrorSummaryResource
 string subscriptionId = "libzegdqkcxmhqhhhcxm";
 string resourceGroupName = "rgspringbootdiscovery";
 string siteName = "xxkzlvbihwxunadjcpjpjmghmhxrqyvghtpfps";
-ResourceIdentifier springBootSiteResourceId = SpringBootSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName);
-SpringBootSiteResource springBootSite = client.GetSpringBootSiteResource(springBootSiteResourceId);
-
-// get the collection of this SpringBootSiteErrorSummaryResource
-SpringBootSiteErrorSummaryCollection collection = springBootSite.GetSpringBootSiteErrorSummaries();
+string errorSummaryName = "K2lv";
+ResourceIdentifier springBootSiteErrorSummaryResourceId = SpringBootSiteErrorSummaryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, errorSummaryName);
+SpringBootSiteErrorSummaryResource springBootSiteErrorSummary = client.GetSpringBootSiteErrorSummaryResource(springBootSiteErrorSummaryResourceId);
 
 // invoke the operation
-string errorSummaryName = "K2lv";
-NullableResponse<SpringBootSiteErrorSummaryResource> response = await collection.GetIfExistsAsync(errorSummaryName);
-SpringBootSiteErrorSummaryResource result = response.HasValue ? response.Value : null;
+SpringBootSiteErrorSummaryResource result = await springBootSiteErrorSummary.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SpringBootSiteErrorSummaryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SpringBootSiteErrorSummaryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

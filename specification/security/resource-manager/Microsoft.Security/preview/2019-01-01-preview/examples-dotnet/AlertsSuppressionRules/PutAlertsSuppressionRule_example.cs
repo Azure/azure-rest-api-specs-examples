@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter.Models;
 using Azure.ResourceManager.SecurityCenter;
 
@@ -15,14 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAlertsSuppressionRuleResource created on azure
-// for more information of creating SecurityAlertsSuppressionRuleResource, please refer to the document of SecurityAlertsSuppressionRuleResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-string alertsSuppressionRuleName = "dismissIpAnomalyAlerts";
-ResourceIdentifier securityAlertsSuppressionRuleResourceId = SecurityAlertsSuppressionRuleResource.CreateResourceIdentifier(subscriptionId, alertsSuppressionRuleName);
-SecurityAlertsSuppressionRuleResource securityAlertsSuppressionRule = client.GetSecurityAlertsSuppressionRuleResource(securityAlertsSuppressionRuleResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this SecurityAlertsSuppressionRuleResource
+SecurityAlertsSuppressionRuleCollection collection = subscriptionResource.GetSecurityAlertsSuppressionRules();
 
 // invoke the operation
+string alertsSuppressionRuleName = "dismissIpAnomalyAlerts";
 SecurityAlertsSuppressionRuleData data = new SecurityAlertsSuppressionRuleData
 {
     AlertType = "IpAnomaly",
@@ -38,7 +42,7 @@ SecurityAlertsSuppressionRuleData data = new SecurityAlertsSuppressionRuleData
     Field = "entities.process.commandline",
     }},
 };
-ArmOperation<SecurityAlertsSuppressionRuleResource> lro = await securityAlertsSuppressionRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SecurityAlertsSuppressionRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, alertsSuppressionRuleName, data);
 SecurityAlertsSuppressionRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

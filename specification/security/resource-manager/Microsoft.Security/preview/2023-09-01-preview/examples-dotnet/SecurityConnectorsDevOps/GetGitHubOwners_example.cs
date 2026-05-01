@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityConnectorGitHubOwnerResource created on azure
-// for more information of creating SecurityConnectorGitHubOwnerResource, please refer to the document of SecurityConnectorGitHubOwnerResource
+// this example assumes you already have this DevOpsConfigurationResource created on azure
+// for more information of creating DevOpsConfigurationResource, please refer to the document of DevOpsConfigurationResource
 string subscriptionId = "0806e1cd-cfda-4ff8-b99c-2b0af42cffd3";
 string resourceGroupName = "myRg";
 string securityConnectorName = "mySecurityConnectorName";
-string ownerName = "myGitHubOwner";
-ResourceIdentifier securityConnectorGitHubOwnerResourceId = SecurityConnectorGitHubOwnerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName, ownerName);
-SecurityConnectorGitHubOwnerResource securityConnectorGitHubOwner = client.GetSecurityConnectorGitHubOwnerResource(securityConnectorGitHubOwnerResourceId);
+ResourceIdentifier devOpsConfigurationResourceId = DevOpsConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName);
+DevOpsConfigurationResource devOpsConfiguration = client.GetDevOpsConfigurationResource(devOpsConfigurationResourceId);
+
+// get the collection of this SecurityConnectorGitHubOwnerResource
+SecurityConnectorGitHubOwnerCollection collection = devOpsConfiguration.GetSecurityConnectorGitHubOwners();
 
 // invoke the operation
-SecurityConnectorGitHubOwnerResource result = await securityConnectorGitHubOwner.GetAsync();
+string ownerName = "myGitHubOwner";
+NullableResponse<SecurityConnectorGitHubOwnerResource> response = await collection.GetIfExistsAsync(ownerName);
+SecurityConnectorGitHubOwnerResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityConnectorGitHubOwnerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecurityConnectorGitHubOwnerData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -14,18 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityHealthReportResource created on azure
-// for more information of creating SecurityHealthReportResource, please refer to the document of SecurityHealthReportResource
+// get the collection of this SecurityHealthReportResource
 string resourceId = "subscriptions/a1efb6ca-fbc5-4782-9aaa-5c7daded1ce2/resourcegroups/E2E-IBB0WX/providers/Microsoft.Security/securityconnectors/AwsConnectorAllOfferings";
-string healthReportName = "909c629a-bf39-4521-8e4f-10b443a0bc02";
-ResourceIdentifier securityHealthReportResourceId = SecurityHealthReportResource.CreateResourceIdentifier(resourceId, healthReportName);
-SecurityHealthReportResource securityHealthReport = client.GetSecurityHealthReportResource(securityHealthReportResourceId);
+SecurityHealthReportCollection collection = client.GetSecurityHealthReports(new ResourceIdentifier(resourceId));
 
 // invoke the operation
-SecurityHealthReportResource result = await securityHealthReport.GetAsync();
+string healthReportName = "909c629a-bf39-4521-8e4f-10b443a0bc02";
+NullableResponse<SecurityHealthReportResource> response = await collection.GetIfExistsAsync(healthReportName);
+SecurityHealthReportResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityHealthReportData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecurityHealthReportData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

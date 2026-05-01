@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ServiceFabric;
 
 // Generated from example definition: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/preview/2023-11-01-preview/examples/UnsupportedVMSizesGet_example.json
@@ -14,19 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceFabricVmSizeResource created on azure
-// for more information of creating ServiceFabricVmSizeResource, please refer to the document of ServiceFabricVmSizeResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this ServiceFabricVmSizeResource
 AzureLocation location = new AzureLocation("eastus");
-string vmSize = "Standard_B1ls1";
-ResourceIdentifier serviceFabricVmSizeResourceId = ServiceFabricVmSizeResource.CreateResourceIdentifier(subscriptionId, location, vmSize);
-ServiceFabricVmSizeResource serviceFabricVmSizeResource = client.GetServiceFabricVmSizeResource(serviceFabricVmSizeResourceId);
+ServiceFabricVmSizeResourceCollection collection = subscriptionResource.GetServiceFabricVmSizeResources(location);
 
 // invoke the operation
-ServiceFabricVmSizeResource result = await serviceFabricVmSizeResource.GetAsync();
+string vmSize = "Standard_B1ls1";
+NullableResponse<ServiceFabricVmSizeResource> response = await collection.GetIfExistsAsync(vmSize);
+ServiceFabricVmSizeResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceFabricVmSizeResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ServiceFabricVmSizeResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

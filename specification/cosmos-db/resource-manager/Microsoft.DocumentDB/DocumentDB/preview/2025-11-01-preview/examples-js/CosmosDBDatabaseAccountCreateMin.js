@@ -1,35 +1,21 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Creates or updates an Azure Cosmos DB database account. The "Update" method is preferred when performing updates on an account.
+ * This sample demonstrates how to creates or updates an Azure Cosmos DB database account. The "Update" method is preferred when performing updates on an account.
  *
- * @summary Creates or updates an Azure Cosmos DB database account. The "Update" method is preferred when performing updates on an account.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBDatabaseAccountCreateMin.json
+ * @summary creates or updates an Azure Cosmos DB database account. The "Update" method is preferred when performing updates on an account.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBDatabaseAccountCreateMin.json
  */
-async function cosmosDbDatabaseAccountCreateMin() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const createUpdateParameters = {
-    createMode: "Default",
-    databaseAccountOfferType: "Standard",
-    location: "westus",
-    locations: [
-      {
-        failoverPriority: 0,
-        isZoneRedundant: false,
-        locationName: "southcentralus",
-      },
-    ],
-  };
+async function cosmosDBDatabaseAccountCreateMin() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.databaseAccounts.beginCreateOrUpdateAndWait(
-    resourceGroupName,
-    accountName,
-    createUpdateParameters,
-  );
+  const result = await client.databaseAccounts.createOrUpdate("rg1", "ddb1", {
+    location: "westus",
+    databaseAccountOfferType: "Standard",
+    locations: [{ failoverPriority: 0, locationName: "southcentralus", isZoneRedundant: false }],
+    createMode: "Default",
+  });
   console.log(result);
 }

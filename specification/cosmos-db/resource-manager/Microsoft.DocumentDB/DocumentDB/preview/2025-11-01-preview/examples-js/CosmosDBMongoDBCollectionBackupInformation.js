@@ -1,30 +1,22 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Retrieves continuous backup information for a Mongodb collection.
+ * This sample demonstrates how to retrieves continuous backup information for a Mongodb collection.
  *
- * @summary Retrieves continuous backup information for a Mongodb collection.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionBackupInformation.json
+ * @summary retrieves continuous backup information for a Mongodb collection.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionBackupInformation.json
  */
-async function cosmosDbMongoDbcollectionBackupInformation() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
-  const location = {
-    location: "North Europe",
-  };
+async function cosmosDBMongoDBCollectionBackupInformation() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginRetrieveContinuousBackupInformationAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    collectionName,
-    location,
+  const result = await client.mongoDBResources.retrieveContinuousBackupInformation(
+    "rgName",
+    "ddb1",
+    "databaseName",
+    "collectionName",
+    { location: "North Europe" },
   );
   console.log(result);
 }

@@ -1,26 +1,21 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+ * This sample demonstrates how to gets the MongoDB collection under an existing Azure Cosmos DB database account.
  *
- * @summary Gets the MongoDB collection under an existing Azure Cosmos DB database account.
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionGet.json
+ * @summary gets the MongoDB collection under an existing Azure Cosmos DB database account.
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionGet.json
  */
-async function cosmosDbMongoDbcollectionGet() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
+async function cosmosDBMongoDBCollectionGet() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const result = await client.mongoDBResources.getMongoDBCollection(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    collectionName,
+    "rgName",
+    "ddb1",
+    "databaseName",
+    "collectionName",
   );
   console.log(result);
 }

@@ -1,31 +1,22 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Retrieve throughput distribution for an Azure Cosmos DB MongoDB container
+ * This sample demonstrates how to retrieve throughput distribution for an Azure Cosmos DB MongoDB container
  *
- * @summary Retrieve throughput distribution for an Azure Cosmos DB MongoDB container
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionRetrieveThroughputDistribution.json
+ * @summary retrieve throughput distribution for an Azure Cosmos DB MongoDB container
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionRetrieveThroughputDistribution.json
  */
-async function cosmosDbMongoDbcollectionRetrieveThroughputDistribution() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
-  const retrieveThroughputParameters = {
-    resource: { physicalPartitionIds: [{ id: "0" }, { id: "1" }] },
-  };
+async function cosmosDBMongoDBCollectionRetrieveThroughputDistribution() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result =
-    await client.mongoDBResources.beginMongoDBContainerRetrieveThroughputDistributionAndWait(
-      resourceGroupName,
-      accountName,
-      databaseName,
-      collectionName,
-      retrieveThroughputParameters,
-    );
+  const result = await client.mongoDBResources.mongoDBContainerRetrieveThroughputDistribution(
+    "rg1",
+    "ddb1",
+    "databaseName",
+    "collectionName",
+    { resource: { physicalPartitionIds: [{ id: "0" }, { id: "1" }] } },
+  );
   console.log(result);
 }

@@ -1,37 +1,31 @@
 const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Redistribute throughput for an Azure Cosmos DB MongoDB container
+ * This sample demonstrates how to redistribute throughput for an Azure Cosmos DB MongoDB container
  *
- * @summary Redistribute throughput for an Azure Cosmos DB MongoDB container
- * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2025-11-01-preview/examples/CosmosDBMongoDBCollectionRedistributeThroughput.json
+ * @summary redistribute throughput for an Azure Cosmos DB MongoDB container
+ * x-ms-original-file: 2025-11-01-preview/CosmosDBMongoDBCollectionRedistributeThroughput.json
  */
-async function cosmosDbMongoDbcollectionRedistributeThroughput() {
-  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
-  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
-  const accountName = "ddb1";
-  const databaseName = "databaseName";
-  const collectionName = "collectionName";
-  const redistributeThroughputParameters = {
-    resource: {
-      sourcePhysicalPartitionThroughputInfo: [{ id: "2", throughput: 5000 }, { id: "3" }],
-      targetPhysicalPartitionThroughputInfo: [
-        { id: "0", throughput: 5000 },
-        { id: "1", throughput: 5000 },
-      ],
-      throughputPolicy: "custom",
-    },
-  };
+async function cosmosDBMongoDBCollectionRedistributeThroughput() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
   const client = new CosmosDBManagementClient(credential, subscriptionId);
-  const result = await client.mongoDBResources.beginMongoDBContainerRedistributeThroughputAndWait(
-    resourceGroupName,
-    accountName,
-    databaseName,
-    collectionName,
-    redistributeThroughputParameters,
+  const result = await client.mongoDBResources.mongoDBContainerRedistributeThroughput(
+    "rg1",
+    "ddb1",
+    "databaseName",
+    "collectionName",
+    {
+      resource: {
+        sourcePhysicalPartitionThroughputInfo: [{ id: "2", throughput: 5000 }, { id: "3" }],
+        targetPhysicalPartitionThroughputInfo: [
+          { id: "0", throughput: 5000 },
+          { id: "1", throughput: 5000 },
+        ],
+        throughputPolicy: "custom",
+      },
+    },
   );
   console.log(result);
 }

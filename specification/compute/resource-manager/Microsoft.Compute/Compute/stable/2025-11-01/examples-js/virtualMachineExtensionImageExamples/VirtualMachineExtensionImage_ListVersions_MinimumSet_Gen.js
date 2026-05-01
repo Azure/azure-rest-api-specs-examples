@@ -1,0 +1,20 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a list of virtual machine extension image versions.
+ *
+ * @summary gets a list of virtual machine extension image versions.
+ * x-ms-original-file: 2025-11-01/virtualMachineExtensionImageExamples/VirtualMachineExtensionImage_ListVersions_MinimumSet_Gen.json
+ */
+async function virtualMachineExtensionImageListVersionsMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineExtensionImages.listVersions(
+    "aaaaaaaaa",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "aaaa",
+  );
+  console.log(result);
+}

@@ -1,0 +1,20 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists all the disk encryption sets under a subscription.
+ *
+ * @summary lists all the disk encryption sets under a subscription.
+ * x-ms-original-file: 2025-01-02/diskEncryptionSetExamples/DiskEncryptionSet_ListBySubscription.json
+ */
+async function listAllDiskEncryptionSetsInASubscription() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.diskEncryptionSets.list()) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

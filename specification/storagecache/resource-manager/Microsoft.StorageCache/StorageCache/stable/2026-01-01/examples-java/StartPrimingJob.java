@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.storagecache.models.PrimingJob;
+
+/**
+ * Samples for Caches StartPrimingJob.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/StartPrimingJob.json
+     */
+    /**
+     * Sample code: StartPrimingJob.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void startPrimingJob(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.caches().startPrimingJob("scgroup", "sc1",
+            new PrimingJob().withPrimingJobName("contosoJob").withPrimingManifestUrl(
+                "https://contosostorage.blob.core.windows.net/contosoblob/00000000_00000000000000000000000000000000.00000000000.FFFFFFFF.00000000?sp=r&st=2021-08-11T19:33:35Z&se=2021-08-12T03:33:35Z&spr=https&sv=2020-08-04&sr=b&sig=<secret-value-from-key>"),
+            com.azure.core.util.Context.NONE);
+    }
+}

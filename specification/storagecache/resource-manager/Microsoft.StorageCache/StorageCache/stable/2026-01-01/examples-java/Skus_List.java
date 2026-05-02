@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Skus List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/Skus_List.json
+     */
+    /**
+     * Sample code: Skus_List.
+     * 
+     * @param manager Entry point to StorageCacheManager.
+     */
+    public static void skusList(com.azure.resourcemanager.storagecache.StorageCacheManager manager) {
+        manager.skus().list(com.azure.core.util.Context.NONE);
+    }
+}

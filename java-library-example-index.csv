@@ -6535,3 +6535,4 @@ id,name,language,tag,package,version,date_epoch,date
 6534,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-storagecache_1.2.0,com.azure.resourcemanager+azure-resourcemanager-storagecache,1.2.0,1777546681,04/30/2026
 6535,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/planetarycomputer/armplanetarycomputer@v1.0.0,go,sdk/resourcemanager/planetarycomputer/armplanetarycomputer/v1.0.0,sdk/resourcemanager/planetarycomputer/armplanetarycomputer,v1.0.0,1777591447,04/30/2026
 6536,azure-mgmt-planetarycomputer@1.0.0,python,azure-mgmt-planetarycomputer_1.0.0,azure-mgmt-planetarycomputer,1.0.0,1777588403,04/30/2026
+6537,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.1,1777654777,05/01/2026

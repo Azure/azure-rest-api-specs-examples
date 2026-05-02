@@ -6532,3 +6532,6 @@ id,name,language,tag,package,version,date_epoch,date
 6531,"Azure.ResourceManager.SecurityDevOps,1.0.0-beta.6",dotnet,Azure.ResourceManager.SecurityDevOps_1.0.0-beta.6,Azure.ResourceManager.SecurityDevOps,1.0.0-beta.6,1777516459,04/30/2026
 6532,"Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.2",dotnet,Azure.ResourceManager.SecretsStoreExtension_1.0.0-beta.2,Azure.ResourceManager.SecretsStoreExtension,1.0.0-beta.2,1777516385,04/30/2026
 6533,azure-mgmt-appconfiguration@6.0.0b2,python,azure-mgmt-appconfiguration_6.0.0b2,azure-mgmt-appconfiguration,6.0.0b2,1777544666,04/30/2026
+6534,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-storagecache_1.2.0,com.azure.resourcemanager+azure-resourcemanager-storagecache,1.2.0,1777546681,04/30/2026
+6535,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/planetarycomputer/armplanetarycomputer@v1.0.0,go,sdk/resourcemanager/planetarycomputer/armplanetarycomputer/v1.0.0,sdk/resourcemanager/planetarycomputer/armplanetarycomputer,v1.0.0,1777591447,04/30/2026
+6536,azure-mgmt-planetarycomputer@1.0.0,python,azure-mgmt-planetarycomputer_1.0.0,azure-mgmt-planetarycomputer,1.0.0,1777588403,04/30/2026

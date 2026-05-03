@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.Project;
+import com.azure.resourcemanager.cognitiveservices.models.ProjectProperties;
+
+/**
+ * Samples for Projects Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-15-preview/UpdateProjects.json
+     */
+    /**
+     * Sample code: Update Project.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void updateProject(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        Project resource = manager.projects()
+            .getWithResponse("bvttest", "bingSearch", "projectName", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new ProjectProperties().withDescription("new description.")).apply();
+    }
+}

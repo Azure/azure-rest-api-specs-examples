@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.netapp.models.BucketPermissions;
+import com.azure.resourcemanager.netapp.models.BucketServerProperties;
+import com.azure.resourcemanager.netapp.models.FileSystemUser;
+import com.azure.resourcemanager.netapp.models.NfsUser;
+import com.azure.resourcemanager.netapp.models.OnCertificateConflictAction;
+
+/**
+ * Samples for Buckets CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/Buckets_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Buckets_CreateOrUpdate.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void bucketsCreateOrUpdate(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.buckets().define("bucket1").withExistingVolume("myRG", "account1", "pool1", "volume1").withPath("/path")
+            .withFileSystemUser(new FileSystemUser().withNfsUser(new NfsUser().withUserId(1001L).withGroupId(1000L)))
+            .withServer(new BucketServerProperties().withFqdn("fullyqualified.domainname.com")
+                .withCertificateObject("<REDACTED>")
+                .withOnCertificateConflictAction(OnCertificateConflictAction.UPDATE))
+            .withPermissions(BucketPermissions.READ_ONLY).create();
+    }
+}

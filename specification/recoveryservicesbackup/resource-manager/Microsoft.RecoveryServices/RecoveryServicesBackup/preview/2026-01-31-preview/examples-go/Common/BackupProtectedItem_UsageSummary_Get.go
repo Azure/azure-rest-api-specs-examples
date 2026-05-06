@@ -1,0 +1,87 @@
+package armrecoveryservicesbackup_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5"
+)
+
+// Generated from example definition: 2026-01-31-preview/Common/BackupProtectedItem_UsageSummary_Get.json
+func ExampleBackupUsageSummariesClient_NewListPager_getProtectedItemsUsagesSummary() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesbackup.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewBackupUsageSummariesClient().NewListPager("testVault", "testRG", &armrecoveryservicesbackup.BackupUsageSummariesClientListOptions{
+		Filter: to.Ptr("type eq 'BackupProtectedItemCountSummary'")})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armrecoveryservicesbackup.BackupUsageSummariesClientListResponse{
+		// 	BackupManagementUsageList: armrecoveryservicesbackup.BackupManagementUsageList{
+		// 		Value: []*armrecoveryservicesbackup.BackupManagementUsage{
+		// 			{
+		// 				Name: &armrecoveryservicesbackup.NameInfo{
+		// 					LocalizedValue: to.Ptr("Azure Virtual Machine"),
+		// 					Value: to.Ptr("AzureIaasVM"),
+		// 				},
+		// 				CurrentValue: to.Ptr[int64](7),
+		// 				Limit: to.Ptr[int64](-1),
+		// 				Unit: to.Ptr(armrecoveryservicesbackup.UsagesUnitCount),
+		// 			},
+		// 			{
+		// 				Name: &armrecoveryservicesbackup.NameInfo{
+		// 					LocalizedValue: to.Ptr("Azure Backup Agent"),
+		// 					Value: to.Ptr("MAB"),
+		// 				},
+		// 				CurrentValue: to.Ptr[int64](3),
+		// 				Limit: to.Ptr[int64](-1),
+		// 				Unit: to.Ptr(armrecoveryservicesbackup.UsagesUnitCount),
+		// 			},
+		// 			{
+		// 				Name: &armrecoveryservicesbackup.NameInfo{
+		// 					LocalizedValue: to.Ptr("Azure Backup Server"),
+		// 					Value: to.Ptr("AzureBackupServer"),
+		// 				},
+		// 				CurrentValue: to.Ptr[int64](1),
+		// 				Limit: to.Ptr[int64](-1),
+		// 				Unit: to.Ptr(armrecoveryservicesbackup.UsagesUnitCount),
+		// 			},
+		// 			{
+		// 				Name: &armrecoveryservicesbackup.NameInfo{
+		// 					LocalizedValue: to.Ptr("Azure Storage (Azure Files)"),
+		// 					Value: to.Ptr("AzureStorage"),
+		// 				},
+		// 				CurrentValue: to.Ptr[int64](2),
+		// 				Limit: to.Ptr[int64](-1),
+		// 				Unit: to.Ptr(armrecoveryservicesbackup.UsagesUnitCount),
+		// 			},
+		// 			{
+		// 				Name: &armrecoveryservicesbackup.NameInfo{
+		// 					LocalizedValue: to.Ptr("SQL in Azure VM"),
+		// 					Value: to.Ptr("AzureWorkload"),
+		// 				},
+		// 				CurrentValue: to.Ptr[int64](2),
+		// 				Limit: to.Ptr[int64](-1),
+		// 				Unit: to.Ptr(armrecoveryservicesbackup.UsagesUnitCount),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

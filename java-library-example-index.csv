@@ -6540,3 +6540,4 @@ id,name,language,tag,package,version,date_epoch,date
 6539,@azure/arm-appconfiguration@6.0.0-beta.2,js,@azure/arm-appconfiguration_6.0.0-beta.2,@azure/arm-appconfiguration,6.0.0-beta.2,1777877749,05/04/2026
 6540,@azure/arm-iotoperations@2.0.0,js,@azure/arm-iotoperations_2.0.0,@azure/arm-iotoperations,2.0.0,1777972384,05/05/2026
 6541,com.azure.resourcemanager:azure-resourcemanager-netapp:2.2.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.2.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.2.0,1777994009,05/05/2026
+6542,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.0.0-beta.1,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.0.0-beta.1,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.0.0-beta.1,1778046754,05/06/2026

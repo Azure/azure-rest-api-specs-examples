@@ -6550,3 +6550,4 @@ id,name,language,tag,package,version,date_epoch,date
 6549,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.2,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.2,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.2,1778078509,05/06/2026
 6550,com.azure.resourcemanager:azure-resourcemanager-compute:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.57.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.57.1,1778078481,05/06/2026
 6551,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.2,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.2,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.2,1778078452,05/06/2026
+6552,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v1.1.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v1.1.0,sdk/resourcemanager/iotoperations/armiotoperations,v1.1.0,1778101028,05/06/2026

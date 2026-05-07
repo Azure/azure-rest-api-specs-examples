@@ -6553,3 +6553,4 @@ id,name,language,tag,package,version,date_epoch,date
 6552,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v1.1.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v1.1.0,sdk/resourcemanager/iotoperations/armiotoperations,v1.1.0,1778101028,05/06/2026
 6553,"Azure.ResourceManager.NetApp,1.16.0",dotnet,Azure.ResourceManager.NetApp_1.16.0,Azure.ResourceManager.NetApp,1.16.0,1778140252,05/07/2026
 6554,azure-mgmt-authorization@5.0.0b2,python,azure-mgmt-authorization_5.0.0b2,azure-mgmt-authorization,5.0.0b2,1778149494,05/07/2026
+6555,azure-mgmt-confidentialledger@1.0.1,python,azure-mgmt-confidentialledger_1.0.1,azure-mgmt-confidentialledger,1.0.1,1778123278,05/07/2026

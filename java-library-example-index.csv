@@ -6539,3 +6539,9 @@ id,name,language,tag,package,version,date_epoch,date
 6538,@azure/arm-planetarycomputer@1.0.0,js,@azure/arm-planetarycomputer_1.0.0,@azure/arm-planetarycomputer,1.0.0,1777668933,05/01/2026
 6539,@azure/arm-appconfiguration@6.0.0-beta.2,js,@azure/arm-appconfiguration_6.0.0-beta.2,@azure/arm-appconfiguration,6.0.0-beta.2,1777877749,05/04/2026
 6540,@azure/arm-iotoperations@2.0.0,js,@azure/arm-iotoperations_2.0.0,@azure/arm-iotoperations,2.0.0,1777972384,05/05/2026
+6541,com.azure.resourcemanager:azure-resourcemanager-netapp:2.2.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.2.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.2.0,1777994009,05/05/2026
+6542,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.0.0-beta.1,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.0.0-beta.1,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.0.0-beta.1,1778046754,05/06/2026
+6543,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.0.0,go,sdk/resourcemanager/netapp/armnetapp/v10.0.0,sdk/resourcemanager/netapp/armnetapp,v10.0.0,1777990542,05/05/2026
+6544,@azure/arm-netapp@24.0.0,js,@azure/arm-netapp_24.0.0,@azure/arm-netapp,24.0.0,1777990334,05/05/2026
+6545,azure-mgmt-cosmosdb@10.0.0b6,python,azure-mgmt-cosmosdb_10.0.0b6,azure-mgmt-cosmosdb,10.0.0b6,1778057857,05/06/2026
+6546,azure-mgmt-netapp@16.0.0,python,azure-mgmt-netapp_16.0.0,azure-mgmt-netapp,16.0.0,1777992097,05/05/2026

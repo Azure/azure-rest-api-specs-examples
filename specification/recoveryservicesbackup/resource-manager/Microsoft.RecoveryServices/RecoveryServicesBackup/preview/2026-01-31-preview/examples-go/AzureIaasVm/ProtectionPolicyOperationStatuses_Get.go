@@ -1,0 +1,46 @@
+package armrecoveryservicesbackup_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5"
+)
+
+// Generated from example definition: 2026-01-31-preview/AzureIaasVm/ProtectionPolicyOperationStatuses_Get.json
+func ExampleProtectionPolicyOperationStatusesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesbackup.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewProtectionPolicyOperationStatusesClient().Get(ctx, "NetSDKTestRsVault", "SwaggerTestRg", "testPolicy1", "00000000-0000-0000-0000-000000000000", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armrecoveryservicesbackup.ProtectionPolicyOperationStatusesClientGetResponse{
+	// 	OperationStatus: armrecoveryservicesbackup.OperationStatus{
+	// 		Name: to.Ptr("GetProtectionPolicyOperationStatus"),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T12:57:32.1142968Z"); return t}()),
+	// 		ID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		Properties: &armrecoveryservicesbackup.OperationStatusJobsExtendedInfo{
+	// 			FailedJobsError: map[string]*string{
+	// 			},
+	// 			JobIDs: []*string{
+	// 				to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			},
+	// 			ObjectType: to.Ptr("OperationStatusJobsExtendedInfo"),
+	// 		},
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T12:57:32.1142968Z"); return t}()),
+	// 		Status: to.Ptr(armrecoveryservicesbackup.OperationStatusValuesSucceeded),
+	// 	},
+	// }
+}

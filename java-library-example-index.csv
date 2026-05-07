@@ -6555,3 +6555,4 @@ id,name,language,tag,package,version,date_epoch,date
 6554,azure-mgmt-authorization@5.0.0b2,python,azure-mgmt-authorization_5.0.0b2,azure-mgmt-authorization,5.0.0b2,1778149494,05/07/2026
 6555,azure-mgmt-confidentialledger@1.0.1,python,azure-mgmt-confidentialledger_1.0.1,azure-mgmt-confidentialledger,1.0.1,1778123278,05/07/2026
 6556,azure-mgmt-iotoperations@1.1.0,python,azure-mgmt-iotoperations_1.1.0,azure-mgmt-iotoperations,1.1.0,1778100947,05/06/2026
+6557,azure-mgmt-web@11.0.0,python,azure-mgmt-web_11.0.0,azure-mgmt-web,11.0.0,1778092291,05/06/2026

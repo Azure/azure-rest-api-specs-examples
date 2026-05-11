@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/edgezones/resource-manager/Microsoft.EdgeZones/preview/2024-04-01-preview/examples/
-     * ExtendedZones_ListBySubscription.json
+     * x-ms-original-file: 2024-04-01-preview/ExtendedZones_ListBySubscription.json
      */
     /**
      * Sample code: ListExtendedZones.

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.web import WebSiteManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-web
+# USAGE
+    python get_site_certificate_slot.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = WebSiteManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.site_certificates.get_slot(
+        resource_group_name="testrg123",
+        name="testSiteName",
+        slot="staging",
+        certificate_name="testc6282",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-05-01/GetSiteCertificateSlot.json
+if __name__ == "__main__":
+    main()

@@ -6545,3 +6545,14 @@ id,name,language,tag,package,version,date_epoch,date
 6544,@azure/arm-netapp@24.0.0,js,@azure/arm-netapp_24.0.0,@azure/arm-netapp,24.0.0,1777990334,05/05/2026
 6545,azure-mgmt-cosmosdb@10.0.0b6,python,azure-mgmt-cosmosdb_10.0.0b6,azure-mgmt-cosmosdb,10.0.0b6,1778057857,05/06/2026
 6546,azure-mgmt-netapp@16.0.0,python,azure-mgmt-netapp_16.0.0,azure-mgmt-netapp,16.0.0,1777992097,05/05/2026
+6547,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.2,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.2,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.2,1778078555,05/06/2026
+6548,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.59.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.59.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.59.1,1778078527,05/06/2026
+6549,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.2,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.2,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.2,1778078509,05/06/2026
+6550,com.azure.resourcemanager:azure-resourcemanager-compute:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.57.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.57.1,1778078481,05/06/2026
+6551,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.2,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.2,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.2,1778078452,05/06/2026
+6552,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v1.1.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v1.1.0,sdk/resourcemanager/iotoperations/armiotoperations,v1.1.0,1778101028,05/06/2026
+6553,"Azure.ResourceManager.NetApp,1.16.0",dotnet,Azure.ResourceManager.NetApp_1.16.0,Azure.ResourceManager.NetApp,1.16.0,1778140252,05/07/2026
+6554,azure-mgmt-authorization@5.0.0b2,python,azure-mgmt-authorization_5.0.0b2,azure-mgmt-authorization,5.0.0b2,1778149494,05/07/2026
+6555,azure-mgmt-confidentialledger@1.0.1,python,azure-mgmt-confidentialledger_1.0.1,azure-mgmt-confidentialledger,1.0.1,1778123278,05/07/2026
+6556,azure-mgmt-iotoperations@1.1.0,python,azure-mgmt-iotoperations_1.1.0,azure-mgmt-iotoperations,1.1.0,1778100947,05/06/2026
+6557,azure-mgmt-web@11.0.0,python,azure-mgmt-web_11.0.0,azure-mgmt-web,11.0.0,1778092291,05/06/2026

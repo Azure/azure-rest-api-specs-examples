@@ -6,9 +6,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
-     * 07-01/examples/DataExportCreateOrUpdate.json
+     * x-ms-original-file: 2025-07-01/DataExportCreateOrUpdate.json
      */
     /**
      * Sample code: DataExportCreate.

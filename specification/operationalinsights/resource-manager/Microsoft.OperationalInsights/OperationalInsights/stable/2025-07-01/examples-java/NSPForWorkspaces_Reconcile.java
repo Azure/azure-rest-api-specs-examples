@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
-     * 07-01/examples/NSPForWorkspaces_Reconcile.json
+     * x-ms-original-file: 2025-07-01/NSPForWorkspaces_Reconcile.json
      */
     /**
      * Sample code: Reconcile NSP config for Scheduled Query Rule.

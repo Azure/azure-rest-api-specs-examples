@@ -7,9 +7,7 @@ import java.util.Arrays;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
-     * 07-01/examples/WorkspacesSavedSearchesCreateOrUpdate.json
+     * x-ms-original-file: 2025-07-01/WorkspacesSavedSearchesCreateOrUpdate.json
      */
     /**
      * Sample code: SavedSearchCreateOrUpdate.
@@ -17,7 +15,7 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void savedSearchCreateOrUpdate(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.savedSearches().define("00000000-0000-0000-0000-00000000000").withExistingWorkspace("TestRG", "TestWS")
+        manager.savedSearches().define("00000000-0000-0000-0000-000000000000").withExistingWorkspace("TestRG", "TestWS")
             .withCategory("Saved Search Test Category").withDisplayName("Create or Update Saved Search Test")
             .withQuery("Heartbeat | summarize Count() by Computer | take a")
             .withTags(Arrays.asList(new Tag().withName("Group").withValue("Computer")))

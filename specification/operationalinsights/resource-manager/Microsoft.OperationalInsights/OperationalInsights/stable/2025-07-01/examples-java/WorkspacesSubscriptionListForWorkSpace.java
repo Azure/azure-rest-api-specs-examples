@@ -1,10 +1,10 @@
 
 /**
- * Samples for DeletedWorkspaces List.
+ * Samples for Workspaces List.
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2025-07-01/WorkspacesSubscriptionList.json
+     * x-ms-original-file: 2025-07-01/WorkspacesSubscriptionListForWorkSpace.json
      */
     /**
      * Sample code: WorkspacesSubscriptionList.
@@ -12,6 +12,6 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void workspacesSubscriptionList(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.deletedWorkspaces().list(com.azure.core.util.Context.NONE);
+        manager.workspaces().list(com.azure.core.util.Context.NONE);
     }
 }

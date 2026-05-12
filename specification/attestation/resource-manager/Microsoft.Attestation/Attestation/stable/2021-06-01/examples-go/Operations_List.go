@@ -1,0 +1,67 @@
+package armattestation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation/v2"
+)
+
+// Generated from example definition: 2021-06-01/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armattestation.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armattestation.OperationsClientListResponse{
+		// 	OperationList: armattestation.OperationList{
+		// 		Value: []*armattestation.OperationsDefinition{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Attestation/attestationProviders/attestation/read"),
+		// 				Display: &armattestation.OperationsDisplayDefinition{
+		// 					Description: to.Ptr("Get status of attestation service."),
+		// 					Operation: to.Ptr("Get status of attestation service"),
+		// 					Provider: to.Ptr("Microsoft Azure Attestation"),
+		// 					Resource: to.Ptr("Attestation"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Attestation/attestationProviders/attestation/write"),
+		// 				Display: &armattestation.OperationsDisplayDefinition{
+		// 					Description: to.Ptr("Adds attestation service."),
+		// 					Operation: to.Ptr("Adds attestation service."),
+		// 					Provider: to.Ptr("Microsoft Azure Attestation"),
+		// 					Resource: to.Ptr("Attestation"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Attestation/attestationProviders/attestation/delete"),
+		// 				Display: &armattestation.OperationsDisplayDefinition{
+		// 					Description: to.Ptr("Removes attestation service"),
+		// 					Operation: to.Ptr("Removes attestation service"),
+		// 					Provider: to.Ptr("Microsoft Azure Attestation"),
+		// 					Resource: to.Ptr("Attestation"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

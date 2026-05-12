@@ -1,0 +1,43 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.network import NetworkManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-network
+# USAGE
+    python bastion_host_developer_put.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = NetworkManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.bastion_hosts.begin_create_or_update(
+        resource_group_name="rg2",
+        bastion_host_name="bastionhostdeveloper",
+        parameters={
+            "properties": {
+                "ipConfigurations": [],
+                "networkAcls": {"ipRules": [{"addressPrefix": "1.1.1.1/16"}]},
+                "virtualNetwork": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"
+                },
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-05-01/BastionHostDeveloperPut.json
+if __name__ == "__main__":
+    main()

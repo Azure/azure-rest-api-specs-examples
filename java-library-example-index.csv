@@ -6560,3 +6560,7 @@ id,name,language,tag,package,version,date_epoch,date
 6559,com.azure.resourcemanager:azure-resourcemanager-loganalytics:2.2.0,java,com.azure.resourcemanager+azure-resourcemanager-loganalytics_2.2.0,com.azure.resourcemanager+azure-resourcemanager-loganalytics,2.2.0,1778316504,05/09/2026
 6560,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-edgezones_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-edgezones,1.0.0-beta.3,1778233360,05/08/2026
 6561,com.azure.resourcemanager:azure-resourcemanager-iotoperations:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-iotoperations_1.1.0,com.azure.resourcemanager+azure-resourcemanager-iotoperations,1.1.0,1778175455,05/07/2026
+6562,@azure/arm-cognitiveservices@9.0.0-beta.1,js,@azure/arm-cognitiveservices_9.0.0-beta.1,@azure/arm-cognitiveservices,9.0.0-beta.1,1778515081,05/11/2026
+6563,@azure/arm-recoveryservicesbackup@14.0.0-beta.1,js,@azure/arm-recoveryservicesbackup_14.0.0-beta.1,@azure/arm-recoveryservicesbackup,14.0.0-beta.1,1778219699,05/08/2026
+6564,@azure/arm-durabletask@1.1.0,js,@azure/arm-durabletask_1.1.0,@azure/arm-durabletask,1.1.0,1778189643,05/07/2026
+6565,@azure/arm-fileshares@1.0.0-beta.1,js,@azure/arm-fileshares_1.0.0-beta.1,@azure/arm-fileshares,1.0.0-beta.1,1778166585,05/07/2026

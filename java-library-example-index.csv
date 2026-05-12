@@ -6567,3 +6567,4 @@ id,name,language,tag,package,version,date_epoch,date
 6566,azure-mgmt-eventgrid@10.5.0b2,python,azure-mgmt-eventgrid_10.5.0b2,azure-mgmt-eventgrid,10.5.0b2,1778560337,05/12/2026
 6567,azure-mgmt-fileshares@1.0.0b1,python,azure-mgmt-fileshares_1.0.0b1,azure-mgmt-fileshares,1.0.0b1,1778559979,05/12/2026
 6568,azure-mgmt-relay@1.1.1,python,azure-mgmt-relay_1.1.1,azure-mgmt-relay,1.1.1,1778469503,05/11/2026
+6569,azure-mgmt-network@31.0.0b1,python,azure-mgmt-network_31.0.0b1,azure-mgmt-network,31.0.0b1,1778304733,05/09/2026

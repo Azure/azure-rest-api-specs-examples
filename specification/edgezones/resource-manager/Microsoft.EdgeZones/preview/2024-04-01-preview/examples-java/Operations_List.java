@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/edgezones/resource-manager/Microsoft.EdgeZones/preview/2024-04-01-preview/examples/Operations_List.
-     * json
+     * x-ms-original-file: 2024-04-01-preview/Operations_List.json
      */
     /**
      * Sample code: ListOperations.

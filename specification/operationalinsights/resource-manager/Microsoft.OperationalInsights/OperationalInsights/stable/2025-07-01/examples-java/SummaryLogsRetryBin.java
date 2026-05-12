@@ -8,9 +8,7 @@ import java.time.OffsetDateTime;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
-     * 07-01/examples/SummaryLogsRetryBin.json
+     * x-ms-original-file: 2025-07-01/SummaryLogsRetryBin.json
      */
     /**
      * Sample code: SummaryLogsRetryBin.

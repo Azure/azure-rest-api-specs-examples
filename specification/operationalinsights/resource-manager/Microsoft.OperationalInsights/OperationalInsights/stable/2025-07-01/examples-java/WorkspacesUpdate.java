@@ -9,9 +9,7 @@ import com.azure.resourcemanager.loganalytics.models.WorkspaceSkuNameEnum;
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-
-     * 07-01/examples/WorkspacesUpdate.json
+     * x-ms-original-file: 2025-07-01/WorkspacesUpdate.json
      */
     /**
      * Sample code: WorkspacesPatch.

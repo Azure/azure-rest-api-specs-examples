@@ -1,10 +1,10 @@
 
 /**
- * Samples for Workspaces ListByResourceGroup.
+ * Samples for DeletedWorkspaces ListByResourceGroup.
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2025-07-01/WorkspacesListByResourceGroup.json
+     * x-ms-original-file: 2025-07-01/WorkspacesListByResourceGroupForDeleted.json
      */
     /**
      * Sample code: WorkspacesGet.
@@ -12,6 +12,6 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void workspacesGet(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.workspaces().listByResourceGroup("oiautorest6685", com.azure.core.util.Context.NONE);
+        manager.deletedWorkspaces().listByResourceGroup("oiautorest6685", com.azure.core.util.Context.NONE);
     }
 }

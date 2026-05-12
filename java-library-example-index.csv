@@ -6556,3 +6556,4 @@ id,name,language,tag,package,version,date_epoch,date
 6555,azure-mgmt-confidentialledger@1.0.1,python,azure-mgmt-confidentialledger_1.0.1,azure-mgmt-confidentialledger,1.0.1,1778123278,05/07/2026
 6556,azure-mgmt-iotoperations@1.1.0,python,azure-mgmt-iotoperations_1.1.0,azure-mgmt-iotoperations,1.1.0,1778100947,05/06/2026
 6557,azure-mgmt-web@11.0.0,python,azure-mgmt-web_11.0.0,azure-mgmt-web,11.0.0,1778092291,05/06/2026
+6558,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-appconfiguration_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-appconfiguration,1.2.0-beta.2,1778486527,05/11/2026

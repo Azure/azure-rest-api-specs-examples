@@ -6558,3 +6558,4 @@ id,name,language,tag,package,version,date_epoch,date
 6557,azure-mgmt-web@11.0.0,python,azure-mgmt-web_11.0.0,azure-mgmt-web,11.0.0,1778092291,05/06/2026
 6558,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-appconfiguration_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-appconfiguration,1.2.0-beta.2,1778486527,05/11/2026
 6559,com.azure.resourcemanager:azure-resourcemanager-loganalytics:2.2.0,java,com.azure.resourcemanager+azure-resourcemanager-loganalytics_2.2.0,com.azure.resourcemanager+azure-resourcemanager-loganalytics,2.2.0,1778316504,05/09/2026
+6560,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-edgezones_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-edgezones,1.0.0-beta.3,1778233360,05/08/2026

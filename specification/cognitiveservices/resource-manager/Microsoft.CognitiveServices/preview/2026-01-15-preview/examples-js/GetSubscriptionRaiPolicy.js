@@ -1,0 +1,16 @@
+const { CognitiveServicesManagementClient } = require("@azure/arm-cognitiveservices");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets the specified Content Filters associated with the Subscription.
+ *
+ * @summary gets the specified Content Filters associated with the Subscription.
+ * x-ms-original-file: 2026-01-15-preview/GetSubscriptionRaiPolicy.json
+ */
+async function getRaiPolicy() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new CognitiveServicesManagementClient(credential, subscriptionId);
+  const result = await client.subscriptionRaiPolicy.get("raiPolicyName");
+  console.log(result);
+}

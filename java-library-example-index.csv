@@ -6569,3 +6569,4 @@ id,name,language,tag,package,version,date_epoch,date
 6568,azure-mgmt-relay@1.1.1,python,azure-mgmt-relay_1.1.1,azure-mgmt-relay,1.1.1,1778469503,05/11/2026
 6569,azure-mgmt-network@31.0.0b1,python,azure-mgmt-network_31.0.0b1,azure-mgmt-network,31.0.0b1,1778304733,05/09/2026
 6570,azure-mgmt-attestation@2.0.0,python,azure-mgmt-attestation_2.0.0,azure-mgmt-attestation,2.0.0,1778221459,05/08/2026
+6571,azure-mgmt-monitorslis@1.0.0b1,python,azure-mgmt-monitorslis_1.0.0b1,azure-mgmt-monitorslis,1.0.0b1,1778198516,05/08/2026

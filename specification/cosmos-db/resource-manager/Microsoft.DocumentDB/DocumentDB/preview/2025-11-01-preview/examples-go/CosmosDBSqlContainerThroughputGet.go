@@ -1,0 +1,74 @@
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4"
+)
+
+// Generated from example definition: 2025-11-01-preview/CosmosDBSqlContainerThroughputGet.json
+func ExampleSQLResourcesClient_GetSQLContainerThroughput() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcosmos.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewSQLResourcesClient().GetSQLContainerThroughput(ctx, "rg1", "ddb1", "databaseName", "containerName", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcosmos.SQLResourcesClientGetSQLContainerThroughputResponse{
+	// 	ThroughputSettingsGetResults: &armcosmos.ThroughputSettingsGetResults{
+	// 		ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.DocumentDB/databaseAccounts/ddb1/sqlDatabases/databaseName/sqlContainers/containerName/throughputSettings/default"),
+	// 		Name: to.Ptr("default"),
+	// 		Type: to.Ptr("Microsoft.DocumentDB/databaseAccounts/sqlDatabases/sqlContainers/throughputSettings"),
+	// 		Location: to.Ptr("West US"),
+	// 		Tags: map[string]*string{
+	// 		},
+	// 		Properties: &armcosmos.ThroughputSettingsGetProperties{
+	// 			Resource: &armcosmos.ThroughputSettingsGetPropertiesResource{
+	// 				Throughput: to.Ptr[int32](400),
+	// 				MinimumThroughput: to.Ptr("400"),
+	// 				OfferReplacePending: to.Ptr("true"),
+	// 				InstantMaximumThroughput: to.Ptr("10000"),
+	// 				SoftAllowedMaximumThroughput: to.Ptr("1000000"),
+	// 				ThroughputBuckets: []*armcosmos.ThroughputBucketResource{
+	// 					{
+	// 						ID: to.Ptr[int32](1),
+	// 						MaxThroughputPercentage: to.Ptr[int32](10),
+	// 					},
+	// 					{
+	// 						ID: to.Ptr[int32](2),
+	// 						MaxThroughputPercentage: to.Ptr[int32](5),
+	// 						IsDefaultBucket: to.Ptr(true),
+	// 					},
+	// 					{
+	// 						ID: to.Ptr[int32](3),
+	// 						MaxThroughputPercentage: to.Ptr[int32](15),
+	// 					},
+	// 					{
+	// 						ID: to.Ptr[int32](4),
+	// 						MaxThroughputPercentage: to.Ptr[int32](10),
+	// 					},
+	// 					{
+	// 						ID: to.Ptr[int32](5),
+	// 						MaxThroughputPercentage: to.Ptr[int32](20),
+	// 					},
+	// 				},
+	// 				Rid: to.Ptr("PD5DALigDgw="),
+	// 				Ts: to.Ptr[float32](1459200611),
+	// 				Etag: to.Ptr("\"00005900-0000-0000-0000-56f9a2630000\""),
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

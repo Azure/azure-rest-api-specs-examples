@@ -6577,3 +6577,4 @@ id,name,language,tag,package,version,date_epoch,date
 6576,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/serialconsole/armserialconsole/v2@v2.0.0-beta.1,go,sdk/resourcemanager/serialconsole/armserialconsole/v2.0.0-beta.1,sdk/resourcemanager/serialconsole/armserialconsole,v2.0.0-beta.1,1778577962,05/12/2026
 6577,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managementgroups/armmanagementgroups/v2@v2.0.0-beta.1,go,sdk/resourcemanager/managementgroups/armmanagementgroups/v2.0.0-beta.1,sdk/resourcemanager/managementgroups/armmanagementgroups,v2.0.0-beta.1,1778570528,05/12/2026
 6578,@azure/arm-dataprotection@5.0.0-beta.1,js,@azure/arm-dataprotection_5.0.0-beta.1,@azure/arm-dataprotection,5.0.0-beta.1,1778638425,05/13/2026
+6579,azure-mgmt-dataprotection@2.1.0b1,python,azure-mgmt-dataprotection_2.1.0b1,azure-mgmt-dataprotection,2.1.0b1,1778616129,05/12/2026

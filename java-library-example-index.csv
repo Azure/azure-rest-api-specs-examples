@@ -6581,3 +6581,4 @@ id,name,language,tag,package,version,date_epoch,date
 6580,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.6.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-dataprotection_1.6.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-dataprotection,1.6.0-beta.1,1778622010,05/12/2026
 6581,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dynatrace/armdynatrace/v2@v2.2.0-beta.1,go,sdk/resourcemanager/dynatrace/armdynatrace/v2.2.0-beta.1,sdk/resourcemanager/dynatrace/armdynatrace,v2.2.0-beta.1,1778644662,05/13/2026
 6582,azure-mgmt-serialconsole@1.0.1,python,azure-mgmt-serialconsole_1.0.1,azure-mgmt-serialconsole,1.0.1,1778643286,05/13/2026
+6583,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/peering/armpeering/v2@v2.0.0-beta.1,go,sdk/resourcemanager/peering/armpeering/v2.0.0-beta.1,sdk/resourcemanager/peering/armpeering,v2.0.0-beta.1,1778656625,05/13/2026

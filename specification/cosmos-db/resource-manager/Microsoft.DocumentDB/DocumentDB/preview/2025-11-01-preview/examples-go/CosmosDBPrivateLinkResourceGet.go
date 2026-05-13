@@ -1,0 +1,46 @@
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4"
+)
+
+// Generated from example definition: 2025-11-01-preview/CosmosDBPrivateLinkResourceGet.json
+func ExamplePrivateLinkResourcesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcosmos.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewPrivateLinkResourcesClient().Get(ctx, "rg1", "ddb1", "sql", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcosmos.PrivateLinkResourcesClientGetResponse{
+	// 	PrivateLinkResource: &armcosmos.PrivateLinkResource{
+	// 		Name: to.Ptr("sql"),
+	// 		Type: to.Ptr("Microsoft.DocumentDB/databaseAccounts/privateLinkResources"),
+	// 		ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.DocumentDb/databaseAccounts/ddb1/privateLinkResources/sql"),
+	// 		Properties: &armcosmos.PrivateLinkResourceProperties{
+	// 			GroupID: to.Ptr("sql"),
+	// 			RequiredMembers: []*string{
+	// 				to.Ptr("ddb1"),
+	// 				to.Ptr("ddb1-westus"),
+	// 			},
+	// 			RequiredZoneNames: []*string{
+	// 				to.Ptr("privatelink.documents.azure.net"),
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

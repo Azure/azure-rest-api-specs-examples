@@ -6572,3 +6572,4 @@ id,name,language,tag,package,version,date_epoch,date
 6571,azure-mgmt-monitorslis@1.0.0b1,python,azure-mgmt-monitorslis_1.0.0b1,azure-mgmt-monitorslis,1.0.0b1,1778198516,05/08/2026
 6572,azure-mgmt-durabletask@1.1.0,python,azure-mgmt-durabletask_1.1.0,azure-mgmt-durabletask,1.1.0,1778189654,05/07/2026
 6573,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation/v2@v2.0.0-beta.1,go,sdk/resourcemanager/attestation/armattestation/v2.0.0-beta.1,sdk/resourcemanager/attestation/armattestation,v2.0.0-beta.1,1778567051,05/12/2026
+6574,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.1.0-beta.1,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.1.0-beta.1,sdk/resourcemanager/dataprotection/armdataprotection,v4.1.0-beta.1,1778617313,05/12/2026

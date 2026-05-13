@@ -6586,3 +6586,4 @@ id,name,language,tag,package,version,date_epoch,date
 6585,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v3@v3.0.0-beta.1,go,sdk/resourcemanager/providerhub/armproviderhub/v3.0.0-beta.1,sdk/resourcemanager/providerhub/armproviderhub,v3.0.0-beta.1,1778652595,05/13/2026
 6586,@azure/arm-peering@2.2.0-beta.1,js,@azure/arm-peering_2.2.0-beta.1,@azure/arm-peering,2.2.0-beta.1,1778657295,05/13/2026
 6587,@azure/arm-providerhub@1.0.0-beta.1,js,@azure/arm-providerhub_1.0.0-beta.1,@azure/arm-providerhub,1.0.0-beta.1,1778657153,05/13/2026
+6588,azure-mgmt-alertsmanagement@1.0.1,python,azure-mgmt-alertsmanagement_1.0.1,azure-mgmt-alertsmanagement,1.0.1,1778664127,05/13/2026

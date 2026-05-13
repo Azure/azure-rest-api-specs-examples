@@ -6576,3 +6576,4 @@ id,name,language,tag,package,version,date_epoch,date
 6575,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.3,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.3,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.3,1778580995,05/12/2026
 6576,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/serialconsole/armserialconsole/v2@v2.0.0-beta.1,go,sdk/resourcemanager/serialconsole/armserialconsole/v2.0.0-beta.1,sdk/resourcemanager/serialconsole/armserialconsole,v2.0.0-beta.1,1778577962,05/12/2026
 6577,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managementgroups/armmanagementgroups/v2@v2.0.0-beta.1,go,sdk/resourcemanager/managementgroups/armmanagementgroups/v2.0.0-beta.1,sdk/resourcemanager/managementgroups/armmanagementgroups,v2.0.0-beta.1,1778570528,05/12/2026
+6578,@azure/arm-dataprotection@5.0.0-beta.1,js,@azure/arm-dataprotection_5.0.0-beta.1,@azure/arm-dataprotection,5.0.0-beta.1,1778638425,05/13/2026

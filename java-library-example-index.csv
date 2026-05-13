@@ -6589,3 +6589,4 @@ id,name,language,tag,package,version,date_epoch,date
 6588,azure-mgmt-alertsmanagement@1.0.1,python,azure-mgmt-alertsmanagement_1.0.1,azure-mgmt-alertsmanagement,1.0.1,1778664127,05/13/2026
 6589,azure-mgmt-advisor@9.0.1,python,azure-mgmt-advisor_9.0.1,azure-mgmt-advisor,9.0.1,1778660683,05/13/2026
 6590,azure-mgmt-portal@1.0.1,python,azure-mgmt-portal_1.0.1,azure-mgmt-portal,1.0.1,1778650757,05/13/2026
+6591,com.azure.resourcemanager:azure-resourcemanager-fileshares:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-fileshares_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-fileshares,1.0.0-beta.1,1778656263,05/13/2026

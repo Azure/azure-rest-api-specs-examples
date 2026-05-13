@@ -6572,3 +6572,10 @@ id,name,language,tag,package,version,date_epoch,date
 6571,azure-mgmt-monitorslis@1.0.0b1,python,azure-mgmt-monitorslis_1.0.0b1,azure-mgmt-monitorslis,1.0.0b1,1778198516,05/08/2026
 6572,azure-mgmt-durabletask@1.1.0,python,azure-mgmt-durabletask_1.1.0,azure-mgmt-durabletask,1.1.0,1778189654,05/07/2026
 6573,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation/v2@v2.0.0-beta.1,go,sdk/resourcemanager/attestation/armattestation/v2.0.0-beta.1,sdk/resourcemanager/attestation/armattestation,v2.0.0-beta.1,1778567051,05/12/2026
+6574,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.1.0-beta.1,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.1.0-beta.1,sdk/resourcemanager/dataprotection/armdataprotection,v4.1.0-beta.1,1778617313,05/12/2026
+6575,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.3,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.3,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.3,1778580995,05/12/2026
+6576,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/serialconsole/armserialconsole/v2@v2.0.0-beta.1,go,sdk/resourcemanager/serialconsole/armserialconsole/v2.0.0-beta.1,sdk/resourcemanager/serialconsole/armserialconsole,v2.0.0-beta.1,1778577962,05/12/2026
+6577,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managementgroups/armmanagementgroups/v2@v2.0.0-beta.1,go,sdk/resourcemanager/managementgroups/armmanagementgroups/v2.0.0-beta.1,sdk/resourcemanager/managementgroups/armmanagementgroups,v2.0.0-beta.1,1778570528,05/12/2026
+6578,@azure/arm-dataprotection@5.0.0-beta.1,js,@azure/arm-dataprotection_5.0.0-beta.1,@azure/arm-dataprotection,5.0.0-beta.1,1778638425,05/13/2026
+6579,azure-mgmt-dataprotection@2.1.0b1,python,azure-mgmt-dataprotection_2.1.0b1,azure-mgmt-dataprotection,2.1.0b1,1778616129,05/12/2026
+6580,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.6.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-dataprotection_1.6.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-dataprotection,1.6.0-beta.1,1778622010,05/12/2026

@@ -6582,3 +6582,4 @@ id,name,language,tag,package,version,date_epoch,date
 6581,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dynatrace/armdynatrace/v2@v2.2.0-beta.1,go,sdk/resourcemanager/dynatrace/armdynatrace/v2.2.0-beta.1,sdk/resourcemanager/dynatrace/armdynatrace,v2.2.0-beta.1,1778644662,05/13/2026
 6582,azure-mgmt-serialconsole@1.0.1,python,azure-mgmt-serialconsole_1.0.1,azure-mgmt-serialconsole,1.0.1,1778643286,05/13/2026
 6583,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/peering/armpeering/v2@v2.0.0-beta.1,go,sdk/resourcemanager/peering/armpeering/v2.0.0-beta.1,sdk/resourcemanager/peering/armpeering,v2.0.0-beta.1,1778656625,05/13/2026
+6584,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabric/armservicefabric/v3@v3.0.0-beta.1,go,sdk/resourcemanager/servicefabric/armservicefabric/v3.0.0-beta.1,sdk/resourcemanager/servicefabric/armservicefabric,v3.0.0-beta.1,1778655407,05/13/2026

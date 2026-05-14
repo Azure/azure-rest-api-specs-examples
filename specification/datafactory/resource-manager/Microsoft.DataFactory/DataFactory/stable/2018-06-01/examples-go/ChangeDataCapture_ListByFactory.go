@@ -1,0 +1,647 @@
+package armdatafactory_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v11"
+)
+
+// Generated from example definition: 2018-06-01/ChangeDataCapture_ListByFactory.json
+func ExampleChangeDataCaptureClient_NewListByFactoryPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdatafactory.NewClientFactory("12345678-1234-1234-1234-123456789012", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewChangeDataCaptureClient().NewListByFactoryPager("exampleResourceGroup", "exampleFactoryName", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armdatafactory.ChangeDataCaptureClientListByFactoryResponse{
+		// 	ChangeDataCaptureListResponse: armdatafactory.ChangeDataCaptureListResponse{
+		// 		Value: []*armdatafactory.ChangeDataCaptureResource{
+		// 			{
+		// 				Name: to.Ptr("exampleChangeDataCapture"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories/adfcdcs"),
+		// 				Etag: to.Ptr("4200eefe-0000-0100-0000-641aa97a0000"),
+		// 				ID: to.Ptr("/subscriptions/d3bb3b2e-9a7e-4194-9960-5171bd192117/resourceGroups/amja-rg-03/providers/Microsoft.DataFactory/factories/amja-adf-04/adfcdcs/exampleChangeDataCapture"),
+		// 				Properties: &armdatafactory.ChangeDataCapture{
+		// 					Description: to.Ptr("Sample demo change data capture to transfer data from delimited (csv) to Azure SQL Database with automapped and non-automapped mappings."),
+		// 					AllowVNetOverride: to.Ptr(false),
+		// 					Policy: &armdatafactory.MapperPolicy{
+		// 						Mode: to.Ptr("Microbatch"),
+		// 						Recurrence: &armdatafactory.MapperPolicyRecurrence{
+		// 							Frequency: to.Ptr(armdatafactory.FrequencyTypeMinute),
+		// 							Interval: to.Ptr[int32](15),
+		// 						},
+		// 					},
+		// 					SourceConnectionsInfo: []*armdatafactory.MapperSourceConnectionsInfo{
+		// 						{
+		// 							Connection: &armdatafactory.MapperConnection{
+		// 								Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 								CommonDslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 									{
+		// 										Name: to.Ptr("allowSchemaDrift"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("inferDriftedColumnTypes"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("format"),
+		// 										Value: "delimited",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("dateFormats"),
+		// 										Value: []any{
+		// 											"MM/dd/yyyy",
+		// 											"dd/MM/yyyy",
+		// 											"yyyy/MM/dd",
+		// 											"MM-dd-yyyy",
+		// 											"dd-MM-yyyy",
+		// 											"yyyy-MM-dd",
+		// 											"dd.MM.yyyy",
+		// 											"MM.dd.yyyy",
+		// 											"yyyy.MM.dd",
+		// 										},
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("timestampFormats"),
+		// 										Value: []any{
+		// 											"yyyyMMddHHmm",
+		// 											"yyyyMMdd HHmm",
+		// 											"yyyyMMddHHmmss",
+		// 											"yyyyMMdd HHmmss",
+		// 											"dd-MM-yyyy HH:mm:ss",
+		// 											"dd-MM-yyyy HH:mm",
+		// 											"yyyy-M-d H:m:s",
+		// 											"yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'",
+		// 											"yyyy-M-d\\'T\\'H:m:s\\'Z\\'",
+		// 											"yyyy-M-d\\'T\\'H:m:s",
+		// 											"yyyy-MM-dd\\'T\\'HH:mm:ss",
+		// 											"yyyy-MM-dd HH:mm:ss",
+		// 											"yyyy-MM-dd HH:mm",
+		// 											"yyyy.MM.dd HH:mm:ss",
+		// 											"MM/dd/yyyy HH:mm:ss",
+		// 											"M/d/yyyy H:m:s",
+		// 											"yyyy/MM/dd HH:mm:ss",
+		// 											"yyyy/M/d H:m:s",
+		// 											"dd MMM yyyy HH:mm:ss",
+		// 											"dd MMMM yyyy HH:mm:ss",
+		// 											"d MMM yyyy H:m:s",
+		// 											"d MMMM yyyy H:m:s",
+		// 											"d-M-yyyy H:m:s",
+		// 											"d-M-yyyy H:m",
+		// 											"yyyy-M-d H:m",
+		// 											"MM/dd/yyyy HH:mm",
+		// 											"M/d/yyyy H:m",
+		// 											"yyyy/MM/dd HH:mm",
+		// 											"yyyy/M/d H:m",
+		// 											"dd MMMM yyyy HH:mm",
+		// 											"dd MMM yyyy HH:mm",
+		// 											"d MMMM yyyy H:m",
+		// 											"d MMM yyyy H:m",
+		// 											"MM-dd-yyyy hh:mm:ss a",
+		// 											"MM-dd-yyyy HH:mm:ss",
+		// 											"MM/dd/yyyy hh:mm:ss a",
+		// 											"yyyy.MM.dd hh:mm:ss a",
+		// 											"MM/dd/yyyy",
+		// 											"dd/MM/yyyy",
+		// 											"yyyy/MM/dd",
+		// 											"MM-dd-yyyy",
+		// 											"dd-MM-yyyy",
+		// 											"yyyy-MM-dd",
+		// 											"dd.MM.yyyy",
+		// 											"MM.dd.yyyy",
+		// 											"yyyy.MM.dd",
+		// 										},
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("enableCdc"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("skipInitialLoad"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("columnNamesAsHeader"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("columnDelimiter"),
+		// 										Value: ",",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("escapeChar"),
+		// 										Value: "\\\\",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("quoteChar"),
+		// 										Value: "\\\"",
+		// 									},
+		// 								},
+		// 								IsInlineDataset: to.Ptr(true),
+		// 								LinkedService: &armdatafactory.LinkedServiceReference{
+		// 									Type: to.Ptr(armdatafactory.LinkedServiceReferenceTypeLinkedServiceReference),
+		// 									ReferenceName: to.Ptr("amjaAdls03"),
+		// 								},
+		// 								LinkedServiceType: to.Ptr("AzureBlobFS"),
+		// 							},
+		// 							SourceEntities: []*armdatafactory.MapperTable{
+		// 								{
+		// 									Name: to.Ptr("source/customer"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("container"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("fileSystem"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("folderPath"),
+		// 												Value: "customer",
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("source/employee"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("container"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("fileSystem"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("folderPath"),
+		// 												Value: "employee",
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("lookup"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 											{
+		// 												Name: to.Ptr("EmpId"),
+		// 												DataType: to.Ptr("short"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("EmpName"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("HomeAddress"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("OfficeAddress"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("EmpPhoneNumber"),
+		// 												DataType: to.Ptr("integer"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("DepName"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("DepLoc"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("DecimalCol"),
+		// 												DataType: to.Ptr("double"),
+		// 											},
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("container"),
+		// 												Value: "lookup",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("fileSystem"),
+		// 												Value: "lookup",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("allowSchemaDrift"),
+		// 												Value: false,
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("inferDriftedColumnTypes"),
+		// 												Value: false,
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("source/justSchema"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 											{
+		// 												Name: to.Ptr("CustId"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustName"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustAddres"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustDepName"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustDepLoc"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("container"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("fileSystem"),
+		// 												Value: "source",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("folderPath"),
+		// 												Value: "justSchema",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("allowSchemaDrift"),
+		// 												Value: false,
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("inferDriftedColumnTypes"),
+		// 												Value: false,
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					Status: to.Ptr("Stopped"),
+		// 					TargetConnectionsInfo: []*armdatafactory.MapperTargetConnectionsInfo{
+		// 						{
+		// 							Connection: &armdatafactory.MapperConnection{
+		// 								Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 								CommonDslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 									{
+		// 										Name: to.Ptr("allowSchemaDrift"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("inferDriftedColumnTypes"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("format"),
+		// 										Value: "table",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("store"),
+		// 										Value: "sqlserver",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("databaseType"),
+		// 										Value: "databaseType",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("database"),
+		// 										Value: "database",
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("deletable"),
+		// 										Value: false,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("insertable"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("updateable"),
+		// 										Value: false,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("upsertable"),
+		// 										Value: false,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("skipDuplicateMapInputs"),
+		// 										Value: true,
+		// 									},
+		// 									{
+		// 										Name: to.Ptr("skipDuplicateMapOutputs"),
+		// 										Value: true,
+		// 									},
+		// 								},
+		// 								IsInlineDataset: to.Ptr(true),
+		// 								LinkedService: &armdatafactory.LinkedServiceReference{
+		// 									Type: to.Ptr(armdatafactory.LinkedServiceReferenceTypeLinkedServiceReference),
+		// 									ReferenceName: to.Ptr("amjaSql"),
+		// 								},
+		// 								LinkedServiceType: to.Ptr("AzureSqlDatabase"),
+		// 							},
+		// 							DataMapperMappings: []*armdatafactory.DataMapperMapping{
+		// 								{
+		// 									AttributeMappingInfo: &armdatafactory.MapperAttributeMappings{
+		// 										AttributeMappings: []*armdatafactory.MapperAttributeMapping{
+		// 										},
+		// 									},
+		// 									SourceConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 										Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 										ConnectionName: to.Ptr("amjaAdls03"),
+		// 									},
+		// 									SourceEntityName: to.Ptr("source/customer"),
+		// 									TargetEntityName: to.Ptr("dbo.customer"),
+		// 								},
+		// 								{
+		// 									AttributeMappingInfo: &armdatafactory.MapperAttributeMappings{
+		// 										AttributeMappings: []*armdatafactory.MapperAttributeMapping{
+		// 											{
+		// 												Name: to.Ptr("Name"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDerived),
+		// 												AttributeReferences: []*armdatafactory.MapperAttributeReference{
+		// 													{
+		// 														Name: to.Ptr("EmpName"),
+		// 														Entity: to.Ptr("lookup"),
+		// 														EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 															Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 															ConnectionName: to.Ptr("amjaAdls03"),
+		// 														},
+		// 													},
+		// 												},
+		// 												Expression: to.Ptr("upper(EmpName)"),
+		// 												FunctionName: to.Ptr("upper"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("PersonID"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDirect),
+		// 												AttributeReference: &armdatafactory.MapperAttributeReference{
+		// 													Name: to.Ptr("EmpId"),
+		// 													Entity: to.Ptr("lookup"),
+		// 													EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 														Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 														ConnectionName: to.Ptr("amjaAdls03"),
+		// 													},
+		// 												},
+		// 												FunctionName: to.Ptr(""),
+		// 											},
+		// 										},
+		// 									},
+		// 									SourceConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 										Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 										ConnectionName: to.Ptr("amjaAdls03"),
+		// 									},
+		// 									SourceEntityName: to.Ptr("lookup"),
+		// 									TargetEntityName: to.Ptr("dbo.data_source_table"),
+		// 								},
+		// 								{
+		// 									AttributeMappingInfo: &armdatafactory.MapperAttributeMappings{
+		// 										AttributeMappings: []*armdatafactory.MapperAttributeMapping{
+		// 										},
+		// 									},
+		// 									SourceConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 										Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 										ConnectionName: to.Ptr("amjaAdls03"),
+		// 									},
+		// 									SourceEntityName: to.Ptr("source/employee"),
+		// 									TargetEntityName: to.Ptr("dbo.employee"),
+		// 								},
+		// 								{
+		// 									AttributeMappingInfo: &armdatafactory.MapperAttributeMappings{
+		// 										AttributeMappings: []*armdatafactory.MapperAttributeMapping{
+		// 											{
+		// 												Name: to.Ptr("CustAddres"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDerived),
+		// 												AttributeReferences: []*armdatafactory.MapperAttributeReference{
+		// 													{
+		// 														Name: to.Ptr("CustAddres"),
+		// 														Entity: to.Ptr("source/justSchema"),
+		// 														EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 															Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 															ConnectionName: to.Ptr("amjaAdls03"),
+		// 														},
+		// 													},
+		// 												},
+		// 												Expression: to.Ptr("trim(CustAddres)"),
+		// 												FunctionName: to.Ptr("trim"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustDepLoc"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDirect),
+		// 												AttributeReference: &armdatafactory.MapperAttributeReference{
+		// 													Name: to.Ptr("CustDepLoc"),
+		// 													Entity: to.Ptr("source/justSchema"),
+		// 													EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 														Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 														ConnectionName: to.Ptr("amjaAdls03"),
+		// 													},
+		// 												},
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustDepName"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDerived),
+		// 												AttributeReferences: []*armdatafactory.MapperAttributeReference{
+		// 													{
+		// 														Name: to.Ptr("CustName"),
+		// 														Entity: to.Ptr("source/justSchema"),
+		// 														EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 															Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 															ConnectionName: to.Ptr("amjaAdls03"),
+		// 														},
+		// 													},
+		// 													{
+		// 														Name: to.Ptr("CustDepName"),
+		// 														Entity: to.Ptr("source/justSchema"),
+		// 														EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 															Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 															ConnectionName: to.Ptr("amjaAdls03"),
+		// 														},
+		// 													},
+		// 												},
+		// 												Expression: to.Ptr("concat(CustName, \" -> \", CustDepName)"),
+		// 												FunctionName: to.Ptr(""),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustId"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDirect),
+		// 												AttributeReference: &armdatafactory.MapperAttributeReference{
+		// 													Name: to.Ptr("CustId"),
+		// 													Entity: to.Ptr("source/justSchema"),
+		// 													EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 														Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 														ConnectionName: to.Ptr("amjaAdls03"),
+		// 													},
+		// 												},
+		// 												FunctionName: to.Ptr(""),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("CustName"),
+		// 												Type: to.Ptr(armdatafactory.MappingTypeDirect),
+		// 												AttributeReference: &armdatafactory.MapperAttributeReference{
+		// 													Name: to.Ptr("CustName"),
+		// 													Entity: to.Ptr("source/justSchema"),
+		// 													EntityConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 														Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 														ConnectionName: to.Ptr("amjaAdls03"),
+		// 													},
+		// 												},
+		// 											},
+		// 										},
+		// 									},
+		// 									SourceConnectionReference: &armdatafactory.MapperConnectionReference{
+		// 										Type: to.Ptr(armdatafactory.ConnectionTypeLinkedservicetype),
+		// 										ConnectionName: to.Ptr("amjaAdls03"),
+		// 									},
+		// 									SourceEntityName: to.Ptr("source/justSchema"),
+		// 									TargetEntityName: to.Ptr("dbo.justSchema"),
+		// 								},
+		// 							},
+		// 							Relationships: []any{
+		// 							},
+		// 							TargetEntities: []*armdatafactory.MapperTable{
+		// 								{
+		// 									Name: to.Ptr("dbo.employee"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("schemaName"),
+		// 												Value: "dbo",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("tableName"),
+		// 												Value: "employee",
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("dbo.justSchema"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("schemaName"),
+		// 												Value: "dbo",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("tableName"),
+		// 												Value: "justSchema",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("allowSchemaDrift"),
+		// 												Value: true,
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("inferDriftedColumnTypes"),
+		// 												Value: true,
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("dbo.customer"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("schemaName"),
+		// 												Value: "dbo",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("tableName"),
+		// 												Value: "customer",
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("dbo.data_source_table"),
+		// 									Properties: &armdatafactory.MapperTableProperties{
+		// 										Schema: []*armdatafactory.MapperTableSchema{
+		// 											{
+		// 												Name: to.Ptr("PersonID"),
+		// 												DataType: to.Ptr("integer"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("Name"),
+		// 												DataType: to.Ptr("string"),
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("LastModifytime"),
+		// 												DataType: to.Ptr("timestamp"),
+		// 											},
+		// 										},
+		// 										DslConnectorProperties: []*armdatafactory.MapperDslConnectorProperties{
+		// 											{
+		// 												Name: to.Ptr("schemaName"),
+		// 												Value: "dbo",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("tableName"),
+		// 												Value: "data_source_table",
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("allowSchemaDrift"),
+		// 												Value: false,
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("inferDriftedColumnTypes"),
+		// 												Value: false,
+		// 											},
+		// 											{
+		// 												Name: to.Ptr("defaultToUpsert"),
+		// 												Value: false,
+		// 											},
+		// 										},
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

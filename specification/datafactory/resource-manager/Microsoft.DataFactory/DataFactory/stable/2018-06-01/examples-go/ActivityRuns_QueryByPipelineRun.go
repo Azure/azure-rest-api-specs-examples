@@ -1,0 +1,131 @@
+package armdatafactory_test
+
+import (
+	"context"
+	"log"
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v11"
+)
+
+// Generated from example definition: 2018-06-01/ActivityRuns_QueryByPipelineRun.json
+func ExampleActivityRunsClient_QueryByPipelineRun() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdatafactory.NewClientFactory("12345678-1234-1234-1234-123456789012", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewActivityRunsClient().QueryByPipelineRun(ctx, "exampleResourceGroup", "exampleFactoryName", "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b", armdatafactory.RunFilterParameters{
+		LastUpdatedAfter:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:36:44.3345758Z"); return t }()),
+		LastUpdatedBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:49:48.3686473Z"); return t }()),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armdatafactory.ActivityRunsClientQueryByPipelineRunResponse{
+	// 	ActivityRunsQueryResponse: &armdatafactory.ActivityRunsQueryResponse{
+	// 		Value: []*armdatafactory.ActivityRun{
+	// 			{
+	// 				ActivityName: to.Ptr("ExampleForeachActivity"),
+	// 				ActivityRunEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:38:11.5445431Z"); return t}()),
+	// 				ActivityRunID: to.Ptr("f30c5514-fb85-43ed-9fa4-768d42e58680"),
+	// 				ActivityRunStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:37:49.4804925Z"); return t}()),
+	// 				ActivityType: to.Ptr("ForEach"),
+	// 				DurationInMs: to.Ptr[int32](22064),
+	// 				Error: map[string]any{
+	// 					"errorCode": "",
+	// 					"failureType": "",
+	// 					"message": "",
+	// 					"target": "ExampleForeachActivity",
+	// 				},
+	// 				Input: map[string]any{
+	// 				},
+	// 				LinkedServiceName: to.Ptr(""),
+	// 				Output: map[string]any{
+	// 				},
+	// 				PipelineName: to.Ptr("examplePipeline"),
+	// 				PipelineRunID: to.Ptr("2f7fdb90-5df1-4b8e-ac2f-064cfa58202b"),
+	// 				Status: to.Ptr("Succeeded"),
+	// 				AdditionalProperties: map[string]any{
+	// 				"retryAttempt": nil,
+	// 				"userProperties": map[string]any{
+	// 				},
+	// 			},
+	// 			},
+	// 			{
+	// 				ActivityName: to.Ptr("ExampleCopyActivity"),
+	// 				ActivityRunEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:38:07.4188923Z"); return t}()),
+	// 				ActivityRunID: to.Ptr("a96678c8-7167-4f00-b629-afccfbad4e51"),
+	// 				ActivityRunStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:37:50.2460952Z"); return t}()),
+	// 				ActivityType: to.Ptr("Copy"),
+	// 				DurationInMs: to.Ptr[int32](17172),
+	// 				Error: map[string]any{
+	// 					"errorCode": "",
+	// 					"failureType": "",
+	// 					"message": "",
+	// 					"target": "ExampleCopyActivity",
+	// 				},
+	// 				Input: map[string]any{
+	// 					"dataIntegrationUnits": 32,
+	// 					"sink": map[string]any{
+	// 						"type": "BlobSink",
+	// 					},
+	// 					"source": map[string]any{
+	// 						"type": "BlobSource",
+	// 					},
+	// 				},
+	// 				LinkedServiceName: to.Ptr(""),
+	// 				Output: map[string]any{
+	// 					"copyDuration": 6,
+	// 					"dataRead": 142000,
+	// 					"dataWritten": 142000,
+	// 					"effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)",
+	// 					"errors": []any{
+	// 					},
+	// 					"executionDetails": []any{
+	// 						map[string]any{
+	// 							"detailedDurations": map[string]any{
+	// 								"queuingDuration": 4,
+	// 								"transferDuration": 2,
+	// 							},
+	// 							"duration": 6,
+	// 							"sink": map[string]any{
+	// 								"type": "AzureBlob",
+	// 							},
+	// 							"source": map[string]any{
+	// 								"type": "AzureBlob",
+	// 							},
+	// 							"start": "2018-06-16T00:37:50.68834Z",
+	// 							"status": "Succeeded",
+	// 							"usedCloudDataMovementUnits": 4,
+	// 							"usedParallelCopies": 1,
+	// 						},
+	// 					},
+	// 					"filesRead": 1,
+	// 					"filesWritten": 1,
+	// 					"throughput": 23.112,
+	// 					"usedCloudDataMovementUnits": 4,
+	// 					"usedParallelCopies": 1,
+	// 				},
+	// 				PipelineName: to.Ptr("examplePipeline"),
+	// 				PipelineRunID: to.Ptr("2f7fdb90-5df1-4b8e-ac2f-064cfa58202b"),
+	// 				Status: to.Ptr("Succeeded"),
+	// 				AdditionalProperties: map[string]any{
+	// 				"retryAttempt": nil,
+	// 				"userProperties": map[string]any{
+	// 				},
+	// 			},
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

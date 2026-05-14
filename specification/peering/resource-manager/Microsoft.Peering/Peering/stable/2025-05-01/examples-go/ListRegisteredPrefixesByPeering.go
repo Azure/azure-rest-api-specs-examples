@@ -1,0 +1,72 @@
+package armpeering_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/peering/armpeering/v2"
+)
+
+// Generated from example definition: 2025-05-01/ListRegisteredPrefixesByPeering.json
+func ExampleRegisteredPrefixesClient_NewListByPeeringPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpeering.NewClientFactory("subId", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewRegisteredPrefixesClient().NewListByPeeringPager("rgName", "peeringName", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armpeering.RegisteredPrefixesClientListByPeeringResponse{
+		// 	RegisteredPrefixListResult: armpeering.RegisteredPrefixListResult{
+		// 		Value: []*armpeering.RegisteredPrefix{
+		// 			{
+		// 				Name: to.Ptr("registeredPrefixName0"),
+		// 				Type: to.Ptr("Microsoft.Peering/registeredPrefixes"),
+		// 				ID: to.Ptr("/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Peering/peerings/peeringName/registeredPrefixes/registeredPrefixName0"),
+		// 				Properties: &armpeering.RegisteredPrefixProperties{
+		// 					PeeringServicePrefixKey: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					Prefix: to.Ptr("10.22.20.0/24"),
+		// 					PrefixValidationState: to.Ptr(armpeering.PrefixValidationStateVerified),
+		// 					ProvisioningState: to.Ptr(armpeering.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("registeredPrefixName1"),
+		// 				Type: to.Ptr("Microsoft.Peering/registeredPrefixes"),
+		// 				ID: to.Ptr("/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Peering/peerings/peeringName/registeredPrefixes/registeredPrefixName1"),
+		// 				Properties: &armpeering.RegisteredPrefixProperties{
+		// 					PeeringServicePrefixKey: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					Prefix: to.Ptr("10.22.21.0/24"),
+		// 					PrefixValidationState: to.Ptr(armpeering.PrefixValidationStateVerified),
+		// 					ProvisioningState: to.Ptr(armpeering.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("registeredPrefixName2"),
+		// 				Type: to.Ptr("Microsoft.Peering/registeredPrefixes"),
+		// 				ID: to.Ptr("/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Peering/peerings/peeringName/registeredPrefixes/registeredPrefixName2"),
+		// 				Properties: &armpeering.RegisteredPrefixProperties{
+		// 					Prefix: to.Ptr("10.22.22.0/24"),
+		// 					PrefixValidationState: to.Ptr(armpeering.PrefixValidationStatePending),
+		// 					ProvisioningState: to.Ptr(armpeering.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

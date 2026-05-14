@@ -6597,3 +6597,4 @@ id,name,language,tag,package,version,date_epoch,date
 6596,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v11@v11.0.0-beta.1,go,sdk/resourcemanager/datafactory/armdatafactory/v11.0.0-beta.1,sdk/resourcemanager/datafactory/armdatafactory,v11.0.0-beta.1,1778725786,05/14/2026
 6597,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fileshares/armfileshares@v0.1.0,go,sdk/resourcemanager/fileshares/armfileshares/v0.1.0,sdk/resourcemanager/fileshares/armfileshares,v0.1.0,1778702435,05/13/2026
 6598,azure-mgmt-azurearcdata@2.0.0b2,python,azure-mgmt-azurearcdata_2.0.0b2,azure-mgmt-azurearcdata,2.0.0b2,1778746214,05/14/2026
+6599,azure-mgmt-storagesync@1.0.1,python,azure-mgmt-storagesync_1.0.1,azure-mgmt-storagesync,1.0.1,1778744865,05/14/2026

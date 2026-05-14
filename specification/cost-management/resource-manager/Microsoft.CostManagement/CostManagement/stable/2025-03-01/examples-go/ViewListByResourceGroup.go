@@ -1,0 +1,158 @@
+package armcostmanagement_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement/v3"
+)
+
+// Generated from example definition: 2025-03-01/ViewListByResourceGroup.json
+func ExampleViewsClient_NewListByScopePager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcostmanagement.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewViewsClient().NewListByScopePager("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcostmanagement.ViewsClientListByScopeResponse{
+		// 	ViewListResult: armcostmanagement.ViewListResult{
+		// 		Value: []*armcostmanagement.View{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.CostManagement/views/swaggerExample"),
+		// 				Name: to.Ptr("swaggerExample"),
+		// 				Type: to.Ptr("Microsoft.CostManagement/Views"),
+		// 				ETag: to.Ptr(azcore.ETag("\"1d4ff9fe66f1d10\"")),
+		// 				Properties: &armcostmanagement.ViewProperties{
+		// 					DisplayName: to.Ptr("swagger Example"),
+		// 					Scope: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG"),
+		// 					Query: &armcostmanagement.ReportConfigDefinition{
+		// 						Type: to.Ptr(armcostmanagement.ReportTypeUsage),
+		// 						Timeframe: to.Ptr(armcostmanagement.ReportTimeframeTypeMonthToDate),
+		// 						DataSet: &armcostmanagement.ReportConfigDataset{
+		// 							Granularity: to.Ptr(armcostmanagement.ReportGranularityTypeDaily),
+		// 							Aggregation: map[string]*armcostmanagement.ReportConfigAggregation{
+		// 								"totalCost": &armcostmanagement.ReportConfigAggregation{
+		// 									Name: to.Ptr("PreTaxCost"),
+		// 									Function: to.Ptr(armcostmanagement.FunctionTypeSum),
+		// 								},
+		// 							},
+		// 							Grouping: []*armcostmanagement.ReportConfigGrouping{
+		// 							},
+		// 							Sorting: []*armcostmanagement.ReportConfigSorting{
+		// 								{
+		// 									Direction: to.Ptr(armcostmanagement.ReportConfigSortingTypeAscending),
+		// 									Name: to.Ptr("UsageDate"),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					Chart: to.Ptr(armcostmanagement.ChartTypeTable),
+		// 					Accumulated: to.Ptr(armcostmanagement.AccumulatedTypeTrue),
+		// 					Metric: to.Ptr(armcostmanagement.MetricTypeActualCost),
+		// 					Kpis: []*armcostmanagement.KpiProperties{
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.KpiTypeTypeForecast),
+		// 							Enabled: to.Ptr(true),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.KpiTypeTypeBudget),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
+		// 							Enabled: to.Ptr(true),
+		// 						},
+		// 					},
+		// 					Pivots: []*armcostmanagement.PivotProperties{
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeDimension),
+		// 							Name: to.Ptr("ServiceName"),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeDimension),
+		// 							Name: to.Ptr("MeterCategory"),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeTagKey),
+		// 							Name: to.Ptr("swaggerTagKey"),
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.CostManagement/views/swaggerExample2"),
+		// 				Name: to.Ptr("swaggerExample2"),
+		// 				Type: to.Ptr("Microsoft.CostManagement/Views"),
+		// 				ETag: to.Ptr(azcore.ETag("\"1d4ffa5a9c2430c\"")),
+		// 				Properties: &armcostmanagement.ViewProperties{
+		// 					DisplayName: to.Ptr("swagger Example 2"),
+		// 					Scope: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG"),
+		// 					Query: &armcostmanagement.ReportConfigDefinition{
+		// 						Type: to.Ptr(armcostmanagement.ReportTypeUsage),
+		// 						Timeframe: to.Ptr(armcostmanagement.ReportTimeframeType("LastMonthToDate")),
+		// 						DataSet: &armcostmanagement.ReportConfigDataset{
+		// 							Granularity: to.Ptr(armcostmanagement.ReportGranularityTypeDaily),
+		// 							Aggregation: map[string]*armcostmanagement.ReportConfigAggregation{
+		// 								"totalCost": &armcostmanagement.ReportConfigAggregation{
+		// 									Name: to.Ptr("PreTaxCost"),
+		// 									Function: to.Ptr(armcostmanagement.FunctionTypeSum),
+		// 								},
+		// 							},
+		// 							Grouping: []*armcostmanagement.ReportConfigGrouping{
+		// 							},
+		// 							Sorting: []*armcostmanagement.ReportConfigSorting{
+		// 								{
+		// 									Direction: to.Ptr(armcostmanagement.ReportConfigSortingTypeAscending),
+		// 									Name: to.Ptr("UsageDate"),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					Chart: to.Ptr(armcostmanagement.ChartTypeGroupedColumn),
+		// 					Accumulated: to.Ptr(armcostmanagement.AccumulatedTypeTrue),
+		// 					Metric: to.Ptr(armcostmanagement.MetricTypeActualCost),
+		// 					Kpis: []*armcostmanagement.KpiProperties{
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.KpiTypeTypeForecast),
+		// 							Enabled: to.Ptr(true),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.KpiTypeTypeBudget),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
+		// 							Enabled: to.Ptr(true),
+		// 						},
+		// 					},
+		// 					Pivots: []*armcostmanagement.PivotProperties{
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeDimension),
+		// 							Name: to.Ptr("ServiceName"),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeDimension),
+		// 							Name: to.Ptr("MeterCategory"),
+		// 						},
+		// 						{
+		// 							Type: to.Ptr(armcostmanagement.PivotTypeTypeTagKey),
+		// 							Name: to.Ptr("swaggerTagKey"),
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

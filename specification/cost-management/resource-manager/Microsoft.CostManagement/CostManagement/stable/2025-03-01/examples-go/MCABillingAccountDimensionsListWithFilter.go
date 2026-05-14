@@ -1,0 +1,66 @@
+package armcostmanagement_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement/v3"
+)
+
+// Generated from example definition: 2025-03-01/MCABillingAccountDimensionsListWithFilter.json
+func ExampleDimensionsClient_NewListPager_billingAccountDimensionsListWithFilterMca() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcostmanagement.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewDimensionsClient().NewListPager("providers/Microsoft.Billing/billingAccounts/12345:6789", &armcostmanagement.DimensionsClientListOptions{
+		Expand: to.Ptr("properties/data"),
+		Filter: to.Ptr("properties/category eq 'resourceId'"),
+		Top:    to.Ptr[int32](5)})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcostmanagement.DimensionsClientListResponse{
+		// 	DimensionsListResult: armcostmanagement.DimensionsListResult{
+		// 		Value: []*armcostmanagement.Dimension{
+		// 			{
+		// 				Name: to.Ptr("dimensions_ResourceId_2019-10-01_2019-10-31"),
+		// 				Type: to.Ptr("microsoft.CostManagement/dimensions"),
+		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/12345:6789/providers/microsoft.CostManagement/dimensions_ResourceId_2019-10-01_2019-10-31"),
+		// 				Properties: &armcostmanagement.DimensionProperties{
+		// 					Description: to.Ptr("Resource Id"),
+		// 					Category: to.Ptr("ResourceId"),
+		// 					Data: []*string{
+		// 						to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/system.orlando/providers/microsoft.storage/storageaccounts/urphealthaccount"),
+		// 						to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/system.orlando/providers/microsoft.storage/storageaccounts/srphytenaccount"),
+		// 						to.Ptr("/subscriptions/67e24f6b-1ec2-4c90-993a-dc2d25b00b6c/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-67e24f6b-1ec2-4c90-993a-dc2d25b00b6c-eus"),
+		// 						to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-sql-ha/providers/microsoft.compute/virtualmachines/sql-4qqp1"),
+		// 						to.Ptr("/subscriptions/a98d6dc5-eb8f-46cf-8938-f1fb08f03706/resourcegroups/databricks-rg-testwsp-xijmsdubneexm/providers/microsoft.compute/disks/488cdb42bf74474a98075415be3f806c-containerrootvolume"),
+		// 					},
+		// 					FilterEnabled: to.Ptr(true),
+		// 					GroupingEnabled: to.Ptr(true),
+		// 					NextLink: to.Ptr("http://management.azure.com/providers/Microsoft.Billing/billingAccounts/12345:6789/providers/Microsoft.CostManagement/Dimensions?$filter=properties/category eq 'resourceId'&$top=5&api-version=2019-10-01&$expand=properties/data&$skiptoken=AQAAAA%3D%3D"),
+		// 					Total: to.Ptr[int32](1409),
+		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-31T00:00:00-07:00"); return t}()),
+		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-01T00:00:00-07:00"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

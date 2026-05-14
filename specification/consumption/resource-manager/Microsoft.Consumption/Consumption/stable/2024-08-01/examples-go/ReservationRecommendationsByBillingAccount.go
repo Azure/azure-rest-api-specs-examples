@@ -1,0 +1,103 @@
+package armconsumption_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2"
+)
+
+// Generated from example definition: 2024-08-01/ReservationRecommendationsByBillingAccount.json
+func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendationsByBillingAccountLegacy() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armconsumption.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewReservationRecommendationsClient().NewListPager("providers/Microsoft.Billing/billingAccounts/123456", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armconsumption.ReservationRecommendationsClientListResponse{
+		// 	ReservationRecommendationsListResult: armconsumption.ReservationRecommendationsListResult{
+		// 		NextLink: to.Ptr("https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Consumption/reservationRecommendations?api-version=2024-08-01&$skiptoken=AQAAAA%3D%3D&"),
+		// 		Value: []armconsumption.ReservationRecommendationClassification{
+		// 			&armconsumption.LegacyReservationRecommendation{
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.Consumption/reservationRecommendations"),
+		// 				ID: to.Ptr("billingAccount/123456/providers/Microsoft.Consumption/reservationRecommendations/00000000-0000-0000-0000-000000000000"),
+		// 				Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
+		// 				Location: to.Ptr("westus"),
+		// 				Properties: &armconsumption.LegacySharedScopeReservationRecommendationProperties{
+		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-07T00:00:00-07:00"); return t}()),
+		// 					InstanceFlexibilityGroup: to.Ptr("DSv2 Series"),
+		// 					InstanceFlexibilityRatio: to.Ptr[float32](1),
+		// 					LastUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-07T00:00:00-07:00"); return t}()),
+		// 					LookBackPeriod: to.Ptr("Last7Days"),
+		// 					MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					NormalizedSize: to.Ptr("Standard_DS1_v2"),
+		// 					RecommendedQuantityNormalized: to.Ptr[float32](1),
+		// 					Scope: to.Ptr("Shared"),
+		// 					SKUProperties: []*armconsumption.SKUProperty{
+		// 						{
+		// 							Name: to.Ptr("Cores"),
+		// 							Value: to.Ptr("1"),
+		// 						},
+		// 						{
+		// 							Name: to.Ptr("Ram"),
+		// 							Value: to.Ptr("1"),
+		// 						},
+		// 					},
+		// 					Term: to.Ptr("P1Y"),
+		// 					TotalHours: to.Ptr[int32](701),
+		// 				},
+		// 				SKU: to.Ptr("Standard_DS1_v2"),
+		// 			},
+		// 			&armconsumption.LegacyReservationRecommendation{
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.Consumption/reservationRecommendations"),
+		// 				ID: to.Ptr("billingAccount/123456/providers/Microsoft.Consumption/reservationRecommendations/00000000-0000-0000-0000-000000000000"),
+		// 				Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
+		// 				Location: to.Ptr("westus"),
+		// 				Properties: &armconsumption.LegacySharedScopeReservationRecommendationProperties{
+		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-07T00:00:00-07:00"); return t}()),
+		// 					InstanceFlexibilityGroup: to.Ptr("DSv2 Series"),
+		// 					InstanceFlexibilityRatio: to.Ptr[float32](1),
+		// 					LastUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-09T00:00:00-07:00"); return t}()),
+		// 					LookBackPeriod: to.Ptr("Last7Days"),
+		// 					MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					NormalizedSize: to.Ptr("Standard_DS1"),
+		// 					RecommendedQuantityNormalized: to.Ptr[float32](1.2),
+		// 					Scope: to.Ptr("Shared"),
+		// 					SKUProperties: []*armconsumption.SKUProperty{
+		// 						{
+		// 							Name: to.Ptr("SkuDisplayName"),
+		// 							Value: to.Ptr("B"),
+		// 						},
+		// 						{
+		// 							Name: to.Ptr("CPU"),
+		// 							Value: to.Ptr("1"),
+		// 						},
+		// 					},
+		// 					Term: to.Ptr("P1Y"),
+		// 					TotalHours: to.Ptr[int32](805),
+		// 				},
+		// 				SKU: to.Ptr("Standard_DS1_v2"),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

@@ -1,0 +1,120 @@
+package armconsumption_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2"
+)
+
+// Generated from example definition: 2024-08-01/ReservationRecommendationDetailsByBillingAccount.json
+func ExampleReservationRecommendationDetailsClient_Get_reservationRecommendationsByBillingAccountLegacy() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armconsumption.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewReservationRecommendationDetailsClient().Get(ctx, "providers/Microsoft.Billing/billingAccounts/00000000", armconsumption.ScopeShared, "eastus", armconsumption.TermP1Y, armconsumption.LookBackPeriodLast60Days, "Standard_DS14_v2", &armconsumption.ReservationRecommendationDetailsClientGetOptions{
+		Filter: to.Ptr("properties/subscriptionId eq 00000000-0000-0000-0000-00000000")})
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armconsumption.ReservationRecommendationDetailsClientGetResponse{
+	// 	ReservationRecommendationDetailsModel: &armconsumption.ReservationRecommendationDetailsModel{
+	// 		Name: to.Ptr("reservationRecommendationDetails"),
+	// 		Type: to.Ptr("Microsoft.Consumption/ReservationRecommendationDetails"),
+	// 		ID: to.Ptr("providers/Microsoft.Billing/billingAccounts/00000000/providers/microsoft.consumption/reservationrecommendationdetails"),
+	// 		Properties: &armconsumption.ReservationRecommendationDetailsProperties{
+	// 			Currency: to.Ptr("USD"),
+	// 			Resource: &armconsumption.ReservationRecommendationDetailsResourceProperties{
+	// 				AppliedScopes: []*string{
+	// 					to.Ptr("00000000-0000-0000-0000-00000000"),
+	// 					to.Ptr("00000000-0000-0000-0000-00000000"),
+	// 				},
+	// 				OnDemandRate: to.Ptr[float32](1.482),
+	// 				Product: to.Ptr("Standard_DS14_v2"),
+	// 				Region: to.Ptr("eastus"),
+	// 				ReservationRate: to.Ptr[float32](0.70570776255707),
+	// 				ResourceType: to.Ptr("virtualmachines"),
+	// 			},
+	// 			Savings: &armconsumption.ReservationRecommendationDetailsSavingsProperties{
+	// 				CalculatedSavings: []*armconsumption.ReservationRecommendationDetailsCalculatedSavingsProperties{
+	// 					{
+	// 						OnDemandCost: to.Ptr[float32](529550.326618951),
+	// 						OverageCost: to.Ptr[float32](63253.5935111345),
+	// 						Quantity: to.Ptr[float32](220),
+	// 						ReservationCost: to.Ptr[float32](223102.452054792),
+	// 						Savings: to.Ptr[float32](243194.281053024),
+	// 						TotalReservationCost: to.Ptr[float32](286356.045565927),
+	// 					},
+	// 					{
+	// 						OnDemandCost: to.Ptr[float32](529550.32661895),
+	// 						OverageCost: to.Ptr[float32](149335.025050147),
+	// 						Quantity: to.Ptr[float32](179),
+	// 						ReservationCost: to.Ptr[float32](181524.267808217),
+	// 						Savings: to.Ptr[float32](198691.033760586),
+	// 						TotalReservationCost: to.Ptr[float32](330859.292858364),
+	// 					},
+	// 					{
+	// 						OnDemandCost: to.Ptr[float32](529550.32661895),
+	// 						OverageCost: to.Ptr[float32](195942.319606957),
+	// 						Quantity: to.Ptr[float32](157),
+	// 						ReservationCost: to.Ptr[float32](159214.022602738),
+	// 						Savings: to.Ptr[float32](174393.984409255),
+	// 						TotalReservationCost: to.Ptr[float32](355156.342209695),
+	// 					},
+	// 					{
+	// 						OnDemandCost: to.Ptr[float32](529550.32661895),
+	// 						OverageCost: to.Ptr[float32](30975.2311896299),
+	// 						Quantity: to.Ptr[float32](241),
+	// 						ReservationCost: to.Ptr[float32](244398.595205477),
+	// 						Savings: to.Ptr[float32](254176.500223843),
+	// 						TotalReservationCost: to.Ptr[float32](275373.826395107),
+	// 					},
+	// 				},
+	// 				LookBackPeriod: to.Ptr[int32](60),
+	// 				RecommendedQuantity: to.Ptr[float32](253),
+	// 				ReservationOrderTerm: to.Ptr("P1Y"),
+	// 				SavingsType: to.Ptr("instance"),
+	// 				UnitOfMeasure: to.Ptr("hour"),
+	// 			},
+	// 			Scope: to.Ptr("Shared"),
+	// 			Usage: &armconsumption.ReservationRecommendationDetailsUsageProperties{
+	// 				FirstConsumptionDate: to.Ptr("2019-11-27T00:00:00"),
+	// 				LastConsumptionDate: to.Ptr("2020-01-25T21:00:00"),
+	// 				LookBackUnitType: to.Ptr("virtualMachine quantity"),
+	// 				UsageData: []*float32{
+	// 					to.Ptr[float32](275.95003899999995),
+	// 					to.Ptr[float32](275.916705),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](275.916725),
+	// 					to.Ptr[float32](275.916705),
+	// 					to.Ptr[float32](275.98335299999997),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](275.98335299999997),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](276),
+	// 					to.Ptr[float32](275.933352),
+	// 				},
+	// 				UsageGrain: to.Ptr("hourly"),
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

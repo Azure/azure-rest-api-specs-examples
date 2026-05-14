@@ -6,17 +6,17 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7611bb6c9bad11244f4351eecfc50b2c46a86fde/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/ResourceTypeRegistrations_CreateOrUpdate.json
+// Generated from example definition: 2024-09-01/ResourceTypeRegistrations_CreateOrUpdate.json
 func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate_resourceTypeRegistrationsCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armproviderhub.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armproviderhub.NewClientFactory("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,36 +26,44 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate_resourceTypeRegi
 			Endpoints: []*armproviderhub.ResourceTypeEndpoint{
 				{
 					APIVersions: []*string{
-						to.Ptr("2020-06-01-preview")},
+						to.Ptr("2020-06-01-preview"),
+					},
 					Locations: []*string{
 						to.Ptr("West US"),
 						to.Ptr("East US"),
-						to.Ptr("North Europe")},
+						to.Ptr("North Europe"),
+					},
 					RequiredFeatures: []*string{
-						to.Ptr("<feature flag>")},
-				}},
+						to.Ptr("<feature flag>"),
+					},
+				},
+			},
 			Management: &armproviderhub.ResourceTypeRegistrationPropertiesManagement{
 				AuthorizationOwners: []*string{
-					to.Ptr("RPAAS-PlatformServiceAdministrator")},
+					to.Ptr("RPAAS-PlatformServiceAdministrator"),
+				},
 				IncidentContactEmail:   to.Ptr("helpme@contoso.com"),
 				IncidentRoutingService: to.Ptr(""),
 				IncidentRoutingTeam:    to.Ptr(""),
 				ManifestOwners: []*string{
-					to.Ptr("SPARTA-PlatformServiceAdministrator")},
+					to.Ptr("SPARTA-PlatformServiceAdministrator"),
+				},
 				ResourceAccessPolicy: to.Ptr(armproviderhub.ResourceAccessPolicyNotSpecified),
 				ServiceTreeInfos: []*armproviderhub.ServiceTreeInfo{
 					{
 						ComponentID: to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
 						Readiness:   to.Ptr(armproviderhub.ReadinessInDevelopment),
 						ServiceID:   to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
-					}},
+					},
+				},
 			},
 			Metadata: map[string]any{},
 			Notifications: []*armproviderhub.Notification{
 				{
 					NotificationType:  to.Ptr(armproviderhub.NotificationTypeSubscriptionNotification),
 					SkipNotifications: to.Ptr(armproviderhub.SkipNotificationsDisabled),
-				}},
+				},
+			},
 			OpenAPIConfiguration: &armproviderhub.OpenAPIConfiguration{
 				Validation: &armproviderhub.OpenAPIValidation{
 					AllowNoncompliantCollectionResponse: to.Ptr(true),
@@ -84,9 +92,11 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate_resourceTypeRegi
 			SwaggerSpecifications: []*armproviderhub.SwaggerSpecification{
 				{
 					APIVersions: []*string{
-						to.Ptr("2020-06-01-preview")},
+						to.Ptr("2020-06-01-preview"),
+					},
 					SwaggerSpecFolderURI: to.Ptr("https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"),
-				}},
+				},
+			},
 		},
 	}, nil)
 	if err != nil {
@@ -99,28 +109,22 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate_resourceTypeRegi
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ResourceTypeRegistration = armproviderhub.ResourceTypeRegistration{
-	// 	Name: to.Ptr("Microsoft.Contoso/employees"),
-	// 	Type: to.Ptr("Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations"),
-	// 	ID: to.Ptr("/subscriptions/ab7a8701-f7ef-471a-a2f4-d0ebbf494f77/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourceTypeRegistrations/employees"),
-	// 	SystemData: &armproviderhub.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
-	// 		CreatedBy: to.Ptr("string"),
-	// 		CreatedByType: to.Ptr(armproviderhub.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
-	// 		LastModifiedBy: to.Ptr("string"),
-	// 		LastModifiedByType: to.Ptr(armproviderhub.CreatedByTypeUser),
-	// 	},
-	// 	Properties: &armproviderhub.ResourceTypeRegistrationProperties{
-	// 		CrossTenantTokenValidation: to.Ptr(armproviderhub.CrossTenantTokenValidationEnsureSecureValidation),
-	// 		EnableAsyncOperation: to.Ptr(false),
-	// 		EnableThirdPartyS2S: to.Ptr(false),
-	// 		Endpoints: []*armproviderhub.ResourceTypeEndpoint{
-	// 			{
-	// 				APIVersions: []*string{
-	// 					to.Ptr("2018-11-01-preview"),
-	// 					to.Ptr("2020-01-01-preview"),
-	// 					to.Ptr("2019-01-01")},
+	// res = armproviderhub.ResourceTypeRegistrationsClientCreateOrUpdateResponse{
+	// 	ResourceTypeRegistration: &armproviderhub.ResourceTypeRegistration{
+	// 		Name: to.Ptr("Microsoft.Contoso/employees"),
+	// 		Type: to.Ptr("Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations"),
+	// 		ID: to.Ptr("/subscriptions/ab7a8701-f7ef-471a-a2f4-d0ebbf494f77/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourceTypeRegistrations/employees"),
+	// 		Properties: &armproviderhub.ResourceTypeRegistrationProperties{
+	// 			CrossTenantTokenValidation: to.Ptr(armproviderhub.CrossTenantTokenValidationEnsureSecureValidation),
+	// 			EnableAsyncOperation: to.Ptr(false),
+	// 			EnableThirdPartyS2S: to.Ptr(false),
+	// 			Endpoints: []*armproviderhub.ResourceTypeEndpoint{
+	// 				{
+	// 					APIVersions: []*string{
+	// 						to.Ptr("2018-11-01-preview"),
+	// 						to.Ptr("2020-01-01-preview"),
+	// 						to.Ptr("2019-01-01"),
+	// 					},
 	// 					Locations: []*string{
 	// 						to.Ptr("East Asia"),
 	// 						to.Ptr("East US"),
@@ -131,66 +135,83 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate_resourceTypeRegi
 	// 						to.Ptr("West Europe"),
 	// 						to.Ptr("West US"),
 	// 						to.Ptr("West Central US"),
-	// 						to.Ptr("West US 2")},
-	// 						RequiredFeatures: []*string{
-	// 							to.Ptr("Microsoft.Contoso/RPaaSSampleApp")},
-	// 					}},
-	// 					Management: &armproviderhub.ResourceTypeRegistrationPropertiesManagement{
-	// 						IncidentContactEmail: to.Ptr("helpme@contoso.com"),
-	// 						IncidentRoutingService: to.Ptr(""),
-	// 						IncidentRoutingTeam: to.Ptr(""),
-	// 						ManifestOwners: []*string{
-	// 							to.Ptr("SPARTA-PlatformServiceAdministrator")},
-	// 							ResourceAccessPolicy: to.Ptr(armproviderhub.ResourceAccessPolicyNotSpecified),
-	// 							ServiceTreeInfos: []*armproviderhub.ServiceTreeInfo{
-	// 								{
-	// 									ComponentID: to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
-	// 									Readiness: to.Ptr(armproviderhub.ReadinessInDevelopment),
-	// 									ServiceID: to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
-	// 							}},
-	// 						},
-	// 						Metadata: map[string]any{
-	// 						},
-	// 						Notifications: []*armproviderhub.Notification{
-	// 							{
-	// 								NotificationType: to.Ptr(armproviderhub.NotificationTypeSubscriptionNotification),
-	// 								SkipNotifications: to.Ptr(armproviderhub.SkipNotificationsDisabled),
-	// 						}},
-	// 						OpenAPIConfiguration: &armproviderhub.OpenAPIConfiguration{
-	// 							Validation: &armproviderhub.OpenAPIValidation{
-	// 								AllowNoncompliantCollectionResponse: to.Ptr(true),
-	// 							},
-	// 						},
-	// 						ProvisioningState: to.Ptr(armproviderhub.ProvisioningStateSucceeded),
-	// 						Regionality: to.Ptr(armproviderhub.RegionalityRegional),
-	// 						RequestHeaderOptions: &armproviderhub.ResourceTypeRegistrationPropertiesRequestHeaderOptions{
-	// 							OptOutHeaders: to.Ptr(armproviderhub.OptOutHeaderTypeSystemDataCreatedByLastModifiedBy),
-	// 						},
-	// 						ResourceConcurrencyControlOptions: map[string]*armproviderhub.ResourceConcurrencyControlOption{
-	// 							"patch": &armproviderhub.ResourceConcurrencyControlOption{
-	// 								Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
-	// 							},
-	// 							"post": &armproviderhub.ResourceConcurrencyControlOption{
-	// 								Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
-	// 							},
-	// 							"put": &armproviderhub.ResourceConcurrencyControlOption{
-	// 								Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
-	// 							},
-	// 						},
-	// 						ResourceDeletionPolicy: to.Ptr(armproviderhub.ResourceDeletionPolicyCascadeDeleteProxyOnlyChildren),
-	// 						ResourceGraphConfiguration: &armproviderhub.ResourceTypeRegistrationPropertiesResourceGraphConfiguration{
-	// 							APIVersion: to.Ptr("2019-01-01"),
-	// 							Enabled: to.Ptr(true),
-	// 						},
-	// 						RoutingType: to.Ptr(armproviderhub.RoutingTypeDefault),
-	// 						SwaggerSpecifications: []*armproviderhub.SwaggerSpecification{
-	// 							{
-	// 								APIVersions: []*string{
-	// 									to.Ptr("2018-11-01-preview"),
-	// 									to.Ptr("2020-01-01-preview"),
-	// 									to.Ptr("2019-01-01")},
-	// 									SwaggerSpecFolderURI: to.Ptr("https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"),
-	// 							}},
-	// 						},
-	// 					}
+	// 						to.Ptr("West US 2"),
+	// 					},
+	// 					RequiredFeatures: []*string{
+	// 						to.Ptr("Microsoft.Contoso/RPaaSSampleApp"),
+	// 					},
+	// 				},
+	// 			},
+	// 			Management: &armproviderhub.ResourceTypeRegistrationPropertiesManagement{
+	// 				IncidentContactEmail: to.Ptr("helpme@contoso.com"),
+	// 				IncidentRoutingService: to.Ptr(""),
+	// 				IncidentRoutingTeam: to.Ptr(""),
+	// 				ManifestOwners: []*string{
+	// 					to.Ptr("SPARTA-PlatformServiceAdministrator"),
+	// 				},
+	// 				ResourceAccessPolicy: to.Ptr(armproviderhub.ResourceAccessPolicyNotSpecified),
+	// 				ServiceTreeInfos: []*armproviderhub.ServiceTreeInfo{
+	// 					{
+	// 						ComponentID: to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
+	// 						Readiness: to.Ptr(armproviderhub.ReadinessInDevelopment),
+	// 						ServiceID: to.Ptr("d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"),
+	// 					},
+	// 				},
+	// 			},
+	// 			Metadata: map[string]any{
+	// 			},
+	// 			Notifications: []*armproviderhub.Notification{
+	// 				{
+	// 					NotificationType: to.Ptr(armproviderhub.NotificationTypeSubscriptionNotification),
+	// 					SkipNotifications: to.Ptr(armproviderhub.SkipNotificationsDisabled),
+	// 				},
+	// 			},
+	// 			OpenAPIConfiguration: &armproviderhub.OpenAPIConfiguration{
+	// 				Validation: &armproviderhub.OpenAPIValidation{
+	// 					AllowNoncompliantCollectionResponse: to.Ptr(true),
+	// 				},
+	// 			},
+	// 			ProvisioningState: to.Ptr(armproviderhub.ProvisioningStateSucceeded),
+	// 			Regionality: to.Ptr(armproviderhub.RegionalityRegional),
+	// 			RequestHeaderOptions: &armproviderhub.ResourceTypeRegistrationPropertiesRequestHeaderOptions{
+	// 				OptOutHeaders: to.Ptr(armproviderhub.OptOutHeaderTypeSystemDataCreatedByLastModifiedBy),
+	// 			},
+	// 			ResourceConcurrencyControlOptions: map[string]*armproviderhub.ResourceConcurrencyControlOption{
+	// 				"patch": &armproviderhub.ResourceConcurrencyControlOption{
+	// 					Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
+	// 				},
+	// 				"post": &armproviderhub.ResourceConcurrencyControlOption{
+	// 					Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
+	// 				},
+	// 				"put": &armproviderhub.ResourceConcurrencyControlOption{
+	// 					Policy: to.Ptr(armproviderhub.PolicySynchronizeBeginExtension),
+	// 				},
+	// 			},
+	// 			ResourceDeletionPolicy: to.Ptr(armproviderhub.ResourceDeletionPolicyCascadeDeleteProxyOnlyChildren),
+	// 			ResourceGraphConfiguration: &armproviderhub.ResourceTypeRegistrationPropertiesResourceGraphConfiguration{
+	// 				APIVersion: to.Ptr("2019-01-01"),
+	// 				Enabled: to.Ptr(true),
+	// 			},
+	// 			RoutingType: to.Ptr(armproviderhub.RoutingTypeDefault),
+	// 			SwaggerSpecifications: []*armproviderhub.SwaggerSpecification{
+	// 				{
+	// 					APIVersions: []*string{
+	// 						to.Ptr("2018-11-01-preview"),
+	// 						to.Ptr("2020-01-01-preview"),
+	// 						to.Ptr("2019-01-01"),
+	// 					},
+	// 					SwaggerSpecFolderURI: to.Ptr("https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"),
+	// 				},
+	// 			},
+	// 		},
+	// 		SystemData: &armproviderhub.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 			CreatedBy: to.Ptr("string"),
+	// 			CreatedByType: to.Ptr(armproviderhub.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("string"),
+	// 			LastModifiedByType: to.Ptr(armproviderhub.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
 }

@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7611bb6c9bad11244f4351eecfc50b2c46a86fde/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2024-09-01/examples/Operations_List.json
+// Generated from example definition: 2024-09-01/Operations_List.json
 func ExampleOperationsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armproviderhub.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armproviderhub.NewClientFactory("<subscriptionID>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,78 +30,81 @@ func ExampleOperationsClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.OperationsDefinitionArrayResponseWithContinuation = armproviderhub.OperationsDefinitionArrayResponseWithContinuation{
-		// 	Value: []*armproviderhub.OperationsDefinition{
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/register/action"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Registers the specified subscription with Microsoft.ProviderHub resource provider"),
-		// 				Operation: to.Ptr("Register for Microsoft.ProviderHub"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("register"),
+		// page = armproviderhub.OperationsClientListResponse{
+		// 	OperationsDefinitionArrayResponseWithContinuation: armproviderhub.OperationsDefinitionArrayResponseWithContinuation{
+		// 		Value: []*armproviderhub.OperationsDefinition{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/register/action"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Registers the specified subscription with Microsoft.ProviderHub resource provider"),
+		// 					Operation: to.Ptr("Register for Microsoft.ProviderHub"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("register"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
 		// 			},
-		// 			IsDataAction: to.Ptr(false),
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/write"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Creates or Updates any rollout"),
+		// 					Operation: to.Ptr("Create or Update rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("defaultRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/read"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Reads any rollout"),
+		// 					Operation: to.Ptr("Read rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("defaultRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/delete"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Deletes any rollout"),
+		// 					Operation: to.Ptr("Delete rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("defaultRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/stop/action"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Deletes any rollout"),
+		// 					Operation: to.Ptr("Delete rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("defaultRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/customRollouts/write"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Creates or Updates any rollout"),
+		// 					Operation: to.Ptr("Create or Update rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("customRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ProviderHub/customRollouts/read"),
+		// 				Display: &armproviderhub.OperationsDefinitionDisplay{
+		// 					Description: to.Ptr("Reads any rollout"),
+		// 					Operation: to.Ptr("Read rollout"),
+		// 					Provider: to.Ptr("Microsoft ProviderHub"),
+		// 					Resource: to.Ptr("customRollouts"),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
 		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/write"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Creates or Updates any rollout"),
-		// 				Operation: to.Ptr("Create or Update rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("defaultRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/read"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Reads any rollout"),
-		// 				Operation: to.Ptr("Read rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("defaultRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/delete"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Deletes any rollout"),
-		// 				Operation: to.Ptr("Delete rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("defaultRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/defaultRollouts/stop/action"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Deletes any rollout"),
-		// 				Operation: to.Ptr("Delete rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("defaultRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/customRollouts/write"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Creates or Updates any rollout"),
-		// 				Operation: to.Ptr("Create or Update rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("customRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 		},
-		// 		{
-		// 			Name: to.Ptr("Microsoft.ProviderHub/customRollouts/read"),
-		// 			Display: &armproviderhub.OperationsDefinitionDisplay{
-		// 				Description: to.Ptr("Reads any rollout"),
-		// 				Operation: to.Ptr("Read rollout"),
-		// 				Provider: to.Ptr("Microsoft ProviderHub"),
-		// 				Resource: to.Ptr("customRollouts"),
-		// 			},
-		// 			IsDataAction: to.Ptr(false),
-		// 	}},
+		// 	},
 		// }
 	}
 }

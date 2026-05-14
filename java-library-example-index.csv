@@ -6591,3 +6591,4 @@ id,name,language,tag,package,version,date_epoch,date
 6590,azure-mgmt-portal@1.0.1,python,azure-mgmt-portal_1.0.1,azure-mgmt-portal,1.0.1,1778650757,05/13/2026
 6591,com.azure.resourcemanager:azure-resourcemanager-fileshares:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-fileshares_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-fileshares,1.0.0-beta.1,1778656263,05/13/2026
 6592,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2@v2.0.0-beta.1,go,sdk/resourcemanager/consumption/armconsumption/v2.0.0-beta.1,sdk/resourcemanager/consumption/armconsumption,v2.0.0-beta.1,1778755567,05/14/2026
+6593,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling/v2@v2.0.0-beta.1,go,sdk/resourcemanager/billing/armbilling/v2.0.0-beta.1,sdk/resourcemanager/billing/armbilling,v2.0.0-beta.1,1778743864,05/14/2026

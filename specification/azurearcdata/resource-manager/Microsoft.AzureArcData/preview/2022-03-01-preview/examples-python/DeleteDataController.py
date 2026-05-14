@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.azurearcdata import AzureArcDataManagementClient
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="00000000-1111-2222-3333-444444444444",
     )
 
-    response = client.data_controllers.begin_delete_data_controller(
+    client.data_controllers.begin_delete_data_controller(
         resource_group_name="testrg",
         data_controller_name="testdataController",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/examples/DeleteDataController.json

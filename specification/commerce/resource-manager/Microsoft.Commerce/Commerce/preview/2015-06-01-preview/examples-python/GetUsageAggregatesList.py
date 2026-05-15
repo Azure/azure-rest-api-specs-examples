@@ -21,7 +21,7 @@ from azure.mgmt.commerce import UsageManagementClient
 def main():
     client = UsageManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="SUBSCRIPTION_ID",
+        subscription_id="f68815e6-3c41-45ef-bbd8-5f83303c396b",
     )
 
     response = client.usage_aggregates.list(
@@ -32,6 +32,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: 2015-06-01-preview/GetUsageAggregatesList.json
+# x-ms-original-file: specification/commerce/resource-manager/Microsoft.Commerce/Commerce/preview/2015-06-01-preview/examples/GetUsageAggregatesList.json
 if __name__ == "__main__":
     main()

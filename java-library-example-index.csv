@@ -6590,3 +6590,12 @@ id,name,language,tag,package,version,date_epoch,date
 6589,azure-mgmt-advisor@9.0.1,python,azure-mgmt-advisor_9.0.1,azure-mgmt-advisor,9.0.1,1778660683,05/13/2026
 6590,azure-mgmt-portal@1.0.1,python,azure-mgmt-portal_1.0.1,azure-mgmt-portal,1.0.1,1778650757,05/13/2026
 6591,com.azure.resourcemanager:azure-resourcemanager-fileshares:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-fileshares_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-fileshares,1.0.0-beta.1,1778656263,05/13/2026
+6592,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2@v2.0.0-beta.1,go,sdk/resourcemanager/consumption/armconsumption/v2.0.0-beta.1,sdk/resourcemanager/consumption/armconsumption,v2.0.0-beta.1,1778755567,05/14/2026
+6593,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling/v2@v2.0.0-beta.1,go,sdk/resourcemanager/billing/armbilling/v2.0.0-beta.1,sdk/resourcemanager/billing/armbilling,v2.0.0-beta.1,1778743864,05/14/2026
+6594,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement/v3@v3.0.0-beta.1,go,sdk/resourcemanager/costmanagement/armcostmanagement/v3.0.0-beta.1,sdk/resourcemanager/costmanagement/armcostmanagement,v3.0.0-beta.1,1778729944,05/14/2026
+6595,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine@v0.11.0,go,sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine/v0.11.0,sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine,v0.11.0,1778728401,05/14/2026
+6596,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v11@v11.0.0-beta.1,go,sdk/resourcemanager/datafactory/armdatafactory/v11.0.0-beta.1,sdk/resourcemanager/datafactory/armdatafactory,v11.0.0-beta.1,1778725786,05/14/2026
+6597,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fileshares/armfileshares@v0.1.0,go,sdk/resourcemanager/fileshares/armfileshares/v0.1.0,sdk/resourcemanager/fileshares/armfileshares,v0.1.0,1778702435,05/13/2026
+6598,azure-mgmt-azurearcdata@2.0.0b2,python,azure-mgmt-azurearcdata_2.0.0b2,azure-mgmt-azurearcdata,2.0.0b2,1778746214,05/14/2026
+6599,azure-mgmt-storagesync@1.0.1,python,azure-mgmt-storagesync_1.0.1,azure-mgmt-storagesync,1.0.1,1778744865,05/14/2026
+6600,azure-mgmt-automation@1.0.1,python,azure-mgmt-automation_1.0.1,azure-mgmt-automation,1.0.1,1778728181,05/14/2026

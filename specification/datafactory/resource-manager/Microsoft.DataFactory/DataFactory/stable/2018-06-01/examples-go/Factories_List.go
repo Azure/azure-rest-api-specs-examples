@@ -1,0 +1,238 @@
+package armdatafactory_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v11"
+)
+
+// Generated from example definition: 2018-06-01/Factories_List.json
+func ExampleFactoriesClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdatafactory.NewClientFactory("12345678-1234-1234-1234-123456789012", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewFactoriesClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armdatafactory.FactoriesClientListResponse{
+		// 	FactoryListResponse: armdatafactory.FactoryListResponse{
+		// 		Value: []*armdatafactory.Factory{
+		// 			{
+		// 				Name: to.Ptr("rpV2OrigDF-72c7d3d4-5e17-4ec6-91de-9ab433f15e79"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"0000aa0d-0000-0000-0000-5b0d58170000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg-yanzhang-dfv2/providers/Microsoft.DataFactory/factories/rpv2origdf-72c7d3d4-5e17-4ec6-91de-9ab433f15e79"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("399c3de2-6072-4326-bfa9-4d0c116f1a7b"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615921Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("df-dogfood-yanzhang-we"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"0000f301-0000-0000-0000-5b21b16c0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg-yanzhang-dfv2/providers/Microsoft.DataFactory/factories/df-dogfood-yanzhang-we"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("e8dd6df9-bad5-4dea-8fb8-0d13d1845d9e"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("West Europe"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.6667461Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("exampleFactoryName-linked"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00008a02-0000-0000-0000-5b237f270000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName-linked"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("10743799-44d2-42fe-8c4d-5bc5c51c0684"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.1828318Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("FactoryToUpgrade"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00003d04-0000-0000-0000-5b28962f0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/factorytoupgrade"),
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.7133828Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2018-06-01"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("exampleFactoryName"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00004004-0000-0000-0000-5b28979e0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.0041314Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					PurviewConfiguration: &armdatafactory.PurviewConfiguration{
+		// 						PurviewResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.Purview/accounts/examplePurview"),
+		// 					},
+		// 					RepoConfiguration: &armdatafactory.FactoryVSTSConfiguration{
+		// 						Type: to.Ptr("FactoryVSTSConfiguration"),
+		// 						AccountName: to.Ptr("ADF"),
+		// 						CollaborationBranch: to.Ptr("master"),
+		// 						LastCommitID: to.Ptr(""),
+		// 						ProjectName: to.Ptr("project"),
+		// 						RepositoryName: to.Ptr("repo"),
+		// 						RootFolder: to.Ptr("/"),
+		// 						TenantID: to.Ptr(""),
+		// 					},
+		// 					Version: to.Ptr("2018-06-01"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"exampleTag": to.Ptr("exampleValue"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("rpV2OrigDF-72c7d3d4-5e17-4ec6-91de-9ab433f15e79"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"0000aa0d-0000-0000-0000-5b0d58170000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg-yanzhang-dfv2/providers/Microsoft.DataFactory/factories/rpv2origdf-72c7d3d4-5e17-4ec6-91de-9ab433f15e79"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("399c3de2-6072-4326-bfa9-4d0c116f1a7b"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615921Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("df-dogfood-yanzhang-we"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"0000f301-0000-0000-0000-5b21b16c0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg-yanzhang-dfv2/providers/Microsoft.DataFactory/factories/df-dogfood-yanzhang-we"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("e8dd6df9-bad5-4dea-8fb8-0d13d1845d9e"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("West Europe"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.6667461Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("exampleFactoryName-linked"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00008a02-0000-0000-0000-5b237f270000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName-linked"),
+		// 				Identity: &armdatafactory.FactoryIdentity{
+		// 					Type: to.Ptr(armdatafactory.FactoryIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("10743799-44d2-42fe-8c4d-5bc5c51c0684"),
+		// 					TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
+		// 				},
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.1828318Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2017-09-01-preview"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("FactoryToUpgrade"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00003d04-0000-0000-0000-5b28962f0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/factorytoupgrade"),
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.7133828Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					Version: to.Ptr("2018-06-01"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("exampleFactoryName"),
+		// 				Type: to.Ptr("Microsoft.DataFactory/factories"),
+		// 				ETag: to.Ptr("\"00004004-0000-0000-0000-5b28979e0000\""),
+		// 				ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
+		// 				Location: to.Ptr("East US"),
+		// 				Properties: &armdatafactory.FactoryProperties{
+		// 					CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.0041314Z"); return t}()),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					PurviewConfiguration: &armdatafactory.PurviewConfiguration{
+		// 						PurviewResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.Purview/accounts/examplePurview"),
+		// 					},
+		// 					RepoConfiguration: &armdatafactory.FactoryVSTSConfiguration{
+		// 						Type: to.Ptr("FactoryVSTSConfiguration"),
+		// 						AccountName: to.Ptr("ADF"),
+		// 						CollaborationBranch: to.Ptr("master"),
+		// 						LastCommitID: to.Ptr(""),
+		// 						ProjectName: to.Ptr("project"),
+		// 						RepositoryName: to.Ptr("repo"),
+		// 						RootFolder: to.Ptr("/"),
+		// 						TenantID: to.Ptr(""),
+		// 					},
+		// 					Version: to.Ptr("2018-06-01"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"exampleTag": to.Ptr("exampleValue"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

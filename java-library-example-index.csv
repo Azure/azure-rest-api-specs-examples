@@ -6602,3 +6602,4 @@ id,name,language,tag,package,version,date_epoch,date
 6601,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.2.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.2.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.2.0,1778807838,05/15/2026
 6602,azure-mgmt-customproviders@1.0.1,python,azure-mgmt-customproviders_1.0.1,azure-mgmt-customproviders,1.0.1,1778834132,05/15/2026
 6603,azure-mgmt-changeanalysis@1.0.1,python,azure-mgmt-changeanalysis_1.0.1,azure-mgmt-changeanalysis,1.0.1,1778834127,05/15/2026
+6604,azure-mgmt-commerce@6.0.1,python,azure-mgmt-commerce_6.0.1,azure-mgmt-commerce,6.0.1,1778834113,05/15/2026

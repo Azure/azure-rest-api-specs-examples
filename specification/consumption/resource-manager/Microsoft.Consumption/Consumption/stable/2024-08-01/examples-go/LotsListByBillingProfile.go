@@ -1,0 +1,100 @@
+package armconsumption_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2"
+)
+
+// Generated from example definition: 2024-08-01/LotsListByBillingProfile.json
+func ExampleLotsClient_NewListByBillingProfilePager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armconsumption.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewLotsClient().NewListByBillingProfilePager("1234:5678", "2468", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armconsumption.LotsClientListByBillingProfileResponse{
+		// 	Lots: armconsumption.Lots{
+		// 		Value: []*armconsumption.LotSummary{
+		// 			{
+		// 				Name: to.Ptr("lot1"),
+		// 				Type: to.Ptr("Microsoft.Consumption/lots"),
+		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/lots/lot1"),
+		// 				Properties: &armconsumption.LotProperties{
+		// 					BillingCurrency: to.Ptr("USD"),
+		// 					ClosedBalance: &armconsumption.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 					},
+		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRateMonth: to.Ptr[int32](1),
+		// 					},
+		// 					CreditCurrency: to.Ptr("USD"),
+		// 					ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-08-01T00:00:00Z"); return t}()),
+		// 					IsEstimatedBalance: to.Ptr(false),
+		// 					OriginalAmount: &armconsumption.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 					},
+		// 					OriginalAmountInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRateMonth: to.Ptr[int32](1),
+		// 					},
+		// 					PoNumber: to.Ptr("3524"),
+		// 					Reseller: &armconsumption.Reseller{
+		// 						ResellerDescription: to.Ptr("Reseller information."),
+		// 						ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
+		// 					},
+		// 					Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),
+		// 					StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-08-01T00:00:00Z"); return t}()),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("lot2"),
+		// 				Type: to.Ptr("Microsoft.Consumption/lots"),
+		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/lots/lot2"),
+		// 				Properties: &armconsumption.LotProperties{
+		// 					BillingCurrency: to.Ptr("USD"),
+		// 					ClosedBalance: &armconsumption.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 					},
+		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRateMonth: to.Ptr[int32](1),
+		// 					},
+		// 					CreditCurrency: to.Ptr("USD"),
+		// 					ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-05-31T00:00:00Z"); return t}()),
+		// 					IsEstimatedBalance: to.Ptr(false),
+		// 					OriginalAmount: &armconsumption.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 					},
+		// 					OriginalAmountInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRateMonth: to.Ptr[int32](1),
+		// 					},
+		// 					PoNumber: to.Ptr("31224"),
+		// 					Reseller: &armconsumption.Reseller{
+		// 						ResellerDescription: to.Ptr("Reseller information."),
+		// 						ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller2"),
+		// 					},
+		// 					Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),
+		// 					StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-08-01T00:00:00Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

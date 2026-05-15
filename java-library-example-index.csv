@@ -6599,3 +6599,4 @@ id,name,language,tag,package,version,date_epoch,date
 6598,azure-mgmt-azurearcdata@2.0.0b2,python,azure-mgmt-azurearcdata_2.0.0b2,azure-mgmt-azurearcdata,2.0.0b2,1778746214,05/14/2026
 6599,azure-mgmt-storagesync@1.0.1,python,azure-mgmt-storagesync_1.0.1,azure-mgmt-storagesync,1.0.1,1778744865,05/14/2026
 6600,azure-mgmt-automation@1.0.1,python,azure-mgmt-automation_1.0.1,azure-mgmt-automation,1.0.1,1778728181,05/14/2026
+6601,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.2.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.2.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.2.0,1778807838,05/15/2026

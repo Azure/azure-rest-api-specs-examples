@@ -6605,3 +6605,4 @@ id,name,language,tag,package,version,date_epoch,date
 6604,azure-mgmt-commerce@6.0.1,python,azure-mgmt-commerce_6.0.1,azure-mgmt-commerce,6.0.1,1778834113,05/15/2026
 6605,azure-mgmt-baremetalinfrastructure@1.0.1,python,azure-mgmt-baremetalinfrastructure_1.0.1,azure-mgmt-baremetalinfrastructure,1.0.1,1778828577,05/15/2026
 6606,azure-mgmt-azurestack@1.0.1,python,azure-mgmt-azurestack_1.0.1,azure-mgmt-azurestack,1.0.1,1778817708,05/15/2026
+6607,azure-mgmt-containerservice@41.2.0,python,azure-mgmt-containerservice_41.2.0,azure-mgmt-containerservice,41.2.0,1778808788,05/15/2026

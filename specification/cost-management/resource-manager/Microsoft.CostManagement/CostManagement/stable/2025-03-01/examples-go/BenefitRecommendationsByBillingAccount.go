@@ -1,0 +1,75 @@
+package armcostmanagement_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement/v3"
+)
+
+// Generated from example definition: 2025-03-01/BenefitRecommendationsByBillingAccount.json
+func ExampleBenefitRecommendationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcostmanagement.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewBenefitRecommendationsClient().NewListPager("providers/Microsoft.Billing/billingAccounts/123456", &armcostmanagement.BenefitRecommendationsClientListOptions{
+		Expand: to.Ptr("properties/usage,properties/allRecommendationDetails"),
+		Filter: to.Ptr("properties/lookBackPeriod eq 'Last7Days' AND properties/term eq 'P1Y'")})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcostmanagement.BenefitRecommendationsClientListResponse{
+		// 	BenefitRecommendationsListResult: armcostmanagement.BenefitRecommendationsListResult{
+		// 		Value: []*armcostmanagement.BenefitRecommendationModel{
+		// 			{
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.CostManagement/benefitRecommendations"),
+		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/123456/providers/Microsoft.CostManagement/benefitRecommendations/00000000-0000-0000-0000-000000000000"),
+		// 				Kind: to.Ptr(armcostmanagement.BenefitKindSavingsPlan),
+		// 				Properties: &armcostmanagement.SharedScopeBenefitRecommendationProperties{
+		// 					AllRecommendationDetails: &armcostmanagement.AllSavingsList{
+		// 						Value: []*armcostmanagement.AllSavingsBenefitDetails{
+		// 							{
+		// 							},
+		// 							{
+		// 							},
+		// 						},
+		// 					},
+		// 					ArmSKUName: to.Ptr("Compute_Savings_Plan"),
+		// 					CommitmentGranularity: to.Ptr(armcostmanagement.GrainHourly),
+		// 					CurrencyCode: to.Ptr("USD"),
+		// 					FirstConsumptionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-18T00:00:00Z"); return t}()),
+		// 					LastConsumptionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-25T00:00:00Z"); return t}()),
+		// 					LookBackPeriod: to.Ptr(armcostmanagement.LookBackPeriodLast7Days),
+		// 					RecommendationDetails: &armcostmanagement.AllSavingsBenefitDetails{
+		// 					},
+		// 					Scope: to.Ptr(armcostmanagement.ScopeShared),
+		// 					Term: to.Ptr(armcostmanagement.TermP1Y),
+		// 					TotalHours: to.Ptr[int32](168),
+		// 					Usage: &armcostmanagement.RecommendationUsageDetails{
+		// 						Charges: []*float64{
+		// 						},
+		// 						UsageGrain: to.Ptr(armcostmanagement.GrainHourly),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

@@ -6614,3 +6614,4 @@ id,name,language,tag,package,version,date_epoch,date
 6613,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeorder/armedgeorder/v2@v2.0.0-beta.1,go,sdk/resourcemanager/edgeorder/armedgeorder/v2.0.0-beta.1,sdk/resourcemanager/edgeorder/armedgeorder,v2.0.0-beta.1,1779090068,05/18/2026
 6614,@azure/arm-containerservice@25.2.0,js,@azure/arm-containerservice_25.2.0,@azure/arm-containerservice,25.2.0,1779067174,05/18/2026
 6615,azure-mgmt-containerservice@41.3.0b1,python,azure-mgmt-containerservice_41.3.0b1,azure-mgmt-containerservice,41.3.0b1,1779091458,05/18/2026
+6616,azure-mgmt-managementpartner@1.0.1,python,azure-mgmt-managementpartner_1.0.1,azure-mgmt-managementpartner,1.0.1,1779090268,05/18/2026

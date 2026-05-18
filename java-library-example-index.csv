@@ -6616,3 +6616,4 @@ id,name,language,tag,package,version,date_epoch,date
 6615,azure-mgmt-containerservice@41.3.0b1,python,azure-mgmt-containerservice_41.3.0b1,azure-mgmt-containerservice,41.3.0b1,1779091458,05/18/2026
 6616,azure-mgmt-managementpartner@1.0.1,python,azure-mgmt-managementpartner_1.0.1,azure-mgmt-managementpartner,1.0.1,1779090268,05/18/2026
 6617,azure-mgmt-managedservices@6.0.1,python,azure-mgmt-managedservices_6.0.1,azure-mgmt-managedservices,6.0.1,1779087143,05/18/2026
+6618,azure-mgmt-marketplaceordering@1.1.1,python,azure-mgmt-marketplaceordering_1.1.1,azure-mgmt-marketplaceordering,1.1.1,1779087127,05/18/2026

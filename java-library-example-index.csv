@@ -6620,3 +6620,4 @@ id,name,language,tag,package,version,date_epoch,date
 6619,azure-mgmt-iotcentral@9.0.1,python,azure-mgmt-iotcentral_9.0.1,azure-mgmt-iotcentral,9.0.1,1779086885,05/18/2026
 6620,azure-mgmt-machinelearningservices@1.0.1,python,azure-mgmt-machinelearningservices_1.0.1,azure-mgmt-machinelearningservices,1.0.1,1779083455,05/18/2026
 6621,azure-mgmt-hdinsight@9.0.1,python,azure-mgmt-hdinsight_9.0.1,azure-mgmt-hdinsight,9.0.1,1779083452,05/18/2026
+6622,azure-mgmt-devtestlabs@9.0.1,python,azure-mgmt-devtestlabs_9.0.1,azure-mgmt-devtestlabs,9.0.1,1779083428,05/18/2026

@@ -1,0 +1,85 @@
+package armdatadog_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datadog/armdatadog/v2"
+)
+
+// Generated from example definition: 2025-12-26-preview/TagRules_CreateOrUpdate.json
+func ExampleTagRulesClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdatadog.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewTagRulesClient().CreateOrUpdate(ctx, "myResourceGroup", "myMonitor", "default", armdatadog.MonitoringTagRules{
+		Properties: &armdatadog.MonitoringTagRulesProperties{
+			Automuting: to.Ptr(true),
+			LogRules: &armdatadog.LogRules{
+				FilteringTags: []*armdatadog.FilteringTag{
+					{
+						Name:   to.Ptr("Environment"),
+						Action: to.Ptr(armdatadog.TagActionInclude),
+						Value:  to.Ptr("Prod"),
+					},
+					{
+						Name:   to.Ptr("Environment"),
+						Action: to.Ptr(armdatadog.TagActionExclude),
+						Value:  to.Ptr("Dev"),
+					},
+				},
+				SendAADLogs:          to.Ptr(false),
+				SendResourceLogs:     to.Ptr(true),
+				SendSubscriptionLogs: to.Ptr(true),
+			},
+			MetricRules: &armdatadog.MetricRules{
+				FilteringTags: []*armdatadog.FilteringTag{},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armdatadog.TagRulesClientCreateOrUpdateResponse{
+	// 	MonitoringTagRules: &armdatadog.MonitoringTagRules{
+	// 		Name: to.Ptr("default"),
+	// 		Type: to.Ptr("Microsoft.Datadog/monitors/tagRules"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Datadog/monitors/myMonitor/tagRules/default"),
+	// 		Properties: &armdatadog.MonitoringTagRulesProperties{
+	// 			Automuting: to.Ptr(true),
+	// 			LogRules: &armdatadog.LogRules{
+	// 				FilteringTags: []*armdatadog.FilteringTag{
+	// 					{
+	// 						Name: to.Ptr("Environment"),
+	// 						Action: to.Ptr(armdatadog.TagActionInclude),
+	// 						Value: to.Ptr("Prod"),
+	// 					},
+	// 					{
+	// 						Name: to.Ptr("Environment"),
+	// 						Action: to.Ptr(armdatadog.TagActionExclude),
+	// 						Value: to.Ptr("Dev"),
+	// 					},
+	// 				},
+	// 				SendAADLogs: to.Ptr(false),
+	// 				SendResourceLogs: to.Ptr(true),
+	// 				SendSubscriptionLogs: to.Ptr(true),
+	// 			},
+	// 			MetricRules: &armdatadog.MetricRules{
+	// 				FilteringTags: []*armdatadog.FilteringTag{
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

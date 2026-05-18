@@ -6617,3 +6617,4 @@ id,name,language,tag,package,version,date_epoch,date
 6616,azure-mgmt-managementpartner@1.0.1,python,azure-mgmt-managementpartner_1.0.1,azure-mgmt-managementpartner,1.0.1,1779090268,05/18/2026
 6617,azure-mgmt-managedservices@6.0.1,python,azure-mgmt-managedservices_6.0.1,azure-mgmt-managedservices,6.0.1,1779087143,05/18/2026
 6618,azure-mgmt-marketplaceordering@1.1.1,python,azure-mgmt-marketplaceordering_1.1.1,azure-mgmt-marketplaceordering,1.1.1,1779087127,05/18/2026
+6619,azure-mgmt-iotcentral@9.0.1,python,azure-mgmt-iotcentral_9.0.1,azure-mgmt-iotcentral,9.0.1,1779086885,05/18/2026

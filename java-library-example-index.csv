@@ -6607,3 +6607,4 @@ id,name,language,tag,package,version,date_epoch,date
 6606,azure-mgmt-azurestack@1.0.1,python,azure-mgmt-azurestack_1.0.1,azure-mgmt-azurestack,1.0.1,1778817708,05/15/2026
 6607,azure-mgmt-containerservice@41.2.0,python,azure-mgmt-containerservice_41.2.0,azure-mgmt-containerservice,41.2.0,1778808788,05/15/2026
 6608,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.60.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.60.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.60.0,1778829456,05/15/2026
+6609,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datadog/armdatadog/v2@v2.0.0-beta.1,go,sdk/resourcemanager/datadog/armdatadog/v2.0.0-beta.1,sdk/resourcemanager/datadog/armdatadog,v2.0.0-beta.1,1779092192,05/18/2026

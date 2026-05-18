@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.applications.begin_delete(
+    client.applications.begin_delete(
         resource_group_name="rg1",
         cluster_name="cluster1",
         application_name="hue",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/DeleteApplication.json

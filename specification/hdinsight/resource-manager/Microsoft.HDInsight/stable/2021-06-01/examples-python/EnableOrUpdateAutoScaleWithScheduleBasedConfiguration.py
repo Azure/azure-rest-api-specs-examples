@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,7 +22,7 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.clusters.begin_update_auto_scale_configuration(
+    client.clusters.begin_update_auto_scale_configuration(
         resource_group_name="rg1",
         cluster_name="cluster1",
         role_name="workernode",
@@ -39,7 +40,6 @@ def main():
             }
         },
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/EnableOrUpdateAutoScaleWithScheduleBasedConfiguration.json

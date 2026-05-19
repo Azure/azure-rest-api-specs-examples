@@ -6623,3 +6623,4 @@ id,name,language,tag,package,version,date_epoch,date
 6622,azure-mgmt-devtestlabs@9.0.1,python,azure-mgmt-devtestlabs_9.0.1,azure-mgmt-devtestlabs,9.0.1,1779083428,05/18/2026
 6623,azure-mgmt-datashare@1.0.1,python,azure-mgmt-datashare_1.0.1,azure-mgmt-datashare,1.0.1,1779083428,05/18/2026
 6624,azure-mgmt-hanaonazure@1.0.1,python,azure-mgmt-hanaonazure_1.0.1,azure-mgmt-hanaonazure,1.0.1,1779083402,05/18/2026
+6625,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge/v2@v2.0.0-beta.1,go,sdk/resourcemanager/databoxedge/armdataboxedge/v2.0.0-beta.1,sdk/resourcemanager/databoxedge/armdataboxedge,v2.0.0-beta.1,1779185467,05/19/2026

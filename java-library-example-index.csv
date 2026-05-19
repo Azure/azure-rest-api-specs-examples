@@ -6633,3 +6633,4 @@ id,name,language,tag,package,version,date_epoch,date
 6632,azure-mgmt-recoveryservices@4.0.1,python,azure-mgmt-recoveryservices_4.0.1,azure-mgmt-recoveryservices,4.0.1,1779184150,05/19/2026
 6633,azure-mgmt-powerbidedicated@1.0.1,python,azure-mgmt-powerbidedicated_1.0.1,azure-mgmt-powerbidedicated,1.0.1,1779184109,05/19/2026
 6634,azure-mgmt-operationsmanagement@1.0.1,python,azure-mgmt-operationsmanagement_1.0.1,azure-mgmt-operationsmanagement,1.0.1,1779174049,05/19/2026
+6635,azure-mgmt-peering@1.0.1,python,azure-mgmt-peering_1.0.1,azure-mgmt-peering,1.0.1,1779174042,05/19/2026

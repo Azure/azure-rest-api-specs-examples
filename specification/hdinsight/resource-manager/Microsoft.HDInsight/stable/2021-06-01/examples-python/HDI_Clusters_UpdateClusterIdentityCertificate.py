@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,7 +22,7 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.clusters.begin_update_identity_certificate(
+    client.clusters.begin_update_identity_certificate(
         resource_group_name="rg1",
         cluster_name="cluster1",
         parameters={
@@ -30,7 +31,6 @@ def main():
             "certificatePassword": "**********",
         },
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Clusters_UpdateClusterIdentityCertificate.json

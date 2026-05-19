@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.extensions.begin_enable_monitoring(
+    client.extensions.begin_enable_monitoring(
         resource_group_name="rg1",
         cluster_name="cluster1",
         parameters={"primaryKey": "**********", "workspaceId": "a2090ead-8c9f-4fba-b70e-533e3e003163"},
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/EnableLinuxClusterMonitoring.json

@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,13 +22,12 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.clusters.begin_resize(
+    client.clusters.begin_resize(
         resource_group_name="rg1",
         cluster_name="cluster1",
         role_name="workernode",
         parameters={"targetInstanceCount": 10},
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/ResizeLinuxHadoopCluster.json

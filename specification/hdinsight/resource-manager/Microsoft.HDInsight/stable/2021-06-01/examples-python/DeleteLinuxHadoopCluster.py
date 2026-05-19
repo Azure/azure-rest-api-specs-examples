@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.hdinsight import HDInsightManagementClient
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.clusters.begin_delete(
+    client.clusters.begin_delete(
         resource_group_name="rg1",
         cluster_name="cluster1",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/DeleteLinuxHadoopCluster.json

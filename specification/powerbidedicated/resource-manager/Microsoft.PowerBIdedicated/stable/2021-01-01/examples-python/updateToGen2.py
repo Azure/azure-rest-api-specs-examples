@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.powerbidedicated import PowerBIDedicated
 
 """
@@ -6,7 +7,7 @@ from azure.mgmt.powerbidedicated import PowerBIDedicated
     pip install azure-identity
     pip install azure-mgmt-powerbidedicated
 # USAGE
-    python update_capacity_to_generation_2.py
+    python update_to_gen2.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

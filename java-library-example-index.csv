@@ -6627,3 +6627,4 @@ id,name,language,tag,package,version,date_epoch,date
 6626,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/botservice/armbotservice/v2@v2.0.0-beta.1,go,sdk/resourcemanager/botservice/armbotservice/v2.0.0-beta.1,sdk/resourcemanager/botservice/armbotservice,v2.0.0-beta.1,1779182102,05/19/2026
 6627,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers/v2@v2.0.0-beta.5,go,sdk/resourcemanager/mysql/armmysqlflexibleservers/v2.0.0-beta.5,sdk/resourcemanager/mysql/armmysqlflexibleservers,v2.0.0-beta.5,1779180317,05/19/2026
 6628,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v3@v3.0.0-beta.1,go,sdk/resourcemanager/cdn/armcdn/v3.0.0-beta.1,sdk/resourcemanager/cdn/armcdn,v3.0.0-beta.1,1779175010,05/19/2026
+6629,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/relay/armrelay/v2@v2.0.0-beta.1,go,sdk/resourcemanager/relay/armrelay/v2.0.0-beta.1,sdk/resourcemanager/relay/armrelay,v2.0.0-beta.1,1779164891,05/19/2026

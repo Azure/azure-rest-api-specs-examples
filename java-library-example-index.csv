@@ -6637,3 +6637,4 @@ id,name,language,tag,package,version,date_epoch,date
 6636,azure-mgmt-policyinsights@1.0.1,python,azure-mgmt-policyinsights_1.0.1,azure-mgmt-policyinsights,1.0.1,1779174032,05/19/2026
 6637,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4@v4.0.0,go,sdk/resourcemanager/storage/armstorage/v4.0.0,sdk/resourcemanager/storage/armstorage,v4.0.0,1779272988,05/20/2026
 6638,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync/v2@v2.0.0-beta.1,go,sdk/resourcemanager/storagesync/armstoragesync/v2.0.0-beta.1,sdk/resourcemanager/storagesync/armstoragesync,v2.0.0-beta.1,1779271352,05/20/2026
+6639,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub/v2@v2.0.0-beta.1,go,sdk/resourcemanager/iothub/armiothub/v2.0.0-beta.1,sdk/resourcemanager/iothub/armiothub,v2.0.0-beta.1,1779262779,05/20/2026

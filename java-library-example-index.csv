@@ -6635,3 +6635,4 @@ id,name,language,tag,package,version,date_epoch,date
 6634,azure-mgmt-operationsmanagement@1.0.1,python,azure-mgmt-operationsmanagement_1.0.1,azure-mgmt-operationsmanagement,1.0.1,1779174049,05/19/2026
 6635,azure-mgmt-peering@1.0.1,python,azure-mgmt-peering_1.0.1,azure-mgmt-peering,1.0.1,1779174042,05/19/2026
 6636,azure-mgmt-policyinsights@1.0.1,python,azure-mgmt-policyinsights_1.0.1,azure-mgmt-policyinsights,1.0.1,1779174032,05/19/2026
+6637,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4@v4.0.0,go,sdk/resourcemanager/storage/armstorage/v4.0.0,sdk/resourcemanager/storage/armstorage,v4.0.0,1779272988,05/20/2026

@@ -1,0 +1,77 @@
+package armcdn_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v3"
+)
+
+// Generated from example definition: 2025-06-01/Rules_ListByRuleSet.json
+func ExampleRulesClient_NewListByRuleSetPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcdn.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewRulesClient().NewListByRuleSetPager("RG", "profile1", "ruleSet1", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcdn.RulesClientListByRuleSetResponse{
+		// 	RuleListResult: armcdn.RuleListResult{
+		// 		Value: []*armcdn.Rule{
+		// 			{
+		// 				Name: to.Ptr("rule1"),
+		// 				Type: to.Ptr("Microsoft.Cdn/profiles/rulesets/rules"),
+		// 				ID: to.Ptr("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/rulesets/ruleSet1/rules/rule1"),
+		// 				Properties: &armcdn.RuleProperties{
+		// 					Actions: []armcdn.DeliveryRuleActionClassification{
+		// 						&armcdn.DeliveryRuleResponseHeaderAction{
+		// 							Name: to.Ptr(armcdn.DeliveryRuleActionNameModifyResponseHeader),
+		// 							Parameters: &armcdn.HeaderActionParameters{
+		// 								HeaderAction: to.Ptr(armcdn.HeaderActionOverwrite),
+		// 								HeaderName: to.Ptr("X-CDN"),
+		// 								TypeName: to.Ptr(armcdn.DeliveryRuleActionParametersTypeDeliveryRuleHeaderActionParameters),
+		// 								Value: to.Ptr("MSFT"),
+		// 							},
+		// 						},
+		// 					},
+		// 					Conditions: []armcdn.DeliveryRuleConditionClassification{
+		// 						&armcdn.DeliveryRuleRequestMethodCondition{
+		// 							Name: to.Ptr(armcdn.MatchVariableRequestMethod),
+		// 							Parameters: &armcdn.RequestMethodMatchConditionParameters{
+		// 								MatchValues: []*armcdn.RequestMethodMatchValue{
+		// 									to.Ptr(armcdn.RequestMethodMatchValueGET),
+		// 								},
+		// 								NegateCondition: to.Ptr(false),
+		// 								Operator: to.Ptr(armcdn.RequestMethodOperatorEqual),
+		// 								Transforms: []*armcdn.Transform{
+		// 								},
+		// 								TypeName: to.Ptr(armcdn.DeliveryRuleConditionParametersTypeDeliveryRuleRequestMethodConditionParameters),
+		// 							},
+		// 						},
+		// 					},
+		// 					DeploymentStatus: to.Ptr(armcdn.DeploymentStatusNotStarted),
+		// 					MatchProcessingBehavior: to.Ptr(armcdn.MatchProcessingBehaviorContinue),
+		// 					Order: to.Ptr[int32](1),
+		// 					ProvisioningState: to.Ptr(armcdn.AfdProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

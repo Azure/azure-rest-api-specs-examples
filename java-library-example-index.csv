@@ -6644,3 +6644,4 @@ id,name,language,tag,package,version,date_epoch,date
 6643,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dns/armdns@v1.3.0-beta.2,go,sdk/resourcemanager/dns/armdns/v1.3.0-beta.2,sdk/resourcemanager/dns/armdns,v1.3.0-beta.2,1779259933,05/20/2026
 6644,azure-mgmt-storage@25.0.0,python,azure-mgmt-storage_25.0.0,azure-mgmt-storage,25.0.0,1779261117,05/20/2026
 6645,azure-mgmt-purview@1.0.1,python,azure-mgmt-purview_1.0.1,azure-mgmt-purview,1.0.1,1779257905,05/20/2026
+6646,com.azure.resourcemanager:azure-resourcemanager-storage:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.56.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.56.0,1779266476,05/20/2026

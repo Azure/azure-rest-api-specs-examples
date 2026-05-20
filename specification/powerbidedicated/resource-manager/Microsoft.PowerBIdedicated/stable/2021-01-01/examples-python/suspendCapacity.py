@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.powerbidedicated import PowerBIDedicated
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="613192d7-503f-477a-9cfe-4efc3ee2bd60",
     )
 
-    response = client.capacities.begin_suspend(
+    client.capacities.begin_suspend(
         resource_group_name="TestRG",
         dedicated_capacity_name="azsdktest",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/suspendCapacity.json

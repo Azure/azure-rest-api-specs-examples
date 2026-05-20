@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/
-     * examples/Evidence_CreateOrUpdate.json
+     * x-ms-original-file: 2024-06-27/Evidence_CreateOrUpdate.json
      */
     /**
      * Sample code: Evidence_CreateOrUpdate.

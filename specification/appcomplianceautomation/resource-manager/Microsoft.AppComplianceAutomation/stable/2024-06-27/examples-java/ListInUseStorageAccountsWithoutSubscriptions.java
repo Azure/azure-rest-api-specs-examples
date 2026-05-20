@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/
-     * examples/ListInUseStorageAccountsWithoutSubscriptions.json
+     * x-ms-original-file: 2024-06-27/ListInUseStorageAccountsWithoutSubscriptions.json
      */
     /**
      * Sample code: ListInUseStorageAccountsWithoutSubscriptions.

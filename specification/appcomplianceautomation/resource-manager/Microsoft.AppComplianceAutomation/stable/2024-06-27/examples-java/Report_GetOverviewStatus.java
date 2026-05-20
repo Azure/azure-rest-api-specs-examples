@@ -4,9 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file:
-     * specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/
-     * examples/Report_GetOverviewStatus.json
+     * x-ms-original-file: 2024-06-27/Report_GetOverviewStatus.json
      */
     /**
      * Sample code: Report_GetOverviewStatus.

@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.policyinsights import PolicyInsightsClient
 
 """
@@ -21,10 +22,9 @@ def main():
         subscription_id="fffedd8f-ffff-fffd-fffd-fffed2f84852",
     )
 
-    response = client.policy_states.begin_trigger_subscription_evaluation(
+    client.policy_states.begin_trigger_subscription_evaluation(
         subscription_id="fffedd8f-ffff-fffd-fffd-fffed2f84852",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_TriggerSubscriptionEvaluation.json

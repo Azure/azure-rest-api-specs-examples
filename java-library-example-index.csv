@@ -6623,3 +6623,15 @@ id,name,language,tag,package,version,date_epoch,date
 6622,azure-mgmt-devtestlabs@9.0.1,python,azure-mgmt-devtestlabs_9.0.1,azure-mgmt-devtestlabs,9.0.1,1779083428,05/18/2026
 6623,azure-mgmt-datashare@1.0.1,python,azure-mgmt-datashare_1.0.1,azure-mgmt-datashare,1.0.1,1779083428,05/18/2026
 6624,azure-mgmt-hanaonazure@1.0.1,python,azure-mgmt-hanaonazure_1.0.1,azure-mgmt-hanaonazure,1.0.1,1779083402,05/18/2026
+6625,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge/v2@v2.0.0-beta.1,go,sdk/resourcemanager/databoxedge/armdataboxedge/v2.0.0-beta.1,sdk/resourcemanager/databoxedge/armdataboxedge,v2.0.0-beta.1,1779185467,05/19/2026
+6626,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/botservice/armbotservice/v2@v2.0.0-beta.1,go,sdk/resourcemanager/botservice/armbotservice/v2.0.0-beta.1,sdk/resourcemanager/botservice/armbotservice,v2.0.0-beta.1,1779182102,05/19/2026
+6627,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers/v2@v2.0.0-beta.5,go,sdk/resourcemanager/mysql/armmysqlflexibleservers/v2.0.0-beta.5,sdk/resourcemanager/mysql/armmysqlflexibleservers,v2.0.0-beta.5,1779180317,05/19/2026
+6628,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v3@v3.0.0-beta.1,go,sdk/resourcemanager/cdn/armcdn/v3.0.0-beta.1,sdk/resourcemanager/cdn/armcdn,v3.0.0-beta.1,1779175010,05/19/2026
+6629,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/relay/armrelay/v2@v2.0.0-beta.1,go,sdk/resourcemanager/relay/armrelay/v2.0.0-beta.1,sdk/resourcemanager/relay/armrelay,v2.0.0-beta.1,1779164891,05/19/2026
+6630,@azure/arm-hdinsight@2.0.0-beta.1,js,@azure/arm-hdinsight_2.0.0-beta.1,@azure/arm-hdinsight,2.0.0-beta.1,1779185404,05/19/2026
+6631,@azure/arm-subscriptions@7.0.0-beta.1,js,@azure/arm-subscriptions_7.0.0-beta.1,@azure/arm-subscriptions,7.0.0-beta.1,1779182710,05/19/2026
+6632,azure-mgmt-recoveryservices@4.0.1,python,azure-mgmt-recoveryservices_4.0.1,azure-mgmt-recoveryservices,4.0.1,1779184150,05/19/2026
+6633,azure-mgmt-powerbidedicated@1.0.1,python,azure-mgmt-powerbidedicated_1.0.1,azure-mgmt-powerbidedicated,1.0.1,1779184109,05/19/2026
+6634,azure-mgmt-operationsmanagement@1.0.1,python,azure-mgmt-operationsmanagement_1.0.1,azure-mgmt-operationsmanagement,1.0.1,1779174049,05/19/2026
+6635,azure-mgmt-peering@1.0.1,python,azure-mgmt-peering_1.0.1,azure-mgmt-peering,1.0.1,1779174042,05/19/2026
+6636,azure-mgmt-policyinsights@1.0.1,python,azure-mgmt-policyinsights_1.0.1,azure-mgmt-policyinsights,1.0.1,1779174032,05/19/2026

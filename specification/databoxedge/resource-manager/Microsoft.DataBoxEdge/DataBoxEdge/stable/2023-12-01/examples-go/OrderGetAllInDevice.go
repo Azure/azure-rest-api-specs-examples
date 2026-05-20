@@ -1,0 +1,81 @@
+package armdataboxedge_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge/v2"
+)
+
+// Generated from example definition: 2023-12-01/OrderGetAllInDevice.json
+func ExampleOrdersClient_NewListByDataBoxEdgeDevicePager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdataboxedge.NewClientFactory("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOrdersClient().NewListByDataBoxEdgeDevicePager("testedgedevice", "GroupForEdgeAutomation", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armdataboxedge.OrdersClientListByDataBoxEdgeDeviceResponse{
+		// 	OrderList: armdataboxedge.OrderList{
+		// 		Value: []*armdataboxedge.Order{
+		// 			{
+		// 				Name: to.Ptr("default"),
+		// 				Type: to.Ptr("dataBoxEdgeDevices/orders"),
+		// 				ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/orders/default"),
+		// 				Properties: &armdataboxedge.OrderProperties{
+		// 					ContactInformation: &armdataboxedge.ContactDetails{
+		// 						CompanyName: to.Ptr("Microsoft"),
+		// 						ContactPerson: to.Ptr("John Mcclane"),
+		// 						EmailList: []*string{
+		// 							to.Ptr("john@microsoft.com"),
+		// 						},
+		// 						Phone: to.Ptr("(800) 426-9400"),
+		// 					},
+		// 					CurrentStatus: &armdataboxedge.OrderStatus{
+		// 						Comments: to.Ptr(""),
+		// 						Status: to.Ptr(armdataboxedge.OrderStateUntracked),
+		// 						UpdateDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-10T07:59:05.847Z"); return t}()),
+		// 					},
+		// 					DeliveryTrackingInfo: []*armdataboxedge.TrackingInfo{
+		// 					},
+		// 					OrderHistory: []*armdataboxedge.OrderStatus{
+		// 						{
+		// 							Comments: to.Ptr("lorem ipsum"),
+		// 							Status: to.Ptr(armdataboxedge.OrderStateUntracked),
+		// 							UpdateDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-10T07:59:05.847Z"); return t}()),
+		// 						},
+		// 					},
+		// 					ReturnTrackingInfo: []*armdataboxedge.TrackingInfo{
+		// 					},
+		// 					SerialNumber: to.Ptr("UDS123NSDA123"),
+		// 					ShippingAddress: &armdataboxedge.Address{
+		// 						AddressLine1: to.Ptr("Microsoft Corporation"),
+		// 						AddressLine2: to.Ptr("One Microsoft Way"),
+		// 						AddressLine3: to.Ptr("Redmond"),
+		// 						City: to.Ptr("WA"),
+		// 						Country: to.Ptr("USA"),
+		// 						PostalCode: to.Ptr("98052"),
+		// 						State: to.Ptr("WA"),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

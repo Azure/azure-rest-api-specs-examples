@@ -6662,3 +6662,4 @@ id,name,language,tag,package,version,date_epoch,date
 6661,@azure/arm-operationalinsights@11.0.0-beta.1,js,@azure/arm-operationalinsights_11.0.0-beta.1,@azure/arm-operationalinsights,11.0.0-beta.1,1779332059,05/21/2026
 6662,@azure/arm-horizondb@1.0.0-beta.1,js,@azure/arm-horizondb_1.0.0-beta.1,@azure/arm-horizondb,1.0.0-beta.1,1779298948,05/20/2026
 6663,azure-mgmt-maintenance@2.2.0b3,python,azure-mgmt-maintenance_2.2.0b3,azure-mgmt-maintenance,2.2.0b3,1779351816,05/21/2026
+6664,azure-mgmt-hybridkubernetes@2.0.0b1,python,azure-mgmt-hybridkubernetes_2.0.0b1,azure-mgmt-hybridkubernetes,2.0.0b1,1779346751,05/21/2026

@@ -1,0 +1,86 @@
+package armstorage_test
+
+import (
+	"context"
+	"log"
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4"
+)
+
+// Generated from example definition: 2025-08-01/storageTaskAssignmentsCrud/PutStorageTaskAssignmentMockRun.json
+func ExampleTaskAssignmentsClient_BeginCreate_putStorageTaskAssignmentMockRun() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armstorage.NewClientFactory("1f31ba14-ce16-4281-b9b4-3e78da6e1616", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewTaskAssignmentsClient().BeginCreate(ctx, "res4228", "sto4445", "myassignment1", armstorage.TaskAssignment{
+		Properties: &armstorage.TaskAssignmentProperties{
+			TaskID:      to.Ptr("/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/myStorageTask"),
+			Enabled:     to.Ptr(true),
+			Description: to.Ptr("My Storage task assignment for testing"),
+			ExecutionContext: &armstorage.TaskAssignmentExecutionContext{
+				Trigger: &armstorage.ExecutionTrigger{
+					Type: to.Ptr(armstorage.TriggerTypeMockRun),
+					Parameters: &armstorage.TriggerParameters{
+						StartOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-01-01T00:00:00.1234567Z"); return t }()),
+					},
+				},
+				Target: &armstorage.ExecutionTarget{
+					Prefix:        []*string{},
+					ExcludePrefix: []*string{},
+				},
+			},
+			Report: &armstorage.TaskAssignmentReport{
+				Prefix: to.Ptr("reports"),
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armstorage.TaskAssignmentsClientCreateResponse{
+	// 	TaskAssignment: armstorage.TaskAssignment{
+	// 		ID: to.Ptr("/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.Storage/storageAccounts/sto4445/storageTaskAssignments/myassignment1"),
+	// 		Name: to.Ptr("myassignment1"),
+	// 		Type: to.Ptr("Microsoft.Storage/storageAccounts/storageTaskAssignments"),
+	// 		Properties: &armstorage.TaskAssignmentProperties{
+	// 			TaskID: to.Ptr("/subscriptions/1f31ba14-ce16-4281-b9b4-3e78da6e1616/resourceGroups/res4228/providers/Microsoft.StorageActions/storageTasks/myStorageTask"),
+	// 			Enabled: to.Ptr(true),
+	// 			Description: to.Ptr("My Storage task assignment for testing"),
+	// 			ProvisioningState: to.Ptr(armstorage.StorageTaskAssignmentProvisioningStateValidateSubscriptionQuotaBegin),
+	// 			ExecutionContext: &armstorage.TaskAssignmentExecutionContext{
+	// 				Trigger: &armstorage.ExecutionTrigger{
+	// 					Type: to.Ptr(armstorage.TriggerTypeMockRun),
+	// 					Parameters: &armstorage.TriggerParameters{
+	// 						StartOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-01-01T00:00:00.1234567Z"); return t}()),
+	// 					},
+	// 				},
+	// 				Target: &armstorage.ExecutionTarget{
+	// 					Prefix: []*string{
+	// 					},
+	// 					ExcludePrefix: []*string{
+	// 					},
+	// 				},
+	// 			},
+	// 			Report: &armstorage.TaskAssignmentReport{
+	// 				Prefix: to.Ptr("reports"),
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

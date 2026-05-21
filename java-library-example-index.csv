@@ -6635,3 +6635,14 @@ id,name,language,tag,package,version,date_epoch,date
 6634,azure-mgmt-operationsmanagement@1.0.1,python,azure-mgmt-operationsmanagement_1.0.1,azure-mgmt-operationsmanagement,1.0.1,1779174049,05/19/2026
 6635,azure-mgmt-peering@1.0.1,python,azure-mgmt-peering_1.0.1,azure-mgmt-peering,1.0.1,1779174042,05/19/2026
 6636,azure-mgmt-policyinsights@1.0.1,python,azure-mgmt-policyinsights_1.0.1,azure-mgmt-policyinsights,1.0.1,1779174032,05/19/2026
+6637,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4@v4.0.0,go,sdk/resourcemanager/storage/armstorage/v4.0.0,sdk/resourcemanager/storage/armstorage,v4.0.0,1779272988,05/20/2026
+6638,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync/v2@v2.0.0-beta.1,go,sdk/resourcemanager/storagesync/armstoragesync/v2.0.0-beta.1,sdk/resourcemanager/storagesync/armstoragesync,v2.0.0-beta.1,1779271352,05/20/2026
+6639,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub/v2@v2.0.0-beta.1,go,sdk/resourcemanager/iothub/armiothub/v2.0.0-beta.1,sdk/resourcemanager/iothub/armiothub,v2.0.0-beta.1,1779262779,05/20/2026
+6640,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.1.0-beta.3,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.1.0-beta.3,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.1.0-beta.3,1779261645,05/20/2026
+6641,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devhub/armdevhub@v0.7.0,go,sdk/resourcemanager/devhub/armdevhub/v0.7.0,sdk/resourcemanager/devhub/armdevhub,v0.7.0,1779261637,05/20/2026
+6642,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoundaries/armdataboundaries@v0.2.0,go,sdk/resourcemanager/databoundaries/armdataboundaries/v0.2.0,sdk/resourcemanager/databoundaries/armdataboundaries,v0.2.0,1779261620,05/20/2026
+6643,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dns/armdns@v1.3.0-beta.2,go,sdk/resourcemanager/dns/armdns/v1.3.0-beta.2,sdk/resourcemanager/dns/armdns,v1.3.0-beta.2,1779259933,05/20/2026
+6644,azure-mgmt-storage@25.0.0,python,azure-mgmt-storage_25.0.0,azure-mgmt-storage,25.0.0,1779261117,05/20/2026
+6645,azure-mgmt-purview@1.0.1,python,azure-mgmt-purview_1.0.1,azure-mgmt-purview,1.0.1,1779257905,05/20/2026
+6646,com.azure.resourcemanager:azure-resourcemanager-storage:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.56.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.56.0,1779266476,05/20/2026
+6647,com.azure.resourcemanager:azure-resourcemanager-appcomplianceautomation:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-appcomplianceautomation_1.1.0,com.azure.resourcemanager+azure-resourcemanager-appcomplianceautomation,1.1.0,1779261794,05/20/2026

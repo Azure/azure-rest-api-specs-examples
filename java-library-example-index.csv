@@ -6659,3 +6659,4 @@ id,name,language,tag,package,version,date_epoch,date
 6658,@azure/arm-authorization@10.0.0-beta.3,js,@azure/arm-authorization_10.0.0-beta.3,@azure/arm-authorization,10.0.0-beta.3,1779332438,05/21/2026
 6659,@azure/arm-appinsights@5.0.0-beta.9,js,@azure/arm-appinsights_5.0.0-beta.9,@azure/arm-appinsights,5.0.0-beta.9,1779332262,05/21/2026
 6660,@azure/arm-msi@2.3.0-beta.1,js,@azure/arm-msi_2.3.0-beta.1,@azure/arm-msi,2.3.0-beta.1,1779332097,05/21/2026
+6661,@azure/arm-operationalinsights@11.0.0-beta.1,js,@azure/arm-operationalinsights_11.0.0-beta.1,@azure/arm-operationalinsights,11.0.0-beta.1,1779332059,05/21/2026

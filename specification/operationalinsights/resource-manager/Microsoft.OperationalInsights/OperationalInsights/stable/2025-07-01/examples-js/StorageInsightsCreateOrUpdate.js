@@ -1,34 +1,28 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Create or update a storage insight.
+ * This sample demonstrates how to create or update a storage insight.
  *
- * @summary Create or update a storage insight.
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/StorageInsightsCreateOrUpdate.json
+ * @summary create or update a storage insight.
+ * x-ms-original-file: 2025-07-01/StorageInsightsCreateOrUpdate.json
  */
 async function storageInsightsCreate() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
-  const workspaceName = "aztest5048";
-  const storageInsightName = "AzTestSI1110";
-  const parameters = {
-    containers: ["wad-iis-logfiles"],
-    storageAccount: {
-      id: "/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/OIAutoRest6987/providers/microsoft.storage/storageaccounts/AzTestFakeSA9945",
-      key: "1234",
-    },
-    tables: ["WADWindowsEventLogsTable", "LinuxSyslogVer2v0"],
-  };
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const result = await client.storageInsightConfigs.createOrUpdate(
-    resourceGroupName,
-    workspaceName,
-    storageInsightName,
-    parameters,
+    "OIAutoRest5123",
+    "aztest5048",
+    "AzTestSI1110",
+    {
+      containers: ["wad-iis-logfiles"],
+      storageAccount: {
+        id: "/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/OIAutoRest6987/providers/microsoft.storage/storageaccounts/AzTestFakeSA9945",
+        key: "1234",
+      },
+      tables: ["WADWindowsEventLogsTable", "LinuxSyslogVer2v0"],
+    },
   );
   console.log(result);
 }

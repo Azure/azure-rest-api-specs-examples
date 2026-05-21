@@ -1,25 +1,16 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets Log Analytics workspace Summary rules.
+ * This sample demonstrates how to gets Log Analytics workspace Summary rules.
  *
- * @summary Gets Log Analytics workspace Summary rules.
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/SummaryLogsGet.json
+ * @summary gets Log Analytics workspace Summary rules.
+ * x-ms-original-file: 2025-07-01/SummaryLogsGet.json
  */
 async function summaryLogsGet() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "11111111-1111-1111-1111-111111111111";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "oiautorest6685";
-  const workspaceName = "oiautorest6685";
-  const summaryLogsName = "summarylogs1";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "11111111-1111-1111-1111-111111111111";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.summaryLogsOperations.get(
-    resourceGroupName,
-    workspaceName,
-    summaryLogsName,
-  );
+  const result = await client.summaryLogs.get("oiautorest6685", "oiautorest6685", "summarylogs1");
   console.log(result);
 }

@@ -1,0 +1,31 @@
+const { StorageManagementClient } = require("@azure/arm-storage");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+ *
+ * @summary asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+ * x-ms-original-file: 2025-08-01/StorageAccountCreatePremiumBlockBlobStorage.json
+ */
+async function storageAccountCreatePremiumBlockBlobStorage() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new StorageManagementClient(credential, subscriptionId);
+  const result = await client.storageAccounts.create("res9101", "sto4445", {
+    kind: "BlockBlobStorage",
+    location: "eastus",
+    allowSharedKeyAccess: true,
+    encryption: {
+      keySource: "Microsoft.Storage",
+      requireInfrastructureEncryption: false,
+      services: {
+        blob: { enabled: true, keyType: "Account" },
+        file: { enabled: true, keyType: "Account" },
+      },
+    },
+    minimumTlsVersion: "TLS1_2",
+    sku: { name: "Premium_LRS" },
+    tags: { key1: "value1", key2: "value2" },
+  });
+  console.log(result);
+}

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.storage import StorageManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-storage
+# USAGE
+    python storage_connectors_test_existing_connection.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = StorageManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.connectors.begin_test_existing_connection(
+        resource_group_name="testrg",
+        account_name="teststorageaccount",
+        connector_name="testconnector",
+        body={"uniqueId": "12345678-1234-1234-1234-12345678912"},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-08-01/StorageConnectorCRUD/StorageConnectors_TestExistingConnection.json
+if __name__ == "__main__":
+    main()

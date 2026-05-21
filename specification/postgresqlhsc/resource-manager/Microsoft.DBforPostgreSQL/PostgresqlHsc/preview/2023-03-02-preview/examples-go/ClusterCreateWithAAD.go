@@ -1,0 +1,150 @@
+package armpostgresqlhsc_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
+)
+
+// Generated from example definition: 2023-03-02-preview/ClusterCreateWithAAD.json
+func ExampleClustersClient_BeginCreate_createANewClusterWithAzureActiveDirectoryAuthentication() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpostgresqlhsc.NewClientFactory("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewClustersClient().BeginCreate(ctx, "TestGroup", "testcluster-cmk", armpostgresqlhsc.Cluster{
+		Identity: &armpostgresqlhsc.IdentityProperties{
+			Type: to.Ptr(armpostgresqlhsc.IdentityTypeUserAssigned),
+			UserAssignedIdentities: map[string]*armpostgresqlhsc.UserAssignedIdentity{
+				"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity": {},
+			},
+		},
+		Location: to.Ptr("westus"),
+		Properties: &armpostgresqlhsc.ClusterProperties{
+			AdministratorLoginPassword:      to.Ptr("password"),
+			CitusVersion:                    to.Ptr("12.1"),
+			CoordinatorEnablePublicIPAccess: to.Ptr(true),
+			CoordinatorServerEdition:        to.Ptr("GeneralPurpose"),
+			CoordinatorStorageQuotaInMb:     to.Ptr[int32](524288),
+			CoordinatorVCores:               to.Ptr[int32](4),
+			DataEncryption: &armpostgresqlhsc.DataEncryption{
+				Type:                          to.Ptr(armpostgresqlhsc.DataEncryptionTypeAzureKeyVault),
+				PrimaryKeyURI:                 to.Ptr("https://test-kv.vault.azure.net/keys/test-key1/fffffffffffffffffffffffffffffff"),
+				PrimaryUserAssignedIdentityID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity"),
+			},
+			DatabaseName:              to.Ptr("citus"),
+			EnableHa:                  to.Ptr(false),
+			EnableShardsOnCoordinator: to.Ptr(false),
+			NodeCount:                 to.Ptr[int32](3),
+			NodeEnablePublicIPAccess:  to.Ptr(false),
+			NodeServerEdition:         to.Ptr("MemoryOptimized"),
+			NodeStorageQuotaInMb:      to.Ptr[int32](524288),
+			NodeVCores:                to.Ptr[int32](8),
+			PostgresqlVersion:         to.Ptr("15"),
+			PreferredPrimaryZone:      to.Ptr("1"),
+		},
+		Tags: map[string]*string{},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armpostgresqlhsc.ClustersClientCreateResponse{
+	// 	Cluster: &armpostgresqlhsc.Cluster{
+	// 		Name: to.Ptr("testcluster-multinode"),
+	// 		Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2"),
+	// 		ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/testcluster-multinode"),
+	// 		Identity: &armpostgresqlhsc.IdentityProperties{
+	// 			Type: to.Ptr(armpostgresqlhsc.IdentityTypeUserAssigned),
+	// 			UserAssignedIdentities: map[string]*armpostgresqlhsc.UserAssignedIdentity{
+	// 				"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-usermanagedidentity": &armpostgresqlhsc.UserAssignedIdentity{
+	// 					ClientID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 					PrincipalID: to.Ptr("0a4e0c6e-7751-4078-ae1f-a477306c11e9"),
+	// 				},
+	// 			},
+	// 		},
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armpostgresqlhsc.ClusterProperties{
+	// 			AADAuthEnabled: to.Ptr(armpostgresqlhsc.AADEnabledEnumEnabled),
+	// 			AdministratorLogin: to.Ptr("citus"),
+	// 			AuthConfig: &armpostgresqlhsc.AuthConfig{
+	// 				ActiveDirectoryAuth: to.Ptr(armpostgresqlhsc.ActiveDirectoryAuth("{serverGroupProperties.ActiveDirectoryAuth}")),
+	// 				PasswordAuth: to.Ptr(armpostgresqlhsc.PasswordAuth("{serverGroupProperties.PasswordAuth}")),
+	// 			},
+	// 			CitusVersion: to.Ptr("12.1"),
+	// 			CoordinatorEnablePublicIPAccess: to.Ptr(true),
+	// 			CoordinatorServerEdition: to.Ptr("GeneralPurpose"),
+	// 			CoordinatorStorageQuotaInMb: to.Ptr[int32](524288),
+	// 			CoordinatorVCores: to.Ptr[int32](4),
+	// 			DataEncryption: &armpostgresqlhsc.DataEncryption{
+	// 				Type: to.Ptr(armpostgresqlhsc.DataEncryptionType("SystemManaged")),
+	// 			},
+	// 			DatabaseName: to.Ptr("citus"),
+	// 			EnableHa: to.Ptr(true),
+	// 			EnableShardsOnCoordinator: to.Ptr(false),
+	// 			MaintenanceWindow: &armpostgresqlhsc.MaintenanceWindow{
+	// 				CustomWindow: to.Ptr("Disabled"),
+	// 				DayOfWeek: to.Ptr[int32](0),
+	// 				StartHour: to.Ptr[int32](0),
+	// 				StartMinute: to.Ptr[int32](0),
+	// 			},
+	// 			NodeCount: to.Ptr[int32](3),
+	// 			NodeEnablePublicIPAccess: to.Ptr(false),
+	// 			NodeServerEdition: to.Ptr("MemoryOptimized"),
+	// 			NodeStorageQuotaInMb: to.Ptr[int32](524288),
+	// 			NodeVCores: to.Ptr[int32](8),
+	// 			PasswordEnabled: to.Ptr(armpostgresqlhsc.PasswordEnabledEnumDisabled),
+	// 			PostgresqlVersion: to.Ptr("15"),
+	// 			PreferredPrimaryZone: to.Ptr("1"),
+	// 			PrivateEndpointConnections: []*armpostgresqlhsc.SimplePrivateEndpointConnection{
+	// 			},
+	// 			ProvisioningState: to.Ptr("Provisioning"),
+	// 			ReadReplicas: []*string{
+	// 			},
+	// 			ServerNames: []*armpostgresqlhsc.ServerNameItem{
+	// 				{
+	// 					Name: to.Ptr("testcluster-multinode-c"),
+	// 					FullyQualifiedDomainName: to.Ptr("c.testcluster-multinode.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster-multinode-w0"),
+	// 					FullyQualifiedDomainName: to.Ptr("w0.testcluster-multinode.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster-multinode-w2"),
+	// 					FullyQualifiedDomainName: to.Ptr("w0.testcluster-multinode.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster-multinode-w3"),
+	// 					FullyQualifiedDomainName: to.Ptr("w0.testcluster-multinode.postgres.database.azure.com"),
+	// 				},
+	// 			},
+	// 			State: to.Ptr("Provisioning"),
+	// 		},
+	// 		SystemData: &armpostgresqlhsc.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 		},
+	// 	},
+	// }
+}

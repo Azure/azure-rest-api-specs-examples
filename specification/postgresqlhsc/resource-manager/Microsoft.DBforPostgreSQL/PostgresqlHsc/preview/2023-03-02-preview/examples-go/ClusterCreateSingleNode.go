@@ -1,0 +1,112 @@
+package armpostgresqlhsc_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
+)
+
+// Generated from example definition: 2023-03-02-preview/ClusterCreateSingleNode.json
+func ExampleClustersClient_BeginCreate_createANewSingleNodeCluster() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpostgresqlhsc.NewClientFactory("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewClustersClient().BeginCreate(ctx, "TestGroup", "testcluster-singlenode", armpostgresqlhsc.Cluster{
+		Location: to.Ptr("westus"),
+		Properties: &armpostgresqlhsc.ClusterProperties{
+			AdministratorLoginPassword:      to.Ptr("password"),
+			CitusVersion:                    to.Ptr("11.3"),
+			CoordinatorEnablePublicIPAccess: to.Ptr(true),
+			CoordinatorServerEdition:        to.Ptr("GeneralPurpose"),
+			CoordinatorStorageQuotaInMb:     to.Ptr[int32](131072),
+			CoordinatorVCores:               to.Ptr[int32](8),
+			EnableHa:                        to.Ptr(true),
+			EnableShardsOnCoordinator:       to.Ptr(true),
+			NodeCount:                       to.Ptr[int32](0),
+			PostgresqlVersion:               to.Ptr("15"),
+			PreferredPrimaryZone:            to.Ptr("1"),
+		},
+		Tags: map[string]*string{
+			"owner": to.Ptr("JohnDoe"),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armpostgresqlhsc.ClustersClientCreateResponse{
+	// 	Cluster: &armpostgresqlhsc.Cluster{
+	// 		Name: to.Ptr("testcluster-singlenode"),
+	// 		Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2"),
+	// 		ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/testcluster-singlenode"),
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armpostgresqlhsc.ClusterProperties{
+	// 			AADAuthEnabled: to.Ptr(armpostgresqlhsc.AADEnabledEnumDisabled),
+	// 			AdministratorLogin: to.Ptr("citus"),
+	// 			CitusVersion: to.Ptr("11.3"),
+	// 			CoordinatorEnablePublicIPAccess: to.Ptr(true),
+	// 			CoordinatorServerEdition: to.Ptr("GeneralPurpose"),
+	// 			CoordinatorStorageQuotaInMb: to.Ptr[int32](131072),
+	// 			CoordinatorVCores: to.Ptr[int32](8),
+	// 			DataEncryption: &armpostgresqlhsc.DataEncryption{
+	// 				Type: to.Ptr(armpostgresqlhsc.DataEncryptionType("SystemManaged")),
+	// 			},
+	// 			DatabaseName: to.Ptr("citus"),
+	// 			EnableHa: to.Ptr(true),
+	// 			EnableShardsOnCoordinator: to.Ptr(true),
+	// 			MaintenanceWindow: &armpostgresqlhsc.MaintenanceWindow{
+	// 				CustomWindow: to.Ptr("Disabled"),
+	// 				DayOfWeek: to.Ptr[int32](0),
+	// 				StartHour: to.Ptr[int32](0),
+	// 				StartMinute: to.Ptr[int32](0),
+	// 			},
+	// 			NodeCount: to.Ptr[int32](0),
+	// 			NodeEnablePublicIPAccess: to.Ptr(false),
+	// 			NodeServerEdition: to.Ptr("MemoryOptimized"),
+	// 			NodeStorageQuotaInMb: to.Ptr[int32](131072),
+	// 			NodeVCores: to.Ptr[int32](8),
+	// 			PasswordEnabled: to.Ptr(armpostgresqlhsc.PasswordEnabledEnumEnabled),
+	// 			PostgresqlVersion: to.Ptr("15"),
+	// 			PreferredPrimaryZone: to.Ptr("1"),
+	// 			PrivateEndpointConnections: []*armpostgresqlhsc.SimplePrivateEndpointConnection{
+	// 			},
+	// 			ProvisioningState: to.Ptr("Provisioning"),
+	// 			ReadReplicas: []*string{
+	// 			},
+	// 			ServerNames: []*armpostgresqlhsc.ServerNameItem{
+	// 				{
+	// 					Name: to.Ptr("testcluster-singlenode-c"),
+	// 					FullyQualifiedDomainName: to.Ptr("c.testcluster-singlenode.postgres.database.azure.com"),
+	// 				},
+	// 			},
+	// 			State: to.Ptr("Provisioning"),
+	// 		},
+	// 		SystemData: &armpostgresqlhsc.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"owner": to.Ptr("JohnDoe"),
+	// 		},
+	// 	},
+	// }
+}

@@ -1,0 +1,39 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.maintenance import MaintenanceManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-maintenance
+# USAGE
+    python configuration_assignments_get_parent.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = MaintenanceManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.configuration_assignments.get_parent(
+        resource_group_name="examplerg",
+        provider_name="Microsoft.Compute",
+        resource_parent_type="virtualMachineScaleSets",
+        resource_parent_name="smdtest1",
+        resource_type="virtualMachines",
+        resource_name="smdvm1",
+        configuration_assignment_name="workervmPolicy",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2023-10-01-preview/ConfigurationAssignments_GetParent.json
+if __name__ == "__main__":
+    main()

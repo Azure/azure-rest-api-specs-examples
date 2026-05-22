@@ -1,0 +1,18 @@
+const { AuthorizationManagementClient } = require("@azure/arm-authorization");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to remediate an alert incident.
+ *
+ * @summary remediate an alert incident.
+ * x-ms-original-file: 2022-08-01-preview/RemediateAlertIncident.json
+ */
+async function remediateAlertIncident() {
+  const credential = new DefaultAzureCredential();
+  const client = new AuthorizationManagementClient(credential);
+  await client.alertIncidents.remediate(
+    "subscriptions/afa2a084-766f-4003-8ae1-c4aeb893a99f",
+    "DuplicateRoleCreated",
+    "0645231d-16ba-4ebf-851a-0875df4052bd",
+  );
+}

@@ -1,15 +1,16 @@
 const { DeploymentsClient } = require("@azure/arm-resourcesdeployments");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Calculate the hash of the given template.
+ * This sample demonstrates how to calculate the hash of the given template.
  *
- * @summary Calculate the hash of the given template.
- * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/CalculateTemplateHash.json
+ * @summary calculate the hash of the given template.
+ * x-ms-original-file: 2025-04-01/CalculateTemplateHash.json
  */
 async function calculateTemplateHash() {
-  const template = {
+  const credential = new DefaultAzureCredential();
+  const client = new DeploymentsClient(credential);
+  const result = await client.deployments.calculateTemplateHash({
     $schema:
       "http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview",
     contentVersion: "1.0.0.0",
@@ -23,9 +24,6 @@ async function calculateTemplateHash() {
       object: { object: { location: "West US", vmSize: "Large" } },
       string: "string",
     },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new DeploymentsClient(credential);
-  const result = await client.deployments.calculateTemplateHash(template);
+  });
   console.log(result);
 }

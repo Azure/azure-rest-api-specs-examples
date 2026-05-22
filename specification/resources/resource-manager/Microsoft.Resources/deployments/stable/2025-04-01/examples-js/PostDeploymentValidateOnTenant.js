@@ -1,28 +1,22 @@
 const { DeploymentsClient } = require("@azure/arm-resourcesdeployments");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+ * This sample demonstrates how to validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
  *
- * @summary Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
- * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PostDeploymentValidateOnTenant.json
+ * @summary validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+ * x-ms-original-file: 2025-04-01/PostDeploymentValidateOnTenant.json
  */
 async function validatesATemplateAtTenantScope() {
-  const deploymentName = "my-deployment";
-  const parameters = {
+  const credential = new DefaultAzureCredential();
+  const client = new DeploymentsClient(credential);
+  const result = await client.deployments.validateAtTenantScope("my-deployment", {
     location: "eastus",
     properties: {
       mode: "Incremental",
       parameters: {},
       templateLink: { uri: "https://example.com/exampleTemplate.json" },
     },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new DeploymentsClient(credential);
-  const result = await client.deployments.beginValidateAtTenantScopeAndWait(
-    deploymentName,
-    parameters,
-  );
+  });
   console.log(result);
 }

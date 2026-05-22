@@ -1,16 +1,16 @@
 const { DeploymentsClient } = require("@azure/arm-resourcesdeployments");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to You can provide the template and parameters directly in the request or link to JSON files.
+ * This sample demonstrates how to you can provide the template and parameters directly in the request or link to JSON files.
  *
- * @summary You can provide the template and parameters directly in the request or link to JSON files.
- * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentAtTenant.json
+ * @summary you can provide the template and parameters directly in the request or link to JSON files.
+ * x-ms-original-file: 2025-04-01/PutDeploymentAtTenant.json
  */
 async function createDeploymentAtTenantScope() {
-  const deploymentName = "tenant-dep01";
-  const parameters = {
+  const credential = new DefaultAzureCredential();
+  const client = new DeploymentsClient(credential);
+  const result = await client.deployments.createOrUpdateAtTenantScope("tenant-dep01", {
     location: "eastus",
     properties: {
       mode: "Incremental",
@@ -18,12 +18,6 @@ async function createDeploymentAtTenantScope() {
       templateLink: { uri: "https://example.com/exampleTemplate.json" },
     },
     tags: { tagKey1: "tag-value-1", tagKey2: "tag-value-2" },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new DeploymentsClient(credential);
-  const result = await client.deployments.beginCreateOrUpdateAtTenantScopeAndWait(
-    deploymentName,
-    parameters,
-  );
+  });
   console.log(result);
 }

@@ -1,0 +1,61 @@
+package armeducation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/education/armeducation"
+)
+
+// Generated from example definition: 2021-12-01-preview/GrantListIncludeAllocatedBudget.json
+func ExampleGrantsClient_NewListAllPager_grantListIncludeAllocatedBudget() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armeducation.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewGrantsClient().NewListAllPager(&armeducation.GrantsClientListAllOptions{
+		IncludeAllocatedBudget: to.Ptr(true)})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armeducation.GrantsClientListAllResponse{
+		// 	GrantListResponse: armeducation.GrantListResponse{
+		// 		Value: []*armeducation.GrantDetails{
+		// 			{
+		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.Education/grants/default"),
+		// 				Name: to.Ptr("default"),
+		// 				Type: to.Ptr("Microsoft.Education/Grants"),
+		// 				Properties: &armeducation.GrantDetailProperties{
+		// 					OfferCap: &armeducation.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float32](1000),
+		// 					},
+		// 					EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T09:08:05.505Z"); return t}()),
+		// 					OfferType: to.Ptr(armeducation.GrantTypeAcademic),
+		// 					ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T09:08:05.505Z"); return t}()),
+		// 					Status: to.Ptr(armeducation.GrantStatusActive),
+		// 					AllocatedBudget: &armeducation.Amount{
+		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float32](0),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

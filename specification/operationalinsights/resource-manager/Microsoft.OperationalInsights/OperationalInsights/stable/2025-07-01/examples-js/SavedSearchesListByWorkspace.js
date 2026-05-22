@@ -1,20 +1,16 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets the saved searches for a given Log Analytics Workspace
+ * This sample demonstrates how to gets the saved searches for a given Log Analytics Workspace
  *
- * @summary Gets the saved searches for a given Log Analytics Workspace
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/SavedSearchesListByWorkspace.json
+ * @summary gets the saved searches for a given Log Analytics Workspace
+ * x-ms-original-file: 2025-07-01/SavedSearchesListByWorkspace.json
  */
 async function savedSearchesList() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "TestRG";
-  const workspaceName = "TestWS";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.savedSearches.listByWorkspace(resourceGroupName, workspaceName);
+  const result = await client.savedSearches.listByWorkspace("TestRG", "TestWS");
   console.log(result);
 }

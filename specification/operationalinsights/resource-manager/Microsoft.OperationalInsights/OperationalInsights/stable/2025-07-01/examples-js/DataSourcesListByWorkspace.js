@@ -1,28 +1,24 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets the first page of data source instances in a workspace with the link to the next page.
+ * This sample demonstrates how to gets the first page of data source instances in a workspace with the link to the next page.
  *
- * @summary Gets the first page of data source instances in a workspace with the link to the next page.
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/DataSourcesListByWorkspace.json
+ * @summary gets the first page of data source instances in a workspace with the link to the next page.
+ * x-ms-original-file: 2025-07-01/DataSourcesListByWorkspace.json
  */
 async function dataSourcesListByWorkspace() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
-  const workspaceName = "AzTest9724";
-  const filter = "kind='WindowsEvent'";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const resArray = new Array();
   for await (const item of client.dataSources.listByWorkspace(
-    resourceGroupName,
-    workspaceName,
-    filter,
+    "OIAutoRest5123",
+    "AzTest9724",
+    "kind='WindowsEvent'",
   )) {
     resArray.push(item);
   }
+
   console.log(resArray);
 }

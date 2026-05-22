@@ -2,16 +2,16 @@ const { OperationalInsightsManagementClient } = require("@azure/arm-operationali
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to update a Log Analytics workspace table.
+ * This sample demonstrates how to update or Create a Log Analytics workspace table.
  *
- * @summary update a Log Analytics workspace table.
- * x-ms-original-file: 2025-07-01/TablesUpsert.json
+ * @summary update or Create a Log Analytics workspace table.
+ * x-ms-original-file: 2025-07-01/TablesUpsertForTable.json
  */
 async function tablesUpsert() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.tables.update(
+  const result = await client.tables.createOrUpdate(
     "oiautorest6685",
     "oiautorest6685",
     "AzureNetworkFlow",

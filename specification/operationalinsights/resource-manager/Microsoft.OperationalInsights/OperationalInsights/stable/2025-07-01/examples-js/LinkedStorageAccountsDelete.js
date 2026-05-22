@@ -1,25 +1,15 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Deletes all linked storage accounts of a specific data source type associated with the specified workspace.
+ * This sample demonstrates how to deletes all linked storage accounts of a specific data source type associated with the specified workspace.
  *
- * @summary Deletes all linked storage accounts of a specific data source type associated with the specified workspace.
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/LinkedStorageAccountsDelete.json
+ * @summary deletes all linked storage accounts of a specific data source type associated with the specified workspace.
+ * x-ms-original-file: 2025-07-01/LinkedStorageAccountsDelete.json
  */
 async function linkedStorageAccountsDelete() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "mms-eus";
-  const workspaceName = "testLinkStorageAccountsWS";
-  const dataSourceType = "CustomLogs";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.linkedStorageAccounts.delete(
-    resourceGroupName,
-    workspaceName,
-    dataSourceType,
-  );
-  console.log(result);
+  await client.linkedStorageAccounts.delete("mms-eus", "testLinkStorageAccountsWS", "CustomLogs");
 }

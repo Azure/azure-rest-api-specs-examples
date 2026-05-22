@@ -1,20 +1,16 @@
 const { OperationalInsightsManagementClient } = require("@azure/arm-operationalinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Gets the shared keys for a workspace.
+ * This sample demonstrates how to gets the shared keys for a workspace.
  *
- * @summary Gets the shared keys for a workspace.
- * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesGetSharedKeys.json
+ * @summary gets the shared keys for a workspace.
+ * x-ms-original-file: 2025-07-01/WorkspacesGetSharedKeys.json
  */
 async function sharedKeysList() {
-  const subscriptionId =
-    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "rg1";
-  const workspaceName = "TestLinkWS";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.sharedKeysOperations.getSharedKeys(resourceGroupName, workspaceName);
+  const result = await client.sharedKeys.getSharedKeys("rg1", "TestLinkWS");
   console.log(result);
 }

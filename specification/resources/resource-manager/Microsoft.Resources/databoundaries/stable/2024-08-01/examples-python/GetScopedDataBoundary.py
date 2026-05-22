@@ -28,6 +28,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/databoundaries/stable/2024-08-01/examples/GetScopedDataBoundary.json
+# x-ms-original-file: 2024-08-01/GetScopedDataBoundary.json
 if __name__ == "__main__":
     main()

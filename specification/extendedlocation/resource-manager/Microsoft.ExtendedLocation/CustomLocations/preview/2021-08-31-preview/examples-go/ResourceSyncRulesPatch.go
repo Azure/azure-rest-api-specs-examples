@@ -1,0 +1,79 @@
+package armextendedlocation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/extendedlocation/armextendedlocation/v2"
+)
+
+// Generated from example definition: 2021-08-31-preview/ResourceSyncRulesPatch.json
+func ExampleResourceSyncRulesClient_BeginUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armextendedlocation.NewClientFactory("11111111-2222-3333-4444-555555555555", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewResourceSyncRulesClient().BeginUpdate(ctx, "testresourcegroup", "customLocation01", "resourceSyncRule01", armextendedlocation.PatchableResourceSyncRule{
+		Properties: &armextendedlocation.ResourceSyncRuleProperties{
+			TargetResourceGroup: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testrg/"),
+		},
+		Tags: map[string]*string{
+			"tier": to.Ptr("testing"),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armextendedlocation.ResourceSyncRulesClientUpdateResponse{
+	// 	ResourceSyncRule: armextendedlocation.ResourceSyncRule{
+	// 		Name: to.Ptr("resourceSyncRule01"),
+	// 		Type: to.Ptr("Microsoft.ExtendedLocation/customLocations/resourceSyncRules"),
+	// 		ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ExtendedLocation/customLocations/customLocation01/resourceSyncRules/resourceSyncRule01"),
+	// 		Location: to.Ptr("West US"),
+	// 		Properties: &armextendedlocation.ResourceSyncRuleProperties{
+	// 			Priority: to.Ptr[int32](999),
+	// 			ProvisioningState: to.Ptr("Patching"),
+	// 			Selector: &armextendedlocation.ResourceSyncRulePropertiesSelector{
+	// 				MatchExpressions: []*armextendedlocation.MatchExpressionsProperties{
+	// 					{
+	// 						Key: to.Ptr("key4"),
+	// 						Operator: to.Ptr("In"),
+	// 						Values: []*string{
+	// 							to.Ptr("value4"),
+	// 						},
+	// 					},
+	// 				},
+	// 				MatchLabels: map[string]*string{
+	// 					"key1": to.Ptr("value1"),
+	// 				},
+	// 			},
+	// 			TargetResourceGroup: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testrg/"),
+	// 		},
+	// 		SystemData: &armextendedlocation.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-16T23:17:11.7353229Z"); return t}()),
+	// 			CreatedBy: to.Ptr("string"),
+	// 			CreatedByType: to.Ptr(armextendedlocation.CreatedByTypeApplication),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-16T23:28:00.5870852Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("string"),
+	// 			LastModifiedByType: to.Ptr(armextendedlocation.CreatedByTypeApplication),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"tier": to.Ptr("testing"),
+	// 		},
+	// 	},
+	// }
+}

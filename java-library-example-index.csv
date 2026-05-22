@@ -6665,3 +6665,4 @@ id,name,language,tag,package,version,date_epoch,date
 6664,azure-mgmt-hybridkubernetes@2.0.0b1,python,azure-mgmt-hybridkubernetes_2.0.0b1,azure-mgmt-hybridkubernetes,2.0.0b1,1779346751,05/21/2026
 6665,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager/v2@v2.0.0-beta.1,go,sdk/resourcemanager/trafficmanager/armtrafficmanager/v2.0.0-beta.1,sdk/resourcemanager/trafficmanager/armtrafficmanager,v2.0.0-beta.1,1779445308,05/22/2026
 6666,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v4@v4.0.0-beta.1,go,sdk/resourcemanager/redis/armredis/v4.0.0-beta.1,sdk/resourcemanager/redis/armredis,v4.0.0-beta.1,1779445299,05/22/2026
+6667,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0-beta.1,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0-beta.1,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0-beta.1,1779445291,05/22/2026

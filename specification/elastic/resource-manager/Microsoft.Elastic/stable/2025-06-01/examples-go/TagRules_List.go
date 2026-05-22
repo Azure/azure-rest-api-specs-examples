@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/22ae5674fc98c32b29fb60791bd51a8fbd41b25f/specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/TagRules_List.json
+// Generated from example definition: 2025-06-01/TagRules_List.json
 func ExampleTagRulesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,32 +30,36 @@ func ExampleTagRulesClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.MonitoringTagRulesListResponse = armelastic.MonitoringTagRulesListResponse{
-		// 	Value: []*armelastic.MonitoringTagRules{
-		// 		{
-		// 			Name: to.Ptr("default"),
-		// 			Type: to.Ptr("Microsoft.Elastic/monitors/tagRules"),
-		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Elastic/monitors/myMonitor/tagRules/default"),
-		// 			Properties: &armelastic.MonitoringTagRulesProperties{
-		// 				LogRules: &armelastic.LogRules{
-		// 					FilteringTags: []*armelastic.FilteringTag{
-		// 						{
-		// 							Name: to.Ptr("Environment"),
-		// 							Action: to.Ptr(armelastic.TagActionInclude),
-		// 							Value: to.Ptr("Prod"),
+		// page = armelastic.TagRulesClientListResponse{
+		// 	MonitoringTagRulesListResponse: armelastic.MonitoringTagRulesListResponse{
+		// 		Value: []*armelastic.MonitoringTagRules{
+		// 			{
+		// 				Name: to.Ptr("default"),
+		// 				Type: to.Ptr("Microsoft.Elastic/monitors/tagRules"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Elastic/monitors/myMonitor/tagRules/default"),
+		// 				Properties: &armelastic.MonitoringTagRulesProperties{
+		// 					LogRules: &armelastic.LogRules{
+		// 						FilteringTags: []*armelastic.FilteringTag{
+		// 							{
+		// 								Name: to.Ptr("Environment"),
+		// 								Action: to.Ptr(armelastic.TagActionInclude),
+		// 								Value: to.Ptr("Prod"),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("Environment"),
+		// 								Action: to.Ptr(armelastic.TagActionExclude),
+		// 								Value: to.Ptr("Dev"),
+		// 							},
 		// 						},
-		// 						{
-		// 							Name: to.Ptr("Environment"),
-		// 							Action: to.Ptr(armelastic.TagActionExclude),
-		// 							Value: to.Ptr("Dev"),
-		// 					}},
-		// 					SendAADLogs: to.Ptr(false),
-		// 					SendActivityLogs: to.Ptr(true),
-		// 					SendSubscriptionLogs: to.Ptr(true),
+		// 						SendAADLogs: to.Ptr(false),
+		// 						SendActivityLogs: to.Ptr(true),
+		// 						SendSubscriptionLogs: to.Ptr(true),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armelastic.ProvisioningStateSucceeded),
 		// 				},
-		// 				ProvisioningState: to.Ptr(armelastic.ProvisioningStateSucceeded),
 		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

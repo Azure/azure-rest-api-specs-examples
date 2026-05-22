@@ -6687,3 +6687,4 @@ id,name,language,tag,package,version,date_epoch,date
 6686,@azure/arm-appcontainers@4.0.0-beta.1,js,@azure/arm-appcontainers_4.0.0-beta.1,@azure/arm-appcontainers,4.0.0-beta.1,1779428793,05/22/2026
 6687,@azure/arm-billing@6.0.0-beta.1,js,@azure/arm-billing_6.0.0-beta.1,@azure/arm-billing,6.0.0-beta.1,1779427439,05/22/2026
 6688,azure-mgmt-iothub@5.0.0b3,python,azure-mgmt-iothub_5.0.0b3,azure-mgmt-iothub,5.0.0b3,1779441228,05/22/2026
+6689,azure-mgmt-resource-deployments@1.0.0b2,python,azure-mgmt-resource-deployments_1.0.0b2,azure-mgmt-resource-deployments,1.0.0b2,1779438306,05/22/2026

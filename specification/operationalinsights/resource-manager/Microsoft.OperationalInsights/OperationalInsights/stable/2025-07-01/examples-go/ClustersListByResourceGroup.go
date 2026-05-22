@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/53d56e4ec74156c450d1e51745a971d3f2031dd7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/ClustersListByResourceGroup.json
+// Generated from example definition: 2025-07-01/ClustersListByResourceGroup.json
 func ExampleClustersClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("53bc36c5-91e1-4d09-92c9-63b89e571926", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,32 +30,35 @@ func ExampleClustersClient_NewListByResourceGroupPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.ClusterListResult = armoperationalinsights.ClusterListResult{
-		// 	Value: []*armoperationalinsights.Cluster{
-		// 		{
-		// 			Name: to.Ptr("mycluster"),
-		// 			Type: to.Ptr("Microsoft.OperationalInsights/clusters"),
-		// 			ID: to.Ptr("/subscriptions/53bc36c5-91e1-4d09-92c9-63b89e571926/resourcegroups/oiautorest6685/providers/microsoft.operationalinsights/clusters/mycluster"),
-		// 			Location: to.Ptr("eastus"),
-		// 			Identity: &armoperationalinsights.ManagedServiceIdentity{
-		// 				Type: to.Ptr(armoperationalinsights.ManagedServiceIdentityTypeSystemAssigned),
-		// 				PrincipalID: to.Ptr("356d057d-cba5-44dd-8a30-b2e547bc416b"),
-		// 				TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-		// 			},
-		// 			Properties: &armoperationalinsights.ClusterProperties{
-		// 				ClusterID: to.Ptr("5b02755b-5bf4-430c-9487-45502a2a7e62"),
-		// 				KeyVaultProperties: &armoperationalinsights.KeyVaultProperties{
-		// 					KeyName: to.Ptr("aztest2170cert"),
-		// 					KeyVaultURI: to.Ptr("https://aztest2170.vault.azure.net"),
-		// 					KeyVersion: to.Ptr("654ft6c4e63845cbb50fd6fg51540429"),
+		// page = armoperationalinsights.ClustersClientListByResourceGroupResponse{
+		// 	ClusterListResult: armoperationalinsights.ClusterListResult{
+		// 		Value: []*armoperationalinsights.Cluster{
+		// 			{
+		// 				Name: to.Ptr("mycluster"),
+		// 				Type: to.Ptr("Microsoft.OperationalInsights/clusters"),
+		// 				ID: to.Ptr("/subscriptions/53bc36c5-91e1-4d09-92c9-63b89e571926/resourcegroups/oiautorest6685/providers/microsoft.operationalinsights/clusters/mycluster"),
+		// 				Identity: &armoperationalinsights.ManagedServiceIdentity{
+		// 					Type: to.Ptr(armoperationalinsights.ManagedServiceIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("356d057d-cba5-44dd-8a30-b2e547bc416b"),
+		// 					TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
 		// 				},
-		// 				ProvisioningState: to.Ptr(armoperationalinsights.ClusterEntityStatusSucceeded),
+		// 				Location: to.Ptr("eastus"),
+		// 				Properties: &armoperationalinsights.ClusterProperties{
+		// 					ClusterID: to.Ptr("5b02755b-5bf4-430c-9487-45502a2a7e62"),
+		// 					KeyVaultProperties: &armoperationalinsights.KeyVaultProperties{
+		// 						KeyName: to.Ptr("aztest2170cert"),
+		// 						KeyVaultURI: to.Ptr("https://aztest2170.vault.azure.net"),
+		// 						KeyVersion: to.Ptr("654ft6c4e63845cbb50fd6fg51540429"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armoperationalinsights.ClusterEntityStatusSucceeded),
+		// 				},
+		// 				SKU: &armoperationalinsights.ClusterSKU{
+		// 					Name: to.Ptr(armoperationalinsights.ClusterSKUNameEnumCapacityReservation),
+		// 					Capacity: to.Ptr[int64](1000),
+		// 				},
 		// 			},
-		// 			SKU: &armoperationalinsights.ClusterSKU{
-		// 				Name: to.Ptr(armoperationalinsights.ClusterSKUNameEnumCapacityReservation),
-		// 				Capacity: to.Ptr[int64](1000),
-		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

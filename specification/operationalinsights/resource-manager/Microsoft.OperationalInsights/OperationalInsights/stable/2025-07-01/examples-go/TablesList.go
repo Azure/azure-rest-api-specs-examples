@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/53d56e4ec74156c450d1e51745a971d3f2031dd7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/TablesList.json
+// Generated from example definition: 2025-07-01/TablesList.json
 func ExampleTablesClient_NewListByWorkspacePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,16 +30,18 @@ func ExampleTablesClient_NewListByWorkspacePager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.TablesListResult = armoperationalinsights.TablesListResult{
-		// 	Value: []*armoperationalinsights.Table{
-		// 		{
-		// 			Name: to.Ptr("AzureNetworkFlow"),
-		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-00000000000/resourcegroups/oiautorest6685/providers/Microsoft.OperationalInsights/workspaces/oiautorest6685/tables/AzureNetworkFlow"),
-		// 			Properties: &armoperationalinsights.TableProperties{
-		// 				Schema: &armoperationalinsights.Schema{
-		// 					Name: to.Ptr("AzureNetworkFlow"),
-		// 					Solutions: []*string{
-		// 						to.Ptr("LogManagement")},
+		// page = armoperationalinsights.TablesClientListByWorkspaceResponse{
+		// 	TablesListResult: armoperationalinsights.TablesListResult{
+		// 		Value: []*armoperationalinsights.Table{
+		// 			{
+		// 				Name: to.Ptr("AzureNetworkFlow"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/oiautorest6685/providers/Microsoft.OperationalInsights/workspaces/oiautorest6685/tables/AzureNetworkFlow"),
+		// 				Properties: &armoperationalinsights.TableProperties{
+		// 					Schema: &armoperationalinsights.Schema{
+		// 						Name: to.Ptr("AzureNetworkFlow"),
+		// 						Solutions: []*string{
+		// 							to.Ptr("LogManagement"),
+		// 						},
 		// 						StandardColumns: []*armoperationalinsights.Column{
 		// 							{
 		// 								Name: to.Ptr("TenantId"),
@@ -130,13 +132,14 @@ func ExampleTablesClient_NewListByWorkspacePager() {
 		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumInt),
 		// 								IsDefaultDisplay: to.Ptr(false),
 		// 								IsHidden: to.Ptr(false),
-		// 						}},
+		// 							},
+		// 						},
 		// 						TableSubType: to.Ptr(armoperationalinsights.TableSubTypeEnumAny),
 		// 						TableType: to.Ptr(armoperationalinsights.TableTypeEnumMicrosoft),
 		// 					},
 		// 					ArchiveRetentionInDays: to.Ptr[int32](25),
 		// 					Plan: to.Ptr(armoperationalinsights.TablePlanEnumAnalytics),
-		// 					ProvisioningState: to.Ptr(armoperationalinsights.ProvisioningStateEnumSucceeded),
+		// 					ProvisioningState: to.Ptr(armoperationalinsights.TableProvisioningStateSucceeded),
 		// 					RetentionInDays: to.Ptr[int32](45),
 		// 					RetentionInDaysAsDefault: to.Ptr(false),
 		// 					TotalRetentionInDays: to.Ptr[int32](70),
@@ -145,55 +148,59 @@ func ExampleTablesClient_NewListByWorkspacePager() {
 		// 			},
 		// 			{
 		// 				Name: to.Ptr("SurfaceHubDns"),
-		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-00000000000/resourcegroups/oiautorest6685/providers/Microsoft.OperationalInsights/workspaces/oiautorest6685/tables/SurfaceHubDns"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/oiautorest6685/providers/Microsoft.OperationalInsights/workspaces/oiautorest6685/tables/SurfaceHubDns"),
 		// 				Properties: &armoperationalinsights.TableProperties{
 		// 					Schema: &armoperationalinsights.Schema{
 		// 						Name: to.Ptr("SurfaceHubDns"),
 		// 						Solutions: []*string{
-		// 							to.Ptr("LogManagement")},
-		// 							StandardColumns: []*armoperationalinsights.Column{
-		// 								{
-		// 									Name: to.Ptr("TenantId"),
-		// 									Type: to.Ptr(armoperationalinsights.ColumnTypeEnumGUID),
-		// 									IsDefaultDisplay: to.Ptr(false),
-		// 									IsHidden: to.Ptr(true),
-		// 								},
-		// 								{
-		// 									Name: to.Ptr("SourceSystem"),
-		// 									Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
-		// 									IsDefaultDisplay: to.Ptr(false),
-		// 									IsHidden: to.Ptr(false),
-		// 								},
-		// 								{
-		// 									Name: to.Ptr("TimeGenerated"),
-		// 									Type: to.Ptr(armoperationalinsights.ColumnTypeEnumDateTime),
-		// 									IsDefaultDisplay: to.Ptr(false),
-		// 									IsHidden: to.Ptr(false),
-		// 								},
-		// 								{
-		// 									Name: to.Ptr("QueryName"),
-		// 									Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
-		// 									IsDefaultDisplay: to.Ptr(false),
-		// 									IsHidden: to.Ptr(false),
-		// 								},
-		// 								{
-		// 									Name: to.Ptr("ComputerName"),
-		// 									Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
-		// 									IsDefaultDisplay: to.Ptr(false),
-		// 									IsHidden: to.Ptr(false),
-		// 							}},
-		// 							TableSubType: to.Ptr(armoperationalinsights.TableSubTypeEnumAny),
-		// 							TableType: to.Ptr(armoperationalinsights.TableTypeEnumMicrosoft),
+		// 							to.Ptr("LogManagement"),
 		// 						},
-		// 						ArchiveRetentionInDays: to.Ptr[int32](0),
-		// 						Plan: to.Ptr(armoperationalinsights.TablePlanEnumAnalytics),
-		// 						ProvisioningState: to.Ptr(armoperationalinsights.ProvisioningStateEnumSucceeded),
-		// 						RetentionInDays: to.Ptr[int32](30),
-		// 						RetentionInDaysAsDefault: to.Ptr(false),
-		// 						TotalRetentionInDays: to.Ptr[int32](30),
-		// 						TotalRetentionInDaysAsDefault: to.Ptr(true),
+		// 						StandardColumns: []*armoperationalinsights.Column{
+		// 							{
+		// 								Name: to.Ptr("TenantId"),
+		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumGUID),
+		// 								IsDefaultDisplay: to.Ptr(false),
+		// 								IsHidden: to.Ptr(true),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("SourceSystem"),
+		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
+		// 								IsDefaultDisplay: to.Ptr(false),
+		// 								IsHidden: to.Ptr(false),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("TimeGenerated"),
+		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumDateTime),
+		// 								IsDefaultDisplay: to.Ptr(false),
+		// 								IsHidden: to.Ptr(false),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("QueryName"),
+		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
+		// 								IsDefaultDisplay: to.Ptr(false),
+		// 								IsHidden: to.Ptr(false),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("ComputerName"),
+		// 								Type: to.Ptr(armoperationalinsights.ColumnTypeEnumString),
+		// 								IsDefaultDisplay: to.Ptr(false),
+		// 								IsHidden: to.Ptr(false),
+		// 							},
+		// 						},
+		// 						TableSubType: to.Ptr(armoperationalinsights.TableSubTypeEnumAny),
+		// 						TableType: to.Ptr(armoperationalinsights.TableTypeEnumMicrosoft),
 		// 					},
-		// 			}},
-		// 		}
+		// 					ArchiveRetentionInDays: to.Ptr[int32](0),
+		// 					Plan: to.Ptr(armoperationalinsights.TablePlanEnumAnalytics),
+		// 					ProvisioningState: to.Ptr(armoperationalinsights.TableProvisioningStateSucceeded),
+		// 					RetentionInDays: to.Ptr[int32](30),
+		// 					RetentionInDaysAsDefault: to.Ptr(false),
+		// 					TotalRetentionInDays: to.Ptr[int32](30),
+		// 					TotalRetentionInDaysAsDefault: to.Ptr(true),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
 	}
 }

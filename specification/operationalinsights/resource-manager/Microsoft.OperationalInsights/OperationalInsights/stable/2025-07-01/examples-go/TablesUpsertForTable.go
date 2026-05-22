@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: 2025-07-01/TablesUpsert.json
-func ExampleTablesClient_BeginUpdate() {
+// Generated from example definition: 2025-07-01/TablesUpsertForTable.json
+func ExampleTablesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleTablesClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewTablesClient().BeginUpdate(ctx, "oiautorest6685", "oiautorest6685", "AzureNetworkFlow", armoperationalinsights.Table{
+	poller, err := clientFactory.NewTablesClient().BeginCreateOrUpdate(ctx, "oiautorest6685", "oiautorest6685", "AzureNetworkFlow", armoperationalinsights.Table{
 		Properties: &armoperationalinsights.TableProperties{
 			Schema: &armoperationalinsights.Schema{
 				Name: to.Ptr("AzureNetworkFlow"),
@@ -45,7 +45,7 @@ func ExampleTablesClient_BeginUpdate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res = armoperationalinsights.TablesClientUpdateResponse{
+	// res = armoperationalinsights.TablesClientCreateOrUpdateResponse{
 	// 	Table: armoperationalinsights.Table{
 	// 		Name: to.Ptr("AzureNetworkFlow"),
 	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/oiautorest6685/providers/Microsoft.OperationalInsights/workspaces/oiautorest6685/tables/AzureNetworkFlow"),

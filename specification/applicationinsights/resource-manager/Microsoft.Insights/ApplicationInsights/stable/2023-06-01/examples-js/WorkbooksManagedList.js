@@ -1,0 +1,23 @@
+const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get all Workbooks defined within a specified resource group and category.
+ *
+ * @summary get all Workbooks defined within a specified resource group and category.
+ * x-ms-original-file: 2023-06-01/WorkbooksManagedList.json
+ */
+async function workbooksManagedList() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "6b643656-33eb-422f-aee8-3ac119r124af";
+  const client = new ApplicationInsightsManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.workbooks.listByResourceGroup("my-resource-group", "workbook", {
+    sourceId:
+      "/subscriptions/6b643656-33eb-422f-aee8-3ac119r124af/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/MyApp",
+  })) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

@@ -1,0 +1,16 @@
+const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a list of favorites defined within an Application Insights component.
+ *
+ * @summary gets a list of favorites defined within an Application Insights component.
+ * x-ms-original-file: 2015-05-01/FavoritesList.json
+ */
+async function favoritesList() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "subid";
+  const client = new ApplicationInsightsManagementClient(credential, subscriptionId);
+  const result = await client.favorites.list("my-resource-group", "my-ai-component");
+  console.log(result);
+}

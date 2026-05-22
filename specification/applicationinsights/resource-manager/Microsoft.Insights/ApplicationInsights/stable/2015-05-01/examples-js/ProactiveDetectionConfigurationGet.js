@@ -1,0 +1,20 @@
+const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get the ProactiveDetection configuration for this configuration id.
+ *
+ * @summary get the ProactiveDetection configuration for this configuration id.
+ * x-ms-original-file: 2015-05-01/ProactiveDetectionConfigurationGet.json
+ */
+async function proactiveDetectionConfigurationGet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "subid";
+  const client = new ApplicationInsightsManagementClient(credential, subscriptionId);
+  const result = await client.proactiveDetectionConfigurations.get(
+    "my-resource-group",
+    "my-component",
+    "slowpageloadtime",
+  );
+  console.log(result);
+}

@@ -1,0 +1,20 @@
+const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets specified work item configuration for an Application Insights component.
+ *
+ * @summary gets specified work item configuration for an Application Insights component.
+ * x-ms-original-file: 2015-05-01/WorkItemConfigGet.json
+ */
+async function workItemConfigurationsGetDefault() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "subid";
+  const client = new ApplicationInsightsManagementClient(credential, subscriptionId);
+  const result = await client.workItemConfigurations.getItem(
+    "my-resource-group",
+    "my-component",
+    "Visual Studio Team Services",
+  );
+  console.log(result);
+}

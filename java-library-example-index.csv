@@ -6685,3 +6685,4 @@ id,name,language,tag,package,version,date_epoch,date
 6684,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/extendedlocation/armextendedlocation/v2@v2.0.0-beta.1,go,sdk/resourcemanager/extendedlocation/armextendedlocation/v2.0.0-beta.1,sdk/resourcemanager/extendedlocation/armextendedlocation,v2.0.0-beta.1,1779365020,05/21/2026
 6685,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions/v2@v2.0.0-beta.1,go,sdk/resourcemanager/resources/armsubscriptions/v2.0.0-beta.1,sdk/resourcemanager/resources/armsubscriptions,v2.0.0-beta.1,1779361929,05/21/2026
 6686,@azure/arm-appcontainers@4.0.0-beta.1,js,@azure/arm-appcontainers_4.0.0-beta.1,@azure/arm-appcontainers,4.0.0-beta.1,1779428793,05/22/2026
+6687,@azure/arm-billing@6.0.0-beta.1,js,@azure/arm-billing_6.0.0-beta.1,@azure/arm-billing,6.0.0-beta.1,1779427439,05/22/2026

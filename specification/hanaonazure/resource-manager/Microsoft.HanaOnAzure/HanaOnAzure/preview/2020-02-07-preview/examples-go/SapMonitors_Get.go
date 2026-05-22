@@ -1,0 +1,50 @@
+package armhanaonazure_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hanaonazure/armhanaonazure"
+)
+
+// Generated from example definition: 2020-02-07-preview/SapMonitors_Get.json
+func ExampleSapMonitorsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhanaonazure.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewSapMonitorsClient().Get(ctx, "myResourceGroup", "mySapMonitor", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armhanaonazure.SapMonitorsClientGetResponse{
+	// 	SapMonitor: armhanaonazure.SapMonitor{
+	// 		Name: to.Ptr("mySapMonitor"),
+	// 		Type: to.Ptr("Microsoft.HanaOnAzure/sapMonitors"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HanaOnAzure/sapMonitors/mySapMonitor"),
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armhanaonazure.SapMonitorProperties{
+	// 			EnableCustomerAnalytics: to.Ptr(true),
+	// 			LogAnalyticsWorkspaceArmID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.operationalinsights/workspaces/myWorkspace"),
+	// 			LogAnalyticsWorkspaceID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			LogAnalyticsWorkspaceSharedKey: to.Ptr("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000=="),
+	// 			ManagedResourceGroupName: to.Ptr("myManagedResourceGroup"),
+	// 			MonitorSubnet: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"),
+	// 			ProvisioningState: to.Ptr(armhanaonazure.HanaProvisioningStatesEnumSucceeded),
+	// 			SapMonitorCollectorVersion: to.Ptr("v1.0"),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"key": to.Ptr("value"),
+	// 		},
+	// 	},
+	// }
+}

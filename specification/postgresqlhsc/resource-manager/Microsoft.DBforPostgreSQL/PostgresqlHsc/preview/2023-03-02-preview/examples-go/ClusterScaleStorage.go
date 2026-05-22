@@ -1,0 +1,108 @@
+package armpostgresqlhsc_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
+)
+
+// Generated from example definition: 2023-03-02-preview/ClusterScaleStorage.json
+func ExampleClustersClient_BeginUpdate_scaleUpStorage() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpostgresqlhsc.NewClientFactory("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewClustersClient().BeginUpdate(ctx, "TestGroup", "testcluster", armpostgresqlhsc.ClusterForUpdate{
+		Properties: &armpostgresqlhsc.ClusterPropertiesForUpdate{
+			NodeStorageQuotaInMb: to.Ptr[int32](2097152),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armpostgresqlhsc.ClustersClientUpdateResponse{
+	// 	Cluster: &armpostgresqlhsc.Cluster{
+	// 		Name: to.Ptr("testcluster"),
+	// 		Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2"),
+	// 		ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/testcluster"),
+	// 		Location: to.Ptr("westus"),
+	// 		Properties: &armpostgresqlhsc.ClusterProperties{
+	// 			AADAuthEnabled: to.Ptr(armpostgresqlhsc.AADEnabledEnumDisabled),
+	// 			AdministratorLogin: to.Ptr("citus"),
+	// 			CitusVersion: to.Ptr("11.1"),
+	// 			CoordinatorEnablePublicIPAccess: to.Ptr(true),
+	// 			CoordinatorServerEdition: to.Ptr("GeneralPurpose"),
+	// 			CoordinatorStorageQuotaInMb: to.Ptr[int32](2097152),
+	// 			CoordinatorVCores: to.Ptr[int32](16),
+	// 			DataEncryption: &armpostgresqlhsc.DataEncryption{
+	// 				Type: to.Ptr(armpostgresqlhsc.DataEncryptionType("SystemManaged")),
+	// 			},
+	// 			DatabaseName: to.Ptr("citus"),
+	// 			EarliestRestoreTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-14T00:00:37.467Z"); return t}()),
+	// 			EnableHa: to.Ptr(false),
+	// 			EnableShardsOnCoordinator: to.Ptr(false),
+	// 			MaintenanceWindow: &armpostgresqlhsc.MaintenanceWindow{
+	// 				CustomWindow: to.Ptr("Disabled"),
+	// 				DayOfWeek: to.Ptr[int32](0),
+	// 				StartHour: to.Ptr[int32](0),
+	// 				StartMinute: to.Ptr[int32](0),
+	// 			},
+	// 			NodeCount: to.Ptr[int32](3),
+	// 			NodeEnablePublicIPAccess: to.Ptr(false),
+	// 			NodeServerEdition: to.Ptr("MemoryOptimized"),
+	// 			NodeStorageQuotaInMb: to.Ptr[int32](2097152),
+	// 			NodeVCores: to.Ptr[int32](16),
+	// 			PasswordEnabled: to.Ptr(armpostgresqlhsc.PasswordEnabledEnumEnabled),
+	// 			PostgresqlVersion: to.Ptr("14"),
+	// 			PreferredPrimaryZone: to.Ptr("1"),
+	// 			PrivateEndpointConnections: []*armpostgresqlhsc.SimplePrivateEndpointConnection{
+	// 			},
+	// 			ProvisioningState: to.Ptr("Succeeded"),
+	// 			ReadReplicas: []*string{
+	// 			},
+	// 			ServerNames: []*armpostgresqlhsc.ServerNameItem{
+	// 				{
+	// 					Name: to.Ptr("testcluster1-c"),
+	// 					FullyQualifiedDomainName: to.Ptr("testcluster1-c.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster1-w0"),
+	// 					FullyQualifiedDomainName: to.Ptr("testcluster1-w0.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster1-w1"),
+	// 					FullyQualifiedDomainName: to.Ptr("testcluster1-w1.postgres.database.azure.com"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("testcluster1-w2"),
+	// 					FullyQualifiedDomainName: to.Ptr("testcluster1-w2.postgres.database.azure.com"),
+	// 				},
+	// 			},
+	// 			State: to.Ptr("Ready"),
+	// 		},
+	// 		SystemData: &armpostgresqlhsc.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armpostgresqlhsc.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

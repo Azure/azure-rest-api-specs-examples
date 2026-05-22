@@ -37,6 +37,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentAtTenant.json
+# x-ms-original-file: 2025-04-01/PutDeploymentAtTenant.json
 if __name__ == "__main__":
     main()

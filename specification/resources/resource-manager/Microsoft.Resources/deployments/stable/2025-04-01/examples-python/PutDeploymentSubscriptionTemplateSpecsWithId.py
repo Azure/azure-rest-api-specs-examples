@@ -19,7 +19,7 @@ from azure.mgmt.resource.deployments import DeploymentsMgmtClient
 def main():
     client = DeploymentsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000001",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.deployments.begin_create_or_update_at_subscription_scope(
@@ -38,6 +38,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentSubscriptionTemplateSpecsWithId.json
+# x-ms-original-file: 2025-04-01/PutDeploymentSubscriptionTemplateSpecsWithId.json
 if __name__ == "__main__":
     main()

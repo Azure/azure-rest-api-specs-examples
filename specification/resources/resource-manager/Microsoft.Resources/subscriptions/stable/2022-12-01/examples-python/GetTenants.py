@@ -26,6 +26,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/subscriptions/stable/2022-12-01/examples/GetTenants.json
+# x-ms-original-file: 2022-12-01/GetTenants.json
 if __name__ == "__main__":
     main()

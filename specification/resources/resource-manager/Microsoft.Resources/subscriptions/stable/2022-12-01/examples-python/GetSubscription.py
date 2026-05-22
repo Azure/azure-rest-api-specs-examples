@@ -27,6 +27,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/subscriptions/stable/2022-12-01/examples/GetSubscription.json
+# x-ms-original-file: 2022-12-01/GetSubscription.json
 if __name__ == "__main__":
     main()

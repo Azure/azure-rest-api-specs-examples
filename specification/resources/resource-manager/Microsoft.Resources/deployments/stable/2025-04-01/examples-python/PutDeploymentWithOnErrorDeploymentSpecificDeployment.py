@@ -19,7 +19,7 @@ from azure.mgmt.resource.deployments import DeploymentsMgmtClient
 def main():
     client = DeploymentsMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.deployments.begin_create_or_update(
@@ -37,6 +37,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/deployments/stable/2025-04-01/examples/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
+# x-ms-original-file: 2025-04-01/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
 if __name__ == "__main__":
     main()

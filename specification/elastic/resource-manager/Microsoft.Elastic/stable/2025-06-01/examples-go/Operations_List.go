@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/22ae5674fc98c32b29fb60791bd51a8fbd41b25f/specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/Operations_List.json
+// Generated from example definition: 2025-06-01/Operations_List.json
 func ExampleOperationsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("<subscriptionID>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,17 +30,20 @@ func ExampleOperationsClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.OperationListResult = armelastic.OperationListResult{
-		// 	Value: []*armelastic.OperationResult{
-		// 		{
-		// 			Name: to.Ptr("Microsoft.Elastic/monitors/write"),
-		// 			Display: &armelastic.OperationDisplay{
-		// 				Description: to.Ptr("Write monitors resource"),
-		// 				Operation: to.Ptr("write"),
-		// 				Provider: to.Ptr("Microsoft.Elastic"),
-		// 				Resource: to.Ptr("monitors"),
+		// page = armelastic.OperationsClientListResponse{
+		// 	OperationListResult: armelastic.OperationListResult{
+		// 		Value: []*armelastic.OperationResult{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Elastic/monitors/write"),
+		// 				Display: &armelastic.OperationDisplay{
+		// 					Description: to.Ptr("Write monitors resource"),
+		// 					Operation: to.Ptr("write"),
+		// 					Provider: to.Ptr("Microsoft.Elastic"),
+		// 					Resource: to.Ptr("monitors"),
+		// 				},
 		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

@@ -6,21 +6,22 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/22ae5674fc98c32b29fb60791bd51a8fbd41b25f/specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/AssociateTrafficFilter_Update.json
+// Generated from example definition: 2025-06-01/AssociateTrafficFilter_Update.json
 func ExampleAssociateTrafficFilterClient_BeginAssociate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewAssociateTrafficFilterClient().BeginAssociate(ctx, "myResourceGroup", "myMonitor", &armelastic.AssociateTrafficFilterClientBeginAssociateOptions{RulesetID: to.Ptr("31d91b5afb6f4c2eaaf104c97b1991dd")})
+	poller, err := clientFactory.NewAssociateTrafficFilterClient().BeginAssociate(ctx, "myResourceGroup", "myMonitor", &armelastic.AssociateTrafficFilterClientBeginAssociateOptions{
+		RulesetID: to.Ptr("31d91b5afb6f4c2eaaf104c97b1991dd")})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

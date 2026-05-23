@@ -1,0 +1,157 @@
+package armdatabricks_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databricks/armdatabricks/v2"
+)
+
+// Generated from example definition: 2026-01-01/OperationsList.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdatabricks.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armdatabricks.OperationsClientListResponse{
+		// 	OperationListResult: armdatabricks.OperationListResult{
+		// 		Value: []*armdatabricks.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/read"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Retrieves a list of workspaces."),
+		// 					Operation: to.Ptr("List Workspaces"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Workspace"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/write"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Creates an workspace."),
+		// 					Operation: to.Ptr("Create Workspace"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Workspace"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/delete"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Removes an workspace."),
+		// 					Operation: to.Ptr("Remove Workspace"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Workspace"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/virtualNetworkPeerings/read"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Gets the virtual network peering."),
+		// 					Operation: to.Ptr("Get Virtual Network Peering"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Virtual Network Peering"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/virtualNetworkPeerings/write"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Add or modify virtual network peering"),
+		// 					Operation: to.Ptr("Add Virtual Network Peering"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Virtual Network Peering"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/virtualNetworkPeerings/delete"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Deletes a virtual network peering"),
+		// 					Operation: to.Ptr("Delete Virtual Network Peering"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Virtual Network Peering"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/PrivateLinkResources/read"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Retrieve List of Private Link Resources"),
+		// 					Operation: to.Ptr("List Private Link Resources"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Private Link Resources"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/PrivateEndpointConnections/read"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Retrieve List of Private Endpoint Connections"),
+		// 					Operation: to.Ptr("List Private Endpoint Connections"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Private Endpoint Connection"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/PrivateEndpointConnections/write"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Update a virtual network peering"),
+		// 					Operation: to.Ptr("Update Private Endpoint Connection"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Private Endpoint Connection"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/workspaces/PrivateEndpointConnections/delete"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Delete a Private Endpoint Connection"),
+		// 					Operation: to.Ptr("Delete Private Endpoint Connection"),
+		// 					Provider: to.Ptr("Microsoft Databricks"),
+		// 					Resource: to.Ptr("Private Endpoint Connection"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/accessConnectors/read"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Retrieves a list of Azure Databricks Access Connector."),
+		// 					Operation: to.Ptr("List Azure Databricks Access Connector"),
+		// 					Provider: to.Ptr("Azure Databricks"),
+		// 					Resource: to.Ptr("AccessConnector"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/accessConnectors/write"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Creates an Azure Databricks Access Connector."),
+		// 					Operation: to.Ptr("Create Azure Databricks Access Connector"),
+		// 					Provider: to.Ptr("Azure Databricks"),
+		// 					Resource: to.Ptr("AccessConnector"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Databricks/accessConnectors/delete"),
+		// 				Display: &armdatabricks.OperationDisplay{
+		// 					Description: to.Ptr("Removes Azure Databricks Access Connector."),
+		// 					Operation: to.Ptr("Remove Azure Databricks Access Connector"),
+		// 					Provider: to.Ptr("Azure Databricks"),
+		// 					Resource: to.Ptr("AccessConnector"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

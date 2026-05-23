@@ -8,14 +8,14 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ecee919199a39cc0d864410f540aa105bf7cdb64/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-12-01-preview/examples/GetProvisionedClusterExample.json
+// Generated from example definition: 2024-12-01-preview/GetProvisionedClusterExample.json
 func ExampleConnectedClusterClient_Get_getProvisionedClusterExample() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armhybridkubernetes.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armhybridkubernetes.NewClientFactory("1bfbb5d0-917e-4346-9026-1d3b344417f5", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,23 +26,23 @@ func ExampleConnectedClusterClient_Get_getProvisionedClusterExample() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ConnectedCluster = armhybridkubernetes.ConnectedCluster{
-	// 	Name: to.Ptr("connectedCluster1"),
-	// 	Type: to.Ptr("Microsoft.Kubernetes/connectedClusters"),
-	// 	ID: to.Ptr("/subscriptions/1bfbb5d0-917e-4346-9026-1d3b344417f5/resourceGroups/akkeshar/providers/Microsoft.Kubernetes/connectedClusters/connectedCluster1"),
-	// 	Location: to.Ptr("East US"),
-	// 	Tags: map[string]*string{
-	// 	},
-	// 	Identity: &armhybridkubernetes.ConnectedClusterIdentity{
-	// 		Type: to.Ptr(armhybridkubernetes.ResourceIdentityTypeSystemAssigned),
-	// 		PrincipalID: to.Ptr("d8cd1fd9-154f-4da7-b348-595f283c13a3"),
-	// 		TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-	// 	},
-	// 	Kind: to.Ptr(armhybridkubernetes.ConnectedClusterKindProvisionedCluster),
-	// 	Properties: &armhybridkubernetes.ConnectedClusterProperties{
-	// 		AADProfile: &armhybridkubernetes.AADProfile{
-	// 			AdminGroupObjectIDs: []*string{
-	// 				to.Ptr("56f988bf-86f1-41af-91ab-2d7cd011db47")},
+	// res = armhybridkubernetes.ConnectedClusterClientGetResponse{
+	// 	ConnectedCluster: &armhybridkubernetes.ConnectedCluster{
+	// 		Name: to.Ptr("connectedCluster1"),
+	// 		Type: to.Ptr("Microsoft.Kubernetes/connectedClusters"),
+	// 		ID: to.Ptr("/subscriptions/1bfbb5d0-917e-4346-9026-1d3b344417f5/resourceGroups/akkeshar/providers/Microsoft.Kubernetes/connectedClusters/connectedCluster1"),
+	// 		Identity: &armhybridkubernetes.ConnectedClusterIdentity{
+	// 			Type: to.Ptr(armhybridkubernetes.ResourceIdentityTypeSystemAssigned),
+	// 			PrincipalID: to.Ptr("d8cd1fd9-154f-4da7-b348-595f283c13a3"),
+	// 			TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 		},
+	// 		Kind: to.Ptr(armhybridkubernetes.ConnectedClusterKindProvisionedCluster),
+	// 		Location: to.Ptr("East US"),
+	// 		Properties: &armhybridkubernetes.ConnectedClusterProperties{
+	// 			AADProfile: &armhybridkubernetes.AADProfile{
+	// 				AdminGroupObjectIDs: []*string{
+	// 					to.Ptr("56f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 				},
 	// 				EnableAzureRBAC: to.Ptr(true),
 	// 				TenantID: to.Ptr("82f988bf-86f1-41af-91ab-2d7cd011db47"),
 	// 			},
@@ -58,7 +58,8 @@ func ExampleConnectedClusterClient_Get_getProvisionedClusterExample() {
 	// 						CurrentVersion: to.Ptr("0.1.0"),
 	// 						MajorVersion: to.Ptr[int32](0),
 	// 						UserSpecifiedVersion: to.Ptr("0.1.1"),
-	// 				}},
+	// 					},
+	// 				},
 	// 			},
 	// 			AzureHybridBenefit: to.Ptr(armhybridkubernetes.AzureHybridBenefitNotApplicable),
 	// 			Distribution: to.Ptr("AKS"),
@@ -73,12 +74,15 @@ func ExampleConnectedClusterClient_Get_getProvisionedClusterExample() {
 	// 			TotalNodeCount: to.Ptr[int32](2),
 	// 		},
 	// 		SystemData: &armhybridkubernetes.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:06:33.917Z"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:06:33.9173186Z"); return t}()),
 	// 			CreatedBy: to.Ptr("sikasire@microsoft.com"),
 	// 			CreatedByType: to.Ptr(armhybridkubernetes.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:14:58.865Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:14:58.865041Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("2d2a754c-cade-4935-83d4-ce413c5a3910"),
-	// 			LastModifiedByType: to.Ptr(armhybridkubernetes.LastModifiedByTypeApplication),
+	// 			LastModifiedByType: to.Ptr(armhybridkubernetes.CreatedByTypeApplication),
 	// 		},
-	// 	}
+	// 		Tags: map[string]*string{
+	// 		},
+	// 	},
+	// }
 }

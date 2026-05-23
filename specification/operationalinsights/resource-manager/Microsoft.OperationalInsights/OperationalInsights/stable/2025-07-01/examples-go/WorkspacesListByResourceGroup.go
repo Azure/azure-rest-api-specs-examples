@@ -5,21 +5,21 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/53d56e4ec74156c450d1e51745a971d3f2031dd7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesListByResourceGroup.json
-func ExampleDeletedWorkspacesClient_NewListByResourceGroupPager() {
+// Generated from example definition: 2025-07-01/WorkspacesListByResourceGroup.json
+func ExampleWorkspacesClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewDeletedWorkspacesClient().NewListByResourceGroupPager("oiautorest6685", nil)
+	pager := clientFactory.NewWorkspacesClient().NewListByResourceGroupPager("oiautorest6685", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -30,27 +30,30 @@ func ExampleDeletedWorkspacesClient_NewListByResourceGroupPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.WorkspaceListResult = armoperationalinsights.WorkspaceListResult{
-		// 	Value: []*armoperationalinsights.Workspace{
-		// 		{
-		// 			Name: to.Ptr("AzTest2170"),
-		// 			Type: to.Ptr("Microsoft.OperationalInsights/workspaces"),
-		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/oiautorest6685/providers/microsoft.operationalinsights/workspaces/aztest2170"),
-		// 			Location: to.Ptr("australiasoutheast"),
-		// 			Tags: map[string]*string{
-		// 				"tag1": to.Ptr("val1"),
-		// 			},
-		// 			Properties: &armoperationalinsights.WorkspaceProperties{
-		// 				CustomerID: to.Ptr("bc089d7b-485c-4aff-a71e-c00f362d8d2f"),
-		// 				ProvisioningState: to.Ptr(armoperationalinsights.WorkspaceEntityStatusSucceeded),
-		// 				PublicNetworkAccessForIngestion: to.Ptr(armoperationalinsights.PublicNetworkAccessTypeEnabled),
-		// 				PublicNetworkAccessForQuery: to.Ptr(armoperationalinsights.PublicNetworkAccessTypeEnabled),
-		// 				RetentionInDays: to.Ptr[int32](30),
-		// 				SKU: &armoperationalinsights.WorkspaceSKU{
-		// 					Name: to.Ptr(armoperationalinsights.WorkspaceSKUNameEnumPerGB2018),
+		// page = armoperationalinsights.WorkspacesClientListByResourceGroupResponse{
+		// 	WorkspaceListResult: armoperationalinsights.WorkspaceListResult{
+		// 		Value: []*armoperationalinsights.Workspace{
+		// 			{
+		// 				Name: to.Ptr("AzTest2170"),
+		// 				Type: to.Ptr("Microsoft.OperationalInsights/workspaces"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/oiautorest6685/providers/microsoft.operationalinsights/workspaces/aztest2170"),
+		// 				Location: to.Ptr("australiasoutheast"),
+		// 				Properties: &armoperationalinsights.WorkspaceProperties{
+		// 					CustomerID: to.Ptr("bc089d7b-485c-4aff-a71e-c00f362d8d2f"),
+		// 					ProvisioningState: to.Ptr(armoperationalinsights.WorkspaceEntityStatusSucceeded),
+		// 					PublicNetworkAccessForIngestion: to.Ptr(armoperationalinsights.PublicNetworkAccessTypeEnabled),
+		// 					PublicNetworkAccessForQuery: to.Ptr(armoperationalinsights.PublicNetworkAccessTypeEnabled),
+		// 					RetentionInDays: to.Ptr[int32](30),
+		// 					SKU: &armoperationalinsights.WorkspaceSKU{
+		// 						Name: to.Ptr(armoperationalinsights.WorkspaceSKUNameEnumPerGB2018),
+		// 					},
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"tag1": to.Ptr("val1"),
 		// 				},
 		// 			},
-		// 	}},
+		// 		},
+		// 	},
 		// }
 	}
 }

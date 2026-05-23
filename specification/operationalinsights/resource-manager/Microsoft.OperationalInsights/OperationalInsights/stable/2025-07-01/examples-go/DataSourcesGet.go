@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/53d56e4ec74156c450d1e51745a971d3f2031dd7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/DataSourcesGet.json
+// Generated from example definition: 2025-07-01/DataSourcesGet.json
 func ExampleDataSourcesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,14 +26,16 @@ func ExampleDataSourcesClient_Get() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.DataSource = armoperationalinsights.DataSource{
-	// 	Name: to.Ptr("AzTestDS774"),
-	// 	Type: to.Ptr("Microsoft.OperationalInsights/workspaces/datasources"),
-	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000005/resourceGroups/OIAutoRest5123/providers/Microsoft.OperationalInsights/workspaces/AzTest9724/datasources/AzTestDS774"),
-	// 	Etag: to.Ptr("W/\"datetime'2017-10-01T08%3A01%3A21.2351243Z'\""),
-	// 	Kind: to.Ptr(armoperationalinsights.DataSourceKindAzureActivityLog),
-	// 	Properties: map[string]any{
-	// 		"linkedResourceId": "/subscriptions/00000000-0000-0000-0000-00000000000/providers/microsoft.insights/eventtypes/management",
+	// res = armoperationalinsights.DataSourcesClientGetResponse{
+	// 	DataSource: armoperationalinsights.DataSource{
+	// 		Name: to.Ptr("AzTestDS774"),
+	// 		Type: to.Ptr("Microsoft.OperationalInsights/workspaces/datasources"),
+	// 		Etag: to.Ptr("W/\"datetime'2017-10-01T08%3A01%3A21.2351243Z'\""),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000005/resourceGroups/OIAutoRest5123/providers/Microsoft.OperationalInsights/workspaces/AzTest9724/datasources/AzTestDS774"),
+	// 		Kind: to.Ptr(armoperationalinsights.DataSourceKindAzureActivityLog),
+	// 		Properties: map[string]any{
+	// 			"linkedResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.insights/eventtypes/management",
+	// 		},
 	// 	},
 	// }
 }

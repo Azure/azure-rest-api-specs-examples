@@ -6,17 +6,17 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/53d56e4ec74156c450d1e51745a971d3f2031dd7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesPurge.json
+// Generated from example definition: 2025-07-01/WorkspacesPurge.json
 func ExampleWorkspacePurgeClient_Purge_workspacePurge() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -26,7 +26,8 @@ func ExampleWorkspacePurgeClient_Purge_workspacePurge() {
 				Column:   to.Ptr("TimeGenerated"),
 				Operator: to.Ptr(">"),
 				Value:    "2017-09-01T00:00:00",
-			}},
+			},
+		},
 		Table: to.Ptr("Heartbeat"),
 	}, nil)
 	if err != nil {

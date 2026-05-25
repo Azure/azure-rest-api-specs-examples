@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.containerservice.models.RunCommandRequest;
+
+/**
+ * Samples for ManagedClusters RunCommand.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02-preview/RunCommandRequest.json
+     */
+    /**
+     * Sample code: submitNewCommand.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void submitNewCommand(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getManagedClusters().runCommand("rg1", "clustername1", new RunCommandRequest()
+            .withCommand("kubectl apply -f ns.yaml").withContext("").withClusterToken("fakeTokenPlaceholder"),
+            com.azure.core.util.Context.NONE);
+    }
+}

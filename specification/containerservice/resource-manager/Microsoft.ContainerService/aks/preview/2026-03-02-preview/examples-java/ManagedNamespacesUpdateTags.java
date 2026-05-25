@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.containerservice.models.TagsObject;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ManagedNamespaces Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02-preview/ManagedNamespacesUpdateTags.json
+     */
+    /**
+     * Sample code: Update Managed Namespace Tags.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void
+        updateManagedNamespaceTags(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getManagedNamespaces().updateWithResponse("rg1", "clustername1", "namespace1",
+            new TagsObject().withTags(mapOf("tagKey1", "fakeTokenPlaceholder", "tagKey2", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.containerservice.models.RebalanceLoadBalancersRequestBody;
+import java.util.Arrays;
+
+/**
+ * Samples for ManagedClusters RebalanceLoadBalancers.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02-preview/LoadBalancers_Rebalance.json
+     */
+    /**
+     * Sample code: Rebalance Load Balancers of a Managed Cluster.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void rebalanceLoadBalancersOfAManagedCluster(
+        com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getManagedClusters().rebalanceLoadBalancers("rg1", "clustername1",
+            new RebalanceLoadBalancersRequestBody().withLoadBalancerNames(Arrays.asList("kubernetes")),
+            com.azure.core.util.Context.NONE);
+    }
+}

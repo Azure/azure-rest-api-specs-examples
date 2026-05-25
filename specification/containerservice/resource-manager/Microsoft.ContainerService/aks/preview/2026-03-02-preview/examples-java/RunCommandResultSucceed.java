@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ManagedClusters GetCommandResult.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02-preview/RunCommandResultSucceed.json
+     */
+    /**
+     * Sample code: commandSucceedResult.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void
+        commandSucceedResult(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getManagedClusters().getCommandResultWithResponse("rg1", "clustername1",
+            "def7b3ea71bd4f7e9d226ddbc0f00ad9", com.azure.core.util.Context.NONE);
+    }
+}

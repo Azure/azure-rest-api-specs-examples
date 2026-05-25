@@ -1,0 +1,42 @@
+const { ContainerServiceClient } = require("@azure/arm-containerservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates a managed cluster.
+ *
+ * @summary creates or updates a managed cluster.
+ * x-ms-original-file: 2026-03-02-preview/ManagedClustersCreate_ControlPlaneScalingProfile.json
+ */
+async function createManagedClusterWithControlPlaneScalingProfile() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ContainerServiceClient(credential, subscriptionId);
+  const result = await client.managedClusters.createOrUpdate("rg1", "clustername1", {
+    location: "location1",
+    agentPoolProfiles: [
+      {
+        name: "nodepool1",
+        type: "VirtualMachineScaleSets",
+        count: 3,
+        enableNodePublicIP: true,
+        mode: "System",
+        osType: "Linux",
+        vmSize: "Standard_DS2_v2",
+      },
+    ],
+    controlPlaneScalingProfile: { scalingSize: "H4" },
+    dnsPrefix: "dnsprefix1",
+    kubernetesVersion: "1.33.0",
+    linuxProfile: { adminUsername: "azureuser", ssh: { publicKeys: [{ keyData: "keydata" }] } },
+    networkProfile: {
+      loadBalancerProfile: { managedOutboundIPs: { count: 2 } },
+      loadBalancerSku: "standard",
+      networkPlugin: "azure",
+      networkPluginMode: "overlay",
+      outboundType: "loadBalancer",
+    },
+    sku: { name: "Base", tier: "Standard" },
+    tags: { archv2: "", tier: "production" },
+  });
+  console.log(result);
+}

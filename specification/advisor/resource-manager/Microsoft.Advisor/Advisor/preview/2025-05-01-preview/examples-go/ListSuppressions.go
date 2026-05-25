@@ -1,0 +1,61 @@
+package armadvisor_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor/v2"
+)
+
+// Generated from example definition: 2025-05-01-preview/ListSuppressions.json
+func ExampleSuppressionsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armadvisor.NewClientFactory("a5481ee1-95df-47d0-85d4-dd3f0dfa19bc", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewSuppressionsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armadvisor.SuppressionsClientListResponse{
+		// 	SuppressionContractListResult: armadvisor.SuppressionContractListResult{
+		// 		NextLink: to.Ptr("https://management.azure.com/subscriptions/a5481ee1-95df-47d0-85d4-dd3f0dfa19bc/providers/microsoft.Advisor/suppressions?api-version=2025-05-01-preview&$top=3&$skiptoken=skiptoken"),
+		// 		Value: []*armadvisor.SuppressionContract{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/a5481ee1-95df-47d0-85d4-dd3f0dfa19bc/resourceGroups/resourceGroup/providers/Microsoft.Compute/availabilitysets/armavset/providers/Microsoft.Advisor/recommendations/1b266c91-3a92-4423-8aa2-ee13a6d90f47/suppressions/HardcodedSuppressionName"),
+		// 				Name: to.Ptr("HardcodedSuppressionName"),
+		// 				Type: to.Ptr("Microsoft.Advisor/suppressions"),
+		// 				Properties: &armadvisor.SuppressionProperties{
+		// 					SuppressionID: to.Ptr("58403b0e-113b-e428-d6f7-2a524380b955"),
+		// 					TTL: to.Ptr("7.00:00:00"),
+		// 					ExpirationTimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-24T22:24:43.3216408Z"); return t}()),
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/a5481ee1-95df-47d0-85d4-dd3f0dfa19bc/resourceGroups/resourceGroup/providers/Microsoft.Compute/virtualMachines/xyz/providers/Microsoft.Advisor/recommendations/3385b5d0-b8cc-bdcf-0e0d-b5a3d1e9b93b/suppressions/HardcodedSuppressionName"),
+		// 				Name: to.Ptr("HardcodedSuppressionName"),
+		// 				Type: to.Ptr("Microsoft.Advisor/suppressions"),
+		// 				Properties: &armadvisor.SuppressionProperties{
+		// 					SuppressionID: to.Ptr("72a23574-d49a-84d0-0a7d-fb3fe6cba16b"),
+		// 					TTL: to.Ptr("7.00:00:00"),
+		// 					ExpirationTimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-25T22:24:43.3216408Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

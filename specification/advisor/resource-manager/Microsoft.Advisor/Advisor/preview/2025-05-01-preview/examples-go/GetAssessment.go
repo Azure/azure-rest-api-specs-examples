@@ -1,0 +1,56 @@
+package armadvisor_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor/v2"
+)
+
+// Generated from example definition: 2025-05-01-preview/GetAssessment.json
+func ExampleAssessmentsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armadvisor.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewAssessmentsClient().Get(ctx, "assessment1", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armadvisor.AssessmentsClientGetResponse{
+	// 	AssessmentResult: armadvisor.AssessmentResult{
+	// 		ID: to.Ptr("/subscriptions/2f2edd23-bded-4c8d-bdef-1f32a9b83f84/providers/Microsoft.Advisor/assessments/MCWAR1"),
+	// 		Name: to.Ptr("MCWAR1"),
+	// 		Type: to.Ptr("Microsoft.Advisor/assessments"),
+	// 		SystemData: &armadvisor.SystemData{
+	// 			CreatedBy: to.Ptr("string"),
+	// 			CreatedByType: to.Ptr(armadvisor.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T04:41:33.937Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("string"),
+	// 			LastModifiedByType: to.Ptr(armadvisor.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T04:41:33.937Z"); return t}()),
+	// 		},
+	// 		Properties: &armadvisor.AssessmentResultProperties{
+	// 			WorkloadID: to.Ptr("f72b7134-800f-4f1b-a5bd-691e2140c7d5"),
+	// 			WorkloadName: to.Ptr("Workload1"),
+	// 			AssessmentID: to.Ptr("fa5cb863-6ed4-4b6b-8c72-06f847cac885"),
+	// 			Description: to.Ptr("Evaluate your mission critical workloads by assessing the technical design"),
+	// 			TypeID: to.Ptr("23513bdb-e8a2-4f0b-8b6b-191ee1f52d34"),
+	// 			Type: to.Ptr("Mission Critical Well-Architected Review"),
+	// 			TypeVersion: to.Ptr("20221031192816.497"),
+	// 			Locale: to.Ptr("en-us"),
+	// 			Score: to.Ptr[int32](60),
+	// 			State: to.Ptr("InProgress"),
+	// 		},
+	// 	},
+	// }
+}

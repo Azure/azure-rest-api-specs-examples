@@ -1,0 +1,109 @@
+package armadvisor_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor/v2"
+)
+
+// Generated from example definition: 2025-05-01-preview/ListRecommendationMetadata.json
+func ExampleRecommendationMetadataClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armadvisor.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewRecommendationMetadataClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armadvisor.RecommendationMetadataClientListResponse{
+		// 	MetadataEntityListResult: armadvisor.MetadataEntityListResult{
+		// 		NextLink: to.Ptr("https://management.azure.com/providers/Microsoft.Advisor/metadata?api-version=2025-05-01-preview&$skipToken=abc123"),
+		// 		Value: []*armadvisor.MetadataEntity{
+		// 			{
+		// 				ID: to.Ptr("/providers/Microsoft.Advisor/metadata/recommendationType"),
+		// 				Name: to.Ptr("recommendationType"),
+		// 				Type: to.Ptr("Microsoft.Advisor/metadata"),
+		// 				Properties: &armadvisor.MetadataEntityProperties{
+		// 					DisplayName: to.Ptr("Recommendation Type"),
+		// 					DependsOn: []*string{
+		// 						to.Ptr("category"),
+		// 						to.Ptr("impact"),
+		// 					},
+		// 					ApplicableScenarios: []*armadvisor.Scenario{
+		// 						to.Ptr(armadvisor.ScenarioAlerts),
+		// 					},
+		// 					SupportedValues: []*armadvisor.MetadataSupportedValueDetail{
+		// 						{
+		// 							ID: to.Ptr("6a2b1e70-bd4c-4163-86de-5243d7ac05ee"),
+		// 							DisplayName: to.Ptr("Upgrade your SKU or add more instances to ensure fault tolerance"),
+		// 						},
+		// 						{
+		// 							ID: to.Ptr("da6630fb-4286-4996-92a3-a43f5f26dd34"),
+		// 							DisplayName: to.Ptr("Delete ExpressRoute circuits in the provider status of Not Provisioned"),
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/providers/Microsoft.Advisor/metadata/recommendationCategory"),
+		// 				Name: to.Ptr("recommendationCategory"),
+		// 				Type: to.Ptr("Microsoft.Advisor/metadata"),
+		// 				Properties: &armadvisor.MetadataEntityProperties{
+		// 					DisplayName: to.Ptr("Category"),
+		// 					ApplicableScenarios: []*armadvisor.Scenario{
+		// 						to.Ptr(armadvisor.ScenarioAlerts),
+		// 					},
+		// 					SupportedValues: []*armadvisor.MetadataSupportedValueDetail{
+		// 						{
+		// 							ID: to.Ptr("Cost"),
+		// 							DisplayName: to.Ptr("Cost"),
+		// 						},
+		// 						{
+		// 							ID: to.Ptr("Performance"),
+		// 							DisplayName: to.Ptr("Performance"),
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/providers/Microsoft.Advisor/metadata/recommendationImpact"),
+		// 				Name: to.Ptr("recommendationImpact"),
+		// 				Type: to.Ptr("Microsoft.Advisor/metadata"),
+		// 				Properties: &armadvisor.MetadataEntityProperties{
+		// 					DisplayName: to.Ptr("Impact"),
+		// 					SupportedValues: []*armadvisor.MetadataSupportedValueDetail{
+		// 						{
+		// 							ID: to.Ptr("High"),
+		// 							DisplayName: to.Ptr("High"),
+		// 						},
+		// 						{
+		// 							ID: to.Ptr("Medium"),
+		// 							DisplayName: to.Ptr("Medium"),
+		// 						},
+		// 						{
+		// 							ID: to.Ptr("Low"),
+		// 							DisplayName: to.Ptr("Low"),
+		// 						},
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

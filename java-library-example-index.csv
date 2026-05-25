@@ -6701,3 +6701,4 @@ id,name,language,tag,package,version,date_epoch,date
 6700,@azure/arm-containerservice@25.3.0-beta.1,js,@azure/arm-containerservice_25.3.0-beta.1,@azure/arm-containerservice,25.3.0-beta.1,1779681032,05/25/2026
 6701,azure-mgmt-consumption@11.0.0b2,python,azure-mgmt-consumption_11.0.0b2,azure-mgmt-consumption,11.0.0b2,1779702950,05/25/2026
 6702,azure-mgmt-cdn@14.0.0b1,python,azure-mgmt-cdn_14.0.0b1,azure-mgmt-cdn,14.0.0b1,1779692324,05/25/2026
+6703,azure-mgmt-redis@15.0.0b1,python,azure-mgmt-redis_15.0.0b1,azure-mgmt-redis,15.0.0b1,1779692288,05/25/2026

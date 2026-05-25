@@ -1,0 +1,204 @@
+package armchaos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v2"
+)
+
+// Generated from example definition: 2026-05-01-preview/Scenarios_CreateOrUpdate.json
+func ExampleScenariosClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armchaos.NewClientFactory("6b052e15-03d3-4f17-b2e1-be7f07588291", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewScenariosClient().CreateOrUpdate(ctx, "exampleRG", "exampleWorkspace", "zoneDownScenario", armchaos.Scenario{
+		Properties: &armchaos.ScenarioProperties{
+			Description: to.Ptr("Induces an outage of all discovered VM and VMSS instances in the target zone with an option to invoke custom scripted actions using Automation Runbooks. Additionally, it forces failover of discovered Redis instances to simulate backend zonal outage."),
+			Parameters: []*armchaos.ScenarioParameter{
+				{
+					Name:        to.Ptr("duration"),
+					Type:        to.Ptr(armchaos.ParameterTypeString),
+					Default:     to.Ptr("PT15M"),
+					Required:    to.Ptr(false),
+					Description: to.Ptr("The duration of the outage scenario."),
+				},
+				{
+					Name:        to.Ptr("customRunbook1ResourceId"),
+					Type:        to.Ptr(armchaos.ParameterTypeString),
+					Required:    to.Ptr(false),
+					Description: to.Ptr("Optional custom runbook 1 resource ID. If not provided, this action will be skipped."),
+				},
+				{
+					Name:        to.Ptr("customRunbook1ParametersJson"),
+					Type:        to.Ptr(armchaos.ParameterTypeString),
+					Required:    to.Ptr(false),
+					Default:     to.Ptr("{}"),
+					Description: to.Ptr("Optional custom runbook 1 parameters in JSON format."),
+				},
+			},
+			Actions: []*armchaos.ScenarioAction{
+				{
+					Name:        to.Ptr("vmssZoneDown"),
+					ActionID:    to.Ptr("urn:csci:microsoft:compute:shutdown/1.0.0"),
+					Description: to.Ptr("Force shutdown VMSS instances in target zone"),
+					Duration:    to.Ptr("%%{parameters.duration}%%"),
+					Parameters: []*armchaos.KeyValuePair{
+						{
+							Key:   to.Ptr("zones"),
+							Value: to.Ptr("%%{filters.zones}%%"),
+						},
+					},
+				},
+				{
+					Name:        to.Ptr("vmZoneDown"),
+					ActionID:    to.Ptr("urn:csci:microsoft:compute:shutdown/1.0.0"),
+					Description: to.Ptr("Force shutdown VM instances in target zone"),
+					Duration:    to.Ptr("%%{parameters.duration}%%"),
+					Parameters: []*armchaos.KeyValuePair{
+						{
+							Key:   to.Ptr("zones"),
+							Value: to.Ptr("%%{filters.zones}%%"),
+						},
+					},
+				},
+				{
+					Name:        to.Ptr("redisFailover"),
+					ActionID:    to.Ptr("urn:csci:microsoft:azureClusteredCacheForRedis:Reboot/1.0.0"),
+					Description: to.Ptr("Force failover of Redis instances to simulate backend zonal outage"),
+					Duration:    to.Ptr("PT5M"),
+					Parameters: []*armchaos.KeyValuePair{
+						{
+							Key:   to.Ptr("RebootType"),
+							Value: to.Ptr("PrimaryNode"),
+						},
+					},
+				},
+				{
+					Name:        to.Ptr("custom-runbook-1"),
+					ActionID:    to.Ptr("urn:csci:microsoft:Automation:StartRunbook/1.0.0"),
+					Description: to.Ptr("Custom Runbook 1"),
+					Duration:    to.Ptr("PT30M"),
+					Parameters: []*armchaos.KeyValuePair{
+						{
+							Key:   to.Ptr("RunbookParameters"),
+							Value: to.Ptr("%%{parameters.customRunbook1ParametersJson}%%"),
+						},
+					},
+					ExternalResource: &armchaos.ExternalResource{
+						ResourceID: to.Ptr("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Automation/automationAccounts/exampleAutomationAccount/runbooks/exampleRunbook"),
+					},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armchaos.ScenariosClientCreateOrUpdateResponse{
+	// 	Scenario: armchaos.Scenario{
+	// 		ID: to.Ptr("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Chaos/workspaces/exampleWorkspace/scenarios/zoneDownScenario"),
+	// 		Name: to.Ptr("zoneDownScenario"),
+	// 		Type: to.Ptr("Microsoft.Chaos/workspaces/scenarios"),
+	// 		Properties: &armchaos.ScenarioProperties{
+	// 			ProvisioningState: to.Ptr(armchaos.ProvisioningStateSucceeded),
+	// 			Version: to.Ptr("1.0"),
+	// 			Description: to.Ptr("Induces an outage of all discovered VM and VMSS instances in the target zone with an option to invoke custom scripted actions using Automation Runbooks. Additionally, it forces failover of discovered Redis instances to simulate backend zonal outage."),
+	// 			Parameters: []*armchaos.ScenarioParameter{
+	// 				{
+	// 					Name: to.Ptr("duration"),
+	// 					Type: to.Ptr(armchaos.ParameterTypeString),
+	// 					Default: to.Ptr("PT15M"),
+	// 					Required: to.Ptr(false),
+	// 					Description: to.Ptr("The duration of the outage scenario."),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("customRunbook1ResourceId"),
+	// 					Type: to.Ptr(armchaos.ParameterTypeString),
+	// 					Required: to.Ptr(false),
+	// 					Description: to.Ptr("Optional custom runbook 1 resource ID. If not provided, this action will be skipped."),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("customRunbook1ParametersJson"),
+	// 					Type: to.Ptr(armchaos.ParameterTypeString),
+	// 					Required: to.Ptr(false),
+	// 					Default: to.Ptr("{}"),
+	// 					Description: to.Ptr("Optional custom runbook 1 parameters in JSON format."),
+	// 				},
+	// 			},
+	// 			Actions: []*armchaos.ScenarioAction{
+	// 				{
+	// 					Name: to.Ptr("vmssZoneDown"),
+	// 					ActionID: to.Ptr("urn:csci:microsoft:compute:shutdown/1.0.0"),
+	// 					Description: to.Ptr("Force shutdown VMSS instances in target zone"),
+	// 					Duration: to.Ptr("%%{parameters.duration}%%"),
+	// 					Parameters: []*armchaos.KeyValuePair{
+	// 						{
+	// 							Key: to.Ptr("zones"),
+	// 							Value: to.Ptr("%%{filters.zones}%%"),
+	// 						},
+	// 					},
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("vmZoneDown"),
+	// 					ActionID: to.Ptr("urn:csci:microsoft:compute:shutdown/1.0.0"),
+	// 					Description: to.Ptr("Force shutdown VM instances in target zone"),
+	// 					Duration: to.Ptr("%%{parameters.duration}%%"),
+	// 					Parameters: []*armchaos.KeyValuePair{
+	// 						{
+	// 							Key: to.Ptr("zones"),
+	// 							Value: to.Ptr("%%{filters.zones}%%"),
+	// 						},
+	// 					},
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("redisFailover"),
+	// 					ActionID: to.Ptr("urn:csci:microsoft:azureClusteredCacheForRedis:Reboot/1.0.0"),
+	// 					Description: to.Ptr("Force failover of Redis instances to simulate backend zonal outage"),
+	// 					Duration: to.Ptr("PT5M"),
+	// 					Parameters: []*armchaos.KeyValuePair{
+	// 						{
+	// 							Key: to.Ptr("RebootType"),
+	// 							Value: to.Ptr("PrimaryNode"),
+	// 						},
+	// 					},
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("custom-runbook-1"),
+	// 					ActionID: to.Ptr("urn:csci:microsoft:Automation:StartRunbook/1.0.0"),
+	// 					Description: to.Ptr("Custom Runbook 1"),
+	// 					Duration: to.Ptr("PT30M"),
+	// 					Parameters: []*armchaos.KeyValuePair{
+	// 						{
+	// 							Key: to.Ptr("RunbookParameters"),
+	// 							Value: to.Ptr("%%{parameters.customRunbook1ParametersJson}%%"),
+	// 						},
+	// 					},
+	// 					ExternalResource: &armchaos.ExternalResource{
+	// 						ResourceID: to.Ptr("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Automation/automationAccounts/exampleAutomationAccount/runbooks/exampleRunbook"),
+	// 					},
+	// 				},
+	// 			},
+	// 		},
+	// 		SystemData: &armchaos.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-01-15T10:30:00.000Z"); return t}()),
+	// 			CreatedBy: to.Ptr("admin@contoso.com"),
+	// 			CreatedByType: to.Ptr(armchaos.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-01-15T10:30:00.000Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("admin@contoso.com"),
+	// 			LastModifiedByType: to.Ptr(armchaos.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

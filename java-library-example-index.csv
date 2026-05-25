@@ -6692,3 +6692,4 @@ id,name,language,tag,package,version,date_epoch,date
 6691,azure-mgmt-resource-subscriptions@1.0.0b2,python,azure-mgmt-resource-subscriptions_1.0.0b2,azure-mgmt-resource-subscriptions,1.0.0b2,1779438287,05/22/2026
 6692,azure-mgmt-extendedlocation@3.0.0b1,python,azure-mgmt-extendedlocation_3.0.0b1,azure-mgmt-extendedlocation,3.0.0b1,1779437650,05/22/2026
 6693,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerplatform/armpowerplatform@v0.4.0,go,sdk/resourcemanager/powerplatform/armpowerplatform/v0.4.0,sdk/resourcemanager/powerplatform/armpowerplatform,v0.4.0,1779700454,05/25/2026
+6694,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor/v2@v2.0.0-beta.1,go,sdk/resourcemanager/advisor/armadvisor/v2.0.0-beta.1,sdk/resourcemanager/advisor/armadvisor,v2.0.0-beta.1,1779698794,05/25/2026

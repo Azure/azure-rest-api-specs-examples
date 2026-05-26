@@ -6704,3 +6704,4 @@ id,name,language,tag,package,version,date_epoch,date
 6703,azure-mgmt-redis@15.0.0b1,python,azure-mgmt-redis_15.0.0b1,azure-mgmt-redis,15.0.0b1,1779692288,05/25/2026
 6704,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.0-beta.1,1779682810,05/25/2026
 6705,"Azure.ResourceManager.Storage,1.7.0",dotnet,Azure.ResourceManager.Storage_1.7.0,Azure.ResourceManager.Storage,1.7.0,1779685330,05/25/2026
+6706,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity@v0.15.0,go,sdk/resourcemanager/security/armsecurity/v0.15.0,sdk/resourcemanager/security/armsecurity,v0.15.0,1779783089,05/26/2026

@@ -1,0 +1,61 @@
+package armapimanagement_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement/v4"
+)
+
+// Generated from example definition: 2025-09-01-preview/ApiManagementListNotificationRecipientEmails.json
+func ExampleNotificationRecipientEmailClient_ListByNotification() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armapimanagement.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewNotificationRecipientEmailClient().ListByNotification(ctx, "rg1", "apimService1", armapimanagement.NotificationNameRequestPublisherNotificationMessage, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armapimanagement.NotificationRecipientEmailClientListByNotificationResponse{
+	// 	RecipientEmailCollection: armapimanagement.RecipientEmailCollection{
+	// 		Count: to.Ptr[int64](3),
+	// 		NextLink: to.Ptr(""),
+	// 		Value: []*armapimanagement.RecipientEmailContract{
+	// 			{
+	// 				Name: to.Ptr("contoso@live.com"),
+	// 				Type: to.Ptr("Microsoft.ApiManagement/service/notifications/recipientEmails"),
+	// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/notifications/RequestPublisherNotificationMessage/recipientEmails/contoso@live.com"),
+	// 				Properties: &armapimanagement.RecipientEmailContractProperties{
+	// 					Email: to.Ptr("contoso@live.com"),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("foobar!live"),
+	// 				Type: to.Ptr("Microsoft.ApiManagement/service/notifications/recipientEmails"),
+	// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/notifications/RequestPublisherNotificationMessage/recipientEmails/foobar!live"),
+	// 				Properties: &armapimanagement.RecipientEmailContractProperties{
+	// 					Email: to.Ptr("foobar!live"),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("foobar@live.com"),
+	// 				Type: to.Ptr("Microsoft.ApiManagement/service/notifications/recipientEmails"),
+	// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/notifications/RequestPublisherNotificationMessage/recipientEmails/foobar@live.com"),
+	// 				Properties: &armapimanagement.RecipientEmailContractProperties{
+	// 					Email: to.Ptr("foobar@live.com"),
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

@@ -6706,3 +6706,4 @@ id,name,language,tag,package,version,date_epoch,date
 6705,"Azure.ResourceManager.Storage,1.7.0",dotnet,Azure.ResourceManager.Storage_1.7.0,Azure.ResourceManager.Storage,1.7.0,1779685330,05/25/2026
 6706,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity@v0.15.0,go,sdk/resourcemanager/security/armsecurity/v0.15.0,sdk/resourcemanager/security/armsecurity,v0.15.0,1779783089,05/26/2026
 6707,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation@v0.10.0,go,sdk/resourcemanager/automation/armautomation/v0.10.0,sdk/resourcemanager/automation/armautomation,v0.10.0,1779781211,05/26/2026
+6708,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement/v4@v4.0.0-beta.1,go,sdk/resourcemanager/apimanagement/armapimanagement/v4.0.0-beta.1,sdk/resourcemanager/apimanagement/armapimanagement,v4.0.0-beta.1,1779779943,05/26/2026

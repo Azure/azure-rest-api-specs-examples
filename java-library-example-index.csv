@@ -6713,3 +6713,4 @@ id,name,language,tag,package,version,date_epoch,date
 6712,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations/v4@v4.0.0-beta.1,go,sdk/resourcemanager/reservations/armreservations/v4.0.0-beta.1,sdk/resourcemanager/reservations/armreservations,v4.0.0-beta.1,1779765194,05/26/2026
 6713,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billingbenefits/armbillingbenefits/v3@v3.0.0-beta.1,go,sdk/resourcemanager/billingbenefits/armbillingbenefits/v3.0.0-beta.1,sdk/resourcemanager/billingbenefits/armbillingbenefits,v3.0.0-beta.1,1779764606,05/26/2026
 6714,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/webpubsub/armwebpubsub@v1.4.0-beta.1,go,sdk/resourcemanager/webpubsub/armwebpubsub/v1.4.0-beta.1,sdk/resourcemanager/webpubsub/armwebpubsub,v1.4.0-beta.1,1779763129,05/26/2026
+6715,@azure/arm-serialconsole@3.0.0-beta.1,js,@azure/arm-serialconsole_3.0.0-beta.1,@azure/arm-serialconsole,3.0.0-beta.1,1779784512,05/26/2026

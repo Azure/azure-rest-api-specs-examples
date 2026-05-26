@@ -1,0 +1,130 @@
+package armreservations_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations/v4"
+)
+
+// Generated from example definition: 2022-11-01/GetOperations.json
+func ExampleOperationClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armreservations.NewClientFactory(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armreservations.OperationClientListResponse{
+		// 	OperationList: armreservations.OperationList{
+		// 		Value: []*armreservations.OperationResponse{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/read"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Read All Reservations"),
+		// 					Operation: to.Ptr("Get Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/write"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Create any Reservation"),
+		// 					Operation: to.Ptr("Create Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/action"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Update any Reservation"),
+		// 					Operation: to.Ptr("Update Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/delete"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Delete any Reservation"),
+		// 					Operation: to.Ptr("Delete Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/reservations/read"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Read All Reservations"),
+		// 					Operation: to.Ptr("Get Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/reservations/write"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Create any Reservation"),
+		// 					Operation: to.Ptr("Create Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/reservations/action"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Update any Reservation"),
+		// 					Operation: to.Ptr("Update Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/reservations/delete"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Delete any Reservation"),
+		// 					Operation: to.Ptr("Delete Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/reservationorders/reservations/revisions/read"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Read All Reservations"),
+		// 					Operation: to.Ptr("Get Reservations"),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.Capacity/register/action"),
+		// 				Display: &armreservations.OperationDisplay{
+		// 					Description: to.Ptr("Registers the Capacity resource provider and enables the creation of Capacity resources."),
+		// 					Operation: to.Ptr("Registers the Capacity Resource Provider."),
+		// 					Provider: to.Ptr("Microsoft Capacity"),
+		// 					Resource: to.Ptr("Reservations"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

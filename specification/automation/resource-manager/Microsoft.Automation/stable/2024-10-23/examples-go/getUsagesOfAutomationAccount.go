@@ -1,0 +1,70 @@
+package armautomation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
+)
+
+// Generated from example definition: 2024-10-23/getUsagesOfAutomationAccount.json
+func ExampleUsagesClient_NewListByAutomationAccountPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armautomation.NewClientFactory("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewUsagesClient().NewListByAutomationAccountPager("rg", "myAutomationAccount11", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armautomation.UsagesClientListByAutomationAccountResponse{
+		// 	UsageListResult: armautomation.UsageListResult{
+		// 		Value: []*armautomation.Usage{
+		// 			{
+		// 				Name: &armautomation.UsageCounterName{
+		// 					LocalizedValue: to.Ptr("AccountUsage"),
+		// 					Value: to.Ptr("AccountUsage"),
+		// 				},
+		// 				CurrentValue: to.Ptr[float64](0),
+		// 				Limit: to.Ptr[int64](500),
+		// 				ThrottleStatus: to.Ptr("NotThrottled"),
+		// 				Unit: to.Ptr("Minute"),
+		// 			},
+		// 			{
+		// 				Name: &armautomation.UsageCounterName{
+		// 					LocalizedValue: to.Ptr("SubscriptionUsage"),
+		// 					Value: to.Ptr("SubscriptionUsage"),
+		// 				},
+		// 				CurrentValue: to.Ptr[float64](429),
+		// 				Limit: to.Ptr[int64](500),
+		// 				ThrottleStatus: to.Ptr("NotThrottled"),
+		// 				Unit: to.Ptr("Minute"),
+		// 			},
+		// 			{
+		// 				Name: &armautomation.UsageCounterName{
+		// 					LocalizedValue: to.Ptr("DscSubscriptionUsage"),
+		// 					Value: to.Ptr("DscSubscriptionUsage"),
+		// 				},
+		// 				CurrentValue: to.Ptr[float64](8),
+		// 				Limit: to.Ptr[int64](5),
+		// 				ThrottleStatus: to.Ptr("ThrottledAtSubscriptionLevel"),
+		// 				Unit: to.Ptr("Count"),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

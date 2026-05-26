@@ -6716,3 +6716,4 @@ id,name,language,tag,package,version,date_epoch,date
 6715,@azure/arm-serialconsole@3.0.0-beta.1,js,@azure/arm-serialconsole_3.0.0-beta.1,@azure/arm-serialconsole,3.0.0-beta.1,1779784512,05/26/2026
 6716,@azure/arm-redisenterprisecache@5.0.0-beta.1,js,@azure/arm-redisenterprisecache_5.0.0-beta.1,@azure/arm-redisenterprisecache,5.0.0-beta.1,1779776643,05/26/2026
 6717,@azure/arm-attestation@3.0.0-beta.1,js,@azure/arm-attestation_3.0.0-beta.1,@azure/arm-attestation,3.0.0-beta.1,1779775075,05/26/2026
+6718,azure-mgmt-databoxedge@3.0.0b2,python,azure-mgmt-databoxedge_3.0.0b2,azure-mgmt-databoxedge,3.0.0b2,1779785243,05/26/2026

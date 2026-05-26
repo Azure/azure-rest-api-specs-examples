@@ -6691,3 +6691,16 @@ id,name,language,tag,package,version,date_epoch,date
 6690,azure-mgmt-resource-databoundaries@1.0.0b2,python,azure-mgmt-resource-databoundaries_1.0.0b2,azure-mgmt-resource-databoundaries,1.0.0b2,1779438290,05/22/2026
 6691,azure-mgmt-resource-subscriptions@1.0.0b2,python,azure-mgmt-resource-subscriptions_1.0.0b2,azure-mgmt-resource-subscriptions,1.0.0b2,1779438287,05/22/2026
 6692,azure-mgmt-extendedlocation@3.0.0b1,python,azure-mgmt-extendedlocation_3.0.0b1,azure-mgmt-extendedlocation,3.0.0b1,1779437650,05/22/2026
+6693,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerplatform/armpowerplatform@v0.4.0,go,sdk/resourcemanager/powerplatform/armpowerplatform/v0.4.0,sdk/resourcemanager/powerplatform/armpowerplatform,v0.4.0,1779700454,05/25/2026
+6694,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor/v2@v2.0.0-beta.1,go,sdk/resourcemanager/advisor/armadvisor/v2.0.0-beta.1,sdk/resourcemanager/advisor/armadvisor,v2.0.0-beta.1,1779698794,05/25/2026
+6695,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/guestconfiguration/armguestconfiguration/v2@v2.0.0-beta.1,go,sdk/resourcemanager/guestconfiguration/armguestconfiguration/v2.0.0-beta.1,sdk/resourcemanager/guestconfiguration/armguestconfiguration,v2.0.0-beta.1,1779696088,05/25/2026
+6696,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.2.0-beta.1,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.2.0-beta.1,sdk/resourcemanager/mongocluster/armmongocluster,v1.2.0-beta.1,1779690196,05/25/2026
+6697,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/authorization/armauthorization/v3@v3.0.0-beta.3,go,sdk/resourcemanager/authorization/armauthorization/v3.0.0-beta.3,sdk/resourcemanager/authorization/armauthorization,v3.0.0-beta.3,1779680993,05/25/2026
+6698,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/onlineexperimentation/armonlineexperimentation@v0.1.0,go,sdk/resourcemanager/onlineexperimentation/armonlineexperimentation/v0.1.0,sdk/resourcemanager/onlineexperimentation/armonlineexperimentation,v0.1.0,1779679324,05/25/2026
+6699,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v2@v2.1.0-beta.1,go,sdk/resourcemanager/chaos/armchaos/v2.1.0-beta.1,sdk/resourcemanager/chaos/armchaos,v2.1.0-beta.1,1779679319,05/25/2026
+6700,@azure/arm-containerservice@25.3.0-beta.1,js,@azure/arm-containerservice_25.3.0-beta.1,@azure/arm-containerservice,25.3.0-beta.1,1779681032,05/25/2026
+6701,azure-mgmt-consumption@11.0.0b2,python,azure-mgmt-consumption_11.0.0b2,azure-mgmt-consumption,11.0.0b2,1779702950,05/25/2026
+6702,azure-mgmt-cdn@14.0.0b1,python,azure-mgmt-cdn_14.0.0b1,azure-mgmt-cdn,14.0.0b1,1779692324,05/25/2026
+6703,azure-mgmt-redis@15.0.0b1,python,azure-mgmt-redis_15.0.0b1,azure-mgmt-redis,15.0.0b1,1779692288,05/25/2026
+6704,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.0-beta.1,1779682810,05/25/2026
+6705,"Azure.ResourceManager.Storage,1.7.0",dotnet,Azure.ResourceManager.Storage_1.7.0,Azure.ResourceManager.Storage,1.7.0,1779685330,05/25/2026

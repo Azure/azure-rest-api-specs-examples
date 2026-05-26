@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.costmanagement import CostManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-costmanagement
+# USAGE
+    python management_group_budgets_list.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CostManagementClient(
+        credential=DefaultAzureCredential(),
+    )
+
+    response = client.budgets.list(
+        scope="Microsoft.Management/managementGroups/MYDEVTESTMG",
+    )
+    for item in response:
+        print(item)
+
+
+# x-ms-original-file: 2025-03-01/Budgets/List/RBAC/ManagementGroupBudgetsList.json
+if __name__ == "__main__":
+    main()

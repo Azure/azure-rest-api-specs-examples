@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.costmanagement import CostManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-costmanagement
+# USAGE
+    python cost_details_operation_results_by_subscription_scope.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CostManagementClient(
+        credential=DefaultAzureCredential(),
+    )
+
+    response = client.generate_cost_details_report.begin_get_operation_results(
+        scope="subscriptions/00000000-0000-0000-0000-000000000000",
+        operation_id="00000000-0000-0000-0000-000000000000",
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-03-01/CostDetailsOperationResultsBySubscriptionScope.json
+if __name__ == "__main__":
+    main()

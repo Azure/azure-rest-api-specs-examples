@@ -6704,3 +6704,17 @@ id,name,language,tag,package,version,date_epoch,date
 6703,azure-mgmt-redis@15.0.0b1,python,azure-mgmt-redis_15.0.0b1,azure-mgmt-redis,15.0.0b1,1779692288,05/25/2026
 6704,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.0-beta.1,1779682810,05/25/2026
 6705,"Azure.ResourceManager.Storage,1.7.0",dotnet,Azure.ResourceManager.Storage_1.7.0,Azure.ResourceManager.Storage,1.7.0,1779685330,05/25/2026
+6706,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity@v0.15.0,go,sdk/resourcemanager/security/armsecurity/v0.15.0,sdk/resourcemanager/security/armsecurity,v0.15.0,1779783089,05/26/2026
+6707,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation@v0.10.0,go,sdk/resourcemanager/automation/armautomation/v0.10.0,sdk/resourcemanager/automation/armautomation,v0.10.0,1779781211,05/26/2026
+6708,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement/v4@v4.0.0-beta.1,go,sdk/resourcemanager/apimanagement/armapimanagement/v4.0.0-beta.1,sdk/resourcemanager/apimanagement/armapimanagement,v4.0.0-beta.1,1779779943,05/26/2026
+6709,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourcegraph/armresourcegraph@v0.10.0,go,sdk/resourcemanager/resourcegraph/armresourcegraph/v0.10.0,sdk/resourcemanager/resourcegraph/armresourcegraph,v0.10.0,1779765223,05/26/2026
+6710,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox/v3@v3.0.0-beta.1,go,sdk/resourcemanager/databox/armdatabox/v3.0.0-beta.1,sdk/resourcemanager/databox/armdatabox,v3.0.0-beta.1,1779765203,05/26/2026
+6711,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights@v0.10.0,go,sdk/resourcemanager/policyinsights/armpolicyinsights/v0.10.0,sdk/resourcemanager/policyinsights/armpolicyinsights,v0.10.0,1779765202,05/26/2026
+6712,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations/v4@v4.0.0-beta.1,go,sdk/resourcemanager/reservations/armreservations/v4.0.0-beta.1,sdk/resourcemanager/reservations/armreservations,v4.0.0-beta.1,1779765194,05/26/2026
+6713,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billingbenefits/armbillingbenefits/v3@v3.0.0-beta.1,go,sdk/resourcemanager/billingbenefits/armbillingbenefits/v3.0.0-beta.1,sdk/resourcemanager/billingbenefits/armbillingbenefits,v3.0.0-beta.1,1779764606,05/26/2026
+6714,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/webpubsub/armwebpubsub@v1.4.0-beta.1,go,sdk/resourcemanager/webpubsub/armwebpubsub/v1.4.0-beta.1,sdk/resourcemanager/webpubsub/armwebpubsub,v1.4.0-beta.1,1779763129,05/26/2026
+6715,@azure/arm-serialconsole@3.0.0-beta.1,js,@azure/arm-serialconsole_3.0.0-beta.1,@azure/arm-serialconsole,3.0.0-beta.1,1779784512,05/26/2026
+6716,@azure/arm-redisenterprisecache@5.0.0-beta.1,js,@azure/arm-redisenterprisecache_5.0.0-beta.1,@azure/arm-redisenterprisecache,5.0.0-beta.1,1779776643,05/26/2026
+6717,@azure/arm-attestation@3.0.0-beta.1,js,@azure/arm-attestation_3.0.0-beta.1,@azure/arm-attestation,3.0.0-beta.1,1779775075,05/26/2026
+6718,azure-mgmt-databoxedge@3.0.0b2,python,azure-mgmt-databoxedge_3.0.0b2,azure-mgmt-databoxedge,3.0.0b2,1779785243,05/26/2026
+6719,azure-mgmt-costmanagement@5.0.0b1,python,azure-mgmt-costmanagement_5.0.0b1,azure-mgmt-costmanagement,5.0.0b1,1779785233,05/26/2026

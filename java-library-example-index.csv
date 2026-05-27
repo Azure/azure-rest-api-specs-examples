@@ -6738,3 +6738,4 @@ id,name,language,tag,package,version,date_epoch,date
 6737,azure-mgmt-redhatopenshift@4.0.0b1,python,azure-mgmt-redhatopenshift_4.0.0b1,azure-mgmt-redhatopenshift,4.0.0b1,1779854646,05/27/2026
 6738,azure-mgmt-hanaonazure@1.1.0b2,python,azure-mgmt-hanaonazure_1.1.0b2,azure-mgmt-hanaonazure,1.1.0b2,1779854559,05/27/2026
 6739,azure-mgmt-resource-policy@1.0.0b3,python,azure-mgmt-resource-policy_1.0.0b3,azure-mgmt-resource-policy,1.0.0b3,1779848312,05/27/2026
+6740,azure-mgmt-cognitiveservices@15.0.0b2,python,azure-mgmt-cognitiveservices_15.0.0b2,azure-mgmt-cognitiveservices,15.0.0b2,1779823832,05/26/2026

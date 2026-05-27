@@ -6732,3 +6732,4 @@ id,name,language,tag,package,version,date_epoch,date
 6731,azure-mgmt-applicationinsights@5.0.0b2,python,azure-mgmt-applicationinsights_5.0.0b2,azure-mgmt-applicationinsights,5.0.0b2,1779875150,05/27/2026
 6732,azure-mgmt-storagecache@4.0.0b1,python,azure-mgmt-storagecache_4.0.0b1,azure-mgmt-storagecache,4.0.0b1,1779873329,05/27/2026
 6733,azure-mgmt-education@1.0.0b3,python,azure-mgmt-education_1.0.0b3,azure-mgmt-education,1.0.0b3,1779867572,05/27/2026
+6734,azure-mgmt-databricks@3.0.0b1,python,azure-mgmt-databricks_3.0.0b1,azure-mgmt-databricks,3.0.0b1,1779867547,05/27/2026

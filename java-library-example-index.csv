@@ -6718,3 +6718,4 @@ id,name,language,tag,package,version,date_epoch,date
 6717,@azure/arm-attestation@3.0.0-beta.1,js,@azure/arm-attestation_3.0.0-beta.1,@azure/arm-attestation,3.0.0-beta.1,1779775075,05/26/2026
 6718,azure-mgmt-databoxedge@3.0.0b2,python,azure-mgmt-databoxedge_3.0.0b2,azure-mgmt-databoxedge,3.0.0b2,1779785243,05/26/2026
 6719,azure-mgmt-costmanagement@5.0.0b1,python,azure-mgmt-costmanagement_5.0.0b1,azure-mgmt-costmanagement,5.0.0b1,1779785233,05/26/2026
+6720,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2@v2.0.0-beta.4,go,sdk/resourcemanager/applicationinsights/armapplicationinsights/v2.0.0-beta.4,sdk/resourcemanager/applicationinsights/armapplicationinsights,v2.0.0-beta.4,1779862028,05/27/2026

@@ -19,7 +19,7 @@ from azure.mgmt.hanaonazure import HanaManagementClient
 def main():
     client = HanaManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.provider_instances.begin_delete(
@@ -29,6 +29,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/HanaOnAzure/preview/2020-02-07-preview/examples/ProviderInstances_Delete.json
+# x-ms-original-file: 2020-02-07-preview/ProviderInstances_Delete.json
 if __name__ == "__main__":
     main()

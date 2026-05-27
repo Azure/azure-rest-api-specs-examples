@@ -6735,3 +6735,4 @@ id,name,language,tag,package,version,date_epoch,date
 6734,azure-mgmt-databricks@3.0.0b1,python,azure-mgmt-databricks_3.0.0b1,azure-mgmt-databricks,3.0.0b1,1779867547,05/27/2026
 6735,azure-mgmt-alertsmanagement@2.0.0b3,python,azure-mgmt-alertsmanagement_2.0.0b3,azure-mgmt-alertsmanagement,2.0.0b3,1779860350,05/27/2026
 6736,azure-mgmt-serialconsole@1.1.0b2,python,azure-mgmt-serialconsole_1.1.0b2,azure-mgmt-serialconsole,1.1.0b2,1779854659,05/27/2026
+6737,azure-mgmt-redhatopenshift@4.0.0b1,python,azure-mgmt-redhatopenshift_4.0.0b1,azure-mgmt-redhatopenshift,4.0.0b1,1779854646,05/27/2026

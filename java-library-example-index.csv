@@ -6727,3 +6727,4 @@ id,name,language,tag,package,version,date_epoch,date
 6726,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2@v2.0.0-beta.8,go,sdk/resourcemanager/sql/armsql/v2.0.0-beta.8,sdk/resourcemanager/sql/armsql,v2.0.0-beta.8,1779852733,05/27/2026
 6727,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicebus/armservicebus/v2@v2.0.0-beta.4,go,sdk/resourcemanager/servicebus/armservicebus/v2.0.0-beta.4,sdk/resourcemanager/servicebus/armservicebus,v2.0.0-beta.4,1779852711,05/27/2026
 6728,@azure/arm-resources-subscriptions@3.0.0-beta.1,js,@azure/arm-resources-subscriptions_3.0.0-beta.1,@azure/arm-resources-subscriptions,3.0.0-beta.1,1779847918,05/27/2026
+6729,@azure/arm-managementgroups@3.0.0-beta.1,js,@azure/arm-managementgroups_3.0.0-beta.1,@azure/arm-managementgroups,3.0.0-beta.1,1779847910,05/27/2026

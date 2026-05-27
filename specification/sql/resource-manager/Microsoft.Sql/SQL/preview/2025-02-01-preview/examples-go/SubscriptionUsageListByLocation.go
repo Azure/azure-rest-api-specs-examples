@@ -1,0 +1,84 @@
+package armsql_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2"
+)
+
+// Generated from example definition: 2025-02-01-preview/SubscriptionUsageListByLocation.json
+func ExampleSubscriptionUsagesClient_NewListByLocationPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsql.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewSubscriptionUsagesClient().NewListByLocationPager("WestUS", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armsql.SubscriptionUsagesClientListByLocationResponse{
+		// 	SubscriptionUsageListResult: armsql.SubscriptionUsageListResult{
+		// 		Value: []*armsql.SubscriptionUsage{
+		// 			{
+		// 				Name: to.Ptr("ServerQuota"),
+		// 				Type: to.Ptr("Microsoft.Sql/locations/usages"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/locations/Onebox/usages/ServerQuota"),
+		// 				Properties: &armsql.SubscriptionUsageProperties{
+		// 					CurrentValue: to.Ptr[float64](1),
+		// 					DisplayName: to.Ptr("Regional Server Quota for West US"),
+		// 					Limit: to.Ptr[float64](20),
+		// 					Unit: to.Ptr("Count"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("SubscriptionFreeDatabaseCount"),
+		// 				Type: to.Ptr("Microsoft.Sql/locations/usages"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/locations/Onebox/usages/SubscriptionFreeDatabaseCount"),
+		// 				Properties: &armsql.SubscriptionUsageProperties{
+		// 					CurrentValue: to.Ptr[float64](0),
+		// 					DisplayName: to.Ptr("Free Database Count per Subscription for West US"),
+		// 					Limit: to.Ptr[float64](1),
+		// 					Unit: to.Ptr("Count"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("SubscriptionFreeDatabaseDaysLeft"),
+		// 				Type: to.Ptr("Microsoft.Sql/locations/usages"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/locations/Onebox/usages/SubscriptionFreeDatabaseDaysLeft"),
+		// 				Properties: &armsql.SubscriptionUsageProperties{
+		// 					CurrentValue: to.Ptr[float64](365),
+		// 					DisplayName: to.Ptr("Free to Basic Database Upgrade count-down in West US"),
+		// 					Limit: to.Ptr[float64](365),
+		// 					Unit: to.Ptr("Count"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("RegionalVCoreQuotaForSQLDBAndDW"),
+		// 				Type: to.Ptr("Microsoft.Sql/locations/usages"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/locations/Onebox/usages/RegionalVCoreQuotaForSQLDBAndDW"),
+		// 				Properties: &armsql.SubscriptionUsageProperties{
+		// 					CurrentValue: to.Ptr[float64](10),
+		// 					DisplayName: to.Ptr("Regional vCore Quota for SQLDB and SQLDW for West US"),
+		// 					Limit: to.Ptr[float64](300),
+		// 					Unit: to.Ptr("Count"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

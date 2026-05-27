@@ -6720,3 +6720,4 @@ id,name,language,tag,package,version,date_epoch,date
 6719,azure-mgmt-costmanagement@5.0.0b1,python,azure-mgmt-costmanagement_5.0.0b1,azure-mgmt-costmanagement,5.0.0b1,1779785233,05/26/2026
 6720,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2@v2.0.0-beta.4,go,sdk/resourcemanager/applicationinsights/armapplicationinsights/v2.0.0-beta.4,sdk/resourcemanager/applicationinsights/armapplicationinsights,v2.0.0-beta.4,1779862028,05/27/2026
 6721,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgemarketplace/armedgemarketplace@v0.1.0,go,sdk/resourcemanager/edgemarketplace/armedgemarketplace/v0.1.0,sdk/resourcemanager/edgemarketplace/armedgemarketplace,v0.1.0,1779859062,05/27/2026
+6722,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor@v0.12.0,go,sdk/resourcemanager/monitor/armmonitor/v0.12.0,sdk/resourcemanager/monitor/armmonitor,v0.12.0,1779854007,05/27/2026

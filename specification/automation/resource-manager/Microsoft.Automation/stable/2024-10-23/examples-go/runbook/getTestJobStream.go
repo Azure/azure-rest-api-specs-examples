@@ -1,0 +1,43 @@
+package armautomation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
+)
+
+// Generated from example definition: 2024-10-23/runbook/getTestJobStream.json
+func ExampleTestJobStreamsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armautomation.NewClientFactory("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewTestJobStreamsClient().Get(ctx, "mygroup", "ContoseAutomationAccount", "Get-AzureVMTutorial", "851b2101-686f-40e2-8a4b-5b8df08afbd1_00636535684910693884_00000000000000000001", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armautomation.TestJobStreamsClientGetResponse{
+	// 	JobStream: armautomation.JobStream{
+	// 		ID: to.Ptr("/subscriptions/51766542-3ed7-4a72-a187-0c8ab644ddab/resourcegroups/mygroup/providers/Microsoft.Automation/automationAccounts/ContoseAutomationAccount/runbooks/foo/draft/testJob/streams/851b2101-686f-40e2-8a4b-5b8df08afbd1_00636535684910693884_00000000000000000001"),
+	// 		Properties: &armautomation.JobStreamProperties{
+	// 			JobStreamID: to.Ptr("851b2101-686f-40e2-8a4b-5b8df08afbd1:00636535684910693884:00000000000000000001"),
+	// 			StreamText: to.Ptr(""),
+	// 			StreamType: to.Ptr(armautomation.JobStreamTypeOutput),
+	// 			Summary: nil,
+	// 			Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-07T02:48:11.0693884+00:00"); return t}()),
+	// 			Value: map[string]any{
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

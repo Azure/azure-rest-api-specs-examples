@@ -1,0 +1,72 @@
+package armautomation_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
+)
+
+// Generated from example definition: 2024-10-23/listPagedDscNodeStatusCounts.json
+func ExampleNodeCountInformationClient_Get_getNodeSStatusCounts() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armautomation.NewClientFactory("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewNodeCountInformationClient().Get(ctx, "rg", "myAutomationAccount33", armautomation.CountTypeStatus, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armautomation.NodeCountInformationClientGetResponse{
+	// 	NodeCounts: armautomation.NodeCounts{
+	// 		TotalCount: to.Ptr[int32](6),
+	// 		Value: []*armautomation.NodeCount{
+	// 			{
+	// 				Name: to.Ptr("Compliant"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](10),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Failed"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](1),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("InProgress"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](1),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("NotCompliant"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](3),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Pending"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](0),
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Unresponsive"),
+	// 				Properties: &armautomation.NodeCountProperties{
+	// 					Count: to.Ptr[int32](4),
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

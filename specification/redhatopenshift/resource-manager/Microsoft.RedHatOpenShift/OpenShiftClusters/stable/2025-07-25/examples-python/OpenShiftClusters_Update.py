@@ -19,7 +19,7 @@ from azure.mgmt.redhatopenshift import AzureRedHatOpenShiftClient
 def main():
     client = AzureRedHatOpenShiftClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.open_shift_clusters.begin_update(
@@ -66,6 +66,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/OpenShiftClusters/stable/2025-07-25/examples/OpenShiftClusters_Update.json
+# x-ms-original-file: 2025-07-25/OpenShiftClusters_Update.json
 if __name__ == "__main__":
     main()

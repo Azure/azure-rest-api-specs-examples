@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/OpenShiftClusters/stable/2025-07-25/examples/Operations_List.json
+# x-ms-original-file: 2025-07-25/Operations_List.json
 if __name__ == "__main__":
     main()

@@ -1,0 +1,48 @@
+package armsql_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2"
+)
+
+// Generated from example definition: 2025-02-01-preview/ResourceGroupBasedLongTermRetentionBackupGet.json
+func ExampleLongTermRetentionBackupsClient_GetByResourceGroup() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsql.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewLongTermRetentionBackupsClient().GetByResourceGroup(ctx, "testResourceGroup", "japaneast", "testserver", "testDatabase", "55555555-6666-7777-8888-999999999999;131637960820000000;Hot", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsql.LongTermRetentionBackupsClientGetByResourceGroupResponse{
+	// 	LongTermRetentionBackup: armsql.LongTermRetentionBackup{
+	// 		Name: to.Ptr("55555555-6666-7777-8888-999999999999;131637960820000000;Hot"),
+	// 		Type: to.Ptr("Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups"),
+	// 		ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/japaneast/longTermRetentionServers/testserver/longTermRetentionDatabases/testDatabase/longTermRetentionBackups/55555555-6666-7777-8888-999999999999;131637960820000000;Hot"),
+	// 		Properties: &armsql.LongTermRetentionBackupProperties{
+	// 			BackupStorageAccessTier: to.Ptr(armsql.BackupStorageAccessTierHot),
+	// 			BackupStorageRedundancy: to.Ptr(armsql.BackupStorageRedundancyGeo),
+	// 			BackupTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-06T08:00:00Z"); return t}()),
+	// 			DatabaseName: to.Ptr("testDatabase"),
+	// 			IsBackupImmutable: to.Ptr(true),
+	// 			LegalHoldImmutability: to.Ptr(armsql.SetLegalHoldImmutabilityDisabled),
+	// 			ServerCreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-10T08:00:00Z"); return t}()),
+	// 			ServerName: to.Ptr("testserver"),
+	// 			TimeBasedImmutability: to.Ptr(armsql.TimeBasedImmutabilityEnabled),
+	// 			TimeBasedImmutabilityMode: to.Ptr(armsql.TimeBasedImmutabilityModeLocked),
+	// 		},
+	// 	},
+	// }
+}

@@ -1,0 +1,66 @@
+package armsql_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2"
+)
+
+// Generated from example definition: 2025-02-01-preview/ListJobAgentsByServer.json
+func ExampleJobAgentsClient_NewListByServerPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsql.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewJobAgentsClient().NewListByServerPager("group1", "server1", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armsql.JobAgentsClientListByServerResponse{
+		// 	JobAgentListResult: armsql.JobAgentListResult{
+		// 		Value: []*armsql.JobAgent{
+		// 			{
+		// 				Name: to.Ptr("agent1"),
+		// 				Type: to.Ptr("Microsoft.Sql/servers/jobAgents"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1"),
+		// 				Location: to.Ptr("southeastasia"),
+		// 				Properties: &armsql.JobAgentProperties{
+		// 					DatabaseID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/databases/db1"),
+		// 				},
+		// 				SKU: &armsql.SKU{
+		// 					Name: to.Ptr("JA200"),
+		// 					Capacity: to.Ptr[int32](200),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("jobAgent2"),
+		// 				Type: to.Ptr("Microsoft.Sql/servers/jobAgents"),
+		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/jobAgent2"),
+		// 				Location: to.Ptr("southeastasia"),
+		// 				Properties: &armsql.JobAgentProperties{
+		// 					DatabaseID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/databases/db12"),
+		// 				},
+		// 				SKU: &armsql.SKU{
+		// 					Name: to.Ptr("JA400"),
+		// 					Capacity: to.Ptr[int32](400),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

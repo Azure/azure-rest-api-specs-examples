@@ -6744,3 +6744,4 @@ id,name,language,tag,package,version,date_epoch,date
 6743,@azure/arm-redhatopenshift@1.0.0-beta.2,js,@azure/arm-redhatopenshift_1.0.0-beta.2,@azure/arm-redhatopenshift,1.0.0-beta.2,1779956960,05/28/2026
 6744,@azure/arm-security@6.0.0-beta.7,js,@azure/arm-security_6.0.0-beta.7,@azure/arm-security,6.0.0-beta.7,1779953951,05/28/2026
 6745,@azure/arm-dns@6.0.0-beta.1,js,@azure/arm-dns_6.0.0-beta.1,@azure/arm-dns,6.0.0-beta.1,1779944041,05/28/2026
+6746,azure-mgmt-appcontainers@5.0.0b1,python,azure-mgmt-appcontainers_5.0.0b1,azure-mgmt-appcontainers,5.0.0b1,1779935020,05/28/2026

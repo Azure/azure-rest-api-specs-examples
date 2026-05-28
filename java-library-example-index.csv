@@ -6741,3 +6741,4 @@ id,name,language,tag,package,version,date_epoch,date
 6740,azure-mgmt-cognitiveservices@15.0.0b2,python,azure-mgmt-cognitiveservices_15.0.0b2,azure-mgmt-cognitiveservices,15.0.0b2,1779823832,05/26/2026
 6741,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto/v2@v2.4.0-beta.1,go,sdk/resourcemanager/kusto/armkusto/v2.4.0-beta.1,sdk/resourcemanager/kusto/armkusto,v2.4.0-beta.1,1779960478,05/28/2026
 6742,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computelimit/armcomputelimit@v1.1.0,go,sdk/resourcemanager/computelimit/armcomputelimit/v1.1.0,sdk/resourcemanager/computelimit/armcomputelimit,v1.1.0,1779951846,05/28/2026
+6743,@azure/arm-redhatopenshift@1.0.0-beta.2,js,@azure/arm-redhatopenshift_1.0.0-beta.2,@azure/arm-redhatopenshift,1.0.0-beta.2,1779956960,05/28/2026

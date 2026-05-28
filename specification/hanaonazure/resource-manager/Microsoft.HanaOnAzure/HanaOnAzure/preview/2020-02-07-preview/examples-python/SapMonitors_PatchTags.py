@@ -19,7 +19,7 @@ from azure.mgmt.hanaonazure import HanaManagementClient
 def main():
     client = HanaManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.sap_monitors.update(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/HanaOnAzure/preview/2020-02-07-preview/examples/SapMonitors_PatchTags.json
+# x-ms-original-file: 2020-02-07-preview/SapMonitors_PatchTags.json
 if __name__ == "__main__":
     main()

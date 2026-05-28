@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/HanaOnAzure/preview/2020-02-07-preview/examples/HanaOperations_List.json
+# x-ms-original-file: 2020-02-07-preview/HanaOperations_List.json
 if __name__ == "__main__":
     main()

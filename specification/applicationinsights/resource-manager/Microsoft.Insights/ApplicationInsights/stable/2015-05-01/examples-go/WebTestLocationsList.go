@@ -1,0 +1,104 @@
+package armapplicationinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
+)
+
+// Generated from example definition: 2015-05-01/WebTestLocationsList.json
+func ExampleWebTestLocationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armapplicationinsights.NewClientFactory("subid", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewWebTestLocationsClient().NewListPager("my-resource-group", "my-component", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armapplicationinsights.WebTestLocationsClientListResponse{
+		// 	WebTestLocationsListResult: armapplicationinsights.WebTestLocationsListResult{
+		// 		Value: []*armapplicationinsights.ComponentWebTestLocation{
+		// 			{
+		// 				DisplayName: to.Ptr("US : IL-Chicago"),
+		// 				Tag: to.Ptr("us-il-ch1-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("NL : Amsterdam"),
+		// 				Tag: to.Ptr("emea-nl-ams-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("SG : Singapore"),
+		// 				Tag: to.Ptr("apac-sg-sin-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("US : CA-San Jose"),
+		// 				Tag: to.Ptr("us-ca-sjc-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("US : TX-San Antonio"),
+		// 				Tag: to.Ptr("us-tx-sn1-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("US : VA-Ashburn"),
+		// 				Tag: to.Ptr("us-va-ash-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("HK : Hong Kong Special Administrative Region"),
+		// 				Tag: to.Ptr("apac-hk-hkn-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("IE : Dublin"),
+		// 				Tag: to.Ptr("emea-gb-db3-azr"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("JP : Kawaguchi"),
+		// 				Tag: to.Ptr("apac-jp-kaw-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("AU : Sydney"),
+		// 				Tag: to.Ptr("emea-au-syd-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("CH : Zurich"),
+		// 				Tag: to.Ptr("emea-ch-zrh-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("FR : Paris"),
+		// 				Tag: to.Ptr("emea-fr-pra-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("RU : Moscow"),
+		// 				Tag: to.Ptr("emea-ru-msa-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("SE : Stockholm"),
+		// 				Tag: to.Ptr("emea-se-sto-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("BR : Sao Paulo"),
+		// 				Tag: to.Ptr("latam-br-gru-edge"),
+		// 			},
+		// 			{
+		// 				DisplayName: to.Ptr("US : FL-Miami"),
+		// 				Tag: to.Ptr("us-fl-mia-edge"),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

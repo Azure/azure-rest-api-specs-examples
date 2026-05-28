@@ -1,0 +1,74 @@
+package armapplicationinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
+)
+
+// Generated from example definition: 2020-02-02/ComponentsUpdateTagsOnly.json
+func ExampleComponentsClient_UpdateTags() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armapplicationinsights.NewClientFactory("subid", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewComponentsClient().UpdateTags(ctx, "my-resource-group", "my-component", armapplicationinsights.TagsResource{
+		Tags: map[string]*string{
+			"ApplicationGatewayType": to.Ptr("Internal-Only"),
+			"BillingEntity":          to.Ptr("Self"),
+			"Color":                  to.Ptr("AzureBlue"),
+			"CustomField_01":         to.Ptr("Custom text in some random field named randomly"),
+			"NodeType":               to.Ptr("Edge"),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armapplicationinsights.ComponentsClientUpdateTagsResponse{
+	// 	Component: armapplicationinsights.Component{
+	// 		Name: to.Ptr("my-component"),
+	// 		Type: to.Ptr("Microsoft.Insights/components"),
+	// 		ID: to.Ptr("/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.Insights/components/my-component"),
+	// 		Kind: to.Ptr("web"),
+	// 		Location: to.Ptr("South Central US"),
+	// 		Properties: &armapplicationinsights.ComponentProperties{
+	// 			AppID: to.Ptr("887f4bfd-b5fd-40d7-9fc3-123456789abc"),
+	// 			ApplicationID: to.Ptr("my-component"),
+	// 			ApplicationType: to.Ptr(armapplicationinsights.ApplicationTypeWeb),
+	// 			ConnectionString: to.Ptr("InstrumentationKey=bc095013-3cf2-45ac-ab47-123456789abc"),
+	// 			CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-24T01:05:38.5934061+00:00"); return t}()),
+	// 			DisableIPMasking: to.Ptr(false),
+	// 			FlowType: to.Ptr(armapplicationinsights.FlowTypeBluefield),
+	// 			HockeyAppID: to.Ptr(""),
+	// 			HockeyAppToken: to.Ptr(""),
+	// 			IngestionMode: to.Ptr(armapplicationinsights.IngestionModeLogAnalytics),
+	// 			InstrumentationKey: to.Ptr("bc095013-3cf2-45ac-ab47-123456789abc"),
+	// 			RequestSource: to.Ptr(armapplicationinsights.RequestSourceRest),
+	// 			SamplingPercentage: to.Ptr[float64](100),
+	// 			TenantID: to.Ptr("f438d567-7177-4fe1-a5e3-123456789abc"),
+	// 			WorkspaceResourceID: to.Ptr("/subscriptions/subid/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"),
+	// 			ProvisioningState: to.Ptr("Succeeded"),
+	// 			PublicNetworkAccessForIngestion: to.Ptr(armapplicationinsights.PublicNetworkAccessTypeEnabled),
+	// 			PublicNetworkAccessForQuery: to.Ptr(armapplicationinsights.PublicNetworkAccessTypeEnabled),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"ApplicationGatewayType": to.Ptr("Internal-Only"),
+	// 			"BillingEntity": to.Ptr("Self"),
+	// 			"Color": to.Ptr("AzureBlue"),
+	// 			"CustomField_01": to.Ptr("Custom text in some random field named randomly"),
+	// 			"NodeType": to.Ptr("Edge"),
+	// 		},
+	// 	},
+	// }
+}

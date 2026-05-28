@@ -6743,3 +6743,4 @@ id,name,language,tag,package,version,date_epoch,date
 6742,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computelimit/armcomputelimit@v1.1.0,go,sdk/resourcemanager/computelimit/armcomputelimit/v1.1.0,sdk/resourcemanager/computelimit/armcomputelimit,v1.1.0,1779951846,05/28/2026
 6743,@azure/arm-redhatopenshift@1.0.0-beta.2,js,@azure/arm-redhatopenshift_1.0.0-beta.2,@azure/arm-redhatopenshift,1.0.0-beta.2,1779956960,05/28/2026
 6744,@azure/arm-security@6.0.0-beta.7,js,@azure/arm-security_6.0.0-beta.7,@azure/arm-security,6.0.0-beta.7,1779953951,05/28/2026
+6745,@azure/arm-dns@6.0.0-beta.1,js,@azure/arm-dns_6.0.0-beta.1,@azure/arm-dns,6.0.0-beta.1,1779944041,05/28/2026

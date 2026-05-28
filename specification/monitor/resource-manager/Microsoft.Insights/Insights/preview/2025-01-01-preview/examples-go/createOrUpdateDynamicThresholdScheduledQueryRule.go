@@ -1,0 +1,156 @@
+package armmonitor_test
+
+import (
+	"context"
+	"log"
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
+)
+
+// Generated from example definition: 2025-01-01-preview/createOrUpdateDynamicThresholdScheduledQueryRule.json
+func ExampleScheduledQueryRulesClient_CreateOrUpdate_createOrUpdateDynamicThresholdScheduledQueryRuleOnSubscription() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armmonitor.NewClientFactory("dd4bfc94-a096-412b-9c43-4bd13e35afbc", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewScheduledQueryRulesClient().CreateOrUpdate(ctx, "QueryResourceGroupName", "perf", armmonitor.ScheduledQueryRuleResource{
+		Location: to.Ptr("eastus"),
+		Properties: &armmonitor.ScheduledQueryRuleProperties{
+			Description: to.Ptr("Performance rule"),
+			Actions: &armmonitor.Actions{
+				ActionGroups: []*string{
+					to.Ptr("/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"),
+				},
+				ActionProperties: map[string]*string{
+					"Icm.Title": to.Ptr("Custom title in ICM"),
+					"Icm.TsgId": to.Ptr("https://tsg.url"),
+				},
+				CustomProperties: map[string]*string{
+					"key11": to.Ptr("value11"),
+					"key12": to.Ptr("value12"),
+				},
+			},
+			CheckWorkspaceAlertsStorageConfigured: to.Ptr(true),
+			Criteria: &armmonitor.ScheduledQueryRuleCriteria{
+				AllOf: []*armmonitor.Condition{
+					{
+						AlertSensitivity: to.Ptr("Medium"),
+						CriterionType:    to.Ptr(armmonitor.CriterionTypeDynamicThresholdCriterion),
+						Dimensions: []*armmonitor.Dimension{
+							{
+								Name:     to.Ptr("ComputerIp"),
+								Operator: to.Ptr(armmonitor.DimensionOperatorExclude),
+								Values: []*string{
+									to.Ptr("192.168.1.1"),
+								},
+							},
+							{
+								Name:     to.Ptr("OSType"),
+								Operator: to.Ptr(armmonitor.DimensionOperatorInclude),
+								Values: []*string{
+									to.Ptr("*"),
+								},
+							},
+						},
+						IgnoreDataBefore:    to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-01T21:00:00.000Z"); return t }()),
+						MetricMeasureColumn: to.Ptr("% Processor Time"),
+						Operator:            to.Ptr(armmonitor.ConditionOperatorGreaterOrLessThan),
+						Query:               to.Ptr("Perf | where ObjectName == \"Processor\""),
+						ResourceIDColumn:    to.Ptr("resourceId"),
+						TimeAggregation:     to.Ptr(armmonitor.TimeAggregationAverage),
+					},
+				},
+			},
+			Enabled:             to.Ptr(true),
+			EvaluationFrequency: to.Ptr("PT5M"),
+			MuteActionsDuration: to.Ptr("PT30M"),
+			Scopes: []*string{
+				to.Ptr("/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1/providers/Microsoft.Compute/virtualMachines/vm1"),
+			},
+			Severity:            to.Ptr(armmonitor.AlertSeverityFour),
+			SkipQueryValidation: to.Ptr(true),
+			WindowSize:          to.Ptr("PT10M"),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armmonitor.ScheduledQueryRulesClientCreateOrUpdateResponse{
+	// 	ScheduledQueryRuleResource: armmonitor.ScheduledQueryRuleResource{
+	// 		Name: to.Ptr("perf"),
+	// 		Type: to.Ptr("microsoft.insights/scheduledqueryrules"),
+	// 		ID: to.Ptr("/subscriptions/dd4bfc94-a096-412b-9c43-4bd13e35afbc/resourcegroups/QueryResourceGroupName/providers/microsoft.insights/scheduledqueryrules/perf"),
+	// 		Location: to.Ptr("eastus"),
+	// 		Properties: &armmonitor.ScheduledQueryRuleProperties{
+	// 			Description: to.Ptr("Performance rule"),
+	// 			Actions: &armmonitor.Actions{
+	// 				ActionGroups: []*string{
+	// 					to.Ptr("/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"),
+	// 				},
+	// 				ActionProperties: map[string]*string{
+	// 					"Icm.Title": to.Ptr("Custom title in ICM"),
+	// 					"Icm.TsgId": to.Ptr("https://tsg.url"),
+	// 				},
+	// 				CustomProperties: map[string]*string{
+	// 					"key11": to.Ptr("value11"),
+	// 					"key12": to.Ptr("value12"),
+	// 				},
+	// 			},
+	// 			CheckWorkspaceAlertsStorageConfigured: to.Ptr(true),
+	// 			Criteria: &armmonitor.ScheduledQueryRuleCriteria{
+	// 				AllOf: []*armmonitor.Condition{
+	// 					{
+	// 						AlertSensitivity: to.Ptr("Medium"),
+	// 						CriterionType: to.Ptr(armmonitor.CriterionTypeDynamicThresholdCriterion),
+	// 						Dimensions: []*armmonitor.Dimension{
+	// 							{
+	// 								Name: to.Ptr("ComputerIp"),
+	// 								Operator: to.Ptr(armmonitor.DimensionOperatorExclude),
+	// 								Values: []*string{
+	// 									to.Ptr("192.168.1.1"),
+	// 								},
+	// 							},
+	// 							{
+	// 								Name: to.Ptr("OSType"),
+	// 								Operator: to.Ptr(armmonitor.DimensionOperatorInclude),
+	// 								Values: []*string{
+	// 									to.Ptr("*"),
+	// 								},
+	// 							},
+	// 						},
+	// 						IgnoreDataBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-06-01T21:00:00.000Z"); return t}()),
+	// 						MetricMeasureColumn: to.Ptr("% Processor Time"),
+	// 						Operator: to.Ptr(armmonitor.ConditionOperatorGreaterOrLessThan),
+	// 						Query: to.Ptr("Perf | where ObjectName == \"Processor\""),
+	// 						ResourceIDColumn: to.Ptr("resourceId"),
+	// 						TimeAggregation: to.Ptr(armmonitor.TimeAggregationAverage),
+	// 					},
+	// 				},
+	// 			},
+	// 			Enabled: to.Ptr(true),
+	// 			EvaluationFrequency: to.Ptr("PT5M"),
+	// 			IsWorkspaceAlertsStorageConfigured: to.Ptr(true),
+	// 			MuteActionsDuration: to.Ptr("PT30M"),
+	// 			Scopes: []*string{
+	// 				to.Ptr("/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1/providers/Microsoft.Compute/virtualMachines/vm1"),
+	// 			},
+	// 			Severity: to.Ptr(		armmonitor.AlertSeverityFour),
+	// 			SkipQueryValidation: to.Ptr(true),
+	// 			WindowSize: to.Ptr("PT10M"),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 		},
+	// 	},
+	// }
+}

@@ -6747,3 +6747,4 @@ id,name,language,tag,package,version,date_epoch,date
 6746,azure-mgmt-appcontainers@5.0.0b1,python,azure-mgmt-appcontainers_5.0.0b1,azure-mgmt-appcontainers,5.0.0b1,1779935020,05/28/2026
 6747,@azure/arm-mysql-flexible@4.0.0-beta.5,js,@azure/arm-mysql-flexible_4.0.0-beta.5,@azure/arm-mysql-flexible,4.0.0-beta.5,1780044614,05/29/2026
 6748,@azure/arm-billingbenefits@2.0.0-beta.1,js,@azure/arm-billingbenefits_2.0.0-beta.1,@azure/arm-billingbenefits,2.0.0-beta.1,1780024111,05/29/2026
+6749,@azure/arm-selfhelp@2.0.0-beta.7,js,@azure/arm-selfhelp_2.0.0-beta.7,@azure/arm-selfhelp,2.0.0-beta.7,1780024106,05/29/2026

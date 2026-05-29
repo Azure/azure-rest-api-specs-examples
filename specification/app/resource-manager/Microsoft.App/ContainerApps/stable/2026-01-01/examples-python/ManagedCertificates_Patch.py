@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.appcontainers import ContainerAppsAPIClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-appcontainers
+# USAGE
+    python managed_certificates_patch.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ContainerAppsAPIClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.managed_certificates.update(
+        resource_group_name="examplerg",
+        environment_name="testcontainerenv",
+        managed_certificate_name="certificate-firendly-name",
+        managed_certificate_envelope={"tags": {"tag1": "value1", "tag2": "value2"}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2026-01-01/ManagedCertificates_Patch.json
+if __name__ == "__main__":
+    main()

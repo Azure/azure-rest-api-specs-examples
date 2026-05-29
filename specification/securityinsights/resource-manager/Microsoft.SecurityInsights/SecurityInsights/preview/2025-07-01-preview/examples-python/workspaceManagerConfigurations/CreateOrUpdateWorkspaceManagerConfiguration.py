@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.securityinsight import SecurityInsightsMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-securityinsight
+# USAGE
+    python create_or_update_workspace_manager_configuration.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SecurityInsightsMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.workspace_manager_configurations.create_or_update(
+        resource_group_name="myRg",
+        workspace_name="myWorkspace",
+        workspace_manager_configuration_name="default",
+        workspace_manager_configuration={"properties": {"mode": "Enabled"}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-07-01-preview/workspaceManagerConfigurations/CreateOrUpdateWorkspaceManagerConfiguration.json
+if __name__ == "__main__":
+    main()

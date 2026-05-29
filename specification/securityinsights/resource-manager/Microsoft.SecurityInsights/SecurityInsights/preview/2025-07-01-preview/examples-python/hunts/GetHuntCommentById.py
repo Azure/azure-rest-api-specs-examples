@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.securityinsight import SecurityInsightsMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-securityinsight
+# USAGE
+    python get_hunt_comment_by_id.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SecurityInsightsMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.hunt_comments.get(
+        resource_group_name="myRg",
+        workspace_name="myWorkspace",
+        hunt_id="163e7b2a-a2ec-4041-aaba-d878a38f265f",
+        hunt_comment_id="2216d0e1-91e3-4902-89fd-d2df8c535096",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-07-01-preview/hunts/GetHuntCommentById.json
+if __name__ == "__main__":
+    main()

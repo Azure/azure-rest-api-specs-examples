@@ -1,0 +1,18 @@
+const { MySQLManagementFlexibleServerClient } = require("@azure/arm-mysql-flexible");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to validate a deployment of high availability.
+ *
+ * @summary validate a deployment of high availability.
+ * x-ms-original-file: 2025-06-01-preview/ServerValidateEstimateHighAvailability.json
+ */
+async function validateAValidationAndEstimationOfHighAvailability() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
+  const result = await client.servers.validateEstimateHighAvailability("TestGroup", "testserver", {
+    expectedStandbyAvailabilityZone: "1",
+  });
+  console.log(result);
+}

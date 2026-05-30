@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.DeploymentModel;
+import com.azure.resourcemanager.cognitiveservices.models.DeploymentProperties;
+import com.azure.resourcemanager.cognitiveservices.models.DeploymentState;
+import com.azure.resourcemanager.cognitiveservices.models.ServiceTier;
+import com.azure.resourcemanager.cognitiveservices.models.Sku;
+
+/**
+ * Samples for Deployments CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15-preview/PutDeployment.json
+     */
+    /**
+     * Sample code: PutDeployment.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void putDeployment(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.deployments().define("deploymentName").withExistingAccount("resourceGroupName", "accountName")
+            .withProperties(new DeploymentProperties()
+                .withModel(new DeploymentModel().withFormat("OpenAI").withName("ada").withVersion("1"))
+                .withServiceTier(ServiceTier.PRIORITY).withDeploymentState(DeploymentState.RUNNING))
+            .withSku(new Sku().withName("Standard").withCapacity(1)).create();
+    }
+}

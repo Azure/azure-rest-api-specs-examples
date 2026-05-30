@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.ConnectionCategory;
+import com.azure.resourcemanager.cognitiveservices.models.NoneAuthTypeConnectionProperties;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for ProjectConnections Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15-preview/ProjectConnection/create.json
+     */
+    /**
+     * Sample code: CreateProjectConnection.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        createProjectConnection(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.projectConnections().define("connection-1")
+            .withExistingProject("resourceGroup-1", "account-1", "project-1")
+            .withProperties(new NoneAuthTypeConnectionProperties().withCategory(ConnectionCategory.CONTAINER_REGISTRY)
+                .withExpiryTime(OffsetDateTime.parse("2024-03-15T14:30:00Z")).withTarget("[target url]"))
+            .create();
+    }
+}

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.securityinsight import SecurityInsightsMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-securityinsight
+# USAGE
+    python get_action_of_alert_rule_by_id.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SecurityInsightsMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.actions.get(
+        resource_group_name="myRg",
+        workspace_name="myWorkspace",
+        rule_id="73e01a99-5cd7-4139-a149-9f2736ff2ab5",
+        action_id="912bec42-cb66-4c03-ac63-1761b6898c3e",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-07-01-preview/actions/GetActionOfAlertRuleById.json
+if __name__ == "__main__":
+    main()

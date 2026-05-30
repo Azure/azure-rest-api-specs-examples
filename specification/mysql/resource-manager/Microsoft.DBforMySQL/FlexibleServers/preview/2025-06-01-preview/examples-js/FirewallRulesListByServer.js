@@ -1,0 +1,20 @@
+const { MySQLManagementFlexibleServerClient } = require("@azure/arm-mysql-flexible");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to list all the firewall rules in a given server.
+ *
+ * @summary list all the firewall rules in a given server.
+ * x-ms-original-file: 2025-06-01-preview/FirewallRulesListByServer.json
+ */
+async function listAllFirewallRulesInAServer() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.firewallRules.listByServer("TestGroup", "testserver")) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

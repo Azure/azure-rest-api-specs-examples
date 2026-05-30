@@ -1,0 +1,20 @@
+const { MySQLManagementFlexibleServerClient } = require("@azure/arm-mysql-flexible");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a server's Advanced Threat Protection state
+ *
+ * @summary get a server's Advanced Threat Protection state
+ * x-ms-original-file: 2025-06-01-preview/AdvancedThreatProtectionSettingsGet.json
+ */
+async function getAServerAdvancedThreatProtectionSettings() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
+  const result = await client.advancedThreatProtectionSettings.get(
+    "threatprotection-6852",
+    "threatprotection-2080",
+    "Default",
+  );
+  console.log(result);
+}

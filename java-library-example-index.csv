@@ -6750,3 +6750,4 @@ id,name,language,tag,package,version,date_epoch,date
 6749,@azure/arm-selfhelp@2.0.0-beta.7,js,@azure/arm-selfhelp_2.0.0-beta.7,@azure/arm-selfhelp,2.0.0-beta.7,1780024106,05/29/2026
 6750,azure-mgmt-securityinsight@2.0.0b3,python,azure-mgmt-securityinsight_2.0.0b3,azure-mgmt-securityinsight,2.0.0b3,1780047551,05/29/2026
 6751,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.0.0-beta.2,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.0.0-beta.2,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.0.0-beta.2,1780099680,05/30/2026
+6752,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.2,1780099671,05/30/2026

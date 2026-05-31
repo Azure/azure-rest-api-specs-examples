@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.ManagedNetworkProvisionOptions;
+
+/**
+ * Samples for ManagedNetworkProvisions ProvisionManagedNetwork.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15-preview/ManagedNetwork/provisionManagedNetwork.json
+     */
+    /**
+     * Sample code: Provision ManagedNetwork.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        provisionManagedNetwork(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.managedNetworkProvisions().provisionManagedNetwork("test-rg", "cognitive-account-name", "default",
+            new ManagedNetworkProvisionOptions(), com.azure.core.util.Context.NONE);
+    }
+}

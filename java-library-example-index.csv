@@ -6753,3 +6753,4 @@ id,name,language,tag,package,version,date_epoch,date
 6752,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.2,1780099671,05/30/2026
 6753,"Azure.ResourceManager.ManagedServiceIdentities,1.5.0-beta.1",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.5.0-beta.1,Azure.ResourceManager.ManagedServiceIdentities,1.5.0-beta.1,1780098875,05/29/2026
 6754,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v0.1.0,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v0.1.0,sdk/resourcemanager/monitor/armmonitorworkspaces,v0.1.0,1780297755,06/01/2026
+6755,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/msi/armmsi@v1.4.0-beta.1,go,sdk/resourcemanager/msi/armmsi/v1.4.0-beta.1,sdk/resourcemanager/msi/armmsi,v1.4.0-beta.1,1780260367,05/31/2026

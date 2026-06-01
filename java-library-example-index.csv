@@ -6758,3 +6758,4 @@ id,name,language,tag,package,version,date_epoch,date
 6757,@azure/arm-purview@2.0.0-beta.1,js,@azure/arm-purview_2.0.0-beta.1,@azure/arm-purview,2.0.0-beta.1,1780285602,06/01/2026
 6758,@azure/arm-edgeorder@1.0.0-beta.1,js,@azure/arm-edgeorder_1.0.0-beta.1,@azure/arm-edgeorder,1.0.0-beta.1,1780281850,06/01/2026
 6759,@azure/arm-guestconfiguration@1.0.0-beta.3,js,@azure/arm-guestconfiguration_1.0.0-beta.3,@azure/arm-guestconfiguration,1.0.0-beta.3,1780281778,06/01/2026
+6760,azure-mgmt-msi@8.0.0b2,python,azure-mgmt-msi_8.0.0b2,azure-mgmt-msi,8.0.0b2,1780298746,06/01/2026

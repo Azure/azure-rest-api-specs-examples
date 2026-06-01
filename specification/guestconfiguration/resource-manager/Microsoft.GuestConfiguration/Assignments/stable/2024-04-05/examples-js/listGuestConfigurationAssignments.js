@@ -1,0 +1,23 @@
+const { GuestConfigurationClient } = require("@azure/arm-guestconfiguration");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to list all guest configuration assignments for a virtual machine.
+ *
+ * @summary list all guest configuration assignments for a virtual machine.
+ * x-ms-original-file: 2024-04-05/listGuestConfigurationAssignments.json
+ */
+async function listAllGuestConfigurationAssignmentsForAVirtualMachine() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "mySubscriptionId";
+  const client = new GuestConfigurationClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.guestConfigurationAssignments.list(
+    "myResourceGroupName",
+    "myVMName",
+  )) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

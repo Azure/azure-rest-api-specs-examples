@@ -1,0 +1,40 @@
+const { GuestConfigurationClient } = require("@azure/arm-guestconfiguration");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates an association between a ARC machine and guest configuration
+ *
+ * @summary creates an association between a ARC machine and guest configuration
+ * x-ms-original-file: 2024-04-05/createOrUpdateGuestConfigurationHCRPAssignment.json
+ */
+async function createOrUpdateGuestConfigurationAssignment() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "mySubscriptionId";
+  const client = new GuestConfigurationClient(credential, subscriptionId);
+  const result = await client.guestConfigurationHcrpAssignments.createOrUpdate(
+    "NotInstalledApplicationForWindows",
+    "myResourceGroupName",
+    "myMachineName",
+    {
+      name: "NotInstalledApplicationForWindows",
+      location: "westcentralus",
+      properties: {
+        context: "Azure policy",
+        guestConfiguration: {
+          name: "NotInstalledApplicationForWindows",
+          assignmentType: "ApplyAndAutoCorrect",
+          configurationParameter: [
+            {
+              name: "[InstalledApplication]NotInstalledApplicationResource1;Name",
+              value: "NotePad,sql",
+            },
+          ],
+          contentHash: "123contenthash",
+          contentUri: "https://thisisfake/pacakge",
+          version: "1.0.0.3",
+        },
+      },
+    },
+  );
+  console.log(result);
+}

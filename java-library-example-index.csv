@@ -6775,3 +6775,4 @@ id,name,language,tag,package,version,date_epoch,date
 6774,azure-mgmt-datafactory@10.0.0b1,python,azure-mgmt-datafactory_10.0.0b1,azure-mgmt-datafactory,10.0.0b1,1780387629,06/02/2026
 6775,azure-mgmt-imagebuilder@2.0.0,python,azure-mgmt-imagebuilder_2.0.0,azure-mgmt-imagebuilder,2.0.0,1780387453,06/02/2026
 6776,azure-mgmt-kusto@4.0.0b1,python,azure-mgmt-kusto_4.0.0b1,azure-mgmt-kusto,4.0.0b1,1780387395,06/02/2026
+6777,azure-mgmt-resourcehealth@1.0.0b7,python,azure-mgmt-resourcehealth_1.0.0b7,azure-mgmt-resourcehealth,1.0.0b7,1780387387,06/02/2026

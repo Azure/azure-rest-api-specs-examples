@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.private_endpoint_connection.get(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/GetPrivateEndpointConnection.json
+# x-ms-original-file: 2018-06-01/GetPrivateEndpointConnection.json
 if __name__ == "__main__":
     main()

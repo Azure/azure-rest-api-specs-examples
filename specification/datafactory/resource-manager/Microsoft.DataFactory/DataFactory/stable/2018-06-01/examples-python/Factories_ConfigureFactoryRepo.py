@@ -19,13 +19,13 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.factories.configure_factory_repo(
         location_id="East US",
         factory_repo_update={
-            "factoryResourceId": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName",
+            "factoryResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName",
             "repoConfiguration": {
                 "accountName": "ADF",
                 "collaborationBranch": "master",
@@ -41,6 +41,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/Factories_ConfigureFactoryRepo.json
+# x-ms-original-file: 2018-06-01/Factories_ConfigureFactoryRepo.json
 if __name__ == "__main__":
     main()

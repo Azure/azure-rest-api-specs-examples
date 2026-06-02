@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="7ad7c73b-38b8-4df3-84ee-52ff91092f61",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.integration_runtimes.list_outbound_network_dependencies_endpoints(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
+# x-ms-original-file: 2018-06-01/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
 if __name__ == "__main__":
     main()

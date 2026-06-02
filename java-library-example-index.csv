@@ -6752,3 +6752,12 @@ id,name,language,tag,package,version,date_epoch,date
 6751,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.0.0-beta.2,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.0.0-beta.2,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.0.0-beta.2,1780099680,05/30/2026
 6752,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.2,1780099671,05/30/2026
 6753,"Azure.ResourceManager.ManagedServiceIdentities,1.5.0-beta.1",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.5.0-beta.1,Azure.ResourceManager.ManagedServiceIdentities,1.5.0-beta.1,1780098875,05/29/2026
+6754,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v0.1.0,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v0.1.0,sdk/resourcemanager/monitor/armmonitorworkspaces,v0.1.0,1780297755,06/01/2026
+6755,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/msi/armmsi@v1.4.0-beta.1,go,sdk/resourcemanager/msi/armmsi/v1.4.0-beta.1,sdk/resourcemanager/msi/armmsi,v1.4.0-beta.1,1780260367,05/31/2026
+6756,@azure/arm-maintenance@1.0.0-beta.4,js,@azure/arm-maintenance_1.0.0-beta.4,@azure/arm-maintenance,1.0.0-beta.4,1780299412,06/01/2026
+6757,@azure/arm-purview@2.0.0-beta.1,js,@azure/arm-purview_2.0.0-beta.1,@azure/arm-purview,2.0.0-beta.1,1780285602,06/01/2026
+6758,@azure/arm-edgeorder@1.0.0-beta.1,js,@azure/arm-edgeorder_1.0.0-beta.1,@azure/arm-edgeorder,1.0.0-beta.1,1780281850,06/01/2026
+6759,@azure/arm-guestconfiguration@1.0.0-beta.3,js,@azure/arm-guestconfiguration_1.0.0-beta.3,@azure/arm-guestconfiguration,1.0.0-beta.3,1780281778,06/01/2026
+6760,azure-mgmt-msi@8.0.0b2,python,azure-mgmt-msi_8.0.0b2,azure-mgmt-msi,8.0.0b2,1780298746,06/01/2026
+6761,com.azure.resourcemanager:azure-resourcemanager-msi:2.54.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-msi_2.54.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-msi,2.54.0-beta.1,1780259926,05/31/2026
+6762,"Azure.ResourceManager.Chaos,1.2.0-beta.1",dotnet,Azure.ResourceManager.Chaos_1.2.0-beta.1,Azure.ResourceManager.Chaos,1.2.0-beta.1,1780292891,06/01/2026

@@ -6761,3 +6761,4 @@ id,name,language,tag,package,version,date_epoch,date
 6760,azure-mgmt-msi@8.0.0b2,python,azure-mgmt-msi_8.0.0b2,azure-mgmt-msi,8.0.0b2,1780298746,06/01/2026
 6761,com.azure.resourcemanager:azure-resourcemanager-msi:2.54.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-msi_2.54.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-msi,2.54.0-beta.1,1780259926,05/31/2026
 6762,"Azure.ResourceManager.Chaos,1.2.0-beta.1",dotnet,Azure.ResourceManager.Chaos_1.2.0-beta.1,Azure.ResourceManager.Chaos,1.2.0-beta.1,1780292891,06/01/2026
+6763,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgemarketplace/armedgemarketplace@v0.1.1,go,sdk/resourcemanager/edgemarketplace/armedgemarketplace/v0.1.1,sdk/resourcemanager/edgemarketplace/armedgemarketplace,v0.1.1,1780386905,06/02/2026

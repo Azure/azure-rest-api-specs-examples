@@ -6764,3 +6764,4 @@ id,name,language,tag,package,version,date_epoch,date
 6763,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgemarketplace/armedgemarketplace@v0.1.1,go,sdk/resourcemanager/edgemarketplace/armedgemarketplace/v0.1.1,sdk/resourcemanager/edgemarketplace/armedgemarketplace,v0.1.1,1780386905,06/02/2026
 6764,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4@v4.1.0,go,sdk/resourcemanager/storage/armstorage/v4.1.0,sdk/resourcemanager/storage/armstorage,v4.1.0,1780383093,06/02/2026
 6765,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armslis@v0.2.0,go,sdk/resourcemanager/monitor/armslis/v0.2.0,sdk/resourcemanager/monitor/armslis,v0.2.0,1780344857,06/01/2026
+6766,@azure/arm-resourcesdeploymentstacks@2.0.0,js,@azure/arm-resourcesdeploymentstacks_2.0.0,@azure/arm-resourcesdeploymentstacks,2.0.0,1780384093,06/02/2026

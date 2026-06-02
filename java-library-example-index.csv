@@ -6778,3 +6778,4 @@ id,name,language,tag,package,version,date_epoch,date
 6777,azure-mgmt-resourcehealth@1.0.0b7,python,azure-mgmt-resourcehealth_1.0.0b7,azure-mgmt-resourcehealth,1.0.0b7,1780387387,06/02/2026
 6778,azure-mgmt-policyinsights@1.1.0b6,python,azure-mgmt-policyinsights_1.1.0b6,azure-mgmt-policyinsights,1.1.0b6,1780387380,06/02/2026
 6779,azure-mgmt-discovery@1.0.0b1,python,azure-mgmt-discovery_1.0.0b1,azure-mgmt-discovery,1.0.0b1,1780354240,06/01/2026
+6780,azure-mgmt-datamigration@11.0.0b1,python,azure-mgmt-datamigration_11.0.0b1,azure-mgmt-datamigration,11.0.0b1,1780393916,06/02/2026

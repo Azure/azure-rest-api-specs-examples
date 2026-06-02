@@ -6776,3 +6776,4 @@ id,name,language,tag,package,version,date_epoch,date
 6775,azure-mgmt-imagebuilder@2.0.0,python,azure-mgmt-imagebuilder_2.0.0,azure-mgmt-imagebuilder,2.0.0,1780387453,06/02/2026
 6776,azure-mgmt-kusto@4.0.0b1,python,azure-mgmt-kusto_4.0.0b1,azure-mgmt-kusto,4.0.0b1,1780387395,06/02/2026
 6777,azure-mgmt-resourcehealth@1.0.0b7,python,azure-mgmt-resourcehealth_1.0.0b7,azure-mgmt-resourcehealth,1.0.0b7,1780387387,06/02/2026
+6778,azure-mgmt-policyinsights@1.1.0b6,python,azure-mgmt-policyinsights_1.1.0b6,azure-mgmt-policyinsights,1.1.0b6,1780387380,06/02/2026

@@ -6767,3 +6767,4 @@ id,name,language,tag,package,version,date_epoch,date
 6766,@azure/arm-resourcesdeploymentstacks@2.0.0,js,@azure/arm-resourcesdeploymentstacks_2.0.0,@azure/arm-resourcesdeploymentstacks,2.0.0,1780384093,06/02/2026
 6767,@azure/arm-confidentialledger@2.0.0-beta.1,js,@azure/arm-confidentialledger_2.0.0-beta.1,@azure/arm-confidentialledger,2.0.0-beta.1,1780369153,06/02/2026
 6768,@azure/arm-databox@6.0.0-beta.1,js,@azure/arm-databox_6.0.0-beta.1,@azure/arm-databox,6.0.0-beta.1,1780369143,06/02/2026
+6769,@azure/arm-datadog@4.0.0-beta.1,js,@azure/arm-datadog_4.0.0-beta.1,@azure/arm-datadog,4.0.0-beta.1,1780367608,06/02/2026

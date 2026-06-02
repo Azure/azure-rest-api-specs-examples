@@ -1,0 +1,19 @@
+const { GuestConfigurationClient } = require("@azure/arm-guestconfiguration");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to delete a guest configuration assignment
+ *
+ * @summary delete a guest configuration assignment
+ * x-ms-original-file: 2024-04-05/deleteGuestConfigurationConnectedVMwarevSphereAssignment.json
+ */
+async function deleteAnGuestConfigurationAssignment() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "mySubscriptionId";
+  const client = new GuestConfigurationClient(credential, subscriptionId);
+  await client.guestConfigurationConnectedVMwarevSphereAssignments.delete(
+    "myResourceGroupName",
+    "myVMName",
+    "SecureProtocol",
+  );
+}

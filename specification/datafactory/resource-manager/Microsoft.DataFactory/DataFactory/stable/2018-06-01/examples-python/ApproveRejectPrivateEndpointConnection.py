@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.private_endpoint_connection.create_or_update(
@@ -29,7 +29,7 @@ def main():
         private_endpoint_wrapper={
             "properties": {
                 "privateEndpoint": {
-                    "id": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"
+                    "id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"
                 },
                 "privateLinkServiceConnectionState": {
                     "actionsRequired": "",
@@ -42,6 +42,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/ApproveRejectPrivateEndpointConnection.json
+# x-ms-original-file: 2018-06-01/ApproveRejectPrivateEndpointConnection.json
 if __name__ == "__main__":
     main()

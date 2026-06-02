@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.managed_virtual_networks.create_or_update(
@@ -31,6 +31,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/ManagedVirtualNetworks_Create.json
+# x-ms-original-file: 2018-06-01/ManagedVirtualNetworks_Create.json
 if __name__ == "__main__":
     main()

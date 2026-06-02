@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.trigger_runs.rerun(
@@ -30,6 +30,6 @@ def main():
     )
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/TriggerRuns_Rerun.json
+# x-ms-original-file: 2018-06-01/TriggerRuns_Rerun.json
 if __name__ == "__main__":
     main()

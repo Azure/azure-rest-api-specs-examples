@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.data_flow_debug_session.query_by_factory(
@@ -30,6 +30,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_QueryByFactory.json
+# x-ms-original-file: 2018-06-01/DataFlowDebugSession_QueryByFactory.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.managed_private_endpoints.create_or_update(
@@ -31,13 +31,13 @@ def main():
             "properties": {
                 "fqdns": [],
                 "groupId": "blob",
-                "privateLinkResourceId": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage",
+                "privateLinkResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage",
             }
         },
     )
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/ManagedPrivateEndpoints_Create.json
+# x-ms-original-file: 2018-06-01/ManagedPrivateEndpoints_Create.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="12345678-1234-1234-1234-12345678abc",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.triggers.begin_unsubscribe_from_events(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/DataFactory/stable/2018-06-01/examples/Triggers_UnsubscribeFromEvents.json
+# x-ms-original-file: 2018-06-01/Triggers_UnsubscribeFromEvents.json
 if __name__ == "__main__":
     main()

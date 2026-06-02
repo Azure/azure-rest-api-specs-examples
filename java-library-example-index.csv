@@ -6762,3 +6762,4 @@ id,name,language,tag,package,version,date_epoch,date
 6761,com.azure.resourcemanager:azure-resourcemanager-msi:2.54.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-msi_2.54.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-msi,2.54.0-beta.1,1780259926,05/31/2026
 6762,"Azure.ResourceManager.Chaos,1.2.0-beta.1",dotnet,Azure.ResourceManager.Chaos_1.2.0-beta.1,Azure.ResourceManager.Chaos,1.2.0-beta.1,1780292891,06/01/2026
 6763,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgemarketplace/armedgemarketplace@v0.1.1,go,sdk/resourcemanager/edgemarketplace/armedgemarketplace/v0.1.1,sdk/resourcemanager/edgemarketplace/armedgemarketplace,v0.1.1,1780386905,06/02/2026
+6764,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4@v4.1.0,go,sdk/resourcemanager/storage/armstorage/v4.1.0,sdk/resourcemanager/storage/armstorage,v4.1.0,1780383093,06/02/2026

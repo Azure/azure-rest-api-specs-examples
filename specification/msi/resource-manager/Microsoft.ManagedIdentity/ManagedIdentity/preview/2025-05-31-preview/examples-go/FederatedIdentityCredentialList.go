@@ -1,0 +1,68 @@
+package armmsi_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/msi/armmsi"
+)
+
+// Generated from example definition: 2025-05-31-preview/FederatedIdentityCredentialList.json
+func ExampleFederatedIdentityCredentialsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armmsi.NewClientFactory("c267c0e7-0a73-4789-9e17-d26aeb0904e5", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewFederatedIdentityCredentialsClient().NewListPager("rgName", "resourceName", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armmsi.FederatedIdentityCredentialsClientListResponse{
+		// 	FederatedIdentityCredentialsListResult: armmsi.FederatedIdentityCredentialsListResult{
+		// 		Value: []*armmsi.FederatedIdentityCredential{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/c267c0e7-0a73-4789-9e17-d26aeb0904e5/resourcegroups/rgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName/federatedIdentityCredentials/ficResourceName"),
+		// 				Name: to.Ptr("ficResourceName"),
+		// 				Properties: &armmsi.FederatedIdentityCredentialProperties{
+		// 					Issuer: to.Ptr("https://oidc.prod-aks.azure.com/TenantGUID/IssuerGUID"),
+		// 					Subject: to.Ptr("system:serviceaccount:ns:svcaccount"),
+		// 					Audiences: []*string{
+		// 						to.Ptr("api://AzureADTokenExchange"),
+		// 					},
+		// 				},
+		// 				Type: to.Ptr("Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"),
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/c267c0e7-0a73-4789-9e17-d26aeb0904e5/resourcegroups/rgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName/federatedIdentityCredentials/flexibleFicResourceName"),
+		// 				Name: to.Ptr("flexibleFicResourceName"),
+		// 				Properties: &armmsi.FederatedIdentityCredentialProperties{
+		// 					Issuer: to.Ptr("https://oidc.prod-aks.azure.com/TenantGUID/IssuerGUID"),
+		// 					Audiences: []*string{
+		// 						to.Ptr("api://AzureADTokenExchange"),
+		// 					},
+		// 					ClaimsMatchingExpression: &armmsi.ClaimsMatchingExpression{
+		// 						LanguageVersion: to.Ptr[int32](1),
+		// 						Value: to.Ptr("claims['sub'] matches system:serviceaccount:ns:*"),
+		// 					},
+		// 				},
+		// 				Type: to.Ptr("Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"),
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://serviceRoot/subscriptions/c267c0e7-0a73-4789-9e17-d26aeb0904e5/resourcegroups/rgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/resourceName/federatedIdentityCredentials?api-version=2025-05-31-preview&$skipToken=X'12345'"),
+		// 	},
+		// }
+	}
+}

@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.discovery import DiscoveryMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-discovery
+# USAGE
+    python workspaces_delete_maximum_set_gen.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DiscoveryMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.workspaces.begin_delete(
+        resource_group_name="rgdiscovery",
+        workspace_name="f1559ab1ef72a2eae5",
+    ).result()
+
+
+# x-ms-original-file: 2026-02-01-preview/Workspaces_Delete_MaximumSet_Gen.json
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,16 @@
+const { PowerBIDedicated } = require("@azure/arm-powerbidedicated");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists eligible SKUs for PowerBI Dedicated resource provider.
+ *
+ * @summary lists eligible SKUs for PowerBI Dedicated resource provider.
+ * x-ms-original-file: 2021-01-01/listSKUsForNew.json
+ */
+async function listEligibleSKUsForANewCapacity() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "613192d7-503f-477a-9cfe-4efc3ee2bd60";
+  const client = new PowerBIDedicated(credential, subscriptionId);
+  const result = await client.capacities.listSkus();
+  console.log(result);
+}

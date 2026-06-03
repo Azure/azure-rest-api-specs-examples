@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppPrivateEndpointConnectionResource created on azure
+// for more information of creating ContainerAppPrivateEndpointConnectionResource, please refer to the document of ContainerAppPrivateEndpointConnectionResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string environmentName = "managedEnv";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppPrivateEndpointConnectionResource
-ContainerAppPrivateEndpointConnectionCollection collection = containerAppManagedEnvironment.GetContainerAppPrivateEndpointConnections();
+string privateEndpointConnectionName = "jlaw-demo1";
+ResourceIdentifier containerAppPrivateEndpointConnectionResourceId = ContainerAppPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, privateEndpointConnectionName);
+ContainerAppPrivateEndpointConnectionResource containerAppPrivateEndpointConnection = client.GetContainerAppPrivateEndpointConnectionResource(containerAppPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "jlaw-demo1";
-NullableResponse<ContainerAppPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
-ContainerAppPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
+ContainerAppPrivateEndpointConnectionResource result = await containerAppPrivateEndpointConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerAppPrivateEndpointConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

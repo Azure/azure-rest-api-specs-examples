@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppHttpRouteConfigResource created on azure
+// for more information of creating ContainerAppHttpRouteConfigResource, please refer to the document of ContainerAppHttpRouteConfigResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "examplerg";
 string environmentName = "testcontainerenv";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppHttpRouteConfigResource
-ContainerAppHttpRouteConfigCollection collection = containerAppManagedEnvironment.GetContainerAppHttpRouteConfigs();
+string httpRouteName = "httproutefriendlyname";
+ResourceIdentifier containerAppHttpRouteConfigResourceId = ContainerAppHttpRouteConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, httpRouteName);
+ContainerAppHttpRouteConfigResource containerAppHttpRouteConfig = client.GetContainerAppHttpRouteConfigResource(containerAppHttpRouteConfigResourceId);
 
 // invoke the operation
-string httpRouteName = "httproutefriendlyname";
-NullableResponse<ContainerAppHttpRouteConfigResource> response = await collection.GetIfExistsAsync(httpRouteName);
-ContainerAppHttpRouteConfigResource result = response.HasValue ? response.Value : null;
+ContainerAppHttpRouteConfigResource result = await containerAppHttpRouteConfig.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerAppHttpRouteConfigData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppHttpRouteConfigData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

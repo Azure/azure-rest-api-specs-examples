@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppConnectedEnvironmentStorageResource created on azure
-// for more information of creating ContainerAppConnectedEnvironmentStorageResource, please refer to the document of ContainerAppConnectedEnvironmentStorageResource
+// this example assumes you already have this ContainerAppConnectedEnvironmentResource created on azure
+// for more information of creating ContainerAppConnectedEnvironmentResource, please refer to the document of ContainerAppConnectedEnvironmentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string connectedEnvironmentName = "env";
-string storageName = "jlaw-demo1";
-ResourceIdentifier containerAppConnectedEnvironmentStorageResourceId = ContainerAppConnectedEnvironmentStorageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName, storageName);
-ContainerAppConnectedEnvironmentStorageResource containerAppConnectedEnvironmentStorage = client.GetContainerAppConnectedEnvironmentStorageResource(containerAppConnectedEnvironmentStorageResourceId);
+ResourceIdentifier containerAppConnectedEnvironmentResourceId = ContainerAppConnectedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName);
+ContainerAppConnectedEnvironmentResource containerAppConnectedEnvironment = client.GetContainerAppConnectedEnvironmentResource(containerAppConnectedEnvironmentResourceId);
+
+// get the collection of this ContainerAppConnectedEnvironmentStorageResource
+ContainerAppConnectedEnvironmentStorageCollection collection = containerAppConnectedEnvironment.GetContainerAppConnectedEnvironmentStorages();
 
 // invoke the operation
-ContainerAppConnectedEnvironmentStorageResource result = await containerAppConnectedEnvironmentStorage.GetAsync();
+string storageName = "jlaw-demo1";
+NullableResponse<ContainerAppConnectedEnvironmentStorageResource> response = await collection.GetIfExistsAsync(storageName);
+ContainerAppConnectedEnvironmentStorageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerAppConnectedEnvironmentStorageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerAppConnectedEnvironmentStorageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

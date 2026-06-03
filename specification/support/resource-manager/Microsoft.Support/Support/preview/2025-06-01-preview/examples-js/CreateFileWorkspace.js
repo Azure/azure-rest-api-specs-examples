@@ -1,0 +1,15 @@
+const { MicrosoftSupport } = require("@azure/arm-support");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates a new file workspace.
+ *
+ * @summary creates a new file workspace.
+ * x-ms-original-file: 2025-06-01-preview/CreateFileWorkspace.json
+ */
+async function createAFileWorkspace() {
+  const credential = new DefaultAzureCredential();
+  const client = new MicrosoftSupport(credential);
+  const result = await client.fileWorkspacesNoSubscription.create("testworkspace");
+  console.log(result);
+}

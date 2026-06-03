@@ -6792,3 +6792,4 @@ id,name,language,tag,package,version,date_epoch,date
 6791,azure-mgmt-devhub@1.0.0b2,python,azure-mgmt-devhub_1.0.0b2,azure-mgmt-devhub,1.0.0b2,1780478895,06/03/2026
 6792,azure-mgmt-subscription@3.2.0b2,python,azure-mgmt-subscription_3.2.0b2,azure-mgmt-subscription,3.2.0b2,1780474405,06/03/2026
 6793,azure-mgmt-sql@4.0.0b25,python,azure-mgmt-sql_4.0.0b25,azure-mgmt-sql,4.0.0b25,1780471950,06/03/2026
+6794,azure-mgmt-containerservicefleet@4.0.0b4,python,azure-mgmt-containerservicefleet_4.0.0b4,azure-mgmt-containerservicefleet,4.0.0b4,1780457071,06/03/2026

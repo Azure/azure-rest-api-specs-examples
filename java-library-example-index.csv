@@ -6789,3 +6789,4 @@ id,name,language,tag,package,version,date_epoch,date
 6788,@azure/arm-support@4.0.0-beta.1,js,@azure/arm-support_4.0.0-beta.1,@azure/arm-support,4.0.0-beta.1,1780453588,06/03/2026
 6789,@azure/arm-postgresqlhsc@1.0.0-beta.1,js,@azure/arm-postgresqlhsc_1.0.0-beta.1,@azure/arm-postgresqlhsc,1.0.0-beta.1,1780453561,06/03/2026
 6790,@azure/arm-computelimit@1.1.0,js,@azure/arm-computelimit_1.1.0,@azure/arm-computelimit,1.1.0,1780431162,06/02/2026
+6791,azure-mgmt-devhub@1.0.0b2,python,azure-mgmt-devhub_1.0.0b2,azure-mgmt-devhub,1.0.0b2,1780478895,06/03/2026

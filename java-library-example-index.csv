@@ -6798,3 +6798,4 @@ id,name,language,tag,package,version,date_epoch,date
 6797,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.1.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.1.0,1780431185,06/02/2026
 6798,"Azure.ResourceManager.AppService,1.5.0",dotnet,Azure.ResourceManager.AppService_1.5.0,Azure.ResourceManager.AppService,1.5.0,1780476427,06/03/2026
 6799,"Azure.ResourceManager.Cdn,1.6.0-beta.1",dotnet,Azure.ResourceManager.Cdn_1.6.0-beta.1,Azure.ResourceManager.Cdn,1.6.0-beta.1,1780457383,06/03/2026
+6800,"Azure.ResourceManager.Batch,1.7.0",dotnet,Azure.ResourceManager.Batch_1.7.0,Azure.ResourceManager.Batch,1.7.0,1780457380,06/03/2026

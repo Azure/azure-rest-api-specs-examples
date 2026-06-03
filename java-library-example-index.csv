@@ -6783,3 +6783,4 @@ id,name,language,tag,package,version,date_epoch,date
 6782,azure-mgmt-reservations@3.0.0b1,python,azure-mgmt-reservations_3.0.0b1,azure-mgmt-reservations,3.0.0b1,1780390357,06/02/2026
 6783,azure-mgmt-billing@8.0.0b1,python,azure-mgmt-billing_8.0.0b1,azure-mgmt-billing,8.0.0b1,1780390109,06/02/2026
 6784,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy/v2@v2.0.0-beta.1,go,sdk/resourcemanager/resources/armpolicy/v2.0.0-beta.1,sdk/resourcemanager/resources/armpolicy,v2.0.0-beta.1,1780466325,06/03/2026
+6785,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v3@v3.0.0-beta.1,go,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v3.0.0-beta.1,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules,v3.0.0-beta.1,1780458019,06/03/2026

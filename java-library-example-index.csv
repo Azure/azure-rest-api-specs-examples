@@ -6793,3 +6793,4 @@ id,name,language,tag,package,version,date_epoch,date
 6792,azure-mgmt-subscription@3.2.0b2,python,azure-mgmt-subscription_3.2.0b2,azure-mgmt-subscription,3.2.0b2,1780474405,06/03/2026
 6793,azure-mgmt-sql@4.0.0b25,python,azure-mgmt-sql_4.0.0b25,azure-mgmt-sql,4.0.0b25,1780471950,06/03/2026
 6794,azure-mgmt-containerservicefleet@4.0.0b4,python,azure-mgmt-containerservicefleet_4.0.0b4,azure-mgmt-containerservicefleet,4.0.0b4,1780457071,06/03/2026
+6795,azure-mgmt-computelimit@1.1.0,python,azure-mgmt-computelimit_1.1.0,azure-mgmt-computelimit,1.1.0,1780430851,06/02/2026

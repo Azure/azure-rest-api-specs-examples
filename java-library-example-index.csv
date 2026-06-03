@@ -6787,3 +6787,4 @@ id,name,language,tag,package,version,date_epoch,date
 6786,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0-beta.5,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0-beta.5,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0-beta.5,1780457198,06/03/2026
 6787,@azure/arm-containerservicefleet@2.1.0-beta.4,js,@azure/arm-containerservicefleet_2.1.0-beta.4,@azure/arm-containerservicefleet,2.1.0-beta.4,1780457052,06/03/2026
 6788,@azure/arm-support@4.0.0-beta.1,js,@azure/arm-support_4.0.0-beta.1,@azure/arm-support,4.0.0-beta.1,1780453588,06/03/2026
+6789,@azure/arm-postgresqlhsc@1.0.0-beta.1,js,@azure/arm-postgresqlhsc_1.0.0-beta.1,@azure/arm-postgresqlhsc,1.0.0-beta.1,1780453561,06/03/2026

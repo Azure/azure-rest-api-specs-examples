@@ -6795,3 +6795,4 @@ id,name,language,tag,package,version,date_epoch,date
 6794,azure-mgmt-containerservicefleet@4.0.0b4,python,azure-mgmt-containerservicefleet_4.0.0b4,azure-mgmt-containerservicefleet,4.0.0b4,1780457071,06/03/2026
 6795,azure-mgmt-computelimit@1.1.0,python,azure-mgmt-computelimit_1.1.0,azure-mgmt-computelimit,1.1.0,1780430851,06/02/2026
 6796,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.3.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet_1.3.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet,1.3.0-beta.4,1780457200,06/03/2026
+6797,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.1.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.1.0,1780431185,06/02/2026

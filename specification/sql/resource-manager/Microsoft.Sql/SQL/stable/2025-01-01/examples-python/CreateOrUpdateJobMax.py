@@ -1,0 +1,48 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python create_or_update_job_max.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.jobs.create_or_update(
+        resource_group_name="group1",
+        server_name="server1",
+        job_agent_name="agent1",
+        job_name="job1",
+        parameters={
+            "properties": {
+                "description": "my favourite job",
+                "schedule": {
+                    "enabled": True,
+                    "endTime": "2015-09-24T23:59:59Z",
+                    "interval": "PT5M",
+                    "startTime": "2015-09-24T18:30:01Z",
+                    "type": "Recurring",
+                },
+            }
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/CreateOrUpdateJobMax.json
+if __name__ == "__main__":
+    main()

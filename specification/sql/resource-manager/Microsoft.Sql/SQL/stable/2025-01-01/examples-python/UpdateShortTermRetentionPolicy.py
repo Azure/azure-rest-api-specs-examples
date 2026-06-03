@@ -1,0 +1,37 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python update_short_term_retention_policy.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.backup_short_term_retention_policies.begin_update(
+        resource_group_name="resourceGroup",
+        server_name="testsvr",
+        database_name="testdb",
+        policy_name="default",
+        parameters={"properties": {"diffBackupIntervalInHours": 24, "retentionDays": 7}},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/UpdateShortTermRetentionPolicy.json
+if __name__ == "__main__":
+    main()

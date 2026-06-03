@@ -1,0 +1,43 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python managed_instance_administrator_create.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.managed_instance_administrators.begin_create_or_update(
+        resource_group_name="Default-SQL-SouthEastAsia",
+        managed_instance_name="managedInstance",
+        administrator_name="ActiveDirectory",
+        parameters={
+            "properties": {
+                "administratorType": "ActiveDirectory",
+                "login": "bob@contoso.com",
+                "sid": "44444444-3333-2222-1111-000000000000",
+                "tenantId": "55555555-4444-3333-2222-111111111111",
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/ManagedInstanceAdministratorCreate.json
+if __name__ == "__main__":
+    main()

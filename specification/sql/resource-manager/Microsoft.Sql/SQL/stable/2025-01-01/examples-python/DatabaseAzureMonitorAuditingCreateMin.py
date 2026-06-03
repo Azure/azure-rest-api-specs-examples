@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python database_azure_monitor_auditing_create_min.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.database_blob_auditing_policies.create_or_update(
+        resource_group_name="blobauditingtest-4799",
+        server_name="blobauditingtest-6440",
+        database_name="testdb",
+        parameters={"properties": {"isAzureMonitorTargetEnabled": True, "state": "Enabled"}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/DatabaseAzureMonitorAuditingCreateMin.json
+if __name__ == "__main__":
+    main()

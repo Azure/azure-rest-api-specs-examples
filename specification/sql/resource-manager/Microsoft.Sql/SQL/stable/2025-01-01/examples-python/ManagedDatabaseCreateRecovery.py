@@ -1,0 +1,42 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python managed_database_create_recovery.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.managed_databases.begin_create_or_update(
+        resource_group_name="Default-SQL-SouthEastAsia",
+        managed_instance_name="server1",
+        database_name="testdb_recovered",
+        parameters={
+            "location": "southeastasia",
+            "properties": {
+                "createMode": "Recovery",
+                "recoverableDatabaseId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-WestEurope/providers/Microsoft.Sql/managedInstances/testsvr/recoverableDatabases/testdb",
+            },
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/ManagedDatabaseCreateRecovery.json
+if __name__ == "__main__":
+    main()

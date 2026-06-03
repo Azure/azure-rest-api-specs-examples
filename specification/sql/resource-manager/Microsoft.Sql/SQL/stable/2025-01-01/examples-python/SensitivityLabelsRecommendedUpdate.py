@@ -1,0 +1,41 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python sensitivity_labels_recommended_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.recommended_sensitivity_labels.update(
+        resource_group_name="myRG",
+        server_name="myServer",
+        database_name="myDatabase",
+        parameters={
+            "operations": [
+                {"properties": {"column": "column1", "op": "enable", "schema": "dbo", "table": "table1"}},
+                {"properties": {"column": "column2", "op": "enable", "schema": "dbo", "table": "table2"}},
+                {"properties": {"column": "column3", "op": "disable", "schema": "dbo", "table": "table1"}},
+            ]
+        },
+    )
+
+
+# x-ms-original-file: 2025-01-01/SensitivityLabelsRecommendedUpdate.json
+if __name__ == "__main__":
+    main()

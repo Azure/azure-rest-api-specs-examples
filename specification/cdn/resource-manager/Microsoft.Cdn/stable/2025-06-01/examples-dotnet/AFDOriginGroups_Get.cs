@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorOriginGroupResource created on azure
-// for more information of creating FrontDoorOriginGroupResource, please refer to the document of FrontDoorOriginGroupResource
+// this example assumes you already have this ProfileResource created on azure
+// for more information of creating ProfileResource, please refer to the document of ProfileResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-string originGroupName = "origingroup1";
-ResourceIdentifier frontDoorOriginGroupResourceId = FrontDoorOriginGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, originGroupName);
-FrontDoorOriginGroupResource frontDoorOriginGroup = client.GetFrontDoorOriginGroupResource(frontDoorOriginGroupResourceId);
+ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
+ProfileResource profile = client.GetProfileResource(profileResourceId);
+
+// get the collection of this FrontDoorOriginGroupResource
+FrontDoorOriginGroupCollection collection = profile.GetFrontDoorOriginGroups();
 
 // invoke the operation
-FrontDoorOriginGroupResource result = await frontDoorOriginGroup.GetAsync();
+string originGroupName = "origingroup1";
+NullableResponse<FrontDoorOriginGroupResource> response = await collection.GetIfExistsAsync(originGroupName);
+FrontDoorOriginGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FrontDoorOriginGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    FrontDoorOriginGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Cdn;
 
 // Generated from example definition: specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/examples/WafPolicyGet.json
@@ -16,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this CdnWebApplicationFirewallPolicyResource created on azure
+// for more information of creating CdnWebApplicationFirewallPolicyResource, please refer to the document of CdnWebApplicationFirewallPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this CdnWebApplicationFirewallPolicyResource
-CdnWebApplicationFirewallPolicyCollection collection = resourceGroupResource.GetCdnWebApplicationFirewallPolicies();
+string policyName = "MicrosoftCdnWafPolicy";
+ResourceIdentifier cdnWebApplicationFirewallPolicyResourceId = CdnWebApplicationFirewallPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, policyName);
+CdnWebApplicationFirewallPolicyResource cdnWebApplicationFirewallPolicy = client.GetCdnWebApplicationFirewallPolicyResource(cdnWebApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-string policyName = "MicrosoftCdnWafPolicy";
-NullableResponse<CdnWebApplicationFirewallPolicyResource> response = await collection.GetIfExistsAsync(policyName);
-CdnWebApplicationFirewallPolicyResource result = response.HasValue ? response.Value : null;
+CdnWebApplicationFirewallPolicyResource result = await cdnWebApplicationFirewallPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CdnWebApplicationFirewallPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CdnWebApplicationFirewallPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

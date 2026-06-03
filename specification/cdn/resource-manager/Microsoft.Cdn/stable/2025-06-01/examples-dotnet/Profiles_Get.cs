@@ -1,12 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Cdn;
 
 // Generated from example definition: specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/examples/Profiles_Get.json
@@ -17,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProfileResource created on azure
-// for more information of creating ProfileResource, please refer to the document of ProfileResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "RG";
-string profileName = "profile1";
-ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
-ProfileResource profile = client.GetProfileResource(profileResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ProfileResource
+ProfileCollection collection = resourceGroupResource.GetProfiles();
 
 // invoke the operation
-ProfileResource result = await profile.GetAsync();
+string profileName = "profile1";
+NullableResponse<ProfileResource> response = await collection.GetIfExistsAsync(profileName);
+ProfileResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ProfileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ProfileData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

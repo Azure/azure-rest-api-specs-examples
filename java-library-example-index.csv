@@ -6807,3 +6807,4 @@ id,name,language,tag,package,version,date_epoch,date
 6806,@azure/arm-storagesync@10.0.0-beta.1,js,@azure/arm-storagesync_10.0.0-beta.1,@azure/arm-storagesync,10.0.0-beta.1,1780557403,06/04/2026
 6807,@azure/arm-dynatrace@3.0.0-beta.1,js,@azure/arm-dynatrace_3.0.0-beta.1,@azure/arm-dynatrace,3.0.0-beta.1,1780557368,06/04/2026
 6808,@azure/arm-advisor@4.0.0-beta.1,js,@azure/arm-advisor_4.0.0-beta.1,@azure/arm-advisor,4.0.0-beta.1,1780553501,06/04/2026
+6809,@azure/arm-webpubsub@2.0.0-beta.3,js,@azure/arm-webpubsub_2.0.0-beta.3,@azure/arm-webpubsub,2.0.0-beta.3,1780543410,06/04/2026

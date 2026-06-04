@@ -6819,3 +6819,4 @@ id,name,language,tag,package,version,date_epoch,date
 6818,com.azure.resourcemanager:azure-resourcemanager-deploymentmanager:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-deploymentmanager_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-deploymentmanager,1.0.0-beta.3,1780562890,06/04/2026
 6819,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.0,1780549670,06/04/2026
 6820,com.azure.resourcemanager:azure-resourcemanager-changeanalysis:1.1.1,java,com.azure.resourcemanager+azure-resourcemanager-changeanalysis_1.1.1,com.azure.resourcemanager+azure-resourcemanager-changeanalysis,1.1.1,1780541093,06/04/2026
+6821,"Azure.ResourceManager.ComputeLimit,1.1.0",dotnet,Azure.ResourceManager.ComputeLimit_1.1.0,Azure.ResourceManager.ComputeLimit,1.1.0,1780556172,06/04/2026

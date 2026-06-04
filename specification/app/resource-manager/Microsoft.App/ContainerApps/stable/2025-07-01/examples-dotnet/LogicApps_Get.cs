@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicAppResource created on azure
-// for more information of creating LogicAppResource, please refer to the document of LogicAppResource
+// this example assumes you already have this ContainerAppResource created on azure
+// for more information of creating ContainerAppResource, please refer to the document of ContainerAppResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string containerAppName = "testcontainerApp0";
-string logicAppName = "testcontainerApp0";
-ResourceIdentifier logicAppResourceId = LogicAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName, logicAppName);
-LogicAppResource logicApp = client.GetLogicAppResource(logicAppResourceId);
+ResourceIdentifier containerAppResourceId = ContainerAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName);
+ContainerAppResource containerApp = client.GetContainerAppResource(containerAppResourceId);
+
+// get the collection of this LogicAppResource
+LogicAppCollection collection = containerApp.GetLogicApps();
 
 // invoke the operation
-LogicAppResource result = await logicApp.GetAsync();
+string logicAppName = "testcontainerApp0";
+NullableResponse<LogicAppResource> response = await collection.GetIfExistsAsync(logicAppName);
+LogicAppResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LogicAppData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LogicAppData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

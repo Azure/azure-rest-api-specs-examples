@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppMaintenanceConfigurationResource created on azure
+// for more information of creating ContainerAppMaintenanceConfigurationResource, please refer to the document of ContainerAppMaintenanceConfigurationResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "rg1";
 string environmentName = "managedEnv";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppMaintenanceConfigurationResource
-ContainerAppMaintenanceConfigurationCollection collection = containerAppManagedEnvironment.GetContainerAppMaintenanceConfigurations();
+string configName = "default";
+ResourceIdentifier containerAppMaintenanceConfigurationResourceId = ContainerAppMaintenanceConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, configName);
+ContainerAppMaintenanceConfigurationResource containerAppMaintenanceConfiguration = client.GetContainerAppMaintenanceConfigurationResource(containerAppMaintenanceConfigurationResourceId);
 
 // invoke the operation
-string configName = "default";
 ContainerAppMaintenanceConfigurationData data = new ContainerAppMaintenanceConfigurationData
 {
     ScheduledEntries = { new ManagedEnvironmentScheduledEntry(ManagedEnvironmentWeekDay.Sunday, 12, 9) },
 };
-ArmOperation<ContainerAppMaintenanceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configName, data);
+ArmOperation<ContainerAppMaintenanceConfigurationResource> lro = await containerAppMaintenanceConfiguration.UpdateAsync(WaitUntil.Completed, data);
 ContainerAppMaintenanceConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

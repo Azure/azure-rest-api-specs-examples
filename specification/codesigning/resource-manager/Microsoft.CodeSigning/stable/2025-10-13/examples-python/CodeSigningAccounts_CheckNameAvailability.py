@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.artifactsigning import ArtifactSigningMgmtClient
+from azure.mgmt.trustedsigning import TrustedSigningMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-artifactsigning
+    pip install azure-mgmt-trustedsigning
 # USAGE
     python code_signing_accounts_check_name_availability.py
 
@@ -17,13 +17,13 @@ from azure.mgmt.artifactsigning import ArtifactSigningMgmtClient
 
 
 def main():
-    client = ArtifactSigningMgmtClient(
+    client = TrustedSigningMgmtClient(
         credential=DefaultAzureCredential(),
         subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.code_signing_accounts.check_name_availability(
-        body={"name": "sample-account", "type": "Microsoft.CodeSigning/codeSigningAccounts"},
+        body={"name": "sample-account"},
     )
     print(response)
 

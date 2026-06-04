@@ -1,11 +1,11 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.artifactsigning import ArtifactSigningMgmtClient
+from azure.mgmt.trustedsigning import TrustedSigningMgmtClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-artifactsigning
+    pip install azure-mgmt-trustedsigning
 # USAGE
     python operations_list.py
 
@@ -17,7 +17,7 @@ from azure.mgmt.artifactsigning import ArtifactSigningMgmtClient
 
 
 def main():
-    client = ArtifactSigningMgmtClient(
+    client = TrustedSigningMgmtClient(
         credential=DefaultAzureCredential(),
         subscription_id="SUBSCRIPTION_ID",
     )

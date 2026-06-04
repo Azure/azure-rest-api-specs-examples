@@ -6803,3 +6803,4 @@ id,name,language,tag,package,version,date_epoch,date
 6802,"Azure.ResourceManager.ApplicationInsights,1.1.0",dotnet,Azure.ResourceManager.ApplicationInsights_1.1.0,Azure.ResourceManager.ApplicationInsights,1.1.0,1780457346,06/03/2026
 6803,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.3.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.3.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.3.0,1780549525,06/04/2026
 6804,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/changeanalysis/armchangeanalysis@v1.2.1,go,sdk/resourcemanager/changeanalysis/armchangeanalysis/v1.2.1,sdk/resourcemanager/changeanalysis/armchangeanalysis,v1.2.1,1780544101,06/04/2026
+6805,@azure/arm-rediscache@9.0.0-beta.1,js,@azure/arm-rediscache_9.0.0-beta.1,@azure/arm-rediscache,9.0.0-beta.1,1780558876,06/04/2026

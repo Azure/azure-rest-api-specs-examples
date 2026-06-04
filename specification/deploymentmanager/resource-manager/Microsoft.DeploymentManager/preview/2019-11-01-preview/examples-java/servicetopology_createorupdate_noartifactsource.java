@@ -1,25 +1,23 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
 /** Samples for ServiceTopologies CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/servicetopology_createorupdate_noartifactsource.json
+     * x-ms-original-file:
+     * specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/
+     * servicetopology_createorupdate_noartifactsource.json
      */
     /**
      * Sample code: Create a topology without Artifact Source.
      *
      * @param manager Entry point to DeploymentManager.
      */
-    public static void createATopologyWithoutArtifactSource(
-        com.azure.resourcemanager.deploymentmanager.DeploymentManager manager) {
-        manager
-            .serviceTopologies()
-            .define("myTopology")
-            .withRegion("centralus")
-            .withExistingResourceGroup("myResourceGroup")
-            .withTags(mapOf())
-            .create();
+    public static void
+        createATopologyWithoutArtifactSource(com.azure.resourcemanager.deploymentmanager.DeploymentManager manager) {
+        manager.serviceTopologies().define("myTopology").withRegion("centralus")
+            .withExistingResourceGroup("myResourceGroup").withTags(mapOf()).create();
     }
 
     @SuppressWarnings("unchecked")

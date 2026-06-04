@@ -1,0 +1,35 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python managed_instance_long_term_retention_backup_delete.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.long_term_retention_managed_instance_backups.begin_delete(
+        location_name="japaneast",
+        managed_instance_name="testInstance",
+        database_name="testDatabase",
+        backup_name="55555555-6666-7777-8888-999999999999;131637960820000000;Hot",
+    ).result()
+
+
+# x-ms-original-file: 2025-01-01/ManagedInstanceLongTermRetentionBackupDelete.json
+if __name__ == "__main__":
+    main()

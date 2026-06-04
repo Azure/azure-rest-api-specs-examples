@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BatchApplicationResource created on azure
-// for more information of creating BatchApplicationResource, please refer to the document of BatchApplicationResource
+// this example assumes you already have this BatchAccountResource created on azure
+// for more information of creating BatchAccountResource, please refer to the document of BatchAccountResource
 string subscriptionId = "12345678-1234-1234-1234-123456789012";
 string resourceGroupName = "default-azurebatch-japaneast";
 string accountName = "sampleacct";
-string applicationName = "app1";
-ResourceIdentifier batchApplicationResourceId = BatchApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, applicationName);
-BatchApplicationResource batchApplication = client.GetBatchApplicationResource(batchApplicationResourceId);
+ResourceIdentifier batchAccountResourceId = BatchAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+BatchAccountResource batchAccount = client.GetBatchAccountResource(batchAccountResourceId);
+
+// get the collection of this BatchApplicationResource
+BatchApplicationCollection collection = batchAccount.GetBatchApplications();
 
 // invoke the operation
-BatchApplicationResource result = await batchApplication.GetAsync();
+string applicationName = "app1";
+NullableResponse<BatchApplicationResource> response = await collection.GetIfExistsAsync(applicationName);
+BatchApplicationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BatchApplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BatchApplicationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

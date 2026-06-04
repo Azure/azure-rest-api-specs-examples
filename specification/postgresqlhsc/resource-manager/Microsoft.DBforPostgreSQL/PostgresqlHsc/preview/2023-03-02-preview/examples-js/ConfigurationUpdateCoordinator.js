@@ -1,0 +1,21 @@
+const { DBforPostgreSQLClient } = require("@azure/arm-postgresqlhsc");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to updates configuration of coordinator in a cluster
+ *
+ * @summary updates configuration of coordinator in a cluster
+ * x-ms-original-file: 2023-03-02-preview/ConfigurationUpdateCoordinator.json
+ */
+async function updateSingleConfigurationOfCoordinator() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const client = new DBforPostgreSQLClient(credential, subscriptionId);
+  const result = await client.configurations.updateOnCoordinator(
+    "TestResourceGroup",
+    "testcluster",
+    "array_nulls",
+    { value: "on" },
+  );
+  console.log(result);
+}

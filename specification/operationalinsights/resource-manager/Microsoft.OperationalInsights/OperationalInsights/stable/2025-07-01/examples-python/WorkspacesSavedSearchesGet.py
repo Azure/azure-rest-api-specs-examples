@@ -19,17 +19,17 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.saved_searches.get(
         resource_group_name="TestRG",
         workspace_name="TestWS",
-        saved_search_id="00000000-0000-0000-0000-00000000000",
+        saved_search_id="00000000-0000-0000-0000-000000000000",
     )
     print(response)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesSavedSearchesGet.json
+# x-ms-original-file: 2025-07-01/WorkspacesSavedSearchesGet.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="86dc51d3-92ed-4d7e-947a-775ea79b4918",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.queries.get(
@@ -30,6 +30,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/QueryPackQueriesGet.json
+# x-ms-original-file: 2025-07-01/QueryPackQueriesGet.json
 if __name__ == "__main__":
     main()

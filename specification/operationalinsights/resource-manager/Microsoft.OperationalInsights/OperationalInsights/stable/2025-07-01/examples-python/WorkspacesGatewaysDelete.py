@@ -19,16 +19,16 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.gateways.delete(
         resource_group_name="OIAutoRest5123",
         workspace_name="aztest5048",
-        gateway_id="00000000-0000-0000-0000-00000000000",
+        gateway_id="00000000-0000-0000-0000-000000000000",
     )
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesGatewaysDelete.json
+# x-ms-original-file: 2025-07-01/WorkspacesGatewaysDelete.json
 if __name__ == "__main__":
     main()

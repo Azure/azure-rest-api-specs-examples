@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.linked_storage_accounts.create_or_update(
@@ -29,8 +29,8 @@ def main():
         parameters={
             "properties": {
                 "storageAccountIds": [
-                    "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA",
-                    "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB",
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageA",
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mms-eus/providers/Microsoft.Storage/storageAccounts/testStorageB",
                 ]
             }
         },
@@ -38,6 +38,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/LinkedStorageAccountsCreate.json
+# x-ms-original-file: 2025-07-01/LinkedStorageAccountsCreate.json
 if __name__ == "__main__":
     main()

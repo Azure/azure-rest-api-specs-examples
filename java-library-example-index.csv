@@ -6810,3 +6810,4 @@ id,name,language,tag,package,version,date_epoch,date
 6809,@azure/arm-webpubsub@2.0.0-beta.3,js,@azure/arm-webpubsub_2.0.0-beta.3,@azure/arm-webpubsub,2.0.0-beta.3,1780543410,06/04/2026
 6810,azure-mgmt-loganalytics@14.0.0b1,python,azure-mgmt-loganalytics_14.0.0b1,azure-mgmt-loganalytics,14.0.0b1,1780564439,06/04/2026
 6811,azure-mgmt-deploymentmanager@2.0.0b2,python,azure-mgmt-deploymentmanager_2.0.0b2,azure-mgmt-deploymentmanager,2.0.0b2,1780558373,06/04/2026
+6812,azure-mgmt-healthcareapis@3.0.0b1,python,azure-mgmt-healthcareapis_3.0.0b1,azure-mgmt-healthcareapis,3.0.0b1,1780558361,06/04/2026

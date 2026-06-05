@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this CosmosDBTableResource created on azure
+// for more information of creating CosmosDBTableResource, please refer to the document of CosmosDBTableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this CosmosDBTableResource
-CosmosDBTableCollection collection = cosmosDBAccount.GetCosmosDBTables();
+string tableName = "tableName";
+ResourceIdentifier cosmosDBTableResourceId = CosmosDBTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, tableName);
+CosmosDBTableResource cosmosDBTable = client.GetCosmosDBTableResource(cosmosDBTableResourceId);
 
 // invoke the operation
-string tableName = "tableName";
-NullableResponse<CosmosDBTableResource> response = await collection.GetIfExistsAsync(tableName);
-CosmosDBTableResource result = response.HasValue ? response.Value : null;
+CosmosDBTableResource result = await cosmosDBTable.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CosmosDBTableData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBTableData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

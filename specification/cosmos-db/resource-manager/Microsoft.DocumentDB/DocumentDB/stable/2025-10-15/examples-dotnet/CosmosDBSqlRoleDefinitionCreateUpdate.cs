@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this CosmosDBSqlRoleDefinitionResource created on azure
+// for more information of creating CosmosDBSqlRoleDefinitionResource, please refer to the document of CosmosDBSqlRoleDefinitionResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this CosmosDBSqlRoleDefinitionResource
-CosmosDBSqlRoleDefinitionCollection collection = cosmosDBAccount.GetCosmosDBSqlRoleDefinitions();
+string roleDefinitionId = "myRoleDefinitionId";
+ResourceIdentifier cosmosDBSqlRoleDefinitionResourceId = CosmosDBSqlRoleDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, roleDefinitionId);
+CosmosDBSqlRoleDefinitionResource cosmosDBSqlRoleDefinition = client.GetCosmosDBSqlRoleDefinitionResource(cosmosDBSqlRoleDefinitionResourceId);
 
 // invoke the operation
-string roleDefinitionId = "myRoleDefinitionId";
 CosmosDBSqlRoleDefinitionCreateOrUpdateContent content = new CosmosDBSqlRoleDefinitionCreateOrUpdateContent
 {
     RoleName = "myRoleName",
@@ -39,7 +36,7 @@ CosmosDBSqlRoleDefinitionCreateOrUpdateContent content = new CosmosDBSqlRoleDefi
     NotDataActions = {},
     }},
 };
-ArmOperation<CosmosDBSqlRoleDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleDefinitionId, content);
+ArmOperation<CosmosDBSqlRoleDefinitionResource> lro = await cosmosDBSqlRoleDefinition.UpdateAsync(WaitUntil.Completed, content);
 CosmosDBSqlRoleDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,7 +1,10 @@
+
 /** Samples for Rollouts Cancel. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_post_cancel.json
+     * x-ms-original-file:
+     * specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/
+     * rollout_post_cancel.json
      */
     /**
      * Sample code: Cancel rollout.

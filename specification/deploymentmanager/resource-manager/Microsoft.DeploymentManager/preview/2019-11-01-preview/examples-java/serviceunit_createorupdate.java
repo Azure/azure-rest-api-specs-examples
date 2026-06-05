@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.deploymentmanager.models.DeploymentMode;
 import com.azure.resourcemanager.deploymentmanager.models.ServiceUnitArtifacts;
 import java.util.HashMap;
@@ -6,7 +7,9 @@ import java.util.Map;
 /** Samples for ServiceUnits CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/serviceunit_createorupdate.json
+     * x-ms-original-file:
+     * specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/
+     * serviceunit_createorupdate.json
      */
     /**
      * Sample code: Create service unit using relative paths into the artifact source.
@@ -15,18 +18,13 @@ public final class Main {
      */
     public static void createServiceUnitUsingRelativePathsIntoTheArtifactSource(
         com.azure.resourcemanager.deploymentmanager.DeploymentManager manager) {
-        manager
-            .serviceUnits()
-            .define("myServiceUnit")
-            .withRegion("centralus")
+        manager.serviceUnits().define("myServiceUnit").withRegion("centralus")
             .withExistingService("myResourceGroup", "myTopology", "myService")
-            .withTargetResourceGroup("myDeploymentResourceGroup")
-            .withDeploymentMode(DeploymentMode.INCREMENTAL)
+            .withTargetResourceGroup("myDeploymentResourceGroup").withDeploymentMode(DeploymentMode.INCREMENTAL)
             .withTags(mapOf())
-            .withArtifacts(
-                new ServiceUnitArtifacts()
-                    .withTemplateArtifactSourceRelativePath("templates/myTopologyUnit.template.json")
-                    .withParametersArtifactSourceRelativePath("parameter/myTopologyUnit.parameters.json"))
+            .withArtifacts(new ServiceUnitArtifacts()
+                .withTemplateArtifactSourceRelativePath("templates/myTopologyUnit.template.json")
+                .withParametersArtifactSourceRelativePath("parameter/myTopologyUnit.parameters.json"))
             .create();
     }
 

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.deploymentmanager.models.SasAuthentication;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,9 @@ import java.util.Map;
 /** Samples for ArtifactSources CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/artifactsource_createorupdate_artifactroot.json
+     * x-ms-original-file:
+     * specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/
+     * artifactsource_createorupdate_artifactroot.json
      */
     /**
      * Sample code: Create artifact source with artifact root, an offset into the storage container.
@@ -14,18 +17,11 @@ public final class Main {
      */
     public static void createArtifactSourceWithArtifactRootAnOffsetIntoTheStorageContainer(
         com.azure.resourcemanager.deploymentmanager.DeploymentManager manager) {
-        manager
-            .artifactSources()
-            .define("myArtifactSource")
-            .withRegion("centralus")
-            .withExistingResourceGroup("myResourceGroup")
-            .withTags(mapOf())
-            .withSourceType("AzureStorage")
+        manager.artifactSources().define("myArtifactSource").withRegion("centralus")
+            .withExistingResourceGroup("myResourceGroup").withTags(mapOf()).withSourceType("AzureStorage")
             .withArtifactRoot("1.0.0.0")
-            .withAuthentication(
-                new SasAuthentication()
-                    .withSasUri(
-                        "https://mystorageaccount.blob.core.windows.net/myartifactsource?st=2018-07-07T14%3A10%3A00Z&se=2019-12-31T15%3A10%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=Yh2SoJ1NhhLRwCLln7de%2Fkabcdefghijklmno5sWEIk%3D"))
+            .withAuthentication(new SasAuthentication().withSasUri(
+                "https://mystorageaccount.blob.core.windows.net/myartifactsource?st=2018-07-07T14%3A10%3A00Z&se=2019-12-31T15%3A10%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=Yh2SoJ1NhhLRwCLln7de%2Fkabcdefghijklmno5sWEIk%3D"))
             .create();
     }
 

@@ -6822,3 +6822,4 @@ id,name,language,tag,package,version,date_epoch,date
 6821,"Azure.ResourceManager.ComputeLimit,1.1.0",dotnet,Azure.ResourceManager.ComputeLimit_1.1.0,Azure.ResourceManager.ComputeLimit,1.1.0,1780556172,06/04/2026
 6822,@azure/arm-notificationhubs@3.0.0-beta.3,js,@azure/arm-notificationhubs_3.0.0-beta.3,@azure/arm-notificationhubs,3.0.0-beta.3,1780653578,06/05/2026
 6823,@azure/arm-hanaonazure@4.0.0-beta.5,js,@azure/arm-hanaonazure_4.0.0-beta.5,@azure/arm-hanaonazure,4.0.0-beta.5,1780652756,06/05/2026
+6824,@azure/arm-resourcehealth@5.0.0-beta.1,js,@azure/arm-resourcehealth_5.0.0-beta.1,@azure/arm-resourcehealth,5.0.0-beta.1,1780652744,06/05/2026

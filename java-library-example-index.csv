@@ -6833,3 +6833,4 @@ id,name,language,tag,package,version,date_epoch,date
 6832,"Azure.ResourceManager.DataFactory,1.11.1",dotnet,Azure.ResourceManager.DataFactory_1.11.1,Azure.ResourceManager.DataFactory,1.11.1,1780623756,06/05/2026
 6833,"Azure.ResourceManager.CosmosDB,1.4.1",dotnet,Azure.ResourceManager.CosmosDB_1.4.1,Azure.ResourceManager.CosmosDB,1.4.1,1780623754,06/05/2026
 6834,"Azure.ResourceManager.Datadog,1.1.0-beta.1",dotnet,Azure.ResourceManager.Datadog_1.1.0-beta.1,Azure.ResourceManager.Datadog,1.1.0-beta.1,1780623706,06/05/2026
+6835,"Azure.ResourceManager.DataMigration,1.0.1",dotnet,Azure.ResourceManager.DataMigration_1.0.1,Azure.ResourceManager.DataMigration,1.0.1,1780623700,06/05/2026

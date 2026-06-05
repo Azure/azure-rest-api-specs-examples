@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DataMigration.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DataMigration;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/stable/2025-06-30/examples/SqlMiCreateOrUpdateDatabaseMigrationMAX.json
@@ -17,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DatabaseMigrationSqlMIResource created on azure
+// for more information of creating DatabaseMigrationSqlMIResource, please refer to the document of DatabaseMigrationSqlMIResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DatabaseMigrationSqlMIResource
-DatabaseMigrationSqlMICollection collection = resourceGroupResource.GetDatabaseMigrationSqlMIs();
-
-// invoke the operation
 string managedInstanceName = "managedInstance1";
 string targetDBName = "db1";
+ResourceIdentifier databaseMigrationSqlMIResourceId = DatabaseMigrationSqlMIResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, targetDBName);
+DatabaseMigrationSqlMIResource databaseMigrationSqlMI = client.GetDatabaseMigrationSqlMIResource(databaseMigrationSqlMIResourceId);
+
+// invoke the operation
 DatabaseMigrationSqlMIData data = new DatabaseMigrationSqlMIData
 {
     Properties = new DatabaseMigrationSqlMIProperties
@@ -70,7 +66,7 @@ DatabaseMigrationSqlMIData data = new DatabaseMigrationSqlMIData
         MigrationService = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent"),
     },
 };
-ArmOperation<DatabaseMigrationSqlMIResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedInstanceName, targetDBName, data);
+ArmOperation<DatabaseMigrationSqlMIResource> lro = await databaseMigrationSqlMI.UpdateAsync(WaitUntil.Completed, data);
 DatabaseMigrationSqlMIResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

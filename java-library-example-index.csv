@@ -6825,3 +6825,4 @@ id,name,language,tag,package,version,date_epoch,date
 6824,@azure/arm-resourcehealth@5.0.0-beta.1,js,@azure/arm-resourcehealth_5.0.0-beta.1,@azure/arm-resourcehealth,5.0.0-beta.1,1780652744,06/05/2026
 6825,@azure/arm-education@1.0.0-beta.5,js,@azure/arm-education_1.0.0-beta.5,@azure/arm-education,1.0.0-beta.5,1780639333,06/05/2026
 6826,@azure/arm-trafficmanager@6.2.0-beta.1,js,@azure/arm-trafficmanager_6.2.0-beta.1,@azure/arm-trafficmanager,6.2.0-beta.1,1780596277,06/04/2026
+6827,azure-mgmt-trafficmanager@2.0.0b1,python,azure-mgmt-trafficmanager_2.0.0b1,azure-mgmt-trafficmanager,2.0.0b1,1780596498,06/04/2026

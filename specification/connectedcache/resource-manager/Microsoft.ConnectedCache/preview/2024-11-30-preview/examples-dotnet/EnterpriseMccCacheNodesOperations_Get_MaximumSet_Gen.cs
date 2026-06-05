@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EnterpriseMccCustomerResource created on azure
-// for more information of creating EnterpriseMccCustomerResource, please refer to the document of EnterpriseMccCustomerResource
+// this example assumes you already have this EnterpriseMccCacheNodeResource created on azure
+// for more information of creating EnterpriseMccCacheNodeResource, please refer to the document of EnterpriseMccCacheNodeResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "rgConnectedCache";
 string customerResourceName = "cygqjgtcetihsajgyqwwrbclssqsvhgltrboemcqqtpoxdbhykqxblaihmrumyhbsx";
-ResourceIdentifier enterpriseMccCustomerResourceId = EnterpriseMccCustomerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, customerResourceName);
-EnterpriseMccCustomerResource enterpriseMccCustomer = client.GetEnterpriseMccCustomerResource(enterpriseMccCustomerResourceId);
-
-// get the collection of this EnterpriseMccCacheNodeResource
-EnterpriseMccCacheNodeCollection collection = enterpriseMccCustomer.GetEnterpriseMccCacheNodes();
+string cacheNodeResourceName = "fqxfadsultwjfzdwlqkvneakfsbyhratytmssmiukpbnus";
+ResourceIdentifier enterpriseMccCacheNodeResourceId = EnterpriseMccCacheNodeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, customerResourceName, cacheNodeResourceName);
+EnterpriseMccCacheNodeResource enterpriseMccCacheNode = client.GetEnterpriseMccCacheNodeResource(enterpriseMccCacheNodeResourceId);
 
 // invoke the operation
-string cacheNodeResourceName = "fqxfadsultwjfzdwlqkvneakfsbyhratytmssmiukpbnus";
-NullableResponse<EnterpriseMccCacheNodeResource> response = await collection.GetIfExistsAsync(cacheNodeResourceName);
-EnterpriseMccCacheNodeResource result = response.HasValue ? response.Value : null;
+EnterpriseMccCacheNodeResource result = await enterpriseMccCacheNode.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    EnterpriseMccCacheNodeData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EnterpriseMccCacheNodeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

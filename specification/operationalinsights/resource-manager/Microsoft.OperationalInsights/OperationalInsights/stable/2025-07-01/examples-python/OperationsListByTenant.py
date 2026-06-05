@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/OperationsListByTenant.json
+# x-ms-original-file: 2025-07-01/OperationsListByTenant.json
 if __name__ == "__main__":
     main()

@@ -19,13 +19,13 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.saved_searches.create_or_update(
         resource_group_name="TestRG",
         workspace_name="TestWS",
-        saved_search_id="00000000-0000-0000-0000-00000000000",
+        saved_search_id="00000000-0000-0000-0000-000000000000",
         parameters={
             "properties": {
                 "category": "Saved Search Test Category",
@@ -41,6 +41,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/WorkspacesSavedSearchesCreateOrUpdate.json
+# x-ms-original-file: 2025-07-01/WorkspacesSavedSearchesCreateOrUpdate.json
 if __name__ == "__main__":
     main()

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.loganalytics import LogAnalyticsManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-loganalytics
+# USAGE
+    python query_pack_queries_search.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = LogAnalyticsManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.queries.search(
+        resource_group_name="my-resource-group",
+        query_pack_name="my-querypack",
+        query_search_properties={"related": {"categories": ["other", "analytics"]}, "tags": {"my-label": ["label1"]}},
+    )
+    for item in response:
+        print(item)
+
+
+# x-ms-original-file: 2025-07-01/QueryPackQueriesSearch.json
+if __name__ == "__main__":
+    main()

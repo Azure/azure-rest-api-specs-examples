@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-1111-2222-3333-444444444444",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.workspaces.begin_reconcile_nsp(
@@ -29,6 +29,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/NSPForWorkspaces_Reconcile.json
+# x-ms-original-file: 2025-07-01/NSPForWorkspaces_Reconcile.json
 if __name__ == "__main__":
     main()

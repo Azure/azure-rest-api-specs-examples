@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="11111111-1111-1111-1111-111111111111",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.summary_logs.begin_retry_bin(
@@ -30,6 +30,6 @@ def main():
     ).result()
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/SummaryLogsRetryBin.json
+# x-ms-original-file: 2025-07-01/SummaryLogsRetryBin.json
 if __name__ == "__main__":
     main()

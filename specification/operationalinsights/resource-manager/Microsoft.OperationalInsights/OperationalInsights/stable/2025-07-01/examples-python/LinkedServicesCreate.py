@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.linked_services.begin_create_or_update(
@@ -28,13 +28,13 @@ def main():
         linked_service_name="Cluster",
         parameters={
             "properties": {
-                "writeAccessResourceId": "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/clusters/testcluster"
+                "writeAccessResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/clusters/testcluster"
             }
         },
     ).result()
     print(response)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/LinkedServicesCreate.json
+# x-ms-original-file: 2025-07-01/LinkedServicesCreate.json
 if __name__ == "__main__":
     main()

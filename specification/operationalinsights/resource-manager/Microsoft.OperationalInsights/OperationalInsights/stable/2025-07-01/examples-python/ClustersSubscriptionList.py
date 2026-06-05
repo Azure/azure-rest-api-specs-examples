@@ -19,7 +19,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="53bc36c5-91e1-4d09-92c9-63b89e571926",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.clusters.list()
@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/OperationalInsights/stable/2025-07-01/examples/ClustersSubscriptionList.json
+# x-ms-original-file: 2025-07-01/ClustersSubscriptionList.json
 if __name__ == "__main__":
     main()

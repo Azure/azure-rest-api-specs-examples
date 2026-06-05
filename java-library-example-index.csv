@@ -6820,3 +6820,4 @@ id,name,language,tag,package,version,date_epoch,date
 6819,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.0,1780549670,06/04/2026
 6820,com.azure.resourcemanager:azure-resourcemanager-changeanalysis:1.1.1,java,com.azure.resourcemanager+azure-resourcemanager-changeanalysis_1.1.1,com.azure.resourcemanager+azure-resourcemanager-changeanalysis,1.1.1,1780541093,06/04/2026
 6821,"Azure.ResourceManager.ComputeLimit,1.1.0",dotnet,Azure.ResourceManager.ComputeLimit_1.1.0,Azure.ResourceManager.ComputeLimit,1.1.0,1780556172,06/04/2026
+6822,@azure/arm-notificationhubs@3.0.0-beta.3,js,@azure/arm-notificationhubs_3.0.0-beta.3,@azure/arm-notificationhubs,3.0.0-beta.3,1780653578,06/05/2026

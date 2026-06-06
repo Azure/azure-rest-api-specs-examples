@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlContainerResource created on azure
-// for more information of creating CosmosDBSqlContainerResource, please refer to the document of CosmosDBSqlContainerResource
+// this example assumes you already have this CosmosDBSqlUserDefinedFunctionResource created on azure
+// for more information of creating CosmosDBSqlUserDefinedFunctionResource, please refer to the document of CosmosDBSqlUserDefinedFunctionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string databaseName = "databaseName";
 string containerName = "containerName";
-ResourceIdentifier cosmosDBSqlContainerResourceId = CosmosDBSqlContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName);
-CosmosDBSqlContainerResource cosmosDBSqlContainer = client.GetCosmosDBSqlContainerResource(cosmosDBSqlContainerResourceId);
-
-// get the collection of this CosmosDBSqlUserDefinedFunctionResource
-CosmosDBSqlUserDefinedFunctionCollection collection = cosmosDBSqlContainer.GetCosmosDBSqlUserDefinedFunctions();
+string userDefinedFunctionName = "userDefinedFunctionName";
+ResourceIdentifier cosmosDBSqlUserDefinedFunctionResourceId = CosmosDBSqlUserDefinedFunctionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName);
+CosmosDBSqlUserDefinedFunctionResource cosmosDBSqlUserDefinedFunction = client.GetCosmosDBSqlUserDefinedFunctionResource(cosmosDBSqlUserDefinedFunctionResourceId);
 
 // invoke the operation
-string userDefinedFunctionName = "userDefinedFunctionName";
 CosmosDBSqlUserDefinedFunctionCreateOrUpdateContent content = new CosmosDBSqlUserDefinedFunctionCreateOrUpdateContent(default, new CosmosDBSqlUserDefinedFunctionResourceInfo("userDefinedFunctionName")
 {
     Body = "body",
@@ -37,7 +34,7 @@ CosmosDBSqlUserDefinedFunctionCreateOrUpdateContent content = new CosmosDBSqlUse
 {
     Options = new CosmosDBCreateUpdateConfig(),
 };
-ArmOperation<CosmosDBSqlUserDefinedFunctionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, userDefinedFunctionName, content);
+ArmOperation<CosmosDBSqlUserDefinedFunctionResource> lro = await cosmosDBSqlUserDefinedFunction.UpdateAsync(WaitUntil.Completed, content);
 CosmosDBSqlUserDefinedFunctionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

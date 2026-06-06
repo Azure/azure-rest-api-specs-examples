@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBAccountResource created on azure
-// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
+// this example assumes you already have this CosmosDBSqlRoleAssignmentResource created on azure
+// for more information of creating CosmosDBSqlRoleAssignmentResource, please refer to the document of CosmosDBSqlRoleAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
-
-// get the collection of this CosmosDBSqlRoleAssignmentResource
-CosmosDBSqlRoleAssignmentCollection collection = cosmosDBAccount.GetCosmosDBSqlRoleAssignments();
+string roleAssignmentId = "myRoleAssignmentId";
+ResourceIdentifier cosmosDBSqlRoleAssignmentResourceId = CosmosDBSqlRoleAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, roleAssignmentId);
+CosmosDBSqlRoleAssignmentResource cosmosDBSqlRoleAssignment = client.GetCosmosDBSqlRoleAssignmentResource(cosmosDBSqlRoleAssignmentResourceId);
 
 // invoke the operation
-string roleAssignmentId = "myRoleAssignmentId";
 CosmosDBSqlRoleAssignmentCreateOrUpdateContent content = new CosmosDBSqlRoleAssignmentCreateOrUpdateContent
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/mySubscriptionId/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlRoleDefinitions/myRoleDefinitionId"),
     Scope = "/subscriptions/mySubscriptionId/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases/colls/redmond-purchases",
     PrincipalId = Guid.Parse("myPrincipalId"),
 };
-ArmOperation<CosmosDBSqlRoleAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleAssignmentId, content);
+ArmOperation<CosmosDBSqlRoleAssignmentResource> lro = await cosmosDBSqlRoleAssignment.UpdateAsync(WaitUntil.Completed, content);
 CosmosDBSqlRoleAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

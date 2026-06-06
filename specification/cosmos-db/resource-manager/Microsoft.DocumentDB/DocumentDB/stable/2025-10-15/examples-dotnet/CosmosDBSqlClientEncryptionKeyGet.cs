@@ -16,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlClientEncryptionKeyResource created on azure
-// for more information of creating CosmosDBSqlClientEncryptionKeyResource, please refer to the document of CosmosDBSqlClientEncryptionKeyResource
+// this example assumes you already have this CosmosDBSqlDatabaseResource created on azure
+// for more information of creating CosmosDBSqlDatabaseResource, please refer to the document of CosmosDBSqlDatabaseResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string accountName = "accountName";
 string databaseName = "databaseName";
-string clientEncryptionKeyName = "cekName";
-ResourceIdentifier cosmosDBSqlClientEncryptionKeyResourceId = CosmosDBSqlClientEncryptionKeyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, clientEncryptionKeyName);
-CosmosDBSqlClientEncryptionKeyResource cosmosDBSqlClientEncryptionKey = client.GetCosmosDBSqlClientEncryptionKeyResource(cosmosDBSqlClientEncryptionKeyResourceId);
+ResourceIdentifier cosmosDBSqlDatabaseResourceId = CosmosDBSqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
+CosmosDBSqlDatabaseResource cosmosDBSqlDatabase = client.GetCosmosDBSqlDatabaseResource(cosmosDBSqlDatabaseResourceId);
+
+// get the collection of this CosmosDBSqlClientEncryptionKeyResource
+CosmosDBSqlClientEncryptionKeyCollection collection = cosmosDBSqlDatabase.GetCosmosDBSqlClientEncryptionKeys();
 
 // invoke the operation
-CosmosDBSqlClientEncryptionKeyResource result = await cosmosDBSqlClientEncryptionKey.GetAsync();
+string clientEncryptionKeyName = "cekName";
+NullableResponse<CosmosDBSqlClientEncryptionKeyResource> response = await collection.GetIfExistsAsync(clientEncryptionKeyName);
+CosmosDBSqlClientEncryptionKeyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CosmosDBSqlClientEncryptionKeyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CosmosDBSqlClientEncryptionKeyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

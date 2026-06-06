@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBFleetspaceResource created on azure
-// for more information of creating CosmosDBFleetspaceResource, please refer to the document of CosmosDBFleetspaceResource
+// this example assumes you already have this CosmosDBFleetspaceAccountResource created on azure
+// for more information of creating CosmosDBFleetspaceAccountResource, please refer to the document of CosmosDBFleetspaceAccountResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
 string fleetspaceName = "fleetspace1";
-ResourceIdentifier cosmosDBFleetspaceResourceId = CosmosDBFleetspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, fleetspaceName);
-CosmosDBFleetspaceResource cosmosDBFleetspace = client.GetCosmosDBFleetspaceResource(cosmosDBFleetspaceResourceId);
-
-// get the collection of this CosmosDBFleetspaceAccountResource
-CosmosDBFleetspaceAccountCollection collection = cosmosDBFleetspace.GetCosmosDBFleetspaceAccounts();
+string fleetspaceAccountName = "db1";
+ResourceIdentifier cosmosDBFleetspaceAccountResourceId = CosmosDBFleetspaceAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, fleetspaceName, fleetspaceAccountName);
+CosmosDBFleetspaceAccountResource cosmosDBFleetspaceAccount = client.GetCosmosDBFleetspaceAccountResource(cosmosDBFleetspaceAccountResourceId);
 
 // invoke the operation
-string fleetspaceAccountName = "db1";
 CosmosDBFleetspaceAccountData data = new CosmosDBFleetspaceAccountData
 {
     GlobalDatabaseAccountProperties = new CosmosDBFleetspaceAccountConfiguration
@@ -37,7 +34,7 @@ CosmosDBFleetspaceAccountData data = new CosmosDBFleetspaceAccountData
         ArmLocation = new AzureLocation("West US"),
     },
 };
-ArmOperation<CosmosDBFleetspaceAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fleetspaceAccountName, data);
+ArmOperation<CosmosDBFleetspaceAccountResource> lro = await cosmosDBFleetspaceAccount.UpdateAsync(WaitUntil.Completed, data);
 CosmosDBFleetspaceAccountResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

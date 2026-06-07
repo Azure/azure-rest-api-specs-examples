@@ -16,12 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this RoleAssignmentScheduleRequestResource
+// this example assumes you already have this RoleAssignmentScheduleRequestResource created on azure
+// for more information of creating RoleAssignmentScheduleRequestResource, please refer to the document of RoleAssignmentScheduleRequestResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-RoleAssignmentScheduleRequestCollection collection = client.GetRoleAssignmentScheduleRequests(new ResourceIdentifier(scope));
+string roleAssignmentScheduleRequestName = "fea7a502-9a96-4806-a26f-eee560e52045";
+ResourceIdentifier roleAssignmentScheduleRequestResourceId = RoleAssignmentScheduleRequestResource.CreateResourceIdentifier(scope, roleAssignmentScheduleRequestName);
+RoleAssignmentScheduleRequestResource roleAssignmentScheduleRequest = client.GetRoleAssignmentScheduleRequestResource(roleAssignmentScheduleRequestResourceId);
 
 // invoke the operation
-string roleAssignmentScheduleRequestName = "fea7a502-9a96-4806-a26f-eee560e52045";
 RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608"),
@@ -35,7 +37,7 @@ RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData
     EndOn = default,
     Duration = XmlConvert.ToTimeSpan("PT8H"),
 };
-ArmOperation<RoleAssignmentScheduleRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleAssignmentScheduleRequestName, data);
+ArmOperation<RoleAssignmentScheduleRequestResource> lro = await roleAssignmentScheduleRequest.UpdateAsync(WaitUntil.Completed, data);
 RoleAssignmentScheduleRequestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

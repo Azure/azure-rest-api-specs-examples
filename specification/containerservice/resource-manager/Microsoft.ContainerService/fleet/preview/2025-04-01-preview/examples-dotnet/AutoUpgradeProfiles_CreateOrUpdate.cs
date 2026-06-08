@@ -29,7 +29,7 @@ AutoUpgradeProfileData data = new AutoUpgradeProfileData
 {
     Channel = ContainerServiceFleetUpgradeChannel.Stable,
     TargetKubernetesVersion = "",
-    LongTermSupport = false,
+    IsLongTermSupport = false,
 };
 ArmOperation<AutoUpgradeProfileResource> lro = await autoUpgradeProfile.UpdateAsync(WaitUntil.Completed, data, matchConditions: null);
 AutoUpgradeProfileResource result = lro.Value;

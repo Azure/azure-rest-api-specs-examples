@@ -6847,3 +6847,4 @@ id,name,language,tag,package,version,date_epoch,date
 6846,@azure/arm-devhub@1.0.0-beta.5,js,@azure/arm-devhub_1.0.0-beta.5,@azure/arm-devhub,1.0.0-beta.5,1780975412,06/09/2026
 6847,@azure/arm-iothub@7.0.0-beta.2,js,@azure/arm-iothub_7.0.0-beta.2,@azure/arm-iothub,7.0.0-beta.2,1780975405,06/09/2026
 6848,@azure/arm-postgresql-flexible@10.0.0-beta.2,js,@azure/arm-postgresql-flexible_10.0.0-beta.2,@azure/arm-postgresql-flexible,10.0.0-beta.2,1780956272,06/08/2026
+6849,@azure/arm-monitorworkspaces@1.0.0-beta.1,js,@azure/arm-monitorworkspaces_1.0.0-beta.1,@azure/arm-monitorworkspaces,1.0.0-beta.1,1780941855,06/08/2026

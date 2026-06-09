@@ -1,0 +1,14 @@
+const { ResourceManagementClient } = require("@azure/arm-resources");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes the entire set of tags on a resource or subscription.
+ *
+ * @summary deletes the entire set of tags on a resource or subscription.
+ * x-ms-original-file: 2025-04-01/DeleteTagsSubscription.json
+ */
+async function updateTagsOnASubscription() {
+  const credential = new DefaultAzureCredential();
+  const client = new ResourceManagementClient(credential);
+  await client.tagsOperations.deleteAtScope("subscriptions/00000000-0000-0000-0000-000000000000");
+}

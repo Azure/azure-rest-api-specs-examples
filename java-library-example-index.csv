@@ -6852,3 +6852,4 @@ id,name,language,tag,package,version,date_epoch,date
 6851,azure-mgmt-containerservice@41.4.0b1,python,azure-mgmt-containerservice_41.4.0b1,azure-mgmt-containerservice,41.4.0b1,1780977158,06/09/2026
 6852,azure-mgmt-postgresqlflexibleservers@3.0.0b2,python,azure-mgmt-postgresqlflexibleservers_3.0.0b2,azure-mgmt-postgresqlflexibleservers,3.0.0b2,1780961209,06/08/2026
 6853,com.azure.resourcemanager:azure-resourcemanager-trustedsigning:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-trustedsigning_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-trustedsigning,1.0.0-beta.2,1780969935,06/09/2026
+6854,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.1.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver_2.1.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver,2.1.0-beta.2,1780961374,06/08/2026

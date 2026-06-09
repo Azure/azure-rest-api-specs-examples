@@ -1,25 +1,22 @@
 const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Check that subnets will be valid for AML file system create calls.
+ * This sample demonstrates how to check that subnets will be valid for AML file system create calls.
  *
- * @summary Check that subnets will be valid for AML file system create calls.
- * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/checkAmlFSSubnets.json
+ * @summary check that subnets will be valid for AML file system create calls.
+ * x-ms-original-file: 2026-01-01/checkAmlFSSubnets.json
  */
-async function checkAmlFsSubnets() {
-  const subscriptionId =
-    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const amlFilesystemSubnetInfo = {
-    filesystemSubnet:
-      "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/fsSub",
-    sku: { name: "AMLFS-Durable-Premium-125" },
-    storageCapacityTiB: 16,
-  };
-  const options = { amlFilesystemSubnetInfo };
+async function checkAmlFSSubnets() {
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new StorageCacheManagementClient(credential, subscriptionId);
-  const result = await client.checkAmlFSSubnets(options);
-  console.log(result);
+  await client.checkAmlFSSubnets({
+    amlFilesystemSubnetInfo: {
+      filesystemSubnet:
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/fsSub",
+      sku: { name: "AMLFS-Durable-Premium-125" },
+      storageCapacityTiB: 16,
+    },
+  });
 }

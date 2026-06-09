@@ -1,27 +1,18 @@
 const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Update an expansion job instance.
+ * This sample demonstrates how to update an expansion job instance.
  *
- * @summary Update an expansion job instance.
- * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/expansionJobs_Update.json
+ * @summary update an expansion job instance.
+ * x-ms-original-file: 2026-01-01/expansionJobs_Update.json
  */
 async function expansionJobsUpdate() {
-  const subscriptionId =
-    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
-  const amlFilesystemName = "fs1";
-  const expansionJobName = "expansionjob1";
-  const expansionJob = { tags: { dept: "ContosoFinance" } };
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new StorageCacheManagementClient(credential, subscriptionId);
-  const result = await client.expansionJobs.beginUpdateAndWait(
-    resourceGroupName,
-    amlFilesystemName,
-    expansionJobName,
-    expansionJob,
-  );
+  const result = await client.expansionJobs.update("scgroup", "fs1", "expansionjob1", {
+    tags: { Dept: "ContosoFinance" },
+  });
   console.log(result);
 }

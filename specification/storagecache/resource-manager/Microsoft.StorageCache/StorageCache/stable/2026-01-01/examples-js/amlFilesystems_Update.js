@@ -1,19 +1,17 @@
 const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Update an AML file system instance.
+ * This sample demonstrates how to update an AML file system instance.
  *
- * @summary Update an AML file system instance.
- * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/amlFilesystems_Update.json
+ * @summary update an AML file system instance.
+ * x-ms-original-file: 2026-01-01/amlFilesystems_Update.json
  */
 async function amlFilesystemsUpdate() {
-  const subscriptionId =
-    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
-  const amlFilesystemName = "fs1";
-  const amlFilesystem = {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new StorageCacheManagementClient(credential, subscriptionId);
+  const result = await client.amlFilesystems.update("scgroup", "fs1", {
     encryptionSettings: {
       keyEncryptionKey: {
         keyUrl: "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
@@ -29,14 +27,7 @@ async function amlFilesystemsUpdate() {
       squashGID: 99,
       squashUID: 99,
     },
-    tags: { dept: "ContosoAds" },
-  };
-  const credential = new DefaultAzureCredential();
-  const client = new StorageCacheManagementClient(credential, subscriptionId);
-  const result = await client.amlFilesystems.beginUpdateAndWait(
-    resourceGroupName,
-    amlFilesystemName,
-    amlFilesystem,
-  );
+    tags: { Dept: "ContosoAds" },
+  });
   console.log(result);
 }

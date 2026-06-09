@@ -1,5 +1,5 @@
 
-import com.azure.resourcemanager.artifactsigning.models.CodeSigningAccount;
+import com.azure.resourcemanager.trustedsigning.models.CodeSigningAccount;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,12 +11,12 @@ public final class Main {
      * x-ms-original-file: 2025-10-13/CodeSigningAccounts_Update.json
      */
     /**
-     * Sample code: Update an artifact signing account.
+     * Sample code: Update a trusted signing account.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
     public static void
-        updateAnArtifactSigningAccount(com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        updateATrustedSigningAccount(com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         CodeSigningAccount resource = manager.codeSigningAccounts()
             .getByResourceGroupWithResponse("MyResourceGroup", "MyAccount", com.azure.core.util.Context.NONE)
             .getValue();

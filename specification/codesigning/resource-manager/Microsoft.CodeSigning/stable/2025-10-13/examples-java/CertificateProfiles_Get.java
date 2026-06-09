@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: Get details of a certificate profile.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
     public static void
-        getDetailsOfACertificateProfile(com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        getDetailsOfACertificateProfile(com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         manager.certificateProfiles().getWithResponse("MyResourceGroup", "MyAccount", "profileA",
             com.azure.core.util.Context.NONE);
     }

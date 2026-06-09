@@ -9,10 +9,10 @@ public final class Main {
     /**
      * Sample code: Delete a certificate profile.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
     public static void
-        deleteACertificateProfile(com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        deleteACertificateProfile(com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         manager.certificateProfiles().delete("MyResourceGroup", "MyAccount", "profileA",
             com.azure.core.util.Context.NONE);
     }

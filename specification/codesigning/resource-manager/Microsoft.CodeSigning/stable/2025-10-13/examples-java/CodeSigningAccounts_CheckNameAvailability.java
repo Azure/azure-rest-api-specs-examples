@@ -1,5 +1,5 @@
 
-import com.azure.resourcemanager.artifactsigning.models.CheckNameAvailability;
+import com.azure.resourcemanager.trustedsigning.models.CheckNameAvailability;
 
 /**
  * Samples for CodeSigningAccounts CheckNameAvailability.
@@ -9,15 +9,13 @@ public final class Main {
      * x-ms-original-file: 2025-10-13/CodeSigningAccounts_CheckNameAvailability.json
      */
     /**
-     * Sample code: Checks if the artifact signing account name is available.
+     * Sample code: Checks that the trusted signing account name is available.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
-    public static void checksIfTheArtifactSigningAccountNameIsAvailable(
-        com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
-        manager.codeSigningAccounts()
-            .checkNameAvailabilityWithResponse(new CheckNameAvailability()
-                .withType("Microsoft.CodeSigning/codeSigningAccounts").withName("sample-account"),
-                com.azure.core.util.Context.NONE);
+    public static void checksThatTheTrustedSigningAccountNameIsAvailable(
+        com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
+        manager.codeSigningAccounts().checkNameAvailabilityWithResponse(
+            new CheckNameAvailability().withName("sample-account"), com.azure.core.util.Context.NONE);
     }
 }

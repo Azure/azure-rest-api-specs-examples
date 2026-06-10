@@ -6854,3 +6854,4 @@ id,name,language,tag,package,version,date_epoch,date
 6853,com.azure.resourcemanager:azure-resourcemanager-trustedsigning:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-trustedsigning_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-trustedsigning,1.0.0-beta.2,1780969935,06/09/2026
 6854,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.1.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver_2.1.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver,2.1.0-beta.2,1780961374,06/08/2026
 6855,@azure/arm-apimanagement@11.0.0-beta.1,js,@azure/arm-apimanagement_11.0.0-beta.1,@azure/arm-apimanagement,11.0.0-beta.1,1781058827,06/10/2026
+6856,@azure/arm-costmanagement@1.0.0-beta.3,js,@azure/arm-costmanagement_1.0.0-beta.3,@azure/arm-costmanagement,1.0.0-beta.3,1781058809,06/10/2026

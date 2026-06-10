@@ -1,5 +1,5 @@
 
-import com.azure.resourcemanager.artifactsigning.models.RevokeCertificate;
+import com.azure.resourcemanager.trustedsigning.models.RevokeCertificate;
 import java.time.OffsetDateTime;
 
 /**
@@ -12,10 +12,10 @@ public final class Main {
     /**
      * Sample code: Revoke a certificate under a certificate profile.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
     public static void revokeACertificateUnderACertificateProfile(
-        com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         manager.certificateProfiles().revokeCertificateWithResponse("MyResourceGroup", "MyAccount", "profileA",
             new RevokeCertificate().withSerialNumber("xxxxxxxxxxxxxxxxxx")
                 .withThumbprint("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")

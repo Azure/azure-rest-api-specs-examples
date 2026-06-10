@@ -7,12 +7,12 @@ public final class Main {
      * x-ms-original-file: 2025-10-13/CodeSigningAccounts_ListByResourceGroup.json
      */
     /**
-     * Sample code: Lists artifact signing accounts within a resource group.
+     * Sample code: Lists trusted signing accounts within a resource group.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
-    public static void listsArtifactSigningAccountsWithinAResourceGroup(
-        com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+    public static void listsTrustedSigningAccountsWithinAResourceGroup(
+        com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         manager.codeSigningAccounts().listByResourceGroup("MyResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

@@ -7,12 +7,12 @@ public final class Main {
      * x-ms-original-file: 2025-10-13/CodeSigningAccounts_Get.json
      */
     /**
-     * Sample code: Get an artifact signing account.
+     * Sample code: Get a Trusted Signing Account.
      * 
-     * @param manager Entry point to ArtifactSigningManager.
+     * @param manager Entry point to TrustedSigningManager.
      */
     public static void
-        getAnArtifactSigningAccount(com.azure.resourcemanager.artifactsigning.ArtifactSigningManager manager) {
+        getATrustedSigningAccount(com.azure.resourcemanager.trustedsigning.TrustedSigningManager manager) {
         manager.codeSigningAccounts().getByResourceGroupWithResponse("MyResourceGroup", "MyAccount",
             com.azure.core.util.Context.NONE);
     }

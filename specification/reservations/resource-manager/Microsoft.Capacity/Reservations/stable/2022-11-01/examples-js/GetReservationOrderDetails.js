@@ -1,0 +1,15 @@
+const { AzureReservationAPI } = require("@azure/arm-reservations");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get the details of the `ReservationOrder`.
+ *
+ * @summary get the details of the `ReservationOrder`.
+ * x-ms-original-file: 2022-11-01/GetReservationOrderDetails.json
+ */
+async function getReservationOrder() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureReservationAPI(credential);
+  const result = await client.reservationOrder.get("a075419f-44cc-497f-b68a-14ee811d48b9");
+  console.log(result);
+}

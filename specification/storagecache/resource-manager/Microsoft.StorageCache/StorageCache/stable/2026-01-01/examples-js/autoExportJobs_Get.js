@@ -1,25 +1,16 @@
 const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Returns an auto export job.
+ * This sample demonstrates how to returns an auto export job.
  *
- * @summary Returns an auto export job.
- * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/autoExportJobs_Get.json
+ * @summary returns an auto export job.
+ * x-ms-original-file: 2026-01-01/autoExportJobs_Get.json
  */
 async function autoExportJobsGet() {
-  const subscriptionId =
-    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
-  const amlFilesystemName = "fs1";
-  const autoExportJobName = "job1";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new StorageCacheManagementClient(credential, subscriptionId);
-  const result = await client.autoExportJobs.get(
-    resourceGroupName,
-    amlFilesystemName,
-    autoExportJobName,
-  );
+  const result = await client.autoExportJobs.get("scgroup", "fs1", "job1");
   console.log(result);
 }

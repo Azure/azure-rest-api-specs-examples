@@ -1,25 +1,15 @@
 const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv/config");
 
 /**
- * This sample demonstrates how to Schedules an auto export job for deletion.
+ * This sample demonstrates how to schedules an auto export job for deletion.
  *
- * @summary Schedules an auto export job for deletion.
- * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/autoExportJobs_Delete.json
+ * @summary schedules an auto export job for deletion.
+ * x-ms-original-file: 2026-01-01/autoExportJobs_Delete.json
  */
 async function autoExportJobsDelete() {
-  const subscriptionId =
-    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
-  const amlFilesystemName = "fs1";
-  const autoExportJobName = "job1";
   const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new StorageCacheManagementClient(credential, subscriptionId);
-  const result = await client.autoExportJobs.beginDeleteAndWait(
-    resourceGroupName,
-    amlFilesystemName,
-    autoExportJobName,
-  );
-  console.log(result);
+  await client.autoExportJobs.delete("scgroup", "fs1", "job1");
 }

@@ -6856,3 +6856,4 @@ id,name,language,tag,package,version,date_epoch,date
 6855,@azure/arm-apimanagement@11.0.0-beta.1,js,@azure/arm-apimanagement_11.0.0-beta.1,@azure/arm-apimanagement,11.0.0-beta.1,1781058827,06/10/2026
 6856,@azure/arm-costmanagement@1.0.0-beta.3,js,@azure/arm-costmanagement_1.0.0-beta.3,@azure/arm-costmanagement,1.0.0-beta.3,1781058809,06/10/2026
 6857,@azure/arm-domainservices@5.0.0-beta.1,js,@azure/arm-domainservices_5.0.0-beta.1,@azure/arm-domainservices,5.0.0-beta.1,1781057956,06/10/2026
+6858,@azure/arm-databricks@4.0.0-beta.1,js,@azure/arm-databricks_4.0.0-beta.1,@azure/arm-databricks,4.0.0-beta.1,1781057914,06/10/2026

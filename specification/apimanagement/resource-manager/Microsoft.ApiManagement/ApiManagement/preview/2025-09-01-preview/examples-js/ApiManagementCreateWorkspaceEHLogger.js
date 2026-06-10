@@ -1,0 +1,24 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or Updates a logger.
+ *
+ * @summary creates or Updates a logger.
+ * x-ms-original-file: 2025-09-01-preview/ApiManagementCreateWorkspaceEHLogger.json
+ */
+async function apiManagementCreateWorkspaceEHLogger() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.workspaceLogger.createOrUpdate("rg1", "apimService1", "wks1", "eh1", {
+    description: "adding a new logger",
+    credentials: {
+      name: "hydraeventhub",
+      connectionString:
+        "Endpoint=sb://hydraeventhub-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=********=",
+    },
+    loggerType: "azureEventHub",
+  });
+  console.log(result);
+}

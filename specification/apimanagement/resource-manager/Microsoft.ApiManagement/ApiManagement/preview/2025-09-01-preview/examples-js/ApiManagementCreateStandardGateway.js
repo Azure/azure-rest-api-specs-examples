@@ -1,0 +1,25 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates an API Management gateway. This is long running operation and could take several minutes to complete.
+ *
+ * @summary creates or updates an API Management gateway. This is long running operation and could take several minutes to complete.
+ * x-ms-original-file: 2025-09-01-preview/ApiManagementCreateStandardGateway.json
+ */
+async function apiManagementCreateStandardGateway() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.apiGateway.createOrUpdate("rg1", "apimGateway1", {
+    location: "South Central US",
+    backend: {
+      subnet: {
+        id: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vn1/subnets/sn1",
+      },
+    },
+    sku: { name: "Standard", capacity: 1 },
+    tags: { Name: "Contoso", Test: "User" },
+  });
+  console.log(result);
+}

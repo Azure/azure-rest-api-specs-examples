@@ -19,7 +19,7 @@ from azure.mgmt.resource.resources import ResourceManagementClient
 def main():
     client = ResourceManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.providers.provider_permissions(
@@ -28,6 +28,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/resources/stable/2025-04-01/examples/GetProviderPermissions.json
+# x-ms-original-file: 2025-04-01/GetProviderPermissions.json
 if __name__ == "__main__":
     main()

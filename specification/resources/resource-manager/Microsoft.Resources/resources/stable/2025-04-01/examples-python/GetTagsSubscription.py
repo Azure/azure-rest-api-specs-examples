@@ -28,6 +28,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/resources/stable/2025-04-01/examples/GetTagsSubscription.json
+# x-ms-original-file: 2025-04-01/GetTagsSubscription.json
 if __name__ == "__main__":
     main()

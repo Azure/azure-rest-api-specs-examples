@@ -6875,3 +6875,4 @@ id,name,language,tag,package,version,date_epoch,date
 6874,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning/v5@v5.0.0-beta.1,go,sdk/resourcemanager/machinelearning/armmachinelearning/v5.0.0-beta.1,sdk/resourcemanager/machinelearning/armmachinelearning,v5.0.0-beta.1,1781148442,06/11/2026
 6875,@azure/arm-newrelicobservability@2.0.0-beta.2,js,@azure/arm-newrelicobservability_2.0.0-beta.2,@azure/arm-newrelicobservability,2.0.0-beta.2,1781144176,06/11/2026
 6876,@azure/arm-privatedns@4.0.0-beta.1,js,@azure/arm-privatedns_4.0.0-beta.1,@azure/arm-privatedns,4.0.0-beta.1,1781144143,06/11/2026
+6877,@azure/arm-containerservice@25.4.0-beta.1,js,@azure/arm-containerservice_25.4.0-beta.1,@azure/arm-containerservice,25.4.0-beta.1,1781094419,06/10/2026

@@ -1,11 +1,11 @@
-package armartifactsigning_test
+package armtrustedsigning_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/artifactsigning/armartifactsigning"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning"
 )
 
 // Generated from example definition: 2025-10-13/CodeSigningAccounts_ListByResourceGroup.json
@@ -15,7 +15,7 @@ func ExampleCodeSigningAccountsClient_NewListByResourceGroupPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armartifactsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armtrustedsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,18 +30,18 @@ func ExampleCodeSigningAccountsClient_NewListByResourceGroupPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page = armartifactsigning.CodeSigningAccountsClientListByResourceGroupResponse{
-		// 	CodeSigningAccountListResult: armartifactsigning.CodeSigningAccountListResult{
-		// 		Value: []*armartifactsigning.CodeSigningAccount{
+		// page = armtrustedsigning.CodeSigningAccountsClientListByResourceGroupResponse{
+		// 	CodeSigningAccountListResult: armtrustedsigning.CodeSigningAccountListResult{
+		// 		Value: []*armtrustedsigning.CodeSigningAccount{
 		// 			{
 		// 				Name: to.Ptr("alpha"),
 		// 				Type: to.Ptr("Microsoft.CodeSigning/codeSigningAccounts"),
 		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.CodeSigning/codeSigningAccounts/MyAccount"),
 		// 				Location: to.Ptr("westcentralus"),
-		// 				Properties: &armartifactsigning.CodeSigningAccountProperties{
-		// 					ProvisioningState: to.Ptr(armartifactsigning.ProvisioningStateSucceeded),
-		// 					SKU: &armartifactsigning.AccountSKU{
-		// 						Name: to.Ptr(armartifactsigning.SKUNameBasic),
+		// 				Properties: &armtrustedsigning.CodeSigningAccountProperties{
+		// 					ProvisioningState: to.Ptr(armtrustedsigning.ProvisioningStateSucceeded),
+		// 					SKU: &armtrustedsigning.AccountSKU{
+		// 						Name: to.Ptr(armtrustedsigning.SKUNameBasic),
 		// 					},
 		// 				},
 		// 				Tags: map[string]*string{

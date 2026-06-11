@@ -6877,3 +6877,4 @@ id,name,language,tag,package,version,date_epoch,date
 6876,@azure/arm-privatedns@4.0.0-beta.1,js,@azure/arm-privatedns_4.0.0-beta.1,@azure/arm-privatedns,4.0.0-beta.1,1781144143,06/11/2026
 6877,@azure/arm-containerservice@25.4.0-beta.1,js,@azure/arm-containerservice_25.4.0-beta.1,@azure/arm-containerservice,25.4.0-beta.1,1781094419,06/10/2026
 6878,azure-mgmt-storagemover@3.1.0,python,azure-mgmt-storagemover_3.1.0,azure-mgmt-storagemover,3.1.0,1781174759,06/11/2026
+6879,azure-mgmt-chaos@3.0.0b1,python,azure-mgmt-chaos_3.0.0b1,azure-mgmt-chaos,3.0.0b1,1781171035,06/11/2026

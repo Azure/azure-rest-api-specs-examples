@@ -1,0 +1,98 @@
+package armsecurityinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
+)
+
+// Generated from example definition: 2025-07-01-preview/sourcecontrols/GetSourceControlById.json
+func ExampleSourceControlsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsecurityinsights.NewClientFactory("b28fbe4a-0bb1-4593-960b-061c8655a550", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewSourceControlsClient().Get(ctx, "myRg", "myWorkspace", "789e0c1f-4a3d-43ad-809c-e713b677b04a", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsecurityinsights.SourceControlsClientGetResponse{
+	// 	SourceControl: armsecurityinsights.SourceControl{
+	// 		Name: to.Ptr("789e0c1f-4a3d-43ad-809c-e713b677b04a"),
+	// 		Type: to.Ptr("Microsoft.SecurityInsights/SourceControls"),
+	// 		Etag: to.Ptr("\"0300bf09-0000-0000-0000-5c37296e0000\""),
+	// 		ID: to.Ptr("/subscriptions/b28fbe4a-0bb1-4593-960b-061c8655a550/resourceGroups/myRg/providers/Microsoft.OperationalIinsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/sourcecontrols/789e0c1f-4a3d-43ad-809c-e713b677b04a"),
+	// 		Properties: &armsecurityinsights.SourceControlProperties{
+	// 			Description: to.Ptr("this is a source control"),
+	// 			ContentTypes: []*armsecurityinsights.ContentType{
+	// 				to.Ptr(armsecurityinsights.ContentTypeAnalyticsRule),
+	// 				to.Ptr(armsecurityinsights.ContentTypeWorkbook),
+	// 			},
+	// 			DisplayName: to.Ptr("My Source Control"),
+	// 			ID: to.Ptr("789e0c1f-4a3d-43ad-809c-e713b677b04a"),
+	// 			LastDeploymentInfo: &armsecurityinsights.DeploymentInfo{
+	// 				Deployment: &armsecurityinsights.Deployment{
+	// 					DeploymentID: to.Ptr("4985046420"),
+	// 					DeploymentLogsURL: to.Ptr("https://github.com/user/repo/actions"),
+	// 					DeploymentResult: to.Ptr(armsecurityinsights.DeploymentResultSuccess),
+	// 					DeploymentState: to.Ptr(armsecurityinsights.DeploymentStateCompleted),
+	// 					DeploymentTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T17:18:19.1234567Z"); return t}()),
+	// 				},
+	// 				DeploymentFetchStatus: to.Ptr(armsecurityinsights.DeploymentFetchStatusSuccess),
+	// 				Message: to.Ptr("Successful deployment"),
+	// 			},
+	// 			PullRequest: &armsecurityinsights.PullRequest{
+	// 				State: to.Ptr(armsecurityinsights.State("Open")),
+	// 				URL: to.Ptr("https://github.com/user/repo/pull/123"),
+	// 			},
+	// 			RepoType: to.Ptr(armsecurityinsights.RepoTypeGithub),
+	// 			Repository: &armsecurityinsights.Repository{
+	// 				Branch: to.Ptr("master"),
+	// 				DeploymentLogsURL: to.Ptr("https://github.com/user/repo/actions"),
+	// 				DisplayURL: to.Ptr("https://github.com/user/repo"),
+	// 				URL: to.Ptr("https://github.com/user/repo"),
+	// 			},
+	// 			RepositoryResourceInfo: &armsecurityinsights.RepositoryResourceInfo{
+	// 				GitHubResourceInfo: &armsecurityinsights.GitHubResourceInfo{
+	// 					AppInstallationID: to.Ptr("123"),
+	// 				},
+	// 				Webhook: &armsecurityinsights.Webhook{
+	// 					WebhookID: to.Ptr("342768323"),
+	// 					WebhookSecretUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T17:18:19.1234567Z"); return t}()),
+	// 					WebhookURL: to.Ptr("https://cac.sentinel.azure.com/workspaces/eeca17ff-d744-4a8b-9f5e-1edcc3346a1d/webhooks/ado/sourceControl/789e0c1f-4a3d-43ad-809c-e713b677b04a"),
+	// 				},
+	// 			},
+	// 			ServicePrincipal: &armsecurityinsights.ServicePrincipal{
+	// 				AppID: to.Ptr("307ef030-13ed-4342-8cc2-c11760649f4d"),
+	// 				ID: to.Ptr("6a5f9fbd-6ce5-45a5-a729-79f8943472f3"),
+	// 				TenantID: to.Ptr("336ffe99-ff10-48fa-8c21-6da2a653dcce"),
+	// 			},
+	// 			WorkloadIdentityFederation: &armsecurityinsights.WorkloadIdentityFederation{
+	// 				AppID: to.Ptr("307ef030-13ed-4342-8cc2-c11760649f4d"),
+	// 				ID: to.Ptr("c2c12197-fc2c-4880-9b18-0996ffe7aeca"),
+	// 				Issuer: to.Ptr("https://token.actions.githubusercontent.com"),
+	// 				Subject: to.Ptr("repo:user/repo:ref:refs/heads/branch"),
+	// 				TenantID: to.Ptr("336ffe99-ff10-48fa-8c21-6da2a653dcce"),
+	// 			},
+	// 		},
+	// 		SystemData: &armsecurityinsights.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T17:18:19.1234567Z"); return t}()),
+	// 			CreatedBy: to.Ptr("user1"),
+	// 			CreatedByType: to.Ptr(armsecurityinsights.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-02T17:18:19.1234567Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("user2"),
+	// 			LastModifiedByType: to.Ptr(armsecurityinsights.CreatedByTypeUser),
+	// 		},
+	// 	},
+	// }
+}

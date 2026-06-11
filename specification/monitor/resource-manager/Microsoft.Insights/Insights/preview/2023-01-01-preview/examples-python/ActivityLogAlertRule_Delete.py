@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.monitor import MonitorManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-monitor
+# USAGE
+    python activity_log_alert_rule_delete.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = MonitorManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.activity_log_alerts.delete(
+        resource_group_name="MyResourceGroup",
+        activity_log_alert_name="SampleActivityLogAlertRule",
+    )
+
+
+# x-ms-original-file: 2023-01-01-preview/ActivityLogAlertRule_Delete.json
+if __name__ == "__main__":
+    main()

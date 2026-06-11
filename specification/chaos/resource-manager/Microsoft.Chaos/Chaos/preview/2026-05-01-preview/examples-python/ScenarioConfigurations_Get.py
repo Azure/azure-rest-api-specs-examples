@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.chaos import ChaosManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-chaos
+# USAGE
+    python scenario_configurations_get.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ChaosManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.scenario_configurations.get(
+        resource_group_name="exampleRG",
+        workspace_name="exampleWorkspace",
+        scenario_name="12345678-1234-1234-1234-123456789012",
+        scenario_configuration_name="config-5678-9012-3456-789012345678",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2026-05-01-preview/ScenarioConfigurations_Get.json
+if __name__ == "__main__":
+    main()

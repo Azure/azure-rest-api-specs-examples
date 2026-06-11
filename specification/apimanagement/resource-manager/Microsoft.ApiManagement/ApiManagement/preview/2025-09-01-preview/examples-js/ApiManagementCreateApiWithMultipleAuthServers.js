@@ -1,0 +1,29 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates new or updates existing specified API of the API Management service instance.
+ *
+ * @summary creates new or updates existing specified API of the API Management service instance.
+ * x-ms-original-file: 2025-09-01-preview/ApiManagementCreateApiWithMultipleAuthServers.json
+ */
+async function apiManagementCreateApiWithMultipleAuthServers() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.api.createOrUpdate("rg1", "apimService1", "tempgroup", {
+    path: "newapiPath",
+    description: "apidescription5200",
+    authenticationSettings: {
+      oAuth2AuthenticationSettings: [
+        { authorizationServerId: "authorizationServerId2283", scope: "oauth2scope2580" },
+        { authorizationServerId: "authorizationServerId2284", scope: "oauth2scope2581" },
+      ],
+    },
+    displayName: "apiname1463",
+    protocols: ["https", "http"],
+    serviceUrl: "http://newechoapi.cloudapp.net/api",
+    subscriptionKeyParameterNames: { header: "header4520", query: "query3037" },
+  });
+  console.log(result);
+}

@@ -1,0 +1,16 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets the details of the certificate specified by its identifier.
+ *
+ * @summary gets the details of the certificate specified by its identifier.
+ * x-ms-original-file: 2025-09-01-preview/ApiManagementGetCertificate.json
+ */
+async function apiManagementGetCertificate() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.certificate.get("rg1", "apimService1", "templateCert1");
+  console.log(result);
+}

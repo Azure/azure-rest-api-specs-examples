@@ -1,0 +1,19 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to updates an existing API Management gateway.
+ *
+ * @summary updates an existing API Management gateway.
+ * x-ms-original-file: 2025-09-01-preview/ApiManagementUpdateStandardGateway.json
+ */
+async function apiManagementUpdateStandardGateway() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.apiGateway.update("rg1", "apimGateway1", {
+    sku: { name: "Standard", capacity: 10 },
+    tags: { Name: "Contoso", Test: "User" },
+  });
+  console.log(result);
+}

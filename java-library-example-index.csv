@@ -6882,3 +6882,4 @@ id,name,language,tag,package,version,date_epoch,date
 6881,azure-mgmt-standbypool@2.1.0,python,azure-mgmt-standbypool_2.1.0,azure-mgmt-standbypool,2.1.0,1781170997,06/11/2026
 6882,azure-mgmt-mongocluster@1.2.0b1,python,azure-mgmt-mongocluster_1.2.0b1,azure-mgmt-mongocluster,1.2.0b1,1781170996,06/11/2026
 6883,azure-mgmt-monitor@8.0.0b3,python,azure-mgmt-monitor_8.0.0b3,azure-mgmt-monitor,8.0.0b3,1781165299,06/11/2026
+6884,azure-mgmt-cloudhealth@1.0.0b2,python,azure-mgmt-cloudhealth_1.0.0b2,azure-mgmt-cloudhealth,1.0.0b2,1781161075,06/11/2026

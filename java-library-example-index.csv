@@ -6860,3 +6860,4 @@ id,name,language,tag,package,version,date_epoch,date
 6859,@azure/arm-hybridcompute@5.0.0-beta.2,js,@azure/arm-hybridcompute_5.0.0-beta.2,@azure/arm-hybridcompute,5.0.0-beta.2,1781057903,06/10/2026
 6860,@azure/arm-reservations@10.0.0-beta.1,js,@azure/arm-reservations_10.0.0-beta.1,@azure/arm-reservations,10.0.0-beta.1,1781057874,06/10/2026
 6861,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning@v1.0.0,go,sdk/resourcemanager/trustedsigning/armtrustedsigning/v1.0.0,sdk/resourcemanager/trustedsigning/armtrustedsigning,v1.0.0,1781162218,06/11/2026
+6862,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/weightsandbiases/armweightsandbiases@v1.0.0,go,sdk/resourcemanager/weightsandbiases/armweightsandbiases/v1.0.0,sdk/resourcemanager/weightsandbiases/armweightsandbiases,v1.0.0,1781162182,06/11/2026

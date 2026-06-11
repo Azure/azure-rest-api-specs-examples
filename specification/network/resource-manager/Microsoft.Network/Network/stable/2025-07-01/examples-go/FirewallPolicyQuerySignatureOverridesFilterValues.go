@@ -1,0 +1,41 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v10"
+)
+
+// Generated from example definition: 2025-07-01/FirewallPolicyQuerySignatureOverridesFilterValues.json
+func ExampleFirewallPolicyIdpsSignaturesFilterValuesClient_List() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("e747cc13-97d4-4a79-b463-42d7f4e558f2", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewFirewallPolicyIdpsSignaturesFilterValuesClient().List(ctx, "rg1", "firewallPolicy", armnetwork.SignatureOverridesFilterValuesQuery{
+		FilterName: to.Ptr("severity"),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armnetwork.FirewallPolicyIdpsSignaturesFilterValuesClientListResponse{
+	// 	SignatureOverridesFilterValuesResponse: armnetwork.SignatureOverridesFilterValuesResponse{
+	// 		FilterValues: []*string{
+	// 			to.Ptr("low"),
+	// 			to.Ptr("medium"),
+	// 			to.Ptr("high"),
+	// 		},
+	// 	},
+	// }
+}

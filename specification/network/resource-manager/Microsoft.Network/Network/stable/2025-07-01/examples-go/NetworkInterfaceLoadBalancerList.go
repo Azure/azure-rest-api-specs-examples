@@ -1,0 +1,166 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v10"
+)
+
+// Generated from example definition: 2025-07-01/NetworkInterfaceLoadBalancerList.json
+func ExampleInterfaceLoadBalancersClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewInterfaceLoadBalancersClient().NewListPager("testrg", "nic1", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnetwork.InterfaceLoadBalancersClientListResponse{
+		// 	InterfaceLoadBalancerListResult: armnetwork.InterfaceLoadBalancerListResult{
+		// 		Value: []*armnetwork.LoadBalancer{
+		// 			{
+		// 				Name: to.Ptr("lbname1"),
+		// 				Type: to.Ptr("Microsoft.Network/loadBalancers"),
+		// 				Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1"),
+		// 				Location: to.Ptr("westus"),
+		// 				Properties: &armnetwork.LoadBalancerPropertiesFormat{
+		// 					BackendAddressPools: []*armnetwork.BackendAddressPool{
+		// 						{
+		// 							Name: to.Ptr("bepool1"),
+		// 							Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/backendAddressPools/bepool1"),
+		// 							Properties: &armnetwork.BackendAddressPoolPropertiesFormat{
+		// 								BackendIPConfigurations: []*armnetwork.InterfaceIPConfiguration{
+		// 									{
+		// 										ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"),
+		// 									},
+		// 								},
+		// 								LoadBalancingRules: []*armnetwork.SubResource{
+		// 									{
+		// 										ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"),
+		// 									},
+		// 								},
+		// 								ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 							},
+		// 						},
+		// 					},
+		// 					FrontendIPConfigurations: []*armnetwork.FrontendIPConfiguration{
+		// 						{
+		// 							Name: to.Ptr("lbfrontend"),
+		// 							Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend"),
+		// 							Properties: &armnetwork.FrontendIPConfigurationPropertiesFormat{
+		// 								InboundNatRules: []*armnetwork.SubResource{
+		// 									{
+		// 										ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/inboundNatRules/inbound1"),
+		// 									},
+		// 								},
+		// 								LoadBalancingRules: []*armnetwork.SubResource{
+		// 									{
+		// 										ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"),
+		// 									},
+		// 								},
+		// 								PrivateIPAllocationMethod: to.Ptr(armnetwork.IPAllocationMethodDynamic),
+		// 								ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 								PublicIPAddress: &armnetwork.PublicIPAddress{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/publicIPAddresses/myDynamicPublicIP"),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					InboundNatPools: []*armnetwork.InboundNatPool{
+		// 					},
+		// 					InboundNatRules: []*armnetwork.InboundNatRule{
+		// 						{
+		// 							Name: to.Ptr("inbound1"),
+		// 							Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/inboundNatRules/inbound1"),
+		// 							Properties: &armnetwork.InboundNatRulePropertiesFormat{
+		// 								BackendIPConfiguration: &armnetwork.InterfaceIPConfiguration{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"),
+		// 								},
+		// 								BackendPort: to.Ptr[int32](3389),
+		// 								EnableFloatingIP: to.Ptr(false),
+		// 								FrontendIPConfiguration: &armnetwork.SubResource{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend"),
+		// 								},
+		// 								FrontendPort: to.Ptr[int32](3389),
+		// 								IdleTimeoutInMinutes: to.Ptr[int32](15),
+		// 								ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 								Protocol: to.Ptr(armnetwork.TransportProtocolTCP),
+		// 							},
+		// 						},
+		// 					},
+		// 					LoadBalancingRules: []*armnetwork.LoadBalancingRule{
+		// 						{
+		// 							Name: to.Ptr("rule1"),
+		// 							Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"),
+		// 							Properties: &armnetwork.LoadBalancingRulePropertiesFormat{
+		// 								BackendAddressPool: &armnetwork.SubResource{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/backendAddressPools/bepool1"),
+		// 								},
+		// 								BackendPort: to.Ptr[int32](80),
+		// 								EnableFloatingIP: to.Ptr(false),
+		// 								FrontendIPConfiguration: &armnetwork.SubResource{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend"),
+		// 								},
+		// 								FrontendPort: to.Ptr[int32](80),
+		// 								IdleTimeoutInMinutes: to.Ptr[int32](15),
+		// 								LoadDistribution: to.Ptr(armnetwork.LoadDistributionDefault),
+		// 								Probe: &armnetwork.SubResource{
+		// 									ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/probes/probe1"),
+		// 								},
+		// 								ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 								Protocol: to.Ptr(armnetwork.TransportProtocolTCP),
+		// 							},
+		// 						},
+		// 					},
+		// 					OutboundRules: []*armnetwork.OutboundRule{
+		// 					},
+		// 					Probes: []*armnetwork.Probe{
+		// 						{
+		// 							Name: to.Ptr("probe1"),
+		// 							Etag: to.Ptr("W/\\\"00000000-0000-0000-0000-000000000000\\\""),
+		// 							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/probes/probe1"),
+		// 							Properties: &armnetwork.ProbePropertiesFormat{
+		// 								IntervalInSeconds: to.Ptr[int32](15),
+		// 								LoadBalancingRules: []*armnetwork.SubResource{
+		// 									{
+		// 										ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"),
+		// 									},
+		// 								},
+		// 								NumberOfProbes: to.Ptr[int32](2),
+		// 								Port: to.Ptr[int32](80),
+		// 								ProbeThreshold: to.Ptr[int32](1),
+		// 								ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 								RequestPath: to.Ptr("healthcheck.aspx"),
+		// 								Protocol: to.Ptr(armnetwork.ProbeProtocolHTTP),
+		// 							},
+		// 						},
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 					ResourceGUID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

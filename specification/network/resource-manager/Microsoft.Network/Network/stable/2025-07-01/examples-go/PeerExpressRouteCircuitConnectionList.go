@@ -1,0 +1,76 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v10"
+)
+
+// Generated from example definition: 2025-07-01/PeerExpressRouteCircuitConnectionList.json
+func ExamplePeerExpressRouteCircuitConnectionsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewPeerExpressRouteCircuitConnectionsClient().NewListPager("rg1", "ExpressRouteARMCircuitA", "AzurePrivatePeering", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnetwork.PeerExpressRouteCircuitConnectionsClientListResponse{
+		// 	PeerExpressRouteCircuitConnectionListResult: armnetwork.PeerExpressRouteCircuitConnectionListResult{
+		// 		Value: []*armnetwork.PeerExpressRouteCircuitConnection{
+		// 			{
+		// 				Name: to.Ptr("60aee347-e889-4a42-8c1b-0aae8b1e4013"),
+		// 				Etag: to.Ptr("W/\"6ffbbb06-da20-44ca-a34f-280c4653b1e9\""),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/peerConnections/60aee347-e889-4a42-8c1b-0aae8b1e4013"),
+		// 				Properties: &armnetwork.PeerExpressRouteCircuitConnectionPropertiesFormat{
+		// 					AddressPrefix: to.Ptr("20.0.0.0/29"),
+		// 					AuthResourceGUID: to.Ptr(""),
+		// 					CircuitConnectionStatus: to.Ptr(armnetwork.CircuitConnectionStatusConnected),
+		// 					ConnectionName: to.Ptr("circuitConnectionWestusEastus"),
+		// 					ExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					PeerExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitB/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("c8b17193-8dd3-4f61-866d-8cdd2e2e268e"),
+		// 				Etag: to.Ptr("W/\"6ffbbb06-da20-44ca-a34f-280c4653b1e9\""),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/peerConnections/c8b17193-8dd3-4f61-866d-8cdd2e2e268e"),
+		// 				Properties: &armnetwork.PeerExpressRouteCircuitConnectionPropertiesFormat{
+		// 					AddressPrefix: to.Ptr("30.0.0.0/29"),
+		// 					AuthResourceGUID: to.Ptr("64283012-d377-421d-8398-f6aeb2ac7ea0"),
+		// 					CircuitConnectionStatus: to.Ptr(armnetwork.CircuitConnectionStatusConnected),
+		// 					ConnectionName: to.Ptr("circuitConnectionCentralusEastus"),
+		// 					ExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					PeerExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitC/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

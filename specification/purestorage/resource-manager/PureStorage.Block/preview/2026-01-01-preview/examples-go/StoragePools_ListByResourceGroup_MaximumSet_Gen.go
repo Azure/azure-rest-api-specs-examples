@@ -1,0 +1,86 @@
+package armpurestorageblock_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purestorageblock/armpurestorageblock"
+)
+
+// Generated from example definition: 2026-01-01-preview/StoragePools_ListByResourceGroup_MaximumSet_Gen.json
+func ExampleStoragePoolsClient_NewListByResourceGroupPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpurestorageblock.NewClientFactory("11111111-1111-1111-1111-111111111111", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewStoragePoolsClient().NewListByResourceGroupPager("rgpurestorage", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armpurestorageblock.StoragePoolsClientListByResourceGroupResponse{
+		// 	StoragePoolListResult: armpurestorageblock.StoragePoolListResult{
+		// 		Value: []*armpurestorageblock.StoragePool{
+		// 			{
+		// 				Properties: &armpurestorageblock.StoragePoolProperties{
+		// 					StoragePoolInternalID: to.Ptr("pool-abc123"),
+		// 					AvailabilityZone: to.Ptr("1"),
+		// 					VnetInjection: &armpurestorageblock.VnetInjection{
+		// 						SubnetID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rgpurestorage/providers/Microsoft.Network/virtualNetworks/vnet-01/subnets/subnet-01"),
+		// 						VnetID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rgpurestorage/providers/Microsoft.Network/virtualNetworks/vnet-01"),
+		// 					},
+		// 					DataRetentionPeriod: to.Ptr[int64](23),
+		// 					ProvisionedBandwidthMbPerSec: to.Ptr[int64](17),
+		// 					ProvisionedIops: to.Ptr[int64](3),
+		// 					Avs: &armpurestorageblock.AzureVmwareService{
+		// 						AvsEnabled: to.Ptr(true),
+		// 						ClusterResourceID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rgpurestorage/providers/Microsoft.AVS/privateClouds/avs-cloud-01"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armpurestorageblock.ProvisioningStateSucceeded),
+		// 					ReservationResourceID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rgpurestorage/providers/PureStorage.Block/reservations/reservation-01"),
+		// 				},
+		// 				Identity: &armpurestorageblock.ManagedServiceIdentity{
+		// 					PrincipalID: to.Ptr("22222222-2222-2222-2222-222222222222"),
+		// 					TenantID: to.Ptr("22222222-2222-2222-2222-222222222222"),
+		// 					Type: to.Ptr(armpurestorageblock.ManagedServiceIdentityTypeNone),
+		// 					UserAssignedIdentities: map[string]*armpurestorageblock.UserAssignedIdentity{
+		// 						"identity-01": &armpurestorageblock.UserAssignedIdentity{
+		// 							PrincipalID: to.Ptr("22222222-2222-2222-2222-222222222222"),
+		// 							ClientID: to.Ptr("22222222-2222-2222-2222-222222222222"),
+		// 						},
+		// 					},
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"environment": to.Ptr("production"),
+		// 				},
+		// 				Location: to.Ptr("eastus"),
+		// 				ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"),
+		// 				Name: to.Ptr("storagepool-01"),
+		// 				Type: to.Ptr("PureStorage.Block/storagePools"),
+		// 				SystemData: &armpurestorageblock.SystemData{
+		// 					CreatedBy: to.Ptr("user@contoso.com"),
+		// 					CreatedByType: to.Ptr(armpurestorageblock.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-01-16T07:25:56.721Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("admin@contoso.com"),
+		// 					LastModifiedByType: to.Ptr(armpurestorageblock.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-01-16T07:25:56.721Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://management.azure.com/providers/PureStorage.Block/operations?api-version=2026-01-01-preview&$skiptoken=abc123hd"),
+		// 	},
+		// }
+	}
+}

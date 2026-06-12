@@ -6899,3 +6899,4 @@ id,name,language,tag,package,version,date_epoch,date
 6898,@azure/arm-dnsresolver@2.0.0-beta.2,js,@azure/arm-dnsresolver_2.0.0-beta.2,@azure/arm-dnsresolver,2.0.0-beta.2,1781237387,06/12/2026
 6899,@azure/arm-signalr@6.0.0-beta.3,js,@azure/arm-signalr_6.0.0-beta.3,@azure/arm-signalr,6.0.0-beta.3,1781231500,06/12/2026
 6900,@azure/arm-resourcegraph@5.0.0-beta.5,js,@azure/arm-resourcegraph_5.0.0-beta.5,@azure/arm-resourcegraph,5.0.0-beta.5,1781231491,06/12/2026
+6901,@azure/arm-sqlvirtualmachine@5.0.0-beta.10,js,@azure/arm-sqlvirtualmachine_5.0.0-beta.10,@azure/arm-sqlvirtualmachine,5.0.0-beta.10,1781231009,06/12/2026

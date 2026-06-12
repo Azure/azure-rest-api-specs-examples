@@ -6887,3 +6887,4 @@ id,name,language,tag,package,version,date_epoch,date
 6886,@azure/arm-imagebuilder@5.0.0,js,@azure/arm-imagebuilder_5.0.0,@azure/arm-imagebuilder,5.0.0,1781253657,06/12/2026
 6887,@azure/arm-managednetworkfabric@2.0.0-beta.1,js,@azure/arm-managednetworkfabric_2.0.0-beta.1,@azure/arm-managednetworkfabric,2.0.0-beta.1,1781253589,06/12/2026
 6888,@azure/arm-healthbot@3.0.0,js,@azure/arm-healthbot_3.0.0,@azure/arm-healthbot,3.0.0,1781253576,06/12/2026
+6889,@azure/arm-weightsandbiases@1.0.0,js,@azure/arm-weightsandbiases_1.0.0,@azure/arm-weightsandbiases,1.0.0,1781253564,06/12/2026

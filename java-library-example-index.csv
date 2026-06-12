@@ -6902,3 +6902,4 @@ id,name,language,tag,package,version,date_epoch,date
 6901,@azure/arm-sqlvirtualmachine@5.0.0-beta.10,js,@azure/arm-sqlvirtualmachine_5.0.0-beta.10,@azure/arm-sqlvirtualmachine,5.0.0-beta.10,1781231009,06/12/2026
 6902,azure-mgmt-redisenterprise@4.0.0b2,python,azure-mgmt-redisenterprise_4.0.0b2,azure-mgmt-redisenterprise,4.0.0b2,1781252691,06/12/2026
 6903,azure-mgmt-servicefabric@2.2.0b2,python,azure-mgmt-servicefabric_2.2.0b2,azure-mgmt-servicefabric,2.2.0b2,1781231156,06/12/2026
+6904,azure-mgmt-monitorslis@1.0.0b2,python,azure-mgmt-monitorslis_1.0.0b2,azure-mgmt-monitorslis,1.0.0b2,1781143317,06/11/2026

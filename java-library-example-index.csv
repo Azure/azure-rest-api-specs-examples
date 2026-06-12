@@ -6903,3 +6903,4 @@ id,name,language,tag,package,version,date_epoch,date
 6902,azure-mgmt-redisenterprise@4.0.0b2,python,azure-mgmt-redisenterprise_4.0.0b2,azure-mgmt-redisenterprise,4.0.0b2,1781252691,06/12/2026
 6903,azure-mgmt-servicefabric@2.2.0b2,python,azure-mgmt-servicefabric_2.2.0b2,azure-mgmt-servicefabric,2.2.0b2,1781231156,06/12/2026
 6904,azure-mgmt-monitorslis@1.0.0b2,python,azure-mgmt-monitorslis_1.0.0b2,azure-mgmt-monitorslis,1.0.0b2,1781143317,06/11/2026
+6905,azure-mgmt-monitorworkspaces@1.0.0b1,python,azure-mgmt-monitorworkspaces_1.0.0b1,azure-mgmt-monitorworkspaces,1.0.0b1,1781106008,06/10/2026

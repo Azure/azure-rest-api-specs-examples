@@ -6889,3 +6889,4 @@ id,name,language,tag,package,version,date_epoch,date
 6888,@azure/arm-healthbot@3.0.0,js,@azure/arm-healthbot_3.0.0,@azure/arm-healthbot,3.0.0,1781253576,06/12/2026
 6889,@azure/arm-weightsandbiases@1.0.0,js,@azure/arm-weightsandbiases_1.0.0,@azure/arm-weightsandbiases,1.0.0,1781253564,06/12/2026
 6890,@azure/arm-domainregistration@1.0.0,js,@azure/arm-domainregistration_1.0.0,@azure/arm-domainregistration,1.0.0,1781253564,06/12/2026
+6891,@azure/arm-standbypool@2.1.0,js,@azure/arm-standbypool_2.1.0,@azure/arm-standbypool,2.1.0,1781253556,06/12/2026

@@ -1,11 +1,11 @@
-package armartifactsigning_test
+package armtrustedsigning_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/artifactsigning/armartifactsigning"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning"
 )
 
 // Generated from example definition: 2025-10-13/Operations_List.json
@@ -15,7 +15,7 @@ func ExampleOperationsClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armartifactsigning.NewClientFactory("<subscriptionID>", cred, nil)
+	clientFactory, err := armtrustedsigning.NewClientFactory("<subscriptionID>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,12 +30,12 @@ func ExampleOperationsClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page = armartifactsigning.OperationsClientListResponse{
-		// 	OperationListResult: armartifactsigning.OperationListResult{
-		// 		Value: []*armartifactsigning.Operation{
+		// page = armtrustedsigning.OperationsClientListResponse{
+		// 	OperationListResult: armtrustedsigning.OperationListResult{
+		// 		Value: []*armtrustedsigning.Operation{
 		// 			{
 		// 				Name: to.Ptr("Microsoft.CodeSigning/codeSigningAccounts/write"),
-		// 				Display: &armartifactsigning.OperationDisplay{
+		// 				Display: &armtrustedsigning.OperationDisplay{
 		// 					Provider: to.Ptr("Microsoft.CodeSigning"),
 		// 					Resource: to.Ptr("codeSigningAccounts"),
 		// 					Operation: to.Ptr("Create CodeSigningAccount"),
@@ -44,7 +44,7 @@ func ExampleOperationsClient_NewListPager() {
 		// 			},
 		// 			{
 		// 				Name: to.Ptr("Microsoft.CodeSigning/codeSigningAccounts/read"),
-		// 				Display: &armartifactsigning.OperationDisplay{
+		// 				Display: &armtrustedsigning.OperationDisplay{
 		// 					Provider: to.Ptr("Microsoft.CodeSigning"),
 		// 					Resource: to.Ptr("codeSigningAccounts"),
 		// 					Operation: to.Ptr("Get CodeSigningAccount"),
@@ -53,7 +53,7 @@ func ExampleOperationsClient_NewListPager() {
 		// 			},
 		// 			{
 		// 				Name: to.Ptr("Microsoft.CodeSigning/codeSigningAccounts/delete"),
-		// 				Display: &armartifactsigning.OperationDisplay{
+		// 				Display: &armtrustedsigning.OperationDisplay{
 		// 					Provider: to.Ptr("Microsoft.CodeSigning"),
 		// 					Resource: to.Ptr("codeSigningAccounts"),
 		// 					Operation: to.Ptr("Delete CodeSigningAccount"),

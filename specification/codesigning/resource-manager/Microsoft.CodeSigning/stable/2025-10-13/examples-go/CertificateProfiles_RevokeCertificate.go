@@ -1,4 +1,4 @@
-package armartifactsigning_test
+package armtrustedsigning_test
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/artifactsigning/armartifactsigning"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning"
 )
 
 // Generated from example definition: 2025-10-13/CertificateProfiles_RevokeCertificate.json
@@ -17,11 +17,11 @@ func ExampleCertificateProfilesClient_RevokeCertificate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armartifactsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armtrustedsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = clientFactory.NewCertificateProfilesClient().RevokeCertificate(ctx, "MyResourceGroup", "MyAccount", "profileA", armartifactsigning.RevokeCertificate{
+	_, err = clientFactory.NewCertificateProfilesClient().RevokeCertificate(ctx, "MyResourceGroup", "MyAccount", "profileA", armtrustedsigning.RevokeCertificate{
 		EffectiveAt:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-12T23:40:25+00:00"); return t }()),
 		Reason:       to.Ptr("KeyCompromised"),
 		Remarks:      to.Ptr("test"),

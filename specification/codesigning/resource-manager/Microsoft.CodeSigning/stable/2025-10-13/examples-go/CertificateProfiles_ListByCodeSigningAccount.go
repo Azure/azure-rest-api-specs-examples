@@ -1,11 +1,11 @@
-package armartifactsigning_test
+package armtrustedsigning_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/artifactsigning/armartifactsigning"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning"
 )
 
 // Generated from example definition: 2025-10-13/CertificateProfiles_ListByCodeSigningAccount.json
@@ -15,7 +15,7 @@ func ExampleCertificateProfilesClient_NewListByCodeSigningAccountPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armartifactsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armtrustedsigning.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -30,21 +30,21 @@ func ExampleCertificateProfilesClient_NewListByCodeSigningAccountPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page = armartifactsigning.CertificateProfilesClientListByCodeSigningAccountResponse{
-		// 	CertificateProfileListResult: armartifactsigning.CertificateProfileListResult{
-		// 		Value: []*armartifactsigning.CertificateProfile{
+		// page = armtrustedsigning.CertificateProfilesClientListByCodeSigningAccountResponse{
+		// 	CertificateProfileListResult: armtrustedsigning.CertificateProfileListResult{
+		// 		Value: []*armtrustedsigning.CertificateProfile{
 		// 			{
 		// 				Name: to.Ptr("profileA"),
 		// 				Type: to.Ptr("Microsoft.CodeSigning/codeSigningAccounts/certificateProfiles"),
 		// 				ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.CodeSigning/codeSigningAccounts/profileA"),
-		// 				Properties: &armartifactsigning.CertificateProfileProperties{
-		// 					Certificates: []*armartifactsigning.Certificate{
+		// 				Properties: &armtrustedsigning.CertificateProfileProperties{
+		// 					Certificates: []*armtrustedsigning.Certificate{
 		// 						{
 		// 							CreatedDate: to.Ptr("3/14/2023 5:27:49 PM"),
 		// 							ExpiryDate: to.Ptr("3/17/2023 5:27:49 PM"),
 		// 							EnhancedKeyUsage: to.Ptr("1.3.6.1.4.1.311.yy.xxxxxxxx.xxxxxxxx.xxxxxxxxx.xxxxxxxx"),
 		// 							SerialNumber: to.Ptr("xxxxxxxxxxxxxxxxxx"),
-		// 							Status: to.Ptr(armartifactsigning.CertificateStatusActive),
+		// 							Status: to.Ptr(armtrustedsigning.CertificateStatusActive),
 		// 							SubjectName: to.Ptr("CN=Contoso Inc, O=Contoso Inc, L=New York, S=New York, C=US"),
 		// 							Thumbprint: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 		// 						},
@@ -55,9 +55,9 @@ func ExampleCertificateProfilesClient_NewListByCodeSigningAccountPager() {
 		// 					IncludePostalCode: to.Ptr(true),
 		// 					IncludeState: to.Ptr(false),
 		// 					IncludeStreetAddress: to.Ptr(false),
-		// 					ProfileType: to.Ptr(armartifactsigning.ProfileTypePublicTrust),
-		// 					ProvisioningState: to.Ptr(armartifactsigning.ProvisioningStateSucceeded),
-		// 					Status: to.Ptr(armartifactsigning.CertificateProfileStatusActive),
+		// 					ProfileType: to.Ptr(armtrustedsigning.ProfileTypePublicTrust),
+		// 					ProvisioningState: to.Ptr(armtrustedsigning.ProvisioningStateSucceeded),
+		// 					Status: to.Ptr(armtrustedsigning.CertificateProfileStatusActive),
 		// 				},
 		// 			},
 		// 		},

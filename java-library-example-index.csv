@@ -6884,3 +6884,4 @@ id,name,language,tag,package,version,date_epoch,date
 6883,azure-mgmt-monitor@8.0.0b3,python,azure-mgmt-monitor_8.0.0b3,azure-mgmt-monitor,8.0.0b3,1781165299,06/11/2026
 6884,azure-mgmt-cloudhealth@1.0.0b2,python,azure-mgmt-cloudhealth_1.0.0b2,azure-mgmt-cloudhealth,1.0.0b2,1781161075,06/11/2026
 6885,@azure/arm-mongocluster@1.2.0-beta.1,js,@azure/arm-mongocluster_1.2.0-beta.1,@azure/arm-mongocluster,1.2.0-beta.1,1781258030,06/12/2026
+6886,@azure/arm-imagebuilder@5.0.0,js,@azure/arm-imagebuilder_5.0.0,@azure/arm-imagebuilder,5.0.0,1781253657,06/12/2026

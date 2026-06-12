@@ -1,0 +1,135 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.cloudhealth import CloudHealthMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-cloudhealth
+# USAGE
+    python entities_create_or_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CloudHealthMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.entities.begin_create_or_update(
+        resource_group_name="rgopenapi",
+        health_model_name="myHealthModel",
+        entity_name="uszrxbdkxesdrxhmagmzywebgbjj",
+        resource={
+            "properties": {
+                "alerts": {
+                    "degraded": {
+                        "actionGroupIds": [
+                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup"
+                        ],
+                        "description": "Alert description",
+                        "severity": "Sev4",
+                    },
+                    "unhealthy": {
+                        "actionGroupIds": [
+                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup"
+                        ],
+                        "description": "Alert description",
+                        "severity": "Sev1",
+                    },
+                },
+                "canvasPosition": {"x": 14, "y": 13},
+                "displayName": "My entity",
+                "healthObjective": 62,
+                "icon": {"customData": "rcitntvapruccrhtxmkqjphbxunkz", "iconName": "Custom"},
+                "impact": "Standard",
+                "signalGroups": {
+                    "azureLogAnalytics": {
+                        "authenticationSetting": "auth123",
+                        "logAnalyticsWorkspaceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace",
+                        "signals": [
+                            {
+                                "dataUnit": "my unit",
+                                "displayName": "Test LA signal",
+                                "evaluationRules": {
+                                    "degradedRule": {"operator": "GreaterThan", "threshold": 1},
+                                    "unhealthyRule": {"operator": "GreaterThan", "threshold": 5},
+                                },
+                                "name": "uniqueSignalName2",
+                                "queryText": "print 1",
+                                "refreshInterval": "PT1M",
+                                "signalDefinitionName": None,
+                                "signalKind": "LogAnalyticsQuery",
+                                "timeGrain": "PT30M",
+                                "valueColumnName": "result",
+                            }
+                        ],
+                    },
+                    "azureMonitorWorkspace": {
+                        "authenticationSetting": "auth123",
+                        "azureMonitorWorkspaceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace",
+                        "signals": [
+                            {
+                                "dataUnit": "Percent",
+                                "displayName": "Pod CPU Usage",
+                                "evaluationRules": {
+                                    "degradedRule": {"operator": "GreaterThan", "threshold": 70},
+                                    "unhealthyRule": {"operator": "GreaterThan", "threshold": 90},
+                                },
+                                "name": "pod-cpu-usage",
+                                "queryText": 'rate(container_cpu_usage_seconds_total{pod=~"my-app-.*"}[5m]) * 100',
+                                "refreshInterval": "PT1M",
+                                "signalDefinitionName": "PodCpuUsageDefinition",
+                                "signalKind": "PrometheusMetricsQuery",
+                                "timeGrain": "PT5M",
+                            }
+                        ],
+                    },
+                    "azureResource": {
+                        "authenticationSetting": "auth123",
+                        "azureResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+                        "azureResourceKind": "functionapp",
+                        "signals": [
+                            {
+                                "aggregationType": "None",
+                                "dataUnit": "Count",
+                                "dimension": "nodename",
+                                "dimensionFilter": "node1",
+                                "displayName": "CPU usage",
+                                "evaluationRules": {
+                                    "degradedRule": {"operator": "LowerThan", "threshold": 10},
+                                    "unhealthyRule": {"operator": "LowerThan", "threshold": 1},
+                                },
+                                "metricName": "cpuusage",
+                                "metricNamespace": "microsoft.compute/virtualMachines",
+                                "name": "uniqueSignalName1",
+                                "refreshInterval": "PT1M",
+                                "signalDefinitionName": "sigdef1",
+                                "signalKind": "AzureResourceMetric",
+                                "timeGrain": "PT1M",
+                            }
+                        ],
+                    },
+                    "dependencies": {
+                        "aggregationType": "MinHealthy",
+                        "degradedThreshold": 80,
+                        "unhealthyThreshold": 50,
+                        "unit": "Percentage",
+                    },
+                },
+                "tags": {"key1376": "sample tag"},
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2026-01-01-preview/Entities_CreateOrUpdate.json
+if __name__ == "__main__":
+    main()

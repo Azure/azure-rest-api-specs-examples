@@ -1,0 +1,53 @@
+package armpurestorageblock_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purestorageblock/armpurestorageblock"
+)
+
+// Generated from example definition: 2026-01-01-preview/Operations_List_MaximumSet_Gen.json
+func ExampleOperationsClient_NewListPager_operationsList() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armpurestorageblock.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armpurestorageblock.OperationsClientListResponse{
+		// 	OperationListResult: armpurestorageblock.OperationListResult{
+		// 		Value: []*armpurestorageblock.Operation{
+		// 			{
+		// 				Name: to.Ptr("PureStorage.Block/storagePools/read"),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Display: &armpurestorageblock.OperationDisplay{
+		// 					Provider: to.Ptr("Pure Storage"),
+		// 					Resource: to.Ptr("Storage Pools"),
+		// 					Operation: to.Ptr("Read Storage Pools"),
+		// 					Description: to.Ptr("Gets a list of storage pools or gets details of a storage pool"),
+		// 				},
+		// 				Origin: to.Ptr(armpurestorageblock.OriginUser),
+		// 				ActionType: to.Ptr(armpurestorageblock.ActionTypeInternal),
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://management.azure.com/providers/PureStorage.Block/operations?api-version=2026-01-01-preview&$skiptoken=abc123"),
+		// 	},
+		// }
+	}
+}

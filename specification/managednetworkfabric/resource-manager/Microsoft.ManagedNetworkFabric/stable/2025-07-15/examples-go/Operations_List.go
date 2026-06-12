@@ -1,0 +1,76 @@
+package armmanagednetworkfabric_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managednetworkfabric/armmanagednetworkfabric/v2"
+)
+
+// Generated from example definition: 2025-07-15/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armmanagednetworkfabric.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armmanagednetworkfabric.OperationsClientListResponse{
+		// 	OperationListResult: armmanagednetworkfabric.OperationListResult{
+		// 		Value: []*armmanagednetworkfabric.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ManagedNetworkFabric/NetworkFabricControllers/Read"),
+		// 				ActionType: to.Ptr(armmanagednetworkfabric.ActionTypeInternal),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Origin: to.Ptr(armmanagednetworkfabric.OriginUserSystem),
+		// 				Display: &armmanagednetworkfabric.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft.ManagedNetworkFabric resource provider"),
+		// 					Resource: to.Ptr("NetworkFabricControllers"),
+		// 					Operation: to.Ptr("Gets/List NetworkFabricController resources."),
+		// 					Description: to.Ptr("Gets/List the NetworkFabricController resource data."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ManagedNetworkFabric/NetworkFabricControllers/Write"),
+		// 				ActionType: to.Ptr(armmanagednetworkfabric.ActionTypeInternal),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Origin: to.Ptr(armmanagednetworkfabric.OriginUserSystem),
+		// 				Display: &armmanagednetworkfabric.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft.ManagedNetworkFabric resource provider"),
+		// 					Resource: to.Ptr("NetworkFabricControllers"),
+		// 					Operation: to.Ptr("Create or Update NetworkFabricController resource."),
+		// 					Description: to.Ptr("Create or Update NetworkFabricController resource data."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.ManagedNetworkFabric/NetworkFabricControllers/Delete"),
+		// 				ActionType: to.Ptr(armmanagednetworkfabric.ActionTypeInternal),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Origin: to.Ptr(armmanagednetworkfabric.OriginUserSystem),
+		// 				Display: &armmanagednetworkfabric.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft.ManagedNetworkFabric resource provider"),
+		// 					Resource: to.Ptr("NetworkFabricControllers"),
+		// 					Operation: to.Ptr("Deletes the NetworkFabricController resource."),
+		// 					Description: to.Ptr("Deletes the NetworkFabricController resource."),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

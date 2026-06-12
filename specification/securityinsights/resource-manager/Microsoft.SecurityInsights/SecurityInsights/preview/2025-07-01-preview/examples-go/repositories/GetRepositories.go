@@ -1,0 +1,59 @@
+package armsecurityinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
+)
+
+// Generated from example definition: 2025-07-01-preview/repositories/GetRepositories.json
+func ExampleSourceControlClient_NewListRepositoriesPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsecurityinsights.NewClientFactory("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewSourceControlClient().NewListRepositoriesPager("myRg", "myWorkspace", armsecurityinsights.RepositoryAccessProperties{
+		Properties: &armsecurityinsights.RepositoryAccessObject{
+			RepositoryAccess: &armsecurityinsights.RepositoryAccess{
+				ClientID: to.Ptr("54b3c2c0-1f48-4a1c-af9f-6399c3240b73"),
+				Code:     to.Ptr("939fd7c6caf754f4f41f"),
+				Kind:     to.Ptr(armsecurityinsights.RepositoryAccessKindOAuth),
+				State:    to.Ptr("state"),
+			},
+		},
+	}, nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armsecurityinsights.SourceControlClientListRepositoriesResponse{
+		// 	RepoList: armsecurityinsights.RepoList{
+		// 		Value: []*armsecurityinsights.Repo{
+		// 			{
+		// 				Branches: []*string{
+		// 					to.Ptr("master"),
+		// 					to.Ptr("develop"),
+		// 				},
+		// 				FullName: to.Ptr("reponame"),
+		// 				InstallationID: to.Ptr[int64](42424242),
+		// 				URL: to.Ptr("https://api.github.com/repos/user/reponame"),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

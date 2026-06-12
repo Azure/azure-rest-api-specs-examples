@@ -1,0 +1,54 @@
+package armsecurityinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
+)
+
+// Generated from example definition: 2025-07-01-preview/dataConnectors/GetThreatIntelligenceTaxiiById.json
+func ExampleDataConnectorsClient_Get_getATiTaxiiDataConnector() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsecurityinsights.NewClientFactory("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewDataConnectorsClient().Get(ctx, "myRg", "myWorkspace", "c39bb458-02a7-4b3f-b0c8-71a1d2692652", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsecurityinsights.DataConnectorsClientGetResponse{
+	// 	DataConnectorClassification: &armsecurityinsights.TiTaxiiDataConnector{
+	// 		Name: to.Ptr("c39bb458-02a7-4b3f-b0c8-71a1d2692652"),
+	// 		Type: to.Ptr("Microsoft.SecurityInsights/dataConnectors"),
+	// 		Etag: to.Ptr("\"0300bf09-0000-0000-0000-5c37296e0000\""),
+	// 		ID: to.Ptr("/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/dataConnectors/c39bb458-02a7-4b3f-b0c8-71a1d2692652"),
+	// 		Kind: to.Ptr(armsecurityinsights.DataConnectorKindThreatIntelligenceTaxii),
+	// 		Properties: &armsecurityinsights.TiTaxiiDataConnectorProperties{
+	// 			CollectionID: to.Ptr("e0b1f32d-1188-48f7-a7a3-de71924e4b5e"),
+	// 			DataTypes: &armsecurityinsights.TiTaxiiDataConnectorDataTypes{
+	// 				TaxiiClient: &armsecurityinsights.TiTaxiiDataConnectorDataTypesTaxiiClient{
+	// 					State: to.Ptr(armsecurityinsights.DataTypeStateEnabled),
+	// 				},
+	// 			},
+	// 			FriendlyName: to.Ptr("My TI Taxii Connector"),
+	// 			Password: to.Ptr(""),
+	// 			PollingFrequency: to.Ptr(armsecurityinsights.PollingFrequencyOnceADay),
+	// 			TaxiiLookbackPeriod: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T13:00:30.123Z"); return t}()),
+	// 			TaxiiServer: to.Ptr("https://mytaxiiserver.com/taxiing/v2/api"),
+	// 			TenantID: to.Ptr("2070ecc9-b4d5-4ae4-adaa-936fa1954fa8"),
+	// 			UserName: to.Ptr(""),
+	// 			WorkspaceID: to.Ptr("8b014a77-4695-4ef4-96bb-6623afb121a2"),
+	// 		},
+	// 	},
+	// }
+}

@@ -6890,3 +6890,4 @@ id,name,language,tag,package,version,date_epoch,date
 6889,@azure/arm-weightsandbiases@1.0.0,js,@azure/arm-weightsandbiases_1.0.0,@azure/arm-weightsandbiases,1.0.0,1781253564,06/12/2026
 6890,@azure/arm-domainregistration@1.0.0,js,@azure/arm-domainregistration_1.0.0,@azure/arm-domainregistration,1.0.0,1781253564,06/12/2026
 6891,@azure/arm-standbypool@2.1.0,js,@azure/arm-standbypool_2.1.0,@azure/arm-standbypool,2.1.0,1781253556,06/12/2026
+6892,@azure/arm-discovery@1.0.0-beta.1,js,@azure/arm-discovery_1.0.0-beta.1,@azure/arm-discovery,1.0.0-beta.1,1781252406,06/12/2026

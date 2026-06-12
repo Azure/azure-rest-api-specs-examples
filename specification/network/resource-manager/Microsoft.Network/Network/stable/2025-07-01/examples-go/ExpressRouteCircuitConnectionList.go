@@ -1,0 +1,77 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v10"
+)
+
+// Generated from example definition: 2025-07-01/ExpressRouteCircuitConnectionList.json
+func ExampleExpressRouteCircuitConnectionsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewExpressRouteCircuitConnectionsClient().NewListPager("rg1", "ExpressRouteARMCircuitA", "AzurePrivatePeering", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnetwork.ExpressRouteCircuitConnectionsClientListResponse{
+		// 	ExpressRouteCircuitConnectionListResult: armnetwork.ExpressRouteCircuitConnectionListResult{
+		// 		Value: []*armnetwork.ExpressRouteCircuitConnection{
+		// 			{
+		// 				Name: to.Ptr("circuitConnectionUSAUS"),
+		// 				Etag: to.Ptr("w/\\00000000-0000-0000-0000-000000000000\\"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/connections/circuitConnectionUSAUS"),
+		// 				Properties: &armnetwork.ExpressRouteCircuitConnectionPropertiesFormat{
+		// 					AddressPrefix: to.Ptr("10.0.0.0/24"),
+		// 					AuthorizationKey: to.Ptr("946a1918-b7a2-4917-b43c-8c4cdaee006a"),
+		// 					CircuitConnectionStatus: to.Ptr(armnetwork.CircuitConnectionStatusConnected),
+		// 					ExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/dedharcktlocal/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					IPv6CircuitConnectionConfig: &armnetwork.IPv6CircuitConnectionConfig{
+		// 						AddressPrefix: to.Ptr("aa:bb::1/125"),
+		// 						CircuitConnectionStatus: to.Ptr(armnetwork.CircuitConnectionStatusConnected),
+		// 					},
+		// 					PeerExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/dedharcktpeer/providers/Microsoft.Network/expressRouteCircuits/dedharcktremote/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("circuitConnectionUSEUR"),
+		// 				Etag: to.Ptr("w/\\00000000-0000-0000-0000-000000000000\\"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/connections/circuitConnectionUSEUR"),
+		// 				Properties: &armnetwork.ExpressRouteCircuitConnectionPropertiesFormat{
+		// 					AddressPrefix: to.Ptr("20.0.0.0/24"),
+		// 					CircuitConnectionStatus: to.Ptr(armnetwork.CircuitConnectionStatusConnected),
+		// 					ExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/dedharcktlocal/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					PeerExpressRouteCircuitPeering: &armnetwork.SubResource{
+		// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharckteurope/providers/Microsoft.Network/expressRouteCircuits/dedharcktams/peerings/AzurePrivatePeering"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

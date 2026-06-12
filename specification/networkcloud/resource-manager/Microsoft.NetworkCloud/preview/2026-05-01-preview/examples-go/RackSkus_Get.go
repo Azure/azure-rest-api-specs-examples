@@ -1,0 +1,128 @@
+package armnetworkcloud_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud"
+)
+
+// Generated from example definition: 2026-05-01-preview/RackSkus_Get.json
+func ExampleRackSKUsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetworkcloud.NewClientFactory("123e4567-e89b-12d3-a456-426655440000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewRackSKUsClient().Get(ctx, "rackSkuName", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armnetworkcloud.RackSKUsClientGetResponse{
+	// 	RackSKU: armnetworkcloud.RackSKU{
+	// 		ID: to.Ptr("/subscriptions/123e4567-e89b-12d3-a456-426655440000/providers/Microsoft.NetworkCloud/rackSkus/rackSkuName"),
+	// 		Name: to.Ptr("rackSkuName"),
+	// 		Properties: &armnetworkcloud.RackSKUProperties{
+	// 			ComputeMachines: []*armnetworkcloud.MachineSKUSlot{
+	// 				{
+	// 					Properties: &armnetworkcloud.MachineSKUProperties{
+	// 						BootstrapProtocol: to.Ptr(armnetworkcloud.BootstrapProtocolPXE),
+	// 						CPUCores: to.Ptr[int64](28),
+	// 						CPUSockets: to.Ptr[int64](2),
+	// 						Disks: []*armnetworkcloud.MachineDisk{
+	// 							{
+	// 								CapacityGB: to.Ptr[int64](893),
+	// 								Connection: to.Ptr(armnetworkcloud.MachineSKUDiskConnectionTypeSAS),
+	// 								Type: to.Ptr(armnetworkcloud.DiskTypeSSD),
+	// 							},
+	// 						},
+	// 						Generation: to.Ptr("8"),
+	// 						HardwareVersion: to.Ptr("3"),
+	// 						MemoryCapacityGB: to.Ptr[int64](512),
+	// 						Model: to.Ptr("PowerEdge R750"),
+	// 						NetworkInterfaces: []*armnetworkcloud.NetworkInterface{
+	// 							{
+	// 								Address: to.Ptr("04:00.0"),
+	// 								DeviceConnectionType: to.Ptr(armnetworkcloud.DeviceConnectionTypePCI),
+	// 								Model: to.Ptr("Broadcom Gigabit Ethernet BCM5720"),
+	// 								PhysicalSlot: to.Ptr[int64](1),
+	// 								PortCount: to.Ptr[int64](2),
+	// 								PortSpeed: to.Ptr[int64](1),
+	// 								Vendor: to.Ptr("Broadcom Corp"),
+	// 							},
+	// 						},
+	// 						TotalThreads: to.Ptr[int64](112),
+	// 						Vendor: to.Ptr("Dell"),
+	// 					},
+	// 					RackSlot: to.Ptr[int64](1),
+	// 				},
+	// 			},
+	// 			ControllerMachines: []*armnetworkcloud.MachineSKUSlot{
+	// 				{
+	// 					Properties: &armnetworkcloud.MachineSKUProperties{
+	// 						BootstrapProtocol: to.Ptr(armnetworkcloud.BootstrapProtocolPXE),
+	// 						CPUCores: to.Ptr[int64](8),
+	// 						CPUSockets: to.Ptr[int64](1),
+	// 						Disks: []*armnetworkcloud.MachineDisk{
+	// 							{
+	// 								CapacityGB: to.Ptr[int64](893),
+	// 								Connection: to.Ptr(armnetworkcloud.MachineSKUDiskConnectionTypeSAS),
+	// 								Type: to.Ptr(armnetworkcloud.DiskTypeSSD),
+	// 							},
+	// 						},
+	// 						Generation: to.Ptr("8"),
+	// 						HardwareVersion: to.Ptr("3"),
+	// 						MemoryCapacityGB: to.Ptr[int64](128),
+	// 						Model: to.Ptr("PowerEdge R650"),
+	// 						NetworkInterfaces: []*armnetworkcloud.NetworkInterface{
+	// 							{
+	// 								Address: to.Ptr("04:00.0"),
+	// 								DeviceConnectionType: to.Ptr(armnetworkcloud.DeviceConnectionTypePCI),
+	// 								Model: to.Ptr("Broadcom Gigabit Ethernet BCM5720"),
+	// 								PhysicalSlot: to.Ptr[int64](2),
+	// 								PortCount: to.Ptr[int64](2),
+	// 								PortSpeed: to.Ptr[int64](1),
+	// 								Vendor: to.Ptr("Broadcom Corp"),
+	// 							},
+	// 						},
+	// 						TotalThreads: to.Ptr[int64](16),
+	// 						Vendor: to.Ptr("Dell"),
+	// 					},
+	// 					RackSlot: to.Ptr[int64](5),
+	// 				},
+	// 			},
+	// 			DeploymentType: to.Ptr(armnetworkcloud.DeploymentTypeAzureLocal),
+	// 			Description: to.Ptr("Sample SKU for the single rack."),
+	// 			MaxClusterSlots: to.Ptr[int64](0),
+	// 			ProvisioningState: to.Ptr(armnetworkcloud.RackSKUProvisioningStateSucceeded),
+	// 			RackType: to.Ptr(armnetworkcloud.RackSKUTypeSingle),
+	// 			StorageAppliances: []*armnetworkcloud.StorageApplianceSKUSlot{
+	// 				{
+	// 					Properties: &armnetworkcloud.StorageApplianceSKUProperties{
+	// 						CapacityGB: to.Ptr[int64](9100),
+	// 						Model: to.Ptr("x70r3-9"),
+	// 					},
+	// 					RackSlot: to.Ptr[int64](2),
+	// 				},
+	// 			},
+	// 		},
+	// 		SystemData: &armnetworkcloud.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-22T13:27:03.008Z"); return t}()),
+	// 			CreatedBy: to.Ptr("identityA"),
+	// 			CreatedByType: to.Ptr(armnetworkcloud.CreatedByTypeApplication),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-22T13:29:03.001Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("identityB"),
+	// 			LastModifiedByType: to.Ptr(armnetworkcloud.CreatedByTypeUser),
+	// 		},
+	// 		Type: to.Ptr("Microsoft.NetworkCloud/rackSkus"),
+	// 	},
+	// }
+}

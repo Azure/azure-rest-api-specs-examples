@@ -6897,3 +6897,4 @@ id,name,language,tag,package,version,date_epoch,date
 6896,@azure/arm-certificateregistration@1.0.0,js,@azure/arm-certificateregistration_1.0.0,@azure/arm-certificateregistration,1.0.0,1781252168,06/12/2026
 6897,@azure/arm-storagemover@3.1.0,js,@azure/arm-storagemover_3.1.0,@azure/arm-storagemover,3.1.0,1781244043,06/12/2026
 6898,@azure/arm-dnsresolver@2.0.0-beta.2,js,@azure/arm-dnsresolver_2.0.0-beta.2,@azure/arm-dnsresolver,2.0.0-beta.2,1781237387,06/12/2026
+6899,@azure/arm-signalr@6.0.0-beta.3,js,@azure/arm-signalr_6.0.0-beta.3,@azure/arm-signalr,6.0.0-beta.3,1781231500,06/12/2026

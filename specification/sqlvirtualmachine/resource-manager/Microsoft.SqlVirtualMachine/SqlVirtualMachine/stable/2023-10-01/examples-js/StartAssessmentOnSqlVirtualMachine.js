@@ -1,0 +1,15 @@
+const { SqlVirtualMachineManagementClient } = require("@azure/arm-sqlvirtualmachine");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to starts SQL best practices Assessment on SQL virtual machine.
+ *
+ * @summary starts SQL best practices Assessment on SQL virtual machine.
+ * x-ms-original-file: 2023-10-01/StartAssessmentOnSqlVirtualMachine.json
+ */
+async function startsSQLBestPracticesAssessmentOnSQLVirtualMachine() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new SqlVirtualMachineManagementClient(credential, subscriptionId);
+  await client.sqlVirtualMachines.startAssessment("testrg", "testvm");
+}

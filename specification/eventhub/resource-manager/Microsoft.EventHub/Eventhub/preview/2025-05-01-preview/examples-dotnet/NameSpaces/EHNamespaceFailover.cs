@@ -25,12 +25,12 @@ ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.Cre
 EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
 
 // invoke the operation
-EventHubsNamespaceFailOver eventHubsNamespaceFailOver = new EventHubsNamespaceFailOver
+EventHubsNamespaceFailover eventHubsNamespaceFailOver = new EventHubsNamespaceFailover
 {
     PrimaryLocation = new AzureLocation("centralus"),
-    Force = true,
+    IsForced = true,
 };
-ArmOperation<EventHubsNamespaceFailOver> lro = await eventHubsNamespace.FailOverAsync(WaitUntil.Completed, eventHubsNamespaceFailOver);
-EventHubsNamespaceFailOver result = lro.Value;
+ArmOperation<EventHubsNamespaceFailover> lro = await eventHubsNamespace.FailOverAsync(WaitUntil.Completed, eventHubsNamespaceFailOver);
+EventHubsNamespaceFailover result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

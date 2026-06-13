@@ -50,7 +50,7 @@ EventHubsNamespaceData data = new EventHubsNamespaceData(new AzureLocation("East
         }},
         KeySource = EventHubsKeySource.MicrosoftKeyVault,
     },
-    GeoDataReplication = new NamespaceGeoDataReplicationProperties
+    GeoDataReplication = new EventHubsNamespaceGeoDataReplicationProperties
     {
         MaxReplicationLagDurationInSeconds = 300,
         Locations = {new EventHubsNamespaceReplicaLocation

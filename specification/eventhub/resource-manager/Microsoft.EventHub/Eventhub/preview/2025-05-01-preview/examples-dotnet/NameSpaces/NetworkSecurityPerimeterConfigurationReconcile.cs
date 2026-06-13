@@ -26,6 +26,7 @@ EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceReso
 
 // invoke the operation
 string resourceAssociationName = "resourceAssociation1";
-await eventHubsNamespace.CreateOrUpdateNetworkSecurityPerimeterConfigurationAsync(WaitUntil.Completed, resourceAssociationName);
+EventHubsNetworkSecurityPerimeterConfigurationResource eventHubsNetworkSecurityPerimeterConfiguration = client.GetEventHubsNetworkSecurityPerimeterConfigurationResource(EventHubsNetworkSecurityPerimeterConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, resourceAssociationName));
+await eventHubsNetworkSecurityPerimeterConfiguration.CreateOrUpdateAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

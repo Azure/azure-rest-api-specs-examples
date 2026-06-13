@@ -25,7 +25,7 @@ ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.Cre
 EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (EventHubsNetworkSecurityPerimeterConfiguration item in eventHubsNamespace.GetNetworkSecurityPerimeterConfigurationsAsync())
+await foreach (EventHubsNetworkSecurityPerimeterConfigurationResource item in eventHubsNamespace.GetEventHubsNetworkSecurityPerimeterConfigurations().GetAllAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

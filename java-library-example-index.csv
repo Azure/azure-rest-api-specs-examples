@@ -6905,3 +6905,4 @@ id,name,language,tag,package,version,date_epoch,date
 6904,azure-mgmt-monitorslis@1.0.0b2,python,azure-mgmt-monitorslis_1.0.0b2,azure-mgmt-monitorslis,1.0.0b2,1781143317,06/11/2026
 6905,azure-mgmt-monitorworkspaces@1.0.0b1,python,azure-mgmt-monitorworkspaces_1.0.0b1,azure-mgmt-monitorworkspaces,1.0.0b1,1781106008,06/10/2026
 6906,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0-beta.2,1781161161,06/11/2026
+6907,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.5.0,java,com.azure.resourcemanager+azure-resourcemanager-storagemover_1.5.0,com.azure.resourcemanager+azure-resourcemanager-storagemover,1.5.0,1781160081,06/11/2026

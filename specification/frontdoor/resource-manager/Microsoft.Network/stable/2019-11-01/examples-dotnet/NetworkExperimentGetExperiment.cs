@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorNetworkExperimentProfileResource created on azure
-// for more information of creating FrontDoorNetworkExperimentProfileResource, please refer to the document of FrontDoorNetworkExperimentProfileResource
+// this example assumes you already have this FrontDoorExperimentResource created on azure
+// for more information of creating FrontDoorExperimentResource, please refer to the document of FrontDoorExperimentResource
 string subscriptionId = "subid";
 string resourceGroupName = "MyResourceGroup";
 string profileName = "MyProfile";
-ResourceIdentifier frontDoorNetworkExperimentProfileResourceId = FrontDoorNetworkExperimentProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
-FrontDoorNetworkExperimentProfileResource frontDoorNetworkExperimentProfile = client.GetFrontDoorNetworkExperimentProfileResource(frontDoorNetworkExperimentProfileResourceId);
-
-// get the collection of this FrontDoorExperimentResource
-FrontDoorExperimentCollection collection = frontDoorNetworkExperimentProfile.GetFrontDoorExperiments();
+string experimentName = "MyExperiment";
+ResourceIdentifier frontDoorExperimentResourceId = FrontDoorExperimentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, experimentName);
+FrontDoorExperimentResource frontDoorExperiment = client.GetFrontDoorExperimentResource(frontDoorExperimentResourceId);
 
 // invoke the operation
-string experimentName = "MyExperiment";
-NullableResponse<FrontDoorExperimentResource> response = await collection.GetIfExistsAsync(experimentName);
-FrontDoorExperimentResource result = response.HasValue ? response.Value : null;
+FrontDoorExperimentResource result = await frontDoorExperiment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FrontDoorExperimentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontDoorExperimentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

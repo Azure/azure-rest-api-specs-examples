@@ -27,7 +27,7 @@ ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceI
 NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
 // invoke the operation
-BackupsMigrationContent content = new BackupsMigrationContent("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/backupVaults/backupVault1");
-await netAppVolume.MigrateBackupsBackupsUnderVolumeAsync(WaitUntil.Completed, content);
+BackupsMigrationContent content = new BackupsMigrationContent(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/backupVaults/backupVault1"));
+await netAppVolume.MigrateBackupsAsync(WaitUntil.Completed, content);
 
 Console.WriteLine("Succeeded");

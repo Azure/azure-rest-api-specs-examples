@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.NetApp.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2025-12-15-preview/examples/Accounts_Get.json
@@ -15,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppAccountResource created on azure
-// for more information of creating NetAppAccountResource, please refer to the document of NetAppAccountResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
-string accountName = "account1";
-ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetAppAccountResource
+NetAppAccountCollection collection = resourceGroupResource.GetNetAppAccounts();
 
 // invoke the operation
-NetAppAccountResource result = await netAppAccount.GetAsync();
+string accountName = "account1";
+NullableResponse<NetAppAccountResource> response = await collection.GetIfExistsAsync(accountName);
+NetAppAccountResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppAccountData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppAccountData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

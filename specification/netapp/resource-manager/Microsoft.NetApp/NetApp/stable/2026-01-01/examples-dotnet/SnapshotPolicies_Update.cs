@@ -25,7 +25,7 @@ ResourceIdentifier snapshotPolicyResourceId = SnapshotPolicyResource.CreateResou
 SnapshotPolicyResource snapshotPolicy = client.GetSnapshotPolicyResource(snapshotPolicyResourceId);
 
 // invoke the operation
-SnapshotPolicyPatch patch = new SnapshotPolicyPatch(new AzureLocation("eastus"))
+SnapshotPolicyPatch patch = new SnapshotPolicyPatch()
 {
     HourlySchedule = new SnapshotPolicyHourlySchedule
     {

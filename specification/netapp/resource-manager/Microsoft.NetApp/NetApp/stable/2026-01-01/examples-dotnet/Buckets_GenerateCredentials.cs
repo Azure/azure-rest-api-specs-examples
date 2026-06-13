@@ -27,10 +27,10 @@ ResourceIdentifier netAppBucketResourceId = NetAppBucketResource.CreateResourceI
 NetAppBucketResource netAppBucket = client.GetNetAppBucketResource(netAppBucketResourceId);
 
 // invoke the operation
-NetAppBucketCredentialsExpiry body = new NetAppBucketCredentialsExpiry
+BucketCredentialsExpiry body = new BucketCredentialsExpiry
 {
     KeyPairExpiryDays = 3,
 };
-NetAppBucketGenerateCredentials result = await netAppBucket.GenerateCredentialsAsync(body);
+BucketGenerateCredentials result = await netAppBucket.GenerateCredentialsAsync(body);
 
 Console.WriteLine($"Succeeded: {result}");

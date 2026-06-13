@@ -28,7 +28,7 @@ NetAppBackupVaultBackupCollection collection = netAppBackupVault.GetNetAppBackup
 
 // invoke the operation
 string backupName = "backup1";
-NetAppBackupData data = new NetAppBackupData(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1"))
+NetAppBackupData data = new NetAppBackupData(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPool/pool1/volumes/volume1"))
 {
     Label = "myLabel",
 };

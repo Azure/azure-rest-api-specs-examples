@@ -1,6 +1,7 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;

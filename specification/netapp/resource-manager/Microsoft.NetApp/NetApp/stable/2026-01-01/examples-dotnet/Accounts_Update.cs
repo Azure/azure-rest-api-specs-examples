@@ -24,7 +24,7 @@ ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourc
 NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
 
 // invoke the operation
-NetAppAccountPatch patch = new NetAppAccountPatch(default)
+NetAppAccountPatch patch = new NetAppAccountPatch()
 {
     Tags =
     {

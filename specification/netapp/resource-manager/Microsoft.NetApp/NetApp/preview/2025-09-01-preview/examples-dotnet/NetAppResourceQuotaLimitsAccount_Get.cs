@@ -25,6 +25,6 @@ NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAcco
 
 // invoke the operation
 string quotaLimitName = "poolsPerAccount";
-NetAppSubscriptionQuotaItem result = await netAppAccount.GetNetAppResourceQuotaLimitsAccountAsync(quotaLimitName);
+NetAppResourceQuotaLimitsAccountResource result = await netAppAccount.GetNetAppResourceQuotaLimitsAccounts().GetAsync(quotaLimitName);
 
 Console.WriteLine($"Succeeded: {result}");

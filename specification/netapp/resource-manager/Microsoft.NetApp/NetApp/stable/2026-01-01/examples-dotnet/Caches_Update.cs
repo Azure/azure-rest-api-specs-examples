@@ -26,7 +26,7 @@ ResourceIdentifier netAppCacheResourceId = NetAppCacheResource.CreateResourceIde
 NetAppCacheResource netAppCache = client.GetNetAppCacheResource(netAppCacheResourceId);
 
 // invoke the operation
-NetAppCachePatch patch = new NetAppCachePatch
+CachePatch patch = new CachePatch
 {
     Properties = new NetAppCachePatchProperties
     {

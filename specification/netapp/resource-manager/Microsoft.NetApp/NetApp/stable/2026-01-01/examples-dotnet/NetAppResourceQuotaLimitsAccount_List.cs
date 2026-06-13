@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-01-01/examples/NetAppResourceQuotaLimitsAccount_List.json
@@ -14,16 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppAccountResource created on azure
-// for more information of creating NetAppAccountResource, please refer to the document of NetAppAccountResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
-string resourceGroupName = "myRG";
-string accountName = "myAccount";
-ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // get the collection of this NetAppSubscriptionQuotaItemResource
-NetAppSubscriptionQuotaItemCollection collection = netAppAccount.GetNetAppSubscriptionQuotaItems();
+AzureLocation location = new AzureLocation("eastus");
+NetAppSubscriptionQuotaItemCollection collection = subscriptionResource.GetNetAppSubscriptionQuotaItems(location);
 
 // invoke the operation and iterate over the result
 await foreach (NetAppSubscriptionQuotaItemResource item in collection.GetAllAsync())

@@ -24,7 +24,7 @@ ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourc
 NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (NetAppSubscriptionQuotaItem item in netAppAccount.GetNetAppResourceQuotaLimitsAccountsAsync())
+await foreach (NetAppResourceQuotaLimitsAccountResource item in netAppAccount.GetNetAppResourceQuotaLimitsAccounts().GetAllAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

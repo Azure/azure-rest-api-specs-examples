@@ -27,6 +27,6 @@ ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceI
 NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
 // invoke the operation
-NetAppVolumeBackupStatus result = await netAppVolume.GetLatestStatusBackupAsync();
+NetAppVolumeBackupStatus result = await netAppVolume.GetLatestStatusAsync();
 
 Console.WriteLine($"Succeeded: {result}");

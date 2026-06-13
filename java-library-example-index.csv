@@ -6908,3 +6908,4 @@ id,name,language,tag,package,version,date_epoch,date
 6907,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.5.0,java,com.azure.resourcemanager+azure-resourcemanager-storagemover_1.5.0,com.azure.resourcemanager+azure-resourcemanager-storagemover,1.5.0,1781160081,06/11/2026
 6908,"Azure.ResourceManager.NetApp,1.16.1",dotnet,Azure.ResourceManager.NetApp_1.16.1,Azure.ResourceManager.NetApp,1.16.1,1781243782,06/12/2026
 6909,"Azure.ResourceManager.FrontDoor,1.4.2",dotnet,Azure.ResourceManager.FrontDoor_1.4.2,Azure.ResourceManager.FrontDoor,1.4.2,1781243779,06/12/2026
+6910,"Azure.ResourceManager.DataBox,1.1.2",dotnet,Azure.ResourceManager.DataBox_1.1.2,Azure.ResourceManager.DataBox,1.1.2,1781243758,06/12/2026

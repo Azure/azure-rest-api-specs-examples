@@ -1,0 +1,40 @@
+
+import com.azure.resourcemanager.storagemover.models.CopyMode;
+import com.azure.resourcemanager.storagemover.models.Frequency;
+import com.azure.resourcemanager.storagemover.models.JobType;
+import com.azure.resourcemanager.storagemover.models.Minute;
+import com.azure.resourcemanager.storagemover.models.ScheduleInfo;
+import com.azure.resourcemanager.storagemover.models.SchedulerTime;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
+
+/**
+ * Samples for JobDefinitions CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/JobDefinitions_CreateOrUpdate_With_Schedule.json
+     */
+    /**
+     * Sample code: JobDefinitions_CreateOrUpdate_With_Schedule.
+     * 
+     * @param manager Entry point to StorageMoverManager.
+     */
+    public static void
+        jobDefinitionsCreateOrUpdateWithSchedule(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+        manager.jobDefinitions().define("examples-jobDefinitionName")
+            .withExistingProject("examples-rg", "examples-storageMoverName", "examples-projectName")
+            .withCopyMode(CopyMode.ADDITIVE).withSourceName("examples-sourceEndpointName")
+            .withTargetName("examples-targetEndpointName").withDescription("Example Job Definition Description")
+            .withJobType(JobType.CLOUD_TO_CLOUD).withSourceSubpath("/").withTargetSubpath("/")
+            .withAgentName("dummy-agent")
+            .withConnections(Arrays.asList(
+                "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.StorageMover/storageMovers/examples-storageMoverName/connections/example-connection"))
+            .withSchedule(new ScheduleInfo().withFrequency(Frequency.WEEKLY).withIsActive(true)
+                .withExecutionTime(new SchedulerTime().withHour(9).withMinute(Minute.ZERO))
+                .withStartDate(OffsetDateTime.parse("2025-12-01T00:00:00Z"))
+                .withDaysOfWeek(Arrays.asList("Monday", "Wednesday", "Friday"))
+                .withEndDate(OffsetDateTime.parse("2025-12-31T12:00:00Z")))
+            .create();
+    }
+}

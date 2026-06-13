@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.storagemover.models.ConnectionProperties;
+
+/**
+ * Samples for Connections CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/Connections_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Connections_CreateOrUpdate.
+     * 
+     * @param manager Entry point to StorageMoverManager.
+     */
+    public static void connectionsCreateOrUpdate(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+        manager.connections().define("example-connection")
+            .withExistingStorageMover("examples-rg", "examples-storageMoverName")
+            .withProperties(
+                new ConnectionProperties().withDescription("Example Connection Description").withPrivateLinkServiceId(
+                    "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Network/privateLinkServices/example-pls"))
+            .create();
+    }
+}

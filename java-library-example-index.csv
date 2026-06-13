@@ -6910,3 +6910,4 @@ id,name,language,tag,package,version,date_epoch,date
 6909,"Azure.ResourceManager.FrontDoor,1.4.2",dotnet,Azure.ResourceManager.FrontDoor_1.4.2,Azure.ResourceManager.FrontDoor,1.4.2,1781243779,06/12/2026
 6910,"Azure.ResourceManager.DataBox,1.1.2",dotnet,Azure.ResourceManager.DataBox_1.1.2,Azure.ResourceManager.DataBox,1.1.2,1781243758,06/12/2026
 6911,"Azure.ResourceManager.ElasticSan,1.2.1",dotnet,Azure.ResourceManager.ElasticSan_1.2.1,Azure.ResourceManager.ElasticSan,1.2.1,1781243753,06/12/2026
+6912,"Azure.ResourceManager.Fabric,1.1.0-beta.1",dotnet,Azure.ResourceManager.Fabric_1.1.0-beta.1,Azure.ResourceManager.Fabric,1.1.0-beta.1,1781163379,06/11/2026

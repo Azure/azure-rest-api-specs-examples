@@ -1,0 +1,20 @@
+const { SignalRManagementClient } = require("@azure/arm-signalr");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a custom certificate.
+ *
+ * @summary get a custom certificate.
+ * x-ms-original-file: 2025-01-01-preview/SignalRCustomCertificates_Get.json
+ */
+async function signalRCustomCertificatesGet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new SignalRManagementClient(credential, subscriptionId);
+  const result = await client.signalRCustomCertificates.get(
+    "myResourceGroup",
+    "mySignalRService",
+    "myCert",
+  );
+  console.log(result);
+}

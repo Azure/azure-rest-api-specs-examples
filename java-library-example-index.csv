@@ -6913,3 +6913,4 @@ id,name,language,tag,package,version,date_epoch,date
 6912,"Azure.ResourceManager.Fabric,1.1.0-beta.1",dotnet,Azure.ResourceManager.Fabric_1.1.0-beta.1,Azure.ResourceManager.Fabric,1.1.0-beta.1,1781163379,06/11/2026
 6913,"Azure.ResourceManager.SelfHelp,1.1.0-beta.7",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.7,Azure.ResourceManager.SelfHelp,1.1.0-beta.7,1781139974,06/11/2026
 6914,"Azure.ResourceManager.ServiceNetworking,1.2.0-beta.2",dotnet,Azure.ResourceManager.ServiceNetworking_1.2.0-beta.2,Azure.ResourceManager.ServiceNetworking,1.2.0-beta.2,1781139949,06/11/2026
+6915,"Azure.ResourceManager.ResourceMover,1.1.2-beta.4",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.4,Azure.ResourceManager.ResourceMover,1.1.2-beta.4,1781139893,06/11/2026

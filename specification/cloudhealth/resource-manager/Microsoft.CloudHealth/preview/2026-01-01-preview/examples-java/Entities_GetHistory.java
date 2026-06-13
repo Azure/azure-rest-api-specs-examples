@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.cloudhealth.models.EntityHistoryRequest;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Entities GetHistory.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/Entities_GetHistory.json
+     */
+    /**
+     * Sample code: Entities_GetHistory.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void entitiesGetHistory(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.entities().getHistoryWithResponse("rgopenapi", "myHealthModel", "entity1",
+            new EntityHistoryRequest().withStartAt(OffsetDateTime.parse("2025-12-11T10:00:00Z"))
+                .withEndAt(OffsetDateTime.parse("2025-12-12T10:00:00Z")),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubsPrivateLinkResource created on azure
-// for more information of creating NotificationHubsPrivateLinkResource, please refer to the document of NotificationHubsPrivateLinkResource
+// this example assumes you already have this NotificationHubNamespaceResource created on azure
+// for more information of creating NotificationHubNamespaceResource, please refer to the document of NotificationHubNamespaceResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
 string namespaceName = "nh-sdk-ns";
-string subResourceName = "namespace";
-ResourceIdentifier notificationHubsPrivateLinkResourceId = NotificationHubsPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, subResourceName);
-NotificationHubsPrivateLinkResource notificationHubsPrivateLinkResource = client.GetNotificationHubsPrivateLinkResource(notificationHubsPrivateLinkResourceId);
+ResourceIdentifier notificationHubNamespaceResourceId = NotificationHubNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+NotificationHubNamespaceResource notificationHubNamespace = client.GetNotificationHubNamespaceResource(notificationHubNamespaceResourceId);
+
+// get the collection of this NotificationHubsPrivateLinkResource
+NotificationHubsPrivateLinkResourceCollection collection = notificationHubNamespace.GetNotificationHubsPrivateLinkResources();
 
 // invoke the operation
-NotificationHubsPrivateLinkResource result = await notificationHubsPrivateLinkResource.GetAsync();
+string subResourceName = "namespace";
+NullableResponse<NotificationHubsPrivateLinkResource> response = await collection.GetIfExistsAsync(subResourceName);
+NotificationHubsPrivateLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NotificationHubsPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NotificationHubsPrivateLinkResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

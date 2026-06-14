@@ -1,0 +1,113 @@
+
+import com.azure.resourcemanager.cloudhealth.models.AlertConfiguration;
+import com.azure.resourcemanager.cloudhealth.models.AlertSeverity;
+import com.azure.resourcemanager.cloudhealth.models.AzureMonitorWorkspaceSignals;
+import com.azure.resourcemanager.cloudhealth.models.AzureResourceSignal;
+import com.azure.resourcemanager.cloudhealth.models.AzureResourceSignals;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesAggregationType;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesAggregationUnit;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesSignalGroupV2;
+import com.azure.resourcemanager.cloudhealth.models.EntityAlerts;
+import com.azure.resourcemanager.cloudhealth.models.EntityCoordinates;
+import com.azure.resourcemanager.cloudhealth.models.EntityImpact;
+import com.azure.resourcemanager.cloudhealth.models.EntityProperties;
+import com.azure.resourcemanager.cloudhealth.models.EvaluationRule;
+import com.azure.resourcemanager.cloudhealth.models.IconDefinition;
+import com.azure.resourcemanager.cloudhealth.models.LogAnalyticsSignal;
+import com.azure.resourcemanager.cloudhealth.models.LogAnalyticsSignals;
+import com.azure.resourcemanager.cloudhealth.models.MetricAggregationType;
+import com.azure.resourcemanager.cloudhealth.models.PrometheusMetricsSignal;
+import com.azure.resourcemanager.cloudhealth.models.RefreshInterval;
+import com.azure.resourcemanager.cloudhealth.models.SignalGroups;
+import com.azure.resourcemanager.cloudhealth.models.SignalOperator;
+import com.azure.resourcemanager.cloudhealth.models.ThresholdRuleV2;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Entities CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01-preview/Entities_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Entities_CreateOrUpdate.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void entitiesCreateOrUpdate(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.entities().define("uszrxbdkxesdrxhmagmzywebgbjj").withExistingHealthmodel("rgopenapi", "myHealthModel")
+            .withProperties(new EntityProperties().withDisplayName("My entity")
+                .withCanvasPosition(new EntityCoordinates().withX(14.0).withY(13.0))
+                .withIcon(new IconDefinition().withIconName("Custom").withCustomData("rcitntvapruccrhtxmkqjphbxunkz"))
+                .withHealthObjective(62.0D).withImpact(EntityImpact.STANDARD)
+                .withTags(mapOf("key1376", "fakeTokenPlaceholder"))
+                .withSignalGroups(new SignalGroups().withAzureResource(new AzureResourceSignals()
+                    .withAuthenticationSetting("auth123")
+                    .withAzureResourceId(
+                        "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1")
+                    .withAzureResourceKind("functionapp")
+                    .withSignals(Arrays.asList(
+                        new AzureResourceSignal().withName("uniqueSignalName1").withSignalDefinitionName("sigdef1")
+                            .withMetricNamespace("microsoft.compute/virtualMachines").withMetricName("cpuusage")
+                            .withTimeGrain("PT1M").withAggregationType(MetricAggregationType.NONE)
+                            .withDimension("nodename").withDimensionFilter("node1").withDisplayName("CPU usage")
+                            .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("Count")
+                            .withEvaluationRules(new EvaluationRule()
+                                .withDegradedRule(new ThresholdRuleV2()
+                                    .withOperator(SignalOperator.fromString("LowerThan")).withThreshold(10.0))
+                                .withUnhealthyRule(new ThresholdRuleV2()
+                                    .withOperator(SignalOperator.fromString("LowerThan")).withThreshold(1.0))))))
+                    .withAzureLogAnalytics(new LogAnalyticsSignals().withAuthenticationSetting("auth123")
+                        .withLogAnalyticsWorkspaceResourceId(
+                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace")
+                        .withSignals(Arrays.asList(new LogAnalyticsSignal().withName("uniqueSignalName2")
+                            .withQueryText("print 1").withTimeGrain("PT30M").withValueColumnName("result")
+                            .withDisplayName("Test LA signal").withRefreshInterval(RefreshInterval.PT1M)
+                            .withDataUnit("my unit")
+                            .withEvaluationRules(new EvaluationRule()
+                                .withDegradedRule(
+                                    new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(1.0))
+                                .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                    .withThreshold(5.0))))))
+                    .withAzureMonitorWorkspace(new AzureMonitorWorkspaceSignals().withAuthenticationSetting("auth123")
+                        .withAzureMonitorWorkspaceResourceId(
+                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.OperationalInsights/workspaces/myworkspace")
+                        .withSignals(Arrays.asList(new PrometheusMetricsSignal().withName("pod-cpu-usage")
+                            .withSignalDefinitionName("PodCpuUsageDefinition")
+                            .withQueryText("rate(container_cpu_usage_seconds_total{pod=~\"my-app-.*\"}[5m]) * 100")
+                            .withTimeGrain("PT5M").withDisplayName("Pod CPU Usage")
+                            .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("Percent")
+                            .withEvaluationRules(new EvaluationRule()
+                                .withDegradedRule(
+                                    new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(70.0))
+                                .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                    .withThreshold(90.0))))))
+                    .withDependencies(new DependenciesSignalGroupV2()
+                        .withAggregationType(DependenciesAggregationType.MIN_HEALTHY).withDegradedThreshold(80.0D)
+                        .withUnhealthyThreshold(50.0D).withUnit(DependenciesAggregationUnit.PERCENTAGE)))
+                .withAlerts(new EntityAlerts().withUnhealthy(new AlertConfiguration().withSeverity(AlertSeverity.SEV1)
+                    .withDescription("Alert description")
+                    .withActionGroupIds(Arrays.asList(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup")))
+                    .withDegraded(new AlertConfiguration().withSeverity(AlertSeverity.SEV4)
+                        .withDescription("Alert description")
+                        .withActionGroupIds(Arrays.asList(
+                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Insights/actionGroups/myactiongroup")))))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

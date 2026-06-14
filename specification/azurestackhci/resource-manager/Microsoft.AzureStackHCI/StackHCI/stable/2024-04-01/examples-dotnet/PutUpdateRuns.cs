@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HciClusterUpdateResource created on azure
-// for more information of creating HciClusterUpdateResource, please refer to the document of HciClusterUpdateResource
+// this example assumes you already have this HciClusterUpdateRunResource created on azure
+// for more information of creating HciClusterUpdateRunResource, please refer to the document of HciClusterUpdateRunResource
 string subscriptionId = "b8d594e5-51f3-4c11-9c54-a7771b81c712";
 string resourceGroupName = "testrg";
 string clusterName = "testcluster";
 string updateName = "Microsoft4.2203.2.32";
-ResourceIdentifier hciClusterUpdateResourceId = HciClusterUpdateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName);
-HciClusterUpdateResource hciClusterUpdate = client.GetHciClusterUpdateResource(hciClusterUpdateResourceId);
-
-// get the collection of this HciClusterUpdateRunResource
-HciClusterUpdateRunCollection collection = hciClusterUpdate.GetHciClusterUpdateRuns();
+string updateRunName = "23b779ba-0d52-4a80-8571-45ca74664ec3";
+ResourceIdentifier hciClusterUpdateRunResourceId = HciClusterUpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName, updateRunName);
+HciClusterUpdateRunResource hciClusterUpdateRun = client.GetHciClusterUpdateRunResource(hciClusterUpdateRunResourceId);
 
 // invoke the operation
-string updateRunName = "23b779ba-0d52-4a80-8571-45ca74664ec3";
 HciClusterUpdateRunData data = new HciClusterUpdateRunData
 {
     NamePropertiesProgressName = "Unnamed step",
@@ -50,7 +47,7 @@ HciClusterUpdateRunData data = new HciClusterUpdateRunData
     Steps = {},
     }},
 };
-ArmOperation<HciClusterUpdateRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateRunName, data);
+ArmOperation<HciClusterUpdateRunResource> lro = await hciClusterUpdateRun.UpdateAsync(WaitUntil.Completed, data);
 HciClusterUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

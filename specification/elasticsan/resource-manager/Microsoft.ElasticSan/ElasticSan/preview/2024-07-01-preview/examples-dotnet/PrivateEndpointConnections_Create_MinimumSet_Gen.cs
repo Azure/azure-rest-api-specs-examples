@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSanResource created on azure
-// for more information of creating ElasticSanResource, please refer to the document of ElasticSanResource
+// this example assumes you already have this ElasticSanPrivateEndpointConnectionResource created on azure
+// for more information of creating ElasticSanPrivateEndpointConnectionResource, please refer to the document of ElasticSanPrivateEndpointConnectionResource
 string subscriptionId = "subscriptionid";
 string resourceGroupName = "resourcegroupname";
 string elasticSanName = "elasticsanname";
-ResourceIdentifier elasticSanResourceId = ElasticSanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName);
-ElasticSanResource elasticSan = client.GetElasticSanResource(elasticSanResourceId);
-
-// get the collection of this ElasticSanPrivateEndpointConnectionResource
-ElasticSanPrivateEndpointConnectionCollection collection = elasticSan.GetElasticSanPrivateEndpointConnections();
+string privateEndpointConnectionName = "privateendpointconnectionname";
+ResourceIdentifier elasticSanPrivateEndpointConnectionResourceId = ElasticSanPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, privateEndpointConnectionName);
+ElasticSanPrivateEndpointConnectionResource elasticSanPrivateEndpointConnection = client.GetElasticSanPrivateEndpointConnectionResource(elasticSanPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "privateendpointconnectionname";
 ElasticSanPrivateEndpointConnectionData data = new ElasticSanPrivateEndpointConnectionData(null);
-ArmOperation<ElasticSanPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<ElasticSanPrivateEndpointConnectionResource> lro = await elasticSanPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 ElasticSanPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ChaosTargetResource created on azure
-// for more information of creating ChaosTargetResource, please refer to the document of ChaosTargetResource
+// this example assumes you already have this ChaosCapabilityResource created on azure
+// for more information of creating ChaosCapabilityResource, please refer to the document of ChaosCapabilityResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string resourceGroupName = "exampleRG";
 string parentProviderNamespace = "Microsoft.Compute";
 string parentResourceType = "virtualMachines";
 string parentResourceName = "exampleVM";
 string targetName = "Microsoft-VirtualMachine";
-ResourceIdentifier chaosTargetResourceId = ChaosTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentProviderNamespace, parentResourceType, parentResourceName, targetName);
-ChaosTargetResource chaosTarget = client.GetChaosTargetResource(chaosTargetResourceId);
-
-// get the collection of this ChaosCapabilityResource
-ChaosCapabilityCollection collection = chaosTarget.GetChaosCapabilities();
+string capabilityName = "Shutdown-1.0";
+ResourceIdentifier chaosCapabilityResourceId = ChaosCapabilityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentProviderNamespace, parentResourceType, parentResourceName, targetName, capabilityName);
+ChaosCapabilityResource chaosCapability = client.GetChaosCapabilityResource(chaosCapabilityResourceId);
 
 // invoke the operation
-string capabilityName = "Shutdown-1.0";
 ChaosCapabilityData data = new ChaosCapabilityData();
-ArmOperation<ChaosCapabilityResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, capabilityName, data);
+ArmOperation<ChaosCapabilityResource> lro = await chaosCapability.UpdateAsync(WaitUntil.Completed, data);
 ChaosCapabilityResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

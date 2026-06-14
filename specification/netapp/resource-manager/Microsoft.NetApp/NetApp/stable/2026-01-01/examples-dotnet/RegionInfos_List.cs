@@ -18,21 +18,17 @@ ArmClient client = new ArmClient(cred);
 // this example assumes you already have this SubscriptionResource created on azure
 // for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this RegionInfoResource
+// this example assumes you already have this RegionInfoResource created on azure
+// for more information of creating RegionInfoResource, please refer to the document of RegionInfoResource
 AzureLocation location = new AzureLocation("eastus");
-RegionInfoResourceCollection collection = subscriptionResource.GetRegionInfoResources(location);
+ResourceIdentifier regionInfoResourceId = RegionInfoResource.CreateResourceIdentifier(subscriptionId, location);
+RegionInfoResource regionInfo = client.GetRegionInfoResource(regionInfoResourceId);
 
-// invoke the operation and iterate over the result
-await foreach (RegionInfoResource item in collection.GetAllAsync())
-{
-    // the variable item is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RegionInfoResourceData resourceData = item.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// invoke the operation
+RegionInfoResource result = await regionInfo.GetAsync();
 
-Console.WriteLine("Succeeded");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RegionInfoResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

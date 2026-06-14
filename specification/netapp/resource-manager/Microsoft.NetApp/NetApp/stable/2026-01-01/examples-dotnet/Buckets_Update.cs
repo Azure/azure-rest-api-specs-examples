@@ -27,15 +27,15 @@ ResourceIdentifier netAppBucketResourceId = NetAppBucketResource.CreateResourceI
 NetAppBucketResource netAppBucket = client.GetNetAppBucketResource(netAppBucketResourceId);
 
 // invoke the operation
-NetAppBucketPatch patch = new NetAppBucketPatch
+BucketPatch patch = new BucketPatch
 {
-    Server = new NetAppBucketServerPatchProperties
+    Server = new BucketServerPatchProperties
     {
         Fqdn = "fullyqualified.domainname.com",
         CertificateObject = "<REDACTED>",
         OnCertificateConflictAction = NetAppOnCertificateConflictAction.Update,
     },
-    Permissions = NetAppBucketPatchPermission.ReadWrite,
+    Permissions = BucketPatchPermissions.ReadWrite,
 };
 ArmOperation<NetAppBucketResource> lro = await netAppBucket.UpdateAsync(WaitUntil.Completed, patch);
 NetAppBucketResource result = lro.Value;

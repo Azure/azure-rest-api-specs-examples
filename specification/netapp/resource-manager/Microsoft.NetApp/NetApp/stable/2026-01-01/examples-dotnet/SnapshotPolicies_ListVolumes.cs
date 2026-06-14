@@ -24,14 +24,11 @@ string snapshotPolicyName = "snapshotPolicyName";
 ResourceIdentifier snapshotPolicyResourceId = SnapshotPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, snapshotPolicyName);
 SnapshotPolicyResource snapshotPolicy = client.GetSnapshotPolicyResource(snapshotPolicyResourceId);
 
-// invoke the operation and iterate over the result
+// invoke the operation
 await foreach (NetAppVolumeResource item in snapshotPolicy.GetVolumesAsync())
 {
-    // the variable item is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NetAppVolumeData resourceData = item.Data;
     // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+    Console.WriteLine($"Succeeded on id: {item.Data.Id}");
 }
 
 Console.WriteLine("Succeeded");

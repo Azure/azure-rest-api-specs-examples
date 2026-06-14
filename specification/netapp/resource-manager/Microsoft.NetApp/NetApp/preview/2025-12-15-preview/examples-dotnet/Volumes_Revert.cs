@@ -29,7 +29,7 @@ NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeR
 // invoke the operation
 NetAppVolumeRevertContent content = new NetAppVolumeRevertContent
 {
-    SnapshotId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1/snapshots/snapshot1",
+    SnapshotId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1/snapshots/snapshot1"),
 };
 await netAppVolume.RevertAsync(WaitUntil.Completed, content);
 

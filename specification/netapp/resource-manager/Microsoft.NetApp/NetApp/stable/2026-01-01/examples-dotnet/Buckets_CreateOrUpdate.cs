@@ -41,13 +41,13 @@ NetAppBucketData data = new NetAppBucketData
             GroupId = 1000L,
         },
     },
-    Server = new NetAppBucketServerProperties
+    Server = new BucketServerProperties
     {
         Fqdn = "fullyqualified.domainname.com",
         CertificateObject = "<REDACTED>",
         OnCertificateConflictAction = NetAppOnCertificateConflictAction.Update,
     },
-    Permissions = NetAppBucketPermission.ReadOnly,
+    Permissions = BucketPermissions.ReadOnly,
 };
 ArmOperation<NetAppBucketResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bucketName, data);
 NetAppBucketResource result = lro.Value;

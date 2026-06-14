@@ -27,7 +27,7 @@ ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceI
 NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
 // invoke the operation
-NetAppVolumePatch patch = new NetAppVolumePatch(default);
+NetAppVolumePatch patch = new NetAppVolumePatch();
 ArmOperation<NetAppVolumeResource> lro = await netAppVolume.UpdateAsync(WaitUntil.Completed, patch);
 NetAppVolumeResource result = lro.Value;
 

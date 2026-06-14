@@ -1,6 +1,7 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -33,7 +34,7 @@ NetAppActiveDirectoryConfigData data = new NetAppActiveDirectoryConfigData(new A
 {
     Properties = new NetAppActiveDirectoryConfigProperties("example.net", new NetAppSecretPassword
     {
-        KeyVaultProperties = new NetAppSecretPasswordKeyVaultProperties(new Uri("https://example.vault.azure.net/"), "activeDirectoryPassword"),
+        KeyVaultProperties = new NetAppSecretPasswordKeyVaultPatchProperties(new Uri("https://example.vault.azure.net/"), "activeDirectoryPassword"),
         Identity = new NetAppSecretPasswordIdentity
         {
             UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentity1",
@@ -41,7 +42,7 @@ NetAppActiveDirectoryConfigData data = new NetAppActiveDirectoryConfigData(new A
     })
     {
         UserName = "admin1",
-        Dns = { "10.10.10.4", "10.10.10.5" },
+        Dns = { IPAddress.Parse("10.10.10.4"), IPAddress.Parse("10.10.10.5") },
         SmbServerName = "smbServer",
         OrganizationalUnit = "OU=Computers,DC=corp,DC=contoso,DC=com",
         Site = "Default-First-Site-Name",

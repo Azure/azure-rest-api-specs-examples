@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.storagemover.models.JobDefinition;
+import java.util.Arrays;
+
+/**
+ * Samples for JobDefinitions Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/JobDefinitions_Update.json
+     */
+    /**
+     * Sample code: JobDefinitions_Update.
+     * 
+     * @param manager Entry point to StorageMoverManager.
+     */
+    public static void jobDefinitionsUpdate(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+        JobDefinition resource = manager.jobDefinitions().getWithResponse("examples-rg", "examples-storageMoverName",
+            "examples-projectName", "examples-jobDefinitionName", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withDescription("Updated Job Definition Description").withAgentName("updatedAgentName")
+            .withConnections(Arrays.asList(
+                "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.StorageMover/storageMovers/examples-storageMoverName/connections/example-connection"))
+            .apply();
+    }
+}

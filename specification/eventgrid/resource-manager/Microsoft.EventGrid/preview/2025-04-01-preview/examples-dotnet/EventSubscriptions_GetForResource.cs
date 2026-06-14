@@ -15,24 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this EventSubscriptionResource
+// this example assumes you already have this EventSubscriptionResource created on azure
+// for more information of creating EventSubscriptionResource, please refer to the document of EventSubscriptionResource
 string scope = "subscriptions/8f6b6269-84f2-4d09-9e31-1127efcd1e40/resourceGroups/examplerg/providers/Microsoft.EventHub/namespaces/examplenamespace1";
-EventSubscriptionCollection collection = client.GetEventSubscriptions(new ResourceIdentifier(scope));
+string eventSubscriptionName = "examplesubscription1";
+ResourceIdentifier eventSubscriptionResourceId = EventSubscriptionResource.CreateResourceIdentifier(scope, eventSubscriptionName);
+EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResource(eventSubscriptionResourceId);
 
 // invoke the operation
-string eventSubscriptionName = "examplesubscription1";
-NullableResponse<EventSubscriptionResource> response = await collection.GetIfExistsAsync(eventSubscriptionName);
-EventSubscriptionResource result = response.HasValue ? response.Value : null;
+EventSubscriptionResource result = await eventSubscription.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    EventGridSubscriptionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridSubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

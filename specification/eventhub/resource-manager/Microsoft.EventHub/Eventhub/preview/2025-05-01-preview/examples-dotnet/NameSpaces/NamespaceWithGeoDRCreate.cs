@@ -31,7 +31,7 @@ EventHubsNamespaceCollection collection = resourceGroupResource.GetEventHubsName
 string namespaceName = "NamespaceGeoDRCreateSample";
 EventHubsNamespaceData data = new EventHubsNamespaceData(new AzureLocation("East US"))
 {
-    GeoDataReplication = new NamespaceGeoDataReplicationProperties
+    GeoDataReplication = new EventHubsNamespaceGeoDataReplicationProperties
     {
         MaxReplicationLagDurationInSeconds = 60,
         Locations = {new EventHubsNamespaceReplicaLocation

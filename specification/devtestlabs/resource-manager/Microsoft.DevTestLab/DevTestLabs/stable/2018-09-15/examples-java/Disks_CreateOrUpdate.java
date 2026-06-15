@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.devtestlabs.models.StorageType;
+
+/**
+ * Samples for Disks CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-09-15/Disks_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Disks_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DevTestLabsManager.
+     */
+    public static void disksCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.disks().define("{diskName}").withExistingUser("resourceGroupName", "{labName}", "{userId}")
+            .withDiskType(StorageType.STANDARD).withDiskSizeGiB(1023)
+            .withLeasedByLabVmId(
+                "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualmachines/vmName")
+            .create();
+    }
+}

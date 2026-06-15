@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningFeatureSetVersionResource created on azure
-// for more information of creating MachineLearningFeatureSetVersionResource, please refer to the document of MachineLearningFeatureSetVersionResource
+// this example assumes you already have this MachineLearningFeatureSetContainerResource created on azure
+// for more information of creating MachineLearningFeatureSetContainerResource, please refer to the document of MachineLearningFeatureSetContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-string version = "string";
-ResourceIdentifier machineLearningFeatureSetVersionResourceId = MachineLearningFeatureSetVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
-MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = client.GetMachineLearningFeatureSetVersionResource(machineLearningFeatureSetVersionResourceId);
+ResourceIdentifier machineLearningFeatureSetContainerResourceId = MachineLearningFeatureSetContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningFeatureSetContainerResource machineLearningFeatureSetContainer = client.GetMachineLearningFeatureSetContainerResource(machineLearningFeatureSetContainerResourceId);
+
+// get the collection of this MachineLearningFeatureSetVersionResource
+MachineLearningFeatureSetVersionCollection collection = machineLearningFeatureSetContainer.GetMachineLearningFeatureSetVersions();
 
 // invoke the operation
+string version = "string";
 MachineLearningFeatureSetVersionData data = new MachineLearningFeatureSetVersionData(new MachineLearningFeatureSetVersionProperties
 {
     SpecificationPath = "string",
@@ -68,7 +71,7 @@ MachineLearningFeatureSetVersionData data = new MachineLearningFeatureSetVersion
     ["string"] = "string"
     },
 });
-ArmOperation<MachineLearningFeatureSetVersionResource> lro = await machineLearningFeatureSetVersion.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningFeatureSetVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
 MachineLearningFeatureSetVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

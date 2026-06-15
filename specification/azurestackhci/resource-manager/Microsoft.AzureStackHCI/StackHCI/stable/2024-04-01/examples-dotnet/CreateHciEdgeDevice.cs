@@ -15,14 +15,12 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HciEdgeDeviceResource created on azure
-// for more information of creating HciEdgeDeviceResource, please refer to the document of HciEdgeDeviceResource
+// get the collection of this HciEdgeDeviceResource
 string resourceUri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1";
-string edgeDeviceName = "default";
-ResourceIdentifier hciEdgeDeviceResourceId = HciEdgeDeviceResource.CreateResourceIdentifier(resourceUri, edgeDeviceName);
-HciEdgeDeviceResource hciEdgeDevice = client.GetHciEdgeDeviceResource(hciEdgeDeviceResourceId);
+HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(new ResourceIdentifier(resourceUri));
 
 // invoke the operation
+string edgeDeviceName = "default";
 HciEdgeDeviceData data = new HciArcEnabledEdgeDevice
 {
     Properties = new HciArcEnabledEdgeDeviceProperties
@@ -45,7 +43,7 @@ HciEdgeDeviceData data = new HciArcEnabledEdgeDevice
         },
     },
 };
-ArmOperation<HciEdgeDeviceResource> lro = await hciEdgeDevice.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HciEdgeDeviceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, edgeDeviceName, data);
 HciEdgeDeviceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

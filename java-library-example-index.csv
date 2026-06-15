@@ -6929,3 +6929,4 @@ id,name,language,tag,package,version,date_epoch,date
 6928,"Azure.ResourceManager.ImpactReporting,1.0.0-beta.2",dotnet,Azure.ResourceManager.ImpactReporting_1.0.0-beta.2,Azure.ResourceManager.ImpactReporting,1.0.0-beta.2,1781515026,06/15/2026
 6929,"Azure.ResourceManager.IotHub,1.2.0-beta.3",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.3,Azure.ResourceManager.IotHub,1.2.0-beta.3,1781515014,06/15/2026
 6930,"Azure.ResourceManager.LoadTesting,1.2.0-beta.1",dotnet,Azure.ResourceManager.LoadTesting_1.2.0-beta.1,Azure.ResourceManager.LoadTesting,1.2.0-beta.1,1781514989,06/15/2026
+6931,"Azure.ResourceManager.HDInsight,1.2.0-beta.6",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.6,Azure.ResourceManager.HDInsight,1.2.0-beta.6,1781514979,06/15/2026

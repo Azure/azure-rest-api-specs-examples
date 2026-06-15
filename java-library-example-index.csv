@@ -6924,3 +6924,4 @@ id,name,language,tag,package,version,date_epoch,date
 6923,azure-mgmt-napsteromniagentapi@1.0.0b1,python,azure-mgmt-napsteromniagentapi_1.0.0b1,azure-mgmt-napsteromniagentapi,1.0.0b1,1781490939,06/15/2026
 6924,com.azure.resourcemanager:azure-resourcemanager-devtestlabs:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-devtestlabs_1.2.0,com.azure.resourcemanager+azure-resourcemanager-devtestlabs,1.2.0,1781504794,06/15/2026
 6925,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.62.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.62.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.62.0-beta.1,1781485733,06/15/2026
+6926,"Azure.ResourceManager.IotFirmwareDefense,1.1.1",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.1.1,Azure.ResourceManager.IotFirmwareDefense,1.1.1,1781515413,06/15/2026

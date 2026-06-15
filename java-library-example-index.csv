@@ -6927,3 +6927,4 @@ id,name,language,tag,package,version,date_epoch,date
 6926,"Azure.ResourceManager.IotFirmwareDefense,1.1.1",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.1.1,Azure.ResourceManager.IotFirmwareDefense,1.1.1,1781515413,06/15/2026
 6927,"Azure.ResourceManager.MachineLearning,1.2.4",dotnet,Azure.ResourceManager.MachineLearning_1.2.4,Azure.ResourceManager.MachineLearning,1.2.4,1781515047,06/15/2026
 6928,"Azure.ResourceManager.ImpactReporting,1.0.0-beta.2",dotnet,Azure.ResourceManager.ImpactReporting_1.0.0-beta.2,Azure.ResourceManager.ImpactReporting,1.0.0-beta.2,1781515026,06/15/2026
+6929,"Azure.ResourceManager.IotHub,1.2.0-beta.3",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.3,Azure.ResourceManager.IotHub,1.2.0-beta.3,1781515014,06/15/2026

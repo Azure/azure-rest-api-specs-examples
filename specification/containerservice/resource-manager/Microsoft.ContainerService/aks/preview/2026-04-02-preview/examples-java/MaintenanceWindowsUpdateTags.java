@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.containerservice.models.TagsObject;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for MaintenanceWindows UpdateTags.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-02-preview/MaintenanceWindowsUpdateTags.json
+     */
+    /**
+     * Sample code: Update Maintenance Window Tags.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void
+        updateMaintenanceWindowTags(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getMaintenanceWindows().updateTagsWithResponse("rg-maintenance", "production-weekends",
+            new TagsObject().withTags(mapOf("environment", "production", "team", "aks-platform")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

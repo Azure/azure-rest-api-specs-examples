@@ -1,0 +1,18 @@
+
+/**
+ * Samples for LoadBalancers Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-02-preview/LoadBalancers_Get.json
+     */
+    /**
+     * Sample code: Get Load Balancer.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void getLoadBalancer(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getLoadBalancers().getWithResponse("rg1", "clustername1", "kubernetes",
+            com.azure.core.util.Context.NONE);
+    }
+}

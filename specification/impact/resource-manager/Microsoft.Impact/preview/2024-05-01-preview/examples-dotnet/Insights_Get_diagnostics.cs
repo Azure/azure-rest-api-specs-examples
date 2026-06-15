@@ -15,30 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkloadImpactResource created on azure
-// for more information of creating WorkloadImpactResource, please refer to the document of WorkloadImpactResource
+// this example assumes you already have this ImpactInsightResource created on azure
+// for more information of creating ImpactInsightResource, please refer to the document of ImpactInsightResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string workloadImpactName = "impactid";
-ResourceIdentifier workloadImpactResourceId = WorkloadImpactResource.CreateResourceIdentifier(subscriptionId, workloadImpactName);
-WorkloadImpactResource workloadImpact = client.GetWorkloadImpactResource(workloadImpactResourceId);
-
-// get the collection of this ImpactInsightResource
-ImpactInsightCollection collection = workloadImpact.GetImpactInsights();
+string insightName = "insight1";
+ResourceIdentifier impactInsightResourceId = ImpactInsightResource.CreateResourceIdentifier(subscriptionId, workloadImpactName, insightName);
+ImpactInsightResource impactInsight = client.GetImpactInsightResource(impactInsightResourceId);
 
 // invoke the operation
-string insightName = "insight1";
-NullableResponse<ImpactInsightResource> response = await collection.GetIfExistsAsync(insightName);
-ImpactInsightResource result = response.HasValue ? response.Value : null;
+ImpactInsightResource result = await impactInsight.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ImpactInsightData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ImpactInsightData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

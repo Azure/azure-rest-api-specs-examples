@@ -14,21 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridTopicResource created on azure
-// for more information of creating EventGridTopicResource, please refer to the document of EventGridTopicResource
+// this example assumes you already have this PartnerNamespaceResource created on azure
+// for more information of creating PartnerNamespaceResource, please refer to the document of PartnerNamespaceResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string parentName = "exampletopic1";
-ResourceIdentifier eventGridTopicResourceId = EventGridTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
-EventGridTopicResource eventGridTopic = client.GetEventGridTopicResource(eventGridTopicResourceId);
+ResourceIdentifier partnerNamespaceResourceId = PartnerNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
+PartnerNamespaceResource partnerNamespace = client.GetPartnerNamespaceResource(partnerNamespaceResourceId);
 
-// get the collection of this EventGridTopicPrivateLinkResource
-EventGridTopicPrivateLinkResourceCollection collection = eventGridTopic.GetEventGridTopicPrivateLinkResources();
+// get the collection of this PartnerNamespacePrivateLinkResource
+PartnerNamespacePrivateLinkResourceCollection collection = partnerNamespace.GetPartnerNamespacePrivateLinkResources();
 
 // invoke the operation
 string privateLinkResourceName = "topic";
-NullableResponse<EventGridTopicPrivateLinkResource> response = await collection.GetIfExistsAsync(privateLinkResourceName);
-EventGridTopicPrivateLinkResource result = response.HasValue ? response.Value : null;
+NullableResponse<PartnerNamespacePrivateLinkResource> response = await collection.GetIfExistsAsync(privateLinkResourceName);
+PartnerNamespacePrivateLinkResource result = response.HasValue ? response.Value : null;
 
 if (result == null)
 {

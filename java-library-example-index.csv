@@ -6930,3 +6930,4 @@ id,name,language,tag,package,version,date_epoch,date
 6929,"Azure.ResourceManager.IotHub,1.2.0-beta.3",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.3,Azure.ResourceManager.IotHub,1.2.0-beta.3,1781515014,06/15/2026
 6930,"Azure.ResourceManager.LoadTesting,1.2.0-beta.1",dotnet,Azure.ResourceManager.LoadTesting_1.2.0-beta.1,Azure.ResourceManager.LoadTesting,1.2.0-beta.1,1781514989,06/15/2026
 6931,"Azure.ResourceManager.HDInsight,1.2.0-beta.6",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.6,Azure.ResourceManager.HDInsight,1.2.0-beta.6,1781514979,06/15/2026
+6932,"Azure.ResourceManager.Kusto,1.6.3",dotnet,Azure.ResourceManager.Kusto_1.6.3,Azure.ResourceManager.Kusto,1.6.3,1781514966,06/15/2026

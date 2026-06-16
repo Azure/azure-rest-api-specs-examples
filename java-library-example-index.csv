@@ -6940,3 +6940,4 @@ id,name,language,tag,package,version,date_epoch,date
 6939,azure-mgmt-computefleet@2.0.0b2,python,azure-mgmt-computefleet_2.0.0b2,azure-mgmt-computefleet,2.0.0b2,1781597355,06/16/2026
 6940,azure-mgmt-servicefabricmanagedclusters@3.1.0b1,python,azure-mgmt-servicefabricmanagedclusters_3.1.0b1,azure-mgmt-servicefabricmanagedclusters,3.1.0b1,1781597347,06/16/2026
 6941,azure-mgmt-managednetworkfabric@2.0.0,python,azure-mgmt-managednetworkfabric_2.0.0,azure-mgmt-managednetworkfabric,2.0.0,1781597304,06/16/2026
+6942,"Azure.ResourceManager.HealthBot,1.3.0",dotnet,Azure.ResourceManager.HealthBot_1.3.0,Azure.ResourceManager.HealthBot,1.3.0,1781568487,06/16/2026

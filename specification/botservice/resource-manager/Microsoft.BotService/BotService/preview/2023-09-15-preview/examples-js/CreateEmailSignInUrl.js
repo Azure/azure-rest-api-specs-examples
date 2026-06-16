@@ -1,0 +1,16 @@
+const { AzureBotService } = require("@azure/arm-botservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates an email channel sign in url for a Bot Service
+ *
+ * @summary creates an email channel sign in url for a Bot Service
+ * x-ms-original-file: 2023-09-15-preview/CreateEmailSignInUrl.json
+ */
+async function createUrl() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "subscription-id";
+  const client = new AzureBotService(credential, subscriptionId);
+  const result = await client.email.createSignInUrl("OneResourceGroupName", "samplebotname");
+  console.log(result);
+}

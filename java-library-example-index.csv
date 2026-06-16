@@ -6938,3 +6938,4 @@ id,name,language,tag,package,version,date_epoch,date
 6937,@azure/arm-botservice@5.0.0-beta.1,js,@azure/arm-botservice_5.0.0-beta.1,@azure/arm-botservice,5.0.0-beta.1,1781566706,06/15/2026
 6938,@azure/arm-cloudhealth@1.0.0-beta.2,js,@azure/arm-cloudhealth_1.0.0-beta.2,@azure/arm-cloudhealth,1.0.0-beta.2,1781525781,06/15/2026
 6939,azure-mgmt-computefleet@2.0.0b2,python,azure-mgmt-computefleet_2.0.0b2,azure-mgmt-computefleet,2.0.0b2,1781597355,06/16/2026
+6940,azure-mgmt-servicefabricmanagedclusters@3.1.0b1,python,azure-mgmt-servicefabricmanagedclusters_3.1.0b1,azure-mgmt-servicefabricmanagedclusters,3.1.0b1,1781597347,06/16/2026

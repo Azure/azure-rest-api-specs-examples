@@ -1,0 +1,106 @@
+const { SecurityInsights } = require("@azure/arm-securityinsight");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates the data connector.
+ *
+ * @summary creates or updates the data connector.
+ * x-ms-original-file: 2025-07-01-preview/dataConnectors/CreateAPIPolling.json
+ */
+async function createsOrUpdatesAAPIPollingDataConnector() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const client = new SecurityInsights(credential, subscriptionId);
+  const result = await client.dataConnectors.createOrUpdate(
+    "myRg",
+    "myWorkspace",
+    "316ec55e-7138-4d63-ab18-90c8a60fd1c8",
+    {
+      kind: "APIPolling",
+      connectorUiConfig: {
+        availability: { isPreview: true, status: 1 },
+        connectivityCriteria: [{ type: "SentinelKindsV2", value: [] }],
+        dataTypes: [
+          {
+            name: "{{graphQueriesTableName}}",
+            lastDataReceivedQuery:
+              "{{graphQueriesTableName}}\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)",
+          },
+        ],
+        descriptionMarkdown:
+          "The GitHub audit log connector provides the capability to ingest GitHub logs into Azure Sentinel. By connecting GitHub audit logs into Azure Sentinel, you can view this data in workbooks, use it to create custom alerts, and improve your investigation process.",
+        graphQueries: [
+          {
+            baseQuery: "{{graphQueriesTableName}}",
+            legend: "GitHub audit log events",
+            metricName: "Total events received",
+          },
+        ],
+        graphQueriesTableName: "GitHubAuditLogPolling_CL",
+        instructionSteps: [
+          {
+            description:
+              "Enable GitHub audit Logs. \n Follow [this](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create or find your personal key",
+            instructions: [
+              {
+                type: "APIKey",
+                parameters: {
+                  enable: "true",
+                  userRequestPlaceHoldersInput: [
+                    {
+                      displayText: "Organization Name",
+                      placeHolderName: "{{placeHolder1}}",
+                      placeHolderValue: "",
+                      requestObjectKey: "apiEndpoint",
+                    },
+                  ],
+                },
+              },
+            ],
+            title: "Connect GitHub Enterprise Audit Log to Azure Sentinel",
+          },
+        ],
+        permissions: {
+          customs: [
+            {
+              name: "GitHub API personal token Key",
+              description:
+                "You need access to GitHub personal token, the key should have 'admin:org' scope",
+            },
+          ],
+          resourceProvider: [
+            {
+              permissionsDisplayText: "read and write permissions are required.",
+              provider: "Microsoft.OperationalInsights/workspaces",
+              providerDisplayName: "Workspace",
+              requiredPermissions: { delete: true, read: true, write: true },
+              scope: "Workspace",
+            },
+          ],
+        },
+        publisher: "GitHub",
+        sampleQueries: [
+          { description: "All logs", query: "{{graphQueriesTableName}}\n | take 10 <change>" },
+        ],
+        title: "GitHub Enterprise Audit Log",
+      },
+      pollingConfig: {
+        auth: { apiKeyIdentifier: "token", apiKeyName: "Authorization", authType: "APIKey" },
+        paging: { pageSizeParaName: "per_page", pagingType: "LinkHeader" },
+        response: { eventsJsonPaths: ["$"] },
+        request: {
+          apiEndpoint: "https://api.github.com/organizations/{{placeHolder1}}/audit-log",
+          headers: { Accept: "application/json", "User-Agent": "Scuba" },
+          httpMethod: "Get",
+          queryParameters: { phrase: "created:{_QueryWindowStartTime}..{_QueryWindowEndTime}" },
+          queryTimeFormat: "yyyy-MM-ddTHH:mm:ssZ",
+          queryWindowInMin: 15,
+          rateLimitQps: 50,
+          retryCount: 2,
+          timeoutInSeconds: 60,
+        },
+      },
+    },
+  );
+  console.log(result);
+}

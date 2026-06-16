@@ -1,0 +1,24 @@
+const { SecurityInsights } = require("@azure/arm-securityinsight");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to create or update a Watchlist and its Watchlist Items (bulk creation, e.g. through text/csv content type). To create a Watchlist and its Items, we should call this endpoint with rawContent and contentType properties.
+ *
+ * @summary create or update a Watchlist and its Watchlist Items (bulk creation, e.g. through text/csv content type). To create a Watchlist and its Items, we should call this endpoint with rawContent and contentType properties.
+ * x-ms-original-file: 2025-07-01-preview/watchlists/CreateWatchlist.json
+ */
+async function createOrUpdateAWatchlist() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const client = new SecurityInsights(credential, subscriptionId);
+  const result = await client.watchlists.createOrUpdate("myRg", "myWorkspace", "highValueAsset", {
+    etag: '"0300bf09-0000-0000-0000-5c37296e0000"',
+    description: "Watchlist from CSV content",
+    displayName: "High Value Assets Watchlist",
+    itemsSearchKey: "header1",
+    provider: "Microsoft",
+    source: "watchlist.csv",
+    sourceType: "Local",
+  });
+  console.log(result);
+}

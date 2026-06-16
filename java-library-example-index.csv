@@ -6936,3 +6936,4 @@ id,name,language,tag,package,version,date_epoch,date
 6935,@azure/arm-servicefabric@4.0.0-beta.1,js,@azure/arm-servicefabric_4.0.0-beta.1,@azure/arm-servicefabric,4.0.0-beta.1,1781576329,06/16/2026
 6936,@azure/arm-securityinsight@1.0.0-beta.8,js,@azure/arm-securityinsight_1.0.0-beta.8,@azure/arm-securityinsight,1.0.0-beta.8,1781566755,06/15/2026
 6937,@azure/arm-botservice@5.0.0-beta.1,js,@azure/arm-botservice_5.0.0-beta.1,@azure/arm-botservice,5.0.0-beta.1,1781566706,06/15/2026
+6938,@azure/arm-cloudhealth@1.0.0-beta.2,js,@azure/arm-cloudhealth_1.0.0-beta.2,@azure/arm-cloudhealth,1.0.0-beta.2,1781525781,06/15/2026

@@ -6932,3 +6932,4 @@ id,name,language,tag,package,version,date_epoch,date
 6931,"Azure.ResourceManager.HDInsight,1.2.0-beta.6",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.6,Azure.ResourceManager.HDInsight,1.2.0-beta.6,1781514979,06/15/2026
 6932,"Azure.ResourceManager.Kusto,1.6.3",dotnet,Azure.ResourceManager.Kusto_1.6.3,Azure.ResourceManager.Kusto,1.6.3,1781514966,06/15/2026
 6933,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3@v3.1.0,go,sdk/resourcemanager/azurestackhci/armazurestackhci/v3.1.0,sdk/resourcemanager/azurestackhci/armazurestackhci,v3.1.0,1781534156,06/15/2026
+6934,@azure/arm-hybridkubernetes@3.0.0-beta.2,js,@azure/arm-hybridkubernetes_3.0.0-beta.2,@azure/arm-hybridkubernetes,3.0.0-beta.2,1781577419,06/16/2026

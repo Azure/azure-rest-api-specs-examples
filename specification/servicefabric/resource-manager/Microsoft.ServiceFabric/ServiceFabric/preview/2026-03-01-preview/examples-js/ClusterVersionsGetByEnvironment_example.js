@@ -1,0 +1,16 @@
+const { ServiceFabricManagementClient } = require("@azure/arm-servicefabric");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets information about an available Service Fabric cluster code version by environment.
+ *
+ * @summary gets information about an available Service Fabric cluster code version by environment.
+ * x-ms-original-file: 2026-03-01-preview/ClusterVersionsGetByEnvironment_example.json
+ */
+async function getClusterVersionByEnvironment() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ServiceFabricManagementClient(credential, subscriptionId);
+  const result = await client.clusterVersions.getByEnvironment("eastus", "Windows", "6.1.480.9494");
+  console.log(result);
+}

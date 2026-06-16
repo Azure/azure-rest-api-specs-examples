@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Secrets List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-09-15/Secrets_List.json
+     */
+    /**
+     * Sample code: Secrets_List.
+     * 
+     * @param manager Entry point to DevTestLabsManager.
+     */
+    public static void secretsList(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.secrets().list("resourceGroupName", "{labName}", "{userName}", null, null, null, null,
+            com.azure.core.util.Context.NONE);
+    }
+}

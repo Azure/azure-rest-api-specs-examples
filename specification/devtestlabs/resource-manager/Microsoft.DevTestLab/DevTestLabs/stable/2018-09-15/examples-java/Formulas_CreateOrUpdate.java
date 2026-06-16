@@ -1,0 +1,41 @@
+
+import com.azure.resourcemanager.devtestlabs.models.ArtifactInstallProperties;
+import com.azure.resourcemanager.devtestlabs.models.GalleryImageReference;
+import com.azure.resourcemanager.devtestlabs.models.InboundNatRule;
+import com.azure.resourcemanager.devtestlabs.models.LabVirtualMachineCreationParameter;
+import com.azure.resourcemanager.devtestlabs.models.NetworkInterfaceProperties;
+import com.azure.resourcemanager.devtestlabs.models.SharedPublicIpAddressConfiguration;
+import com.azure.resourcemanager.devtestlabs.models.TransportProtocol;
+import java.util.Arrays;
+
+/**
+ * Samples for Formulas CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-09-15/Formulas_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Formulas_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DevTestLabsManager.
+     */
+    public static void formulasCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.formulas().define("{formulaName}").withExistingLab("resourceGroupName", "{labName}")
+            .withRegion("{location}").withDescription("Formula using a Linux base")
+            .withFormulaContent(new LabVirtualMachineCreationParameter().withLocation("{location}")
+                .withNotes("Ubuntu Server 20.10").withSize("Standard_B1ms").withUsername("user")
+                .withIsAuthenticationWithSshKey(false).withLabSubnetName("Dtl{labName}Subnet")
+                .withLabVirtualNetworkId("/virtualnetworks/dtl{labName}").withDisallowPublicIpAddress(true)
+                .withArtifacts(Arrays.asList(new ArtifactInstallProperties()
+                    .withArtifactId("/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs")
+                    .withParameters(Arrays.asList())))
+                .withGalleryImageReference(new GalleryImageReference().withOffer("0001-com-ubuntu-server-groovy")
+                    .withPublisher("canonical").withSku("2010").withOsType("Linux").withVersion("latest"))
+                .withNetworkInterface(new NetworkInterfaceProperties().withSharedPublicIpAddressConfiguration(
+                    new SharedPublicIpAddressConfiguration().withInboundNatRules(Arrays.asList(
+                        new InboundNatRule().withTransportProtocol(TransportProtocol.TCP).withBackendPort(22)))))
+                .withAllowClaim(false).withStorageType("Standard"))
+            .create();
+    }
+}

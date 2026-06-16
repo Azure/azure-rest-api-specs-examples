@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.devtestlabs.models.EnableStatus;
+import com.azure.resourcemanager.devtestlabs.models.WeekDetails;
+import java.util.Arrays;
+
+/**
+ * Samples for GlobalSchedules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-09-15/GlobalSchedules_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: GlobalSchedules_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DevTestLabsManager.
+     */
+    public static void globalSchedulesCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.globalSchedules().define("labvmautostart").withExistingResourceGroup("resourceGroupName")
+            .withStatus(EnableStatus.ENABLED).withTaskType("LabVmsStartupTask")
+            .withWeeklyRecurrence(new WeekDetails()
+                .withWeekdays(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+                .withTime("0700"))
+            .withTimeZoneId("Hawaiian Standard Time").create();
+    }
+}

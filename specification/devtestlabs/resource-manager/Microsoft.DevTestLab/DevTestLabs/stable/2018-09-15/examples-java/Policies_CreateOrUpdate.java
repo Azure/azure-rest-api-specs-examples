@@ -1,0 +1,41 @@
+
+import com.azure.resourcemanager.devtestlabs.models.PolicyEvaluatorType;
+import com.azure.resourcemanager.devtestlabs.models.PolicyFactName;
+import com.azure.resourcemanager.devtestlabs.models.PolicyStatus;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Policies CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2018-09-15/Policies_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Policies_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DevTestLabsManager.
+     */
+    public static void policiesCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.policies().define("{policyName}")
+            .withExistingPolicyset("resourceGroupName", "{labName}", "{policySetName}").withRegion("{location}")
+            .withTags(mapOf("tagName1", "tagValue1")).withDescription("{policyDescription}")
+            .withStatus(PolicyStatus.fromString("{policyStatus}"))
+            .withFactName(PolicyFactName.fromString("{policyFactName}")).withFactData("{policyFactData}")
+            .withThreshold("{policyThreshold}")
+            .withEvaluatorType(PolicyEvaluatorType.fromString("{policyEvaluatorType}")).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

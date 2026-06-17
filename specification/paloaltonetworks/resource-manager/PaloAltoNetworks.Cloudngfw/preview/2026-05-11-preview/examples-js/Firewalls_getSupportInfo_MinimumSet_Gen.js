@@ -1,0 +1,16 @@
+const { PaloAltoNetworksCloudngfw } = require("@azure/arm-paloaltonetworksngfw");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to support info for firewall.
+ *
+ * @summary support info for firewall.
+ * x-ms-original-file: 2026-05-11-preview/Firewalls_getSupportInfo_MinimumSet_Gen.json
+ */
+async function firewallsGetSupportInfoMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
+  const client = new PaloAltoNetworksCloudngfw(credential, subscriptionId);
+  const result = await client.firewalls.getSupportInfo("rgopenapi", "firewall1");
+  console.log(result);
+}

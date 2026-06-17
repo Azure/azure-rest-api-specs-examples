@@ -1,0 +1,16 @@
+const { PaloAltoNetworksCloudngfw } = require("@azure/arm-paloaltonetworksngfw");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a MetricsObjectFirewallResource
+ *
+ * @summary get a MetricsObjectFirewallResource
+ * x-ms-original-file: 2026-05-11-preview/MetricsObjectFirewall_Get_MinimumSet_Gen.json
+ */
+async function metricsObjectFirewallGetMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "aaaaaaa";
+  const client = new PaloAltoNetworksCloudngfw(credential, subscriptionId);
+  const result = await client.metricsObjectFirewall.get("rgopenapi", "aaaaaaaaaaaaaaaaaaaaaaaa");
+  console.log(result);
+}

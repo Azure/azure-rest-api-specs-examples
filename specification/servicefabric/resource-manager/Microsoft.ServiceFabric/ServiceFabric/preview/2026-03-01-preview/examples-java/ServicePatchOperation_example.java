@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.servicefabric.models.ServiceLoadMetricDescription;
+import com.azure.resourcemanager.servicefabric.models.ServiceLoadMetricWeight;
+import com.azure.resourcemanager.servicefabric.models.ServiceResource;
+import com.azure.resourcemanager.servicefabric.models.StatelessServiceUpdateProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for Services Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/ServicePatchOperation_example.json
+     */
+    /**
+     * Sample code: Patch a service.
+     * 
+     * @param manager Entry point to ServiceFabricManager.
+     */
+    public static void patchAService(com.azure.resourcemanager.servicefabric.ServiceFabricManager manager) {
+        ServiceResource resource = manager.services()
+            .getWithResponse("resRg", "myCluster", "myApp", "myService", com.azure.core.util.Context.NONE).getValue();
+        resource.update()
+            .withProperties(new StatelessServiceUpdateProperties().withServiceLoadMetrics(Arrays.asList(
+                new ServiceLoadMetricDescription().withName("metric1").withWeight(ServiceLoadMetricWeight.LOW))))
+            .apply();
+    }
+}

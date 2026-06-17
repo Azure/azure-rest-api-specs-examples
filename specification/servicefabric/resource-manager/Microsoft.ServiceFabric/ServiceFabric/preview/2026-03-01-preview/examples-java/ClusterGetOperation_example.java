@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Clusters GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/ClusterGetOperation_example.json
+     */
+    /**
+     * Sample code: Get a cluster.
+     * 
+     * @param manager Entry point to ServiceFabricManager.
+     */
+    public static void getACluster(com.azure.resourcemanager.servicefabric.ServiceFabricManager manager) {
+        manager.clusters().getByResourceGroupWithResponse("resRg", "myCluster", com.azure.core.util.Context.NONE);
+    }
+}

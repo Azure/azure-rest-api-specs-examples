@@ -6948,3 +6948,4 @@ id,name,language,tag,package,version,date_epoch,date
 6947,@azure/arm-servicebus@7.0.0-beta.1,js,@azure/arm-servicebus_7.0.0-beta.1,@azure/arm-servicebus,7.0.0-beta.1,1781627158,06/16/2026
 6948,@azure/arm-paloaltonetworksngfw@2.0.0-beta.1,js,@azure/arm-paloaltonetworksngfw_2.0.0-beta.1,@azure/arm-paloaltonetworksngfw,2.0.0-beta.1,1781627147,06/16/2026
 6949,@azure/arm-databoxedge@3.0.0-beta.1,js,@azure/arm-databoxedge_3.0.0-beta.1,@azure/arm-databoxedge,3.0.0-beta.1,1781627139,06/16/2026
+6950,azure-mgmt-programenrollment@1.0.0b1,python,azure-mgmt-programenrollment_1.0.0b1,azure-mgmt-programenrollment,1.0.0b1,1781675686,06/17/2026

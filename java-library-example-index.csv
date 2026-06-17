@@ -6952,3 +6952,4 @@ id,name,language,tag,package,version,date_epoch,date
 6951,azure-mgmt-resiliencemanagement@1.0.0b1,python,azure-mgmt-resiliencemanagement_1.0.0b1,azure-mgmt-resiliencemanagement,1.0.0b1,1781661848,06/17/2026
 6952,com.azure.resourcemanager:azure-resourcemanager-chaos:1.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-chaos_1.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-chaos,1.4.0-beta.1,1781690155,06/17/2026
 6953,com.azure.resourcemanager:azure-resourcemanager-artifactsigning:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-artifactsigning_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-artifactsigning,1.1.0-beta.1,1781690127,06/17/2026
+6954,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-servicefabric_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-servicefabric,1.1.0-beta.1,1781689697,06/17/2026

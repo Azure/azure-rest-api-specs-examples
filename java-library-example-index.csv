@@ -6950,3 +6950,4 @@ id,name,language,tag,package,version,date_epoch,date
 6949,@azure/arm-databoxedge@3.0.0-beta.1,js,@azure/arm-databoxedge_3.0.0-beta.1,@azure/arm-databoxedge,3.0.0-beta.1,1781627139,06/16/2026
 6950,azure-mgmt-programenrollment@1.0.0b1,python,azure-mgmt-programenrollment_1.0.0b1,azure-mgmt-programenrollment,1.0.0b1,1781675686,06/17/2026
 6951,azure-mgmt-resiliencemanagement@1.0.0b1,python,azure-mgmt-resiliencemanagement_1.0.0b1,azure-mgmt-resiliencemanagement,1.0.0b1,1781661848,06/17/2026
+6952,com.azure.resourcemanager:azure-resourcemanager-chaos:1.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-chaos_1.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-chaos,1.4.0-beta.1,1781690155,06/17/2026

@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/preview/2024-03-01-preview/examples/getDynamicMetricAlertMultipleResource.json
@@ -18,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this MetricAlertResource created on azure
+// for more information of creating MetricAlertResource, please refer to the document of MetricAlertResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "gigtest";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this MetricAlertResource
-MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
+string ruleName = "MetricAlertOnMultipleResources";
+ResourceIdentifier metricAlertResourceId = MetricAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, ruleName);
+MetricAlertResource metricAlert = client.GetMetricAlertResource(metricAlertResourceId);
 
 // invoke the operation
-string ruleName = "MetricAlertOnMultipleResources";
-NullableResponse<MetricAlertResource> response = await collection.GetIfExistsAsync(ruleName);
-MetricAlertResource result = response.HasValue ? response.Value : null;
+MetricAlertResource result = await metricAlert.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MetricAlertData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MetricAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

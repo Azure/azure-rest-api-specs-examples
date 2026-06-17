@@ -1,0 +1,23 @@
+const { DataBoxEdgeManagementClient } = require("@azure/arm-databoxedge");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets all the storage account credentials in a Data Box Edge/Data Box Gateway device.
+ *
+ * @summary gets all the storage account credentials in a Data Box Edge/Data Box Gateway device.
+ * x-ms-original-file: 2023-12-01/SACGetAllInDevice.json
+ */
+async function sacGetAllInDevice() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
+  const client = new DataBoxEdgeManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.storageAccountCredentials.listByDataBoxEdgeDevice(
+    "testedgedevice",
+    "GroupForEdgeAutomation",
+  )) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

@@ -1,0 +1,27 @@
+const { CloudHealthClient } = require("@azure/arm-cloudhealth");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to create a AuthenticationSetting
+ *
+ * @summary create a AuthenticationSetting
+ * x-ms-original-file: 2026-01-01-preview/AuthenticationSettings_CreateOrUpdate.json
+ */
+async function authenticationSettingsCreateOrUpdate() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new CloudHealthClient(credential, subscriptionId);
+  const result = await client.authenticationSettings.createOrUpdate(
+    "myResourceGroup",
+    "myHealthModel",
+    "myAuthSetting",
+    {
+      properties: {
+        managedIdentityName: "SystemAssigned",
+        displayName: "myDisplayName",
+        authenticationKind: "ManagedIdentity",
+      },
+    },
+  );
+  console.log(result);
+}

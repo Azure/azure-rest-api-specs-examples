@@ -6959,3 +6959,4 @@ id,name,language,tag,package,version,date_epoch,date
 6958,com.azure.resourcemanager:azure-resourcemanager-standbypool:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-standbypool_1.2.0,com.azure.resourcemanager+azure-resourcemanager-standbypool,1.2.0,1781675776,06/17/2026
 6959,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-healthbot_1.2.0,com.azure.resourcemanager+azure-resourcemanager-healthbot,1.2.0,1781665854,06/17/2026
 6960,"Azure.ResourceManager.NewRelicObservability,1.2.0-beta.2",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0-beta.2,Azure.ResourceManager.NewRelicObservability,1.2.0-beta.2,1781688916,06/17/2026
+6961,"Azure.ResourceManager.StorageMover,1.4.1",dotnet,Azure.ResourceManager.StorageMover_1.4.1,Azure.ResourceManager.StorageMover,1.4.1,1781683733,06/17/2026

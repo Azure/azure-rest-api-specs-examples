@@ -26,7 +26,7 @@ ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateRes
 NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
 
 // invoke the operation
-NewRelicObservabilitySaaSContent content = new NewRelicObservabilitySaaSContent
+NewRelicObservabilitySaaSInfo content = new NewRelicObservabilitySaaSInfo
 {
     SaaSResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/Microsoft.SaaS/resources/abcd",
 };

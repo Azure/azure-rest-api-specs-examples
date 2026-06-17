@@ -24,6 +24,6 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 ActivateSaaSParameterContent content = new ActivateSaaSParameterContent("00000000-0000-0000-0000-000005430000", "publisherId");
-NewRelicObservabilitySaaSResourceDetailsResult result = await subscriptionResource.ActivateResourceSaaSAsync(content);
+NewRelicObservabilitySaaSResourceDetailsResult result = await subscriptionResource.ActivateResourceAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

@@ -6963,3 +6963,4 @@ id,name,language,tag,package,version,date_epoch,date
 6962,@azure/arm-frontdoor@6.0.0-beta.1,js,@azure/arm-frontdoor_6.0.0-beta.1,@azure/arm-frontdoor,6.0.0-beta.1,1781776808,06/18/2026
 6963,com.azure.resourcemanager:azure-resourcemanager-managednetworkfabric:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-managednetworkfabric_2.0.0,com.azure.resourcemanager+azure-resourcemanager-managednetworkfabric,2.0.0,1781746691,06/18/2026
 6964,"Azure.ResourceManager.PostgreSql,1.5.0-beta.1",dotnet,Azure.ResourceManager.PostgreSql_1.5.0-beta.1,Azure.ResourceManager.PostgreSql,1.5.0-beta.1,1781675232,06/17/2026
+6965,"Azure.ResourceManager.MongoCluster,1.1.0-beta.1",dotnet,Azure.ResourceManager.MongoCluster_1.1.0-beta.1,Azure.ResourceManager.MongoCluster,1.1.0-beta.1,1781624332,06/16/2026

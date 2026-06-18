@@ -1,0 +1,19 @@
+
+/**
+ * Samples for PrivateAccesses GetAPrivateEndpointConnection.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/PrivateAccesses_GetAPrivateEndpointConnection.json
+     */
+    /**
+     * Sample code: Get information about a private endpoint connection under a private access resource.
+     * 
+     * @param manager Entry point to ChaosManager.
+     */
+    public static void getInformationAboutAPrivateEndpointConnectionUnderAPrivateAccessResource(
+        com.azure.resourcemanager.chaos.ChaosManager manager) {
+        manager.privateAccesses().getAPrivateEndpointConnectionWithResponse("myResourceGroup", "myPrivateAccess",
+            "myPrivateEndpointConnection", com.azure.core.util.Context.NONE);
+    }
+}

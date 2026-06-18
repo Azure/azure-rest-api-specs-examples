@@ -1,0 +1,18 @@
+
+/**
+ * Samples for DiscoveredResources Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/DiscoveredResources_Get.json
+     */
+    /**
+     * Sample code: Get a discovered resource.
+     * 
+     * @param manager Entry point to ChaosManager.
+     */
+    public static void getADiscoveredResource(com.azure.resourcemanager.chaos.ChaosManager manager) {
+        manager.discoveredResources().getWithResponse("exampleRG", "exampleWorkspace",
+            "a1b2c3d4-e5f6-7890-abcd-ef1234567890", com.azure.core.util.Context.NONE);
+    }
+}

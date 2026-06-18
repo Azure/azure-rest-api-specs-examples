@@ -1,0 +1,77 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.BfdConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.BmpConfigurationState;
+import com.azure.resourcemanager.managednetworkfabric.models.ExportRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.ExternalNetworkBmpProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ExternalNetworkPropertiesOptionAProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ExternalNetworkStaticRouteConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.ImportRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.L3OptionBProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NativeIpv4PrefixLimitProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NativeIpv6PrefixLimitProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PeeringOption;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixLimitProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.RouteTargetInformation;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRouteProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.V4OverV6BgpSessionState;
+import com.azure.resourcemanager.managednetworkfabric.models.V6OverV4BgpSessionState;
+import java.util.Arrays;
+
+/**
+ * Samples for ExternalNetworks Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/ExternalNetworks_Create.json
+     */
+    /**
+     * Sample code: ExternalNetworks_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void externalNetworksCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.externalNetworks().define("example-ext")
+            .withExistingL3IsolationDomain("example-rg", "example-externalnetwork")
+            .withPeeringOption(PeeringOption.OPTIONA).withAnnotation("annotation")
+            .withNetworkToNetworkInterconnectId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni")
+            .withImportRoutePolicy(new ImportRoutePolicy().withImportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName")
+                .withImportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"))
+            .withExportRoutePolicy(new ExportRoutePolicy().withExportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName")
+                .withExportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"))
+            .withOptionBProperties(new L3OptionBProperties().withImportRouteTargets(Arrays.asList("65046:10039"))
+                .withExportRouteTargets(Arrays.asList("65046:10039"))
+                .withRouteTargets(new RouteTargetInformation().withImportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                    .withImportIpv6RouteTargets(Arrays.asList("65046:10050"))
+                    .withExportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                    .withExportIpv6RouteTargets(Arrays.asList("65046:10050"))))
+            .withOptionAProperties(new ExternalNetworkPropertiesOptionAProperties().withPrimaryIpv4Prefix("10.1.1.0/30")
+                .withPrimaryIpv6Prefix("3FFE:FFFF:0:CD30::a0/126").withSecondaryIpv4Prefix("10.1.1.4/30")
+                .withSecondaryIpv6Prefix("3FFE:FFFF:0:CD30::a4/126").withMtu(1500).withVlanId(1001).withPeerAsn(65047L)
+                .withBfdConfiguration(new BfdConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withIngressAclId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+                .withBmpConfiguration(
+                    new ExternalNetworkBmpProperties().withConfigurationState(BmpConfigurationState.ENABLED))
+                .withEgressAclId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+                .withV4OverV6BgpSession(V4OverV6BgpSessionState.ENABLED)
+                .withV6OverV4BgpSession(V6OverV4BgpSessionState.ENABLED)
+                .withNativeIpv4PrefixLimit(new NativeIpv4PrefixLimitProperties().withPrefixLimits(Arrays
+                    .asList(new PrefixLimitProperties().withMaximumRoutes(14).withThreshold(17).withIdleTimeExpiry(7))))
+                .withNativeIpv6PrefixLimit(new NativeIpv6PrefixLimitProperties().withPrefixLimits(Arrays.asList(
+                    new PrefixLimitProperties().withMaximumRoutes(14).withThreshold(17).withIdleTimeExpiry(7)))))
+            .withStaticRouteConfiguration(new ExternalNetworkStaticRouteConfiguration()
+                .withBfdConfiguration(new BfdConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withIpv4Routes(Arrays.asList(
+                    new StaticRouteProperties().withPrefix("10.0.0.1/24").withNextHop(Arrays.asList("10.0.0.1"))))
+                .withIpv6Routes(Arrays
+                    .asList(new StaticRouteProperties().withPrefix("2fff::/64").withNextHop(Arrays.asList("3ffe::1")))))
+            .create();
+    }
+}

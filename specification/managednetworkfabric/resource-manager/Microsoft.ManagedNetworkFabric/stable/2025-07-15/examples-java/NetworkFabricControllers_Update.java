@@ -1,0 +1,53 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ExpressRouteConnectionInformation;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkFabricController;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkFabricControllers Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkFabricControllers_Update.json
+     */
+    /**
+     * Sample code: NetworkFabricControllers_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricControllersUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        NetworkFabricController resource = manager.networkFabricControllers()
+            .getByResourceGroupWithResponse("example-rg", "example-networkController", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key1402", new UserAssignedIdentity())))
+            .withInfrastructureExpressRouteConnections(Arrays.asList(new ExpressRouteConnectionInformation()
+                .withExpressRouteCircuitId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .withWorkloadExpressRouteConnections(Arrays.asList(new ExpressRouteConnectionInformation()
+                .withExpressRouteCircuitId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

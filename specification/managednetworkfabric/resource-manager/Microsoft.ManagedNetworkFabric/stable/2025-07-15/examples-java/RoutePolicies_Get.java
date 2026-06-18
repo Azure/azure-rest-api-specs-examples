@@ -1,0 +1,19 @@
+
+/**
+ * Samples for RoutePolicies GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/RoutePolicies_Get.json
+     */
+    /**
+     * Sample code: RoutePolicies_Get_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void routePoliciesGetMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.routePolicies().getByResourceGroupWithResponse("example-rg", "example-routePolicy",
+            com.azure.core.util.Context.NONE);
+    }
+}

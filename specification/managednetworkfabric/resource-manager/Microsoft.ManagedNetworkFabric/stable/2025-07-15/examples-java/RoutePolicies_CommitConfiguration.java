@@ -1,0 +1,19 @@
+
+/**
+ * Samples for RoutePolicies CommitConfiguration.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/RoutePolicies_CommitConfiguration.json
+     */
+    /**
+     * Sample code: RoutePolicies_CommitConfiguration_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void routePoliciesCommitConfigurationMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.routePolicies().commitConfiguration("example-rg", "example-routePolicy",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,45 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.IpCommunity;
+import com.azure.resourcemanager.managednetworkfabric.models.IpCommunityRule;
+import com.azure.resourcemanager.managednetworkfabric.models.WellKnownCommunities;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for IpCommunities Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/IpCommunities_Update.json
+     */
+    /**
+     * Sample code: IpCommunities_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void ipCommunitiesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        IpCommunity resource = manager.ipCommunities()
+            .getByResourceGroupWithResponse("example-rg", "example-ipcommunity", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyID", "fakeTokenPlaceholder"))
+            .withIpCommunityRules(Arrays.asList(new IpCommunityRule().withAction(CommunityActionTypes.PERMIT)
+                .withSequenceNumber(4155123341L).withWellKnownCommunities(Arrays.asList(WellKnownCommunities.INTERNET))
+                .withCommunityMembers(Arrays.asList("1:1"))))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

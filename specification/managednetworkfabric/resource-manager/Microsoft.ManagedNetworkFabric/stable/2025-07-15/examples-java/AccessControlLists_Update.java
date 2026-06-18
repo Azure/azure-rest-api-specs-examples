@@ -1,0 +1,99 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlList;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListActionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListMatchConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListMatchConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListPortConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.AclActionType;
+import com.azure.resourcemanager.managednetworkfabric.models.AclType;
+import com.azure.resourcemanager.managednetworkfabric.models.BitRate;
+import com.azure.resourcemanager.managednetworkfabric.models.BitRateUnit;
+import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
+import com.azure.resourcemanager.managednetworkfabric.models.BurstSize;
+import com.azure.resourcemanager.managednetworkfabric.models.BurstSizeUnit;
+import com.azure.resourcemanager.managednetworkfabric.models.CommonDynamicMatchConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.ConfigurationType;
+import com.azure.resourcemanager.managednetworkfabric.models.DeviceRole;
+import com.azure.resourcemanager.managednetworkfabric.models.GlobalAccessControlListActionPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IcmpConfigurationPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpAddressType;
+import com.azure.resourcemanager.managednetworkfabric.models.IpGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpMatchConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.Layer4Protocol;
+import com.azure.resourcemanager.managednetworkfabric.models.PoliceRateConfigurationProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortType;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixType;
+import com.azure.resourcemanager.managednetworkfabric.models.SourceDestinationType;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanMatchConditionPatch;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for AccessControlLists Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/AccessControlLists_Update.json
+     */
+    /**
+     * Sample code: AccessControlLists_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void accessControlListsUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        AccessControlList resource = manager.accessControlLists()
+            .getByResourceGroupWithResponse("example-rg", "example-acl", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("KeyId", "fakeTokenPlaceholder")).withConfigurationType(ConfigurationType.FILE)
+            .withAclsUrl("https://microsoft.com/a").withDefaultAction(CommunityActionTypes.PERMIT)
+            .withMatchConfigurationsForUpdate(Arrays.asList(new AccessControlListMatchConfigurationPatch()
+                .withMatchConfigurationName("example-match").withSequenceNumber(123L)
+                .withIpAddressType(IpAddressType.IPV4)
+                .withMatchConditions(Arrays.asList(new AccessControlListMatchConditionPatch()
+                    .withProtocolTypes(Arrays.asList("TCP"))
+                    .withVlanMatchCondition(new VlanMatchConditionPatch().withVlans(Arrays.asList("20-30"))
+                        .withInnerVlans(Arrays.asList("30")).withVlanGroupNames(Arrays.asList("example-vlanGroup")))
+                    .withIpCondition(new IpMatchConditionPatch().withType(SourceDestinationType.SOURCE_IP)
+                        .withPrefixType(PrefixType.PREFIX).withIpPrefixValues(Arrays.asList("10.20.20.20/12"))
+                        .withIpGroupNames(Arrays.asList("example-ipGroup")))
+                    .withEtherTypes(Arrays.asList("0x1")).withFragments(Arrays.asList("0xff00-0xffff"))
+                    .withIpLengths(Arrays.asList("4094-9214")).withTtlValues(Arrays.asList("23"))
+                    .withDscpMarkings(Arrays.asList("32"))
+                    .withPortCondition(new AccessControlListPortConditionPatch().withPortType(PortType.SOURCE_PORT)
+                        .withLayer4Protocol(Layer4Protocol.TCP).withPorts(Arrays.asList("1-20"))
+                        .withPortGroupNames(Arrays.asList("example-portGroup")).withFlags(Arrays.asList("established")))
+                    .withProtocolNeighbors(Arrays.asList("example-neighbor")).withIcmpConfiguration(
+                        new IcmpConfigurationPatchProperties().withIcmpTypes(Arrays.asList("echo")))))
+                .withActions(Arrays.asList(new AccessControlListActionPatch().withType(AclActionType.POLICE_RATE)
+                    .withPoliceRateConfiguration(new PoliceRateConfigurationProperties()
+                        .withBitRate(new BitRate().withRate(15L).withUnit(BitRateUnit.BPS))
+                        .withBurstSize(new BurstSize().withSize(2L).withUnit(BurstSizeUnit.BYTES)))))))
+            .withDynamicMatchConfigurationsForUpdate(Arrays.asList(new CommonDynamicMatchConfigurationPatch()
+                .withIpGroups(Arrays.asList(new IpGroupPatchProperties().withName("example-ipGroup")
+                    .withIpAddressType(IpAddressType.IPV4).withIpPrefixes(Arrays.asList("10.20.3.1/20"))))
+                .withVlanGroups(Arrays.asList(
+                    new VlanGroupPatchProperties().withName("example-vlanGroup").withVlans(Arrays.asList("20-30"))))
+                .withPortGroups(Arrays.asList(
+                    new PortGroupPatchProperties().withName("example-portGroup").withPorts(Arrays.asList("100-200"))))))
+            .withAclType(AclType.CP).withDeviceRole(DeviceRole.CE)
+            .withGlobalAccessControlListActions(
+                new GlobalAccessControlListActionPatchProperties().withEnableCount(BooleanEnumProperty.TRUE))
+            .withAnnotation("annotation").apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

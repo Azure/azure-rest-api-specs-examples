@@ -1,0 +1,60 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.DestinationPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.DestinationType;
+import com.azure.resourcemanager.managednetworkfabric.models.Encapsulation;
+import com.azure.resourcemanager.managednetworkfabric.models.IsolationDomainPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTap;
+import com.azure.resourcemanager.managednetworkfabric.models.PollingType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkTaps Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkTaps_Update.json
+     */
+    /**
+     * Sample code: NetworkTaps_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkTapsUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        NetworkTap resource = manager.networkTaps()
+            .getByResourceGroupWithResponse("example-rg", "example-networkTap", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key8793", new UserAssignedIdentity())))
+            .withPollingType(PollingType.PULL)
+            .withDestinationsForUpdate(Arrays.asList(new DestinationPatchProperties().withName("example-destinaionName")
+                .withDestinationType(DestinationType.ISOLATION_DOMAIN)
+                .withDestinationId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/l3IsloationDomains/example-l3Domain/internalNetworks/example-internalNetwork")
+                .withIsolationDomainProperties(new IsolationDomainPatchProperties()
+                    .withEncapsulation(Encapsulation.NONE)
+                    .withNeighborGroupIds(Arrays.asList(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")))
+                .withDestinationTapRuleId(
+                    "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkTapRules/example-destinationTapRule")))
+            .withAnnotation("annotation1").apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

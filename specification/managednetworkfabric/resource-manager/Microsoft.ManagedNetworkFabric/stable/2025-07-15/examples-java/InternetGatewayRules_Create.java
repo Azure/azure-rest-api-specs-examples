@@ -1,0 +1,46 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.Action;
+import com.azure.resourcemanager.managednetworkfabric.models.HeaderAddressProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.RuleCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.RuleProperties;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for InternetGatewayRules Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/InternetGatewayRules_Create.json
+     */
+    /**
+     * Sample code: InternetGatewayRules_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void internetGatewayRulesCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.internetGatewayRules().define("example-internetGatewayRule").withRegion("eastus")
+            .withExistingResourceGroup("example-rg")
+            .withRuleProperties(
+                new RuleProperties().withAction(Action.ALLOW).withAddressList(Arrays.asList("10.10.10.10"))
+                    .withCondition(RuleCondition.OR).withDestinationAddressList(Arrays.asList("11.11.10.11"))
+                    .withSourceAddressList(Arrays.asList("10.10.10.10"))
+                    .withHeaderAddressList(Arrays.asList(new HeaderAddressProperties().withHeaderName("abcHeader")
+                        .withAddressList(Arrays.asList("10.10.10.10")))))
+            .withTags(mapOf("KeyID", "fakeTokenPlaceholder")).withAnnotation("annotationValue").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

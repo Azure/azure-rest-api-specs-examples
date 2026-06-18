@@ -1,0 +1,19 @@
+
+/**
+ * Samples for AccessControlLists GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/AccessControlLists_Get.json
+     */
+    /**
+     * Sample code: AccessControlLists_Get_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void accessControlListsGetMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.accessControlLists().getByResourceGroupWithResponse("example-rg", "example-acl",
+            com.azure.core.util.Context.NONE);
+    }
+}

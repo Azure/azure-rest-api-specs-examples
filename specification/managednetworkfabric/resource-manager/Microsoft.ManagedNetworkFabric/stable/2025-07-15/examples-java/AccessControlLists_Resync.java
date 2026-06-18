@@ -1,0 +1,18 @@
+
+/**
+ * Samples for AccessControlLists Resync.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/AccessControlLists_Resync.json
+     */
+    /**
+     * Sample code: AccessControlLists_Resync_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void accessControlListsResyncMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.accessControlLists().resync("example-rg", "example-acl", com.azure.core.util.Context.NONE);
+    }
+}

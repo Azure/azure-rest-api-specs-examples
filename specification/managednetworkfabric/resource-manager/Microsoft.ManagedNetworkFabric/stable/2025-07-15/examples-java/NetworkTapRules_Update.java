@@ -1,0 +1,102 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
+import com.azure.resourcemanager.managednetworkfabric.models.CommonDynamicMatchConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ConfigurationType;
+import com.azure.resourcemanager.managednetworkfabric.models.EncapsulationType;
+import com.azure.resourcemanager.managednetworkfabric.models.GlobalNetworkTapRuleActionPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IdentitySelectorPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.IpAddressType;
+import com.azure.resourcemanager.managednetworkfabric.models.IpGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpMatchConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.Layer4Protocol;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentitySelectorType;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRule;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleActionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleMatchConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleMatchConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.PortConditionPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.PortGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortType;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixType;
+import com.azure.resourcemanager.managednetworkfabric.models.SourceDestinationType;
+import com.azure.resourcemanager.managednetworkfabric.models.TapRuleActionType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanGroupPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanMatchConditionPatch;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkTapRules Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkTapRules_Update.json
+     */
+    /**
+     * Sample code: NetworkTapRules_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkTapRulesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        NetworkTapRule resource = manager.networkTapRules()
+            .getByResourceGroupWithResponse("example-rg", "example-tapRule", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf("key872", new UserAssignedIdentity())))
+            .withAnnotation("annotation").withConfigurationType(ConfigurationType.FILE)
+            .withTapRulesUrl("https://microsoft.com/amdsdx")
+            .withMatchConfigurationsForUpdate(
+                Arrays.asList(new NetworkTapRuleMatchConfigurationPatch().withMatchConfigurationName("config1")
+                    .withSequenceNumber(10L).withIpAddressType(IpAddressType.IPV4)
+                    .withMatchConditions(Arrays.asList(new NetworkTapRuleMatchConditionPatch()
+                        .withProtocolTypes(Arrays.asList("TCP"))
+                        .withVlanMatchCondition(new VlanMatchConditionPatch().withVlans(Arrays.asList("20-30"))
+                            .withInnerVlans(Arrays.asList("30")).withVlanGroupNames(Arrays.asList("example-vlanGroup")))
+                        .withIpCondition(new IpMatchConditionPatch().withType(SourceDestinationType.SOURCE_IP)
+                            .withPrefixType(PrefixType.PREFIX).withIpPrefixValues(Arrays.asList("10.20.20.20/12"))
+                            .withIpGroupNames(Arrays.asList("example-ipGroup")))
+                        .withEncapsulationType(EncapsulationType.NONE)
+                        .withPortCondition(
+                            new PortConditionPatch()
+                                .withPortType(PortType.SOURCE_PORT).withLayer4Protocol(Layer4Protocol.TCP)
+                                .withPorts(Arrays.asList("100"))
+                                .withPortGroupNames(Arrays.asList("example-portGroup1")))))
+                    .withActions(Arrays.asList(new NetworkTapRuleActionPatch().withType(TapRuleActionType.DROP)
+                        .withTruncate("100").withIsTimestampEnabled(BooleanEnumProperty.TRUE)
+                        .withDestinationId(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")
+                        .withMatchConfigurationName("match1")))))
+            .withDynamicMatchConfigurationsForUpdate(Arrays.asList(new CommonDynamicMatchConfigurationPatch()
+                .withIpGroups(Arrays.asList(new IpGroupPatchProperties().withName("example-ipGroup")
+                    .withIpAddressType(IpAddressType.IPV4).withIpPrefixes(Arrays.asList("10.20.3.1/20"))))
+                .withVlanGroups(Arrays.asList(
+                    new VlanGroupPatchProperties().withName("example-vlanGroup").withVlans(Arrays.asList("20-30"))))
+                .withPortGroups(Arrays.asList(
+                    new PortGroupPatchProperties().withName("example-portGroup").withPorts(Arrays.asList("100-200"))))))
+            .withIdentitySelector(new IdentitySelectorPatch()
+                .withIdentityType(ManagedServiceIdentitySelectorType.USER_ASSIGNED_IDENTITY)
+                .withUserAssignedIdentityResourceId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/example-identity"))
+            .withGlobalNetworkTapRuleActions(new GlobalNetworkTapRuleActionPatchProperties()
+                .withEnableCount(BooleanEnumProperty.TRUE).withTruncate("truncate-name"))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

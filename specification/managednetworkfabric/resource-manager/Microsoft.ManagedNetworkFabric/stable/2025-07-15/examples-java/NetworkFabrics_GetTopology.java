@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkFabrics GetTopology.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkFabrics_GetTopology.json
+     */
+    /**
+     * Sample code: NetworkFabrics_GetTopology_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricsGetTopologyMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkFabrics().getTopology("example-rg", "example-fabric", com.azure.core.util.Context.NONE);
+    }
+}

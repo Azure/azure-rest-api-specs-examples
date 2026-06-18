@@ -1,0 +1,68 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.BfdPatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.BmpConfigurationState;
+import com.azure.resourcemanager.managednetworkfabric.models.ExportRoutePolicyInformationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ImportRoutePolicyInformationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.Layer2ConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.MicroBfdState;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkToNetworkInterconnect;
+import com.azure.resourcemanager.managednetworkfabric.models.NniBmpPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NniStaticRoutePatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.NpbStaticRouteConfigurationPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.OptionBLayer3ConfigurationPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.OptionBLayer3PrefixLimitPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRoutePatchProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for NetworkToNetworkInterconnects Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkToNetworkInterconnects_Update.json
+     */
+    /**
+     * Sample code: NetworkToNetworkInterconnects_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkToNetworkInterconnectsUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        NetworkToNetworkInterconnect resource = manager.networkToNetworkInterconnects()
+            .getWithResponse("example-rg", "example-nf", "example-nni", com.azure.core.util.Context.NONE).getValue();
+        resource.update()
+            .withLayer2Configuration(new Layer2ConfigurationPatch().withMtu(1500).withInterfaces(Arrays.asList(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-networkInterface")))
+            .withOptionBLayer3Configuration(new OptionBLayer3ConfigurationPatchProperties()
+                .withPrimaryIpv4Prefix("20.0.0.12/29").withPrimaryIpv6Prefix("4FFE:FFFF:0:CD30::a8/127")
+                .withSecondaryIpv4Prefix("20.0.0.14/29").withSecondaryIpv6Prefix("6FFE:FFFF:0:CD30::ac/127")
+                .withPeerAsn(2345L).withVlanId(1235).withPeLoopbackIpAddress(Arrays.asList("10.0.0.1"))
+                .withBmpConfiguration(new NniBmpPatchProperties().withConfigurationState(BmpConfigurationState.ENABLED))
+                .withPrefixLimits(Arrays.asList(new OptionBLayer3PrefixLimitPatchProperties().withMaximumRoutes(1))))
+            .withNpbStaticRouteConfiguration(new NpbStaticRouteConfigurationPatch()
+                .withBfdConfiguration(new BfdPatchConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withIpv4Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("10.0.0.1/24").withNextHop(Arrays.asList("10.0.0.1"))))
+                .withIpv6Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("fe80::/64").withNextHop(Arrays.asList("fe80::1")))))
+            .withStaticRouteConfiguration(new NniStaticRoutePatchConfiguration()
+                .withBfdConfiguration(new BfdPatchConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withIpv4Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("10.0.0.1").withNextHop(Arrays.asList("10.0.0.1"))))
+                .withIpv6Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("2fff::/64").withNextHop(Arrays.asList("3ffe::1")))))
+            .withImportRoutePolicy(new ImportRoutePolicyInformationPatch().withImportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                .withImportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"))
+            .withExportRoutePolicy(new ExportRoutePolicyInformationPatch().withExportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                .withExportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy"))
+            .withEgressAclId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+            .withIngressAclId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+            .withMicroBfdState(MicroBfdState.ENABLED).apply();
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for NetworkToNetworkInterconnects Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkToNetworkInterconnects_Get.json
+     */
+    /**
+     * Sample code: NetworkToNetworkInterconnects_Get_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkToNetworkInterconnectsGetMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkToNetworkInterconnects().getWithResponse("example-rg", "example-nf", "example-nni",
+            com.azure.core.util.Context.NONE);
+    }
+}

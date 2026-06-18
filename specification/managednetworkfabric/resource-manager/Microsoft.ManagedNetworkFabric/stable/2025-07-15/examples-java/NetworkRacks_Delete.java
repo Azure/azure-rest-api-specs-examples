@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkRacks Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkRacks_Delete.json
+     */
+    /**
+     * Sample code: NetworkRacks_Delete_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkRacksDeleteMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkRacks().delete("example-rg", "example-rack", com.azure.core.util.Context.NONE);
+    }
+}

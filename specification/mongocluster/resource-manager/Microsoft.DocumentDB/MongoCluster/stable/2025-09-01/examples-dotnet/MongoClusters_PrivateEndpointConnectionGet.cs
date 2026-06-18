@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoClusterPrivateEndpointConnectionResource created on azure
-// for more information of creating MongoClusterPrivateEndpointConnectionResource, please refer to the document of MongoClusterPrivateEndpointConnectionResource
+// this example assumes you already have this MongoClusterResource created on azure
+// for more information of creating MongoClusterResource, please refer to the document of MongoClusterResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string mongoClusterName = "myMongoCluster";
-string privateEndpointConnectionName = "pecTest.5d393f64-ef64-46d0-9959-308321c44ac0";
-ResourceIdentifier mongoClusterPrivateEndpointConnectionResourceId = MongoClusterPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, mongoClusterName, privateEndpointConnectionName);
-MongoClusterPrivateEndpointConnectionResource mongoClusterPrivateEndpointConnectionResource = client.GetMongoClusterPrivateEndpointConnectionResource(mongoClusterPrivateEndpointConnectionResourceId);
+ResourceIdentifier mongoClusterResourceId = MongoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, mongoClusterName);
+MongoClusterResource mongoCluster = client.GetMongoClusterResource(mongoClusterResourceId);
+
+// get the collection of this MongoClusterPrivateEndpointConnectionResource
+MongoClusterPrivateEndpointConnectionResourceCollection collection = mongoCluster.GetMongoClusterPrivateEndpointConnectionResources();
 
 // invoke the operation
-MongoClusterPrivateEndpointConnectionResource result = await mongoClusterPrivateEndpointConnectionResource.GetAsync();
+string privateEndpointConnectionName = "pecTest.5d393f64-ef64-46d0-9959-308321c44ac0";
+NullableResponse<MongoClusterPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+MongoClusterPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MongoClusterPrivateEndpointConnectionResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MongoClusterPrivateEndpointConnectionResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

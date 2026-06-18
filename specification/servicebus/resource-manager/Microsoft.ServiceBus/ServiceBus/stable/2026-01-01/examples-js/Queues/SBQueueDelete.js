@@ -1,0 +1,15 @@
+const { ServiceBusManagementClient } = require("@azure/arm-servicebus");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes a queue from the specified namespace in a resource group.
+ *
+ * @summary deletes a queue from the specified namespace in a resource group.
+ * x-ms-original-file: 2026-01-01/Queues/SBQueueDelete.json
+ */
+async function queueDelete() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
+  const client = new ServiceBusManagementClient(credential, subscriptionId);
+  await client.queues.delete("ArunMonocle", "sdk-Namespace-183", "sdk-Queues-8708");
+}

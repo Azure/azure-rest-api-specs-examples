@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.servicefabric.models.ApplicationMetricDescription;
+import com.azure.resourcemanager.servicefabric.models.ApplicationResource;
+import java.util.Arrays;
+
+/**
+ * Samples for Applications Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/ApplicationPatchOperation_example.json
+     */
+    /**
+     * Sample code: Patch an application.
+     * 
+     * @param manager Entry point to ServiceFabricManager.
+     */
+    public static void patchAnApplication(com.azure.resourcemanager.servicefabric.ServiceFabricManager manager) {
+        ApplicationResource resource = manager.applications()
+            .getWithResponse("resRg", "myCluster", "myApp", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTypeVersion("1.0").withRemoveApplicationCapacity(false)
+            .withMetrics(Arrays.asList(new ApplicationMetricDescription().withName("metric1").withMaximumCapacity(3L)
+                .withReservationCapacity(1L).withTotalApplicationCapacity(5L)))
+            .apply();
+    }
+}

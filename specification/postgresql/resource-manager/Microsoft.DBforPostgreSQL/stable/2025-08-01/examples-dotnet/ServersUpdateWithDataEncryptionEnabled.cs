@@ -22,7 +22,7 @@ string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
+PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = FlexibleServersExtensions.GetPostgreSqlFlexibleServerResource(client, postgreSqlFlexibleServerResourceId);
 
 // invoke the operation
 PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch

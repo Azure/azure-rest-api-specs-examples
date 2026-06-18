@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation locationName = new AzureLocation("eastus");
-await foreach (PostgreSqlFlexibleServerQuotaUsage item in subscriptionResource.GetQuotaUsagesAsync(locationName))
+await foreach (PostgreSqlFlexibleServerQuotaUsage item in FlexibleServersExtensions.GetQuotaUsagesAsync(subscriptionResource, locationName))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

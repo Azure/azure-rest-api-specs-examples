@@ -22,7 +22,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 PostgreSqlFlexibleServerTuningOptionType tuningOption = PostgreSqlFlexibleServerTuningOptionType.Table;
 ResourceIdentifier postgreSqlFlexibleServerTuningOptionResourceId = PostgreSqlFlexibleServerTuningOptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, tuningOption);
-PostgreSqlFlexibleServerTuningOptionResource postgreSqlFlexibleServerTuningOption = client.GetPostgreSqlFlexibleServerTuningOptionResource(postgreSqlFlexibleServerTuningOptionResourceId);
+PostgreSqlFlexibleServerTuningOptionResource postgreSqlFlexibleServerTuningOption = FlexibleServersExtensions.GetPostgreSqlFlexibleServerTuningOptionResource(client, postgreSqlFlexibleServerTuningOptionResourceId);
 
 // invoke the operation and iterate over the result
 await foreach (ObjectRecommendation item in postgreSqlFlexibleServerTuningOption.GetRecommendationsAsync())

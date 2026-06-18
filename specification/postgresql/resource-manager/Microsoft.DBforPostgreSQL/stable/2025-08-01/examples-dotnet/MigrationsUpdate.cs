@@ -22,7 +22,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string migrationName = "examplemigration";
 ResourceIdentifier postgreSqlMigrationResourceId = PostgreSqlMigrationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, migrationName);
-PostgreSqlMigrationResource postgreSqlMigration = client.GetPostgreSqlMigrationResource(postgreSqlMigrationResourceId);
+PostgreSqlMigrationResource postgreSqlMigration = FlexibleServersExtensions.GetPostgreSqlMigrationResource(client, postgreSqlMigrationResourceId);
 
 // invoke the operation
 PostgreSqlMigrationPatch patch = new PostgreSqlMigrationPatch

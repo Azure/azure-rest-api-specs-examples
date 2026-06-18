@@ -25,7 +25,7 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // get the collection of this PostgreSqlFlexibleServerResource
-PostgreSqlFlexibleServerCollection collection = resourceGroupResource.GetPostgreSqlFlexibleServers();
+PostgreSqlFlexibleServerCollection collection = FlexibleServersExtensions.GetPostgreSqlFlexibleServers(resourceGroupResource);
 
 // invoke the operation
 string serverName = "exampleserver";

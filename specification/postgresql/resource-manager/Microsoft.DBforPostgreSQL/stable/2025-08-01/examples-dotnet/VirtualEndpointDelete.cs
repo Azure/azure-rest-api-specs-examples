@@ -22,7 +22,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string virtualEndpointName = "examplebasename";
 ResourceIdentifier virtualEndpointResourceId = VirtualEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, virtualEndpointName);
-VirtualEndpointResource virtualEndpointResource = client.GetVirtualEndpointResource(virtualEndpointResourceId);
+VirtualEndpointResource virtualEndpointResource = FlexibleServersExtensions.GetVirtualEndpointResource(client, virtualEndpointResourceId);
 
 // invoke the operation
 await virtualEndpointResource.DeleteAsync(WaitUntil.Completed);

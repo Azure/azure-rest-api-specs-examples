@@ -22,7 +22,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string firewallRuleName = "examplefirewallrule";
 ResourceIdentifier postgreSqlFlexibleServerFirewallRuleResourceId = PostgreSqlFlexibleServerFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
-PostgreSqlFlexibleServerFirewallRuleResource postgreSqlFlexibleServerFirewallRule = client.GetPostgreSqlFlexibleServerFirewallRuleResource(postgreSqlFlexibleServerFirewallRuleResourceId);
+PostgreSqlFlexibleServerFirewallRuleResource postgreSqlFlexibleServerFirewallRule = FlexibleServersExtensions.GetPostgreSqlFlexibleServerFirewallRuleResource(client, postgreSqlFlexibleServerFirewallRuleResourceId);
 
 // invoke the operation
 PostgreSqlFlexibleServerFirewallRuleResource result = await postgreSqlFlexibleServerFirewallRule.GetAsync();

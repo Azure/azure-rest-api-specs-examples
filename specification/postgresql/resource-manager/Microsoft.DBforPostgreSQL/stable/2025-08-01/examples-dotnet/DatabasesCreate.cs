@@ -21,7 +21,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string databaseName = "exampledatabase";
 ResourceIdentifier postgreSqlFlexibleServerDatabaseResourceId = PostgreSqlFlexibleServerDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-PostgreSqlFlexibleServerDatabaseResource postgreSqlFlexibleServerDatabase = client.GetPostgreSqlFlexibleServerDatabaseResource(postgreSqlFlexibleServerDatabaseResourceId);
+PostgreSqlFlexibleServerDatabaseResource postgreSqlFlexibleServerDatabase = FlexibleServersExtensions.GetPostgreSqlFlexibleServerDatabaseResource(client, postgreSqlFlexibleServerDatabaseResourceId);
 
 // invoke the operation
 PostgreSqlFlexibleServerDatabaseData data = new PostgreSqlFlexibleServerDatabaseData

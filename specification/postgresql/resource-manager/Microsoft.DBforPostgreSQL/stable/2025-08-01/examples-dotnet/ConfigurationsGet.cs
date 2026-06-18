@@ -21,7 +21,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string configurationName = "array_nulls";
 ResourceIdentifier postgreSqlFlexibleServerConfigurationResourceId = PostgreSqlFlexibleServerConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, configurationName);
-PostgreSqlFlexibleServerConfigurationResource postgreSqlFlexibleServerConfiguration = client.GetPostgreSqlFlexibleServerConfigurationResource(postgreSqlFlexibleServerConfigurationResourceId);
+PostgreSqlFlexibleServerConfigurationResource postgreSqlFlexibleServerConfiguration = FlexibleServersExtensions.GetPostgreSqlFlexibleServerConfigurationResource(client, postgreSqlFlexibleServerConfigurationResourceId);
 
 // invoke the operation
 PostgreSqlFlexibleServerConfigurationResource result = await postgreSqlFlexibleServerConfiguration.GetAsync();

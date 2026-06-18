@@ -6961,3 +6961,4 @@ id,name,language,tag,package,version,date_epoch,date
 6960,"Azure.ResourceManager.NewRelicObservability,1.2.0-beta.2",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0-beta.2,Azure.ResourceManager.NewRelicObservability,1.2.0-beta.2,1781688916,06/17/2026
 6961,"Azure.ResourceManager.StorageMover,1.4.1",dotnet,Azure.ResourceManager.StorageMover_1.4.1,Azure.ResourceManager.StorageMover,1.4.1,1781683733,06/17/2026
 6962,@azure/arm-frontdoor@6.0.0-beta.1,js,@azure/arm-frontdoor_6.0.0-beta.1,@azure/arm-frontdoor,6.0.0-beta.1,1781776808,06/18/2026
+6963,com.azure.resourcemanager:azure-resourcemanager-managednetworkfabric:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-managednetworkfabric_2.0.0,com.azure.resourcemanager+azure-resourcemanager-managednetworkfabric,2.0.0,1781746691,06/18/2026

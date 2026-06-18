@@ -1,0 +1,16 @@
+const { PaloAltoNetworksCloudngfw } = require("@azure/arm-paloaltonetworksngfw");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to execute listProductSerialNumberStatus
+ *
+ * @summary execute listProductSerialNumberStatus
+ * x-ms-original-file: 2026-05-11-preview/PaloAltoNetworksCloudngfwOperations_listProductSerialNumberStatus_MinimumSet_Gen.json
+ */
+async function paloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
+  const client = new PaloAltoNetworksCloudngfw(credential, subscriptionId);
+  const result = await client.paloAltoNetworksCloudngfwOperations.listProductSerialNumberStatus();
+  console.log(result);
+}

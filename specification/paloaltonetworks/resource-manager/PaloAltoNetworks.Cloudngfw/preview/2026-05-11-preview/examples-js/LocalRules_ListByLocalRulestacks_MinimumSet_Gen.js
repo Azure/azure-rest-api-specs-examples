@@ -1,0 +1,20 @@
+const { PaloAltoNetworksCloudngfw } = require("@azure/arm-paloaltonetworksngfw");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to list LocalRulesResource resources by LocalRulestacks
+ *
+ * @summary list LocalRulesResource resources by LocalRulestacks
+ * x-ms-original-file: 2026-05-11-preview/LocalRules_ListByLocalRulestacks_MinimumSet_Gen.json
+ */
+async function localRulesListByLocalRulestacksMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
+  const client = new PaloAltoNetworksCloudngfw(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.localRules.listByLocalRulestacks("firewall-rg", "lrs1")) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

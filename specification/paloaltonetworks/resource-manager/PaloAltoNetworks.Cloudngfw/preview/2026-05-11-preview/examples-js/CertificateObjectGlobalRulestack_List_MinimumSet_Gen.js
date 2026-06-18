@@ -1,0 +1,19 @@
+const { PaloAltoNetworksCloudngfw } = require("@azure/arm-paloaltonetworksngfw");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to list CertificateObjectGlobalRulestackResource resources by Tenant
+ *
+ * @summary list CertificateObjectGlobalRulestackResource resources by Tenant
+ * x-ms-original-file: 2026-05-11-preview/CertificateObjectGlobalRulestack_List_MinimumSet_Gen.json
+ */
+async function certificateObjectGlobalRulestackListMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const client = new PaloAltoNetworksCloudngfw(credential);
+  const resArray = new Array();
+  for await (const item of client.certificateObjectGlobalRulestack.list("praval")) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

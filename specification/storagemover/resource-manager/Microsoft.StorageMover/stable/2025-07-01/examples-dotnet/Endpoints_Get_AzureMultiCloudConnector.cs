@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageMoverEndpointResource created on azure
-// for more information of creating StorageMoverEndpointResource, please refer to the document of StorageMoverEndpointResource
+// this example assumes you already have this StorageMoverResource created on azure
+// for more information of creating StorageMoverResource, please refer to the document of StorageMoverResource
 string subscriptionId = "60bcfc77-6589-4da2-b7fd-f9ec9322cf95";
 string resourceGroupName = "examples-rg";
 string storageMoverName = "examples-storageMoverName";
-string endpointName = "examples-endpointName";
-ResourceIdentifier storageMoverEndpointResourceId = StorageMoverEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageMoverName, endpointName);
-StorageMoverEndpointResource storageMoverEndpoint = client.GetStorageMoverEndpointResource(storageMoverEndpointResourceId);
+ResourceIdentifier storageMoverResourceId = StorageMoverResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageMoverName);
+StorageMoverResource storageMover = client.GetStorageMoverResource(storageMoverResourceId);
+
+// get the collection of this StorageMoverEndpointResource
+StorageMoverEndpointCollection collection = storageMover.GetStorageMoverEndpoints();
 
 // invoke the operation
-StorageMoverEndpointResource result = await storageMoverEndpoint.GetAsync();
+string endpointName = "examples-endpointName";
+NullableResponse<StorageMoverEndpointResource> response = await collection.GetIfExistsAsync(endpointName);
+StorageMoverEndpointResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StorageMoverEndpointData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StorageMoverEndpointData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

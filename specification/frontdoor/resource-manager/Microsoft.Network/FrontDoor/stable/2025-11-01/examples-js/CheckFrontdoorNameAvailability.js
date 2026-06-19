@@ -1,0 +1,18 @@
+const { FrontDoorManagementClient } = require("@azure/arm-frontdoor");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to check the availability of a Front Door resource name.
+ *
+ * @summary check the availability of a Front Door resource name.
+ * x-ms-original-file: 2025-11-01/CheckFrontdoorNameAvailability.json
+ */
+async function checkNameAvailability() {
+  const credential = new DefaultAzureCredential();
+  const client = new FrontDoorManagementClient(credential);
+  const result = await client.frontDoorNameAvailability.check({
+    name: "sampleName",
+    type: "Microsoft.Network/frontDoors",
+  });
+  console.log(result);
+}

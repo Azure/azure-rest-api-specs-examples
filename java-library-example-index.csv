@@ -6965,3 +6965,4 @@ id,name,language,tag,package,version,date_epoch,date
 6964,"Azure.ResourceManager.PostgreSql,1.5.0-beta.1",dotnet,Azure.ResourceManager.PostgreSql_1.5.0-beta.1,Azure.ResourceManager.PostgreSql,1.5.0-beta.1,1781675232,06/17/2026
 6965,"Azure.ResourceManager.MongoCluster,1.1.0-beta.1",dotnet,Azure.ResourceManager.MongoCluster_1.1.0-beta.1,Azure.ResourceManager.MongoCluster,1.1.0-beta.1,1781624332,06/16/2026
 6966,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/napsteromniagentapi/armnapsteromniagentapi@v0.1.0,go,sdk/resourcemanager/napsteromniagentapi/armnapsteromniagentapi/v0.1.0,sdk/resourcemanager/napsteromniagentapi/armnapsteromniagentapi,v0.1.0,1781865280,06/19/2026
+6967,@azure/arm-napsteromniagentapi@1.0.0-beta.1,js,@azure/arm-napsteromniagentapi_1.0.0-beta.1,@azure/arm-napsteromniagentapi,1.0.0-beta.1,1781865124,06/19/2026

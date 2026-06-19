@@ -1,0 +1,47 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ExtendedVlan;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for L2IsolationDomains Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/L2IsolationDomains_Create.json
+     */
+    /**
+     * Sample code: L2IsolationDomains_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void l2IsolationDomainsCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.l2IsolationDomains().define("example-l2domain").withRegion("eastus")
+            .withExistingResourceGroup("example-rg")
+            .withNetworkFabricId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric")
+            .withVlanId(501).withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key3673", new UserAssignedIdentity())))
+            .withMtu(1500).withExtendedVlan(ExtendedVlan.ENABLED)
+            .withNetworkToNetworkInterconnectId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni")
+            .withAnnotation("annotation").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

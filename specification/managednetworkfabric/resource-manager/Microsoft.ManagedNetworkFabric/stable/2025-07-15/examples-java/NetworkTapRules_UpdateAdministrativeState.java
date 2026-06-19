@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.EnableDisableState;
+import com.azure.resourcemanager.managednetworkfabric.models.UpdateAdministrativeState;
+import java.util.Arrays;
+
+/**
+ * Samples for NetworkTapRules UpdateAdministrativeState.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkTapRules_UpdateAdministrativeState.json
+     */
+    /**
+     * Sample code: NetworkTapRules_UpdateAdministrativeState_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkTapRulesUpdateAdministrativeStateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkTapRules().updateAdministrativeState("example-rg", "example-tapRule",
+            new UpdateAdministrativeState().withResourceIds(Arrays.asList(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkTapRules/example-tapRule"))
+                .withState(EnableDisableState.ENABLE),
+            com.azure.core.util.Context.NONE);
+    }
+}

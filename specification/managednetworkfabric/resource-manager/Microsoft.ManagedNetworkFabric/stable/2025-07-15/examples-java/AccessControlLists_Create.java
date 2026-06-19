@@ -1,0 +1,97 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListAction;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListMatchCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListMatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListPortCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.AclActionType;
+import com.azure.resourcemanager.managednetworkfabric.models.AclType;
+import com.azure.resourcemanager.managednetworkfabric.models.BitRate;
+import com.azure.resourcemanager.managednetworkfabric.models.BitRateUnit;
+import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
+import com.azure.resourcemanager.managednetworkfabric.models.BurstSize;
+import com.azure.resourcemanager.managednetworkfabric.models.BurstSizeUnit;
+import com.azure.resourcemanager.managednetworkfabric.models.CommonDynamicMatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.ConfigurationType;
+import com.azure.resourcemanager.managednetworkfabric.models.DeviceRole;
+import com.azure.resourcemanager.managednetworkfabric.models.GlobalAccessControlListActionProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IcmpConfigurationProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpAddressType;
+import com.azure.resourcemanager.managednetworkfabric.models.IpGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpMatchCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.Layer4Protocol;
+import com.azure.resourcemanager.managednetworkfabric.models.PoliceRateConfigurationProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortType;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixType;
+import com.azure.resourcemanager.managednetworkfabric.models.SourceDestinationType;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanMatchCondition;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for AccessControlLists Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/AccessControlLists_Create.json
+     */
+    /**
+     * Sample code: AccessControlLists_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void accessControlListsCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.accessControlLists().define("example-acl").withRegion("eastUs").withExistingResourceGroup("example-rg")
+            .withConfigurationType(ConfigurationType.FILE).withTags(mapOf("keyID", "fakeTokenPlaceholder"))
+            .withAnnotation("annotation").withAclsUrl("https://ACL-Storage-URL")
+            .withDefaultAction(CommunityActionTypes.PERMIT)
+            .withMatchConfigurations(Arrays.asList(new AccessControlListMatchConfiguration()
+                .withMatchConfigurationName("example-match").withSequenceNumber(123L)
+                .withIpAddressType(IpAddressType.IPV4)
+                .withMatchConditions(Arrays.asList(new AccessControlListMatchCondition()
+                    .withProtocolTypes(Arrays.asList("TCP"))
+                    .withVlanMatchCondition(new VlanMatchCondition().withVlans(Arrays.asList("20-30"))
+                        .withInnerVlans(Arrays.asList("30")).withVlanGroupNames(Arrays.asList("example-vlanGroup")))
+                    .withIpCondition(new IpMatchCondition().withType(SourceDestinationType.SOURCE_IP)
+                        .withPrefixType(PrefixType.PREFIX).withIpPrefixValues(Arrays.asList("10.20.20.20/12"))
+                        .withIpGroupNames(Arrays.asList("example-ipGroup")))
+                    .withEtherTypes(Arrays.asList("0x1")).withFragments(Arrays.asList("0xff00-0xffff"))
+                    .withIpLengths(Arrays.asList("4094-9214")).withTtlValues(Arrays.asList("23"))
+                    .withDscpMarkings(Arrays.asList("32")).withProtocolNeighbors(Arrays.asList("example-neighbor"))
+                    .withPortCondition(new AccessControlListPortCondition().withPortType(PortType.SOURCE_PORT)
+                        .withLayer4Protocol(Layer4Protocol.TCP).withPorts(Arrays.asList("1-20"))
+                        .withPortGroupNames(Arrays.asList("example-portGroup")).withFlags(Arrays.asList("established")))
+                    .withIcmpConfiguration(new IcmpConfigurationProperties().withIcmpTypes(Arrays.asList("echo")))))
+                .withActions(Arrays.asList(new AccessControlListAction().withType(AclActionType.COUNT)
+                    .withCounterName("example-counter").withRemarkComment("example-remark")
+                    .withPoliceRateConfiguration(new PoliceRateConfigurationProperties()
+                        .withBitRate(new BitRate().withRate(15L).withUnit(BitRateUnit.BPS))
+                        .withBurstSize(new BurstSize().withSize(2L).withUnit(BurstSizeUnit.BYTES)))))))
+            .withDynamicMatchConfigurations(Arrays.asList(new CommonDynamicMatchConfiguration()
+                .withIpGroups(Arrays.asList(new IpGroupProperties().withName("example-ipGroup")
+                    .withIpAddressType(IpAddressType.IPV4).withIpPrefixes(Arrays.asList("10.20.3.1/20"))))
+                .withVlanGroups(Arrays
+                    .asList(new VlanGroupProperties().withName("example-vlanGroup").withVlans(Arrays.asList("20-30"))))
+                .withPortGroups(Arrays.asList(
+                    new PortGroupProperties().withName("example-portGroup").withPorts(Arrays.asList("100-200"))))))
+            .withAclType(AclType.CP).withDeviceRole(DeviceRole.CE).withGlobalAccessControlListActions(
+                new GlobalAccessControlListActionProperties().withEnableCount(BooleanEnumProperty.TRUE))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

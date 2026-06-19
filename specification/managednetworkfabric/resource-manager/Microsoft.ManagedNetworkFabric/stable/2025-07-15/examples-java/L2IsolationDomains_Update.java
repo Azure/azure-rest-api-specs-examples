@@ -1,0 +1,46 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.L2IsolationDomain;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for L2IsolationDomains Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/L2IsolationDomains_Update.json
+     */
+    /**
+     * Sample code: L2IsolationDomains_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void l2IsolationDomainsUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        L2IsolationDomain resource = manager.l2IsolationDomains()
+            .getByResourceGroupWithResponse("example-rg", "example-l2domain", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key8793", new UserAssignedIdentity())))
+            .withMtu(6000)
+            .withNetworkToNetworkInterconnectId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni")
+            .withAnnotation("annotation1").apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

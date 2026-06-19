@@ -1,0 +1,83 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AllowASOverride;
+import com.azure.resourcemanager.managednetworkfabric.models.BfdPatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.BgpPatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.BmpConfigurationState;
+import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
+import com.azure.resourcemanager.managednetworkfabric.models.ConnectedSubnetPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ExportRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.ImportRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.InternalNetwork;
+import com.azure.resourcemanager.managednetworkfabric.models.InternalNetworkBmpPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IsMonitoringEnabled;
+import com.azure.resourcemanager.managednetworkfabric.models.NativeIpv4PrefixLimitPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NativeIpv6PrefixLimitPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NeighborAddressPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixLimitPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRoutePatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRoutePatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.V4OverV6BgpSessionState;
+import com.azure.resourcemanager.managednetworkfabric.models.V6OverV4BgpSessionState;
+import java.util.Arrays;
+
+/**
+ * Samples for InternalNetworks Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/InternalNetworks_Update.json
+     */
+    /**
+     * Sample code: InternalNetworks_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void internalNetworksUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        InternalNetwork resource = manager.internalNetworks()
+            .getWithResponse("example-rg", "example-l3isd", "example-internalnetwork", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withAnnotation("annotation").withMtu(1500)
+            .withConnectedIPv4SubnetsForUpdate(
+                Arrays.asList(new ConnectedSubnetPatch().withAnnotation("annotation").withPrefix("10.0.0.0/24")))
+            .withConnectedIPv6SubnetsForUpdate(
+                Arrays.asList(new ConnectedSubnetPatch().withAnnotation("annotation").withPrefix("10.0.0.0/24")))
+            .withImportRoutePolicy(new ImportRoutePolicy().withImportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName")
+                .withImportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"))
+            .withExportRoutePolicy(new ExportRoutePolicy().withExportIpv4RoutePolicyId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName")
+                .withExportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"))
+            .withIngressAclId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+            .withEgressAclId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl")
+            .withIsMonitoringEnabled(IsMonitoringEnabled.TRUE)
+            .withBgpConfiguration(new BgpPatchConfiguration().withAnnotation("annotation")
+                .withBfdConfiguration(new BfdPatchConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withDefaultRouteOriginate(BooleanEnumProperty.TRUE).withAllowAS(10)
+                .withAllowASOverride(AllowASOverride.ENABLE).withPeerAsn(61234L)
+                .withIpv4ListenRangePrefixes(Arrays.asList("10.1.0.0/25"))
+                .withIpv6ListenRangePrefixes(Arrays.asList("2fff::/66"))
+                .withIpv4NeighborAddress(Arrays.asList(new NeighborAddressPatch().withAddress("10.1.0.0")))
+                .withIpv6NeighborAddress(Arrays.asList(new NeighborAddressPatch().withAddress("10.1.0.0")))
+                .withBmpConfiguration(
+                    new InternalNetworkBmpPatchProperties().withNeighborIpExclusions(Arrays.asList("10.0.0.10"))
+                        .withBmpConfigurationState(BmpConfigurationState.ENABLED))
+                .withV4OverV6BgpSession(V4OverV6BgpSessionState.ENABLED)
+                .withV6OverV4BgpSession(V6OverV4BgpSessionState.ENABLED))
+            .withStaticRouteConfiguration(new StaticRoutePatchConfiguration()
+                .withBfdConfiguration(new BfdPatchConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))
+                .withIpv4Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("jffgck").withNextHop(Arrays.asList("10.0.0.1"))))
+                .withIpv6Routes(Arrays.asList(
+                    new StaticRoutePatchProperties().withPrefix("jffgck").withNextHop(Arrays.asList("10.0.0.1")))))
+            .withNativeIpv4PrefixLimit(new NativeIpv4PrefixLimitPatchProperties().withPrefixLimits(Arrays.asList(
+                new PrefixLimitPatchProperties().withMaximumRoutes(24).withThreshold(6).withIdleTimeExpiry(20))))
+            .withNativeIpv6PrefixLimit(new NativeIpv6PrefixLimitPatchProperties().withPrefixLimits(Arrays.asList(
+                new PrefixLimitPatchProperties().withMaximumRoutes(24).withThreshold(6).withIdleTimeExpiry(20))))
+            .apply();
+    }
+}

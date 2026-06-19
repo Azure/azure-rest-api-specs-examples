@@ -1,0 +1,57 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ExpressRouteConnectionInformation;
+import com.azure.resourcemanager.managednetworkfabric.models.IsWorkloadManagementNetworkEnabled;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedResourceGroupConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NfcSku;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkFabricControllers Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkFabricControllers_Create.json
+     */
+    /**
+     * Sample code: NetworkFabricControllers_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricControllersCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkFabricControllers().define("example-networkController").withRegion("eastus")
+            .withExistingResourceGroup("example-rg").withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key4876", new UserAssignedIdentity())))
+            .withAnnotation("annotation")
+            .withInfrastructureExpressRouteConnections(Arrays.asList(new ExpressRouteConnectionInformation()
+                .withExpressRouteCircuitId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .withWorkloadExpressRouteConnections(Arrays.asList(new ExpressRouteConnectionInformation()
+                .withExpressRouteCircuitId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .withManagedResourceGroupConfiguration(
+                new ManagedResourceGroupConfiguration().withName("managedResourceGroupName").withLocation("eastus"))
+            .withIsWorkloadManagementNetworkEnabled(IsWorkloadManagementNetworkEnabled.TRUE)
+            .withIpv4AddressSpace("172.253.0.0/19").withIpv6AddressSpace("::/60").withNfcSku(NfcSku.STANDARD).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

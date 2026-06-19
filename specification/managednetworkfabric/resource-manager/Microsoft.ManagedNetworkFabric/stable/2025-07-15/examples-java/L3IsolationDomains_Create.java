@@ -1,0 +1,70 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AggregateRoute;
+import com.azure.resourcemanager.managednetworkfabric.models.AggregateRouteConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.ConnectedSubnetRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.L3ExportRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.L3UniqueRouteDistinguisherProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.RedistributeConnectedSubnets;
+import com.azure.resourcemanager.managednetworkfabric.models.RedistributeStaticRoutes;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePrefixLimitProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRouteRoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for L3IsolationDomains Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/L3IsolationDomains_Create.json
+     */
+    /**
+     * Sample code: L3IsolationDomains_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void l3IsolationDomainsCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.l3IsolationDomains().define("example-l3domain").withRegion("eastus")
+            .withExistingResourceGroup("example-rg")
+            .withNetworkFabricId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric")
+            .withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key3673", new UserAssignedIdentity())))
+            .withAnnotation("annotation").withRedistributeConnectedSubnets(RedistributeConnectedSubnets.TRUE)
+            .withRedistributeStaticRoutes(RedistributeStaticRoutes.TRUE)
+            .withAggregateRouteConfiguration(new AggregateRouteConfiguration()
+                .withIpv4Routes(Arrays.asList(new AggregateRoute().withPrefix("10.0.0.0/24")))
+                .withIpv6Routes(Arrays.asList(new AggregateRoute().withPrefix("3FFE:FFFF:0:CD30::a0/29"))))
+            .withConnectedSubnetRoutePolicy(new ConnectedSubnetRoutePolicy()
+                .withExportRoutePolicy(new L3ExportRoutePolicy().withExportIpv4RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                    .withExportIpv6RoutePolicyId(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")))
+            .withStaticRouteRoutePolicy(new StaticRouteRoutePolicy().withExportRoutePolicy(new L3ExportRoutePolicy()
+                .withExportIpv4RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                .withExportIpv6RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")))
+            .withUniqueRdConfiguration(new L3UniqueRouteDistinguisherProperties())
+            .withV4routePrefixLimit(new RoutePrefixLimitProperties().withHardLimit(1000).withThreshold(90))
+            .withV6routePrefixLimit(new RoutePrefixLimitProperties().withHardLimit(1000).withThreshold(90)).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

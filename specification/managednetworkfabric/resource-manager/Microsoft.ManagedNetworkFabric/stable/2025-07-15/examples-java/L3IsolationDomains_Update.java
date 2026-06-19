@@ -1,0 +1,73 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AggregateRoute;
+import com.azure.resourcemanager.managednetworkfabric.models.AggregateRoutePatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.BmpExportPolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.BmpExportPolicyPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ConnectedSubnetRoutePolicyPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.L3ExportRoutePolicyPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.L3IsolationDomain;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.RedistributeConnectedSubnets;
+import com.azure.resourcemanager.managednetworkfabric.models.RedistributeStaticRoutes;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePrefixLimitPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StaticRouteRoutePolicyPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for L3IsolationDomains Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/L3IsolationDomains_Update.json
+     */
+    /**
+     * Sample code: L3IsolationDomains_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void l3IsolationDomainsUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        L3IsolationDomain resource = manager.l3IsolationDomains()
+            .getByResourceGroupWithResponse("example-rg", "example-l3domain", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key8793", new UserAssignedIdentity())))
+            .withAnnotation("annotation1").withRedistributeConnectedSubnets(RedistributeConnectedSubnets.TRUE)
+            .withRedistributeStaticRoutes(RedistributeStaticRoutes.TRUE)
+            .withAggregateRouteConfiguration(new AggregateRoutePatchConfiguration()
+                .withIpv4Routes(Arrays.asList(new AggregateRoute().withPrefix("10.0.0.0/24")))
+                .withIpv6Routes(Arrays.asList(new AggregateRoute().withPrefix("3FFE:FFFF:0:CD30::a0/29"))))
+            .withConnectedSubnetRoutePolicy(new ConnectedSubnetRoutePolicyPatch()
+                .withExportRoutePolicy(new L3ExportRoutePolicyPatch().withExportIpv4RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                    .withExportIpv6RoutePolicyId(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")))
+            .withStaticRouteRoutePolicy(new StaticRouteRoutePolicyPatch()
+                .withExportRoutePolicy(new L3ExportRoutePolicyPatch().withExportIpv4RoutePolicyId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")
+                    .withExportIpv6RoutePolicyId(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-routePolicy")))
+            .withV4routePrefixLimit(new RoutePrefixLimitPatchProperties().withHardLimit(1000).withThreshold(50))
+            .withV6routePrefixLimit(new RoutePrefixLimitPatchProperties().withHardLimit(1000).withThreshold(50))
+            .withExportPolicyConfiguration(
+                new BmpExportPolicyPatchProperties().withExportPolicies(Arrays.asList(BmpExportPolicy.PRE_POLICY)))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

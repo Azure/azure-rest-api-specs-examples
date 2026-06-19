@@ -1,0 +1,43 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.IpExtendedCommunity;
+import com.azure.resourcemanager.managednetworkfabric.models.IpExtendedCommunityRule;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for IpExtendedCommunities Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/IpExtendedCommunities_Update.json
+     */
+    /**
+     * Sample code: IpExtendedCommunities_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void ipExtendedCommunitiesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        IpExtendedCommunity resource = manager.ipExtendedCommunities().getByResourceGroupWithResponse("example-rg",
+            "example-ipExtendedCommunity", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("KeyId", "fakeTokenPlaceholder")).withAnnotation("annotation")
+            .withIpExtendedCommunityRules(
+                Arrays.asList(new IpExtendedCommunityRule().withAction(CommunityActionTypes.PERMIT)
+                    .withSequenceNumber(4155123341L).withRouteTargets(Arrays.asList("1234:2345"))))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,50 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.IdentitySelector;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentitySelectorType;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkDevices Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkDevices_Create.json
+     */
+    /**
+     * Sample code: NetworkDevices_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkDevicesCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkDevices().define("example-device").withRegion("eastuseuap")
+            .withExistingResourceGroup("example-rg").withSerialNumber("Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX")
+            .withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/example-identity",
+                    new UserAssignedIdentity())))
+            .withAnnotation("annotation").withHostname("NFA-Device")
+            .withIdentitySelector(new IdentitySelector()
+                .withIdentityType(ManagedServiceIdentitySelectorType.USER_ASSIGNED_IDENTITY)
+                .withUserAssignedIdentityResourceId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/example-identity"))
+            .withNetworkDeviceSku("DeviceSku").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

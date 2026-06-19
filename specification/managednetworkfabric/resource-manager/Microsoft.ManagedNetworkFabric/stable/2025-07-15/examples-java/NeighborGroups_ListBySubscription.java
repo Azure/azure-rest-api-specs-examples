@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NeighborGroups List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NeighborGroups_ListBySubscription.json
+     */
+    /**
+     * Sample code: NeighborGroups_ListBySubscription_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void neighborGroupsListBySubscriptionMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.neighborGroups().list(com.azure.core.util.Context.NONE);
+    }
+}

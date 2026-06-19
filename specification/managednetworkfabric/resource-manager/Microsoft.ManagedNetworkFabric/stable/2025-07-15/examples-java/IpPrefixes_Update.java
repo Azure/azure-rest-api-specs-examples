@@ -1,0 +1,45 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.Condition;
+import com.azure.resourcemanager.managednetworkfabric.models.IpPrefix;
+import com.azure.resourcemanager.managednetworkfabric.models.IpPrefixRule;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for IpPrefixes Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/IpPrefixes_Update.json
+     */
+    /**
+     * Sample code: IpPrefixes_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void ipPrefixesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        IpPrefix resource = manager.ipPrefixes()
+            .getByResourceGroupWithResponse("example-rg", "example-ipPrefix", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("KeyId", "fakeTokenPlaceholder")).withAnnotation("annotation")
+            .withIpPrefixRules(Arrays.asList(new IpPrefixRule().withAction(CommunityActionTypes.PERMIT)
+                .withSequenceNumber(4155123341L).withNetworkPrefix("10.10.10.10/30")
+                .withCondition(Condition.GREATER_THAN_OR_EQUAL_TO).withSubnetMaskLength("10")))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

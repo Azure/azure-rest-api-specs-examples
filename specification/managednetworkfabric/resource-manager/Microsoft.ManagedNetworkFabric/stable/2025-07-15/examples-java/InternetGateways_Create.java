@@ -1,0 +1,42 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.GatewayType;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for InternetGateways Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/InternetGateways_Create.json
+     */
+    /**
+     * Sample code: InternetGateways_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void internetGatewaysCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.internetGateways().define("example-internetGateway").withRegion("eastus")
+            .withExistingResourceGroup("example-rg")
+            .withNetworkFabricControllerId(
+                "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-networkFabricController")
+            .withTags(mapOf("keyId", "fakeTokenPlaceholder")).withAnnotation("annotation")
+            .withInternetGatewayRuleId(
+                "/subscriptions/xxxx-xxxx-xxxx-xxxx/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/example-internetGatewayRule")
+            .withTypePropertiesType(GatewayType.INFRASTRUCTURE).withInternetGatewayType(GatewayType.INFRASTRUCTURE)
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

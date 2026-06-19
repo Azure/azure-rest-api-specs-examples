@@ -1,0 +1,97 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
+import com.azure.resourcemanager.managednetworkfabric.models.CommonDynamicMatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.ConfigurationType;
+import com.azure.resourcemanager.managednetworkfabric.models.EncapsulationType;
+import com.azure.resourcemanager.managednetworkfabric.models.GlobalNetworkTapRuleActionProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IdentitySelector;
+import com.azure.resourcemanager.managednetworkfabric.models.IpAddressType;
+import com.azure.resourcemanager.managednetworkfabric.models.IpGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.IpMatchCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.Layer4Protocol;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentitySelectorType;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleAction;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleMatchCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkTapRuleMatchConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.PortCondition;
+import com.azure.resourcemanager.managednetworkfabric.models.PortGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.PortType;
+import com.azure.resourcemanager.managednetworkfabric.models.PrefixType;
+import com.azure.resourcemanager.managednetworkfabric.models.SourceDestinationType;
+import com.azure.resourcemanager.managednetworkfabric.models.TapRuleActionType;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanGroupProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VlanMatchCondition;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkTapRules Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkTapRules_Create.json
+     */
+    /**
+     * Sample code: NetworkTapRules_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkTapRulesCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkTapRules().define("example-tapRule").withRegion("eastuseuap")
+            .withExistingResourceGroup("example-rg").withConfigurationType(ConfigurationType.FILE)
+            .withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf("key872", new UserAssignedIdentity())))
+            .withAnnotation("annotation").withTapRulesUrl("https://microsoft.com/a")
+            .withIdentitySelector(new IdentitySelector()
+                .withIdentityType(ManagedServiceIdentitySelectorType.USER_ASSIGNED_IDENTITY)
+                .withUserAssignedIdentityResourceId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/example-identity"))
+            .withMatchConfigurations(
+                Arrays.asList(new NetworkTapRuleMatchConfiguration().withMatchConfigurationName("config1")
+                    .withSequenceNumber(10L).withIpAddressType(IpAddressType.IPV4)
+                    .withMatchConditions(Arrays.asList(new NetworkTapRuleMatchCondition()
+                        .withProtocolTypes(Arrays.asList("TCP"))
+                        .withVlanMatchCondition(new VlanMatchCondition().withVlans(Arrays.asList("20-30"))
+                            .withInnerVlans(Arrays.asList("30")).withVlanGroupNames(Arrays.asList("example-vlanGroup")))
+                        .withIpCondition(new IpMatchCondition().withType(SourceDestinationType.SOURCE_IP)
+                            .withPrefixType(PrefixType.PREFIX).withIpPrefixValues(Arrays.asList("10.20.20.20/12"))
+                            .withIpGroupNames(Arrays.asList("example-ipGroup")))
+                        .withEncapsulationType(EncapsulationType.NONE)
+                        .withPortCondition(new PortCondition().withPortType(PortType.SOURCE_PORT)
+                            .withLayer4Protocol(Layer4Protocol.TCP).withPorts(Arrays.asList("100"))
+                            .withPortGroupNames(Arrays.asList("example-portGroup1")))))
+                    .withActions(Arrays.asList(new NetworkTapRuleAction().withType(TapRuleActionType.DROP)
+                        .withTruncate("100").withIsTimestampEnabled(BooleanEnumProperty.TRUE)
+                        .withDestinationId(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")
+                        .withMatchConfigurationName("match1")))))
+            .withDynamicMatchConfigurations(Arrays.asList(new CommonDynamicMatchConfiguration()
+                .withIpGroups(Arrays.asList(new IpGroupProperties().withName("example-ipGroup")
+                    .withIpAddressType(IpAddressType.IPV4).withIpPrefixes(Arrays.asList("10.20.3.1/20"))))
+                .withVlanGroups(Arrays
+                    .asList(new VlanGroupProperties().withName("example-vlanGroup").withVlans(Arrays.asList("20-30"))))
+                .withPortGroups(Arrays.asList(
+                    new PortGroupProperties().withName("example-portGroup").withPorts(Arrays.asList("100-200"))))))
+            .withPollingIntervalInSeconds(30).withGlobalNetworkTapRuleActions(new GlobalNetworkTapRuleActionProperties()
+                .withEnableCount(BooleanEnumProperty.TRUE).withTruncate("truncate-name"))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

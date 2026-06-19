@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkTaps List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkTaps_ListBySubscription.json
+     */
+    /**
+     * Sample code: NetworkTaps_ListBySubscription_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkTapsListBySubscriptionMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkTaps().list(com.azure.core.util.Context.NONE);
+    }
+}

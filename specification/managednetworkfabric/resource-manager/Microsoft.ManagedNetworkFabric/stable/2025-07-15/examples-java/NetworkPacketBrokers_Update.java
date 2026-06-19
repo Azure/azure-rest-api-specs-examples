@@ -1,0 +1,42 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityPatch;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NetworkPacketBroker;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkPacketBrokers Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkPacketBrokers_Update.json
+     */
+    /**
+     * Sample code: NetworkPacketBrokers_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkPacketBrokersUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        NetworkPacketBroker resource = manager.networkPacketBrokers().getByResourceGroupWithResponse("example-rg",
+            "example-networkPacketBroker", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentityPatch().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key8793", new UserAssignedIdentity())))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

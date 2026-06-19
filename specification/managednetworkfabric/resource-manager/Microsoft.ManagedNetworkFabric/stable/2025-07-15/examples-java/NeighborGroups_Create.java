@@ -1,0 +1,47 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.NeighborGroupDestination;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NeighborGroups Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NeighborGroups_Create.json
+     */
+    /**
+     * Sample code: NeighborGroups_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void neighborGroupsCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.neighborGroups().define("example-neighborGroup").withRegion("eastus")
+            .withExistingResourceGroup("example-rg")
+            .withDestination(new NeighborGroupDestination()
+                .withIpv4Addresses(Arrays.asList("10.10.10.10", "20.10.10.10", "30.10.10.10", "40.10.10.10",
+                    "50.10.10.10", "60.10.10.10", "70.10.10.10", "80.10.10.10", "90.10.10.10"))
+                .withIpv6Addresses(Arrays.asList("2F::/100")))
+            .withTags(mapOf("KeyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key3673", new UserAssignedIdentity())))
+            .withAnnotation("annotation").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

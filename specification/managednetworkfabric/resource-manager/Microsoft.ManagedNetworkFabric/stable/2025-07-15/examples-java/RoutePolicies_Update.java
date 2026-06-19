@@ -1,0 +1,74 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.ActionIpCommunityPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.ActionIpExtendedCommunityPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
+import com.azure.resourcemanager.managednetworkfabric.models.IpCommunityIdList;
+import com.azure.resourcemanager.managednetworkfabric.models.IpExtendedCommunityIdList;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePolicy;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePolicyActionType;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePolicyConditionType;
+import com.azure.resourcemanager.managednetworkfabric.models.RoutePolicyStatementPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StatementActionPatchProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.StatementConditionPatchProperties;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for RoutePolicies Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/RoutePolicies_Update.json
+     */
+    /**
+     * Sample code: RoutePolicies_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void routePoliciesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        RoutePolicy resource = manager.routePolicies()
+            .getByResourceGroupWithResponse("example-rg", "example-routePolicy", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withDefaultAction(CommunityActionTypes.PERMIT)
+            .withStatementsForUpdate(Arrays.asList(new RoutePolicyStatementPatchProperties()
+                .withAnnotation("annotation").withSequenceNumber(7L)
+                .withCondition(new StatementConditionPatchProperties().withIpCommunityIds(Arrays.asList(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"))
+                    .withIpExtendedCommunityIds(Arrays.asList(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity"))
+                    .withType(RoutePolicyConditionType.OR).withIpPrefixId(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix"))
+                .withAction(new StatementActionPatchProperties().withLocalPreference(20L)
+                    .withActionType(RoutePolicyActionType.PERMIT)
+                    .withIpCommunityProperties(new ActionIpCommunityPatchProperties()
+                        .withAdd(new IpCommunityIdList().withIpCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")))
+                        .withDelete(new IpCommunityIdList().withIpCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity")))
+                        .withSet(new IpCommunityIdList().withIpCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipCommunity"))))
+                    .withIpExtendedCommunityProperties(new ActionIpExtendedCommunityPatchProperties()
+                        .withAdd(new IpExtendedCommunityIdList().withIpExtendedCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")))
+                        .withDelete(new IpExtendedCommunityIdList().withIpExtendedCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")))
+                        .withSet(new IpExtendedCommunityIdList().withIpExtendedCommunityIds(Arrays.asList(
+                            "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipExtendedCommunity")))))))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for InternetGatewayRules GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/InternetGatewayRules_Get.json
+     */
+    /**
+     * Sample code: InternetGatewayRules_Get_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void internetGatewayRulesGetMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.internetGatewayRules().getByResourceGroupWithResponse("example-rg", "example-internetGatewayRule",
+            com.azure.core.util.Context.NONE);
+    }
+}

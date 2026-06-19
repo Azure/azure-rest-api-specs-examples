@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkFabrics Provision.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkFabrics_Provision.json
+     */
+    /**
+     * Sample code: NetworkFabrics_Provision_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricsProvisionMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkFabrics().provision("example-rg", "example-fabric", com.azure.core.util.Context.NONE);
+    }
+}

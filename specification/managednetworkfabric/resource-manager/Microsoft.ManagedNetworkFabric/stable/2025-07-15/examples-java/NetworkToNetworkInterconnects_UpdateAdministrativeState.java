@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.EnableDisableState;
+import com.azure.resourcemanager.managednetworkfabric.models.UpdateAdministrativeState;
+import java.util.Arrays;
+
+/**
+ * Samples for NetworkToNetworkInterconnects UpdateAdministrativeState.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkToNetworkInterconnects_UpdateAdministrativeState.json
+     */
+    /**
+     * Sample code: NetworkToNetworkInterconnects_UpdateAdministrativeState_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkToNetworkInterconnectsUpdateAdministrativeStateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkToNetworkInterconnects().updateAdministrativeState("example-rg", "example-nf", "example-nni",
+            new UpdateAdministrativeState().withResourceIds(Arrays.asList(
+                "/subscriptions/0000ABCD-0A0B-0000-0000-000000ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-nf/networkToNetworkInterconnects/example-nni"))
+                .withState(EnableDisableState.ENABLE),
+            com.azure.core.util.Context.NONE);
+    }
+}

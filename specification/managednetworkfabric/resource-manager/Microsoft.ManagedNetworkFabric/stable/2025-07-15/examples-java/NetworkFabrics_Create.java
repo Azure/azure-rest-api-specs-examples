@@ -1,0 +1,113 @@
+
+import com.azure.resourcemanager.managednetworkfabric.models.AuthorizedTransceiverProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.BfdConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.IdentitySelector;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentitySelectorType;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagementNetworkConfigurationProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.NNIDerivedUniqueRouteDistinguisherConfigurationState;
+import com.azure.resourcemanager.managednetworkfabric.models.PeeringOption;
+import com.azure.resourcemanager.managednetworkfabric.models.RouteTargetInformation;
+import com.azure.resourcemanager.managednetworkfabric.models.StorageAccountConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.TerminalServerConfiguration;
+import com.azure.resourcemanager.managednetworkfabric.models.UniqueRouteDistinguisherConfigurationState;
+import com.azure.resourcemanager.managednetworkfabric.models.UniqueRouteDistinguisherProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.UserAssignedIdentity;
+import com.azure.resourcemanager.managednetworkfabric.models.VpnConfigurationProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VpnOptionAProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.VpnOptionBProperties;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NetworkFabrics Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-15/NetworkFabrics_Create.json
+     */
+    /**
+     * Sample code: NetworkFabrics_Create_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricsCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager.networkFabrics().define("example-fabric").withRegion("eastuseuap")
+            .withExistingResourceGroup("example-rg").withNetworkFabricSku("M4-A400-A100-C16-aa")
+            .withNetworkFabricControllerId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-fabricController")
+            .withServerCountPerRack(8).withIpv4Prefix("10.18.0.0/19").withFabricAsn(29249L)
+            .withTerminalServerConfiguration(new TerminalServerConfiguration().withUsername("username")
+                .withPassword("fakeTokenPlaceholder").withSerialNumber("123456").withPrimaryIpv4Prefix("10.0.0.12/30")
+                .withPrimaryIpv6Prefix("4FFE:FFFF:0:CD30::a8/127").withSecondaryIpv4Prefix("40.0.0.14/30")
+                .withSecondaryIpv6Prefix("6FFE:FFFF:0:CD30::ac/127"))
+            .withManagementNetworkConfiguration(new ManagementNetworkConfigurationProperties()
+                .withInfrastructureVpnConfiguration(new VpnConfigurationProperties().withNetworkToNetworkInterconnectId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni")
+                    .withPeeringOption(PeeringOption.OPTIONA)
+                    .withOptionBProperties(
+                        new VpnOptionBProperties().withImportRouteTargets(Arrays.asList("65046:10050"))
+                            .withExportRouteTargets(Arrays.asList("65046:10050")).withRouteTargets(
+                                new RouteTargetInformation().withImportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                                    .withImportIpv6RouteTargets(Arrays.asList("65046:10050"))
+                                    .withExportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                                    .withExportIpv6RouteTargets(Arrays.asList("65046:10050"))))
+                    .withOptionAProperties(new VpnOptionAProperties().withPrimaryIpv4Prefix("10.0.0.12/30")
+                        .withPrimaryIpv6Prefix("4FFE:FFFF:0:CD30::a8/127").withSecondaryIpv4Prefix("20.0.0.13/30")
+                        .withSecondaryIpv6Prefix("6FFE:FFFF:0:CD30::ac/127").withMtu(1501).withVlanId(3001)
+                        .withPeerASN(1235L).withBfdConfiguration(
+                            new BfdConfiguration().withIntervalInMilliSeconds(300).withMultiplier(10))))
+                .withWorkloadVpnConfiguration(new VpnConfigurationProperties().withNetworkToNetworkInterconnectId(
+                    "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni")
+                    .withPeeringOption(PeeringOption.OPTIONA)
+                    .withOptionBProperties(
+                        new VpnOptionBProperties().withImportRouteTargets(Arrays.asList("65046:10050"))
+                            .withExportRouteTargets(Arrays.asList("65046:10050")).withRouteTargets(
+                                new RouteTargetInformation().withImportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                                    .withImportIpv6RouteTargets(Arrays.asList("65046:10050"))
+                                    .withExportIpv4RouteTargets(Arrays.asList("65046:10050"))
+                                    .withExportIpv6RouteTargets(Arrays.asList("65046:10050"))))
+                    .withOptionAProperties(new VpnOptionAProperties().withPrimaryIpv4Prefix("10.0.0.14/30")
+                        .withPrimaryIpv6Prefix("2FFE:FFFF:0:CD30::a7/126").withSecondaryIpv4Prefix("10.0.0.15/30")
+                        .withSecondaryIpv6Prefix("2FFE:FFFF:0:CD30::ac/126").withMtu(1500).withVlanId(3000)
+                        .withPeerASN(61234L).withBfdConfiguration(
+                            new BfdConfiguration().withIntervalInMilliSeconds(300).withMultiplier(5)))))
+            .withTags(mapOf("keyId", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key872", new UserAssignedIdentity())))
+            .withFabricVersion("version1")
+            .withStorageAccountConfiguration(new StorageAccountConfiguration().withStorageAccountId(
+                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.Storage/storageAccounts/nfStorage")
+                .withStorageAccountIdentity(new IdentitySelector()
+                    .withIdentityType(ManagedServiceIdentitySelectorType.USER_ASSIGNED_IDENTITY)
+                    .withUserAssignedIdentityResourceId(
+                        "/subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-id")))
+            .withRackCount(4).withIpv6Prefix("3FFE:FFFF:0:CD40::/59").withHardwareAlertThreshold(74)
+            .withControlPlaneAcls(Arrays.asList(
+                "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"))
+            .withTrustedIpPrefixes(Arrays.asList(
+                "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-prefix"))
+            .withUniqueRdConfiguration(new UniqueRouteDistinguisherProperties()
+                .withUniqueRdConfigurationState(UniqueRouteDistinguisherConfigurationState.ENABLED)
+                .withNniDerivedUniqueRdConfigurationState(NNIDerivedUniqueRouteDistinguisherConfigurationState.ENABLED))
+            .withStorageArrayCount(1)
+            .withAuthorizedTransceiver(
+                new AuthorizedTransceiverProperties().withVendor("vendorX").withKey("fakeTokenPlaceholder"))
+            .withAnnotation("annotation").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

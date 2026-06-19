@@ -28,6 +28,6 @@ PostgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter postgreSqlFlexibleSer
 {
     VirtualNetworkArmResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/exampleresourcegroup/providers/Microsoft.Network/virtualNetworks/examplevirtualnetwork"),
 };
-PostgreSqlFlexibleServerVirtualNetworkSubnetUsageResult result = await subscriptionResource.ExecuteVirtualNetworkSubnetUsageAsync(locationName, postgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter);
+PostgreSqlFlexibleServerVirtualNetworkSubnetUsageResult result = await FlexibleServersExtensions.ExecuteVirtualNetworkSubnetUsageAsync(subscriptionResource, locationName, postgreSqlFlexibleServerVirtualNetworkSubnetUsageParameter);
 
 Console.WriteLine($"Succeeded: {result}");

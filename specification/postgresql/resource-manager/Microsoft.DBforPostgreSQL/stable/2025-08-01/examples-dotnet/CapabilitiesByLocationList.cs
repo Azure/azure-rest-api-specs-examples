@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation locationName = new AzureLocation("eastus");
-await foreach (PostgreSqlFlexibleServerCapabilityProperties item in subscriptionResource.ExecuteLocationBasedCapabilitiesAsync(locationName))
+await foreach (PostgreSqlFlexibleServerCapabilityProperties item in FlexibleServersExtensions.ExecuteLocationBasedCapabilitiesAsync(subscriptionResource, locationName))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

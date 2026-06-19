@@ -28,6 +28,6 @@ PostgreSqlFlexibleServerNameAvailabilityContent content = new PostgreSqlFlexible
 {
     ResourceType = new ResourceType("Microsoft.DBforPostgreSQL/flexibleServers"),
 };
-PostgreSqlFlexibleServerNameAvailabilityResult result = await subscriptionResource.CheckPostgreSqlFlexibleServerNameAvailabilityWithLocationAsync(locationName, content);
+PostgreSqlFlexibleServerNameAvailabilityResult result = await FlexibleServersExtensions.CheckPostgreSqlFlexibleServerNameAvailabilityWithLocationAsync(subscriptionResource, locationName, content);
 
 Console.WriteLine($"Succeeded: {result}");

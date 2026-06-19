@@ -21,7 +21,7 @@ string resourceGroupName = "exampleresourcegroup";
 string serverName = "exampleserver";
 string backupName = "ondemandbackup-20250601T183022";
 ResourceIdentifier postgreSqlFlexibleServerBackupResourceId = PostgreSqlFlexibleServerBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, backupName);
-PostgreSqlFlexibleServerBackupResource postgreSqlFlexibleServerBackup = client.GetPostgreSqlFlexibleServerBackupResource(postgreSqlFlexibleServerBackupResourceId);
+PostgreSqlFlexibleServerBackupResource postgreSqlFlexibleServerBackup = FlexibleServersExtensions.GetPostgreSqlFlexibleServerBackupResource(client, postgreSqlFlexibleServerBackupResourceId);
 
 // invoke the operation
 await postgreSqlFlexibleServerBackup.DeleteAsync(WaitUntil.Completed);

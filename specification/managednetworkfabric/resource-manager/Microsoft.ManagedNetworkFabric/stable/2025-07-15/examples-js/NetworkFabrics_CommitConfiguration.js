@@ -1,0 +1,19 @@
+const { AzureNetworkFabricManagementServiceAPI } = require("@azure/arm-managednetworkfabric");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to atomic update of the given Network Fabric instance. Sync update of NFA resources at Fabric level.
+ *
+ * @summary atomic update of the given Network Fabric instance. Sync update of NFA resources at Fabric level.
+ * x-ms-original-file: 2025-07-15/NetworkFabrics_CommitConfiguration.json
+ */
+async function networkFabricsCommitConfigurationMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "0000ABCD-0A0B-0000-0000-000000ABCDEF";
+  const client = new AzureNetworkFabricManagementServiceAPI(credential, subscriptionId);
+  const result = await client.networkFabrics.commitConfiguration(
+    "example-rg",
+    "example-networkFabric",
+  );
+  console.log(result);
+}

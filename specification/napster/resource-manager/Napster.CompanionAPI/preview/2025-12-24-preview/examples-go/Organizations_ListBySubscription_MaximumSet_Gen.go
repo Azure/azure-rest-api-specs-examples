@@ -1,0 +1,99 @@
+package armnapsteromniagentapi_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/napsteromniagentapi/armnapsteromniagentapi"
+)
+
+// Generated from example definition: 2025-12-24-preview/Organizations_ListBySubscription_MaximumSet_Gen.json
+func ExampleOrganizationsClient_NewListBySubscriptionPager_organizationsListBySubscriptionMaximumSetGeneratedByMaximumSetRule() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnapsteromniagentapi.NewClientFactory("0F0FBCF9-8374-47FC-B189-B79B84033EA3", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOrganizationsClient().NewListBySubscriptionPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armnapsteromniagentapi.OrganizationsClientListBySubscriptionResponse{
+		// 	OrganizationResourceListResult: armnapsteromniagentapi.OrganizationResourceListResult{
+		// 		Value: []*armnapsteromniagentapi.OrganizationResource{
+		// 			{
+		// 				Properties: &armnapsteromniagentapi.OrganizationProperties{
+		// 					Marketplace: &armnapsteromniagentapi.MarketplaceDetails{
+		// 						SubscriptionID: to.Ptr("a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"),
+		// 						SubscriptionStatus: to.Ptr(armnapsteromniagentapi.MarketplaceSubscriptionStatusPendingFulfillmentStart),
+		// 						OfferDetails: &armnapsteromniagentapi.OfferDetails{
+		// 							PublisherID: to.Ptr("contoso"),
+		// 							OfferID: to.Ptr("contoso-saas-app"),
+		// 							PlanID: to.Ptr("standard-plan"),
+		// 							PlanName: to.Ptr("Standard Plan"),
+		// 							TermUnit: to.Ptr("P1M"),
+		// 							TermID: to.Ptr("monthly-term-001"),
+		// 						},
+		// 						SaasResourceID: to.Ptr("/subscriptions/a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d/resourceGroups/rgopenapi/providers/Microsoft.SaaS/resources/contosoSaaS"),
+		// 					},
+		// 					User: &armnapsteromniagentapi.UserDetails{
+		// 						FirstName: to.Ptr("John"),
+		// 						LastName: to.Ptr("Doe"),
+		// 						EmailAddress: to.Ptr("john.doe@contoso.com"),
+		// 						Upn: to.Ptr("john.doe@contoso.com"),
+		// 						PhoneNumber: to.Ptr("+1-425-555-1234"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armnapsteromniagentapi.ResourceProvisioningStateSucceeded),
+		// 					PartnerProperties: &armnapsteromniagentapi.PartnerProperties{
+		// 						Application: to.Ptr("Contoso App"),
+		// 					},
+		// 					SingleSignOnProperties: &armnapsteromniagentapi.SingleSignOnPropertiesV2{
+		// 						Type: to.Ptr(armnapsteromniagentapi.SingleSignOnTypeSaml),
+		// 						State: to.Ptr(armnapsteromniagentapi.SingleSignOnStatesInitial),
+		// 						EnterpriseAppID: to.Ptr("b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e"),
+		// 						URL: to.Ptr("https://login.contoso.com"),
+		// 						AADDomains: []*string{
+		// 							to.Ptr("contoso.com"),
+		// 						},
+		// 					},
+		// 				},
+		// 				Identity: &armnapsteromniagentapi.ManagedServiceIdentity{
+		// 					PrincipalID: to.Ptr("c3d4e5f6-a7b8-4c5d-9e0f-1a2b3c4d5e6f"),
+		// 					TenantID: to.Ptr("d4e5f6a7-b8c9-4d5e-0f1a-2b3c4d5e6f7a"),
+		// 					Type: to.Ptr(armnapsteromniagentapi.ManagedServiceIdentityTypeNone),
+		// 					UserAssignedIdentities: map[string]*armnapsteromniagentapi.UserAssignedIdentity{
+		// 					},
+		// 				},
+		// 				Tags: map[string]*string{
+		// 				},
+		// 				Location: to.Ptr("eastus"),
+		// 				ID: to.Ptr("/subscriptions/0F0FBCF9-8374-47FC-B189-B79B84033EA3/resourceGroups/rgopenapi/providers/Napster.CompanionAPI/organizations/contosoOrg"),
+		// 				Name: to.Ptr("contosoOrg"),
+		// 				Type: to.Ptr("Napster.CompanionAPI/organizations"),
+		// 				SystemData: &armnapsteromniagentapi.SystemData{
+		// 					CreatedBy: to.Ptr("john.doe@contoso.com"),
+		// 					CreatedByType: to.Ptr(armnapsteromniagentapi.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-12-24T15:55:17.787Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("jane.smith@contoso.com"),
+		// 					LastModifiedByType: to.Ptr(armnapsteromniagentapi.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-12-24T15:55:17.787Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://management.azure.com/subscriptions/0F0FBCF9-8374-47FC-B189-B79B84033EA3/providers/Napster.CompanionAPI/organizations?api-version=2025-12-24-preview&$skiptoken=X'12345'"),
+		// 	},
+		// }
+	}
+}

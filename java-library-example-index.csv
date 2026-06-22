@@ -6968,3 +6968,4 @@ id,name,language,tag,package,version,date_epoch,date
 6967,@azure/arm-napsteromniagentapi@1.0.0-beta.1,js,@azure/arm-napsteromniagentapi_1.0.0-beta.1,@azure/arm-napsteromniagentapi,1.0.0-beta.1,1781865124,06/19/2026
 6968,@azure/arm-managednetworkfabric@2.0.0,js,@azure/arm-managednetworkfabric_2.0.0,@azure/arm-managednetworkfabric,2.0.0,1781794320,06/18/2026
 6969,com.azure.resourcemanager:azure-resourcemanager-napsteromniagentapi:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-napsteromniagentapi_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-napsteromniagentapi,1.0.0-beta.1,1781865232,06/19/2026
+6970,@azure/arm-powerplatform@1.0.0-beta.1,js,@azure/arm-powerplatform_1.0.0-beta.1,@azure/arm-powerplatform,1.0.0-beta.1,1782095897,06/22/2026

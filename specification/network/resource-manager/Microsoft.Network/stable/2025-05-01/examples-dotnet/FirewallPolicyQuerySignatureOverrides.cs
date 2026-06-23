@@ -40,6 +40,6 @@ IdpsQueryContent content = new IdpsQueryContent
     ResultsPerPage = 20,
     Skip = 0,
 };
-IdpsSignatureListResult result = await firewallPolicy.GetFirewallPolicyIdpsSignatureAsync(content);
+IdpsSignatureListResult result = await firewallPolicy.GetFirewallPolicyIdpsSignatureAsync(content, System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

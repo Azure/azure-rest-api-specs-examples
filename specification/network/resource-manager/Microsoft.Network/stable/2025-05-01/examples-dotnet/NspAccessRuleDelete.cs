@@ -26,6 +26,6 @@ ResourceIdentifier networkSecurityPerimeterAccessRuleResourceId = NetworkSecurit
 NetworkSecurityPerimeterAccessRuleResource networkSecurityPerimeterAccessRule = client.GetNetworkSecurityPerimeterAccessRuleResource(networkSecurityPerimeterAccessRuleResourceId);
 
 // invoke the operation
-await networkSecurityPerimeterAccessRule.DeleteAsync(WaitUntil.Completed);
+await networkSecurityPerimeterAccessRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

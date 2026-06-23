@@ -25,6 +25,6 @@ ResourceIdentifier networkPrivateEndpointConnectionResourceId = NetworkPrivateEn
 NetworkPrivateEndpointConnectionResource networkPrivateEndpointConnection = client.GetNetworkPrivateEndpointConnectionResource(networkPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-await networkPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
+await networkPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

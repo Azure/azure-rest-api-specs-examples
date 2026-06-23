@@ -37,11 +37,9 @@ LoadBalancerData data = new LoadBalancerData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"),
     },
-    Name = "fe-lb",
     }},
     BackendAddressPools = {new BackendAddressPoolData
     {
-    Name = "be-lb",
     }},
     LoadBalancingRules = {new LoadBalancingRuleData
     {
@@ -56,7 +54,6 @@ LoadBalancerData data = new LoadBalancerData
     EnableFloatingIP = true,
     EnableTcpReset = false,
     },
-    Name = "rulelb",
     }},
     Probes = {new ProbeData
     {
@@ -66,7 +63,6 @@ LoadBalancerData data = new LoadBalancerData
     NumberOfProbes = 2,
     ProbeThreshold = 1,
     RequestPath = "healthcheck.aspx",
-    Name = "probe-lb",
     }},
     InboundNatRules = {new InboundNatRuleData
     {
@@ -77,13 +73,12 @@ LoadBalancerData data = new LoadBalancerData
     IdleTimeoutInMinutes = 15,
     EnableFloatingIP = true,
     EnableTcpReset = false,
-    Name = "in-nat-rule",
     }},
     InboundNatPools = { },
     Scope = LoadBalancerScope.Public,
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data);
+ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data, cancellationToken: System.Threading.CancellationToken.None);
 LoadBalancerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

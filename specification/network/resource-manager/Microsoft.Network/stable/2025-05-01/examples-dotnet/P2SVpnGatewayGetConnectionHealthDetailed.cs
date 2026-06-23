@@ -29,7 +29,7 @@ P2SVpnConnectionHealthContent content = new P2SVpnConnectionHealthContent
     VpnUserNamesFilter = { "vpnUser1", "vpnUser2" },
     OutputBlobSasUri = new Uri("https://blobcortextesturl.blob.core.windows.net/folderforconfig/p2sconnectionhealths?sp=rw&se=2018-01-10T03%3A42%3A04Z&sv=2017-04-17&sig=WvXrT5bDmDFfgHs%2Brz%2BjAu123eRCNE9BO0eQYcPDT7pY%3D&sr=b"),
 };
-ArmOperation<P2SVpnConnectionHealth> lro = await p2sVpnGateway.GetP2SVpnConnectionHealthDetailedAsync(WaitUntil.Completed, content);
+ArmOperation<P2SVpnConnectionHealth> lro = await p2sVpnGateway.GetP2SVpnConnectionHealthDetailedAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 P2SVpnConnectionHealth result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

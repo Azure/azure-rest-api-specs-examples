@@ -26,7 +26,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 
 // invoke the operation
 bool? attemptRefresh = true;
-ArmOperation<GatewayResiliencyInformation> lro = await virtualNetworkGateway.GetResiliencyInformationAsync(WaitUntil.Completed, attemptRefresh: attemptRefresh);
+ArmOperation<GatewayResiliencyInformation> lro = await virtualNetworkGateway.GetResiliencyInformationAsync(WaitUntil.Completed, attemptRefresh: attemptRefresh, cancellationToken: System.Threading.CancellationToken.None);
 GatewayResiliencyInformation result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

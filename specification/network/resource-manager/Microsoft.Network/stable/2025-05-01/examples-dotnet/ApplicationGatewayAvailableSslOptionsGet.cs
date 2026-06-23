@@ -23,6 +23,6 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-ApplicationGatewayAvailableSslOptionsInfo result = await subscriptionResource.GetApplicationGatewayAvailableSslOptionsAsync();
+ApplicationGatewayAvailableSslOptionsInfo result = await subscriptionResource.GetApplicationGatewayAvailableSslOptionsAsync(System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

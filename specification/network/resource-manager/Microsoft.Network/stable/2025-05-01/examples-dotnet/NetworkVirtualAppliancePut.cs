@@ -54,11 +54,9 @@ NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
     NicType = NicTypeInRequest.PublicNic,
     VirtualApplianceNetworkInterfaceIPConfigurations = {new VirtualApplianceIPConfiguration
     {
-    Name = "publicnicipconfig",
     IsPrimary = true,
     }, new VirtualApplianceIPConfiguration
     {
-    Name = "publicnicipconfig-2",
     IsPrimary = false,
     }},
     }, new VirtualApplianceNetworkInterfaceConfiguration
@@ -66,17 +64,14 @@ NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
     NicType = NicTypeInRequest.PrivateNic,
     VirtualApplianceNetworkInterfaceIPConfigurations = {new VirtualApplianceIPConfiguration
     {
-    Name = "privatenicipconfig",
     IsPrimary = true,
     }, new VirtualApplianceIPConfiguration
     {
-    Name = "privatenicipconfig-2",
     IsPrimary = false,
     }},
     }},
     AdditionalNics = {new VirtualApplianceAdditionalNicProperties
     {
-    Name = "exrsdwan",
     HasPublicIP = true,
     }},
     InternetIngressPublicIPs = {new WritableSubResource
@@ -89,7 +84,7 @@ NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
     ["key1"] = "value1"
     },
 };
-ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data);
+ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkVirtualApplianceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

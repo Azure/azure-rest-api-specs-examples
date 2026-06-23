@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<BgpPeerStatusListResult> lro = await virtualNetworkGateway.GetBgpPeerStatusAsync(WaitUntil.Completed);
+ArmOperation<BgpPeerStatusListResult> lro = await virtualNetworkGateway.GetBgpPeerStatusAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 BgpPeerStatusListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

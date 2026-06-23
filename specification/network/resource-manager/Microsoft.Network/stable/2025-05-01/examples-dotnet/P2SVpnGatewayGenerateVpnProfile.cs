@@ -28,7 +28,7 @@ P2SVpnProfileContent content = new P2SVpnProfileContent
 {
     AuthenticationMethod = NetworkAuthenticationMethod.Eaptls,
 };
-ArmOperation<VpnProfileResponse> lro = await p2sVpnGateway.GenerateVpnProfileAsync(WaitUntil.Completed, content);
+ArmOperation<VpnProfileResponse> lro = await p2sVpnGateway.GenerateVpnProfileAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 VpnProfileResponse result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -24,6 +24,6 @@ ResourceIdentifier networkSecurityPerimeterLinkReferenceResourceId = NetworkSecu
 NetworkSecurityPerimeterLinkReferenceResource networkSecurityPerimeterLinkReference = client.GetNetworkSecurityPerimeterLinkReferenceResource(networkSecurityPerimeterLinkReferenceResourceId);
 
 // invoke the operation
-await networkSecurityPerimeterLinkReference.DeleteAsync(WaitUntil.Completed);
+await networkSecurityPerimeterLinkReference.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

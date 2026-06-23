@@ -25,7 +25,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("westeurope");
 string tagName = "ApiManagement";
-await foreach (ServiceTagInformation item in subscriptionResource.GetAllServiceTagInformationAsync(location, tagName: tagName))
+await foreach (var item in subscriptionResource.GetAllServiceTagInformationAsync(location, tagName: tagName))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

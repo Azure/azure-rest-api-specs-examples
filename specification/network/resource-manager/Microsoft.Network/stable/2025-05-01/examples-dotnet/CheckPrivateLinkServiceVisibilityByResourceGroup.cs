@@ -29,7 +29,7 @@ CheckPrivateLinkServiceVisibilityRequest checkPrivateLinkServiceVisibilityReques
 {
     PrivateLinkServiceAlias = "mypls.00000000-0000-0000-0000-000000000000.azure.privatelinkservice",
 };
-ArmOperation<PrivateLinkServiceVisibility> lro = await resourceGroupResource.CheckPrivateLinkServiceVisibilityByResourceGroupPrivateLinkServiceAsync(WaitUntil.Completed, location, checkPrivateLinkServiceVisibilityRequest);
+ArmOperation<PrivateLinkServiceVisibility> lro = await resourceGroupResource.CheckPrivateLinkServiceVisibilityByResourceGroupPrivateLinkServiceAsync(WaitUntil.Completed, location, checkPrivateLinkServiceVisibilityRequest, cancellationToken: System.Threading.CancellationToken.None);
 PrivateLinkServiceVisibility result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

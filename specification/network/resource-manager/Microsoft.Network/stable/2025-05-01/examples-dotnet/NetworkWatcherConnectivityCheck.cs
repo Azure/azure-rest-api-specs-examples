@@ -33,7 +33,7 @@ ConnectivityContent content = new ConnectivityContent(new ConnectivitySource(new
 {
     PreferredIPVersion = NetworkIPVersion.IPv4,
 };
-ArmOperation<ConnectivityInformation> lro = await networkWatcher.CheckConnectivityAsync(WaitUntil.Completed, content);
+ArmOperation<ConnectivityInformation> lro = await networkWatcher.CheckConnectivityAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 ConnectivityInformation result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

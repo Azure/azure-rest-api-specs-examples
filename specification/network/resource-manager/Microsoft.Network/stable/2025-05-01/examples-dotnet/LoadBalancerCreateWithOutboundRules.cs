@@ -33,7 +33,6 @@ LoadBalancerData data = new LoadBalancerData
 {
     Sku = new LoadBalancerSku
     {
-        Name = LoadBalancerSkuName.Standard,
     },
     FrontendIPConfigurations = {new FrontendIPConfigurationData
     {
@@ -41,11 +40,9 @@ LoadBalancerData data = new LoadBalancerData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip"),
     },
-    Name = "fe-lb",
     }},
     BackendAddressPools = {new BackendAddressPoolData
     {
-    Name = "be-lb",
     }},
     LoadBalancingRules = {new LoadBalancingRuleData
     {
@@ -60,7 +57,6 @@ LoadBalancerData data = new LoadBalancerData
     EnableFloatingIP = true,
     DisableOutboundSnat = true,
     },
-    Name = "rulelb",
     }},
     Probes = {new ProbeData
     {
@@ -70,7 +66,6 @@ LoadBalancerData data = new LoadBalancerData
     NumberOfProbes = 2,
     ProbeThreshold = 1,
     RequestPath = "healthcheck.aspx",
-    Name = "probe-lb",
     }},
     InboundNatRules = {new InboundNatRuleData
     {
@@ -80,7 +75,6 @@ LoadBalancerData data = new LoadBalancerData
     BackendPort = 3389,
     IdleTimeoutInMinutes = 15,
     EnableFloatingIP = true,
-    Name = "in-nat-rule",
     }},
     InboundNatPools = { },
     OutboundRules = {new OutboundRuleData
@@ -91,11 +85,10 @@ LoadBalancerData data = new LoadBalancerData
     }},
     BackendAddressPoolId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"),
     Protocol = LoadBalancerOutboundRuleProtocol.All,
-    Name = "rule1",
     }},
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data);
+ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data, cancellationToken: System.Threading.CancellationToken.None);
 LoadBalancerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

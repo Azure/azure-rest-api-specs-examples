@@ -41,52 +41,42 @@ ApplicationGatewayData data = new ApplicationGatewayData
     },
     Sku = new ApplicationGatewaySku
     {
-        Name = ApplicationGatewaySkuName.StandardV2,
         Tier = ApplicationGatewayTier.StandardV2,
         Capacity = 3,
     },
     GatewayIPConfigurations = {new ApplicationGatewayIPConfiguration
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/appgwsubnet"),
-    Name = "appgwipc",
     }},
     TrustedRootCertificates = {new ApplicationGatewayTrustedRootCertificate
     {
-    Data = BinaryData.FromObjectAsJson("****"),
-    Name = "rootcert",
+    Data = BinaryData.FromString("****"),
     }, new ApplicationGatewayTrustedRootCertificate
     {
     KeyVaultSecretId = "https://kv/secret",
-    Name = "rootcert1",
     }},
     TrustedClientCertificates = {new ApplicationGatewayTrustedClientCertificate
     {
-    Data = BinaryData.FromObjectAsJson("****"),
-    Name = "clientcert",
+    Data = BinaryData.FromString("****"),
     }},
     SslCertificates = {new ApplicationGatewaySslCertificate
     {
-    Data = BinaryData.FromObjectAsJson("****"),
+    Data = BinaryData.FromString("****"),
     Password = "****",
-    Name = "sslcert",
     }, new ApplicationGatewaySslCertificate
     {
     KeyVaultSecretId = "https://kv/secret",
-    Name = "sslcert2",
     }},
     FrontendIPConfigurations = {new ApplicationGatewayFrontendIPConfiguration
     {
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/appgwpip"),
-    Name = "appgwfip",
     }},
     FrontendPorts = {new ApplicationGatewayFrontendPort
     {
     Port = 443,
-    Name = "appgwfp",
     }, new ApplicationGatewayFrontendPort
     {
     Port = 80,
-    Name = "appgwfp80",
     }},
     BackendAddressPools = {new ApplicationGatewayBackendAddressPool
     {
@@ -97,7 +87,6 @@ ApplicationGatewayData data = new ApplicationGatewayData
     {
     IPAddress = "10.0.1.2",
     }},
-    Name = "appgwpool",
     }, new ApplicationGatewayBackendAddressPool
     {
     BackendAddresses = {new ApplicationGatewayBackendAddress
@@ -108,7 +97,6 @@ ApplicationGatewayData data = new ApplicationGatewayData
     IPAddress = "10.0.0.2",
     }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool1"),
-    Name = "appgwpool1",
     }},
     BackendHttpSettingsCollection = {new ApplicationGatewayBackendHttpSettings
     {
@@ -116,7 +104,6 @@ ApplicationGatewayData data = new ApplicationGatewayData
     Protocol = ApplicationGatewayProtocol.Http,
     CookieBasedAffinity = ApplicationGatewayCookieBasedAffinity.Disabled,
     RequestTimeoutInSeconds = 30,
-    Name = "appgwbhs",
     }},
     HttpListeners = {new ApplicationGatewayHttpListener
     {
@@ -126,13 +113,11 @@ ApplicationGatewayData data = new ApplicationGatewayData
     SslCertificateId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/sslCertificates/sslcert"),
     SslProfileId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/sslProfiles/sslProfile1"),
     RequireServerNameIndication = false,
-    Name = "appgwhl",
     }, new ApplicationGatewayHttpListener
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip"),
     FrontendPortId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp80"),
     Protocol = ApplicationGatewayProtocol.Http,
-    Name = "appgwhttplistener",
     }},
     SslProfiles = {new ApplicationGatewaySslProfile
     {
@@ -150,7 +135,6 @@ ApplicationGatewayData data = new ApplicationGatewayData
     {
     VerifyClientCertIssuerDN = true,
     },
-    Name = "sslProfile1",
     }},
     RequestRoutingRules = {new ApplicationGatewayRequestRoutingRule
     {
@@ -161,13 +145,11 @@ ApplicationGatewayData data = new ApplicationGatewayData
     HttpListenerId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhl"),
     RewriteRuleSetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1"),
     EntraJwtValidationConfigId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/entraJWTValidationConfigs/entraJWTValidationConfig1"),
-    Name = "appgwrule",
     }},
     RewriteRuleSets = {new ApplicationGatewayRewriteRuleSet
     {
     RewriteRules = {new ApplicationGatewayRewriteRule
     {
-    Name = "Set X-Forwarded-For",
     RuleSequence = 102,
     Conditions = {new ApplicationGatewayRewriteRuleCondition
     {
@@ -194,14 +176,12 @@ ApplicationGatewayData data = new ApplicationGatewayData
     },
     },
     }},
-    Name = "rewriteRuleSet1",
     }},
     EntraJwtValidationConfigs = {new ApplicationGatewayEntraJwtValidationConfig
     {
     UnAuthorizedRequestAction = ApplicationGatewayUnAuthorizedRequestAction.Deny,
     TenantId = Guid.Parse("70a036f6-8e4d-4615-bad6-149c02e7720d"),
     ClientId = "37293f5a-97b3-451d-b786-f532d711c9ff",
-    Name = "entraJWTValidationConfig1",
     }},
     GlobalConfiguration = new ApplicationGatewayGlobalConfiguration
     {
@@ -210,7 +190,7 @@ ApplicationGatewayData data = new ApplicationGatewayData
     },
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<ApplicationGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationGatewayName, data);
+ArmOperation<ApplicationGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationGatewayName, data, cancellationToken: System.Threading.CancellationToken.None);
 ApplicationGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

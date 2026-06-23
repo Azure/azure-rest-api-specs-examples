@@ -25,6 +25,6 @@ ResourceIdentifier vpnServerConfigurationPolicyGroupResourceId = VpnServerConfig
 VpnServerConfigurationPolicyGroupResource vpnServerConfigurationPolicyGroup = client.GetVpnServerConfigurationPolicyGroupResource(vpnServerConfigurationPolicyGroupResourceId);
 
 // invoke the operation
-await vpnServerConfigurationPolicyGroup.DeleteAsync(WaitUntil.Completed);
+await vpnServerConfigurationPolicyGroup.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -26,7 +26,7 @@ ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = 
 
 // invoke the operation
 string devicePath = "primary";
-ArmOperation<ExpressRouteCrossConnectionsRoutesTableSummaryListResult> lro = await expressRouteCrossConnectionPeering.GetRoutesTableSummaryExpressRouteCrossConnectionAsync(WaitUntil.Completed, devicePath);
+ArmOperation<ExpressRouteCrossConnectionsRoutesTableSummaryListResult> lro = await expressRouteCrossConnectionPeering.GetRoutesTableSummaryExpressRouteCrossConnectionAsync(WaitUntil.Completed, devicePath, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteCrossConnectionsRoutesTableSummaryListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

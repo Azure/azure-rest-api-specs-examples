@@ -29,7 +29,7 @@ QueryInboundNatRulePortMappingContent content = new QueryInboundNatRulePortMappi
 {
     IPAddress = "10.0.0.4",
 };
-ArmOperation<BackendAddressInboundNatRulePortMappings> lro = await backendAddressPool.GetInboundNatRulePortMappingsLoadBalancerAsync(WaitUntil.Completed, content);
+ArmOperation<BackendAddressInboundNatRulePortMappings> lro = await backendAddressPool.GetInboundNatRulePortMappingsLoadBalancerAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 BackendAddressInboundNatRulePortMappings result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

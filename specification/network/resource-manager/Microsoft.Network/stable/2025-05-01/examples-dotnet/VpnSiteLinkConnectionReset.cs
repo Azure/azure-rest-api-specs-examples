@@ -25,6 +25,6 @@ ResourceIdentifier vpnSiteLinkConnectionResourceId = VpnSiteLinkConnectionResour
 VpnSiteLinkConnectionResource vpnSiteLinkConnection = client.GetVpnSiteLinkConnectionResource(vpnSiteLinkConnectionResourceId);
 
 // invoke the operation
-await vpnSiteLinkConnection.ResetConnectionVpnLinkConnectionAsync(WaitUntil.Completed);
+await vpnSiteLinkConnection.ResetConnectionVpnLinkConnectionAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

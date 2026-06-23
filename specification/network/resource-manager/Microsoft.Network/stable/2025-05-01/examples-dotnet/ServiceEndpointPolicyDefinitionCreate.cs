@@ -33,7 +33,7 @@ ServiceEndpointPolicyDefinitionData data = new ServiceEndpointPolicyDefinitionDa
     Service = "Microsoft.Storage",
     ServiceResources = { new ResourceIdentifier("/subscriptions/subid1"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount") },
 };
-ArmOperation<ServiceEndpointPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyDefinitionName, data);
+ArmOperation<ServiceEndpointPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyDefinitionName, data, cancellationToken: System.Threading.CancellationToken.None);
 ServiceEndpointPolicyDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

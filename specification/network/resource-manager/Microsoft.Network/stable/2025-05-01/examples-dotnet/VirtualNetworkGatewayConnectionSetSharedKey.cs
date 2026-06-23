@@ -25,7 +25,7 @@ VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client
 
 // invoke the operation
 ConnectionSharedKey connectionSharedKey = new ConnectionSharedKey("AzureAbc123");
-ArmOperation<ConnectionSharedKey> lro = await virtualNetworkGatewayConnection.SetSharedKeyAsync(WaitUntil.Completed, connectionSharedKey);
+ArmOperation<ConnectionSharedKey> lro = await virtualNetworkGatewayConnection.SetSharedKeyAsync(WaitUntil.Completed, connectionSharedKey, cancellationToken: System.Threading.CancellationToken.None);
 ConnectionSharedKey result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

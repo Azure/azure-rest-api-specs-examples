@@ -27,7 +27,7 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 ExpressRouteGatewayCollection collection = resourceGroupResource.GetExpressRouteGateways();
 
 // invoke the operation and iterate over the result
-await foreach (ExpressRouteGatewayResource item in collection.GetAllAsync())
+await foreach (ExpressRouteGatewayResource item in collection.GetAllAsync(System.Threading.CancellationToken.None))
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

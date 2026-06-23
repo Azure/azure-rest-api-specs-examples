@@ -33,11 +33,10 @@ BastionHostData data = new BastionHostData
     IPConfigurations = {new BastionHostIPConfiguration
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/BastionHostSubnet"),
-    Name = "bastionHostIpConfiguration",
     }},
     EnablePrivateOnlyBastion = true,
 };
-ArmOperation<BastionHostResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bastionHostName, data);
+ArmOperation<BastionHostResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bastionHostName, data, cancellationToken: System.Threading.CancellationToken.None);
 BastionHostResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

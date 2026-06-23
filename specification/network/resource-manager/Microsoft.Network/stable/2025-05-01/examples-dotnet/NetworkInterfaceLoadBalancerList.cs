@@ -24,7 +24,7 @@ ResourceIdentifier networkInterfaceResourceId = NetworkInterfaceResource.CreateR
 NetworkInterfaceResource networkInterface = client.GetNetworkInterfaceResource(networkInterfaceResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (LoadBalancerResource item in networkInterface.GetNetworkInterfaceLoadBalancersAsync())
+await foreach (LoadBalancerResource item in networkInterface.GetNetworkInterfaceLoadBalancersAsync(System.Threading.CancellationToken.None))
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

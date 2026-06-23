@@ -24,6 +24,6 @@ ResourceIdentifier securityPartnerProviderResourceId = SecurityPartnerProviderRe
 SecurityPartnerProviderResource securityPartnerProvider = client.GetSecurityPartnerProviderResource(securityPartnerProviderResourceId);
 
 // invoke the operation
-await securityPartnerProvider.DeleteAsync(WaitUntil.Completed);
+await securityPartnerProvider.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

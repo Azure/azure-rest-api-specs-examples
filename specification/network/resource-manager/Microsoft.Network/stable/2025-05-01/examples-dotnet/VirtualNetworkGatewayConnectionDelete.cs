@@ -24,6 +24,6 @@ ResourceIdentifier virtualNetworkGatewayConnectionResourceId = VirtualNetworkGat
 VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client.GetVirtualNetworkGatewayConnectionResource(virtualNetworkGatewayConnectionResourceId);
 
 // invoke the operation
-await virtualNetworkGatewayConnection.DeleteAsync(WaitUntil.Completed);
+await virtualNetworkGatewayConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

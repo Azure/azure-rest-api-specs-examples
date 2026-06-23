@@ -29,7 +29,7 @@ EffectiveRoutesContent content = new EffectiveRoutesContent
     ResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/expressRouteGatewayName/expressRouteConnections/connectionName"),
     VirtualWanResourceType = "ExpressRouteConnection",
 };
-ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content);
+ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content, cancellationToken: System.Threading.CancellationToken.None);
 VirtualHubEffectiveRouteList result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

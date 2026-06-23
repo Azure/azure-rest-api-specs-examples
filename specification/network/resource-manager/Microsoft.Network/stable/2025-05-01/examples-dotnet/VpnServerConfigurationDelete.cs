@@ -24,6 +24,6 @@ ResourceIdentifier vpnServerConfigurationResourceId = VpnServerConfigurationReso
 VpnServerConfigurationResource vpnServerConfiguration = client.GetVpnServerConfigurationResource(vpnServerConfigurationResourceId);
 
 // invoke the operation
-await vpnServerConfiguration.DeleteAsync(WaitUntil.Completed);
+await vpnServerConfiguration.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

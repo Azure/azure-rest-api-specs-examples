@@ -24,6 +24,6 @@ ResourceIdentifier expressRouteGatewayResourceId = ExpressRouteGatewayResource.C
 ExpressRouteGatewayResource expressRouteGateway = client.GetExpressRouteGatewayResource(expressRouteGatewayResourceId);
 
 // invoke the operation
-await expressRouteGateway.DeleteAsync(WaitUntil.Completed);
+await expressRouteGateway.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -25,6 +25,6 @@ NetworkManagerResource networkManager = client.GetNetworkManagerResource(network
 
 // invoke the operation
 bool? force = false;
-await networkManager.DeleteAsync(WaitUntil.Completed, force: force);
+await networkManager.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

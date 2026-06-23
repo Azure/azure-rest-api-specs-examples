@@ -25,6 +25,6 @@ ResourceIdentifier backendAddressPoolResourceId = BackendAddressPoolResource.Cre
 BackendAddressPoolResource backendAddressPool = client.GetBackendAddressPoolResource(backendAddressPoolResourceId);
 
 // invoke the operation
-await backendAddressPool.DeleteAsync(WaitUntil.Completed);
+await backendAddressPool.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

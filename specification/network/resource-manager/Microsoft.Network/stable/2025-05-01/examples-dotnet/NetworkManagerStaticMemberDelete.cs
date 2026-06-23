@@ -25,6 +25,6 @@ ResourceIdentifier networkGroupStaticMemberResourceId = NetworkGroupStaticMember
 NetworkGroupStaticMemberResource networkGroupStaticMember = client.GetNetworkGroupStaticMemberResource(networkGroupStaticMemberResourceId);
 
 // invoke the operation
-await networkGroupStaticMember.DeleteAsync(WaitUntil.Completed);
+await networkGroupStaticMember.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

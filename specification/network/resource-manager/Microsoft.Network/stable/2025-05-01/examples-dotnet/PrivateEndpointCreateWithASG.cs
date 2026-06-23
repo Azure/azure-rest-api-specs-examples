@@ -47,7 +47,7 @@ PrivateEndpointData data = new PrivateEndpointData
     }},
     Location = new AzureLocation("eastus2euap"),
 };
-ArmOperation<PrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data);
+ArmOperation<PrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data, cancellationToken: System.Threading.CancellationToken.None);
 PrivateEndpointResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

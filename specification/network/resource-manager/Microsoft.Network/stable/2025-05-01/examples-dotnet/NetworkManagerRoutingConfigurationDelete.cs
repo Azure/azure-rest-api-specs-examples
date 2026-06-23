@@ -25,6 +25,6 @@ ResourceIdentifier networkManagerRoutingConfigurationResourceId = NetworkManager
 NetworkManagerRoutingConfigurationResource networkManagerRoutingConfiguration = client.GetNetworkManagerRoutingConfigurationResource(networkManagerRoutingConfigurationResourceId);
 
 // invoke the operation
-await networkManagerRoutingConfiguration.DeleteAsync(WaitUntil.Completed);
+await networkManagerRoutingConfiguration.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -24,6 +24,6 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 string predefinedPolicyName = "AppGwSslPolicy20150501";
-ApplicationGatewaySslPredefinedPolicy result = await subscriptionResource.GetApplicationGatewaySslPredefinedPolicyAsync(predefinedPolicyName);
+ApplicationGatewaySslPredefinedPolicy result = await subscriptionResource.GetApplicationGatewaySslPredefinedPolicyAsync(predefinedPolicyName, System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

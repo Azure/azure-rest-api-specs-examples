@@ -25,6 +25,6 @@ ResourceIdentifier networkVerifierWorkspaceResourceId = NetworkVerifierWorkspace
 NetworkVerifierWorkspaceResource networkVerifierWorkspace = client.GetNetworkVerifierWorkspaceResource(networkVerifierWorkspaceResourceId);
 
 // invoke the operation
-await networkVerifierWorkspace.DeleteAsync(WaitUntil.Completed);
+await networkVerifierWorkspace.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

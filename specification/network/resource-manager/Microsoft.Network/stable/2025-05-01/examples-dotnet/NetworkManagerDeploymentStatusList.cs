@@ -30,7 +30,7 @@ NetworkManagerDeploymentStatusContent content = new NetworkManagerDeploymentStat
     DeploymentTypes = { NetworkConfigurationDeploymentType.Connectivity, new NetworkConfigurationDeploymentType("AdminPolicy") },
     SkipToken = "FakeSkipTokenCode",
 };
-await foreach (NetworkManagerDeploymentStatus item in networkManager.GetNetworkManagerDeploymentStatusAsync(content))
+await foreach (var item in networkManager.GetNetworkManagerDeploymentStatusAsync(content, null, System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

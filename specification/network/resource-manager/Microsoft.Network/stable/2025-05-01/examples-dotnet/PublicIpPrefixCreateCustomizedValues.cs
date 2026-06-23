@@ -32,14 +32,13 @@ PublicIPPrefixData data = new PublicIPPrefixData
 {
     Sku = new PublicIPPrefixSku
     {
-        Name = PublicIPPrefixSkuName.Standard,
         Tier = PublicIPPrefixSkuTier.Regional,
     },
     PublicIPAddressVersion = NetworkIPVersion.IPv4,
     PrefixLength = 30,
     Location = new AzureLocation("westus"),
 };
-ArmOperation<PublicIPPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, publicIPPrefixName, data);
+ArmOperation<PublicIPPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, publicIPPrefixName, data, cancellationToken: System.Threading.CancellationToken.None);
 PublicIPPrefixResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

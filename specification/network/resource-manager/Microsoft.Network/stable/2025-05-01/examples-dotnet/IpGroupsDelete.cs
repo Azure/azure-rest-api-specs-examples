@@ -24,6 +24,6 @@ ResourceIdentifier ipGroupResourceId = IPGroupResource.CreateResourceIdentifier(
 IPGroupResource ipGroup = client.GetIPGroupResource(ipGroupResourceId);
 
 // invoke the operation
-await ipGroup.DeleteAsync(WaitUntil.Completed);
+await ipGroup.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

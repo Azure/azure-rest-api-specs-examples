@@ -24,6 +24,6 @@ ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceI
 LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
 
 // invoke the operation
-await loadBalancer.DeleteAsync(WaitUntil.Completed);
+await loadBalancer.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<VirtualNetworkGatewayResource> lro = await virtualNetworkGateway.ResetAsync(WaitUntil.Completed);
+ArmOperation<VirtualNetworkGatewayResource> lro = await virtualNetworkGateway.ResetAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

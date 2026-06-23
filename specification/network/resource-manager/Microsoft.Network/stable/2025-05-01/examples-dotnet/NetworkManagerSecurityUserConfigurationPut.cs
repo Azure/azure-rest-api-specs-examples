@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerResource created on azure
-// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
+// this example assumes you already have this NetworkManagerSecurityUserConfigurationResource created on azure
+// for more information of creating NetworkManagerSecurityUserConfigurationResource, please refer to the document of NetworkManagerSecurityUserConfigurationResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
-NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
-
-// get the collection of this NetworkManagerSecurityUserConfigurationResource
-NetworkManagerSecurityUserConfigurationCollection collection = networkManager.GetNetworkManagerSecurityUserConfigurations();
+string configurationName = "myTestSecurityConfig";
+ResourceIdentifier networkManagerSecurityUserConfigurationResourceId = NetworkManagerSecurityUserConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
+NetworkManagerSecurityUserConfigurationResource networkManagerSecurityUserConfiguration = client.GetNetworkManagerSecurityUserConfigurationResource(networkManagerSecurityUserConfigurationResourceId);
 
 // invoke the operation
-string configurationName = "myTestSecurityConfig";
 NetworkManagerSecurityUserConfigurationData data = new NetworkManagerSecurityUserConfigurationData
 {
     Description = "A sample policy",
 };
-ArmOperation<NetworkManagerSecurityUserConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
+ArmOperation<NetworkManagerSecurityUserConfigurationResource> lro = await networkManagerSecurityUserConfiguration.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkManagerSecurityUserConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -28,6 +28,6 @@ SignatureOverridesFilterValuesQueryContent content = new SignatureOverridesFilte
 {
     FilterName = "severity",
 };
-SignatureOverridesFilterValuesResult result = await firewallPolicy.GetFirewallPolicyIdpsSignaturesFilterValueAsync(content);
+SignatureOverridesFilterValuesResult result = await firewallPolicy.GetFirewallPolicyIdpsSignaturesFilterValueAsync(content, System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

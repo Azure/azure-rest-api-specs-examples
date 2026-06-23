@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnGatewayResource created on azure
-// for more information of creating VpnGatewayResource, please refer to the document of VpnGatewayResource
+// this example assumes you already have this VpnGatewayNatRuleResource created on azure
+// for more information of creating VpnGatewayNatRuleResource, please refer to the document of VpnGatewayNatRuleResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string gatewayName = "gateway1";
-ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
-VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
-
-// get the collection of this VpnGatewayNatRuleResource
-VpnGatewayNatRuleCollection collection = vpnGateway.GetVpnGatewayNatRules();
+string natRuleName = "natRule1";
+ResourceIdentifier vpnGatewayNatRuleResourceId = VpnGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, natRuleName);
+VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResource(vpnGatewayNatRuleResourceId);
 
 // invoke the operation
-string natRuleName = "natRule1";
-NullableResponse<VpnGatewayNatRuleResource> response = await collection.GetIfExistsAsync(natRuleName);
-VpnGatewayNatRuleResource result = response.HasValue ? response.Value : null;
+VpnGatewayNatRuleResource result = await vpnGatewayNatRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VpnGatewayNatRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VpnGatewayNatRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

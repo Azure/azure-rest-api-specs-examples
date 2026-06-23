@@ -50,6 +50,6 @@ ServiceGatewayUpdateAddressLocationsContent content = new ServiceGatewayUpdateAd
     }},
     }},
 };
-await serviceGateway.UpdateAddressLocationsAsync(WaitUntil.Completed, content);
+await serviceGateway.UpdateAddressLocationsAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

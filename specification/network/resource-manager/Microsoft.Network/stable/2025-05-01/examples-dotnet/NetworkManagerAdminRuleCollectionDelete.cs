@@ -27,6 +27,6 @@ AdminRuleGroupResource adminRuleGroup = client.GetAdminRuleGroupResource(adminRu
 
 // invoke the operation
 bool? force = false;
-await adminRuleGroup.DeleteAsync(WaitUntil.Completed, force: force);
+await adminRuleGroup.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

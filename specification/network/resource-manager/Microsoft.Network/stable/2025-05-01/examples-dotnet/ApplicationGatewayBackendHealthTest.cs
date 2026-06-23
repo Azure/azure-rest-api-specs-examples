@@ -33,7 +33,7 @@ ApplicationGatewayOnDemandProbe probeRequest = new ApplicationGatewayOnDemandPro
     BackendAddressPoolId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendaddressPools/MFAnalyticsPool"),
     BackendHttpSettingsId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/MFPoolSettings"),
 };
-ArmOperation<ApplicationGatewayBackendHealthOnDemand> lro = await applicationGateway.BackendHealthOnDemandAsync(WaitUntil.Completed, probeRequest);
+ArmOperation<ApplicationGatewayBackendHealthOnDemand> lro = await applicationGateway.BackendHealthOnDemandAsync(WaitUntil.Completed, probeRequest, cancellationToken: System.Threading.CancellationToken.None);
 ApplicationGatewayBackendHealthOnDemand result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

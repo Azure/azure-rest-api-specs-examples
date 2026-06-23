@@ -24,6 +24,6 @@ ResourceIdentifier expressRoutePortResourceId = ExpressRoutePortResource.CreateR
 ExpressRoutePortResource expressRoutePort = client.GetExpressRoutePortResource(expressRoutePortResourceId);
 
 // invoke the operation
-await expressRoutePort.DeleteAsync(WaitUntil.Completed);
+await expressRoutePort.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

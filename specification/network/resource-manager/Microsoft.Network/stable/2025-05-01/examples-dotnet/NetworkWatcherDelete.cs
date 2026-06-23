@@ -25,6 +25,6 @@ ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResou
 NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
 
 // invoke the operation
-await networkWatcher.DeleteAsync(WaitUntil.Completed);
+await networkWatcher.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

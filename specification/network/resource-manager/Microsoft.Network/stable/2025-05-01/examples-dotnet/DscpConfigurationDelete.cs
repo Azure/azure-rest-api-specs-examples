@@ -24,6 +24,6 @@ ResourceIdentifier dscpConfigurationResourceId = DscpConfigurationResource.Creat
 DscpConfigurationResource dscpConfiguration = client.GetDscpConfigurationResource(dscpConfigurationResourceId);
 
 // invoke the operation
-await dscpConfiguration.DeleteAsync(WaitUntil.Completed);
+await dscpConfiguration.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

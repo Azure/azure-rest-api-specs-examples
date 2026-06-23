@@ -40,12 +40,11 @@ NetworkInterfaceData data = new NetworkInterfaceData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/test-ip"),
     },
-    Name = "ipconfig1",
     }},
     EnableAcceleratedNetworking = true,
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<NetworkInterfaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkInterfaceName, data);
+ArmOperation<NetworkInterfaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkInterfaceName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkInterfaceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

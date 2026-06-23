@@ -37,7 +37,7 @@ ExpressRouteCircuitConnectionData data = new ExpressRouteCircuitConnectionData
         AddressPrefix = "aa:bb::/125",
     },
 };
-ArmOperation<ExpressRouteCircuitConnectionResource> lro = await expressRouteCircuitConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRouteCircuitConnectionResource> lro = await expressRouteCircuitConnection.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteCircuitConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

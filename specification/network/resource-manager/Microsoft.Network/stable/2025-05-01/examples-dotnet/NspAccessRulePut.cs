@@ -31,7 +31,7 @@ NetworkSecurityPerimeterAccessRuleData data = new NetworkSecurityPerimeterAccess
     Direction = NetworkSecurityPerimeterAccessRuleDirection.Inbound,
     AddressPrefixes = { "10.11.0.0/16", "10.10.1.0/24" },
 };
-ArmOperation<NetworkSecurityPerimeterAccessRuleResource> lro = await networkSecurityPerimeterAccessRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NetworkSecurityPerimeterAccessRuleResource> lro = await networkSecurityPerimeterAccessRule.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkSecurityPerimeterAccessRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

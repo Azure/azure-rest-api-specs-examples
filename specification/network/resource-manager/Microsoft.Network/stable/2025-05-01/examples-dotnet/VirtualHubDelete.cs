@@ -24,6 +24,6 @@ ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdent
 VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
 
 // invoke the operation
-await virtualHub.DeleteAsync(WaitUntil.Completed);
+await virtualHub.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

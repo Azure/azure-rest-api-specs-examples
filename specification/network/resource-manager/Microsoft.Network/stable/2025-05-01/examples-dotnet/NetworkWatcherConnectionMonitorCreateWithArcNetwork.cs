@@ -70,7 +70,7 @@ ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUp
     }},
     Outputs = { },
 };
-ArmOperation<ConnectionMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorName, content);
+ArmOperation<ConnectionMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorName, content, cancellationToken: System.Threading.CancellationToken.None);
 ConnectionMonitorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

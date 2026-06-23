@@ -25,7 +25,7 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("regionName");
-await foreach (AutoApprovedPrivateLinkService item in resourceGroupResource.GetAutoApprovedPrivateLinkServicesByResourceGroupPrivateLinkServicesAsync(location))
+await foreach (AutoApprovedPrivateLinkService item in resourceGroupResource.GetAutoApprovedPrivateLinkServicesByResourceGroupPrivateLinkServicesAsync(location, System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

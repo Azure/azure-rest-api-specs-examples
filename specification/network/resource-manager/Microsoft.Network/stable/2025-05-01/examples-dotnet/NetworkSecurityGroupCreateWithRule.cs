@@ -40,11 +40,10 @@ NetworkSecurityGroupData data = new NetworkSecurityGroupData
     Access = SecurityRuleAccess.Allow,
     Priority = 130,
     Direction = SecurityRuleDirection.Inbound,
-    Name = "rule1",
     }},
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<NetworkSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkSecurityGroupName, data);
+ArmOperation<NetworkSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkSecurityGroupName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkSecurityGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/AzureWebCategoryGet.json
@@ -14,18 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AzureWebCategoryResource created on azure
-// for more information of creating AzureWebCategoryResource, please refer to the document of AzureWebCategoryResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "4de8428a-4a92-4cea-90ff-b47128b8cab8";
-string name = "Arts";
-ResourceIdentifier azureWebCategoryResourceId = AzureWebCategoryResource.CreateResourceIdentifier(subscriptionId, name);
-AzureWebCategoryResource azureWebCategory = client.GetAzureWebCategoryResource(azureWebCategoryResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this AzureWebCategoryResource
+AzureWebCategoryCollection collection = subscriptionResource.GetAzureWebCategories();
 
 // invoke the operation
-AzureWebCategoryResource result = await azureWebCategory.GetAsync();
+string name = "Arts";
+NullableResponse<AzureWebCategoryResource> response = await collection.GetIfExistsAsync(name);
+AzureWebCategoryResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AzureWebCategoryData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AzureWebCategoryData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -25,6 +25,6 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-await virtualNetworkGateway.InvokeExecuteMigrationAsync(WaitUntil.Completed);
+await virtualNetworkGateway.InvokeExecuteMigrationAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

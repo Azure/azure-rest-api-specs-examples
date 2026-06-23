@@ -26,6 +26,6 @@ ResourceIdentifier expressRouteConnectionResourceId = ExpressRouteConnectionReso
 ExpressRouteConnectionResource expressRouteConnection = client.GetExpressRouteConnectionResource(expressRouteConnectionResourceId);
 
 // invoke the operation
-await expressRouteConnection.DeleteAsync(WaitUntil.Completed);
+await expressRouteConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

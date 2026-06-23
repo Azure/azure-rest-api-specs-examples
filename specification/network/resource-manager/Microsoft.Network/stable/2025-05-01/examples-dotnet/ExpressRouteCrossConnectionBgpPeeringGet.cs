@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCrossConnectionPeeringResource created on azure
-// for more information of creating ExpressRouteCrossConnectionPeeringResource, please refer to the document of ExpressRouteCrossConnectionPeeringResource
+// this example assumes you already have this ExpressRouteCrossConnectionResource created on azure
+// for more information of creating ExpressRouteCrossConnectionResource, please refer to the document of ExpressRouteCrossConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "CrossConnection-SiliconValley";
 string crossConnectionName = "<circuitServiceKey>";
-string peeringName = "AzurePrivatePeering";
-ResourceIdentifier expressRouteCrossConnectionPeeringResourceId = ExpressRouteCrossConnectionPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, crossConnectionName, peeringName);
-ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = client.GetExpressRouteCrossConnectionPeeringResource(expressRouteCrossConnectionPeeringResourceId);
+ResourceIdentifier expressRouteCrossConnectionResourceId = ExpressRouteCrossConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, crossConnectionName);
+ExpressRouteCrossConnectionResource expressRouteCrossConnection = client.GetExpressRouteCrossConnectionResource(expressRouteCrossConnectionResourceId);
+
+// get the collection of this ExpressRouteCrossConnectionPeeringResource
+ExpressRouteCrossConnectionPeeringCollection collection = expressRouteCrossConnection.GetExpressRouteCrossConnectionPeerings();
 
 // invoke the operation
-ExpressRouteCrossConnectionPeeringResource result = await expressRouteCrossConnectionPeering.GetAsync();
+string peeringName = "AzurePrivatePeering";
+NullableResponse<ExpressRouteCrossConnectionPeeringResource> response = await collection.GetIfExistsAsync(peeringName);
+ExpressRouteCrossConnectionPeeringResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ExpressRouteCrossConnectionPeeringData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ExpressRouteCrossConnectionPeeringData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

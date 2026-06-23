@@ -25,6 +25,6 @@ ResourceIdentifier routeResourceId = RouteResource.CreateResourceIdentifier(subs
 RouteResource route = client.GetRouteResource(routeResourceId);
 
 // invoke the operation
-await route.DeleteAsync(WaitUntil.Completed);
+await route.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -27,7 +27,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 // invoke the operation
 string peeringLocation = "Vancouver";
 string failoverTestId = "fe458ae8-d2ae-4520-a104-44bc233bde7e";
-ArmOperation<IList<ExpressRouteFailoverSingleTestDetails>> lro = await virtualNetworkGateway.GetFailoverSingleTestDetailsAsync(WaitUntil.Completed, peeringLocation, failoverTestId);
+ArmOperation<IList<ExpressRouteFailoverSingleTestDetails>> lro = await virtualNetworkGateway.GetFailoverSingleTestDetailsAsync(WaitUntil.Completed, peeringLocation, failoverTestId, cancellationToken: System.Threading.CancellationToken.None);
 IList<ExpressRouteFailoverSingleTestDetails> result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

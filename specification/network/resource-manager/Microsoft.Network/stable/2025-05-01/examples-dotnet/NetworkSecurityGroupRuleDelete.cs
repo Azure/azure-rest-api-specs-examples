@@ -25,6 +25,6 @@ ResourceIdentifier securityRuleResourceId = SecurityRuleResource.CreateResourceI
 SecurityRuleResource securityRule = client.GetSecurityRuleResource(securityRuleResourceId);
 
 // invoke the operation
-await securityRule.DeleteAsync(WaitUntil.Completed);
+await securityRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -32,9 +32,8 @@ NetworkPrivateEndpointConnectionData data = new NetworkPrivateEndpointConnection
         Status = "Approved",
         Description = "approved it for some reason.",
     },
-    Name = "testPlePeConnection",
 };
-ArmOperation<NetworkPrivateEndpointConnectionResource> lro = await networkPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NetworkPrivateEndpointConnectionResource> lro = await networkPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

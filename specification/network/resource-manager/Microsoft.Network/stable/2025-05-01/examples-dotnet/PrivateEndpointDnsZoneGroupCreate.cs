@@ -32,7 +32,7 @@ PrivateDnsZoneGroupData data = new PrivateDnsZoneGroupData
     PrivateDnsZoneId = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com",
     }},
 };
-ArmOperation<PrivateDnsZoneGroupResource> lro = await privateDnsZoneGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PrivateDnsZoneGroupResource> lro = await privateDnsZoneGroup.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 PrivateDnsZoneGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

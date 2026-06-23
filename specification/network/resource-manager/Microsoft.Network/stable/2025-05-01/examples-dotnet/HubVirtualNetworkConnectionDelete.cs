@@ -26,6 +26,6 @@ ResourceIdentifier hubVirtualNetworkConnectionResourceId = HubVirtualNetworkConn
 HubVirtualNetworkConnectionResource hubVirtualNetworkConnection = client.GetHubVirtualNetworkConnectionResource(hubVirtualNetworkConnectionResourceId);
 
 // invoke the operation
-await hubVirtualNetworkConnection.DeleteAsync(WaitUntil.Completed);
+await hubVirtualNetworkConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

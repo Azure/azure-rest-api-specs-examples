@@ -26,7 +26,7 @@ ResourceIdentifier bgpConnectionResourceId = BgpConnectionResource.CreateResourc
 BgpConnectionResource bgpConnection = client.GetBgpConnectionResource(bgpConnectionResourceId);
 
 // invoke the operation
-ArmOperation<IDictionary<string, IList<PeerRoute>>> lro = await bgpConnection.GetVirtualHubBgpConnectionAdvertisedRoutesAsync(WaitUntil.Completed);
+ArmOperation<IDictionary<string, IList<PeerRoute>>> lro = await bgpConnection.GetVirtualHubBgpConnectionAdvertisedRoutesAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 IDictionary<string, IList<PeerRoute>> result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

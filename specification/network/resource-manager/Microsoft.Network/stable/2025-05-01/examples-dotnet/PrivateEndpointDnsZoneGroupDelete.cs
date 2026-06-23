@@ -25,6 +25,6 @@ ResourceIdentifier privateDnsZoneGroupResourceId = PrivateDnsZoneGroupResource.C
 PrivateDnsZoneGroupResource privateDnsZoneGroup = client.GetPrivateDnsZoneGroupResource(privateDnsZoneGroupResourceId);
 
 // invoke the operation
-await privateDnsZoneGroup.DeleteAsync(WaitUntil.Completed);
+await privateDnsZoneGroup.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

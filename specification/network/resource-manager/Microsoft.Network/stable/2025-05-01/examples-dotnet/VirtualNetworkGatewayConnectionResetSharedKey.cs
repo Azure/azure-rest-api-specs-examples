@@ -25,7 +25,7 @@ VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client
 
 // invoke the operation
 ConnectionResetSharedKey connectionResetSharedKey = new ConnectionResetSharedKey(128);
-ArmOperation<ConnectionResetSharedKey> lro = await virtualNetworkGatewayConnection.ResetSharedKeyAsync(WaitUntil.Completed, connectionResetSharedKey);
+ArmOperation<ConnectionResetSharedKey> lro = await virtualNetworkGatewayConnection.ResetSharedKeyAsync(WaitUntil.Completed, connectionResetSharedKey, cancellationToken: System.Threading.CancellationToken.None);
 ConnectionResetSharedKey result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

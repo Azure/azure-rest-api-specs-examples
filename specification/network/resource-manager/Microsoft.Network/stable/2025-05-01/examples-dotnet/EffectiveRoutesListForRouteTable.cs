@@ -29,7 +29,7 @@ EffectiveRoutesContent content = new EffectiveRoutesContent
     ResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
     VirtualWanResourceType = "RouteTable",
 };
-ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content);
+ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content, cancellationToken: System.Threading.CancellationToken.None);
 VirtualHubEffectiveRouteList result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -25,6 +25,6 @@ ResourceIdentifier connectionMonitorResourceId = ConnectionMonitorResource.Creat
 ConnectionMonitorResource connectionMonitor = client.GetConnectionMonitorResource(connectionMonitorResourceId);
 
 // invoke the operation
-await connectionMonitor.StopAsync(WaitUntil.Completed);
+await connectionMonitor.StopAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

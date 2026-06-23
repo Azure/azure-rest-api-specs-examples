@@ -32,7 +32,7 @@ ExpressRouteCrossConnectionData data = new ExpressRouteCrossConnectionData
 {
     ServiceProviderProvisioningState = ServiceProviderProvisioningState.NotProvisioned,
 };
-ArmOperation<ExpressRouteCrossConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, crossConnectionName, data);
+ArmOperation<ExpressRouteCrossConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, crossConnectionName, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteCrossConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

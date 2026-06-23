@@ -41,7 +41,7 @@ ExpressRouteFailoverStopApiContent content = new ExpressRouteFailoverStopApiCont
     IsVerified = true,
     }},
 };
-ArmOperation<string> lro = await virtualNetworkGateway.StopExpressRouteSiteFailoverSimulationAsync(WaitUntil.Completed, content);
+ArmOperation<string> lro = await virtualNetworkGateway.StopExpressRouteSiteFailoverSimulationAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -24,6 +24,6 @@ ResourceIdentifier networkSecurityPerimeterProfileResourceId = NetworkSecurityPe
 NetworkSecurityPerimeterProfileResource networkSecurityPerimeterProfile = client.GetNetworkSecurityPerimeterProfileResource(networkSecurityPerimeterProfileResourceId);
 
 // invoke the operation
-await networkSecurityPerimeterProfile.DeleteAsync(WaitUntil.Completed);
+await networkSecurityPerimeterProfile.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

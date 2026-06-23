@@ -24,7 +24,7 @@ ResourceIdentifier networkInterfaceResourceId = NetworkInterfaceResource.CreateR
 NetworkInterfaceResource networkInterface = client.GetNetworkInterfaceResource(networkInterfaceResourceId);
 
 // invoke the operation
-ArmOperation<EffectiveNetworkSecurityGroupListResult> lro = await networkInterface.GetEffectiveNetworkSecurityGroupsAsync(WaitUntil.Completed);
+ArmOperation<EffectiveNetworkSecurityGroupListResult> lro = await networkInterface.GetEffectiveNetworkSecurityGroupsAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 EffectiveNetworkSecurityGroupListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

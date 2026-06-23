@@ -24,7 +24,7 @@ ResourceIdentifier virtualNetworkGatewayConnectionResourceId = VirtualNetworkGat
 VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client.GetVirtualNetworkGatewayConnectionResource(virtualNetworkGatewayConnectionResourceId);
 
 // invoke the operation
-ArmOperation<string> lro = await virtualNetworkGatewayConnection.GetIkeSasAsync(WaitUntil.Completed);
+ArmOperation<string> lro = await virtualNetworkGatewayConnection.GetIkeSasAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

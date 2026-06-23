@@ -24,7 +24,7 @@ ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceRe
 NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
 
 // invoke the operation
-ArmOperation<NetworkVirtualApplianceInstanceIds> lro = await networkVirtualAppliance.ReimageAsync(WaitUntil.Completed);
+ArmOperation<NetworkVirtualApplianceInstanceIds> lro = await networkVirtualAppliance.ReimageAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 NetworkVirtualApplianceInstanceIds result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

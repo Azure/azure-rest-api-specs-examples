@@ -41,7 +41,6 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Dynamic,
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"),
-    Name = "gwipconfig1",
     }},
     GatewayType = VirtualNetworkGatewayType.ExpressRoute,
     VpnType = VpnType.PolicyBased,
@@ -50,7 +49,6 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     DisableIPSecReplayProtection = false,
     Sku = new VirtualNetworkGatewaySku
     {
-        Name = VirtualNetworkGatewaySkuName.ErGwScale,
         Tier = VirtualNetworkGatewaySkuTier.ErGwScale,
     },
     VpnClientConfiguration = default,
@@ -63,7 +61,7 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     AdminState = ExpressRouteGatewayAdminState.Enabled,
     Location = new AzureLocation("centralus"),
 };
-ArmOperation<VirtualNetworkGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkGatewayName, data);
+ArmOperation<VirtualNetworkGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkGatewayName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

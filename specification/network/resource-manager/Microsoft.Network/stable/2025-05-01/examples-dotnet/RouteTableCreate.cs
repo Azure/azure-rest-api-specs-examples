@@ -32,7 +32,7 @@ RouteTableData data = new RouteTableData
 {
     Location = new AzureLocation("westus"),
 };
-ArmOperation<RouteTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data);
+ArmOperation<RouteTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data, cancellationToken: System.Threading.CancellationToken.None);
 RouteTableResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

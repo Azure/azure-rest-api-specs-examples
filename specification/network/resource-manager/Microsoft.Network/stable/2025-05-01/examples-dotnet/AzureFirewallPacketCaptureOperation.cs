@@ -51,7 +51,7 @@ FirewallPacketCaptureRequestContent content = new FirewallPacketCaptureRequestCo
     }},
     Operation = AzureFirewallPacketCaptureOperationType.Status,
 };
-ArmOperation<AzureFirewallPacketCaptureResult> lro = await azureFirewall.PacketCaptureOperationAsync(WaitUntil.Completed, content);
+ArmOperation<AzureFirewallPacketCaptureResult> lro = await azureFirewall.PacketCaptureOperationAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 AzureFirewallPacketCaptureResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

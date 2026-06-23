@@ -25,6 +25,6 @@ ResourceIdentifier inboundNatRuleResourceId = InboundNatRuleResource.CreateResou
 InboundNatRuleResource inboundNatRule = client.GetInboundNatRuleResource(inboundNatRuleResourceId);
 
 // invoke the operation
-await inboundNatRule.DeleteAsync(WaitUntil.Completed);
+await inboundNatRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/examples/WafPolicyCreateOrUpdate.json
@@ -16,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this WebApplicationFirewallPolicyResource created on azure
+// for more information of creating WebApplicationFirewallPolicyResource, please refer to the document of WebApplicationFirewallPolicyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this WebApplicationFirewallPolicyResource
-WebApplicationFirewallPolicyCollection collection = resourceGroupResource.GetWebApplicationFirewallPolicies();
+string policyName = "Policy1";
+ResourceIdentifier webApplicationFirewallPolicyResourceId = WebApplicationFirewallPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, policyName);
+WebApplicationFirewallPolicyResource webApplicationFirewallPolicy = client.GetWebApplicationFirewallPolicyResource(webApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-string policyName = "Policy1";
 WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
 {
     PolicySettings = new PolicySettings
@@ -58,7 +54,6 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
     }, WebApplicationFirewallOperator.IPMatch, new string[]{"192.168.1.0/24", "10.0.0.0/24"})
     }, WebApplicationFirewallAction.Block)
     {
-    Name = "Rule1",
     }, new WebApplicationFirewallCustomRule(2, WebApplicationFirewallRuleType.MatchRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
@@ -77,7 +72,6 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
     }, WebApplicationFirewallOperator.Contains, new string[]{"Windows"})
     }, WebApplicationFirewallAction.Block)
     {
-    Name = "Rule2",
     }, new WebApplicationFirewallCustomRule(3, WebApplicationFirewallRuleType.RateLimitRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
@@ -92,7 +86,6 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
     }
     }, WebApplicationFirewallAction.Block)
     {
-    Name = "RateLimitRule3",
     RateLimitDuration = ApplicationGatewayFirewallRateLimitDuration.OneMin,
     RateLimitThreshold = 10,
     GroupByUserSession = {new GroupByUserSession(new GroupByVariable[]
@@ -117,7 +110,6 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
     }, WebApplicationFirewallOperator.Contains, new string[]{"Bot"})
     }, WebApplicationFirewallAction.JSChallenge)
     {
-    Name = "Rule4",
     }, new WebApplicationFirewallCustomRule(5, WebApplicationFirewallRuleType.MatchRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
@@ -142,7 +134,6 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
     }
     }, WebApplicationFirewallAction.Captcha)
     {
-    Name = "Rule5",
     State = WebApplicationFirewallState.Enabled,
     }},
     ManagedRules = new ManagedRulesDefinition(new ManagedRuleSet[]
@@ -234,7 +225,7 @@ Sensitivity = ManagedRuleSensitivityType.High,
     },
     Location = new AzureLocation("WestUs"),
 };
-ArmOperation<WebApplicationFirewallPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
+ArmOperation<WebApplicationFirewallPolicyResource> lro = await webApplicationFirewallPolicy.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 WebApplicationFirewallPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

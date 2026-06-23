@@ -26,7 +26,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 
 // invoke the operation
 bool? attemptRefresh = false;
-ArmOperation<GatewayRouteSetsInformation> lro = await virtualNetworkGateway.GetRoutesInformationAsync(WaitUntil.Completed, attemptRefresh: attemptRefresh);
+ArmOperation<GatewayRouteSetsInformation> lro = await virtualNetworkGateway.GetRoutesInformationAsync(WaitUntil.Completed, attemptRefresh: attemptRefresh, cancellationToken: System.Threading.CancellationToken.None);
 GatewayRouteSetsInformation result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

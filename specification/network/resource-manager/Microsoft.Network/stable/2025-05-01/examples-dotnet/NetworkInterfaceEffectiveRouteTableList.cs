@@ -24,7 +24,7 @@ ResourceIdentifier networkInterfaceResourceId = NetworkInterfaceResource.CreateR
 NetworkInterfaceResource networkInterface = client.GetNetworkInterfaceResource(networkInterfaceResourceId);
 
 // invoke the operation
-ArmOperation<EffectiveRouteListResult> lro = await networkInterface.GetEffectiveRouteTableAsync(WaitUntil.Completed);
+ArmOperation<EffectiveRouteListResult> lro = await networkInterface.GetEffectiveRouteTableAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 EffectiveRouteListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

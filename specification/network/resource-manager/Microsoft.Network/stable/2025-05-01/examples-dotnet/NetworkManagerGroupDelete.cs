@@ -26,6 +26,6 @@ NetworkGroupResource networkGroup = client.GetNetworkGroupResource(networkGroupR
 
 // invoke the operation
 bool? force = false;
-await networkGroup.DeleteAsync(WaitUntil.Completed, force: force);
+await networkGroup.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

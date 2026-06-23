@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("westus");
-await foreach (NetworkSecurityPerimeterServiceTags item in subscriptionResource.GetNetworkSecurityPerimeterServiceTagsAsync(location))
+await foreach (var item in subscriptionResource.GetNetworkSecurityPerimeterServiceTagsAsync(location))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

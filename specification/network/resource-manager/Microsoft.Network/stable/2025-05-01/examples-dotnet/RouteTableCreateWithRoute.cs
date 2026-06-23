@@ -34,12 +34,11 @@ RouteTableData data = new RouteTableData
     {
     AddressPrefix = "10.0.3.0/24",
     NextHopType = RouteNextHopType.VirtualNetworkGateway,
-    Name = "route1",
     }},
     DisableBgpRoutePropagation = true,
     Location = new AzureLocation("westus"),
 };
-ArmOperation<RouteTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data);
+ArmOperation<RouteTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data, cancellationToken: System.Threading.CancellationToken.None);
 RouteTableResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

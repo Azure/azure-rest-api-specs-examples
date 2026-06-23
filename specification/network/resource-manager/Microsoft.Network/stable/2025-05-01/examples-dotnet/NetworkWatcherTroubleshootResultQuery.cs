@@ -26,7 +26,7 @@ NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(network
 
 // invoke the operation
 QueryTroubleshootingContent content = new QueryTroubleshootingContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"));
-ArmOperation<TroubleshootingResult> lro = await networkWatcher.GetTroubleshootingResultAsync(WaitUntil.Completed, content);
+ArmOperation<TroubleshootingResult> lro = await networkWatcher.GetTroubleshootingResultAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 TroubleshootingResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

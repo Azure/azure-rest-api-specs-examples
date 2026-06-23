@@ -33,7 +33,7 @@ AzureReachabilityReportContent content = new AzureReachabilityReportContent(new 
     Providers = { "Frontier Communications of America, Inc. - ASN 5650" },
     AzureLocations = { new AzureLocation("West US") },
 };
-ArmOperation<AzureReachabilityReport> lro = await networkWatcher.GetAzureReachabilityReportAsync(WaitUntil.Completed, content);
+ArmOperation<AzureReachabilityReport> lro = await networkWatcher.GetAzureReachabilityReportAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 AzureReachabilityReport result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -24,7 +24,7 @@ ResourceIdentifier azureFirewallResourceId = AzureFirewallResource.CreateResourc
 AzureFirewallResource azureFirewall = client.GetAzureFirewallResource(azureFirewallResourceId);
 
 // invoke the operation
-ArmOperation<LearnedIPPrefixesListResult> lro = await azureFirewall.GetLearnedPrefixesAsync(WaitUntil.Completed);
+ArmOperation<LearnedIPPrefixesListResult> lro = await azureFirewall.GetLearnedPrefixesAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 LearnedIPPrefixesListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

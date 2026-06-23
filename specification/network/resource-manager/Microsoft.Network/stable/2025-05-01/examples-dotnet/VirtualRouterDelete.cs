@@ -23,6 +23,6 @@ ResourceIdentifier virtualRouterResourceId = VirtualRouterResource.CreateResourc
 VirtualRouterResource virtualRouter = client.GetVirtualRouterResource(virtualRouterResourceId);
 
 // invoke the operation
-await virtualRouter.DeleteAsync(WaitUntil.Completed);
+await virtualRouter.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

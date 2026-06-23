@@ -26,6 +26,6 @@ ResourceIdentifier reachabilityAnalysisIntentResourceId = ReachabilityAnalysisIn
 ReachabilityAnalysisIntentResource reachabilityAnalysisIntent = client.GetReachabilityAnalysisIntentResource(reachabilityAnalysisIntentResourceId);
 
 // invoke the operation
-await reachabilityAnalysisIntent.DeleteAsync(WaitUntil.Completed);
+await reachabilityAnalysisIntent.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

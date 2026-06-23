@@ -1,4 +1,4 @@
-const { DBforPostgreSQLClient } = require("@azure/arm-postgresqlhsc");
+const { CosmosDBForPostgreSQL } = require("@azure/arm-cosmosdbforpostgresql");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -10,7 +10,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
 async function updateOrDefineMaintenanceWindow() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const client = new DBforPostgreSQLClient(credential, subscriptionId);
+  const client = new CosmosDBForPostgreSQL(credential, subscriptionId);
   const result = await client.clusters.update("TestGroup", "testcluster", {
     maintenanceWindow: { customWindow: "Enabled", dayOfWeek: 0, startHour: 8, startMinute: 0 },
   });

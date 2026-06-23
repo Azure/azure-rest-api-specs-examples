@@ -6971,3 +6971,4 @@ id,name,language,tag,package,version,date_epoch,date
 6970,@azure/arm-powerplatform@1.0.0-beta.1,js,@azure/arm-powerplatform_1.0.0-beta.1,@azure/arm-powerplatform,1.0.0-beta.1,1782095897,06/22/2026
 6971,@azure/arm-cosmosdbforpostgresql@2.0.0-beta.1,js,@azure/arm-cosmosdbforpostgresql_2.0.0-beta.1,@azure/arm-cosmosdbforpostgresql,2.0.0-beta.1,1782093958,06/22/2026
 6972,azure-mgmt-compute@38.1.0,python,azure-mgmt-compute_38.1.0,azure-mgmt-compute,38.1.0,1782111096,06/22/2026
+6973,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computelimit/armcomputelimit@v1.2.0,go,sdk/resourcemanager/computelimit/armcomputelimit/v1.2.0,sdk/resourcemanager/computelimit/armcomputelimit,v1.2.0,1782209148,06/23/2026

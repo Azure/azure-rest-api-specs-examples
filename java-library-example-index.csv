@@ -6990,3 +6990,4 @@ id,name,language,tag,package,version,date_epoch,date
 6989,azure-mgmt-resource@26.0.0,python,azure-mgmt-resource_26.0.0,azure-mgmt-resource,26.0.0,1782294139,06/24/2026
 6990,azure-mgmt-qumulo@3.0.0,python,azure-mgmt-qumulo_3.0.0,azure-mgmt-qumulo,3.0.0,1782289094,06/24/2026
 6991,com.azure.resourcemanager:azure-resourcemanager-qumulo:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-qumulo_1.2.0,com.azure.resourcemanager+azure-resourcemanager-qumulo,1.2.0,1782290017,06/24/2026
+6992,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.0,1782230439,06/23/2026

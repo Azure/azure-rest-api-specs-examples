@@ -34,11 +34,10 @@ ServiceEndpointPolicyData data = new ServiceEndpointPolicyData
     Description = "Storage Service EndpointPolicy Definition",
     Service = "Microsoft.Storage",
     ServiceResources = {new ResourceIdentifier("/subscriptions/subid1"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount")},
-    Name = "StorageServiceEndpointPolicyDefinition",
     }},
     Location = new AzureLocation("westus"),
 };
-ArmOperation<ServiceEndpointPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyName, data);
+ArmOperation<ServiceEndpointPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyName, data, cancellationToken: System.Threading.CancellationToken.None);
 ServiceEndpointPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

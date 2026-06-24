@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<VpnClientIPsecParameters> lro = await virtualNetworkGateway.GetVpnclientIPsecParametersAsync(WaitUntil.Completed);
+ArmOperation<VpnClientIPsecParameters> lro = await virtualNetworkGateway.GetVpnclientIPsecParametersAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 VpnClientIPsecParameters result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

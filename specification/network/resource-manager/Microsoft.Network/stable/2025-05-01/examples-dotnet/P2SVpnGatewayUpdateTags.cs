@@ -32,7 +32,7 @@ NetworkTagsObject p2sVpnGatewayParameters = new NetworkTagsObject
     ["tag2"] = "value2"
     },
 };
-ArmOperation<P2SVpnGatewayResource> lro = await p2sVpnGateway.UpdateAsync(WaitUntil.Completed, p2sVpnGatewayParameters);
+ArmOperation<P2SVpnGatewayResource> lro = await p2sVpnGateway.UpdateAsync(WaitUntil.Completed, p2sVpnGatewayParameters, cancellationToken: System.Threading.CancellationToken.None);
 P2SVpnGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

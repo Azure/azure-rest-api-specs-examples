@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<string> lro = await virtualNetworkGateway.GetVpnProfilePackageUrlAsync(WaitUntil.Completed);
+ArmOperation<string> lro = await virtualNetworkGateway.GetVpnProfilePackageUrlAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

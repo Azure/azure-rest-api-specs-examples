@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkVirtualApplianceConnectionResource created on azure
-// for more information of creating NetworkVirtualApplianceConnectionResource, please refer to the document of NetworkVirtualApplianceConnectionResource
+// this example assumes you already have this NetworkVirtualApplianceResource created on azure
+// for more information of creating NetworkVirtualApplianceResource, please refer to the document of NetworkVirtualApplianceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkVirtualApplianceName = "nva1";
-string connectionName = "connection1";
-ResourceIdentifier networkVirtualApplianceConnectionResourceId = NetworkVirtualApplianceConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName, connectionName);
-NetworkVirtualApplianceConnectionResource networkVirtualApplianceConnection = client.GetNetworkVirtualApplianceConnectionResource(networkVirtualApplianceConnectionResourceId);
+ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName);
+NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
+
+// get the collection of this NetworkVirtualApplianceConnectionResource
+NetworkVirtualApplianceConnectionCollection collection = networkVirtualAppliance.GetNetworkVirtualApplianceConnections();
 
 // invoke the operation
+string connectionName = "connection1";
 NetworkVirtualApplianceConnectionData data = new NetworkVirtualApplianceConnectionData
 {
     NamePropertiesName = "connection1",
@@ -47,9 +50,8 @@ NetworkVirtualApplianceConnectionData data = new NetworkVirtualApplianceConnecti
         InboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),
     },
-    Name = "connection1",
 };
-ArmOperation<NetworkVirtualApplianceConnectionResource> lro = await networkVirtualApplianceConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NetworkVirtualApplianceConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkVirtualApplianceConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

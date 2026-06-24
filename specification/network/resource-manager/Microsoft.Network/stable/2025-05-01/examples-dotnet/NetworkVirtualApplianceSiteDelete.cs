@@ -25,6 +25,6 @@ ResourceIdentifier virtualApplianceSiteResourceId = VirtualApplianceSiteResource
 VirtualApplianceSiteResource virtualApplianceSite = client.GetVirtualApplianceSiteResource(virtualApplianceSiteResourceId);
 
 // invoke the operation
-await virtualApplianceSite.DeleteAsync(WaitUntil.Completed);
+await virtualApplianceSite.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

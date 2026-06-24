@@ -50,7 +50,6 @@ VpnSiteData data = new VpnSiteData
     Asn = 1234L,
     BgpPeeringAddress = "192.168.0.0",
     },
-    Name = "vpnSiteLink1",
     }},
     O365BreakOutCategories = new O365BreakOutCategoryPolicies
     {
@@ -64,7 +63,7 @@ VpnSiteData data = new VpnSiteData
     ["key1"] = "value1"
     },
 };
-ArmOperation<VpnSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vpnSiteName, data);
+ArmOperation<VpnSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vpnSiteName, data, cancellationToken: System.Threading.CancellationToken.None);
 VpnSiteResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

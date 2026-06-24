@@ -26,7 +26,7 @@ NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(network
 
 // invoke the operation
 FlowLogStatusContent content = new FlowLogStatusContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1"));
-ArmOperation<FlowLogInformation> lro = await networkWatcher.GetFlowLogStatusAsync(WaitUntil.Completed, content);
+ArmOperation<FlowLogInformation> lro = await networkWatcher.GetFlowLogStatusAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 FlowLogInformation result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

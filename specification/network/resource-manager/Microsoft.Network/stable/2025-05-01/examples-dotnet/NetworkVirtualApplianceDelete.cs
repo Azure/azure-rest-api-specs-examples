@@ -24,6 +24,6 @@ ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceRe
 NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
 
 // invoke the operation
-await networkVirtualAppliance.DeleteAsync(WaitUntil.Completed);
+await networkVirtualAppliance.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

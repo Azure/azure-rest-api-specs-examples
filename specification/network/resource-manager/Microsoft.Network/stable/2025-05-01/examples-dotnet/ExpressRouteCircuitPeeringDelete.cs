@@ -25,6 +25,6 @@ ResourceIdentifier expressRouteCircuitPeeringResourceId = ExpressRouteCircuitPee
 ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpressRouteCircuitPeeringResource(expressRouteCircuitPeeringResourceId);
 
 // invoke the operation
-await expressRouteCircuitPeering.DeleteAsync(WaitUntil.Completed);
+await expressRouteCircuitPeering.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -22,6 +22,6 @@ ResourceIdentifier subscriptionNetworkManagerConnectionResourceId = Subscription
 SubscriptionNetworkManagerConnectionResource subscriptionNetworkManagerConnection = client.GetSubscriptionNetworkManagerConnectionResource(subscriptionNetworkManagerConnectionResourceId);
 
 // invoke the operation
-await subscriptionNetworkManagerConnection.DeleteAsync(WaitUntil.Completed);
+await subscriptionNetworkManagerConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

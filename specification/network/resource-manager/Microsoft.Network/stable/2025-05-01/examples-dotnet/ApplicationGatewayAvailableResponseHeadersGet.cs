@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (string item in subscriptionResource.GetAvailableResponseHeadersApplicationGatewaysAsync())
+await foreach (string item in subscriptionResource.GetAvailableResponseHeadersApplicationGatewaysAsync(System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

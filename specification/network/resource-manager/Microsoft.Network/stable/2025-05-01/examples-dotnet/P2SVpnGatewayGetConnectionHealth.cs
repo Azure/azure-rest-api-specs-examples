@@ -24,7 +24,7 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-ArmOperation<P2SVpnGatewayResource> lro = await p2sVpnGateway.GetP2SVpnConnectionHealthAsync(WaitUntil.Completed);
+ArmOperation<P2SVpnGatewayResource> lro = await p2sVpnGateway.GetP2SVpnConnectionHealthAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 P2SVpnGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

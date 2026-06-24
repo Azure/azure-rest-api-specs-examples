@@ -31,7 +31,7 @@ ApplicationSecurityGroupData data = new ApplicationSecurityGroupData
 {
     Location = new AzureLocation("westus"),
 };
-ArmOperation<ApplicationSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationSecurityGroupName, data);
+ArmOperation<ApplicationSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationSecurityGroupName, data, cancellationToken: System.Threading.CancellationToken.None);
 ApplicationSecurityGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -36,6 +36,6 @@ LoadBalancerVipSwapContent content = new LoadBalancerVipSwapContent
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip1"),
     }},
 };
-await subscriptionResource.SwapPublicIPAddressesLoadBalancerAsync(WaitUntil.Completed, location, content);
+await subscriptionResource.SwapPublicIPAddressesLoadBalancerAsync(WaitUntil.Completed, location, content, System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

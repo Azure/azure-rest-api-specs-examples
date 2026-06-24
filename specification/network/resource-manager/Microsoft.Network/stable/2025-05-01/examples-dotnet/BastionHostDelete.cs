@@ -24,6 +24,6 @@ ResourceIdentifier bastionHostResourceId = BastionHostResource.CreateResourceIde
 BastionHostResource bastionHost = client.GetBastionHostResource(bastionHostResourceId);
 
 // invoke the operation
-await bastionHost.DeleteAsync(WaitUntil.Completed);
+await bastionHost.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

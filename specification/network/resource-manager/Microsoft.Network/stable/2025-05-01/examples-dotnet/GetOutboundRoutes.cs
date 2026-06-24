@@ -29,7 +29,7 @@ VirtualHubOutboundRoutesContent content = new VirtualHubOutboundRoutesContent
     ResourceUri = new Uri("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGw1/expressRouteConnections/exrConn1"),
     ConnectionType = "ExpressRouteConnection",
 };
-ArmOperation<EffectiveRouteMapRouteList> lro = await virtualHub.GetVirtualHubOutboundRoutesAsync(WaitUntil.Completed, content);
+ArmOperation<EffectiveRouteMapRouteList> lro = await virtualHub.GetVirtualHubOutboundRoutesAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 EffectiveRouteMapRouteList result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

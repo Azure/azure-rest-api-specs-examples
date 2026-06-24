@@ -24,6 +24,6 @@ ResourceIdentifier serviceEndpointPolicyResourceId = ServiceEndpointPolicyResour
 ServiceEndpointPolicyResource serviceEndpointPolicy = client.GetServiceEndpointPolicyResource(serviceEndpointPolicyResourceId);
 
 // invoke the operation
-await serviceEndpointPolicy.DeleteAsync(WaitUntil.Completed);
+await serviceEndpointPolicy.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

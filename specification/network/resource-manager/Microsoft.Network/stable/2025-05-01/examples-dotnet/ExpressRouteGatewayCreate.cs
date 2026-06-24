@@ -38,7 +38,7 @@ ExpressRouteGatewayData data = new ExpressRouteGatewayData
     AllowNonVirtualWanTraffic = false,
     Location = new AzureLocation("westus"),
 };
-ArmOperation<ExpressRouteGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, expressRouteGatewayName, data);
+ArmOperation<ExpressRouteGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, expressRouteGatewayName, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

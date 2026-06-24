@@ -31,7 +31,7 @@ NetworkInterfaceTapConfigurationData data = new NetworkInterfaceTapConfiguration
         Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworkTaps/testvtap"),
     },
 };
-ArmOperation<NetworkInterfaceTapConfigurationResource> lro = await networkInterfaceTapConfiguration.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NetworkInterfaceTapConfigurationResource> lro = await networkInterfaceTapConfiguration.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkInterfaceTapConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -52,9 +52,8 @@ ExpressRouteConnectionData data = new ExpressRouteConnectionData
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),
     },
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName"),
-    Name = "connectionName",
 };
-ArmOperation<ExpressRouteConnectionResource> lro = await expressRouteConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRouteConnectionResource> lro = await expressRouteConnection.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

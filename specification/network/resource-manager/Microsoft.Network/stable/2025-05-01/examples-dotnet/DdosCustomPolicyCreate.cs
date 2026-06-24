@@ -38,11 +38,10 @@ DdosCustomPolicyData data = new DdosCustomPolicyData
     TrafficType = DdosTrafficType.Tcp,
     PacketsPerSecond = 1000000,
     },
-    Name = "detectionRuleTcp",
     }},
     Location = new AzureLocation("centraluseuap"),
 };
-ArmOperation<DdosCustomPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ddosCustomPolicyName, data);
+ArmOperation<DdosCustomPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ddosCustomPolicyName, data, cancellationToken: System.Threading.CancellationToken.None);
 DdosCustomPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -25,7 +25,7 @@ PublicIPAddressResource publicIPAddress = client.GetPublicIPAddressResource(publ
 
 // invoke the operation
 ReserveCloudServicePublicIPAddressContent content = new ReserveCloudServicePublicIPAddressContent(UndoReservationType.False);
-ArmOperation<PublicIPAddressResource> lro = await publicIPAddress.ReserveCloudServicePublicIPAddressAsync(WaitUntil.Completed, content);
+ArmOperation<PublicIPAddressResource> lro = await publicIPAddress.ReserveCloudServicePublicIPAddressAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 PublicIPAddressResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

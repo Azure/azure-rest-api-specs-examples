@@ -25,6 +25,6 @@ ResourceIdentifier staticCidrResourceId = StaticCidrResource.CreateResourceIdent
 StaticCidrResource staticCidr = client.GetStaticCidrResource(staticCidrResourceId);
 
 // invoke the operation
-await staticCidr.DeleteAsync(WaitUntil.Completed);
+await staticCidr.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

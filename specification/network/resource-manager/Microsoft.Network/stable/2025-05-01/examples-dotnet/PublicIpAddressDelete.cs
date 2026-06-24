@@ -24,6 +24,6 @@ ResourceIdentifier publicIPAddressResourceId = PublicIPAddressResource.CreateRes
 PublicIPAddressResource publicIPAddress = client.GetPublicIPAddressResource(publicIPAddressResourceId);
 
 // invoke the operation
-await publicIPAddress.DeleteAsync(WaitUntil.Completed);
+await publicIPAddress.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

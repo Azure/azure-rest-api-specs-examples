@@ -25,6 +25,6 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupDraftResourceId = FirewallPo
 FirewallPolicyRuleCollectionGroupDraftResource firewallPolicyRuleCollectionGroupDraft = client.GetFirewallPolicyRuleCollectionGroupDraftResource(firewallPolicyRuleCollectionGroupDraftResourceId);
 
 // invoke the operation
-await firewallPolicyRuleCollectionGroupDraft.DeleteAsync(WaitUntil.Completed);
+await firewallPolicyRuleCollectionGroupDraft.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

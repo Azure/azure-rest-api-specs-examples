@@ -43,7 +43,7 @@ NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
     ["key1"] = "value1"
     },
 };
-ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data);
+ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkVirtualApplianceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

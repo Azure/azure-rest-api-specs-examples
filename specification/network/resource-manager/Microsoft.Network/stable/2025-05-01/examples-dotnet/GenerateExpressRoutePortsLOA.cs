@@ -25,6 +25,6 @@ ExpressRoutePortResource expressRoutePort = client.GetExpressRoutePortResource(e
 
 // invoke the operation
 GenerateExpressRoutePortsLoaContent content = new GenerateExpressRoutePortsLoaContent("customerName");
-GenerateExpressRoutePortsLoaResult result = await expressRoutePort.GenerateLoaAsync(content);
+GenerateExpressRoutePortsLoaResult result = await expressRoutePort.GenerateLoaAsync(content, System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

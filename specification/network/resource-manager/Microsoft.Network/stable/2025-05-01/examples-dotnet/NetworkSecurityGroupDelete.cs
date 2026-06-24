@@ -24,6 +24,6 @@ ResourceIdentifier networkSecurityGroupResourceId = NetworkSecurityGroupResource
 NetworkSecurityGroupResource networkSecurityGroup = client.GetNetworkSecurityGroupResource(networkSecurityGroupResourceId);
 
 // invoke the operation
-await networkSecurityGroup.DeleteAsync(WaitUntil.Completed);
+await networkSecurityGroup.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

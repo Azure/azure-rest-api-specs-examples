@@ -33,7 +33,7 @@ VerificationIPFlowContent content = new VerificationIPFlowContent(
     "80",
     "10.2.0.4",
     "121.10.1.1");
-ArmOperation<VerificationIPFlowResult> lro = await networkWatcher.VerifyIPFlowAsync(WaitUntil.Completed, content);
+ArmOperation<VerificationIPFlowResult> lro = await networkWatcher.VerifyIPFlowAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 VerificationIPFlowResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

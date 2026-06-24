@@ -28,7 +28,7 @@ NetworkSecurityPerimeterProfileCollection collection = networkSecurityPerimeter.
 // invoke the operation
 string profileName = "profile1";
 NetworkSecurityPerimeterProfileData data = new NetworkSecurityPerimeterProfileData();
-ArmOperation<NetworkSecurityPerimeterProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data);
+ArmOperation<NetworkSecurityPerimeterProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, profileName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkSecurityPerimeterProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

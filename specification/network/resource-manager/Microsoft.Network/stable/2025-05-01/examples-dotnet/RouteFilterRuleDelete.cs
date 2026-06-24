@@ -25,6 +25,6 @@ ResourceIdentifier routeFilterRuleResourceId = RouteFilterRuleResource.CreateRes
 RouteFilterRuleResource routeFilterRule = client.GetRouteFilterRuleResource(routeFilterRuleResourceId);
 
 // invoke the operation
-await routeFilterRule.DeleteAsync(WaitUntil.Completed);
+await routeFilterRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

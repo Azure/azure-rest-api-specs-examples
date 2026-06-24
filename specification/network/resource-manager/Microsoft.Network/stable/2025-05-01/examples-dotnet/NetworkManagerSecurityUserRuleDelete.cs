@@ -28,6 +28,6 @@ NetworkManagerSecurityUserRuleResource networkManagerSecurityUserRule = client.G
 
 // invoke the operation
 bool? force = false;
-await networkManagerSecurityUserRule.DeleteAsync(WaitUntil.Completed, force: force);
+await networkManagerSecurityUserRule.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

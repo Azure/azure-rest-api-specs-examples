@@ -28,7 +28,7 @@ NetworkManagerCommit networkManagerCommit = new NetworkManagerCommit(new string[
 {
     ConfigurationIds = { "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig" },
 };
-ArmOperation<NetworkManagerCommit> lro = await networkManager.PostNetworkManagerCommitAsync(WaitUntil.Completed, networkManagerCommit);
+ArmOperation<NetworkManagerCommit> lro = await networkManager.PostNetworkManagerCommitAsync(WaitUntil.Completed, networkManagerCommit, cancellationToken: System.Threading.CancellationToken.None);
 NetworkManagerCommit result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

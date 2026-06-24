@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (ApplicationGatewayFirewallRuleSet item in subscriptionResource.GetAppGatewayAvailableWafRuleSetsAsync())
+await foreach (ApplicationGatewayFirewallRuleSet item in subscriptionResource.GetAppGatewayAvailableWafRuleSetsAsync(System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

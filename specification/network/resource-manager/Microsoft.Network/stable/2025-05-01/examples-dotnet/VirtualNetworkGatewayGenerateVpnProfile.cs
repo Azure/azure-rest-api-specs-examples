@@ -26,7 +26,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 
 // invoke the operation
 VpnClientContent content = new VpnClientContent();
-ArmOperation<string> lro = await virtualNetworkGateway.GenerateVpnProfileAsync(WaitUntil.Completed, content);
+ArmOperation<string> lro = await virtualNetworkGateway.GenerateVpnProfileAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

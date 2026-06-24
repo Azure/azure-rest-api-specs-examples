@@ -25,7 +25,7 @@ ResourceIdentifier packetCaptureResourceId = PacketCaptureResource.CreateResourc
 PacketCaptureResource packetCapture = client.GetPacketCaptureResource(packetCaptureResourceId);
 
 // invoke the operation
-ArmOperation<PacketCaptureQueryStatusResult> lro = await packetCapture.GetStatusAsync(WaitUntil.Completed);
+ArmOperation<PacketCaptureQueryStatusResult> lro = await packetCapture.GetStatusAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 PacketCaptureQueryStatusResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

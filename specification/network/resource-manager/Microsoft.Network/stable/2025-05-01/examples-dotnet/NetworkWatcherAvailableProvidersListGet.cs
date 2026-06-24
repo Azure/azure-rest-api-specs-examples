@@ -32,7 +32,7 @@ AvailableProvidersListContent content = new AvailableProvidersListContent
     State = "washington",
     City = "seattle",
 };
-ArmOperation<AvailableProvidersList> lro = await networkWatcher.GetAvailableProvidersAsync(WaitUntil.Completed, content);
+ArmOperation<AvailableProvidersList> lro = await networkWatcher.GetAvailableProvidersAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 AvailableProvidersList result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -24,6 +24,6 @@ ResourceIdentifier firewallPolicyResourceId = FirewallPolicyResource.CreateResou
 FirewallPolicyResource firewallPolicy = client.GetFirewallPolicyResource(firewallPolicyResourceId);
 
 // invoke the operation
-await firewallPolicy.DeleteAsync(WaitUntil.Completed);
+await firewallPolicy.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

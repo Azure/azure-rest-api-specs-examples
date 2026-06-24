@@ -37,7 +37,7 @@ VirtualNetworkPeeringData data = new VirtualNetworkPeeringData
     RemoteVirtualNetworkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet2"),
 };
 SyncRemoteAddressSpace? syncRemoteAddressSpace = SyncRemoteAddressSpace.True;
-ArmOperation<VirtualNetworkPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkPeeringName, data, syncRemoteAddressSpace: syncRemoteAddressSpace);
+ArmOperation<VirtualNetworkPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkPeeringName, data, syncRemoteAddressSpace: syncRemoteAddressSpace, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

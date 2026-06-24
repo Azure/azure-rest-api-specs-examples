@@ -24,6 +24,6 @@ ResourceIdentifier azureFirewallResourceId = AzureFirewallResource.CreateResourc
 AzureFirewallResource azureFirewall = client.GetAzureFirewallResource(azureFirewallResourceId);
 
 // invoke the operation
-await azureFirewall.DeleteAsync(WaitUntil.Completed);
+await azureFirewall.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

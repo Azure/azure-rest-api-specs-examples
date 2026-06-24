@@ -32,7 +32,7 @@ NetworkTagsObject networkTagsObject = new NetworkTagsObject
     ["tag2"] = "value2"
     },
 };
-ArmOperation<VirtualNetworkGatewayConnectionResource> lro = await virtualNetworkGatewayConnection.UpdateAsync(WaitUntil.Completed, networkTagsObject);
+ArmOperation<VirtualNetworkGatewayConnectionResource> lro = await virtualNetworkGatewayConnection.UpdateAsync(WaitUntil.Completed, networkTagsObject, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkGatewayConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

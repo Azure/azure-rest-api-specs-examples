@@ -24,7 +24,7 @@ ResourceIdentifier applicationGatewayResourceId = ApplicationGatewayResource.Cre
 ApplicationGatewayResource applicationGateway = client.GetApplicationGatewayResource(applicationGatewayResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (ApplicationGatewayPrivateLinkResource item in applicationGateway.GetApplicationGatewayPrivateLinkResourcesAsync())
+await foreach (ApplicationGatewayPrivateLinkResource item in applicationGateway.GetApplicationGatewayPrivateLinkResourcesAsync(System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

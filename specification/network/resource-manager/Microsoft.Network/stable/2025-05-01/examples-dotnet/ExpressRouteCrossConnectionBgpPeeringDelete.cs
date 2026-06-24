@@ -25,6 +25,6 @@ ResourceIdentifier expressRouteCrossConnectionPeeringResourceId = ExpressRouteCr
 ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = client.GetExpressRouteCrossConnectionPeeringResource(expressRouteCrossConnectionPeeringResourceId);
 
 // invoke the operation
-await expressRouteCrossConnectionPeering.DeleteAsync(WaitUntil.Completed);
+await expressRouteCrossConnectionPeering.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

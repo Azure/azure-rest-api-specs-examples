@@ -25,6 +25,6 @@ ResourceIdentifier routingIntentResourceId = RoutingIntentResource.CreateResourc
 RoutingIntentResource routingIntent = client.GetRoutingIntentResource(routingIntentResourceId);
 
 // invoke the operation
-await routingIntent.DeleteAsync(WaitUntil.Completed);
+await routingIntent.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

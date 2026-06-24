@@ -28,6 +28,6 @@ GetVpnSitesConfigurationContent content = new GetVpnSitesConfigurationContent(ne
 {
     VpnSites = { "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/abc" },
 };
-await virtualWan.DownloadVpnSitesConfigurationAsync(WaitUntil.Completed, content);
+await virtualWan.DownloadVpnSitesConfigurationAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

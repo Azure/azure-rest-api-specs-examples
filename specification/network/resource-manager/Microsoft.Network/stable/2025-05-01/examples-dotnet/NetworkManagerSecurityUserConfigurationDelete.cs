@@ -25,6 +25,6 @@ NetworkManagerSecurityUserConfigurationResource networkManagerSecurityUserConfig
 
 // invoke the operation
 bool? force = false;
-await networkManagerSecurityUserConfiguration.DeleteAsync(WaitUntil.Completed, force: force);
+await networkManagerSecurityUserConfiguration.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

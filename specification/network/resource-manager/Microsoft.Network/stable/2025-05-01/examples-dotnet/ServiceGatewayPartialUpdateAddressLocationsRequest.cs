@@ -53,6 +53,6 @@ ServiceGatewayUpdateAddressLocationsContent content = new ServiceGatewayUpdateAd
     AddressLocation = "192.0.0.3",
     }},
 };
-await serviceGateway.UpdateAddressLocationsAsync(WaitUntil.Completed, content);
+await serviceGateway.UpdateAddressLocationsAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

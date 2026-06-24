@@ -25,7 +25,7 @@ PublicIPAddressResource publicIPAddress = client.GetPublicIPAddressResource(publ
 
 // invoke the operation
 DisassociateCloudServicePublicIPContent content = new DisassociateCloudServicePublicIPContent(new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.Network/publicIpAddresses/pip2"));
-ArmOperation<PublicIPAddressResource> lro = await publicIPAddress.DisassociateCloudServiceReservedPublicIPAsync(WaitUntil.Completed, content);
+ArmOperation<PublicIPAddressResource> lro = await publicIPAddress.DisassociateCloudServiceReservedPublicIPAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 PublicIPAddressResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

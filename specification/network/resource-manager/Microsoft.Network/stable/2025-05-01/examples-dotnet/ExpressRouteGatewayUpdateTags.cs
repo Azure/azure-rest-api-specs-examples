@@ -32,7 +32,7 @@ NetworkTagsObject expressRouteGatewayParameters = new NetworkTagsObject
     ["tag2"] = "value2"
     },
 };
-ArmOperation<ExpressRouteGatewayResource> lro = await expressRouteGateway.UpdateAsync(WaitUntil.Completed, expressRouteGatewayParameters);
+ArmOperation<ExpressRouteGatewayResource> lro = await expressRouteGateway.UpdateAsync(WaitUntil.Completed, expressRouteGatewayParameters, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

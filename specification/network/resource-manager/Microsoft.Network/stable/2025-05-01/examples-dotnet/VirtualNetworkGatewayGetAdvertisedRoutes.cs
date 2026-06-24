@@ -26,7 +26,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 
 // invoke the operation
 string peer = "test";
-ArmOperation<GatewayRouteListResult> lro = await virtualNetworkGateway.GetAdvertisedRoutesAsync(WaitUntil.Completed, peer);
+ArmOperation<GatewayRouteListResult> lro = await virtualNetworkGateway.GetAdvertisedRoutesAsync(WaitUntil.Completed, peer, cancellationToken: System.Threading.CancellationToken.None);
 GatewayRouteListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

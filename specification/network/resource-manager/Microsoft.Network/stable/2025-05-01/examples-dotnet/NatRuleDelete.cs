@@ -25,6 +25,6 @@ ResourceIdentifier vpnGatewayNatRuleResourceId = VpnGatewayNatRuleResource.Creat
 VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResource(vpnGatewayNatRuleResourceId);
 
 // invoke the operation
-await vpnGatewayNatRule.DeleteAsync(WaitUntil.Completed);
+await vpnGatewayNatRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

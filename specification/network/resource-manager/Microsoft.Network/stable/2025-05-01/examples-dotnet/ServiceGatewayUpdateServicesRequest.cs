@@ -31,7 +31,6 @@ ServiceGatewayUpdateServicesContent content = new ServiceGatewayUpdateServicesCo
     {
     Service = new ServiceGatewayService
     {
-    Name = "Service1",
     ServiceType = ServiceType.Inbound,
     IsDefault = true,
     LoadBalancerBackendPools = {new BackendAddressPoolData
@@ -45,12 +44,11 @@ ServiceGatewayUpdateServicesContent content = new ServiceGatewayUpdateServicesCo
     IsDelete = true,
     Service = new ServiceGatewayService
     {
-    Name = "Service2",
     ServiceType = ServiceType.Outbound,
     IsDefault = false,
     },
     }},
 };
-await serviceGateway.UpdateServicesAsync(WaitUntil.Completed, content);
+await serviceGateway.UpdateServicesAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -25,7 +25,7 @@ ResourceIdentifier loadBalancingRuleResourceId = LoadBalancingRuleResource.Creat
 LoadBalancingRuleResource loadBalancingRule = client.GetLoadBalancingRuleResource(loadBalancingRuleResourceId);
 
 // invoke the operation
-ArmOperation<LoadBalancerHealthPerRule> lro = await loadBalancingRule.HealthAsync(WaitUntil.Completed);
+ArmOperation<LoadBalancerHealthPerRule> lro = await loadBalancingRule.HealthAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 LoadBalancerHealthPerRule result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

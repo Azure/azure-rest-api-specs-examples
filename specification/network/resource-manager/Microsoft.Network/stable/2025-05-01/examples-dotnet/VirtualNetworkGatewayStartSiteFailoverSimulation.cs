@@ -26,7 +26,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 
 // invoke the operation
 string peeringLocation = "Vancouver";
-ArmOperation<string> lro = await virtualNetworkGateway.StartExpressRouteSiteFailoverSimulationAsync(WaitUntil.Completed, peeringLocation);
+ArmOperation<string> lro = await virtualNetworkGateway.StartExpressRouteSiteFailoverSimulationAsync(WaitUntil.Completed, peeringLocation, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

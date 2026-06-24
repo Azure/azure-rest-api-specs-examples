@@ -28,6 +28,6 @@ P2SVpnConnectionRequest request = new P2SVpnConnectionRequest
 {
     VpnConnectionIds = { "vpnconnId1", "vpnconnId2" },
 };
-await p2sVpnGateway.DisconnectP2SVpnConnectionsAsync(WaitUntil.Completed, request);
+await p2sVpnGateway.DisconnectP2SVpnConnectionsAsync(WaitUntil.Completed, request, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

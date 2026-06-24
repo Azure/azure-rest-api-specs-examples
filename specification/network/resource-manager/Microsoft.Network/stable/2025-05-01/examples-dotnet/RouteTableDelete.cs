@@ -24,6 +24,6 @@ ResourceIdentifier routeTableResourceId = RouteTableResource.CreateResourceIdent
 RouteTableResource routeTable = client.GetRouteTableResource(routeTableResourceId);
 
 // invoke the operation
-await routeTable.DeleteAsync(WaitUntil.Completed);
+await routeTable.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

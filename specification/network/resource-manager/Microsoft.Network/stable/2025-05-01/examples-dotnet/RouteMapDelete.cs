@@ -25,6 +25,6 @@ ResourceIdentifier routeMapResourceId = RouteMapResource.CreateResourceIdentifie
 RouteMapResource routeMap = client.GetRouteMapResource(routeMapResourceId);
 
 // invoke the operation
-await routeMap.DeleteAsync(WaitUntil.Completed);
+await routeMap.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

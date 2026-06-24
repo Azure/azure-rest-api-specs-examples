@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (ApplicationGatewaySslPredefinedPolicy item in subscriptionResource.GetApplicationGatewayAvailableSslPredefinedPoliciesAsync())
+await foreach (ApplicationGatewaySslPredefinedPolicy item in subscriptionResource.GetApplicationGatewayAvailableSslPredefinedPoliciesAsync(System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

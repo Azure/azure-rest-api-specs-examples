@@ -24,7 +24,7 @@ ResourceIdentifier applicationGatewayResourceId = ApplicationGatewayResource.Cre
 ApplicationGatewayResource applicationGateway = client.GetApplicationGatewayResource(applicationGatewayResourceId);
 
 // invoke the operation
-ArmOperation<ApplicationGatewayBackendHealth> lro = await applicationGateway.BackendHealthAsync(WaitUntil.Completed);
+ArmOperation<ApplicationGatewayBackendHealth> lro = await applicationGateway.BackendHealthAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 ApplicationGatewayBackendHealth result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

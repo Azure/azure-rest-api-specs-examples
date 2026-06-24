@@ -24,6 +24,6 @@ ResourceIdentifier virtualWanResourceId = VirtualWanResource.CreateResourceIdent
 VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceId);
 
 // invoke the operation
-await virtualWan.DeleteAsync(WaitUntil.Completed);
+await virtualWan.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

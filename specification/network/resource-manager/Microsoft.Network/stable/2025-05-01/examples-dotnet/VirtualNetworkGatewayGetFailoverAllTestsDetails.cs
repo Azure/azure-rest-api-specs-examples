@@ -27,7 +27,7 @@ VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGa
 // invoke the operation
 string type = "SingleSiteFailover";
 bool fetchLatest = true;
-ArmOperation<IList<ExpressRouteFailoverTestDetails>> lro = await virtualNetworkGateway.GetFailoverAllTestDetailsAsync(WaitUntil.Completed, type, fetchLatest);
+ArmOperation<IList<ExpressRouteFailoverTestDetails>> lro = await virtualNetworkGateway.GetFailoverAllTestDetailsAsync(WaitUntil.Completed, type, fetchLatest, cancellationToken: System.Threading.CancellationToken.None);
 IList<ExpressRouteFailoverTestDetails> result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

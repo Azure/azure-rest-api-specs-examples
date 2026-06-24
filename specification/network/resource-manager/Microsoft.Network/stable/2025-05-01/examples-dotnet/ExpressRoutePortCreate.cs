@@ -36,7 +36,7 @@ ExpressRoutePortData data = new ExpressRoutePortData
     BillingType = ExpressRoutePortsBillingType.UnlimitedData,
     Location = new AzureLocation("westus"),
 };
-ArmOperation<ExpressRoutePortResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, expressRoutePortName, data);
+ArmOperation<ExpressRoutePortResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, expressRoutePortName, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRoutePortResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

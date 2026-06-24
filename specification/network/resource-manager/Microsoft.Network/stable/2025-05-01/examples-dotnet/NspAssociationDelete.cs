@@ -25,6 +25,6 @@ ResourceIdentifier networkSecurityPerimeterAssociationResourceId = NetworkSecuri
 NetworkSecurityPerimeterAssociationResource networkSecurityPerimeterAssociation = client.GetNetworkSecurityPerimeterAssociationResource(networkSecurityPerimeterAssociationResourceId);
 
 // invoke the operation
-await networkSecurityPerimeterAssociation.DeleteAsync(WaitUntil.Completed);
+await networkSecurityPerimeterAssociation.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

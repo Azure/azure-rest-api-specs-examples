@@ -24,7 +24,7 @@ ResourceIdentifier virtualWanResourceId = VirtualWanResource.CreateResourceIdent
 VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceId);
 
 // invoke the operation
-ArmOperation<VpnServerConfigurationsResponse> lro = await virtualWan.GetVpnServerConfigurationsAssociatedWithVirtualWanAsync(WaitUntil.Completed);
+ArmOperation<VpnServerConfigurationsResponse> lro = await virtualWan.GetVpnServerConfigurationsAssociatedWithVirtualWanAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 VpnServerConfigurationsResponse result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

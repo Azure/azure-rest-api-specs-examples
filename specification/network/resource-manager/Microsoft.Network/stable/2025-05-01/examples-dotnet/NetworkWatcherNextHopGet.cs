@@ -29,7 +29,7 @@ NextHopContent content = new NextHopContent(new ResourceIdentifier("/subscriptio
 {
     TargetNicResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic1"),
 };
-ArmOperation<NextHopResult> lro = await networkWatcher.GetNextHopAsync(WaitUntil.Completed, content);
+ArmOperation<NextHopResult> lro = await networkWatcher.GetNextHopAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 NextHopResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

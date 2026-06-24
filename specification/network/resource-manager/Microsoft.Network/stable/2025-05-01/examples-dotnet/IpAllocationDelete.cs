@@ -24,6 +24,6 @@ ResourceIdentifier ipAllocationResourceId = IPAllocationResource.CreateResourceI
 IPAllocationResource ipAllocation = client.GetIPAllocationResource(ipAllocationResourceId);
 
 // invoke the operation
-await ipAllocation.DeleteAsync(WaitUntil.Completed);
+await ipAllocation.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

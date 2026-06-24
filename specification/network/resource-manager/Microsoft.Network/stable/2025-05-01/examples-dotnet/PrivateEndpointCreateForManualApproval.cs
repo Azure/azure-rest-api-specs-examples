@@ -43,7 +43,6 @@ PrivateEndpointData data = new PrivateEndpointData
     }},
     IPConfigurations = {new PrivateEndpointIPConfiguration
     {
-    Name = "pestaticconfig",
     GroupId = "file",
     MemberName = "file",
     PrivateIPAddress = IPAddress.Parse("192.168.0.5"),
@@ -51,7 +50,7 @@ PrivateEndpointData data = new PrivateEndpointData
     CustomNetworkInterfaceName = "testPeNic",
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<PrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data);
+ArmOperation<PrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data, cancellationToken: System.Threading.CancellationToken.None);
 PrivateEndpointResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

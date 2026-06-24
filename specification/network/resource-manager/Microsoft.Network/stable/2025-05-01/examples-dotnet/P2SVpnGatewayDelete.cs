@@ -24,6 +24,6 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-await p2sVpnGateway.DeleteAsync(WaitUntil.Completed);
+await p2sVpnGateway.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

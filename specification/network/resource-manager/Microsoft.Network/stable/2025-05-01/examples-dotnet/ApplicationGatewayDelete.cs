@@ -24,6 +24,6 @@ ResourceIdentifier applicationGatewayResourceId = ApplicationGatewayResource.Cre
 ApplicationGatewayResource applicationGateway = client.GetApplicationGatewayResource(applicationGatewayResourceId);
 
 // invoke the operation
-await applicationGateway.DeleteAsync(WaitUntil.Completed);
+await applicationGateway.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

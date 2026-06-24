@@ -28,6 +28,6 @@ BastionShareableLinkTokenListContent content = new BastionShareableLinkTokenList
 {
     Tokens = { "abcd1234-efgh-hijk-5678-abcdefgh1234", "dcba4321-hgfe-kjih-8765-hgfedcba4321" },
 };
-await bastionHost.DeleteBastionShareableLinkByTokenAsync(WaitUntil.Completed, content);
+await bastionHost.DeleteBastionShareableLinkByTokenAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

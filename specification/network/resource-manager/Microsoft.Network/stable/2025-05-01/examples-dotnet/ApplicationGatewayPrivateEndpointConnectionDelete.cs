@@ -25,6 +25,6 @@ ResourceIdentifier applicationGatewayPrivateEndpointConnectionResourceId = Appli
 ApplicationGatewayPrivateEndpointConnectionResource applicationGatewayPrivateEndpointConnection = client.GetApplicationGatewayPrivateEndpointConnectionResource(applicationGatewayPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-await applicationGatewayPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
+await applicationGatewayPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

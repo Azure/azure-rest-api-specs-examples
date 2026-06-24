@@ -26,7 +26,7 @@ ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpres
 
 // invoke the operation
 string devicePath = "devicePath";
-ArmOperation<ExpressRouteCircuitsArpTableListResult> lro = await expressRouteCircuitPeering.GetArpTableExpressRouteCircuitAsync(WaitUntil.Completed, devicePath);
+ArmOperation<ExpressRouteCircuitsArpTableListResult> lro = await expressRouteCircuitPeering.GetArpTableExpressRouteCircuitAsync(WaitUntil.Completed, devicePath, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteCircuitsArpTableListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

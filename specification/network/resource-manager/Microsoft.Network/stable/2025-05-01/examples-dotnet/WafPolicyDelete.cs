@@ -24,6 +24,6 @@ ResourceIdentifier webApplicationFirewallPolicyResourceId = WebApplicationFirewa
 WebApplicationFirewallPolicyResource webApplicationFirewallPolicy = client.GetWebApplicationFirewallPolicyResource(webApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-await webApplicationFirewallPolicy.DeleteAsync(WaitUntil.Completed);
+await webApplicationFirewallPolicy.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

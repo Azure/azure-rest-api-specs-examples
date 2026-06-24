@@ -40,13 +40,11 @@ VirtualNetworkData data = new VirtualNetworkData
     Delegations = {new ServiceDelegation
     {
     ServiceName = "Microsoft.Sql/managedInstances",
-    Name = "myDelegation",
     }},
-    Name = "test-1",
     }},
     Location = new AzureLocation("westcentralus"),
 };
-ArmOperation<VirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkName, data);
+ArmOperation<VirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

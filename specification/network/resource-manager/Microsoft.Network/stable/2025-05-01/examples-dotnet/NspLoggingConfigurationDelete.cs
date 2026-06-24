@@ -24,6 +24,6 @@ ResourceIdentifier networkSecurityPerimeterLoggingConfigurationResourceId = Netw
 NetworkSecurityPerimeterLoggingConfigurationResource networkSecurityPerimeterLoggingConfiguration = client.GetNetworkSecurityPerimeterLoggingConfigurationResource(networkSecurityPerimeterLoggingConfigurationResourceId);
 
 // invoke the operation
-await networkSecurityPerimeterLoggingConfiguration.DeleteAsync(WaitUntil.Completed);
+await networkSecurityPerimeterLoggingConfiguration.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

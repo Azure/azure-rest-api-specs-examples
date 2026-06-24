@@ -29,6 +29,6 @@ VirtualNetworkGatewayMigrationContent content = new VirtualNetworkGatewayMigrati
 {
     ResourceUri = new Uri("testUrl"),
 };
-await virtualNetworkGateway.InvokePrepareMigrationAsync(WaitUntil.Completed, content);
+await virtualNetworkGateway.InvokePrepareMigrationAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

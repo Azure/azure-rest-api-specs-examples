@@ -30,7 +30,7 @@ VpnConnectionPacketCaptureStartContent content = new VpnConnectionPacketCaptureS
 {
     LinkConnectionNames = { "siteLink1", "siteLink2" },
 };
-ArmOperation<string> lro = await vpnConnection.StartPacketCaptureAsync(WaitUntil.Completed, content: content);
+ArmOperation<string> lro = await vpnConnection.StartPacketCaptureAsync(WaitUntil.Completed, content: content, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

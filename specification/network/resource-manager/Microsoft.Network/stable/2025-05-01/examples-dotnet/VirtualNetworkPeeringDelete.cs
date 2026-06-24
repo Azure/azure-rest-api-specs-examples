@@ -25,6 +25,6 @@ ResourceIdentifier virtualNetworkPeeringResourceId = VirtualNetworkPeeringResour
 VirtualNetworkPeeringResource virtualNetworkPeering = client.GetVirtualNetworkPeeringResource(virtualNetworkPeeringResourceId);
 
 // invoke the operation
-await virtualNetworkPeering.DeleteAsync(WaitUntil.Completed);
+await virtualNetworkPeering.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

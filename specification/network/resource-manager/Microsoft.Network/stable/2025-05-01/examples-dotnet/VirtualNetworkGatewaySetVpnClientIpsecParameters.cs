@@ -34,7 +34,7 @@ VpnClientIPsecParameters vpnclientIPsecParams = new VpnClientIPsecParameters(
     IkeIntegrity.Sha384,
     DHGroup.DHGroup2,
     PfsGroup.Pfs2);
-ArmOperation<VpnClientIPsecParameters> lro = await virtualNetworkGateway.SetVpnclientIPsecParametersAsync(WaitUntil.Completed, vpnclientIPsecParams);
+ArmOperation<VpnClientIPsecParameters> lro = await virtualNetworkGateway.SetVpnclientIPsecParametersAsync(WaitUntil.Completed, vpnclientIPsecParams, cancellationToken: System.Threading.CancellationToken.None);
 VpnClientIPsecParameters result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

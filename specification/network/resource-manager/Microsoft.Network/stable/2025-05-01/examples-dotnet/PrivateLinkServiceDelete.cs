@@ -24,6 +24,6 @@ ResourceIdentifier privateLinkServiceResourceId = PrivateLinkServiceResource.Cre
 PrivateLinkServiceResource privateLinkService = client.GetPrivateLinkServiceResource(privateLinkServiceResourceId);
 
 // invoke the operation
-await privateLinkService.DeleteAsync(WaitUntil.Completed);
+await privateLinkService.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

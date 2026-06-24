@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("regionName");
-await foreach (AutoApprovedPrivateLinkService item in subscriptionResource.GetAutoApprovedPrivateLinkServicesPrivateLinkServicesAsync(location))
+await foreach (AutoApprovedPrivateLinkService item in subscriptionResource.GetAutoApprovedPrivateLinkServicesPrivateLinkServicesAsync(location, System.Threading.CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

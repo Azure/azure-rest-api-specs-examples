@@ -24,7 +24,7 @@ ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdent
 VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
 
 // invoke the operation
-ArmOperation<VpnGatewayResource> lro = await vpnGateway.ResetAsync(WaitUntil.Completed);
+ArmOperation<VpnGatewayResource> lro = await vpnGateway.ResetAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 VpnGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

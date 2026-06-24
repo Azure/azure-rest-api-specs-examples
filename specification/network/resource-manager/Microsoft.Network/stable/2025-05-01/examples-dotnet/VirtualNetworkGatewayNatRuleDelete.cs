@@ -25,6 +25,6 @@ ResourceIdentifier virtualNetworkGatewayNatRuleResourceId = VirtualNetworkGatewa
 VirtualNetworkGatewayNatRuleResource virtualNetworkGatewayNatRule = client.GetVirtualNetworkGatewayNatRuleResource(virtualNetworkGatewayNatRuleResourceId);
 
 // invoke the operation
-await virtualNetworkGatewayNatRule.DeleteAsync(WaitUntil.Completed);
+await virtualNetworkGatewayNatRule.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

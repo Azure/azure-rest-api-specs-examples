@@ -36,7 +36,7 @@ VirtualRouterData data = new VirtualRouterData
     ["key1"] = "value1"
     },
 };
-ArmOperation<VirtualRouterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualRouterName, data);
+ArmOperation<VirtualRouterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualRouterName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualRouterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

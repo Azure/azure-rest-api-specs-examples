@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LoadBalancerResource created on azure
-// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
+// this example assumes you already have this InboundNatRuleResource created on azure
+// for more information of creating InboundNatRuleResource, please refer to the document of InboundNatRuleResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb1";
-ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
-LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
-
-// get the collection of this InboundNatRuleResource
-InboundNatRuleCollection collection = loadBalancer.GetInboundNatRules();
+string inboundNatRuleName = "natRule1.1";
+ResourceIdentifier inboundNatRuleResourceId = InboundNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, inboundNatRuleName);
+InboundNatRuleResource inboundNatRule = client.GetInboundNatRuleResource(inboundNatRuleResourceId);
 
 // invoke the operation
-string inboundNatRuleName = "natRule1.1";
 InboundNatRuleData data = new InboundNatRuleData
 {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/ip1"),
@@ -38,7 +35,7 @@ InboundNatRuleData data = new InboundNatRuleData
     EnableFloatingIP = false,
     EnableTcpReset = false,
 };
-ArmOperation<InboundNatRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, inboundNatRuleName, data);
+ArmOperation<InboundNatRuleResource> lro = await inboundNatRule.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 InboundNatRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

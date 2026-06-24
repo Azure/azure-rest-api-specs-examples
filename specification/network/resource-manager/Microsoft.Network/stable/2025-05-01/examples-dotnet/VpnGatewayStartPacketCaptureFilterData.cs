@@ -28,7 +28,7 @@ VpnGatewayPacketCaptureStartContent content = new VpnGatewayPacketCaptureStartCo
 {
     FilterData = "{'TracingFlags': 11,'MaxPacketBufferSize': 120,'MaxFileSize': 200,'Filters': [{'SourceSubnets': ['20.1.1.0/24'],'DestinationSubnets': ['10.1.1.0/24'],'SourcePort': [500],'DestinationPort': [4500],'Protocol': 6,'TcpFlags': 16,'CaptureSingleDirectionTrafficOnly': true}]}",
 };
-ArmOperation<string> lro = await vpnGateway.StartPacketCaptureAsync(WaitUntil.Completed, content: content);
+ArmOperation<string> lro = await vpnGateway.StartPacketCaptureAsync(WaitUntil.Completed, content: content, cancellationToken: System.Threading.CancellationToken.None);
 string result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -28,7 +28,7 @@ NetworkSecurityPerimeterCollection collection = resourceGroupResource.GetNetwork
 // invoke the operation
 string networkSecurityPerimeterName = "nsp1";
 NetworkSecurityPerimeterData data = new NetworkSecurityPerimeterData(new AzureLocation("location1"));
-ArmOperation<NetworkSecurityPerimeterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkSecurityPerimeterName, data);
+ArmOperation<NetworkSecurityPerimeterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkSecurityPerimeterName, data, cancellationToken: System.Threading.CancellationToken.None);
 NetworkSecurityPerimeterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

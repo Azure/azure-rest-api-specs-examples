@@ -24,6 +24,6 @@ ResourceIdentifier expressRoutePortAuthorizationResourceId = ExpressRoutePortAut
 ExpressRoutePortAuthorizationResource expressRoutePortAuthorization = client.GetExpressRoutePortAuthorizationResource(expressRoutePortAuthorizationResourceId);
 
 // invoke the operation
-await expressRoutePortAuthorization.DeleteAsync(WaitUntil.Completed);
+await expressRoutePortAuthorization.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

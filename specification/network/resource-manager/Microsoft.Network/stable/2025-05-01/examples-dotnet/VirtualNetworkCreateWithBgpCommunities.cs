@@ -37,12 +37,11 @@ VirtualNetworkData data = new VirtualNetworkData
     Subnets = {new SubnetData
     {
     AddressPrefix = "10.0.0.0/24",
-    Name = "test-1",
     }},
     BgpCommunities = new VirtualNetworkBgpCommunities("12076:20000"),
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<VirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkName, data);
+ArmOperation<VirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -50,6 +50,6 @@ FirewallPacketCaptureRequestContent content = new FirewallPacketCaptureRequestCo
     DestinationPorts = {"123", "80"},
     }},
 };
-await azureFirewall.PacketCaptureAsync(WaitUntil.Completed, content);
+await azureFirewall.PacketCaptureAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

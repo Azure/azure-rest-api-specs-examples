@@ -26,6 +26,6 @@ ConnectivityConfigurationResource connectivityConfiguration = client.GetConnecti
 
 // invoke the operation
 bool? force = false;
-await connectivityConfiguration.DeleteAsync(WaitUntil.Completed, force: force);
+await connectivityConfiguration.DeleteAsync(WaitUntil.Completed, force: force, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

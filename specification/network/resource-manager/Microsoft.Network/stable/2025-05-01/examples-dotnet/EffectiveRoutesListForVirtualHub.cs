@@ -25,7 +25,7 @@ VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceI
 
 // invoke the operation
 EffectiveRoutesContent content = default;
-ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content);
+ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content, cancellationToken: System.Threading.CancellationToken.None);
 VirtualHubEffectiveRouteList result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

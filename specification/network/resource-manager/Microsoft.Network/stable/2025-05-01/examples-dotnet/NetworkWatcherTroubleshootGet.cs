@@ -26,7 +26,7 @@ NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(network
 
 // invoke the operation
 TroubleshootingContent content = new TroubleshootingContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"), new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/st1"), new Uri("https://st1.blob.core.windows.net/cn1"));
-ArmOperation<TroubleshootingResult> lro = await networkWatcher.GetTroubleshootingAsync(WaitUntil.Completed, content);
+ArmOperation<TroubleshootingResult> lro = await networkWatcher.GetTroubleshootingAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 TroubleshootingResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<VpnClientConnectionHealthDetailListResult> lro = await virtualNetworkGateway.GetVpnclientConnectionHealthAsync(WaitUntil.Completed);
+ArmOperation<VpnClientConnectionHealthDetailListResult> lro = await virtualNetworkGateway.GetVpnclientConnectionHealthAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 VpnClientConnectionHealthDetailListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

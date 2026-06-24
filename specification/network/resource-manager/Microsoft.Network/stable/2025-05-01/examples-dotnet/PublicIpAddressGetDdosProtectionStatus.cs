@@ -24,7 +24,7 @@ ResourceIdentifier publicIPAddressResourceId = PublicIPAddressResource.CreateRes
 PublicIPAddressResource publicIPAddress = client.GetPublicIPAddressResource(publicIPAddressResourceId);
 
 // invoke the operation
-ArmOperation<PublicIPDdosProtectionStatusResult> lro = await publicIPAddress.DdosProtectionStatusAsync(WaitUntil.Completed);
+ArmOperation<PublicIPDdosProtectionStatusResult> lro = await publicIPAddress.DdosProtectionStatusAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 PublicIPDdosProtectionStatusResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

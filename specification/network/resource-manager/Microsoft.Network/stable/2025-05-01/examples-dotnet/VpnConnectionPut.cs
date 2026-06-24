@@ -38,7 +38,6 @@ VpnConnectionData data = new VpnConnectionData
     ConnectionBandwidth = 200,
     SharedKey = "key",
     UsePolicyBasedTrafficSelectors = false,
-    Name = "Connection-Link1",
     }},
     RoutingConfiguration = new RoutingConfiguration
     {
@@ -61,7 +60,7 @@ VpnConnectionData data = new VpnConnectionData
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),
     },
 };
-ArmOperation<VpnConnectionResource> lro = await vpnConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VpnConnectionResource> lro = await vpnConnection.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 VpnConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

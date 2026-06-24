@@ -25,6 +25,6 @@ ResourceIdentifier packetCaptureResourceId = PacketCaptureResource.CreateResourc
 PacketCaptureResource packetCapture = client.GetPacketCaptureResource(packetCaptureResourceId);
 
 // invoke the operation
-await packetCapture.DeleteAsync(WaitUntil.Completed);
+await packetCapture.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

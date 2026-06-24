@@ -43,7 +43,6 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Dynamic,
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"),
-    Name = "gwipconfig1",
     }},
     GatewayType = VirtualNetworkGatewayType.Vpn,
     VpnType = VpnType.RouteBased,
@@ -53,7 +52,6 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     DisableIPSecReplayProtection = false,
     Sku = new VirtualNetworkGatewaySku
     {
-        Name = VirtualNetworkGatewaySkuName.VpnGw1,
         Tier = VirtualNetworkGatewaySkuTier.VpnGw1,
     },
     VpnClientConfiguration = new VpnClientConfiguration
@@ -92,7 +90,6 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1"),
-    Name = "natRule1",
     }, new VirtualNetworkGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
@@ -107,14 +104,13 @@ VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
     }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2"),
-    Name = "natRule2",
     }},
     EnableBgpRouteTranslationForNat = false,
     AllowVirtualWanTraffic = false,
     AllowRemoteVnetTraffic = false,
     Location = new AzureLocation("centralus"),
 };
-ArmOperation<VirtualNetworkGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkGatewayName, data);
+ArmOperation<VirtualNetworkGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkGatewayName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualNetworkGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

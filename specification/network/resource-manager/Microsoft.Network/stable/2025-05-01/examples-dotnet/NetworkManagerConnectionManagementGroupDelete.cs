@@ -22,6 +22,6 @@ ResourceIdentifier managementGroupNetworkManagerConnectionResourceId = Managemen
 ManagementGroupNetworkManagerConnectionResource managementGroupNetworkManagerConnection = client.GetManagementGroupNetworkManagerConnectionResource(managementGroupNetworkManagerConnectionResourceId);
 
 // invoke the operation
-await managementGroupNetworkManagerConnection.DeleteAsync(WaitUntil.Completed);
+await managementGroupNetworkManagerConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

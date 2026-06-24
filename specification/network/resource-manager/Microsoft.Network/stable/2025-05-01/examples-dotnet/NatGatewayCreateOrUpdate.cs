@@ -42,7 +42,7 @@ NatGatewayData data = new NatGatewayData
     }},
     Location = new AzureLocation("westus"),
 };
-ArmOperation<NatGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, natGatewayName, data);
+ArmOperation<NatGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, natGatewayName, data, cancellationToken: System.Threading.CancellationToken.None);
 NatGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

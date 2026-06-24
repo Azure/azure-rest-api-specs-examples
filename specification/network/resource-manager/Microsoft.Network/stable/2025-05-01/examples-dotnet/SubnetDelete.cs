@@ -25,6 +25,6 @@ ResourceIdentifier subnetResourceId = SubnetResource.CreateResourceIdentifier(su
 SubnetResource subnet = client.GetSubnetResource(subnetResourceId);
 
 // invoke the operation
-await subnet.DeleteAsync(WaitUntil.Completed);
+await subnet.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

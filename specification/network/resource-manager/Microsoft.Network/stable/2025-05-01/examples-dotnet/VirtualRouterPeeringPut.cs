@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualRouterPeeringResource created on azure
-// for more information of creating VirtualRouterPeeringResource, please refer to the document of VirtualRouterPeeringResource
+// this example assumes you already have this VirtualRouterResource created on azure
+// for more information of creating VirtualRouterResource, please refer to the document of VirtualRouterResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualRouterName = "virtualRouter";
-string peeringName = "peering1";
-ResourceIdentifier virtualRouterPeeringResourceId = VirtualRouterPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualRouterName, peeringName);
-VirtualRouterPeeringResource virtualRouterPeering = client.GetVirtualRouterPeeringResource(virtualRouterPeeringResourceId);
+ResourceIdentifier virtualRouterResourceId = VirtualRouterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualRouterName);
+VirtualRouterResource virtualRouter = client.GetVirtualRouterResource(virtualRouterResourceId);
+
+// get the collection of this VirtualRouterPeeringResource
+VirtualRouterPeeringCollection collection = virtualRouter.GetVirtualRouterPeerings();
 
 // invoke the operation
+string peeringName = "peering1";
 VirtualRouterPeeringData data = new VirtualRouterPeeringData
 {
     PeerAsn = 20000L,
     PeerIP = "192.168.1.5",
 };
-ArmOperation<VirtualRouterPeeringResource> lro = await virtualRouterPeering.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VirtualRouterPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, peeringName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualRouterPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -26,6 +26,6 @@ ResourceIdentifier bgpConnectionResourceId = BgpConnectionResource.CreateResourc
 BgpConnectionResource bgpConnection = client.GetBgpConnectionResource(bgpConnectionResourceId);
 
 // invoke the operation
-await bgpConnection.DeleteAsync(WaitUntil.Completed);
+await bgpConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

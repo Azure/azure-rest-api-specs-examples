@@ -35,7 +35,7 @@ FlowLogInformation flowLogInformation = new FlowLogInformation(new ResourceIdent
         },
     },
 };
-ArmOperation<FlowLogInformation> lro = await networkWatcher.SetFlowLogConfigurationAsync(WaitUntil.Completed, flowLogInformation);
+ArmOperation<FlowLogInformation> lro = await networkWatcher.SetFlowLogConfigurationAsync(WaitUntil.Completed, flowLogInformation, cancellationToken: System.Threading.CancellationToken.None);
 FlowLogInformation result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

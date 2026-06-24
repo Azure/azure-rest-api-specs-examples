@@ -25,7 +25,6 @@ PolicySignaturesOverridesForIdpsResource policySignaturesOverridesForIdps = clie
 // invoke the operation
 PolicySignaturesOverridesForIdpsData data = new PolicySignaturesOverridesForIdpsData
 {
-    Name = "default",
     Id = new ResourceIdentifier("/subscriptions/e747cc13-97d4-4a79-b463-42d7f4e558f2/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/firewallPolicy/signatureOverrides/default"),
     ResourceType = new ResourceType("Microsoft.Network/firewallPolicies/signatureOverrides"),
     Signatures =
@@ -34,7 +33,7 @@ PolicySignaturesOverridesForIdpsData data = new PolicySignaturesOverridesForIdps
     ["2000106"] = "Deny"
     },
 };
-PolicySignaturesOverridesForIdpsResource result = await policySignaturesOverridesForIdps.UpdateAsync(data);
+PolicySignaturesOverridesForIdpsResource result = await policySignaturesOverridesForIdps.UpdateAsync(data, System.Threading.CancellationToken.None);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance

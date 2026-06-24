@@ -32,7 +32,7 @@ NetworkTagsObject networkTagsObject = new NetworkTagsObject
     ["tag2"] = "value2"
     },
 };
-ArmOperation<AzureFirewallResource> lro = await azureFirewall.UpdateAsync(WaitUntil.Completed, networkTagsObject);
+ArmOperation<AzureFirewallResource> lro = await azureFirewall.UpdateAsync(WaitUntil.Completed, networkTagsObject, cancellationToken: System.Threading.CancellationToken.None);
 AzureFirewallResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

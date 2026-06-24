@@ -24,6 +24,6 @@ ResourceIdentifier networkInterfaceTapConfigurationResourceId = NetworkInterface
 NetworkInterfaceTapConfigurationResource networkInterfaceTapConfiguration = client.GetNetworkInterfaceTapConfigurationResource(networkInterfaceTapConfigurationResourceId);
 
 // invoke the operation
-await networkInterfaceTapConfiguration.DeleteAsync(WaitUntil.Completed);
+await networkInterfaceTapConfiguration.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -26,7 +26,7 @@ NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(network
 
 // invoke the operation
 SecurityGroupViewContent content = new SecurityGroupViewContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"));
-ArmOperation<SecurityGroupViewResult> lro = await networkWatcher.GetVmSecurityRulesAsync(WaitUntil.Completed, content);
+ArmOperation<SecurityGroupViewResult> lro = await networkWatcher.GetVmSecurityRulesAsync(WaitUntil.Completed, content, System.Threading.CancellationToken.None);
 SecurityGroupViewResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

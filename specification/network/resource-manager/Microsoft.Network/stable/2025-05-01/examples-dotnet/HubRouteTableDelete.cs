@@ -25,6 +25,6 @@ ResourceIdentifier hubRouteTableResourceId = HubRouteTableResource.CreateResourc
 HubRouteTableResource hubRouteTable = client.GetHubRouteTableResource(hubRouteTableResourceId);
 
 // invoke the operation
-await hubRouteTable.DeleteAsync(WaitUntil.Completed);
+await hubRouteTable.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

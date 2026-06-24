@@ -28,6 +28,6 @@ MigrateLoadBalancerToIPBasedContent content = new MigrateLoadBalancerToIPBasedCo
 {
     Pools = { "pool1", "pool2" },
 };
-MigrateLoadBalancerToIPBasedResult result = await loadBalancer.MigrateToIPBasedAsync(content: content);
+MigrateLoadBalancerToIPBasedResult result = await loadBalancer.MigrateToIPBasedAsync(content, System.Threading.CancellationToken.None);
 
 Console.WriteLine($"Succeeded: {result}");

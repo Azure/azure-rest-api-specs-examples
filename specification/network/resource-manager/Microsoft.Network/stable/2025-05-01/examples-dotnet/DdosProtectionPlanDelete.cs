@@ -24,6 +24,6 @@ ResourceIdentifier ddosProtectionPlanResourceId = DdosProtectionPlanResource.Cre
 DdosProtectionPlanResource ddosProtectionPlan = client.GetDdosProtectionPlanResource(ddosProtectionPlanResourceId);
 
 // invoke the operation
-await ddosProtectionPlan.DeleteAsync(WaitUntil.Completed);
+await ddosProtectionPlan.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

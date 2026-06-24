@@ -24,6 +24,6 @@ ResourceIdentifier scopeConnectionResourceId = ScopeConnectionResource.CreateRes
 ScopeConnectionResource scopeConnection = client.GetScopeConnectionResource(scopeConnectionResourceId);
 
 // invoke the operation
-await scopeConnection.DeleteAsync(WaitUntil.Completed);
+await scopeConnection.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

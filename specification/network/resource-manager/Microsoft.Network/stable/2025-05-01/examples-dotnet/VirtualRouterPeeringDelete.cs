@@ -24,6 +24,6 @@ ResourceIdentifier virtualRouterPeeringResourceId = VirtualRouterPeeringResource
 VirtualRouterPeeringResource virtualRouterPeering = client.GetVirtualRouterPeeringResource(virtualRouterPeeringResourceId);
 
 // invoke the operation
-await virtualRouterPeering.DeleteAsync(WaitUntil.Completed);
+await virtualRouterPeering.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

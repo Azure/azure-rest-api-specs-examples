@@ -85,7 +85,7 @@ DscpConfigurationData data = new DscpConfigurationData
     }},
     Location = new AzureLocation("eastus"),
 };
-ArmOperation<DscpConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dscpConfigurationName, data);
+ArmOperation<DscpConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dscpConfigurationName, data, cancellationToken: System.Threading.CancellationToken.None);
 DscpConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RouteResource created on azure
-// for more information of creating RouteResource, please refer to the document of RouteResource
+// this example assumes you already have this RouteTableResource created on azure
+// for more information of creating RouteTableResource, please refer to the document of RouteTableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string routeTableName = "testrt";
-string routeName = "route1";
-ResourceIdentifier routeResourceId = RouteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, routeTableName, routeName);
-RouteResource route = client.GetRouteResource(routeResourceId);
+ResourceIdentifier routeTableResourceId = RouteTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, routeTableName);
+RouteTableResource routeTable = client.GetRouteTableResource(routeTableResourceId);
+
+// get the collection of this RouteResource
+RouteCollection collection = routeTable.GetRoutes();
 
 // invoke the operation
+string routeName = "route1";
 RouteData data = new RouteData
 {
     AddressPrefix = "10.0.3.0/24",
     NextHopType = RouteNextHopType.VirtualNetworkGateway,
 };
-ArmOperation<RouteResource> lro = await route.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RouteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeName, data, cancellationToken: System.Threading.CancellationToken.None);
 RouteResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

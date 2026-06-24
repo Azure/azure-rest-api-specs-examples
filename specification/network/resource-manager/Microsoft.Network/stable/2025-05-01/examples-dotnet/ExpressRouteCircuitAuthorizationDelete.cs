@@ -24,6 +24,6 @@ ResourceIdentifier expressRouteCircuitAuthorizationResourceId = ExpressRouteCirc
 ExpressRouteCircuitAuthorizationResource expressRouteCircuitAuthorization = client.GetExpressRouteCircuitAuthorizationResource(expressRouteCircuitAuthorizationResourceId);
 
 // invoke the operation
-await expressRouteCircuitAuthorization.DeleteAsync(WaitUntil.Completed);
+await expressRouteCircuitAuthorization.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

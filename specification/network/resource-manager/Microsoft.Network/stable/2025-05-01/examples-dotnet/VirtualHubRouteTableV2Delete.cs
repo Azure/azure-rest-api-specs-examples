@@ -25,6 +25,6 @@ ResourceIdentifier virtualHubRouteTableV2ResourceId = VirtualHubRouteTableV2Reso
 VirtualHubRouteTableV2Resource virtualHubRouteTableV2 = client.GetVirtualHubRouteTableV2Resource(virtualHubRouteTableV2ResourceId);
 
 // invoke the operation
-await virtualHubRouteTableV2.DeleteAsync(WaitUntil.Completed);
+await virtualHubRouteTableV2.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

@@ -32,7 +32,6 @@ ExpressRouteCircuitData data = new ExpressRouteCircuitData
 {
     Sku = new ExpressRouteCircuitSku
     {
-        Name = "Standard_MeteredData",
         Tier = ExpressRouteCircuitSkuTier.Standard,
         Family = ExpressRouteCircuitSkuFamily.MeteredData,
     },
@@ -47,7 +46,7 @@ ExpressRouteCircuitData data = new ExpressRouteCircuitData
     },
     Location = new AzureLocation("Brazil South"),
 };
-ArmOperation<ExpressRouteCircuitResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, circuitName, data);
+ArmOperation<ExpressRouteCircuitResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, circuitName, data, cancellationToken: System.Threading.CancellationToken.None);
 ExpressRouteCircuitResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -37,13 +37,11 @@ FirewallPolicyRuleCollectionGroupDraftData data = new FirewallPolicyRuleCollecti
     SourceAddresses = {"10.1.25.0/24"},
     DestinationAddresses = {"*"},
     DestinationPorts = {"*"},
-    Name = "network-rule1",
     }},
-    Name = "Example-Filter-Rule-Collection",
     Priority = 100,
     }},
 };
-ArmOperation<FirewallPolicyRuleCollectionGroupDraftResource> lro = await firewallPolicyRuleCollectionGroupDraft.CreateOrUpdateAsync(WaitUntil.Completed, data);
+ArmOperation<FirewallPolicyRuleCollectionGroupDraftResource> lro = await firewallPolicyRuleCollectionGroupDraft.CreateOrUpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
 FirewallPolicyRuleCollectionGroupDraftResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

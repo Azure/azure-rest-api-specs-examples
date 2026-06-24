@@ -25,6 +25,6 @@ ResourceIdentifier privateEndpointResourceId = PrivateEndpointResource.CreateRes
 PrivateEndpointResource privateEndpoint = client.GetPrivateEndpointResource(privateEndpointResourceId);
 
 // invoke the operation
-await privateEndpoint.DeleteAsync(WaitUntil.Completed);
+await privateEndpoint.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

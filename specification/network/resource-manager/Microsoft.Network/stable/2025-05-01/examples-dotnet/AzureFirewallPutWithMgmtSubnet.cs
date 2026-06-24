@@ -37,7 +37,6 @@ AzureFirewallData data = new AzureFirewallData
     ActionType = AzureFirewallRCActionType.Deny,
     Rules = {new AzureFirewallApplicationRule
     {
-    Name = "rule1",
     Description = "Deny inbound rule",
     SourceAddresses = {"216.58.216.164", "10.0.0.0/24"},
     Protocols = {new AzureFirewallApplicationRuleProtocol
@@ -48,7 +47,6 @@ AzureFirewallData data = new AzureFirewallData
     TargetFqdns = {"www.test.com"},
     }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"),
-    Name = "apprulecoll",
     }},
     NatRuleCollections = {new AzureFirewallNatRuleCollectionData
     {
@@ -56,7 +54,6 @@ AzureFirewallData data = new AzureFirewallData
     ActionType = AzureFirewallNatRCActionType.Dnat,
     Rules = {new AzureFirewallNatRule
     {
-    Name = "DNAT-HTTPS-traffic",
     Description = "D-NAT all outbound web traffic for inspection",
     SourceAddresses = {"*"},
     DestinationAddresses = {"1.2.3.4"},
@@ -66,7 +63,6 @@ AzureFirewallData data = new AzureFirewallData
     TranslatedPort = "8443",
     }, new AzureFirewallNatRule
     {
-    Name = "DNAT-HTTP-traffic-With-FQDN",
     Description = "D-NAT all inbound web traffic for inspection",
     SourceAddresses = {"*"},
     DestinationAddresses = {"1.2.3.4"},
@@ -76,7 +72,6 @@ AzureFirewallData data = new AzureFirewallData
     TranslatedFqdn = "internalhttpserver",
     }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"),
-    Name = "natrulecoll",
     }},
     NetworkRuleCollections = {new AzureFirewallNetworkRuleCollectionData
     {
@@ -84,7 +79,6 @@ AzureFirewallData data = new AzureFirewallData
     ActionType = AzureFirewallRCActionType.Deny,
     Rules = {new AzureFirewallNetworkRule
     {
-    Name = "L4-traffic",
     Description = "Block traffic based on source IPs and ports",
     Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
     SourceAddresses = {"192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"},
@@ -92,7 +86,6 @@ AzureFirewallData data = new AzureFirewallData
     DestinationPorts = {"443-444", "8443"},
     }, new AzureFirewallNetworkRule
     {
-    Name = "L4-traffic-with-FQDN",
     Description = "Block traffic based on source IPs and ports to amazon",
     Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
     SourceAddresses = {"10.2.4.12-10.2.4.255"},
@@ -100,24 +93,20 @@ AzureFirewallData data = new AzureFirewallData
     DestinationFqdns = {"www.amazon.com"},
     }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"),
-    Name = "netrulecoll",
     }},
     IPConfigurations = {new AzureFirewallIPConfiguration
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"),
-    Name = "azureFirewallIpConfiguration",
     }},
     ManagementIPConfiguration = new AzureFirewallIPConfiguration
     {
         SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallManagementSubnet"),
         PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/managementPipName"),
-        Name = "azureFirewallMgmtIpConfiguration",
     },
     ThreatIntelMode = AzureFirewallThreatIntelMode.Alert,
     Sku = new AzureFirewallSku
     {
-        Name = AzureFirewallSkuName.AzfwVnet,
         Tier = AzureFirewallSkuTier.Standard,
     },
     Location = new AzureLocation("West US"),
@@ -126,7 +115,7 @@ AzureFirewallData data = new AzureFirewallData
     ["key1"] = "value1"
     },
 };
-ArmOperation<AzureFirewallResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, azureFirewallName, data);
+ArmOperation<AzureFirewallResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, azureFirewallName, data, cancellationToken: System.Threading.CancellationToken.None);
 AzureFirewallResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

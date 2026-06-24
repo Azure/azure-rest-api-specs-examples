@@ -29,7 +29,7 @@ NetworkConfigurationDiagnosticContent content = new NetworkConfigurationDiagnost
 {
 new NetworkConfigurationDiagnosticProfile(NetworkTrafficDirection.Inbound, "TCP", "10.1.0.4", "12.11.12.14", "12100")
 });
-ArmOperation<NetworkConfigurationDiagnosticResponse> lro = await networkWatcher.GetNetworkConfigurationDiagnosticAsync(WaitUntil.Completed, content);
+ArmOperation<NetworkConfigurationDiagnosticResponse> lro = await networkWatcher.GetNetworkConfigurationDiagnosticAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 NetworkConfigurationDiagnosticResponse result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

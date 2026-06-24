@@ -35,7 +35,6 @@ RouteFilterData data = new RouteFilterData
     Access = NetworkAccess.Allow,
     RouteFilterRuleType = RouteFilterRuleType.Community,
     Communities = {"12076:5030", "12076:5040"},
-    Name = "ruleName",
     }},
     Location = new AzureLocation("West US"),
     Tags =
@@ -43,7 +42,7 @@ RouteFilterData data = new RouteFilterData
     ["key1"] = "value1"
     },
 };
-ArmOperation<RouteFilterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeFilterName, data);
+ArmOperation<RouteFilterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeFilterName, data, cancellationToken: System.Threading.CancellationToken.None);
 RouteFilterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -37,7 +37,7 @@ VirtualWanData data = new VirtualWanData
     ["key1"] = "value1"
     },
 };
-ArmOperation<VirtualWanResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualWanName, data);
+ArmOperation<VirtualWanResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualWanName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualWanResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

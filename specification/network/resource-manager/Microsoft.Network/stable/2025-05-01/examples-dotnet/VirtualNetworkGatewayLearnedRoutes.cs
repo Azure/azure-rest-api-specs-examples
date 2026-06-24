@@ -25,7 +25,7 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-ArmOperation<GatewayRouteListResult> lro = await virtualNetworkGateway.GetLearnedRoutesAsync(WaitUntil.Completed);
+ArmOperation<GatewayRouteListResult> lro = await virtualNetworkGateway.GetLearnedRoutesAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 GatewayRouteListResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

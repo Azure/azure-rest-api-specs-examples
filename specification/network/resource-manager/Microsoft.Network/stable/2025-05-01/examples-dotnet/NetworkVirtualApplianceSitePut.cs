@@ -38,7 +38,7 @@ VirtualApplianceSiteData data = new VirtualApplianceSiteData
         Default = true,
     },
 };
-ArmOperation<VirtualApplianceSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, siteName, data);
+ArmOperation<VirtualApplianceSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, siteName, data, cancellationToken: System.Threading.CancellationToken.None);
 VirtualApplianceSiteResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -29,6 +29,6 @@ UnprepareNetworkPoliciesContent content = new UnprepareNetworkPoliciesContent
 {
     ServiceName = "Microsoft.Sql/managedInstances",
 };
-await subnet.UnprepareNetworkPoliciesAsync(WaitUntil.Completed, content);
+await subnet.UnprepareNetworkPoliciesAsync(WaitUntil.Completed, content, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

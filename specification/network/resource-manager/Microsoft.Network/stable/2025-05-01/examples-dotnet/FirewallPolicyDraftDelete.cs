@@ -24,6 +24,6 @@ ResourceIdentifier firewallPolicyDraftResourceId = FirewallPolicyDraftResource.C
 FirewallPolicyDraftResource firewallPolicyDraft = client.GetFirewallPolicyDraftResource(firewallPolicyDraftResourceId);
 
 // invoke the operation
-await firewallPolicyDraft.DeleteAsync(WaitUntil.Completed);
+await firewallPolicyDraft.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

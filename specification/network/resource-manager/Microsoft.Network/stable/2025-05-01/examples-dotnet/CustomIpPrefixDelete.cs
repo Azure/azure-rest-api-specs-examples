@@ -24,6 +24,6 @@ ResourceIdentifier customIPPrefixResourceId = CustomIPPrefixResource.CreateResou
 CustomIPPrefixResource customIPPrefix = client.GetCustomIPPrefixResource(customIPPrefixResourceId);
 
 // invoke the operation
-await customIPPrefix.DeleteAsync(WaitUntil.Completed);
+await customIPPrefix.DeleteAsync(WaitUntil.Completed, cancellationToken: System.Threading.CancellationToken.None);
 
 Console.WriteLine("Succeeded");

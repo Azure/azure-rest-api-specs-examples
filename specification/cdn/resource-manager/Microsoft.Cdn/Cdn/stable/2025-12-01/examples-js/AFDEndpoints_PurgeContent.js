@@ -1,0 +1,18 @@
+const { CdnManagementClient } = require("@azure/arm-cdn");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to removes a content from AzureFrontDoor.
+ *
+ * @summary removes a content from AzureFrontDoor.
+ * x-ms-original-file: 2025-12-01/AFDEndpoints_PurgeContent.json
+ */
+async function afdEndpointsPurgeContent() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new CdnManagementClient(credential, subscriptionId);
+  await client.afdEndpoints.purgeContent("RG", "profile1", "endpoint1", {
+    contentPaths: ["/folder1"],
+    domains: ["endpoint1-abcdefghijklmnop.z01.azurefd.net"],
+  });
+}

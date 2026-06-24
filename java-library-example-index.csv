@@ -6978,3 +6978,4 @@ id,name,language,tag,package,version,date_epoch,date
 6977,"Azure.ResourceManager.ComputeLimit,1.2.0",dotnet,Azure.ResourceManager.ComputeLimit_1.2.0,Azure.ResourceManager.ComputeLimit,1.2.0,1782208846,06/23/2026
 6978,"Azure.ResourceManager.Network,1.16.0",dotnet,Azure.ResourceManager.Network_1.16.0,Azure.ResourceManager.Network,1.16.0,1782188108,06/23/2026
 6979,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/serialconsole/armserialconsole/v2@v2.0.0,go,sdk/resourcemanager/serialconsole/armserialconsole/v2.0.0,sdk/resourcemanager/serialconsole/armserialconsole,v2.0.0,1782285314,06/24/2026
+6980,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.1.0,go,sdk/resourcemanager/compute/armcompute/v8.1.0,sdk/resourcemanager/compute/armcompute,v8.1.0,1782230402,06/23/2026

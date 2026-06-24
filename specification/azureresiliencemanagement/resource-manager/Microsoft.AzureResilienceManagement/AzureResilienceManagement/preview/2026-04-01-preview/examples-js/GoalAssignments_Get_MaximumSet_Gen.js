@@ -1,0 +1,15 @@
+const { AzureResilienceManagementClient } = require("@azure/arm-resiliencemanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to get a GoalAssignment
+ *
+ * @summary get a GoalAssignment
+ * x-ms-original-file: 2026-04-01-preview/GoalAssignments_Get_MaximumSet_Gen.json
+ */
+async function goalAssignmentsGetMaximumSet() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureResilienceManagementClient(credential);
+  const result = await client.goalAssignments.get("sg1", "ga1");
+  console.log(result);
+}

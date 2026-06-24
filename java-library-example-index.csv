@@ -6985,3 +6985,4 @@ id,name,language,tag,package,version,date_epoch,date
 6984,@azure/arm-kusto@9.0.0-beta.1,js,@azure/arm-kusto_9.0.0-beta.1,@azure/arm-kusto,9.0.0-beta.1,1782282140,06/24/2026
 6985,@azure/arm-compute@24.1.0,js,@azure/arm-compute_24.1.0,@azure/arm-compute,24.1.0,1782229885,06/23/2026
 6986,azure-mgmt-loganalytics@14.0.0,python,azure-mgmt-loganalytics_14.0.0,azure-mgmt-loganalytics,14.0.0,1782295256,06/24/2026
+6987,azure-mgmt-billing@8.0.0,python,azure-mgmt-billing_8.0.0,azure-mgmt-billing,8.0.0,1782295226,06/24/2026

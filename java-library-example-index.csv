@@ -6987,3 +6987,4 @@ id,name,language,tag,package,version,date_epoch,date
 6986,azure-mgmt-loganalytics@14.0.0,python,azure-mgmt-loganalytics_14.0.0,azure-mgmt-loganalytics,14.0.0,1782295256,06/24/2026
 6987,azure-mgmt-billing@8.0.0,python,azure-mgmt-billing_8.0.0,azure-mgmt-billing,8.0.0,1782295226,06/24/2026
 6988,azure-mgmt-kusto@4.0.0,python,azure-mgmt-kusto_4.0.0,azure-mgmt-kusto,4.0.0,1782295192,06/24/2026
+6989,azure-mgmt-resource@26.0.0,python,azure-mgmt-resource_26.0.0,azure-mgmt-resource,26.0.0,1782294139,06/24/2026

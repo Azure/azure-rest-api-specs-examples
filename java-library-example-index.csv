@@ -6982,3 +6982,4 @@ id,name,language,tag,package,version,date_epoch,date
 6981,@azure/arm-resiliencemanagement@1.0.0-beta.1,js,@azure/arm-resiliencemanagement_1.0.0-beta.1,@azure/arm-resiliencemanagement,1.0.0-beta.1,1782290692,06/24/2026
 6982,@azure/arm-containerinstance@10.0.0-beta.1,js,@azure/arm-containerinstance_10.0.0-beta.1,@azure/arm-containerinstance,10.0.0-beta.1,1782282860,06/24/2026
 6983,@azure/arm-cdn@10.0.0-beta.1,js,@azure/arm-cdn_10.0.0-beta.1,@azure/arm-cdn,10.0.0-beta.1,1782282155,06/24/2026
+6984,@azure/arm-kusto@9.0.0-beta.1,js,@azure/arm-kusto_9.0.0-beta.1,@azure/arm-kusto,9.0.0-beta.1,1782282140,06/24/2026

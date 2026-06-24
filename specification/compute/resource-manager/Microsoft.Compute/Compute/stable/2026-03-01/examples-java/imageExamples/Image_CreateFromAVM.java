@@ -1,0 +1,24 @@
+
+import com.azure.core.management.SubResource;
+import com.azure.resourcemanager.compute.fluent.models.ImageInner;
+
+/**
+ * Samples for Images CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01/imageExamples/Image_CreateFromAVM.json
+     */
+    /**
+     * Sample code: Create a virtual machine image from an existing virtual machine.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void createAVirtualMachineImageFromAnExistingVirtualMachine(
+        com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getImages().createOrUpdate("myResourceGroup", "myImage",
+            new ImageInner().withLocation("West US").withSourceVirtualMachine(new SubResource().withId(
+                "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM")),
+            com.azure.core.util.Context.NONE);
+    }
+}

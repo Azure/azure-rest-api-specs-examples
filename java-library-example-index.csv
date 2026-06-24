@@ -6984,3 +6984,4 @@ id,name,language,tag,package,version,date_epoch,date
 6983,@azure/arm-cdn@10.0.0-beta.1,js,@azure/arm-cdn_10.0.0-beta.1,@azure/arm-cdn,10.0.0-beta.1,1782282155,06/24/2026
 6984,@azure/arm-kusto@9.0.0-beta.1,js,@azure/arm-kusto_9.0.0-beta.1,@azure/arm-kusto,9.0.0-beta.1,1782282140,06/24/2026
 6985,@azure/arm-compute@24.1.0,js,@azure/arm-compute_24.1.0,@azure/arm-compute,24.1.0,1782229885,06/23/2026
+6986,azure-mgmt-loganalytics@14.0.0,python,azure-mgmt-loganalytics_14.0.0,azure-mgmt-loganalytics,14.0.0,1782295256,06/24/2026

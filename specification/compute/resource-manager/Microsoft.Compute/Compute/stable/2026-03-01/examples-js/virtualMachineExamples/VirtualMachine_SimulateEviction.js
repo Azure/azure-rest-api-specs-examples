@@ -1,0 +1,15 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to simulate the eviction of spot virtual machine.
+ *
+ * @summary the operation to simulate the eviction of spot virtual machine.
+ * x-ms-original-file: 2026-03-01/virtualMachineExamples/VirtualMachine_SimulateEviction.json
+ */
+async function simulateEvictionAVirtualMachine() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  await client.virtualMachines.simulateEviction("ResourceGroup", "VMName");
+}

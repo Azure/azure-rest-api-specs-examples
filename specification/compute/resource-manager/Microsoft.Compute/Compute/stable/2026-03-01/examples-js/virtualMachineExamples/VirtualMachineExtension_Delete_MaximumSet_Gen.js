@@ -1,0 +1,19 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to delete the extension.
+ *
+ * @summary the operation to delete the extension.
+ * x-ms-original-file: 2026-03-01/virtualMachineExamples/VirtualMachineExtension_Delete_MaximumSet_Gen.json
+ */
+async function virtualMachineExtensionDeleteMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  await client.virtualMachineExtensions.delete(
+    "rgcompute",
+    "aaaaaaaaaaaaa",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  );
+}

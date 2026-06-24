@@ -1,0 +1,15 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to delete a virtual machine.
+ *
+ * @summary the operation to delete a virtual machine.
+ * x-ms-original-file: 2026-03-01/virtualMachineExamples/VirtualMachine_Delete_Force.json
+ */
+async function forceDeleteAVM() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  await client.virtualMachines.delete("myResourceGroup", "myVM", { forceDeletion: true });
+}

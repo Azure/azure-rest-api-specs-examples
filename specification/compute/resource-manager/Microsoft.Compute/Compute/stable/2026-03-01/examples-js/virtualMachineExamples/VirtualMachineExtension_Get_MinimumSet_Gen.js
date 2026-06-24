@@ -1,0 +1,16 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to get the extension.
+ *
+ * @summary the operation to get the extension.
+ * x-ms-original-file: 2026-03-01/virtualMachineExamples/VirtualMachineExtension_Get_MinimumSet_Gen.json
+ */
+async function virtualMachineExtensionGetMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineExtensions.get("rgcompute", "myVM", "myVMExtension");
+  console.log(result);
+}

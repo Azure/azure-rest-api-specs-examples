@@ -27,7 +27,7 @@ func ExampleDiskEncryptionSetsClient_Get_getInformationAboutADiskEncryptionSetWh
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.DiskEncryptionSetsClientGetResponse{
-	// 	DiskEncryptionSet: &armcompute.DiskEncryptionSet{
+	// 	DiskEncryptionSet: armcompute.DiskEncryptionSet{
 	// 		Identity: &armcompute.EncryptionSetIdentity{
 	// 			Type: to.Ptr(armcompute.DiskEncryptionSetIdentityTypeSystemAssigned),
 	// 		},

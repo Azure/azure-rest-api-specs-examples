@@ -1,0 +1,49 @@
+
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.qumulo.models.MarketplaceDetails;
+import com.azure.resourcemanager.qumulo.models.UserAssignedIdentity;
+import com.azure.resourcemanager.qumulo.models.UserDetails;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for FileSystems CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-16/FileSystems_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: FileSystems_CreateOrUpdate_MaximumSet.
+     * 
+     * @param manager Entry point to QumuloManager.
+     */
+    public static void fileSystemsCreateOrUpdateMaximumSet(com.azure.resourcemanager.qumulo.QumuloManager manager) {
+        manager.fileSystems().define("qumulo-fs-01").withRegion("uiuztlexlmxsqcnsdpvzzygmi")
+            .withExistingResourceGroup("rgQumulo").withTags(mapOf("key7800", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key8111", new UserAssignedIdentity())))
+            .withMarketplaceDetails(
+                new MarketplaceDetails().withMarketplaceSubscriptionId("vwjzkiurjihwxrhoicenkbxacokvep")
+                    .withPlanId("vxnyxa").withOfferId("itiocfnteqyuavgmdtnvwvbpectyr")
+                    .withPublisherId("zfevjvhjiifwxbazta").withTermUnit("lkbiqoqdyqbua"))
+            .withStorageSku("myzqnfqelxo").withUserDetails(new UserDetails().withEmail("rlqqzevfgtqpynvifqp"))
+            .withDelegatedSubnetId("kmjaqsfflkjpke").withPerformanceTier("fjgqmkcvjtygcavpbo")
+            .withClusterLoginUrl("uzpvkgxrbgtthyxgavsjr").withPrivateIPs(Arrays.asList("qrhvbdfbfdgqqe"))
+            .withAdminPassword("<a-password-goes-here>").withAvailabilityZone("luklrtwmngwnaerygykcbwljeso").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

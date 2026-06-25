@@ -1,0 +1,48 @@
+
+import com.azure.resourcemanager.networkcloud.models.DeploymentType;
+import com.azure.resourcemanager.networkcloud.models.ManagedResourceGroupConfiguration;
+import com.azure.resourcemanager.networkcloud.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.networkcloud.models.ManagedServiceIdentityType;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ClusterManagers CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/ClusterManagers_Create.json
+     */
+    /**
+     * Sample code: Create or update cluster manager.
+     * 
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void
+        createOrUpdateClusterManager(com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager.clusterManagers().define("clusterManagerName").withRegion("location")
+            .withExistingResourceGroup("resourceGroupName")
+            .withFabricControllerId(
+                "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/fabricControllerName")
+            .withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED))
+            .withKind(DeploymentType.AZURE_LOCAL)
+            .withAnalyticsWorkspaceId(
+                "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.OperationalInsights/workspaces/logAnalyticsWorkspaceName")
+            .withManagedResourceGroupConfiguration(
+                new ManagedResourceGroupConfiguration().withLocation("East US").withName("my-managed-rg"))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

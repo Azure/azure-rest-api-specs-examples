@@ -1,0 +1,19 @@
+const { AzureResilienceManagementClient } = require("@azure/arm-resiliencemanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to this action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.
+ *
+ * @summary this action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.
+ * x-ms-original-file: 2026-04-01-preview/RecoveryPlanActions_Finalize_MaximumSet_Gen.json
+ */
+async function recoveryPlanActionsFinalizeMaximumSet() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureResilienceManagementClient(credential);
+  const result = await client.recoveryPlanActions.finalize(
+    "sampleServiceGroupName",
+    "qmn",
+    "samplePlanName",
+  );
+  console.log(result);
+}

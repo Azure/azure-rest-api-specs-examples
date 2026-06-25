@@ -1,0 +1,191 @@
+package armcompute_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+)
+
+// Generated from example definition: 2026-03-01/virtualMachineExamples/VirtualMachine_Create_WithDataDisksFromSourceResource.json
+func ExampleVirtualMachinesClient_BeginCreateOrUpdate_createAVMWithDataDisksUsingCopyAndRestoreOptions() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcompute.NewClientFactory("{subscription-id}", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewVirtualMachinesClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "myVM", armcompute.VirtualMachine{
+		Location: to.Ptr("westus"),
+		Properties: &armcompute.VirtualMachineProperties{
+			HardwareProfile: &armcompute.HardwareProfile{
+				VMSize: to.Ptr(armcompute.VirtualMachineSizeTypesStandardD2V2),
+			},
+			StorageProfile: &armcompute.StorageProfile{
+				ImageReference: &armcompute.ImageReference{
+					SKU:       to.Ptr("2016-Datacenter"),
+					Publisher: to.Ptr("MicrosoftWindowsServer"),
+					Version:   to.Ptr("latest"),
+					Offer:     to.Ptr("WindowsServer"),
+				},
+				OSDisk: &armcompute.OSDisk{
+					Caching: to.Ptr(armcompute.CachingTypesReadWrite),
+					ManagedDisk: &armcompute.ManagedDiskParameters{
+						StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+					},
+					Name:         to.Ptr("myVMosdisk"),
+					CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+				},
+				DataDisks: []*armcompute.DataDisk{
+					{
+						DiskSizeGB:   to.Ptr[int32](1023),
+						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesCopy),
+						SourceResource: &armcompute.APIEntityReference{
+							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/{existing-snapshot-name}"),
+						},
+						Lun: to.Ptr[int32](0),
+					},
+					{
+						DiskSizeGB:   to.Ptr[int32](1023),
+						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesCopy),
+						SourceResource: &armcompute.APIEntityReference{
+							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-disk-name}"),
+						},
+						Lun: to.Ptr[int32](1),
+					},
+					{
+						DiskSizeGB:   to.Ptr[int32](1023),
+						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesRestore),
+						SourceResource: &armcompute.APIEntityReference{
+							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/{existing-rpc-name}/restorePoints/{existing-rp-name}/diskRestorePoints/{existing-disk-restore-point-name}"),
+						},
+						Lun: to.Ptr[int32](2),
+					},
+				},
+			},
+			OSProfile: &armcompute.OSProfile{
+				AdminUsername: to.Ptr("{your-username}"),
+				ComputerName:  to.Ptr("myVM"),
+				AdminPassword: to.Ptr("{your-password}"),
+			},
+			NetworkProfile: &armcompute.NetworkProfile{
+				NetworkInterfaces: []*armcompute.NetworkInterfaceReference{
+					{
+						ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
+						Properties: &armcompute.NetworkInterfaceReferenceProperties{
+							Primary: to.Ptr(true),
+						},
+					},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcompute.VirtualMachinesClientCreateOrUpdateResponse{
+	// 	VirtualMachine: armcompute.VirtualMachine{
+	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
+	// 		Type: to.Ptr("Microsoft.Compute/virtualMachines"),
+	// 		Properties: &armcompute.VirtualMachineProperties{
+	// 			OSProfile: &armcompute.OSProfile{
+	// 				AdminUsername: to.Ptr("{your-username}"),
+	// 				Secrets: []*armcompute.VaultSecretGroup{
+	// 				},
+	// 				ComputerName: to.Ptr("myVM"),
+	// 				WindowsConfiguration: &armcompute.WindowsConfiguration{
+	// 					ProvisionVMAgent: to.Ptr(true),
+	// 					EnableAutomaticUpdates: to.Ptr(true),
+	// 				},
+	// 			},
+	// 			NetworkProfile: &armcompute.NetworkProfile{
+	// 				NetworkInterfaces: []*armcompute.NetworkInterfaceReference{
+	// 					{
+	// 						ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/nsgExistingNic"),
+	// 						Properties: &armcompute.NetworkInterfaceReferenceProperties{
+	// 							Primary: to.Ptr(true),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 			StorageProfile: &armcompute.StorageProfile{
+	// 				ImageReference: &armcompute.ImageReference{
+	// 					SKU: to.Ptr("2016-Datacenter"),
+	// 					Publisher: to.Ptr("MicrosoftWindowsServer"),
+	// 					Version: to.Ptr("latest"),
+	// 					Offer: to.Ptr("WindowsServer"),
+	// 				},
+	// 				OSDisk: &armcompute.OSDisk{
+	// 					OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
+	// 					Caching: to.Ptr(armcompute.CachingTypesReadWrite),
+	// 					CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+	// 					Name: to.Ptr("myVMosdisk"),
+	// 					ManagedDisk: &armcompute.ManagedDiskParameters{
+	// 						StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 					},
+	// 				},
+	// 				DataDisks: []*armcompute.DataDisk{
+	// 					{
+	// 						Caching: to.Ptr(armcompute.CachingTypesNone),
+	// 						ManagedDisk: &armcompute.ManagedDiskParameters{
+	// 							StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 						},
+	// 						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesCopy),
+	// 						SourceResource: &armcompute.APIEntityReference{
+	// 							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/{existing-snapshot-name}"),
+	// 						},
+	// 						Lun: to.Ptr[int32](0),
+	// 						DiskSizeGB: to.Ptr[int32](1023),
+	// 					},
+	// 					{
+	// 						Caching: to.Ptr(armcompute.CachingTypesNone),
+	// 						ManagedDisk: &armcompute.ManagedDiskParameters{
+	// 							StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 						},
+	// 						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesCopy),
+	// 						SourceResource: &armcompute.APIEntityReference{
+	// 							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-disk-name}"),
+	// 						},
+	// 						Lun: to.Ptr[int32](1),
+	// 						DiskSizeGB: to.Ptr[int32](1023),
+	// 					},
+	// 					{
+	// 						Caching: to.Ptr(armcompute.CachingTypesNone),
+	// 						ManagedDisk: &armcompute.ManagedDiskParameters{
+	// 							StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 						},
+	// 						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesRestore),
+	// 						SourceResource: &armcompute.APIEntityReference{
+	// 							ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/{existing-rpc-name}/restorePoints/{existing-rp-name}/diskRestorePoints/{existing-disk-restore-point-name}"),
+	// 						},
+	// 						Lun: to.Ptr[int32](2),
+	// 						DiskSizeGB: to.Ptr[int32](1023),
+	// 					},
+	// 				},
+	// 			},
+	// 			VMID: to.Ptr("3906fef9-a1e5-4b83-a8a8-540858b41df0"),
+	// 			HardwareProfile: &armcompute.HardwareProfile{
+	// 				VMSize: to.Ptr(armcompute.VirtualMachineSizeTypesStandardD2V2),
+	// 			},
+	// 			SecurityProfile: &armcompute.SecurityProfile{
+	// 				SecurityType: to.Ptr(armcompute.SecurityTypesStandard),
+	// 			},
+	// 			ProvisioningState: to.Ptr("Creating"),
+	// 		},
+	// 		Name: to.Ptr("myVM"),
+	// 		Location: to.Ptr("westus"),
+	// 	},
+	// }
+}

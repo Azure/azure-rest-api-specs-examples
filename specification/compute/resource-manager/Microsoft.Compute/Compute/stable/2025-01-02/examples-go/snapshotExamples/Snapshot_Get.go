@@ -27,7 +27,7 @@ func ExampleSnapshotsClient_Get_getInformationAboutASnapshot() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.SnapshotsClientGetResponse{
-	// 	Snapshot: &armcompute.Snapshot{
+	// 	Snapshot: armcompute.Snapshot{
 	// 		Properties: &armcompute.SnapshotProperties{
 	// 			OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 	// 			HyperVGeneration: to.Ptr(armcompute.HyperVGenerationV1),

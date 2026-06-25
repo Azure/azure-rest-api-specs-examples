@@ -27,7 +27,7 @@ func ExampleDiskAccessesClient_Get_getInformationAboutADiskAccessResourceWithPri
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.DiskAccessesClientGetResponse{
-	// 	DiskAccess: &armcompute.DiskAccess{
+	// 	DiskAccess: armcompute.DiskAccess{
 	// 		Properties: &armcompute.DiskAccessProperties{
 	// 			ProvisioningState: to.Ptr("Succeeded"),
 	// 			TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T04:41:35.079872+00:00"); return t}()),

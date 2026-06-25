@@ -27,7 +27,7 @@ func ExampleGalleryApplicationsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.GalleryApplicationsClientGetResponse{
-	// 	GalleryApplication: &armcompute.GalleryApplication{
+	// 	GalleryApplication: armcompute.GalleryApplication{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGalleryName/applications/myGalleryApplicationName"),
 	// 		Properties: &armcompute.GalleryApplicationProperties{
 	// 			Description: to.Ptr("This is the gallery application description."),

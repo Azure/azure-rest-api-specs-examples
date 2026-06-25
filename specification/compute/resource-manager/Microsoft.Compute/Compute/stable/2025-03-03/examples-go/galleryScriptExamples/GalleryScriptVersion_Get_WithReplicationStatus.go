@@ -27,7 +27,7 @@ func ExampleGalleryScriptVersionsClient_Get_getAGalleryScriptVersionWithReplicat
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.GalleryScriptVersionsClientGetResponse{
-	// 	GalleryScriptVersion: &armcompute.GalleryScriptVersion{
+	// 	GalleryScriptVersion: armcompute.GalleryScriptVersion{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroupName/providers/Microsoft.Compute/galleries/myGalleryName/scripts/myGalleryScriptName/versions/1.0.0"),
 	// 		Properties: &armcompute.GalleryScriptVersionProperties{
 	// 			PublishingProfile: &armcompute.GalleryScriptVersionPublishingProfile{

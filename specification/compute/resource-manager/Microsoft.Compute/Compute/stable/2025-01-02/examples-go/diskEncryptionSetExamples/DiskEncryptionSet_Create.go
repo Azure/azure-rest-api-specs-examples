@@ -40,13 +40,13 @@ func ExampleDiskEncryptionSetsClient_BeginCreateOrUpdate_createADiskEncryptionSe
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.DiskEncryptionSetsClientCreateOrUpdateResponse{
-	// 	DiskEncryptionSet: &armcompute.DiskEncryptionSet{
+	// 	DiskEncryptionSet: armcompute.DiskEncryptionSet{
 	// 		ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/myDiskEncryptionSet"),
 	// 		Name: to.Ptr("myDiskEncryptionSet"),
 	// 		Location: to.Ptr("West US"),

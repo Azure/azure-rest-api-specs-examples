@@ -27,7 +27,7 @@ func ExampleDiskRestorePointClient_Get_getAnIncrementalDiskRestorePointWhenSourc
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.DiskRestorePointClientGetResponse{
-	// 	DiskRestorePoint: &armcompute.DiskRestorePoint{
+	// 	DiskRestorePoint: armcompute.DiskRestorePoint{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/rpc/restorePoints/vmrp/diskRestorePoints/TestDisk45ceb03433006d1baee0_b70cd924-3362-4a80-93c2-9415eaa12745"),
 	// 		Name: to.Ptr("TestDisk45ceb03433006d1baee0_b70cd924-3362-4a80-93c2-9415eaa12745"),
 	// 		Properties: &armcompute.DiskRestorePointProperties{

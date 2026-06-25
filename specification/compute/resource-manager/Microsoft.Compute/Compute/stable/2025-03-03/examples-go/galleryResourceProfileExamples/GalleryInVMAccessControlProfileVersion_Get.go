@@ -27,7 +27,7 @@ func ExampleGalleryInVMAccessControlProfileVersionsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.GalleryInVMAccessControlProfileVersionsClientGetResponse{
-	// 	GalleryInVMAccessControlProfileVersion: &armcompute.GalleryInVMAccessControlProfileVersion{
+	// 	GalleryInVMAccessControlProfileVersion: armcompute.GalleryInVMAccessControlProfileVersion{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGallery/inVMAccessControlProfiles/myInVMAccessControlProfileName/versions/1.0.0"),
 	// 		Properties: &armcompute.GalleryInVMAccessControlProfileVersionProperties{
 	// 			Mode: to.Ptr(armcompute.AccessControlRulesModeAudit),

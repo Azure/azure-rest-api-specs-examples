@@ -27,7 +27,7 @@ func ExampleDisksClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.DisksClientGetResponse{
-	// 	Disk: &armcompute.Disk{
+	// 	Disk: armcompute.Disk{
 	// 		ManagedBy: to.Ptr("/subscriptions/123caaa-123v-v211-a49f-f88ccac5bf88/resourceGroups/ResourceGroupName/providers/Microsoft.Compute/virtualMachines/TestVM414689371c88843d65ec"),
 	// 		SKU: &armcompute.DiskSKU{
 	// 			Name: to.Ptr(armcompute.DiskStorageAccountTypesStandardLRS),

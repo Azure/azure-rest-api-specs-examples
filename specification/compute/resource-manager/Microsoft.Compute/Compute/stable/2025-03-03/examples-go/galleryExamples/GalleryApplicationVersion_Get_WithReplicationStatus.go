@@ -29,7 +29,7 @@ func ExampleGalleryApplicationVersionsClient_Get_getAGalleryApplicationVersionWi
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.GalleryApplicationVersionsClientGetResponse{
-	// 	GalleryApplicationVersion: &armcompute.GalleryApplicationVersion{
+	// 	GalleryApplicationVersion: armcompute.GalleryApplicationVersion{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGalleryName/applications/myGalleryApplicationName/versions/1.0.0"),
 	// 		Properties: &armcompute.GalleryApplicationVersionProperties{
 	// 			PublishingProfile: &armcompute.GalleryApplicationVersionPublishingProfile{

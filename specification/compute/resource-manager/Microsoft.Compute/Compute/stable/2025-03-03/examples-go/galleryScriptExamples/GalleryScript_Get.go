@@ -27,7 +27,7 @@ func ExampleGalleryScriptsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcompute.GalleryScriptsClientGetResponse{
-	// 	GalleryScript: &armcompute.GalleryScript{
+	// 	GalleryScript: armcompute.GalleryScript{
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/myGalleryName/scripts/myGalleryScriptName"),
 	// 		Properties: &armcompute.GalleryScriptProperties{
 	// 			Description: to.Ptr("This is the gallery script description."),

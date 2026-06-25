@@ -6998,3 +6998,4 @@ id,name,language,tag,package,version,date_epoch,date
 6997,@azure/arm-networkcloud@2.0.0-beta.2,js,@azure/arm-networkcloud_2.0.0-beta.2,@azure/arm-networkcloud,2.0.0-beta.2,1782320077,06/24/2026
 6998,azure-mgmt-networkcloud@3.0.0b2,python,azure-mgmt-networkcloud_3.0.0b2,azure-mgmt-networkcloud,3.0.0b2,1782321311,06/24/2026
 6999,com.azure.resourcemanager:azure-resourcemanager-redhatopenshift:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-redhatopenshift_1.0.0,com.azure.resourcemanager+azure-resourcemanager-redhatopenshift,1.0.0,1782368123,06/25/2026
+7000,com.azure.resourcemanager:azure-resourcemanager-networkcloud:2.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-networkcloud_2.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-networkcloud,2.2.0-beta.1,1782323084,06/24/2026

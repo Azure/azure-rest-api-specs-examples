@@ -1,0 +1,20 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.
+ *
+ * @summary lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.
+ * x-ms-original-file: 2026-03-01/virtualMachineExamples/VirtualMachine_List_MinimumSet_Gen.json
+ */
+async function virtualMachineListMinimumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.virtualMachines.list("rgcompute")) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

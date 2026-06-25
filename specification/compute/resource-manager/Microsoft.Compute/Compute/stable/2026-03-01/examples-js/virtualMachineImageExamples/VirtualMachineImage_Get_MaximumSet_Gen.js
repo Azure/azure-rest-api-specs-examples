@@ -1,0 +1,22 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a virtual machine image.
+ *
+ * @summary gets a virtual machine image.
+ * x-ms-original-file: 2026-03-01/virtualMachineImageExamples/VirtualMachineImage_Get_MaximumSet_Gen.json
+ */
+async function virtualMachineImageGetMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineImages.get(
+    "aaaaaa",
+    "aaa",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "aaaaaaaaaaaaaaaaaaa",
+  );
+  console.log(result);
+}

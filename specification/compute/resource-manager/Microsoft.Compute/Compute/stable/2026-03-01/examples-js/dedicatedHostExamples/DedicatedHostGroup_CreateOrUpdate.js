@@ -1,0 +1,26 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to create or update a dedicated host group. For details of Dedicated Host and Dedicated Host Groups please see [Dedicated Host Documentation] (https://go.microsoft.com/fwlink/?linkid=2082596)
+ *
+ * @summary create or update a dedicated host group. For details of Dedicated Host and Dedicated Host Groups please see [Dedicated Host Documentation] (https://go.microsoft.com/fwlink/?linkid=2082596)
+ * x-ms-original-file: 2026-03-01/dedicatedHostExamples/DedicatedHostGroup_CreateOrUpdate.json
+ */
+async function createOrUpdateADedicatedHostGroup() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.dedicatedHostGroups.createOrUpdate(
+    "myResourceGroup",
+    "myDedicatedHostGroup",
+    {
+      location: "westus",
+      tags: { department: "finance" },
+      zones: ["1"],
+      platformFaultDomainCount: 3,
+      supportAutomaticPlacement: true,
+    },
+  );
+  console.log(result);
+}

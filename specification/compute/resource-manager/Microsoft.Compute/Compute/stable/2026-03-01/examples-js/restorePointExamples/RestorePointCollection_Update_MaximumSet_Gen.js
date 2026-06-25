@@ -1,0 +1,22 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to update the restore point collection.
+ *
+ * @summary the operation to update the restore point collection.
+ * x-ms-original-file: 2026-03-01/restorePointExamples/RestorePointCollection_Update_MaximumSet_Gen.json
+ */
+async function restorePointCollectionUpdateMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.restorePointCollections.update("rgcompute", "aaaaaaaaaaaaaaaaaaaa", {
+    source: {
+      id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+    },
+    instantAccess: true,
+    tags: { key8536: "aaaaaaaaaaaaaaaaaaa" },
+  });
+  console.log(result);
+}

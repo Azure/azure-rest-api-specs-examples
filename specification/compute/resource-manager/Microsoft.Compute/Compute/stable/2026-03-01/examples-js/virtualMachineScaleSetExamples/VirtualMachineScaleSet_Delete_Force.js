@@ -1,0 +1,17 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes a VM scale set.
+ *
+ * @summary deletes a VM scale set.
+ * x-ms-original-file: 2026-03-01/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Delete_Force.json
+ */
+async function forceDeleteAVMScaleSet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  await client.virtualMachineScaleSets.delete("myResourceGroup", "myvmScaleSet", {
+    forceDeletion: true,
+  });
+}

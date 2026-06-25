@@ -1,0 +1,20 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to display information about a virtual machine scale set.
+ *
+ * @summary display information about a virtual machine scale set.
+ * x-ms-original-file: 2026-03-01/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Get_WithUserData.json
+ */
+async function getAVirtualMachineScaleSetWithUserData() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachineScaleSets.get(
+    "myResourceGroup",
+    "myVirtualMachineScaleSet",
+    { expand: "userData" },
+  );
+  console.log(result);
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for VirtualMachineScaleSetVMRunCommands Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Get.json
+     */
+    /**
+     * Sample code: Get VirtualMachineScaleSet VM run commands.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void
+        getVirtualMachineScaleSetVMRunCommands(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getVirtualMachineScaleSetVMRunCommands().getWithResponse("myResourceGroup",
+            "myvmScaleSet", "0", "myRunCommand", null, com.azure.core.util.Context.NONE);
+    }
+}

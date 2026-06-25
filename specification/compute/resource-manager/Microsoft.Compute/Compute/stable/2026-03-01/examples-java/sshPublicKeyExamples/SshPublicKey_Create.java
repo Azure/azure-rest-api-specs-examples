@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.compute.fluent.models.SshPublicKeyResourceInner;
+
+/**
+ * Samples for SshPublicKeys Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01/sshPublicKeyExamples/SshPublicKey_Create.json
+     */
+    /**
+     * Sample code: Create a new SSH public key resource.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void createANewSSHPublicKeyResource(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getSshPublicKeys().createWithResponse("myResourceGroup", "mySshPublicKeyName",
+            new SshPublicKeyResourceInner().withLocation("westus").withPublicKey("fakeTokenPlaceholder"),
+            com.azure.core.util.Context.NONE);
+    }
+}

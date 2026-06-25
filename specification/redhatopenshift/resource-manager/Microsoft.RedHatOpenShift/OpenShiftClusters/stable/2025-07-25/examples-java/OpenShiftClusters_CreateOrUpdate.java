@@ -1,0 +1,82 @@
+
+import com.azure.resourcemanager.redhatopenshift.models.ApiServerProfile;
+import com.azure.resourcemanager.redhatopenshift.models.ClusterProfile;
+import com.azure.resourcemanager.redhatopenshift.models.ConsoleProfile;
+import com.azure.resourcemanager.redhatopenshift.models.EncryptionAtHost;
+import com.azure.resourcemanager.redhatopenshift.models.FipsValidatedModules;
+import com.azure.resourcemanager.redhatopenshift.models.IngressProfile;
+import com.azure.resourcemanager.redhatopenshift.models.LoadBalancerProfile;
+import com.azure.resourcemanager.redhatopenshift.models.ManagedOutboundIPs;
+import com.azure.resourcemanager.redhatopenshift.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.redhatopenshift.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.redhatopenshift.models.MasterProfile;
+import com.azure.resourcemanager.redhatopenshift.models.NetworkProfile;
+import com.azure.resourcemanager.redhatopenshift.models.PlatformWorkloadIdentity;
+import com.azure.resourcemanager.redhatopenshift.models.PlatformWorkloadIdentityProfile;
+import com.azure.resourcemanager.redhatopenshift.models.PreconfiguredNsg;
+import com.azure.resourcemanager.redhatopenshift.models.ServicePrincipalProfile;
+import com.azure.resourcemanager.redhatopenshift.models.UserAssignedIdentity;
+import com.azure.resourcemanager.redhatopenshift.models.Visibility;
+import com.azure.resourcemanager.redhatopenshift.models.WorkerProfile;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for OpenShiftClusters CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-25/OpenShiftClusters_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Creates or updates a OpenShift cluster with the specified subscription, resource group and resource
+     * name.
+     * 
+     * @param manager Entry point to RedHatOpenShiftManager.
+     */
+    public static void createsOrUpdatesAOpenShiftClusterWithTheSpecifiedSubscriptionResourceGroupAndResourceName(
+        com.azure.resourcemanager.redhatopenshift.RedHatOpenShiftManager manager) {
+        manager.openShiftClusters().define("resourceName").withRegion("location")
+            .withExistingResourceGroup("resourceGroup").withTags(mapOf("key", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf("", new UserAssignedIdentity())))
+            .withClusterProfile(
+                new ClusterProfile().withPullSecret("fakeTokenPlaceholder").withDomain("cluster.location.aroapp.io")
+                    .withResourceGroupId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clusterResourceGroup")
+                    .withFipsValidatedModules(FipsValidatedModules.ENABLED))
+            .withConsoleProfile(new ConsoleProfile())
+            .withServicePrincipalProfile(
+                new ServicePrincipalProfile().withClientId("clientId").withClientSecret("fakeTokenPlaceholder"))
+            .withPlatformWorkloadIdentityProfile(new PlatformWorkloadIdentityProfile()
+                .withPlatformWorkloadIdentities(mapOf("", new PlatformWorkloadIdentity())))
+            .withNetworkProfile(new NetworkProfile().withPodCidr("10.128.0.0/14").withServiceCidr("172.30.0.0/16")
+                .withLoadBalancerProfile(
+                    new LoadBalancerProfile().withManagedOutboundIps(new ManagedOutboundIPs().withCount(1)))
+                .withPreconfiguredNsg(PreconfiguredNsg.DISABLED))
+            .withMasterProfile(new MasterProfile().withVmSize("Standard_D8s_v3").withSubnetId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/vnetResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/master")
+                .withEncryptionAtHost(EncryptionAtHost.ENABLED))
+            .withWorkerProfiles(Arrays.asList(new WorkerProfile().withName("worker").withVmSize("Standard_D2s_v3")
+                .withDiskSizeGB(128)
+                .withSubnetId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/vnetResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/worker")
+                .withCount(3)))
+            .withApiserverProfile(new ApiServerProfile().withVisibility(Visibility.PUBLIC)).withIngressProfiles(
+                Arrays.asList(new IngressProfile().withName("default").withVisibility(Visibility.PUBLIC)))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

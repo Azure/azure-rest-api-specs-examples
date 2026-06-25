@@ -1,0 +1,20 @@
+
+/**
+ * Samples for PlatformWorkloadIdentityRoleSets List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-25/PlatformWorkloadIdentityRoleSets_List.json
+     */
+    /**
+     * Sample code: Lists a mapping of OpenShift versions to identity requirements, which include operatorName,
+     * roleDefinitionName, roleDefinitionId, and serviceAccounts.
+     * 
+     * @param manager Entry point to RedHatOpenShiftManager.
+     */
+    public static void
+        listsAMappingOfOpenShiftVersionsToIdentityRequirementsWhichIncludeOperatorNameRoleDefinitionNameRoleDefinitionIdAndServiceAccounts(
+            com.azure.resourcemanager.redhatopenshift.RedHatOpenShiftManager manager) {
+        manager.platformWorkloadIdentityRoleSets().list("location", com.azure.core.util.Context.NONE);
+    }
+}

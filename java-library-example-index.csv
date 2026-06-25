@@ -6994,3 +6994,4 @@ id,name,language,tag,package,version,date_epoch,date
 6993,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync/v2@v2.0.0,go,sdk/resourcemanager/storagesync/armstoragesync/v2.0.0,sdk/resourcemanager/storagesync/armstoragesync,v2.0.0,1782383395,06/25/2026
 6994,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport/v2@v2.0.0,go,sdk/resourcemanager/support/armsupport/v2.0.0,sdk/resourcemanager/support/armsupport,v2.0.0,1782381235,06/25/2026
 6995,@azure/arm-elastic@3.0.0-beta.1,js,@azure/arm-elastic_3.0.0-beta.1,@azure/arm-elastic,3.0.0-beta.1,1782373414,06/25/2026
+6996,@azure/arm-relay@4.0.0-beta.1,js,@azure/arm-relay_4.0.0-beta.1,@azure/arm-relay,4.0.0-beta.1,1782373391,06/25/2026

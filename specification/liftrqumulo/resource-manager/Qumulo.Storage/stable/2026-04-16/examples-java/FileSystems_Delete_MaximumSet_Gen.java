@@ -1,0 +1,17 @@
+
+/**
+ * Samples for FileSystems Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-16/FileSystems_Delete_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: FileSystems_Delete_MaximumSet.
+     * 
+     * @param manager Entry point to QumuloManager.
+     */
+    public static void fileSystemsDeleteMaximumSet(com.azure.resourcemanager.qumulo.QumuloManager manager) {
+        manager.fileSystems().delete("rgQumulo", "qumulo-fs-01", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.networkcloud.models.StorageApplianceEnableRemoteVendorManagementParameters;
+import java.util.Arrays;
+
+/**
+ * Samples for StorageAppliances EnableRemoteVendorManagement.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/StorageAppliances_EnableRemoteVendorManagement.json
+     */
+    /**
+     * Sample code: Turn on remote vendor management for storage appliance.
+     * 
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void turnOnRemoteVendorManagementForStorageAppliance(
+        com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager.storageAppliances().enableRemoteVendorManagement("resourceGroupName", "storageApplianceName",
+            new StorageApplianceEnableRemoteVendorManagementParameters()
+                .withSupportEndpoints(Arrays.asList("10.0.0.0/24")),
+            com.azure.core.util.Context.NONE);
+    }
+}

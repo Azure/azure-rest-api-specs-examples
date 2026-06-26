@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Qumulo.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Qumulo;
 
 // Generated from example definition: 2024-06-19/FileSystems_Get_MaximumSet_Gen.json
@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this QumuloFileSystemResource created on azure
-// for more information of creating QumuloFileSystemResource, please refer to the document of QumuloFileSystemResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "382E8C7A-AC80-4D70-8580-EFE99537B9B7";
 string resourceGroupName = "rgQumulo";
-string fileSystemName = "sihbehcisdqtqqyfiewiiaphgh";
-ResourceIdentifier qumuloFileSystemResourceId = QumuloFileSystemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fileSystemName);
-QumuloFileSystemResource qumuloFileSystemResource = client.GetQumuloFileSystemResource(qumuloFileSystemResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this QumuloFileSystemResource
+QumuloFileSystemResourceCollection collection = resourceGroupResource.GetQumuloFileSystemResources();
 
 // invoke the operation
-QumuloFileSystemResource result = await qumuloFileSystemResource.GetAsync();
+string fileSystemName = "sihbehcisdqtqqyfiewiiaphgh";
+NullableResponse<QumuloFileSystemResource> response = await collection.GetIfExistsAsync(fileSystemName);
+QumuloFileSystemResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-QumuloFileSystemResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    QumuloFileSystemResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

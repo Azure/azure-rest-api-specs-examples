@@ -4,8 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Orbital.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Orbital;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/AvailableGroundStationGet.json
@@ -16,29 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this AvailableGroundStationResource created on azure
+// for more information of creating AvailableGroundStationResource, please refer to the document of AvailableGroundStationResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this AvailableGroundStationResource
-AvailableGroundStationCollection collection = subscriptionResource.GetAvailableGroundStations();
+string groundStationName = "EASTUS2_0";
+ResourceIdentifier availableGroundStationResourceId = AvailableGroundStationResource.CreateResourceIdentifier(subscriptionId, groundStationName);
+AvailableGroundStationResource availableGroundStation = client.GetAvailableGroundStationResource(availableGroundStationResourceId);
 
 // invoke the operation
-string groundStationName = "EASTUS2_0";
-NullableResponse<AvailableGroundStationResource> response = await collection.GetIfExistsAsync(groundStationName);
-AvailableGroundStationResource result = response.HasValue ? response.Value : null;
+AvailableGroundStationResource result = await availableGroundStation.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AvailableGroundStationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AvailableGroundStationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

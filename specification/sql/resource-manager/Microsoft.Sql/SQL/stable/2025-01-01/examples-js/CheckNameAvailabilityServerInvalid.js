@@ -1,0 +1,19 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to determines whether a resource can be created with the specified name.
+ *
+ * @summary determines whether a resource can be created with the specified name.
+ * x-ms-original-file: 2025-01-01/CheckNameAvailabilityServerInvalid.json
+ */
+async function checkForAServerNameThatIsInvalid() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new SqlManagementClient(credential, subscriptionId);
+  const result = await client.servers.checkNameAvailability({
+    name: "SERVER1",
+    type: "Microsoft.Sql/servers",
+  });
+  console.log(result);
+}

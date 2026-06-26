@@ -1,0 +1,17 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates a TDE certificate for a given server.
+ *
+ * @summary creates a TDE certificate for a given server.
+ * x-ms-original-file: 2025-01-01/ManagedInstanceTdeCertificate.json
+ */
+async function uploadATDECertificate() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000001";
+  const client = new SqlManagementClient(credential, subscriptionId);
+  await client.managedInstanceTdeCertificates.create("testtdecert", "testtdecert", {
+    privateBlob: "MIIXXXXXXXX",
+  });
+}

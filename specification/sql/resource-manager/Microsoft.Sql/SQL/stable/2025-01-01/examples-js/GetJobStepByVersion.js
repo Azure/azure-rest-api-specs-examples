@@ -1,0 +1,23 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets the specified version of a job step.
+ *
+ * @summary gets the specified version of a job step.
+ * x-ms-original-file: 2025-01-01/GetJobStepByVersion.json
+ */
+async function getTheSpecifiedVersionOfAJobStep() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new SqlManagementClient(credential, subscriptionId);
+  const result = await client.jobSteps.getByVersion(
+    "group1",
+    "server1",
+    "agent1",
+    "job1",
+    1,
+    "step1",
+  );
+  console.log(result);
+}

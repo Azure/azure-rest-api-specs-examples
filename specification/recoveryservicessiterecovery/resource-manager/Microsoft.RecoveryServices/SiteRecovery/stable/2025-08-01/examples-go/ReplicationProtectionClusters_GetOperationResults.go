@@ -27,7 +27,7 @@ func ExampleReplicationProtectionClustersClient_GetOperationResults() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationProtectionClustersClientGetOperationResultsResponse{
-	// 	ReplicationProtectionCluster: &armrecoveryservicessiterecovery.ReplicationProtectionCluster{
+	// 	ReplicationProtectionCluster: armrecoveryservicessiterecovery.ReplicationProtectionCluster{
 	// 		Name: to.Ptr("cluster12"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionClusters"),
 	// 		ID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/eastus/replicationProtectionContainers/eastus-container/replicationProtectionClusters/cluster12"),

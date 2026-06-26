@@ -27,7 +27,7 @@ func ExampleReplicationPoliciesClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationPoliciesClientGetResponse{
-	// 	Policy: &armrecoveryservicessiterecovery.Policy{
+	// 	Policy: armrecoveryservicessiterecovery.Policy{
 	// 		Name: to.Ptr("protectionprofile1"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/vaults/replicationPolicies"),
 	// 		ID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/protectionprofile1"),

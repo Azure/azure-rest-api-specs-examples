@@ -31,13 +31,13 @@ func ExampleReplicationJobsClient_BeginExport() {
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationJobsClientExportResponse{
-	// 	Job: &armrecoveryservicessiterecovery.Job{
+	// 	Job: armrecoveryservicessiterecovery.Job{
 	// 		Name: to.Ptr("37e0fc2b-13f2-4817-aafa-0cd807d46842"),
 	// 		ID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationJobs/37e0fc2b-13f2-4817-aafa-0cd807d46842"),
 	// 		Properties: &armrecoveryservicessiterecovery.JobProperties{

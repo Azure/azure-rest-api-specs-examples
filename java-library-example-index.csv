@@ -7008,3 +7008,4 @@ id,name,language,tag,package,version,date_epoch,date
 7007,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments/v2@v2.0.0,go,sdk/resourcemanager/resources/armdeployments/v2.0.0,sdk/resourcemanager/resources/armdeployments,v2.0.0,1782389672,06/25/2026
 7008,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v4@v4.0.0,go,sdk/resourcemanager/resources/armresources/v4.0.0,sdk/resourcemanager/resources/armresources,v4.0.0,1782387767,06/25/2026
 7009,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions/v2@v2.0.0,go,sdk/resourcemanager/resources/armsubscriptions/v2.0.0,sdk/resourcemanager/resources/armsubscriptions,v2.0.0,1782385488,06/25/2026
+7010,@azure/arm-networkfunction@3.0.0-beta.1,js,@azure/arm-networkfunction_3.0.0-beta.1,@azure/arm-networkfunction,3.0.0-beta.1,1782468978,06/26/2026

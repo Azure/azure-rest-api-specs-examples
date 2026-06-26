@@ -27,7 +27,7 @@ func ExampleVaultExtendedInfoClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservices.VaultExtendedInfoClientGetResponse{
-	// 	VaultExtendedInfoResource: &armrecoveryservices.VaultExtendedInfoResource{
+	// 	VaultExtendedInfoResource: armrecoveryservices.VaultExtendedInfoResource{
 	// 		Name: to.Ptr("vaultExtendedInfo"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/vaults/extendedInformation"),
 	// 		Etag: to.Ptr("f0d0260b-b92d-4458-ba0a-32c6cdabacb7"),

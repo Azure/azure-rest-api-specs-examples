@@ -7012,3 +7012,4 @@ id,name,language,tag,package,version,date_epoch,date
 7011,@azure/arm-sql@11.0.0,js,@azure/arm-sql_11.0.0,@azure/arm-sql,11.0.0,1782465856,06/26/2026
 7012,azure-mgmt-monitorworkspaces@1.0.0,python,azure-mgmt-monitorworkspaces_1.0.0,azure-mgmt-monitorworkspaces,1.0.0,1782441756,06/26/2026
 7013,"Azure.ResourceManager.Playwright,1.1.0-beta.2",dotnet,Azure.ResourceManager.Playwright_1.1.0-beta.2,Azure.ResourceManager.Playwright,1.1.0-beta.2,1782468993,06/26/2026
+7014,"Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.3",dotnet,Azure.ResourceManager.OnlineExperimentation_1.0.0-beta.3,Azure.ResourceManager.OnlineExperimentation,1.0.0-beta.3,1782468469,06/26/2026

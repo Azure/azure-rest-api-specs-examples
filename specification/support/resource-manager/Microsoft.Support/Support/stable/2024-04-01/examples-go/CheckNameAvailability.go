@@ -31,7 +31,7 @@ func ExampleTicketsNoSubscriptionClient_CheckNameAvailability() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armsupport.TicketsNoSubscriptionClientCheckNameAvailabilityResponse{
-	// 	CheckNameAvailabilityOutput: &armsupport.CheckNameAvailabilityOutput{
+	// 	CheckNameAvailabilityOutput: armsupport.CheckNameAvailabilityOutput{
 	// 		Message: to.Ptr("Name not available"),
 	// 		NameAvailable: to.Ptr(false),
 	// 		Reason: to.Ptr("Name is already in use"),

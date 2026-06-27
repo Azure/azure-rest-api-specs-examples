@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Peering.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Peering;
 
 // Generated from example definition: specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/examples/CreatePeerAsn.json
@@ -15,14 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PeerAsnResource created on azure
-// for more information of creating PeerAsnResource, please refer to the document of PeerAsnResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "subId";
-string peerAsnName = "peerAsnName";
-ResourceIdentifier peerAsnResourceId = PeerAsnResource.CreateResourceIdentifier(subscriptionId, peerAsnName);
-PeerAsnResource peerAsn = client.GetPeerAsnResource(peerAsnResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this PeerAsnResource
+PeerAsnCollection collection = subscriptionResource.GetPeerAsns();
 
 // invoke the operation
+string peerAsnName = "peerAsnName";
 PeerAsnData data = new PeerAsnData
 {
     PeerAsn = 65000,
@@ -44,7 +48,7 @@ PeerAsnData data = new PeerAsnData
     }},
     PeerName = "Contoso",
 };
-ArmOperation<PeerAsnResource> lro = await peerAsn.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PeerAsnResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, peerAsnName, data);
 PeerAsnResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

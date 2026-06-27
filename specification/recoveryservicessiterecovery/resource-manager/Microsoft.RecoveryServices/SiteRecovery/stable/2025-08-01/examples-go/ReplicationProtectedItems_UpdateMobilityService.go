@@ -30,13 +30,13 @@ func ExampleReplicationProtectedItemsClient_BeginUpdateMobilityService() {
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationProtectedItemsClientUpdateMobilityServiceResponse{
-	// 	ReplicationProtectedItem: &armrecoveryservicessiterecovery.ReplicationProtectedItem{
+	// 	ReplicationProtectedItem: armrecoveryservicessiterecovery.ReplicationProtectedItem{
 	// 		Name: to.Ptr("79dd20ab-2b40-11e7-9791-0050568f387e"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems"),
 	// 		ID: to.Ptr("/Subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/wcusValidations/providers/Microsoft.RecoveryServices/vaults/WCUSVault/replicationFabrics/d70b0326a201008a953505ef271dc908e5e23468bc7356862ea178696f5f15c7/replicationProtectionContainers/cloud_c6780228-83bd-4f3e-a70e-cb46b7da33a0/replicationProtectedItems/79dd20ab-2b40-11e7-9791-0050568f387e"),

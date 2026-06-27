@@ -59,13 +59,13 @@ func ExampleReplicationProtectionContainersClient_BeginSwitchClusterProtection()
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationProtectionContainersClientSwitchClusterProtectionResponse{
-	// 	ProtectionContainer: &armrecoveryservicessiterecovery.ProtectionContainer{
+	// 	ProtectionContainer: armrecoveryservicessiterecovery.ProtectionContainer{
 	// 		Name: to.Ptr("pri-cloud-eastus"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers"),
 	// 		ID: to.Ptr("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/fabric-pri-eastus/replicationProtectionContainers/pri-cloud-eastus"),

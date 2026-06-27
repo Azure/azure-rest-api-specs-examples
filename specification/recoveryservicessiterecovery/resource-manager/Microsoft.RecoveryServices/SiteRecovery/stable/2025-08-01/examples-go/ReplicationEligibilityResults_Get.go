@@ -27,7 +27,7 @@ func ExampleReplicationEligibilityResultsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationEligibilityResultsClientGetResponse{
-	// 	ReplicationEligibilityResults: &armrecoveryservicessiterecovery.ReplicationEligibilityResults{
+	// 	ReplicationEligibilityResults: armrecoveryservicessiterecovery.ReplicationEligibilityResults{
 	// 		Name: to.Ptr("default"),
 	// 		Type: to.Ptr("Microsoft.RecoveryServices/replicationEligibilityResults"),
 	// 		ID: to.Ptr("/subscriptions/d90d145a-4cdd-45a3-b2c4-971d69775278/resourceGroups/testRg1/providers/Microsoft.Compute/virtualMachines/testVm1/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default"),

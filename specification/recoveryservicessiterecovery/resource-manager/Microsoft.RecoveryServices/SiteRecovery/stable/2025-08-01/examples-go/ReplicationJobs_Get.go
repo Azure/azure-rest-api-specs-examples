@@ -27,7 +27,7 @@ func ExampleReplicationJobsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armrecoveryservicessiterecovery.ReplicationJobsClientGetResponse{
-	// 	Job: &armrecoveryservicessiterecovery.Job{
+	// 	Job: armrecoveryservicessiterecovery.Job{
 	// 		Name: to.Ptr("32ea4b9e-de62-49a1-b062-7864d5c3b897"),
 	// 		ID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationJobs/32ea4b9e-de62-49a1-b062-7864d5c3b897"),
 	// 		Properties: &armrecoveryservicessiterecovery.JobProperties{

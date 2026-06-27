@@ -14,19 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackResource created on azure
-// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
+// this example assumes you already have this GlobalRulestackPrefixResource created on azure
+// for more information of creating GlobalRulestackPrefixResource, please refer to the document of GlobalRulestackPrefixResource
 string globalRulestackName = "praval";
-ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
-GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
-
-// get the collection of this GlobalRulestackPrefixResource
-GlobalRulestackPrefixCollection collection = globalRulestack.GetGlobalRulestackPrefixes();
+string name = "armid1";
+ResourceIdentifier globalRulestackPrefixResourceId = GlobalRulestackPrefixResource.CreateResourceIdentifier(globalRulestackName, name);
+GlobalRulestackPrefixResource globalRulestackPrefix = client.GetGlobalRulestackPrefixResource(globalRulestackPrefixResourceId);
 
 // invoke the operation
-string name = "armid1";
 GlobalRulestackPrefixData data = new GlobalRulestackPrefixData(new string[] { "1.0.0.0/24" });
-ArmOperation<GlobalRulestackPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<GlobalRulestackPrefixResource> lro = await globalRulestackPrefix.UpdateAsync(WaitUntil.Completed, data);
 GlobalRulestackPrefixResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

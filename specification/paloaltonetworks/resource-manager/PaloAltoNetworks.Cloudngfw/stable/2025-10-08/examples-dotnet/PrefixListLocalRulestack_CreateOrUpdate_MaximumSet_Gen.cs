@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LocalRulestackPrefixResource created on azure
-// for more information of creating LocalRulestackPrefixResource, please refer to the document of LocalRulestackPrefixResource
+// this example assumes you already have this LocalRulestackResource created on azure
+// for more information of creating LocalRulestackResource, please refer to the document of LocalRulestackResource
 string subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
 string resourceGroupName = "rgopenapi";
 string localRulestackName = "lrs1";
-string name = "armid1";
-ResourceIdentifier localRulestackPrefixResourceId = LocalRulestackPrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName, name);
-LocalRulestackPrefixResource localRulestackPrefix = client.GetLocalRulestackPrefixResource(localRulestackPrefixResourceId);
+ResourceIdentifier localRulestackResourceId = LocalRulestackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName);
+LocalRulestackResource localRulestack = client.GetLocalRulestackResource(localRulestackResourceId);
+
+// get the collection of this LocalRulestackPrefixResource
+LocalRulestackPrefixCollection collection = localRulestack.GetLocalRulestackPrefixes();
 
 // invoke the operation
+string name = "armid1";
 LocalRulestackPrefixData data = new LocalRulestackPrefixData(new string[] { "1.0.0.0/24" })
 {
     Description = "string",
     ETag = new ETag("2bf4a339-294d-4c25-b0b2-ef649e9f5c27"),
     AuditComment = "comment",
 };
-ArmOperation<LocalRulestackPrefixResource> lro = await localRulestackPrefix.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<LocalRulestackPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 LocalRulestackPrefixResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

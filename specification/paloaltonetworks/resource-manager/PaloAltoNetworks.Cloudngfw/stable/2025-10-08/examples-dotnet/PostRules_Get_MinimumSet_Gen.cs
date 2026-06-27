@@ -15,29 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackResource created on azure
-// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
+// this example assumes you already have this PostRulestackRuleResource created on azure
+// for more information of creating PostRulestackRuleResource, please refer to the document of PostRulestackRuleResource
 string globalRulestackName = "lrs1";
-ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
-GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
-
-// get the collection of this PostRulestackRuleResource
-PostRulestackRuleCollection collection = globalRulestack.GetPostRulestackRules();
+string priority = "1";
+ResourceIdentifier postRulestackRuleResourceId = PostRulestackRuleResource.CreateResourceIdentifier(globalRulestackName, priority);
+PostRulestackRuleResource postRulestackRule = client.GetPostRulestackRuleResource(postRulestackRuleResourceId);
 
 // invoke the operation
-string priority = "1";
-NullableResponse<PostRulestackRuleResource> response = await collection.GetIfExistsAsync(priority);
-PostRulestackRuleResource result = response.HasValue ? response.Value : null;
+PostRulestackRuleResource result = await postRulestackRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PostRulestackRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PostRulestackRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

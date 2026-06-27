@@ -1,0 +1,21 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes a workload classifier.
+ *
+ * @summary deletes a workload classifier.
+ * x-ms-original-file: 2025-01-01/DeleteWorkloadClassifier.json
+ */
+async function deleteAWorkloadClassifier() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new SqlManagementClient(credential, subscriptionId);
+  await client.workloadClassifiers.delete(
+    "Default-SQL-SouthEastAsia",
+    "testsvr",
+    "testdb",
+    "wlm_workloadgroup",
+    "wlm_workloadclassifier",
+  );
+}

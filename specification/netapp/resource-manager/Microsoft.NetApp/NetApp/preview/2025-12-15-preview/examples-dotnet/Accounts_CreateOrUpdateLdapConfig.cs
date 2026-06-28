@@ -28,15 +28,7 @@ NetAppAccountCollection collection = resourceGroupResource.GetNetAppAccounts();
 
 // invoke the operation
 string accountName = "account1";
-NetAppAccountData data = new NetAppAccountData(new AzureLocation("eastus"))
-{
-    LdapConfiguration = new LdapConfiguration
-    {
-        Domain = "example.com",
-        LdapServers = { System.Net.IPAddress.Parse("192.0.2.1"), System.Net.IPAddress.Parse("192.0.2.2") },
-        IsLdapOverTlsEnabled = false,
-    },
-};
+NetAppAccountData data = new NetAppAccountData(new AzureLocation("eastus"));
 ArmOperation<NetAppAccountResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, accountName, data);
 NetAppAccountResource result = lro.Value;
 

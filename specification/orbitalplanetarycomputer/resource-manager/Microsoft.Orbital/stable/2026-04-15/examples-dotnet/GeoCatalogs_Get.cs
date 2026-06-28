@@ -6,6 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PlanetaryComputer.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PlanetaryComputer;
 
 // Generated from example definition: 2026-04-15/GeoCatalogs_Get.json
@@ -16,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PlanetaryComputerGeoCatalogResource created on azure
-// for more information of creating PlanetaryComputerGeoCatalogResource, please refer to the document of PlanetaryComputerGeoCatalogResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "cd9b6cdf-dcf0-4dca-ab19-82be07b74704";
 string resourceGroupName = "MyResourceGroup";
-string catalogName = "MyCatalog";
-ResourceIdentifier planetaryComputerGeoCatalogResourceId = PlanetaryComputerGeoCatalogResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, catalogName);
-PlanetaryComputerGeoCatalogResource planetaryComputerGeoCatalog = client.GetPlanetaryComputerGeoCatalogResource(planetaryComputerGeoCatalogResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this PlanetaryComputerGeoCatalogResource
+PlanetaryComputerGeoCatalogCollection collection = resourceGroupResource.GetPlanetaryComputerGeoCatalogs();
 
 // invoke the operation
-PlanetaryComputerGeoCatalogResource result = await planetaryComputerGeoCatalog.GetAsync();
+string catalogName = "MyCatalog";
+NullableResponse<PlanetaryComputerGeoCatalogResource> response = await collection.GetIfExistsAsync(catalogName);
+PlanetaryComputerGeoCatalogResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PlanetaryComputerGeoCatalogData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PlanetaryComputerGeoCatalogData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

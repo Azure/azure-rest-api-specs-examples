@@ -7021,3 +7021,4 @@ id,name,language,tag,package,version,date_epoch,date
 7020,"Azure.ResourceManager.PlanetaryComputer,1.0.1",dotnet,Azure.ResourceManager.PlanetaryComputer_1.0.1,Azure.ResourceManager.PlanetaryComputer,1.0.1,1782485140,06/26/2026
 7021,"Azure.ResourceManager.Peering,1.2.4",dotnet,Azure.ResourceManager.Peering_1.2.4,Azure.ResourceManager.Peering,1.2.4,1782485133,06/26/2026
 7022,"Azure.ResourceManager.MongoCluster,1.1.0",dotnet,Azure.ResourceManager.MongoCluster_1.1.0,Azure.ResourceManager.MongoCluster,1.1.0,1782484938,06/26/2026
+7023,"Azure.ResourceManager.NetApp,1.17.0",dotnet,Azure.ResourceManager.NetApp_1.17.0,Azure.ResourceManager.NetApp,1.17.0,1782495829,06/26/2026

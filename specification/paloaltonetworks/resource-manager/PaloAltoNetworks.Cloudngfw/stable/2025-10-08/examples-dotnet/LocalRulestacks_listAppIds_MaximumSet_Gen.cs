@@ -29,7 +29,7 @@ string appIdVersion = "8543";
 string appPrefix = "pref";
 string skip = "a6a321";
 int? top = 20;
-await foreach (string item in localRulestack.GetAppIdsAsync(appIdVersion: appIdVersion, appPrefix: appPrefix, skip: skip, top: top))
+await foreach (string item in localRulestack.GetAppIdsAsync(appIdVersion: appIdVersion, appPrefix: appPrefix, skip: skip, maxCount: top))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

@@ -27,7 +27,7 @@ LocalRulestackResource localRulestack = client.GetLocalRulestackResource(localRu
 // invoke the operation and iterate over the result
 string skip = "a6a321";
 int? top = 20;
-await foreach (PredefinedUrlCategory item in localRulestack.GetPredefinedUrlCategoriesAsync(skip: skip, top: top))
+await foreach (PredefinedUrlCategory item in localRulestack.GetPredefinedUrlCategoriesAsync(skip: skip, maxCount: top))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

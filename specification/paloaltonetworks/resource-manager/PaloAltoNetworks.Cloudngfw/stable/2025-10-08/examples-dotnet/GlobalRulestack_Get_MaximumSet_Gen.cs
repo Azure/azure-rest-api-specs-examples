@@ -6,6 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
 
 // Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2025-10-08/examples/GlobalRulestack_Get_MaximumSet_Gen.json
@@ -16,17 +17,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackResource created on azure
-// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
-string globalRulestackName = "praval";
-ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
-GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
+TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this GlobalRulestackResource
+GlobalRulestackCollection collection = tenantResource.GetGlobalRulestacks();
 
 // invoke the operation
-GlobalRulestackResource result = await globalRulestack.GetAsync();
+string globalRulestackName = "praval";
+NullableResponse<GlobalRulestackResource> response = await collection.GetIfExistsAsync(globalRulestackName);
+GlobalRulestackResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GlobalRulestackData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GlobalRulestackData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

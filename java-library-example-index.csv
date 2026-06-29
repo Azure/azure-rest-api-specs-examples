@@ -7028,3 +7028,4 @@ id,name,language,tag,package,version,date_epoch,date
 7027,@azure/arm-qumulo@3.0.0,js,@azure/arm-qumulo_3.0.0,@azure/arm-qumulo,3.0.0,1782710193,06/29/2026
 7028,@azure/arm-storage@20.1.0,js,@azure/arm-storage_20.1.0,@azure/arm-storage,20.1.0,1782702851,06/29/2026
 7029,@azure/arm-extendedlocation@1.0.0-beta.5,js,@azure/arm-extendedlocation_1.0.0-beta.5,@azure/arm-extendedlocation,1.0.0-beta.5,1782701011,06/29/2026
+7030,@azure/arm-mongocluster@1.2.0,js,@azure/arm-mongocluster_1.2.0,@azure/arm-mongocluster,1.2.0,1782660617,06/28/2026

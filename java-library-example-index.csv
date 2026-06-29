@@ -7023,3 +7023,4 @@ id,name,language,tag,package,version,date_epoch,date
 7022,"Azure.ResourceManager.MongoCluster,1.1.0",dotnet,Azure.ResourceManager.MongoCluster_1.1.0,Azure.ResourceManager.MongoCluster,1.1.0,1782484938,06/26/2026
 7023,"Azure.ResourceManager.NetApp,1.17.0",dotnet,Azure.ResourceManager.NetApp_1.17.0,Azure.ResourceManager.NetApp,1.17.0,1782495829,06/26/2026
 7024,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/liftrqumulo/armqumulo/v2@v2.1.0,go,sdk/resourcemanager/liftrqumulo/armqumulo/v2.1.0,sdk/resourcemanager/liftrqumulo/armqumulo,v2.1.0,1782716902,06/29/2026
+7025,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.2.0,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.2.0,sdk/resourcemanager/mongocluster/armmongocluster,v1.2.0,1782660845,06/28/2026

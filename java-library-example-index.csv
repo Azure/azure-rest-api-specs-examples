@@ -7030,3 +7030,4 @@ id,name,language,tag,package,version,date_epoch,date
 7029,@azure/arm-extendedlocation@1.0.0-beta.5,js,@azure/arm-extendedlocation_1.0.0-beta.5,@azure/arm-extendedlocation,1.0.0-beta.5,1782701011,06/29/2026
 7030,@azure/arm-mongocluster@1.2.0,js,@azure/arm-mongocluster_1.2.0,@azure/arm-mongocluster,1.2.0,1782660617,06/28/2026
 7031,azure-mgmt-communication@3.0.0,python,azure-mgmt-communication_3.0.0,azure-mgmt-communication,3.0.0,1782715867,06/29/2026
+7032,azure-mgmt-managementgroups@2.0.0,python,azure-mgmt-managementgroups_2.0.0,azure-mgmt-managementgroups,2.0.0,1782700848,06/29/2026

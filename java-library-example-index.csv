@@ -7035,3 +7035,4 @@ id,name,language,tag,package,version,date_epoch,date
 7034,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/programenrollment/armprogramenrollment@v0.1.0,go,sdk/resourcemanager/programenrollment/armprogramenrollment/v0.1.0,sdk/resourcemanager/programenrollment/armprogramenrollment,v0.1.0,1782781481,06/30/2026
 7035,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers/v2@v2.0.0,go,sdk/resourcemanager/mysql/armmysqlflexibleservers/v2.0.0,sdk/resourcemanager/mysql/armmysqlflexibleservers,v2.0.0,1782767789,06/29/2026
 7036,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.1.0,go,sdk/resourcemanager/netapp/armnetapp/v10.1.0,sdk/resourcemanager/netapp/armnetapp,v10.1.0,1782751614,06/29/2026
+7037,@azure/arm-automation@11.0.0-beta.6,js,@azure/arm-automation_11.0.0-beta.6,@azure/arm-automation,11.0.0-beta.6,1782797833,06/30/2026

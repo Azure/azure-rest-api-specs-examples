@@ -7037,3 +7037,4 @@ id,name,language,tag,package,version,date_epoch,date
 7036,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.1.0,go,sdk/resourcemanager/netapp/armnetapp/v10.1.0,sdk/resourcemanager/netapp/armnetapp,v10.1.0,1782751614,06/29/2026
 7037,@azure/arm-automation@11.0.0-beta.6,js,@azure/arm-automation_11.0.0-beta.6,@azure/arm-automation,11.0.0-beta.6,1782797833,06/30/2026
 7038,@azure/arm-programenrollment@1.0.0-beta.1,js,@azure/arm-programenrollment_1.0.0-beta.1,@azure/arm-programenrollment,1.0.0-beta.1,1782777715,06/30/2026
+7039,@azure/arm-netapp@24.1.0,js,@azure/arm-netapp_24.1.0,@azure/arm-netapp,24.1.0,1782750829,06/29/2026

@@ -7022,3 +7022,13 @@ id,name,language,tag,package,version,date_epoch,date
 7021,"Azure.ResourceManager.Peering,1.2.4",dotnet,Azure.ResourceManager.Peering_1.2.4,Azure.ResourceManager.Peering,1.2.4,1782485133,06/26/2026
 7022,"Azure.ResourceManager.MongoCluster,1.1.0",dotnet,Azure.ResourceManager.MongoCluster_1.1.0,Azure.ResourceManager.MongoCluster,1.1.0,1782484938,06/26/2026
 7023,"Azure.ResourceManager.NetApp,1.17.0",dotnet,Azure.ResourceManager.NetApp_1.17.0,Azure.ResourceManager.NetApp,1.17.0,1782495829,06/26/2026
+7024,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/liftrqumulo/armqumulo/v2@v2.1.0,go,sdk/resourcemanager/liftrqumulo/armqumulo/v2.1.0,sdk/resourcemanager/liftrqumulo/armqumulo,v2.1.0,1782716902,06/29/2026
+7025,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.2.0,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.2.0,sdk/resourcemanager/mongocluster/armmongocluster,v1.2.0,1782660845,06/28/2026
+7026,@azure/arm-machinelearning@4.0.0-beta.1,js,@azure/arm-machinelearning_4.0.0-beta.1,@azure/arm-machinelearning,4.0.0-beta.1,1782714681,06/29/2026
+7027,@azure/arm-qumulo@3.0.0,js,@azure/arm-qumulo_3.0.0,@azure/arm-qumulo,3.0.0,1782710193,06/29/2026
+7028,@azure/arm-storage@20.1.0,js,@azure/arm-storage_20.1.0,@azure/arm-storage,20.1.0,1782702851,06/29/2026
+7029,@azure/arm-extendedlocation@1.0.0-beta.5,js,@azure/arm-extendedlocation_1.0.0-beta.5,@azure/arm-extendedlocation,1.0.0-beta.5,1782701011,06/29/2026
+7030,@azure/arm-mongocluster@1.2.0,js,@azure/arm-mongocluster_1.2.0,@azure/arm-mongocluster,1.2.0,1782660617,06/28/2026
+7031,azure-mgmt-communication@3.0.0,python,azure-mgmt-communication_3.0.0,azure-mgmt-communication,3.0.0,1782715867,06/29/2026
+7032,azure-mgmt-managementgroups@2.0.0,python,azure-mgmt-managementgroups_2.0.0,azure-mgmt-managementgroups,2.0.0,1782700848,06/29/2026
+7033,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-mongocluster_1.2.0,com.azure.resourcemanager+azure-resourcemanager-mongocluster,1.2.0,1782660851,06/28/2026

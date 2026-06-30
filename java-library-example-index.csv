@@ -7049,3 +7049,4 @@ id,name,language,tag,package,version,date_epoch,date
 7048,azure-mgmt-cognitiveservices@15.0.0b3,python,azure-mgmt-cognitiveservices_15.0.0b3,azure-mgmt-cognitiveservices,15.0.0b3,1782790137,06/30/2026
 7049,azure-mgmt-mongocluster@1.2.0,python,azure-mgmt-mongocluster_1.2.0,azure-mgmt-mongocluster,1.2.0,1782790117,06/30/2026
 7050,azure-mgmt-netapp@17.0.0,python,azure-mgmt-netapp_17.0.0,azure-mgmt-netapp,17.0.0,1782752137,06/29/2026
+7051,com.azure.resourcemanager:azure-resourcemanager-programenrollment:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-programenrollment_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-programenrollment,1.0.0-beta.1,1782781669,06/30/2026

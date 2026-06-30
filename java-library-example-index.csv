@@ -7052,3 +7052,4 @@ id,name,language,tag,package,version,date_epoch,date
 7051,com.azure.resourcemanager:azure-resourcemanager-programenrollment:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-programenrollment_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-programenrollment,1.0.0-beta.1,1782781669,06/30/2026
 7052,com.azure.resourcemanager:azure-resourcemanager-netapp:2.3.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.3.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.3.0,1782753649,06/29/2026
 7053,"Azure.ResourceManager.ResourceHealth,1.1.0",dotnet,Azure.ResourceManager.ResourceHealth_1.1.0,Azure.ResourceManager.ResourceHealth,1.1.0,1782815926,06/30/2026
+7054,"Azure.ResourceManager.ResourceConnector,1.0.0-beta.5",dotnet,Azure.ResourceManager.ResourceConnector_1.0.0-beta.5,Azure.ResourceManager.ResourceConnector,1.0.0-beta.5,1782815173,06/30/2026

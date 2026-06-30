@@ -1,0 +1,20 @@
+const { AutomationClient } = require("@azure/arm-automation");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a private endpoint connection.
+ *
+ * @summary gets a private endpoint connection.
+ * x-ms-original-file: 2024-10-23/privateEndpointConnection/PrivateEndpointConnectionGet.json
+ */
+async function getsPrivateEndpointConnection() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new AutomationClient(credential, subscriptionId);
+  const result = await client.privateEndpointConnections.get(
+    "rg1",
+    "automationAccountName",
+    "privateEndpointConnectionName",
+  );
+  console.log(result);
+}

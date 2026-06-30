@@ -7041,3 +7041,4 @@ id,name,language,tag,package,version,date_epoch,date
 7040,@azure/arm-policyinsights@7.0.0-beta.1,js,@azure/arm-policyinsights_7.0.0-beta.1,@azure/arm-policyinsights,7.0.0-beta.1,1782748508,06/29/2026
 7041,azure-mgmt-recoveryservicessiterecovery@2.0.0,python,azure-mgmt-recoveryservicessiterecovery_2.0.0,azure-mgmt-recoveryservicessiterecovery,2.0.0,1782813449,06/30/2026
 7042,azure-mgmt-certificateregistration@1.0.0,python,azure-mgmt-certificateregistration_1.0.0,azure-mgmt-certificateregistration,1.0.0,1782813348,06/30/2026
+7043,azure-mgmt-domainregistration@1.0.0,python,azure-mgmt-domainregistration_1.0.0,azure-mgmt-domainregistration,1.0.0,1782813341,06/30/2026

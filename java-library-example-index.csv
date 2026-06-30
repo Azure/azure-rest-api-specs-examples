@@ -7044,3 +7044,4 @@ id,name,language,tag,package,version,date_epoch,date
 7043,azure-mgmt-domainregistration@1.0.0,python,azure-mgmt-domainregistration_1.0.0,azure-mgmt-domainregistration,1.0.0,1782813341,06/30/2026
 7044,azure-mgmt-frontdoor@2.0.0,python,azure-mgmt-frontdoor_2.0.0,azure-mgmt-frontdoor,2.0.0,1782813287,06/30/2026
 7045,azure-mgmt-kubernetesconfiguration-fluxconfigurations@1.0.0,python,azure-mgmt-kubernetesconfiguration-fluxconfigurations_1.0.0,azure-mgmt-kubernetesconfiguration-fluxconfigurations,1.0.0,1782813281,06/30/2026
+7046,azure-mgmt-networkfunction@1.0.0,python,azure-mgmt-networkfunction_1.0.0,azure-mgmt-networkfunction,1.0.0,1782813279,06/30/2026

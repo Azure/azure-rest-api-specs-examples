@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.commvaultcontentstore import CommvaultContentStoreMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-commvaultcontentstore
+# USAGE
+    python saa_soperation_group_activate_resource_minimum_set_gen.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CommvaultContentStoreMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.saa_soperation_group.begin_activate_resource(
+        body={"saaSGuid": "55555555-6666-7777-8888-999999999999"},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: 2026-07-03-preview/SaaSOperationGroup_ActivateResource_MinimumSet_Gen.json
+if __name__ == "__main__":
+    main()

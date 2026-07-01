@@ -7055,3 +7055,4 @@ id,name,language,tag,package,version,date_epoch,date
 7054,"Azure.ResourceManager.ResourceConnector,1.0.0-beta.5",dotnet,Azure.ResourceManager.ResourceConnector_1.0.0-beta.5,Azure.ResourceManager.ResourceConnector,1.0.0-beta.5,1782815173,06/30/2026
 7055,"Azure.ResourceManager.RedisEnterprise,1.4.0-beta.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.4.0-beta.1,Azure.ResourceManager.RedisEnterprise,1.4.0-beta.1,1782815159,06/30/2026
 7056,@azure/arm-monitor@8.0.0-beta.7,js,@azure/arm-monitor_8.0.0-beta.7,@azure/arm-monitor,8.0.0-beta.7,1782887061,07/01/2026
+7057,@azure/arm-cognitiveservices@9.0.0-beta.3,js,@azure/arm-cognitiveservices_9.0.0-beta.3,@azure/arm-cognitiveservices,9.0.0-beta.3,1782870610,07/01/2026

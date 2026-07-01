@@ -7066,3 +7066,4 @@ id,name,language,tag,package,version,date_epoch,date
 7065,"Azure.ResourceManager.StorageDiscovery,1.0.1",dotnet,Azure.ResourceManager.StorageDiscovery_1.0.1,Azure.ResourceManager.StorageDiscovery,1.0.1,1782872189,07/01/2026
 7066,"Azure.ResourceManager.StorageCache,1.5.0",dotnet,Azure.ResourceManager.StorageCache_1.5.0,Azure.ResourceManager.StorageCache,1.5.0,1782872189,07/01/2026
 7067,"Azure.ResourceManager.Resources,1.12.0-beta.1",dotnet,Azure.ResourceManager.Resources_1.12.0-beta.1,Azure.ResourceManager.Resources,1.12.0-beta.1,1782872143,07/01/2026
+7068,"Azure.ResourceManager.SiteManager,1.0.1",dotnet,Azure.ResourceManager.SiteManager_1.0.1,Azure.ResourceManager.SiteManager,1.0.1,1782872128,07/01/2026

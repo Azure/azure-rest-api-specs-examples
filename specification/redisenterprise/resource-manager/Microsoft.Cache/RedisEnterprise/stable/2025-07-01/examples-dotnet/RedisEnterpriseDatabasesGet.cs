@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisEnterpriseDatabaseResource created on azure
-// for more information of creating RedisEnterpriseDatabaseResource, please refer to the document of RedisEnterpriseDatabaseResource
+// this example assumes you already have this RedisEnterpriseClusterResource created on azure
+// for more information of creating RedisEnterpriseClusterResource, please refer to the document of RedisEnterpriseClusterResource
 string subscriptionId = "e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f";
 string resourceGroupName = "rg1";
 string clusterName = "cache1";
-string databaseName = "default";
-ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
-RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
+ResourceIdentifier redisEnterpriseClusterResourceId = RedisEnterpriseClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpriseClusterResource(redisEnterpriseClusterResourceId);
+
+// get the collection of this RedisEnterpriseDatabaseResource
+RedisEnterpriseDatabaseCollection collection = redisEnterpriseCluster.GetRedisEnterpriseDatabases();
 
 // invoke the operation
-RedisEnterpriseDatabaseResource result = await redisEnterpriseDatabase.GetAsync();
+string databaseName = "default";
+NullableResponse<RedisEnterpriseDatabaseResource> response = await collection.GetIfExistsAsync(databaseName);
+RedisEnterpriseDatabaseResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RedisEnterpriseDatabaseData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RedisEnterpriseDatabaseData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

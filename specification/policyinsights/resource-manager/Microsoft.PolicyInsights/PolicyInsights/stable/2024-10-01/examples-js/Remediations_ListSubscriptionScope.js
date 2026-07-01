@@ -1,0 +1,20 @@
+const { PolicyInsightsClient } = require("@azure/arm-policyinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets all remediations for the subscription.
+ *
+ * @summary gets all remediations for the subscription.
+ * x-ms-original-file: 2024-10-01/Remediations_ListSubscriptionScope.json
+ */
+async function listRemediationsAtSubscriptionScope() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "35ee058e-5fa0-414c-8145-3ebb8d09b6e2";
+  const client = new PolicyInsightsClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.remediations.listForSubscription()) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

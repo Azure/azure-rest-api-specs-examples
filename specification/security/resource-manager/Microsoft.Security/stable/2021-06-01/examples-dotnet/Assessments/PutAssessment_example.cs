@@ -15,20 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAssessmentResource created on azure
-// for more information of creating SecurityAssessmentResource, please refer to the document of SecurityAssessmentResource
+// get the collection of this SecurityAssessmentResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2";
-string assessmentName = "8bb8be0a-6010-4789-812f-e4d661c4ed0e";
-ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.CreateResourceIdentifier(resourceId, assessmentName);
-SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
+SecurityAssessmentCollection collection = client.GetSecurityAssessments(new ResourceIdentifier(resourceId));
 
 // invoke the operation
+string assessmentName = "8bb8be0a-6010-4789-812f-e4d661c4ed0e";
 SecurityAssessmentCreateOrUpdateContent content = new SecurityAssessmentCreateOrUpdateContent
 {
     ResourceDetails = new AzureResourceDetails(),
     Status = new SecurityAssessmentStatus(SecurityAssessmentStatusCode.Healthy),
 };
-ArmOperation<SecurityAssessmentResource> lro = await securityAssessment.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<SecurityAssessmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, assessmentName, content);
 SecurityAssessmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

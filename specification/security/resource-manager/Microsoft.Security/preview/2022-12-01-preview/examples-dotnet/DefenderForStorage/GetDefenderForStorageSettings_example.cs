@@ -20,7 +20,7 @@ string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resource
 DefenderForStorageSettingCollection collection = client.GetDefenderForStorageSettings(new ResourceIdentifier(resourceId));
 
 // invoke the operation
-DefenderForStorageSettingName settingName = DefenderForStorageSettingName.Current;
+SettingName settingName = SettingName.Current;
 NullableResponse<DefenderForStorageSettingResource> response = await collection.GetIfExistsAsync(settingName);
 DefenderForStorageSettingResource result = response.HasValue ? response.Value : null;
 

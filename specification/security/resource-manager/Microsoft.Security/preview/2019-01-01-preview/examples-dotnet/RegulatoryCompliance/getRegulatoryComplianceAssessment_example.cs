@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RegulatoryComplianceAssessmentResource created on azure
-// for more information of creating RegulatoryComplianceAssessmentResource, please refer to the document of RegulatoryComplianceAssessmentResource
+// this example assumes you already have this RegulatoryComplianceControlResource created on azure
+// for more information of creating RegulatoryComplianceControlResource, please refer to the document of RegulatoryComplianceControlResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string regulatoryComplianceStandardName = "PCI-DSS-3.2";
 string regulatoryComplianceControlName = "1.1";
-string regulatoryComplianceAssessmentName = "968548cb-02b3-8cd2-11f8-0cf64ab1a347";
-ResourceIdentifier regulatoryComplianceAssessmentResourceId = RegulatoryComplianceAssessmentResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName, regulatoryComplianceControlName, regulatoryComplianceAssessmentName);
-RegulatoryComplianceAssessmentResource regulatoryComplianceAssessment = client.GetRegulatoryComplianceAssessmentResource(regulatoryComplianceAssessmentResourceId);
+ResourceIdentifier regulatoryComplianceControlResourceId = RegulatoryComplianceControlResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName, regulatoryComplianceControlName);
+RegulatoryComplianceControlResource regulatoryComplianceControl = client.GetRegulatoryComplianceControlResource(regulatoryComplianceControlResourceId);
+
+// get the collection of this RegulatoryComplianceAssessmentResource
+RegulatoryComplianceAssessmentCollection collection = regulatoryComplianceControl.GetRegulatoryComplianceAssessments();
 
 // invoke the operation
-RegulatoryComplianceAssessmentResource result = await regulatoryComplianceAssessment.GetAsync();
+string regulatoryComplianceAssessmentName = "968548cb-02b3-8cd2-11f8-0cf64ab1a347";
+NullableResponse<RegulatoryComplianceAssessmentResource> response = await collection.GetIfExistsAsync(regulatoryComplianceAssessmentName);
+RegulatoryComplianceAssessmentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RegulatoryComplianceAssessmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RegulatoryComplianceAssessmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

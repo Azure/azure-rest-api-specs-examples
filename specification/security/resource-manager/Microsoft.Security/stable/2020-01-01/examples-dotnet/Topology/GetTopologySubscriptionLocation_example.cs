@@ -23,7 +23,7 @@ ResourceIdentifier securityCenterLocationResourceId = SecurityCenterLocationReso
 SecurityCenterLocationResource securityCenterLocation = client.GetSecurityCenterLocationResource(securityCenterLocationResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (SecurityTopologyResource item in securityCenterLocation.GetTopologiesByHomeRegionAsync())
+await foreach (global::Azure.ResourceManager.SecurityCenter.Models.SecurityTopologyResource item in securityCenterLocation.GetTopologiesByHomeRegionAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

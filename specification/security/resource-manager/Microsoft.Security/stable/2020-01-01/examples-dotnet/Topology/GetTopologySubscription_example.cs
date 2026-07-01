@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (SecurityTopologyResource item in subscriptionResource.GetTopologiesAsync())
+await foreach (global::Azure.ResourceManager.SecurityCenter.Models.SecurityTopologyResource item in subscriptionResource.GetTopologiesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

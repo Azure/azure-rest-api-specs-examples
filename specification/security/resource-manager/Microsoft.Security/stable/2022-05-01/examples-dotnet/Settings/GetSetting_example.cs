@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter.Models;
 using Azure.ResourceManager.SecurityCenter;
 
@@ -15,18 +16,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecuritySettingResource created on azure
-// for more information of creating SecuritySettingResource, please refer to the document of SecuritySettingResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-SecuritySettingName settingName = SecuritySettingName.Wdatp;
-ResourceIdentifier securitySettingResourceId = SecuritySettingResource.CreateResourceIdentifier(subscriptionId, settingName);
-SecuritySettingResource securitySetting = client.GetSecuritySettingResource(securitySettingResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this SecuritySettingResource
+SecuritySettingCollection collection = subscriptionResource.GetSecuritySettings();
 
 // invoke the operation
-SecuritySettingResource result = await securitySetting.GetAsync();
+SettingName settingName = SettingName.Wdatp;
+NullableResponse<SecuritySettingResource> response = await collection.GetIfExistsAsync(settingName);
+SecuritySettingResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecuritySettingData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecuritySettingData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

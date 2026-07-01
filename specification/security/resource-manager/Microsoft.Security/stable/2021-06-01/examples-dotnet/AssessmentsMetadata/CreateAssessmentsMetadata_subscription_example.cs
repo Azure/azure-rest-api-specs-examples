@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter.Models;
 using Azure.ResourceManager.SecurityCenter;
 
@@ -15,14 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionAssessmentMetadataResource created on azure
-// for more information of creating SubscriptionAssessmentMetadataResource, please refer to the document of SubscriptionAssessmentMetadataResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "0980887d-03d6-408c-9566-532f3456804e";
-string assessmentMetadataName = "ca039e75-a276-4175-aebc-bcd41e4b14b7";
-ResourceIdentifier subscriptionAssessmentMetadataResourceId = SubscriptionAssessmentMetadataResource.CreateResourceIdentifier(subscriptionId, assessmentMetadataName);
-SubscriptionAssessmentMetadataResource subscriptionAssessmentMetadata = client.GetSubscriptionAssessmentMetadataResource(subscriptionAssessmentMetadataResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this SubscriptionAssessmentMetadataResource
+SubscriptionAssessmentMetadataCollection collection = subscriptionResource.GetAllSubscriptionAssessmentMetadata();
 
 // invoke the operation
+string assessmentMetadataName = "ca039e75-a276-4175-aebc-bcd41e4b14b7";
 SecurityAssessmentMetadataData data = new SecurityAssessmentMetadataData
 {
     DisplayName = "Install endpoint protection solution on virtual machine scale sets",
@@ -35,7 +39,7 @@ SecurityAssessmentMetadataData data = new SecurityAssessmentMetadataData
     Threats = { SecurityThreat.DataExfiltration, SecurityThreat.DataSpillage, SecurityThreat.MaliciousInsider },
     AssessmentType = SecurityAssessmentType.CustomerManaged,
 };
-ArmOperation<SubscriptionAssessmentMetadataResource> lro = await subscriptionAssessmentMetadata.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SubscriptionAssessmentMetadataResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, assessmentMetadataName, data);
 SubscriptionAssessmentMetadataResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

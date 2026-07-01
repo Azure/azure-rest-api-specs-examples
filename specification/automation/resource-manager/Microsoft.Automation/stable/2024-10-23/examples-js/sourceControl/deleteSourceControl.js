@@ -1,0 +1,15 @@
+const { AutomationClient } = require("@azure/arm-automation");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to delete the source control.
+ *
+ * @summary delete the source control.
+ * x-ms-original-file: 2024-10-23/sourceControl/deleteSourceControl.json
+ */
+async function deleteASourceControl() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee";
+  const client = new AutomationClient(credential, subscriptionId);
+  await client.sourceControlOperations.delete("rg", "sampleAccount9", "sampleSourceControl");
+}

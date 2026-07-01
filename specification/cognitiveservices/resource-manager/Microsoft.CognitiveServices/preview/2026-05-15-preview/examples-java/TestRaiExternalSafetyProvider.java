@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.RaiExternalSafetyProviderSchemaProperties;
+
+/**
+ * Samples for TestRaiExternalSafetyProvider CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-15-preview/TestRaiExternalSafetyProvider.json
+     */
+    /**
+     * Sample code: TestRaiExternalSafetyProvider.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        testRaiExternalSafetyProvider(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.testRaiExternalSafetyProviders().define("mySafetyProvider")
+            .withExistingAccount("myResourceGroup", "myCognitiveAccount")
+            .withProperties(new RaiExternalSafetyProviderSchemaProperties()
+                .withProviderId("00000000-0000-0000-0000-000000000000").withProviderName("safetyProviderName")
+                .withMode("sync").withUrl("https://example-safety-provider.contoso.com/webhook")
+                .withSecretName("fakeTokenPlaceholder").withManagedIdentity("f3b9c2e7-4aad-4b1f-9d9c-9e9b1e9b1f9b")
+                .withKeyVaultUri("fakeTokenPlaceholder"))
+            .create();
+    }
+}

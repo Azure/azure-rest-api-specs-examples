@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.CalculateModelCapacityParameter;
+import com.azure.resourcemanager.cognitiveservices.models.DeploymentModel;
+import com.azure.resourcemanager.cognitiveservices.models.ModelCapacityCalculatorWorkload;
+import com.azure.resourcemanager.cognitiveservices.models.ModelCapacityCalculatorWorkloadRequestParam;
+import java.util.Arrays;
+
+/**
+ * Samples for ResourceProvider CalculateModelCapacity.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-15-preview/CalculateModelCapacity.json
+     */
+    /**
+     * Sample code: Calculate Model Capacity.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        calculateModelCapacity(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.resourceProviders()
+            .calculateModelCapacityWithResponse(
+                new CalculateModelCapacityParameter()
+                    .withModel(new DeploymentModel().withFormat("OpenAI").withName("gpt-4").withVersion("0613"))
+                    .withSkuName("ProvisionedManaged")
+                    .withWorkloads(Arrays.asList(
+                        new ModelCapacityCalculatorWorkload().withRequestPerMinute(10L)
+                            .withRequestParameters(new ModelCapacityCalculatorWorkloadRequestParam()
+                                .withAvgPromptTokens(30L).withAvgGeneratedTokens(50L)),
+                        new ModelCapacityCalculatorWorkload().withRequestPerMinute(20L)
+                            .withRequestParameters(new ModelCapacityCalculatorWorkloadRequestParam()
+                                .withAvgPromptTokens(60L).withAvgGeneratedTokens(20L)))),
+                com.azure.core.util.Context.NONE);
+    }
+}

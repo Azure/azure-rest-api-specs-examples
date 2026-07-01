@@ -7059,3 +7059,4 @@ id,name,language,tag,package,version,date_epoch,date
 7058,azure-mgmt-mongodbatlas@1.1.0b1,python,azure-mgmt-mongodbatlas_1.1.0b1,azure-mgmt-mongodbatlas,1.1.0b1,1782888687,07/01/2026
 7059,azure-mgmt-sql@4.0.0,python,azure-mgmt-sql_4.0.0,azure-mgmt-sql,4.0.0,1782888619,07/01/2026
 7060,azure-mgmt-network@31.0.0,python,azure-mgmt-network_31.0.0,azure-mgmt-network,31.0.0,1782888617,07/01/2026
+7061,azure-mgmt-powerplatform@1.0.0b1,python,azure-mgmt-powerplatform_1.0.0b1,azure-mgmt-powerplatform,1.0.0b1,1782873884,07/01/2026

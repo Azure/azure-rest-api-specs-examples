@@ -7064,3 +7064,4 @@ id,name,language,tag,package,version,date_epoch,date
 7063,"Azure.ResourceManager.Resources.DeploymentStacks,1.0.1",dotnet,Azure.ResourceManager.Resources.DeploymentStacks_1.0.1,Azure.ResourceManager.Resources.DeploymentStacks,1.0.1,1782872223,07/01/2026
 7064,"Azure.ResourceManager.Resources.Deployments,1.0.0-beta.1",dotnet,Azure.ResourceManager.Resources.Deployments_1.0.0-beta.1,Azure.ResourceManager.Resources.Deployments,1.0.0-beta.1,1782872202,07/01/2026
 7065,"Azure.ResourceManager.StorageDiscovery,1.0.1",dotnet,Azure.ResourceManager.StorageDiscovery_1.0.1,Azure.ResourceManager.StorageDiscovery,1.0.1,1782872189,07/01/2026
+7066,"Azure.ResourceManager.StorageCache,1.5.0",dotnet,Azure.ResourceManager.StorageCache_1.5.0,Azure.ResourceManager.StorageCache,1.5.0,1782872189,07/01/2026

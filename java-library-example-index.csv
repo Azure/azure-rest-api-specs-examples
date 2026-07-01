@@ -7057,3 +7057,4 @@ id,name,language,tag,package,version,date_epoch,date
 7056,@azure/arm-monitor@8.0.0-beta.7,js,@azure/arm-monitor_8.0.0-beta.7,@azure/arm-monitor,8.0.0-beta.7,1782887061,07/01/2026
 7057,@azure/arm-cognitiveservices@9.0.0-beta.3,js,@azure/arm-cognitiveservices_9.0.0-beta.3,@azure/arm-cognitiveservices,9.0.0-beta.3,1782870610,07/01/2026
 7058,azure-mgmt-mongodbatlas@1.1.0b1,python,azure-mgmt-mongodbatlas_1.1.0b1,azure-mgmt-mongodbatlas,1.1.0b1,1782888687,07/01/2026
+7059,azure-mgmt-sql@4.0.0,python,azure-mgmt-sql_4.0.0,azure-mgmt-sql,4.0.0,1782888619,07/01/2026

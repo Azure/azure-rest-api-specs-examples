@@ -1,0 +1,20 @@
+const { MonitorClient } = require("@azure/arm-monitor");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists all data collection endpoints in the specified subscription
+ *
+ * @summary lists all data collection endpoints in the specified subscription
+ * x-ms-original-file: 2024-03-11/DataCollectionEndpointsListBySubscription.json
+ */
+async function listDataCollectionEndpointsBySubscription() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "703362b3-f278-4e4b-9179-c76eaf41ffc2";
+  const client = new MonitorClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.dataCollectionEndpoints.listBySubscription()) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

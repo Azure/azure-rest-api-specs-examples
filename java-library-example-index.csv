@@ -7078,3 +7078,4 @@ id,name,language,tag,package,version,date_epoch,date
 7077,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v3@v3.0.0,go,sdk/resourcemanager/providerhub/armproviderhub/v3.0.0,sdk/resourcemanager/providerhub/armproviderhub,v3.0.0,1782963794,07/02/2026
 7078,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine@v1.0.0,go,sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine/v1.0.0,sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine,v1.0.0,1782962138,07/02/2026
 7079,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourcehealth/armresourcehealth@v1.4.0,go,sdk/resourcemanager/resourcehealth/armresourcehealth/v1.4.0,sdk/resourcemanager/resourcehealth/armresourcehealth,v1.4.0,1782960863,07/02/2026
+7080,azure-mgmt-network@31.0.1,python,azure-mgmt-network_31.0.1,azure-mgmt-network,31.0.1,1782970493,07/02/2026

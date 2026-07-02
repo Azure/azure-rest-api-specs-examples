@@ -27,7 +27,7 @@ func ExampleCapacitiesClient_ListSKUsForCapacity() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armpowerbidedicated.CapacitiesClientListSKUsForCapacityResponse{
-	// 	SKUEnumerationForExistingResourceResult: &armpowerbidedicated.SKUEnumerationForExistingResourceResult{
+	// 	SKUEnumerationForExistingResourceResult: armpowerbidedicated.SKUEnumerationForExistingResourceResult{
 	// 		Value: []*armpowerbidedicated.SKUDetailsForExistingResource{
 	// 			{
 	// 				SKU: &armpowerbidedicated.CapacitySKU{

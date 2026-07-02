@@ -30,7 +30,7 @@ DevOpsConfigurationData data = new DevOpsConfigurationData
     Properties = new DevOpsConfigurationProperties
     {
         AuthorizationCode = "00000000000000000000",
-        AutoDiscovery = DevOpsAutoDiscovery.Disabled,
+        AutoDiscovery = AutoDiscovery.Disabled,
         TopLevelInventoryList = { "org1", "org2" },
     },
 };

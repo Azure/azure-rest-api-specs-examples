@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAssessmentResource created on azure
-// for more information of creating SecurityAssessmentResource, please refer to the document of SecurityAssessmentResource
+// get the collection of this SecurityAssessmentResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2";
-string assessmentName = "21300918-b2e3-0346-785f-c77ff57d243b";
-ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.CreateResourceIdentifier(resourceId, assessmentName);
-SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
+SecurityAssessmentCollection collection = client.GetSecurityAssessments(new ResourceIdentifier(resourceId));
 
 // invoke the operation
-SecurityAssessmentResource result = await securityAssessment.GetAsync();
+string assessmentName = "21300918-b2e3-0346-785f-c77ff57d243b";
+NullableResponse<SecurityAssessmentResource> response = await collection.GetIfExistsAsync(assessmentName);
+SecurityAssessmentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityAssessmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SecurityAssessmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

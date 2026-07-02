@@ -29,7 +29,7 @@ DevOpsConfigurationData data = new DevOpsConfigurationData
 {
     Properties = new DevOpsConfigurationProperties
     {
-        AutoDiscovery = DevOpsAutoDiscovery.Enabled,
+        AutoDiscovery = AutoDiscovery.Enabled,
     },
 };
 ArmOperation<DevOpsConfigurationResource> lro = await devOpsConfiguration.UpdateAsync(WaitUntil.Completed, data);

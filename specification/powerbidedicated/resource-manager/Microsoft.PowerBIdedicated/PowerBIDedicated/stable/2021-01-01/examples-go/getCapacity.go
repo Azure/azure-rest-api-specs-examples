@@ -27,7 +27,7 @@ func ExampleCapacitiesClient_GetDetails() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armpowerbidedicated.CapacitiesClientGetDetailsResponse{
-	// 	DedicatedCapacity: &armpowerbidedicated.DedicatedCapacity{
+	// 	DedicatedCapacity: armpowerbidedicated.DedicatedCapacity{
 	// 		Name: to.Ptr("azsdktest"),
 	// 		ID: to.Ptr("/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.PowerBIDedicated/capacities/azsdktest"),
 	// 		Location: to.Ptr("West US"),

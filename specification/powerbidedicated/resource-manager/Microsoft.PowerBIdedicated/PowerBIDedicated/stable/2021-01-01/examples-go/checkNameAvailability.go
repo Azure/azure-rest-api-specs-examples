@@ -31,7 +31,7 @@ func ExampleCapacitiesClient_CheckNameAvailability() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armpowerbidedicated.CapacitiesClientCheckNameAvailabilityResponse{
-	// 	CheckCapacityNameAvailabilityResult: &armpowerbidedicated.CheckCapacityNameAvailabilityResult{
+	// 	CheckCapacityNameAvailabilityResult: armpowerbidedicated.CheckCapacityNameAvailabilityResult{
 	// 		NameAvailable: to.Ptr(true),
 	// 	},
 	// }

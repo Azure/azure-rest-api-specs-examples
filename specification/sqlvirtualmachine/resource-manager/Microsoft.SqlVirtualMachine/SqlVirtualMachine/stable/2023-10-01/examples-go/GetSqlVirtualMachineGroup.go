@@ -27,7 +27,7 @@ func ExampleGroupsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armsqlvirtualmachine.GroupsClientGetResponse{
-	// 	Group: &armsqlvirtualmachine.Group{
+	// 	Group: armsqlvirtualmachine.Group{
 	// 		Name: to.Ptr("testvmgroup"),
 	// 		Type: to.Ptr("Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups"),
 	// 		ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/testvmgroup"),

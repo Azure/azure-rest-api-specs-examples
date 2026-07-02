@@ -7081,3 +7081,4 @@ id,name,language,tag,package,version,date_epoch,date
 7080,azure-mgmt-network@31.0.1,python,azure-mgmt-network_31.0.1,azure-mgmt-network,31.0.1,1782970493,07/02/2026
 7081,azure-mgmt-netapp@18.0.0b1,python,azure-mgmt-netapp_18.0.0b1,azure-mgmt-netapp,18.0.0b1,1782961966,07/02/2026
 7082,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.3,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.3,1782955930,07/02/2026
+7083,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.1,1782955883,07/02/2026

@@ -22,15 +22,15 @@ string amlFileSystemName = "fs1";
 ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName);
 AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
 
-// get the collection of this ExpansionJobResource
-ExpansionJobCollection collection = amlFileSystem.GetExpansionJobs();
+// get the collection of this AmlFileSystemExpansionJobResource
+AmlFileSystemExpansionJobCollection collection = amlFileSystem.GetAmlFileSystemExpansionJobs();
 
 // invoke the operation and iterate over the result
-await foreach (ExpansionJobResource item in collection.GetAllAsync())
+await foreach (AmlFileSystemExpansionJobResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    ExpansionJobData resourceData = item.Data;
+    AmlFileSystemExpansionJobData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

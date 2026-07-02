@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.StorageCache.Models;
 using Azure.ResourceManager.StorageCache;
 
 // Generated from example definition: specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/examples/expansionJobs_Get.json
@@ -14,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AmlFileSystemResource created on azure
-// for more information of creating AmlFileSystemResource, please refer to the document of AmlFileSystemResource
+// this example assumes you already have this AmlFileSystemExpansionJobResource created on azure
+// for more information of creating AmlFileSystemExpansionJobResource, please refer to the document of AmlFileSystemExpansionJobResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "scgroup";
 string amlFileSystemName = "fs1";
-ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName);
-AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
-
-// get the collection of this ExpansionJobResource
-ExpansionJobCollection collection = amlFileSystem.GetExpansionJobs();
+string expansionJobName = "expansionjob1";
+ResourceIdentifier expansionJobResourceId = AmlFileSystemExpansionJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName, expansionJobName);
+AmlFileSystemExpansionJobResource expansionJob = client.GetAmlFileSystemExpansionJobResource(expansionJobResourceId);
 
 // invoke the operation
-string expansionJobName = "expansionjob1";
-NullableResponse<ExpansionJobResource> response = await collection.GetIfExistsAsync(expansionJobName);
-ExpansionJobResource result = response.HasValue ? response.Value : null;
+AmlFileSystemExpansionJobResource result = await expansionJob.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ExpansionJobData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AmlFileSystemExpansionJobData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

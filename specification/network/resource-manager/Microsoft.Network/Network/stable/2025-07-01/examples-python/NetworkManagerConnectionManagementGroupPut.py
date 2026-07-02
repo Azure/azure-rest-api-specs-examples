@@ -1,0 +1,39 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.network import NetworkManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-network
+# USAGE
+    python network_manager_connection_management_group_put.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = NetworkManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.management_group_network_manager_connections.create_or_update(
+        management_group_id="managementGroupA",
+        network_manager_connection_name="TestNMConnection",
+        parameters={
+            "properties": {
+                "networkManagerId": "/subscriptions/22222222-2222-2222-2222-222222222222/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager"
+            }
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-07-01/NetworkManagerConnectionManagementGroupPut.json
+if __name__ == "__main__":
+    main()

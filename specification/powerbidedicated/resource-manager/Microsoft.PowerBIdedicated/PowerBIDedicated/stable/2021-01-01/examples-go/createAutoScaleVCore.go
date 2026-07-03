@@ -42,7 +42,7 @@ func ExampleAutoScaleVCoresClient_Create() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armpowerbidedicated.AutoScaleVCoresClientCreateResponse{
-	// 	AutoScaleVCore: &armpowerbidedicated.AutoScaleVCore{
+	// 	AutoScaleVCore: armpowerbidedicated.AutoScaleVCore{
 	// 		Name: to.Ptr("testvcore"),
 	// 		Type: to.Ptr("Microsoft.PowerBIDedicated/autoScaleVCores"),
 	// 		ID: to.Ptr("/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.PowerBIDedicated/autoScaleVCores/testvcore"),

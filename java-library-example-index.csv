@@ -7086,3 +7086,4 @@ id,name,language,tag,package,version,date_epoch,date
 7085,azure-mgmt-cosmosdb@10.0.0,python,azure-mgmt-cosmosdb_10.0.0,azure-mgmt-cosmosdb,10.0.0,1783058407,07/03/2026
 7086,azure-mgmt-automation@1.1.0b5,python,azure-mgmt-automation_1.1.0b5,azure-mgmt-automation,1.1.0b5,1783051968,07/03/2026
 7087,com.azure.resourcemanager:azure-resourcemanager-network:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.59.0,com.azure.resourcemanager+azure-resourcemanager-network,2.59.0,1783069769,07/03/2026
+7088,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.1,1782955801,07/02/2026

@@ -7088,3 +7088,4 @@ id,name,language,tag,package,version,date_epoch,date
 7087,com.azure.resourcemanager:azure-resourcemanager-network:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.59.0,com.azure.resourcemanager+azure-resourcemanager-network,2.59.0,1783069769,07/03/2026
 7088,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.1,1782955801,07/02/2026
 7089,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.3,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.3,1782955753,07/02/2026
+7090,com.azure.resourcemanager:azure-resourcemanager-storage:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.56.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.56.1,1782955722,07/02/2026

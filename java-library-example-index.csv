@@ -7083,3 +7083,4 @@ id,name,language,tag,package,version,date_epoch,date
 7082,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.3,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.3,1782955930,07/02/2026
 7083,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.61.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.61.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.61.1,1782955883,07/02/2026
 7084,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.3,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.3,1782955849,07/02/2026
+7085,azure-mgmt-cosmosdb@10.0.0,python,azure-mgmt-cosmosdb_10.0.0,azure-mgmt-cosmosdb,10.0.0,1783058407,07/03/2026

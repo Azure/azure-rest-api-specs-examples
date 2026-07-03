@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.network.fluent.models.PrivateDnsZoneGroupInner;
+import com.azure.resourcemanager.network.models.PrivateDnsZoneConfig;
+import java.util.Arrays;
+
+/**
+ * Samples for PrivateDnsZoneGroups CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/PrivateEndpointDnsZoneGroupCreate.json
+     */
+    /**
+     * Sample code: Create private dns zone group.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createPrivateDnsZoneGroup(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getPrivateDnsZoneGroups().createOrUpdate("rg1", "testPe", "testPdnsgroup",
+            new PrivateDnsZoneGroupInner()
+                .withPrivateDnsZoneConfigs(Arrays.asList(new PrivateDnsZoneConfig().withPrivateDnsZoneId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for VirtualApplianceSites Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkVirtualApplianceSiteDelete.json
+     */
+    /**
+     * Sample code: Delete Network Virtual Appliance Site.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void deleteNetworkVirtualApplianceSite(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualApplianceSites().delete("rg1", "nva", "site1",
+            com.azure.core.util.Context.NONE);
+    }
+}

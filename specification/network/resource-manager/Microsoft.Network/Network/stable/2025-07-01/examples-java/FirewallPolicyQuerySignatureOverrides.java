@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.network.models.FilterItems;
+import com.azure.resourcemanager.network.models.FirewallPolicyIdpsQuerySortOrder;
+import com.azure.resourcemanager.network.models.IdpsQueryObject;
+import com.azure.resourcemanager.network.models.OrderBy;
+import java.util.Arrays;
+
+/**
+ * Samples for FirewallPolicyIdpsSignatures List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/FirewallPolicyQuerySignatureOverrides.json
+     */
+    /**
+     * Sample code: query signature overrides.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void querySignatureOverrides(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getFirewallPolicyIdpsSignatures().listWithResponse("rg1", "firewallPolicy",
+            new IdpsQueryObject()
+                .withFilters(Arrays.asList(new FilterItems().withField("Mode").withValues(Arrays.asList("Deny"))))
+                .withSearch("")
+                .withOrderBy(new OrderBy().withField("severity").withOrder(FirewallPolicyIdpsQuerySortOrder.ASCENDING))
+                .withResultsPerPage(20).withSkip(0),
+            com.azure.core.util.Context.NONE);
+    }
+}

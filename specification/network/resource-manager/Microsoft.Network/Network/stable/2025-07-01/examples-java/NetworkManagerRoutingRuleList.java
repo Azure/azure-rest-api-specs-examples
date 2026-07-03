@@ -1,0 +1,18 @@
+
+/**
+ * Samples for RoutingRules List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkManagerRoutingRuleList.json
+     */
+    /**
+     * Sample code: List routing rules.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void listRoutingRules(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getRoutingRules().list("rg1", "testNetworkManager", "myTestRoutingConfig",
+            "testRuleCollection", null, null, com.azure.core.util.Context.NONE);
+    }
+}

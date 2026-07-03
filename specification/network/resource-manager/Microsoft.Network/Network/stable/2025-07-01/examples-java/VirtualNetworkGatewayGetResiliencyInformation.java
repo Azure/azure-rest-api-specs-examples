@@ -1,0 +1,19 @@
+
+/**
+ * Samples for VirtualNetworkGateways GetResiliencyInformation.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/VirtualNetworkGatewayGetResiliencyInformation.json
+     */
+    /**
+     * Sample code: GetVirtualNetworkGatewayResiliencyInformation.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        getVirtualNetworkGatewayResiliencyInformation(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualNetworkGateways().getResiliencyInformation("rg1", "vpngw", true,
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.network.models.NextHopParameters;
+
+/**
+ * Samples for NetworkWatchers GetNextHop.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkWatcherNextHopGet.json
+     */
+    /**
+     * Sample code: Get next hop.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getNextHop(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getNetworkWatchers().getNextHop("rg1", "nw1", new NextHopParameters()
+            .withTargetResourceId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1")
+            .withSourceIpAddress("10.0.0.5").withDestinationIpAddress("10.0.0.10").withTargetNicResourceId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic1"),
+            com.azure.core.util.Context.NONE);
+    }
+}

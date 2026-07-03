@@ -1,0 +1,20 @@
+
+/**
+ * Samples for ExpressRouteCrossConnections ListRoutesTableSummary.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ExpressRouteCrossConnectionsRouteTableSummary.json
+     */
+    /**
+     * Sample code: GetExpressRouteCrossConnectionsRouteTableSummary.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        getExpressRouteCrossConnectionsRouteTableSummary(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getExpressRouteCrossConnections().listRoutesTableSummary(
+            "CrossConnection-SiliconValley", "<circuitServiceKey>", "AzurePrivatePeering", "primary",
+            com.azure.core.util.Context.NONE);
+    }
+}

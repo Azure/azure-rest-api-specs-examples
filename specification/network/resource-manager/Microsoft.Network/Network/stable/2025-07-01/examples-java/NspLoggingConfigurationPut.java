@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.network.fluent.models.NspLoggingConfigurationInner;
+import java.util.Arrays;
+
+/**
+ * Samples for NetworkSecurityPerimeterLoggingConfigurations CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NspLoggingConfigurationPut.json
+     */
+    /**
+     * Sample code: NspLoggingConfigurationPut.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void nspLoggingConfigurationPut(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getNetworkSecurityPerimeterLoggingConfigurations().createOrUpdateWithResponse("rg1",
+            "nsp1", "instance",
+            new NspLoggingConfigurationInner().withEnabledLogCategories(
+                Arrays.asList("NspPublicInboundPerimeterRulesDenied", "NspPublicOutboundPerimeterRulesDenied")),
+            com.azure.core.util.Context.NONE);
+    }
+}

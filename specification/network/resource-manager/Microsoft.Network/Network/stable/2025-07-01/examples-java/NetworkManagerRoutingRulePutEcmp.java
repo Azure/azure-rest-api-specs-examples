@@ -1,0 +1,31 @@
+
+import com.azure.resourcemanager.network.fluent.models.RoutingRuleInner;
+import com.azure.resourcemanager.network.models.RoutingRuleDestinationType;
+import com.azure.resourcemanager.network.models.RoutingRuleNextHop;
+import com.azure.resourcemanager.network.models.RoutingRuleNextHopType;
+import com.azure.resourcemanager.network.models.RoutingRuleRouteDestination;
+
+/**
+ * Samples for RoutingRules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkManagerRoutingRulePutEcmp.json
+     */
+    /**
+     * Sample code: Create an ECMP routing rule.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createAnECMPRoutingRule(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getRoutingRules().createOrUpdateWithResponse("rg1", "testNetworkManager",
+            "myTestRoutingConfig", "testRuleCollection", "SampleEcmpRoutingRule",
+            new RoutingRuleInner()
+                .withDescription("This is a sample ECMP routing rule with multiple next hop IP addresses")
+                .withDestination(new RoutingRuleRouteDestination().withType(RoutingRuleDestinationType.ADDRESS_PREFIX)
+                    .withDestinationAddress("10.0.0.0/16"))
+                .withNextHop(new RoutingRuleNextHop().withNextHopType(RoutingRuleNextHopType.VIRTUAL_APPLIANCE)
+                    .withNextHopAddress("10.1.0.4,10.1.0.5,10.1.0.6")),
+            com.azure.core.util.Context.NONE);
+    }
+}

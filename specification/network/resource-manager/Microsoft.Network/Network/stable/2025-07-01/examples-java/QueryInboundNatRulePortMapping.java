@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.network.models.QueryInboundNatRulePortMappingRequest;
+
+/**
+ * Samples for LoadBalancers ListInboundNatRulePortMappings.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/QueryInboundNatRulePortMapping.json
+     */
+    /**
+     * Sample code: Query inbound NAT rule port mapping.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void queryInboundNATRulePortMapping(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getLoadBalancers().listInboundNatRulePortMappings("rg1", "lb1", "bp1",
+            new QueryInboundNatRulePortMappingRequest().withIpAddress("10.0.0.4"), com.azure.core.util.Context.NONE);
+    }
+}

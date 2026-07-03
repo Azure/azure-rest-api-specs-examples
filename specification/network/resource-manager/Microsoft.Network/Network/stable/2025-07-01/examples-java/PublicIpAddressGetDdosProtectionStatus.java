@@ -1,0 +1,19 @@
+
+/**
+ * Samples for PublicIpAddresses DdosProtectionStatus.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/PublicIpAddressGetDdosProtectionStatus.json
+     */
+    /**
+     * Sample code: Get Ddos Protection Status of a Public IP Address.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        getDdosProtectionStatusOfAPublicIPAddress(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getPublicIpAddresses().ddosProtectionStatus("rg1", "test-pip",
+            com.azure.core.util.Context.NONE);
+    }
+}

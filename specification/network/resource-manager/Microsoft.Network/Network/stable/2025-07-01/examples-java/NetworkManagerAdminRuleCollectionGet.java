@@ -1,0 +1,18 @@
+
+/**
+ * Samples for AdminRuleCollections Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkManagerAdminRuleCollectionGet.json
+     */
+    /**
+     * Sample code: Gets security admin rule collection.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getsSecurityAdminRuleCollection(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getAdminRuleCollections().getWithResponse("rg1", "testNetworkManager",
+            "myTestSecurityConfig", "testRuleCollection", com.azure.core.util.Context.NONE);
+    }
+}

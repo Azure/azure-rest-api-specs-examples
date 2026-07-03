@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.network.models.VirtualNetworkGatewayMigrationParameters;
+import com.azure.resourcemanager.network.models.VirtualNetworkGatewayMigrationType;
+
+/**
+ * Samples for VirtualNetworkGateways InvokePrepareMigration.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/VirtualNetworkGatewayPrepareMigration.json
+     */
+    /**
+     * Sample code: VirtualNetworkGatewayPrepareMigration.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void virtualNetworkGatewayPrepareMigration(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualNetworkGateways().invokePrepareMigration("rg1", "vpngw",
+            new VirtualNetworkGatewayMigrationParameters()
+                .withMigrationType(VirtualNetworkGatewayMigrationType.UPGRADE_DEPLOYMENT_TO_STANDARD_IP)
+                .withResourceUrl("testUrl"),
+            com.azure.core.util.Context.NONE);
+    }
+}

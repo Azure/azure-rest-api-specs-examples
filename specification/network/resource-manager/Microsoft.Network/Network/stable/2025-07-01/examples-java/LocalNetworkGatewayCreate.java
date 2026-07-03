@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.network.fluent.models.LocalNetworkGatewayInner;
+import com.azure.resourcemanager.network.models.AddressSpace;
+import java.util.Arrays;
+
+/**
+ * Samples for LocalNetworkGateways CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/LocalNetworkGatewayCreate.json
+     */
+    /**
+     * Sample code: CreateLocalNetworkGateway.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createLocalNetworkGateway(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getLocalNetworkGateways().createOrUpdate("rg1", "localgw",
+            new LocalNetworkGatewayInner().withLocation("Central US")
+                .withLocalNetworkAddressSpace(new AddressSpace().withAddressPrefixes(Arrays.asList("10.1.0.0/16")))
+                .withGatewayIpAddress("11.12.13.14").withFqdn("site1.contoso.com"),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,17 @@
+
+/**
+ * Samples for PacketCaptures Stop.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkWatcherPacketCaptureStop.json
+     */
+    /**
+     * Sample code: Stop packet capture.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void stopPacketCapture(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getPacketCaptures().stop("rg1", "nw1", "pc1", com.azure.core.util.Context.NONE);
+    }
+}

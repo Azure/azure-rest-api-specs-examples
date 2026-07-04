@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ManagementGroupNetworkManagerConnections Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkManagerConnectionManagementGroupGet.json
+     */
+    /**
+     * Sample code: Get Management Group Network Manager Connection.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        getManagementGroupNetworkManagerConnection(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getManagementGroupNetworkManagerConnections().getWithResponse("managementGroupA",
+            "TestNMConnection", com.azure.core.util.Context.NONE);
+    }
+}

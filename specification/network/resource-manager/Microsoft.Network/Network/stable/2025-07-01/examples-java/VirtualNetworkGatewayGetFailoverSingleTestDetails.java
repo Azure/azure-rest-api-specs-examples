@@ -1,0 +1,19 @@
+
+/**
+ * Samples for VirtualNetworkGateways GetFailoverSingleTestDetails.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/VirtualNetworkGatewayGetFailoverSingleTestDetails.json
+     */
+    /**
+     * Sample code: VirtualNetworkGatewayGetFailoverSingleTestDetails.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        virtualNetworkGatewayGetFailoverSingleTestDetails(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualNetworkGateways().getFailoverSingleTestDetails("rg1", "ergw", "Vancouver",
+            "fe458ae8-d2ae-4520-a104-44bc233bde7e", com.azure.core.util.Context.NONE);
+    }
+}

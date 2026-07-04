@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.network.models.QueryTroubleshootingParameters;
+
+/**
+ * Samples for NetworkWatchers GetTroubleshootingResult.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkWatcherTroubleshootResultQuery.json
+     */
+    /**
+     * Sample code: Get troubleshoot result.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getTroubleshootResult(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getNetworkWatchers().getTroubleshootingResult("rg1", "nw1",
+            new QueryTroubleshootingParameters().withTargetResourceId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"),
+            com.azure.core.util.Context.NONE);
+    }
+}

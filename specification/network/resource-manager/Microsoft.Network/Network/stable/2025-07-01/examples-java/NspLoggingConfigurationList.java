@@ -1,0 +1,18 @@
+
+/**
+ * Samples for NetworkSecurityPerimeterLoggingConfigurations List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NspLoggingConfigurationList.json
+     */
+    /**
+     * Sample code: NspLoggingConfigurationList.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void nspLoggingConfigurationList(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getNetworkSecurityPerimeterLoggingConfigurations().list("rg1", "nsp1",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ExpressRoutePorts Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ExpressRoutePortDelete.json
+     */
+    /**
+     * Sample code: ExpressRoutePortDelete.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void expressRoutePortDelete(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getExpressRoutePorts().delete("rg1", "portName", com.azure.core.util.Context.NONE);
+    }
+}

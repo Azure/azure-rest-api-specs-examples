@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ExpressRouteGateways GetFailoverAllTestsDetails.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ExpressRouteGatewayGetFailoverAllTestsDetails.json
+     */
+    /**
+     * Sample code: ExpressRouteGatewayGetFailoverAllTestsDetails.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        expressRouteGatewayGetFailoverAllTestsDetails(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getExpressRouteGateways().getFailoverAllTestsDetails("rg1", "ergw1",
+            "SingleSiteFailover", true, com.azure.core.util.Context.NONE);
+    }
+}

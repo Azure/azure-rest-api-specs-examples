@@ -1,0 +1,18 @@
+
+/**
+ * Samples for VirtualApplianceSites Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkVirtualApplianceSiteGet.json
+     */
+    /**
+     * Sample code: GetNetwork Virtual Appliance Site.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getNetworkVirtualApplianceSite(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualApplianceSites().getWithResponse("rg1", "nva", "site1",
+            com.azure.core.util.Context.NONE);
+    }
+}

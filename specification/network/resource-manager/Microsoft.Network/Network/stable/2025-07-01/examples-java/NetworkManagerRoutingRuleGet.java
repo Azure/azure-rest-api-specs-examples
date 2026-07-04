@@ -1,0 +1,18 @@
+
+/**
+ * Samples for RoutingRules Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkManagerRoutingRuleGet.json
+     */
+    /**
+     * Sample code: Gets routing rule.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getsRoutingRule(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getRoutingRules().getWithResponse("rg1", "testNetworkManager", "myTestSecurityConfig",
+            "testRuleCollection", "SampleRoutingRule", com.azure.core.util.Context.NONE);
+    }
+}

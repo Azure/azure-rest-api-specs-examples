@@ -1,0 +1,19 @@
+
+/**
+ * Samples for PeerExpressRouteCircuitConnections Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/PeerExpressRouteCircuitConnectionGet.json
+     */
+    /**
+     * Sample code: PeerExpressRouteCircuitConnectionGet.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void peerExpressRouteCircuitConnectionGet(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getPeerExpressRouteCircuitConnections().getWithResponse("rg1",
+            "ExpressRouteARMCircuitA", "AzurePrivatePeering", "60aee347-e889-4a42-8c1b-0aae8b1e4013",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Subgroups List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/SubgroupList.json
+     */
+    /**
+     * Sample code: List subgroups.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void listSubgroups(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getSubgroups().list("rg1", "test-ig", com.azure.core.util.Context.NONE);
+    }
+}

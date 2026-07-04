@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.network.models.TagsObject;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for IpGroups UpdateGroups.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/IpGroupsUpdateTags.json
+     */
+    /**
+     * Sample code: Update_IpGroups.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void updateIpGroups(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getIpGroups().updateGroupsWithResponse("myResourceGroup", "ipGroups1",
+            new TagsObject().withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

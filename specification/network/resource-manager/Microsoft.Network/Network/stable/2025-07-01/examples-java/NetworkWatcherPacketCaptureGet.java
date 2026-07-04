@@ -1,0 +1,18 @@
+
+/**
+ * Samples for PacketCaptures Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkWatcherPacketCaptureGet.json
+     */
+    /**
+     * Sample code: Get packet capture.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void getPacketCapture(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getPacketCaptures().getWithResponse("rg1", "nw1", "pc1",
+            com.azure.core.util.Context.NONE);
+    }
+}

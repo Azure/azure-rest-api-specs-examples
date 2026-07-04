@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ExpressRouteGateways GetResiliencyInformation.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ExpressRouteGatewayGetResiliencyInformation.json
+     */
+    /**
+     * Sample code: ExpressRouteGatewayGetResiliencyInformation.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        expressRouteGatewayGetResiliencyInformation(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getExpressRouteGateways().getResiliencyInformation("rg1", "ergw1", false,
+            com.azure.core.util.Context.NONE);
+    }
+}

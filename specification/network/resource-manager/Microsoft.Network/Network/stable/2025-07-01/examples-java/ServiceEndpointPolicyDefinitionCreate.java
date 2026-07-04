@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.network.fluent.models.ServiceEndpointPolicyDefinitionInner;
+import java.util.Arrays;
+
+/**
+ * Samples for ServiceEndpointPolicyDefinitions CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ServiceEndpointPolicyDefinitionCreate.json
+     */
+    /**
+     * Sample code: Create service endpoint policy definition.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createServiceEndpointPolicyDefinition(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getServiceEndpointPolicyDefinitions()
+            .createOrUpdate("rg1", "testPolicy", "testDefinition", new ServiceEndpointPolicyDefinitionInner()
+                .withDescription("Storage Service EndpointPolicy Definition").withService("Microsoft.Storage")
+                .withServiceResources(Arrays.asList("/subscriptions/00000000-0000-0000-0000-000000000000",
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/storageRg",
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount")),
+                com.azure.core.util.Context.NONE);
+    }
+}

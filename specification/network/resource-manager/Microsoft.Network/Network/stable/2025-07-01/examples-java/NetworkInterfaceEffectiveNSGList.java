@@ -1,0 +1,19 @@
+
+/**
+ * Samples for NetworkInterfaces ListEffectiveNetworkSecurityGroups.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/NetworkInterfaceEffectiveNSGList.json
+     */
+    /**
+     * Sample code: List network interface effective network security groups.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        listNetworkInterfaceEffectiveNetworkSecurityGroups(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getNetworkInterfaces().listEffectiveNetworkSecurityGroups("rg1", "nic1",
+            com.azure.core.util.Context.NONE);
+    }
+}

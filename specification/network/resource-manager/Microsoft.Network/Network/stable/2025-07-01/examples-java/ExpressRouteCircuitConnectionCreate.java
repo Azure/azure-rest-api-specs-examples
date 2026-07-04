@@ -1,0 +1,29 @@
+
+import com.azure.core.management.SubResource;
+import com.azure.resourcemanager.network.fluent.models.ExpressRouteCircuitConnectionInner;
+import com.azure.resourcemanager.network.models.Ipv6CircuitConnectionConfig;
+
+/**
+ * Samples for ExpressRouteCircuitConnections CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/ExpressRouteCircuitConnectionCreate.json
+     */
+    /**
+     * Sample code: ExpressRouteCircuitConnectionCreate.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void expressRouteCircuitConnectionCreate(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getExpressRouteCircuitConnections().createOrUpdate("rg1", "ExpressRouteARMCircuitA",
+            "AzurePrivatePeering", "circuitConnectionUSAUS",
+            new ExpressRouteCircuitConnectionInner().withExpressRouteCircuitPeering(new SubResource().withId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/dedharcktlocal/peerings/AzurePrivatePeering"))
+                .withPeerExpressRouteCircuitPeering(new SubResource().withId(
+                    "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/dedharcktpeer/providers/Microsoft.Network/expressRouteCircuits/dedharcktremote/peerings/AzurePrivatePeering"))
+                .withAddressPrefix("10.0.0.0/29").withAuthorizationKey("fakeTokenPlaceholder")
+                .withIpv6CircuitConnectionConfig(new Ipv6CircuitConnectionConfig().withAddressPrefix("aa:bb::/125")),
+            com.azure.core.util.Context.NONE);
+    }
+}

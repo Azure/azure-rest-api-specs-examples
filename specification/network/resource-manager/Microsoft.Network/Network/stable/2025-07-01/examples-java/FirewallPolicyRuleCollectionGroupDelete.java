@@ -1,0 +1,19 @@
+
+/**
+ * Samples for FirewallPolicyRuleCollectionGroups Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-07-01/FirewallPolicyRuleCollectionGroupDelete.json
+     */
+    /**
+     * Sample code: Delete FirewallPolicyRuleCollectionGroup.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void
+        deleteFirewallPolicyRuleCollectionGroup(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getFirewallPolicyRuleCollectionGroups().delete("rg1", "firewallPolicy",
+            "ruleCollectionGroup1", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,36 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.automation import AutomationClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-automation
+# USAGE
+    python update_runtime_environment.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = AutomationClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    response = client.runtime_environments.update(
+        resource_group_name="rg",
+        automation_account_name="myAutomationAccount9",
+        runtime_environment_name="myRuntimeEnvironmentName",
+        parameters={"properties": {"defaultPackages": {"Az": "12.3.0"}}},
+    )
+    print(response)
+
+
+# x-ms-original-file: 2024-10-23/runtimeEnvironment/updateRuntimeEnvironment.json
+if __name__ == "__main__":
+    main()

@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
 // Generated from example definition: specification/support/resource-manager/Microsoft.Support/stable/2024-04-01/examples/CreateFileForSubscription.json
@@ -15,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SupportTicketFileResource created on azure
-// for more information of creating SupportTicketFileResource, please refer to the document of SupportTicketFileResource
+// this example assumes you already have this SubscriptionFileWorkspaceResource created on azure
+// for more information of creating SubscriptionFileWorkspaceResource, please refer to the document of SubscriptionFileWorkspaceResource
 string subscriptionId = "132d901f-189d-4381-9214-fe68e27e05a1";
 string fileWorkspaceName = "testworkspace";
-string fileName = "test.txt";
-ResourceIdentifier supportTicketFileResourceId = SupportTicketFileResource.CreateResourceIdentifier(subscriptionId, fileWorkspaceName, fileName);
-SupportTicketFileResource supportTicketFile = client.GetSupportTicketFileResource(supportTicketFileResourceId);
+ResourceIdentifier subscriptionFileWorkspaceResourceId = SubscriptionFileWorkspaceResource.CreateResourceIdentifier(subscriptionId, fileWorkspaceName);
+SubscriptionFileWorkspaceResource subscriptionFileWorkspace = client.GetSubscriptionFileWorkspaceResource(subscriptionFileWorkspaceResourceId);
+
+// get the collection of this SupportTicketFileResource
+SupportTicketFileCollection collection = subscriptionFileWorkspace.GetSupportTicketFiles();
 
 // invoke the operation
+string fileName = "test.txt";
 SupportFileDetailData data = new SupportFileDetailData
 {
     ChunkSize = 41423,
     FileSize = 41423,
     NumberOfChunks = 1,
 };
-ArmOperation<SupportTicketFileResource> lro = await supportTicketFile.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SupportTicketFileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fileName, data);
 SupportTicketFileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

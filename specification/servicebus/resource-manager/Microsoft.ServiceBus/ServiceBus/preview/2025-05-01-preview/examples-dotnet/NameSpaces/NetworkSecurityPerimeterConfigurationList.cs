@@ -24,7 +24,7 @@ ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.C
 ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (ServiceBusNetworkSecurityPerimeterConfiguration item in serviceBusNamespace.GetNetworkSecurityPerimeterConfigurationsAsync())
+await foreach (ServiceBusNetworkSecurityPerimeterConfigurationResource item in serviceBusNamespace.GetServiceBusNetworkSecurityPerimeterConfigurations().GetAllAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

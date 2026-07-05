@@ -7092,3 +7092,4 @@ id,name,language,tag,package,version,date_epoch,date
 7091,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v10@v10.0.0,go,sdk/resourcemanager/network/armnetwork/v10.0.0,sdk/resourcemanager/network/armnetwork,v10.0.0,1783080702,07/03/2026
 7092,"Azure.ResourceManager.StreamAnalytics,1.3.0-beta.2",dotnet,Azure.ResourceManager.StreamAnalytics_1.3.0-beta.2,Azure.ResourceManager.StreamAnalytics,1.3.0-beta.2,1782871339,07/01/2026
 7093,"Azure.ResourceManager.ServiceBus,1.2.0-beta.2",dotnet,Azure.ResourceManager.ServiceBus_1.2.0-beta.2,Azure.ResourceManager.ServiceBus,1.2.0-beta.2,1782871328,07/01/2026
+7094,"Azure.ResourceManager.Support,1.2.0-beta.2",dotnet,Azure.ResourceManager.Support_1.2.0-beta.2,Azure.ResourceManager.Support,1.2.0-beta.2,1782871323,07/01/2026

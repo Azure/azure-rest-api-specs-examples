@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.storage.fluent.models.DataShareInner;
+import com.azure.resourcemanager.storage.models.StorageDataShareAccessPolicy;
+import com.azure.resourcemanager.storage.models.StorageDataShareAccessPolicyPermission;
+import com.azure.resourcemanager.storage.models.StorageDataShareAsset;
+import com.azure.resourcemanager.storage.models.StorageDataShareProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for DataShares Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01/StorageDataShareCRUD/StorageDataShares_Create.json
+     */
+    /**
+     * Sample code: CreateDataShare.
+     * 
+     * @param manager Entry point to StorageManager.
+     */
+    public static void createDataShare(com.azure.resourcemanager.storage.StorageManager manager) {
+        manager.serviceClient().getDataShares()
+            .create("testrg", "teststorageaccount", "testdatashare",
+                new DataShareInner().withLocation("eastus")
+                    .withProperties(
+                        new StorageDataShareProperties().withDescription("Dummy data share")
+                            .withAccessPolicies(Arrays.asList(new StorageDataShareAccessPolicy()
+                                .withPrincipalId("00000000-0000-0000-0000-000000000000")
+                                .withTenantId("00000000-0000-0000-0000-000000000000")
+                                .withPermission(StorageDataShareAccessPolicyPermission.READ)))
+                            .withAssets(Arrays.asList(new StorageDataShareAsset().withAssetPath("/container/folder/foo")
+                                .withDisplayName("virtualFoo")))),
+                com.azure.core.util.Context.NONE);
+    }
+}

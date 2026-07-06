@@ -25,6 +25,7 @@ ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceR
 
 // invoke the operation
 string resourceAssociationName = "resourceAssociation1";
-await serviceBusNamespace.ReconcileNetworkSecurityPerimeterConfigurationAsync(resourceAssociationName);
+ServiceBusNetworkSecurityPerimeterConfigurationResource nspResource = await serviceBusNamespace.GetServiceBusNetworkSecurityPerimeterConfigurationAsync(resourceAssociationName);
+await nspResource.ReconcileAsync();
 
 Console.WriteLine("Succeeded");

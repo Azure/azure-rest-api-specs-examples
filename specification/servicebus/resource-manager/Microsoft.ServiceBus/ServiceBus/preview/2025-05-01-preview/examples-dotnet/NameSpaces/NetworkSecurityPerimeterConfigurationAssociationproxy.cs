@@ -25,6 +25,6 @@ ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceR
 
 // invoke the operation
 string resourceAssociationName = "resourceAssociation1";
-ServiceBusNetworkSecurityPerimeterConfiguration result = await serviceBusNamespace.GetNetworkSecurityPerimeterAssociationNameAsync(resourceAssociationName);
+ServiceBusNetworkSecurityPerimeterConfigurationResource result = await serviceBusNamespace.GetServiceBusNetworkSecurityPerimeterConfigurationAsync(resourceAssociationName);
 
 Console.WriteLine($"Succeeded: {result}");

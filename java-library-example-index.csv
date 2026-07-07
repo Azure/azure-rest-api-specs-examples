@@ -7099,3 +7099,4 @@ id,name,language,tag,package,version,date_epoch,date
 7098,@azure/arm-network@37.0.0,js,@azure/arm-network_37.0.0,@azure/arm-network,37.0.0,1783415784,07/07/2026
 7099,azure-mgmt-peering@2.0.0,python,azure-mgmt-peering_2.0.0,azure-mgmt-peering,2.0.0,1783417128,07/07/2026
 7100,azure-mgmt-recoveryservices@4.1.0,python,azure-mgmt-recoveryservices_4.1.0,azure-mgmt-recoveryservices,4.1.0,1783409631,07/07/2026
+7101,azure-mgmt-billingtrust@1.0.0b1,python,azure-mgmt-billingtrust_1.0.0b1,azure-mgmt-billingtrust,1.0.0b1,1783404713,07/07/2026

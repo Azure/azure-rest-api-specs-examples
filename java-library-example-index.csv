@@ -7102,3 +7102,4 @@ id,name,language,tag,package,version,date_epoch,date
 7101,azure-mgmt-billingtrust@1.0.0b1,python,azure-mgmt-billingtrust_1.0.0b1,azure-mgmt-billingtrust,1.0.0b1,1783404713,07/07/2026
 7102,azure-mgmt-storagesync@2.0.0b2,python,azure-mgmt-storagesync_2.0.0b2,azure-mgmt-storagesync,2.0.0b2,1783398746,07/07/2026
 7103,azure-mgmt-powerbidedicated@1.1.0b2,python,azure-mgmt-powerbidedicated_1.1.0b2,azure-mgmt-powerbidedicated,1.1.0b2,1783398746,07/07/2026
+7104,azure-mgmt-edgeorder@3.0.0b1,python,azure-mgmt-edgeorder_3.0.0b1,azure-mgmt-edgeorder,3.0.0b1,1783398722,07/07/2026

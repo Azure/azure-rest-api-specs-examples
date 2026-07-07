@@ -1,0 +1,18 @@
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to generate a letter of authorization for the requested ExpressRoutePort resource.
+ *
+ * @summary generate a letter of authorization for the requested ExpressRoutePort resource.
+ * x-ms-original-file: 2025-07-01/GenerateExpressRoutePortsLOA.json
+ */
+async function generateExpressRoutePortLOA() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const result = await client.expressRoutePorts.generateLOA("rg1", "portName", {
+    customerName: "customerName",
+  });
+  console.log(result);
+}

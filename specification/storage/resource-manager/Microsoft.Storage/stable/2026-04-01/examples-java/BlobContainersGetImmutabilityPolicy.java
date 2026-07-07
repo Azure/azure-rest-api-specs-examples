@@ -1,0 +1,18 @@
+
+/**
+ * Samples for BlobContainers GetImmutabilityPolicy.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01/BlobContainersGetImmutabilityPolicy.json
+     */
+    /**
+     * Sample code: GetImmutabilityPolicy.
+     * 
+     * @param manager Entry point to StorageManager.
+     */
+    public static void getImmutabilityPolicy(com.azure.resourcemanager.storage.StorageManager manager) {
+        manager.serviceClient().getBlobContainers().getImmutabilityPolicyWithResponse("res5221", "sto9177",
+            "container3489", null, com.azure.core.util.Context.NONE);
+    }
+}

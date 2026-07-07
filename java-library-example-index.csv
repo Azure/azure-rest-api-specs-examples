@@ -7104,3 +7104,4 @@ id,name,language,tag,package,version,date_epoch,date
 7103,azure-mgmt-powerbidedicated@1.1.0b2,python,azure-mgmt-powerbidedicated_1.1.0b2,azure-mgmt-powerbidedicated,1.1.0b2,1783398746,07/07/2026
 7104,azure-mgmt-edgeorder@3.0.0b1,python,azure-mgmt-edgeorder_3.0.0b1,azure-mgmt-edgeorder,3.0.0b1,1783398722,07/07/2026
 7105,azure-mgmt-privatedns@2.0.0b1,python,azure-mgmt-privatedns_2.0.0b1,azure-mgmt-privatedns,2.0.0b1,1783398692,07/07/2026
+7106,azure-mgmt-elastic@3.0.0b1,python,azure-mgmt-elastic_3.0.0b1,azure-mgmt-elastic,3.0.0b1,1783398651,07/07/2026

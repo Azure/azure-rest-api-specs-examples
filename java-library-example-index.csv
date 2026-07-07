@@ -7096,3 +7096,4 @@ id,name,language,tag,package,version,date_epoch,date
 7095,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.0,1783327713,07/06/2026
 7096,"Azure.ResourceManager.ServiceFabric,1.2.0-beta.4",dotnet,Azure.ResourceManager.ServiceFabric_1.2.0-beta.4,Azure.ResourceManager.ServiceFabric,1.2.0-beta.4,1782871008,07/01/2026
 7097,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.0.0-beta.3,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.0.0-beta.3,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.0.0-beta.3,1783358752,07/06/2026
+7098,@azure/arm-network@37.0.0,js,@azure/arm-network_37.0.0,@azure/arm-network,37.0.0,1783415784,07/07/2026

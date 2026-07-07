@@ -7107,3 +7107,4 @@ id,name,language,tag,package,version,date_epoch,date
 7106,azure-mgmt-elastic@3.0.0b1,python,azure-mgmt-elastic_3.0.0b1,azure-mgmt-elastic,3.0.0b1,1783398651,07/07/2026
 7107,azure-mgmt-relay@2.0.0b2,python,azure-mgmt-relay_2.0.0b2,azure-mgmt-relay,2.0.0b2,1783398645,07/07/2026
 7108,azure-mgmt-databox@4.0.0b1,python,azure-mgmt-databox_4.0.0b1,azure-mgmt-databox,4.0.0b1,1783398638,07/07/2026
+7109,azure-mgmt-dynatrace@3.0.0b1,python,azure-mgmt-dynatrace_3.0.0b1,azure-mgmt-dynatrace,3.0.0b1,1783398604,07/07/2026

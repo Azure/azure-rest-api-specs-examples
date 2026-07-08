@@ -7095,3 +7095,17 @@ id,name,language,tag,package,version,date_epoch,date
 7094,"Azure.ResourceManager.Support,1.2.0-beta.2",dotnet,Azure.ResourceManager.Support_1.2.0-beta.2,Azure.ResourceManager.Support,1.2.0-beta.2,1782871323,07/01/2026
 7095,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.0,1783327713,07/06/2026
 7096,"Azure.ResourceManager.ServiceFabric,1.2.0-beta.4",dotnet,Azure.ResourceManager.ServiceFabric_1.2.0-beta.4,Azure.ResourceManager.ServiceFabric,1.2.0-beta.4,1782871008,07/01/2026
+7097,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.0.0-beta.3,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.0.0-beta.3,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.0.0-beta.3,1783358752,07/06/2026
+7098,@azure/arm-network@37.0.0,js,@azure/arm-network_37.0.0,@azure/arm-network,37.0.0,1783415784,07/07/2026
+7099,azure-mgmt-peering@2.0.0,python,azure-mgmt-peering_2.0.0,azure-mgmt-peering,2.0.0,1783417128,07/07/2026
+7100,azure-mgmt-recoveryservices@4.1.0,python,azure-mgmt-recoveryservices_4.1.0,azure-mgmt-recoveryservices,4.1.0,1783409631,07/07/2026
+7101,azure-mgmt-billingtrust@1.0.0b1,python,azure-mgmt-billingtrust_1.0.0b1,azure-mgmt-billingtrust,1.0.0b1,1783404713,07/07/2026
+7102,azure-mgmt-storagesync@2.0.0b2,python,azure-mgmt-storagesync_2.0.0b2,azure-mgmt-storagesync,2.0.0b2,1783398746,07/07/2026
+7103,azure-mgmt-powerbidedicated@1.1.0b2,python,azure-mgmt-powerbidedicated_1.1.0b2,azure-mgmt-powerbidedicated,1.1.0b2,1783398746,07/07/2026
+7104,azure-mgmt-edgeorder@3.0.0b1,python,azure-mgmt-edgeorder_3.0.0b1,azure-mgmt-edgeorder,3.0.0b1,1783398722,07/07/2026
+7105,azure-mgmt-privatedns@2.0.0b1,python,azure-mgmt-privatedns_2.0.0b1,azure-mgmt-privatedns,2.0.0b1,1783398692,07/07/2026
+7106,azure-mgmt-elastic@3.0.0b1,python,azure-mgmt-elastic_3.0.0b1,azure-mgmt-elastic,3.0.0b1,1783398651,07/07/2026
+7107,azure-mgmt-relay@2.0.0b2,python,azure-mgmt-relay_2.0.0b2,azure-mgmt-relay,2.0.0b2,1783398645,07/07/2026
+7108,azure-mgmt-databox@4.0.0b1,python,azure-mgmt-databox_4.0.0b1,azure-mgmt-databox,4.0.0b1,1783398638,07/07/2026
+7109,azure-mgmt-dynatrace@3.0.0b1,python,azure-mgmt-dynatrace_3.0.0b1,azure-mgmt-dynatrace,3.0.0b1,1783398604,07/07/2026
+7110,azure-mgmt-containerregistry@15.1.0b2,python,azure-mgmt-containerregistry_15.1.0b2,azure-mgmt-containerregistry,15.1.0b2,1783394210,07/07/2026

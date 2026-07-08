@@ -7117,3 +7117,4 @@ id,name,language,tag,package,version,date_epoch,date
 7116,@azure/arm-marketplace@1.0.0,js,@azure/arm-marketplace_1.0.0,@azure/arm-marketplace,1.0.0,1783480606,07/08/2026
 7117,@azure/arm-communication@5.0.0,js,@azure/arm-communication_5.0.0,@azure/arm-communication,5.0.0,1783478427,07/08/2026
 7118,@azure/arm-datafactory@20.0.0,js,@azure/arm-datafactory_20.0.0,@azure/arm-datafactory,20.0.0,1783478397,07/08/2026
+7119,@azure/arm-alertprocessingrules@1.0.0,js,@azure/arm-alertprocessingrules_1.0.0,@azure/arm-alertprocessingrules,1.0.0,1783477381,07/08/2026

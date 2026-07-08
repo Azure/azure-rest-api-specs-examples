@@ -1,6 +1,6 @@
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.elastic import MicrosoftElastic
+from azure.mgmt.elastic import ElasticMgmtClient
 
 """
 # PREREQUISITES
@@ -17,7 +17,7 @@ from azure.mgmt.elastic import MicrosoftElastic
 
 
 def main():
-    client = MicrosoftElastic(
+    client = ElasticMgmtClient(
         credential=DefaultAzureCredential(),
         subscription_id="SUBSCRIPTION_ID",
     )
@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/elastic/resource-manager/Microsoft.Elastic/stable/2025-06-01/examples/Operations_List.json
+# x-ms-original-file: 2025-06-01/Operations_List.json
 if __name__ == "__main__":
     main()

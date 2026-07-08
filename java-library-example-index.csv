@@ -7127,3 +7127,4 @@ id,name,language,tag,package,version,date_epoch,date
 7126,azure-mgmt-purview@1.1.0b3,python,azure-mgmt-purview_1.1.0b3,azure-mgmt-purview,1.1.0b3,1783502053,07/08/2026
 7127,azure-mgmt-paloaltonetworksngfw@2.0.0b2,python,azure-mgmt-paloaltonetworksngfw_2.0.0b2,azure-mgmt-paloaltonetworksngfw,2.0.0b2,1783498146,07/08/2026
 7128,azure-mgmt-servicebus@10.0.0b2,python,azure-mgmt-servicebus_10.0.0b2,azure-mgmt-servicebus,10.0.0b2,1783498113,07/08/2026
+7129,azure-mgmt-newrelicobservability@2.0.0b2,python,azure-mgmt-newrelicobservability_2.0.0b2,azure-mgmt-newrelicobservability,2.0.0b2,1783498078,07/08/2026

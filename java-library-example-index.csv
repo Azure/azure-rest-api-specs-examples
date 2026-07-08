@@ -7121,3 +7121,4 @@ id,name,language,tag,package,version,date_epoch,date
 7120,azure-mgmt-storagecache@4.0.0,python,azure-mgmt-storagecache_4.0.0,azure-mgmt-storagecache,4.0.0,1783503420,07/08/2026
 7121,azure-mgmt-costmanagement@5.0.0,python,azure-mgmt-costmanagement_5.0.0,azure-mgmt-costmanagement,5.0.0,1783503416,07/08/2026
 7122,azure-mgmt-databricks@3.0.0,python,azure-mgmt-databricks_3.0.0,azure-mgmt-databricks,3.0.0,1783503382,07/08/2026
+7123,azure-mgmt-appcontainers@5.0.0,python,azure-mgmt-appcontainers_5.0.0,azure-mgmt-appcontainers,5.0.0,1783503361,07/08/2026

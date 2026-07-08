@@ -1,0 +1,28 @@
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates a peering in the specified virtual network.
+ *
+ * @summary creates or updates a peering in the specified virtual network.
+ * x-ms-original-file: 2025-07-01/VirtualNetworkSubnetPeeringCreate.json
+ */
+async function createSubnetPeering() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const result = await client.virtualNetworkPeerings.createOrUpdate("peerTest", "vnet1", "peer", {
+    allowForwardedTraffic: true,
+    allowGatewayTransit: false,
+    allowVirtualNetworkAccess: true,
+    enableOnlyIPv6Peering: false,
+    localSubnetNames: ["Subnet1", "Subnet4"],
+    peerCompleteVnets: false,
+    remoteSubnetNames: ["Subnet2"],
+    remoteVirtualNetwork: {
+      id: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet2",
+    },
+    useRemoteGateways: false,
+  });
+  console.log(result);
+}

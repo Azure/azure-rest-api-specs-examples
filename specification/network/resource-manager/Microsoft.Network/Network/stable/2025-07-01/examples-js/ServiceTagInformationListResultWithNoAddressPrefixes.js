@@ -1,0 +1,22 @@
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a list of service tag information resources with pagination.
+ *
+ * @summary gets a list of service tag information resources with pagination.
+ * x-ms-original-file: 2025-07-01/ServiceTagInformationListResultWithNoAddressPrefixes.json
+ */
+async function getListOfServiceTagsWithNoAddressPrefixes() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.serviceTagInformationOperations.list("westeurope", {
+    noAddressPrefixes: true,
+  })) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

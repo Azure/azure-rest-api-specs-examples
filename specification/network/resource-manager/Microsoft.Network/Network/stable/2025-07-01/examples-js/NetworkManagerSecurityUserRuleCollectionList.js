@@ -1,0 +1,24 @@
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists all the security user rule collections in a security configuration, in a paginated format.
+ *
+ * @summary lists all the security user rule collections in a security configuration, in a paginated format.
+ * x-ms-original-file: 2025-07-01/NetworkManagerSecurityUserRuleCollectionList.json
+ */
+async function listRuleCollectionsInASecurityConfiguration() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.securityUserRuleCollections.list(
+    "rg1",
+    "testNetworkManager",
+    "myTestSecurityConfig",
+  )) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

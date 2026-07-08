@@ -19,7 +19,7 @@ from azure.mgmt.newrelicobservability import NewRelicObservabilityMgmtClient
 def main():
     client = NewRelicObservabilityMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.monitors.refresh_ingestion_key(
@@ -28,6 +28,6 @@ def main():
     )
 
 
-# x-ms-original-file: specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/Monitors_RefreshIngestionKey.json
+# x-ms-original-file: 2025-05-01-preview/Monitors_RefreshIngestionKey.json
 if __name__ == "__main__":
     main()

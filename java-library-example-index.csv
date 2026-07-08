@@ -7122,3 +7122,4 @@ id,name,language,tag,package,version,date_epoch,date
 7121,azure-mgmt-costmanagement@5.0.0,python,azure-mgmt-costmanagement_5.0.0,azure-mgmt-costmanagement,5.0.0,1783503416,07/08/2026
 7122,azure-mgmt-databricks@3.0.0,python,azure-mgmt-databricks_3.0.0,azure-mgmt-databricks,3.0.0,1783503382,07/08/2026
 7123,azure-mgmt-appcontainers@5.0.0,python,azure-mgmt-appcontainers_5.0.0,azure-mgmt-appcontainers,5.0.0,1783503361,07/08/2026
+7124,azure-mgmt-resourcehealth@1.0.0,python,azure-mgmt-resourcehealth_1.0.0,azure-mgmt-resourcehealth,1.0.0,1783503334,07/08/2026

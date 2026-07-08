@@ -7110,3 +7110,4 @@ id,name,language,tag,package,version,date_epoch,date
 7109,azure-mgmt-dynatrace@3.0.0b1,python,azure-mgmt-dynatrace_3.0.0b1,azure-mgmt-dynatrace,3.0.0b1,1783398604,07/07/2026
 7110,azure-mgmt-containerregistry@15.1.0b2,python,azure-mgmt-containerregistry_15.1.0b2,azure-mgmt-containerregistry,15.1.0b2,1783394210,07/07/2026
 7111,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0-beta.2,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0-beta.2,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0-beta.2,1783502744,07/08/2026
+7112,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore@v0.1.0,go,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore/v0.1.0,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore,v0.1.0,1783500057,07/08/2026

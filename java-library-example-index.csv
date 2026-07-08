@@ -7115,3 +7115,4 @@ id,name,language,tag,package,version,date_epoch,date
 7114,@azure/arm-recoveryservices-siterecovery@6.0.0,js,@azure/arm-recoveryservices-siterecovery_6.0.0,@azure/arm-recoveryservices-siterecovery,6.0.0,1783498248,07/08/2026
 7115,@azure/arm-prometheusrulegroups@1.0.0,js,@azure/arm-prometheusrulegroups_1.0.0,@azure/arm-prometheusrulegroups,1.0.0,1783491070,07/08/2026
 7116,@azure/arm-marketplace@1.0.0,js,@azure/arm-marketplace_1.0.0,@azure/arm-marketplace,1.0.0,1783480606,07/08/2026
+7117,@azure/arm-communication@5.0.0,js,@azure/arm-communication_5.0.0,@azure/arm-communication,5.0.0,1783478427,07/08/2026

@@ -1,0 +1,59 @@
+package armdevcenter_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter/v3"
+)
+
+// Generated from example definition: 2026-01-01-preview/ImageVersions_ListByProject.json
+func ExampleImageVersionsClient_NewListByProjectPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdevcenter.NewClientFactory("0ac520ee-14c0-480f-b6c9-0a90c58fffff", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewImageVersionsClient().NewListByProjectPager("rg1", "myProject", "~gallery~DefaultDevGallery~ContosoImageDefinition", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armdevcenter.ImageVersionsClientListByProjectResponse{
+		// 	ImageVersionListResult: armdevcenter.ImageVersionListResult{
+		// 		Value: []*armdevcenter.ImageVersion{
+		// 			{
+		// 				Name: to.Ptr("1.0.0"),
+		// 				Type: to.Ptr("Microsoft.DevCenter/project/images/versions"),
+		// 				ID: to.Ptr("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/project/myProject/images/~gallery~DefaultDevGallery~ContosoImageDefinition/versions/1.0.0"),
+		// 				Properties: &armdevcenter.ImageVersionProperties{
+		// 					ExcludeFromLatest: to.Ptr(false),
+		// 					OSDiskImageSizeInGb: to.Ptr[int32](64),
+		// 					ProvisioningState: to.Ptr(armdevcenter.ProvisioningStateSucceeded),
+		// 					PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-12-01T12:45:16.845Z"); return t}()),
+		// 				},
+		// 				SystemData: &armdevcenter.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:00:36.993Z"); return t}()),
+		// 					CreatedBy: to.Ptr("user1"),
+		// 					CreatedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:30:36.993Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("user1"),
+		// 					LastModifiedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

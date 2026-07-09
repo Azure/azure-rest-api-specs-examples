@@ -27,7 +27,7 @@ func ExampleDomainsClient_GetControlCenterSsoRequest() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdomainregistration.DomainsClientGetControlCenterSsoRequestResponse{
-	// 	DomainControlCenterSsoRequest: &armdomainregistration.DomainControlCenterSsoRequest{
+	// 	DomainControlCenterSsoRequest: armdomainregistration.DomainControlCenterSsoRequest{
 	// 		PostParameterKey: to.Ptr("saml"),
 	// 		PostParameterValue: to.Ptr("1242sds|k1340"),
 	// 		URL: to.Ptr("https://Reseller.provider.com/?xRequestId=sdsdsds&app=dcc"),

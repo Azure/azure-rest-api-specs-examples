@@ -7131,3 +7131,4 @@ id,name,language,tag,package,version,date_epoch,date
 7130,azure-mgmt-commerce@6.1.0b3,python,azure-mgmt-commerce_6.1.0b3,azure-mgmt-commerce,6.1.0b3,1783498074,07/08/2026
 7131,azure-mgmt-mysqlflexibleservers@1.1.0b3,python,azure-mgmt-mysqlflexibleservers_1.1.0b3,azure-mgmt-mysqlflexibleservers,1.1.0b3,1783498069,07/08/2026
 7132,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter/v3@v3.0.0-beta.1,go,sdk/resourcemanager/devcenter/armdevcenter/v3.0.0-beta.1,sdk/resourcemanager/devcenter/armdevcenter,v3.0.0-beta.1,1783584208,07/09/2026
+7133,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billingtrust/armbillingtrust@v0.1.0,go,sdk/resourcemanager/billingtrust/armbillingtrust/v0.1.0,sdk/resourcemanager/billingtrust/armbillingtrust,v0.1.0,1783583304,07/09/2026

@@ -7133,3 +7133,4 @@ id,name,language,tag,package,version,date_epoch,date
 7132,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter/v3@v3.0.0-beta.1,go,sdk/resourcemanager/devcenter/armdevcenter/v3.0.0-beta.1,sdk/resourcemanager/devcenter/armdevcenter,v3.0.0-beta.1,1783584208,07/09/2026
 7133,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billingtrust/armbillingtrust@v0.1.0,go,sdk/resourcemanager/billingtrust/armbillingtrust/v0.1.0,sdk/resourcemanager/billingtrust/armbillingtrust,v0.1.0,1783583304,07/09/2026
 7134,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.0.0-beta.1,go,sdk/resourcemanager/netapp/armnetapp/v11.0.0-beta.1,sdk/resourcemanager/netapp/armnetapp,v11.0.0-beta.1,1783578814,07/09/2026
+7135,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeorder/armedgeorder/v2@v2.0.0,go,sdk/resourcemanager/edgeorder/armedgeorder/v2.0.0,sdk/resourcemanager/edgeorder/armedgeorder,v2.0.0,1783576413,07/09/2026

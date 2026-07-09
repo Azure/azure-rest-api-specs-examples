@@ -19,7 +19,7 @@ from azure.mgmt.newrelicobservability import NewRelicObservabilityMgmtClient
 def main():
     client = NewRelicObservabilityMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.monitors.list_app_services(
@@ -36,6 +36,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/Monitors_ListAppServices_MaximumSet_Gen.json
+# x-ms-original-file: 2025-05-01-preview/Monitors_ListAppServices_MaximumSet_Gen.json
 if __name__ == "__main__":
     main()

@@ -19,16 +19,16 @@ from azure.mgmt.newrelicobservability import NewRelicObservabilityMgmtClient
 def main():
     client = NewRelicObservabilityMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-000000000000",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     client.monitors.begin_delete(
         resource_group_name="rgopenapi",
-        user_email="ruxvg@xqkmdhrnoo.hlmbpm",
         monitor_name="ipxmlcbonyxtolzejcjshkmlron",
+        user_email="ruxvg@xqkmdhrnoo.hlmbpm",
     ).result()
 
 
-# x-ms-original-file: specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/Monitors_Delete_MaximumSet_Gen.json
+# x-ms-original-file: 2025-05-01-preview/Monitors_Delete_MaximumSet_Gen.json
 if __name__ == "__main__":
     main()

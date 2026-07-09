@@ -27,7 +27,7 @@ func ExampleDeletedBackupInstancesClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.DeletedBackupInstancesClientGetResponse{
-	// 	DeletedBackupInstanceResource: &armdataprotection.DeletedBackupInstanceResource{
+	// 	DeletedBackupInstanceResource: armdataprotection.DeletedBackupInstanceResource{
 	// 		Name: to.Ptr("testInstance1"),
 	// 		Type: to.Ptr("Microsoft.DataProtection/backupVaults/deletedBackupInstances"),
 	// 		ID: to.Ptr("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/backupVaults/PratikPrivatePreviewVault1/deletedBackupInstances/testInstance1"),

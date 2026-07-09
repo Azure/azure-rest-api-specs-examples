@@ -27,7 +27,7 @@ func ExampleBackupInstancesClient_Get_getBackupInstanceWithAdlsBlobBackupAutoPro
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.BackupInstancesClientGetResponse{
-	// 	BackupInstanceResource: &armdataprotection.BackupInstanceResource{
+	// 	BackupInstanceResource: armdataprotection.BackupInstanceResource{
 	// 		Name: to.Ptr("adlsbackupinstance"),
 	// 		Type: to.Ptr("Microsoft.DataProtection/backupVaults/backupInstances"),
 	// 		ID: to.Ptr("/subscriptions/54707983-993e-43de-8d94-074451394eda/resourceGroups/adlsrg/providers/Microsoft.DataProtection/backupVaults/adlsvault/backupInstances/adlsbackupinstance"),

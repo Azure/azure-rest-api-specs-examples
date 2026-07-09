@@ -32,7 +32,7 @@ func ExampleResourceGuardsClient_Patch() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.ResourceGuardsClientPatchResponse{
-	// 	ResourceGuardResource: &armdataprotection.ResourceGuardResource{
+	// 	ResourceGuardResource: armdataprotection.ResourceGuardResource{
 	// 		Name: to.Ptr("VaultGuardTestNew"),
 	// 		Type: to.Ptr("Microsoft.DataProtection/resourceGuards"),
 	// 		ID: to.Ptr("/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew"),

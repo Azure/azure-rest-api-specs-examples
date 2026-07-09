@@ -27,7 +27,7 @@ func ExampleResourceGuardsClient_GetDefaultDisableSoftDeleteRequestsObject() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.ResourceGuardsClientGetDefaultDisableSoftDeleteRequestsObjectResponse{
-	// 	DppBaseResource: &armdataprotection.DppBaseResource{
+	// 	DppBaseResource: armdataprotection.DppBaseResource{
 	// 		Name: to.Ptr("default"),
 	// 		Type: to.Ptr("Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests"),
 	// 		ID: to.Ptr("/subscriptions/0b352192-dcac-4cc7-992e-a96190ccc68c/resourceGroups/SampleResourceGroup/providers/Microsoft.DataProtection/resourceGuards/swaggerExample/disableSoftDeleteRequests/default"),

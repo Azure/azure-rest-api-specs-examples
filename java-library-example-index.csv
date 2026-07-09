@@ -7147,3 +7147,4 @@ id,name,language,tag,package,version,date_epoch,date
 7146,azure-mgmt-notificationhubs@8.1.0b3,python,azure-mgmt-notificationhubs_8.1.0b3,azure-mgmt-notificationhubs,8.1.0b3,1783583398,07/09/2026
 7147,azure-mgmt-hybridcompute@9.1.0b4,python,azure-mgmt-hybridcompute_9.1.0b4,azure-mgmt-hybridcompute,9.1.0b4,1783580931,07/09/2026
 7148,azure-mgmt-prometheusrulegroups@1.0.0b1,python,azure-mgmt-prometheusrulegroups_1.0.0b1,azure-mgmt-prometheusrulegroups,1.0.0b1,1783575230,07/09/2026
+7149,azure-mgmt-alertprocessingrules@1.0.0b1,python,azure-mgmt-alertprocessingrules_1.0.0b1,azure-mgmt-alertprocessingrules,1.0.0b1,1783575182,07/09/2026

@@ -7144,3 +7144,4 @@ id,name,language,tag,package,version,date_epoch,date
 7143,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v1.0.0,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v1.0.0,sdk/resourcemanager/monitor/armmonitorworkspaces,v1.0.0,1783538060,07/08/2026
 7144,@azure/arm-cosmosdb@17.0.0,js,@azure/arm-cosmosdb_17.0.0,@azure/arm-cosmosdb,17.0.0,1783583091,07/09/2026
 7145,azure-mgmt-devcenter@2.0.0b1,python,azure-mgmt-devcenter_2.0.0b1,azure-mgmt-devcenter,2.0.0b1,1783585427,07/09/2026
+7146,azure-mgmt-notificationhubs@8.1.0b3,python,azure-mgmt-notificationhubs_8.1.0b3,azure-mgmt-notificationhubs,8.1.0b3,1783583398,07/09/2026

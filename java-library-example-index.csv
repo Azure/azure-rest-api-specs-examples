@@ -7142,3 +7142,4 @@ id,name,language,tag,package,version,date_epoch,date
 7141,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/guestconfiguration/armguestconfiguration/v2@v2.0.0,go,sdk/resourcemanager/guestconfiguration/armguestconfiguration/v2.0.0,sdk/resourcemanager/guestconfiguration/armguestconfiguration,v2.0.0,1783576019,07/09/2026
 7142,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongodbatlas/armmongodbatlas@v1.1.0-beta.1,go,sdk/resourcemanager/mongodbatlas/armmongodbatlas/v1.1.0-beta.1,sdk/resourcemanager/mongodbatlas/armmongodbatlas,v1.1.0-beta.1,1783563395,07/09/2026
 7143,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v1.0.0,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v1.0.0,sdk/resourcemanager/monitor/armmonitorworkspaces,v1.0.0,1783538060,07/08/2026
+7144,@azure/arm-cosmosdb@17.0.0,js,@azure/arm-cosmosdb_17.0.0,@azure/arm-cosmosdb,17.0.0,1783583091,07/09/2026

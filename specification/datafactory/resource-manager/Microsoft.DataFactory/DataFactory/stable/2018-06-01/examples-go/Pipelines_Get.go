@@ -27,7 +27,7 @@ func ExamplePipelinesClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.PipelinesClientGetResponse{
-	// 	PipelineResource: &armdatafactory.PipelineResource{
+	// 	PipelineResource: armdatafactory.PipelineResource{
 	// 		Name: to.Ptr("examplePipeline"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/pipelines"),
 	// 		Etag: to.Ptr("1500504f-0000-0200-0000-5cbe090f0000"),

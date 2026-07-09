@@ -38,7 +38,7 @@ func ExampleLinkedServicesClient_CreateOrUpdate_linkedServicesCreate() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.LinkedServicesClientCreateOrUpdateResponse{
-	// 	LinkedServiceResource: &armdatafactory.LinkedServiceResource{
+	// 	LinkedServiceResource: armdatafactory.LinkedServiceResource{
 	// 		Name: to.Ptr("exampleLinkedService"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/linkedservices"),
 	// 		Etag: to.Ptr("0a0062d4-0000-0000-0000-5b245bcf0000"),

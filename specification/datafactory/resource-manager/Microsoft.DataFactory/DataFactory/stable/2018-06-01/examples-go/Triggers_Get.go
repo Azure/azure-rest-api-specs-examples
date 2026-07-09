@@ -27,7 +27,7 @@ func ExampleTriggersClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.TriggersClientGetResponse{
-	// 	TriggerResource: &armdatafactory.TriggerResource{
+	// 	TriggerResource: armdatafactory.TriggerResource{
 	// 		Name: to.Ptr("exampleTrigger"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/triggers"),
 	// 		Etag: to.Ptr("1500544f-0000-0200-0000-5cbe09100000"),

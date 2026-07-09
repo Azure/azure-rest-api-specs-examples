@@ -27,7 +27,7 @@ func ExampleGlobalParametersClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.GlobalParametersClientGetResponse{
-	// 	GlobalParameterResource: &armdatafactory.GlobalParameterResource{
+	// 	GlobalParameterResource: armdatafactory.GlobalParameterResource{
 	// 		Name: to.Ptr("default"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/globalParameters"),
 	// 		Etag: to.Ptr("72001a6a-0000-0400-0000-623d058f0000"),

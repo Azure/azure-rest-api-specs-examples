@@ -27,7 +27,7 @@ func ExampleTriggersClient_GetEventSubscriptionStatus() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.TriggersClientGetEventSubscriptionStatusResponse{
-	// 	TriggerSubscriptionOperationStatus: &armdatafactory.TriggerSubscriptionOperationStatus{
+	// 	TriggerSubscriptionOperationStatus: armdatafactory.TriggerSubscriptionOperationStatus{
 	// 		Status: to.Ptr(armdatafactory.EventSubscriptionStatusEnabled),
 	// 		TriggerName: to.Ptr("exampleTrigger"),
 	// 	},

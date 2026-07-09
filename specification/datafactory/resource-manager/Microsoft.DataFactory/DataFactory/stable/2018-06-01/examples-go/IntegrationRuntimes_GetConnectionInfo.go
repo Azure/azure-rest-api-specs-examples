@@ -27,7 +27,7 @@ func ExampleIntegrationRuntimesClient_GetConnectionInfo() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.IntegrationRuntimesClientGetConnectionInfoResponse{
-	// 	IntegrationRuntimeConnectionInfo: &armdatafactory.IntegrationRuntimeConnectionInfo{
+	// 	IntegrationRuntimeConnectionInfo: armdatafactory.IntegrationRuntimeConnectionInfo{
 	// 		HostServiceURI: to.Ptr("https://yanzhang-dt.fareast.corp.microsoft.com:8050/HostServiceRemote.svc/"),
 	// 		IdentityCertThumbprint: to.Ptr("**********"),
 	// 		IsIdentityCertExprired: to.Ptr(false),

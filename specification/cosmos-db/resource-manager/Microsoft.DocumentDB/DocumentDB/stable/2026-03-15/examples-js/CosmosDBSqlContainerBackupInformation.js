@@ -1,0 +1,22 @@
+const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to retrieves continuous backup information for a container resource.
+ *
+ * @summary retrieves continuous backup information for a container resource.
+ * x-ms-original-file: 2026-03-15/CosmosDBSqlContainerBackupInformation.json
+ */
+async function cosmosDBSqlContainerBackupInformation() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new CosmosDBManagementClient(credential, subscriptionId);
+  const result = await client.sqlResources.retrieveContinuousBackupInformation(
+    "rgName",
+    "ddb1",
+    "databaseName",
+    "containerName",
+    { location: "North Europe" },
+  );
+  console.log(result);
+}

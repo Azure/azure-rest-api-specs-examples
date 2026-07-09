@@ -1,0 +1,19 @@
+const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+ *
+ * @summary deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+ * x-ms-original-file: 2026-03-15/cassandrarbac/CosmosDBCassandraRoleAssignmentDelete.json
+ */
+async function cosmosDBCassandraRoleAssignmentDelete() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const client = new CosmosDBManagementClient(credential, subscriptionId);
+  await client.cassandraResources.deleteCassandraRoleAssignment(
+    "myResourceGroupName",
+    "myAccountName",
+    "myRoleAssignmentId",
+  );
+}

@@ -7159,3 +7159,4 @@ id,name,language,tag,package,version,date_epoch,date
 7158,azure-mgmt-advisor@10.0.0b2,python,azure-mgmt-advisor_10.0.0b2,azure-mgmt-advisor,10.0.0b2,1783497942,07/08/2026
 7159,azure-mgmt-eventhub@12.0.0b2,python,azure-mgmt-eventhub_12.0.0b2,azure-mgmt-eventhub,12.0.0b2,1783497936,07/08/2026
 7160,azure-mgmt-selfhelp@2.0.0b5,python,azure-mgmt-selfhelp_2.0.0b5,azure-mgmt-selfhelp,2.0.0b5,1783497918,07/08/2026
+7161,azure-mgmt-dns@10.0.0b1,python,azure-mgmt-dns_10.0.0b1,azure-mgmt-dns,10.0.0b1,1783497885,07/08/2026

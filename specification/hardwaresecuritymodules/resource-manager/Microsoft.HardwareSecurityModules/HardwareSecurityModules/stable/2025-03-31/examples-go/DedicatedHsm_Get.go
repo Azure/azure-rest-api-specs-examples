@@ -27,7 +27,7 @@ func ExampleDedicatedHsmClient_Get_getADedicatedHsm() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armhardwaresecuritymodules.DedicatedHsmClientGetResponse{
-	// 	DedicatedHsm: &armhardwaresecuritymodules.DedicatedHsm{
+	// 	DedicatedHsm: armhardwaresecuritymodules.DedicatedHsm{
 	// 		Name: to.Ptr("hsm1"),
 	// 		Type: to.Ptr("Microsoft.HardwareSecurityModules/dedicatedHSMs"),
 	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm1"),

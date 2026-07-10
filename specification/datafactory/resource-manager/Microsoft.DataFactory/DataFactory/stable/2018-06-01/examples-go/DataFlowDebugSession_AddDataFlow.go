@@ -118,7 +118,7 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.DataFlowDebugSessionClientAddDataFlowResponse{
-	// 	AddDataFlowToDebugSessionResponse: &armdatafactory.AddDataFlowToDebugSessionResponse{
+	// 	AddDataFlowToDebugSessionResponse: armdatafactory.AddDataFlowToDebugSessionResponse{
 	// 		JobVersion: to.Ptr("e5328ee7-c524-4207-8ba4-b709010db33d"),
 	// 	},
 	// }

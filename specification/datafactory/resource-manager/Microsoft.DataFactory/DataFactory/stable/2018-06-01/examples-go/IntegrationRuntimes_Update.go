@@ -31,7 +31,7 @@ func ExampleIntegrationRuntimesClient_Update() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.IntegrationRuntimesClientUpdateResponse{
-	// 	IntegrationRuntimeResource: &armdatafactory.IntegrationRuntimeResource{
+	// 	IntegrationRuntimeResource: armdatafactory.IntegrationRuntimeResource{
 	// 		Name: to.Ptr("exampleIntegrationRuntime"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/integrationruntimes"),
 	// 		Etag: to.Ptr("0400f1a1-0000-0000-0000-5b2188640000"),

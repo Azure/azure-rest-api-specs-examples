@@ -27,7 +27,7 @@ func ExamplePipelineRunsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.PipelineRunsClientGetResponse{
-	// 	PipelineRun: &armdatafactory.PipelineRun{
+	// 	PipelineRun: armdatafactory.PipelineRun{
 	// 		DurationInMs: to.Ptr[int32](28105),
 	// 		InvokedBy: &armdatafactory.PipelineRunInvokedBy{
 	// 			Name: to.Ptr("Manual"),

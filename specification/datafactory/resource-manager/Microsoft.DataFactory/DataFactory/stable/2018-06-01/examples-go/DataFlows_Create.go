@@ -91,7 +91,7 @@ func ExampleDataFlowsClient_CreateOrUpdate_dataFlowsCreate() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.DataFlowsClientCreateOrUpdateResponse{
-	// 	DataFlowResource: &armdatafactory.DataFlowResource{
+	// 	DataFlowResource: armdatafactory.DataFlowResource{
 	// 		Name: to.Ptr("exampleDataFlow"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/dataflows"),
 	// 		Etag: to.Ptr("0a0066d4-0000-0000-0000-5b245bd20000"),

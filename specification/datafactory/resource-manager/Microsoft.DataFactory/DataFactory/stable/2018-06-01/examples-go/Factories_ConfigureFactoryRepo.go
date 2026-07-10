@@ -40,7 +40,7 @@ func ExampleFactoriesClient_ConfigureFactoryRepo() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.FactoriesClientConfigureFactoryRepoResponse{
-	// 	Factory: &armdatafactory.Factory{
+	// 	Factory: armdatafactory.Factory{
 	// 		Name: to.Ptr("exampleFactoryName"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories"),
 	// 		ETag: to.Ptr("\"00004004-0000-0000-0000-5b28979e0000\""),

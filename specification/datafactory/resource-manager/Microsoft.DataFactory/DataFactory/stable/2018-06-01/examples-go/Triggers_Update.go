@@ -56,7 +56,7 @@ func ExampleTriggersClient_CreateOrUpdate_triggersUpdate() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.TriggersClientCreateOrUpdateResponse{
-	// 	TriggerResource: &armdatafactory.TriggerResource{
+	// 	TriggerResource: armdatafactory.TriggerResource{
 	// 		Name: to.Ptr("exampleTrigger"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/triggers"),
 	// 		Etag: to.Ptr("0a008dd4-0000-0000-0000-5b245c6f0000"),

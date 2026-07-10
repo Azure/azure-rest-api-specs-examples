@@ -27,7 +27,7 @@ func ExampleDatasetsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdatafactory.DatasetsClientGetResponse{
-	// 	DatasetResource: &armdatafactory.DatasetResource{
+	// 	DatasetResource: armdatafactory.DatasetResource{
 	// 		Name: to.Ptr("exampleDataset"),
 	// 		Type: to.Ptr("Microsoft.DataFactory/factories/datasets"),
 	// 		Etag: to.Ptr("15004c4f-0000-0200-0000-5cbe090e0000"),

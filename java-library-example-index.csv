@@ -7161,3 +7161,4 @@ id,name,language,tag,package,version,date_epoch,date
 7160,azure-mgmt-selfhelp@2.0.0b5,python,azure-mgmt-selfhelp_2.0.0b5,azure-mgmt-selfhelp,2.0.0b5,1783497918,07/08/2026
 7161,azure-mgmt-dns@10.0.0b1,python,azure-mgmt-dns_10.0.0b1,azure-mgmt-dns,10.0.0b1,1783497885,07/08/2026
 7162,azure-mgmt-botservice@3.0.0b1,python,azure-mgmt-botservice_3.0.0b1,azure-mgmt-botservice,3.0.0b1,1783497874,07/08/2026
+7163,azure-mgmt-guestconfig@1.0.0b3,python,azure-mgmt-guestconfig_1.0.0b3,azure-mgmt-guestconfig,1.0.0b3,1783497800,07/08/2026

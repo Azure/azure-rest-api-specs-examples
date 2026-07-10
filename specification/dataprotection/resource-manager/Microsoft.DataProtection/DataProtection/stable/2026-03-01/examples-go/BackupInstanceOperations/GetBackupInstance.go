@@ -27,7 +27,7 @@ func ExampleBackupInstancesClient_Get_getBackupInstance() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.BackupInstancesClientGetResponse{
-	// 	BackupInstanceResource: &armdataprotection.BackupInstanceResource{
+	// 	BackupInstanceResource: armdataprotection.BackupInstanceResource{
 	// 		Name: to.Ptr("harshitbi2"),
 	// 		Type: to.Ptr("Microsoft.DataProtection/backupVaults/backupInstances"),
 	// 		ID: to.Ptr("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/000pikumar/providers/Microsoft.DataProtection/backupVaults/PratikPrivatePreviewVault1/backupInstances/harshitbi2"),

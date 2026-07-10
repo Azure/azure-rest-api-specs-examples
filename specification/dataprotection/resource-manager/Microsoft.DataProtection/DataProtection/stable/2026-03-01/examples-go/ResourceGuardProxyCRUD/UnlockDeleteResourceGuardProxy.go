@@ -33,7 +33,7 @@ func ExampleDppResourceGuardProxyClient_UnlockDelete() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armdataprotection.DppResourceGuardProxyClientUnlockDeleteResponse{
-	// 	UnlockDeleteResponse: &armdataprotection.UnlockDeleteResponse{
+	// 	UnlockDeleteResponse: armdataprotection.UnlockDeleteResponse{
 	// 		UnlockDeleteExpiryTime: to.Ptr("2022-09-16T12:50:10.7039695Z"),
 	// 	},
 	// }

@@ -7152,3 +7152,4 @@ id,name,language,tag,package,version,date_epoch,date
 7151,@azure/arm-mongodbatlas@1.1.0-beta.1,js,@azure/arm-mongodbatlas_1.1.0-beta.1,@azure/arm-mongodbatlas,1.1.0-beta.1,1783673821,07/10/2026
 7152,@azure/arm-devcenter@2.0.0-beta.1,js,@azure/arm-devcenter_2.0.0-beta.1,@azure/arm-devcenter,2.0.0-beta.1,1783671895,07/10/2026
 7153,azure-mgmt-marketplace@1.0.0b1,python,azure-mgmt-marketplace_1.0.0b1,azure-mgmt-marketplace,1.0.0b1,1783679324,07/10/2026
+7154,azure-mgmt-providerhub@1.0.0b1,python,azure-mgmt-providerhub_1.0.0b1,azure-mgmt-providerhub,1.0.0b1,1783676455,07/10/2026

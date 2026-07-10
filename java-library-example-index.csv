@@ -7156,3 +7156,4 @@ id,name,language,tag,package,version,date_epoch,date
 7155,azure-mgmt-webpubsub@3.0.0b1,python,azure-mgmt-webpubsub_3.0.0b1,azure-mgmt-webpubsub,3.0.0b1,1783498062,07/08/2026
 7156,azure-mgmt-cosmosdbforpostgresql@1.1.0b2,python,azure-mgmt-cosmosdbforpostgresql_1.1.0b2,azure-mgmt-cosmosdbforpostgresql,1.1.0b2,1783498050,07/08/2026
 7157,azure-mgmt-managedapplications@1.0.0b2,python,azure-mgmt-managedapplications_1.0.0b2,azure-mgmt-managedapplications,1.0.0b2,1783497948,07/08/2026
+7158,azure-mgmt-advisor@10.0.0b2,python,azure-mgmt-advisor_10.0.0b2,azure-mgmt-advisor,10.0.0b2,1783497942,07/08/2026

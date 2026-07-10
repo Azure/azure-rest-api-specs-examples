@@ -1,0 +1,16 @@
+const { DevCenterClient } = require("@azure/arm-devcenter");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to gets a gallery image.
+ *
+ * @summary gets a gallery image.
+ * x-ms-original-file: 2026-01-01-preview/Images_Get.json
+ */
+async function imagesGet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58fffff";
+  const client = new DevCenterClient(credential, subscriptionId);
+  const result = await client.images.get("rg1", "Contoso", "DefaultDevGallery", "ContosoBaseImage");
+  console.log(result);
+}

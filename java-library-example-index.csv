@@ -7150,3 +7150,4 @@ id,name,language,tag,package,version,date_epoch,date
 7149,azure-mgmt-alertprocessingrules@1.0.0b1,python,azure-mgmt-alertprocessingrules_1.0.0b1,azure-mgmt-alertprocessingrules,1.0.0b1,1783575182,07/09/2026
 7150,azure-mgmt-domainservices@1.0.0b1,python,azure-mgmt-domainservices_1.0.0b1,azure-mgmt-domainservices,1.0.0b1,1783566963,07/09/2026
 7151,@azure/arm-mongodbatlas@1.1.0-beta.1,js,@azure/arm-mongodbatlas_1.1.0-beta.1,@azure/arm-mongodbatlas,1.1.0-beta.1,1783673821,07/10/2026
+7152,@azure/arm-devcenter@2.0.0-beta.1,js,@azure/arm-devcenter_2.0.0-beta.1,@azure/arm-devcenter,2.0.0-beta.1,1783671895,07/10/2026

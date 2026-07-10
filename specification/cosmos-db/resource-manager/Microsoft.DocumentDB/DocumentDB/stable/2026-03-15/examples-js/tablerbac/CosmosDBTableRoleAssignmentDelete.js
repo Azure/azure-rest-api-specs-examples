@@ -1,0 +1,19 @@
+const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to deletes an existing Azure Cosmos DB Table Role Assignment.
+ *
+ * @summary deletes an existing Azure Cosmos DB Table Role Assignment.
+ * x-ms-original-file: 2026-03-15/tablerbac/CosmosDBTableRoleAssignmentDelete.json
+ */
+async function cosmosDBTableRoleAssignmentDelete() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const client = new CosmosDBManagementClient(credential, subscriptionId);
+  await client.tableResources.deleteTableRoleAssignment(
+    "myResourceGroupName",
+    "myAccountName",
+    "myRoleAssignmentId",
+  );
+}

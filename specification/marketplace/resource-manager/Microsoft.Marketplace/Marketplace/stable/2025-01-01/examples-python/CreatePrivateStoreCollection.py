@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.marketplace import MarketplaceMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-marketplace
+# USAGE
+    python create_private_store_collection.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = MarketplaceMgmtClient(
+        credential=DefaultAzureCredential(),
+    )
+
+    response = client.private_store_collection.create_or_update(
+        private_store_id="a0e28e55-90c4-41d8-8e34-bb7ef7775406",
+        collection_id="d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1",
+    )
+    print(response)
+
+
+# x-ms-original-file: 2025-01-01/CreatePrivateStoreCollection.json
+if __name__ == "__main__":
+    main()

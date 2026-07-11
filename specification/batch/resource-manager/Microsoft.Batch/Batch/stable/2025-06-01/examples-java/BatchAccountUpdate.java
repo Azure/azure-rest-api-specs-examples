@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.batch.models.AutoStorageBaseProperties;
+import com.azure.resourcemanager.batch.models.BatchAccount;
+
+/**
+ * Samples for BatchAccount Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01/BatchAccountUpdate.json
+     */
+    /**
+     * Sample code: BatchAccountUpdate.
+     * 
+     * @param manager Entry point to BatchManager.
+     */
+    public static void batchAccountUpdate(com.azure.resourcemanager.batch.BatchManager manager) {
+        BatchAccount resource = manager.batchAccounts().getByResourceGroupWithResponse("default-azurebatch-japaneast",
+            "sampleacct", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withAutoStorage(new AutoStorageBaseProperties().withStorageAccountId(
+            "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"))
+            .apply();
+    }
+}

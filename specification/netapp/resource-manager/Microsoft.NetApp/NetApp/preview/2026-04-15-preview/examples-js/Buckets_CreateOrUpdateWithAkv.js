@@ -1,0 +1,44 @@
+const { NetAppManagementClient } = require("@azure/arm-netapp");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates a bucket for a volume. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.
+ *
+ * @summary creates or updates a bucket for a volume. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.
+ * x-ms-original-file: 2026-04-15-preview/Buckets_CreateOrUpdateWithAkv.json
+ */
+async function bucketsCreateOrUpdateWithAkv() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new NetAppManagementClient(credential, subscriptionId);
+  const result = await client.buckets.createOrUpdate(
+    "myRG",
+    "account1",
+    "pool1",
+    "volume1",
+    "bucket1",
+    {
+      properties: {
+        fileSystemUser: { nfsUser: { userId: 1001, groupId: 1000 } },
+        path: "/path",
+        server: { fqdn: "fullyqualified.domainname.com", onCertificateConflictAction: "Fail" },
+        akvDetails: {
+          certificateAkvDetails: {
+            certificateKeyVaultUri: "https://REDACTED.vault.azure.net/",
+            certificateName: "my-certificate",
+            userAssignedIdentity:
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1",
+          },
+          credentialsAkvDetails: {
+            credentialsKeyVaultUri: "https://REDACTED.vault.azure.net/",
+            secretName: "my-secret",
+            userAssignedIdentity:
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1",
+          },
+        },
+        permissions: "ReadOnly",
+      },
+    },
+  );
+  console.log(result);
+}

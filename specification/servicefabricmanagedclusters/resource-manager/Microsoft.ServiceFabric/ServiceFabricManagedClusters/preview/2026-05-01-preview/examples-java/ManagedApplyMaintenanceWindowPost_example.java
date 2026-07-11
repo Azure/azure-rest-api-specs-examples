@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.servicefabricmanagedclusters.models.ApplyMaintenanceWindowRequest;
+
+/**
+ * Samples for ManagedApplyMaintenanceWindow Post.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/ManagedApplyMaintenanceWindowPost_example.json
+     */
+    /**
+     * Sample code: Apply Maintenance Window Status.
+     * 
+     * @param manager Entry point to ServiceFabricManagedClustersManager.
+     */
+    public static void applyMaintenanceWindowStatus(
+        com.azure.resourcemanager.servicefabricmanagedclusters.ServiceFabricManagedClustersManager manager) {
+        manager.managedApplyMaintenanceWindows()
+            .postWithResponse(
+                "resourceGroup1", "mycluster1", new ApplyMaintenanceWindowRequest()
+                    .withStartDateTime("2026-04-07 13:00").withDuration("08:30").withTimeZone("Pacific Standard Time"),
+                com.azure.core.util.Context.NONE);
+    }
+}

@@ -7169,3 +7169,4 @@ id,name,language,tag,package,version,date_epoch,date
 7168,@azure/arm-billing-trust@1.0.0-beta.1,js,@azure/arm-billing-trust_1.0.0-beta.1,@azure/arm-billing-trust,1.0.0-beta.1,1783711937,07/10/2026
 7169,@azure/arm-netapp@25.0.0-beta.1,js,@azure/arm-netapp_25.0.0-beta.1,@azure/arm-netapp,25.0.0-beta.1,1783686943,07/10/2026
 7170,com.azure.resourcemanager:azure-resourcemanager-netapp:2.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.4.0-beta.1,1783690357,07/10/2026
+7171,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.7.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservices_1.7.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservices,1.7.0,1783663853,07/10/2026

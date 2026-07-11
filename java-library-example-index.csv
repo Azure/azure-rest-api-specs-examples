@@ -7166,3 +7166,4 @@ id,name,language,tag,package,version,date_epoch,date
 7165,azure-mgmt-sqlvirtualmachine@1.0.0b7,python,azure-mgmt-sqlvirtualmachine_1.0.0b7,azure-mgmt-sqlvirtualmachine,1.0.0b7,1783497788,07/08/2026
 7166,azure-mgmt-signalr@2.0.0b3,python,azure-mgmt-signalr_2.0.0b3,azure-mgmt-signalr,2.0.0b3,1783497773,07/08/2026
 7167,azure-mgmt-cloudhealth@1.0.0b3,python,azure-mgmt-cloudhealth_1.0.0b3,azure-mgmt-cloudhealth,1.0.0b3,1783492229,07/08/2026
+7168,@azure/arm-billing-trust@1.0.0-beta.1,js,@azure/arm-billing-trust_1.0.0-beta.1,@azure/arm-billing-trust,1.0.0-beta.1,1783711937,07/10/2026

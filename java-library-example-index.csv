@@ -7177,3 +7177,4 @@ id,name,language,tag,package,version,date_epoch,date
 7176,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.4,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.4,1783467561,07/07/2026
 7177,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.2,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.2,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.2,1783467531,07/07/2026
 7178,com.azure.resourcemanager:azure-resourcemanager-network:2.59.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.59.1,com.azure.resourcemanager+azure-resourcemanager-network,2.59.1,1783467516,07/07/2026
+7179,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.1,1783467501,07/07/2026

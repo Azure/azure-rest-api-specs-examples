@@ -7166,3 +7166,15 @@ id,name,language,tag,package,version,date_epoch,date
 7165,azure-mgmt-sqlvirtualmachine@1.0.0b7,python,azure-mgmt-sqlvirtualmachine_1.0.0b7,azure-mgmt-sqlvirtualmachine,1.0.0b7,1783497788,07/08/2026
 7166,azure-mgmt-signalr@2.0.0b3,python,azure-mgmt-signalr_2.0.0b3,azure-mgmt-signalr,2.0.0b3,1783497773,07/08/2026
 7167,azure-mgmt-cloudhealth@1.0.0b3,python,azure-mgmt-cloudhealth_1.0.0b3,azure-mgmt-cloudhealth,1.0.0b3,1783492229,07/08/2026
+7168,@azure/arm-billing-trust@1.0.0-beta.1,js,@azure/arm-billing-trust_1.0.0-beta.1,@azure/arm-billing-trust,1.0.0-beta.1,1783711937,07/10/2026
+7169,@azure/arm-netapp@25.0.0-beta.1,js,@azure/arm-netapp_25.0.0-beta.1,@azure/arm-netapp,25.0.0-beta.1,1783686943,07/10/2026
+7170,com.azure.resourcemanager:azure-resourcemanager-netapp:2.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.4.0-beta.1,1783690357,07/10/2026
+7171,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.7.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservices_1.7.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservices,1.7.0,1783663853,07/10/2026
+7172,com.azure.resourcemanager:azure-resourcemanager-batch:3.0.0,java,com.azure.resourcemanager+azure-resourcemanager-batch_3.0.0,com.azure.resourcemanager+azure-resourcemanager-batch,3.0.0,1783600164,07/09/2026
+7173,com.azure.resourcemanager:azure-resourcemanager-mongodbatlas:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-mongodbatlas_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-mongodbatlas,1.1.0-beta.1,1783599788,07/09/2026
+7174,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-azurestackhci_1.1.0,com.azure.resourcemanager+azure-resourcemanager-azurestackhci,1.1.0,1783592584,07/09/2026
+7175,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters,1.2.0-beta.1,1783592430,07/09/2026
+7176,com.azure.resourcemanager:azure-resourcemanager-appservice:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.55.4,com.azure.resourcemanager+azure-resourcemanager-appservice,2.55.4,1783467561,07/07/2026
+7177,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.2,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.2,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.2,1783467531,07/07/2026
+7178,com.azure.resourcemanager:azure-resourcemanager-network:2.59.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.59.1,com.azure.resourcemanager+azure-resourcemanager-network,2.59.1,1783467516,07/07/2026
+7179,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.1,1783467501,07/07/2026

@@ -7178,3 +7178,4 @@ id,name,language,tag,package,version,date_epoch,date
 7177,com.azure.resourcemanager:azure-resourcemanager-compute:2.58.2,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.58.2,com.azure.resourcemanager+azure-resourcemanager-compute,2.58.2,1783467531,07/07/2026
 7178,com.azure.resourcemanager:azure-resourcemanager-network:2.59.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.59.1,com.azure.resourcemanager+azure-resourcemanager-network,2.59.1,1783467516,07/07/2026
 7179,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.1,1783467501,07/07/2026
+7180,"Azure.ResourceManager.MongoDBAtlas,1.1.0-beta.1",dotnet,Azure.ResourceManager.MongoDBAtlas_1.1.0-beta.1,Azure.ResourceManager.MongoDBAtlas,1.1.0-beta.1,1783839609,07/12/2026

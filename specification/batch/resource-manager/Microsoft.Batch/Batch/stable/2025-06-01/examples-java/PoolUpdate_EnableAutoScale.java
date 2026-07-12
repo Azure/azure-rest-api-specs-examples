@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.batch.models.AutoScaleSettings;
+import com.azure.resourcemanager.batch.models.Pool;
+import com.azure.resourcemanager.batch.models.ScaleSettings;
+
+/**
+ * Samples for Pool Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-06-01/PoolUpdate_EnableAutoScale.json
+     */
+    /**
+     * Sample code: UpdatePool - Enable Autoscale.
+     * 
+     * @param manager Entry point to BatchManager.
+     */
+    public static void updatePoolEnableAutoscale(com.azure.resourcemanager.batch.BatchManager manager) {
+        Pool resource = manager.pools()
+            .getWithResponse("default-azurebatch-japaneast", "sampleacct", "testpool", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update()
+            .withScaleSettings(
+                new ScaleSettings().withAutoScale(new AutoScaleSettings().withFormula("$TargetDedicatedNodes=34")))
+            .apply();
+    }
+}

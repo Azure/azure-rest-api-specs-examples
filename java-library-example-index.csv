@@ -7182,3 +7182,4 @@ id,name,language,tag,package,version,date_epoch,date
 7181,"Azure.ResourceManager.NetApp,1.18.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.18.0-beta.1,Azure.ResourceManager.NetApp,1.18.0-beta.1,1783687391,07/10/2026
 7182,@azure/arm-kubernetesconfiguration-fluxconfigurations@1.0.0,js,@azure/arm-kubernetesconfiguration-fluxconfigurations_1.0.0,@azure/arm-kubernetesconfiguration-fluxconfigurations,1.0.0,1783926863,07/13/2026
 7183,azure-mgmt-web@11.0.1,python,azure-mgmt-web_11.0.1,azure-mgmt-web,11.0.1,1783934810,07/13/2026
+7184,azure-mgmt-computelimit@1.2.1,python,azure-mgmt-computelimit_1.2.1,azure-mgmt-computelimit,1.2.1,1783913285,07/13/2026

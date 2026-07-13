@@ -7180,3 +7180,4 @@ id,name,language,tag,package,version,date_epoch,date
 7179,com.azure.resourcemanager:azure-resourcemanager-storage:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.57.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.57.1,1783467501,07/07/2026
 7180,"Azure.ResourceManager.MongoDBAtlas,1.1.0-beta.1",dotnet,Azure.ResourceManager.MongoDBAtlas_1.1.0-beta.1,Azure.ResourceManager.MongoDBAtlas,1.1.0-beta.1,1783839609,07/12/2026
 7181,"Azure.ResourceManager.NetApp,1.18.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.18.0-beta.1,Azure.ResourceManager.NetApp,1.18.0-beta.1,1783687391,07/10/2026
+7182,@azure/arm-kubernetesconfiguration-fluxconfigurations@1.0.0,js,@azure/arm-kubernetesconfiguration-fluxconfigurations_1.0.0,@azure/arm-kubernetesconfiguration-fluxconfigurations,1.0.0,1783926863,07/13/2026

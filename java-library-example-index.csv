@@ -7187,3 +7187,4 @@ id,name,language,tag,package,version,date_epoch,date
 7186,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computelimit/armcomputelimit@v1.2.1,go,sdk/resourcemanager/computelimit/armcomputelimit/v1.2.1,sdk/resourcemanager/computelimit/armcomputelimit,v1.2.1,1783990861,07/14/2026
 7187,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cloudhealth/armcloudhealth@v0.3.0,go,sdk/resourcemanager/cloudhealth/armcloudhealth/v0.3.0,sdk/resourcemanager/cloudhealth/armcloudhealth,v0.3.0,1783949435,07/13/2026
 7188,@azure/arm-computelimit@1.2.1,js,@azure/arm-computelimit_1.2.1,@azure/arm-computelimit,1.2.1,1783990847,07/14/2026
+7189,azure-mgmt-serialconsole@2.0.0,python,azure-mgmt-serialconsole_2.0.0,azure-mgmt-serialconsole,2.0.0,1784012776,07/14/2026

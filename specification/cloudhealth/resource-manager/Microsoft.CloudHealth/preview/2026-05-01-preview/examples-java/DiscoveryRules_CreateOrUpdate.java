@@ -1,0 +1,31 @@
+
+import com.azure.resourcemanager.cloudhealth.models.DiscoveryRuleProperties;
+import com.azure.resourcemanager.cloudhealth.models.DiscoveryRuleRecommendedSignalsBehavior;
+import com.azure.resourcemanager.cloudhealth.models.DiscoveryRuleRelationshipDiscoveryBehavior;
+import com.azure.resourcemanager.cloudhealth.models.ResourceGraphQuerySpecification;
+import com.azure.resourcemanager.cloudhealth.models.ResourceHealthAvailabilityStateSignalBehavior;
+
+/**
+ * Samples for DiscoveryRules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/DiscoveryRules_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: DiscoveryRules_CreateOrUpdate.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void discoveryRulesCreateOrUpdate(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.discoveryRules().define("discover-web-apps").withExistingHealthmodel("online-store-rg", "online-store")
+            .withProperties(new DiscoveryRuleProperties().withDisplayName("Discover web apps")
+                .withAuthenticationSetting("default-auth")
+                .withDiscoverRelationships(DiscoveryRuleRelationshipDiscoveryBehavior.ENABLED)
+                .withAddRecommendedSignals(DiscoveryRuleRecommendedSignalsBehavior.ENABLED)
+                .withSpecification(new ResourceGraphQuerySpecification().withResourceGraphQuery(
+                    "resources | where type =~ 'microsoft.web/sites' and resourceGroup =~ 'online-store-rg' | project id, name, location"))
+                .withAddResourceHealthSignal(ResourceHealthAvailabilityStateSignalBehavior.ENABLED))
+            .create();
+    }
+}

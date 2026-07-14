@@ -1,0 +1,136 @@
+
+import com.azure.resourcemanager.cloudhealth.models.AlertConfiguration;
+import com.azure.resourcemanager.cloudhealth.models.AlertSeverity;
+import com.azure.resourcemanager.cloudhealth.models.AzureMonitorWorkspaceSignals;
+import com.azure.resourcemanager.cloudhealth.models.AzureResourceHealthSignal;
+import com.azure.resourcemanager.cloudhealth.models.AzureResourceSignal;
+import com.azure.resourcemanager.cloudhealth.models.AzureResourceSignals;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesAggregationType;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesAggregationUnit;
+import com.azure.resourcemanager.cloudhealth.models.DependenciesSignalGroupV2;
+import com.azure.resourcemanager.cloudhealth.models.EntityAlerts;
+import com.azure.resourcemanager.cloudhealth.models.EntityCoordinates;
+import com.azure.resourcemanager.cloudhealth.models.EntityImpact;
+import com.azure.resourcemanager.cloudhealth.models.EntityProperties;
+import com.azure.resourcemanager.cloudhealth.models.EvaluationRule;
+import com.azure.resourcemanager.cloudhealth.models.IconDefinition;
+import com.azure.resourcemanager.cloudhealth.models.LogAnalyticsSignal;
+import com.azure.resourcemanager.cloudhealth.models.LogAnalyticsSignals;
+import com.azure.resourcemanager.cloudhealth.models.MetricAggregationType;
+import com.azure.resourcemanager.cloudhealth.models.PrometheusMetricsSignal;
+import com.azure.resourcemanager.cloudhealth.models.RefreshInterval;
+import com.azure.resourcemanager.cloudhealth.models.ResourceHealthAvailabilityStateSignalBehavior;
+import com.azure.resourcemanager.cloudhealth.models.SignalGroups;
+import com.azure.resourcemanager.cloudhealth.models.SignalOperator;
+import com.azure.resourcemanager.cloudhealth.models.ThresholdRuleV2;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Entities CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/Entities_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Entities_CreateOrUpdate.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void entitiesCreateOrUpdate(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.entities().define("orders-api").withExistingHealthmodel("online-store-rg", "online-store")
+            .withProperties(new EntityProperties().withDisplayName("Orders API")
+                .withCanvasPosition(new EntityCoordinates().withX(360.0).withY(240.0))
+                .withIcon(new IconDefinition().withIconName("Kubernetes")).withHealthObjective(99.9D)
+                .withImpact(EntityImpact.STANDARD).withTags(mapOf("environment", "production", "team", "online-store"))
+                .withSignalGroups(new SignalGroups().withAzureResource(new AzureResourceSignals()
+                    .withAuthenticationSetting("default-auth")
+                    .withAzureResourceId(
+                        "/subscriptions/abcdef12-3456-7890-abcd-ef1234567890/resourceGroups/online-store-rg/providers/Microsoft.ContainerService/managedClusters/online-store-aks")
+                    .withAzureResourceKind("managedClusters")
+                    .withSignals(Arrays.asList(new AzureResourceSignal().withName("node-cpu")
+                        .withMetricNamespace("Microsoft.ContainerService/managedClusters")
+                        .withMetricName("node_cpu_usage_percentage").withTimeGrain("PT5M")
+                        .withAggregationType(MetricAggregationType.AVERAGE).withDisplayName("Node CPU utilization")
+                        .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("Percent")
+                        .withEvaluationRules(new EvaluationRule()
+                            .withDegradedRule(
+                                new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(70.0D))
+                            .withUnhealthyRule(
+                                new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(90.0D)))))
+                    .withResourceHealth(new AzureResourceHealthSignal()
+                        .withEnabled(ResourceHealthAvailabilityStateSignalBehavior.ENABLED)))
+                    .withAzureLogAnalytics(new LogAnalyticsSignals().withAuthenticationSetting("default-auth")
+                        .withLogAnalyticsWorkspaceResourceId(
+                            "/subscriptions/abcdef12-3456-7890-abcd-ef1234567890/resourceGroups/online-store-rg/providers/Microsoft.OperationalInsights/workspaces/online-store-law")
+                        .withSignals(Arrays.asList(new LogAnalyticsSignal().withName("unhealthy-pods").withQueryText(
+                            "KubePodInventory | where TimeGenerated > ago(5m) | where Namespace == 'online-store' | where PodStatus != 'Running' | summarize unhealthyPods = dcount(Name)")
+                            .withTimeGrain("PT5M").withValueColumnName("unhealthyPods")
+                            .withDisplayName("Unhealthy pods").withRefreshInterval(RefreshInterval.PT5M)
+                            .withDataUnit("Count")
+                            .withEvaluationRules(new EvaluationRule()
+                                .withDegradedRule(
+                                    new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(0.0D))
+                                .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                    .withThreshold(2.0D))))))
+                    .withAzureMonitorWorkspace(new AzureMonitorWorkspaceSignals()
+                        .withAuthenticationSetting("default-auth")
+                        .withAzureMonitorWorkspaceResourceId(
+                            "/subscriptions/abcdef12-3456-7890-abcd-ef1234567890/resourceGroups/online-store-rg/providers/Microsoft.Monitor/accounts/online-store-amw")
+                        .withSignals(Arrays.asList(new PrometheusMetricsSignal().withName("error-rate").withQueryText(
+                            "sum(rate(http_requests_total{job=\"orders-api\", code=~\"5..\"}[5m])) / sum(rate(http_requests_total{job=\"orders-api\"}[5m])) * 100")
+                            .withTimeGrain("PT5M").withDisplayName("HTTP 5xx error rate")
+                            .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("Percent")
+                            .withEvaluationRules(new EvaluationRule()
+                                .withDegradedRule(
+                                    new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(1.0D))
+                                .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                    .withThreshold(5.0D))),
+                            new PrometheusMetricsSignal().withName("p95-latency").withQueryText(
+                                "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"orders-api\"}[5m]))) * 1000")
+                                .withTimeGrain("PT5M").withDisplayName("p95 request latency")
+                                .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("MilliSeconds")
+                                .withEvaluationRules(new EvaluationRule()
+                                    .withDegradedRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                        .withThreshold(300.0D))
+                                    .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                        .withThreshold(800.0D))),
+                            new PrometheusMetricsSignal().withName("pod-cpu").withSignalDefinitionName("pod-cpu-usage")
+                                .withQueryText(
+                                    "sum(rate(container_cpu_usage_seconds_total{namespace=\"online-store\", pod=~\"orders-api-.*\"}[5m])) * 100")
+                                .withTimeGrain("PT5M").withDisplayName("Pod CPU utilization")
+                                .withRefreshInterval(RefreshInterval.PT1M).withDataUnit("Percent")
+                                .withEvaluationRules(new EvaluationRule()
+                                    .withDegradedRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                        .withThreshold(70.0D))
+                                    .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN)
+                                        .withThreshold(90.0D))))))
+                    .withDependencies(
+                        new DependenciesSignalGroupV2().withAggregationType(DependenciesAggregationType.MIN_HEALTHY)
+                            .withDegradedThreshold(100.0D).withUnhealthyThreshold(50.0D)
+                            .withUnit(DependenciesAggregationUnit.PERCENTAGE).withIgnoreUnknown(true)))
+                .withAlerts(new EntityAlerts().withUnhealthy(new AlertConfiguration().withSeverity(AlertSeverity.SEV1)
+                    .withDescription("Orders API is unhealthy.")
+                    .withActionGroupIds(Arrays.asList(
+                        "/subscriptions/abcdef12-3456-7890-abcd-ef1234567890/resourceGroups/online-store-rg/providers/Microsoft.Insights/actionGroups/online-store-oncall")))
+                    .withDegraded(new AlertConfiguration().withSeverity(AlertSeverity.SEV3)
+                        .withDescription("Orders API is degraded.")
+                        .withActionGroupIds(Arrays.asList(
+                            "/subscriptions/abcdef12-3456-7890-abcd-ef1234567890/resourceGroups/online-store-rg/providers/Microsoft.Insights/actionGroups/online-store-oncall")))))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

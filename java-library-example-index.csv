@@ -7192,3 +7192,4 @@ id,name,language,tag,package,version,date_epoch,date
 7191,azure-mgmt-resource-databoundaries@1.0.0,python,azure-mgmt-resource-databoundaries_1.0.0,azure-mgmt-resource-databoundaries,1.0.0,1784007260,07/14/2026
 7192,azure-mgmt-redhatopenshift@4.0.0,python,azure-mgmt-redhatopenshift_4.0.0,azure-mgmt-redhatopenshift,4.0.0,1784007250,07/14/2026
 7193,azure-mgmt-databoxedge@3.0.0,python,azure-mgmt-databoxedge_3.0.0,azure-mgmt-databoxedge,3.0.0,1784007236,07/14/2026
+7194,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.3.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.3.0,1783991145,07/14/2026

@@ -7190,3 +7190,4 @@ id,name,language,tag,package,version,date_epoch,date
 7189,azure-mgmt-serialconsole@2.0.0,python,azure-mgmt-serialconsole_2.0.0,azure-mgmt-serialconsole,2.0.0,1784012776,07/14/2026
 7190,azure-mgmt-cdn@14.0.0,python,azure-mgmt-cdn_14.0.0,azure-mgmt-cdn,14.0.0,1784007265,07/14/2026
 7191,azure-mgmt-resource-databoundaries@1.0.0,python,azure-mgmt-resource-databoundaries_1.0.0,azure-mgmt-resource-databoundaries,1.0.0,1784007260,07/14/2026
+7192,azure-mgmt-redhatopenshift@4.0.0,python,azure-mgmt-redhatopenshift_4.0.0,azure-mgmt-redhatopenshift,4.0.0,1784007250,07/14/2026

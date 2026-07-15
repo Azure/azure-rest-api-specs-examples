@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.cloudhealth.models.GetDataAnnotationsRequest;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Entities GetDataAnnotations.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/Entities_GetDataAnnotations.json
+     */
+    /**
+     * Sample code: Entities_GetDataAnnotations.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void entitiesGetDataAnnotations(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.entities().getDataAnnotationsWithResponse("online-store-rg", "online-store", "web-frontend",
+            new GetDataAnnotationsRequest().withStartAt(OffsetDateTime.parse("2026-05-03T00:00:00Z"))
+                .withEndAt(OffsetDateTime.parse("2026-05-04T23:59:59Z")),
+            com.azure.core.util.Context.NONE);
+    }
+}

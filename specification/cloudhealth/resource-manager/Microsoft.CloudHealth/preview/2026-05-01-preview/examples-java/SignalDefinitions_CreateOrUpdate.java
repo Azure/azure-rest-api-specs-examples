@@ -1,0 +1,52 @@
+
+import com.azure.resourcemanager.cloudhealth.models.DynamicThresholdSensitivity;
+import com.azure.resourcemanager.cloudhealth.models.EvaluationRule;
+import com.azure.resourcemanager.cloudhealth.models.LookBackWindow;
+import com.azure.resourcemanager.cloudhealth.models.MetricAggregationType;
+import com.azure.resourcemanager.cloudhealth.models.RefreshInterval;
+import com.azure.resourcemanager.cloudhealth.models.ResourceMetricSignalDefinitionProperties;
+import com.azure.resourcemanager.cloudhealth.models.SignalOperator;
+import com.azure.resourcemanager.cloudhealth.models.ThresholdRuleV2;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for SignalDefinitions CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/SignalDefinitions_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: SignalDefinitions_CreateOrUpdate.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void
+        signalDefinitionsCreateOrUpdate(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.signalDefinitions().define("sql-cpu-percent").withExistingHealthmodel("online-store-rg", "online-store")
+            .withProperties(new ResourceMetricSignalDefinitionProperties().withDisplayName("SQL CPU utilization")
+                .withRefreshInterval(RefreshInterval.PT1M)
+                .withTags(mapOf("environment", "production", "team", "online-store")).withDataUnit("Percent")
+                .withEvaluationRules(new EvaluationRule()
+                    .withDegradedRule(
+                        new ThresholdRuleV2().withOperator(SignalOperator.GREATER_THAN).withThreshold(70.0D))
+                    .withUnhealthyRule(new ThresholdRuleV2().withOperator(SignalOperator.DYNAMIC)
+                        .withSensitivity(DynamicThresholdSensitivity.MEDIUM).withLookBackWindow(LookBackWindow.PT1H)))
+                .withMetricNamespace("Microsoft.Sql/servers/databases").withMetricName("cpu_percent")
+                .withTimeGrain("PT5M").withAggregationType(MetricAggregationType.AVERAGE))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

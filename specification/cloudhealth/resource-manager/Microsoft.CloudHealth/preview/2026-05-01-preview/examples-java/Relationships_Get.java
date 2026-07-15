@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Relationships Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/Relationships_Get.json
+     */
+    /**
+     * Sample code: Relationships_Get.
+     * 
+     * @param manager Entry point to CloudHealthManager.
+     */
+    public static void relationshipsGet(com.azure.resourcemanager.cloudhealth.CloudHealthManager manager) {
+        manager.relationships().getWithResponse("online-store-rg", "online-store", "web-frontend-to-orders-api",
+            com.azure.core.util.Context.NONE);
+    }
+}

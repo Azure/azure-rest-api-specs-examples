@@ -1,0 +1,84 @@
+package armcloudhealth_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cloudhealth/armcloudhealth"
+)
+
+// Generated from example definition: 2026-05-01-preview/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcloudhealth.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcloudhealth.OperationsClientListResponse{
+		// 	OperationListResult: armcloudhealth.OperationListResult{
+		// 		Value: []*armcloudhealth.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.CloudHealth/healthmodels/read"),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Display: &armcloudhealth.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft CloudHealth"),
+		// 					Resource: to.Ptr("Health models"),
+		// 					Operation: to.Ptr("Get Health Model"),
+		// 					Description: to.Ptr("Gets a health model."),
+		// 				},
+		// 				Origin: to.Ptr(armcloudhealth.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.CloudHealth/healthmodels/write"),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Display: &armcloudhealth.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft CloudHealth"),
+		// 					Resource: to.Ptr("Health models"),
+		// 					Operation: to.Ptr("Create or Update Health Model"),
+		// 					Description: to.Ptr("Creates or updates a health model."),
+		// 				},
+		// 				Origin: to.Ptr(armcloudhealth.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.CloudHealth/healthmodels/delete"),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Display: &armcloudhealth.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft CloudHealth"),
+		// 					Resource: to.Ptr("Health models"),
+		// 					Operation: to.Ptr("Delete Health Model"),
+		// 					Description: to.Ptr("Deletes a health model."),
+		// 				},
+		// 				Origin: to.Ptr(armcloudhealth.OriginUserSystem),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.CloudHealth/operations/read"),
+		// 				IsDataAction: to.Ptr(false),
+		// 				Display: &armcloudhealth.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft CloudHealth"),
+		// 					Resource: to.Ptr("Operations"),
+		// 					Operation: to.Ptr("List Operations"),
+		// 					Description: to.Ptr("Lists the available operations."),
+		// 				},
+		// 				Origin: to.Ptr(armcloudhealth.OriginUserSystem),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

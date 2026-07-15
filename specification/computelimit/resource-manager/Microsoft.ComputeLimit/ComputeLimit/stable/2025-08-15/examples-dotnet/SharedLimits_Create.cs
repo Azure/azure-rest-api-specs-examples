@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ComputeLimit.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ComputeLimit;
 
 // Generated from example definition: 2025-08-15/SharedLimits_Create.json
@@ -16,23 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this ComputeLimitSharedLimitResource created on azure
+// for more information of creating ComputeLimitSharedLimitResource, please refer to the document of ComputeLimitSharedLimitResource
 string subscriptionId = "12345678-1234-1234-1234-123456789012";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this ComputeLimitSharedLimitResource
 AzureLocation location = new AzureLocation("eastus");
-ComputeLimitSharedLimitCollection collection = subscriptionResource.GetComputeLimitSharedLimits(location);
+string name = "StandardDSv3Family";
+ResourceIdentifier computeLimitSharedLimitResourceId = ComputeLimitSharedLimitResource.CreateResourceIdentifier(subscriptionId, location, name);
+ComputeLimitSharedLimitResource computeLimitSharedLimit = client.GetComputeLimitSharedLimitResource(computeLimitSharedLimitResourceId);
 
 // invoke the operation
-string name = "StandardDSv3Family";
 ComputeLimitSharedLimitData data = new ComputeLimitSharedLimitData
 {
     Properties = new ComputeLimitSharedLimitProperties(),
 };
-ArmOperation<ComputeLimitSharedLimitResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<ComputeLimitSharedLimitResource> lro = await computeLimitSharedLimit.UpdateAsync(WaitUntil.Completed, data);
 ComputeLimitSharedLimitResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

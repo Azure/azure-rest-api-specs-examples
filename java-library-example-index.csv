@@ -7195,3 +7195,8 @@ id,name,language,tag,package,version,date_epoch,date
 7194,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.3.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.3.0,1783991145,07/14/2026
 7195,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0-beta.3,1783951579,07/13/2026
 7196,"Azure.ResourceManager.ComputeLimit,1.3.0",dotnet,Azure.ResourceManager.ComputeLimit_1.3.0,Azure.ResourceManager.ComputeLimit,1.3.0,1783991373,07/14/2026
+7197,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservices/v3@v3.1.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservices/v3.1.0,sdk/resourcemanager/recoveryservices/armrecoveryservices,v3.1.0,1784081936,07/15/2026
+7198,@azure/arm-commvaultcontentstore@1.0.0-beta.1,js,@azure/arm-commvaultcontentstore_1.0.0-beta.1,@azure/arm-commvaultcontentstore,1.0.0-beta.1,1784108241,07/15/2026
+7199,@azure/arm-azurestackhci@4.1.0,js,@azure/arm-azurestackhci_4.1.0,@azure/arm-azurestackhci,4.1.0,1784106516,07/15/2026
+7200,@azure/arm-monitorworkspaces@1.0.0,js,@azure/arm-monitorworkspaces_1.0.0,@azure/arm-monitorworkspaces,1.0.0,1784084926,07/15/2026
+7201,@azure/arm-recoveryservices@7.1.0,js,@azure/arm-recoveryservices_7.1.0,@azure/arm-recoveryservices,7.1.0,1784081865,07/15/2026

@@ -7202,3 +7202,4 @@ id,name,language,tag,package,version,date_epoch,date
 7201,@azure/arm-recoveryservices@7.1.0,js,@azure/arm-recoveryservices_7.1.0,@azure/arm-recoveryservices,7.1.0,1784081865,07/15/2026
 7202,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor@v0.13.0,go,sdk/resourcemanager/monitor/armmonitor/v0.13.0,sdk/resourcemanager/monitor/armmonitor,v0.13.0,1784180810,07/16/2026
 7203,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge/v2@v2.0.0,go,sdk/resourcemanager/databoxedge/armdataboxedge/v2.0.0,sdk/resourcemanager/databoxedge/armdataboxedge,v2.0.0,1784175965,07/16/2026
+7204,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2@v2.0.0,go,sdk/resourcemanager/consumption/armconsumption/v2.0.0,sdk/resourcemanager/consumption/armconsumption,v2.0.0,1784175893,07/16/2026

@@ -45,13 +45,13 @@ func ExampleAppServiceCertificateOrdersClient_BeginCreateOrUpdate() {
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcertificateregistration.AppServiceCertificateOrdersClientCreateOrUpdateResponse{
-	// 	AppServiceCertificateOrder: &armcertificateregistration.AppServiceCertificateOrder{
+	// 	AppServiceCertificateOrder: armcertificateregistration.AppServiceCertificateOrder{
 	// 		Name: to.Ptr("SampleCertificateOrderName"),
 	// 		Type: to.Ptr("Microsoft.CertificateRegistration/certificateOrders"),
 	// 		ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName"),

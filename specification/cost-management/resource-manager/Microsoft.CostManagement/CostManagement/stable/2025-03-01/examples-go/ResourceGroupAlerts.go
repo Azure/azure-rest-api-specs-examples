@@ -48,6 +48,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 					Status: to.Ptr(armcostmanagement.AlertStatusActive),
 	// 					StatusModificationTime: to.Ptr("0001-01-01T00:00:00"),
 	// 					Details: &armcostmanagement.AlertPropertiesDetails{
+	// 						Amount: to.Ptr[float64](200000),
 	// 						ContactEmails: []*string{
 	// 							to.Ptr("1234@contoso.com"),
 	// 						},
@@ -55,6 +56,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 						},
 	// 						ContactRoles: []*string{
 	// 						},
+	// 						CurrentSpend: to.Ptr[float64](161000.12),
 	// 						MeterFilter: []any{
 	// 						},
 	// 						Operator: to.Ptr(armcostmanagement.AlertOperatorGreaterThan),
@@ -65,6 +67,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 						},
 	// 						TagFilter: map[string]any{
 	// 						},
+	// 						Threshold: to.Ptr[float64](0.8),
 	// 						TimeGrainType: to.Ptr(armcostmanagement.AlertTimeGrainTypeQuarterly),
 	// 						TriggeredBy: to.Ptr("00000000-0000-0000-0000-000000000000_1_01"),
 	// 						Unit: to.Ptr("USD"),
@@ -90,6 +93,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 					Status: to.Ptr(armcostmanagement.AlertStatusActive),
 	// 					StatusModificationTime: to.Ptr("0001-01-01T00:00:00"),
 	// 					Details: &armcostmanagement.AlertPropertiesDetails{
+	// 						Amount: to.Ptr[float64](200000),
 	// 						ContactEmails: []*string{
 	// 							to.Ptr("1234@contoso.com"),
 	// 						},
@@ -97,6 +101,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 						},
 	// 						ContactRoles: []*string{
 	// 						},
+	// 						CurrentSpend: to.Ptr[float64](171000.32),
 	// 						MeterFilter: []any{
 	// 						},
 	// 						Operator: to.Ptr(armcostmanagement.AlertOperatorGreaterThan),
@@ -107,6 +112,7 @@ func ExampleAlertsClient_List_resourceGroupAlerts() {
 	// 						},
 	// 						TagFilter: map[string]any{
 	// 						},
+	// 						Threshold: to.Ptr[float64](0.8),
 	// 						TimeGrainType: to.Ptr(armcostmanagement.AlertTimeGrainTypeQuarterly),
 	// 						TriggeredBy: to.Ptr("11111111-1111-1111-111111111111_1_01"),
 	// 						Unit: to.Ptr("USD"),

@@ -7214,3 +7214,4 @@ id,name,language,tag,package,version,date_epoch,date
 7213,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement/v3@v3.0.0,go,sdk/resourcemanager/costmanagement/armcostmanagement/v3.0.0,sdk/resourcemanager/costmanagement/armcostmanagement,v3.0.0,1784175635,07/16/2026
 7214,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation/v2@v2.0.0,go,sdk/resourcemanager/attestation/armattestation/v2.0.0,sdk/resourcemanager/attestation/armattestation,v2.0.0,1784175631,07/16/2026
 7215,@azure/arm-edgeorder@1.0.0,js,@azure/arm-edgeorder_1.0.0,@azure/arm-edgeorder,1.0.0,1784195227,07/16/2026
+7216,@azure/arm-storagesync@10.0.0,js,@azure/arm-storagesync_10.0.0,@azure/arm-storagesync,10.0.0,1784194236,07/16/2026

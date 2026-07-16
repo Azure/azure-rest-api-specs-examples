@@ -7207,3 +7207,4 @@ id,name,language,tag,package,version,date_epoch,date
 7206,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoundaries/armdataboundaries@v1.0.0,go,sdk/resourcemanager/databoundaries/armdataboundaries/v1.0.0,sdk/resourcemanager/databoundaries/armdataboundaries,v1.0.0,1784175852,07/16/2026
 7207,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databricks/armdatabricks/v2@v2.0.0,go,sdk/resourcemanager/databricks/armdatabricks/v2.0.0,sdk/resourcemanager/databricks/armdatabricks,v2.0.0,1784175851,07/16/2026
 7208,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v3@v3.0.0,go,sdk/resourcemanager/cdn/armcdn/v3.0.0,sdk/resourcemanager/cdn/armcdn,v3.0.0,1784175839,07/16/2026
+7209,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling/v2@v2.0.0,go,sdk/resourcemanager/billing/armbilling/v2.0.0,sdk/resourcemanager/billing/armbilling,v2.0.0,1784175836,07/16/2026

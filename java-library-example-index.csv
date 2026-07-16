@@ -7221,3 +7221,4 @@ id,name,language,tag,package,version,date_epoch,date
 7220,@azure/arm-powerbidedicated@5.0.0,js,@azure/arm-powerbidedicated_5.0.0,@azure/arm-powerbidedicated,5.0.0,1784194084,07/16/2026
 7221,@azure/arm-storagecache@9.0.0,js,@azure/arm-storagecache_9.0.0,@azure/arm-storagecache,9.0.0,1784194083,07/16/2026
 7222,@azure/arm-serialconsole@3.0.0,js,@azure/arm-serialconsole_3.0.0,@azure/arm-serialconsole,3.0.0,1784194083,07/16/2026
+7223,@azure/arm-operationalinsights@11.0.0,js,@azure/arm-operationalinsights_11.0.0,@azure/arm-operationalinsights,11.0.0,1784194077,07/16/2026

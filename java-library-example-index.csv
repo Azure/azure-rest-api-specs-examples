@@ -7215,3 +7215,4 @@ id,name,language,tag,package,version,date_epoch,date
 7214,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation/v2@v2.0.0,go,sdk/resourcemanager/attestation/armattestation/v2.0.0,sdk/resourcemanager/attestation/armattestation,v2.0.0,1784175631,07/16/2026
 7215,@azure/arm-edgeorder@1.0.0,js,@azure/arm-edgeorder_1.0.0,@azure/arm-edgeorder,1.0.0,1784195227,07/16/2026
 7216,@azure/arm-storagesync@10.0.0,js,@azure/arm-storagesync_10.0.0,@azure/arm-storagesync,10.0.0,1784194236,07/16/2026
+7217,@azure/arm-resourcehealth@5.0.0,js,@azure/arm-resourcehealth_5.0.0,@azure/arm-resourcehealth,5.0.0,1784194134,07/16/2026

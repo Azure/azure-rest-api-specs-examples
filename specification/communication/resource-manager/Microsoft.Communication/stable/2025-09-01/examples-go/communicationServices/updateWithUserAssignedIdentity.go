@@ -38,7 +38,7 @@ func ExampleServicesClient_Update_updateResourceToAddAUserAssignedManagedIdentit
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcommunication.ServicesClientUpdateResponse{
-	// 	ServiceResource: &armcommunication.ServiceResource{
+	// 	ServiceResource: armcommunication.ServiceResource{
 	// 		Name: to.Ptr("MyCommunicationResource"),
 	// 		Type: to.Ptr("Microsoft.Communication/CommunicationServices"),
 	// 		ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/MyResourceGroup/providers/Microsoft.Communication/CommunicationServices/MyCommunicationResource"),

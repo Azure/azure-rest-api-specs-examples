@@ -30,13 +30,13 @@ func ExampleEmailServicesClient_BeginUpdate() {
 	}
 	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcommunication.EmailServicesClientUpdateResponse{
-	// 	EmailServiceResource: &armcommunication.EmailServiceResource{
+	// 	EmailServiceResource: armcommunication.EmailServiceResource{
 	// 		Name: to.Ptr("MyEmailServiceResource"),
 	// 		Type: to.Ptr("Microsoft.Communication/EmailServices"),
 	// 		ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/MyResourceGroup/providers/Microsoft.Communication/EmailServices/MyEmailServiceResource"),

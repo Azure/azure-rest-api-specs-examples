@@ -47,9 +47,11 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccountW
 		// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/X3TD-KVTT-BG7-TGB"),
 		// 					CanceledCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](200),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventType("CanceledCredit")),
 		// 					InvoiceNumber: to.Ptr("3304"),

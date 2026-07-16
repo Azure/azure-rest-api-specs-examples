@@ -39,8 +39,10 @@ func ExampleBudgetsClient_NewListPager() {
 		// 				ETag: to.Ptr("\"1d34d012214157f\""),
 		// 				ID: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/TestBudget"),
 		// 				Properties: &armconsumption.BudgetProperties{
+		// 					Amount: to.Ptr[float64](100.65),
 		// 					Category: to.Ptr(armconsumption.CategoryTypeCost),
 		// 					CurrentSpend: &armconsumption.CurrentSpend{
+		// 						Amount: to.Ptr[float64](80.89),
 		// 						Unit: to.Ptr("USD"),
 		// 					},
 		// 					Filter: &armconsumption.BudgetFilter{
@@ -92,6 +94,7 @@ func ExampleBudgetsClient_NewListPager() {
 		// 							},
 		// 							Enabled: to.Ptr(true),
 		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThanOrEqualTo),
+		// 							Threshold: to.Ptr[float64](90),
 		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 		// 						},
 		// 						"Actual_GreaterThan_80_Percent": &armconsumption.Notification{
@@ -105,6 +108,7 @@ func ExampleBudgetsClient_NewListPager() {
 		// 							},
 		// 							Enabled: to.Ptr(true),
 		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThan),
+		// 							Threshold: to.Ptr[float64](80),
 		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 		// 						},
 		// 					},
@@ -121,8 +125,10 @@ func ExampleBudgetsClient_NewListPager() {
 		// 				ETag: to.Ptr("\"1d34d012214157f\""),
 		// 				ID: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Consumption/budgets/TestBudget"),
 		// 				Properties: &armconsumption.BudgetProperties{
+		// 					Amount: to.Ptr[float64](600.65),
 		// 					Category: to.Ptr(armconsumption.CategoryTypeCost),
 		// 					CurrentSpend: &armconsumption.CurrentSpend{
+		// 						Amount: to.Ptr[float64](120.89),
 		// 						Unit: to.Ptr("USD"),
 		// 					},
 		// 					Filter: &armconsumption.BudgetFilter{
@@ -174,6 +180,7 @@ func ExampleBudgetsClient_NewListPager() {
 		// 							},
 		// 							Enabled: to.Ptr(true),
 		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThanOrEqualTo),
+		// 							Threshold: to.Ptr[float64](60),
 		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 		// 						},
 		// 						"Actual_GreaterThan_40_Percent": &armconsumption.Notification{
@@ -187,6 +194,7 @@ func ExampleBudgetsClient_NewListPager() {
 		// 							},
 		// 							Enabled: to.Ptr(true),
 		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThan),
+		// 							Threshold: to.Ptr[float64](40),
 		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 		// 						},
 		// 					},

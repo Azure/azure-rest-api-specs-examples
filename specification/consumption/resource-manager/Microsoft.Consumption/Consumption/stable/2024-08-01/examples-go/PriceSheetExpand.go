@@ -29,7 +29,7 @@ func ExamplePriceSheetClient_GetByBillingPeriod_priceSheetExpand() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armconsumption.PriceSheetClientGetByBillingPeriodResponse{
-	// 	PriceSheetResult: &armconsumption.PriceSheetResult{
+	// 	PriceSheetResult: armconsumption.PriceSheetResult{
 	// 		Name: to.Ptr("default"),
 	// 		Type: to.Ptr("Microsoft.Consumption/pricesheets"),
 	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/pricesheets/default"),
@@ -39,16 +39,20 @@ func ExamplePriceSheetClient_GetByBillingPeriod_priceSheetExpand() {
 	// 				{
 	// 					BillingPeriodID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702"),
 	// 					CurrencyCode: to.Ptr("EUR"),
+	// 					IncludedQuantity: to.Ptr[float64](100),
 	// 					MeterDetails: &armconsumption.MeterDetails{
 	// 						MeterCategory: to.Ptr("Networking"),
 	// 						MeterLocation: to.Ptr("Zone 2"),
 	// 						MeterName: to.Ptr("Data Transfer Out (GB)"),
+	// 						PretaxStandardRate: to.Ptr[float64](0.138),
+	// 						TotalIncludedQuantity: to.Ptr[float64](0),
 	// 						Unit: to.Ptr("GB"),
 	// 					},
 	// 					MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 	// 					OfferID: to.Ptr("OfferId 1"),
 	// 					PartNumber: to.Ptr("XX-11110"),
 	// 					UnitOfMeasure: to.Ptr("100 Hours"),
+	// 					UnitPrice: to.Ptr[float64](0.00328),
 	// 				},
 	// 			},
 	// 		},

@@ -27,7 +27,7 @@ func ExampleChargesClient_List_chargesListByInvoiceSectionIdModern() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armconsumption.ChargesClientListResponse{
-	// 	ChargesListResult: &armconsumption.ChargesListResult{
+	// 	ChargesListResult: armconsumption.ChargesListResult{
 	// 		Value: []armconsumption.ChargeSummaryClassification{
 	// 			&armconsumption.ModernChargeSummary{
 	// 				Name: to.Ptr("chargeSummaryId1"),
@@ -37,17 +37,20 @@ func ExampleChargesClient_List_chargesListByInvoiceSectionIdModern() {
 	// 				Properties: &armconsumption.ModernChargeSummaryProperties{
 	// 					AzureCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](12),
 	// 					},
 	// 					BillingAccountID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789"),
 	// 					BillingPeriodID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/providers/Microsoft.Billing/billingPeriods/201910"),
 	// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/2460"),
 	// 					ChargesBilledSeparately: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](0),
 	// 					},
 	// 					InvoiceSectionID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/2460/invoiceSections/97531"),
 	// 					IsInvoiced: to.Ptr(false),
 	// 					MarketplaceCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](0),
 	// 					},
 	// 					UsageEnd: to.Ptr("2023-05-31"),
 	// 					UsageStart: to.Ptr("2023-03-01"),

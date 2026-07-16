@@ -21,8 +21,9 @@ func ExampleReservationTransactionsClient_NewListPager() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	pager := clientFactory.NewReservationTransactionsClient().NewListPager("123456", &armconsumption.ReservationTransactionsClientListOptions{
-		Filter:             to.Ptr("properties/eventDate+ge+2020-05-20+AND+properties/eventDate+le+2020-05-30"),
-		UseMarkupIfPartner: to.Ptr(true)})
+		Filter:                  to.Ptr("properties/eventDate+ge+2020-05-20+AND+properties/eventDate+le+2020-05-30"),
+		PreviewMarkupPercentage: to.Ptr[float64](15.5),
+		UseMarkupIfPartner:      to.Ptr(true)})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -44,6 +45,7 @@ func ExampleReservationTransactionsClient_NewListPager() {
 		// 					Description: to.Ptr("Standard_DS1_v2 westus 1 Year"),
 		// 					AccountName: to.Ptr("Microsoft Infrastructure"),
 		// 					AccountOwnerEmail: to.Ptr("admin@microsoft.com"),
+		// 					Amount: to.Ptr[float64](-21),
 		// 					ArmSKUName: to.Ptr("Standard_DS1_v2"),
 		// 					BillingFrequency: to.Ptr("recurring"),
 		// 					BillingMonth: to.Ptr[int32](20190901),
@@ -53,9 +55,12 @@ func ExampleReservationTransactionsClient_NewListPager() {
 		// 					DepartmentName: to.Ptr("Unassigned"),
 		// 					EventDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-09T19:19:04Z"); return t}()),
 		// 					EventType: to.Ptr("Refund"),
+		// 					MonetaryCommitment: to.Ptr[float64](523123.9),
+		// 					Overage: to.Ptr[float64](23234.49),
 		// 					PurchasingEnrollment: to.Ptr("123456"),
 		// 					PurchasingSubscriptionGUID: to.Ptr("a838a8c3-a408-49e1-ac90-42cb95bff9b2"),
 		// 					PurchasingSubscriptionName: to.Ptr("Infrastructure Subscription"),
+		// 					Quantity: to.Ptr[float64](1),
 		// 					Region: to.Ptr("westus"),
 		// 					ReservationOrderID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 					ReservationOrderName: to.Ptr("Transaction-DS1_v2"),
@@ -72,6 +77,7 @@ func ExampleReservationTransactionsClient_NewListPager() {
 		// 					Description: to.Ptr("Standard_DS1_v2 westus 1 Year"),
 		// 					AccountName: to.Ptr("Microsoft Infrastructure"),
 		// 					AccountOwnerEmail: to.Ptr("admin@microsoft.com"),
+		// 					Amount: to.Ptr[float64](21),
 		// 					ArmSKUName: to.Ptr("Standard_DS1_v2"),
 		// 					BillingFrequency: to.Ptr("recurring"),
 		// 					BillingMonth: to.Ptr[int32](20190901),
@@ -81,9 +87,12 @@ func ExampleReservationTransactionsClient_NewListPager() {
 		// 					DepartmentName: to.Ptr("Unassigned"),
 		// 					EventDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-09T19:19:04Z"); return t}()),
 		// 					EventType: to.Ptr("Purchase"),
+		// 					MonetaryCommitment: to.Ptr[float64](523123.9),
+		// 					Overage: to.Ptr[float64](23234.49),
 		// 					PurchasingEnrollment: to.Ptr("123456"),
 		// 					PurchasingSubscriptionGUID: to.Ptr("a838a8c3-a408-49e1-ac90-42cb95bff9b2"),
 		// 					PurchasingSubscriptionName: to.Ptr("Infrastructure Subscription"),
+		// 					Quantity: to.Ptr[float64](1),
 		// 					Region: to.Ptr("westus"),
 		// 					ReservationOrderID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 					ReservationOrderName: to.Ptr("Transaction-DS1_v2"),

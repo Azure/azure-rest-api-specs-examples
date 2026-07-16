@@ -43,10 +43,13 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 				Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
 		// 				Location: to.Ptr("northeurope"),
 		// 				Properties: &armconsumption.LegacySingleScopeReservationRecommendationProperties{
+		// 					CostWithNoReservedInstances: to.Ptr[float64](0),
 		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00Z"); return t}()),
 		// 					LastUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-15T00:00:00Z"); return t}()),
 		// 					LookBackPeriod: to.Ptr("Last7Days"),
 		// 					MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					NetSavings: to.Ptr[float64](4.634521202630137),
+		// 					RecommendedQuantity: to.Ptr[float64](1),
 		// 					Scope: to.Ptr("Single"),
 		// 					SKUProperties: []*armconsumption.SKUProperty{
 		// 						{
@@ -60,6 +63,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					},
 		// 					SubscriptionID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 					Term: to.Ptr("P1Y"),
+		// 					TotalCostWithReservedInstances: to.Ptr[float64](0),
 		// 					TotalHours: to.Ptr[int32](527),
 		// 				},
 		// 				SKU: to.Ptr("Standard_DS1_v2"),
@@ -71,10 +75,13 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 				Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
 		// 				Location: to.Ptr("northeurope"),
 		// 				Properties: &armconsumption.LegacySingleScopeReservationRecommendationProperties{
+		// 					CostWithNoReservedInstances: to.Ptr[float64](0),
 		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00Z"); return t}()),
 		// 					LastUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-08T00:00:00Z"); return t}()),
 		// 					LookBackPeriod: to.Ptr("Last7Days"),
 		// 					MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					NetSavings: to.Ptr[float64](7.289315723178081),
+		// 					RecommendedQuantity: to.Ptr[float64](1),
 		// 					Scope: to.Ptr("Single"),
 		// 					SKUProperties: []*armconsumption.SKUProperty{
 		// 						{
@@ -88,6 +95,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					},
 		// 					SubscriptionID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 					Term: to.Ptr("P3Y"),
+		// 					TotalCostWithReservedInstances: to.Ptr[float64](0),
 		// 					TotalHours: to.Ptr[int32](427),
 		// 				},
 		// 				SKU: to.Ptr("Standard_DS1_v2"),

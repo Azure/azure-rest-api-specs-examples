@@ -45,9 +45,11 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccount(
 		// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/X3TD-KVTT-BG7-TGB"),
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventTypeNewCredit),
 		// 					InvoiceNumber: to.Ptr("3304"),
@@ -55,6 +57,7 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccount(
 		// 					LotSource: to.Ptr("ConsumptionCommitment"),
 		// 					NewCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00Z"); return t}()),
 		// 				},
@@ -69,9 +72,11 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccount(
 		// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/X3TD-KVTT-BG7-TGB"),
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventTypeSettledCharges),
 		// 					InvoiceNumber: to.Ptr("3304"),

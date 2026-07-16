@@ -41,6 +41,7 @@ func ExampleReservationTransactionsClient_NewListByBillingProfilePager() {
 		// 				ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/fcebaabc-fced-4284-a83d-79f83dee183c:45796ba8-988f-45ad-bea9-7b71fc6c7513_2018-09-30/billingProfiles/Z76D-SGAF-BG7-TGB/providers/Microsoft.Consumption/reservationTransactions"),
 		// 				Properties: &armconsumption.ModernReservationTransactionProperties{
 		// 					Description: to.Ptr("Reserved VM Instance, Standard_B1ls, US East, 3 Years"),
+		// 					Amount: to.Ptr[float64](1.44),
 		// 					ArmSKUName: to.Ptr("Standard_B1ls"),
 		// 					BillingFrequency: to.Ptr("Recurring"),
 		// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/fcebaabc-fced-4284-a83d-79f83dee183c:45796ba8-988f-45ad-bea9-7b71fc6c7513_2018-09-30/billingProfiles/Z76D-SGAF-BG7-TGB"),
@@ -54,6 +55,7 @@ func ExampleReservationTransactionsClient_NewListByBillingProfilePager() {
 		// 					InvoiceSectionName: to.Ptr("IT Department"),
 		// 					PurchasingSubscriptionGUID: to.Ptr("d924ad15-4a3d-4047-971d-c8b1b300a97b"),
 		// 					PurchasingSubscriptionName: to.Ptr("contoso"),
+		// 					Quantity: to.Ptr[float64](1),
 		// 					Region: to.Ptr("eastus"),
 		// 					ReservationOrderID: to.Ptr("a838a8c3-a408-49e1-ac90-42cb95bff9b2"),
 		// 					ReservationOrderName: to.Ptr("VM_RI_03-25-2020_14-18"),

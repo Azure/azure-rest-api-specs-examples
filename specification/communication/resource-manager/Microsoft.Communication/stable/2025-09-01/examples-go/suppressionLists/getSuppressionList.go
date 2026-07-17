@@ -27,7 +27,7 @@ func ExampleSuppressionListsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcommunication.SuppressionListsClientGetResponse{
-	// 	SuppressionListResource: &armcommunication.SuppressionListResource{
+	// 	SuppressionListResource: armcommunication.SuppressionListResource{
 	// 		Name: to.Ptr("aaaa1111-bbbb-2222-3333-aaaa11112222"),
 	// 		Type: to.Ptr("Microsoft.Communication/EmailServices/Domains/SuppressionLists"),
 	// 		ID: to.Ptr("/subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/contosoResourceGroup/providers/Microsoft.Communication/EmailServices/contosoEmailService/Domains/contoso.com/suppressionLists/aaaa1111-bbbb-2222-3333-aaaa11112222"),

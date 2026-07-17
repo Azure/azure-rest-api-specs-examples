@@ -33,7 +33,7 @@ func ExampleAppServiceCertificateOrdersClient_UpdateCertificate() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcertificateregistration.AppServiceCertificateOrdersClientUpdateCertificateResponse{
-	// 	AppServiceCertificateResource: &armcertificateregistration.AppServiceCertificateResource{
+	// 	AppServiceCertificateResource: armcertificateregistration.AppServiceCertificateResource{
 	// 		Name: to.Ptr("SampleCertName1"),
 	// 		Type: to.Ptr("Microsoft.CertificateRegistration/certificateOrders/certificates"),
 	// 		ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.CertificateRegistration/certificateOrders/SampleCertificateOrderName/certificates/SampleCertName1"),

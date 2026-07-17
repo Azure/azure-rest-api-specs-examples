@@ -27,7 +27,7 @@ func ExampleAppServiceCertificateOrdersClient_RetrieveCertificateEmailHistory() 
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armcertificateregistration.AppServiceCertificateOrdersClientRetrieveCertificateEmailHistoryResponse{
-	// 	undefined: &[]*armcertificateregistration.CertificateEmail{
+	// 	CertificateEmailArray: []*armcertificateregistration.CertificateEmail{
 	// 		{
 	// 			EmailID: to.Ptr("customer@email.com"),
 	// 			TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25+00:00"); return t}()),

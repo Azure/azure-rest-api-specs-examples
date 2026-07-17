@@ -7226,3 +7226,4 @@ id,name,language,tag,package,version,date_epoch,date
 7225,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0,sdk/resourcemanager/cosmos/armcosmos,v4.0.0,1784282069,07/17/2026
 7226,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.1.0,go,sdk/resourcemanager/compute/armbulkactions/v0.1.0,sdk/resourcemanager/compute/armbulkactions,v0.1.0,1784281406,07/17/2026
 7227,@azure/arm-monitor@8.0.0-beta.8,js,@azure/arm-monitor_8.0.0-beta.8,@azure/arm-monitor,8.0.0-beta.8,1784272972,07/17/2026
+7228,@azure/arm-redhatopenshift@1.0.0,js,@azure/arm-redhatopenshift_1.0.0,@azure/arm-redhatopenshift,1.0.0,1784253146,07/17/2026

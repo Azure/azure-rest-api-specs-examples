@@ -7223,3 +7223,4 @@ id,name,language,tag,package,version,date_epoch,date
 7222,@azure/arm-serialconsole@3.0.0,js,@azure/arm-serialconsole_3.0.0,@azure/arm-serialconsole,3.0.0,1784194083,07/16/2026
 7223,@azure/arm-operationalinsights@11.0.0,js,@azure/arm-operationalinsights_11.0.0,@azure/arm-operationalinsights,11.0.0,1784194077,07/16/2026
 7224,@azure/arm-resources-subscriptions@3.0.0,js,@azure/arm-resources-subscriptions_3.0.0,@azure/arm-resources-subscriptions,3.0.0,1784194072,07/16/2026
+7225,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0,sdk/resourcemanager/cosmos/armcosmos,v4.0.0,1784282069,07/17/2026

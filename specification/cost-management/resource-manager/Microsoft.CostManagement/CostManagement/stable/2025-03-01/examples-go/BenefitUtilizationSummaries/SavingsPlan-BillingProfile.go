@@ -42,9 +42,12 @@ func ExampleBenefitUtilizationSummariesClient_NewListByBillingProfileIDPager() {
 		// 				Kind: to.Ptr(armcostmanagement.BenefitKindSavingsPlan),
 		// 				Properties: &armcostmanagement.SavingsPlanUtilizationSummaryProperties{
 		// 					ArmSKUName: to.Ptr("Compute_Savings_Plan"),
+		// 					AvgUtilizationPercentage: to.Ptr[float64](90),
 		// 					BenefitID: to.Ptr("/providers/Microsoft.BillingBenefits/savingsPlanOrders/66cccc66-6ccc-6c66-666c-66cc6c6c66c6/savingsPlans/222d22dd-d2d2-2dd2-222d-2dd2222ddddd"),
 		// 					BenefitOrderID: to.Ptr("/providers/Microsoft.BillingBenefits/savingsPlanOrders/66cccc66-6ccc-6c66-666c-66cc6c6c66c6"),
 		// 					BenefitType: to.Ptr(armcostmanagement.BenefitKindSavingsPlan),
+		// 					MaxUtilizationPercentage: to.Ptr[float64](100),
+		// 					MinUtilizationPercentage: to.Ptr[float64](80),
 		// 					UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-16T00:00:00Z"); return t}()),
 		// 				},
 		// 			},

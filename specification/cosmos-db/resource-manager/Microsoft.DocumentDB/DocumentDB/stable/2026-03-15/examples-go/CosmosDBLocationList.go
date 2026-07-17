@@ -1,0 +1,72 @@
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4"
+)
+
+// Generated from example definition: 2026-03-15/CosmosDBLocationList.json
+func ExampleLocationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcosmos.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewLocationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcosmos.LocationsClientListResponse{
+		// 	LocationListResult: armcosmos.LocationListResult{
+		// 		Value: []*armcosmos.LocationGetResult{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus"),
+		// 				Type: to.Ptr("Microsoft.DocumentDB/locations"),
+		// 				Name: to.Ptr("westus"),
+		// 				Properties: &armcosmos.LocationProperties{
+		// 					SupportsAvailabilityZone: to.Ptr(false),
+		// 					IsResidencyRestricted: to.Ptr(false),
+		// 					BackupStorageRedundancies: []*armcosmos.BackupStorageRedundancy{
+		// 						to.Ptr(armcosmos.BackupStorageRedundancyLocal),
+		// 						to.Ptr(armcosmos.BackupStorageRedundancyGeo),
+		// 					},
+		// 					IsSubscriptionRegionAccessAllowedForRegular: to.Ptr(true),
+		// 					IsSubscriptionRegionAccessAllowedForAz: to.Ptr(false),
+		// 					Status: to.Ptr(armcosmos.StatusOnline),
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/centralus"),
+		// 				Type: to.Ptr("Microsoft.DocumentDB/locations"),
+		// 				Name: to.Ptr("centralus"),
+		// 				Properties: &armcosmos.LocationProperties{
+		// 					SupportsAvailabilityZone: to.Ptr(true),
+		// 					IsResidencyRestricted: to.Ptr(false),
+		// 					BackupStorageRedundancies: []*armcosmos.BackupStorageRedundancy{
+		// 						to.Ptr(armcosmos.BackupStorageRedundancyZone),
+		// 						to.Ptr(armcosmos.BackupStorageRedundancyGeo),
+		// 					},
+		// 					IsSubscriptionRegionAccessAllowedForRegular: to.Ptr(false),
+		// 					IsSubscriptionRegionAccessAllowedForAz: to.Ptr(true),
+		// 					Status: to.Ptr(armcosmos.StatusOnline),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

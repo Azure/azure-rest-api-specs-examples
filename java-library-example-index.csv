@@ -7229,3 +7229,4 @@ id,name,language,tag,package,version,date_epoch,date
 7228,@azure/arm-redhatopenshift@1.0.0,js,@azure/arm-redhatopenshift_1.0.0,@azure/arm-redhatopenshift,1.0.0,1784253146,07/17/2026
 7229,@azure/arm-resources@8.0.0,js,@azure/arm-resources_8.0.0,@azure/arm-resources,8.0.0,1784253117,07/17/2026
 7230,@azure/arm-resourcesdeployments@1.0.0,js,@azure/arm-resourcesdeployments_1.0.0,@azure/arm-resourcesdeployments,1.0.0,1784253116,07/17/2026
+7231,@azure/arm-reservations@10.0.0,js,@azure/arm-reservations_10.0.0,@azure/arm-reservations,10.0.0,1784194063,07/16/2026

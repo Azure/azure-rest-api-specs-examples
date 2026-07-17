@@ -7233,3 +7233,4 @@ id,name,language,tag,package,version,date_epoch,date
 7232,@azure/arm-providerhub@1.0.0,js,@azure/arm-providerhub_1.0.0,@azure/arm-providerhub,1.0.0,1784194046,07/16/2026
 7233,@azure/arm-peering@2.2.0,js,@azure/arm-peering_2.2.0,@azure/arm-peering,2.2.0,1784193969,07/16/2026
 7234,@azure/arm-managementgroups@3.0.0,js,@azure/arm-managementgroups_3.0.0,@azure/arm-managementgroups,3.0.0,1784193955,07/16/2026
+7235,@azure/arm-guestconfiguration@1.0.0,js,@azure/arm-guestconfiguration_1.0.0,@azure/arm-guestconfiguration,1.0.0,1784193935,07/16/2026

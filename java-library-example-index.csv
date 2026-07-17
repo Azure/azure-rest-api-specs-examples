@@ -7237,3 +7237,4 @@ id,name,language,tag,package,version,date_epoch,date
 7236,@azure/arm-databox@6.0.0,js,@azure/arm-databox_6.0.0,@azure/arm-databox,6.0.0,1784193640,07/16/2026
 7237,@azure/arm-databricks@4.0.0,js,@azure/arm-databricks_4.0.0,@azure/arm-databricks,4.0.0,1784193623,07/16/2026
 7238,@azure/arm-billing@6.0.0,js,@azure/arm-billing_6.0.0,@azure/arm-billing,6.0.0,1784193301,07/16/2026
+7239,@azure/arm-databoundaries@1.0.0,js,@azure/arm-databoundaries_1.0.0,@azure/arm-databoundaries,1.0.0,1784193248,07/16/2026

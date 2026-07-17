@@ -29,7 +29,7 @@ func ExampleChargesClient_List_chargesListByDepartmentLegacy() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armconsumption.ChargesClientListResponse{
-	// 	ChargesListResult: &armconsumption.ChargesListResult{
+	// 	ChargesListResult: armconsumption.ChargesListResult{
 	// 		Value: []armconsumption.ChargeSummaryClassification{
 	// 			&armconsumption.LegacyChargeSummary{
 	// 				Name: to.Ptr("chargeSummaryId1"),
@@ -37,7 +37,10 @@ func ExampleChargesClient_List_chargesListByDepartmentLegacy() {
 	// 				ID: to.Ptr("/providers/Microsoft.Billing/BillingAccounts/1234/departments/42425/providers/Microsoft.Consumption/charges/chargeSummaryId1"),
 	// 				Kind: to.Ptr(armconsumption.ChargeSummaryKindLegacy),
 	// 				Properties: &armconsumption.LegacyChargeSummaryProperties{
+	// 					AzureCharges: to.Ptr[float64](5000),
+	// 					MarketplaceCharges: to.Ptr[float64](100),
 	// 					BillingPeriodID: to.Ptr("/providers/Microsoft.Billing/BillingAccounts/1234/providers/Microsoft.Billing/billingPeriods/201804"),
+	// 					ChargesBilledSeparately: to.Ptr[float64](60.9),
 	// 					Currency: to.Ptr("USD"),
 	// 					UsageEnd: to.Ptr("2018-04-30"),
 	// 					UsageStart: to.Ptr("2018-04-01"),

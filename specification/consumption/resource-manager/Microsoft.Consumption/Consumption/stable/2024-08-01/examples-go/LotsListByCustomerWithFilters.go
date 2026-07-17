@@ -42,11 +42,13 @@ func ExampleLotsClient_NewListByCustomerPager_lotsListByCustomerWithFilter() {
 		// 				Properties: &armconsumption.LotProperties{
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](60.9),
 		// 					},
 		// 					ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00Z"); return t}()),
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					OriginalAmount: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](5000),
 		// 					},
 		// 					PoNumber: to.Ptr("3524"),
 		// 					Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),

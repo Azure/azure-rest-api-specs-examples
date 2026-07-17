@@ -41,28 +41,36 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					Description: to.Ptr("Settled invoice #312033"),
 		// 					Adjustments: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					AdjustmentsInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					ChargesInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](500),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
 		// 					CreditExpired: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					CreditExpiredInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventTypeSettledCharges),
@@ -70,8 +78,10 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					NewCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					NewCreditInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					Reseller: &armconsumption.Reseller{
@@ -89,31 +99,40 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					Description: to.Ptr("New credits added"),
 		// 					Adjustments: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					AdjustmentsInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					CanceledCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](5000),
 		// 					},
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					ChargesInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](900),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
 		// 					CreditExpired: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					CreditExpiredInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventTypeNewCredit),
@@ -121,8 +140,10 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					NewCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](400),
 		// 					},
 		// 					NewCreditInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					Reseller: &armconsumption.Reseller{
@@ -140,31 +161,40 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					Description: to.Ptr("Credits Expired"),
 		// 					Adjustments: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					AdjustmentsInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					CanceledCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](5000),
 		// 					},
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					ChargesInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](600),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
 		// 					CreditExpired: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](300),
 		// 					},
 		// 					CreditExpiredInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventType("ExpiredCredit")),
@@ -172,8 +202,10 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					NewCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](0),
 		// 					},
 		// 					NewCreditInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					Reseller: &armconsumption.Reseller{
@@ -191,31 +223,40 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					Description: to.Ptr("Settled invoice #212033"),
 		// 					Adjustments: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](-200),
 		// 					},
 		// 					AdjustmentsInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					CanceledCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](5000),
 		// 					},
 		// 					Charges: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](300),
 		// 					},
 		// 					ChargesInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](700),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
 		// 					CreditExpired: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](100),
 		// 					},
 		// 					CreditExpiredInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					EventType: to.Ptr(armconsumption.EventTypeSettledCharges),
@@ -223,8 +264,10 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					NewCredit: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](300),
 		// 					},
 		// 					NewCreditInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					Reseller: &armconsumption.Reseller{

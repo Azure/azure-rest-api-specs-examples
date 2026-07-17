@@ -42,6 +42,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 				Properties: &armconsumption.ModernSingleScopeReservationRecommendationProperties{
 		// 					CostWithNoReservedInstances: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](279881.9457795231),
 		// 					},
 		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-22T00:00:00Z"); return t}()),
 		// 					InstanceFlexibilityGroup: to.Ptr("NA"),
@@ -52,8 +53,10 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					MeterID: to.Ptr("30f7049a-b092-42f4-9173-9ec31ab945ad"),
 		// 					NetSavings: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](153766.87728637524),
 		// 					},
 		// 					NormalizedSize: to.Ptr("SQLDB_BC_Compute_Gen5"),
+		// 					RecommendedQuantity: to.Ptr[float64](35),
 		// 					RecommendedQuantityNormalized: to.Ptr[float32](35),
 		// 					ResourceType: to.Ptr("sqldatabases"),
 		// 					Scope: to.Ptr("Single"),
@@ -62,6 +65,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					Term: to.Ptr("P3Y"),
 		// 					TotalCostWithReservedInstances: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](126115.06849314792),
 		// 					},
 		// 					TotalHours: to.Ptr[int32](717),
 		// 				},
@@ -74,6 +78,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 				Properties: &armconsumption.ModernSingleScopeReservationRecommendationProperties{
 		// 					CostWithNoReservedInstances: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](93208.8596802244),
 		// 					},
 		// 					FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-22T00:00:00Z"); return t}()),
 		// 					InstanceFlexibilityGroup: to.Ptr("NA"),
@@ -84,8 +89,10 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					MeterID: to.Ptr("30f7049a-b092-42f4-9173-9ec31ab945ad"),
 		// 					NetSavings: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](32553.85968022456),
 		// 					},
 		// 					NormalizedSize: to.Ptr("SQLDB_BC_Compute_Gen5"),
+		// 					RecommendedQuantity: to.Ptr[float64](35),
 		// 					RecommendedQuantityNormalized: to.Ptr[float32](35),
 		// 					ResourceType: to.Ptr("sqldatabases"),
 		// 					Scope: to.Ptr("Single"),
@@ -94,6 +101,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 					Term: to.Ptr("P1Y"),
 		// 					TotalCostWithReservedInstances: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](60654.99999999984),
 		// 					},
 		// 					TotalHours: to.Ptr[int32](527),
 		// 				},

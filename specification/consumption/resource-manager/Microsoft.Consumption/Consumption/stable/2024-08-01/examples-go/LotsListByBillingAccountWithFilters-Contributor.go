@@ -48,6 +48,7 @@ func ExampleLotsClient_NewListByBillingAccountPager_lotsListByBillingAccountWith
 		// 					Status: to.Ptr(armconsumption.StatusActive),
 		// 					UsedAmount: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](550),
 		// 					},
 		// 				},
 		// 			},

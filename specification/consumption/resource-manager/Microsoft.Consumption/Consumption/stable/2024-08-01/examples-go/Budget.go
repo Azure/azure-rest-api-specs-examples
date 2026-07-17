@@ -27,14 +27,16 @@ func ExampleBudgetsClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armconsumption.BudgetsClientGetResponse{
-	// 	Budget: &armconsumption.Budget{
+	// 	Budget: armconsumption.Budget{
 	// 		Name: to.Ptr("TestBudget"),
 	// 		Type: to.Ptr("Microsoft.Consumption/budgets"),
 	// 		ETag: to.Ptr("\"1d34d012214157f\""),
 	// 		ID: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/TestBudget"),
 	// 		Properties: &armconsumption.BudgetProperties{
+	// 			Amount: to.Ptr[float64](100.65),
 	// 			Category: to.Ptr(armconsumption.CategoryTypeCost),
 	// 			CurrentSpend: &armconsumption.CurrentSpend{
+	// 				Amount: to.Ptr[float64](80.89),
 	// 				Unit: to.Ptr("USD"),
 	// 			},
 	// 			Filter: &armconsumption.BudgetFilter{
@@ -86,6 +88,7 @@ func ExampleBudgetsClient_Get() {
 	// 					},
 	// 					Enabled: to.Ptr(true),
 	// 					Operator: to.Ptr(armconsumption.OperatorTypeGreaterThan),
+	// 					Threshold: to.Ptr[float64](80),
 	// 					ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 	// 				},
 	// 			},

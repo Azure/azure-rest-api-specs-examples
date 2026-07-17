@@ -41,8 +41,10 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](60.9),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
@@ -50,8 +52,10 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					OriginalAmount: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](5000),
 		// 					},
 		// 					OriginalAmountInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					PoNumber: to.Ptr("3524"),
@@ -71,8 +75,10 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					BillingCurrency: to.Ptr("USD"),
 		// 					ClosedBalance: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](80.9),
 		// 					},
 		// 					ClosedBalanceInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					CreditCurrency: to.Ptr("USD"),
@@ -80,8 +86,10 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					IsEstimatedBalance: to.Ptr(false),
 		// 					OriginalAmount: &armconsumption.Amount{
 		// 						Currency: to.Ptr("USD"),
+		// 						Value: to.Ptr[float64](6000),
 		// 					},
 		// 					OriginalAmountInBillingCurrency: &armconsumption.AmountWithExchangeRate{
+		// 						ExchangeRate: to.Ptr[float64](5000),
 		// 						ExchangeRateMonth: to.Ptr[int32](1),
 		// 					},
 		// 					PoNumber: to.Ptr("31224"),

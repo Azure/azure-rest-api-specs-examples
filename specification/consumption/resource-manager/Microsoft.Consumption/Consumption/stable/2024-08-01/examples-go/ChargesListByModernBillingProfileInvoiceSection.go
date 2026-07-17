@@ -30,7 +30,7 @@ func ExampleChargesClient_List_chargesListByBillingProfileInvoiceSectionModern()
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res = armconsumption.ChargesClientListResponse{
-	// 	ChargesListResult: &armconsumption.ChargesListResult{
+	// 	ChargesListResult: armconsumption.ChargesListResult{
 	// 		Value: []armconsumption.ChargeSummaryClassification{
 	// 			&armconsumption.ModernChargeSummary{
 	// 				Name: to.Ptr("chargeSummaryId1"),
@@ -40,17 +40,20 @@ func ExampleChargesClient_List_chargesListByBillingProfileInvoiceSectionModern()
 	// 				Properties: &armconsumption.ModernChargeSummaryProperties{
 	// 					AzureCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](5000),
 	// 					},
 	// 					BillingAccountID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789"),
 	// 					BillingPeriodID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/providers/Microsoft.Billing/billingPeriods/201909"),
 	// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425"),
 	// 					ChargesBilledSeparately: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](60.9),
 	// 					},
 	// 					InvoiceSectionID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425/invoiceSections/4567"),
 	// 					IsInvoiced: to.Ptr(false),
 	// 					MarketplaceCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](100),
 	// 					},
 	// 					UsageEnd: to.Ptr("2019-09-30"),
 	// 					UsageStart: to.Ptr("2019-09-01"),
@@ -64,17 +67,20 @@ func ExampleChargesClient_List_chargesListByBillingProfileInvoiceSectionModern()
 	// 				Properties: &armconsumption.ModernChargeSummaryProperties{
 	// 					AzureCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](5000),
 	// 					},
 	// 					BillingAccountID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789"),
 	// 					BillingPeriodID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/providers/Microsoft.Billing/billingPeriods/201910"),
 	// 					BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425"),
 	// 					ChargesBilledSeparately: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](60.9),
 	// 					},
 	// 					InvoiceSectionID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425/invoiceSections/4567"),
 	// 					IsInvoiced: to.Ptr(false),
 	// 					MarketplaceCharges: &armconsumption.Amount{
 	// 						Currency: to.Ptr("USD"),
+	// 						Value: to.Ptr[float64](100),
 	// 					},
 	// 					UsageEnd: to.Ptr("2019-10-31"),
 	// 					UsageStart: to.Ptr("2019-09-01"),

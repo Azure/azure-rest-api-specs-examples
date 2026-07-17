@@ -7235,3 +7235,4 @@ id,name,language,tag,package,version,date_epoch,date
 7234,@azure/arm-managementgroups@3.0.0,js,@azure/arm-managementgroups_3.0.0,@azure/arm-managementgroups,3.0.0,1784193955,07/16/2026
 7235,@azure/arm-guestconfiguration@1.0.0,js,@azure/arm-guestconfiguration_1.0.0,@azure/arm-guestconfiguration,1.0.0,1784193935,07/16/2026
 7236,@azure/arm-databox@6.0.0,js,@azure/arm-databox_6.0.0,@azure/arm-databox,6.0.0,1784193640,07/16/2026
+7237,@azure/arm-databricks@4.0.0,js,@azure/arm-databricks_4.0.0,@azure/arm-databricks,4.0.0,1784193623,07/16/2026

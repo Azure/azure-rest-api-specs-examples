@@ -7230,3 +7230,4 @@ id,name,language,tag,package,version,date_epoch,date
 7229,@azure/arm-resources@8.0.0,js,@azure/arm-resources_8.0.0,@azure/arm-resources,8.0.0,1784253117,07/17/2026
 7230,@azure/arm-resourcesdeployments@1.0.0,js,@azure/arm-resourcesdeployments_1.0.0,@azure/arm-resourcesdeployments,1.0.0,1784253116,07/17/2026
 7231,@azure/arm-reservations@10.0.0,js,@azure/arm-reservations_10.0.0,@azure/arm-reservations,10.0.0,1784194063,07/16/2026
+7232,@azure/arm-providerhub@1.0.0,js,@azure/arm-providerhub_1.0.0,@azure/arm-providerhub,1.0.0,1784194046,07/16/2026

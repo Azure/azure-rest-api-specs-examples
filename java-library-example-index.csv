@@ -7228,3 +7228,4 @@ id,name,language,tag,package,version,date_epoch,date
 7227,@azure/arm-monitor@8.0.0-beta.8,js,@azure/arm-monitor_8.0.0-beta.8,@azure/arm-monitor,8.0.0-beta.8,1784272972,07/17/2026
 7228,@azure/arm-redhatopenshift@1.0.0,js,@azure/arm-redhatopenshift_1.0.0,@azure/arm-redhatopenshift,1.0.0,1784253146,07/17/2026
 7229,@azure/arm-resources@8.0.0,js,@azure/arm-resources_8.0.0,@azure/arm-resources,8.0.0,1784253117,07/17/2026
+7230,@azure/arm-resourcesdeployments@1.0.0,js,@azure/arm-resourcesdeployments_1.0.0,@azure/arm-resourcesdeployments,1.0.0,1784253116,07/17/2026

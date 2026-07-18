@@ -7241,3 +7241,4 @@ id,name,language,tag,package,version,date_epoch,date
 7240,@azure/arm-confidentialledger@2.0.0,js,@azure/arm-confidentialledger_2.0.0,@azure/arm-confidentialledger,2.0.0,1784193241,07/16/2026
 7241,@azure/arm-costmanagement@1.0.0,js,@azure/arm-costmanagement_1.0.0,@azure/arm-costmanagement,1.0.0,1784193240,07/16/2026
 7242,@azure/arm-attestation@3.0.0,js,@azure/arm-attestation_3.0.0,@azure/arm-attestation,3.0.0,1784191205,07/16/2026
+7243,@azure/arm-servicefabricmanagedclusters@1.1.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.1.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.1.0-beta.1,1784184586,07/16/2026

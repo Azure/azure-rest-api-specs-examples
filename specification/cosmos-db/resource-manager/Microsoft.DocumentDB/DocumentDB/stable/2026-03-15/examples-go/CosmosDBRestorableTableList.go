@@ -1,0 +1,71 @@
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4"
+)
+
+// Generated from example definition: 2026-03-15/CosmosDBRestorableTableList.json
+func ExampleRestorableTablesClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcosmos.NewClientFactory("00000000-1111-2222-3333-444444444444", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewRestorableTablesClient().NewListPager("WestUS", "98a570f2-63db-4117-91f0-366327b7b353", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcosmos.RestorableTablesClientListResponse{
+		// 	RestorableTablesListResult: armcosmos.RestorableTablesListResult{
+		// 		Value: []*armcosmos.RestorableTableGetResult{
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/subid/providers/Microsoft.DocumentDb/locations/westus/restorableDatabaseAccounts/98a570f2-63db-4117-91f0-366327b7b353/restorableTables/79609a98-3394-41f8-911f-cfab0c075c86"),
+		// 				Type: to.Ptr("Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableTables"),
+		// 				Name: to.Ptr("79609a98-3394-41f8-911f-cfab0c075c86"),
+		// 				Properties: &armcosmos.RestorableTableProperties{
+		// 					Resource: &armcosmos.RestorableTablePropertiesResource{
+		// 						Rid: to.Ptr("zAyAPQAAAA=="),
+		// 						EventTimestamp: to.Ptr("2020-10-13T04:56:42Z"),
+		// 						OwnerID: to.Ptr("Table1"),
+		// 						OwnerResourceID: to.Ptr("V18LoLrv-qA="),
+		// 						OperationType: to.Ptr(armcosmos.OperationTypeCreate),
+		// 						CanUndelete: to.Ptr("invalid"),
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				ID: to.Ptr("/subscriptions/subid/providers/Microsoft.DocumentDb/locations/westus/restorableDatabaseAccounts/98a570f2-63db-4117-91f0-366327b7b353/restorableTables/79609a98-3394-41f8-911f-cfab0c075c86"),
+		// 				Type: to.Ptr("Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableTables"),
+		// 				Name: to.Ptr("79609a98-3394-41f8-911f-cfab0c075c86"),
+		// 				Properties: &armcosmos.RestorableTableProperties{
+		// 					Resource: &armcosmos.RestorableTablePropertiesResource{
+		// 						Rid: to.Ptr("zAyAPQAAAA=="),
+		// 						EventTimestamp: to.Ptr("2020-10-13T04:56:42Z"),
+		// 						OwnerID: to.Ptr("Table1"),
+		// 						OwnerResourceID: to.Ptr("V18LoLrv-qA="),
+		// 						OperationType: to.Ptr(armcosmos.OperationTypeDelete),
+		// 						CanUndelete: to.Ptr("notRestorable"),
+		// 						CanUndeleteReason: to.Ptr("Collection with same name already exist as live collection."),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

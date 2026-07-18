@@ -7242,3 +7242,4 @@ id,name,language,tag,package,version,date_epoch,date
 7241,@azure/arm-costmanagement@1.0.0,js,@azure/arm-costmanagement_1.0.0,@azure/arm-costmanagement,1.0.0,1784193240,07/16/2026
 7242,@azure/arm-attestation@3.0.0,js,@azure/arm-attestation_3.0.0,@azure/arm-attestation,3.0.0,1784191205,07/16/2026
 7243,@azure/arm-servicefabricmanagedclusters@1.1.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.1.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.1.0-beta.1,1784184586,07/16/2026
+7244,@azure/arm-redisenterprisecache@5.0.0-beta.2,js,@azure/arm-redisenterprisecache_5.0.0-beta.2,@azure/arm-redisenterprisecache,5.0.0-beta.2,1784180801,07/16/2026

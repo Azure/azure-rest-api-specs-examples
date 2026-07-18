@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.sql.models.ManagedDatabaseMoveDefinition;
+
+/**
+ * Samples for ManagedDatabases CancelMove.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedDatabaseCancelMove.json
+     */
+    /**
+     * Sample code: Cancels a managed database move.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void cancelsAManagedDatabaseMove(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedDatabases().cancelMove("group1", "testInstanceSrc", "testDatabase",
+            new ManagedDatabaseMoveDefinition().withDestinationManagedDatabaseId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/managedInstances/testInstanceTgt/databases/testDatabase"),
+            com.azure.core.util.Context.NONE);
+    }
+}

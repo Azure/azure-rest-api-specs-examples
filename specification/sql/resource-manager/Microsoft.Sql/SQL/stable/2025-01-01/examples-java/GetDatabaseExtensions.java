@@ -1,0 +1,19 @@
+
+/**
+ * Samples for DatabaseExtensionsOperation Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/GetDatabaseExtensions.json
+     */
+    /**
+     * Sample code: Get database extensions.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void getDatabaseExtensions(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getDatabaseExtensionsOperations().getWithResponse(
+            "rg_a1f9d6f8-30d5-4228-9504-8a364361bca3", "srv_65858e0f-b1d1-4bdc-8351-a7da86ca4939",
+            "11aa6c5e-58ed-4693-b303-3b8e3131deaa", "polybaseimport", com.azure.core.util.Context.NONE);
+    }
+}

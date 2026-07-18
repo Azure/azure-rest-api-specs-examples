@@ -1,0 +1,19 @@
+
+/**
+ * Samples for SensitivityLabels ListCurrentByDatabase.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/SensitivityLabelsListByDatabaseWithSourceCurrent.json
+     */
+    /**
+     * Sample code: Gets the current sensitivity labels of a given database.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        getsTheCurrentSensitivityLabelsOfAGivenDatabase(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getSensitivityLabels().listCurrentByDatabase("myRG", "myServer", "myDatabase", null,
+            null, null, com.azure.core.util.Context.NONE);
+    }
+}

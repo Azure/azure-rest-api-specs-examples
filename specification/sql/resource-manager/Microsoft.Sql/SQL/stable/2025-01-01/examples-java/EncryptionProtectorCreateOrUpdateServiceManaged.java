@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.sql.fluent.models.EncryptionProtectorInner;
+import com.azure.resourcemanager.sql.models.EncryptionProtectorName;
+import com.azure.resourcemanager.sql.models.ServerKeyType;
+
+/**
+ * Samples for EncryptionProtectors CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/EncryptionProtectorCreateOrUpdateServiceManaged.json
+     */
+    /**
+     * Sample code: Update the encryption protector to service managed.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        updateTheEncryptionProtectorToServiceManaged(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getEncryptionProtectors().createOrUpdate(
+            "sqlcrudtest-7398", "sqlcrudtest-4645", EncryptionProtectorName.CURRENT, new EncryptionProtectorInner()
+                .withServerKeyName("fakeTokenPlaceholder").withServerKeyType(ServerKeyType.SERVICE_MANAGED),
+            com.azure.core.util.Context.NONE);
+    }
+}

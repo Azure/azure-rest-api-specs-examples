@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ServerConfigurationOptions ListByManagedInstance.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ServerConfigurationOptionList.json
+     */
+    /**
+     * Sample code: Gets a list of managed instance server configuration options.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        getsAListOfManagedInstanceServerConfigurationOptions(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getServerConfigurationOptions().listByManagedInstance("testrg", "testinstance",
+            com.azure.core.util.Context.NONE);
+    }
+}

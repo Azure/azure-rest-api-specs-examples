@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ServerTrustGroups ListByInstance.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ServerTrustGroupListByManagedInstance.json
+     */
+    /**
+     * Sample code: List server trust groups by managed instance.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void listServerTrustGroupsByManagedInstance(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getServerTrustGroups().listByInstance("Default-SQL-SouthEastAsia", "managedInstance-1",
+            com.azure.core.util.Context.NONE);
+    }
+}

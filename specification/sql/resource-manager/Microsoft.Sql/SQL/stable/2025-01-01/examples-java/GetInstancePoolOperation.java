@@ -1,0 +1,18 @@
+
+/**
+ * Samples for InstancePoolOperations Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/GetInstancePoolOperation.json
+     */
+    /**
+     * Sample code: Gets the instance pool management operation.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void getsTheInstancePoolManagementOperation(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getInstancePoolOperations().getWithResponse("resource-group", "test-instance-pool",
+            "c218773b-203f-4c7a-b174-6bd71fe20f72", com.azure.core.util.Context.NONE);
+    }
+}

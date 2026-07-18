@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.sql.fluent.models.VirtualClusterInner;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for VirtualClusters CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/VirtualClusterCreate.json
+     */
+    /**
+     * Sample code: Create virtual cluster.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void createVirtualCluster(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getVirtualClusters().createOrUpdate("testrg",
+            "vc-subnet1-f769ed71-b3ad-491a-a9d5-26eeceaa6be2",
+            new VirtualClusterInner().withLocation("japaneast").withTags(mapOf("key", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

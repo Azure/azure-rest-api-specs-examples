@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceAzureADOnlyAuthenticationInner;
+import com.azure.resourcemanager.sql.models.AuthenticationName;
+
+/**
+ * Samples for ManagedInstanceAzureADOnlyAuthentications CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedInstanceAzureADOnlyAuthCreateOrUpdate.json
+     */
+    /**
+     * Sample code: Creates or updates Azure Active Directory only authentication object.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject(
+        com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedInstanceAzureADOnlyAuthentications().createOrUpdate(
+            "Default-SQL-SouthEastAsia", "managedInstance", AuthenticationName.DEFAULT,
+            new ManagedInstanceAzureADOnlyAuthenticationInner().withAzureADOnlyAuthentication(false),
+            com.azure.core.util.Context.NONE);
+    }
+}

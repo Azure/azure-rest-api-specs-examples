@@ -1,0 +1,19 @@
+
+/**
+ * Samples for VirtualClusters UpdateDnsServers.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/UpdateVirtualClusterDnsServers.json
+     */
+    /**
+     * Sample code: Performs update of dns servers on managed instance.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        performsUpdateOfDnsServersOnManagedInstance(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getVirtualClusters().updateDnsServers("sqlcrudtest-7398",
+            "VirtualCluster2b9a846b-2e37-43ef-a8e9-f2c6d645c1d7", com.azure.core.util.Context.NONE);
+    }
+}

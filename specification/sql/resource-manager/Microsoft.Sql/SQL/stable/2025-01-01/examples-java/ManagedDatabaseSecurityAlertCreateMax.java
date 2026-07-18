@@ -1,0 +1,30 @@
+
+import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseSecurityAlertPolicyInner;
+import com.azure.resourcemanager.sql.models.SecurityAlertPolicyName;
+import com.azure.resourcemanager.sql.models.SecurityAlertPolicyState;
+import java.util.Arrays;
+
+/**
+ * Samples for ManagedDatabaseSecurityAlertPolicies CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedDatabaseSecurityAlertCreateMax.json
+     */
+    /**
+     * Sample code: Update a database's threat detection policy with all parameters.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        updateADatabaseSThreatDetectionPolicyWithAllParameters(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedDatabaseSecurityAlertPolicies().createOrUpdateWithResponse(
+            "securityalert-4799", "securityalert-6440", "testdb", SecurityAlertPolicyName.DEFAULT,
+            new ManagedDatabaseSecurityAlertPolicyInner().withState(SecurityAlertPolicyState.ENABLED)
+                .withDisabledAlerts(Arrays.asList("Sql_Injection", "Usage_Anomaly"))
+                .withEmailAddresses(Arrays.asList("test@contoso.com", "user@contoso.com")).withEmailAccountAdmins(true)
+                .withStorageEndpoint("https://mystorage.blob.core.windows.net")
+                .withStorageAccountAccessKey("fakeTokenPlaceholder").withRetentionDays(6),
+            com.azure.core.util.Context.NONE);
+    }
+}

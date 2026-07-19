@@ -7241,3 +7241,7 @@ id,name,language,tag,package,version,date_epoch,date
 7240,@azure/arm-confidentialledger@2.0.0,js,@azure/arm-confidentialledger_2.0.0,@azure/arm-confidentialledger,2.0.0,1784193241,07/16/2026
 7241,@azure/arm-costmanagement@1.0.0,js,@azure/arm-costmanagement_1.0.0,@azure/arm-costmanagement,1.0.0,1784193240,07/16/2026
 7242,@azure/arm-attestation@3.0.0,js,@azure/arm-attestation_3.0.0,@azure/arm-attestation,3.0.0,1784191205,07/16/2026
+7243,@azure/arm-servicefabricmanagedclusters@1.1.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.1.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.1.0-beta.1,1784184586,07/16/2026
+7244,@azure/arm-redisenterprisecache@5.0.0-beta.2,js,@azure/arm-redisenterprisecache_5.0.0-beta.2,@azure/arm-redisenterprisecache,5.0.0-beta.2,1784180801,07/16/2026
+7245,@azure/arm-containerregistry@12.1.0-beta.2,js,@azure/arm-containerregistry_12.1.0-beta.2,@azure/arm-containerregistry,12.1.0-beta.2,1784170427,07/16/2026
+7246,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.0,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.0,1784176889,07/16/2026

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for JobPrivateEndpoints ListByAgent.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ListJobPrivateEndpointsByAgent.json
+     */
+    /**
+     * Sample code: List private endpoints in a job agent.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void listPrivateEndpointsInAJobAgent(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getJobPrivateEndpoints().listByAgent("group1", "server1", "agent1",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,21 @@
+
+/**
+ * Samples for ManagedDatabaseSecurityEvents ListByDatabase.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedDatabaseSecurityEventsGetMax.json
+     */
+    /**
+     * Sample code: Get the managed database's security events with maximal parameters.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void getTheManagedDatabaseSSecurityEventsWithMaximalParameters(
+        com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedDatabaseSecurityEvents().listByDatabase("testrg", "testcl", "database1",
+            "ShowServerRecords eq true", 0L, 1L,
+            "eyJCbG9iTmFtZURhdGVUaW1lIjoiXC9EYXRlKDE1MTIyODg4MTIwMTArMDIwMClcLyIsIkJsb2JOYW1lUm9sbG92ZXJJbmRleCI6IjAiLCJFbmREYXRlIjoiXC9EYXRlKDE1MTI0NjYyMDA1MjkpXC8iLCJJc1NraXBUb2tlblNldCI6ZmFsc2UsIklzVjJCbG9iVGltZUZvcm1hdCI6dHJ1ZSwiU2hvd1NlcnZlclJlY29yZHMiOmZhbHNlLCJTa2lwVmFsdWUiOjAsIlRha2VWYWx1ZSI6MTB9",
+            com.azure.core.util.Context.NONE);
+    }
+}

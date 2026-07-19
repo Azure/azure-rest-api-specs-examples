@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.sql.models.ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest;
+
+/**
+ * Samples for ManagedInstances ValidateAzureKeyVaultEncryptionKey.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedInstancValidateAzureKeyVaultEncryptionKey.json
+     */
+    /**
+     * Sample code: Validate the customer managed key.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void validateTheCustomerManagedKey(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedInstances().validateAzureKeyVaultEncryptionKey("testrg", "testinstance",
+            new ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest().withTdeKeyUri("fakeTokenPlaceholder"),
+            com.azure.core.util.Context.NONE);
+    }
+}

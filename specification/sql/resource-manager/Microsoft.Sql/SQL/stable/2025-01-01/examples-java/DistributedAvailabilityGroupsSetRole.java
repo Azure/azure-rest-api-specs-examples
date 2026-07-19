@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.sql.models.DistributedAvailabilityGroupSetRole;
+import com.azure.resourcemanager.sql.models.InstanceRole;
+import com.azure.resourcemanager.sql.models.RoleChangeType;
+
+/**
+ * Samples for DistributedAvailabilityGroups SetRole.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/DistributedAvailabilityGroupsSetRole.json
+     */
+    /**
+     * Sample code: Set distributed availability group primary replica to managed instance.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void setDistributedAvailabilityGroupPrimaryReplicaToManagedInstance(
+        com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getDistributedAvailabilityGroups()
+            .setRole(
+                "testrg", "testcl", "dag", new DistributedAvailabilityGroupSetRole()
+                    .withInstanceRole(InstanceRole.PRIMARY).withRoleChangeType(RoleChangeType.FORCED),
+                com.azure.core.util.Context.NONE);
+    }
+}

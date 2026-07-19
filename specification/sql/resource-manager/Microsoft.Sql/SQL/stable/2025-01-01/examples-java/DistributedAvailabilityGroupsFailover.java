@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.sql.models.DistributedAvailabilityGroupsFailoverRequest;
+import com.azure.resourcemanager.sql.models.FailoverType;
+
+/**
+ * Samples for DistributedAvailabilityGroups Failover.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/DistributedAvailabilityGroupsFailover.json
+     */
+    /**
+     * Sample code: Failover a distributed availability group.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void failoverADistributedAvailabilityGroup(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getDistributedAvailabilityGroups().failover("testrg", "testcl", "dag",
+            new DistributedAvailabilityGroupsFailoverRequest().withFailoverType(FailoverType.FORCED_ALLOW_DATA_LOSS),
+            com.azure.core.util.Context.NONE);
+    }
+}

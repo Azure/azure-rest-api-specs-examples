@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.sql.models.ServerConfigurationOptionName;
+
+/**
+ * Samples for ServerConfigurationOptions Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ServerConfigurationOptionGet.json
+     */
+    /**
+     * Sample code: Gets managed instance server configuration option.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        getsManagedInstanceServerConfigurationOption(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getServerConfigurationOptions().getWithResponse("testrg", "testinstance",
+            ServerConfigurationOptionName.ALLOW_POLYBASE_EXPORT, com.azure.core.util.Context.NONE);
+    }
+}

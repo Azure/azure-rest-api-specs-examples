@@ -1,0 +1,18 @@
+
+/**
+ * Samples for FirewallRules Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/FirewallRuleGet.json
+     */
+    /**
+     * Sample code: Get Firewall Rule.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void getFirewallRule(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getFirewallRules().getWithResponse("firewallrulecrudtest-12",
+            "firewallrulecrudtest-6285", "firewallrulecrudtest-2304", com.azure.core.util.Context.NONE);
+    }
+}

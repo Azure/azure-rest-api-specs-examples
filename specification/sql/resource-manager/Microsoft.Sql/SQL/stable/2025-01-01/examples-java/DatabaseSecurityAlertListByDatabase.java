@@ -1,0 +1,18 @@
+
+/**
+ * Samples for DatabaseSecurityAlertPolicies ListByDatabase.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/DatabaseSecurityAlertListByDatabase.json
+     */
+    /**
+     * Sample code: Get the database's threat detection policies.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void getTheDatabaseSThreatDetectionPolicies(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getDatabaseSecurityAlertPolicies().listByDatabase("securityalert-6852",
+            "securityalert-2080", "testdb", com.azure.core.util.Context.NONE);
+    }
+}

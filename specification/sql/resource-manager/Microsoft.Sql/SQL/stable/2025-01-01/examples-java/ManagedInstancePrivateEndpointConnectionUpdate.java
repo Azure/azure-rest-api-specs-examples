@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.sql.fluent.models.ManagedInstancePrivateEndpointConnectionInner;
+import com.azure.resourcemanager.sql.models.ManagedInstancePrivateLinkServiceConnectionStateProperty;
+
+/**
+ * Samples for ManagedInstancePrivateEndpointConnections CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedInstancePrivateEndpointConnectionUpdate.json
+     */
+    /**
+     * Sample code: Approve or reject a private endpoint connection with a given name.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void approveOrRejectAPrivateEndpointConnectionWithAGivenName(
+        com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedInstancePrivateEndpointConnections().createOrUpdate("Default", "test-cl",
+            "private-endpoint-connection-name",
+            new ManagedInstancePrivateEndpointConnectionInner().withPrivateLinkServiceConnectionState(
+                new ManagedInstancePrivateLinkServiceConnectionStateProperty().withStatus("Approved")
+                    .withDescription("Approved by johndoe@contoso.com")),
+            com.azure.core.util.Context.NONE);
+    }
+}

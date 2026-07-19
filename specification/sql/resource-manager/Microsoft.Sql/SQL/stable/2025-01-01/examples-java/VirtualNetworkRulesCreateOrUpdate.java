@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.sql.fluent.models.VirtualNetworkRuleInner;
+
+/**
+ * Samples for VirtualNetworkRules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/VirtualNetworkRulesCreateOrUpdate.json
+     */
+    /**
+     * Sample code: Create or update a virtual network rule.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void createOrUpdateAVirtualNetworkRule(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getVirtualNetworkRules().createOrUpdate("Default", "vnet-test-svr",
+            "vnet-firewall-rule",
+            new VirtualNetworkRuleInner().withVirtualNetworkSubnetId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet")
+                .withIgnoreMissingVnetServiceEndpoint(false),
+            com.azure.core.util.Context.NONE);
+    }
+}

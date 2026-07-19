@@ -1,0 +1,33 @@
+
+import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceDtcInner;
+import com.azure.resourcemanager.sql.models.DtcName;
+import com.azure.resourcemanager.sql.models.ManagedInstanceDtcSecuritySettings;
+import com.azure.resourcemanager.sql.models.ManagedInstanceDtcTransactionManagerCommunicationSettings;
+import java.util.Arrays;
+
+/**
+ * Samples for ManagedInstanceDtcs CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01/ManagedInstanceDtcUpdateMax.json
+     */
+    /**
+     * Sample code: Updates managed instance DTC settings with all optional parameters specified.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void updatesManagedInstanceDTCSettingsWithAllOptionalParametersSpecified(
+        com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedInstanceDtcs().createOrUpdate("testrg", "testinstance", DtcName.CURRENT,
+            new ManagedInstanceDtcInner().withDtcEnabled(true)
+                .withSecuritySettings(new ManagedInstanceDtcSecuritySettings()
+                    .withTransactionManagerCommunicationSettings(
+                        new ManagedInstanceDtcTransactionManagerCommunicationSettings().withAllowInboundEnabled(false)
+                            .withAllowOutboundEnabled(true).withAuthentication("NoAuth"))
+                    .withXaTransactionsEnabled(false).withSnaLu6point2TransactionsEnabled(false)
+                    .withXaTransactionsDefaultTimeout(1000).withXaTransactionsMaximumTimeout(3000))
+                .withExternalDnsSuffixSearchList(Arrays.asList("dns.example1.com", "dns.example2.com")),
+            com.azure.core.util.Context.NONE);
+    }
+}

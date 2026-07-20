@@ -7254,3 +7254,4 @@ id,name,language,tag,package,version,date_epoch,date
 7253,azure-mgmt-resource-deployments@1.0.0,python,azure-mgmt-resource-deployments_1.0.0,azure-mgmt-resource-deployments,1.0.0,1784537595,07/20/2026
 7254,azure-mgmt-hybridkubernetes@2.0.0,python,azure-mgmt-hybridkubernetes_2.0.0,azure-mgmt-hybridkubernetes,2.0.0,1784537594,07/20/2026
 7255,azure-mgmt-consumption@11.0.0,python,azure-mgmt-consumption_11.0.0,azure-mgmt-consumption,11.0.0,1784534305,07/20/2026
+7256,azure-mgmt-storage@25.1.0,python,azure-mgmt-storage_25.1.0,azure-mgmt-storage,25.1.0,1784527672,07/20/2026

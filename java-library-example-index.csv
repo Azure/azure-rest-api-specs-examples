@@ -7252,3 +7252,4 @@ id,name,language,tag,package,version,date_epoch,date
 7251,azure-mgmt-servicebus@10.0.0,python,azure-mgmt-servicebus_10.0.0,azure-mgmt-servicebus,10.0.0,1784537614,07/20/2026
 7252,azure-mgmt-resource-subscriptions@1.0.0,python,azure-mgmt-resource-subscriptions_1.0.0,azure-mgmt-resource-subscriptions,1.0.0,1784537597,07/20/2026
 7253,azure-mgmt-resource-deployments@1.0.0,python,azure-mgmt-resource-deployments_1.0.0,azure-mgmt-resource-deployments,1.0.0,1784537595,07/20/2026
+7254,azure-mgmt-hybridkubernetes@2.0.0,python,azure-mgmt-hybridkubernetes_2.0.0,azure-mgmt-hybridkubernetes,2.0.0,1784537594,07/20/2026

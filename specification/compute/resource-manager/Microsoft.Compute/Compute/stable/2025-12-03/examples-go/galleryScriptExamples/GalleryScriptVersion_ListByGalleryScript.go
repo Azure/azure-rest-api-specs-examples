@@ -1,0 +1,170 @@
+package armcompute_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+)
+
+// Generated from example definition: 2025-12-03/galleryScriptExamples/GalleryScriptVersion_ListByGalleryScript.json
+func ExampleGalleryScriptVersionsClient_NewListByGalleryScriptPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcompute.NewClientFactory("{subscription-id}", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewGalleryScriptVersionsClient().NewListByGalleryScriptPager("myResourceGroupName", "myGalleryName", "myGalleryScriptName", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armcompute.GalleryScriptVersionsClientListByGalleryScriptResponse{
+		// 	GalleryScriptVersionList: armcompute.GalleryScriptVersionList{
+		// 		Value: []*armcompute.GalleryScriptVersion{
+		// 			{
+		// 				Location: to.Ptr("West US"),
+		// 				Name: to.Ptr("1.0.0"),
+		// 				Type: to.Ptr("Microsoft.Compute/galleries/script/versions"),
+		// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroupName/providers/Microsoft.Compute/galleries/myGalleryName/scripts/myGalleryScriptName/versions/1.0.0"),
+		// 				Properties: &armcompute.GalleryScriptVersionProperties{
+		// 					PublishingProfile: &armcompute.GalleryScriptVersionPublishingProfile{
+		// 						Source: &armcompute.ScriptSource{
+		// 							ScriptLink: to.Ptr("https://mystorageaccount.blob.core.windows.net/mycontainer/myScript1.ps1"),
+		// 							Parameters: []*armcompute.GalleryScriptParameter{
+		// 								{
+		// 									Name: to.Ptr("location"),
+		// 									Required: to.Ptr(true),
+		// 									DefaultValue: to.Ptr("westus"),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeString),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("myGalleryScriptParameter1"),
+		// 									Required: to.Ptr(true),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeString),
+		// 									DefaultValue: to.Ptr("default value of parameter"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("myGalleryScriptParameter2"),
+		// 									Required: to.Ptr(false),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeString),
+		// 									DefaultValue: to.Ptr("default value of parameter"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("numberOfUnits"),
+		// 									Required: to.Ptr(true),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeInt),
+		// 									DefaultValue: to.Ptr("3"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 									MinValue: to.Ptr("1"),
+		// 									MaxValue: to.Ptr("5"),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("weightOfUnit"),
+		// 									Required: to.Ptr(true),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeDouble),
+		// 									DefaultValue: to.Ptr("0.6"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 									MinValue: to.Ptr("0.1"),
+		// 									MaxValue: to.Ptr("2"),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("typeOfProduct"),
+		// 									Required: to.Ptr(false),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeEnum),
+		// 									DefaultValue: to.Ptr("Fruit"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 									EnumValues: []*string{
+		// 										to.Ptr("Fruit"),
+		// 										to.Ptr("Vegetable"),
+		// 										to.Ptr("Greens"),
+		// 										to.Ptr("Nuts"),
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 						TargetRegions: []*armcompute.TargetRegion{
+		// 							{
+		// 								Name: to.Ptr("West US"),
+		// 								RegionalReplicaCount: to.Ptr[int32](2),
+		// 								StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+		// 								ExcludeFromLatest: to.Ptr(false),
+		// 							},
+		// 						},
+		// 						ReplicaCount: to.Ptr[int32](2),
+		// 						ExcludeFromLatest: to.Ptr(false),
+		// 						PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-06-21T17:13:57.5972568+00:00"); return t}()),
+		// 						EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2027-07-01T07:00:00+00:00"); return t}()),
+		// 						StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+		// 					},
+		// 					SafetyProfile: &armcompute.GalleryScriptVersionSafetyProfile{
+		// 						AllowDeletionOfReplicatedLocations: to.Ptr(false),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 			{
+		// 				Location: to.Ptr("West US"),
+		// 				Name: to.Ptr("1.0.1"),
+		// 				Type: to.Ptr("Microsoft.Compute/galleries/script/versions"),
+		// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroupName/providers/Microsoft.Compute/galleries/myGalleryName/scripts/myGalleryScriptName/versions/1.0.1"),
+		// 				Properties: &armcompute.GalleryScriptVersionProperties{
+		// 					PublishingProfile: &armcompute.GalleryScriptVersionPublishingProfile{
+		// 						Source: &armcompute.ScriptSource{
+		// 							ScriptLink: to.Ptr("https://mystorageaccount.blob.core.windows.net/mycontainer/myScript2.ps1"),
+		// 							Parameters: []*armcompute.GalleryScriptParameter{
+		// 								{
+		// 									Name: to.Ptr("myGalleryScriptParameter1"),
+		// 									Required: to.Ptr(true),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeString),
+		// 									DefaultValue: to.Ptr("default value of parameter"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 								},
+		// 								{
+		// 									Name: to.Ptr("myGalleryScriptParameter2"),
+		// 									Required: to.Ptr(false),
+		// 									Type: to.Ptr(armcompute.GalleryScriptParameterTypeString),
+		// 									DefaultValue: to.Ptr("default value of parameter"),
+		// 									Description: to.Ptr("description of the parameter"),
+		// 								},
+		// 							},
+		// 						},
+		// 						TargetRegions: []*armcompute.TargetRegion{
+		// 							{
+		// 								Name: to.Ptr("West US"),
+		// 								RegionalReplicaCount: to.Ptr[int32](2),
+		// 								StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+		// 								ExcludeFromLatest: to.Ptr(false),
+		// 							},
+		// 						},
+		// 						ReplicaCount: to.Ptr[int32](2),
+		// 						ExcludeFromLatest: to.Ptr(false),
+		// 						PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-06-21T17:13:57.5972568+00:00"); return t}()),
+		// 						EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2027-07-01T07:00:00+00:00"); return t}()),
+		// 						StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+		// 					},
+		// 					SafetyProfile: &armcompute.GalleryScriptVersionSafetyProfile{
+		// 						AllowDeletionOfReplicatedLocations: to.Ptr(false),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://microsoft.com/nextLinkExample"),
+		// 	},
+		// }
+	}
+}

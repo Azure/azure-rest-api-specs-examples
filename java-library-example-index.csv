@@ -7247,3 +7247,4 @@ id,name,language,tag,package,version,date_epoch,date
 7246,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.0,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.0,1784176889,07/16/2026
 7247,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.2.0,go,sdk/resourcemanager/compute/armcompute/v8.2.0,sdk/resourcemanager/compute/armcompute,v8.2.0,1784515475,07/20/2026
 7248,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/enclave/armenclave@v0.1.0,go,sdk/resourcemanager/enclave/armenclave/v0.1.0,sdk/resourcemanager/enclave/armenclave,v0.1.0,1784514652,07/20/2026
+7249,azure-mgmt-sqlvirtualmachine@1.0.0,python,azure-mgmt-sqlvirtualmachine_1.0.0,azure-mgmt-sqlvirtualmachine,1.0.0,1784538928,07/20/2026

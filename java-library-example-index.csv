@@ -7249,3 +7249,4 @@ id,name,language,tag,package,version,date_epoch,date
 7248,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/enclave/armenclave@v0.1.0,go,sdk/resourcemanager/enclave/armenclave/v0.1.0,sdk/resourcemanager/enclave/armenclave,v0.1.0,1784514652,07/20/2026
 7249,azure-mgmt-sqlvirtualmachine@1.0.0,python,azure-mgmt-sqlvirtualmachine_1.0.0,azure-mgmt-sqlvirtualmachine,1.0.0,1784538928,07/20/2026
 7250,azure-mgmt-networkcloud@3.0.0,python,azure-mgmt-networkcloud_3.0.0,azure-mgmt-networkcloud,3.0.0,1784538915,07/20/2026
+7251,azure-mgmt-servicebus@10.0.0,python,azure-mgmt-servicebus_10.0.0,azure-mgmt-servicebus,10.0.0,1784537614,07/20/2026

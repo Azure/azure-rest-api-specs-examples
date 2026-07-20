@@ -7256,3 +7256,4 @@ id,name,language,tag,package,version,date_epoch,date
 7255,azure-mgmt-consumption@11.0.0,python,azure-mgmt-consumption_11.0.0,azure-mgmt-consumption,11.0.0,1784534305,07/20/2026
 7256,azure-mgmt-storage@25.1.0,python,azure-mgmt-storage_25.1.0,azure-mgmt-storage,25.1.0,1784527672,07/20/2026
 7257,azure-mgmt-computeschedule@1.2.0b2,python,azure-mgmt-computeschedule_1.2.0b2,azure-mgmt-computeschedule,1.2.0b2,1784527648,07/20/2026
+7258,azure-mgmt-compute@38.2.0,python,azure-mgmt-compute_38.2.0,azure-mgmt-compute,38.2.0,1784519243,07/20/2026

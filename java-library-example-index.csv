@@ -7245,3 +7245,16 @@ id,name,language,tag,package,version,date_epoch,date
 7244,@azure/arm-redisenterprisecache@5.0.0-beta.2,js,@azure/arm-redisenterprisecache_5.0.0-beta.2,@azure/arm-redisenterprisecache,5.0.0-beta.2,1784180801,07/16/2026
 7245,@azure/arm-containerregistry@12.1.0-beta.2,js,@azure/arm-containerregistry_12.1.0-beta.2,@azure/arm-containerregistry,12.1.0-beta.2,1784170427,07/16/2026
 7246,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.0,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.0,1784176889,07/16/2026
+7247,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.2.0,go,sdk/resourcemanager/compute/armcompute/v8.2.0,sdk/resourcemanager/compute/armcompute,v8.2.0,1784515475,07/20/2026
+7248,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/enclave/armenclave@v0.1.0,go,sdk/resourcemanager/enclave/armenclave/v0.1.0,sdk/resourcemanager/enclave/armenclave,v0.1.0,1784514652,07/20/2026
+7249,azure-mgmt-sqlvirtualmachine@1.0.0,python,azure-mgmt-sqlvirtualmachine_1.0.0,azure-mgmt-sqlvirtualmachine,1.0.0,1784538928,07/20/2026
+7250,azure-mgmt-networkcloud@3.0.0,python,azure-mgmt-networkcloud_3.0.0,azure-mgmt-networkcloud,3.0.0,1784538915,07/20/2026
+7251,azure-mgmt-servicebus@10.0.0,python,azure-mgmt-servicebus_10.0.0,azure-mgmt-servicebus,10.0.0,1784537614,07/20/2026
+7252,azure-mgmt-resource-subscriptions@1.0.0,python,azure-mgmt-resource-subscriptions_1.0.0,azure-mgmt-resource-subscriptions,1.0.0,1784537597,07/20/2026
+7253,azure-mgmt-resource-deployments@1.0.0,python,azure-mgmt-resource-deployments_1.0.0,azure-mgmt-resource-deployments,1.0.0,1784537595,07/20/2026
+7254,azure-mgmt-hybridkubernetes@2.0.0,python,azure-mgmt-hybridkubernetes_2.0.0,azure-mgmt-hybridkubernetes,2.0.0,1784537594,07/20/2026
+7255,azure-mgmt-consumption@11.0.0,python,azure-mgmt-consumption_11.0.0,azure-mgmt-consumption,11.0.0,1784534305,07/20/2026
+7256,azure-mgmt-storage@25.1.0,python,azure-mgmt-storage_25.1.0,azure-mgmt-storage,25.1.0,1784527672,07/20/2026
+7257,azure-mgmt-computeschedule@1.2.0b2,python,azure-mgmt-computeschedule_1.2.0b2,azure-mgmt-computeschedule,1.2.0b2,1784527648,07/20/2026
+7258,azure-mgmt-compute@38.2.0,python,azure-mgmt-compute_38.2.0,azure-mgmt-compute,38.2.0,1784519243,07/20/2026
+7259,azure-mgmt-enclave@1.0.0b1,python,azure-mgmt-enclave_1.0.0b1,azure-mgmt-enclave,1.0.0b1,1784519218,07/20/2026

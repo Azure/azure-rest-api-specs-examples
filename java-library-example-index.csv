@@ -7258,3 +7258,4 @@ id,name,language,tag,package,version,date_epoch,date
 7257,azure-mgmt-computeschedule@1.2.0b2,python,azure-mgmt-computeschedule_1.2.0b2,azure-mgmt-computeschedule,1.2.0b2,1784527648,07/20/2026
 7258,azure-mgmt-compute@38.2.0,python,azure-mgmt-compute_38.2.0,azure-mgmt-compute,38.2.0,1784519243,07/20/2026
 7259,azure-mgmt-enclave@1.0.0b1,python,azure-mgmt-enclave_1.0.0b1,azure-mgmt-enclave,1.0.0b1,1784519218,07/20/2026
+7260,@azure/arm-enclave@1.0.0-beta.1,js,@azure/arm-enclave_1.0.0-beta.1,@azure/arm-enclave,1.0.0-beta.1,1784515656,07/20/2026

@@ -1,0 +1,159 @@
+package armenclave_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/enclave/armenclave"
+)
+
+// Generated from example definition: 2026-03-01-preview/VirtualEnclave_ListByResourceGroup.json
+func ExampleVirtualEnclaveClient_NewListByResourceGroupPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armenclave.NewClientFactory("CA1CB369-DD26-4DB2-9D43-9AFEF0F22093", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewVirtualEnclaveClient().NewListByResourceGroupPager("rgopenapi", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armenclave.VirtualEnclaveClientListByResourceGroupResponse{
+		// 	ResourceListResult: armenclave.ResourceListResult{
+		// 		Value: []*armenclave.Resource{
+		// 			{
+		// 				Identity: &armenclave.ManagedServiceIdentity{
+		// 					Type: to.Ptr(armenclave.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
+		// 					PrincipalID: to.Ptr("1a2e532b-9900-414c-8600-cfc6126628d7"),
+		// 					TenantID: to.Ptr("f686d426-8d16-42db-81b7-ab578e110ccd"),
+		// 					UserAssignedIdentities: map[string]*armenclave.UserAssignedIdentity{
+		// 						"/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": &armenclave.UserAssignedIdentity{
+		// 							PrincipalID: to.Ptr("f4aa4954-a564-4933-a7e1-502019d807c2"),
+		// 							ClientID: to.Ptr("b82bf757-ee7f-4632-9df1-5e52a720fdd2"),
+		// 						},
+		// 					},
+		// 				},
+		// 				Properties: &armenclave.VirtualEnclaveProperties{
+		// 					ProvisioningState: to.Ptr(armenclave.ProvisioningStateSucceeded),
+		// 					EnclaveVirtualNetwork: &armenclave.VirtualNetworkModel{
+		// 						NetworkSize: to.Ptr("small"),
+		// 						CustomCidrRange: to.Ptr("10.0.0.0/24"),
+		// 						SubnetConfigurations: []*armenclave.SubnetConfiguration{
+		// 							{
+		// 								SubnetName: to.Ptr("test"),
+		// 								SubnetResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.KeyVault/vaults/TestMyKeyVault1"),
+		// 								NetworkPrefixSize: to.Ptr[int32](26),
+		// 								AddressPrefix: to.Ptr("10.0.0.0/26"),
+		// 								NetworkSecurityGroupResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.KeyVault/vaults/TestMyKeyVault1"),
+		// 							},
+		// 						},
+		// 						AllowSubnetCommunication: to.Ptr(true),
+		// 					},
+		// 					CommunityResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/microsoft.mission/communities/TestMyCommunity"),
+		// 					EnclaveDefaultSettings: &armenclave.DefaultSettingsModel{
+		// 						KeyVaultResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.KeyVault/vaults/TestMyKeyVault1"),
+		// 						StorageAccountResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.Storage/storageAccounts/TestMyStorageAccount"),
+		// 						LogAnalyticsResourceIDCollection: []*string{
+		// 							to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.OperationalInsights/workspaces/TestMyLogA1"),
+		// 							to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.OperationalInsights/workspaces/TestMyLogA2"),
+		// 						},
+		// 						DiagnosticDestination: to.Ptr(armenclave.DiagnosticDestinationBoth),
+		// 					},
+		// 					ResourceCollection: []*string{
+		// 						to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg"),
+		// 					},
+		// 					MaintenanceModeConfiguration: &armenclave.MaintenanceModeConfigurationModel{
+		// 						Mode: to.Ptr(armenclave.MaintenanceModeConfigurationModelModeOff),
+		// 						Principals: []*armenclave.Principal{
+		// 							{
+		// 								ID: to.Ptr("355a6bb0-abc0-4cba-000d-12a345b678c9"),
+		// 								Type: to.Ptr(armenclave.PrincipalTypeUser),
+		// 							},
+		// 						},
+		// 						Justification: to.Ptr(armenclave.MaintenanceModeConfigurationModelJustificationOff),
+		// 					},
+		// 					DedicatedHubResourceID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestResourceGroup/providers/Microsoft.Mission/communities/TestMyCommunity/dedicatedHubs/TestDedicatedHub"),
+		// 					BastionEnabled: to.Ptr(true),
+		// 					WorkloadResourceVisibility: to.Ptr(armenclave.ResourceVisibilityModeDisabled),
+		// 					RbacInheritance: to.Ptr(armenclave.RbacInheritanceModeDisabled),
+		// 					EnclaveRoleAssignments: []*armenclave.RoleAssignmentItem{
+		// 						{
+		// 							RoleDefinitionID: to.Ptr("b24988ac-6180-42a0-ab88-20f7382dd24c"),
+		// 							Principals: []*armenclave.Principal{
+		// 								{
+		// 									ID: to.Ptr("355a6bb0-abc0-4cba-000d-12a345b678c9"),
+		// 									Type: to.Ptr(armenclave.PrincipalTypeUser),
+		// 								},
+		// 								{
+		// 									ID: to.Ptr("355a6bb0-abc0-4cba-000d-12a345b678c0"),
+		// 									Type: to.Ptr(armenclave.PrincipalTypeUser),
+		// 								},
+		// 							},
+		// 							Condition: to.Ptr("@RoleDefinition.Name StringNotEquals 'Owner'"),
+		// 						},
+		// 						{
+		// 							RoleDefinitionID: to.Ptr("18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"),
+		// 							Principals: []*armenclave.Principal{
+		// 								{
+		// 									ID: to.Ptr("355a6bb0-abc0-4cba-000d-12a345b678c9"),
+		// 									Type: to.Ptr(armenclave.PrincipalTypeUser),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					WorkloadRoleAssignments: []*armenclave.RoleAssignmentItem{
+		// 						{
+		// 							RoleDefinitionID: to.Ptr("d73bb868-a0df-4d4d-bd69-98a00b01fccb"),
+		// 							Principals: []*armenclave.Principal{
+		// 								{
+		// 									ID: to.Ptr("01234567-89ab-ef01-2345-0123456789ab"),
+		// 									Type: to.Ptr(armenclave.PrincipalTypeGroup),
+		// 								},
+		// 							},
+		// 							Condition: to.Ptr("@RoleDefinition.Name StringNotEquals 'Owner'"),
+		// 						},
+		// 						{
+		// 							RoleDefinitionID: to.Ptr("fb879df8-f326-4884-b1cf-06f3ad86be52"),
+		// 							Principals: []*armenclave.Principal{
+		// 								{
+		// 									ID: to.Ptr("01234567-89ab-ef01-2345-0123456789ab"),
+		// 									Type: to.Ptr(armenclave.PrincipalTypeGroup),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"Tag1": to.Ptr("Value1"),
+		// 				},
+		// 				Location: to.Ptr("westcentralus"),
+		// 				ID: to.Ptr("/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/microsoft.mission/virtualenclaves/TestMyEnclave"),
+		// 				Name: to.Ptr("TestMyEnclave"),
+		// 				Type: to.Ptr("microsoft.mission/virtualenclaves"),
+		// 				SystemData: &armenclave.SystemData{
+		// 					CreatedBy: to.Ptr("myAlias"),
+		// 					CreatedByType: to.Ptr(armenclave.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-17T20:43:17.760Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("myAlias"),
+		// 					LastModifiedByType: to.Ptr(armenclave.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-17T20:43:17.760Z"); return t}()),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://microsoft.com/a"),
+		// 	},
+		// }
+	}
+}

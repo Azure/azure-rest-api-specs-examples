@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.containerservice.models.AgentPoolDeleteMachinesParameter;
+import java.util.Arrays;
+
+/**
+ * Samples for AgentPools DeleteMachines.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01/AgentPoolsDeleteMachines.json
+     */
+    /**
+     * Sample code: Delete Specific Machines in an Agent Pool.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void deleteSpecificMachinesInAnAgentPool(
+        com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getAgentPools().deleteMachines("rg1", "clustername1", "agentpool1",
+            new AgentPoolDeleteMachinesParameter().withMachineNames(
+                Arrays.asList("aks-nodepool1-42263519-vmss00000a", "aks-nodepool1-42263519-vmss00000b")),
+            com.azure.core.util.Context.NONE);
+    }
+}

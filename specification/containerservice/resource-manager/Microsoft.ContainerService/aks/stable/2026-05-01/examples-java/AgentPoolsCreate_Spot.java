@@ -1,0 +1,43 @@
+
+import com.azure.resourcemanager.containerservice.fluent.models.AgentPoolInner;
+import com.azure.resourcemanager.containerservice.models.OSType;
+import com.azure.resourcemanager.containerservice.models.ScaleSetEvictionPolicy;
+import com.azure.resourcemanager.containerservice.models.ScaleSetPriority;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for AgentPools CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01/AgentPoolsCreate_Spot.json
+     */
+    /**
+     * Sample code: Create Spot Agent Pool.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void createSpotAgentPool(com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getAgentPools().createOrUpdate("rg1", "clustername1", "agentpool1",
+            new AgentPoolInner().withCount(3).withVmSize("Standard_DS1_v2").withOsType(OSType.LINUX)
+                .withOrchestratorVersion("").withScaleSetPriority(ScaleSetPriority.SPOT)
+                .withScaleSetEvictionPolicy(ScaleSetEvictionPolicy.DELETE).withTags(mapOf("name1", "val1"))
+                .withNodeLabels(mapOf("key1", "fakeTokenPlaceholder"))
+                .withNodeTaints(Arrays.asList("Key1=Value1:NoSchedule")),
+            null, null, com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

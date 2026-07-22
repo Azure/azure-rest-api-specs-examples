@@ -7264,3 +7264,4 @@ id,name,language,tag,package,version,date_epoch,date
 7263,azure-mgmt-compute-bulkaction@1.0.0b1,python,azure-mgmt-compute-bulkaction_1.0.0b1,azure-mgmt-compute-bulkaction,1.0.0b1,1784692087,07/22/2026
 7264,azure-mgmt-cognitiveservices@15.0.0b4,python,azure-mgmt-cognitiveservices_15.0.0b4,azure-mgmt-cognitiveservices,15.0.0b4,1784685732,07/22/2026
 7265,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.0,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.0,1784715224,07/22/2026
+7266,com.azure.resourcemanager:azure-resourcemanager-compute:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.59.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.59.0,1784703561,07/22/2026

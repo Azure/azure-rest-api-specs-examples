@@ -1,0 +1,18 @@
+
+/**
+ * Samples for CommunityGalleryImageVersions List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-03/communityGalleryExamples/CommunityGalleryImageVersion_List.json
+     */
+    /**
+     * Sample code: List community gallery image versions.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void listCommunityGalleryImageVersions(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getCommunityGalleryImageVersions().list("myLocation", "publicGalleryName",
+            "myGalleryImageName", com.azure.core.util.Context.NONE);
+    }
+}

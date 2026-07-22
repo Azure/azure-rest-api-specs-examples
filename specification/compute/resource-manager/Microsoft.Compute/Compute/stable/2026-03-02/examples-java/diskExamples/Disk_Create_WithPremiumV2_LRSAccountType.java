@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.compute.fluent.models.DiskInner;
+import com.azure.resourcemanager.compute.models.CreationData;
+import com.azure.resourcemanager.compute.models.DiskCreateOption;
+import com.azure.resourcemanager.compute.models.DiskSku;
+import com.azure.resourcemanager.compute.models.DiskStorageAccountTypes;
+
+/**
+ * Samples for Disks CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02/diskExamples/Disk_Create_WithPremiumV2_LRSAccountType.json
+     */
+    /**
+     * Sample code: create a managed disk with premium v2 account type.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void
+        createAManagedDiskWithPremiumV2AccountType(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getDisks().createOrUpdate("myResourceGroup", "myPremiumV2Disk",
+            new DiskInner().withLocation("West US")
+                .withSku(new DiskSku().withName(DiskStorageAccountTypes.PREMIUM_V2_LRS))
+                .withCreationData(new CreationData().withCreateOption(DiskCreateOption.EMPTY)).withDiskSizeGB(200)
+                .withDiskIopsReadWrite(125L).withDiskMBpsReadWrite(3000L),
+            com.azure.core.util.Context.NONE);
+    }
+}

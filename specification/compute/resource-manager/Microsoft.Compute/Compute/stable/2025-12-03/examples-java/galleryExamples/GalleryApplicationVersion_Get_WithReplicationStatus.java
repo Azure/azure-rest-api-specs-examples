@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.compute.models.ReplicationStatusTypes;
+
+/**
+ * Samples for GalleryApplicationVersions Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-03/galleryExamples/GalleryApplicationVersion_Get_WithReplicationStatus.json
+     */
+    /**
+     * Sample code: Get a gallery Application Version with replication status.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void
+        getAGalleryApplicationVersionWithReplicationStatus(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getGalleryApplicationVersions().getWithResponse("myResourceGroup", "myGalleryName",
+            "myGalleryApplicationName", "1.0.0", ReplicationStatusTypes.REPLICATION_STATUS,
+            com.azure.core.util.Context.NONE);
+    }
+}

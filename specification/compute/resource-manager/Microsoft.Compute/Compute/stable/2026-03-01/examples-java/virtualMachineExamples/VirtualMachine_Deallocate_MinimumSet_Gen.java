@@ -15,5 +15,4 @@ public final class Main {
         manager.serviceClient().getVirtualMachines().deallocate("rgcompute", "aaaaaaaaaaaaaaaa", null, null,
             com.azure.core.util.Context.NONE);
     }
-
 }

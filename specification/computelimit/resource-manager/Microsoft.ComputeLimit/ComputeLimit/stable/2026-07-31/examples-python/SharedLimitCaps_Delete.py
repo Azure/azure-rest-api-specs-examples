@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.computelimit import ComputeLimitMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-computelimit
+# USAGE
+    python shared_limit_caps_delete.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ComputeLimitMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.shared_limit_caps.delete(
+        location="eastus",
+        vm_family_name="StandardDSv3Family",
+    )
+
+
+# x-ms-original-file: 2026-07-31/SharedLimitCaps_Delete.json
+if __name__ == "__main__":
+    main()

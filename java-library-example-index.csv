@@ -7265,3 +7265,4 @@ id,name,language,tag,package,version,date_epoch,date
 7264,azure-mgmt-cognitiveservices@15.0.0b4,python,azure-mgmt-cognitiveservices_15.0.0b4,azure-mgmt-cognitiveservices,15.0.0b4,1784685732,07/22/2026
 7265,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.0,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.0,1784715224,07/22/2026
 7266,com.azure.resourcemanager:azure-resourcemanager-compute:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.59.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.59.0,1784703561,07/22/2026
+7267,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.56.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.56.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.56.0-beta.2,1784700302,07/22/2026

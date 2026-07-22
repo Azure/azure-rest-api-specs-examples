@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.cosmos.models.NotebookWorkspaceName;
+
+/**
+ * Samples for NotebookWorkspaces Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15/CosmosDBNotebookWorkspaceGet.json
+     */
+    /**
+     * Sample code: CosmosDBNotebookWorkspaceGet.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBNotebookWorkspaceGet(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getNotebookWorkspaces().getWithResponse("rg1", "ddb1", NotebookWorkspaceName.DEFAULT,
+            com.azure.core.util.Context.NONE);
+    }
+}

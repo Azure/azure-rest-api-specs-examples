@@ -1,0 +1,18 @@
+
+/**
+ * Samples for TableResources MigrateTableToManualThroughput.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15/CosmosDBTableMigrateToManualThroughput.json
+     */
+    /**
+     * Sample code: CosmosDBTableMigrateToManualThroughput.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBTableMigrateToManualThroughput(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getTableResources().migrateTableToManualThroughput("rg1", "ddb1", "tableName",
+            com.azure.core.util.Context.NONE);
+    }
+}

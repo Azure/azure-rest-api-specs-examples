@@ -1,0 +1,17 @@
+
+/**
+ * Samples for EnclaveConnection Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/EnclaveConnection_Delete.json
+     */
+    /**
+     * Sample code: EnclaveConnection_Delete.
+     * 
+     * @param manager Entry point to AzureEnclaveManager.
+     */
+    public static void enclaveConnectionDelete(com.azure.resourcemanager.enclave.AzureEnclaveManager manager) {
+        manager.enclaveConnections().delete("rgopenapi", "TestMyEnclaveConnection", com.azure.core.util.Context.NONE);
+    }
+}

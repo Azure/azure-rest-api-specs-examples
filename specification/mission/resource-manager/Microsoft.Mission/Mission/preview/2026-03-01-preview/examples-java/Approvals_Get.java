@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Approval Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/Approvals_Get.json
+     */
+    /**
+     * Sample code: Approval_Get.
+     * 
+     * @param manager Entry point to AzureEnclaveManager.
+     */
+    public static void approvalGet(com.azure.resourcemanager.enclave.AzureEnclaveManager manager) {
+        manager.approvals().getWithResponse(
+            "subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.Mission/enclaveconnections/TestMyEnclaveConnection",
+            "TestApprovals", com.azure.core.util.Context.NONE);
+    }
+}

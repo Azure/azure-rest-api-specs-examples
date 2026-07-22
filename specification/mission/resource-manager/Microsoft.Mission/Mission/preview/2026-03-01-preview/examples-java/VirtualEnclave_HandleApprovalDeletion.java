@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.enclave.models.ApprovalDeletionCallbackRequest;
+import com.azure.resourcemanager.enclave.models.ApprovalDeletionCallbackRequestResourceRequestAction;
+
+/**
+ * Samples for VirtualEnclave HandleApprovalDeletion.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/VirtualEnclave_HandleApprovalDeletion.json
+     */
+    /**
+     * Sample code: VirtualEnclave_HandleApprovalDeletion.
+     * 
+     * @param manager Entry point to AzureEnclaveManager.
+     */
+    public static void
+        virtualEnclaveHandleApprovalDeletion(com.azure.resourcemanager.enclave.AzureEnclaveManager manager) {
+        manager.virtualEnclaves()
+            .handleApprovalDeletion("rgopenapi", "TestMyEnclave", new ApprovalDeletionCallbackRequest()
+                .withResourceRequestAction(ApprovalDeletionCallbackRequestResourceRequestAction.CREATE),
+                com.azure.core.util.Context.NONE);
+    }
+}

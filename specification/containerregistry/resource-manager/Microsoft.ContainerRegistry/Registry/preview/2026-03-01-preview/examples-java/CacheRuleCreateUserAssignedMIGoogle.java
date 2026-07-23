@@ -1,0 +1,48 @@
+
+import com.azure.resourcemanager.containerregistry.fluent.models.CacheRuleInner;
+import com.azure.resourcemanager.containerregistry.models.GarAuthenticationProperties;
+import com.azure.resourcemanager.containerregistry.models.IdentityProperties;
+import com.azure.resourcemanager.containerregistry.models.ResourceIdentityType;
+import com.azure.resourcemanager.containerregistry.models.UserIdentityProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for CacheRules Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/CacheRuleCreateUserAssignedMIGoogle.json
+     */
+    /**
+     * Sample code: CacheRuleCreateUserAssignedMIAuthGoogle.
+     * 
+     * @param manager Entry point to ContainerRegistryManager.
+     */
+    public static void cacheRuleCreateUserAssignedMIAuthGoogle(
+        com.azure.resourcemanager.containerregistry.ContainerRegistryManager manager) {
+        manager.serviceClient().getCacheRules().create("myResourceGroup", "myRegistry", "myCacheRule",
+            new CacheRuleInner().withIdentity(new IdentityProperties().withType(ResourceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity",
+                    new UserIdentityProperties())))
+                .withAdditionalAuthenticationProperties(new GarAuthenticationProperties()
+                    .withProjectNumber("123456789012").withWorkloadIdentityPool("my-workload-identity-pool")
+                    .withWorkloadIdentityProvider("my-workload-identity-provider"))
+                .withSourceRepository("us-west1-docker.pkg.dev/repository/hello-world")
+                .withTargetRepository("cached-acr/hello-world"),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.redisenterprise.fluent.models.MigrationInner;
+import com.azure.resourcemanager.redisenterprise.models.AzureCacheForRedisMigrationProperties;
+
+/**
+ * Samples for Migrations Start.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01-preview/RedisEnterpriseMigrationStart.json
+     */
+    /**
+     * Sample code: RedisEnterpriseMigrationStart.
+     * 
+     * @param manager Entry point to RedisEnterpriseManager.
+     */
+    public static void
+        redisEnterpriseMigrationStart(com.azure.resourcemanager.redisenterprise.RedisEnterpriseManager manager) {
+        manager.migrations().start("rg1", "cache1",
+            new MigrationInner().withProperties(new AzureCacheForRedisMigrationProperties().withSourceResourceId(
+                "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redis/cache1")
+                .withSwitchDns(true).withSkipDataMigration(true)),
+            com.azure.core.util.Context.NONE);
+    }
+}

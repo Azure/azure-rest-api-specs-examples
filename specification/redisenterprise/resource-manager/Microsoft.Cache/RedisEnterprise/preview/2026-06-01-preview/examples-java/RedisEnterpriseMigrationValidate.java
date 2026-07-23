@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.redisenterprise.models.MigrationValidationRequest;
+
+/**
+ * Samples for Migrations Validate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01-preview/RedisEnterpriseMigrationValidate.json
+     */
+    /**
+     * Sample code: RedisEnterpriseMigrationValidate.
+     * 
+     * @param manager Entry point to RedisEnterpriseManager.
+     */
+    public static void
+        redisEnterpriseMigrationValidate(com.azure.resourcemanager.redisenterprise.RedisEnterpriseManager manager) {
+        manager.migrations().validateWithResponse("rg1", "cache1",
+            new MigrationValidationRequest().withSourceResourceId(
+                "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redis/cache1")
+                .withSkipDataMigration(true).withForceMigrate(false),
+            com.azure.core.util.Context.NONE);
+    }
+}

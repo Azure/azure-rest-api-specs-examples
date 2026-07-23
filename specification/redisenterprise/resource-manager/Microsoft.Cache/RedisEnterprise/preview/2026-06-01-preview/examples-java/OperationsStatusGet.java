@@ -1,0 +1,17 @@
+
+/**
+ * Samples for OperationsStatus Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01-preview/OperationsStatusGet.json
+     */
+    /**
+     * Sample code: OperationsStatusGet.
+     * 
+     * @param manager Entry point to RedisEnterpriseManager.
+     */
+    public static void operationsStatusGet(com.azure.resourcemanager.redisenterprise.RedisEnterpriseManager manager) {
+        manager.operationsStatus().getWithResponse("West US", "testoperationid", com.azure.core.util.Context.NONE);
+    }
+}

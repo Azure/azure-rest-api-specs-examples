@@ -1,0 +1,34 @@
+
+import com.azure.resourcemanager.cosmos.models.Permission;
+import com.azure.resourcemanager.cosmos.models.RoleDefinitionType;
+import com.azure.resourcemanager.cosmos.models.SqlRoleDefinitionCreateUpdateParameters;
+import java.util.Arrays;
+
+/**
+ * Samples for SqlResources CreateUpdateSqlRoleDefinition.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-15/CosmosDBSqlRoleDefinitionCreateUpdate.json
+     */
+    /**
+     * Sample code: CosmosDBSqlRoleDefinitionCreateUpdate.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBSqlRoleDefinitionCreateUpdate(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getSqlResources().createUpdateSqlRoleDefinition("myRoleDefinitionId",
+            "myResourceGroupName", "myAccountName",
+            new SqlRoleDefinitionCreateUpdateParameters().withRoleName("myRoleName")
+                .withType(RoleDefinitionType.CUSTOM_ROLE)
+                .withAssignableScopes(Arrays.asList(
+                    "/subscriptions/mySubscriptionId/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/sales",
+                    "/subscriptions/mySubscriptionId/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases"))
+                .withPermissions(Arrays.asList(new Permission()
+                    .withDataActions(
+                        Arrays.asList("Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"))
+                    .withNotDataActions(Arrays.asList()))),
+            com.azure.core.util.Context.NONE);
+    }
+}

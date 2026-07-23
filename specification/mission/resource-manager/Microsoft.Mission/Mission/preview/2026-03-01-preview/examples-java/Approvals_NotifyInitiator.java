@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.enclave.models.ApprovalActionRequest;
+import com.azure.resourcemanager.enclave.models.ApprovalActionRequestApprovalStatus;
+
+/**
+ * Samples for Approval NotifyInitiator.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-01-preview/Approvals_NotifyInitiator.json
+     */
+    /**
+     * Sample code: Approval_NotifyInitiator.
+     * 
+     * @param manager Entry point to AzureEnclaveManager.
+     */
+    public static void approvalNotifyInitiator(com.azure.resourcemanager.enclave.AzureEnclaveManager manager) {
+        manager.approvals().notifyInitiator(
+            "subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.Mission/enclaveconnections/TestMyEnclaveConnection",
+            "TestApprovals",
+            new ApprovalActionRequest().withApprovalStatus(ApprovalActionRequestApprovalStatus.APPROVED),
+            com.azure.core.util.Context.NONE);
+    }
+}

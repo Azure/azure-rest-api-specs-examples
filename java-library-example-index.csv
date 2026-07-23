@@ -7274,3 +7274,4 @@ id,name,language,tag,package,version,date_epoch,date
 7273,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.2.0,go,sdk/resourcemanager/netapp/armnetapp/v10.2.0,sdk/resourcemanager/netapp/armnetapp,v10.2.0,1784786343,07/23/2026
 7274,@azure/arm-policy@7.0.1,js,@azure/arm-policy_7.0.1,@azure/arm-policy,7.0.1,1784789432,07/23/2026
 7275,@azure/arm-hybridcompute@5.0.0-beta.3,js,@azure/arm-hybridcompute_5.0.0-beta.3,@azure/arm-hybridcompute,5.0.0-beta.3,1784789005,07/23/2026
+7276,@azure/arm-netapp@24.2.0,js,@azure/arm-netapp_24.2.0,@azure/arm-netapp,24.2.0,1784786256,07/23/2026

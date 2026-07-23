@@ -1,0 +1,233 @@
+package armhybridcompute_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3"
+)
+
+// Generated from example definition: 2026-06-16-preview/machine/Machines_ListByResourceGroup.json
+func ExampleMachinesClient_NewListByResourceGroupPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhybridcompute.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewMachinesClient().NewListByResourceGroupPager("myResourceGroup", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armhybridcompute.MachinesClientListByResourceGroupResponse{
+		// 	MachineListResult: armhybridcompute.MachineListResult{
+		// 		Value: []*armhybridcompute.Machine{
+		// 			{
+		// 				Name: to.Ptr("myMachine"),
+		// 				Type: to.Ptr("Microsoft.HybridCompute/machines"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/myMachine"),
+		// 				Identity: &armhybridcompute.ManagedServiceIdentity{
+		// 					Type: to.Ptr(armhybridcompute.ManagedServiceIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("f7a068cc-b0b8-46e8-a203-22f301a62a8f"),
+		// 					TenantID: to.Ptr("c4098ccc-91b8-46c2-a205-d82ab1a62a8f"),
+		// 				},
+		// 				Location: to.Ptr("eastus2euap"),
+		// 				Properties: &armhybridcompute.MachineProperties{
+		// 					AgentConfiguration: &armhybridcompute.AgentConfiguration{
+		// 						ConfigMode: to.Ptr(armhybridcompute.AgentConfigurationModeFull),
+		// 						ExtensionsEnabled: to.Ptr("true"),
+		// 						GuestConfigurationEnabled: to.Ptr("true"),
+		// 						IncomingConnectionsPorts: []*string{
+		// 							to.Ptr("22"),
+		// 							to.Ptr("23"),
+		// 						},
+		// 						ProxyBypass: []*string{
+		// 							to.Ptr("proxy1"),
+		// 							to.Ptr("proxy2"),
+		// 						},
+		// 						ProxyURL: to.Ptr("https://test.test"),
+		// 					},
+		// 					ClientPublicKey: to.Ptr("string"),
+		// 					DetectedProperties: map[string]*string{
+		// 						"cloudprovider": to.Ptr("N/A"),
+		// 						"manufacturer": to.Ptr("Microsoft Corporation"),
+		// 						"model": to.Ptr("Virtual Machine"),
+		// 					},
+		// 					LicenseProfile: &armhybridcompute.LicenseProfileMachineInstanceView{
+		// 						EsuProfile: &armhybridcompute.LicenseProfileMachineInstanceViewEsuProperties{
+		// 							EsuEligibility: to.Ptr(armhybridcompute.EsuEligibilityIneligible),
+		// 							EsuKeyState: to.Ptr(armhybridcompute.EsuKeyStateInactive),
+		// 							EsuKeys: []*armhybridcompute.EsuKey{
+		// 								{
+		// 									LicenseStatus: to.Ptr[int32](1),
+		// 									SKU: to.Ptr("skuNumber1"),
+		// 								},
+		// 								{
+		// 									LicenseStatus: to.Ptr[int32](1),
+		// 									SKU: to.Ptr("skuNumber2"),
+		// 								},
+		// 							},
+		// 							LicenseAssignmentState: to.Ptr(armhybridcompute.LicenseAssignmentStateAssigned),
+		// 							ServerType: to.Ptr(armhybridcompute.EsuServerTypeStandard),
+		// 						},
+		// 						LicenseChannel: to.Ptr("PSG"),
+		// 						LicenseStatus: to.Ptr(armhybridcompute.LicenseStatusLicensed),
+		// 						ProductProfile: &armhybridcompute.LicenseProfileArmProductProfileProperties{
+		// 							BillingEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 							BillingStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 							DisenrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 							EnrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 							ProductFeatures: []*armhybridcompute.ProductFeature{
+		// 								{
+		// 									Name: to.Ptr("Hotpatch"),
+		// 									BillingEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 									BillingStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 									DisenrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 									EnrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 									SubscriptionStatus: to.Ptr(armhybridcompute.LicenseProfileSubscriptionStatusEnabled),
+		// 								},
+		// 							},
+		// 							ProductType: to.Ptr(armhybridcompute.LicenseProfileProductTypeWindowsServer),
+		// 							SubscriptionStatus: to.Ptr(armhybridcompute.LicenseProfileSubscriptionStatusEnabled),
+		// 						},
+		// 						SoftwareAssurance: &armhybridcompute.LicenseProfileMachineInstanceViewSoftwareAssurance{
+		// 							SoftwareAssuranceCustomer: to.Ptr(true),
+		// 						},
+		// 					},
+		// 					LocationData: &armhybridcompute.LocationData{
+		// 						Name: to.Ptr("Redmond"),
+		// 					},
+		// 					MssqlDiscovered: to.Ptr("false"),
+		// 					OSEdition: to.Ptr("Standard"),
+		// 					OSProfile: &armhybridcompute.OSProfile{
+		// 						LinuxConfiguration: &armhybridcompute.OSProfileLinuxConfiguration{
+		// 							PatchSettings: &armhybridcompute.PatchSettings{
+		// 							},
+		// 						},
+		// 						WindowsConfiguration: &armhybridcompute.OSProfileWindowsConfiguration{
+		// 							PatchSettings: &armhybridcompute.PatchSettings{
+		// 								EnableHotpatching: to.Ptr(true),
+		// 								Status: &armhybridcompute.PatchSettingsStatus{
+		// 									HotpatchEnablementStatus: to.Ptr(armhybridcompute.HotpatchEnablementStatusEnabled),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					PrivateLinkScopeResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName"),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					VMID: to.Ptr("b7a098cc-b0b8-46e8-a205-62f301a62a8f"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("myMachine2"),
+		// 				Type: to.Ptr("Microsoft.HybridCompute/machines"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/myMachine2"),
+		// 				Identity: &armhybridcompute.ManagedServiceIdentity{
+		// 					Type: to.Ptr(armhybridcompute.ManagedServiceIdentityTypeSystemAssigned),
+		// 					PrincipalID: to.Ptr("e7a068cc-b0b8-46e8-a203-22f301a62a8f"),
+		// 					TenantID: to.Ptr("c4098ccc-91b8-46c2-a205-d82ab1a62a8f"),
+		// 				},
+		// 				Location: to.Ptr("westus2"),
+		// 				Properties: &armhybridcompute.MachineProperties{
+		// 					AgentConfiguration: &armhybridcompute.AgentConfiguration{
+		// 						ConfigMode: to.Ptr(armhybridcompute.AgentConfigurationModeFull),
+		// 						ExtensionsEnabled: to.Ptr("true"),
+		// 						GuestConfigurationEnabled: to.Ptr("true"),
+		// 						IncomingConnectionsPorts: []*string{
+		// 							to.Ptr("22"),
+		// 							to.Ptr("23"),
+		// 						},
+		// 						ProxyBypass: []*string{
+		// 							to.Ptr("proxy1"),
+		// 							to.Ptr("proxy2"),
+		// 						},
+		// 						ProxyURL: to.Ptr("https://test.test"),
+		// 					},
+		// 					ClientPublicKey: to.Ptr("string"),
+		// 					DetectedProperties: map[string]*string{
+		// 						"cloudprovider": to.Ptr("N/A"),
+		// 						"manufacturer": to.Ptr("Microsoft Corporation"),
+		// 						"model": to.Ptr("Surfacebook"),
+		// 					},
+		// 					LicenseProfile: &armhybridcompute.LicenseProfileMachineInstanceView{
+		// 						EsuProfile: &armhybridcompute.LicenseProfileMachineInstanceViewEsuProperties{
+		// 							EsuEligibility: to.Ptr(armhybridcompute.EsuEligibilityIneligible),
+		// 							EsuKeyState: to.Ptr(armhybridcompute.EsuKeyStateInactive),
+		// 							EsuKeys: []*armhybridcompute.EsuKey{
+		// 								{
+		// 									LicenseStatus: to.Ptr[int32](1),
+		// 									SKU: to.Ptr("skuNumber1"),
+		// 								},
+		// 								{
+		// 									LicenseStatus: to.Ptr[int32](1),
+		// 									SKU: to.Ptr("skuNumber2"),
+		// 								},
+		// 							},
+		// 							LicenseAssignmentState: to.Ptr(armhybridcompute.LicenseAssignmentStateAssigned),
+		// 							ServerType: to.Ptr(armhybridcompute.EsuServerTypeStandard),
+		// 						},
+		// 						LicenseChannel: to.Ptr("PSG"),
+		// 						LicenseStatus: to.Ptr(armhybridcompute.LicenseStatusLicensed),
+		// 						ProductProfile: &armhybridcompute.LicenseProfileArmProductProfileProperties{
+		// 							BillingEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 							BillingStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 							DisenrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 							EnrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 							ProductFeatures: []*armhybridcompute.ProductFeature{
+		// 								{
+		// 									Name: to.Ptr("Hotpatch"),
+		// 									BillingEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 									BillingStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 									DisenrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-11-05T20:36:49.745Z"); return t}()),
+		// 									EnrollmentDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-10-05T20:36:49.745Z"); return t}()),
+		// 									SubscriptionStatus: to.Ptr(armhybridcompute.LicenseProfileSubscriptionStatusEnabled),
+		// 								},
+		// 							},
+		// 							ProductType: to.Ptr(armhybridcompute.LicenseProfileProductTypeWindowsServer),
+		// 							SubscriptionStatus: to.Ptr(armhybridcompute.LicenseProfileSubscriptionStatusEnabled),
+		// 						},
+		// 						SoftwareAssurance: &armhybridcompute.LicenseProfileMachineInstanceViewSoftwareAssurance{
+		// 							SoftwareAssuranceCustomer: to.Ptr(true),
+		// 						},
+		// 					},
+		// 					LocationData: &armhybridcompute.LocationData{
+		// 						Name: to.Ptr("Redmond"),
+		// 					},
+		// 					MssqlDiscovered: to.Ptr("true"),
+		// 					OSEdition: to.Ptr("Standard"),
+		// 					OSProfile: &armhybridcompute.OSProfile{
+		// 						LinuxConfiguration: &armhybridcompute.OSProfileLinuxConfiguration{
+		// 							PatchSettings: &armhybridcompute.PatchSettings{
+		// 							},
+		// 						},
+		// 						WindowsConfiguration: &armhybridcompute.OSProfileWindowsConfiguration{
+		// 							PatchSettings: &armhybridcompute.PatchSettings{
+		// 								EnableHotpatching: to.Ptr(true),
+		// 								Status: &armhybridcompute.PatchSettingsStatus{
+		// 									HotpatchEnablementStatus: to.Ptr(armhybridcompute.HotpatchEnablementStatusEnabled),
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					ParentClusterResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AzureStackHCI/clusters/myAzureStackHCICluster"),
+		// 					PrivateLinkScopeResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName"),
+		// 					ProvisioningState: to.Ptr("Succeeded"),
+		// 					VMID: to.Ptr("a4a098cc-b0b8-46e8-a205-62f301a62a8f"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

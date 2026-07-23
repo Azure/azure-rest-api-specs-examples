@@ -7276,3 +7276,4 @@ id,name,language,tag,package,version,date_epoch,date
 7275,@azure/arm-hybridcompute@5.0.0-beta.3,js,@azure/arm-hybridcompute_5.0.0-beta.3,@azure/arm-hybridcompute,5.0.0-beta.3,1784789005,07/23/2026
 7276,@azure/arm-netapp@24.2.0,js,@azure/arm-netapp_24.2.0,@azure/arm-netapp,24.2.0,1784786256,07/23/2026
 7277,@azure/arm-compute-bulkactions@1.0.0-beta.1,js,@azure/arm-compute-bulkactions_1.0.0-beta.1,@azure/arm-compute-bulkactions,1.0.0-beta.1,1784753641,07/22/2026
+7278,azure-mgmt-netapp@17.1.0,python,azure-mgmt-netapp_17.1.0,azure-mgmt-netapp,17.1.0,1784777723,07/23/2026

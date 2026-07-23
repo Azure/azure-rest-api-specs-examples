@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.compute.fluent.models.DiskAccessInner;
+
+/**
+ * Samples for DiskAccesses CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-03-02/diskAccessExamples/DiskAccess_Create.json
+     */
+    /**
+     * Sample code: create a disk access resource.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void createADiskAccessResource(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getDiskAccesses().createOrUpdate("myResourceGroup", "myDiskAccess",
+            new DiskAccessInner().withLocation("West US"), com.azure.core.util.Context.NONE);
+    }
+}

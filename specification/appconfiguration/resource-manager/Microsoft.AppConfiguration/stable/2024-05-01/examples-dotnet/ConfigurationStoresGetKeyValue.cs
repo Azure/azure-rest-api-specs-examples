@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppConfigurationKeyValueResource created on azure
-// for more information of creating AppConfigurationKeyValueResource, please refer to the document of AppConfigurationKeyValueResource
+// this example assumes you already have this AppConfigurationStoreResource created on azure
+// for more information of creating AppConfigurationStoreResource, please refer to the document of AppConfigurationStoreResource
 string subscriptionId = "c80fb759-c965-4c6a-9110-9b2b2d038882";
 string resourceGroupName = "myResourceGroup";
 string configStoreName = "contoso";
-string keyValueName = "myKey$myLabel";
-ResourceIdentifier appConfigurationKeyValueResourceId = AppConfigurationKeyValueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configStoreName, keyValueName);
-AppConfigurationKeyValueResource appConfigurationKeyValue = client.GetAppConfigurationKeyValueResource(appConfigurationKeyValueResourceId);
+ResourceIdentifier appConfigurationStoreResourceId = AppConfigurationStoreResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configStoreName);
+AppConfigurationStoreResource appConfigurationStore = client.GetAppConfigurationStoreResource(appConfigurationStoreResourceId);
+
+// get the collection of this AppConfigurationKeyValueResource
+AppConfigurationKeyValueCollection collection = appConfigurationStore.GetAppConfigurationKeyValues();
 
 // invoke the operation
-AppConfigurationKeyValueResource result = await appConfigurationKeyValue.GetAsync();
+string keyValueName = "myKey$myLabel";
+NullableResponse<AppConfigurationKeyValueResource> response = await collection.GetIfExistsAsync(keyValueName);
+AppConfigurationKeyValueResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppConfigurationKeyValueData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppConfigurationKeyValueData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

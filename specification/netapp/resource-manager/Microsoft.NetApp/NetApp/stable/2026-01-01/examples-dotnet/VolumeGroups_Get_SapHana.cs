@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppVolumeGroupResource created on azure
-// for more information of creating NetAppVolumeGroupResource, please refer to the document of NetAppVolumeGroupResource
+// this example assumes you already have this NetAppAccountResource created on azure
+// for more information of creating NetAppAccountResource, please refer to the document of NetAppAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-string volumeGroupName = "group1";
-ResourceIdentifier netAppVolumeGroupResourceId = NetAppVolumeGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, volumeGroupName);
-NetAppVolumeGroupResource netAppVolumeGroup = client.GetNetAppVolumeGroupResource(netAppVolumeGroupResourceId);
+ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
+
+// get the collection of this NetAppVolumeGroupResource
+NetAppVolumeGroupCollection collection = netAppAccount.GetNetAppVolumeGroups();
 
 // invoke the operation
-NetAppVolumeGroupResource result = await netAppVolumeGroup.GetAsync();
+string volumeGroupName = "group1";
+NullableResponse<NetAppVolumeGroupResource> response = await collection.GetIfExistsAsync(volumeGroupName);
+NetAppVolumeGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppVolumeGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppVolumeGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -7283,3 +7283,4 @@ id,name,language,tag,package,version,date_epoch,date
 7282,@azure/arm-containerservicepreparedimgspec@1.0.0-beta.1,js,@azure/arm-containerservicepreparedimgspec_1.0.0-beta.1,@azure/arm-containerservicepreparedimgspec,1.0.0-beta.1,1784861209,07/24/2026
 7283,azure-mgmt-containerservice@41.5.0,python,azure-mgmt-containerservice_41.5.0,azure-mgmt-containerservice,41.5.0,1784877692,07/24/2026
 7284,azure-mgmt-datadog@3.0.0b1,python,azure-mgmt-datadog_3.0.0b1,azure-mgmt-datadog,3.0.0b1,1784876161,07/24/2026
+7285,com.azure.resourcemanager:azure-resourcemanager-netapp:2.4.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.4.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.4.0,1784814952,07/23/2026

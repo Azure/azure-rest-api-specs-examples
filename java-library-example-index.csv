@@ -7269,3 +7269,13 @@ id,name,language,tag,package,version,date_epoch,date
 7268,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.62.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.62.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.62.0,1784697950,07/22/2026
 7269,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-redisenterprise_2.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-redisenterprise,2.2.0-beta.1,1784691131,07/22/2026
 7270,com.azure.resourcemanager:azure-resourcemanager-enclave:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-enclave_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-enclave,1.0.0-beta.1,1784689454,07/22/2026
+7271,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.4.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.4.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.4.0,1784800185,07/23/2026
+7272,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3@v3.0.0-beta.1,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v3.0.0-beta.1,sdk/resourcemanager/hybridcompute/armhybridcompute,v3.0.0-beta.1,1784789107,07/23/2026
+7273,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v10@v10.2.0,go,sdk/resourcemanager/netapp/armnetapp/v10.2.0,sdk/resourcemanager/netapp/armnetapp,v10.2.0,1784786343,07/23/2026
+7274,@azure/arm-policy@7.0.1,js,@azure/arm-policy_7.0.1,@azure/arm-policy,7.0.1,1784789432,07/23/2026
+7275,@azure/arm-hybridcompute@5.0.0-beta.3,js,@azure/arm-hybridcompute_5.0.0-beta.3,@azure/arm-hybridcompute,5.0.0-beta.3,1784789005,07/23/2026
+7276,@azure/arm-netapp@24.2.0,js,@azure/arm-netapp_24.2.0,@azure/arm-netapp,24.2.0,1784786256,07/23/2026
+7277,@azure/arm-compute-bulkactions@1.0.0-beta.1,js,@azure/arm-compute-bulkactions_1.0.0-beta.1,@azure/arm-compute-bulkactions,1.0.0-beta.1,1784753641,07/22/2026
+7278,azure-mgmt-netapp@17.1.0,python,azure-mgmt-netapp_17.1.0,azure-mgmt-netapp,17.1.0,1784777723,07/23/2026
+7279,azure-mgmt-hybridcompute@9.1.0b5,python,azure-mgmt-hybridcompute_9.1.0b5,azure-mgmt-hybridcompute,9.1.0b5,1784777704,07/23/2026
+7280,"Azure.ResourceManager.AppConfiguration,1.5.0-beta.2",dotnet,Azure.ResourceManager.AppConfiguration_1.5.0-beta.2,Azure.ResourceManager.AppConfiguration,1.5.0-beta.2,1784733612,07/22/2026

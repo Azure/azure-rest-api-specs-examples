@@ -7279,3 +7279,11 @@ id,name,language,tag,package,version,date_epoch,date
 7278,azure-mgmt-netapp@17.1.0,python,azure-mgmt-netapp_17.1.0,azure-mgmt-netapp,17.1.0,1784777723,07/23/2026
 7279,azure-mgmt-hybridcompute@9.1.0b5,python,azure-mgmt-hybridcompute_9.1.0b5,azure-mgmt-hybridcompute,9.1.0b5,1784777704,07/23/2026
 7280,"Azure.ResourceManager.AppConfiguration,1.5.0-beta.2",dotnet,Azure.ResourceManager.AppConfiguration_1.5.0-beta.2,Azure.ResourceManager.AppConfiguration,1.5.0-beta.2,1784733612,07/22/2026
+7281,@azure/arm-containerservice@25.4.0,js,@azure/arm-containerservice_25.4.0,@azure/arm-containerservice,25.4.0,1784883699,07/24/2026
+7282,@azure/arm-containerservicepreparedimgspec@1.0.0-beta.1,js,@azure/arm-containerservicepreparedimgspec_1.0.0-beta.1,@azure/arm-containerservicepreparedimgspec,1.0.0-beta.1,1784861209,07/24/2026
+7283,azure-mgmt-containerservice@41.5.0,python,azure-mgmt-containerservice_41.5.0,azure-mgmt-containerservice,41.5.0,1784877692,07/24/2026
+7284,azure-mgmt-datadog@3.0.0b1,python,azure-mgmt-datadog_3.0.0b1,azure-mgmt-datadog,3.0.0b1,1784876161,07/24/2026
+7285,com.azure.resourcemanager:azure-resourcemanager-netapp:2.4.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.4.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.4.0,1784814952,07/23/2026
+7286,"Azure.ResourceManager.Datadog,1.1.0-beta.2",dotnet,Azure.ResourceManager.Datadog_1.1.0-beta.2,Azure.ResourceManager.Datadog,1.1.0-beta.2,1784888434,07/24/2026
+7287,"Azure.ResourceManager.CosmosDB,1.5.0",dotnet,Azure.ResourceManager.CosmosDB_1.5.0,Azure.ResourceManager.CosmosDB,1.5.0,1784874273,07/24/2026
+7288,"Azure.ResourceManager.NetApp,1.18.0",dotnet,Azure.ResourceManager.NetApp_1.18.0,Azure.ResourceManager.NetApp,1.18.0,1784861008,07/24/2026

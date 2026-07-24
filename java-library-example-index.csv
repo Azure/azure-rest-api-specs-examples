@@ -7279,3 +7279,4 @@ id,name,language,tag,package,version,date_epoch,date
 7278,azure-mgmt-netapp@17.1.0,python,azure-mgmt-netapp_17.1.0,azure-mgmt-netapp,17.1.0,1784777723,07/23/2026
 7279,azure-mgmt-hybridcompute@9.1.0b5,python,azure-mgmt-hybridcompute_9.1.0b5,azure-mgmt-hybridcompute,9.1.0b5,1784777704,07/23/2026
 7280,"Azure.ResourceManager.AppConfiguration,1.5.0-beta.2",dotnet,Azure.ResourceManager.AppConfiguration_1.5.0-beta.2,Azure.ResourceManager.AppConfiguration,1.5.0-beta.2,1784733612,07/22/2026
+7281,@azure/arm-containerservice@25.4.0,js,@azure/arm-containerservice_25.4.0,@azure/arm-containerservice,25.4.0,1784883699,07/24/2026

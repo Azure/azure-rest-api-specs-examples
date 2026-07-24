@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBUserDefinitionResource created on azure
-// for more information of creating MongoDBUserDefinitionResource, please refer to the document of MongoDBUserDefinitionResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-string mongoUserDefinitionId = "myMongoUserDefinitionId";
-ResourceIdentifier mongoDBUserDefinitionResourceId = MongoDBUserDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, mongoUserDefinitionId);
-MongoDBUserDefinitionResource mongoDBUserDefinition = client.GetMongoDBUserDefinitionResource(mongoDBUserDefinitionResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this MongoDBUserDefinitionResource
+MongoDBUserDefinitionCollection collection = cosmosDBAccount.GetMongoDBUserDefinitions();
 
 // invoke the operation
+string mongoUserDefinitionId = "myMongoUserDefinitionId";
 MongoDBUserDefinitionCreateOrUpdateContent content = new MongoDBUserDefinitionCreateOrUpdateContent
 {
     UserName = "myUserName",
@@ -38,7 +41,7 @@ MongoDBUserDefinitionCreateOrUpdateContent content = new MongoDBUserDefinitionCr
     }},
     Mechanisms = "SCRAM-SHA-256",
 };
-ArmOperation<MongoDBUserDefinitionResource> lro = await mongoDBUserDefinition.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<MongoDBUserDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, mongoUserDefinitionId, content);
 MongoDBUserDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

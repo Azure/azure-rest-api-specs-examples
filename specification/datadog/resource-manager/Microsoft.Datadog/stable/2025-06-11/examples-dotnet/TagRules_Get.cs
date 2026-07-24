@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataMonitoringTagRuleResource created on azure
-// for more information of creating DataMonitoringTagRuleResource, please refer to the document of DataMonitoringTagRuleResource
+// this example assumes you already have this DatadogMonitorResource created on azure
+// for more information of creating DatadogMonitorResource, please refer to the document of DatadogMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-string ruleSetName = "default";
-ResourceIdentifier dataMonitoringTagRuleResourceId = DataMonitoringTagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-DataMonitoringTagRuleResource dataMonitoringTagRule = client.GetDataMonitoringTagRuleResource(dataMonitoringTagRuleResourceId);
+ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+DatadogMonitorResource datadogMonitor = client.GetDatadogMonitorResource(datadogMonitorResourceId);
+
+// get the collection of this DataMonitoringTagRuleResource
+DataMonitoringTagRuleCollection collection = datadogMonitor.GetDataMonitoringTagRules();
 
 // invoke the operation
-DataMonitoringTagRuleResource result = await dataMonitoringTagRule.GetAsync();
+string ruleSetName = "default";
+NullableResponse<DataMonitoringTagRuleResource> response = await collection.GetIfExistsAsync(ruleSetName);
+DataMonitoringTagRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataMonitoringTagRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataMonitoringTagRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

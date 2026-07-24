@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataMonitoringTagRuleResource created on azure
-// for more information of creating DataMonitoringTagRuleResource, please refer to the document of DataMonitoringTagRuleResource
+// this example assumes you already have this DatadogMonitorResource created on azure
+// for more information of creating DatadogMonitorResource, please refer to the document of DatadogMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-string ruleSetName = "default";
-ResourceIdentifier dataMonitoringTagRuleResourceId = DataMonitoringTagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-DataMonitoringTagRuleResource dataMonitoringTagRule = client.GetDataMonitoringTagRuleResource(dataMonitoringTagRuleResourceId);
+ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+DatadogMonitorResource datadogMonitor = client.GetDatadogMonitorResource(datadogMonitorResourceId);
+
+// get the collection of this DataMonitoringTagRuleResource
+DataMonitoringTagRuleCollection collection = datadogMonitor.GetDataMonitoringTagRules();
 
 // invoke the operation
+string ruleSetName = "default";
 DataMonitoringTagRuleData data = new DataMonitoringTagRuleData
 {
     Properties = new MonitoringTagRuleProperties
@@ -50,7 +53,7 @@ DataMonitoringTagRuleData data = new DataMonitoringTagRuleData
         IsAutomutingEnabled = true,
     },
 };
-ArmOperation<DataMonitoringTagRuleResource> lro = await dataMonitoringTagRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataMonitoringTagRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleSetName, data);
 DataMonitoringTagRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

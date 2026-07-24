@@ -7284,3 +7284,4 @@ id,name,language,tag,package,version,date_epoch,date
 7283,azure-mgmt-containerservice@41.5.0,python,azure-mgmt-containerservice_41.5.0,azure-mgmt-containerservice,41.5.0,1784877692,07/24/2026
 7284,azure-mgmt-datadog@3.0.0b1,python,azure-mgmt-datadog_3.0.0b1,azure-mgmt-datadog,3.0.0b1,1784876161,07/24/2026
 7285,com.azure.resourcemanager:azure-resourcemanager-netapp:2.4.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.4.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.4.0,1784814952,07/23/2026
+7286,"Azure.ResourceManager.Datadog,1.1.0-beta.2",dotnet,Azure.ResourceManager.Datadog_1.1.0-beta.2,Azure.ResourceManager.Datadog,1.1.0-beta.2,1784888434,07/24/2026

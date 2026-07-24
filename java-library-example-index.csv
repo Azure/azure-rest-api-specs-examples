@@ -7280,3 +7280,4 @@ id,name,language,tag,package,version,date_epoch,date
 7279,azure-mgmt-hybridcompute@9.1.0b5,python,azure-mgmt-hybridcompute_9.1.0b5,azure-mgmt-hybridcompute,9.1.0b5,1784777704,07/23/2026
 7280,"Azure.ResourceManager.AppConfiguration,1.5.0-beta.2",dotnet,Azure.ResourceManager.AppConfiguration_1.5.0-beta.2,Azure.ResourceManager.AppConfiguration,1.5.0-beta.2,1784733612,07/22/2026
 7281,@azure/arm-containerservice@25.4.0,js,@azure/arm-containerservice_25.4.0,@azure/arm-containerservice,25.4.0,1784883699,07/24/2026
+7282,@azure/arm-containerservicepreparedimgspec@1.0.0-beta.1,js,@azure/arm-containerservicepreparedimgspec_1.0.0-beta.1,@azure/arm-containerservicepreparedimgspec,1.0.0-beta.1,1784861209,07/24/2026

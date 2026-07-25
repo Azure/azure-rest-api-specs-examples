@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBUserDefinitionResource created on azure
-// for more information of creating MongoDBUserDefinitionResource, please refer to the document of MongoDBUserDefinitionResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-string mongoUserDefinitionId = "myMongoUserDefinitionId";
-ResourceIdentifier mongoDBUserDefinitionResourceId = MongoDBUserDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, mongoUserDefinitionId);
-MongoDBUserDefinitionResource mongoDBUserDefinition = client.GetMongoDBUserDefinitionResource(mongoDBUserDefinitionResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this MongoDBUserDefinitionResource
+MongoDBUserDefinitionCollection collection = cosmosDBAccount.GetMongoDBUserDefinitions();
 
 // invoke the operation
-MongoDBUserDefinitionResource result = await mongoDBUserDefinition.GetAsync();
+string mongoUserDefinitionId = "myMongoUserDefinitionId";
+NullableResponse<MongoDBUserDefinitionResource> response = await collection.GetIfExistsAsync(mongoUserDefinitionId);
+MongoDBUserDefinitionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MongoDBUserDefinitionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MongoDBUserDefinitionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

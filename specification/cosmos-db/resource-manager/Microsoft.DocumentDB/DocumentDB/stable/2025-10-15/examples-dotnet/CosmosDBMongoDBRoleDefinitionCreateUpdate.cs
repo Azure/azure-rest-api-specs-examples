@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBRoleDefinitionResource created on azure
-// for more information of creating MongoDBRoleDefinitionResource, please refer to the document of MongoDBRoleDefinitionResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string accountName = "myAccountName";
-string mongoRoleDefinitionId = "myMongoRoleDefinitionId";
-ResourceIdentifier mongoDBRoleDefinitionResourceId = MongoDBRoleDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, mongoRoleDefinitionId);
-MongoDBRoleDefinitionResource mongoDBRoleDefinition = client.GetMongoDBRoleDefinitionResource(mongoDBRoleDefinitionResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this MongoDBRoleDefinitionResource
+MongoDBRoleDefinitionCollection collection = cosmosDBAccount.GetMongoDBRoleDefinitions();
 
 // invoke the operation
+string mongoRoleDefinitionId = "myMongoRoleDefinitionId";
 MongoDBRoleDefinitionCreateOrUpdateContent content = new MongoDBRoleDefinitionCreateOrUpdateContent
 {
     RoleName = "myRoleName",
@@ -44,7 +47,7 @@ MongoDBRoleDefinitionCreateOrUpdateContent content = new MongoDBRoleDefinitionCr
     Role = "myInheritedRole",
     }},
 };
-ArmOperation<MongoDBRoleDefinitionResource> lro = await mongoDBRoleDefinition.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<MongoDBRoleDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, mongoRoleDefinitionId, content);
 MongoDBRoleDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

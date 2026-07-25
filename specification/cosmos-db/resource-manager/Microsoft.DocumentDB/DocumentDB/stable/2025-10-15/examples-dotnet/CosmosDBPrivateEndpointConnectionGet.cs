@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBPrivateEndpointConnectionResource created on azure
-// for more information of creating CosmosDBPrivateEndpointConnectionResource, please refer to the document of CosmosDBPrivateEndpointConnectionResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string privateEndpointConnectionName = "privateEndpointConnectionName";
-ResourceIdentifier cosmosDBPrivateEndpointConnectionResourceId = CosmosDBPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
-CosmosDBPrivateEndpointConnectionResource cosmosDBPrivateEndpointConnection = client.GetCosmosDBPrivateEndpointConnectionResource(cosmosDBPrivateEndpointConnectionResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this CosmosDBPrivateEndpointConnectionResource
+CosmosDBPrivateEndpointConnectionCollection collection = cosmosDBAccount.GetCosmosDBPrivateEndpointConnections();
 
 // invoke the operation
-CosmosDBPrivateEndpointConnectionResource result = await cosmosDBPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "privateEndpointConnectionName";
+NullableResponse<CosmosDBPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+CosmosDBPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CosmosDBPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CosmosDBPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

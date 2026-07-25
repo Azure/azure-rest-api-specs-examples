@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoDBDatabaseResource created on azure
-// for more information of creating MongoDBDatabaseResource, please refer to the document of MongoDBDatabaseResource
+// this example assumes you already have this MongoDBCollectionResource created on azure
+// for more information of creating MongoDBCollectionResource, please refer to the document of MongoDBCollectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rgName";
 string accountName = "ddb1";
 string databaseName = "databaseName";
-ResourceIdentifier mongoDBDatabaseResourceId = MongoDBDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-MongoDBDatabaseResource mongoDBDatabase = client.GetMongoDBDatabaseResource(mongoDBDatabaseResourceId);
-
-// get the collection of this MongoDBCollectionResource
-MongoDBCollectionCollection collection = mongoDBDatabase.GetMongoDBCollections();
+string collectionName = "collectionName";
+ResourceIdentifier mongoDBCollectionResourceId = MongoDBCollectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, collectionName);
+MongoDBCollectionResource mongoDBCollection = client.GetMongoDBCollectionResource(mongoDBCollectionResourceId);
 
 // invoke the operation
-string collectionName = "collectionName";
-NullableResponse<MongoDBCollectionResource> response = await collection.GetIfExistsAsync(collectionName);
-MongoDBCollectionResource result = response.HasValue ? response.Value : null;
+MongoDBCollectionResource result = await mongoDBCollection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MongoDBCollectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MongoDBCollectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

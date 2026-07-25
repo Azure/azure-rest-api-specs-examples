@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppVolumeQuotaRuleResource created on azure
-// for more information of creating NetAppVolumeQuotaRuleResource, please refer to the document of NetAppVolumeQuotaRuleResource
+// this example assumes you already have this NetAppVolumeResource created on azure
+// for more information of creating NetAppVolumeResource, please refer to the document of NetAppVolumeResource
 string subscriptionId = "5275316f-a498-48d6-b324-2cbfdc4311b9";
 string resourceGroupName = "myRG";
 string accountName = "account-9957";
 string poolName = "pool-5210";
 string volumeName = "volume-6387";
-string volumeQuotaRuleName = "rule-0004";
-ResourceIdentifier netAppVolumeQuotaRuleResourceId = NetAppVolumeQuotaRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName);
-NetAppVolumeQuotaRuleResource netAppVolumeQuotaRule = client.GetNetAppVolumeQuotaRuleResource(netAppVolumeQuotaRuleResourceId);
+ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
+NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
+
+// get the collection of this NetAppVolumeQuotaRuleResource
+NetAppVolumeQuotaRuleCollection collection = netAppVolume.GetNetAppVolumeQuotaRules();
 
 // invoke the operation
-NetAppVolumeQuotaRuleResource result = await netAppVolumeQuotaRule.GetAsync();
+string volumeQuotaRuleName = "rule-0004";
+NullableResponse<NetAppVolumeQuotaRuleResource> response = await collection.GetIfExistsAsync(volumeQuotaRuleName);
+NetAppVolumeQuotaRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppVolumeQuotaRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppVolumeQuotaRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

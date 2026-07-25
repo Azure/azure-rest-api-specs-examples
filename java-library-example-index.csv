@@ -7287,3 +7287,4 @@ id,name,language,tag,package,version,date_epoch,date
 7286,"Azure.ResourceManager.Datadog,1.1.0-beta.2",dotnet,Azure.ResourceManager.Datadog_1.1.0-beta.2,Azure.ResourceManager.Datadog,1.1.0-beta.2,1784888434,07/24/2026
 7287,"Azure.ResourceManager.CosmosDB,1.5.0",dotnet,Azure.ResourceManager.CosmosDB_1.5.0,Azure.ResourceManager.CosmosDB,1.5.0,1784874273,07/24/2026
 7288,"Azure.ResourceManager.NetApp,1.18.0",dotnet,Azure.ResourceManager.NetApp_1.18.0,Azure.ResourceManager.NetApp,1.18.0,1784861008,07/24/2026
+7289,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicepreparedimgspec/armcontainerservicepreparedimgspec@v0.1.0,go,sdk/resourcemanager/containerservicepreparedimgspec/armcontainerservicepreparedimgspec/v0.1.0,sdk/resourcemanager/containerservicepreparedimgspec/armcontainerservicepreparedimgspec,v0.1.0,1784861152,07/24/2026

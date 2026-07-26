@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.hybridcompute.fluent.models.SettingsInner;
+
+/**
+ * Samples for SettingsOperation Patch.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-16-preview/settings/SettingsPatch.json
+     */
+    /**
+     * Sample code: NetworkConfigurationsPatch.
+     * 
+     * @param manager Entry point to HybridComputeManager.
+     */
+    public static void
+        networkConfigurationsPatch(com.azure.resourcemanager.hybridcompute.HybridComputeManager manager) {
+        manager.settingsOperations().patchWithResponse("hybridRG", "Microsoft.HybridCompute", "machines", "testMachine",
+            "default",
+            new SettingsInner().withGatewayResourceId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/gateways/newGateway"),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for TrustedHostSubscriptions Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-31/TrustedHostSubscriptions_Get.json
+     */
+    /**
+     * Sample code: Get a trusted host subscription.
+     * 
+     * @param manager Entry point to ComputeLimitManager.
+     */
+    public static void getATrustedHostSubscription(com.azure.resourcemanager.computelimit.ComputeLimitManager manager) {
+        manager.trustedHostSubscriptions().getWithResponse("eastus", "22222222-2222-2222-2222-222222222222",
+            com.azure.core.util.Context.NONE);
+    }
+}

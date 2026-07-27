@@ -1,0 +1,18 @@
+
+/**
+ * Samples for TrustedHostSubscriptions Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-31/TrustedHostSubscriptions_Create.json
+     */
+    /**
+     * Sample code: Trust a host subscription.
+     * 
+     * @param manager Entry point to ComputeLimitManager.
+     */
+    public static void trustAHostSubscription(com.azure.resourcemanager.computelimit.ComputeLimitManager manager) {
+        manager.trustedHostSubscriptions().define("22222222-2222-2222-2222-222222222222").withExistingLocation("eastus")
+            .create();
+    }
+}

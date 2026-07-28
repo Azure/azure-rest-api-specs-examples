@@ -7293,3 +7293,4 @@ id,name,language,tag,package,version,date_epoch,date
 7292,@azure/arm-computelimit@1.3.0,js,@azure/arm-computelimit_1.3.0,@azure/arm-computelimit,1.3.0,1785104186,07/26/2026
 7293,azure-mgmt-containerservice@41.6.0b1,python,azure-mgmt-containerservice_41.6.0b1,azure-mgmt-containerservice,41.6.0b1,1785137996,07/27/2026
 7294,com.azure.resourcemanager:azure-resourcemanager-computelimit:1.4.0,java,com.azure.resourcemanager+azure-resourcemanager-computelimit_1.4.0,com.azure.resourcemanager+azure-resourcemanager-computelimit,1.4.0,1785083279,07/26/2026
+7295,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.2.0,go,sdk/resourcemanager/compute/armbulkactions/v0.2.0,sdk/resourcemanager/compute/armbulkactions,v0.2.0,1785220344,07/28/2026

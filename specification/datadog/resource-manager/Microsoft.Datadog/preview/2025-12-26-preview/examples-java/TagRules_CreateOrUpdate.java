@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.datadog.models.FilteringTag;
+import com.azure.resourcemanager.datadog.models.LogRules;
+import com.azure.resourcemanager.datadog.models.MetricRules;
+import com.azure.resourcemanager.datadog.models.MonitoringTagRulesProperties;
+import com.azure.resourcemanager.datadog.models.TagAction;
+import java.util.Arrays;
+
+/**
+ * Samples for TagRules CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-26-preview/TagRules_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: TagRules_CreateOrUpdate.
+     * 
+     * @param manager Entry point to MicrosoftDatadogManager.
+     */
+    public static void tagRulesCreateOrUpdate(com.azure.resourcemanager.datadog.MicrosoftDatadogManager manager) {
+        manager.tagRules().define("default").withExistingMonitor("myResourceGroup", "myMonitor")
+            .withProperties(new MonitoringTagRulesProperties()
+                .withLogRules(
+                    new LogRules().withSendAadLogs(false).withSendSubscriptionLogs(true).withSendResourceLogs(true)
+                        .withFilteringTags(Arrays.asList(
+                            new FilteringTag().withName("Environment").withValue("Prod").withAction(TagAction.INCLUDE),
+                            new FilteringTag().withName("Environment").withValue("Dev").withAction(TagAction.EXCLUDE))))
+                .withMetricRules(new MetricRules().withFilteringTags(Arrays.asList())).withAutomuting(true))
+            .create();
+    }
+}

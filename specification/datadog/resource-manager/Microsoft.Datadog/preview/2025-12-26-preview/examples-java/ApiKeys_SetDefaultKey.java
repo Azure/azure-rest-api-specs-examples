@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Monitors SetDefaultKey.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-26-preview/ApiKeys_SetDefaultKey.json
+     */
+    /**
+     * Sample code: Monitors_SetDefaultKey.
+     * 
+     * @param manager Entry point to MicrosoftDatadogManager.
+     */
+    public static void monitorsSetDefaultKey(com.azure.resourcemanager.datadog.MicrosoftDatadogManager manager) {
+        manager.monitors().setDefaultKeyWithResponse("myResourceGroup", "myMonitor", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

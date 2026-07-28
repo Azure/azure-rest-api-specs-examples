@@ -1,0 +1,50 @@
+
+import com.azure.resourcemanager.datadog.models.DatadogOrganizationProperties;
+import com.azure.resourcemanager.datadog.models.MarketplaceOfferDetails;
+import com.azure.resourcemanager.datadog.models.MonitorProperties;
+import com.azure.resourcemanager.datadog.models.MonitoringStatus;
+import com.azure.resourcemanager.datadog.models.ResourceSku;
+import com.azure.resourcemanager.datadog.models.UserInfo;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Monitors Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-26-preview/Monitors_Create.json
+     */
+    /**
+     * Sample code: Monitors_Create.
+     * 
+     * @param manager Entry point to MicrosoftDatadogManager.
+     */
+    public static void monitorsCreate(com.azure.resourcemanager.datadog.MicrosoftDatadogManager manager) {
+        manager.monitors().define("myMonitor").withRegion("West US").withExistingResourceGroup("myResourceGroup")
+            .withTags(mapOf("Environment", "Dev"))
+            .withProperties(new MonitorProperties().withMonitoringStatus(MonitoringStatus.ENABLED)
+                .withDatadogOrganizationProperties(new DatadogOrganizationProperties().withName("myOrg")
+                    .withId("myOrg123").withLinkingAuthCode("fakeTokenPlaceholder")
+                    .withLinkingClientId("00000000-0000-0000-0000-000000000000")
+                    .withEnterpriseAppId("00000000-0000-0000-0000-000000000000").withCspm(false)
+                    .withResourceCollection(false))
+                .withUserInfo(new UserInfo().withName("Alice").withEmailAddress("alice@microsoft.com")
+                    .withPhoneNumber("123-456-7890"))
+                .withMarketplaceOfferDetails(new MarketplaceOfferDetails().withPublisherId("datadog1591740804488")
+                    .withOfferId("dd_liftr_v3_decoupled")))
+            .withSku(new ResourceSku().withName("free_Monthly")).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

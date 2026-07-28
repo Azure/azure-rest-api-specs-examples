@@ -7297,3 +7297,4 @@ id,name,language,tag,package,version,date_epoch,date
 7296,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computefleet/armcomputefleet/v2@v2.0.0-beta.3,go,sdk/resourcemanager/computefleet/armcomputefleet/v2.0.0-beta.3,sdk/resourcemanager/computefleet/armcomputefleet,v2.0.0-beta.3,1785181387,07/27/2026
 7297,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.5.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.5.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v9.5.0-beta.1,1785155622,07/27/2026
 7298,@azure/arm-compute-bulkactions@1.0.0-beta.2,js,@azure/arm-compute-bulkactions_1.0.0-beta.2,@azure/arm-compute-bulkactions,1.0.0-beta.2,1785220244,07/28/2026
+7299,@azure/arm-containerservice@25.5.0-beta.1,js,@azure/arm-containerservice_25.5.0-beta.1,@azure/arm-containerservice,25.5.0-beta.1,1785219440,07/28/2026

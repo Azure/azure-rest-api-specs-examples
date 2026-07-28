@@ -7303,3 +7303,4 @@ id,name,language,tag,package,version,date_epoch,date
 7302,azure-mgmt-computefleet@2.0.0b3,python,azure-mgmt-computefleet_2.0.0b3,azure-mgmt-computefleet,2.0.0b3,1785181539,07/27/2026
 7303,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.63.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.63.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.63.0-beta.1,1785222590,07/28/2026
 7304,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-computefleet_1.1.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-computefleet,1.1.0-beta.4,1785188278,07/27/2026
+7305,com.azure.resourcemanager:azure-resourcemanager-datadog:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-datadog_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-datadog,1.2.0-beta.1,1785152752,07/27/2026

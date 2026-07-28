@@ -7301,3 +7301,4 @@ id,name,language,tag,package,version,date_epoch,date
 7300,@azure/arm-computefleet@2.0.0-beta.3,js,@azure/arm-computefleet_2.0.0-beta.3,@azure/arm-computefleet,2.0.0-beta.3,1785181145,07/27/2026
 7301,azure-mgmt-compute-bulkaction@1.0.0b2,python,azure-mgmt-compute-bulkaction_1.0.0b2,azure-mgmt-compute-bulkaction,1.0.0b2,1785213819,07/28/2026
 7302,azure-mgmt-computefleet@2.0.0b3,python,azure-mgmt-computefleet_2.0.0b3,azure-mgmt-computefleet,2.0.0b3,1785181539,07/27/2026
+7303,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.63.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.63.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.63.0-beta.1,1785222590,07/28/2026

@@ -7307,3 +7307,4 @@ id,name,language,tag,package,version,date_epoch,date
 7306,@azure/arm-networkfunction@3.0.0,js,@azure/arm-networkfunction_3.0.0,@azure/arm-networkfunction,3.0.0,1785307869,07/29/2026
 7307,@azure/arm-automation@11.0.0,js,@azure/arm-automation_11.0.0,@azure/arm-automation,11.0.0,1785307864,07/29/2026
 7308,@azure/arm-eventhub@6.0.0,js,@azure/arm-eventhub_6.0.0,@azure/arm-eventhub,6.0.0,1785307848,07/29/2026
+7309,@azure/arm-relay@4.0.0,js,@azure/arm-relay_4.0.0,@azure/arm-relay,4.0.0,1785307800,07/29/2026

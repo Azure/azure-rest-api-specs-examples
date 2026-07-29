@@ -7305,3 +7305,4 @@ id,name,language,tag,package,version,date_epoch,date
 7304,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-computefleet_1.1.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-computefleet,1.1.0-beta.4,1785188278,07/27/2026
 7305,com.azure.resourcemanager:azure-resourcemanager-datadog:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-datadog_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-datadog,1.2.0-beta.1,1785152752,07/27/2026
 7306,@azure/arm-networkfunction@3.0.0,js,@azure/arm-networkfunction_3.0.0,@azure/arm-networkfunction,3.0.0,1785307869,07/29/2026
+7307,@azure/arm-automation@11.0.0,js,@azure/arm-automation_11.0.0,@azure/arm-automation,11.0.0,1785307864,07/29/2026

@@ -7314,3 +7314,4 @@ id,name,language,tag,package,version,date_epoch,date
 7313,@azure/arm-cdn@10.0.0,js,@azure/arm-cdn_10.0.0,@azure/arm-cdn,10.0.0,1785307657,07/29/2026
 7314,@azure/arm-databoxedge@3.0.0,js,@azure/arm-databoxedge_3.0.0,@azure/arm-databoxedge,3.0.0,1785307603,07/29/2026
 7315,azure-mgmt-storagesync@2.0.0,python,azure-mgmt-storagesync_2.0.0,azure-mgmt-storagesync,2.0.0,1785318288,07/29/2026
+7316,azure-mgmt-prometheusrulegroups@1.0.0,python,azure-mgmt-prometheusrulegroups_1.0.0,azure-mgmt-prometheusrulegroups,1.0.0,1785317062,07/29/2026

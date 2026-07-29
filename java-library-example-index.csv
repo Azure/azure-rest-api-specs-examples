@@ -7318,3 +7318,4 @@ id,name,language,tag,package,version,date_epoch,date
 7317,azure-mgmt-automation@2.0.0,python,azure-mgmt-automation_2.0.0,azure-mgmt-automation,2.0.0,1785317047,07/29/2026
 7318,azure-mgmt-databox@4.0.0,python,azure-mgmt-databox_4.0.0,azure-mgmt-databox,4.0.0,1785316696,07/29/2026
 7319,azure-mgmt-privatedns@2.0.0,python,azure-mgmt-privatedns_2.0.0,azure-mgmt-privatedns,2.0.0,1785316692,07/29/2026
+7320,azure-mgmt-dataprotection@2.1.0,python,azure-mgmt-dataprotection_2.1.0,azure-mgmt-dataprotection,2.1.0,1785316689,07/29/2026

@@ -7311,3 +7311,4 @@ id,name,language,tag,package,version,date_epoch,date
 7310,@azure/arm-kusto@9.0.0,js,@azure/arm-kusto_9.0.0,@azure/arm-kusto,9.0.0,1785307782,07/29/2026
 7311,@azure/arm-frontdoor@6.0.0,js,@azure/arm-frontdoor_6.0.0,@azure/arm-frontdoor,6.0.0,1785307777,07/29/2026
 7312,@azure/arm-servicebus@7.0.0,js,@azure/arm-servicebus_7.0.0,@azure/arm-servicebus,7.0.0,1785307678,07/29/2026
+7313,@azure/arm-cdn@10.0.0,js,@azure/arm-cdn_10.0.0,@azure/arm-cdn,10.0.0,1785307657,07/29/2026

@@ -7310,3 +7310,4 @@ id,name,language,tag,package,version,date_epoch,date
 7309,@azure/arm-relay@4.0.0,js,@azure/arm-relay_4.0.0,@azure/arm-relay,4.0.0,1785307800,07/29/2026
 7310,@azure/arm-kusto@9.0.0,js,@azure/arm-kusto_9.0.0,@azure/arm-kusto,9.0.0,1785307782,07/29/2026
 7311,@azure/arm-frontdoor@6.0.0,js,@azure/arm-frontdoor_6.0.0,@azure/arm-frontdoor,6.0.0,1785307777,07/29/2026
+7312,@azure/arm-servicebus@7.0.0,js,@azure/arm-servicebus_7.0.0,@azure/arm-servicebus,7.0.0,1785307678,07/29/2026

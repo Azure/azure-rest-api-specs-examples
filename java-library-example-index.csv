@@ -7333,3 +7333,4 @@ id,name,language,tag,package,version,date_epoch,date
 7332,azure-mgmt-eventhub@12.0.0,python,azure-mgmt-eventhub_12.0.0,azure-mgmt-eventhub,12.0.0,1785378130,07/30/2026
 7333,azure-mgmt-guestconfig@1.0.0,python,azure-mgmt-guestconfig_1.0.0,azure-mgmt-guestconfig,1.0.0,1785316676,07/29/2026
 7334,azure-mgmt-edgeorder@3.0.0,python,azure-mgmt-edgeorder_3.0.0,azure-mgmt-edgeorder,3.0.0,1785316670,07/29/2026
+7335,azure-mgmt-relay@2.0.0,python,azure-mgmt-relay_2.0.0,azure-mgmt-relay,2.0.0,1785316546,07/29/2026

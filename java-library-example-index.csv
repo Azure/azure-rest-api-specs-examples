@@ -7334,3 +7334,4 @@ id,name,language,tag,package,version,date_epoch,date
 7333,azure-mgmt-guestconfig@1.0.0,python,azure-mgmt-guestconfig_1.0.0,azure-mgmt-guestconfig,1.0.0,1785316676,07/29/2026
 7334,azure-mgmt-edgeorder@3.0.0,python,azure-mgmt-edgeorder_3.0.0,azure-mgmt-edgeorder,3.0.0,1785316670,07/29/2026
 7335,azure-mgmt-relay@2.0.0,python,azure-mgmt-relay_2.0.0,azure-mgmt-relay,2.0.0,1785316546,07/29/2026
+7336,com.azure.resourcemanager:azure-resourcemanager-containerservicepreparedimgspec:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservicepreparedimgspec_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservicepreparedimgspec,1.0.0-beta.1,1785387515,07/30/2026

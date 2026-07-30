@@ -7321,3 +7321,4 @@ id,name,language,tag,package,version,date_epoch,date
 7320,azure-mgmt-dataprotection@2.1.0,python,azure-mgmt-dataprotection_2.1.0,azure-mgmt-dataprotection,2.1.0,1785316689,07/29/2026
 7321,azure-mgmt-powerbidedicated@2.0.0,python,azure-mgmt-powerbidedicated_2.0.0,azure-mgmt-powerbidedicated,2.0.0,1785316688,07/29/2026
 7322,azure-mgmt-dynatrace@3.0.0,python,azure-mgmt-dynatrace_3.0.0,azure-mgmt-dynatrace,3.0.0,1785316683,07/29/2026
+7323,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v1.0.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v1.0.0,sdk/resourcemanager/connectedcache/armconnectedcache,v1.0.0,1785377570,07/30/2026

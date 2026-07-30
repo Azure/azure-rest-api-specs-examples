@@ -7331,3 +7331,4 @@ id,name,language,tag,package,version,date_epoch,date
 7330,azure-mgmt-providerhub@1.0.0,python,azure-mgmt-providerhub_1.0.0,azure-mgmt-providerhub,1.0.0,1785382196,07/30/2026
 7331,azure-mgmt-alertprocessingrules@1.0.0,python,azure-mgmt-alertprocessingrules_1.0.0,azure-mgmt-alertprocessingrules,1.0.0,1785381066,07/30/2026
 7332,azure-mgmt-eventhub@12.0.0,python,azure-mgmt-eventhub_12.0.0,azure-mgmt-eventhub,12.0.0,1785378130,07/30/2026
+7333,azure-mgmt-guestconfig@1.0.0,python,azure-mgmt-guestconfig_1.0.0,azure-mgmt-guestconfig,1.0.0,1785316676,07/29/2026

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventHubs.Models;
-using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventHubs;
 
 // Generated from example definition: specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/preview/2025-05-01-preview/examples/Clusters/ClusterGet.json
@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsClusterResource created on azure
-// for more information of creating EventHubsClusterResource, please refer to the document of EventHubsClusterResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "myResourceGroup";
-string clusterName = "testCluster";
-ResourceIdentifier eventHubsClusterResourceId = EventHubsClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-EventHubsClusterResource eventHubsCluster = client.GetEventHubsClusterResource(eventHubsClusterResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this EventHubsClusterResource
+EventHubsClusterCollection collection = resourceGroupResource.GetEventHubsClusters();
 
 // invoke the operation
-EventHubsClusterResource result = await eventHubsCluster.GetAsync();
+string clusterName = "testCluster";
+NullableResponse<EventHubsClusterResource> response = await collection.GetIfExistsAsync(clusterName);
+EventHubsClusterResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventHubsClusterData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EventHubsClusterData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

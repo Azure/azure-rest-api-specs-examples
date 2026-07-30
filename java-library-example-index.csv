@@ -7328,3 +7328,4 @@ id,name,language,tag,package,version,date_epoch,date
 7327,azure-mgmt-reservations@3.0.0,python,azure-mgmt-reservations_3.0.0,azure-mgmt-reservations,3.0.0,1785382211,07/30/2026
 7328,azure-mgmt-marketplace@1.0.0,python,azure-mgmt-marketplace_1.0.0,azure-mgmt-marketplace,1.0.0,1785382201,07/30/2026
 7329,azure-mgmt-elastic@3.0.0,python,azure-mgmt-elastic_3.0.0,azure-mgmt-elastic,3.0.0,1785382201,07/30/2026
+7330,azure-mgmt-providerhub@1.0.0,python,azure-mgmt-providerhub_1.0.0,azure-mgmt-providerhub,1.0.0,1785382196,07/30/2026

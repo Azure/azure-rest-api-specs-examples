@@ -56,11 +56,11 @@ EventHubsNamespaceData data = new EventHubsNamespaceData(new AzureLocation("East
         Locations = {new EventHubsNamespaceReplicaLocation
         {
         LocationName = "eastus",
-        RoleType = EventHubsNamespaceGeoDRRoleType.Primary,
+        RoleType = EventHubsNamespaceGeoDrRoleType.Primary,
         }, new EventHubsNamespaceReplicaLocation
         {
         LocationName = "southcentralus",
-        RoleType = EventHubsNamespaceGeoDRRoleType.Secondary,
+        RoleType = EventHubsNamespaceGeoDrRoleType.Secondary,
         }},
     },
 };

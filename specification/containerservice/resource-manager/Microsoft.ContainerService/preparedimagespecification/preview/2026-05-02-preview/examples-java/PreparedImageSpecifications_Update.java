@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.containerservicepreparedimgspec.models.PreparedImageSpecification;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for PreparedImageSpecifications Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-02-preview/PreparedImageSpecifications_Update.json
+     */
+    /**
+     * Sample code: PreparedImageSpecifications_Update.
+     * 
+     * @param manager Entry point to ContainerServicePreparedImageSpecificationManager.
+     */
+    public static void preparedImageSpecificationsUpdate(
+        com.azure.resourcemanager.containerservicepreparedimgspec.ContainerServicePreparedImageSpecificationManager manager) {
+        PreparedImageSpecification resource = manager.preparedImageSpecifications()
+            .getByResourceGroupWithResponse("rg1", "my-prepared-image-specification", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("key5558", "fakeTokenPlaceholder")).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

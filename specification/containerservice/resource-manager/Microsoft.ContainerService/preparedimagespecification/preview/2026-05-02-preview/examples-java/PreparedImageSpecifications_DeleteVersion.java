@@ -1,0 +1,19 @@
+
+/**
+ * Samples for PreparedImageSpecifications DeleteVersion.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-02-preview/PreparedImageSpecifications_DeleteVersion.json
+     */
+    /**
+     * Sample code: PreparedImageSpecifications_DeleteVersion.
+     * 
+     * @param manager Entry point to ContainerServicePreparedImageSpecificationManager.
+     */
+    public static void preparedImageSpecificationsDeleteVersion(
+        com.azure.resourcemanager.containerservicepreparedimgspec.ContainerServicePreparedImageSpecificationManager manager) {
+        manager.preparedImageSpecifications().deleteVersion("rg1", "my-prepared-image-specification",
+            "20250101-abcd1234", null, com.azure.core.util.Context.NONE);
+    }
+}

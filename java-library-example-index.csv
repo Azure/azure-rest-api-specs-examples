@@ -7340,3 +7340,4 @@ id,name,language,tag,package,version,date_epoch,date
 7339,"Azure.ResourceManager.ComputeLimit,1.4.0",dotnet,Azure.ResourceManager.ComputeLimit_1.4.0,Azure.ResourceManager.ComputeLimit,1.4.0,1785264822,07/28/2026
 7340,azure-mgmt-discovery@1.0.0,python,azure-mgmt-discovery_1.0.0,azure-mgmt-discovery,1.0.0,1785541990,07/31/2026
 7341,@azure/arm-resourcegraph@5.0.0,js,@azure/arm-resourcegraph_5.0.0,@azure/arm-resourcegraph,5.0.0,1785737744,08/03/2026
+7342,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armrecommender@v0.2.0,go,sdk/resourcemanager/compute/armrecommender/v0.2.0,sdk/resourcemanager/compute/armrecommender,v0.2.0,1785883680,08/04/2026

@@ -7344,3 +7344,4 @@ id,name,language,tag,package,version,date_epoch,date
 7343,@azure/arm-computerecommender@1.1.0-beta.1,js,@azure/arm-computerecommender_1.1.0-beta.1,@azure/arm-computerecommender,1.1.0-beta.1,1785890727,08/05/2026
 7344,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v1.2.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v1.2.0,sdk/resourcemanager/iotoperations/armiotoperations,v1.2.0,1786000994,08/06/2026
 7345,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager@v0.1.0,go,sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager/v0.1.0,sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager,v0.1.0,1785998809,08/06/2026
+7346,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/discovery/armdiscovery@v0.1.0,go,sdk/resourcemanager/discovery/armdiscovery/v0.1.0,sdk/resourcemanager/discovery/armdiscovery,v0.1.0,1785951619,08/05/2026

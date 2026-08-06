@@ -7351,3 +7351,4 @@ id,name,language,tag,package,version,date_epoch,date
 7350,@azure/arm-compute@25.0.0,js,@azure/arm-compute_25.0.0,@azure/arm-compute,25.0.0,1785986208,08/06/2026
 7351,@azure/arm-containerservicefleet@2.1.0,js,@azure/arm-containerservicefleet_2.1.0,@azure/arm-containerservicefleet,2.1.0,1785956180,08/05/2026
 7352,azure-mgmt-azurestackhci@8.1.0,python,azure-mgmt-azurestackhci_8.1.0,azure-mgmt-azurestackhci,8.1.0,1786008503,08/06/2026
+7353,azure-mgmt-iotoperations@1.2.0,python,azure-mgmt-iotoperations_1.2.0,azure-mgmt-iotoperations,1.2.0,1785999131,08/06/2026

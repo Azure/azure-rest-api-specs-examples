@@ -7355,3 +7355,4 @@ id,name,language,tag,package,version,date_epoch,date
 7354,azure-mgmt-hardwaresecuritymodules@2.0.0b1,python,azure-mgmt-hardwaresecuritymodules_2.0.0b1,azure-mgmt-hardwaresecuritymodules,2.0.0b1,1785997936,08/06/2026
 7355,azure-mgmt-containerserviceaimanager@1.0.0b1,python,azure-mgmt-containerserviceaimanager_1.0.0b1,azure-mgmt-containerserviceaimanager,1.0.0b1,1785983167,08/06/2026
 7356,azure-mgmt-computerecommender@1.0.0b2,python,azure-mgmt-computerecommender_1.0.0b2,azure-mgmt-computerecommender,1.0.0b2,1785980339,08/06/2026
+7357,azure-mgmt-containerservicefleet@4.0.0,python,azure-mgmt-containerservicefleet_4.0.0,azure-mgmt-containerservicefleet,4.0.0,1785952861,08/05/2026

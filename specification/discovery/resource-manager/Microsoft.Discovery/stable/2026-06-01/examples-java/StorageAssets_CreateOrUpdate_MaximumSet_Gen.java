@@ -1,0 +1,38 @@
+
+import com.azure.resourcemanager.discovery.models.StorageAssetProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for StorageAssets CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/StorageAssets_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: StorageAssets_CreateOrUpdate_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void
+        storageAssetsCreateOrUpdateMaximumSet(com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        manager.storageAssets().define("ccc236f0a64cea48ae").withRegion("uksouth")
+            .withExistingStorageContainer("rgdiscovery", "d676b22945d9bc1c78")
+            .withTags(mapOf("key5959", "fakeTokenPlaceholder")).withProperties(new StorageAssetProperties()
+                .withDescription("nopjazrozjrjeruobmiwm").withPath("oakrihezlavfyobbhmgqmzowzw"))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

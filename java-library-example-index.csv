@@ -7353,3 +7353,4 @@ id,name,language,tag,package,version,date_epoch,date
 7352,azure-mgmt-azurestackhci@8.1.0,python,azure-mgmt-azurestackhci_8.1.0,azure-mgmt-azurestackhci,8.1.0,1786008503,08/06/2026
 7353,azure-mgmt-iotoperations@1.2.0,python,azure-mgmt-iotoperations_1.2.0,azure-mgmt-iotoperations,1.2.0,1785999131,08/06/2026
 7354,azure-mgmt-hardwaresecuritymodules@2.0.0b1,python,azure-mgmt-hardwaresecuritymodules_2.0.0b1,azure-mgmt-hardwaresecuritymodules,2.0.0b1,1785997936,08/06/2026
+7355,azure-mgmt-containerserviceaimanager@1.0.0b1,python,azure-mgmt-containerserviceaimanager_1.0.0b1,azure-mgmt-containerserviceaimanager,1.0.0b1,1785983167,08/06/2026

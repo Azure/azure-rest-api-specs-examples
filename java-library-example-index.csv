@@ -7362,3 +7362,4 @@ id,name,language,tag,package,version,date_epoch,date
 7361,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.0.0,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.0.0,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.0.0,1786025655,08/06/2026
 7362,@azure/arm-hardwaresecuritymodules@3.0.0-beta.1,js,@azure/arm-hardwaresecuritymodules_3.0.0-beta.1,@azure/arm-hardwaresecuritymodules,3.0.0-beta.1,1786027658,08/06/2026
 7363,azure-mgmt-sql@5.0.0b1,python,azure-mgmt-sql_5.0.0b1,azure-mgmt-sql,5.0.0b1,1786073708,08/07/2026
+7364,com.azure.resourcemanager:azure-resourcemanager-containerserviceaimanager:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager,1.0.0-beta.1,1786036224,08/06/2026

@@ -1,0 +1,20 @@
+const { AzureDedicatedHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the List operation gets information about the Payment HSM Clusters associated with the subscription.
+ *
+ * @summary the List operation gets information about the Payment HSM Clusters associated with the subscription.
+ * x-ms-original-file: 2025-12-01-preview/PaymentHsmCluster_ListBySubscription_MaximumSet_Gen.json
+ */
+async function paymentHsmClusterListBySubscriptionMaximumSetGen() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new AzureDedicatedHSMResourceProvider(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.paymentHsmClusters.listBySubscription()) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

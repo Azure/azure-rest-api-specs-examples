@@ -1,0 +1,30 @@
+
+import com.azure.resourcemanager.discovery.models.PrivateEndpoint;
+import com.azure.resourcemanager.discovery.models.PrivateEndpointConnectionProperties;
+import com.azure.resourcemanager.discovery.models.PrivateEndpointServiceConnectionStatus;
+import com.azure.resourcemanager.discovery.models.PrivateLinkServiceConnectionState;
+
+/**
+ * Samples for WorkspacePrivateEndpointConnections CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/WorkspacePrivateEndpointConnections_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: WorkspacePrivateEndpointConnections_CreateOrUpdate_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void workspacePrivateEndpointConnectionsCreateOrUpdateMaximumSet(
+        com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        manager.workspacePrivateEndpointConnections().define("connection")
+            .withExistingWorkspace("rgdiscovery", "d72095912c2b410266")
+            .withProperties(
+                new PrivateEndpointConnectionProperties().withPrivateEndpoint(new PrivateEndpoint())
+                    .withPrivateLinkServiceConnectionState(new PrivateLinkServiceConnectionState()
+                        .withStatus(PrivateEndpointServiceConnectionStatus.PENDING).withDescription("km")
+                        .withActionsRequired("xbshniighjomlygqk")))
+            .create();
+    }
+}

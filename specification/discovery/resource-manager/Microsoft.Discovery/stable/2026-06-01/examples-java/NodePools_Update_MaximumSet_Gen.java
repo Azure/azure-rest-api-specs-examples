@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.discovery.models.NodePool;
+import com.azure.resourcemanager.discovery.models.NodePoolProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for NodePools Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/NodePools_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: NodePools_Update_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void nodePoolsUpdateMaximumSet(com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        NodePool resource = manager.nodePools().getWithResponse("rgdiscovery", "8e65e3461b33b01369",
+            "2e50b6da812ce89198", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("key101", "fakeTokenPlaceholder"))
+            .withProperties(new NodePoolProperties().withMaxNodeCount(24).withMinNodeCount(0)).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

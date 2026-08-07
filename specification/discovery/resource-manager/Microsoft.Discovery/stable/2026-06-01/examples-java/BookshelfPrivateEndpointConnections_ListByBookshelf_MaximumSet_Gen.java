@@ -1,0 +1,19 @@
+
+/**
+ * Samples for BookshelfPrivateEndpointConnections ListByBookshelf.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/BookshelfPrivateEndpointConnections_ListByBookshelf_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: BookshelfPrivateEndpointConnections_ListByBookshelf_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void bookshelfPrivateEndpointConnectionsListByBookshelfMaximumSet(
+        com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        manager.bookshelfPrivateEndpointConnections().listByBookshelf("rgdiscovery", "4a89794042861144cd",
+            com.azure.core.util.Context.NONE);
+    }
+}

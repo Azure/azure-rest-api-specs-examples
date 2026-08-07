@@ -1,0 +1,43 @@
+
+import com.azure.resourcemanager.discovery.models.Bookshelf;
+import com.azure.resourcemanager.discovery.models.BookshelfKeyVaultProperties;
+import com.azure.resourcemanager.discovery.models.BookshelfProperties;
+import com.azure.resourcemanager.discovery.models.PublicNetworkAccess;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Bookshelves Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/Bookshelves_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Bookshelves_Update_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void bookshelvesUpdateMaximumSet(com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        Bookshelf resource = manager.bookshelves()
+            .getByResourceGroupWithResponse("rgdiscovery", "14964dff7a049b02ad", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("key5254", "fakeTokenPlaceholder"))
+            .withProperties(new BookshelfProperties().withKeyVaultProperties(new BookshelfKeyVaultProperties()
+                .withKeyName("fakeTokenPlaceholder").withKeyVersion("fakeTokenPlaceholder"))
+                .withPublicNetworkAccess(PublicNetworkAccess.ENABLED))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

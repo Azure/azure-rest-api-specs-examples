@@ -1,0 +1,17 @@
+
+/**
+ * Samples for Bookshelves Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/Bookshelves_Delete_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Bookshelves_Delete_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void bookshelvesDeleteMaximumSet(com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        manager.bookshelves().delete("rgdiscovery", "507b19b0687a8924a5", com.azure.core.util.Context.NONE);
+    }
+}

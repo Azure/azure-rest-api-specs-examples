@@ -1,0 +1,38 @@
+
+import com.azure.resourcemanager.discovery.models.ChatModelDeployment;
+import com.azure.resourcemanager.discovery.models.ChatModelDeploymentProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ChatModelDeployments Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/ChatModelDeployments_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: ChatModelDeployments_Update_MaximumSet.
+     * 
+     * @param manager Entry point to DiscoveryManager.
+     */
+    public static void
+        chatModelDeploymentsUpdateMaximumSet(com.azure.resourcemanager.discovery.DiscoveryManager manager) {
+        ChatModelDeployment resource = manager.chatModelDeployments().getWithResponse("rgdiscovery",
+            "308882f04c9bcf36d5", "985d52cec9acb72ebe", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("key5692", "fakeTokenPlaceholder"))
+            .withProperties(new ChatModelDeploymentProperties().withCapacity(15)).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

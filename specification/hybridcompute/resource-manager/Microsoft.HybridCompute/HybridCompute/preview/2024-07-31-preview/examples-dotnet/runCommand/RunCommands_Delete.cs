@@ -15,14 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineRunCommandResource created on azure
-// for more information of creating MachineRunCommandResource, please refer to the document of MachineRunCommandResource
+// this example assumes you already have this HybridComputeMachineRunCommandResource created on azure
+// for more information of creating HybridComputeMachineRunCommandResource, please refer to the document of HybridComputeMachineRunCommandResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string machineName = "myMachine";
 string runCommandName = "myRunCommand";
-ResourceIdentifier machineRunCommandResourceId = MachineRunCommandResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, runCommandName);
-MachineRunCommandResource machineRunCommand = client.GetMachineRunCommandResource(machineRunCommandResourceId);
+ResourceIdentifier machineRunCommandResourceId = HybridComputeMachineRunCommandResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, runCommandName);
+HybridComputeMachineRunCommandResource machineRunCommand = client.GetHybridComputeMachineRunCommandResource(machineRunCommandResourceId);
 
 // invoke the operation
 await machineRunCommand.DeleteAsync(WaitUntil.Completed);

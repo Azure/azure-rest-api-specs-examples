@@ -15,35 +15,38 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineRunCommandResource created on azure
-// for more information of creating MachineRunCommandResource, please refer to the document of MachineRunCommandResource
+// this example assumes you already have this HybridComputeMachineResource created on azure
+// for more information of creating HybridComputeMachineResource, please refer to the document of HybridComputeMachineResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string machineName = "myMachine";
-string runCommandName = "myRunCommand";
-ResourceIdentifier machineRunCommandResourceId = MachineRunCommandResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, runCommandName);
-MachineRunCommandResource machineRunCommand = client.GetMachineRunCommandResource(machineRunCommandResourceId);
+ResourceIdentifier hybridComputeMachineResourceId = HybridComputeMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName);
+HybridComputeMachineResource hybridComputeMachine = client.GetHybridComputeMachineResource(hybridComputeMachineResourceId);
+
+// get the collection of this HybridComputeMachineRunCommandResource
+HybridComputeMachineRunCommandCollection collection = hybridComputeMachine.GetHybridComputeMachineRunCommands();
 
 // invoke the operation
-MachineRunCommandData data = new MachineRunCommandData(new AzureLocation("eastus2"))
+string runCommandName = "myRunCommand";
+HybridComputeMachineRunCommandData data = new HybridComputeMachineRunCommandData(new AzureLocation("eastus2"))
 {
     Source = new MachineRunCommandScriptSource
     {
         Script = "Write-Host Hello World!",
     },
-    Parameters = { new RunCommandInputParameter("param1", "value1"), new RunCommandInputParameter("param2", "value2") },
-    AsyncExecution = false,
+    Parameters = { new RunCommandInputContent("param1", "value1"), new RunCommandInputContent("param2", "value2") },
+    IsAsyncExecution = false,
     RunAsUser = "user1",
     RunAsPassword = "<runAsPassword>",
     TimeoutInSeconds = 3600,
     OutputBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/myscriptoutputcontainer/MyScriptoutput.txt"),
     ErrorBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"),
 };
-ArmOperation<MachineRunCommandResource> lro = await machineRunCommand.UpdateAsync(WaitUntil.Completed, data);
-MachineRunCommandResource result = lro.Value;
+ArmOperation<HybridComputeMachineRunCommandResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, runCommandName, data);
+HybridComputeMachineRunCommandResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-MachineRunCommandData resourceData = result.Data;
+HybridComputeMachineRunCommandData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HybridCompute.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HybridCompute;
 
 // Generated from example definition: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/HybridCompute/preview/2024-07-31-preview/examples/license/License_CreateOrUpdate.json
@@ -15,15 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridComputeLicenseResource created on azure
-// for more information of creating HybridComputeLicenseResource, please refer to the document of HybridComputeLicenseResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
-string licenseName = "{licenseName}";
-ResourceIdentifier hybridComputeLicenseResourceId = HybridComputeLicenseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, licenseName);
-HybridComputeLicenseResource hybridComputeLicense = client.GetHybridComputeLicenseResource(hybridComputeLicenseResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this HybridComputeLicenseResource
+HybridComputeLicenseCollection collection = resourceGroupResource.GetHybridComputeLicenses();
 
 // invoke the operation
+string licenseName = "{licenseName}";
 HybridComputeLicenseData data = new HybridComputeLicenseData(new AzureLocation("eastus2euap"))
 {
     LicenseType = HybridComputeLicenseType.Esu,
@@ -36,7 +40,7 @@ HybridComputeLicenseData data = new HybridComputeLicenseData(new AzureLocation("
         Processors = 6,
     },
 };
-ArmOperation<HybridComputeLicenseResource> lro = await hybridComputeLicense.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HybridComputeLicenseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, licenseName, data);
 HybridComputeLicenseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

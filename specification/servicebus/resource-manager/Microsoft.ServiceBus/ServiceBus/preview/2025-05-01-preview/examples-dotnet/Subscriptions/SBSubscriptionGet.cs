@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusSubscriptionResource created on azure
-// for more information of creating ServiceBusSubscriptionResource, please refer to the document of ServiceBusSubscriptionResource
+// this example assumes you already have this ServiceBusTopicResource created on azure
+// for more information of creating ServiceBusTopicResource, please refer to the document of ServiceBusTopicResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ResourceGroup";
 string namespaceName = "sdk-Namespace-1349";
 string topicName = "sdk-Topics-8740";
-string subscriptionName = "sdk-Subscriptions-2178";
-ResourceIdentifier serviceBusSubscriptionResourceId = ServiceBusSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName);
-ServiceBusSubscriptionResource serviceBusSubscription = client.GetServiceBusSubscriptionResource(serviceBusSubscriptionResourceId);
+ResourceIdentifier serviceBusTopicResourceId = ServiceBusTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
+ServiceBusTopicResource serviceBusTopic = client.GetServiceBusTopicResource(serviceBusTopicResourceId);
+
+// get the collection of this ServiceBusSubscriptionResource
+ServiceBusSubscriptionCollection collection = serviceBusTopic.GetServiceBusSubscriptions();
 
 // invoke the operation
-ServiceBusSubscriptionResource result = await serviceBusSubscription.GetAsync();
+string subscriptionName = "sdk-Subscriptions-2178";
+NullableResponse<ServiceBusSubscriptionResource> response = await collection.GetIfExistsAsync(subscriptionName);
+ServiceBusSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceBusSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ServiceBusSubscriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

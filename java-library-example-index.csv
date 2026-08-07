@@ -7364,3 +7364,4 @@ id,name,language,tag,package,version,date_epoch,date
 7363,azure-mgmt-sql@5.0.0b1,python,azure-mgmt-sql_5.0.0b1,azure-mgmt-sql,5.0.0b1,1786073708,08/07/2026
 7364,com.azure.resourcemanager:azure-resourcemanager-containerserviceaimanager:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager,1.0.0-beta.1,1786036224,08/06/2026
 7365,"Azure.ResourceManager.HybridCompute,1.1.0",dotnet,Azure.ResourceManager.HybridCompute_1.1.0,Azure.ResourceManager.HybridCompute,1.1.0,1786081257,08/07/2026
+7366,"Azure.ResourceManager.ServiceBus,1.2.0",dotnet,Azure.ResourceManager.ServiceBus_1.2.0,Azure.ResourceManager.ServiceBus,1.2.0,1785998927,08/06/2026

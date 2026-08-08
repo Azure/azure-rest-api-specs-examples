@@ -35,7 +35,7 @@ HybridComputeLicenseData data = new HybridComputeLicenseData(new AzureLocation("
         Processors = 6,
     },
 };
-ArmOperation<HybridComputeLicenseResource> lro = await subscriptionResource.ValidateLicenseLicenseAsync(WaitUntil.Completed, data);
+ArmOperation<HybridComputeLicenseResource> lro = await subscriptionResource.ValidateLicenseAsync(WaitUntil.Completed, data);
 HybridComputeLicenseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

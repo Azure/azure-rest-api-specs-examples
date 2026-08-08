@@ -25,6 +25,6 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 // invoke the operation
 AzureLocation location = new AzureLocation("wus2");
 string privateLinkScopeId = "f5dc51d3-92ed-4d7e-947a-775ea79b4919";
-PrivateLinkScopeValidationDetails result = await subscriptionResource.GetValidationDetailsPrivateLinkScopeAsync(location, privateLinkScopeId);
+PrivateLinkScopeValidationDetails result = await subscriptionResource.GetValidationDetailsAsync(location, privateLinkScopeId);
 
 Console.WriteLine($"Succeeded: {result}");

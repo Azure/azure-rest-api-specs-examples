@@ -36,7 +36,6 @@ HybridComputeMachinePatch patch = new HybridComputeMachinePatch
         {
             AssessmentMode = AssessmentModeType.ImageDefault,
             PatchMode = PatchModeType.AutomaticByPlatform,
-            IsHotpatchingEnabled = true,
         },
         LinuxConfiguration = new HybridComputeLinuxConfiguration
         {

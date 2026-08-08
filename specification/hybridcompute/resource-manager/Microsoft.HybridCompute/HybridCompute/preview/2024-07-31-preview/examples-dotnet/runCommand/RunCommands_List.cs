@@ -23,15 +23,15 @@ string machineName = "myMachine";
 ResourceIdentifier hybridComputeMachineResourceId = HybridComputeMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName);
 HybridComputeMachineResource hybridComputeMachine = client.GetHybridComputeMachineResource(hybridComputeMachineResourceId);
 
-// get the collection of this MachineRunCommandResource
-MachineRunCommandCollection collection = hybridComputeMachine.GetMachineRunCommands();
+// get the collection of this HybridComputeMachineRunCommandResource
+HybridComputeMachineRunCommandCollection collection = hybridComputeMachine.GetHybridComputeMachineRunCommands();
 
 // invoke the operation and iterate over the result
-await foreach (MachineRunCommandResource item in collection.GetAllAsync())
+await foreach (HybridComputeMachineRunCommandResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    MachineRunCommandData resourceData = item.Data;
+    HybridComputeMachineRunCommandData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

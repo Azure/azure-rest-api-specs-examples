@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HybridCompute.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HybridCompute;
 
 // Generated from example definition: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/HybridCompute/preview/2024-07-31-preview/examples/gateway/Gateway_Get.json
@@ -15,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArcGatewayResource created on azure
-// for more information of creating ArcGatewayResource, please refer to the document of ArcGatewayResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "ffd506c8-3415-42d3-9612-fdb423fb17df";
 string resourceGroupName = "myResourceGroup";
-string gatewayName = "{gatewayName}";
-ResourceIdentifier arcGatewayResourceId = ArcGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
-ArcGatewayResource arcGateway = client.GetArcGatewayResource(arcGatewayResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ArcGatewayResource
+ArcGatewayCollection collection = resourceGroupResource.GetArcGateways();
 
 // invoke the operation
-ArcGatewayResource result = await arcGateway.GetAsync();
+string gatewayName = "{gatewayName}";
+NullableResponse<ArcGatewayResource> response = await collection.GetIfExistsAsync(gatewayName);
+ArcGatewayResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ArcGatewayData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ArcGatewayData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

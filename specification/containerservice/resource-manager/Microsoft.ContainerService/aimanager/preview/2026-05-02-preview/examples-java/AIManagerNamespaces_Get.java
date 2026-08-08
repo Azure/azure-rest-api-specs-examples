@@ -1,0 +1,19 @@
+
+/**
+ * Samples for AIManagerNamespaces Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-02-preview/AIManagerNamespaces_Get.json
+     */
+    /**
+     * Sample code: Gets an AI Manager namespace resource.
+     * 
+     * @param manager Entry point to ContainerServiceAIManagerManager.
+     */
+    public static void getsAnAIManagerNamespaceResource(
+        com.azure.resourcemanager.containerserviceaimanager.ContainerServiceAIManagerManager manager) {
+        manager.aIManagerNamespaces().getWithResponse("rg1", "aimanager1", "namespace1",
+            com.azure.core.util.Context.NONE);
+    }
+}

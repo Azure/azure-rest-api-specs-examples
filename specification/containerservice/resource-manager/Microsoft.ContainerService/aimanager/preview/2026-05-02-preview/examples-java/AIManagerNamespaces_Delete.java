@@ -1,0 +1,18 @@
+
+/**
+ * Samples for AIManagerNamespaces Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-02-preview/AIManagerNamespaces_Delete.json
+     */
+    /**
+     * Sample code: Deletes an AI Manager namespace resource.
+     * 
+     * @param manager Entry point to ContainerServiceAIManagerManager.
+     */
+    public static void deletesAnAIManagerNamespaceResource(
+        com.azure.resourcemanager.containerserviceaimanager.ContainerServiceAIManagerManager manager) {
+        manager.aIManagerNamespaces().delete("rg1", "aimanager1", "namespace1", null, com.azure.core.util.Context.NONE);
+    }
+}

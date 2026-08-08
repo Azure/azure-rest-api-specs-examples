@@ -1,0 +1,19 @@
+
+/**
+ * Samples for AIManagerNamespaces ListCredential.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-02-preview/AIManagerNamespaces_ListCredential.json
+     */
+    /**
+     * Sample code: Lists the credentials of an AI Manager namespace.
+     * 
+     * @param manager Entry point to ContainerServiceAIManagerManager.
+     */
+    public static void listsTheCredentialsOfAnAIManagerNamespace(
+        com.azure.resourcemanager.containerserviceaimanager.ContainerServiceAIManagerManager manager) {
+        manager.aIManagerNamespaces().listCredentialWithResponse("rg1", "aimanager1", "namespace1",
+            com.azure.core.util.Context.NONE);
+    }
+}

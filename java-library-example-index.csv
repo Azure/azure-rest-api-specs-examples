@@ -7366,3 +7366,4 @@ id,name,language,tag,package,version,date_epoch,date
 7365,"Azure.ResourceManager.HybridCompute,1.1.0",dotnet,Azure.ResourceManager.HybridCompute_1.1.0,Azure.ResourceManager.HybridCompute,1.1.0,1786081257,08/07/2026
 7366,"Azure.ResourceManager.ServiceBus,1.2.0",dotnet,Azure.ResourceManager.ServiceBus_1.2.0,Azure.ResourceManager.ServiceBus,1.2.0,1785998927,08/06/2026
 7367,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.3",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.3,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.3,1785780191,08/03/2026
+7368,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices,1.2.0-beta.2,1786432214,08/11/2026

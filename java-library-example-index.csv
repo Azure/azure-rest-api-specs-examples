@@ -7375,3 +7375,4 @@ id,name,language,tag,package,version,date_epoch,date
 7374,@azure/arm-fabric@1.1.0-beta.1,js,@azure/arm-fabric_1.1.0-beta.1,@azure/arm-fabric,1.1.0-beta.1,1786501703,08/12/2026
 7375,azure-mgmt-iothub@5.0.0b4,python,azure-mgmt-iothub_5.0.0b4,azure-mgmt-iothub,5.0.0b4,1786506778,08/12/2026
 7376,azure-mgmt-netapp@18.0.0b2,python,azure-mgmt-netapp_18.0.0b2,azure-mgmt-netapp,18.0.0b2,1786504912,08/12/2026
+7377,azure-mgmt-fabric@1.1.0b1,python,azure-mgmt-fabric_1.1.0b1,azure-mgmt-fabric,1.1.0b1,1786504897,08/12/2026

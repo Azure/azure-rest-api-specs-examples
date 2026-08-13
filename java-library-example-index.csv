@@ -7378,3 +7378,4 @@ id,name,language,tag,package,version,date_epoch,date
 7377,azure-mgmt-fabric@1.1.0b1,python,azure-mgmt-fabric_1.1.0b1,azure-mgmt-fabric,1.1.0b1,1786504897,08/12/2026
 7378,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub/v2@v2.0.0-beta.2,go,sdk/resourcemanager/iothub/armiothub/v2.0.0-beta.2,sdk/resourcemanager/iothub/armiothub,v2.0.0-beta.2,1786590504,08/13/2026
 7379,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-iothub_1.4.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-iothub,1.4.0-beta.3,1786569963,08/12/2026
+7380,com.azure.resourcemanager:azure-resourcemanager-netapp:2.5.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.5.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.5.0-beta.1,1786546490,08/12/2026

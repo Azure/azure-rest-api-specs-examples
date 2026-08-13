@@ -7368,3 +7368,11 @@ id,name,language,tag,package,version,date_epoch,date
 7367,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.3",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.3,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.3,1785780191,08/03/2026
 7368,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices,1.2.0-beta.2,1786432214,08/11/2026
 7369,com.azure.resourcemanager:azure-resourcemanager-iotoperations:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-iotoperations_1.2.0,com.azure.resourcemanager+azure-resourcemanager-iotoperations,1.2.0,1786428657,08/11/2026
+7370,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fabric/armfabric@v1.1.0-beta.1,go,sdk/resourcemanager/fabric/armfabric/v1.1.0-beta.1,sdk/resourcemanager/fabric/armfabric,v1.1.0-beta.1,1786501914,08/12/2026
+7371,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.0.0-beta.2,go,sdk/resourcemanager/netapp/armnetapp/v11.0.0-beta.2,sdk/resourcemanager/netapp/armnetapp,v11.0.0-beta.2,1786501844,08/12/2026
+7372,@azure/arm-iothub@7.0.0-beta.3,js,@azure/arm-iothub_7.0.0-beta.3,@azure/arm-iothub,7.0.0-beta.3,1786516851,08/12/2026
+7373,@azure/arm-netapp@25.0.0-beta.2,js,@azure/arm-netapp_25.0.0-beta.2,@azure/arm-netapp,25.0.0-beta.2,1786503598,08/12/2026
+7374,@azure/arm-fabric@1.1.0-beta.1,js,@azure/arm-fabric_1.1.0-beta.1,@azure/arm-fabric,1.1.0-beta.1,1786501703,08/12/2026
+7375,azure-mgmt-iothub@5.0.0b4,python,azure-mgmt-iothub_5.0.0b4,azure-mgmt-iothub,5.0.0b4,1786506778,08/12/2026
+7376,azure-mgmt-netapp@18.0.0b2,python,azure-mgmt-netapp_18.0.0b2,azure-mgmt-netapp,18.0.0b2,1786504912,08/12/2026
+7377,azure-mgmt-fabric@1.1.0b1,python,azure-mgmt-fabric_1.1.0b1,azure-mgmt-fabric,1.1.0b1,1786504897,08/12/2026

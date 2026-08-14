@@ -7380,3 +7380,4 @@ id,name,language,tag,package,version,date_epoch,date
 7379,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-iothub_1.4.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-iothub,1.4.0-beta.3,1786569963,08/12/2026
 7380,com.azure.resourcemanager:azure-resourcemanager-netapp:2.5.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.5.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.5.0-beta.1,1786546490,08/12/2026
 7381,"Azure.ResourceManager.NetApp,1.19.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.19.0-beta.1,Azure.ResourceManager.NetApp,1.19.0-beta.1,1786549617,08/12/2026
+7382,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3@v3.0.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v3.0.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v3.0.0,1786690903,08/14/2026

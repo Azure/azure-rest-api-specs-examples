@@ -1,0 +1,33 @@
+
+import com.azure.resourcemanager.network.models.MoveIpConfigurationItem;
+import com.azure.resourcemanager.network.models.MoveIpConfigurationResourceReference;
+import com.azure.resourcemanager.network.models.MoveIpConfigurationsRequest;
+import java.util.Arrays;
+
+/**
+ * Samples for VirtualNetworks MoveIpConfigurations.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/VirtualNetworkMoveIpConfigurations.json
+     */
+    /**
+     * Sample code: Move IP Configurations.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void moveIPConfigurations(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getVirtualNetworks().moveIpConfigurations("rg1", "test-vnet",
+            new MoveIpConfigurationsRequest().withMoveIpConfigurationItems(Arrays.asList(new MoveIpConfigurationItem()
+                .withSourceIpConfiguration(new MoveIpConfigurationResourceReference().withId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"))
+                .withTargetIpConfiguration(new MoveIpConfigurationResourceReference().withId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic2/ipConfigurations/ipconfig2")),
+                new MoveIpConfigurationItem()
+                    .withSourceIpConfiguration(new MoveIpConfigurationResourceReference().withId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic3/ipConfigurations/ipconfig3"))
+                    .withTargetIpConfiguration(new MoveIpConfigurationResourceReference().withId(
+                        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic4/ipConfigurations/ipconfig4")))),
+            com.azure.core.util.Context.NONE);
+    }
+}

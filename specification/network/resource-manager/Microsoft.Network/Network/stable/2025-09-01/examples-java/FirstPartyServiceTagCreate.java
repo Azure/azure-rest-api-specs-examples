@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.network.fluent.models.FirstPartyServiceTagInner;
+import com.azure.resourcemanager.network.models.FirstPartyServiceTagPropertiesFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for FirstPartyServiceTags CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-09-01/FirstPartyServiceTagCreate.json
+     */
+    /**
+     * Sample code: Create first party service tag.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createFirstPartyServiceTag(com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getFirstPartyServiceTags().createOrUpdate("rg1", "myServiceTag",
+            new FirstPartyServiceTagInner().withLocation("eastus").withTags(mapOf("key1", "fakeTokenPlaceholder"))
+                .withProperties(new FirstPartyServiceTagPropertiesFormat().withValue("myServiceTagValue")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

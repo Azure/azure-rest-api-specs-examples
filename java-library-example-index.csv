@@ -7386,3 +7386,4 @@ id,name,language,tag,package,version,date_epoch,date
 7385,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v11@v11.0.0,go,sdk/resourcemanager/network/armnetwork/v11.0.0,sdk/resourcemanager/network/armnetwork,v11.0.0,1786957296,08/17/2026
 7386,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservices/v3@v3.2.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservices/v3.2.0,sdk/resourcemanager/recoveryservices/armrecoveryservices,v3.2.0,1786957292,08/17/2026
 7387,azure-mgmt-network@32.0.0,python,azure-mgmt-network_32.0.0,azure-mgmt-network,32.0.0,1786944609,08/17/2026
+7388,azure-mgmt-recoveryservicesbackup@11.0.0,python,azure-mgmt-recoveryservicesbackup_11.0.0,azure-mgmt-recoveryservicesbackup,11.0.0,1786944606,08/17/2026

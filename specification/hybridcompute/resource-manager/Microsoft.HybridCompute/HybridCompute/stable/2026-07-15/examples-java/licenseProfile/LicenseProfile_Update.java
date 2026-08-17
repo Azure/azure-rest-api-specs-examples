@@ -1,0 +1,30 @@
+
+import com.azure.resourcemanager.hybridcompute.models.LicenseProfile;
+import com.azure.resourcemanager.hybridcompute.models.LicenseProfileProductType;
+import com.azure.resourcemanager.hybridcompute.models.LicenseProfileSubscriptionStatusUpdate;
+import com.azure.resourcemanager.hybridcompute.models.ProductFeatureUpdate;
+import java.util.Arrays;
+
+/**
+ * Samples for LicenseProfiles Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-15/licenseProfile/LicenseProfile_Update.json
+     */
+    /**
+     * Sample code: Update a License Profile.
+     * 
+     * @param manager Entry point to HybridComputeManager.
+     */
+    public static void updateALicenseProfile(com.azure.resourcemanager.hybridcompute.HybridComputeManager manager) {
+        LicenseProfile resource = manager.licenseProfiles()
+            .getWithResponse("myResourceGroup", "myMachine", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withSoftwareAssuranceCustomer(true).withAssignedLicense("{LicenseResourceId}")
+            .withSubscriptionStatus(LicenseProfileSubscriptionStatusUpdate.ENABLE)
+            .withProductType(LicenseProfileProductType.WINDOWS_SERVER)
+            .withProductFeaturesForUpdate(Arrays.asList(new ProductFeatureUpdate().withName("Hotpatch")
+                .withSubscriptionStatus(LicenseProfileSubscriptionStatusUpdate.ENABLE)))
+            .apply();
+    }
+}

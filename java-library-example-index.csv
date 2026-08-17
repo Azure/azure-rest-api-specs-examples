@@ -7383,3 +7383,4 @@ id,name,language,tag,package,version,date_epoch,date
 7382,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3@v3.0.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v3.0.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v3.0.0,1786690903,08/14/2026
 7383,azure-mgmt-hybridcompute@10.0.0,python,azure-mgmt-hybridcompute_10.0.0,azure-mgmt-hybridcompute,10.0.0,1786677700,08/14/2026
 7384,"Azure.ResourceManager.ContainerServiceFleet,1.2.0",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.2.0,Azure.ResourceManager.ContainerServiceFleet,1.2.0,1786732104,08/14/2026
+7385,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v11@v11.0.0,go,sdk/resourcemanager/network/armnetwork/v11.0.0,sdk/resourcemanager/network/armnetwork,v11.0.0,1786957296,08/17/2026

@@ -7389,3 +7389,4 @@ id,name,language,tag,package,version,date_epoch,date
 7388,azure-mgmt-recoveryservicesbackup@11.0.0,python,azure-mgmt-recoveryservicesbackup_11.0.0,azure-mgmt-recoveryservicesbackup,11.0.0,1786944606,08/17/2026
 7389,azure-mgmt-recoveryservices@4.2.0,python,azure-mgmt-recoveryservices_4.2.0,azure-mgmt-recoveryservices,4.2.0,1786944591,08/17/2026
 7390,com.azure.resourcemanager:azure-resourcemanager-network:2.60.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.60.0,com.azure.resourcemanager+azure-resourcemanager-network,2.60.0,1786948451,08/17/2026
+7391,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.7.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup_1.7.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup,1.7.0,1786948366,08/17/2026

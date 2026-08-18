@@ -1,0 +1,17 @@
+
+/**
+ * Samples for FabricCapacities ListUsages.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01-preview/FabricCapacities_ListUsagesBySubscription.json
+     */
+    /**
+     * Sample code: List quota usages for a subscription.
+     * 
+     * @param manager Entry point to FabricManager.
+     */
+    public static void listQuotaUsagesForASubscription(com.azure.resourcemanager.fabric.FabricManager manager) {
+        manager.fabricCapacities().listUsages("centraluseuap", com.azure.core.util.Context.NONE);
+    }
+}

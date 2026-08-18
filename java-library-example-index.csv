@@ -7393,3 +7393,4 @@ id,name,language,tag,package,version,date_epoch,date
 7392,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-hybridcompute_1.1.0,com.azure.resourcemanager+azure-resourcemanager-hybridcompute,1.1.0,1786948347,08/17/2026
 7393,com.azure.resourcemanager:azure-resourcemanager-fabric:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-fabric_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-fabric,1.1.0-beta.1,1786948332,08/17/2026
 7394,@azure/arm-network@38.0.0,js,@azure/arm-network_38.0.0,@azure/arm-network,38.0.0,1787048352,08/18/2026
+7395,com.azure.resourcemanager:azure-resourcemanager-commvaultcontentstore:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore,1.0.0-beta.1,1787046311,08/18/2026

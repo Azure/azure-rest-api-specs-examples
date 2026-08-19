@@ -7400,3 +7400,4 @@ id,name,language,tag,package,version,date_epoch,date
 7399,@azure/arm-recoveryservicesbackup@14.0.0,js,@azure/arm-recoveryservicesbackup_14.0.0,@azure/arm-recoveryservicesbackup,14.0.0,1787106077,08/19/2026
 7400,azure-mgmt-servicegroups@1.0.0,python,azure-mgmt-servicegroups_1.0.0,azure-mgmt-servicegroups,1.0.0,1787109305,08/19/2026
 7401,azure-mgmt-compute@38.3.0,python,azure-mgmt-compute_38.3.0,azure-mgmt-compute,38.3.0,1787109292,08/19/2026
+7402,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.4,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.4,1787091987,08/18/2026

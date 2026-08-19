@@ -63,7 +63,7 @@ func ExampleSnapshotsClient_NewListByResourceGroupPager() {
 		// 					Encryption: &armcompute.Encryption{
 		// 						Type: to.Ptr(armcompute.EncryptionTypeEncryptionAtRestWithPlatformKey),
 		// 					},
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.9278721+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(time.Date(2016, time.December, 28, 4, 41, 35, 927872100, time.UTC)),
 		// 					ProvisioningState: to.Ptr("Succeeded"),
 		// 				},
 		// 				Type: to.Ptr("Microsoft.Compute/snapshots"),

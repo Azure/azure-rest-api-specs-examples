@@ -63,7 +63,7 @@ func ExampleSnapshotsClient_NewListPager() {
 		// 					Encryption: &armcompute.Encryption{
 		// 						Type: to.Ptr(armcompute.EncryptionTypeEncryptionAtRestWithPlatformKey),
 		// 					},
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.6630569+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(time.Date(2016, time.December, 28, 4, 47, 30, 663056900, time.UTC)),
 		// 					ProvisioningState: to.Ptr("Succeeded"),
 		// 				},
 		// 				Type: to.Ptr("Microsoft.Compute/snapshots"),
@@ -106,7 +106,7 @@ func ExampleSnapshotsClient_NewListPager() {
 		// 					Encryption: &armcompute.Encryption{
 		// 						Type: to.Ptr(armcompute.EncryptionTypeEncryptionAtRestWithPlatformKey),
 		// 					},
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.3247198+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(time.Date(2016, time.December, 28, 4, 47, 30, 324719800, time.UTC)),
 		// 					ProvisioningState: to.Ptr("Succeeded"),
 		// 				},
 		// 				Type: to.Ptr("Microsoft.Compute/snapshots"),

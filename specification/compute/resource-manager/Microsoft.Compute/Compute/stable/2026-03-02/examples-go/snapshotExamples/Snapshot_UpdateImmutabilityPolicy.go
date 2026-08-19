@@ -46,8 +46,8 @@ func ExampleSnapshotsClient_BeginUpdateImmutabilityPolicy() {
 	// 			ImmutabilityPolicy: &armcompute.ImmutabilityPolicy{
 	// 				ImmutabilityDurationDays: to.Ptr[int32](30),
 	// 				Type: to.Ptr(armcompute.ImmutabilityPolicyTypeUnlocked),
-	// 				PolicyStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-05-21T12:00:00.0000000+00:00"); return t}()),
-	// 				PolicyExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-06-20T12:00:00.0000000+00:00"); return t}()),
+	// 				PolicyStartTime: to.Ptr(time.Date(2026, time.May, 21, 12, 0, 0, 0, time.UTC)),
+	// 				PolicyExpirationTime: to.Ptr(time.Date(2026, time.June, 20, 12, 0, 0, 0, time.UTC)),
 	// 				IsPolicyExpired: to.Ptr(false),
 	// 			},
 	// 		},

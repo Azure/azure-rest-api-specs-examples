@@ -7398,3 +7398,4 @@ id,name,language,tag,package,version,date_epoch,date
 7397,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.3.0,go,sdk/resourcemanager/compute/armcompute/v8.3.0,sdk/resourcemanager/compute/armcompute,v8.3.0,1787087800,08/18/2026
 7398,@azure/arm-hybridcompute@5.0.0,js,@azure/arm-hybridcompute_5.0.0,@azure/arm-hybridcompute,5.0.0,1787106175,08/19/2026
 7399,@azure/arm-recoveryservicesbackup@14.0.0,js,@azure/arm-recoveryservicesbackup_14.0.0,@azure/arm-recoveryservicesbackup,14.0.0,1787106077,08/19/2026
+7400,azure-mgmt-servicegroups@1.0.0,python,azure-mgmt-servicegroups_1.0.0,azure-mgmt-servicegroups,1.0.0,1787109305,08/19/2026

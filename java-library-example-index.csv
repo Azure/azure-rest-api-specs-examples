@@ -7405,3 +7405,4 @@ id,name,language,tag,package,version,date_epoch,date
 7404,@azure/arm-monitor@8.0.0,js,@azure/arm-monitor_8.0.0,@azure/arm-monitor,8.0.0,1787194235,08/20/2026
 7405,com.azure.resourcemanager:azure-resourcemanager-compute:2.60.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.60.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.60.0,1787153286,08/19/2026
 7406,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.1,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.1,1787091924,08/18/2026
+7407,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.1,1787091904,08/18/2026

@@ -36,7 +36,7 @@ func ExampleDiskAccessesClient_NewListByResourceGroupPager() {
 		// 			{
 		// 				Properties: &armcompute.DiskAccessProperties{
 		// 					ProvisioningState: to.Ptr("Succeeded"),
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T04:41:35.079872+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(time.Date(2020, time.May, 1, 4, 41, 35, 79872000, time.UTC)),
 		// 				},
 		// 				Type: to.Ptr("Microsoft.Compute/diskAccesses"),
 		// 				Location: to.Ptr("westus"),
@@ -50,7 +50,7 @@ func ExampleDiskAccessesClient_NewListByResourceGroupPager() {
 		// 			{
 		// 				Properties: &armcompute.DiskAccessProperties{
 		// 					ProvisioningState: to.Ptr("Succeeded"),
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T04:41:35.079872+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(time.Date(2020, time.May, 1, 4, 41, 35, 79872000, time.UTC)),
 		// 					PrivateEndpointConnections: []*armcompute.PrivateEndpointConnection{
 		// 						{
 		// 							Name: to.Ptr("myDiskAccess.d4914cfa-6bc2-4049-a57c-3d1f622d8eef"),

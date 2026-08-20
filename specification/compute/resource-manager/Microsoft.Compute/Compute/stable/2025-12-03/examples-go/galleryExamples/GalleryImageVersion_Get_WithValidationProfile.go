@@ -63,7 +63,7 @@ func ExampleGalleryImageVersionsClient_Get_getAGalleryImageVersionWithValidation
 	// 					},
 	// 				},
 	// 				ReplicaCount: to.Ptr[int32](1),
-	// 				PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 				PublishedDate: to.Ptr(time.Date(2018, time.January, 1, 0, 0, 0, 0, time.UTC)),
 	// 				StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 	// 			},
 	// 			StorageProfile: &armcompute.GalleryImageVersionStorageProfile{
@@ -98,13 +98,13 @@ func ExampleGalleryImageVersionsClient_Get_getAGalleryImageVersionWithValidation
 	// 						Type: to.Ptr("LinuxSecurityBaseline"),
 	// 						Status: to.Ptr(armcompute.ValidationStatusFailed),
 	// 						Version: to.Ptr("beta"),
-	// 						ExecutionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 						ExecutionTime: to.Ptr(time.Date(2018, time.January, 1, 0, 0, 0, 0, time.UTC)),
 	// 					},
 	// 					{
 	// 						Type: to.Ptr("AzCertify"),
 	// 						Status: to.Ptr(armcompute.ValidationStatusSucceeded),
 	// 						Version: to.Ptr("10.0.4"),
-	// 						ExecutionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 						ExecutionTime: to.Ptr(time.Date(2018, time.January, 1, 0, 0, 0, 0, time.UTC)),
 	// 					},
 	// 				},
 	// 				PlatformAttributes: []*armcompute.PlatformAttribute{

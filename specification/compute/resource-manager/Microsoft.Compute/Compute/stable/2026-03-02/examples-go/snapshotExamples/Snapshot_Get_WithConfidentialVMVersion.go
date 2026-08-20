@@ -53,7 +53,7 @@ func ExampleSnapshotsClient_Get_getInformationAboutAConfidentialVMSnapshotWithCo
 	// 			Encryption: &armcompute.Encryption{
 	// 				Type: to.Ptr(armcompute.EncryptionTypeEncryptionAtRestWithPlatformKey),
 	// 			},
-	// 			TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-04-20T04:41:35.079872+00:00"); return t}()),
+	// 			TimeCreated: to.Ptr(time.Date(2026, time.April, 20, 4, 41, 35, 79872000, time.UTC)),
 	// 			ProvisioningState: to.Ptr("Succeeded"),
 	// 		},
 	// 		Type: to.Ptr("Microsoft.Compute/snapshots"),

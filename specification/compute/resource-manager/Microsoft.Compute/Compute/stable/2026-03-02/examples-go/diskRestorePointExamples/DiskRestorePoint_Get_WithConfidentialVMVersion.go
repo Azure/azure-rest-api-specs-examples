@@ -31,7 +31,7 @@ func ExampleDiskRestorePointClient_Get_getAConfidentialVMIncrementalDiskRestoreP
 	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/rpc/restorePoints/vmrp/diskRestorePoints/myConfidentialDisk_c4bc27e0-ccf6-494e-a740-af34de775527"),
 	// 		Name: to.Ptr("myConfidentialDisk_c4bc27e0-ccf6-494e-a740-af34de775527"),
 	// 		Properties: &armcompute.DiskRestorePointProperties{
-	// 			TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-03-02T04:41:35.079872+00:00"); return t}()),
+	// 			TimeCreated: to.Ptr(time.Date(2026, time.March, 2, 4, 41, 35, 79872000, time.UTC)),
 	// 			SourceResourceID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myConfidentialDisk"),
 	// 			OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 	// 			HyperVGeneration: to.Ptr(armcompute.HyperVGenerationV2),

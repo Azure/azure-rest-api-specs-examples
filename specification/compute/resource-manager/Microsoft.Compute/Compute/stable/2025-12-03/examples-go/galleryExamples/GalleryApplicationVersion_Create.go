@@ -41,7 +41,7 @@ func ExampleGalleryApplicationVersionsClient_BeginCreateOrUpdate() {
 					},
 				},
 				ReplicaCount:       to.Ptr[int32](1),
-				EndOfLifeDate:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T07:00:00Z"); return t }()),
+				EndOfLifeDate:      to.Ptr(time.Date(2019, time.July, 1, 7, 0, 0, 0, time.UTC)),
 				StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 				CustomActions: []*armcompute.GalleryApplicationCustomAction{
 					{
@@ -109,8 +109,8 @@ func ExampleGalleryApplicationVersionsClient_BeginCreateOrUpdate() {
 	// 				},
 	// 				ReplicaCount: to.Ptr[int32](1),
 	// 				ExcludeFromLatest: to.Ptr(false),
-	// 				PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-21T17:13:57.5972568+00:00"); return t}()),
-	// 				EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T07:00:00+00:00"); return t}()),
+	// 				PublishedDate: to.Ptr(time.Date(2019, time.June, 21, 17, 13, 57, 597256800, time.UTC)),
+	// 				EndOfLifeDate: to.Ptr(time.Date(2019, time.July, 1, 7, 0, 0, 0, time.UTC)),
 	// 				StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 	// 				CustomActions: []*armcompute.GalleryApplicationCustomAction{
 	// 					{

@@ -80,7 +80,7 @@ func ExampleGalleryInVMAccessControlProfileVersionsClient_Get() {
 	// 				},
 	// 			},
 	// 			ExcludeFromLatest: to.Ptr(false),
-	// 			PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-01-01T00:00:00Z"); return t}()),
+	// 			PublishedDate: to.Ptr(time.Date(2024, time.January, 1, 0, 0, 0, 0, time.UTC)),
 	// 			ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
 	// 		},
 	// 		Location: to.Ptr("West US"),

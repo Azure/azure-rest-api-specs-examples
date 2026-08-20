@@ -1,0 +1,42 @@
+package armrecoveryservicesbackup_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5"
+)
+
+// Generated from example definition: 2026-07-01/AzureIaasVm/ProtectedItemOperationStatus.json
+func ExampleProtectedItemOperationStatusesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesbackup.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewProtectedItemOperationStatusesClient().Get(ctx, "NetSDKTestRsVault", "SwaggerTestRg", "Azure", "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1", "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1", "00000000-0000-0000-0000-000000000000", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armrecoveryservicesbackup.ProtectedItemOperationStatusesClientGetResponse{
+	// 	OperationStatus: armrecoveryservicesbackup.OperationStatus{
+	// 		Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		EndTime: to.Ptr(time.Date(2017, time.October, 29, 6, 4, 18, 207325000, time.UTC)),
+	// 		ID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		Properties: &armrecoveryservicesbackup.OperationStatusJobExtendedInfo{
+	// 			JobID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			ObjectType: to.Ptr("OperationStatusJobExtendedInfo"),
+	// 		},
+	// 		StartTime: to.Ptr(time.Date(2017, time.October, 29, 6, 4, 18, 207325000, time.UTC)),
+	// 		Status: to.Ptr(armrecoveryservicesbackup.OperationStatusValuesSucceeded),
+	// 	},
+	// }
+}

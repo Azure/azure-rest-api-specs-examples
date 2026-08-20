@@ -1,0 +1,73 @@
+package armrecoveryservicesbackup_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5"
+)
+
+// Generated from example definition: 2026-07-01/Common/ListJobs.json
+func ExampleBackupJobsClient_NewListPager_listAllJobs() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armrecoveryservicesbackup.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewBackupJobsClient().NewListPager("NetSDKTestRsVault", "SwaggerTestRg", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armrecoveryservicesbackup.BackupJobsClientListResponse{
+		// 	JobResourceList: armrecoveryservicesbackup.JobResourceList{
+		// 		Value: []*armrecoveryservicesbackup.JobResource{
+		// 			{
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.RecoveryServices/vaults/backupJobs"),
+		// 				ID: to.Ptr("/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/NetSDKTestRsVault/backupJobs/00000000-0000-0000-0000-000000000000"),
+		// 				Properties: &armrecoveryservicesbackup.AzureIaaSVMJob{
+		// 					ActivityID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					BackupManagementType: to.Ptr(armrecoveryservicesbackup.BackupManagementTypeAzureIaasVM),
+		// 					Duration: to.Ptr("PT12.4272909S"),
+		// 					EntityFriendlyName: to.Ptr("testvm"),
+		// 					JobType: to.Ptr("AzureIaaSVMJob"),
+		// 					Operation: to.Ptr("Backup"),
+		// 					StartTime: to.Ptr(time.Date(2017, time.August, 3, 5, 31, 7, 14604000, time.UTC)),
+		// 					Status: to.Ptr("InProgress"),
+		// 					VirtualMachineVersion: to.Ptr("Compute"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 				Type: to.Ptr("Microsoft.RecoveryServices/vaults/backupJobs"),
+		// 				ID: to.Ptr("/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/NetSDKTestRsVault/backupJobs/00000000-0000-0000-0000-000000000000"),
+		// 				Properties: &armrecoveryservicesbackup.AzureIaaSVMJob{
+		// 					ActivityID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+		// 					BackupManagementType: to.Ptr(armrecoveryservicesbackup.BackupManagementTypeAzureIaasVM),
+		// 					Duration: to.Ptr("PT31.3066291S"),
+		// 					EndTime: to.Ptr(time.Date(2017, time.August, 3, 5, 31, 3, 755337600, time.UTC)),
+		// 					EntityFriendlyName: to.Ptr("testvm"),
+		// 					JobType: to.Ptr("AzureIaaSVMJob"),
+		// 					Operation: to.Ptr("ConfigureBackup"),
+		// 					StartTime: to.Ptr(time.Date(2017, time.August, 3, 5, 30, 32, 448708500, time.UTC)),
+		// 					Status: to.Ptr("Completed"),
+		// 					VirtualMachineVersion: to.Ptr("Compute"),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

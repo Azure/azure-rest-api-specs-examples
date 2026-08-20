@@ -7403,3 +7403,4 @@ id,name,language,tag,package,version,date_epoch,date
 7402,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.4,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.4,1787091987,08/18/2026
 7403,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.62.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.62.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.62.1,1787091939,08/18/2026
 7404,@azure/arm-monitor@8.0.0,js,@azure/arm-monitor_8.0.0,@azure/arm-monitor,8.0.0,1787194235,08/20/2026
+7405,com.azure.resourcemanager:azure-resourcemanager-compute:2.60.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.60.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.60.0,1787153286,08/19/2026

@@ -7394,3 +7394,11 @@ id,name,language,tag,package,version,date_epoch,date
 7393,com.azure.resourcemanager:azure-resourcemanager-fabric:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-fabric_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-fabric,1.1.0-beta.1,1786948332,08/17/2026
 7394,@azure/arm-network@38.0.0,js,@azure/arm-network_38.0.0,@azure/arm-network,38.0.0,1787048352,08/18/2026
 7395,com.azure.resourcemanager:azure-resourcemanager-commvaultcontentstore:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore,1.0.0-beta.1,1787046311,08/18/2026
+7396,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.0.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.0.0,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.0.0,1787106047,08/19/2026
+7397,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.3.0,go,sdk/resourcemanager/compute/armcompute/v8.3.0,sdk/resourcemanager/compute/armcompute,v8.3.0,1787087800,08/18/2026
+7398,@azure/arm-hybridcompute@5.0.0,js,@azure/arm-hybridcompute_5.0.0,@azure/arm-hybridcompute,5.0.0,1787106175,08/19/2026
+7399,@azure/arm-recoveryservicesbackup@14.0.0,js,@azure/arm-recoveryservicesbackup_14.0.0,@azure/arm-recoveryservicesbackup,14.0.0,1787106077,08/19/2026
+7400,azure-mgmt-servicegroups@1.0.0,python,azure-mgmt-servicegroups_1.0.0,azure-mgmt-servicegroups,1.0.0,1787109305,08/19/2026
+7401,azure-mgmt-compute@38.3.0,python,azure-mgmt-compute_38.3.0,azure-mgmt-compute,38.3.0,1787109292,08/19/2026
+7402,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.4,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.4,1787091987,08/18/2026
+7403,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.62.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.62.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.62.1,1787091939,08/18/2026

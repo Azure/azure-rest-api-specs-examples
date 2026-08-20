@@ -7407,3 +7407,4 @@ id,name,language,tag,package,version,date_epoch,date
 7406,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.1,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.1,1787091924,08/18/2026
 7407,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.1,1787091904,08/18/2026
 7408,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.1,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.1,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.1,1787091871,08/18/2026
+7409,com.azure.resourcemanager:azure-resourcemanager-network:2.60.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.60.1,com.azure.resourcemanager+azure-resourcemanager-network,2.60.1,1787091840,08/18/2026

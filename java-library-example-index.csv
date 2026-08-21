@@ -7410,3 +7410,4 @@ id,name,language,tag,package,version,date_epoch,date
 7409,com.azure.resourcemanager:azure-resourcemanager-network:2.60.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.60.1,com.azure.resourcemanager+azure-resourcemanager-network,2.60.1,1787091840,08/18/2026
 7410,@azure/arm-compute@25.1.1,js,@azure/arm-compute_25.1.1,@azure/arm-compute,25.1.1,1787282175,08/21/2026
 7411,@azure/arm-storagesync@10.1.0,js,@azure/arm-storagesync_10.1.0,@azure/arm-storagesync,10.1.0,1787281862,08/21/2026
+7412,@azure/arm-chaos@2.1.0-beta.2,js,@azure/arm-chaos_2.1.0-beta.2,@azure/arm-chaos,2.1.0-beta.2,1787281281,08/21/2026

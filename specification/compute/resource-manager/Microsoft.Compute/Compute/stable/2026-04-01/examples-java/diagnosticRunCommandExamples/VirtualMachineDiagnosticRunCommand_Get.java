@@ -1,0 +1,18 @@
+
+/**
+ * Samples for VirtualMachineDiagnosticRunCommands GetByVirtualMachine.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01/diagnosticRunCommandExamples/VirtualMachineDiagnosticRunCommand_Get.json
+     */
+    /**
+     * Sample code: Get a diagnostic run command.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void getADiagnosticRunCommand(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getVirtualMachineDiagnosticRunCommands().getByVirtualMachineWithResponse(
+            "myResourceGroup", "myVM", "myRunCommand", null, com.azure.core.util.Context.NONE);
+    }
+}

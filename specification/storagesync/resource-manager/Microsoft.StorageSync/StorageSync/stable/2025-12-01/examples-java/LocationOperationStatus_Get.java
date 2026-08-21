@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ResourceProvider LocationOperationStatus.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/LocationOperationStatus_Get.json
+     */
+    /**
+     * Sample code: LocationOperationStatus.
+     * 
+     * @param manager Entry point to StorageSyncManager.
+     */
+    public static void locationOperationStatus(com.azure.resourcemanager.storagesync.StorageSyncManager manager) {
+        manager.resourceProviders().locationOperationStatusWithResponse("westus",
+            "eyJwYXJ0aXRpb25JZCI6ImE1ZDNiMDU4LTYwN2MtNDI0Ny05Y2FmLWJlZmU4NGQ0ZDU0NyIsIndvcmtmbG93SWQiOiJjYzg1MTY2YS0xMjI2LTQ4MGYtYWM5ZC1jMmRhNTVmY2M2ODYiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiOTdmODU5ZTAtOGY1MC00ZTg4LWJkZDEtNWZlYzgwYTVlYzM0tui=",
+            com.azure.core.util.Context.NONE);
+    }
+}

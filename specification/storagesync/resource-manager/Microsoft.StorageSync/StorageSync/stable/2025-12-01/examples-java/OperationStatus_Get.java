@@ -1,0 +1,19 @@
+
+/**
+ * Samples for OperationStatusOperation Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/OperationStatus_Get.json
+     */
+    /**
+     * Sample code: OperationStatus_Get.
+     * 
+     * @param manager Entry point to StorageSyncManager.
+     */
+    public static void operationStatusGet(com.azure.resourcemanager.storagesync.StorageSyncManager manager) {
+        manager.operationStatusOperations().getWithResponse("SampleResourceGroup_1", "westus",
+            "828219ea-083e-48b5-89ea-8fd9991b2e75", "14b50e24-f68d-4b29-a882-38be9dfb8bd1",
+            com.azure.core.util.Context.NONE);
+    }
+}

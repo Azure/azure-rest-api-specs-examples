@@ -7412,3 +7412,4 @@ id,name,language,tag,package,version,date_epoch,date
 7411,@azure/arm-storagesync@10.1.0,js,@azure/arm-storagesync_10.1.0,@azure/arm-storagesync,10.1.0,1787281862,08/21/2026
 7412,@azure/arm-chaos@2.1.0-beta.2,js,@azure/arm-chaos_2.1.0-beta.2,@azure/arm-chaos,2.1.0-beta.2,1787281281,08/21/2026
 7413,azure-mgmt-storagesync@2.1.0,python,azure-mgmt-storagesync_2.1.0,azure-mgmt-storagesync,2.1.0,1787283853,08/21/2026
+7414,azure-mgmt-chaos@3.0.0b2,python,azure-mgmt-chaos_3.0.0b2,azure-mgmt-chaos,3.0.0b2,1787283226,08/21/2026

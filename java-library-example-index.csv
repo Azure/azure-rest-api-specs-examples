@@ -7408,3 +7408,10 @@ id,name,language,tag,package,version,date_epoch,date
 7407,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.1,1787091904,08/18/2026
 7408,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.1,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.1,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.1,1787091871,08/18/2026
 7409,com.azure.resourcemanager:azure-resourcemanager-network:2.60.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.60.1,com.azure.resourcemanager+azure-resourcemanager-network,2.60.1,1787091840,08/18/2026
+7410,@azure/arm-compute@25.1.1,js,@azure/arm-compute_25.1.1,@azure/arm-compute,25.1.1,1787282175,08/21/2026
+7411,@azure/arm-storagesync@10.1.0,js,@azure/arm-storagesync_10.1.0,@azure/arm-storagesync,10.1.0,1787281862,08/21/2026
+7412,@azure/arm-chaos@2.1.0-beta.2,js,@azure/arm-chaos_2.1.0-beta.2,@azure/arm-chaos,2.1.0-beta.2,1787281281,08/21/2026
+7413,azure-mgmt-storagesync@2.1.0,python,azure-mgmt-storagesync_2.1.0,azure-mgmt-storagesync,2.1.0,1787283853,08/21/2026
+7414,azure-mgmt-chaos@3.0.0b2,python,azure-mgmt-chaos_3.0.0b2,azure-mgmt-chaos,3.0.0b2,1787283226,08/21/2026
+7415,com.azure.resourcemanager:azure-resourcemanager-storagesync:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-storagesync_1.0.0,com.azure.resourcemanager+azure-resourcemanager-storagesync,1.0.0,1787297447,08/21/2026
+7416,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.4,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.4,1787091807,08/18/2026

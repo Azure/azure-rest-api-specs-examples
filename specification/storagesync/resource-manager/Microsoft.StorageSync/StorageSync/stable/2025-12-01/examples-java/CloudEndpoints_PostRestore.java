@@ -1,0 +1,33 @@
+
+import com.azure.resourcemanager.storagesync.models.PostRestoreRequest;
+import com.azure.resourcemanager.storagesync.models.RestoreFileSpec;
+import java.util.Arrays;
+
+/**
+ * Samples for CloudEndpoints PostRestore.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/CloudEndpoints_PostRestore.json
+     */
+    /**
+     * Sample code: CloudEndpoints_PostRestore.
+     * 
+     * @param manager Entry point to StorageSyncManager.
+     */
+    public static void cloudEndpointsPostRestore(com.azure.resourcemanager.storagesync.StorageSyncManager manager) {
+        manager.cloudEndpoints().postRestore("SampleResourceGroup_1", "SampleStorageSyncService_1", "SampleSyncGroup_1",
+            "SampleCloudEndpoint_1",
+            new PostRestoreRequest()
+                .withAzureFileShareUri(
+                    "https://hfsazbackupdevintncus2.file.core.test-cint.azure-test.net/sampleFileShare")
+                .withStatus("Succeeded")
+                .withSourceAzureFileShareUri(
+                    "https://hfsazbackupdevintncus2.file.core.test-cint.azure-test.net/sampleFileShare")
+                .withRestoreFileSpec(Arrays.asList(new RestoreFileSpec().withPath("text1.txt").withIsdir(false),
+                    new RestoreFileSpec().withPath("MyDir").withIsdir(true),
+                    new RestoreFileSpec().withPath("MyDir/SubDir").withIsdir(false),
+                    new RestoreFileSpec().withPath("MyDir/SubDir/File1.pdf").withIsdir(false))),
+            com.azure.core.util.Context.NONE);
+    }
+}

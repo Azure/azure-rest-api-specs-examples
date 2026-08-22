@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.storagesync.models.BackupRequest;
+
+/**
+ * Samples for CloudEndpoints PreBackup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/CloudEndpoints_PreBackup.json
+     */
+    /**
+     * Sample code: CloudEndpoints_PreBackup.
+     * 
+     * @param manager Entry point to StorageSyncManager.
+     */
+    public static void cloudEndpointsPreBackup(com.azure.resourcemanager.storagesync.StorageSyncManager manager) {
+        manager.cloudEndpoints().preBackup("SampleResourceGroup_1", "SampleStorageSyncService_1", "SampleSyncGroup_1",
+            "SampleCloudEndpoint_1",
+            new BackupRequest()
+                .withAzureFileShare("https://sampleserver.file.core.test-cint.azure-test.net/sampleFileShare"),
+            com.azure.core.util.Context.NONE);
+    }
+}

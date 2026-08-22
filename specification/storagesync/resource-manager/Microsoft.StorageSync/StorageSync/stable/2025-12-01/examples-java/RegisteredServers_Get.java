@@ -1,0 +1,18 @@
+
+/**
+ * Samples for RegisteredServers Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-12-01/RegisteredServers_Get.json
+     */
+    /**
+     * Sample code: RegisteredServers_Get.
+     * 
+     * @param manager Entry point to StorageSyncManager.
+     */
+    public static void registeredServersGet(com.azure.resourcemanager.storagesync.StorageSyncManager manager) {
+        manager.registeredServers().getWithResponse("SampleResourceGroup_1", "SampleStorageSyncService_1",
+            "080d4133-bdb5-40a0-96a0-71a6057bfe9a", com.azure.core.util.Context.NONE);
+    }
+}

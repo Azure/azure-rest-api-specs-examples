@@ -7415,3 +7415,4 @@ id,name,language,tag,package,version,date_epoch,date
 7414,azure-mgmt-chaos@3.0.0b2,python,azure-mgmt-chaos_3.0.0b2,azure-mgmt-chaos,3.0.0b2,1787283226,08/21/2026
 7415,com.azure.resourcemanager:azure-resourcemanager-storagesync:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-storagesync_1.0.0,com.azure.resourcemanager+azure-resourcemanager-storagesync,1.0.0,1787297447,08/21/2026
 7416,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.4,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.4,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.4,1787091807,08/18/2026
+7417,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync/v2@v2.1.0,go,sdk/resourcemanager/storagesync/armstoragesync/v2.1.0,sdk/resourcemanager/storagesync/armstoragesync,v2.1.0,1787336132,08/21/2026

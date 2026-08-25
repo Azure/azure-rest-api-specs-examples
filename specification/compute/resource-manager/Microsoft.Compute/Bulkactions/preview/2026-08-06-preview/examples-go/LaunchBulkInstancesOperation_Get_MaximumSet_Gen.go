@@ -1,0 +1,587 @@
+package armbulkactions_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions"
+)
+
+// Generated from example definition: 2026-08-06-preview/LaunchBulkInstancesOperation_Get_MaximumSet_Gen.json
+func ExampleLaunchBulkInstancesOperationClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armbulkactions.NewClientFactory("1FBA3C66-5C9C-4391-B72F-9F52735FC9F2", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewLaunchBulkInstancesOperationClient().Get(ctx, "rgBulkactions", "useast2euap", "495544ae-8710-4e8b-bca3-49a1dbb1623a", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armbulkactions.LaunchBulkInstancesOperationClientGetResponse{
+	// 	LocationBasedLaunchBulkInstancesOperation: armbulkactions.LocationBasedLaunchBulkInstancesOperation{
+	// 		Properties: &armbulkactions.LaunchBulkInstancesOperationProperties{
+	// 			CreatedTime: to.Ptr(time.Date(2026, time.June, 11, 19, 35, 42, 832000000, time.UTC)),
+	// 			ProvisioningState: to.Ptr(armbulkactions.ProvisioningStateCreating),
+	// 			Capacity: to.Ptr[int32](21),
+	// 			CapacityType: to.Ptr(armbulkactions.CapacityTypeVM),
+	// 			PriorityProfile: &armbulkactions.PriorityProfile{
+	// 				Type: to.Ptr(armbulkactions.PriorityTypeRegular),
+	// 				MaxPricePerVM: to.Ptr[float32](23),
+	// 				EvictionPolicy: to.Ptr(armbulkactions.EvictionPolicyDelete),
+	// 				AllocationStrategy: to.Ptr(armbulkactions.AllocationStrategyLowestPrice),
+	// 			},
+	// 			VMSizesProfile: []*armbulkactions.VMSizeProfile{
+	// 				{
+	// 					Name: to.Ptr("frbnnpdkq"),
+	// 					Rank: to.Ptr[int32](7),
+	// 				},
+	// 			},
+	// 			VMAttributes: &armbulkactions.VMAttributes{
+	// 				VCPUCount: &armbulkactions.VMAttributeMinMaxInteger{
+	// 					Min: to.Ptr[int32](0),
+	// 					Max: to.Ptr[int32](0),
+	// 				},
+	// 				MemoryInGiB: &armbulkactions.VMAttributeMinMaxDouble{
+	// 					Min: to.Ptr[float64](0),
+	// 					Max: to.Ptr[float64](0),
+	// 				},
+	// 				ArchitectureTypes: []*armbulkactions.ArchitectureType{
+	// 					to.Ptr(armbulkactions.ArchitectureTypeARM64),
+	// 				},
+	// 				MemoryInGiBPerVCpu: &armbulkactions.VMAttributeMinMaxDouble{
+	// 					Min: to.Ptr[float64](0),
+	// 					Max: to.Ptr[float64](0),
+	// 				},
+	// 				LocalStorageSupport: to.Ptr(armbulkactions.VMAttributeSupportExcluded),
+	// 				LocalStorageInGiB: &armbulkactions.VMAttributeMinMaxDouble{
+	// 					Min: to.Ptr[float64](0),
+	// 					Max: to.Ptr[float64](0),
+	// 				},
+	// 				LocalStorageDiskTypes: []*armbulkactions.LocalStorageDiskType{
+	// 					to.Ptr(armbulkactions.LocalStorageDiskTypeHDD),
+	// 				},
+	// 				DataDiskCount: &armbulkactions.VMAttributeMinMaxInteger{
+	// 					Min: to.Ptr[int32](0),
+	// 					Max: to.Ptr[int32](0),
+	// 				},
+	// 				NetworkInterfaceCount: &armbulkactions.VMAttributeMinMaxInteger{
+	// 					Min: to.Ptr[int32](0),
+	// 					Max: to.Ptr[int32](0),
+	// 				},
+	// 				NetworkBandwidthInMbps: &armbulkactions.VMAttributeMinMaxDouble{
+	// 					Min: to.Ptr[float64](0),
+	// 					Max: to.Ptr[float64](0),
+	// 				},
+	// 				RdmaSupport: to.Ptr(armbulkactions.VMAttributeSupportExcluded),
+	// 				RdmaNetworkInterfaceCount: &armbulkactions.VMAttributeMinMaxInteger{
+	// 					Min: to.Ptr[int32](0),
+	// 					Max: to.Ptr[int32](0),
+	// 				},
+	// 				AcceleratorSupport: to.Ptr(armbulkactions.VMAttributeSupportExcluded),
+	// 				AcceleratorManufacturers: []*armbulkactions.AcceleratorManufacturer{
+	// 					to.Ptr(armbulkactions.AcceleratorManufacturerAMD),
+	// 				},
+	// 				AcceleratorTypes: []*armbulkactions.AcceleratorType{
+	// 					to.Ptr(armbulkactions.AcceleratorTypeGPU),
+	// 				},
+	// 				AcceleratorCount: &armbulkactions.VMAttributeMinMaxInteger{
+	// 					Min: to.Ptr[int32](0),
+	// 					Max: to.Ptr[int32](0),
+	// 				},
+	// 				VMCategories: []*armbulkactions.VMCategory{
+	// 					to.Ptr(armbulkactions.VMCategoryGeneralPurpose),
+	// 				},
+	// 				CPUManufacturers: []*armbulkactions.CPUManufacturer{
+	// 					to.Ptr(armbulkactions.CPUManufacturerIntel),
+	// 				},
+	// 				HyperVGenerations: []*armbulkactions.HyperVGeneration{
+	// 					to.Ptr(armbulkactions.HyperVGenerationGen1),
+	// 				},
+	// 				BurstableSupport: to.Ptr(armbulkactions.VMAttributeSupportExcluded),
+	// 				AllowedVMSizes: []*string{
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 					to.Ptr("dwcsrlrzrzzqleqivkzwpczpf"),
+	// 				},
+	// 				ExcludedVMSizes: []*string{
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 					to.Ptr("igehpnuaybwy"),
+	// 				},
+	// 			},
+	// 			ComputeProfile: &armbulkactions.ComputeProfile{
+	// 				VirtualMachineProfile: &armbulkactions.BulkactionVMProperties{
+	// 					ScheduledEventsPolicy: &armbulkactions.ScheduledEventsPolicy{
+	// 						UserInitiatedRedeploy: &armbulkactions.UserInitiatedRedeploy{
+	// 							UserInitiatedRedeployAutomaticallyApprove: to.Ptr(true),
+	// 						},
+	// 						UserInitiatedReboot: &armbulkactions.UserInitiatedReboot{
+	// 							UserInitiatedRebootAutomaticallyApprove: to.Ptr(true),
+	// 						},
+	// 						ScheduledEventsAdditionalPublishingTargets: &armbulkactions.ScheduledEventsAdditionalPublishingTargets{
+	// 							EventGridAndResourceGraph: &armbulkactions.EventGridAndResourceGraph{
+	// 								Enable: to.Ptr(true),
+	// 								ScheduledEventsAPIVersion: to.Ptr("lifncbftlkounuyfn"),
+	// 							},
+	// 						},
+	// 						AllInstancesDown: &armbulkactions.AllInstancesDown{
+	// 							AllInstancesDownAutomaticallyApprove: to.Ptr(true),
+	// 						},
+	// 					},
+	// 					StorageProfile: &armbulkactions.StorageProfile{
+	// 						ImageReference: &armbulkactions.ImageReference{
+	// 							Publisher: to.Ptr("ojlplghybdamadvsrq"),
+	// 							Offer: to.Ptr("uvnqoxhkxefqwbsvjgbswqy"),
+	// 							SKU: to.Ptr("hajdxhjmlkx"),
+	// 							Version: to.Ptr("u"),
+	// 							SharedGalleryImageID: to.Ptr("fz"),
+	// 							CommunityGalleryImageID: to.Ptr("tsfpcq"),
+	// 							ID: to.Ptr("cdbrkpdicibtlliq"),
+	// 						},
+	// 						OSDisk: &armbulkactions.OSDisk{
+	// 							OSType: to.Ptr(armbulkactions.OperatingSystemTypesWindows),
+	// 							EncryptionSettings: &armbulkactions.DiskEncryptionSettings{
+	// 								DiskEncryptionKey: &armbulkactions.KeyVaultSecretReference{
+	// 									SecretURL: to.Ptr("vzkogocyw"),
+	// 									SourceVault: &armbulkactions.SubResource{
+	// 										ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 									},
+	// 								},
+	// 								KeyEncryptionKey: &armbulkactions.KeyVaultKeyReference{
+	// 									KeyURL: to.Ptr("mjjkvgpoohatw"),
+	// 									SourceVault: &armbulkactions.SubResource{
+	// 										ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 									},
+	// 								},
+	// 								Enabled: to.Ptr(true),
+	// 							},
+	// 							Name: to.Ptr("opogpznvctmraoajgizcyrfvpt"),
+	// 							Vhd: &armbulkactions.VirtualHardDisk{
+	// 								URI: to.Ptr("elpzggtxubepzgjqvdbjmbu"),
+	// 							},
+	// 							Image: &armbulkactions.VirtualHardDisk{
+	// 								URI: to.Ptr("elpzggtxubepzgjqvdbjmbu"),
+	// 							},
+	// 							Caching: to.Ptr(armbulkactions.CachingTypesNone),
+	// 							WriteAcceleratorEnabled: to.Ptr(true),
+	// 							DiffDiskSettings: &armbulkactions.DiffDiskSettings{
+	// 								Option: to.Ptr(armbulkactions.DiffDiskOptionsLocal),
+	// 								Placement: to.Ptr(armbulkactions.DiffDiskPlacementCacheDisk),
+	// 							},
+	// 							CreateOption: to.Ptr(armbulkactions.DiskCreateOptionTypesFromImage),
+	// 							DiskSizeGB: to.Ptr[int32](2),
+	// 							ManagedDisk: &armbulkactions.ManagedDiskParametersContent{
+	// 								StorageAccountType: to.Ptr(armbulkactions.StorageAccountTypesStandardLRS),
+	// 								DiskEncryptionSet: &armbulkactions.DiskEncryptionSetParametersContent{
+	// 									ID: to.Ptr("magvkzhdmzhktjlqkkk"),
+	// 								},
+	// 								SecurityProfile: &armbulkactions.VMDiskSecurityProfile{
+	// 									SecurityEncryptionType: to.Ptr(armbulkactions.SecurityEncryptionTypesVMGuestStateOnly),
+	// 									DiskEncryptionSet: &armbulkactions.DiskEncryptionSetParametersContent{
+	// 										ID: to.Ptr("magvkzhdmzhktjlqkkk"),
+	// 									},
+	// 								},
+	// 								ID: to.Ptr("numddbqmkxuu"),
+	// 							},
+	// 							DeleteOption: to.Ptr(armbulkactions.DiskDeleteOptionTypesDelete),
+	// 						},
+	// 						DataDisks: []*armbulkactions.DataDisk{
+	// 							{
+	// 								Lun: to.Ptr[int32](7),
+	// 								Name: to.Ptr("nbthfzqsxyqvqnbgcljxbwyyoj"),
+	// 								Vhd: &armbulkactions.VirtualHardDisk{
+	// 									URI: to.Ptr("elpzggtxubepzgjqvdbjmbu"),
+	// 								},
+	// 								Image: &armbulkactions.VirtualHardDisk{
+	// 									URI: to.Ptr("elpzggtxubepzgjqvdbjmbu"),
+	// 								},
+	// 								Caching: to.Ptr(armbulkactions.CachingTypesNone),
+	// 								WriteAcceleratorEnabled: to.Ptr(true),
+	// 								CreateOption: to.Ptr(armbulkactions.DiskCreateOptionTypesFromImage),
+	// 								DiskSizeGB: to.Ptr[int32](19),
+	// 								ManagedDisk: &armbulkactions.ManagedDiskParametersContent{
+	// 									StorageAccountType: to.Ptr(armbulkactions.StorageAccountTypesStandardLRS),
+	// 									DiskEncryptionSet: &armbulkactions.DiskEncryptionSetParametersContent{
+	// 										ID: to.Ptr("magvkzhdmzhktjlqkkk"),
+	// 									},
+	// 									SecurityProfile: &armbulkactions.VMDiskSecurityProfile{
+	// 										SecurityEncryptionType: to.Ptr(armbulkactions.SecurityEncryptionTypesVMGuestStateOnly),
+	// 										DiskEncryptionSet: &armbulkactions.DiskEncryptionSetParametersContent{
+	// 											ID: to.Ptr("magvkzhdmzhktjlqkkk"),
+	// 										},
+	// 									},
+	// 									ID: to.Ptr("numddbqmkxuu"),
+	// 								},
+	// 								SourceResource: &armbulkactions.APIEntityReference{
+	// 									ID: to.Ptr("qnukyordmomtjjqabovlsxl"),
+	// 								},
+	// 								ToBeDetached: to.Ptr(true),
+	// 								DetachOption: to.Ptr(armbulkactions.DiskDetachOptionTypesForceDetach),
+	// 								DeleteOption: to.Ptr(armbulkactions.DiskDeleteOptionTypesDelete),
+	// 							},
+	// 						},
+	// 						DiskControllerType: to.Ptr(armbulkactions.DiskControllerTypesSCSI),
+	// 					},
+	// 					HardwareProfile: &armbulkactions.HardwareProfile{
+	// 						VMSize: to.Ptr("szrnjqwbruz"),
+	// 						VMSizeProperties: &armbulkactions.VMSizeProperties{
+	// 							VCpusAvailable: to.Ptr[int32](24),
+	// 							VCpusPerCore: to.Ptr[int32](6),
+	// 						},
+	// 					},
+	// 					AdditionalCapabilities: &armbulkactions.AdditionalCapabilities{
+	// 						UltraSSDEnabled: to.Ptr(true),
+	// 						HibernationEnabled: to.Ptr(true),
+	// 					},
+	// 					OSProfile: &armbulkactions.OSProfile{
+	// 						ComputerName: to.Ptr("bplxnfp"),
+	// 						AdminUsername: to.Ptr("fxzbi"),
+	// 						CustomData: to.Ptr("hbdlirohsgnbrahscboc"),
+	// 						WindowsConfiguration: &armbulkactions.WindowsConfiguration{
+	// 							ProvisionVMAgent: to.Ptr(true),
+	// 							EnableAutomaticUpdates: to.Ptr(true),
+	// 							TimeZone: to.Ptr("t"),
+	// 							AdditionalUnattendContent: []*armbulkactions.AdditionalUnattendContent{
+	// 								{
+	// 									PassName: to.Ptr("OobeSystem"),
+	// 									ComponentName: to.Ptr("Microsoft-Windows-Shell-Setup"),
+	// 									SettingName: to.Ptr(armbulkactions.SettingNamesAutoLogon),
+	// 									Content: to.Ptr("rguazthnx"),
+	// 								},
+	// 							},
+	// 							PatchSettings: &armbulkactions.PatchSettings{
+	// 								PatchMode: to.Ptr(armbulkactions.WindowsVMGuestPatchModeManual),
+	// 								EnableHotpatching: to.Ptr(true),
+	// 								AssessmentMode: to.Ptr(armbulkactions.WindowsPatchAssessmentModeImageDefault),
+	// 								AutomaticByPlatformSettings: &armbulkactions.WindowsVMGuestPatchAutomaticByPlatformSettings{
+	// 									RebootSetting: to.Ptr(armbulkactions.WindowsVMGuestPatchAutomaticByPlatformRebootSettingUnknown),
+	// 									BypassPlatformSafetyChecksOnUserSchedule: to.Ptr(true),
+	// 								},
+	// 							},
+	// 							WinRM: &armbulkactions.WinRMConfiguration{
+	// 								Listeners: []*armbulkactions.WinRMListener{
+	// 									{
+	// 										Protocol: to.Ptr(armbulkactions.ProtocolTypesHTTP),
+	// 										CertificateURL: to.Ptr("quhfapfpyeeocwvwtvuggoqqwt"),
+	// 									},
+	// 								},
+	// 							},
+	// 						},
+	// 						LinuxConfiguration: &armbulkactions.LinuxConfiguration{
+	// 							DisablePasswordAuthentication: to.Ptr(true),
+	// 							SSH: &armbulkactions.SSHConfiguration{
+	// 								PublicKeys: []*armbulkactions.SSHPublicKey{
+	// 									{
+	// 										Path: to.Ptr("mrdfxnfjazxog"),
+	// 										KeyData: to.Ptr("wfhrknkehgesontscqyrewfmhgwt"),
+	// 									},
+	// 								},
+	// 							},
+	// 							ProvisionVMAgent: to.Ptr(true),
+	// 							PatchSettings: &armbulkactions.LinuxPatchSettings{
+	// 								PatchMode: to.Ptr(armbulkactions.LinuxVMGuestPatchModeImageDefault),
+	// 								AssessmentMode: to.Ptr(armbulkactions.LinuxPatchAssessmentModeImageDefault),
+	// 								AutomaticByPlatformSettings: &armbulkactions.LinuxVMGuestPatchAutomaticByPlatformSettings{
+	// 									RebootSetting: to.Ptr(armbulkactions.LinuxVMGuestPatchAutomaticByPlatformRebootSettingUnknown),
+	// 									BypassPlatformSafetyChecksOnUserSchedule: to.Ptr(true),
+	// 								},
+	// 							},
+	// 							EnableVMAgentPlatformUpdates: to.Ptr(true),
+	// 						},
+	// 						Secrets: []*armbulkactions.VaultSecretGroup{
+	// 							{
+	// 								SourceVault: &armbulkactions.SubResource{
+	// 									ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 								},
+	// 								VaultCertificates: []*armbulkactions.VaultCertificate{
+	// 									{
+	// 										CertificateURL: to.Ptr("crgbpfdvlohwkupdjp"),
+	// 										CertificateStore: to.Ptr("hyx"),
+	// 									},
+	// 								},
+	// 							},
+	// 						},
+	// 						AllowExtensionOperations: to.Ptr(true),
+	// 						RequireGuestProvisionSignal: to.Ptr(true),
+	// 					},
+	// 					NetworkProfile: &armbulkactions.NetworkProfile{
+	// 						NetworkInterfaces: []*armbulkactions.NetworkInterfaceReference{
+	// 							{
+	// 								Properties: &armbulkactions.NetworkInterfaceReferenceProperties{
+	// 									Primary: to.Ptr(true),
+	// 									DeleteOption: to.Ptr(armbulkactions.DeleteOptionsDelete),
+	// 								},
+	// 								ID: to.Ptr("ymfxctb"),
+	// 							},
+	// 						},
+	// 						NetworkAPIVersion: to.Ptr(armbulkactions.NetworkAPIVersion20201101),
+	// 						NetworkInterfaceConfigurations: []*armbulkactions.VirtualMachineNetworkInterfaceConfiguration{
+	// 							{
+	// 								Name: to.Ptr("qrkzoctmzjketostzabnra"),
+	// 								Properties: &armbulkactions.VirtualMachineNetworkInterfaceConfigurationProperties{
+	// 									Primary: to.Ptr(true),
+	// 									DeleteOption: to.Ptr(armbulkactions.DeleteOptionsDelete),
+	// 									EnableAcceleratedNetworking: to.Ptr(true),
+	// 									DisableTCPStateTracking: to.Ptr(true),
+	// 									EnableFpga: to.Ptr(true),
+	// 									EnableIPForwarding: to.Ptr(true),
+	// 									NetworkSecurityGroup: &armbulkactions.SubResource{
+	// 										ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 									},
+	// 									DNSSettings: &armbulkactions.VirtualMachineNetworkInterfaceDNSSettingsConfiguration{
+	// 										DNSServers: []*string{
+	// 											to.Ptr("tqcqopnanyyiavfwhqbkarxtrfqbww"),
+	// 										},
+	// 									},
+	// 									IPConfigurations: []*armbulkactions.VirtualMachineNetworkInterfaceIPConfiguration{
+	// 										{
+	// 											Name: to.Ptr("gqymuvgzzfmxqvdadx"),
+	// 											Properties: &armbulkactions.VirtualMachineNetworkInterfaceIPConfigurationProperties{
+	// 												Subnet: &armbulkactions.SubResource{
+	// 													ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 												},
+	// 												Primary: to.Ptr(true),
+	// 												PublicIPAddressConfiguration: &armbulkactions.VirtualMachinePublicIPAddressConfiguration{
+	// 													Name: to.Ptr("cwxsqjijtwbsyqdwht"),
+	// 													Properties: &armbulkactions.VirtualMachinePublicIPAddressConfigurationProperties{
+	// 														IdleTimeoutInMinutes: to.Ptr[int32](17),
+	// 														DeleteOption: to.Ptr(armbulkactions.DeleteOptionsDelete),
+	// 														DNSSettings: &armbulkactions.VirtualMachinePublicIPAddressDNSSettingsConfiguration{
+	// 															DomainNameLabel: to.Ptr("fampou"),
+	// 															DomainNameLabelScope: to.Ptr(armbulkactions.DomainNameLabelScopeTypesTenantReuse),
+	// 														},
+	// 														IPTags: []*armbulkactions.VirtualMachineIPTag{
+	// 															{
+	// 																IPTagType: to.Ptr("hkjoxhqadudjartwooezaxl"),
+	// 																Tag: to.Ptr("xywunkjglkmmwfpf"),
+	// 															},
+	// 														},
+	// 														PublicIPPrefix: &armbulkactions.SubResource{
+	// 															ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 														},
+	// 														PublicIPAddressVersion: to.Ptr(armbulkactions.IPVersionsIPv4),
+	// 														PublicIPAllocationMethod: to.Ptr(armbulkactions.PublicIPAllocationMethodDynamic),
+	// 													},
+	// 													SKU: &armbulkactions.PublicIPAddressSKU{
+	// 														Name: to.Ptr(armbulkactions.PublicIPAddressSKUNameBasic),
+	// 														Tier: to.Ptr(armbulkactions.PublicIPAddressSKUTierRegional),
+	// 													},
+	// 													Tags: map[string]*string{
+	// 														"key5442": to.Ptr("qhpwpnylvmdthxazhxamnbhdfpf"),
+	// 													},
+	// 												},
+	// 												PrivateIPAddressVersion: to.Ptr(armbulkactions.IPVersionsIPv4),
+	// 												ApplicationSecurityGroups: []*armbulkactions.SubResource{
+	// 													{
+	// 														ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 													},
+	// 												},
+	// 												ApplicationGatewayBackendAddressPools: []*armbulkactions.SubResource{
+	// 													{
+	// 														ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 													},
+	// 												},
+	// 												LoadBalancerBackendAddressPools: []*armbulkactions.SubResource{
+	// 													{
+	// 														ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 													},
+	// 												},
+	// 											},
+	// 										},
+	// 									},
+	// 									DscpConfiguration: &armbulkactions.SubResource{
+	// 										ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 									},
+	// 									AuxiliaryMode: to.Ptr(armbulkactions.NetworkInterfaceAuxiliaryModeNone),
+	// 									AuxiliarySKU: to.Ptr(armbulkactions.NetworkInterfaceAuxiliarySKUNone),
+	// 								},
+	// 								Tags: map[string]*string{
+	// 									"key9436": to.Ptr("bjbadzbfvpszbsickv"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 					SecurityProfile: &armbulkactions.SecurityProfile{
+	// 						UefiSettings: &armbulkactions.UefiSettings{
+	// 							SecureBootEnabled: to.Ptr(true),
+	// 							VTpmEnabled: to.Ptr(true),
+	// 						},
+	// 						EncryptionAtHost: to.Ptr(true),
+	// 						SecurityType: to.Ptr(armbulkactions.SecurityTypesTrustedLaunch),
+	// 						EncryptionIdentity: &armbulkactions.EncryptionIdentity{
+	// 							UserAssignedIdentityResourceID: to.Ptr("tnajlgbwcepmhytzb"),
+	// 						},
+	// 						ProxyAgentSettings: &armbulkactions.ProxyAgentSettings{
+	// 							Enabled: to.Ptr(true),
+	// 							Mode: to.Ptr(armbulkactions.ModeAudit),
+	// 							KeyIncarnationID: to.Ptr[int32](4),
+	// 							WireServer: &armbulkactions.HostEndpointSettings{
+	// 								Mode: to.Ptr(armbulkactions.ModesAudit),
+	// 								InVMAccessControlProfileReferenceID: to.Ptr("xvlzroy"),
+	// 							},
+	// 							Imds: &armbulkactions.HostEndpointSettings{
+	// 								Mode: to.Ptr(armbulkactions.ModesAudit),
+	// 								InVMAccessControlProfileReferenceID: to.Ptr("xvlzroy"),
+	// 							},
+	// 							AddProxyAgentExtension: to.Ptr(true),
+	// 						},
+	// 					},
+	// 					DiagnosticsProfile: &armbulkactions.DiagnosticsProfile{
+	// 						BootDiagnostics: &armbulkactions.BootDiagnostics{
+	// 							Enabled: to.Ptr(true),
+	// 							StorageURI: to.Ptr("pxuhtzehlfsqolbdleirgj"),
+	// 						},
+	// 					},
+	// 					LicenseType: to.Ptr("ymwuemwuntbignqyvzqflvjpcdus"),
+	// 					ExtensionsTimeBudget: to.Ptr("dnyqmcijikzkltjav"),
+	// 					ScheduledEventsProfile: &armbulkactions.ScheduledEventsProfile{
+	// 						TerminateNotificationProfile: &armbulkactions.TerminateNotificationProfile{
+	// 							NotBeforeTimeout: to.Ptr("owbwifqrlsdmm"),
+	// 							Enable: to.Ptr(true),
+	// 						},
+	// 						OSImageNotificationProfile: &armbulkactions.OSImageNotificationProfile{
+	// 							NotBeforeTimeout: to.Ptr("ataqykjdakdvyyzdspaqnhd"),
+	// 							Enable: to.Ptr(true),
+	// 						},
+	// 					},
+	// 					UserData: to.Ptr("nwjvxe"),
+	// 					CapacityReservation: &armbulkactions.CapacityReservationProfile{
+	// 						CapacityReservationGroup: &armbulkactions.SubResource{
+	// 							ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 						},
+	// 					},
+	// 					ApplicationProfile: &armbulkactions.ApplicationProfile{
+	// 						GalleryApplications: []*armbulkactions.VMGalleryApplication{
+	// 							{
+	// 								Tags: to.Ptr("cmygipvpkegyclvpznfu"),
+	// 								Order: to.Ptr[int32](8),
+	// 								PackageReferenceID: to.Ptr("afrfkjdrtzftmwramfyu"),
+	// 								ConfigurationReference: to.Ptr("nmfaspclhidtznslsps"),
+	// 								TreatFailureAsDeploymentFailure: to.Ptr(true),
+	// 								EnableAutomaticUpgrade: to.Ptr(true),
+	// 							},
+	// 						},
+	// 					},
+	// 					VMExtensions: []*armbulkactions.BulkactionVMExtension{
+	// 						{
+	// 							Name: to.Ptr("jkpmcxwuahpzwkvexgzpypk"),
+	// 							Properties: &armbulkactions.BulkActionVMExtensionProperties{
+	// 								ForceUpdateTag: to.Ptr("dockqxgatsfzhctxrncuw"),
+	// 								Publisher: to.Ptr("qesyfldbfoaexyoywhcxafdtdwcg"),
+	// 								Type: to.Ptr("ptlmlzpbpbkfbu"),
+	// 								TypeHandlerVersion: to.Ptr("crllsludntz"),
+	// 								AutoUpgradeMinorVersion: to.Ptr(true),
+	// 								EnableAutomaticUpgrade: to.Ptr(true),
+	// 								Settings: map[string]any{
+	// 								},
+	// 								SuppressFailures: to.Ptr(true),
+	// 								ProtectedSettingsFromKeyVault: &armbulkactions.KeyVaultSecretReference{
+	// 									SecretURL: to.Ptr("vzkogocyw"),
+	// 									SourceVault: &armbulkactions.SubResource{
+	// 										ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 									},
+	// 								},
+	// 								ProvisionAfterExtensions: []*string{
+	// 									to.Ptr("onbtyoeifafiktrkmal"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				Extensions: []*armbulkactions.BulkactionVMExtension{
+	// 					{
+	// 						Name: to.Ptr("jkpmcxwuahpzwkvexgzpypk"),
+	// 						Properties: &armbulkactions.BulkActionVMExtensionProperties{
+	// 							ForceUpdateTag: to.Ptr("dockqxgatsfzhctxrncuw"),
+	// 							Publisher: to.Ptr("qesyfldbfoaexyoywhcxafdtdwcg"),
+	// 							Type: to.Ptr("ptlmlzpbpbkfbu"),
+	// 							TypeHandlerVersion: to.Ptr("crllsludntz"),
+	// 							AutoUpgradeMinorVersion: to.Ptr(true),
+	// 							EnableAutomaticUpgrade: to.Ptr(true),
+	// 							Settings: map[string]any{
+	// 							},
+	// 							SuppressFailures: to.Ptr(true),
+	// 							ProtectedSettingsFromKeyVault: &armbulkactions.KeyVaultSecretReference{
+	// 								SecretURL: to.Ptr("vzkogocyw"),
+	// 								SourceVault: &armbulkactions.SubResource{
+	// 									ID: to.Ptr("lvzxxyypkeqlflftmfn"),
+	// 								},
+	// 							},
+	// 							ProvisionAfterExtensions: []*string{
+	// 								to.Ptr("onbtyoeifafiktrkmal"),
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				ComputeAPIVersion: to.Ptr("qqxldedyfmfmidkvtkixh"),
+	// 			},
+	// 			ZoneAllocationPolicy: &armbulkactions.ZoneAllocationPolicy{
+	// 				DistributionStrategy: to.Ptr(armbulkactions.DistributionStrategyBestEffortSingleZone),
+	// 				ZonePreferences: []*armbulkactions.ZonePreference{
+	// 					{
+	// 						Zone: to.Ptr("ixksjnaxwelhfpsoyjfaezievquqv"),
+	// 						Rank: to.Ptr[int32](19),
+	// 					},
+	// 				},
+	// 			},
+	// 			RetryPolicy: &armbulkactions.RetryPolicy{
+	// 				RetryCount: to.Ptr[int32](2),
+	// 				RetryWindowInMinutes: to.Ptr[int32](19),
+	// 				OnFailureAction: to.Ptr(armbulkactions.ResourceOperationTypeUnknown),
+	// 			},
+	// 		},
+	// 		Zones: []*string{
+	// 			to.Ptr("hzqzrbvpgsudtesi"),
+	// 		},
+	// 		Tags: map[string]*string{
+	// 			"key1909": to.Ptr("eaoznrkaglklvv"),
+	// 		},
+	// 		Identity: &armbulkactions.ManagedServiceIdentity{
+	// 			PrincipalID: to.Ptr("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+	// 			TenantID: to.Ptr("11111111-2222-3333-4444-555555555555"),
+	// 			Type: to.Ptr(armbulkactions.ManagedServiceIdentityTypeNone),
+	// 			UserAssignedIdentities: map[string]*armbulkactions.UserAssignedIdentity{
+	// 				"key9643": &armbulkactions.UserAssignedIdentity{
+	// 					PrincipalID: to.Ptr("66666666-7777-8888-9999-aaaaaaaaaaaa"),
+	// 					ClientID: to.Ptr("bbbbbbbb-cccc-dddd-eeee-ffffffffffff"),
+	// 				},
+	// 			},
+	// 		},
+	// 		Plan: &armbulkactions.Plan{
+	// 			Name: to.Ptr("iemasqqkbixbewezyrhnpntjd"),
+	// 			Publisher: to.Ptr("bvggylbvfstnscuupuithafvvgc"),
+	// 			Product: to.Ptr("bguuzrknnuohugjhernflurpx"),
+	// 			PromotionCode: to.Ptr("bxgonranwqoryfkhkfaumdgz"),
+	// 			Version: to.Ptr("uyxetqmmzvqianqv"),
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myResourceGroup/providers/Microsoft.Compute/launchBulkInstancesOperations/myBulkOp"),
+	// 		Name: to.Ptr("pfkzuarhmzjcpxmrlljhlucw"),
+	// 		Type: to.Ptr("wrdycerxvilkxk"),
+	// 		SystemData: &armbulkactions.SystemData{
+	// 			CreatedBy: to.Ptr("hyr"),
+	// 			CreatedByType: to.Ptr(armbulkactions.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(time.Date(2026, time.June, 11, 19, 35, 42, 837000000, time.UTC)),
+	// 			LastModifiedBy: to.Ptr("gcxscdei"),
+	// 			LastModifiedByType: to.Ptr(armbulkactions.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(time.Date(2026, time.June, 11, 19, 35, 42, 837000000, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

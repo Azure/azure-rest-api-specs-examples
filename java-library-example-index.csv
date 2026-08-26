@@ -7427,3 +7427,4 @@ id,name,language,tag,package,version,date_epoch,date
 7426,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.8.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservices_1.8.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservices,1.8.0,1787629121,08/25/2026
 7427,"Azure.ResourceManager.ConnectedCache,1.0.0",dotnet,Azure.ResourceManager.ConnectedCache_1.0.0,Azure.ResourceManager.ConnectedCache,1.0.0,1787634852,08/25/2026
 7428,"Azure.ResourceManager.Network,1.17.0",dotnet,Azure.ResourceManager.Network_1.17.0,Azure.ResourceManager.Network,1.17.0,1787628678,08/25/2026
+7429,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.5.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.5.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.5.0,1787726539,08/26/2026

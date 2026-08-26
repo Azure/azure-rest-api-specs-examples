@@ -7429,3 +7429,4 @@ id,name,language,tag,package,version,date_epoch,date
 7428,"Azure.ResourceManager.Network,1.17.0",dotnet,Azure.ResourceManager.Network_1.17.0,Azure.ResourceManager.Network,1.17.0,1787628678,08/25/2026
 7429,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.5.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.5.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.5.0,1787726539,08/26/2026
 7430,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgezones/armedgezones@v1.0.0,go,sdk/resourcemanager/edgezones/armedgezones/v1.0.0,sdk/resourcemanager/edgezones/armedgezones,v1.0.0,1787710432,08/26/2026
+7431,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud/v2@v2.0.0,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v2.0.0,sdk/resourcemanager/networkcloud/armnetworkcloud,v2.0.0,1787710424,08/26/2026

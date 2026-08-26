@@ -7432,3 +7432,4 @@ id,name,language,tag,package,version,date_epoch,date
 7431,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud/v2@v2.0.0,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v2.0.0,sdk/resourcemanager/networkcloud/armnetworkcloud,v2.0.0,1787710424,08/26/2026
 7432,@azure/arm-recoveryservices@7.2.0,js,@azure/arm-recoveryservices_7.2.0,@azure/arm-recoveryservices,7.2.0,1787726768,08/26/2026
 7433,@azure/arm-containerservice@25.5.0,js,@azure/arm-containerservice_25.5.0,@azure/arm-containerservice,25.5.0,1787710618,08/26/2026
+7434,com.azure.resourcemanager:azure-resourcemanager-chaos:1.4.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-chaos_1.4.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-chaos,1.4.0-beta.2,1787690797,08/25/2026

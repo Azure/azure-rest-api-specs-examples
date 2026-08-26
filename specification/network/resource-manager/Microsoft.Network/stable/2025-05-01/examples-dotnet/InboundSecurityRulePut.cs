@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this InboundSecurityRuleResource created on azure
-// for more information of creating InboundSecurityRuleResource, please refer to the document of InboundSecurityRuleResource
+// this example assumes you already have this NetworkVirtualApplianceResource created on azure
+// for more information of creating NetworkVirtualApplianceResource, please refer to the document of NetworkVirtualApplianceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkVirtualApplianceName = "nva";
-string ruleCollectionName = "rule1";
-ResourceIdentifier inboundSecurityRuleResourceId = InboundSecurityRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName, ruleCollectionName);
-InboundSecurityRuleResource inboundSecurityRule = client.GetInboundSecurityRuleResource(inboundSecurityRuleResourceId);
+ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName);
+NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
+
+// get the collection of this InboundSecurityRuleResource
+InboundSecurityRuleCollection collection = networkVirtualAppliance.GetInboundSecurityRules();
 
 // invoke the operation
+string ruleCollectionName = "rule1";
 InboundSecurityRuleData data = new InboundSecurityRuleData
 {
     RuleType = InboundSecurityRuleType.Permanent,
@@ -37,7 +40,7 @@ InboundSecurityRuleData data = new InboundSecurityRuleData
     AppliesOn = {"slbip1"},
     }},
 };
-ArmOperation<InboundSecurityRuleResource> lro = await inboundSecurityRule.UpdateAsync(WaitUntil.Completed, data, cancellationToken: System.Threading.CancellationToken.None);
+ArmOperation<InboundSecurityRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleCollectionName, data, cancellationToken: System.Threading.CancellationToken.None);
 InboundSecurityRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

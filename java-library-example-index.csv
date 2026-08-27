@@ -7437,3 +7437,4 @@ id,name,language,tag,package,version,date_epoch,date
 7436,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v3@v3.0.0-beta.1,go,sdk/resourcemanager/chaos/armchaos/v3.0.0-beta.1,sdk/resourcemanager/chaos/armchaos,v3.0.0-beta.1,1787810728,08/27/2026
 7437,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb@v0.2.0,go,sdk/resourcemanager/horizondb/armhorizondb/v0.2.0,sdk/resourcemanager/horizondb/armhorizondb,v0.2.0,1787784076,08/26/2026
 7438,@azure/arm-horizondb@1.0.0-beta.2,js,@azure/arm-horizondb_1.0.0-beta.2,@azure/arm-horizondb,1.0.0-beta.2,1787798534,08/27/2026
+7439,azure-mgmt-containerservice@41.6.0,python,azure-mgmt-containerservice_41.6.0,azure-mgmt-containerservice,41.6.0,1787794677,08/27/2026

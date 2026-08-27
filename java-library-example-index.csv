@@ -7440,3 +7440,4 @@ id,name,language,tag,package,version,date_epoch,date
 7439,azure-mgmt-containerservice@41.6.0,python,azure-mgmt-containerservice_41.6.0,azure-mgmt-containerservice,41.6.0,1787794677,08/27/2026
 7440,azure-mgmt-horizondb@1.0.0b2,python,azure-mgmt-horizondb_1.0.0b2,azure-mgmt-horizondb,1.0.0b2,1787783920,08/26/2026
 7441,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.63.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.63.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.63.0,1787797447,08/27/2026
+7442,com.azure.resourcemanager:azure-resourcemanager-horizondb:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-horizondb_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-horizondb,1.0.0-beta.2,1787785883,08/26/2026

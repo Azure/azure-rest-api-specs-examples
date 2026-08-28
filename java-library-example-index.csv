@@ -7448,3 +7448,4 @@ id,name,language,tag,package,version,date_epoch,date
 7447,azure-mgmt-terraform@1.0.0b2,python,azure-mgmt-terraform_1.0.0b2,azure-mgmt-terraform,1.0.0b2,1787886997,08/28/2026
 7448,azure-mgmt-enclave@1.0.0,python,azure-mgmt-enclave_1.0.0,azure-mgmt-enclave,1.0.0,1787871189,08/27/2026
 7449,azure-mgmt-redisenterprise@4.0.0b3,python,azure-mgmt-redisenterprise_4.0.0b3,azure-mgmt-redisenterprise,4.0.0b3,1787833083,08/27/2026
+7450,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-edgezones_1.0.0,com.azure.resourcemanager+azure-resourcemanager-edgezones,1.0.0,1787913048,08/28/2026

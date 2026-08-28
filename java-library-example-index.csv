@@ -7445,3 +7445,4 @@ id,name,language,tag,package,version,date_epoch,date
 7444,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.0.0-beta.3,go,sdk/resourcemanager/netapp/armnetapp/v11.0.0-beta.3,sdk/resourcemanager/netapp/armnetapp,v11.0.0-beta.3,1787899885,08/28/2026
 7445,@azure/arm-netapp@25.0.0-beta.3,js,@azure/arm-netapp_25.0.0-beta.3,@azure/arm-netapp,25.0.0-beta.3,1787899576,08/28/2026
 7446,azure-mgmt-netapp@18.0.0b3,python,azure-mgmt-netapp_18.0.0b3,azure-mgmt-netapp,18.0.0b3,1787887011,08/28/2026
+7447,azure-mgmt-terraform@1.0.0b2,python,azure-mgmt-terraform_1.0.0b2,azure-mgmt-terraform,1.0.0b2,1787886997,08/28/2026

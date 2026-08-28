@@ -1,0 +1,18 @@
+
+/**
+ * Samples for HorizonDbPools Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/Pools_Get.json
+     */
+    /**
+     * Sample code: Get a HorizonDB pool.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void getAHorizonDBPool(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.horizonDbPools().getWithResponse("exampleresourcegroup", "examplecluster", "examplepool",
+            com.azure.core.util.Context.NONE);
+    }
+}

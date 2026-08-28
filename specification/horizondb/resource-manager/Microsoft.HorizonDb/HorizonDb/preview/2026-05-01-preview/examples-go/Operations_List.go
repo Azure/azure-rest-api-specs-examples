@@ -1,0 +1,312 @@
+package armhorizondb_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb"
+)
+
+// Generated from example definition: 2026-05-01-preview/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhorizondb.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armhorizondb.OperationsClientListResponse{
+		// 	OperationListResult: armhorizondb.OperationListResult{
+		// 		Value: []*armhorizondb.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb cluster"),
+		// 					Description: to.Ptr("Creates a HorizonDb cluster with the specified parameters or update the properties or tags for the specified cluster."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb cluster"),
+		// 					Description: to.Ptr("Creates a HorizonDb cluster with the specified parameters or update the properties or tags for the specified cluster."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("Delete HorizonDb cluster"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb cluster."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("List/Get HorizonDb cluster"),
+		// 					Description: to.Ptr("Return the list of HorizonDb clusters or gets the properties for the specified cluster."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("List HorizonDb clusters in subscription"),
+		// 					Description: to.Ptr("Lists all HorizonDb clusters in the subscription."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/replicas/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Replica"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb replica"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb replica with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/replicas/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Replica"),
+		// 					Operation: to.Ptr("Get HorizonDb replica"),
+		// 					Description: to.Ptr("Gets the properties for the specified HorizonDb replica."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/replicas/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Replica"),
+		// 					Operation: to.Ptr("Delete HorizonDb replica"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb replica."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/replicas/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Replica"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb replica"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb replica with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/effectiveParameters/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster Effective Parameters"),
+		// 					Operation: to.Ptr("Get HorizonDb cluster effective parameters"),
+		// 					Description: to.Ptr("Gets the effective (parameter group merged with per-cluster overrides) parameter set for a HorizonDb cluster."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Cluster"),
+		// 					Operation: to.Ptr("List HorizonDb clusters in subscription"),
+		// 					Description: to.Ptr("Lists all HorizonDb clusters in the subscription."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/firewallRules/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Firewall Rule"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb firewall rule"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb firewall rule with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/firewallRules/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Firewall Rule"),
+		// 					Operation: to.Ptr("Delete HorizonDb firewall rule"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb firewall rule."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/firewallRules/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Firewall Rule"),
+		// 					Operation: to.Ptr("List HorizonDb firewall rules"),
+		// 					Description: to.Ptr("Lists all firewall rules for the specified HorizonDb pool."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/firewallRules/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Firewall Rule"),
+		// 					Operation: to.Ptr("Get HorizonDb firewall rule"),
+		// 					Description: to.Ptr("Gets the properties for the specified HorizonDb firewall rule."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb parameter group"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb parameter group with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb parameter group"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb parameter group with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Delete HorizonDb parameter group"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb parameter group."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Get HorizonDb parameter group"),
+		// 					Description: to.Ptr("Gets the properties for the specified HorizonDb parameter group."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/connections/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Get HorizonDb parameter group connections"),
+		// 					Description: to.Ptr("Gets the clusters connected to a HorizonDb parameter group."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("List HorizonDb parameter groups in subscription"),
+		// 					Description: to.Ptr("Lists all HorizonDb parameter groups in the subscription."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/parameterGroups/versions/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Parameter Group"),
+		// 					Operation: to.Ptr("Get HorizonDb parameter group versions"),
+		// 					Description: to.Ptr("Gets the versions of a HorizonDb parameter group."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Pool"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb pool"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb pool with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Pool"),
+		// 					Operation: to.Ptr("Delete HorizonDb pool"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb pool."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Pool"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb pool"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb pool with the specified parameters."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/privateEndpointConnectionProxies/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Create/Update HorizonDb private endpoint connection proxy"),
+		// 					Description: to.Ptr("Creates or updates a HorizonDb private endpoint connection proxy."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/privateEndpointConnectionProxies/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Get HorizonDb private endpoint connection proxy"),
+		// 					Description: to.Ptr("Returns the properties for the specified HorizonDb private endpoint connection proxy."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/privateEndpointConnectionProxies/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Delete HorizonDb private endpoint connection proxy"),
+		// 					Description: to.Ptr("Deletes an existing HorizonDb private endpoint connection proxy."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/locations/privateEndpointConnectionProxyAzureAsyncOperation/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Get HorizonDb private endpoint connection proxy async operation status"),
+		// 					Description: to.Ptr("Gets the async status for a HorizonDb private endpoint connection proxy operation."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/locations/privateEndpointConnectionProxyOperationResults/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Get HorizonDb private endpoint connection proxy operation result"),
+		// 					Description: to.Ptr("Gets the result for a HorizonDb private endpoint connection proxy operation."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/privateEndpointConnectionProxies/validate/action"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("HorizonDb Private Endpoint Connection Proxy"),
+		// 					Operation: to.Ptr("Validate HorizonDb private endpoint connection proxy creation by NRP"),
+		// 					Description: to.Ptr("Validates a HorizonDb private endpoint connection proxy creation request from NRP."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/systemAiModels/delete"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("System AI Model"),
+		// 					Operation: to.Ptr("Delete System AI Model"),
+		// 					Description: to.Ptr("Deletes an existing System AI Model."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/systemAiModels/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("System AI Model"),
+		// 					Operation: to.Ptr("Get System AI Model"),
+		// 					Description: to.Ptr("Gets the properties for the specified System AI Model."),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/systemAiModels/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Resource: to.Ptr("System AI Model"),
+		// 					Operation: to.Ptr("Get System AI Model"),
+		// 					Description: to.Ptr("Gets the properties for the specified System AI Model."),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

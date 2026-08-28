@@ -7443,3 +7443,4 @@ id,name,language,tag,package,version,date_epoch,date
 7442,com.azure.resourcemanager:azure-resourcemanager-horizondb:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-horizondb_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-horizondb,1.0.0-beta.2,1787785883,08/26/2026
 7443,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purestorageblock/armpurestorageblock@v1.1.0-beta.2,go,sdk/resourcemanager/purestorageblock/armpurestorageblock/v1.1.0-beta.2,sdk/resourcemanager/purestorageblock/armpurestorageblock,v1.1.0-beta.2,1787901661,08/28/2026
 7444,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.0.0-beta.3,go,sdk/resourcemanager/netapp/armnetapp/v11.0.0-beta.3,sdk/resourcemanager/netapp/armnetapp,v11.0.0-beta.3,1787899885,08/28/2026
+7445,@azure/arm-netapp@25.0.0-beta.3,js,@azure/arm-netapp_25.0.0-beta.3,@azure/arm-netapp,25.0.0-beta.3,1787899576,08/28/2026

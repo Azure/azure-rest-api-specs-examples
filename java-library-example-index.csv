@@ -7450,3 +7450,4 @@ id,name,language,tag,package,version,date_epoch,date
 7449,azure-mgmt-redisenterprise@4.0.0b3,python,azure-mgmt-redisenterprise_4.0.0b3,azure-mgmt-redisenterprise,4.0.0b3,1787833083,08/27/2026
 7450,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-edgezones_1.0.0,com.azure.resourcemanager+azure-resourcemanager-edgezones,1.0.0,1787913048,08/28/2026
 7451,com.azure.resourcemanager:azure-resourcemanager-netapp:2.5.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.5.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-netapp,2.5.0-beta.2,1787912703,08/28/2026
+7452,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/enclave/armenclave@v1.0.0,go,sdk/resourcemanager/enclave/armenclave/v1.0.0,sdk/resourcemanager/enclave/armenclave,v1.0.0,1787952916,08/28/2026

@@ -7454,3 +7454,4 @@ id,name,language,tag,package,version,date_epoch,date
 7453,com.azure.resourcemanager:azure-resourcemanager-enclave:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-enclave_1.0.0,com.azure.resourcemanager+azure-resourcemanager-enclave,1.0.0,1787955144,08/28/2026
 7454,"Azure.ResourceManager.Resources,1.12.0",dotnet,Azure.ResourceManager.Resources_1.12.0,Azure.ResourceManager.Resources,1.12.0,1787927686,08/28/2026
 7455,"Azure.ResourceManager.HardwareSecurityModules,1.1.0-beta.1",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.1.0-beta.1,Azure.ResourceManager.HardwareSecurityModules,1.1.0-beta.1,1787826612,08/27/2026
+7456,"Azure.ResourceManager.RecoveryServices,1.4.0",dotnet,Azure.ResourceManager.RecoveryServices_1.4.0,Azure.ResourceManager.RecoveryServices,1.4.0,1787735090,08/26/2026

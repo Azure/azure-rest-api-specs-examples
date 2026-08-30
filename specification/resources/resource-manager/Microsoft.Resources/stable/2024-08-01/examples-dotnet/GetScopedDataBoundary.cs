@@ -15,24 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// get the collection of this DataBoundaryResource
+// this example assumes you already have this DataBoundaryResource created on azure
+// for more information of creating DataBoundaryResource, please refer to the document of DataBoundaryResource
 string scope = "subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/my-resource-group";
-DataBoundaryCollection collection = client.GetDataBoundaries(new ResourceIdentifier(scope));
+DataBoundaryName name = DataBoundaryName.Default;
+ResourceIdentifier dataBoundaryResourceId = DataBoundaryResource.CreateResourceIdentifier(scope, name);
+DataBoundaryResource dataBoundary = client.GetDataBoundaryResource(dataBoundaryResourceId);
 
 // invoke the operation
-DataBoundaryName name = DataBoundaryName.Default;
-NullableResponse<DataBoundaryResource> response = await collection.GetIfExistsAsync(name);
-DataBoundaryResource result = response.HasValue ? response.Value : null;
+DataBoundaryName name0 = DataBoundaryName.Default;
+DataBoundaryResource result = await dataBoundary.GetAsync(name0);
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DataBoundaryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataBoundaryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

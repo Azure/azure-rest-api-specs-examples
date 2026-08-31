@@ -7456,3 +7456,4 @@ id,name,language,tag,package,version,date_epoch,date
 7455,"Azure.ResourceManager.HardwareSecurityModules,1.1.0-beta.1",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.1.0-beta.1,Azure.ResourceManager.HardwareSecurityModules,1.1.0-beta.1,1787826612,08/27/2026
 7456,"Azure.ResourceManager.RecoveryServices,1.4.0",dotnet,Azure.ResourceManager.RecoveryServices_1.4.0,Azure.ResourceManager.RecoveryServices,1.4.0,1787735090,08/26/2026
 7457,@azure/arm-terraform@1.0.0-beta.2,js,@azure/arm-terraform_1.0.0-beta.2,@azure/arm-terraform,1.0.0-beta.2,1788143059,08/31/2026
+7458,@azure/arm-enclave@1.0.0,js,@azure/arm-enclave_1.0.0,@azure/arm-enclave,1.0.0,1788143051,08/31/2026

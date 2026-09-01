@@ -7463,3 +7463,4 @@ id,name,language,tag,package,version,date_epoch,date
 7462,@azure/arm-cognitiveservices@9.0.0-beta.4,js,@azure/arm-cognitiveservices_9.0.0-beta.4,@azure/arm-cognitiveservices,9.0.0-beta.4,1788246276,09/01/2026
 7463,@azure/arm-compute-bulkactions@1.0.0-beta.3,js,@azure/arm-compute-bulkactions_1.0.0-beta.3,@azure/arm-compute-bulkactions,1.0.0-beta.3,1788244082,09/01/2026
 7464,@azure/arm-cloudhealth@1.0.0-beta.4,js,@azure/arm-cloudhealth_1.0.0-beta.4,@azure/arm-cloudhealth,1.0.0-beta.4,1788243820,09/01/2026
+7465,"Azure.ResourceManager.StorageSync,1.4.0",dotnet,Azure.ResourceManager.StorageSync_1.4.0,Azure.ResourceManager.StorageSync,1.4.0,1788243834,09/01/2026

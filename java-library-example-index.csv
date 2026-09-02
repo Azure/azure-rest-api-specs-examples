@@ -7470,3 +7470,4 @@ id,name,language,tag,package,version,date_epoch,date
 7469,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy/v2@v2.0.0-beta.2,go,sdk/resourcemanager/resources/armpolicy/v2.0.0-beta.2,sdk/resourcemanager/resources/armpolicy,v2.0.0-beta.2,1788290021,09/01/2026
 7470,@azure/arm-servicefabricmanagedclusters@1.1.0-beta.2,js,@azure/arm-servicefabricmanagedclusters_1.1.0-beta.2,@azure/arm-servicefabricmanagedclusters,1.1.0-beta.2,1788318847,09/02/2026
 7471,@azure/arm-containerservice@25.6.0-beta.1,js,@azure/arm-containerservice_25.6.0-beta.1,@azure/arm-containerservice,25.6.0-beta.1,1788318840,09/02/2026
+7472,@azure/arm-computerecommender@1.1.0-beta.2,js,@azure/arm-computerecommender_1.1.0-beta.2,@azure/arm-computerecommender,1.1.0-beta.2,1788318775,09/02/2026

@@ -7472,3 +7472,4 @@ id,name,language,tag,package,version,date_epoch,date
 7471,@azure/arm-containerservice@25.6.0-beta.1,js,@azure/arm-containerservice_25.6.0-beta.1,@azure/arm-containerservice,25.6.0-beta.1,1788318840,09/02/2026
 7472,@azure/arm-computerecommender@1.1.0-beta.2,js,@azure/arm-computerecommender_1.1.0-beta.2,@azure/arm-computerecommender,1.1.0-beta.2,1788318775,09/02/2026
 7473,@azure/arm-policy@8.0.0-beta.1,js,@azure/arm-policy_8.0.0-beta.1,@azure/arm-policy,8.0.0-beta.1,1788300474,09/01/2026
+7474,azure-mgmt-cloudhealth@1.0.0b4,python,azure-mgmt-cloudhealth_1.0.0b4,azure-mgmt-cloudhealth,1.0.0b4,1788275630,09/01/2026

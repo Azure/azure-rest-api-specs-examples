@@ -35,7 +35,7 @@ func ExampleManagedClusterVersionClient_List() {
 	// 			Properties: &armservicefabricmanagedclusters.ManagedClusterVersionDetails{
 	// 				ClusterCodeVersion: to.Ptr("7.2.457.9590"),
 	// 				OSType: to.Ptr(armservicefabricmanagedclusters.OsTypeWindows),
-	// 				SupportExpiryUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T00:00:00Z"); return t}()),
+	// 				SupportExpiryUTC: to.Ptr(time.Date(2021, time.November, 30, 0, 0, 0, 0, time.UTC)),
 	// 			},
 	// 		},
 	// 		{
@@ -45,7 +45,7 @@ func ExampleManagedClusterVersionClient_List() {
 	// 			Properties: &armservicefabricmanagedclusters.ManagedClusterVersionDetails{
 	// 				ClusterCodeVersion: to.Ptr("7.2.477.9590"),
 	// 				OSType: to.Ptr(armservicefabricmanagedclusters.OsTypeWindows),
-	// 				SupportExpiryUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T00:00:00Z"); return t}()),
+	// 				SupportExpiryUTC: to.Ptr(time.Date(2021, time.November, 30, 0, 0, 0, 0, time.UTC)),
 	// 			},
 	// 		},
 	// 	},

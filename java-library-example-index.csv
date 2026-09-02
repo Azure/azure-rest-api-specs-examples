@@ -7474,3 +7474,4 @@ id,name,language,tag,package,version,date_epoch,date
 7473,@azure/arm-policy@8.0.0-beta.1,js,@azure/arm-policy_8.0.0-beta.1,@azure/arm-policy,8.0.0-beta.1,1788300474,09/01/2026
 7474,azure-mgmt-cloudhealth@1.0.0b4,python,azure-mgmt-cloudhealth_1.0.0b4,azure-mgmt-cloudhealth,1.0.0b4,1788275630,09/01/2026
 7475,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.4,1788287262,09/01/2026
+7476,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0-beta.4,1788277523,09/01/2026

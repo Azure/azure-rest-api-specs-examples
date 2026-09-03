@@ -7477,3 +7477,4 @@ id,name,language,tag,package,version,date_epoch,date
 7476,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0-beta.4,1788277523,09/01/2026
 7477,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.2.0,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.2.0,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.2.0,1788412986,09/03/2026
 7478,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp@v0.1.0,go,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp/v0.1.0,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp,v0.1.0,1788362357,09/02/2026
+7479,@azure/arm-servicenetworking@3.0.0,js,@azure/arm-servicenetworking_3.0.0,@azure/arm-servicenetworking,3.0.0,1788405634,09/03/2026

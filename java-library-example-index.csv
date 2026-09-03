@@ -7482,3 +7482,4 @@ id,name,language,tag,package,version,date_epoch,date
 7481,azure-mgmt-containerservice@41.7.0b1,python,azure-mgmt-containerservice_41.7.0b1,azure-mgmt-containerservice,41.7.0b1,1788395750,09/03/2026
 7482,azure-mgmt-cognitiveservices@15.0.0b5,python,azure-mgmt-cognitiveservices_15.0.0b5,azure-mgmt-cognitiveservices,15.0.0b5,1788377620,09/02/2026
 7483,azure-mgmt-resource-policy@1.0.0b4,python,azure-mgmt-resource-policy_1.0.0b4,azure-mgmt-resource-policy,1.0.0b4,1788373367,09/02/2026
+7484,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.0-beta.1,1788397110,09/03/2026

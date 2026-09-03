@@ -7480,3 +7480,4 @@ id,name,language,tag,package,version,date_epoch,date
 7479,@azure/arm-servicenetworking@3.0.0,js,@azure/arm-servicenetworking_3.0.0,@azure/arm-servicenetworking,3.0.0,1788405634,09/03/2026
 7480,azure-mgmt-servicenetworking@2.1.0,python,azure-mgmt-servicenetworking_2.1.0,azure-mgmt-servicenetworking,2.1.0,1788417708,09/03/2026
 7481,azure-mgmt-containerservice@41.7.0b1,python,azure-mgmt-containerservice_41.7.0b1,azure-mgmt-containerservice,41.7.0b1,1788395750,09/03/2026
+7482,azure-mgmt-cognitiveservices@15.0.0b5,python,azure-mgmt-cognitiveservices_15.0.0b5,azure-mgmt-cognitiveservices,15.0.0b5,1788377620,09/02/2026

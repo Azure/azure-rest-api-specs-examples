@@ -34,7 +34,7 @@ func ExampleManagedClusterVersionClient_Get() {
 	// 		Properties: &armservicefabricmanagedclusters.ManagedClusterVersionDetails{
 	// 			ClusterCodeVersion: to.Ptr("7.2.477.9590"),
 	// 			OSType: to.Ptr(armservicefabricmanagedclusters.OsTypeWindows),
-	// 			SupportExpiryUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T00:00:00"); return t}()),
+	// 			SupportExpiryUTC: to.Ptr(time.Time{}),
 	// 		},
 	// 	},
 	// }

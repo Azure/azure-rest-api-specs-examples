@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
 // Generated from example definition: specification/support/resource-manager/Microsoft.Support/stable/2024-04-01/examples/CreateFile.json
@@ -14,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantFileWorkspaceResource created on azure
-// for more information of creating TenantFileWorkspaceResource, please refer to the document of TenantFileWorkspaceResource
+// this example assumes you already have this SupportTicketNoSubFileResource created on azure
+// for more information of creating SupportTicketNoSubFileResource, please refer to the document of SupportTicketNoSubFileResource
 string fileWorkspaceName = "testworkspace";
-ResourceIdentifier tenantFileWorkspaceResourceId = TenantFileWorkspaceResource.CreateResourceIdentifier(fileWorkspaceName);
-TenantFileWorkspaceResource tenantFileWorkspace = client.GetTenantFileWorkspaceResource(tenantFileWorkspaceResourceId);
-
-// get the collection of this SupportTicketNoSubFileResource
-SupportTicketNoSubFileCollection collection = tenantFileWorkspace.GetSupportTicketNoSubFiles();
+string fileName = "test.txt";
+ResourceIdentifier supportTicketNoSubFileResourceId = SupportTicketNoSubFileResource.CreateResourceIdentifier(fileWorkspaceName, fileName);
+SupportTicketNoSubFileResource supportTicketNoSubFile = client.GetSupportTicketNoSubFileResource(supportTicketNoSubFileResourceId);
 
 // invoke the operation
-string fileName = "test.txt";
 SupportFileDetailData data = new SupportFileDetailData
 {
     ChunkSize = 41423,
     FileSize = 41423,
     NumberOfChunks = 1,
 };
-ArmOperation<SupportTicketNoSubFileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fileName, data);
+ArmOperation<SupportTicketNoSubFileResource> lro = await supportTicketNoSubFile.UpdateAsync(WaitUntil.Completed, data);
 SupportTicketNoSubFileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

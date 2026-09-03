@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageCacheImportJobResource created on azure
-// for more information of creating StorageCacheImportJobResource, please refer to the document of StorageCacheImportJobResource
+// this example assumes you already have this AmlFileSystemResource created on azure
+// for more information of creating AmlFileSystemResource, please refer to the document of AmlFileSystemResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "scgroup";
 string amlFileSystemName = "fs1";
-string importJobName = "job1";
-ResourceIdentifier storageCacheImportJobResourceId = StorageCacheImportJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName, importJobName);
-StorageCacheImportJobResource storageCacheImportJob = client.GetStorageCacheImportJobResource(storageCacheImportJobResourceId);
+ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName);
+AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
+
+// get the collection of this StorageCacheImportJobResource
+StorageCacheImportJobCollection collection = amlFileSystem.GetStorageCacheImportJobs();
 
 // invoke the operation
-StorageCacheImportJobResource result = await storageCacheImportJob.GetAsync();
+string importJobName = "job1";
+NullableResponse<StorageCacheImportJobResource> response = await collection.GetIfExistsAsync(importJobName);
+StorageCacheImportJobResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StorageCacheImportJobData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StorageCacheImportJobData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

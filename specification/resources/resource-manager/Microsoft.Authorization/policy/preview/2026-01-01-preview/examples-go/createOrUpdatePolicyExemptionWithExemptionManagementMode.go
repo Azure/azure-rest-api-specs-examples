@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy/v2"
 )
 
-// Generated from example definition: 2026-01-01-preview/updatePolicyExemptionWithResourceSelectors.json
-func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors() {
+// Generated from example definition: 2026-01-01-preview/createOrUpdatePolicyExemptionWithExemptionManagementMode.json
+func ExampleExemptionsClient_CreateOrUpdate_createOrUpdateAPolicyExemptionWithExemptionManagementMode() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,23 +20,19 @@ func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors(
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewExemptionsClient().Update(ctx, "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster", "DemoExpensiveVM", armpolicy.ExemptionUpdate{
-		Properties: &armpolicy.ExemptionUpdateProperties{
-			AssignmentScopeValidation: to.Ptr(armpolicy.AssignmentScopeValidationDefault),
-			ResourceSelectors: []*armpolicy.ResourceSelector{
-				{
-					Name: to.Ptr("SDPRegions"),
-					Selectors: []*armpolicy.Selector{
-						{
-							Kind: to.Ptr(armpolicy.SelectorKindResourceLocation),
-							In: []*string{
-								to.Ptr("eastus2euap"),
-								to.Ptr("centraluseuap"),
-							},
-						},
-					},
-				},
+	res, err := clientFactory.NewExemptionsClient().CreateOrUpdate(ctx, "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster", "DemoExpensiveVM", armpolicy.Exemption{
+		Properties: &armpolicy.ExemptionProperties{
+			PolicyAssignmentID: to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyAssignments/CostManagement"),
+			PolicyDefinitionReferenceIDs: []*string{
+				to.Ptr("Limit_Skus"),
 			},
+			ExemptionCategory: to.Ptr(armpolicy.ExemptionCategoryWaiver),
+			DisplayName:       to.Ptr("Exempt demo cluster"),
+			Description:       to.Ptr("Exempt demo cluster from limit sku"),
+			Metadata: map[string]any{
+				"reason": "Temporary exemption for a expensive VM demo",
+			},
+			ExemptionManagementMode: to.Ptr(armpolicy.ExemptionManagementModeUserSelfServe),
 		},
 	}, nil)
 	if err != nil {
@@ -45,7 +41,7 @@ func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors(
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res = armpolicy.ExemptionsClientUpdateResponse{
+	// res = armpolicy.ExemptionsClientCreateOrUpdateResponse{
 	// 	Exemption: armpolicy.Exemption{
 	// 		Properties: &armpolicy.ExemptionProperties{
 	// 			PolicyAssignmentID: to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyAssignments/CostManagement"),
@@ -58,21 +54,7 @@ func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors(
 	// 			Metadata: map[string]any{
 	// 				"reason": "Temporary exemption for a expensive VM demo",
 	// 			},
-	// 			AssignmentScopeValidation: to.Ptr(armpolicy.AssignmentScopeValidationDefault),
-	// 			ResourceSelectors: []*armpolicy.ResourceSelector{
-	// 				{
-	// 					Name: to.Ptr("SDPRegions"),
-	// 					Selectors: []*armpolicy.Selector{
-	// 						{
-	// 							Kind: to.Ptr(armpolicy.SelectorKindResourceLocation),
-	// 							In: []*string{
-	// 								to.Ptr("eastus2euap"),
-	// 								to.Ptr("centraluseuap"),
-	// 							},
-	// 						},
-	// 					},
-	// 				},
-	// 			},
+	// 			ExemptionManagementMode: to.Ptr(armpolicy.ExemptionManagementModeUserSelfServe),
 	// 		},
 	// 		SystemData: &armpolicy.SystemData{
 	// 			CreatedBy: to.Ptr("string"),

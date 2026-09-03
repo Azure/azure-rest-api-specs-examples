@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy/v2"
 )
 
-// Generated from example definition: 2026-01-01-preview/updatePolicyExemptionWithResourceSelectors.json
-func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors() {
+// Generated from example definition: 2026-01-01-preview/updatePolicyExemptionWithExemptionManagementMode.json
+func ExampleExemptionsClient_Update_updateAPolicyExemptionWithExemptionManagementMode() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,21 +22,7 @@ func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors(
 	}
 	res, err := clientFactory.NewExemptionsClient().Update(ctx, "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster", "DemoExpensiveVM", armpolicy.ExemptionUpdate{
 		Properties: &armpolicy.ExemptionUpdateProperties{
-			AssignmentScopeValidation: to.Ptr(armpolicy.AssignmentScopeValidationDefault),
-			ResourceSelectors: []*armpolicy.ResourceSelector{
-				{
-					Name: to.Ptr("SDPRegions"),
-					Selectors: []*armpolicy.Selector{
-						{
-							Kind: to.Ptr(armpolicy.SelectorKindResourceLocation),
-							In: []*string{
-								to.Ptr("eastus2euap"),
-								to.Ptr("centraluseuap"),
-							},
-						},
-					},
-				},
-			},
+			ExemptionManagementMode: to.Ptr(armpolicy.ExemptionManagementModeAdmin),
 		},
 	}, nil)
 	if err != nil {
@@ -58,21 +44,7 @@ func ExampleExemptionsClient_Update_updateAPolicyExemptionWithResourceSelectors(
 	// 			Metadata: map[string]any{
 	// 				"reason": "Temporary exemption for a expensive VM demo",
 	// 			},
-	// 			AssignmentScopeValidation: to.Ptr(armpolicy.AssignmentScopeValidationDefault),
-	// 			ResourceSelectors: []*armpolicy.ResourceSelector{
-	// 				{
-	// 					Name: to.Ptr("SDPRegions"),
-	// 					Selectors: []*armpolicy.Selector{
-	// 						{
-	// 							Kind: to.Ptr(armpolicy.SelectorKindResourceLocation),
-	// 							In: []*string{
-	// 								to.Ptr("eastus2euap"),
-	// 								to.Ptr("centraluseuap"),
-	// 							},
-	// 						},
-	// 					},
-	// 				},
-	// 			},
+	// 			ExemptionManagementMode: to.Ptr(armpolicy.ExemptionManagementModeAdmin),
 	// 		},
 	// 		SystemData: &armpolicy.SystemData{
 	// 			CreatedBy: to.Ptr("string"),

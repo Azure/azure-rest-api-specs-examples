@@ -7485,3 +7485,4 @@ id,name,language,tag,package,version,date_epoch,date
 7484,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.0-beta.1,1788397110,09/03/2026
 7485,com.azure.resourcemanager:azure-resourcemanager-redhatopenshifthcp:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp,1.0.0-beta.1,1788364349,09/02/2026
 7486,"Azure.ResourceManager.Support,1.2.0",dotnet,Azure.ResourceManager.Support_1.2.0,Azure.ResourceManager.Support,1.2.0,1788418589,09/03/2026
+7487,"Azure.ResourceManager.StorageCache,1.6.0",dotnet,Azure.ResourceManager.StorageCache_1.6.0,Azure.ResourceManager.StorageCache,1.6.0,1788408047,09/03/2026

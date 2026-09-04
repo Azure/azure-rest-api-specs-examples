@@ -1,0 +1,19 @@
+
+/**
+ * Samples for AlertConfigurations ListByManagedCluster.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-02-preview/AlertConfigurations_ListByManagedCluster.json
+     */
+    /**
+     * Sample code: List Alert Configurations by Managed Cluster.
+     * 
+     * @param manager Entry point to ContainerServiceManager.
+     */
+    public static void listAlertConfigurationsByManagedCluster(
+        com.azure.resourcemanager.containerservice.ContainerServiceManager manager) {
+        manager.serviceClient().getAlertConfigurations().listByManagedCluster("rg1", "clustername1",
+            com.azure.core.util.Context.NONE);
+    }
+}

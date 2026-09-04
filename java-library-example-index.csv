@@ -7491,3 +7491,4 @@ id,name,language,tag,package,version,date_epoch,date
 7490,azure-mgmt-computerecommender@1.0.0b3,python,azure-mgmt-computerecommender_1.0.0b3,azure-mgmt-computerecommender,1.0.0b3,1788478970,09/03/2026
 7491,azure-mgmt-servicefabricmanagedclusters@3.1.0b2,python,azure-mgmt-servicefabricmanagedclusters_3.1.0b2,azure-mgmt-servicefabricmanagedclusters,3.1.0b2,1788452530,09/03/2026
 7492,com.azure.resourcemanager:azure-resourcemanager-providerhub:3.0.0,java,com.azure.resourcemanager+azure-resourcemanager-providerhub_3.0.0,com.azure.resourcemanager+azure-resourcemanager-providerhub,3.0.0,1788463159,09/03/2026
+7493,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters,1.2.0-beta.2,1788451386,09/03/2026

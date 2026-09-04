@@ -7488,3 +7488,4 @@ id,name,language,tag,package,version,date_epoch,date
 7487,"Azure.ResourceManager.StorageCache,1.6.0",dotnet,Azure.ResourceManager.StorageCache_1.6.0,Azure.ResourceManager.StorageCache,1.6.0,1788408047,09/03/2026
 7488,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v4@v4.0.0,go,sdk/resourcemanager/providerhub/armproviderhub/v4.0.0,sdk/resourcemanager/providerhub/armproviderhub,v4.0.0,1788490488,09/04/2026
 7489,@azure/arm-redhatopenshifthcp@1.0.0-beta.1,js,@azure/arm-redhatopenshifthcp_1.0.0-beta.1,@azure/arm-redhatopenshifthcp,1.0.0-beta.1,1788470173,09/03/2026
+7490,azure-mgmt-computerecommender@1.0.0b3,python,azure-mgmt-computerecommender_1.0.0b3,azure-mgmt-computerecommender,1.0.0b3,1788478970,09/03/2026

@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Support;
 
 // Generated from example definition: specification/support/resource-manager/Microsoft.Support/stable/2024-04-01/examples/CreateFileWorkspace.json
@@ -15,14 +14,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-TenantResource tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this TenantFileWorkspaceResource
-TenantFileWorkspaceCollection collection = tenantResource.GetTenantFileWorkspaces();
+// this example assumes you already have this TenantFileWorkspaceResource created on azure
+// for more information of creating TenantFileWorkspaceResource, please refer to the document of TenantFileWorkspaceResource
+string fileWorkspaceName = "testworkspace";
+ResourceIdentifier tenantFileWorkspaceResourceId = TenantFileWorkspaceResource.CreateResourceIdentifier(fileWorkspaceName);
+TenantFileWorkspaceResource tenantFileWorkspace = client.GetTenantFileWorkspaceResource(tenantFileWorkspaceResourceId);
 
 // invoke the operation
-string fileWorkspaceName = "testworkspace";
-ArmOperation<TenantFileWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fileWorkspaceName);
+ArmOperation<TenantFileWorkspaceResource> lro = await tenantFileWorkspace.UpdateAsync(WaitUntil.Completed);
 TenantFileWorkspaceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Support.Models;
 using Azure.ResourceManager.Support;
 
 // Generated from example definition: specification/support/resource-manager/Microsoft.Support/stable/2024-04-01/examples/GetFileDetails.json
@@ -14,29 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantFileWorkspaceResource created on azure
-// for more information of creating TenantFileWorkspaceResource, please refer to the document of TenantFileWorkspaceResource
+// this example assumes you already have this SupportTicketNoSubFileResource created on azure
+// for more information of creating SupportTicketNoSubFileResource, please refer to the document of SupportTicketNoSubFileResource
 string fileWorkspaceName = "testworkspace";
-ResourceIdentifier tenantFileWorkspaceResourceId = TenantFileWorkspaceResource.CreateResourceIdentifier(fileWorkspaceName);
-TenantFileWorkspaceResource tenantFileWorkspace = client.GetTenantFileWorkspaceResource(tenantFileWorkspaceResourceId);
-
-// get the collection of this SupportTicketNoSubFileResource
-SupportTicketNoSubFileCollection collection = tenantFileWorkspace.GetSupportTicketNoSubFiles();
+string fileName = "test.txt";
+ResourceIdentifier supportTicketNoSubFileResourceId = SupportTicketNoSubFileResource.CreateResourceIdentifier(fileWorkspaceName, fileName);
+SupportTicketNoSubFileResource supportTicketNoSubFile = client.GetSupportTicketNoSubFileResource(supportTicketNoSubFileResourceId);
 
 // invoke the operation
-string fileName = "test.txt";
-NullableResponse<SupportTicketNoSubFileResource> response = await collection.GetIfExistsAsync(fileName);
-SupportTicketNoSubFileResource result = response.HasValue ? response.Value : null;
+SupportTicketNoSubFileResource result = await supportTicketNoSubFile.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SupportFileDetailData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SupportFileDetailData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

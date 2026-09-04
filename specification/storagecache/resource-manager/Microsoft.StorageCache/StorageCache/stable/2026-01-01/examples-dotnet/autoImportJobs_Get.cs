@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AmlFileSystemResource created on azure
-// for more information of creating AmlFileSystemResource, please refer to the document of AmlFileSystemResource
+// this example assumes you already have this AutoImportJobResource created on azure
+// for more information of creating AutoImportJobResource, please refer to the document of AutoImportJobResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "scgroup";
 string amlFileSystemName = "fs1";
-ResourceIdentifier amlFileSystemResourceId = AmlFileSystemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName);
-AmlFileSystemResource amlFileSystem = client.GetAmlFileSystemResource(amlFileSystemResourceId);
-
-// get the collection of this AutoImportJobResource
-AutoImportJobCollection collection = amlFileSystem.GetAutoImportJobs();
+string autoImportJobName = "autojob1";
+ResourceIdentifier autoImportJobResourceId = AutoImportJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, amlFileSystemName, autoImportJobName);
+AutoImportJobResource autoImportJob = client.GetAutoImportJobResource(autoImportJobResourceId);
 
 // invoke the operation
-string autoImportJobName = "autojob1";
-NullableResponse<AutoImportJobResource> response = await collection.GetIfExistsAsync(autoImportJobName);
-AutoImportJobResource result = response.HasValue ? response.Value : null;
+AutoImportJobResource result = await autoImportJob.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AutoImportJobData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutoImportJobData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

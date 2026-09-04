@@ -7490,3 +7490,4 @@ id,name,language,tag,package,version,date_epoch,date
 7489,@azure/arm-redhatopenshifthcp@1.0.0-beta.1,js,@azure/arm-redhatopenshifthcp_1.0.0-beta.1,@azure/arm-redhatopenshifthcp,1.0.0-beta.1,1788470173,09/03/2026
 7490,azure-mgmt-computerecommender@1.0.0b3,python,azure-mgmt-computerecommender_1.0.0b3,azure-mgmt-computerecommender,1.0.0b3,1788478970,09/03/2026
 7491,azure-mgmt-servicefabricmanagedclusters@3.1.0b2,python,azure-mgmt-servicefabricmanagedclusters_3.1.0b2,azure-mgmt-servicefabricmanagedclusters,3.1.0b2,1788452530,09/03/2026
+7492,com.azure.resourcemanager:azure-resourcemanager-providerhub:3.0.0,java,com.azure.resourcemanager+azure-resourcemanager-providerhub_3.0.0,com.azure.resourcemanager+azure-resourcemanager-providerhub,3.0.0,1788463159,09/03/2026

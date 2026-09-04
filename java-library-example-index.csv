@@ -7475,3 +7475,14 @@ id,name,language,tag,package,version,date_epoch,date
 7474,azure-mgmt-cloudhealth@1.0.0b4,python,azure-mgmt-cloudhealth_1.0.0b4,azure-mgmt-cloudhealth,1.0.0b4,1788275630,09/01/2026
 7475,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.4,1788287262,09/01/2026
 7476,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0-beta.4,1788277523,09/01/2026
+7477,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.2.0,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.2.0,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.2.0,1788412986,09/03/2026
+7478,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp@v0.1.0,go,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp/v0.1.0,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp,v0.1.0,1788362357,09/02/2026
+7479,@azure/arm-servicenetworking@3.0.0,js,@azure/arm-servicenetworking_3.0.0,@azure/arm-servicenetworking,3.0.0,1788405634,09/03/2026
+7480,azure-mgmt-servicenetworking@2.1.0,python,azure-mgmt-servicenetworking_2.1.0,azure-mgmt-servicenetworking,2.1.0,1788417708,09/03/2026
+7481,azure-mgmt-containerservice@41.7.0b1,python,azure-mgmt-containerservice_41.7.0b1,azure-mgmt-containerservice,41.7.0b1,1788395750,09/03/2026
+7482,azure-mgmt-cognitiveservices@15.0.0b5,python,azure-mgmt-cognitiveservices_15.0.0b5,azure-mgmt-cognitiveservices,15.0.0b5,1788377620,09/02/2026
+7483,azure-mgmt-resource-policy@1.0.0b4,python,azure-mgmt-resource-policy_1.0.0b4,azure-mgmt-resource-policy,1.0.0b4,1788373367,09/02/2026
+7484,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.0-beta.1,1788397110,09/03/2026
+7485,com.azure.resourcemanager:azure-resourcemanager-redhatopenshifthcp:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp,1.0.0-beta.1,1788364349,09/02/2026
+7486,"Azure.ResourceManager.Support,1.2.0",dotnet,Azure.ResourceManager.Support_1.2.0,Azure.ResourceManager.Support,1.2.0,1788418589,09/03/2026
+7487,"Azure.ResourceManager.StorageCache,1.6.0",dotnet,Azure.ResourceManager.StorageCache_1.6.0,Azure.ResourceManager.StorageCache,1.6.0,1788408047,09/03/2026

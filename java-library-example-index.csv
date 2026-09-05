@@ -7493,3 +7493,4 @@ id,name,language,tag,package,version,date_epoch,date
 7492,com.azure.resourcemanager:azure-resourcemanager-providerhub:3.0.0,java,com.azure.resourcemanager+azure-resourcemanager-providerhub_3.0.0,com.azure.resourcemanager+azure-resourcemanager-providerhub,3.0.0,1788463159,09/03/2026
 7493,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.2.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters_1.2.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-servicefabricmanagedclusters,1.2.0-beta.2,1788451386,09/03/2026
 7494,"Azure.ResourceManager.EventHubs,1.4.0-beta.1",dotnet,Azure.ResourceManager.EventHubs_1.4.0-beta.1,Azure.ResourceManager.EventHubs,1.4.0-beta.1,1788490961,09/04/2026
+7495,@azure/arm-containerservicefleet@2.2.0-beta.1,js,@azure/arm-containerservicefleet_2.2.0-beta.1,@azure/arm-containerservicefleet,2.2.0-beta.1,1788542281,09/04/2026

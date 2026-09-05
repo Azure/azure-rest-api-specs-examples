@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-01-01/examples/RegionInfos_Get.json
@@ -14,18 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+string subscriptionId = "00000000-0000-0000-0000-000000000000";
 // this example assumes you already have this RegionInfoResource created on azure
 // for more information of creating RegionInfoResource, please refer to the document of RegionInfoResource
-string subscriptionId = "00000000-0000-0000-0000-000000000000";
 AzureLocation location = new AzureLocation("eastus");
 ResourceIdentifier regionInfoResourceId = RegionInfoResource.CreateResourceIdentifier(subscriptionId, location);
-RegionInfoResource regionInfoResource = client.GetRegionInfoResource(regionInfoResourceId);
+RegionInfoResource regionInfo = client.GetRegionInfoResource(regionInfoResourceId);
 
 // invoke the operation
-RegionInfoResource result = await regionInfoResource.GetAsync();
+RegionInfoResource result = await regionInfo.GetAsync();
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RegionInfoResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RegionInfoResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

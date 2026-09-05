@@ -7495,3 +7495,4 @@ id,name,language,tag,package,version,date_epoch,date
 7494,"Azure.ResourceManager.EventHubs,1.4.0-beta.1",dotnet,Azure.ResourceManager.EventHubs_1.4.0-beta.1,Azure.ResourceManager.EventHubs,1.4.0-beta.1,1788490961,09/04/2026
 7495,@azure/arm-containerservicefleet@2.2.0-beta.1,js,@azure/arm-containerservicefleet_2.2.0-beta.1,@azure/arm-containerservicefleet,2.2.0-beta.1,1788542281,09/04/2026
 7496,azure-mgmt-redhatopenshifthcp@1.0.0b1,python,azure-mgmt-redhatopenshifthcp_1.0.0b1,azure-mgmt-redhatopenshifthcp,1.0.0b1,1788542875,09/04/2026
+7497,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet_1.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet,1.4.0-beta.1,1788545824,09/04/2026

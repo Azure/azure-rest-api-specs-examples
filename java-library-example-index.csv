@@ -7497,3 +7497,4 @@ id,name,language,tag,package,version,date_epoch,date
 7496,azure-mgmt-redhatopenshifthcp@1.0.0b1,python,azure-mgmt-redhatopenshifthcp_1.0.0b1,azure-mgmt-redhatopenshifthcp,1.0.0b1,1788542875,09/04/2026
 7497,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.4.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet_1.4.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet,1.4.0-beta.1,1788545824,09/04/2026
 7498,"Azure.ResourceManager.Chaos,1.2.0-beta.3",dotnet,Azure.ResourceManager.Chaos_1.2.0-beta.3,Azure.ResourceManager.Chaos,1.2.0-beta.3,1788371269,09/02/2026
+7499,"Azure.ResourceManager.NetApp,1.19.0-beta.2",dotnet,Azure.ResourceManager.NetApp_1.19.0-beta.2,Azure.ResourceManager.NetApp,1.19.0-beta.2,1788179847,08/31/2026

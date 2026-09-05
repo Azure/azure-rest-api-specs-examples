@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ChaosTargetMetadataResource created on azure
-// for more information of creating ChaosTargetMetadataResource, please refer to the document of ChaosTargetMetadataResource
+// this example assumes you already have this ChaosCapabilityMetadataResource created on azure
+// for more information of creating ChaosCapabilityMetadataResource, please refer to the document of ChaosCapabilityMetadataResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 AzureLocation location = new AzureLocation("westus2");
 string targetTypeName = "Microsoft-VirtualMachine";
-ResourceIdentifier chaosTargetMetadataResourceId = ChaosTargetMetadataResource.CreateResourceIdentifier(subscriptionId, location, targetTypeName);
-ChaosTargetMetadataResource chaosTargetMetadata = client.GetChaosTargetMetadataResource(chaosTargetMetadataResourceId);
-
-// get the collection of this ChaosCapabilityMetadataResource
-ChaosCapabilityMetadataCollection collection = chaosTargetMetadata.GetAllChaosCapabilityMetadata();
+string capabilityTypeName = "Shutdown-1.0";
+ResourceIdentifier chaosCapabilityMetadataResourceId = ChaosCapabilityMetadataResource.CreateResourceIdentifier(subscriptionId, location, targetTypeName, capabilityTypeName);
+ChaosCapabilityMetadataResource chaosCapabilityMetadata = client.GetChaosCapabilityMetadataResource(chaosCapabilityMetadataResourceId);
 
 // invoke the operation
-string capabilityTypeName = "Shutdown-1.0";
-NullableResponse<ChaosCapabilityMetadataResource> response = await collection.GetIfExistsAsync(capabilityTypeName);
-ChaosCapabilityMetadataResource result = response.HasValue ? response.Value : null;
+ChaosCapabilityMetadataResource result = await chaosCapabilityMetadata.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ChaosCapabilityMetadataData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ChaosCapabilityMetadataData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

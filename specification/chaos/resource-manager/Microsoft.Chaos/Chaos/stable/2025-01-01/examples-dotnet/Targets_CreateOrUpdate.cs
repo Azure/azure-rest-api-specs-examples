@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Chaos;
 
 // Generated from example definition: 2025-01-01/Targets_CreateOrUpdate.json
@@ -15,20 +16,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ChaosTargetResource created on azure
-// for more information of creating ChaosTargetResource, please refer to the document of ChaosTargetResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string resourceGroupName = "exampleRG";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ChaosTargetResource
 string parentProviderNamespace = "Microsoft.Compute";
 string parentResourceType = "virtualMachines";
 string parentResourceName = "exampleVM";
-string targetName = "Microsoft-VirtualMachine";
-ResourceIdentifier chaosTargetResourceId = ChaosTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentProviderNamespace, parentResourceType, parentResourceName, targetName);
-ChaosTargetResource chaosTarget = client.GetChaosTargetResource(chaosTargetResourceId);
+ChaosTargetCollection collection = resourceGroupResource.GetChaosTargets(parentProviderNamespace, parentResourceType, parentResourceName);
 
 // invoke the operation
+string targetName = "Microsoft-VirtualMachine";
 ChaosTargetData data = new ChaosTargetData(new Dictionary<string, BinaryData>());
-ArmOperation<ChaosTargetResource> lro = await chaosTarget.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ChaosTargetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, targetName, data);
 ChaosTargetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

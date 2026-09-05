@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.providerhub.models.CheckinManifestParams;
+
+/**
+ * Samples for ResourceProvider CheckinManifest.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01/CheckinManifest.json
+     */
+    /**
+     * Sample code: CheckinManifest.
+     * 
+     * @param manager Entry point to ProviderHubManager.
+     */
+    public static void checkinManifest(com.azure.resourcemanager.providerhub.ProviderHubManager manager) {
+        manager.resourceProviders().checkinManifestWithResponse("Microsoft.Contoso",
+            new CheckinManifestParams().withEnvironment("Prod").withBaselineArmManifestLocation("EastUS2EUAP"),
+            com.azure.core.util.Context.NONE);
+    }
+}

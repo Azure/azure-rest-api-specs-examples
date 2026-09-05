@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ProviderRegistrations GenerateOperations.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01/ProviderRegistrations_GenerateOperations.json
+     */
+    /**
+     * Sample code: ProviderRegistrations_GenerateOperations.
+     * 
+     * @param manager Entry point to ProviderHubManager.
+     */
+    public static void
+        providerRegistrationsGenerateOperations(com.azure.resourcemanager.providerhub.ProviderHubManager manager) {
+        manager.providerRegistrations().generateOperationsWithResponse("Microsoft.Contoso",
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,176 @@
+package armproviderhub_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub/v4"
+)
+
+// Generated from example definition: 2025-10-01/GenerateManifest.json
+func ExampleClient_GenerateManifest() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armproviderhub.NewClientFactory("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewClient().GenerateManifest(ctx, "Microsoft.Contoso", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armproviderhub.ClientGenerateManifestResponse{
+	// 	ResourceProviderManifest: armproviderhub.ResourceProviderManifest{
+	// 		ProviderAuthorizations: []*armproviderhub.ResourceProviderAuthorization{
+	// 			{
+	// 				ApplicationID: to.Ptr("1a3b5c7d-8e9f-10g1-1h12-i13j14k1"),
+	// 				RoleDefinitionID: to.Ptr("123456bf-gkur-2098-b890-98da392a00b2"),
+	// 			},
+	// 		},
+	// 		ResourceProviderAuthorizationRules: &armproviderhub.ResourceProviderAuthorizationRules{
+	// 			AsyncOperationPollingRules: &armproviderhub.AsyncOperationPollingRules{
+	// 				AuthorizationActions: []*string{
+	// 					to.Ptr("Microsoft.Contoso/classicAdministrators/operationStatuses/read"),
+	// 				},
+	// 			},
+	// 		},
+	// 		Namespace: to.Ptr("microsoft.contoso"),
+	// 		ServiceName: to.Ptr("root"),
+	// 		Services: []*armproviderhub.ResourceProviderService{
+	// 			{
+	// 				ServiceName: to.Ptr("tags"),
+	// 				Status: to.Ptr(armproviderhub.ServiceStatusInactive),
+	// 			},
+	// 		},
+	// 		ProviderVersion: to.Ptr("2.0"),
+	// 		ProviderType: to.Ptr(armproviderhub.ResourceProviderType("Internal, Hidden")),
+	// 		CrossTenantTokenValidation: to.Ptr(armproviderhub.CrossTenantTokenValidationEnsureSecureValidation),
+	// 		ResourceTypes: []*armproviderhub.ResourceType{
+	// 			{
+	// 				Name: to.Ptr("Operations"),
+	// 				RoutingType: to.Ptr(armproviderhub.RoutingType("ProxyOnly, Tenant")),
+	// 				ResourceValidation: to.Ptr(armproviderhub.ResourceValidation("ReservedWords, ProfaneWords")),
+	// 				AllowedUnauthorizedActions: []*string{
+	// 					to.Ptr("microsoft.contoso/operations/read"),
+	// 				},
+	// 				ResourceDeletionPolicies: []*armproviderhub.ResourceDeletionPolicyAndProperties{
+	// 					{
+	// 						PolicyName: to.Ptr(armproviderhub.ResourceDeletionPolicySoftDelete),
+	// 						Properties: &armproviderhub.ResourceDeletionPolicyProperties{
+	// 							MinimumRetentionTime: to.Ptr("P0DT1H0M"),
+	// 							MaximumRetentionTime: to.Ptr("P1DT0H0M"),
+	// 						},
+	// 					},
+	// 				},
+	// 				AllowedUnauthorizedActionsExtensions: []*armproviderhub.AllowedUnauthorizedActionsExtension{
+	// 					{
+	// 						Action: to.Ptr("Microsoft.BizTalkServices/bizTalk/read"),
+	// 						Intent: to.Ptr(armproviderhub.IntentDEFERREDACCESSCHECK),
+	// 					},
+	// 				},
+	// 				Endpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 					{
+	// 						APIVersions: []*string{
+	// 							to.Ptr("2020-01-01-preview"),
+	// 						},
+	// 						EndpointURI: to.Ptr("https://resource-endpoint.com/"),
+	// 						Locations: []*string{
+	// 							to.Ptr(""),
+	// 						},
+	// 						Timeout: to.Ptr("PT20S"),
+	// 					},
+	// 				},
+	// 				LinkedOperationRules: []*armproviderhub.LinkedOperationRule{
+	// 				},
+	// 				Notifications: []*armproviderhub.Notification{
+	// 					{
+	// 						NotificationType: to.Ptr(armproviderhub.NotificationTypeSubscriptionNotification),
+	// 						SkipNotifications: to.Ptr(armproviderhub.SkipNotificationsDisabled),
+	// 					},
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Locations"),
+	// 				RoutingType: to.Ptr(armproviderhub.RoutingTypeProxyOnly),
+	// 				ResourceValidation: to.Ptr(armproviderhub.ResourceValidation("ReservedWords, ProfaneWords")),
+	// 				Endpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 					{
+	// 						APIVersions: []*string{
+	// 							to.Ptr("2020-01-01-preview"),
+	// 						},
+	// 						EndpointURI: to.Ptr("https://resource-endpoint.com/"),
+	// 						Locations: []*string{
+	// 							to.Ptr(""),
+	// 						},
+	// 						Timeout: to.Ptr("PT20S"),
+	// 					},
+	// 				},
+	// 				LinkedOperationRules: []*armproviderhub.LinkedOperationRule{
+	// 				},
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("Locations/OperationStatuses"),
+	// 				RoutingType: to.Ptr(armproviderhub.RoutingType("ProxyOnly, LocationBased")),
+	// 				ResourceValidation: to.Ptr(armproviderhub.ResourceValidation("ReservedWords, ProfaneWords")),
+	// 				AdditionalOptions: to.Ptr(armproviderhub.AdditionalOptionsProtectedAsyncOperationPolling),
+	// 				Endpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 					{
+	// 						APIVersions: []*string{
+	// 							to.Ptr("2020-01-01-preview"),
+	// 						},
+	// 						EndpointURI: to.Ptr("https://resource-endpoint.com/"),
+	// 						Locations: []*string{
+	// 							to.Ptr(""),
+	// 						},
+	// 						Timeout: to.Ptr("PT20S"),
+	// 					},
+	// 				},
+	// 				LinkedOperationRules: []*armproviderhub.LinkedOperationRule{
+	// 				},
+	// 			},
+	// 		},
+	// 		Management: &armproviderhub.ResourceProviderManifestManagement{
+	// 			ManifestOwners: []*string{
+	// 				to.Ptr("manifestOwners-group"),
+	// 			},
+	// 			AuthorizationOwners: []*string{
+	// 				to.Ptr("authorizationOwners-group"),
+	// 			},
+	// 			IncidentRoutingService: to.Ptr(""),
+	// 			IncidentRoutingTeam: to.Ptr(""),
+	// 			IncidentContactEmail: to.Ptr("helpme@contoso.com"),
+	// 			ResourceAccessPolicy: to.Ptr(armproviderhub.ResourceAccessPolicyNotSpecified),
+	// 		},
+	// 		Capabilities: []*armproviderhub.ResourceProviderCapabilities{
+	// 			{
+	// 				QuotaID: to.Ptr("CSP_2015-05-01"),
+	// 				Effect: to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
+	// 			},
+	// 			{
+	// 				QuotaID: to.Ptr("CSP_MG_2017-12-01"),
+	// 				Effect: to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
+	// 			},
+	// 		},
+	// 		Metadata: map[string]any{
+	// 			"onboardedVia": "ProviderHub",
+	// 		},
+	// 		GlobalNotificationEndpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 			{
+	// 				Enabled: to.Ptr(true),
+	// 				EndpointURI: to.Ptr("https://notificationendpoint.com"),
+	// 			},
+	// 		},
+	// 		ReRegisterSubscriptionMetadata: &armproviderhub.ResourceProviderManifestReRegisterSubscriptionMetadata{
+	// 			Enabled: to.Ptr(true),
+	// 			ConcurrencyLimit: to.Ptr[int32](100),
+	// 		},
+	// 	},
+	// }
+}

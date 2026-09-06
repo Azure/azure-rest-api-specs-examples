@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.NetApp.Models;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-01-01/examples/BackupsUnderBackupVault_Get.json
@@ -15,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppBackupVaultBackupResource created on azure
-// for more information of creating NetAppBackupVaultBackupResource, please refer to the document of NetAppBackupVaultBackupResource
+// this example assumes you already have this NetAppBackupVaultResource created on azure
+// for more information of creating NetAppBackupVaultResource, please refer to the document of NetAppBackupVaultResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string backupVaultName = "backupVault1";
-string backupName = "backup1";
-ResourceIdentifier netAppBackupVaultBackupResourceId = NetAppBackupVaultBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName, backupName);
-NetAppBackupVaultBackupResource netAppBackupVaultBackup = client.GetNetAppBackupVaultBackupResource(netAppBackupVaultBackupResourceId);
+ResourceIdentifier netAppBackupVaultResourceId = NetAppBackupVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, backupVaultName);
+NetAppBackupVaultResource netAppBackupVault = client.GetNetAppBackupVaultResource(netAppBackupVaultResourceId);
+
+// get the collection of this NetAppBackupVaultBackupResource
+NetAppBackupVaultBackupCollection collection = netAppBackupVault.GetNetAppBackupVaultBackups();
 
 // invoke the operation
-NetAppBackupVaultBackupResource result = await netAppBackupVaultBackup.GetAsync();
+string backupName = "backup1";
+NullableResponse<NetAppBackupVaultBackupResource> response = await collection.GetIfExistsAsync(backupName);
+NetAppBackupVaultBackupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppBackupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetAppBackupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

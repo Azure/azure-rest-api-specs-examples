@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.NetApp.Models;
 using Azure.ResourceManager.NetApp;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-01-01/examples/Snapshots_Create.json
@@ -15,20 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppVolumeSnapshotResource created on azure
-// for more information of creating NetAppVolumeSnapshotResource, please refer to the document of NetAppVolumeSnapshotResource
+// this example assumes you already have this NetAppVolumeResource created on azure
+// for more information of creating NetAppVolumeResource, please refer to the document of NetAppVolumeResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
-string snapshotName = "snapshot1";
-ResourceIdentifier netAppVolumeSnapshotResourceId = NetAppVolumeSnapshotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, snapshotName);
-NetAppVolumeSnapshotResource netAppVolumeSnapshot = client.GetNetAppVolumeSnapshotResource(netAppVolumeSnapshotResourceId);
+ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
+NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
+
+// get the collection of this NetAppVolumeSnapshotResource
+NetAppVolumeSnapshotCollection collection = netAppVolume.GetNetAppVolumeSnapshots();
 
 // invoke the operation
+string snapshotName = "snapshot1";
 NetAppVolumeSnapshotData data = new NetAppVolumeSnapshotData(new AzureLocation("eastus"));
-ArmOperation<NetAppVolumeSnapshotResource> lro = await netAppVolumeSnapshot.UpdateAsync(WaitUntil.Completed, new NetAppVolumeSnapshotPatch());
+ArmOperation<NetAppVolumeSnapshotResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, snapshotName, data);
 NetAppVolumeSnapshotResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

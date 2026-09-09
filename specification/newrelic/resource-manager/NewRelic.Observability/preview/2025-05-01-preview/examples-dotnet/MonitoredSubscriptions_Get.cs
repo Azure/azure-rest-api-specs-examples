@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NewRelicMonitoredSubscriptionResource created on azure
-// for more information of creating NewRelicMonitoredSubscriptionResource, please refer to the document of NewRelicMonitoredSubscriptionResource
+// this example assumes you already have this NewRelicMonitorResource created on azure
+// for more information of creating NewRelicMonitorResource, please refer to the document of NewRelicMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-MonitoredSubscriptionConfigurationName configurationName = MonitoredSubscriptionConfigurationName.Default;
-ResourceIdentifier newRelicMonitoredSubscriptionResourceId = NewRelicMonitoredSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, configurationName);
-NewRelicMonitoredSubscriptionResource newRelicMonitoredSubscription = client.GetNewRelicMonitoredSubscriptionResource(newRelicMonitoredSubscriptionResourceId);
+ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
+
+// get the collection of this NewRelicMonitoredSubscriptionResource
+NewRelicMonitoredSubscriptionCollection collection = newRelicMonitorResource.GetNewRelicMonitoredSubscriptions();
 
 // invoke the operation
-NewRelicMonitoredSubscriptionResource result = await newRelicMonitoredSubscription.GetAsync();
+MonitoredSubscriptionConfigurationName configurationName = MonitoredSubscriptionConfigurationName.Default;
+NullableResponse<NewRelicMonitoredSubscriptionResource> response = await collection.GetIfExistsAsync(configurationName);
+NewRelicMonitoredSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NewRelicMonitoredSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NewRelicMonitoredSubscriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

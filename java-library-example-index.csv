@@ -7505,3 +7505,4 @@ id,name,language,tag,package,version,date_epoch,date
 7504,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.1.0-beta.1,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.1.0-beta.1,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.1.0-beta.1,1788880223,09/08/2026
 7505,@azure/arm-deviceprovisioningservices@6.0.0,js,@azure/arm-deviceprovisioningservices_6.0.0,@azure/arm-deviceprovisioningservices,6.0.0,1788933561,09/09/2026
 7506,@azure/arm-resourcesdeployments@2.0.0,js,@azure/arm-resourcesdeployments_2.0.0,@azure/arm-resourcesdeployments,2.0.0,1788925657,09/09/2026
+7507,azure-mgmt-containerservicefleet@4.1.0b1,python,azure-mgmt-containerservicefleet_4.1.0b1,azure-mgmt-containerservicefleet,4.1.0b1,1788882882,09/08/2026

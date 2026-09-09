@@ -1,6 +1,7 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -40,7 +41,7 @@ MachineLearningQuotaUpdateContent content = new MachineLearningQuotaUpdateConten
     Unit = MachineLearningQuotaUnit.Count,
     }},
 };
-await foreach (MachineLearningWorkspaceQuotaUpdate item in subscriptionResource.UpdateMachineLearningQuotasAsync(location, content))
+await foreach (MachineLearningWorkspaceQuotaUpdate item in subscriptionResource.UpdateMachineLearningQuotasAsync(location, content, CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

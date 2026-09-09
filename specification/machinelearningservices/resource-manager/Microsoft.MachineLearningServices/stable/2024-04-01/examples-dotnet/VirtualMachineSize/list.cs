@@ -1,6 +1,7 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -24,7 +25,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation and iterate over the result
 AzureLocation location = new AzureLocation("eastus");
-await foreach (MachineLearningVmSize item in subscriptionResource.GetMachineLearningVmSizesAsync(location))
+await foreach (MachineLearningVmSize item in subscriptionResource.GetMachineLearningVmSizesAsync(location, CancellationToken.None))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

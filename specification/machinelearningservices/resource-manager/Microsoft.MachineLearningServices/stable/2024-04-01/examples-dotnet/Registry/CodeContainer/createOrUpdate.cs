@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryCodeContainerResource created on azure
-// for more information of creating MachineLearningRegistryCodeContainerResource, please refer to the document of MachineLearningRegistryCodeContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string registryName = "testregistry";
-string codeName = "testContainer";
-ResourceIdentifier machineLearningRegistryCodeContainerResourceId = MachineLearningRegistryCodeContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, codeName);
-MachineLearningRegistryCodeContainerResource machineLearningRegistryCodeContainer = client.GetMachineLearningRegistryCodeContainerResource(machineLearningRegistryCodeContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearningRegistryCodeContainerResource
+MachineLearningRegistryCodeContainerCollection collection = machineLearningRegistry.GetMachineLearningRegistryCodeContainers();
 
 // invoke the operation
+string codeName = "testContainer";
 MachineLearningCodeContainerData data = new MachineLearningCodeContainerData(new MachineLearningCodeContainerProperties
 {
     Description = "string",
@@ -34,7 +37,7 @@ MachineLearningCodeContainerData data = new MachineLearningCodeContainerData(new
     ["tag2"] = "value2"
     },
 });
-ArmOperation<MachineLearningRegistryCodeContainerResource> lro = await machineLearningRegistryCodeContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningRegistryCodeContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, codeName, data);
 MachineLearningRegistryCodeContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

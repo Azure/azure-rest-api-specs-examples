@@ -7500,3 +7500,4 @@ id,name,language,tag,package,version,date_epoch,date
 7499,"Azure.ResourceManager.NetApp,1.19.0-beta.2",dotnet,Azure.ResourceManager.NetApp_1.19.0-beta.2,Azure.ResourceManager.NetApp,1.19.0-beta.2,1788179847,08/31/2026
 7500,azure-mgmt-dataprotection@2.2.0,python,azure-mgmt-dataprotection_2.2.0,azure-mgmt-dataprotection,2.2.0,1788766752,09/07/2026
 7501,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices_1.2.0,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices,1.2.0,1788761710,09/07/2026
+7502,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments/v3@v3.0.0,go,sdk/resourcemanager/resources/armdeployments/v3.0.0,sdk/resourcemanager/resources/armdeployments,v3.0.0,1788933390,09/09/2026

@@ -7517,3 +7517,4 @@ id,name,language,tag,package,version,date_epoch,date
 7516,@azure/arm-search@4.0.0-beta.3,js,@azure/arm-search_4.0.0-beta.3,@azure/arm-search,4.0.0-beta.3,1789026018,09/10/2026
 7517,@azure/arm-recoveryservicesbackup@14.1.0,js,@azure/arm-recoveryservicesbackup_14.1.0,@azure/arm-recoveryservicesbackup,14.1.0,1788975483,09/09/2026
 7518,azure-mgmt-iothubprovisioningservices@2.0.0,python,azure-mgmt-iothubprovisioningservices_2.0.0,azure-mgmt-iothubprovisioningservices,2.0.0,1789021972,09/10/2026
+7519,azure-mgmt-resource-deployments@2.0.0,python,azure-mgmt-resource-deployments_2.0.0,azure-mgmt-resource-deployments,2.0.0,1789011249,09/10/2026

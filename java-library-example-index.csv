@@ -7512,3 +7512,4 @@ id,name,language,tag,package,version,date_epoch,date
 7511,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0-beta.3,go,sdk/resourcemanager/search/armsearch/v2.0.0-beta.3,sdk/resourcemanager/search/armsearch,v2.0.0-beta.3,1788974332,09/09/2026
 7512,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.1.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.1.0,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.1.0,1788968054,09/09/2026
 7513,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0-beta.3,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0-beta.3,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0-beta.3,1788960429,09/09/2026
+7514,@azure/arm-providerhub@2.0.0,js,@azure/arm-providerhub_2.0.0,@azure/arm-providerhub,2.0.0,1789026747,09/10/2026

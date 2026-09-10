@@ -7509,3 +7509,4 @@ id,name,language,tag,package,version,date_epoch,date
 7508,"Azure.ResourceManager.NewRelicObservability,1.2.0",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0,Azure.ResourceManager.NewRelicObservability,1.2.0,1788947772,09/09/2026
 7509,"Azure.ResourceManager.MachineLearning,1.3.0",dotnet,Azure.ResourceManager.MachineLearning_1.3.0,Azure.ResourceManager.MachineLearning,1.3.0,1788938049,09/09/2026
 7510,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.2.0,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.2.0,sdk/resourcemanager/dataprotection/armdataprotection,v4.2.0,1789027677,09/10/2026
+7511,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0-beta.3,go,sdk/resourcemanager/search/armsearch/v2.0.0-beta.3,sdk/resourcemanager/search/armsearch,v2.0.0-beta.3,1788974332,09/09/2026

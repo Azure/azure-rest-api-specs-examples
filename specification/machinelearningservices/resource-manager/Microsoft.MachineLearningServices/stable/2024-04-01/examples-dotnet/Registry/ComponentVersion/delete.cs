@@ -23,10 +23,10 @@ string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
 string componentName = "string";
 string version = "string";
-ResourceIdentifier machineLearninRegistryComponentVersionResourceId = MachineLearninRegistryComponentVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName, version);
-MachineLearninRegistryComponentVersionResource machineLearninRegistryComponentVersion = client.GetMachineLearninRegistryComponentVersionResource(machineLearninRegistryComponentVersionResourceId);
+ResourceIdentifier machineLearningRegistryComponentVersionResourceId = MachineLearningRegistryComponentVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName, version);
+MachineLearningRegistryComponentVersionResource machineLearningRegistryComponentVersion = client.GetMachineLearningRegistryComponentVersionResource(machineLearningRegistryComponentVersionResourceId);
 
 // invoke the operation
-await machineLearninRegistryComponentVersion.DeleteAsync(WaitUntil.Completed);
+await machineLearningRegistryComponentVersion.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

@@ -22,16 +22,16 @@ string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
 string componentName = "string";
-ResourceIdentifier machineLearninRegistryComponentContainerResourceId = MachineLearninRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
-MachineLearninRegistryComponentContainerResource machineLearninRegistryComponentContainer = client.GetMachineLearninRegistryComponentContainerResource(machineLearninRegistryComponentContainerResourceId);
+ResourceIdentifier machineLearningRegistryComponentContainerResourceId = MachineLearningRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
+MachineLearningRegistryComponentContainerResource machineLearningRegistryComponentContainer = client.GetMachineLearningRegistryComponentContainerResource(machineLearningRegistryComponentContainerResourceId);
 
-// get the collection of this MachineLearninRegistryComponentVersionResource
-MachineLearninRegistryComponentVersionCollection collection = machineLearninRegistryComponentContainer.GetMachineLearninRegistryComponentVersions();
+// get the collection of this MachineLearningRegistryComponentVersionResource
+MachineLearningRegistryComponentVersionCollection collection = machineLearningRegistryComponentContainer.GetMachineLearningRegistryComponentVersions();
 
 // invoke the operation and iterate over the result
 string orderBy = "string";
 int? top = 1;
-await foreach (MachineLearninRegistryComponentVersionResource item in collection.GetAllAsync(orderBy: orderBy, top: top))
+await foreach (MachineLearningRegistryComponentVersionResource item in collection.GetAllAsync(orderBy: orderBy, top: top))
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

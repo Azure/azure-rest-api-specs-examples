@@ -21,8 +21,8 @@ string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
 string componentName = "string";
-ResourceIdentifier machineLearninRegistryComponentContainerResourceId = MachineLearninRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
-MachineLearninRegistryComponentContainerResource machineLearninRegistryComponentContainer = client.GetMachineLearninRegistryComponentContainerResource(machineLearninRegistryComponentContainerResourceId);
+ResourceIdentifier machineLearningRegistryComponentContainerResourceId = MachineLearningRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
+MachineLearningRegistryComponentContainerResource machineLearningRegistryComponentContainer = client.GetMachineLearningRegistryComponentContainerResource(machineLearningRegistryComponentContainerResourceId);
 
 // invoke the operation
 MachineLearningComponentContainerData data = new MachineLearningComponentContainerData(new MachineLearningComponentContainerProperties
@@ -37,8 +37,8 @@ MachineLearningComponentContainerData data = new MachineLearningComponentContain
     ["string"] = "string"
     },
 });
-ArmOperation<MachineLearninRegistryComponentContainerResource> lro = await machineLearninRegistryComponentContainer.UpdateAsync(WaitUntil.Completed, data);
-MachineLearninRegistryComponentContainerResource result = lro.Value;
+ArmOperation<MachineLearningRegistryComponentContainerResource> lro = await machineLearningRegistryComponentContainer.UpdateAsync(WaitUntil.Completed, data);
+MachineLearningRegistryComponentContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance

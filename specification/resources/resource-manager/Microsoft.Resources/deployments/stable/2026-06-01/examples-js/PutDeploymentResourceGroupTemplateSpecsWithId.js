@@ -1,0 +1,24 @@
+const { DeploymentsClient } = require("@azure/arm-resourcesdeployments");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to you can provide the template and parameters directly in the request or link to JSON files.
+ *
+ * @summary you can provide the template and parameters directly in the request or link to JSON files.
+ * x-ms-original-file: 2026-06-01/PutDeploymentResourceGroupTemplateSpecsWithId.json
+ */
+async function createADeploymentThatWillDeployATemplateSpecWithTheGivenResourceId() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000001";
+  const client = new DeploymentsClient(credential, subscriptionId);
+  const result = await client.deployments.createOrUpdate("my-resource-group", "my-deployment", {
+    properties: {
+      mode: "Incremental",
+      parameters: {},
+      templateLink: {
+        id: "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1",
+      },
+    },
+  });
+  console.log(result);
+}

@@ -7500,3 +7500,11 @@ id,name,language,tag,package,version,date_epoch,date
 7499,"Azure.ResourceManager.NetApp,1.19.0-beta.2",dotnet,Azure.ResourceManager.NetApp_1.19.0-beta.2,Azure.ResourceManager.NetApp,1.19.0-beta.2,1788179847,08/31/2026
 7500,azure-mgmt-dataprotection@2.2.0,python,azure-mgmt-dataprotection_2.2.0,azure-mgmt-dataprotection,2.2.0,1788766752,09/07/2026
 7501,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices_1.2.0,com.azure.resourcemanager+azure-resourcemanager-deviceprovisioningservices,1.2.0,1788761710,09/07/2026
+7502,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeployments/v3@v3.0.0,go,sdk/resourcemanager/resources/armdeployments/v3.0.0,sdk/resourcemanager/resources/armdeployments,v3.0.0,1788933390,09/09/2026
+7503,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.3.0,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.3.0,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.3.0,1788890239,09/08/2026
+7504,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.1.0-beta.1,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.1.0-beta.1,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.1.0-beta.1,1788880223,09/08/2026
+7505,@azure/arm-deviceprovisioningservices@6.0.0,js,@azure/arm-deviceprovisioningservices_6.0.0,@azure/arm-deviceprovisioningservices,6.0.0,1788933561,09/09/2026
+7506,@azure/arm-resourcesdeployments@2.0.0,js,@azure/arm-resourcesdeployments_2.0.0,@azure/arm-resourcesdeployments,2.0.0,1788925657,09/09/2026
+7507,azure-mgmt-containerservicefleet@4.1.0b1,python,azure-mgmt-containerservicefleet_4.1.0b1,azure-mgmt-containerservicefleet,4.1.0b1,1788882882,09/08/2026
+7508,"Azure.ResourceManager.NewRelicObservability,1.2.0",dotnet,Azure.ResourceManager.NewRelicObservability_1.2.0,Azure.ResourceManager.NewRelicObservability,1.2.0,1788947772,09/09/2026
+7509,"Azure.ResourceManager.MachineLearning,1.3.0",dotnet,Azure.ResourceManager.MachineLearning_1.3.0,Azure.ResourceManager.MachineLearning,1.3.0,1788938049,09/09/2026

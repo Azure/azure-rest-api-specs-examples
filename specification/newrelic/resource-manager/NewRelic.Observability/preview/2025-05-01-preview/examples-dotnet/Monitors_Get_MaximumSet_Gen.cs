@@ -6,7 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NewRelicObservability.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.NewRelicObservability;
 
 // Generated from example definition: specification/newrelic/resource-manager/NewRelic.Observability/preview/2025-05-01-preview/examples/Monitors_Get_MaximumSet_Gen.json
@@ -17,30 +17,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this NewRelicMonitorResource created on azure
+// for more information of creating NewRelicMonitorResource, please refer to the document of NewRelicMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rgNewRelic";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this NewRelicMonitorResource
-NewRelicMonitorResourceCollection collection = resourceGroupResource.GetNewRelicMonitorResources();
+string monitorName = "cdlymktqw";
+ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
 
 // invoke the operation
-string monitorName = "cdlymktqw";
-NullableResponse<NewRelicMonitorResource> response = await collection.GetIfExistsAsync(monitorName);
-NewRelicMonitorResource result = response.HasValue ? response.Value : null;
+NewRelicMonitorResource result = await newRelicMonitorResource.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NewRelicMonitorResourceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NewRelicMonitorResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

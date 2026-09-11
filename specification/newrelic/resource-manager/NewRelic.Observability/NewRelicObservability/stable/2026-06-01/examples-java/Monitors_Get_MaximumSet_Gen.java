@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Monitors GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/Monitors_Get_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Monitors_Get_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to NewRelicObservabilityManager.
+     */
+    public static void
+        monitorsGetMaximumSetGen(com.azure.resourcemanager.newrelicobservability.NewRelicObservabilityManager manager) {
+        manager.monitors().getByResourceGroupWithResponse("rgNewRelic", "cdlymktqw", com.azure.core.util.Context.NONE);
+    }
+}

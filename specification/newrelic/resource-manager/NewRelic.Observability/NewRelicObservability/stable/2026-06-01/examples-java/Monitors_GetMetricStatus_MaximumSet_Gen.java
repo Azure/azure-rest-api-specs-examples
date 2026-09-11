@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.newrelicobservability.models.MetricsStatusRequest;
+import java.util.Arrays;
+
+/**
+ * Samples for Monitors GetMetricStatus.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/Monitors_GetMetricStatus_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Monitors_GetMetricStatus_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to NewRelicObservabilityManager.
+     */
+    public static void monitorsGetMetricStatusMaximumSetGen(
+        com.azure.resourcemanager.newrelicobservability.NewRelicObservabilityManager manager) {
+        manager.monitors().getMetricStatusWithResponse("rgNewRelic", "fhcjxnxumkdlgpwanewtkdnyuz",
+            new MetricsStatusRequest().withAzureResourceIds(Arrays.asList(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgNewRelic/providers/NewRelic.Observability/monitors/fhcjxnxumkdlgpwanewtkdnyuz"))
+                .withUserEmail("ruxvg@xqkmdhrnoo.hlmbpm"),
+            com.azure.core.util.Context.NONE);
+    }
+}

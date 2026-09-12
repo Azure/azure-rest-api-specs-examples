@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.relay.models.CheckNameAvailability;
+
+/**
+ * Samples for Namespaces CheckNameAvailability.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-01-01/NameSpaces/RelayNameSpaceCheckNameAvailability.json
+     */
+    /**
+     * Sample code: RelayCheckNameAvailability.
+     * 
+     * @param manager Entry point to RelayManager.
+     */
+    public static void relayCheckNameAvailability(com.azure.resourcemanager.relay.RelayManager manager) {
+        manager.namespaces().checkNameAvailabilityWithResponse(
+            new CheckNameAvailability().withName("example-RelayNamespace1321"), com.azure.core.util.Context.NONE);
+    }
+}

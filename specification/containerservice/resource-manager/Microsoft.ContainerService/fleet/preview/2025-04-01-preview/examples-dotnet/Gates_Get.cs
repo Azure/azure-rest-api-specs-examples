@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.ContainerServiceFleet.Models;
 using Azure.ResourceManager.ContainerServiceFleet;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2025-04-01-preview/examples/Gates_Get.json
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetGateResource created on azure
-// for more information of creating ContainerServiceFleetGateResource, please refer to the document of ContainerServiceFleetGateResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-string gateName = "12345678-910a-bcde-f000-000000000000";
-ResourceIdentifier containerServiceFleetGateResourceId = ContainerServiceFleetGateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, gateName);
-ContainerServiceFleetGateResource containerServiceFleetGate = client.GetContainerServiceFleetGateResource(containerServiceFleetGateResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this ContainerServiceFleetGateResource
+ContainerServiceFleetGateCollection collection = containerServiceFleet.GetContainerServiceFleetGates();
 
 // invoke the operation
-ContainerServiceFleetGateResource result = await containerServiceFleetGate.GetAsync();
+string gateName = "12345678-910a-bcde-f000-000000000000";
+NullableResponse<ContainerServiceFleetGateResource> response = await collection.GetIfExistsAsync(gateName);
+ContainerServiceFleetGateResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerServiceFleetGateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerServiceFleetGateData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

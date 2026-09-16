@@ -7547,3 +7547,4 @@ id,name,language,tag,package,version,date_epoch,date
 7546,azure-mgmt-appcontainers@5.1.0,python,azure-mgmt-appcontainers_5.1.0,azure-mgmt-appcontainers,5.1.0,1789506929,09/15/2026
 7547,azure-mgmt-mongocluster@1.3.0b1,python,azure-mgmt-mongocluster_1.3.0b1,azure-mgmt-mongocluster,1.3.0b1,1789499640,09/15/2026
 7548,azure-mgmt-avs@10.1.0,python,azure-mgmt-avs_10.1.0,azure-mgmt-avs,10.1.0,1789496484,09/15/2026
+7549,azure-mgmt-compute-bulkaction@1.0.0b4,python,azure-mgmt-compute-bulkaction_1.0.0b4,azure-mgmt-compute-bulkaction,1.0.0b4,1789484284,09/15/2026

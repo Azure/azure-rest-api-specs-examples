@@ -1,0 +1,18 @@
+
+/**
+ * Samples for SentinelOnboardingStates List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/onboardingStates/GetAllSentinelOnboardingStates.json
+     */
+    /**
+     * Sample code: Get all Sentinel onboarding states.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void
+        getAllSentinelOnboardingStates(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.sentinelOnboardingStates().listWithResponse("myRg", "myWorkspace", com.azure.core.util.Context.NONE);
+    }
+}

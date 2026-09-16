@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ContentPackageOperation Uninstall.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/contentPackages/UninstallPackage.json
+     */
+    /**
+     * Sample code: Uninstall a package from the workspace.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void
+        uninstallAPackageFromTheWorkspace(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.contentPackageOperations().uninstallWithResponse("myRg", "myWorkspace",
+            "str.azure-sentinel-solution-str", com.azure.core.util.Context.NONE);
+    }
+}

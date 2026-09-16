@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Incidents ListEntities.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/incidents/IncidentEntities/Incidents_ListEntities.json
+     */
+    /**
+     * Sample code: Incidents_ListEntities.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void
+        incidentsListEntities(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.incidents().listEntitiesWithResponse("myRg", "myWorkspace", "69a30280-6a4c-4aa7-9af0-5d63f335d600",
+            com.azure.core.util.Context.NONE);
+    }
+}

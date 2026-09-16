@@ -7542,3 +7542,4 @@ id,name,language,tag,package,version,date_epoch,date
 7541,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.3.0,go,sdk/resourcemanager/avs/armavs/v2.3.0,sdk/resourcemanager/avs/armavs,v2.3.0,1789494168,09/15/2026
 7542,@azure/arm-avs@7.2.0,js,@azure/arm-avs_7.2.0,@azure/arm-avs,7.2.0,1789529462,09/16/2026
 7543,@azure/arm-appcontainers@4.0.0,js,@azure/arm-appcontainers_4.0.0,@azure/arm-appcontainers,4.0.0,1789529430,09/16/2026
+7544,azure-mgmt-securityinsight@2.0.0b4,python,azure-mgmt-securityinsight_2.0.0b4,azure-mgmt-securityinsight,2.0.0b4,1789545478,09/16/2026

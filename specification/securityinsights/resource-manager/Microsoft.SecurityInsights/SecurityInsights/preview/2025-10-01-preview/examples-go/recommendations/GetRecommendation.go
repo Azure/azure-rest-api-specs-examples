@@ -1,0 +1,60 @@
+package armsecurityinsights_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
+)
+
+// Generated from example definition: 2025-10-01-preview/recommendations/GetRecommendation.json
+func ExampleGetClient_SingleRecommendation() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsecurityinsights.NewClientFactory("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewGetClient().SingleRecommendation(ctx, "myRg", "myWorkspace", "6d4b54eb-8684-4aa3-a156-3aa37b8014bc", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsecurityinsights.GetClientSingleRecommendationResponse{
+	// 	Recommendation: armsecurityinsights.Recommendation{
+	// 		Name: to.Ptr("ceea048e-923e-4eeb-8fcb-6cb0c06b101f"),
+	// 		Type: to.Ptr("Microsoft.SecurityInsights/Recommendations"),
+	// 		ID: to.Ptr("/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/Recommendations/ceea048e-923e-4eeb-8fcb-6cb0c06b101f"),
+	// 		Properties: &armsecurityinsights.RecommendationProperties{
+	// 			Description: to.Ptr("someText"),
+	// 			AdditionalProperties: map[string]*string{
+	// 				"someKey": to.Ptr("someValue"),
+	// 			},
+	// 			CreationTimeUTC: to.Ptr(time.Date(2022, time.February, 19, 3, 9, 3, 488839600, time.UTC)),
+	// 			LastEvaluatedTimeUTC: to.Ptr(time.Date(2022, time.February, 19, 3, 9, 3, 488839600, time.UTC)),
+	// 			LastModifiedTimeUTC: to.Ptr(time.Date(2022, time.February, 19, 3, 57, 31, 796444700, time.UTC)),
+	// 			RecommendationTypeID: to.Ptr("Swagger_Example"),
+	// 			ResourceID: to.Ptr("someId"),
+	// 			State: to.Ptr(armsecurityinsights.StateCompletedBySystem),
+	// 			Suggestions: []*armsecurityinsights.RecommendedSuggestion{
+	// 				{
+	// 					Description: to.Ptr("someText"),
+	// 					Action: to.Ptr("someText"),
+	// 					AdditionalProperties: map[string]*string{
+	// 						"someKey": to.Ptr("someValue"),
+	// 					},
+	// 					SuggestionTypeID: to.Ptr("ThreatIntelligence_Example_Suggestion_Example"),
+	// 					Title: to.Ptr("someText"),
+	// 				},
+	// 			},
+	// 			Title: to.Ptr("someText"),
+	// 		},
+	// 	},
+	// }
+}

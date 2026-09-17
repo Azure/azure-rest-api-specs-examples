@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Incidents ListAlerts.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/incidents/IncidentAlerts/Incidents_ListAlerts.json
+     */
+    /**
+     * Sample code: Incidents_ListAlerts.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void incidentsListAlerts(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.incidents().listAlertsWithResponse("myRg", "myWorkspace", "69a30280-6a4c-4aa7-9af0-5d63f335d600",
+            com.azure.core.util.Context.NONE);
+    }
+}

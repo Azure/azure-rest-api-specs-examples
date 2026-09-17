@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.securityinsights.models.EntityQueryTemplateKind;
+
+/**
+ * Samples for EntityQueries List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/entityQueries/GetEntityQueries.json
+     */
+    /**
+     * Sample code: Get all entity queries.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void getAllEntityQueries(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.entityQueries().list("myRg", "myWorkspace", EntityQueryTemplateKind.EXPANSION,
+            com.azure.core.util.Context.NONE);
+    }
+}

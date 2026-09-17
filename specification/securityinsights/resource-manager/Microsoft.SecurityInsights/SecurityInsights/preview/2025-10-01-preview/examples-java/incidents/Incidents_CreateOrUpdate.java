@@ -1,0 +1,33 @@
+
+import com.azure.resourcemanager.securityinsights.models.IncidentClassification;
+import com.azure.resourcemanager.securityinsights.models.IncidentClassificationReason;
+import com.azure.resourcemanager.securityinsights.models.IncidentOwnerInfo;
+import com.azure.resourcemanager.securityinsights.models.IncidentSeverity;
+import com.azure.resourcemanager.securityinsights.models.IncidentStatus;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for Incidents CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/incidents/Incidents_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Incidents_CreateOrUpdate.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void
+        incidentsCreateOrUpdate(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.incidents().define("73e01a99-5cd7-4139-a149-9f2736ff2ab5").withExistingWorkspace("myRg", "myWorkspace")
+            .withEtag("\"0300bf09-0000-0000-0000-5c37296e0000\"").withTitle("My incident")
+            .withDescription("This is a demo incident").withSeverity(IncidentSeverity.HIGH)
+            .withStatus(IncidentStatus.CLOSED).withClassification(IncidentClassification.FALSE_POSITIVE)
+            .withClassificationReason(IncidentClassificationReason.INACCURATE_DATA)
+            .withClassificationComment("Not a malicious activity")
+            .withOwner(new IncidentOwnerInfo().withObjectId("2046feea-040d-4a46-9e2b-91c2941bfa70"))
+            .withFirstActivityTimeUtc(OffsetDateTime.parse("2019-01-01T13:00:30Z"))
+            .withLastActivityTimeUtc(OffsetDateTime.parse("2019-01-01T13:05:30Z")).create();
+    }
+}

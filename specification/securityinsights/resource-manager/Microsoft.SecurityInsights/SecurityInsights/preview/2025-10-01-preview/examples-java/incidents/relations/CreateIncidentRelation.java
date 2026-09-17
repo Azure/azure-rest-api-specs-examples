@@ -1,0 +1,22 @@
+
+/**
+ * Samples for IncidentRelations CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/incidents/relations/CreateIncidentRelation.json
+     */
+    /**
+     * Sample code: Creates or updates a relation for a given incident.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void createsOrUpdatesARelationForAGivenIncident(
+        com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.incidentRelations().define("4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014")
+            .withExistingIncident("myRg", "myWorkspace", "afbd324f-6c48-459c-8710-8d1e1cd03812")
+            .withRelatedResourceId(
+                "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalIinsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096")
+            .create();
+    }
+}

@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.securityinsights.models.AssignmentItem;
+import java.util.Arrays;
+
+/**
+ * Samples for WorkspaceManagerAssignments CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/workspaceManagerAssignments/CreateOrUpdateWorkspaceManagerAssignment.json
+     */
+    /**
+     * Sample code: Creates or updates a workspace manager assignment.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void createsOrUpdatesAWorkspaceManagerAssignment(
+        com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.workspaceManagerAssignments().define("47cdc5f5-37c4-47b5-bd5f-83c84b8bdd58")
+            .withExistingWorkspace("myRg", "myWorkspace").withTargetResourceName("37207a7a-3b8a-438f-a559-c7df400e1b96")
+            .withItems(Arrays.asList(new AssignmentItem().withResourceId(
+                "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspac-es/myWorkspace/providers/Microsoft.SecurityInsights/alertRules/microsoftSecurityIncidentCreationRuleExampleOne"),
+                new AssignmentItem().withResourceId(
+                    "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspac-es/myWorkspace/providers/Microsoft.SecurityInsights/alertRules/microsoftSecurityIncidentCreationRuleExampleTwo")))
+            .create();
+    }
+}

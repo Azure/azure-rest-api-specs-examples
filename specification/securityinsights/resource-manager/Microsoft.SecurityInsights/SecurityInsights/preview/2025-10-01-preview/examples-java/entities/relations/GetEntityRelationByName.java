@@ -1,0 +1,18 @@
+
+/**
+ * Samples for EntityRelations GetRelation.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/entities/relations/GetEntityRelationByName.json
+     */
+    /**
+     * Sample code: Get an entity relation.
+     * 
+     * @param manager Entry point to SecurityInsightsManager.
+     */
+    public static void getAnEntityRelation(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
+        manager.entityRelations().getRelationWithResponse("myRg", "myWorkspace", "afbd324f-6c48-459c-8710-8d1e1cd03812",
+            "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,25 @@
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates/Updates the Pool resource.
+ *
+ * @summary creates/Updates the Pool resource.
+ * x-ms-original-file: 2026-01-01/IpamPools_CreateWithAllocationBounds.json
+ */
+async function createOrUpdateThePoolResourceWithAllocationSizeBounds() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "11111111-1111-1111-1111-111111111111";
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const result = await client.ipamPools.create("rg1", "TestNetworkManager", "TestPool", {
+    location: "eastus",
+    properties: {
+      description: "Test description.",
+      addressPrefixes: ["10.0.0.0/24"],
+      maxAllocationSize: "256",
+      minAllocationSize: "16",
+      parentPoolName: "",
+    },
+  });
+  console.log(result);
+}

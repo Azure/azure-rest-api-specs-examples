@@ -7553,3 +7553,4 @@ id,name,language,tag,package,version,date_epoch,date
 7552,@azure/arm-network@39.0.0,js,@azure/arm-network_39.0.0,@azure/arm-network,39.0.0,1789640544,09/17/2026
 7553,@azure/arm-securityinsight@1.0.0-beta.9,js,@azure/arm-securityinsight_1.0.0-beta.9,@azure/arm-securityinsight,1.0.0-beta.9,1789627474,09/17/2026
 7554,@azure/arm-sql@12.0.0-beta.1,js,@azure/arm-sql_12.0.0-beta.1,@azure/arm-sql,12.0.0-beta.1,1789627031,09/17/2026
+7555,@azure/arm-mongocluster@1.3.0-beta.1,js,@azure/arm-mongocluster_1.3.0-beta.1,@azure/arm-mongocluster,1.3.0-beta.1,1789607896,09/17/2026

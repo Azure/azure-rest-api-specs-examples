@@ -7557,3 +7557,4 @@ id,name,language,tag,package,version,date_epoch,date
 7556,@azure/arm-relay@4.1.0,js,@azure/arm-relay_4.1.0,@azure/arm-relay,4.1.0,1789593807,09/16/2026
 7557,azure-mgmt-astro@1.0.0b2,python,azure-mgmt-astro_1.0.0b2,azure-mgmt-astro,1.0.0b2,1789639365,09/17/2026
 7558,com.azure.resourcemanager:azure-resourcemanager-network:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.61.0,com.azure.resourcemanager+azure-resourcemanager-network,2.61.0,1789637927,09/17/2026
+7559,com.azure.resourcemanager:azure-resourcemanager-containerserviceaimanager:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-containerserviceaimanager,1.0.0-beta.2,1789617509,09/17/2026

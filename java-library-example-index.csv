@@ -7555,3 +7555,4 @@ id,name,language,tag,package,version,date_epoch,date
 7554,@azure/arm-sql@12.0.0-beta.1,js,@azure/arm-sql_12.0.0-beta.1,@azure/arm-sql,12.0.0-beta.1,1789627031,09/17/2026
 7555,@azure/arm-mongocluster@1.3.0-beta.1,js,@azure/arm-mongocluster_1.3.0-beta.1,@azure/arm-mongocluster,1.3.0-beta.1,1789607896,09/17/2026
 7556,@azure/arm-relay@4.1.0,js,@azure/arm-relay_4.1.0,@azure/arm-relay,4.1.0,1789593807,09/16/2026
+7557,azure-mgmt-astro@1.0.0b2,python,azure-mgmt-astro_1.0.0b2,azure-mgmt-astro,1.0.0b2,1789639365,09/17/2026

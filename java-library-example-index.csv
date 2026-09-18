@@ -7570,3 +7570,4 @@ id,name,language,tag,package,version,date_epoch,date
 7569,azure-mgmt-network@33.0.0,python,azure-mgmt-network_33.0.0,azure-mgmt-network,33.0.0,1789710489,09/18/2026
 7570,azure-mgmt-fabric@1.1.0b2,python,azure-mgmt-fabric_1.1.0b2,azure-mgmt-fabric,1.1.0b2,1789666959,09/17/2026
 7571,com.azure.resourcemanager:azure-resourcemanager-search:2.55.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-search_2.55.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-search,2.55.0-beta.2,1789701348,09/18/2026
+7572,com.azure.resourcemanager:azure-resourcemanager-fabric:1.1.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-fabric_1.1.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-fabric,1.1.0-beta.2,1789669691,09/17/2026

@@ -7568,3 +7568,4 @@ id,name,language,tag,package,version,date_epoch,date
 7567,@azure/arm-fabric@2.0.0-beta.1,js,@azure/arm-fabric_2.0.0-beta.1,@azure/arm-fabric,2.0.0-beta.1,1789695457,09/18/2026
 7568,@azure/arm-policy@8.0.0,js,@azure/arm-policy_8.0.0,@azure/arm-policy,8.0.0,1789673802,09/17/2026
 7569,azure-mgmt-network@33.0.0,python,azure-mgmt-network_33.0.0,azure-mgmt-network,33.0.0,1789710489,09/18/2026
+7570,azure-mgmt-fabric@1.1.0b2,python,azure-mgmt-fabric_1.1.0b2,azure-mgmt-fabric,1.1.0b2,1789666959,09/17/2026

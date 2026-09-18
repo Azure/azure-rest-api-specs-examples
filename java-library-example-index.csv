@@ -7564,3 +7564,4 @@ id,name,language,tag,package,version,date_epoch,date
 7563,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager@v0.2.0,go,sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager/v0.2.0,sdk/resourcemanager/containerserviceaimanager/armcontainerserviceaimanager,v0.2.0,1789699487,09/18/2026
 7564,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy/v2@v2.0.0,go,sdk/resourcemanager/resources/armpolicy/v2.0.0,sdk/resourcemanager/resources/armpolicy,v2.0.0,1789674039,09/17/2026
 7565,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fabric/armfabric@v1.1.0-beta.2,go,sdk/resourcemanager/fabric/armfabric/v1.1.0-beta.2,sdk/resourcemanager/fabric/armfabric,v1.1.0-beta.2,1789665348,09/17/2026
+7566,@azure/arm-containerserviceaimanager@1.0.0-beta.2,js,@azure/arm-containerserviceaimanager_1.0.0-beta.2,@azure/arm-containerserviceaimanager,1.0.0-beta.2,1789706127,09/18/2026

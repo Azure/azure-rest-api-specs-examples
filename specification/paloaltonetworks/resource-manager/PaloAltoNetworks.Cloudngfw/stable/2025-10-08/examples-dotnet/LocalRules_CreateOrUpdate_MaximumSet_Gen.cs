@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LocalRulestackResource created on azure
-// for more information of creating LocalRulestackResource, please refer to the document of LocalRulestackResource
+// this example assumes you already have this LocalRulestackRuleResource created on azure
+// for more information of creating LocalRulestackRuleResource, please refer to the document of LocalRulestackRuleResource
 string subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
 string resourceGroupName = "firewall-rg";
 string localRulestackName = "lrs1";
-ResourceIdentifier localRulestackResourceId = LocalRulestackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName);
-LocalRulestackResource localRulestack = client.GetLocalRulestackResource(localRulestackResourceId);
-
-// get the collection of this LocalRulestackRuleResource
-LocalRulestackRuleCollection collection = localRulestack.GetLocalRulestackRules();
+string priority = "1";
+ResourceIdentifier localRulestackRuleResourceId = LocalRulestackRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName, priority);
+LocalRulestackRuleResource localRulestackRule = client.GetLocalRulestackRuleResource(localRulestackRuleResourceId);
 
 // invoke the operation
-string priority = "1";
 LocalRulestackRuleData data = new LocalRulestackRuleData("localRule1")
 {
     ETag = new ETag("c18e6eef-ba3e-49ee-8a85-2b36c863a9d0"),
@@ -61,7 +58,7 @@ LocalRulestackRuleData data = new LocalRulestackRuleData("localRule1")
     DecryptionRuleType = DecryptionRuleType.SslOutboundInspection,
     Tags = { new RulestackTagInfo("keyName", "value") },
 };
-ArmOperation<LocalRulestackRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, priority, data);
+ArmOperation<LocalRulestackRuleResource> lro = await localRulestackRule.UpdateAsync(WaitUntil.Completed, data);
 LocalRulestackRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

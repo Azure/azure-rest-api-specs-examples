@@ -1,0 +1,18 @@
+
+/**
+ * Samples for JavaComponents List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/JavaComponents_List_ServiceBind.json
+     */
+    /**
+     * Sample code: List Java Components with ServiceBinds.
+     * 
+     * @param manager Entry point to ContainerAppsApiManager.
+     */
+    public static void
+        listJavaComponentsWithServiceBinds(com.azure.resourcemanager.appcontainers.ContainerAppsApiManager manager) {
+        manager.javaComponents().list("examplerg", "myenvironment", com.azure.core.util.Context.NONE);
+    }
+}

@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayNamespaceResource created on azure
-// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
+// this example assumes you already have this RelayHybridConnectionResource created on azure
+// for more information of creating RelayHybridConnectionResource, please refer to the document of RelayHybridConnectionResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-01";
-ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
-
-// get the collection of this RelayHybridConnectionResource
-RelayHybridConnectionCollection collection = relayNamespace.GetRelayHybridConnections();
+string hybridConnectionName = "example-Relay-Hybrid-01";
+ResourceIdentifier relayHybridConnectionResourceId = RelayHybridConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, hybridConnectionName);
+RelayHybridConnectionResource relayHybridConnection = client.GetRelayHybridConnectionResource(relayHybridConnectionResourceId);
 
 // invoke the operation
-string hybridConnectionName = "example-Relay-Hybrid-01";
-NullableResponse<RelayHybridConnectionResource> response = await collection.GetIfExistsAsync(hybridConnectionName);
-RelayHybridConnectionResource result = response.HasValue ? response.Value : null;
+RelayHybridConnectionResource result = await relayHybridConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    RelayHybridConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RelayHybridConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ContainerApps Stop.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/ContainerApps_Stop.json
+     */
+    /**
+     * Sample code: Stop Container App.
+     * 
+     * @param manager Entry point to ContainerAppsApiManager.
+     */
+    public static void stopContainerApp(com.azure.resourcemanager.appcontainers.ContainerAppsApiManager manager) {
+        manager.containerApps().stop("rg", "testWorkerApp0", com.azure.core.util.Context.NONE);
+    }
+}

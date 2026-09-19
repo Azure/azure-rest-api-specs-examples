@@ -7578,3 +7578,4 @@ id,name,language,tag,package,version,date_epoch,date
 7577,"Azure.ResourceManager.Relay,1.4.0-beta.1",dotnet,Azure.ResourceManager.Relay_1.4.0-beta.1,Azure.ResourceManager.Relay,1.4.0-beta.1,1789691986,09/18/2026
 7578,"Azure.ResourceManager.MongoCluster,1.2.0-beta.1",dotnet,Azure.ResourceManager.MongoCluster_1.2.0-beta.1,Azure.ResourceManager.MongoCluster,1.2.0-beta.1,1789652205,09/17/2026
 7579,"Azure.ResourceManager.StorageMover,1.5.0",dotnet,Azure.ResourceManager.StorageMover_1.5.0,Azure.ResourceManager.StorageMover,1.5.0,1789633166,09/17/2026
+7580,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.4",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.4,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.4,1789622346,09/17/2026

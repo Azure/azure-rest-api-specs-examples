@@ -15,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalRulestackResource created on azure
-// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
+// this example assumes you already have this GlobalRulestackCertificateObjectResource created on azure
+// for more information of creating GlobalRulestackCertificateObjectResource, please refer to the document of GlobalRulestackCertificateObjectResource
 string globalRulestackName = "praval";
-ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
-GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
-
-// get the collection of this GlobalRulestackCertificateObjectResource
-GlobalRulestackCertificateObjectCollection collection = globalRulestack.GetGlobalRulestackCertificateObjects();
+string name = "armid1";
+ResourceIdentifier globalRulestackCertificateObjectResourceId = GlobalRulestackCertificateObjectResource.CreateResourceIdentifier(globalRulestackName, name);
+GlobalRulestackCertificateObjectResource globalRulestackCertificateObject = client.GetGlobalRulestackCertificateObjectResource(globalRulestackCertificateObjectResourceId);
 
 // invoke the operation
-string name = "armid1";
 GlobalRulestackCertificateObjectData data = new GlobalRulestackCertificateObjectData(FirewallBooleanType.True)
 {
     CertificateSignerResourceId = "",
@@ -33,7 +30,7 @@ GlobalRulestackCertificateObjectData data = new GlobalRulestackCertificateObject
     Description = "description",
     ETag = new ETag("2bf4a339-294d-4c25-b0b2-ef649e9f5c27"),
 };
-ArmOperation<GlobalRulestackCertificateObjectResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<GlobalRulestackCertificateObjectResource> lro = await globalRulestackCertificateObject.UpdateAsync(WaitUntil.Completed, data);
 GlobalRulestackCertificateObjectResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

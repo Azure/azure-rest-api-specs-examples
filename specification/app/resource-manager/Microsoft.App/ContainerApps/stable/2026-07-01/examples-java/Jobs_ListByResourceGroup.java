@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Jobs ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Jobs_ListByResourceGroup.json
+     */
+    /**
+     * Sample code: List Container Apps Jobs by resource group.
+     * 
+     * @param manager Entry point to ContainerAppsApiManager.
+     */
+    public static void
+        listContainerAppsJobsByResourceGroup(com.azure.resourcemanager.appcontainers.ContainerAppsApiManager manager) {
+        manager.jobs().listByResourceGroup("rg", com.azure.core.util.Context.NONE);
+    }
+}

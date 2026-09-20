@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MongoClusterPrivateEndpointConnectionResource created on azure
-// for more information of creating MongoClusterPrivateEndpointConnectionResource, please refer to the document of MongoClusterPrivateEndpointConnectionResource
+// this example assumes you already have this MongoClusterResource created on azure
+// for more information of creating MongoClusterResource, please refer to the document of MongoClusterResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string mongoClusterName = "myMongoCluster";
-string privateEndpointConnectionName = "pecTest";
-ResourceIdentifier mongoClusterPrivateEndpointConnectionResourceId = MongoClusterPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, mongoClusterName, privateEndpointConnectionName);
-MongoClusterPrivateEndpointConnectionResource mongoClusterPrivateEndpointConnectionResource = client.GetMongoClusterPrivateEndpointConnectionResource(mongoClusterPrivateEndpointConnectionResourceId);
+ResourceIdentifier mongoClusterResourceId = MongoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, mongoClusterName);
+MongoClusterResource mongoCluster = client.GetMongoClusterResource(mongoClusterResourceId);
+
+// get the collection of this MongoClusterPrivateEndpointConnectionResource
+MongoClusterPrivateEndpointConnectionResourceCollection collection = mongoCluster.GetMongoClusterPrivateEndpointConnectionResources();
 
 // invoke the operation
+string privateEndpointConnectionName = "pecTest";
 MongoClusterPrivateEndpointConnectionResourceData data = new MongoClusterPrivateEndpointConnectionResourceData
 {
     Properties = new MongoClusterPrivateEndpointConnectionProperties(new MongoClusterPrivateLinkServiceConnectionState
@@ -33,7 +36,7 @@ MongoClusterPrivateEndpointConnectionResourceData data = new MongoClusterPrivate
         Description = "Auto-Approved",
     }),
 };
-ArmOperation<MongoClusterPrivateEndpointConnectionResource> lro = await mongoClusterPrivateEndpointConnectionResource.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MongoClusterPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 MongoClusterPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

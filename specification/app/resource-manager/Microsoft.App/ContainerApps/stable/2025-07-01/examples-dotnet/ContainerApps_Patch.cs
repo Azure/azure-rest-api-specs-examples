@@ -54,7 +54,7 @@ ContainerAppData data = new ContainerAppData(new AzureLocation("East US"))
             {
             Description = "Allowing all IP's within the subnet below to access containerapp",
             }},
-            StickySessionsAffinity = Affinity.Sticky,
+            StickySessionAffinity = StickySessionAffinity.Sticky,
         },
         Dapr = new ContainerAppDaprConfiguration
         {

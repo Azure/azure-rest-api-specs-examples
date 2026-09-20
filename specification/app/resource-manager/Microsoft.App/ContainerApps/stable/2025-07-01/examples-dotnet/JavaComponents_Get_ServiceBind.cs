@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this JavaComponentResource created on azure
-// for more information of creating JavaComponentResource, please refer to the document of JavaComponentResource
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string environmentName = "myenvironment";
-string name = "myjavacomponent";
-ResourceIdentifier javaComponentResourceId = JavaComponentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, name);
-JavaComponentResource javaComponent = client.GetJavaComponentResource(javaComponentResourceId);
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
+
+// get the collection of this JavaComponentResource
+JavaComponentCollection collection = containerAppManagedEnvironment.GetJavaComponents();
 
 // invoke the operation
-JavaComponentResource result = await javaComponent.GetAsync();
+string name = "myjavacomponent";
+NullableResponse<JavaComponentResource> response = await collection.GetIfExistsAsync(name);
+JavaComponentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-JavaComponentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    JavaComponentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

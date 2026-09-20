@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppMaintenanceConfigurationResource created on azure
-// for more information of creating ContainerAppMaintenanceConfigurationResource, please refer to the document of ContainerAppMaintenanceConfigurationResource
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "rg1";
 string environmentName = "managedEnv";
-string configName = "default";
-ResourceIdentifier containerAppMaintenanceConfigurationResourceId = ContainerAppMaintenanceConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, configName);
-ContainerAppMaintenanceConfigurationResource containerAppMaintenanceConfiguration = client.GetContainerAppMaintenanceConfigurationResource(containerAppMaintenanceConfigurationResourceId);
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
+
+// get the collection of this ContainerAppMaintenanceConfigurationResource
+ContainerAppMaintenanceConfigurationCollection collection = containerAppManagedEnvironment.GetContainerAppMaintenanceConfigurations();
 
 // invoke the operation
-ContainerAppMaintenanceConfigurationResource result = await containerAppMaintenanceConfiguration.GetAsync();
+string configName = "default";
+NullableResponse<ContainerAppMaintenanceConfigurationResource> response = await collection.GetIfExistsAsync(configName);
+ContainerAppMaintenanceConfigurationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerAppMaintenanceConfigurationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerAppMaintenanceConfigurationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

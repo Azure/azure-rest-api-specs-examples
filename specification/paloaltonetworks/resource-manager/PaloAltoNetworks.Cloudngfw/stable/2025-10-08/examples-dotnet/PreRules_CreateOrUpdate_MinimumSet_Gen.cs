@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PreRulestackRuleResource created on azure
-// for more information of creating PreRulestackRuleResource, please refer to the document of PreRulestackRuleResource
+// this example assumes you already have this GlobalRulestackResource created on azure
+// for more information of creating GlobalRulestackResource, please refer to the document of GlobalRulestackResource
 string globalRulestackName = "lrs1";
-string priority = "1";
-ResourceIdentifier preRulestackRuleResourceId = PreRulestackRuleResource.CreateResourceIdentifier(globalRulestackName, priority);
-PreRulestackRuleResource preRulestackRule = client.GetPreRulestackRuleResource(preRulestackRuleResourceId);
+ResourceIdentifier globalRulestackResourceId = GlobalRulestackResource.CreateResourceIdentifier(globalRulestackName);
+GlobalRulestackResource globalRulestack = client.GetGlobalRulestackResource(globalRulestackResourceId);
+
+// get the collection of this PreRulestackRuleResource
+PreRulestackRuleCollection collection = globalRulestack.GetPreRulestackRules();
 
 // invoke the operation
+string priority = "1";
 PreRulestackRuleData data = new PreRulestackRuleData("preRule1");
-ArmOperation<PreRulestackRuleResource> lro = await preRulestackRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PreRulestackRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, priority, data);
 PreRulestackRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppPrivateEndpointConnectionResource created on azure
-// for more information of creating ContainerAppPrivateEndpointConnectionResource, please refer to the document of ContainerAppPrivateEndpointConnectionResource
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string environmentName = "managedEnv";
-string privateEndpointConnectionName = "jlaw-demo1";
-ResourceIdentifier containerAppPrivateEndpointConnectionResourceId = ContainerAppPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, privateEndpointConnectionName);
-ContainerAppPrivateEndpointConnectionResource containerAppPrivateEndpointConnection = client.GetContainerAppPrivateEndpointConnectionResource(containerAppPrivateEndpointConnectionResourceId);
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
+
+// get the collection of this ContainerAppPrivateEndpointConnectionResource
+ContainerAppPrivateEndpointConnectionCollection collection = containerAppManagedEnvironment.GetContainerAppPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "jlaw-demo1";
 ContainerAppPrivateEndpointConnectionData data = new ContainerAppPrivateEndpointConnectionData
 {
     ConnectionState = new ContainerAppPrivateLinkServiceConnectionState
@@ -33,7 +36,7 @@ ContainerAppPrivateEndpointConnectionData data = new ContainerAppPrivateEndpoint
         ActionsRequired = "None",
     },
 };
-ArmOperation<ContainerAppPrivateEndpointConnectionResource> lro = await containerAppPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ContainerAppPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 ContainerAppPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

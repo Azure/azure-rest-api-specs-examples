@@ -7580,3 +7580,4 @@ id,name,language,tag,package,version,date_epoch,date
 7579,"Azure.ResourceManager.StorageMover,1.5.0",dotnet,Azure.ResourceManager.StorageMover_1.5.0,Azure.ResourceManager.StorageMover,1.5.0,1789633166,09/17/2026
 7580,"Azure.ResourceManager.ContainerRegistry,1.5.0-beta.4",dotnet,Azure.ResourceManager.ContainerRegistry_1.5.0-beta.4,Azure.ResourceManager.ContainerRegistry,1.5.0-beta.4,1789622346,09/17/2026
 7581,"Azure.ResourceManager.RedisEnterprise,1.4.0-beta.2",dotnet,Azure.ResourceManager.RedisEnterprise_1.4.0-beta.2,Azure.ResourceManager.RedisEnterprise,1.4.0-beta.2,1789585733,09/16/2026
+7582,"Azure.ResourceManager.AppContainers,1.6.0",dotnet,Azure.ResourceManager.AppContainers_1.6.0,Azure.ResourceManager.AppContainers,1.6.0,1789525003,09/16/2026

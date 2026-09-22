@@ -7582,3 +7582,4 @@ id,name,language,tag,package,version,date_epoch,date
 7581,"Azure.ResourceManager.RedisEnterprise,1.4.0-beta.2",dotnet,Azure.ResourceManager.RedisEnterprise_1.4.0-beta.2,Azure.ResourceManager.RedisEnterprise,1.4.0-beta.2,1789585733,09/16/2026
 7582,"Azure.ResourceManager.AppContainers,1.6.0",dotnet,Azure.ResourceManager.AppContainers_1.6.0,Azure.ResourceManager.AppContainers,1.6.0,1789525003,09/16/2026
 7583,azure-mgmt-containerserviceaimanager@1.0.0b2,python,azure-mgmt-containerserviceaimanager_1.0.0b2,azure-mgmt-containerserviceaimanager,1.0.0b2,1789965352,09/21/2026
+7584,azure-mgmt-resource-policy@1.0.0,python,azure-mgmt-resource-policy_1.0.0,azure-mgmt-resource-policy,1.0.0,1790015415,09/21/2026

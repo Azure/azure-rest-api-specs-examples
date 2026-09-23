@@ -7584,3 +7584,4 @@ id,name,language,tag,package,version,date_epoch,date
 7583,azure-mgmt-containerserviceaimanager@1.0.0b2,python,azure-mgmt-containerserviceaimanager_1.0.0b2,azure-mgmt-containerserviceaimanager,1.0.0b2,1789965352,09/21/2026
 7584,azure-mgmt-resource-policy@1.0.0,python,azure-mgmt-resource-policy_1.0.0,azure-mgmt-resource-policy,1.0.0,1790015415,09/21/2026
 7585,com.azure.resourcemanager:azure-resourcemanager-relationships:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-relationships_1.0.0,com.azure.resourcemanager+azure-resourcemanager-relationships,1.0.0,1790046990,09/22/2026
+7586,com.azure.resourcemanager:azure-resourcemanager-sql:2.55.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.55.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-sql,2.55.0-beta.1,1790098093,09/22/2026

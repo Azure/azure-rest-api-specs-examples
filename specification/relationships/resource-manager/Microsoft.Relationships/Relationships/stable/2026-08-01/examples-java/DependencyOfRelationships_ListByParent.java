@@ -1,0 +1,20 @@
+
+/**
+ * Samples for DependencyOfRelationships ListByParent.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01/DependencyOfRelationships_ListByParent.json
+     */
+    /**
+     * Sample code: DependencyOfRelationships_ListByParent.
+     * 
+     * @param manager Entry point to RelationshipsManager.
+     */
+    public static void
+        dependencyOfRelationshipsListByParent(com.azure.resourcemanager.relationships.RelationshipsManager manager) {
+        manager.dependencyOfRelationships().listByParent(
+            "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg/providers/Microsoft.DocumentDb/databaseAccounts/test-db-account",
+            com.azure.core.util.Context.NONE);
+    }
+}

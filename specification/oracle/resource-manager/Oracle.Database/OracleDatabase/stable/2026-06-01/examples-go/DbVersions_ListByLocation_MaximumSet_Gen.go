@@ -1,0 +1,68 @@
+package armoracledatabase_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase/v3"
+)
+
+// Generated from example definition: 2026-06-01/DbVersions_ListByLocation_MaximumSet_Gen.json
+func ExampleDbVersionsClient_NewListByLocationPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armoracledatabase.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewDbVersionsClient().NewListByLocationPager("eastus", &armoracledatabase.DbVersionsClientListByLocationOptions{
+		DbSystemShape:                    to.Ptr(armoracledatabase.BaseDbSystemShapesVMStandardX86),
+		DbSystemID:                       to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/dbSystems/db1"),
+		StorageManagement:                to.Ptr(armoracledatabase.StorageManagementTypeLVM),
+		IsUpgradeSupported:               to.Ptr(true),
+		IsDatabaseSoftwareImageSupported: to.Ptr(true),
+		ShapeFamily:                      to.Ptr(armoracledatabase.ShapeFamilyTypeExadata)})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armoracledatabase.DbVersionsClientListByLocationResponse{
+		// 	DbVersionListResult: armoracledatabase.DbVersionListResult{
+		// 		Value: []*armoracledatabase.DbVersion{
+		// 			{
+		// 				Properties: &armoracledatabase.DbVersionProperties{
+		// 					Version: to.Ptr("example"),
+		// 					IsLatestForMajorVersion: to.Ptr(true),
+		// 					IsPreviewDbVersion: to.Ptr(true),
+		// 					IsUpgradeSupported: to.Ptr(true),
+		// 					SupportsPdb: to.Ptr(true),
+		// 				},
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/resources/resource1"),
+		// 				Name: to.Ptr("resource1"),
+		// 				Type: to.Ptr("tgug"),
+		// 				SystemData: &armoracledatabase.SystemData{
+		// 					CreatedBy: to.Ptr("ns"),
+		// 					CreatedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+		// 					CreatedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+		// 					LastModifiedBy: to.Ptr("example"),
+		// 					LastModifiedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+		// 				},
+		// 			},
+		// 		},
+		// 		NextLink: to.Ptr("https://microsoft.com/ajaiji"),
+		// 	},
+		// }
+	}
+}

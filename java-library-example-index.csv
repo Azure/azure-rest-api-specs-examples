@@ -7589,3 +7589,4 @@ id,name,language,tag,package,version,date_epoch,date
 7588,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase/v3@v3.0.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v3.0.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v3.0.0,1790197024,09/23/2026
 7589,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/relationships/armrelationships@v1.0.0,go,sdk/resourcemanager/relationships/armrelationships/v1.0.0,sdk/resourcemanager/relationships/armrelationships,v1.0.0,1790181764,09/23/2026
 7590,@azure/arm-storage@20.2.0,js,@azure/arm-storage_20.2.0,@azure/arm-storage,20.2.0,1790222936,09/24/2026
+7591,@azure/arm-relationships@1.0.0,js,@azure/arm-relationships_1.0.0,@azure/arm-relationships,1.0.0,1790217346,09/24/2026

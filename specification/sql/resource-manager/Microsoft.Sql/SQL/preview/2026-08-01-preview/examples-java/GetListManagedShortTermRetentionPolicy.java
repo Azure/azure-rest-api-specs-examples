@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ManagedBackupShortTermRetentionPolicies ListByDatabase.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01-preview/GetListManagedShortTermRetentionPolicy.json
+     */
+    /**
+     * Sample code: Get the short term retention policy list for the database.
+     * 
+     * @param manager Entry point to SqlServerManager.
+     */
+    public static void
+        getTheShortTermRetentionPolicyListForTheDatabase(com.azure.resourcemanager.sql.SqlServerManager manager) {
+        manager.serviceClient().getManagedBackupShortTermRetentionPolicies().listByDatabase("Default-SQL-SouthEastAsia",
+            "testsvr", "testdb", com.azure.core.util.Context.NONE);
+    }
+}

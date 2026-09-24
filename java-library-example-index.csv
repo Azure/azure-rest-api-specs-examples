@@ -7593,3 +7593,4 @@ id,name,language,tag,package,version,date_epoch,date
 7592,azure-mgmt-storage@25.2.0,python,azure-mgmt-storage_25.2.0,azure-mgmt-storage,25.2.0,1790226513,09/24/2026
 7593,azure-mgmt-search@10.0.0b2,python,azure-mgmt-search_10.0.0b2,azure-mgmt-search,10.0.0b2,1790210909,09/24/2026
 7594,azure-mgmt-oracledatabase@4.0.0,python,azure-mgmt-oracledatabase_4.0.0,azure-mgmt-oracledatabase,4.0.0,1790199131,09/23/2026
+7595,azure-mgmt-relationships@1.0.0,python,azure-mgmt-relationships_1.0.0,azure-mgmt-relationships,1.0.0,1790178861,09/23/2026

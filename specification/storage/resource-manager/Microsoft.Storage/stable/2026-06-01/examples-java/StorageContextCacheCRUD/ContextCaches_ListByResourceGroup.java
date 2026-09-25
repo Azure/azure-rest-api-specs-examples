@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ContextCaches ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01/StorageContextCacheCRUD/ContextCaches_ListByResourceGroup.json
+     */
+    /**
+     * Sample code: List Context Caches by Resource Group.
+     * 
+     * @param manager Entry point to StorageManager.
+     */
+    public static void listContextCachesByResourceGroup(com.azure.resourcemanager.storage.StorageManager manager) {
+        manager.serviceClient().getContextCaches().listByResourceGroup("testrg", com.azure.core.util.Context.NONE);
+    }
+}

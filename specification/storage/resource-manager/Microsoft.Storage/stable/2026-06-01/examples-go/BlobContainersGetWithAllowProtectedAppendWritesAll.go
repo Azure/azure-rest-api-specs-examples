@@ -1,0 +1,106 @@
+package armstorage_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage/v4"
+)
+
+// Generated from example definition: 2026-06-01/BlobContainersGetWithAllowProtectedAppendWritesAll.json
+func ExampleBlobContainersClient_Get_getBlobContainersGetWithAllowProtectedAppendWritesAll() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armstorage.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewBlobContainersClient().Get(ctx, "res9871", "sto6217", "container1634", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armstorage.BlobContainersClientGetResponse{
+	// 	BlobContainer: armstorage.BlobContainer{
+	// 		Name: to.Ptr("container1634"),
+	// 		Type: to.Ptr("Microsoft.Storage/storageAccounts/blobServices/containers"),
+	// 		Etag: to.Ptr("\"0x8D592D74CC20EBA\""),
+	// 		ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res9871/providers/Microsoft.Storage/storageAccounts/sto6217/blobServices/default/containers/container1634"),
+	// 		ContainerProperties: &armstorage.ContainerProperties{
+	// 			HasImmutabilityPolicy: to.Ptr(true),
+	// 			HasLegalHold: to.Ptr(true),
+	// 			ImmutabilityPolicy: &armstorage.ImmutabilityPolicyProperties{
+	// 				Etag: to.Ptr("\"8d592d74cb3011a\""),
+	// 				Properties: &armstorage.ImmutabilityPolicyProperty{
+	// 					AllowProtectedAppendWritesAll: to.Ptr(true),
+	// 					ImmutabilityPeriodSinceCreationInDays: to.Ptr[int32](100),
+	// 					State: to.Ptr(armstorage.ImmutabilityPolicyStateLocked),
+	// 				},
+	// 				UpdateHistory: []*armstorage.UpdateHistoryProperty{
+	// 					{
+	// 						AllowProtectedAppendWritesAll: to.Ptr(true),
+	// 						ImmutabilityPeriodSinceCreationInDays: to.Ptr[int32](3),
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 11, 431403000, time.UTC)),
+	// 						Update: to.Ptr(armstorage.ImmutabilityPolicyUpdateTypePut),
+	// 					},
+	// 					{
+	// 						AllowProtectedAppendWritesAll: to.Ptr(true),
+	// 						ImmutabilityPeriodSinceCreationInDays: to.Ptr[int32](3),
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 13, 90764100, time.UTC)),
+	// 						Update: to.Ptr(armstorage.ImmutabilityPolicyUpdateTypeLock),
+	// 					},
+	// 					{
+	// 						AllowProtectedAppendWritesAll: to.Ptr(true),
+	// 						ImmutabilityPeriodSinceCreationInDays: to.Ptr[int32](100),
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 14, 709771600, time.UTC)),
+	// 						Update: to.Ptr(armstorage.ImmutabilityPolicyUpdateTypeExtend),
+	// 					},
+	// 				},
+	// 			},
+	// 			LastModifiedTime: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 14, 0, time.UTC)),
+	// 			LeaseState: to.Ptr(armstorage.LeaseStateAvailable),
+	// 			LeaseStatus: to.Ptr(armstorage.LeaseStatusUnlocked),
+	// 			LegalHold: &armstorage.LegalHoldProperties{
+	// 				HasLegalHold: to.Ptr(true),
+	// 				ProtectedAppendWritesHistory: &armstorage.ProtectedAppendWritesHistory{
+	// 					AllowProtectedAppendWritesAll: to.Ptr(true),
+	// 					Timestamp: to.Ptr(time.Date(2022, time.September, 1, 1, 58, 44, 504448300, time.UTC)),
+	// 				},
+	// 				Tags: []*armstorage.TagProperty{
+	// 					{
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						Tag: to.Ptr("tag1"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 9, 696464300, time.UTC)),
+	// 					},
+	// 					{
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						Tag: to.Ptr("tag2"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 9, 696464300, time.UTC)),
+	// 					},
+	// 					{
+	// 						ObjectIdentifier: to.Ptr("ce7cd28a-fc25-4bf1-8fb9-e1b9833ffd4b"),
+	// 						Tag: to.Ptr("tag3"),
+	// 						TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
+	// 						Timestamp: to.Ptr(time.Date(2018, time.March, 26, 5, 6, 9, 696464300, time.UTC)),
+	// 					},
+	// 				},
+	// 			},
+	// 			PublicAccess: to.Ptr(armstorage.PublicAccessNone),
+	// 		},
+	// 	},
+	// }
+}

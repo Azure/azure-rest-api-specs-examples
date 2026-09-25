@@ -1,0 +1,143 @@
+package armoracledatabase_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase/v3"
+)
+
+// Generated from example definition: 2026-06-01/CloudExadataInfrastructures_ConfigureExascale_MaximumSet_Gen.json
+func ExampleCloudExadataInfrastructuresClient_BeginConfigureExascale() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armoracledatabase.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewCloudExadataInfrastructuresClient().BeginConfigureExascale(ctx, "rgopenapi", "resource1", armoracledatabase.ConfigureExascaleCloudExadataInfrastructureDetails{
+		TotalStorageInGbs: to.Ptr[int32](14),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armoracledatabase.CloudExadataInfrastructuresClientConfigureExascaleResponse{
+	// 	CloudExadataInfrastructure: armoracledatabase.CloudExadataInfrastructure{
+	// 		Properties: &armoracledatabase.CloudExadataInfrastructureProperties{
+	// 			ComputeCount: to.Ptr[int32](100),
+	// 			StorageCount: to.Ptr[int32](10),
+	// 			Shape: to.Ptr("EXADATA.X9M"),
+	// 			DisplayName: to.Ptr("infra 1"),
+	// 			DefinedFileSystemConfiguration: []*armoracledatabase.DefinedFileSystemConfiguration{
+	// 				{
+	// 					IsBackupPartition: to.Ptr(true),
+	// 					IsResizable: to.Ptr(true),
+	// 					MinSizeGb: to.Ptr[int32](8),
+	// 					MountPoint: to.Ptr("example"),
+	// 				},
+	// 			},
+	// 			Ocid: to.Ptr("ocid1..aaaaaa"),
+	// 			ResourceAnchorID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/resourceAnchors/anchor1"),
+	// 			TotalStorageSizeInGbs: to.Ptr[int32](1000),
+	// 			AvailableStorageSizeInGbs: to.Ptr[int32](1000),
+	// 			TimeCreated: to.Ptr("2026-04-01T10:00:00Z"),
+	// 			LifecycleDetails: to.Ptr("none"),
+	// 			MaintenanceWindow: &armoracledatabase.MaintenanceWindow{
+	// 				Preference: to.Ptr(armoracledatabase.PreferenceNoPreference),
+	// 				Months: []*armoracledatabase.Month{
+	// 					{
+	// 						Name: to.Ptr(armoracledatabase.MonthName("resource1")),
+	// 					},
+	// 				},
+	// 				WeeksOfMonth: []*int32{
+	// 					to.Ptr[int32](0),
+	// 				},
+	// 				DaysOfWeek: []*armoracledatabase.DayOfWeek{
+	// 					{
+	// 						Name: to.Ptr(armoracledatabase.DayOfWeekName("resource1")),
+	// 					},
+	// 				},
+	// 				HoursOfDay: []*int32{
+	// 					to.Ptr[int32](0),
+	// 				},
+	// 				LeadTimeInWeeks: to.Ptr[int32](3),
+	// 				PatchingMode: to.Ptr(armoracledatabase.PatchingModeRolling),
+	// 				CustomActionTimeoutInMins: to.Ptr[int32](120),
+	// 				IsCustomActionTimeoutEnabled: to.Ptr(true),
+	// 				IsMonthlyPatchingEnabled: to.Ptr(true),
+	// 			},
+	// 			EstimatedPatchingTime: &armoracledatabase.EstimatedPatchingTime{
+	// 				EstimatedDbServerPatchingTime: to.Ptr[int32](3000),
+	// 				EstimatedNetworkSwitchesPatchingTime: to.Ptr[int32](3000),
+	// 				EstimatedStorageServerPatchingTime: to.Ptr[int32](3000),
+	// 				TotalEstimatedPatchingTime: to.Ptr[int32](3000),
+	// 			},
+	// 			CustomerContacts: []*armoracledatabase.CustomerContact{
+	// 				{
+	// 					Email: to.Ptr("noreply@oracle.com"),
+	// 				},
+	// 			},
+	// 			ProvisioningState: to.Ptr(armoracledatabase.AzureResourceProvisioningStateSucceeded),
+	// 			LifecycleState: to.Ptr(armoracledatabase.CloudExadataInfrastructureLifecycleStateProvisioning),
+	// 			ProximityPlacementGroup: &armoracledatabase.ProximityPlacementGroup{
+	// 				ProximityPlacementGroupID: to.Ptr("example"),
+	// 				ProximityAnchorID: to.Ptr("example"),
+	// 				EntityTypeIntendedToUse: to.Ptr(armoracledatabase.ProximityPlacementGroupEntityTypeCloudExadataInfrastructure),
+	// 			},
+	// 			OciURL: to.Ptr("https://url"),
+	// 			CPUCount: to.Ptr[int32](10),
+	// 			MaxCPUCount: to.Ptr[int32](100),
+	// 			MemorySizeInGbs: to.Ptr[int32](100),
+	// 			MaxMemoryInGbs: to.Ptr[int32](1000),
+	// 			DbNodeStorageSizeInGbs: to.Ptr[int32](10),
+	// 			MaxDbNodeStorageSizeInGbs: to.Ptr[int32](10),
+	// 			DataStorageSizeInTbs: to.Ptr[float64](10),
+	// 			MaxDataStorageInTbs: to.Ptr[float64](1000),
+	// 			DbServerVersion: to.Ptr("19.0.0.0"),
+	// 			StorageServerVersion: to.Ptr("0.0"),
+	// 			ActivatedStorageCount: to.Ptr[int32](1),
+	// 			AdditionalStorageCount: to.Ptr[int32](1),
+	// 			LastMaintenanceRunID: to.Ptr("ocid1..aaaaa"),
+	// 			NextMaintenanceRunID: to.Ptr("ocid1..aaaaaa"),
+	// 			MonthlyDbServerVersion: to.Ptr("aaaa"),
+	// 			MonthlyStorageServerVersion: to.Ptr("aaaa"),
+	// 			DatabaseServerType: to.Ptr("example"),
+	// 			StorageServerType: to.Ptr("example"),
+	// 			ComputeModel: to.Ptr(armoracledatabase.ComputeModelECPU),
+	// 			ExascaleConfig: &armoracledatabase.ExascaleConfigDetails{
+	// 				TotalStorageInGbs: to.Ptr[int32](3),
+	// 				AvailableStorageInGbs: to.Ptr[int32](25),
+	// 			},
+	// 		},
+	// 		Location: to.Ptr("eastus"),
+	// 		Tags: map[string]*string{
+	// 		},
+	// 		Zones: []*string{
+	// 			to.Ptr("1"),
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/resources/resource1"),
+	// 		Name: to.Ptr("resource1"),
+	// 		Type: to.Ptr("Oracle.Database/resource"),
+	// 		SystemData: &armoracledatabase.SystemData{
+	// 			CreatedBy: to.Ptr("ns"),
+	// 			CreatedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+	// 			LastModifiedBy: to.Ptr("example"),
+	// 			LastModifiedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

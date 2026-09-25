@@ -1,0 +1,215 @@
+package armoracledatabase_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase/v3"
+)
+
+// Generated from example definition: 2026-06-01/AutonomousDatabases_Action_MaximumSet_Gen.json
+func ExampleAutonomousDatabasesClient_BeginAction() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armoracledatabase.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewAutonomousDatabasesClient().BeginAction(ctx, "rgopenapi", "resource1", armoracledatabase.AutonomousDatabaseLifecycleAction{
+		Action: to.Ptr(armoracledatabase.AutonomousDatabaseLifecycleActionEnumStart),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armoracledatabase.AutonomousDatabasesClientActionResponse{
+	// 	AutonomousDatabase: armoracledatabase.AutonomousDatabase{
+	// 		Properties: &armoracledatabase.AutonomousDatabaseProperties{
+	// 			DataBaseType: to.Ptr(armoracledatabase.DataBaseTypeRegular),
+	// 			DisplayName: to.Ptr("example_autonomous_databasedb1"),
+	// 			ComputeModel: to.Ptr(armoracledatabase.ComputeModelECPU),
+	// 			ComputeCount: to.Ptr[float32](2),
+	// 			DataStorageSizeInTbs: to.Ptr[int32](1),
+	// 			DbVersion: to.Ptr("18.4.0.0"),
+	// 			CharacterSet: to.Ptr("AL32UTF8"),
+	// 			NcharacterSet: to.Ptr("AL16UTF16"),
+	// 			SubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"),
+	// 			VnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Microsoft.Network/virtualNetworks/vnet1"),
+	// 			AutonomousMaintenanceScheduleType: to.Ptr(armoracledatabase.AutonomousMaintenanceScheduleTypeRegular),
+	// 			CPUCoreCount: to.Ptr[int32](1),
+	// 			CustomerContacts: []*armoracledatabase.CustomerContact{
+	// 				{
+	// 					Email: to.Ptr("example"),
+	// 				},
+	// 			},
+	// 			DataStorageSizeInGbs: to.Ptr[int32](1024),
+	// 			DbWorkload: to.Ptr(armoracledatabase.WorkloadTypeOLTP),
+	// 			IsAutoScalingEnabled: to.Ptr(true),
+	// 			IsAutoScalingForStorageEnabled: to.Ptr(true),
+	// 			PeerDbIDs: []*string{
+	// 				to.Ptr("example"),
+	// 			},
+	// 			IsLocalDataGuardEnabled: to.Ptr(true),
+	// 			IsRemoteDataGuardEnabled: to.Ptr(true),
+	// 			LocalDisasterRecoveryType: to.Ptr(armoracledatabase.DisasterRecoveryTypeAdg),
+	// 			TimeDisasterRecoveryRoleChanged: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 144000000, time.UTC)),
+	// 			RemoteDisasterRecoveryConfiguration: &armoracledatabase.DisasterRecoveryConfigurationDetails{
+	// 				DisasterRecoveryType: to.Ptr(armoracledatabase.DisasterRecoveryTypeAdg),
+	// 				TimeSnapshotStandbyEnabledTill: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 140000000, time.UTC)),
+	// 				IsSnapshotStandby: to.Ptr(true),
+	// 				IsReplicateAutomaticBackups: to.Ptr(true),
+	// 			},
+	// 			LocalStandbyDb: &armoracledatabase.AutonomousDatabaseStandbySummary{
+	// 				LagTimeInSeconds: to.Ptr[int32](29),
+	// 				LifecycleState: to.Ptr(armoracledatabase.AutonomousDatabaseLifecycleStateProvisioning),
+	// 				LifecycleDetails: to.Ptr("example"),
+	// 				TimeDataGuardRoleChanged: to.Ptr("dofkfatm"),
+	// 				TimeDisasterRecoveryRoleChanged: to.Ptr("gxz"),
+	// 			},
+	// 			FailedDataRecoveryInSeconds: to.Ptr[int32](9),
+	// 			IsMtlsConnectionRequired: to.Ptr(true),
+	// 			LicenseModel: to.Ptr(armoracledatabase.LicenseModelBringYourOwnLicense),
+	// 			LifecycleDetails: to.Ptr("success"),
+	// 			ProvisioningState: to.Ptr(armoracledatabase.AzureResourceProvisioningStateSucceeded),
+	// 			LifecycleState: to.Ptr(armoracledatabase.AutonomousDatabaseLifecycleState("Succeeded")),
+	// 			ScheduledOperationsList: []*armoracledatabase.ScheduledOperationsType{
+	// 				{
+	// 					DayOfWeek: &armoracledatabase.DayOfWeek{
+	// 						Name: to.Ptr(armoracledatabase.DayOfWeekNameMonday),
+	// 					},
+	// 					ScheduledStartTime: to.Ptr("2026-06-01T00:00:00Z"),
+	// 					ScheduledStopTime: to.Ptr("2026-06-01T00:00:00Z"),
+	// 				},
+	// 			},
+	// 			PrivateEndpointIP: to.Ptr("nqndpar"),
+	// 			PrivateEndpointLabel: to.Ptr("example"),
+	// 			OciURL: to.Ptr("https://fake"),
+	// 			TimeCreated: to.Ptr(time.Date(2024, time.January, 9, 20, 44, 9, 466000000, time.UTC)),
+	// 			TimeMaintenanceBegin: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 144000000, time.UTC)),
+	// 			TimeMaintenanceEnd: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 144000000, time.UTC)),
+	// 			ActualUsedDataStorageSizeInTbs: to.Ptr[float64](10),
+	// 			AllocatedStorageSizeInTbs: to.Ptr[float64](8),
+	// 			ApexDetails: &armoracledatabase.ApexDetailsType{
+	// 				ApexVersion: to.Ptr("example"),
+	// 				OrdsVersion: to.Ptr("example"),
+	// 			},
+	// 			AvailableUpgradeVersions: []*string{
+	// 				to.Ptr("example"),
+	// 			},
+	// 			ConnectionStrings: &armoracledatabase.ConnectionStringType{
+	// 				AllConnectionStrings: &armoracledatabase.AllConnectionStringType{
+	// 					High: to.Ptr("tcps://db_high_connection"),
+	// 					Low: to.Ptr("tcps://db_low_connection"),
+	// 					Medium: to.Ptr("tcps://db_medium_connection"),
+	// 				},
+	// 				Dedicated: to.Ptr("tcps://db_dedicated_connection"),
+	// 				High: to.Ptr("tcps://db_high_connection"),
+	// 				Low: to.Ptr("tcps://db_low_connection"),
+	// 				Medium: to.Ptr("tcps://db_medium_connection"),
+	// 				Profiles: []*armoracledatabase.ProfileType{
+	// 					{
+	// 						ConsumerGroup: to.Ptr(armoracledatabase.ConsumerGroupHigh),
+	// 						DisplayName: to.Ptr("resource1"),
+	// 						HostFormat: to.Ptr(armoracledatabase.HostFormatTypeFqdn),
+	// 						IsRegional: to.Ptr(true),
+	// 						Protocol: to.Ptr(armoracledatabase.ProtocolTypeTCP),
+	// 						SessionMode: to.Ptr(armoracledatabase.SessionModeTypeDirect),
+	// 						SyntaxFormat: to.Ptr(armoracledatabase.SyntaxFormatTypeLong),
+	// 						TLSAuthentication: to.Ptr(armoracledatabase.TLSAuthenticationTypeServer),
+	// 						Value: to.Ptr("example"),
+	// 					},
+	// 				},
+	// 			},
+	// 			ConnectionUrls: &armoracledatabase.ConnectionURLType{
+	// 				ApexURL: to.Ptr("https://example.com"),
+	// 				DatabaseTransformsURL: to.Ptr("cqqnacphflw"),
+	// 				GraphStudioURL: to.Ptr("https://example.com"),
+	// 				MachineLearningNotebookURL: to.Ptr("https://example.com"),
+	// 				MongoDbURL: to.Ptr("https://example.com"),
+	// 				OrdsURL: to.Ptr("https://example.com"),
+	// 				SQLDevWebURL: to.Ptr("https://example.com"),
+	// 			},
+	// 			DataSafeStatus: to.Ptr(armoracledatabase.DataSafeStatusTypeRegistering),
+	// 			DatabaseEdition: to.Ptr(armoracledatabase.DatabaseEditionTypeEnterpriseEdition),
+	// 			AutonomousDatabaseID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/autonomousDatabases/databasedb1"),
+	// 			InMemoryAreaInGbs: to.Ptr[int32](19),
+	// 			NextLongTermBackupTimeStamp: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 144000000, time.UTC)),
+	// 			LongTermBackupSchedule: &armoracledatabase.LongTermBackUpScheduleDetails{
+	// 				RepeatCadence: to.Ptr(armoracledatabase.RepeatCadenceTypeOneTime),
+	// 				TimeOfBackup: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+	// 				RetentionPeriodInDays: to.Ptr[int32](2202),
+	// 				IsDisabled: to.Ptr(true),
+	// 			},
+	// 			IsPreview: to.Ptr(true),
+	// 			LocalAdgAutoFailoverMaxDataLossLimit: to.Ptr[int32](2383),
+	// 			MemoryPerOracleComputeUnitInGbs: to.Ptr[int32](22),
+	// 			OpenMode: to.Ptr(armoracledatabase.OpenModeTypeReadOnly),
+	// 			OperationsInsightsStatus: to.Ptr(armoracledatabase.OperationsInsightsStatusTypeEnabling),
+	// 			PermissionLevel: to.Ptr(armoracledatabase.PermissionLevelTypeRestricted),
+	// 			PrivateEndpoint: to.Ptr("example"),
+	// 			ProvisionableCpus: []*int32{
+	// 				to.Ptr[int32](11),
+	// 			},
+	// 			Role: to.Ptr(armoracledatabase.RoleTypePrimary),
+	// 			ServiceConsoleURL: to.Ptr("https://example.com"),
+	// 			SQLWebDeveloperURL: to.Ptr("https://example.com"),
+	// 			SupportedRegionsToCloneTo: []*string{
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 				to.Ptr("example"),
+	// 			},
+	// 			TimeDataGuardRoleChanged: to.Ptr("sjpv"),
+	// 			TimeDeletionOfFreeAutonomousDatabase: to.Ptr("pntinw"),
+	// 			TimeLocalDataGuardEnabled: to.Ptr("nmofbv"),
+	// 			TimeOfLastFailover: to.Ptr("p"),
+	// 			TimeOfLastRefresh: to.Ptr("phm"),
+	// 			TimeOfLastRefreshPoint: to.Ptr("2026-06-01T00:00:00Z"),
+	// 			TimeOfLastSwitchover: to.Ptr("hawddo"),
+	// 			TimeReclamationOfFreeAutonomousDatabase: to.Ptr("2026-06-01T00:00:00Z"),
+	// 			UsedDataStorageSizeInGbs: to.Ptr[int32](20),
+	// 			UsedDataStorageSizeInTbs: to.Ptr[int32](25),
+	// 			Ocid: to.Ptr("ocid1..aaaaa"),
+	// 			BackupRetentionPeriodInDays: to.Ptr[int32](7),
+	// 			WhitelistedIPs: []*string{
+	// 				to.Ptr("1.1.1.1"),
+	// 				to.Ptr("1.1.1.0/24"),
+	// 				to.Ptr("1.1.2.25"),
+	// 			},
+	// 			Zone: to.Ptr("example"),
+	// 			BackupDestination: to.Ptr(armoracledatabase.BackupDestinationTypeOci),
+	// 			ResourceAnchorID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/resourceAnchors/anchor1"),
+	// 			NetworkAnchorID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/networkAnchors/networkanchor1"),
+	// 		},
+	// 		Location: to.Ptr("eastus"),
+	// 		Tags: map[string]*string{
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg000/providers/Oracle.Database/resources/resource1"),
+	// 		Name: to.Ptr("e"),
+	// 		Type: to.Ptr("Oracle.Database/resource"),
+	// 		SystemData: &armoracledatabase.SystemData{
+	// 			CreatedBy: to.Ptr("ns"),
+	// 			CreatedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+	// 			LastModifiedBy: to.Ptr("example"),
+	// 			LastModifiedByType: to.Ptr(armoracledatabase.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(time.Date(2026, time.July, 28, 21, 47, 8, 141000000, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

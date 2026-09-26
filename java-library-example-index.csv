@@ -7597,3 +7597,9 @@ id,name,language,tag,package,version,date_epoch,date
 7596,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-oracledatabase_1.3.0,com.azure.resourcemanager+azure-resourcemanager-oracledatabase,1.3.0,1790229639,09/24/2026
 7597,com.azure.resourcemanager:azure-resourcemanager-storage:2.58.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.58.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.58.0,1790226107,09/24/2026
 7598,@azure/arm-oracledatabase@4.0.0,js,@azure/arm-oracledatabase_4.0.0,@azure/arm-oracledatabase,4.0.0,1790263402,09/24/2026
+7599,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.4.0,go,sdk/resourcemanager/compute/armcompute/v8.4.0,sdk/resourcemanager/compute/armcompute,v8.4.0,1790352151,09/25/2026
+7600,azure-mgmt-computeworkloadmanager@1.0.0b1,python,azure-mgmt-computeworkloadmanager_1.0.0b1,azure-mgmt-computeworkloadmanager,1.0.0b1,1790369777,09/25/2026
+7601,azure-mgmt-platformvalidation@1.0.0b1,python,azure-mgmt-platformvalidation_1.0.0b1,azure-mgmt-platformvalidation,1.0.0b1,1790358116,09/25/2026
+7602,azure-mgmt-compute@38.4.0,python,azure-mgmt-compute_38.4.0,azure-mgmt-compute,38.4.0,1790354384,09/25/2026
+7603,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.0,1790356351,09/25/2026
+7604,"Azure.ResourceManager.Storage,1.8.0",dotnet,Azure.ResourceManager.Storage_1.8.0,Azure.ResourceManager.Storage,1.8.0,1790361018,09/25/2026

@@ -7597,3 +7597,4 @@ id,name,language,tag,package,version,date_epoch,date
 7596,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-oracledatabase_1.3.0,com.azure.resourcemanager+azure-resourcemanager-oracledatabase,1.3.0,1790229639,09/24/2026
 7597,com.azure.resourcemanager:azure-resourcemanager-storage:2.58.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.58.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.58.0,1790226107,09/24/2026
 7598,@azure/arm-oracledatabase@4.0.0,js,@azure/arm-oracledatabase_4.0.0,@azure/arm-oracledatabase,4.0.0,1790263402,09/24/2026
+7599,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8@v8.4.0,go,sdk/resourcemanager/compute/armcompute/v8.4.0,sdk/resourcemanager/compute/armcompute,v8.4.0,1790352151,09/25/2026

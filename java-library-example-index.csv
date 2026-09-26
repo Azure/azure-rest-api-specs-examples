@@ -7601,3 +7601,4 @@ id,name,language,tag,package,version,date_epoch,date
 7600,azure-mgmt-computeworkloadmanager@1.0.0b1,python,azure-mgmt-computeworkloadmanager_1.0.0b1,azure-mgmt-computeworkloadmanager,1.0.0b1,1790369777,09/25/2026
 7601,azure-mgmt-platformvalidation@1.0.0b1,python,azure-mgmt-platformvalidation_1.0.0b1,azure-mgmt-platformvalidation,1.0.0b1,1790358116,09/25/2026
 7602,azure-mgmt-compute@38.4.0,python,azure-mgmt-compute_38.4.0,azure-mgmt-compute,38.4.0,1790354384,09/25/2026
+7603,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.0,1790356351,09/25/2026

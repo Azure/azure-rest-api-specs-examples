@@ -7606,3 +7606,4 @@ id,name,language,tag,package,version,date_epoch,date
 7605,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.5.0,go,sdk/resourcemanager/compute/armbulkactions/v0.5.0,sdk/resourcemanager/compute/armbulkactions,v0.5.0,1790567303,09/28/2026
 7606,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/platformvalidation/armplatformvalidation@v0.1.0,go,sdk/resourcemanager/platformvalidation/armplatformvalidation/v0.1.0,sdk/resourcemanager/platformvalidation/armplatformvalidation,v0.1.0,1790662690,09/29/2026
 7607,@azure/arm-computeworkloadmanager@1.0.0-beta.1,js,@azure/arm-computeworkloadmanager_1.0.0-beta.1,@azure/arm-computeworkloadmanager,1.0.0-beta.1,1790649358,09/29/2026
+7608,azure-mgmt-secretsstoreextension@1.0.0b2,python,azure-mgmt-secretsstoreextension_1.0.0b2,azure-mgmt-secretsstoreextension,1.0.0b2,1790677476,09/29/2026

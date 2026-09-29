@@ -7608,3 +7608,4 @@ id,name,language,tag,package,version,date_epoch,date
 7607,@azure/arm-computeworkloadmanager@1.0.0-beta.1,js,@azure/arm-computeworkloadmanager_1.0.0-beta.1,@azure/arm-computeworkloadmanager,1.0.0-beta.1,1790649358,09/29/2026
 7608,azure-mgmt-secretsstoreextension@1.0.0b2,python,azure-mgmt-secretsstoreextension_1.0.0b2,azure-mgmt-secretsstoreextension,1.0.0b2,1790677476,09/29/2026
 7609,azure-mgmt-containerservice@41.7.0,python,azure-mgmt-containerservice_41.7.0,azure-mgmt-containerservice,41.7.0,1790661910,09/29/2026
+7610,azure-mgmt-computeworkloadmanager@1.0.0b2,python,azure-mgmt-computeworkloadmanager_1.0.0b2,azure-mgmt-computeworkloadmanager,1.0.0b2,1790648502,09/29/2026

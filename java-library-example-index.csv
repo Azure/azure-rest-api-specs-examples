@@ -7611,3 +7611,4 @@ id,name,language,tag,package,version,date_epoch,date
 7610,azure-mgmt-computeworkloadmanager@1.0.0b2,python,azure-mgmt-computeworkloadmanager_1.0.0b2,azure-mgmt-computeworkloadmanager,1.0.0b2,1790648502,09/29/2026
 7611,azure-mgmt-resource-templatespecs@1.0.0,python,azure-mgmt-resource-templatespecs_1.0.0,azure-mgmt-resource-templatespecs,1.0.0,1790647385,09/29/2026
 7612,azure-mgmt-resource-features@1.0.0,python,azure-mgmt-resource-features_1.0.0,azure-mgmt-resource-features,1.0.0,1790647356,09/29/2026
+7613,azure-mgmt-resource-locks@1.0.0,python,azure-mgmt-resource-locks_1.0.0,azure-mgmt-resource-locks,1.0.0,1790647303,09/29/2026

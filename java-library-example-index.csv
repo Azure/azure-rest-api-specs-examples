@@ -7604,3 +7604,4 @@ id,name,language,tag,package,version,date_epoch,date
 7603,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.0,1790356351,09/25/2026
 7604,"Azure.ResourceManager.Storage,1.8.0",dotnet,Azure.ResourceManager.Storage_1.8.0,Azure.ResourceManager.Storage,1.8.0,1790361018,09/25/2026
 7605,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.5.0,go,sdk/resourcemanager/compute/armbulkactions/v0.5.0,sdk/resourcemanager/compute/armbulkactions,v0.5.0,1790567303,09/28/2026
+7606,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/platformvalidation/armplatformvalidation@v0.1.0,go,sdk/resourcemanager/platformvalidation/armplatformvalidation/v0.1.0,sdk/resourcemanager/platformvalidation/armplatformvalidation,v0.1.0,1790662690,09/29/2026

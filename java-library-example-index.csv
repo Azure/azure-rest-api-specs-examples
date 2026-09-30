@@ -7617,3 +7617,4 @@ id,name,language,tag,package,version,date_epoch,date
 7616,com.azure.resourcemanager:azure-resourcemanager-platformvalidation:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-platformvalidation_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-platformvalidation,1.0.0-beta.1,1790596388,09/28/2026
 7617,"Azure.ResourceManager.Fabric,1.1.0-beta.4",dotnet,Azure.ResourceManager.Fabric_1.1.0-beta.4,Azure.ResourceManager.Fabric,1.1.0-beta.4,1790642850,09/29/2026
 7618,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appnetwork/armappnetwork@v0.2.0,go,sdk/resourcemanager/appnetwork/armappnetwork/v0.2.0,sdk/resourcemanager/appnetwork/armappnetwork,v0.2.0,1790758589,09/30/2026
+7619,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.6.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.6.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.6.0,1790741349,09/30/2026

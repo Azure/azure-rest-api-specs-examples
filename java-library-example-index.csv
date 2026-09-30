@@ -7621,3 +7621,4 @@ id,name,language,tag,package,version,date_epoch,date
 7620,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicegroups/armservicegroups@v1.0.0,go,sdk/resourcemanager/servicegroups/armservicegroups/v1.0.0,sdk/resourcemanager/servicegroups/armservicegroups,v1.0.0,1790737968,09/30/2026
 7621,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager/v2@v2.0.0,go,sdk/resourcemanager/trafficmanager/armtrafficmanager/v2.0.0,sdk/resourcemanager/trafficmanager/armtrafficmanager,v2.0.0,1790736732,09/30/2026
 7622,@azure/arm-templatespecs@2.2.0,js,@azure/arm-templatespecs_2.2.0,@azure/arm-templatespecs,2.2.0,1790760588,09/30/2026
+7623,@azure/arm-appnetwork@1.0.0-beta.2,js,@azure/arm-appnetwork_1.0.0-beta.2,@azure/arm-appnetwork,1.0.0-beta.2,1790758573,09/30/2026

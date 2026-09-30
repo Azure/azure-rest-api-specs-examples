@@ -7604,3 +7604,15 @@ id,name,language,tag,package,version,date_epoch,date
 7603,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.0,1790356351,09/25/2026
 7604,"Azure.ResourceManager.Storage,1.8.0",dotnet,Azure.ResourceManager.Storage_1.8.0,Azure.ResourceManager.Storage,1.8.0,1790361018,09/25/2026
 7605,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.5.0,go,sdk/resourcemanager/compute/armbulkactions/v0.5.0,sdk/resourcemanager/compute/armbulkactions,v0.5.0,1790567303,09/28/2026
+7606,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/platformvalidation/armplatformvalidation@v0.1.0,go,sdk/resourcemanager/platformvalidation/armplatformvalidation/v0.1.0,sdk/resourcemanager/platformvalidation/armplatformvalidation,v0.1.0,1790662690,09/29/2026
+7607,@azure/arm-computeworkloadmanager@1.0.0-beta.1,js,@azure/arm-computeworkloadmanager_1.0.0-beta.1,@azure/arm-computeworkloadmanager,1.0.0-beta.1,1790649358,09/29/2026
+7608,azure-mgmt-secretsstoreextension@1.0.0b2,python,azure-mgmt-secretsstoreextension_1.0.0b2,azure-mgmt-secretsstoreextension,1.0.0b2,1790677476,09/29/2026
+7609,azure-mgmt-containerservice@41.7.0,python,azure-mgmt-containerservice_41.7.0,azure-mgmt-containerservice,41.7.0,1790661910,09/29/2026
+7610,azure-mgmt-computeworkloadmanager@1.0.0b2,python,azure-mgmt-computeworkloadmanager_1.0.0b2,azure-mgmt-computeworkloadmanager,1.0.0b2,1790648502,09/29/2026
+7611,azure-mgmt-resource-templatespecs@1.0.0,python,azure-mgmt-resource-templatespecs_1.0.0,azure-mgmt-resource-templatespecs,1.0.0,1790647385,09/29/2026
+7612,azure-mgmt-resource-features@1.0.0,python,azure-mgmt-resource-features_1.0.0,azure-mgmt-resource-features,1.0.0,1790647356,09/29/2026
+7613,azure-mgmt-resource-locks@1.0.0,python,azure-mgmt-resource-locks_1.0.0,azure-mgmt-resource-locks,1.0.0,1790647303,09/29/2026
+7614,com.azure.resourcemanager:azure-resourcemanager-secretsstoreextension:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-secretsstoreextension_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-secretsstoreextension,1.0.0-beta.2,1790674354,09/29/2026
+7615,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.0,1790661352,09/29/2026
+7616,com.azure.resourcemanager:azure-resourcemanager-platformvalidation:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-platformvalidation_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-platformvalidation,1.0.0-beta.1,1790596388,09/28/2026
+7617,"Azure.ResourceManager.Fabric,1.1.0-beta.4",dotnet,Azure.ResourceManager.Fabric_1.1.0-beta.4,Azure.ResourceManager.Fabric,1.1.0-beta.4,1790642850,09/29/2026

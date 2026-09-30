@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.platformvalidation.models.ExecutionPlanRunProperties;
+
+/**
+ * Samples for ExecutionPlanRuns CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01-preview/ExecutionPlanRuns_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: ExecutionPlanRuns_CreateOrUpdate_MaximumSet.
+     * 
+     * @param manager Entry point to PlatformValidationManager.
+     */
+    public static void executionPlanRunsCreateOrUpdateMaximumSet(
+        com.azure.resourcemanager.platformvalidation.PlatformValidationManager manager) {
+        manager.executionPlanRuns().define("run-001")
+            .withExistingValidationExecutionPlan("rgvalidate", "cvtest01", "contoso-linux-cert")
+            .withProperties(
+                new ExecutionPlanRunProperties().withDescription("Run the Contoso Linux image certification plan."))
+            .create();
+    }
+}

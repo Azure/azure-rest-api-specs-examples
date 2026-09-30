@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ValidationTestRuns ListByExecutionPlanRun.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01-preview/ValidationTestRuns_ListByExecutionPlanRun_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: ValidationTestRuns_ListByExecutionPlanRun_MaximumSet.
+     * 
+     * @param manager Entry point to PlatformValidationManager.
+     */
+    public static void validationTestRunsListByExecutionPlanRunMaximumSet(
+        com.azure.resourcemanager.platformvalidation.PlatformValidationManager manager) {
+        manager.validationTestRuns().listByExecutionPlanRun("rgvalidate", "cvtest01", "contoso-linux-cert", "run-001",
+            com.azure.core.util.Context.NONE);
+    }
+}

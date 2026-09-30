@@ -7623,3 +7623,4 @@ id,name,language,tag,package,version,date_epoch,date
 7622,@azure/arm-templatespecs@2.2.0,js,@azure/arm-templatespecs_2.2.0,@azure/arm-templatespecs,2.2.0,1790760588,09/30/2026
 7623,@azure/arm-appnetwork@1.0.0-beta.2,js,@azure/arm-appnetwork_1.0.0-beta.2,@azure/arm-appnetwork,1.0.0-beta.2,1790758573,09/30/2026
 7624,@azure/arm-containerservice@25.6.0,js,@azure/arm-containerservice_25.6.0,@azure/arm-containerservice,25.6.0,1790757454,09/30/2026
+7625,@azure/arm-platformvalidation@1.0.0-beta.1,js,@azure/arm-platformvalidation_1.0.0-beta.1,@azure/arm-platformvalidation,1.0.0-beta.1,1790732638,09/30/2026

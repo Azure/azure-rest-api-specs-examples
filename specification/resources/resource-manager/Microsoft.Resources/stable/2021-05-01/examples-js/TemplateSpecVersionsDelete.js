@@ -1,12 +1,6 @@
 const { TemplateSpecsClient } = require("@azure/arm-templatespecs");
 const { DefaultAzureCredential } = require("@azure/identity");
 
-/**
- * This sample demonstrates how to Deletes a specific version from a Template Spec. When operation completes, status code 200 returned without content.
- *
- * @summary Deletes a specific version from a Template Spec. When operation completes, status code 200 returned without content.
- * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/examples/TemplateSpecVersionsDelete.json
- */
 async function templateSpecVersionsDelete() {
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const resourceGroupName = "templateSpecRG";
@@ -17,7 +11,7 @@ async function templateSpecVersionsDelete() {
   const result = await client.templateSpecVersions.delete(
     resourceGroupName,
     templateSpecName,
-    templateSpecVersion
+    templateSpecVersion,
   );
   console.log(result);
 }

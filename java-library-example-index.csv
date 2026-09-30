@@ -7628,3 +7628,4 @@ id,name,language,tag,package,version,date_epoch,date
 7627,@azure/arm-servicegroups@1.0.0,js,@azure/arm-servicegroups_1.0.0,@azure/arm-servicegroups,1.0.0,1790704490,09/29/2026
 7628,azure-mgmt-appnetwork@1.0.0b2,python,azure-mgmt-appnetwork_1.0.0b2,azure-mgmt-appnetwork,1.0.0b2,1790761590,09/30/2026
 7629,azure-mgmt-trafficmanager@2.0.0,python,azure-mgmt-trafficmanager_2.0.0,azure-mgmt-trafficmanager,2.0.0,1790716485,09/29/2026
+7630,com.azure.resourcemanager:azure-resourcemanager-appnetwork:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-appnetwork_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-appnetwork,1.0.0-beta.2,1790762006,09/30/2026

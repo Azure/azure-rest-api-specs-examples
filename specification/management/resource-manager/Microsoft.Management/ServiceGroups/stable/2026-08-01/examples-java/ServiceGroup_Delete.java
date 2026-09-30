@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ResourceProvider DeleteServiceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-01/ServiceGroup_Delete.json
+     */
+    /**
+     * Sample code: DeleteServiceGroup.
+     * 
+     * @param manager Entry point to ServiceGroupsManager.
+     */
+    public static void deleteServiceGroup(com.azure.resourcemanager.servicegroups.ServiceGroupsManager manager) {
+        manager.resourceProviders().deleteServiceGroup("20000000-0001-0000-0000-000000000000",
+            com.azure.core.util.Context.NONE);
+    }
+}

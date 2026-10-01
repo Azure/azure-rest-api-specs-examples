@@ -7634,3 +7634,4 @@ id,name,language,tag,package,version,date_epoch,date
 7633,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6@v6.0.0-beta.4,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v6.0.0-beta.4,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v6.0.0-beta.4,1790810061,09/30/2026
 7634,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resiliencemanagement/armresiliencemanagement@v0.2.0,go,sdk/resourcemanager/resiliencemanagement/armresiliencemanagement/v0.2.0,sdk/resourcemanager/resiliencemanagement/armresiliencemanagement,v0.2.0,1790767650,09/30/2026
 7635,@azure/arm-storagecache@9.1.0,js,@azure/arm-storagecache_9.1.0,@azure/arm-storagecache,9.1.0,1790818900,10/01/2026
+7636,@azure/arm-compute-bulkactions@1.0.0-beta.5,js,@azure/arm-compute-bulkactions_1.0.0-beta.5,@azure/arm-compute-bulkactions,1.0.0-beta.5,1790786033,09/30/2026

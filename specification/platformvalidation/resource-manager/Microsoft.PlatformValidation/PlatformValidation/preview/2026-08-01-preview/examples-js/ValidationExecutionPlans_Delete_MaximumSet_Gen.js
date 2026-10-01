@@ -1,0 +1,15 @@
+const { PlatformValidationClient } = require("@azure/arm-platformvalidation");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to delete a validation test execution plan
+ *
+ * @summary delete a validation test execution plan
+ * x-ms-original-file: 2026-08-01-preview/ValidationExecutionPlans_Delete_MaximumSet_Gen.json
+ */
+async function validationExecutionPlansDeleteMaximumSet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new PlatformValidationClient(credential, subscriptionId);
+  await client.validationExecutionPlans.delete("rgvalidate", "cvtest01", "veptest01");
+}

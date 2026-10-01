@@ -7630,3 +7630,4 @@ id,name,language,tag,package,version,date_epoch,date
 7629,azure-mgmt-trafficmanager@2.0.0,python,azure-mgmt-trafficmanager_2.0.0,azure-mgmt-trafficmanager,2.0.0,1790716485,09/29/2026
 7630,com.azure.resourcemanager:azure-resourcemanager-appnetwork:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-appnetwork_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-appnetwork,1.0.0-beta.2,1790762006,09/30/2026
 7631,com.azure.resourcemanager:azure-resourcemanager-servicegroups:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-servicegroups_1.0.0,com.azure.resourcemanager+azure-resourcemanager-servicegroups,1.0.0,1790758204,09/30/2026
+7632,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagecache/armstoragecache/v4@v4.3.0,go,sdk/resourcemanager/storagecache/armstoragecache/v4.3.0,sdk/resourcemanager/storagecache/armstoragecache,v4.3.0,1790819114,10/01/2026

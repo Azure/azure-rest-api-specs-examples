@@ -1,0 +1,97 @@
+package armstoragecache_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagecache/armstoragecache/v4"
+)
+
+// Generated from example definition: 2026-08-01/autoExportJobs_ListByAmlFilesystem.json
+func ExampleAutoExportJobsClient_NewListByAmlFilesystemPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armstoragecache.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewAutoExportJobsClient().NewListByAmlFilesystemPager("scgroup", "fs1", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armstoragecache.AutoExportJobsClientListByAmlFilesystemResponse{
+		// 	AutoExportJobsListResult: armstoragecache.AutoExportJobsListResult{
+		// 		Value: []*armstoragecache.AutoExportJob{
+		// 			{
+		// 				Name: to.Ptr("job1"),
+		// 				Type: to.Ptr("Microsoft.StorageCache/amlFilesystem/autoExportJob"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlfilesystems/fs1/autoExportJob/job1"),
+		// 				Location: to.Ptr("eastus"),
+		// 				Properties: &armstoragecache.AutoExportJobProperties{
+		// 					AdminStatus: to.Ptr(armstoragecache.AutoExportJobAdminStatusEnable),
+		// 					AutoExportPrefixes: []*string{
+		// 						to.Ptr("/"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armstoragecache.AutoExportJobProvisioningStateTypeSucceeded),
+		// 					Status: &armstoragecache.AutoExportJobPropertiesStatus{
+		// 						CurrentIterationFilesDiscovered: to.Ptr[int64](10),
+		// 						CurrentIterationFilesExported: to.Ptr[int64](5),
+		// 						CurrentIterationFilesFailed: to.Ptr[int64](1),
+		// 						CurrentIterationMiBDiscovered: to.Ptr[int64](4000),
+		// 						CurrentIterationMiBExported: to.Ptr[int64](500),
+		// 						ExportIterationCount: to.Ptr[int32](100),
+		// 						LastStartedTimeUTC: to.Ptr(time.Date(2024, time.April, 21, 17, 25, 43, 511000000, time.UTC)),
+		// 						LastSuccessfulIterationCompletionTimeUTC: to.Ptr(time.Date(2024, time.April, 21, 19, 28, 43, 511000000, time.UTC)),
+		// 						State: to.Ptr(armstoragecache.AutoExportStatusTypeInProgress),
+		// 						StatusMessage: to.Ptr("Auto Export is in progress"),
+		// 						TotalFilesExported: to.Ptr[int64](1000000),
+		// 						TotalFilesFailed: to.Ptr[int64](5),
+		// 						TotalMiBExported: to.Ptr[int64](10000),
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("job2"),
+		// 				Type: to.Ptr("Microsoft.StorageCache/amlFilesystem/autoExportJob"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlfilesystems/fs1/autoExportJob/job2"),
+		// 				Location: to.Ptr("eastus"),
+		// 				Properties: &armstoragecache.AutoExportJobProperties{
+		// 					AdminStatus: to.Ptr(armstoragecache.AutoExportJobAdminStatusDisable),
+		// 					AutoExportPrefixes: []*string{
+		// 						to.Ptr("/dir1"),
+		// 					},
+		// 					ProvisioningState: to.Ptr(armstoragecache.AutoExportJobProvisioningStateTypeSucceeded),
+		// 					Status: &armstoragecache.AutoExportJobPropertiesStatus{
+		// 						CurrentIterationFilesDiscovered: to.Ptr[int64](10),
+		// 						CurrentIterationFilesExported: to.Ptr[int64](5),
+		// 						CurrentIterationFilesFailed: to.Ptr[int64](1),
+		// 						CurrentIterationMiBDiscovered: to.Ptr[int64](4000),
+		// 						CurrentIterationMiBExported: to.Ptr[int64](500),
+		// 						ExportIterationCount: to.Ptr[int32](100),
+		// 						LastCompletionTimeUTC: to.Ptr(time.Date(2024, time.April, 21, 20, 25, 43, 511000000, time.UTC)),
+		// 						LastStartedTimeUTC: to.Ptr(time.Date(2024, time.April, 21, 17, 25, 43, 511000000, time.UTC)),
+		// 						LastSuccessfulIterationCompletionTimeUTC: to.Ptr(time.Date(2024, time.April, 21, 19, 28, 43, 511000000, time.UTC)),
+		// 						State: to.Ptr(armstoragecache.AutoExportStatusTypeDisabled),
+		// 						StatusMessage: to.Ptr("Auto Export job is disabled"),
+		// 						TotalFilesExported: to.Ptr[int64](1000000),
+		// 						TotalFilesFailed: to.Ptr[int64](5),
+		// 						TotalMiBExported: to.Ptr[int64](10000),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

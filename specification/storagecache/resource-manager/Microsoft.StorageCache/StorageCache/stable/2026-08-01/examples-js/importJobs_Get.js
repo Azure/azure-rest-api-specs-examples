@@ -1,0 +1,16 @@
+const { StorageCacheManagementClient } = require("@azure/arm-storagecache");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to returns an import job.
+ *
+ * @summary returns an import job.
+ * x-ms-original-file: 2026-08-01/importJobs_Get.json
+ */
+async function importJobsGet() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new StorageCacheManagementClient(credential, subscriptionId);
+  const result = await client.importJobs.get("scgroup", "fs1", "job1");
+  console.log(result);
+}

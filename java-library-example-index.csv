@@ -7638,3 +7638,4 @@ id,name,language,tag,package,version,date_epoch,date
 7637,@azure/arm-resiliencemanagement@1.0.0-beta.2,js,@azure/arm-resiliencemanagement_1.0.0-beta.2,@azure/arm-resiliencemanagement,1.0.0-beta.2,1790767713,09/30/2026
 7638,azure-mgmt-storagecache@4.1.0,python,azure-mgmt-storagecache_4.1.0,azure-mgmt-storagecache,4.1.0,1790827370,10/01/2026
 7639,azure-mgmt-postgresqlflexibleservers@3.0.0b3,python,azure-mgmt-postgresqlflexibleservers_3.0.0b3,azure-mgmt-postgresqlflexibleservers,3.0.0b3,1790812440,09/30/2026
+7640,azure-mgmt-compute-bulkaction@1.0.0b5,python,azure-mgmt-compute-bulkaction_1.0.0b5,azure-mgmt-compute-bulkaction,1.0.0b5,1790789802,09/30/2026

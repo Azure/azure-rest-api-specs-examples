@@ -7636,3 +7636,4 @@ id,name,language,tag,package,version,date_epoch,date
 7635,@azure/arm-storagecache@9.1.0,js,@azure/arm-storagecache_9.1.0,@azure/arm-storagecache,9.1.0,1790818900,10/01/2026
 7636,@azure/arm-compute-bulkactions@1.0.0-beta.5,js,@azure/arm-compute-bulkactions_1.0.0-beta.5,@azure/arm-compute-bulkactions,1.0.0-beta.5,1790786033,09/30/2026
 7637,@azure/arm-resiliencemanagement@1.0.0-beta.2,js,@azure/arm-resiliencemanagement_1.0.0-beta.2,@azure/arm-resiliencemanagement,1.0.0-beta.2,1790767713,09/30/2026
+7638,azure-mgmt-storagecache@4.1.0,python,azure-mgmt-storagecache_4.1.0,azure-mgmt-storagecache,4.1.0,1790827370,10/01/2026

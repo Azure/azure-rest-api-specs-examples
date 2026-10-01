@@ -7616,3 +7616,17 @@ id,name,language,tag,package,version,date_epoch,date
 7615,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.0,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.0,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.0,1790661352,09/29/2026
 7616,com.azure.resourcemanager:azure-resourcemanager-platformvalidation:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-platformvalidation_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-platformvalidation,1.0.0-beta.1,1790596388,09/28/2026
 7617,"Azure.ResourceManager.Fabric,1.1.0-beta.4",dotnet,Azure.ResourceManager.Fabric_1.1.0-beta.4,Azure.ResourceManager.Fabric,1.1.0-beta.4,1790642850,09/29/2026
+7618,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appnetwork/armappnetwork@v0.2.0,go,sdk/resourcemanager/appnetwork/armappnetwork/v0.2.0,sdk/resourcemanager/appnetwork/armappnetwork,v0.2.0,1790758589,09/30/2026
+7619,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.6.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.6.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.6.0,1790741349,09/30/2026
+7620,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicegroups/armservicegroups@v1.0.0,go,sdk/resourcemanager/servicegroups/armservicegroups/v1.0.0,sdk/resourcemanager/servicegroups/armservicegroups,v1.0.0,1790737968,09/30/2026
+7621,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager/v2@v2.0.0,go,sdk/resourcemanager/trafficmanager/armtrafficmanager/v2.0.0,sdk/resourcemanager/trafficmanager/armtrafficmanager,v2.0.0,1790736732,09/30/2026
+7622,@azure/arm-templatespecs@2.2.0,js,@azure/arm-templatespecs_2.2.0,@azure/arm-templatespecs,2.2.0,1790760588,09/30/2026
+7623,@azure/arm-appnetwork@1.0.0-beta.2,js,@azure/arm-appnetwork_1.0.0-beta.2,@azure/arm-appnetwork,1.0.0-beta.2,1790758573,09/30/2026
+7624,@azure/arm-containerservice@25.6.0,js,@azure/arm-containerservice_25.6.0,@azure/arm-containerservice,25.6.0,1790757454,09/30/2026
+7625,@azure/arm-platformvalidation@1.0.0-beta.1,js,@azure/arm-platformvalidation_1.0.0-beta.1,@azure/arm-platformvalidation,1.0.0-beta.1,1790732638,09/30/2026
+7626,@azure/arm-trafficmanager@6.2.0,js,@azure/arm-trafficmanager_6.2.0,@azure/arm-trafficmanager,6.2.0,1790730874,09/30/2026
+7627,@azure/arm-servicegroups@1.0.0,js,@azure/arm-servicegroups_1.0.0,@azure/arm-servicegroups,1.0.0,1790704490,09/29/2026
+7628,azure-mgmt-appnetwork@1.0.0b2,python,azure-mgmt-appnetwork_1.0.0b2,azure-mgmt-appnetwork,1.0.0b2,1790761590,09/30/2026
+7629,azure-mgmt-trafficmanager@2.0.0,python,azure-mgmt-trafficmanager_2.0.0,azure-mgmt-trafficmanager,2.0.0,1790716485,09/29/2026
+7630,com.azure.resourcemanager:azure-resourcemanager-appnetwork:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-appnetwork_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-appnetwork,1.0.0-beta.2,1790762006,09/30/2026
+7631,com.azure.resourcemanager:azure-resourcemanager-servicegroups:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-servicegroups_1.0.0,com.azure.resourcemanager+azure-resourcemanager-servicegroups,1.0.0,1790758204,09/30/2026

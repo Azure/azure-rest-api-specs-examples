@@ -1,0 +1,18 @@
+
+/**
+ * Samples for DbAgents List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/DBAgentList.json
+     */
+    /**
+     * Sample code: List the database agent configuration for a server.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void listTheDatabaseAgentConfigurationForAServer(
+        com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        manager.dbAgents().list("exampleresourcegroup", "exampleserver", com.azure.core.util.Context.NONE);
+    }
+}

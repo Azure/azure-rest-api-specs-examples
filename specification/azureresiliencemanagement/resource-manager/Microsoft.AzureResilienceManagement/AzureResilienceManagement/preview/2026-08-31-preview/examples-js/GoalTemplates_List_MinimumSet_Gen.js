@@ -1,0 +1,19 @@
+const { AzureResilienceManagementClient } = require("@azure/arm-resiliencemanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists the goal templates of a service group. Deprecated: the GoalTemplate resource type is deprecated and is removed in 2026-09-30-preview. Set resiliency intent directly on the GoalAssignment (requireZonalResiliency, requireRegionalResiliency) and read resource posture from GoalResource (zonalResiliency, regionalResiliency) instead.
+ *
+ * @summary lists the goal templates of a service group. Deprecated: the GoalTemplate resource type is deprecated and is removed in 2026-09-30-preview. Set resiliency intent directly on the GoalAssignment (requireZonalResiliency, requireRegionalResiliency) and read resource posture from GoalResource (zonalResiliency, regionalResiliency) instead.
+ * x-ms-original-file: 2026-08-31-preview/GoalTemplates_List_MinimumSet_Gen.json
+ */
+async function goalTemplatesListMinimumSet() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureResilienceManagementClient(credential);
+  const resArray = new Array();
+  for await (const item of client.goalTemplates.list("sg1")) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

@@ -1,0 +1,24 @@
+const { ComputeClient } = require("@azure/arm-compute-bulkactions");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to lists resources for the specified occurrence.
+ *
+ * @summary lists resources for the specified occurrence.
+ * x-ms-original-file: 2026-10-06-preview/Occurrences_ListResources_BasicSuccess.json
+ */
+async function _01ListResourcesInARecurringScheduledActionOccurrence() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new ComputeClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (const item of client.occurrences.listResources(
+    "example-rg",
+    "weekday-start",
+    "77777777-7777-7777-7777-777777777777",
+  )) {
+    resArray.push(item);
+  }
+
+  console.log(resArray);
+}

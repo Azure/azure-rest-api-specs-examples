@@ -7641,3 +7641,4 @@ id,name,language,tag,package,version,date_epoch,date
 7640,azure-mgmt-compute-bulkaction@1.0.0b5,python,azure-mgmt-compute-bulkaction_1.0.0b5,azure-mgmt-compute-bulkaction,1.0.0b5,1790789802,09/30/2026
 7641,azure-mgmt-resiliencemanagement@1.0.0b2,python,azure-mgmt-resiliencemanagement_1.0.0b2,azure-mgmt-resiliencemanagement,1.0.0b2,1790770964,09/30/2026
 7642,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:2.1.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver_2.1.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver,2.1.0-beta.3,1790813278,10/01/2026
+7643,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computefleet/armcomputefleet/v2@v2.0.0,go,sdk/resourcemanager/computefleet/armcomputefleet/v2.0.0,sdk/resourcemanager/computefleet/armcomputefleet,v2.0.0,1790988138,10/03/2026

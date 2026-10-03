@@ -7644,3 +7644,4 @@ id,name,language,tag,package,version,date_epoch,date
 7643,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computefleet/armcomputefleet/v2@v2.0.0,go,sdk/resourcemanager/computefleet/armcomputefleet/v2.0.0,sdk/resourcemanager/computefleet/armcomputefleet,v2.0.0,1790988138,10/03/2026
 7644,@azure/arm-computefleet@2.0.0,js,@azure/arm-computefleet_2.0.0,@azure/arm-computefleet,2.0.0,1790987495,10/03/2026
 7645,azure-mgmt-computefleet@2.0.0,python,azure-mgmt-computefleet_2.0.0,azure-mgmt-computefleet,2.0.0,1790990254,10/03/2026
+7646,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-computefleet_1.1.0,com.azure.resourcemanager+azure-resourcemanager-computefleet,1.1.0,1790990895,10/03/2026

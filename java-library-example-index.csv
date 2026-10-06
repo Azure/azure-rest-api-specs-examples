@@ -7645,3 +7645,4 @@ id,name,language,tag,package,version,date_epoch,date
 7644,@azure/arm-computefleet@2.0.0,js,@azure/arm-computefleet_2.0.0,@azure/arm-computefleet,2.0.0,1790987495,10/03/2026
 7645,azure-mgmt-computefleet@2.0.0,python,azure-mgmt-computefleet_2.0.0,azure-mgmt-computefleet,2.0.0,1790990254,10/03/2026
 7646,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-computefleet_1.1.0,com.azure.resourcemanager+azure-resourcemanager-computefleet,1.1.0,1790990895,10/03/2026
+7647,@azure/arm-postgresql-flexible@10.0.0-beta.3,js,@azure/arm-postgresql-flexible_10.0.0-beta.3,@azure/arm-postgresql-flexible,10.0.0-beta.3,1791205792,10/05/2026

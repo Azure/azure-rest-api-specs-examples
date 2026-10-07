@@ -1,0 +1,38 @@
+
+import com.azure.resourcemanager.elasticsan.models.ElasticSanVersion;
+import com.azure.resourcemanager.elasticsan.models.Sku;
+import com.azure.resourcemanager.elasticsan.models.SkuName;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ElasticSans Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/ElasticSans_V2_Create_MinimumSet_Gen.json
+     */
+    /**
+     * Sample code: ElasticSans_V2_Create_MinimumSet_Gen.
+     * 
+     * @param manager Entry point to ElasticSanManager.
+     */
+    public static void
+        elasticSansV2CreateMinimumSetGen(com.azure.resourcemanager.elasticsan.ElasticSanManager manager) {
+        manager.elasticSans().define("elasticsanname").withRegion("France Central")
+            .withExistingResourceGroup("resourcegroupname").withSku(new Sku().withName(SkuName.ELASTIC_SAN_LRS))
+            .withTotalIops(22L).withTotalMBps(4L).withTotalSizeTiB(27L).withVersion(ElasticSanVersion.V2).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

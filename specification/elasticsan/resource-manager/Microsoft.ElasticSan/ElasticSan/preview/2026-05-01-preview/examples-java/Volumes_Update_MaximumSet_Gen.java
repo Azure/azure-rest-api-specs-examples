@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.elasticsan.models.ManagedByResources;
+import com.azure.resourcemanager.elasticsan.models.Volume;
+import java.util.Arrays;
+
+/**
+ * Samples for Volumes Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01-preview/Volumes_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Volumes_Update_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to ElasticSanManager.
+     */
+    public static void volumesUpdateMaximumSetGen(com.azure.resourcemanager.elasticsan.ElasticSanManager manager) {
+        Volume resource = manager.volumes().getWithResponse("resourcegroupname", "elasticsanname", "volumegroupname",
+            "volumename", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withSizeGiB(7L).withManagedBy(Arrays.asList(new ManagedByResources()
+            .withClientId("pclpkrpkpmvcsegcubrakcoodrubo").withVersion(1)
+            .withResourceIds(Arrays.asList(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.SomeProvider/someResource/myResource"))))
+            .apply();
+    }
+}

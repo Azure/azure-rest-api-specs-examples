@@ -7647,3 +7647,4 @@ id,name,language,tag,package,version,date_epoch,date
 7646,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-computefleet_1.1.0,com.azure.resourcemanager+azure-resourcemanager-computefleet,1.1.0,1790990895,10/03/2026
 7647,@azure/arm-postgresql-flexible@10.0.0-beta.3,js,@azure/arm-postgresql-flexible_10.0.0-beta.3,@azure/arm-postgresql-flexible,10.0.0-beta.3,1791205792,10/05/2026
 7648,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.7.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.7.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v9.7.0-beta.1,1791345380,10/07/2026
+7649,@azure/arm-containerservice@25.7.0-beta.1,js,@azure/arm-containerservice_25.7.0-beta.1,@azure/arm-containerservice,25.7.0-beta.1,1791345702,10/07/2026

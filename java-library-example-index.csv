@@ -7650,3 +7650,4 @@ id,name,language,tag,package,version,date_epoch,date
 7649,@azure/arm-containerservice@25.7.0-beta.1,js,@azure/arm-containerservice_25.7.0-beta.1,@azure/arm-containerservice,25.7.0-beta.1,1791345702,10/07/2026
 7650,@azure/arm-compute@25.2.0,js,@azure/arm-compute_25.2.0,@azure/arm-compute,25.2.0,1791306918,10/06/2026
 7651,com.azure.resourcemanager:azure-resourcemanager-storagediscovery:1.1.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-storagediscovery_1.1.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-storagediscovery,1.1.0-beta.1,1791353987,10/07/2026
+7652,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.3.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-elasticsan_1.3.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-elasticsan,1.3.0-beta.1,1791353967,10/07/2026

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for NetworkSecurityPerimeterConfigurations Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/NetworkSecurityPerimeterConfigurationGet.json
+     */
+    /**
+     * Sample code: NamspaceNetworkSecurityPerimeterConfigurationList.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void
+        namspaceNetworkSecurityPerimeterConfigurationList(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getNetworkSecurityPerimeterConfigurations().getWithResponse("res4410", "cosmosTest",
+            "dbedb4e0-40e6-4145-81f3-f1314c150774.resourceAssociation1", com.azure.core.util.Context.NONE);
+    }
+}

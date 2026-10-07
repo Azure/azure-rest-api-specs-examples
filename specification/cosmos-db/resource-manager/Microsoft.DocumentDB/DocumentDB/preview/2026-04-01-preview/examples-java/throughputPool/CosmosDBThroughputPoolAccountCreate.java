@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.cosmos.fluent.models.ThroughputPoolAccountResourceInner;
+
+/**
+ * Samples for ThroughputPoolAccount Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/throughputPool/CosmosDBThroughputPoolAccountCreate.json
+     */
+    /**
+     * Sample code: CosmosDB ThroughputPool Account Create.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBThroughputPoolAccountCreate(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getThroughputPoolAccounts().create("rg1", "tp1", "db1",
+            new ThroughputPoolAccountResourceInner().withAccountResourceIdentifier(
+                "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DocumentDB/resourceGroup/rg1/databaseAccounts/db1/")
+                .withAccountLocation("West US"),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.cosmos.fluent.models.ThroughputPoolResourceInner;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ThroughputPool CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/throughputPool/CosmosDBThroughputPoolCreate.json
+     */
+    /**
+     * Sample code: CosmosDB ThroughputPool Create.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBThroughputPoolCreate(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getThroughputPools().createOrUpdate("rg1", "tp1",
+            new ThroughputPoolResourceInner().withLocation("westus2").withTags(mapOf()).withMaxThroughput(10000),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

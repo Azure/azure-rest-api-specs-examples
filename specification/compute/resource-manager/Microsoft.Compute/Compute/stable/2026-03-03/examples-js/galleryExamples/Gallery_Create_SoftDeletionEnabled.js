@@ -1,0 +1,24 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to create or update a Shared Image Gallery.
+ *
+ * @summary create or update a Shared Image Gallery.
+ * x-ms-original-file: 2026-03-03/galleryExamples/Gallery_Create_SoftDeletionEnabled.json
+ */
+async function createOrUpdateASimpleGalleryWithSoftDeletionEnabled() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "{subscription-id}";
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.galleries.createOrUpdate("myResourceGroup", "myGalleryName", {
+    location: "West US",
+    description: "This is the gallery description.",
+    softDeletePolicy: {
+      isSoftDeleteEnabled: true,
+      retentionPeriodInDays: 7,
+      gracePeriodInDays: 30,
+    },
+  });
+  console.log(result);
+}

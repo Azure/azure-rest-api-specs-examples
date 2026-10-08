@@ -1,0 +1,20 @@
+
+/**
+ * Samples for ManagementLocks ListByScope.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/resources/resource-manager/Microsoft.Authorization/locks/stable/2020-05-01/examples/
+     * ManagementLocks_ListAtScope.json
+     */
+    /**
+     * Sample code: List management locks at scope.
+     *
+     * @param manager Entry point to ResourceManager.
+     */
+    public static void listManagementLocksAtScope(com.azure.resourcemanager.resources.ResourceManager manager) {
+        manager.managementLockClient().getManagementLocks().listByScope("subscriptions/subscriptionId", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

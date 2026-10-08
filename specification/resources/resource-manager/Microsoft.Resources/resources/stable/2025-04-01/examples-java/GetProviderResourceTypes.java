@@ -1,0 +1,18 @@
+
+/**
+ * Samples for ProviderResourceTypes List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-04-01/GetProviderResourceTypes.json
+     */
+    /**
+     * Sample code: Get provider resource types.
+     * 
+     * @param manager Entry point to ResourceManager.
+     */
+    public static void getProviderResourceTypes(com.azure.resourcemanager.resources.ResourceManager manager) {
+        manager.serviceClient().getProviderResourceTypes().listWithResponse("Microsoft.TestRP", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -7657,3 +7657,4 @@ id,name,language,tag,package,version,date_epoch,date
 7656,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.2,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.2,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.2,1791321010,10/06/2026
 7657,@azure/arm-secretsstoreextension@1.0.0-beta.1,js,@azure/arm-secretsstoreextension_1.0.0-beta.1,@azure/arm-secretsstoreextension,1.0.0-beta.1,1791434994,10/08/2026
 7658,azure-mgmt-containerservice@41.8.0b1,python,azure-mgmt-containerservice_41.8.0b1,azure-mgmt-containerservice,41.8.0b1,1791454634,10/08/2026
+7659,com.azure.resourcemanager:azure-resourcemanager-resources:2.55.0,java,com.azure.resourcemanager+azure-resourcemanager-resources_2.55.0,com.azure.resourcemanager+azure-resourcemanager-resources,2.55.0,1791439057,10/08/2026

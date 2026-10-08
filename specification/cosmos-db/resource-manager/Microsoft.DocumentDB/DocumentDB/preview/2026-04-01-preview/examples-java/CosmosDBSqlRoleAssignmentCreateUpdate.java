@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.cosmos.models.SqlRoleAssignmentCreateUpdateParameters;
+
+/**
+ * Samples for SqlResources CreateUpdateSqlRoleAssignment.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/CosmosDBSqlRoleAssignmentCreateUpdate.json
+     */
+    /**
+     * Sample code: CosmosDBSqlRoleAssignmentCreateUpdate.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void cosmosDBSqlRoleAssignmentCreateUpdate(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getSqlResources().createUpdateSqlRoleAssignment("myRoleAssignmentId",
+            "myResourceGroupName", "myAccountName",
+            new SqlRoleAssignmentCreateUpdateParameters().withRoleDefinitionId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlRoleDefinitions/myRoleDefinitionId")
+                .withScope(
+                    "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases/colls/redmond-purchases")
+                .withPrincipalId("myPrincipalId"),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,28 @@
+
+import com.azure.resourcemanager.cosmos.models.PhysicalPartitionId;
+import com.azure.resourcemanager.cosmos.models.RetrieveThroughputParameters;
+import com.azure.resourcemanager.cosmos.models.RetrieveThroughputPropertiesResource;
+import java.util.Arrays;
+
+/**
+ * Samples for MongoDBResources MongoDBDatabaseRetrieveThroughputDistribution.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01-preview/CosmosDBMongoDBDatabaseRetrieveThroughputDistribution.json
+     */
+    /**
+     * Sample code: CosmosDBMongoDBDatabaseRetrieveThroughputDistribution.
+     * 
+     * @param manager Entry point to CosmosManager.
+     */
+    public static void
+        cosmosDBMongoDBDatabaseRetrieveThroughputDistribution(com.azure.resourcemanager.cosmos.CosmosManager manager) {
+        manager.serviceClient().getMongoDBResources().mongoDBDatabaseRetrieveThroughputDistribution("rg1", "ddb1",
+            "databaseName",
+            new RetrieveThroughputParameters()
+                .withResource(new RetrieveThroughputPropertiesResource().withPhysicalPartitionIds(
+                    Arrays.asList(new PhysicalPartitionId().withId("0"), new PhysicalPartitionId().withId("1")))),
+            com.azure.core.util.Context.NONE);
+    }
+}

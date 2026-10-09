@@ -7671,3 +7671,4 @@ id,name,language,tag,package,version,date_epoch,date
 7670,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.64.2,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.64.2,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.64.2,1791534615,10/09/2026
 7671,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.3,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.3,1791534601,10/09/2026
 7672,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.3,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.3,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.3,1791534587,10/09/2026
+7673,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.3,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.3,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.3,1791534558,10/09/2026

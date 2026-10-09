@@ -7666,3 +7666,4 @@ id,name,language,tag,package,version,date_epoch,date
 7665,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagediscovery/armstoragediscovery@v1.1.0-beta.1,go,sdk/resourcemanager/storagediscovery/armstoragediscovery/v1.1.0-beta.1,sdk/resourcemanager/storagediscovery/armstoragediscovery,v1.1.0-beta.1,1791482798,10/08/2026
 7666,azure-mgmt-sql@5.0.0b2,python,azure-mgmt-sql_5.0.0b2,azure-mgmt-sql,5.0.0b2,1791527310,10/09/2026
 7667,azure-mgmt-elasticsan@3.0.0b1,python,azure-mgmt-elasticsan_3.0.0b1,azure-mgmt-elasticsan,3.0.0b1,1791487186,10/08/2026
+7668,azure-mgmt-storagediscovery@1.1.0b1,python,azure-mgmt-storagediscovery_1.1.0b1,azure-mgmt-storagediscovery,1.1.0b1,1791485788,10/08/2026

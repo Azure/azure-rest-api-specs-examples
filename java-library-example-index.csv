@@ -7667,3 +7667,4 @@ id,name,language,tag,package,version,date_epoch,date
 7666,azure-mgmt-sql@5.0.0b2,python,azure-mgmt-sql_5.0.0b2,azure-mgmt-sql,5.0.0b2,1791527310,10/09/2026
 7667,azure-mgmt-elasticsan@3.0.0b1,python,azure-mgmt-elasticsan_3.0.0b1,azure-mgmt-elasticsan,3.0.0b1,1791487186,10/08/2026
 7668,azure-mgmt-storagediscovery@1.1.0b1,python,azure-mgmt-storagediscovery_1.1.0b1,azure-mgmt-storagediscovery,1.1.0b1,1791485788,10/08/2026
+7669,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.55.6,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.55.6,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.55.6,1791534660,10/09/2026

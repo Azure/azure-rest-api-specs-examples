@@ -1,0 +1,39 @@
+
+import com.azure.resourcemanager.resources.models.Tags;
+import com.azure.resourcemanager.resources.models.TagsPatchOperation;
+import com.azure.resourcemanager.resources.models.TagsPatchResource;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for TagOperations UpdateAtScope.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-04-01/PatchTagsResource.json
+     */
+    /**
+     * Sample code: Update tags on a resource.
+     * 
+     * @param manager Entry point to ResourceManager.
+     */
+    public static void updateTagsOnAResource(com.azure.resourcemanager.resources.ResourceManager manager) {
+        manager.serviceClient().getTagOperations().updateAtScope(
+            "subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/myPRNameSpace/VM/myVm",
+            new TagsPatchResource().withOperation(TagsPatchOperation.REPLACE).withProperties(
+                new Tags().withTags(mapOf("tagKey1", "fakeTokenPlaceholder", "tagKey2", "fakeTokenPlaceholder"))),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

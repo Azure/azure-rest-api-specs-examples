@@ -7664,3 +7664,4 @@ id,name,language,tag,package,version,date_epoch,date
 7663,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resiliencemanagement/armresiliencemanagement@v1.0.0,go,sdk/resourcemanager/resiliencemanagement/armresiliencemanagement/v1.0.0,sdk/resourcemanager/resiliencemanagement/armresiliencemanagement,v1.0.0,1791543086,10/09/2026
 7664,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan/v2@v2.0.0-beta.1,go,sdk/resourcemanager/elasticsan/armelasticsan/v2.0.0-beta.1,sdk/resourcemanager/elasticsan/armelasticsan,v2.0.0-beta.1,1791485063,10/08/2026
 7665,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagediscovery/armstoragediscovery@v1.1.0-beta.1,go,sdk/resourcemanager/storagediscovery/armstoragediscovery/v1.1.0-beta.1,sdk/resourcemanager/storagediscovery/armstoragediscovery,v1.1.0-beta.1,1791482798,10/08/2026
+7666,azure-mgmt-sql@5.0.0b2,python,azure-mgmt-sql_5.0.0b2,azure-mgmt-sql,5.0.0b2,1791527310,10/09/2026

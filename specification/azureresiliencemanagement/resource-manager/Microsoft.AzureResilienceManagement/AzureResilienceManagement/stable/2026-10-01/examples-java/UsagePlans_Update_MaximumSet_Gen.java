@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.resiliencemanagement.models.UsagePlan;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for UsagePlans Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/UsagePlans_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: UsagePlans_Update_MaximumSet.
+     * 
+     * @param manager Entry point to ResilienceManagementManager.
+     */
+    public static void
+        usagePlansUpdateMaximumSet(com.azure.resourcemanager.resiliencemanagement.ResilienceManagementManager manager) {
+        UsagePlan resource = manager.usagePlans()
+            .getByResourceGroupWithResponse("MyResourceGroup", "myUsagePlan", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("environment", "staging", "costCenter", "12345")).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

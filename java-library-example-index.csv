@@ -7674,3 +7674,4 @@ id,name,language,tag,package,version,date_epoch,date
 7673,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.3,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.3,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.3,1791534558,10/09/2026
 7674,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.6.0,go,sdk/resourcemanager/compute/armbulkactions/v0.6.0,sdk/resourcemanager/compute/armbulkactions,v0.6.0,1791560342,10/09/2026
 7675,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.1.0,go,sdk/resourcemanager/keyvault/armkeyvault/v2.1.0,sdk/resourcemanager/keyvault/armkeyvault,v2.1.0,1791545260,10/09/2026
+7676,@azure/arm-dataprotection@5.1.0-beta.1,js,@azure/arm-dataprotection_5.1.0-beta.1,@azure/arm-dataprotection,5.1.0-beta.1,1791624640,10/10/2026

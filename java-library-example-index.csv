@@ -7672,3 +7672,4 @@ id,name,language,tag,package,version,date_epoch,date
 7671,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.55.3,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.55.3,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.55.3,1791534601,10/09/2026
 7672,com.azure.resourcemanager:azure-resourcemanager-appservice:2.56.3,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.56.3,com.azure.resourcemanager+azure-resourcemanager-appservice,2.56.3,1791534587,10/09/2026
 7673,com.azure.resourcemanager:azure-resourcemanager-sql:2.54.3,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.54.3,com.azure.resourcemanager+azure-resourcemanager-sql,2.54.3,1791534558,10/09/2026
+7674,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.6.0,go,sdk/resourcemanager/compute/armbulkactions/v0.6.0,sdk/resourcemanager/compute/armbulkactions,v0.6.0,1791560342,10/09/2026

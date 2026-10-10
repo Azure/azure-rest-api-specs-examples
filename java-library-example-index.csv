@@ -7679,3 +7679,4 @@ id,name,language,tag,package,version,date_epoch,date
 7678,azure-mgmt-keyvault@14.1.0,python,azure-mgmt-keyvault_14.1.0,azure-mgmt-keyvault,14.1.0,1791548420,10/09/2026
 7679,com.azure.resourcemanager:azure-resourcemanager-resiliencemanagement:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-resiliencemanagement_1.0.0,com.azure.resourcemanager+azure-resourcemanager-resiliencemanagement,1.0.0,1791553049,10/09/2026
 7680,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.2,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.2,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.2,1791534544,10/09/2026
+7681,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.55.6,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.55.6,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.55.6,1791534514,10/09/2026

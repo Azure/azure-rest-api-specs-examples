@@ -7678,3 +7678,4 @@ id,name,language,tag,package,version,date_epoch,date
 7677,@azure/arm-resiliencemanagement@1.0.0,js,@azure/arm-resiliencemanagement_1.0.0,@azure/arm-resiliencemanagement,1.0.0,1791545471,10/09/2026
 7678,azure-mgmt-keyvault@14.1.0,python,azure-mgmt-keyvault_14.1.0,azure-mgmt-keyvault,14.1.0,1791548420,10/09/2026
 7679,com.azure.resourcemanager:azure-resourcemanager-resiliencemanagement:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-resiliencemanagement_1.0.0,com.azure.resourcemanager+azure-resourcemanager-resiliencemanagement,1.0.0,1791553049,10/09/2026
+7680,com.azure.resourcemanager:azure-resourcemanager-compute:2.61.2,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.61.2,com.azure.resourcemanager+azure-resourcemanager-compute,2.61.2,1791534544,10/09/2026

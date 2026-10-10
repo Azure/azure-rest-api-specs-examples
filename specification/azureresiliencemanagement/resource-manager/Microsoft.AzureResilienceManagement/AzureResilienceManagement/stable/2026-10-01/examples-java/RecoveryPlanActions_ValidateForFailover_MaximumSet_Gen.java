@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverDirectionTypes;
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverRequest;
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverRequestProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for RecoveryPlanActions ValidateForFailover.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/RecoveryPlanActions_ValidateForFailover_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: RecoveryPlanActions_ValidateForFailover_MaximumSet.
+     * 
+     * @param manager Entry point to ResilienceManagementManager.
+     */
+    public static void recoveryPlanActionsValidateForFailoverMaximumSet(
+        com.azure.resourcemanager.resiliencemanagement.ResilienceManagementManager manager) {
+        manager.recoveryPlanActions().validateForFailover("sampleServiceGroupName", "qmn", "samplePlanName",
+            new FailoverRequest().withFailoverDirection(FailoverDirectionTypes.FROM_SPECIFIC_LOCATIONS)
+                .withFailoverRequestProperties(
+                    new FailoverRequestProperties().withSourceLocations(Arrays.asList("westus"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

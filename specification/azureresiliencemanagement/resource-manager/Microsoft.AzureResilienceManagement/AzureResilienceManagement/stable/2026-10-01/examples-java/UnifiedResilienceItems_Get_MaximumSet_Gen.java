@@ -1,0 +1,18 @@
+
+/**
+ * Samples for UnifiedResilienceItems Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/UnifiedResilienceItems_Get_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: UnifiedResilienceItems_Get_MaximumSet.
+     * 
+     * @param manager Entry point to ResilienceManagementManager.
+     */
+    public static void unifiedResilienceItemsGetMaximumSet(
+        com.azure.resourcemanager.resiliencemanagement.ResilienceManagementManager manager) {
+        manager.unifiedResilienceItems().getWithResponse("sg1", "uri1", com.azure.core.util.Context.NONE);
+    }
+}

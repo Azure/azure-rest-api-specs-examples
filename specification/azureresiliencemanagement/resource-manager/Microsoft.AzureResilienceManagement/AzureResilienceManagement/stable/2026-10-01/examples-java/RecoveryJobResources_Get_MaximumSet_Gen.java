@@ -1,0 +1,20 @@
+
+/**
+ * Samples for RecoveryJobResources Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/RecoveryJobResources_Get_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: RecoveryJobResources_Get_MaximumSet.
+     * 
+     * @param manager Entry point to ResilienceManagementManager.
+     */
+    public static void recoveryJobResourcesGetMaximumSet(
+        com.azure.resourcemanager.resiliencemanagement.ResilienceManagementManager manager) {
+        manager.recoveryJobResources().getWithResponse("sampleServiceGroupName", "samplePlanName",
+            "c56888ef-9ced-4001-a6d4-7145a0309bdb", "56f942da-a30e-43c0-b5f0-1c22e44f2d94",
+            com.azure.core.util.Context.NONE);
+    }
+}

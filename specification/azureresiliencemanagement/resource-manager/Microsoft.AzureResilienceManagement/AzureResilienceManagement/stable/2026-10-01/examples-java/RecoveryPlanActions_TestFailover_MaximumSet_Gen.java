@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.resiliencemanagement.models.ExecutionConfigurations;
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverDirectionTypes;
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverRequest;
+import com.azure.resourcemanager.resiliencemanagement.models.FailoverRequestProperties;
+import com.azure.resourcemanager.resiliencemanagement.models.UserConsent;
+import java.util.Arrays;
+
+/**
+ * Samples for RecoveryPlanActions TestFailover.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/RecoveryPlanActions_TestFailover_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: RecoveryPlanActions_TestFailover_MaximumSet.
+     * 
+     * @param manager Entry point to ResilienceManagementManager.
+     */
+    public static void recoveryPlanActionsTestFailoverMaximumSet(
+        com.azure.resourcemanager.resiliencemanagement.ResilienceManagementManager manager) {
+        manager.recoveryPlanActions().testFailover("sampleServiceGroupName", "qmn", "samplePlanName",
+            new FailoverRequest().withFailoverDirection(FailoverDirectionTypes.FROM_SPECIFIC_LOCATIONS)
+                .withFailoverRequestProperties(new FailoverRequestProperties()
+                    .withSourceLocations(Arrays.asList("westus"))
+                    .withSelectedResourceIds(Arrays.asList(
+                        "/providers/Microsoft.Management/serviceGroups/sampleServiceGroupName/providers/Microsoft.AzureResilienceManagement/recoveryPlans/samplePlanName/recoveryResources/12345678-9012-3456-7890-123456789012"))
+                    .withExecutionConfigurations(new ExecutionConfigurations().withUserConsent(UserConsent.ALLOWED))),
+            com.azure.core.util.Context.NONE);
+    }
+}

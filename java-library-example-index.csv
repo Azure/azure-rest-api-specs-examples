@@ -7686,3 +7686,4 @@ id,name,language,tag,package,version,date_epoch,date
 7685,"Azure.ResourceManager.OperationalInsights,1.4.0",dotnet,Azure.ResourceManager.OperationalInsights_1.4.0,Azure.ResourceManager.OperationalInsights,1.4.0,1791617710,10/10/2026
 7686,@azure/arm-network@39.1.0,js,@azure/arm-network_39.1.0,@azure/arm-network,39.1.0,1791788348,10/12/2026
 7687,azure-mgmt-network@33.1.0,python,azure-mgmt-network_33.1.0,azure-mgmt-network,33.1.0,1791790042,10/12/2026
+7688,"Azure.ResourceManager.ProviderHub,1.3.0",dotnet,Azure.ResourceManager.ProviderHub_1.3.0,Azure.ResourceManager.ProviderHub,1.3.0,1791776956,10/12/2026

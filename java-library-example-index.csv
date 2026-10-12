@@ -7684,3 +7684,4 @@ id,name,language,tag,package,version,date_epoch,date
 7683,com.azure.resourcemanager:azure-resourcemanager-network:2.61.2,java,com.azure.resourcemanager+azure-resourcemanager-network_2.61.2,com.azure.resourcemanager+azure-resourcemanager-network,2.61.2,1791519449,10/09/2026
 7684,com.azure.resourcemanager:azure-resourcemanager-trafficmanager:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-trafficmanager_2.54.0,com.azure.resourcemanager+azure-resourcemanager-trafficmanager,2.54.0,1791464122,10/08/2026
 7685,"Azure.ResourceManager.OperationalInsights,1.4.0",dotnet,Azure.ResourceManager.OperationalInsights_1.4.0,Azure.ResourceManager.OperationalInsights,1.4.0,1791617710,10/10/2026
+7686,@azure/arm-network@39.1.0,js,@azure/arm-network_39.1.0,@azure/arm-network,39.1.0,1791788348,10/12/2026

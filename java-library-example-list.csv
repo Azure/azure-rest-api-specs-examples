@@ -444401,3 +444401,10 @@ id,file,release_id
 890916,specification/liftrcommvault/resource-manager/Commvault.ContentStore/stable/2026-09-30/examples-js/Operations_List_MaximumSet_Gen.js,7692
 890917,specification/liftrcommvault/resource-manager/Commvault.ContentStore/stable/2026-09-30/examples-js/Operations_List_MinimumSet_Gen.js,7692
 890918,specification/liftrcommvault/resource-manager/Commvault.ContentStore/stable/2026-09-30/examples-js/CloudAccounts_LinkSaaS_MaximumSet_Gen.js,7692
+890919,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_Get.js,7693
+890920,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_Delete.js,7693
+890921,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_CreateOrUpdate.js,7693
+890922,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_Update.js,7693
+890923,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_ListByResourceGroup.js,7693
+890924,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/Operation_List.js,7693
+890925,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2026-10-01-preview/examples-js/StorageDiscoveryWorkspaces_ListBySubscription.js,7693

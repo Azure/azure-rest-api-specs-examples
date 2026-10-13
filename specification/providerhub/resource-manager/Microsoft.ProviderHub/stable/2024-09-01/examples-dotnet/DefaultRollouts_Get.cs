@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DefaultRolloutResource created on azure
-// for more information of creating DefaultRolloutResource, please refer to the document of DefaultRolloutResource
+// this example assumes you already have this ProviderRegistrationResource created on azure
+// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-string rolloutName = "2020week10";
-ResourceIdentifier defaultRolloutResourceId = DefaultRolloutResource.CreateResourceIdentifier(subscriptionId, providerNamespace, rolloutName);
-DefaultRolloutResource defaultRollout = client.GetDefaultRolloutResource(defaultRolloutResourceId);
+ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
+ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
+
+// get the collection of this DefaultRolloutResource
+DefaultRolloutCollection collection = providerRegistration.GetDefaultRollouts();
 
 // invoke the operation
-DefaultRolloutResource result = await defaultRollout.GetAsync();
+string rolloutName = "2020week10";
+NullableResponse<DefaultRolloutResource> response = await collection.GetIfExistsAsync(rolloutName);
+DefaultRolloutResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DefaultRolloutData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DefaultRolloutData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

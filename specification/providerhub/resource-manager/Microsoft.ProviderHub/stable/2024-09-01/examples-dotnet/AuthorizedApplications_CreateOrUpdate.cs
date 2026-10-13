@@ -15,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this ProviderAuthorizedApplicationResource created on azure
+// for more information of creating ProviderAuthorizedApplicationResource, please refer to the document of ProviderAuthorizedApplicationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this ProviderAuthorizedApplicationResource
-ProviderAuthorizedApplicationCollection collection = providerRegistration.GetProviderAuthorizedApplications();
+Guid applicationId = Guid.Parse("760505bf-dcfa-4311-b890-18da392a00b2");
+ResourceIdentifier providerAuthorizedApplicationResourceId = ProviderAuthorizedApplicationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, applicationId);
+ProviderAuthorizedApplicationResource providerAuthorizedApplication = client.GetProviderAuthorizedApplicationResource(providerAuthorizedApplicationResourceId);
 
 // invoke the operation
-Guid applicationId = Guid.Parse("760505bf-dcfa-4311-b890-18da392a00b2");
 ProviderAuthorizedApplicationData data = new ProviderAuthorizedApplicationData
 {
     Properties = new ProviderAuthorizedApplicationProperties
@@ -42,7 +39,7 @@ ProviderAuthorizedApplicationData data = new ProviderAuthorizedApplicationData
         }},
     },
 };
-ArmOperation<ProviderAuthorizedApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationId, data);
+ArmOperation<ProviderAuthorizedApplicationResource> lro = await providerAuthorizedApplication.UpdateAsync(WaitUntil.Completed, data);
 ProviderAuthorizedApplicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

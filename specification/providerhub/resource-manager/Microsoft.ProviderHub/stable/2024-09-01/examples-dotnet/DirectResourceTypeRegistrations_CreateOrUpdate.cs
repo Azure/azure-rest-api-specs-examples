@@ -15,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this ResourceTypeRegistrationResource created on azure
+// for more information of creating ResourceTypeRegistrationResource, please refer to the document of ResourceTypeRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this ResourceTypeRegistrationResource
-ResourceTypeRegistrationCollection collection = providerRegistration.GetResourceTypeRegistrations();
+string resourceType = "employees";
+ResourceIdentifier resourceTypeRegistrationResourceId = ResourceTypeRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType);
+ResourceTypeRegistrationResource resourceTypeRegistration = client.GetResourceTypeRegistrationResource(resourceTypeRegistrationResourceId);
 
 // invoke the operation
-string resourceType = "employees";
 ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
 {
     Properties = new ResourceTypeRegistrationProperties
@@ -76,12 +73,6 @@ ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
             IncidentRoutingService = "",
             IncidentRoutingTeam = "",
             IncidentContactEmail = "helpme@contoso.com",
-            ServiceTreeInfos = {new ServiceTreeInfo
-            {
-            ServiceId = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69",
-            ComponentId = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69",
-            Readiness = ServiceTreeReadiness.InDevelopment,
-            }},
             ResourceAccessPolicy = ResourceAccessPolicy.NotSpecified,
         },
         IsNoncompliantCollectionResponseAllowed = true,
@@ -98,10 +89,6 @@ ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
         IsEmptyRoleAssignmentsAllowed = false,
         PolicyExecutionType = PolicyExecutionType.BypassPolicies,
         AvailabilityZonePolicy = AvailabilityZonePolicy.MultiZoned,
-        DstsConfiguration = new ProviderDstsConfiguration("prds-shim")
-        {
-            ServiceDnsName = "prds.sparta.azure.com",
-        },
         AsyncTimeoutRules = {new AsyncTimeoutRule
         {
         ActionName = "Microsoft.ClassicCompute/domainNames/write",
@@ -154,7 +141,10 @@ ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
         AreTagsSupported = true,
         ResourceManagementOptions = new ResourceTypeRegistrationResourceManagementOptions
         {
-            BatchProvisioningSupportSupportedOperations = new ResourceManagementSupportedOperation("Get, Delete"),
+            BatchProvisioningSupport = new BatchProvisioningSupport
+            {
+                SupportedOperations = new ResourceManagementSupportedOperation("Get, Delete"),
+            },
             DeleteDependencies = {new ResourceTypeRegistrationDeleteDependency
             {
             LinkedProperty = "properties.edgeProfile.subscription.id",
@@ -166,7 +156,7 @@ ResourceTypeRegistrationData data = new ResourceTypeRegistrationData
         RoutingRuleHostResourceType = "servers/databases",
     },
 };
-ArmOperation<ResourceTypeRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceType, data);
+ArmOperation<ResourceTypeRegistrationResource> lro = await resourceTypeRegistration.UpdateAsync(WaitUntil.Completed, data);
 ResourceTypeRegistrationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

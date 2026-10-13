@@ -44,12 +44,6 @@ ProviderRegistrationData data = new ProviderRegistrationData
             IncidentRoutingService = "Contoso Resource Provider",
             IncidentRoutingTeam = "Contoso Triage",
             IncidentContactEmail = "helpme@contoso.com",
-            ServiceTreeInfos = {new ServiceTreeInfo
-            {
-            ServiceId = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69",
-            ComponentId = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69",
-            Readiness = ServiceTreeReadiness.InDevelopment,
-            }},
             ExpeditedRolloutSubmitters = { "SPARTA-PlatformServiceOperator" },
             ServerFailureResponseMessageType = ServerFailureResponseMessageType.OutageReporting,
             ExpeditedRolloutMetadata = new ExpeditedRolloutMetadata

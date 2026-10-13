@@ -7692,3 +7692,4 @@ id,name,language,tag,package,version,date_epoch,date
 7691,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub/v2@v2.0.0-beta.3,go,sdk/resourcemanager/iothub/armiothub/v2.0.0-beta.3,sdk/resourcemanager/iothub/armiothub,v2.0.0-beta.3,1791825057,10/12/2026
 7692,@azure/arm-commvaultcontentstore@1.0.0,js,@azure/arm-commvaultcontentstore_1.0.0,@azure/arm-commvaultcontentstore,1.0.0,1791840805,10/12/2026
 7693,@azure/arm-storagediscovery@1.1.0-beta.1,js,@azure/arm-storagediscovery_1.1.0-beta.1,@azure/arm-storagediscovery,1.1.0-beta.1,1791826632,10/12/2026
+7694,@azure/arm-elasticsan@3.0.0-beta.1,js,@azure/arm-elasticsan_3.0.0-beta.1,@azure/arm-elasticsan,3.0.0-beta.1,1791826177,10/12/2026

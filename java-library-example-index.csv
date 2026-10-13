@@ -7688,3 +7688,4 @@ id,name,language,tag,package,version,date_epoch,date
 7687,azure-mgmt-network@33.1.0,python,azure-mgmt-network_33.1.0,azure-mgmt-network,33.1.0,1791790042,10/12/2026
 7688,"Azure.ResourceManager.ProviderHub,1.3.0",dotnet,Azure.ResourceManager.ProviderHub_1.3.0,Azure.ResourceManager.ProviderHub,1.3.0,1791776956,10/12/2026
 7689,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v12@v12.1.0,go,sdk/resourcemanager/network/armnetwork/v12.1.0,sdk/resourcemanager/network/armnetwork,v12.1.0,1791875919,10/13/2026
+7690,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore@v1.0.0,go,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore/v1.0.0,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore,v1.0.0,1791839341,10/12/2026

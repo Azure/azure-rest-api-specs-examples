@@ -7697,3 +7697,4 @@ id,name,language,tag,package,version,date_epoch,date
 7696,azure-mgmt-commvaultcontentstore@1.0.0,python,azure-mgmt-commvaultcontentstore_1.0.0,azure-mgmt-commvaultcontentstore,1.0.0,1791863866,10/13/2026
 7697,azure-mgmt-cognitiveservices@15.0.0b6,python,azure-mgmt-cognitiveservices_15.0.0b6,azure-mgmt-cognitiveservices,15.0.0b6,1791863540,10/13/2026
 7698,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.7.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-dataprotection_1.7.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-dataprotection,1.7.0-beta.1,1791861319,10/13/2026
+7699,com.azure.resourcemanager:azure-resourcemanager-commvaultcontentstore:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore_1.0.0,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore,1.0.0,1791837021,10/12/2026

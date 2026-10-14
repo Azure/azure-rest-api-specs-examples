@@ -7703,3 +7703,4 @@ id,name,language,tag,package,version,date_epoch,date
 7702,@azure/arm-cosmosdb@17.1.0-beta.1,js,@azure/arm-cosmosdb_17.1.0-beta.1,@azure/arm-cosmosdb,17.1.0-beta.1,1791974450,10/14/2026
 7703,@azure/arm-compute-bulkactions@1.0.0-beta.6,js,@azure/arm-compute-bulkactions_1.0.0-beta.6,@azure/arm-compute-bulkactions,1.0.0-beta.6,1791956997,10/14/2026
 7704,@azure/arm-cloudhealth@1.0.0-beta.5,js,@azure/arm-cloudhealth_1.0.0-beta.5,@azure/arm-cloudhealth,1.0.0-beta.5,1791923059,10/13/2026
+7705,azure-mgmt-cloudhealth@1.0.0b5,python,azure-mgmt-cloudhealth_1.0.0b5,azure-mgmt-cloudhealth,1.0.0b5,1791927821,10/13/2026

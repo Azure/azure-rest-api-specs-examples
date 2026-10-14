@@ -7687,3 +7687,15 @@ id,name,language,tag,package,version,date_epoch,date
 7686,@azure/arm-network@39.1.0,js,@azure/arm-network_39.1.0,@azure/arm-network,39.1.0,1791788348,10/12/2026
 7687,azure-mgmt-network@33.1.0,python,azure-mgmt-network_33.1.0,azure-mgmt-network,33.1.0,1791790042,10/12/2026
 7688,"Azure.ResourceManager.ProviderHub,1.3.0",dotnet,Azure.ResourceManager.ProviderHub_1.3.0,Azure.ResourceManager.ProviderHub,1.3.0,1791776956,10/12/2026
+7689,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v12@v12.1.0,go,sdk/resourcemanager/network/armnetwork/v12.1.0,sdk/resourcemanager/network/armnetwork,v12.1.0,1791875919,10/13/2026
+7690,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore@v1.0.0,go,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore/v1.0.0,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore,v1.0.0,1791839341,10/12/2026
+7691,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub/v2@v2.0.0-beta.3,go,sdk/resourcemanager/iothub/armiothub/v2.0.0-beta.3,sdk/resourcemanager/iothub/armiothub,v2.0.0-beta.3,1791825057,10/12/2026
+7692,@azure/arm-commvaultcontentstore@1.0.0,js,@azure/arm-commvaultcontentstore_1.0.0,@azure/arm-commvaultcontentstore,1.0.0,1791840805,10/12/2026
+7693,@azure/arm-storagediscovery@1.1.0-beta.1,js,@azure/arm-storagediscovery_1.1.0-beta.1,@azure/arm-storagediscovery,1.1.0-beta.1,1791826632,10/12/2026
+7694,@azure/arm-elasticsan@3.0.0-beta.1,js,@azure/arm-elasticsan_3.0.0-beta.1,@azure/arm-elasticsan,3.0.0-beta.1,1791826177,10/12/2026
+7695,@azure/arm-iothub@7.0.0-beta.4,js,@azure/arm-iothub_7.0.0-beta.4,@azure/arm-iothub,7.0.0-beta.4,1791824894,10/12/2026
+7696,azure-mgmt-commvaultcontentstore@1.0.0,python,azure-mgmt-commvaultcontentstore_1.0.0,azure-mgmt-commvaultcontentstore,1.0.0,1791863866,10/13/2026
+7697,azure-mgmt-cognitiveservices@15.0.0b6,python,azure-mgmt-cognitiveservices_15.0.0b6,azure-mgmt-cognitiveservices,15.0.0b6,1791863540,10/13/2026
+7698,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.7.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-dataprotection_1.7.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-dataprotection,1.7.0-beta.1,1791861319,10/13/2026
+7699,com.azure.resourcemanager:azure-resourcemanager-commvaultcontentstore:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore_1.0.0,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore,1.0.0,1791837021,10/12/2026
+7700,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-iothub_1.4.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-iothub,1.4.0-beta.4,1791828484,10/12/2026

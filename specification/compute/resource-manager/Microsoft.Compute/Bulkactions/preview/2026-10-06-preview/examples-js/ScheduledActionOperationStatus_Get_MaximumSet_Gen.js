@@ -2,12 +2,12 @@ const { ComputeClient } = require("@azure/arm-compute-bulkactions");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to gets the status of the specified scheduled action operation.
+ * This sample demonstrates how to gets the status of the specified recurring bulk action operation.
  *
- * @summary gets the status of the specified scheduled action operation.
+ * @summary gets the status of the specified recurring bulk action operation.
  * x-ms-original-file: 2026-10-06-preview/ScheduledActionOperationStatus_Get_MaximumSet_Gen.json
  */
-async function getScheduledActionOperationStatus() {
+async function getRecurringBulkActionOperationStatus() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "CB26D7CB-3E27-465F-99C8-EAF7A4118245";
   const client = new ComputeClient(credential, subscriptionId);

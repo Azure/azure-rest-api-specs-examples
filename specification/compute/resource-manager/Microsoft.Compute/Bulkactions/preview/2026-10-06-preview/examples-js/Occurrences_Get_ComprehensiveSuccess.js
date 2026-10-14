@@ -7,7 +7,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * @summary gets the specified occurrence.
  * x-ms-original-file: 2026-10-06-preview/Occurrences_Get_ComprehensiveSuccess.json
  */
-async function _02ReadARecurringScheduledActionOccurrenceWithMixedResults() {
+async function _02ReadARecurringBulkActionOccurrenceWithMixedResults() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new ComputeClient(credential, subscriptionId);

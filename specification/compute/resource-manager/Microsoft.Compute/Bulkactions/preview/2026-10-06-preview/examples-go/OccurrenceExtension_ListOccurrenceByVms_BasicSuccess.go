@@ -44,7 +44,7 @@ func ExampleOccurrenceExtensionClient_NewListOccurrenceByVMsPager() {
 		// 				},
 		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01/providers/Microsoft.Compute/associatedOccurrences/77777777-7777-7777-7777-777777777777"),
 		// 				Name: to.Ptr("77777777-7777-7777-7777-777777777777"),
-		// 				Type: to.Ptr("Microsoft.Compute/associatedOccurrences"),
+		// 				Type: to.Ptr("microsoft.compute/associatedOccurrences"),
 		// 			},
 		// 			{
 		// 				Properties: &armbulkactions.OccurrenceExtensionProperties{
@@ -57,7 +57,7 @@ func ExampleOccurrenceExtensionClient_NewListOccurrenceByVMsPager() {
 		// 				},
 		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01/providers/Microsoft.Compute/associatedOccurrences/88888888-8888-8888-8888-888888888888"),
 		// 				Name: to.Ptr("88888888-8888-8888-8888-888888888888"),
-		// 				Type: to.Ptr("Microsoft.Compute/associatedOccurrences"),
+		// 				Type: to.Ptr("microsoft.compute/associatedOccurrences"),
 		// 			},
 		// 		},
 		// 	},

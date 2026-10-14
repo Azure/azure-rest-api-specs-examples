@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_ListResources_BasicSuccess.json
-func ExampleOccurrencesClient_NewListResourcesPager_oneListResourcesInARecurringScheduledActionOccurrence() {
+func ExampleOccurrencesClient_NewListResourcesPager_oneListResourcesInARecurringBulkActionOccurrence() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -37,17 +37,17 @@ func ExampleOccurrencesClient_NewListResourcesPager_oneListResourcesInARecurring
 		// 				ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01"),
 		// 				ScheduledTime: to.Ptr(time.Date(2026, time.September, 15, 14, 0, 0, 0, time.UTC)),
 		// 				ProvisioningState: to.Ptr(armbulkactions.OccurrenceResourceProvisioningStateSucceeded),
-		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01"),
-		// 				Name: to.Ptr("web-vm-01"),
-		// 				Type: to.Ptr("Microsoft.Compute/virtualMachines"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/scheduledActions/weekday-start/occurrences/77777777-7777-7777-7777-777777777777/resources/VM_00000000-0000-0000-0000-000000000000_example-rg_web-vm-01"),
+		// 				Name: to.Ptr("VM_00000000-0000-0000-0000-000000000000_example-rg_web-vm-01"),
+		// 				Type: to.Ptr("microsoft.compute/scheduledActions/occurrences/resources"),
 		// 			},
 		// 			{
 		// 				ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-02"),
 		// 				ScheduledTime: to.Ptr(time.Date(2026, time.September, 15, 14, 0, 0, 0, time.UTC)),
 		// 				ProvisioningState: to.Ptr(armbulkactions.OccurrenceResourceProvisioningStateSucceeded),
-		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-02"),
-		// 				Name: to.Ptr("web-vm-02"),
-		// 				Type: to.Ptr("Microsoft.Compute/virtualMachines"),
+		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/scheduledActions/weekday-start/occurrences/77777777-7777-7777-7777-777777777777/resources/VM_00000000-0000-0000-0000-000000000000_example-rg_web-vm-02"),
+		// 				Name: to.Ptr("VM_00000000-0000-0000-0000-000000000000_example-rg_web-vm-02"),
+		// 				Type: to.Ptr("microsoft.compute/scheduledActions/occurrences/resources"),
 		// 			},
 		// 		},
 		// 	},

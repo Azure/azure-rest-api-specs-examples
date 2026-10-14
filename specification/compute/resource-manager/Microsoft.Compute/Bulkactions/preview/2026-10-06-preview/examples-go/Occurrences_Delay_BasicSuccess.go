@@ -11,7 +11,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_Delay_BasicSuccess.json
-func ExampleOccurrencesClient_BeginDelay_oneDelayOperationsInARecurringScheduledActionOccurrence() {
+func ExampleOccurrencesClient_BeginDelay_oneDelayOperationsInARecurringBulkActionOccurrence() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

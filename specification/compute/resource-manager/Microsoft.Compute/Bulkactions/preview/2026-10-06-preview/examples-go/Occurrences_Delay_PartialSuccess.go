@@ -11,7 +11,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_Delay_PartialSuccess.json
-func ExampleOccurrencesClient_BeginDelay_threeResponseWithPartialSuccessResultsWhenDelayingOperationsInARecurringScheduledActionOccurrence() {
+func ExampleOccurrencesClient_BeginDelay_threeResponseWithPartialSuccessResultsWhenDelayingOperationsInARecurringBulkActionOccurrence() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -42,10 +42,6 @@ func ExampleOccurrencesClient_BeginDelay_threeResponseWithPartialSuccessResultsW
 	// 	ResourceOperationResponse: armbulkactions.ResourceOperationResponse{
 	// 		TotalResources: to.Ptr[int32](2),
 	// 		ResourcesStatuses: []*armbulkactions.ResourceStatus{
-	// 			{
-	// 				ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-01"),
-	// 				Status: to.Ptr(armbulkactions.ResourceOperationStatusSucceeded),
-	// 			},
 	// 			{
 	// 				ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/virtualMachines/web-vm-02"),
 	// 				Status: to.Ptr(armbulkactions.ResourceOperationStatusFailed),

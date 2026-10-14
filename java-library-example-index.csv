@@ -7701,3 +7701,4 @@ id,name,language,tag,package,version,date_epoch,date
 7700,com.azure.resourcemanager:azure-resourcemanager-iothub:1.4.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-iothub_1.4.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-iothub,1.4.0-beta.4,1791828484,10/12/2026
 7701,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armbulkactions@v0.7.0,go,sdk/resourcemanager/compute/armbulkactions/v0.7.0,sdk/resourcemanager/compute/armbulkactions,v0.7.0,1791950209,10/14/2026
 7702,@azure/arm-cosmosdb@17.1.0-beta.1,js,@azure/arm-cosmosdb_17.1.0-beta.1,@azure/arm-cosmosdb,17.1.0-beta.1,1791974450,10/14/2026
+7703,@azure/arm-compute-bulkactions@1.0.0-beta.6,js,@azure/arm-compute-bulkactions_1.0.0-beta.6,@azure/arm-compute-bulkactions,1.0.0-beta.6,1791956997,10/14/2026

@@ -1,0 +1,51 @@
+package armcommvaultcontentstore_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore"
+)
+
+// Generated from example definition: 2026-09-30/ProtectedItems_Get_MaximumSet_Gen.json
+func ExampleProtectedItemsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcommvaultcontentstore.NewClientFactory("65D4E6D7-7063-4C4B-BAC5-13C45474009E", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewProtectedItemsClient().Get(ctx, "rgcommvault", "sample-cloudAccountName", "sample-protectionGroupName", "sample-protectedItemName", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcommvaultcontentstore.ProtectedItemsClientGetResponse{
+	// 	ProtectedItem: armcommvaultcontentstore.ProtectedItem{
+	// 		Properties: &armcommvaultcontentstore.ProtectedItemProperties{
+	// 			ResourceName: to.Ptr("srazwevhzrpbixzhouigjnjols"),
+	// 			LastBackUpTime: to.Ptr[int64](11),
+	// 			ResourceGroup: to.Ptr("ndgjxpiwhgukfgwekqoxofiikcnt"),
+	// 			Location: to.Ptr("bta"),
+	// 			VMGUID: to.Ptr("40000000-aaaa-4bbb-8ccc-000000000000"),
+	// 		},
+	// 		ID: to.Ptr("/subscriptions/65D4E6D7-7063-4C4B-BAC5-13C45474009E/resourceGroups/rgcommvault/providers/Commvault.ContentStore/cloudAccounts/myCloudAccount/protectionGroups/myProtectionGroup/protectedItems/myProtectedItem"),
+	// 		Name: to.Ptr("axpokdfysounjsuecfwxgswk"),
+	// 		Type: to.Ptr("bpwzurse"),
+	// 		SystemData: &armcommvaultcontentstore.SystemData{
+	// 			CreatedBy: to.Ptr("wg"),
+	// 			CreatedByType: to.Ptr(armcommvaultcontentstore.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(time.Date(2026, time.April, 1, 6, 14, 57, 355000000, time.UTC)),
+	// 			LastModifiedBy: to.Ptr("hbpzxzzwhqfy"),
+	// 			LastModifiedByType: to.Ptr(armcommvaultcontentstore.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(time.Date(2026, time.April, 1, 6, 14, 57, 355000000, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

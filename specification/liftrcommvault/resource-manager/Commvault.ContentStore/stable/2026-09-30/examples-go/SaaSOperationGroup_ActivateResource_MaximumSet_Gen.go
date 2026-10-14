@@ -1,0 +1,73 @@
+package armcommvaultcontentstore_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore"
+)
+
+// Generated from example definition: 2026-09-30/SaaSOperationGroup_ActivateResource_MaximumSet_Gen.json
+func ExampleSaaSOperationGroupClient_BeginActivateResource_saaSOperationGroupActivateResourceMaximumSetGeneratedByMaximumSetRuleGeneratedByMaximumSetRule() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcommvaultcontentstore.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewSaaSOperationGroupClient().BeginActivateResource(ctx, armcommvaultcontentstore.ActivateSaaSParameterRequest{
+		SaaSGUID:    to.Ptr("55555555-6666-7777-8888-999999999999"),
+		PublisherID: to.Ptr("contoso-publisher"),
+		ActivateSaaSRequestParam: &armcommvaultcontentstore.ActivateSaaSRequestParam{
+			SaaSResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Microsoft.SaaS/resources/commvault-saas"),
+			User: &armcommvaultcontentstore.UserDetails{
+				FirstName:    to.Ptr("John"),
+				LastName:     to.Ptr("Smith"),
+				EmailAddress: to.Ptr("john.smith@contoso.com"),
+				Upn:          to.Ptr("john.smith@contoso.com"),
+				PhoneNumber:  to.Ptr("+1-555-0101"),
+			},
+			Company: &armcommvaultcontentstore.CompanyProfile{
+				JobTitle:    to.Ptr("Security Administrator"),
+				CompanyName: to.Ptr("Contoso"),
+				Website:     to.Ptr("https://www.contoso.com"),
+				Street:      to.Ptr("1 Microsoft Way"),
+				City:        to.Ptr("Redmond"),
+				Country:     to.Ptr("USA"),
+				PostalCode:  to.Ptr("98052"),
+				State:       to.Ptr("WA"),
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armcommvaultcontentstore.SaaSOperationGroupClientActivateResourceResponse{
+	// 	SaaSResourceDetailsResponse: armcommvaultcontentstore.SaaSResourceDetailsResponse{
+	// 		SaaSResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Microsoft.SaaS/resources/commvault-saas"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Commvault.ContentStore/saasOperations/contoso-saas-activation"),
+	// 		Name: to.Ptr("contoso-saas-activation"),
+	// 		Type: to.Ptr("Commvault.ContentStore/saasOperations"),
+	// 		SystemData: &armcommvaultcontentstore.SystemData{
+	// 			CreatedBy: to.Ptr("john.doe@example.com"),
+	// 			CreatedByType: to.Ptr(armcommvaultcontentstore.CreatedByTypeUser),
+	// 			CreatedAt: to.Ptr(time.Date(2026, time.March, 12, 5, 18, 18, 58000000, time.UTC)),
+	// 			LastModifiedBy: to.Ptr("john.doe@example.com"),
+	// 			LastModifiedByType: to.Ptr(armcommvaultcontentstore.CreatedByTypeUser),
+	// 			LastModifiedAt: to.Ptr(time.Date(2026, time.March, 12, 5, 18, 18, 59000000, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

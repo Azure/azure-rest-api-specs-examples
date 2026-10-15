@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.edgeactions.fluent.models.VersionCodeInner;
+
+/**
+ * Samples for EdgeActionVersions DeployVersionCode.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/EdgeActionVersions_DeployVersionCode.json
+     */
+    /**
+     * Sample code: DeployVersionCode.
+     * 
+     * @param manager Entry point to EdgeActionsManager.
+     */
+    public static void deployVersionCode(com.azure.resourcemanager.edgeactions.EdgeActionsManager manager) {
+        manager.edgeActionVersions().deployVersionCode("testrg", "edgeAction1", "version2",
+            new VersionCodeInner().withContent(
+                "UEsDBBQAAAAIAAAAIQAqlc+OKAAAACoAAAAOAAAAZWRnZV9hY3Rpb24uanNLK81LLsnMz1PISMxLyUkt0kgtS80r0VSoVihKLSktylMA860VarkAUEsBAhQAFAAAAAgAAAAhACqVz44oAAAAKgAAAA4AAAAAAAAAAAAAAKSBAAAAAGVkZ2VfYWN0aW9uLmpzUEsFBgAAAAABAAEAPAAAAFQAAAAAAA==")
+                .withName("edge_action.js"),
+            com.azure.core.util.Context.NONE);
+    }
+}

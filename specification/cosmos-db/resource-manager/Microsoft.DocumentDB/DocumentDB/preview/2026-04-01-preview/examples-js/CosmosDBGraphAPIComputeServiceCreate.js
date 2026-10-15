@@ -1,0 +1,18 @@
+const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates a service.
+ *
+ * @summary creates a service.
+ * x-ms-original-file: 2026-04-01-preview/CosmosDBGraphAPIComputeServiceCreate.json
+ */
+async function graphAPIComputeServiceCreate() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const client = new CosmosDBManagementClient(credential, subscriptionId);
+  const result = await client.service.create("rg1", "ddb1", "GraphAPICompute", {
+    properties: { instanceCount: 1, instanceSize: "Cosmos.D4s", serviceType: "GraphAPICompute" },
+  });
+  console.log(result);
+}

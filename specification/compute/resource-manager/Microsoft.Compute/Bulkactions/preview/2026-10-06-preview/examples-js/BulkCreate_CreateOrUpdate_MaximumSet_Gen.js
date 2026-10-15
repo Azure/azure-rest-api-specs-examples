@@ -19,9 +19,6 @@ async function bulkCreateCreateOrUpdateMaximumSet() {
       properties: {
         capacity: 2,
         capacityType: "VM",
-        minCapacity: 1,
-        partialFulfillmentPolicy: { mode: "Enabled" },
-        priorityProfile: { type: "Spot", maxPricePerVM: 0.2, evictionPolicy: "Delete" },
         computeProfile: {
           virtualMachineProfile: {
             storageProfile: {
@@ -79,6 +76,9 @@ async function bulkCreateCreateOrUpdateMaximumSet() {
                 },
               ],
             },
+            priority: "Spot",
+            evictionPolicy: "Deallocate",
+            billingProfile: { maxPrice: 0.05 },
           },
           computeApiVersion: "2024-11-01",
         },
@@ -87,6 +87,8 @@ async function bulkCreateCreateOrUpdateMaximumSet() {
         },
       },
       zones: ["1", "2"],
+      extendedLocation: { name: "microsoftlosangeles1", type: "EdgeZone" },
+      placement: { zonePlacementPolicy: "Auto", includeZones: ["1", "2"], excludeZones: ["3"] },
       tags: { workload: "batch-render", env: "prod" },
       identity: { type: "SystemAssigned" },
     },

@@ -7,7 +7,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * @summary cancels the specified occurrence for the specified resource IDs.
  * x-ms-original-file: 2026-10-06-preview/Occurrences_Cancel_BasicSuccess.json
  */
-async function _01CancelOperationsInARecurringScheduledActionOccurrence() {
+async function _01CancelOperationsInARecurringBulkActionOccurrence() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new ComputeClient(credential, subscriptionId);

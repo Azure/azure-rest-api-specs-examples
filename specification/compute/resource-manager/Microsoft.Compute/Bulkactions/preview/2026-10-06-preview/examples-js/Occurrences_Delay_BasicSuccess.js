@@ -7,7 +7,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * @summary delays the specified occurrence for the specified resource IDs.
  * x-ms-original-file: 2026-10-06-preview/Occurrences_Delay_BasicSuccess.json
  */
-async function _01DelayOperationsInARecurringScheduledActionOccurrence() {
+async function _01DelayOperationsInARecurringBulkActionOccurrence() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const client = new ComputeClient(credential, subscriptionId);

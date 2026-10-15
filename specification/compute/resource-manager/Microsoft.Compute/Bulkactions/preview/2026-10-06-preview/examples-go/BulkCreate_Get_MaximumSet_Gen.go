@@ -33,11 +33,6 @@ func ExampleBulkCreateClient_Get() {
 	// 			ProvisioningState: to.Ptr(armbulkactions.ProvisioningStateSucceeded),
 	// 			Capacity: to.Ptr[int32](10),
 	// 			CapacityType: to.Ptr(armbulkactions.CapacityTypeVM),
-	// 			PriorityProfile: &armbulkactions.PriorityProfile{
-	// 				Type: to.Ptr(armbulkactions.PriorityTypeSpot),
-	// 				MaxPricePerVM: to.Ptr[float32](0.2),
-	// 				EvictionPolicy: to.Ptr(armbulkactions.EvictionPolicyDelete),
-	// 			},
 	// 			ComputeProfile: &armbulkactions.ComputeProfile{
 	// 				VirtualMachineProfile: &armbulkactions.BulkactionVMProperties{
 	// 					StorageProfile: &armbulkactions.StorageProfile{
@@ -108,6 +103,20 @@ func ExampleBulkCreateClient_Get() {
 	// 		Zones: []*string{
 	// 			to.Ptr("1"),
 	// 			to.Ptr("2"),
+	// 		},
+	// 		ExtendedLocation: &armbulkactions.ExtendedLocation{
+	// 			Name: to.Ptr("microsoftlosangeles1"),
+	// 			Type: to.Ptr(armbulkactions.ExtendedLocationTypeEdgeZone),
+	// 		},
+	// 		Placement: &armbulkactions.Placement{
+	// 			ZonePlacementPolicy: to.Ptr(armbulkactions.ZonePlacementPolicyTypeAuto),
+	// 			IncludeZones: []*string{
+	// 				to.Ptr("1"),
+	// 				to.Ptr("2"),
+	// 			},
+	// 			ExcludeZones: []*string{
+	// 				to.Ptr("3"),
+	// 			},
 	// 		},
 	// 		Tags: map[string]*string{
 	// 			"workload": to.Ptr("batch-render"),

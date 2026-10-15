@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_Get_ComprehensiveSuccess.json
-func ExampleOccurrencesClient_Get_twoReadARecurringScheduledActionOccurrenceWithMixedResults() {
+func ExampleOccurrencesClient_Get_twoReadARecurringBulkActionOccurrenceWithMixedResults() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -52,7 +52,7 @@ func ExampleOccurrencesClient_Get_twoReadARecurringScheduledActionOccurrenceWith
 	// 		},
 	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/scheduledActions/weekday-start/occurrences/88888888-8888-8888-8888-888888888888"),
 	// 		Name: to.Ptr("88888888-8888-8888-8888-888888888888"),
-	// 		Type: to.Ptr("Microsoft.Compute/scheduledActions/occurrences"),
+	// 		Type: to.Ptr("microsoft.compute/scheduledActions/occurrences"),
 	// 		SystemData: &armbulkactions.SystemData{
 	// 			CreatedBy: to.Ptr("user@contoso.com"),
 	// 			CreatedByType: to.Ptr(armbulkactions.CreatedByTypeUser),

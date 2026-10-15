@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_Cancel_PartialSuccess.json
-func ExampleOccurrencesClient_BeginCancel_threeResponseWithPartialResultsWhenCancelingResourcesInARecurringScheduledActionOccurrence() {
+func ExampleOccurrencesClient_BeginCancel_threeResponseWithPartialResultsWhenCancelingResourcesInARecurringBulkActionOccurrence() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_ListByScheduledAction_BasicSuccess.json
-func ExampleOccurrencesClient_NewListByScheduledActionPager_oneListRecurringScheduledActionOccurrences() {
+func ExampleOccurrencesClient_NewListByScheduledActionPager_oneListRecurringBulkActionOccurrences() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -49,7 +49,7 @@ func ExampleOccurrencesClient_NewListByScheduledActionPager_oneListRecurringSche
 		// 				},
 		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/scheduledActions/weekday-start/occurrences/77777777-7777-7777-7777-777777777777"),
 		// 				Name: to.Ptr("77777777-7777-7777-7777-777777777777"),
-		// 				Type: to.Ptr("Microsoft.Compute/scheduledActions/occurrences"),
+		// 				Type: to.Ptr("microsoft.compute/scheduledActions/occurrences"),
 		// 			},
 		// 			{
 		// 				Properties: &armbulkactions.OccurrenceProperties{
@@ -67,7 +67,7 @@ func ExampleOccurrencesClient_NewListByScheduledActionPager_oneListRecurringSche
 		// 				},
 		// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Compute/scheduledActions/weekday-start/occurrences/88888888-8888-8888-8888-888888888888"),
 		// 				Name: to.Ptr("88888888-8888-8888-8888-888888888888"),
-		// 				Type: to.Ptr("Microsoft.Compute/scheduledActions/occurrences"),
+		// 				Type: to.Ptr("microsoft.compute/scheduledActions/occurrences"),
 		// 			},
 		// 		},
 		// 	},

@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: 2026-10-06-preview/Occurrences_Get_BasicSuccess.json
-func ExampleOccurrencesClient_Get_oneReadARecurringScheduledActionOccurrence() {
+func ExampleOccurrencesClient_Get_oneReadARecurringBulkActionOccurrence() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

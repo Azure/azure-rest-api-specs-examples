@@ -7707,3 +7707,4 @@ id,name,language,tag,package,version,date_epoch,date
 7706,azure-mgmt-iothub@5.0.0b5,python,azure-mgmt-iothub_5.0.0b5,azure-mgmt-iothub,5.0.0b5,1791827645,10/12/2026
 7707,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-storagecache_1.3.0,com.azure.resourcemanager+azure-resourcemanager-storagecache,1.3.0,1791923327,10/13/2026
 7708,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v1.1.0-beta.1,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v1.1.0-beta.1,sdk/resourcemanager/monitor/armmonitorworkspaces,v1.1.0-beta.1,1792021099,10/14/2026
+7709,@azure/arm-keyvault@6.0.0,js,@azure/arm-keyvault_6.0.0,@azure/arm-keyvault,6.0.0,1792052712,10/15/2026

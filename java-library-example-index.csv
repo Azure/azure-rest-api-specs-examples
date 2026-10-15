@@ -7710,3 +7710,4 @@ id,name,language,tag,package,version,date_epoch,date
 7709,@azure/arm-keyvault@6.0.0,js,@azure/arm-keyvault_6.0.0,@azure/arm-keyvault,6.0.0,1792052712,10/15/2026
 7710,azure-mgmt-dataprotection@2.3.0b1,python,azure-mgmt-dataprotection_2.3.0b1,azure-mgmt-dataprotection,2.3.0b1,1792051058,10/15/2026
 7711,azure-mgmt-monitorworkspaces@1.1.0b1,python,azure-mgmt-monitorworkspaces_1.1.0b1,azure-mgmt-monitorworkspaces,1.1.0b1,1792024134,10/15/2026
+7712,azure-mgmt-compute-bulkaction@1.0.0b6,python,azure-mgmt-compute-bulkaction_1.0.0b6,azure-mgmt-compute-bulkaction,1.0.0b6,1791997171,10/14/2026

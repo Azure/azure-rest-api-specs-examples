@@ -7721,3 +7721,4 @@ id,name,language,tag,package,version,date_epoch,date
 7720,@azure/arm-azurestackhci@4.2.0,js,@azure/arm-azurestackhci_4.2.0,@azure/arm-azurestackhci,4.2.0,1792136870,10/16/2026
 7721,@azure/arm-recoveryservicesbackup@15.0.0,js,@azure/arm-recoveryservicesbackup_15.0.0,@azure/arm-recoveryservicesbackup,15.0.0,1792123716,10/16/2026
 7722,azure-mgmt-azurestackhci@8.2.0,python,azure-mgmt-azurestackhci_8.2.0,azure-mgmt-azurestackhci,8.2.0,1792139405,10/16/2026
+7723,azure-mgmt-recoveryservicesbackup@11.2.0,python,azure-mgmt-recoveryservicesbackup_11.2.0,azure-mgmt-recoveryservicesbackup,11.2.0,1792129735,10/16/2026

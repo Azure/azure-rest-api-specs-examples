@@ -7725,3 +7725,4 @@ id,name,language,tag,package,version,date_epoch,date
 7724,azure-mgmt-cosmosdb@10.1.0b1,python,azure-mgmt-cosmosdb_10.1.0b1,azure-mgmt-cosmosdb,10.1.0b1,1792118528,10/16/2026
 7725,com.azure.resourcemanager:azure-resourcemanager-terraform:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-terraform_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-terraform,1.0.0-beta.2,1792122012,10/16/2026
 7726,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-azurestackhci_1.2.0,com.azure.resourcemanager+azure-resourcemanager-azurestackhci,1.2.0,1792116800,10/16/2026
+7727,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.5.0-beta.5,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.5.0-beta.5,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.5.0-beta.5,1792100396,10/15/2026

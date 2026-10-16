@@ -1,0 +1,19 @@
+
+/**
+ * Samples for EdgeMachineDiskJobs Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/EdgeMachineDiskJobs_Get_CreateVolume.json
+     */
+    /**
+     * Sample code: EdgeMachineDiskJobs_Get_CreateVolume.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void
+        edgeMachineDiskJobsGetCreateVolume(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.edgeMachineDiskJobs().getWithResponse("test-rg", "EdgeMachine01", "disk-001", "CreateVolume",
+            com.azure.core.util.Context.NONE);
+    }
+}

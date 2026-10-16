@@ -446925,3 +446925,5 @@ id,file,release_id
 893632,specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2026-10-01/examples-go/UpdateSummaries_CheckHealth.go,7715
 893633,specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2026-10-01/examples-go/UpdateSummaries_CheckUpdates.go,7715
 893634,specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2026-10-01/examples-go/UpdateSummaries_CheckUpdates_MaximumSet.go,7715
+893635,specification/terraform/resource-manager/Microsoft.AzureTerraform/AzureTerraform/preview/2026-09-01-preview/examples-go/ListOperations.go,7716
+893636,specification/terraform/resource-manager/Microsoft.AzureTerraform/AzureTerraform/preview/2026-09-01-preview/examples-go/ExportTerraform.go,7716

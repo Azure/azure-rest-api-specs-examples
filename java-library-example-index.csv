@@ -7713,3 +7713,4 @@ id,name,language,tag,package,version,date_epoch,date
 7712,azure-mgmt-compute-bulkaction@1.0.0b6,python,azure-mgmt-compute-bulkaction_1.0.0b6,azure-mgmt-compute-bulkaction,1.0.0b6,1791997171,10/14/2026
 7713,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.0.0,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.0.0,1792037232,10/15/2026
 7714,com.azure.resourcemanager:azure-resourcemanager-network:2.62.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.62.0,com.azure.resourcemanager+azure-resourcemanager-network,2.62.0,1792037191,10/15/2026
+7715,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3@v3.2.0,go,sdk/resourcemanager/azurestackhci/armazurestackhci/v3.2.0,sdk/resourcemanager/azurestackhci/armazurestackhci,v3.2.0,1792135847,10/16/2026

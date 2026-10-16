@@ -1,0 +1,54 @@
+package armazurestackhci_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3"
+)
+
+// Generated from example definition: 2026-10-01/EdgeMachineSecuritySettingsOperations_CreateOrUpdate.json
+func ExampleEdgeMachineSecuritySettingsOperationsClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armazurestackhci.NewClientFactory("12345678-1234-1234-1234-123456789012", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewEdgeMachineSecuritySettingsOperationsClient().BeginCreateOrUpdate(ctx, "test-rg", "testEdgeMachine", "default", armazurestackhci.EdgeMachineSecuritySettings{
+		Properties: &armazurestackhci.EdgeMachineSecurityProperties{},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armazurestackhci.EdgeMachineSecuritySettingsOperationsClientCreateOrUpdateResponse{
+	// 	EdgeMachineSecuritySettings: armazurestackhci.EdgeMachineSecuritySettings{
+	// 		ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/test-rg/providers/Microsoft.AzureStackHCI/edgeMachines/testEdgeMachine/securitySettings/default"),
+	// 		Name: to.Ptr("default"),
+	// 		Type: to.Ptr("Microsoft.AzureStackHCI/edgeMachines/securitySettings"),
+	// 		Properties: &armazurestackhci.EdgeMachineSecurityProperties{
+	// 			ProvisioningState: to.Ptr(armazurestackhci.ProvisioningStateSucceeded),
+	// 			SecurityComplianceStatus: &armazurestackhci.EdgeMachineSecurityComplianceStatus{
+	// 				FipsStatus: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+	// 				SecureBootStatus: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+	// 				EncryptionAtRestStatus: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+	// 				SeLinuxPolicyStatus: to.Ptr(armazurestackhci.ComplianceStatusNonCompliant),
+	// 				SecurityBaselineStatus: to.Ptr(armazurestackhci.ComplianceStatusPending),
+	// 			},
+	// 			RegistrationTimestamp: to.Ptr(time.Date(2026, time.March, 10, 15, 4, 5, 0, time.UTC)),
+	// 			LastSyncTimestamp: to.Ptr(time.Date(2026, time.March, 15, 12, 34, 56, 0, time.UTC)),
+	// 		},
+	// 	},
+	// }
+}

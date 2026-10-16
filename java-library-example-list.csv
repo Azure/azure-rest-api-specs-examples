@@ -448137,3 +448137,5 @@ id,file,release_id
 894844,specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2026-04-01-preview/examples-python/cassandrarbac/CosmosDBCassandraRoleDefinitionGet.py,7724
 894845,specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2026-04-01-preview/examples-python/CosmosDBGremlinGraphBackupInformation.py,7724
 894846,specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/2026-04-01-preview/examples-python/CosmosDBSqlContainerRedistributeThroughput.py,7724
+894847,specification/terraform/resource-manager/Microsoft.AzureTerraform/AzureTerraform/preview/2026-09-01-preview/examples-java/ListOperations.java,7725
+894848,specification/terraform/resource-manager/Microsoft.AzureTerraform/AzureTerraform/preview/2026-09-01-preview/examples-java/ExportTerraform.java,7725

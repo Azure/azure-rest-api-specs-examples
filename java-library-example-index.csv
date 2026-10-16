@@ -7706,3 +7706,10 @@ id,name,language,tag,package,version,date_epoch,date
 7705,azure-mgmt-cloudhealth@1.0.0b5,python,azure-mgmt-cloudhealth_1.0.0b5,azure-mgmt-cloudhealth,1.0.0b5,1791927821,10/13/2026
 7706,azure-mgmt-iothub@5.0.0b5,python,azure-mgmt-iothub_5.0.0b5,azure-mgmt-iothub,5.0.0b5,1791827645,10/12/2026
 7707,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-storagecache_1.3.0,com.azure.resourcemanager+azure-resourcemanager-storagecache,1.3.0,1791923327,10/13/2026
+7708,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitorworkspaces@v1.1.0-beta.1,go,sdk/resourcemanager/monitor/armmonitorworkspaces/v1.1.0-beta.1,sdk/resourcemanager/monitor/armmonitorworkspaces,v1.1.0-beta.1,1792021099,10/14/2026
+7709,@azure/arm-keyvault@6.0.0,js,@azure/arm-keyvault_6.0.0,@azure/arm-keyvault,6.0.0,1792052712,10/15/2026
+7710,azure-mgmt-dataprotection@2.3.0b1,python,azure-mgmt-dataprotection_2.3.0b1,azure-mgmt-dataprotection,2.3.0b1,1792051058,10/15/2026
+7711,azure-mgmt-monitorworkspaces@1.1.0b1,python,azure-mgmt-monitorworkspaces_1.1.0b1,azure-mgmt-monitorworkspaces,1.1.0b1,1792024134,10/15/2026
+7712,azure-mgmt-compute-bulkaction@1.0.0b6,python,azure-mgmt-compute-bulkaction_1.0.0b6,azure-mgmt-compute-bulkaction,1.0.0b6,1791997171,10/14/2026
+7713,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.0.0,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.0.0,1792037232,10/15/2026
+7714,com.azure.resourcemanager:azure-resourcemanager-network:2.62.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.62.0,com.azure.resourcemanager+azure-resourcemanager-network,2.62.0,1792037191,10/15/2026

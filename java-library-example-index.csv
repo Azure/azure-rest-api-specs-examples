@@ -7735,3 +7735,4 @@ id,name,language,tag,package,version,date_epoch,date
 7734,azure-mgmt-storage@25.3.0,python,azure-mgmt-storage_25.3.0,azure-mgmt-storage,25.3.0,1792180116,10/16/2026
 7735,com.azure.resourcemanager:azure-resourcemanager-compute:2.62.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.62.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.62.0,1792200571,10/17/2026
 7736,com.azure.resourcemanager:azure-resourcemanager-storage:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.59.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.59.0,1792175732,10/16/2026
+7737,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0,1792169312,10/16/2026

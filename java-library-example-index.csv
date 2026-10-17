@@ -7733,3 +7733,4 @@ id,name,language,tag,package,version,date_epoch,date
 7732,@azure/arm-cognitiveservices@9.0.0-beta.5,js,@azure/arm-cognitiveservices_9.0.0-beta.5,@azure/arm-cognitiveservices,9.0.0-beta.5,1792171779,10/16/2026
 7733,@azure/arm-cloudhealth@1.0.0,js,@azure/arm-cloudhealth_1.0.0,@azure/arm-cloudhealth,1.0.0,1792166681,10/16/2026
 7734,azure-mgmt-storage@25.3.0,python,azure-mgmt-storage_25.3.0,azure-mgmt-storage,25.3.0,1792180116,10/16/2026
+7735,com.azure.resourcemanager:azure-resourcemanager-compute:2.62.0,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.62.0,com.azure.resourcemanager+azure-resourcemanager-compute,2.62.0,1792200571,10/17/2026

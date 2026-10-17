@@ -1,0 +1,17 @@
+
+/**
+ * Samples for EdgeMachineDisks List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/EdgeMachineDisks_List.json
+     */
+    /**
+     * Sample code: EdgeMachineDisks_List.
+     * 
+     * @param manager Entry point to AzureStackHciManager.
+     */
+    public static void edgeMachineDisksList(com.azure.resourcemanager.azurestackhci.AzureStackHciManager manager) {
+        manager.edgeMachineDisks().list("test-rg", "EdgeMachine01", com.azure.core.util.Context.NONE);
+    }
+}

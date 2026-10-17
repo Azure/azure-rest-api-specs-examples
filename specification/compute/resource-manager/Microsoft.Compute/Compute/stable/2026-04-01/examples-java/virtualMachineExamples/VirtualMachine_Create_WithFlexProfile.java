@@ -1,0 +1,64 @@
+
+import com.azure.resourcemanager.compute.fluent.models.VirtualMachineInner;
+import com.azure.resourcemanager.compute.models.DiskCreateOptionTypes;
+import com.azure.resourcemanager.compute.models.FlexProfile;
+import com.azure.resourcemanager.compute.models.ImageReference;
+import com.azure.resourcemanager.compute.models.LinuxConfiguration;
+import com.azure.resourcemanager.compute.models.ManagedDiskParameters;
+import com.azure.resourcemanager.compute.models.NetworkInterfaceReference;
+import com.azure.resourcemanager.compute.models.NetworkProfile;
+import com.azure.resourcemanager.compute.models.OSDisk;
+import com.azure.resourcemanager.compute.models.OSProfile;
+import com.azure.resourcemanager.compute.models.SshConfiguration;
+import com.azure.resourcemanager.compute.models.SshPublicKey;
+import com.azure.resourcemanager.compute.models.StorageAccountTypes;
+import com.azure.resourcemanager.compute.models.StorageProfile;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for VirtualMachines CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-04-01/virtualMachineExamples/VirtualMachine_Create_WithFlexProfile.json
+     */
+    /**
+     * Sample code: Create a VM with a FlexProfile.
+     * 
+     * @param manager Entry point to ComputeManager.
+     */
+    public static void createAVMWithAFlexProfile(com.azure.resourcemanager.compute.ComputeManager manager) {
+        manager.serviceClient().getVirtualMachines().createOrUpdate("myResourceGroup", "myVM",
+            new VirtualMachineInner().withLocation("westus")
+                .withTags(mapOf("department", "engineering", "project", "alpha"))
+                .withFlexProfile(new FlexProfile().withPreferredVMSize("Standard_D4s_v5"))
+                .withStorageProfile(new StorageProfile()
+                    .withImageReference(new ImageReference().withPublisher("Canonical")
+                        .withOffer("0001-com-ubuntu-server-focal").withSku("20_04-lts-gen2").withVersion("latest"))
+                    .withOsDisk(new OSDisk().withCreateOption(DiskCreateOptionTypes.FROM_IMAGE).withManagedDisk(
+                        new ManagedDiskParameters().withStorageAccountType(StorageAccountTypes.PREMIUM_LRS))))
+                .withOsProfile(new OSProfile().withComputerName("myVM").withAdminUsername("azureuser")
+                    .withLinuxConfiguration(new LinuxConfiguration().withDisablePasswordAuthentication(true)
+                        .withSsh(new SshConfiguration().withPublicKeys(Arrays.asList(new SshPublicKey()
+                            .withPath("/home/azureuser/.ssh/authorized_keys").withKeyData("fakeTokenPlaceholder"))))))
+                .withNetworkProfile(
+                    new NetworkProfile().withNetworkInterfaces(Arrays.asList(new NetworkInterfaceReference().withId(
+                        "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic")
+                        .withPrimary(true)))),
+            null, null, com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -197,6 +197,7 @@ public final class Main {
                                                             .withDomainNameLabel("aaaaaaaaaaaaaaaaaa"))
                                                     .withDeleteOption(DeleteOptions.DELETE))
                                             .withPrivateIpAddressVersion(IpVersion.IPV4)
+                                            .withPrivateIPAddressPrefixLength(28)
                                             .withApplicationGatewayBackendAddressPools(
                                                 Arrays.asList(new SubResource().withId(
                                                     "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot")))

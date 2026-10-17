@@ -1,0 +1,30 @@
+
+import com.azure.resourcemanager.storage.models.BlobAccessPointAccessKeyAuthPropertiesUpdate;
+import com.azure.resourcemanager.storage.models.BlobAccessPointConfigurationPropertiesUpdate;
+import com.azure.resourcemanager.storage.models.BlobAccessPointConfigurationState;
+import com.azure.resourcemanager.storage.models.BlobAccessPointConfigurationUpdate;
+import com.azure.resourcemanager.storage.models.BlobAccessPointNetAppOntapSourcePropertiesUpdate;
+
+/**
+ * Samples for BlobAccessPointConfigurations Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-09-01/BlobAccessPointConfigurations_Update.json
+     */
+    /**
+     * Sample code: UpdateBlobAccessPointConfiguration.
+     * 
+     * @param manager Entry point to StorageManager.
+     */
+    public static void updateBlobAccessPointConfiguration(com.azure.resourcemanager.storage.StorageManager manager) {
+        manager.serviceClient().getBlobAccessPointConfigurations().update("testrg", "teststorageaccount",
+            "testaccesspointconfig",
+            new BlobAccessPointConfigurationUpdate().withProperties(new BlobAccessPointConfigurationPropertiesUpdate()
+                .withState(BlobAccessPointConfigurationState.INACTIVE)
+                .withDescription("Updated NetApp ONTAP S3-compatible source")
+                .withSource(new BlobAccessPointNetAppOntapSourcePropertiesUpdate().withAuth(
+                    new BlobAccessPointAccessKeyAuthPropertiesUpdate().withSecretAccessKey("fakeTokenPlaceholder")))),
+            com.azure.core.util.Context.NONE);
+    }
+}

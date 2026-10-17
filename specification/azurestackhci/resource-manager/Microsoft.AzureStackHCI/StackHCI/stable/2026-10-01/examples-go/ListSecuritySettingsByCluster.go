@@ -1,0 +1,65 @@
+package armazurestackhci_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci/v3"
+)
+
+// Generated from example definition: 2026-10-01/ListSecuritySettingsByCluster.json
+func ExampleSecuritySettingsClient_NewListByClustersPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armazurestackhci.NewClientFactory("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewSecuritySettingsClient().NewListByClustersPager("test-rg", "myCluster", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armazurestackhci.SecuritySettingsClientListByClustersResponse{
+		// 	SecuritySettingListResult: armazurestackhci.SecuritySettingListResult{
+		// 		Value: []*armazurestackhci.SecuritySetting{
+		// 			{
+		// 				Type: to.Ptr("Microsoft.AzureStackHCI/clusters/securitySettings"),
+		// 				ID: to.Ptr("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/test-rg/providers/Microsoft.AzureStackHCI/clusters/myCluster/securitySettings/default"),
+		// 				Properties: &armazurestackhci.SecurityProperties{
+		// 					ProvisioningState: to.Ptr(armazurestackhci.ProvisioningStateSucceeded),
+		// 					SecuredCoreComplianceAssignment: to.Ptr(armazurestackhci.ComplianceAssignmentTypeAudit),
+		// 					SecurityComplianceStatus: &armazurestackhci.SecurityComplianceStatus{
+		// 						DataAtRestEncrypted: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+		// 						DataInTransitProtected: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+		// 						LastUpdated: to.Ptr(time.Date(2023, time.November, 14, 7, 9, 44, 771000000, time.UTC)),
+		// 						SecuredCoreCompliance: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+		// 						WdacCompliance: to.Ptr(armazurestackhci.ComplianceStatusCompliant),
+		// 					},
+		// 					SmbEncryptionForIntraClusterTrafficComplianceAssignment: to.Ptr(armazurestackhci.ComplianceAssignmentTypeAudit),
+		// 					WdacComplianceAssignment: to.Ptr(armazurestackhci.ComplianceAssignmentTypeApplyAndAutoCorrect),
+		// 				},
+		// 				SystemData: &armazurestackhci.SystemData{
+		// 					CreatedAt: to.Ptr(time.Date(2021, time.January, 1, 17, 18, 19, 123456700, time.UTC)),
+		// 					CreatedBy: to.Ptr("user1"),
+		// 					CreatedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(time.Date(2021, time.January, 2, 17, 18, 19, 123456700, time.UTC)),
+		// 					LastModifiedBy: to.Ptr("user2"),
+		// 					LastModifiedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

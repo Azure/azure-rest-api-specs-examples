@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.Account;
+import com.azure.resourcemanager.cognitiveservices.models.AccountProperties;
+import com.azure.resourcemanager.cognitiveservices.models.CostControlConnections;
+import com.azure.resourcemanager.cognitiveservices.models.Sku;
+
+/**
+ * Samples for Accounts Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-09-15-preview/UpdateAccount.json
+     */
+    /**
+     * Sample code: Update Account.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void updateAccount(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        Account resource = manager.accounts()
+            .getByResourceGroupWithResponse("bvttest", "bingSearch", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new AccountProperties().withCostControlConnections(new CostControlConnections()
+            .withAppInsightsConnectionId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/bvttest/providers/Microsoft.CognitiveServices/accounts/bingSearch/connections/myAppInsightsConnection")
+            .withEventGridConnectionId(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/bvttest/providers/Microsoft.CognitiveServices/accounts/bingSearch/connections/myEventGridConnection")))
+            .withSku(new Sku().withName("S2")).apply();
+    }
+}

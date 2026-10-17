@@ -1,0 +1,212 @@
+package armconsumption_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption/v2"
+)
+
+// Generated from example definition: 2026-06-01/BudgetsList.json
+func ExampleBudgetsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armconsumption.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewBudgetsClient().NewListPager("subscriptions/00000000-0000-0000-0000-000000000000", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armconsumption.BudgetsClientListResponse{
+		// 	BudgetsListResult: armconsumption.BudgetsListResult{
+		// 		Value: []*armconsumption.Budget{
+		// 			{
+		// 				Name: to.Ptr("TestBudget"),
+		// 				Type: to.Ptr("Microsoft.Consumption/budgets"),
+		// 				ETag: to.Ptr("\"1d34d012214157f\""),
+		// 				ID: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/TestBudget"),
+		// 				Properties: &armconsumption.BudgetProperties{
+		// 					Amount: to.Ptr[float64](100.65),
+		// 					Category: to.Ptr(armconsumption.CategoryTypeCost),
+		// 					CurrentSpend: &armconsumption.CurrentSpend{
+		// 						Amount: to.Ptr[float64](80.89),
+		// 						Unit: to.Ptr("USD"),
+		// 					},
+		// 					Filter: &armconsumption.BudgetFilter{
+		// 						And: []*armconsumption.BudgetFilterProperties{
+		// 							{
+		// 								Dimensions: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("ResourceId"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2"),
+		// 										to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"),
+		// 									},
+		// 								},
+		// 							},
+		// 							{
+		// 								Tags: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("category"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("Dev"),
+		// 										to.Ptr("Prod"),
+		// 									},
+		// 								},
+		// 							},
+		// 							{
+		// 								Tags: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("department"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("engineering"),
+		// 										to.Ptr("sales"),
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					Notifications: map[string]*armconsumption.Notification{
+		// 						"Actual_GreaterThanOrEqualTo_90_Percent": &armconsumption.Notification{
+		// 							ContactEmails: []*string{
+		// 								to.Ptr("johndoe@contoso.com"),
+		// 								to.Ptr("janesmith@contoso.com"),
+		// 							},
+		// 							ContactGroups: []*string{
+		// 								to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup"),
+		// 							},
+		// 							ContactRoles: []*string{
+		// 								to.Ptr("Contributor"),
+		// 								to.Ptr("Reader"),
+		// 							},
+		// 							Enabled: to.Ptr(true),
+		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThanOrEqualTo),
+		// 							Threshold: to.Ptr[float64](90),
+		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
+		// 						},
+		// 						"Actual_GreaterThan_80_Percent": &armconsumption.Notification{
+		// 							ContactEmails: []*string{
+		// 								to.Ptr("johndoe@contoso.com"),
+		// 								to.Ptr("janesmith@contoso.com"),
+		// 							},
+		// 							ContactRoles: []*string{
+		// 								to.Ptr("Contributor"),
+		// 								to.Ptr("Reader"),
+		// 							},
+		// 							Enabled: to.Ptr(true),
+		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThan),
+		// 							Threshold: to.Ptr[float64](80),
+		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
+		// 						},
+		// 					},
+		// 					TimeGrain: to.Ptr(armconsumption.TimeGrainTypeMonthly),
+		// 					TimePeriod: &armconsumption.BudgetTimePeriod{
+		// 						EndDate: to.Ptr(time.Date(2018, time.October, 31, 0, 0, 0, 0, time.UTC)),
+		// 						StartDate: to.Ptr(time.Date(2017, time.October, 1, 0, 0, 0, 0, time.UTC)),
+		// 					},
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("TestBudget"),
+		// 				Type: to.Ptr("Microsoft.Consumption/budgets"),
+		// 				ETag: to.Ptr("\"1d34d012214157f\""),
+		// 				ID: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Consumption/budgets/TestBudget"),
+		// 				Properties: &armconsumption.BudgetProperties{
+		// 					Amount: to.Ptr[float64](600.65),
+		// 					Category: to.Ptr(armconsumption.CategoryTypeCost),
+		// 					CurrentSpend: &armconsumption.CurrentSpend{
+		// 						Amount: to.Ptr[float64](120.89),
+		// 						Unit: to.Ptr("USD"),
+		// 					},
+		// 					Filter: &armconsumption.BudgetFilter{
+		// 						And: []*armconsumption.BudgetFilterProperties{
+		// 							{
+		// 								Dimensions: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("ResourceId"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2"),
+		// 										to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"),
+		// 									},
+		// 								},
+		// 							},
+		// 							{
+		// 								Tags: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("category"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("Dev"),
+		// 										to.Ptr("Prod"),
+		// 									},
+		// 								},
+		// 							},
+		// 							{
+		// 								Tags: &armconsumption.BudgetComparisonExpression{
+		// 									Name: to.Ptr("department"),
+		// 									Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
+		// 									Values: []*string{
+		// 										to.Ptr("engineering"),
+		// 										to.Ptr("sales"),
+		// 									},
+		// 								},
+		// 							},
+		// 						},
+		// 					},
+		// 					Notifications: map[string]*armconsumption.Notification{
+		// 						"Actual_GreaterThanOrEqualTo_60_Percent": &armconsumption.Notification{
+		// 							ContactEmails: []*string{
+		// 								to.Ptr("johndoe@contoso.com"),
+		// 								to.Ptr("janesmith@contoso.com"),
+		// 							},
+		// 							ContactGroups: []*string{
+		// 								to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup"),
+		// 							},
+		// 							ContactRoles: []*string{
+		// 								to.Ptr("Contributor"),
+		// 								to.Ptr("Reader"),
+		// 							},
+		// 							Enabled: to.Ptr(true),
+		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThanOrEqualTo),
+		// 							Threshold: to.Ptr[float64](60),
+		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
+		// 						},
+		// 						"Actual_GreaterThan_40_Percent": &armconsumption.Notification{
+		// 							ContactEmails: []*string{
+		// 								to.Ptr("johndoe@contoso.com"),
+		// 								to.Ptr("janesmith@contoso.com"),
+		// 							},
+		// 							ContactRoles: []*string{
+		// 								to.Ptr("Contributor"),
+		// 								to.Ptr("Reader"),
+		// 							},
+		// 							Enabled: to.Ptr(true),
+		// 							Operator: to.Ptr(armconsumption.OperatorTypeGreaterThan),
+		// 							Threshold: to.Ptr[float64](40),
+		// 							ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
+		// 						},
+		// 					},
+		// 					TimeGrain: to.Ptr(armconsumption.TimeGrainTypeMonthly),
+		// 					TimePeriod: &armconsumption.BudgetTimePeriod{
+		// 						EndDate: to.Ptr(time.Date(2018, time.October, 31, 0, 0, 0, 0, time.UTC)),
+		// 						StartDate: to.Ptr(time.Date(2017, time.October, 1, 0, 0, 0, 0, time.UTC)),
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

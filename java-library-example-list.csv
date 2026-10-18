@@ -449571,3 +449571,12 @@ id,file,release_id
 897606,specification/cloudhealth/resource-manager/Microsoft.CloudHealth/CloudHealth/stable/2026-11-01/examples-java/Entities_CreateOrUpdate.java,7737
 897607,specification/cloudhealth/resource-manager/Microsoft.CloudHealth/CloudHealth/stable/2026-11-01/examples-java/DiscoveryRules_ListByHealthModel.java,7737
 897608,specification/cloudhealth/resource-manager/Microsoft.CloudHealth/CloudHealth/stable/2026-11-01/examples-java/Relationships_CreateOrUpdate.java,7737
+897609,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_CreateOrUpdate.cs,7738
+897610,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Get.cs,7738
+897611,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_ListByResourceGroup.cs,7738
+897612,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Get.cs,7738
+897613,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Get.cs,7738
+897614,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_ListBySubscription.cs,7738
+897615,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Get.cs,7738
+897616,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Delete.cs,7738
+897617,specification/storagediscovery/resource-manager/Microsoft.StorageDiscovery/StorageDiscovery/preview/2025-06-01-preview/examples-dotnet/StorageDiscoveryWorkspaces_Update.cs,7738

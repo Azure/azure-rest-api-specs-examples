@@ -13,7 +13,7 @@ public final class Main {
      */
     public static void
         capacityReservationGroupDeleteMinimumSetGen(com.azure.resourcemanager.compute.ComputeManager manager) {
-        manager.serviceClient().getCapacityReservationGroups().deleteWithResponse("rgcompute",
-            "aaaaaaaaaaaaaaaaaaaaaaaaaa", com.azure.core.util.Context.NONE);
+        manager.serviceClient().getCapacityReservationGroups().delete("rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaaa",
+            com.azure.core.util.Context.NONE);
     }
 }

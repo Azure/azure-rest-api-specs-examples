@@ -13,7 +13,7 @@ public final class Main {
      */
     public static void
         capacityReservationGroupDeleteMaximumSetGen(com.azure.resourcemanager.compute.ComputeManager manager) {
-        manager.serviceClient().getCapacityReservationGroups().deleteWithResponse("rgcompute", "a",
+        manager.serviceClient().getCapacityReservationGroups().delete("rgcompute", "a",
             com.azure.core.util.Context.NONE);
     }
 }

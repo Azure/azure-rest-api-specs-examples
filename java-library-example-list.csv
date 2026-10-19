@@ -449604,3 +449604,16 @@ id,file,release_id
 897639,specification/compute/resource-manager/Microsoft.Compute/WorkloadManager/preview/2026-11-01-preview/examples-go/Capabilities_Get.go,7739
 897640,specification/compute/resource-manager/Microsoft.Compute/WorkloadManager/preview/2026-11-01-preview/examples-go/Capabilities_ListByWorkloadSpace.go,7739
 897641,specification/compute/resource-manager/Microsoft.Compute/WorkloadManager/preview/2026-11-01-preview/examples-go/Capabilities_Update.go,7739
+897642,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_CreateOrUpdate_MaximumSet_Gen.go,7740
+897643,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_Delete_MaximumSet_Gen.go,7740
+897644,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_Get_MaximumSet_Gen.go,7740
+897645,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_ListByResourceGroup_MaximumSet_Gen.go,7740
+897646,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_ListBySubscription_MaximumSet_Gen.go,7740
+897647,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/AzureKeyVaultSecretProviderClasses_Update_MaximumSet_Gen.go,7740
+897648,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/Operations_List_MaximumSet_Gen.go,7740
+897649,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_CreateOrUpdate_MaximumSet_Gen.go,7740
+897650,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_Delete_MaximumSet_Gen.go,7740
+897651,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_Get_MaximumSet_Gen.go,7740
+897652,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_ListByResourceGroup_MaximumSet_Gen.go,7740
+897653,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_ListBySubscription_MaximumSet_Gen.go,7740
+897654,specification/ews/resource-manager/Microsoft.SecretSyncController/SecretSyncController/preview/2026-09-25-preview/examples-go/SecretSyncs_Update_MaximumSet_Gen.go,7740

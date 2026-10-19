@@ -7737,3 +7737,4 @@ id,name,language,tag,package,version,date_epoch,date
 7736,com.azure.resourcemanager:azure-resourcemanager-storage:2.59.0,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.59.0,com.azure.resourcemanager+azure-resourcemanager-storage,2.59.0,1792175732,10/16/2026
 7737,com.azure.resourcemanager:azure-resourcemanager-cloudhealth:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-cloudhealth_1.0.0,com.azure.resourcemanager+azure-resourcemanager-cloudhealth,1.0.0,1792169312,10/16/2026
 7738,"Azure.ResourceManager.StorageDiscovery,1.1.0-beta.1",dotnet,Azure.ResourceManager.StorageDiscovery_1.1.0-beta.1,Azure.ResourceManager.StorageDiscovery,1.1.0-beta.1,1792089951,10/15/2026
+7739,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armworkloadmanager@v0.1.0,go,sdk/resourcemanager/compute/armworkloadmanager/v0.1.0,sdk/resourcemanager/compute/armworkloadmanager,v0.1.0,1792397437,10/19/2026

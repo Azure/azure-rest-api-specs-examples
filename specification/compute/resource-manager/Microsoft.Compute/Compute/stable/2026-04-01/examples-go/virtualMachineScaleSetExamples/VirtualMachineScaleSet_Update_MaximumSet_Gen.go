@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v9"
 )
 
 // Generated from example definition: 2026-04-01/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Update_MaximumSet_Gen.json
@@ -201,7 +201,8 @@ func ExampleVirtualMachineScaleSetsClient_BeginUpdate_virtualMachineScaleSetUpda
 													DeleteOption: to.Ptr(armcompute.DeleteOptionsDelete),
 												},
 											},
-											PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+											PrivateIPAddressVersion:      to.Ptr(armcompute.IPVersionIPv4),
+											PrivateIPAddressPrefixLength: to.Ptr[int32](28),
 											ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{
 												{
 													ID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"),
@@ -490,6 +491,7 @@ func ExampleVirtualMachineScaleSetsClient_BeginUpdate_virtualMachineScaleSetUpda
 	// 												},
 	// 											},
 	// 											PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+	// 											PrivateIPAddressPrefixLength: to.Ptr[int32](28),
 	// 											ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{
 	// 												{
 	// 													ID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"),

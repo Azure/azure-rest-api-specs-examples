@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v9"
 )
 
 // Generated from example definition: 2026-04-01/restorePointExamples/RestorePoint_Get_WithInstanceView.json
@@ -124,6 +124,11 @@ func ExampleRestorePointsClient_Get_getRestorePointWithInstanceView() {
 	// 						Code: to.Ptr("ReplicationState/succeeded"),
 	// 						Level: to.Ptr(armcompute.StatusLevelTypesInfo),
 	// 						DisplayStatus: to.Ptr("Succeeded"),
+	// 					},
+	// 					{
+	// 						Code: to.Ptr("InstantAccessState/availableWithInstantAccess"),
+	// 						Level: to.Ptr(armcompute.StatusLevelTypesInfo),
+	// 						DisplayStatus: to.Ptr("AvailableWithInstantAccess"),
 	// 					},
 	// 				},
 	// 			},

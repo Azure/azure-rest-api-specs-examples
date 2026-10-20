@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v9"
 )
 
 // Generated from example definition: 2026-04-01/virtualMachineScaleSetExamples/VirtualMachineScaleSet_List_MaximumSet_Gen.json
@@ -203,6 +203,7 @@ func ExampleVirtualMachineScaleSetsClient_NewListPager_virtualMachineScaleSetLis
 		// 														},
 		// 													},
 		// 													PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+		// 													PrivateIPAddressPrefixLength: to.Ptr[int32](28),
 		// 													ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{
 		// 														{
 		// 															ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
@@ -542,6 +543,7 @@ func ExampleVirtualMachineScaleSetsClient_NewListPager_virtualMachineScaleSetLis
 		// 														},
 		// 													},
 		// 													PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+		// 													PrivateIPAddressPrefixLength: to.Ptr[int32](28),
 		// 													ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{
 		// 														{
 		// 															ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),

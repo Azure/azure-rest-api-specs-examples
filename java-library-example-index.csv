@@ -7748,3 +7748,4 @@ id,name,language,tag,package,version,date_epoch,date
 7747,azure-mgmt-edgeoperator@1.0.0b1,python,azure-mgmt-edgeoperator_1.0.0b1,azure-mgmt-edgeoperator,1.0.0b1,1792437289,10/19/2026
 7748,azure-mgmt-compute@39.0.0,python,azure-mgmt-compute_39.0.0,azure-mgmt-compute,39.0.0,1792436185,10/19/2026
 7749,azure-mgmt-edgeactions@1.0.0,python,azure-mgmt-edgeactions_1.0.0,azure-mgmt-edgeactions,1.0.0,1792428276,10/19/2026
+7750,azure-mgmt-cloudhealth@1.0.0,python,azure-mgmt-cloudhealth_1.0.0,azure-mgmt-cloudhealth,1.0.0,1792423963,10/19/2026

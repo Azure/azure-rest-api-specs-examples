@@ -449970,3 +449970,5 @@ id,file,release_id
 898743,specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/preview/2026-09-03-preview/examples-js/AzureMonitorWorkspaces_Get_MaximumSet_Gen.js,7746
 898744,specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/preview/2026-09-03-preview/examples-js/Issue_SetBackgroundVisualization_MaximumSet_Gen.js,7746
 898745,specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/preview/2026-09-03-preview/examples-js/Issue_Get_MaximumSet_Gen.js,7746
+898746,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-python/SystemReadinessOperations_Get.py,7747
+898747,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-python/Operations_List.py,7747

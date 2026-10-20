@@ -7746,3 +7746,4 @@ id,name,language,tag,package,version,date_epoch,date
 7745,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v9@v9.0.0,go,sdk/resourcemanager/compute/armcompute/v9.0.0,sdk/resourcemanager/compute/armcompute,v9.0.0,1792431169,10/19/2026
 7746,@azure/arm-monitorworkspaces@1.1.0-beta.1,js,@azure/arm-monitorworkspaces_1.1.0-beta.1,@azure/arm-monitorworkspaces,1.1.0-beta.1,1792436196,10/19/2026
 7747,azure-mgmt-edgeoperator@1.0.0b1,python,azure-mgmt-edgeoperator_1.0.0b1,azure-mgmt-edgeoperator,1.0.0b1,1792437289,10/19/2026
+7748,azure-mgmt-compute@39.0.0,python,azure-mgmt-compute_39.0.0,azure-mgmt-compute,39.0.0,1792436185,10/19/2026

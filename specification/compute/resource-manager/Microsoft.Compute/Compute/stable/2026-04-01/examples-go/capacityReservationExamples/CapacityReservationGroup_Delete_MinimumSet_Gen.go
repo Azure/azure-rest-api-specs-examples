@@ -5,11 +5,11 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v9"
 )
 
 // Generated from example definition: 2026-04-01/capacityReservationExamples/CapacityReservationGroup_Delete_MinimumSet_Gen.json
-func ExampleCapacityReservationGroupsClient_Delete_capacityReservationGroupDeleteMinimumSetGen() {
+func ExampleCapacityReservationGroupsClient_BeginDelete_capacityReservationGroupDeleteMinimumSetGen() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +19,13 @@ func ExampleCapacityReservationGroupsClient_Delete_capacityReservationGroupDelet
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewCapacityReservationGroupsClient().Delete(ctx, "rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaaa", nil)
+	poller, err := clientFactory.NewCapacityReservationGroupsClient().BeginDelete(ctx, "rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaaa", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to poll the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res

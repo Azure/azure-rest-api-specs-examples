@@ -1,0 +1,47 @@
+
+import com.azure.resourcemanager.durabletask.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.durabletask.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.durabletask.models.SchedulerProperties;
+import com.azure.resourcemanager.durabletask.models.SchedulerSku;
+import com.azure.resourcemanager.durabletask.models.SchedulerSkuName;
+import com.azure.resourcemanager.durabletask.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Schedulers CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/Schedulers_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Schedulers_CreateOrUpdate.
+     * 
+     * @param manager Entry point to DurableTaskManager.
+     */
+    public static void schedulersCreateOrUpdate(com.azure.resourcemanager.durabletask.DurableTaskManager manager) {
+        manager.schedulers().define("testscheduler").withRegion("northcentralus").withExistingResourceGroup("rgopenapi")
+            .withTags(mapOf("department", "research", "development", "true"))
+            .withProperties(new SchedulerProperties().withIpAllowlist(Arrays.asList("10.0.0.0/8"))
+                .withSku(new SchedulerSku().withName(SchedulerSkuName.DEDICATED)))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C93/resourceGroups/rgopenapi/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity",
+                    new UserAssignedIdentity())))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

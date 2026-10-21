@@ -7756,3 +7756,4 @@ id,name,language,tag,package,version,date_epoch,date
 7755,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb@v0.3.0,go,sdk/resourcemanager/horizondb/armhorizondb/v0.3.0,sdk/resourcemanager/horizondb/armhorizondb,v0.3.0,1792516320,10/20/2026
 7756,@azure/arm-storage@21.0.0,js,@azure/arm-storage_21.0.0,@azure/arm-storage,21.0.0,1792529857,10/20/2026
 7757,@azure/arm-durabletask@1.2.0-beta.1,js,@azure/arm-durabletask_1.2.0-beta.1,@azure/arm-durabletask,1.2.0-beta.1,1792529756,10/20/2026
+7758,@azure/arm-maintenance@1.0.0-beta.5,js,@azure/arm-maintenance_1.0.0-beta.5,@azure/arm-maintenance,1.0.0-beta.5,1792519381,10/20/2026

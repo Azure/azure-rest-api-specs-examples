@@ -1,0 +1,47 @@
+const { StorageManagementClient } = require("@azure/arm-storage");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates a Blob Access Point configuration.
+ *
+ * @summary creates or updates a Blob Access Point configuration.
+ * x-ms-original-file: 2026-09-01/BlobAccessPointConfigurations_Create_AzureNetAppFilesPrivateLink.json
+ */
+async function createBlobAccessPointConfigurationWithAzureNetAppFilesPrivateLink() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new StorageManagementClient(credential, subscriptionId);
+  const result = await client.blobAccessPointConfigurations.create(
+    "testrg",
+    "teststorageaccount",
+    "anfprivatelinkaccesspoint",
+    {
+      location: "eastus",
+      properties: {
+        state: "Active",
+        description: "Azure NetApp Files S3-compatible source over Private Link",
+        source: {
+          sourceType: "AzureNetAppFiles",
+          connection: {
+            connectionType: "PrivateLink",
+            privateLinkIdType: "ResourceId",
+            privateLinkId:
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/privateLinkServices/anfpls",
+            privateLinkGroupId: "s3",
+            privateLinkLocation: "eastus",
+            requestMessage: "Blob Access Point connection request for Azure NetApp Files",
+            endpoint: "https://anf.contoso.com/bucket1",
+            tlsVerification: "Perform",
+          },
+          auth: {
+            authType: "AccessKey",
+            accessKeyId: "example-access-key",
+            secretAccessKey: "example-secret-key",
+            signingRegion: "us-east-1",
+          },
+        },
+      },
+    },
+  );
+  console.log(result);
+}

@@ -1,0 +1,34 @@
+const { StorageManagementClient } = require("@azure/arm-storage");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to update a Context Cache.
+ *
+ * @summary update a Context Cache.
+ * x-ms-original-file: 2026-09-01/StorageContextCacheCRUD/ContextCaches_Update.json
+ */
+async function updateAContextCacheTags() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const client = new StorageManagementClient(credential, subscriptionId);
+  const result = await client.contextCaches.update("testrg", "testcontextcache", {
+    tags: { environment: "production", team: "promptservice" },
+    identity: {
+      type: "SystemAssigned,UserAssigned",
+      userAssignedIdentities: {
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami":
+          {},
+      },
+    },
+    properties: {
+      description: "Updated context cache",
+      encryption: {
+        customerManagedKeyEncryption: {
+          keyEncryptionKeyIdentity: { identityType: "systemAssignedIdentity" },
+          keyEncryptionKeyUrl: "https://mykeyvault.vault.azure.net/keys/newEncryptionKey",
+        },
+      },
+    },
+  });
+  console.log(result);
+}

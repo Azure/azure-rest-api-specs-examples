@@ -7751,3 +7751,4 @@ id,name,language,tag,package,version,date_epoch,date
 7750,azure-mgmt-cloudhealth@1.0.0,python,azure-mgmt-cloudhealth_1.0.0,azure-mgmt-cloudhealth,1.0.0,1792423963,10/19/2026
 7751,azure-mgmt-containerservice@41.8.0,python,azure-mgmt-containerservice_41.8.0,azure-mgmt-containerservice,41.8.0,1792408841,10/19/2026
 7752,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.1.0,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.1.0,1792481945,10/20/2026
+7753,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.2.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.2.0,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.2.0,1792568862,10/21/2026

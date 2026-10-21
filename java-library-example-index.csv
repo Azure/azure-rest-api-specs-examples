@@ -7758,3 +7758,4 @@ id,name,language,tag,package,version,date_epoch,date
 7757,@azure/arm-durabletask@1.2.0-beta.1,js,@azure/arm-durabletask_1.2.0-beta.1,@azure/arm-durabletask,1.2.0-beta.1,1792529756,10/20/2026
 7758,@azure/arm-maintenance@1.0.0-beta.5,js,@azure/arm-maintenance_1.0.0-beta.5,@azure/arm-maintenance,1.0.0-beta.5,1792519381,10/20/2026
 7759,@azure/arm-edgeactions@1.0.0,js,@azure/arm-edgeactions_1.0.0,@azure/arm-edgeactions,1.0.0,1792519062,10/20/2026
+7760,@azure/arm-horizondb@1.0.0-beta.3,js,@azure/arm-horizondb_1.0.0-beta.3,@azure/arm-horizondb,1.0.0-beta.3,1792516252,10/20/2026

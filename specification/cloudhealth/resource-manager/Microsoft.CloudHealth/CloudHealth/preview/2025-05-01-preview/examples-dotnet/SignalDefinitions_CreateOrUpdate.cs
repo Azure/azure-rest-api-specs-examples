@@ -1,0 +1,52 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.CloudHealth.Models;
+using Azure.ResourceManager.CloudHealth;
+
+// Generated from example definition: 2025-05-01-preview/SignalDefinitions_CreateOrUpdate.json
+// this example is just showing the usage of "SignalDefinition_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this HealthModelResource created on azure
+// for more information of creating HealthModelResource, please refer to the document of HealthModelResource
+string subscriptionId = "4980D7D5-4E07-47AD-AD34-E76C6BC9F061";
+string resourceGroupName = "rgopenapi";
+string healthModelName = "myHealthModel";
+ResourceIdentifier healthModelResourceId = HealthModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, healthModelName);
+HealthModelResource healthModel = client.GetHealthModelResource(healthModelResourceId);
+
+// get the collection of this HealthModelSignalDefinitionResource
+HealthModelSignalDefinitionCollection collection = healthModel.GetHealthModelSignalDefinitions();
+
+// invoke the operation
+string signalDefinitionName = "sig1";
+HealthModelSignalDefinitionData data = new HealthModelSignalDefinitionData
+{
+    Properties = new ResourceMetricSignalDefinitionProperties(new EntitySignalEvaluationRule
+    {
+        DegradedRule = new EntitySignalThresholdRuleV2(EntitySignalOperator.LessThan),
+        UnhealthyRule = new EntitySignalThresholdRuleV2(EntitySignalOperator.LessThan),
+    }, "microsoft.compute/virtualMachines", "cpuusage", "PT1M", MetricAggregationType.None)
+    {
+        DimensionFilter = "node1",
+        DisplayName = "cpu usage",
+        RefreshInterval = EntitySignalRefreshInterval.PT1M,
+        DataUnit = "byte",
+    },
+};
+ArmOperation<HealthModelSignalDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, signalDefinitionName, data);
+HealthModelSignalDefinitionResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HealthModelSignalDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

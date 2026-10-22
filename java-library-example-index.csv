@@ -7751,3 +7751,15 @@ id,name,language,tag,package,version,date_epoch,date
 7750,azure-mgmt-cloudhealth@1.0.0,python,azure-mgmt-cloudhealth_1.0.0,azure-mgmt-cloudhealth,1.0.0,1792423963,10/19/2026
 7751,azure-mgmt-containerservice@41.8.0,python,azure-mgmt-containerservice_41.8.0,azure-mgmt-containerservice,41.8.0,1792408841,10/19/2026
 7752,com.azure.resourcemanager:azure-resourcemanager-edgeactions:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-edgeactions_1.1.0,com.azure.resourcemanager+azure-resourcemanager-edgeactions,1.1.0,1792481945,10/20/2026
+7753,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5@v5.2.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v5.2.0,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v5.2.0,1792568862,10/21/2026
+7754,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maintenance/armmaintenance/v2@v2.0.0-beta.1,go,sdk/resourcemanager/maintenance/armmaintenance/v2.0.0-beta.1,sdk/resourcemanager/maintenance/armmaintenance,v2.0.0-beta.1,1792530288,10/20/2026
+7755,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb@v0.3.0,go,sdk/resourcemanager/horizondb/armhorizondb/v0.3.0,sdk/resourcemanager/horizondb/armhorizondb,v0.3.0,1792516320,10/20/2026
+7756,@azure/arm-storage@21.0.0,js,@azure/arm-storage_21.0.0,@azure/arm-storage,21.0.0,1792529857,10/20/2026
+7757,@azure/arm-durabletask@1.2.0-beta.1,js,@azure/arm-durabletask_1.2.0-beta.1,@azure/arm-durabletask,1.2.0-beta.1,1792529756,10/20/2026
+7758,@azure/arm-maintenance@1.0.0-beta.5,js,@azure/arm-maintenance_1.0.0-beta.5,@azure/arm-maintenance,1.0.0-beta.5,1792519381,10/20/2026
+7759,@azure/arm-edgeactions@1.0.0,js,@azure/arm-edgeactions_1.0.0,@azure/arm-edgeactions,1.0.0,1792519062,10/20/2026
+7760,@azure/arm-horizondb@1.0.0-beta.3,js,@azure/arm-horizondb_1.0.0-beta.3,@azure/arm-horizondb,1.0.0-beta.3,1792516252,10/20/2026
+7761,@azure/arm-containerservice@25.7.0,js,@azure/arm-containerservice_25.7.0,@azure/arm-containerservice,25.7.0,1792506661,10/20/2026
+7762,com.azure.resourcemanager:azure-resourcemanager-durabletask:1.2.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-durabletask_1.2.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-durabletask,1.2.0-beta.1,1792529538,10/20/2026
+7763,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-maintenance_1.1.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-maintenance,1.1.0-beta.4,1792522305,10/20/2026
+7764,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.56.0,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.56.0,1792502803,10/20/2026

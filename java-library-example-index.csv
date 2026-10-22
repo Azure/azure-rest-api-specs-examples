@@ -7765,3 +7765,4 @@ id,name,language,tag,package,version,date_epoch,date
 7764,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.56.0,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.56.0,1792502803,10/20/2026
 7765,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.8.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.8.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v9.8.0-beta.1,1792626802,10/21/2026
 7766,@azure/arm-netapp@25.0.0,js,@azure/arm-netapp_25.0.0,@azure/arm-netapp,25.0.0,1792603240,10/21/2026
+7767,"Azure.ResourceManager.CloudHealth,1.0.0-beta.6",dotnet,Azure.ResourceManager.CloudHealth_1.0.0-beta.6,Azure.ResourceManager.CloudHealth,1.0.0-beta.6,1792087487,10/15/2026

@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.maintenance.models.ScheduledEventsIdList;
+import java.util.Arrays;
+
+/**
+ * Samples for ScheduledEvents AcknowledgeList.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/ScheduledEvents_AcknowledgeList.json
+     */
+    /**
+     * Sample code: Post ScheduledEvents List Acknowledgement.
+     * 
+     * @param manager Entry point to MaintenanceManager.
+     */
+    public static void
+        postScheduledEventsListAcknowledgement(com.azure.resourcemanager.maintenance.MaintenanceManager manager) {
+        manager.scheduledEvents().acknowledgeListWithResponse("resource-group1", "resource-type1", "resource-name1",
+            new ScheduledEventsIdList().withValue(
+                Arrays.asList("00000000-0000-0000-0000-000000000000", "11111111-1111-1111-1111-111111111111")),
+            com.azure.core.util.Context.NONE);
+    }
+}

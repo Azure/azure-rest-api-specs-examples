@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ScheduledEvents Acknowledge.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-10-01-preview/ScheduledEvents_Acknowledge.json
+     */
+    /**
+     * Sample code: Post ScheduledEvents Acknowledgement.
+     * 
+     * @param manager Entry point to MaintenanceManager.
+     */
+    public static void
+        postScheduledEventsAcknowledgement(com.azure.resourcemanager.maintenance.MaintenanceManager manager) {
+        manager.scheduledEvents().acknowledgeWithResponse("resource-group1", "resource-type1", "resource-name1",
+            "00000000-0000-0000-0000-000000000000", com.azure.core.util.Context.NONE);
+    }
+}

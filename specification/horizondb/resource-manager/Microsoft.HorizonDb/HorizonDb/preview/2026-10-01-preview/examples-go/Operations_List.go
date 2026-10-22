@@ -1,0 +1,70 @@
+package armhorizondb_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb"
+)
+
+// Generated from example definition: 2026-10-01-preview/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armhorizondb.NewClientFactory("<subscriptionID>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page = armhorizondb.OperationsClientListResponse{
+		// 	OperationListResult: armhorizondb.OperationListResult{
+		// 		Value: []*armhorizondb.Operation{
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/read"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft HorizonDB"),
+		// 					Resource: to.Ptr("HorizonDB cluster"),
+		// 					Operation: to.Ptr("Read HorizonDB clusters"),
+		// 					Description: to.Ptr("Reads or lists HorizonDB clusters."),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/write"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft HorizonDB"),
+		// 					Resource: to.Ptr("HorizonDB cluster"),
+		// 					Operation: to.Ptr("Create or replace HorizonDB clusters"),
+		// 					Description: to.Ptr("Creates or replaces HorizonDB clusters."),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Microsoft.HorizonDb/clusters/pools/maintenanceEvents/reschedule/action"),
+		// 				Display: &armhorizondb.OperationDisplay{
+		// 					Provider: to.Ptr("Microsoft HorizonDB"),
+		// 					Resource: to.Ptr("HorizonDB maintenance event"),
+		// 					Operation: to.Ptr("Reschedule maintenance"),
+		// 					Description: to.Ptr("Reschedules a HorizonDB pool maintenance event."),
+		// 				},
+		// 				IsDataAction: to.Ptr(false),
+		// 			},
+		// 		},
+		// 	},
+		// }
+	}
+}

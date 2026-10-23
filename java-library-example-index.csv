@@ -7774,3 +7774,4 @@ id,name,language,tag,package,version,date_epoch,date
 7773,azure-mgmt-maintenance@2.2.0b4,python,azure-mgmt-maintenance_2.2.0b4,azure-mgmt-maintenance,2.2.0b4,1792729679,10/23/2026
 7774,com.azure.resourcemanager:azure-resourcemanager-redhatopenshifthcp:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp_1.0.0,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp,1.0.0,1792683894,10/22/2026
 7775,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.9.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup_1.9.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservicesbackup,1.9.0,1792662369,10/22/2026
+7776,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.66.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.66.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.66.0-beta.1,1792654167,10/22/2026

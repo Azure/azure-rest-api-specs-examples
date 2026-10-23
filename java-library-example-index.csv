@@ -7769,3 +7769,4 @@ id,name,language,tag,package,version,date_epoch,date
 7768,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.0.0,go,sdk/resourcemanager/netapp/armnetapp/v11.0.0,sdk/resourcemanager/netapp/armnetapp,v11.0.0,1792724658,10/23/2026
 7769,azure-mgmt-aigateway@1.0.0b1,python,azure-mgmt-aigateway_1.0.0b1,azure-mgmt-aigateway,1.0.0b1,1792739214,10/23/2026
 7770,azure-mgmt-durabletask@1.2.0b1,python,azure-mgmt-durabletask_1.2.0b1,azure-mgmt-durabletask,1.2.0b1,1792739209,10/23/2026
+7771,azure-mgmt-horizondb@1.0.0b3,python,azure-mgmt-horizondb_1.0.0b3,azure-mgmt-horizondb,1.0.0b3,1792739185,10/23/2026

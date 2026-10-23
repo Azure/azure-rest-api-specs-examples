@@ -451628,3 +451628,10 @@ id,file,release_id
 901083,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-08-01/examples-go/OperationList.go,7768
 901084,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-08-01/examples-go/NetAppResourceQuotaLimitsAccount_Get.go,7768
 901085,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2026-08-01/examples-go/NetAppResourceQuotaLimitsAccount_List.go,7768
+901086,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayListBySubscription.py,7769
+901087,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AIGatewayListOperations.py,7769
+901088,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayGet.py,7769
+901089,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayDelete.py,7769
+901090,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayCreate.py,7769
+901091,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayListByResourceGroup.py,7769
+901092,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-python/AiGatewayUpdate.py,7769

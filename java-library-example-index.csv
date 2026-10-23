@@ -7770,3 +7770,4 @@ id,name,language,tag,package,version,date_epoch,date
 7769,azure-mgmt-aigateway@1.0.0b1,python,azure-mgmt-aigateway_1.0.0b1,azure-mgmt-aigateway,1.0.0b1,1792739214,10/23/2026
 7770,azure-mgmt-durabletask@1.2.0b1,python,azure-mgmt-durabletask_1.2.0b1,azure-mgmt-durabletask,1.2.0b1,1792739209,10/23/2026
 7771,azure-mgmt-horizondb@1.0.0b3,python,azure-mgmt-horizondb_1.0.0b3,azure-mgmt-horizondb,1.0.0b3,1792739185,10/23/2026
+7772,azure-mgmt-netapp@18.0.0,python,azure-mgmt-netapp_18.0.0,azure-mgmt-netapp,18.0.0,1792732898,10/23/2026

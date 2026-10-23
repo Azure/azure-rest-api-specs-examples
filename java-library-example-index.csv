@@ -7772,3 +7772,4 @@ id,name,language,tag,package,version,date_epoch,date
 7771,azure-mgmt-horizondb@1.0.0b3,python,azure-mgmt-horizondb_1.0.0b3,azure-mgmt-horizondb,1.0.0b3,1792739185,10/23/2026
 7772,azure-mgmt-netapp@18.0.0,python,azure-mgmt-netapp_18.0.0,azure-mgmt-netapp,18.0.0,1792732898,10/23/2026
 7773,azure-mgmt-maintenance@2.2.0b4,python,azure-mgmt-maintenance_2.2.0b4,azure-mgmt-maintenance,2.2.0b4,1792729679,10/23/2026
+7774,com.azure.resourcemanager:azure-resourcemanager-redhatopenshifthcp:1.0.0,java,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp_1.0.0,com.azure.resourcemanager+azure-resourcemanager-redhatopenshifthcp,1.0.0,1792683894,10/22/2026

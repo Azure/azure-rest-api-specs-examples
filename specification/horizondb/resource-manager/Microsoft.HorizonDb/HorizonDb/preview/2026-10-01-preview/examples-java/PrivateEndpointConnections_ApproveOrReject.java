@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.horizondb.models.PrivateEndpointConnectionProperties;
+import com.azure.resourcemanager.horizondb.models.PrivateEndpointServiceConnectionStatus;
+import com.azure.resourcemanager.horizondb.models.PrivateLinkServiceConnectionState;
+
+/**
+ * Samples for PrivateEndpointConnections ApproveOrReject.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/PrivateEndpointConnections_ApproveOrReject.json
+     */
+    /**
+     * Sample code: Approve or reject a private endpoint connection.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        approveOrRejectAPrivateEndpointConnection(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.privateEndpointConnections().define("example-private-endpoint-connection")
+            .withExistingCluster("example-resource-group", "example-cluster")
+            .withProperties(new PrivateEndpointConnectionProperties().withPrivateLinkServiceConnectionState(
+                new PrivateLinkServiceConnectionState().withStatus(PrivateEndpointServiceConnectionStatus.APPROVED)
+                    .withDescription("Approved for the production database network")))
+            .create();
+    }
+}

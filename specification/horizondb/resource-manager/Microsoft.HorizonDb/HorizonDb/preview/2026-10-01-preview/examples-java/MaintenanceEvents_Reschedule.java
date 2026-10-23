@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.horizondb.models.MaintenanceEventRescheduleRequest;
+import java.time.OffsetDateTime;
+
+/**
+ * Samples for MaintenanceEvents Reschedule.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/MaintenanceEvents_Reschedule.json
+     */
+    /**
+     * Sample code: Reschedule a maintenance event for a HorizonDB pool.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        rescheduleAMaintenanceEventForAHorizonDBPool(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.maintenanceEvents().reschedule("example-resource-group", "example-cluster", "example-pool-01",
+            "ABCD-123", new MaintenanceEventRescheduleRequest().withPostponeToDateTimeUtc(
+                OffsetDateTime.parse("2026-08-20T10:00:00Z")),
+            com.azure.core.util.Context.NONE);
+    }
+}

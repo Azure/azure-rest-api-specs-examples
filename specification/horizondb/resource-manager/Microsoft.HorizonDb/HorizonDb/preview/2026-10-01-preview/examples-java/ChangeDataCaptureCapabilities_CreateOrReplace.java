@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.horizondb.fluent.models.ChangeDataCaptureCapabilityInner;
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureCapabilityProperties;
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureDesiredState;
+
+/**
+ * Samples for ChangeDataCaptureCapabilities CreateOrReplace.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/ChangeDataCaptureCapabilities_CreateOrReplace.json
+     */
+    /**
+     * Sample code: Enable the cluster change data capture capability.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        enableTheClusterChangeDataCaptureCapability(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.changeDataCaptureCapabilities().createOrReplace("example-resource-group", "example-cluster",
+            new ChangeDataCaptureCapabilityInner().withProperties(new ChangeDataCaptureCapabilityProperties()
+                .withDesiredState(ChangeDataCaptureDesiredState.ENABLED).withAutoUpgradeExtension(true)),
+            com.azure.core.util.Context.NONE);
+    }
+}

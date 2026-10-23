@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Pools Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/Pools_Delete.json
+     */
+    /**
+     * Sample code: Delete the last HorizonDB pool and disconnect private endpoint connections.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void deleteTheLastHorizonDBPoolAndDisconnectPrivateEndpointConnections(
+        com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.pools().delete("example-resource-group", "example-cluster", "example-pool-01",
+            com.azure.core.util.Context.NONE);
+    }
+}

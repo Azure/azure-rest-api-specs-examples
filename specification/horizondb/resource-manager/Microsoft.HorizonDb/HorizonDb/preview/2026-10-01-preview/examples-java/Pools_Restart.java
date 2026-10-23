@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Pools Restart.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/Pools_Restart.json
+     */
+    /**
+     * Sample code: Restart a HorizonDB pool and apply pending parameter changes.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void restartAHorizonDBPoolAndApplyPendingParameterChanges(
+        com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.pools().restart("exampleresourcegroup", "examplecluster", "example-pool-01",
+            com.azure.core.util.Context.NONE);
+    }
+}

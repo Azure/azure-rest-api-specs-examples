@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureConfigurationProperties;
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureDesiredState;
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureUsageProfile;
+
+/**
+ * Samples for ChangeDataCaptureConfigurations CreateOrReplace.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/ChangeDataCaptureConfigurations_CreateOrReplace.json
+     */
+    /**
+     * Sample code: Enroll a database for Microsoft Fabric Mirroring.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        enrollADatabaseForMicrosoftFabricMirroring(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.changeDataCaptureConfigurations().define("sales-database")
+            .withExistingCluster("example-resource-group", "example-cluster")
+            .withProperties(new ChangeDataCaptureConfigurationProperties().withDatabaseName("sales")
+                .withUsageProfile(ChangeDataCaptureUsageProfile.MIRRORING)
+                .withDestinationResourceId(
+                    "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/example-resource-group/providers/Microsoft.HorizonDb/clusters/example-cluster/changeDataCaptureDestinations/fabric-mirroring")
+                .withDesiredState(ChangeDataCaptureDesiredState.ENABLED))
+            .create();
+    }
+}

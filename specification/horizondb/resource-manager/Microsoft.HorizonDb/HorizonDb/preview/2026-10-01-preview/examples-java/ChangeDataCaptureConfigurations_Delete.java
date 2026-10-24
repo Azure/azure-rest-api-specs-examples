@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ChangeDataCaptureConfigurations Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/ChangeDataCaptureConfigurations_Delete.json
+     */
+    /**
+     * Sample code: Delete a Microsoft Fabric Mirroring configuration.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        deleteAMicrosoftFabricMirroringConfiguration(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.changeDataCaptureConfigurations().delete("example-resource-group", "example-cluster", "sales-database",
+            com.azure.core.util.Context.NONE);
+    }
+}

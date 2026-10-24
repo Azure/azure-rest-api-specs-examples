@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureCapabilityForPatchUpdate;
+import com.azure.resourcemanager.horizondb.models.ChangeDataCaptureCapabilityPropertiesForPatchUpdate;
+
+/**
+ * Samples for ChangeDataCaptureCapabilities Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/ChangeDataCaptureCapabilities_Update.json
+     */
+    /**
+     * Sample code: Update the cluster change data capture capability.
+     * 
+     * @param manager Entry point to HorizonDbManager.
+     */
+    public static void
+        updateTheClusterChangeDataCaptureCapability(com.azure.resourcemanager.horizondb.HorizonDbManager manager) {
+        manager.changeDataCaptureCapabilities().update("example-resource-group", "example-cluster",
+            new ChangeDataCaptureCapabilityForPatchUpdate().withProperties(
+                new ChangeDataCaptureCapabilityPropertiesForPatchUpdate().withAutoUpgradeExtension(false)),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -452422,3 +452422,5 @@ id,file,release_id
 901900,specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/examples-go/EdgeActions_Get.go,7779
 901901,specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/examples-go/EdgeActions_ListByResourceGroup.go,7779
 901902,specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/examples-go/EdgeActions_ListBySubscription.go,7779
+901903,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-js/Operations_List.js,7780
+901904,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-js/SystemReadinessOperations_Get.js,7780

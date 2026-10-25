@@ -7777,3 +7777,8 @@ id,name,language,tag,package,version,date_epoch,date
 7776,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.66.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.66.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.66.0-beta.1,1792654167,10/22/2026
 7777,com.azure.resourcemanager:azure-resourcemanager-horizondb:1.0.0-beta.3,java,com.azure.resourcemanager+azure-resourcemanager-horizondb_1.0.0-beta.3,com.azure.resourcemanager+azure-resourcemanager-horizondb,1.0.0-beta.3,1792601362,10/21/2026
 7778,"Azure.ResourceManager.EdgeActions,1.0.0-beta.4",dotnet,Azure.ResourceManager.EdgeActions_1.0.0-beta.4,Azure.ResourceManager.EdgeActions,1.0.0-beta.4,1792742894,10/23/2026
+7779,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeactions/armedgeactions@v1.0.0,go,sdk/resourcemanager/edgeactions/armedgeactions/v1.0.0,sdk/resourcemanager/edgeactions/armedgeactions,v1.0.0,1792766662,10/23/2026
+7780,@azure/arm-edgeoperator@1.0.0-beta.1,js,@azure/arm-edgeoperator_1.0.0-beta.1,@azure/arm-edgeoperator,1.0.0-beta.1,1792776201,10/23/2026
+7781,azure-mgmt-redhatopenshifthcp@1.0.0,python,azure-mgmt-redhatopenshifthcp_1.0.0,azure-mgmt-redhatopenshifthcp,1.0.0,1792788565,10/23/2026
+7782,"Azure.ResourceManager.Hci,1.4.0",dotnet,Azure.ResourceManager.Hci_1.4.0,Azure.ResourceManager.Hci,1.4.0,1792740341,10/23/2026
+7783,"Azure.ResourceManager.Maintenance,1.2.0-beta.12",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.12,Azure.ResourceManager.Maintenance,1.2.0-beta.12,1792572416,10/21/2026

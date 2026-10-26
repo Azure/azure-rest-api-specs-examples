@@ -452448,3 +452448,5 @@ id,file,release_id
 902053,specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/examples-dotnet/MaintenanceConfigurations_GetForResource.cs,7783
 902054,specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/examples-dotnet/MaintenanceConfigurations_DeleteForResource.cs,7783
 902055,specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/examples-dotnet/MaintenanceConfigurations_UpdateForResource.cs,7783
+902056,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-go/Operations_List.go,7784
+902057,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-go/SystemReadinessOperations_Get.go,7784

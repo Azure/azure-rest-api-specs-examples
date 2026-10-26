@@ -7784,3 +7784,4 @@ id,name,language,tag,package,version,date_epoch,date
 7783,"Azure.ResourceManager.Maintenance,1.2.0-beta.12",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.12,Azure.ResourceManager.Maintenance,1.2.0-beta.12,1792572416,10/21/2026
 7784,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeoperator/armedgeoperator@v0.1.0,go,sdk/resourcemanager/edgeoperator/armedgeoperator/v0.1.0,sdk/resourcemanager/edgeoperator/armedgeoperator,v0.1.0,1793001046,10/26/2026
 7785,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp@v1.0.0,go,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp/v1.0.0,sdk/resourcemanager/redhatopenshifthcp/armredhatopenshifthcp,v1.0.0,1792982384,10/26/2026
+7786,@azure/arm-containerservice@25.8.0-beta.1,js,@azure/arm-containerservice_25.8.0-beta.1,@azure/arm-containerservice,25.8.0-beta.1,1792980874,10/26/2026

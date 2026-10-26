@@ -7787,3 +7787,4 @@ id,name,language,tag,package,version,date_epoch,date
 7786,@azure/arm-containerservice@25.8.0-beta.1,js,@azure/arm-containerservice_25.8.0-beta.1,@azure/arm-containerservice,25.8.0-beta.1,1792980874,10/26/2026
 7787,@azure/arm-redhatopenshifthcp@1.0.0,js,@azure/arm-redhatopenshifthcp_1.0.0,@azure/arm-redhatopenshifthcp,1.0.0,1792977533,10/26/2026
 7788,azure-mgmt-containerservice@41.9.0b1,python,azure-mgmt-containerservice_41.9.0b1,azure-mgmt-containerservice,41.9.0b1,1793004249,10/26/2026
+7789,com.azure.resourcemanager:azure-resourcemanager-datatransfer:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-datatransfer_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-datatransfer,1.0.0-beta.1,1792986437,10/26/2026

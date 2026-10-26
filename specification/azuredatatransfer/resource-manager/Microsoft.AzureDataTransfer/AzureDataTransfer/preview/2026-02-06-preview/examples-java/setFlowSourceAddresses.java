@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.datatransfer.models.SetSourceAddresses;
+import java.util.Arrays;
+
+/**
+ * Samples for Flows SetSourceAddresses.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-06-preview/setFlowSourceAddresses.json
+     */
+    /**
+     * Sample code: Set the flow stream source addresses.
+     * 
+     * @param manager Entry point to DataTransferManager.
+     */
+    public static void
+        setTheFlowStreamSourceAddresses(com.azure.resourcemanager.datatransfer.DataTransferManager manager) {
+        manager.flows().setSourceAddresses("testRG", "testConnection", "testFlow",
+            new SetSourceAddresses().withValues(Arrays.asList("0.0.0.0", "1.0.0.0/24")),
+            com.azure.core.util.Context.NONE);
+    }
+}

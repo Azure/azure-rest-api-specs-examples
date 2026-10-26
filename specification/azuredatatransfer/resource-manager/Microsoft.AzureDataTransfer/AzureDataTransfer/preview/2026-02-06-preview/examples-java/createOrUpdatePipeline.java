@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.datatransfer.models.PipelineProperties;
+
+/**
+ * Samples for Pipelines CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-06-preview/createOrUpdatePipeline.json
+     */
+    /**
+     * Sample code: Creates or updates the pipeline resource.
+     * 
+     * @param manager Entry point to DataTransferManager.
+     */
+    public static void
+        createsOrUpdatesThePipelineResource(com.azure.resourcemanager.datatransfer.DataTransferManager manager) {
+        manager.pipelines().define("testPipeline").withRegion("East US").withExistingResourceGroup("testRG")
+            .withProperties(new PipelineProperties().withRemoteCloud("testdc")).create();
+    }
+}

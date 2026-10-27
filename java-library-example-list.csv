@@ -453053,3 +453053,10 @@ id,file,release_id
 902658,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-js/TopologyMaps_Delete_MaximumSet_Gen.js,7792
 902659,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-js/HealthPolicies_Get_MaximumSet_Gen.js,7792
 902660,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-js/Profiles_ListByResourceGroup_MaximumSet_Gen.js,7792
+902661,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayDelete.js,7793
+902662,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayUpdate.js,7793
+902663,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayGet.js,7793
+902664,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayCreate.js,7793
+902665,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayListByResourceGroup.js,7793
+902666,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AIGatewayListOperations.js,7793
+902667,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-js/AiGatewayListBySubscription.js,7793

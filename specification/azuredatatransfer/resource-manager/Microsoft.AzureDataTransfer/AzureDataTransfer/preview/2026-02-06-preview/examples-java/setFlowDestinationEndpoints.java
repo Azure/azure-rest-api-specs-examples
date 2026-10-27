@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.datatransfer.models.SetDestinationEndpoints;
+import java.util.Arrays;
+
+/**
+ * Samples for Flows SetDestinationEndpoints.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-02-06-preview/setFlowDestinationEndpoints.json
+     */
+    /**
+     * Sample code: Set the flow stream destination endpoints.
+     * 
+     * @param manager Entry point to DataTransferManager.
+     */
+    public static void
+        setTheFlowStreamDestinationEndpoints(com.azure.resourcemanager.datatransfer.DataTransferManager manager) {
+        manager.flows().setDestinationEndpoints("testRG", "testConnection", "testFlow",
+            new SetDestinationEndpoints().withEndpoints(Arrays.asList("10.0.0.1")), com.azure.core.util.Context.NONE);
+    }
+}

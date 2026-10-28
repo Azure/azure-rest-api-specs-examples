@@ -453391,3 +453391,10 @@ id,file,release_id
 902996,specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-07-01/examples-go/PolicyCRUD/GetBackupPolicy.go,7797
 902997,specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-07-01/examples-go/PolicyCRUD/ListBackupPolicy.go,7797
 902998,specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-07-01/examples-go/GetOperationStatusVaultContext.go,7797
+902999,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayCreate.go,7798
+903000,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayDelete.go,7798
+903001,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayUpdate.go,7798
+903002,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayGet.go,7798
+903003,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayListByResourceGroup.go,7798
+903004,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AiGatewayListBySubscription.go,7798
+903005,specification/apimanagement/resource-manager/Microsoft.ApiManagement/AIGateway/preview/2026-09-01-preview/examples-go/AIGatewayListOperations.go,7798

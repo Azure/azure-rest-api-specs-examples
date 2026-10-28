@@ -1,0 +1,27 @@
+const { AzureStackHCIVMManagementClient } = require("@azure/arm-azurestackhcivm");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+ *
+ * @summary the operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+ * x-ms-original-file: 2026-07-01-preview/VirtualHardDisks__CreateOrUpdate_CreateFromLocal.json
+ */
+async function createVirtualHardDiskFromLocal() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
+  const client = new AzureStackHCIVMManagementClient(credential, subscriptionId);
+  const result = await client.virtualHardDisks.createOrUpdate("test-rg", "rehome-datadisk-1", {
+    extendedLocation: {
+      name: "/subscriptions/a95612cb-f1fa-4daa-a4fd-272844fa512c/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location",
+      type: "CustomLocation",
+    },
+    location: "West US2",
+    properties: {
+      createFromLocal: true,
+      localVhdPath:
+        "C:\\ClusterStorage\\UserStorage_2\\e35803d0bd82d61\\rehome555-dd1-a95612cb-f1fa-4daa-a4fd-272844fa512c-dogfoodarc.vhdx",
+    },
+  });
+  console.log(result);
+}

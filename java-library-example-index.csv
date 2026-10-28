@@ -7802,3 +7802,4 @@ id,name,language,tag,package,version,date_epoch,date
 7801,@azure/arm-azurestackhcivm@1.0.0-beta.2,js,@azure/arm-azurestackhcivm_1.0.0-beta.2,@azure/arm-azurestackhcivm,1.0.0-beta.2,1793131839,10/27/2026
 7802,@azure/arm-appinsights@5.0.0-beta.10,js,@azure/arm-appinsights_5.0.0-beta.10,@azure/arm-appinsights,5.0.0-beta.10,1793127233,10/27/2026
 7803,azure-mgmt-cdn@14.1.0,python,azure-mgmt-cdn_14.1.0,azure-mgmt-cdn,14.1.0,1793162018,10/28/2026
+7804,com.azure.resourcemanager:azure-resourcemanager-cdn:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-cdn_2.54.0,com.azure.resourcemanager+azure-resourcemanager-cdn,2.54.0,1793162840,10/28/2026

@@ -7794,3 +7794,4 @@ id,name,language,tag,package,version,date_epoch,date
 7793,@azure/arm-aigateway@1.0.0-beta.1,js,@azure/arm-aigateway_1.0.0-beta.1,@azure/arm-aigateway,1.0.0-beta.1,1793034851,10/26/2026
 7794,com.azure.resourcemanager:azure-resourcemanager-netapp:2.5.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.5.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.5.0,1793068118,10/27/2026
 7795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v1.2.0-beta.1,go,sdk/resourcemanager/durabletask/armdurabletask/v1.2.0-beta.1,sdk/resourcemanager/durabletask/armdurabletask,v1.2.0-beta.1,1793176236,10/28/2026
+7796,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datatransfer/armdatatransfer@v0.1.0,go,sdk/resourcemanager/datatransfer/armdatatransfer/v0.1.0,sdk/resourcemanager/datatransfer/armdatatransfer,v0.1.0,1793176199,10/28/2026

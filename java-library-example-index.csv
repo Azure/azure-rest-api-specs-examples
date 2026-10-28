@@ -7798,3 +7798,4 @@ id,name,language,tag,package,version,date_epoch,date
 7797,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.3.0-beta.1,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.3.0-beta.1,sdk/resourcemanager/dataprotection/armdataprotection,v4.3.0-beta.1,1793176189,10/28/2026
 7798,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/aigateway/armaigateway@v0.1.0,go,sdk/resourcemanager/aigateway/armaigateway/v0.1.0,sdk/resourcemanager/aigateway/armaigateway,v0.1.0,1793176186,10/28/2026
 7799,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v4@v4.0.0,go,sdk/resourcemanager/cdn/armcdn/v4.0.0,sdk/resourcemanager/cdn/armcdn,v4.0.0,1793156978,10/28/2026
+7800,@azure/arm-cdn@10.1.0,js,@azure/arm-cdn_10.1.0,@azure/arm-cdn,10.1.0,1793159517,10/28/2026

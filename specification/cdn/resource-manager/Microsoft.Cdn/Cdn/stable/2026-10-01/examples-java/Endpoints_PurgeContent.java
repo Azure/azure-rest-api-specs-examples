@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.cdn.models.PurgeParameters;
+import java.util.Arrays;
+
+/**
+ * Samples for Endpoints PurgeContent.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/Endpoints_PurgeContent.json
+     */
+    /**
+     * Sample code: Endpoints_PurgeContent.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void endpointsPurgeContent(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getEndpoints().purgeContent("RG", "profile1", "endpoint1",
+            new PurgeParameters().withContentPaths(Arrays.asList("/folder1")), com.azure.core.util.Context.NONE);
+    }
+}

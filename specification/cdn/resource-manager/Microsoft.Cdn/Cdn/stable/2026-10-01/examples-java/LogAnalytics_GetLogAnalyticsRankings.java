@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.cdn.models.LogRanking;
+import com.azure.resourcemanager.cdn.models.LogRankingMetric;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
+
+/**
+ * Samples for LogAnalytics GetLogAnalyticsRankings.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/LogAnalytics_GetLogAnalyticsRankings.json
+     */
+    /**
+     * Sample code: LogAnalytics_GetLogAnalyticsRankings.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void logAnalyticsGetLogAnalyticsRankings(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getLogAnalytics().getLogAnalyticsRankingsWithResponse("RG", "profile1",
+            Arrays.asList(LogRanking.URL), Arrays.asList(LogRankingMetric.CLIENT_REQUEST_COUNT), 5,
+            OffsetDateTime.parse("2020-11-04T06:49:27.554Z"), OffsetDateTime.parse("2020-11-04T09:49:27.554Z"), null,
+            com.azure.core.util.Context.NONE);
+    }
+}

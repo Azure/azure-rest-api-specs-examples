@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.cdn.models.MigrationParameters;
+import com.azure.resourcemanager.cdn.models.ResourceReference;
+import com.azure.resourcemanager.cdn.models.Sku;
+import com.azure.resourcemanager.cdn.models.SkuName;
+
+/**
+ * Samples for Profiles Migrate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/Profiles_Migrate.json
+     */
+    /**
+     * Sample code: Profiles_Migrate.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void profilesMigrate(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getProfiles().migrate("RG",
+            new MigrationParameters().withSku(new Sku().withName(SkuName.STANDARD_AZURE_FRONT_DOOR))
+                .withClassicResourceReference(new ResourceReference().withId(
+                    "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoors/frontdoorname"))
+                .withProfileName("profile1"),
+            com.azure.core.util.Context.NONE);
+    }
+}

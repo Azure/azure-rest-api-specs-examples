@@ -1,0 +1,34 @@
+
+import com.azure.resourcemanager.cdn.fluent.models.SecurityPolicyInner;
+import com.azure.resourcemanager.cdn.models.ActivatedResourceReference;
+import com.azure.resourcemanager.cdn.models.ResourceReference;
+import com.azure.resourcemanager.cdn.models.SecurityPolicyWebApplicationFirewallAssociation;
+import com.azure.resourcemanager.cdn.models.SecurityPolicyWebApplicationFirewallParameters;
+import java.util.Arrays;
+
+/**
+ * Samples for SecurityPolicies Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/SecurityPolicies_Create.json
+     */
+    /**
+     * Sample code: SecurityPolicies_Create.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void securityPoliciesCreate(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getSecurityPolicies().create("RG", "profile1", "securityPolicy1",
+            new SecurityPolicyInner().withParameters(new SecurityPolicyWebApplicationFirewallParameters()
+                .withWafPolicy(new ResourceReference().withId(
+                    "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/wafTest"))
+                .withAssociations(Arrays.asList(new SecurityPolicyWebApplicationFirewallAssociation()
+                    .withDomains(Arrays.asList(new ActivatedResourceReference().withId(
+                        "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"),
+                        new ActivatedResourceReference().withId(
+                            "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain2")))
+                    .withPatternsToMatch(Arrays.asList("/*"))))),
+            com.azure.core.util.Context.NONE);
+    }
+}

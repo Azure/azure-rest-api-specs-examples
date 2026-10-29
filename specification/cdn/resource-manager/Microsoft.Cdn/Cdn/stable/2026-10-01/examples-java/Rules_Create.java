@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.cdn.fluent.models.RuleInner;
+import com.azure.resourcemanager.cdn.models.DeliveryRuleRequestMethodCondition;
+import com.azure.resourcemanager.cdn.models.DeliveryRuleResponseHeaderAction;
+import com.azure.resourcemanager.cdn.models.HeaderAction;
+import com.azure.resourcemanager.cdn.models.HeaderActionParameters;
+import com.azure.resourcemanager.cdn.models.RequestMethodMatchConditionParameters;
+import com.azure.resourcemanager.cdn.models.RequestMethodMatchConditionParametersMatchValuesItem;
+import com.azure.resourcemanager.cdn.models.RequestMethodOperator;
+import java.util.Arrays;
+
+/**
+ * Samples for Rules Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/Rules_Create.json
+     */
+    /**
+     * Sample code: Rules_Create.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void rulesCreate(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getRules().create("RG", "profile1", "ruleSet1", "rule1",
+            new RuleInner().withOrder(1)
+                .withConditions(Arrays.asList(
+                    new DeliveryRuleRequestMethodCondition().withParameters(new RequestMethodMatchConditionParameters()
+                        .withOperator(RequestMethodOperator.EQUAL).withNegateCondition(false)
+                        .withMatchValues(Arrays.asList(RequestMethodMatchConditionParametersMatchValuesItem.GET)))))
+                .withActions(
+                    Arrays.asList(new DeliveryRuleResponseHeaderAction().withParameters(new HeaderActionParameters()
+                        .withHeaderAction(HeaderAction.OVERWRITE).withHeaderName("X-CDN").withValue("MSFT")))),
+            com.azure.core.util.Context.NONE);
+    }
+}

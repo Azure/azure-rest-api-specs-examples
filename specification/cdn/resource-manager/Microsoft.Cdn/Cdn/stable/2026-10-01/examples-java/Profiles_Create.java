@@ -1,0 +1,23 @@
+
+import com.azure.resourcemanager.cdn.fluent.models.ProfileInner;
+import com.azure.resourcemanager.cdn.models.Sku;
+import com.azure.resourcemanager.cdn.models.SkuName;
+
+/**
+ * Samples for Profiles Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01/Profiles_Create.json
+     */
+    /**
+     * Sample code: Profiles_Create.
+     * 
+     * @param manager Entry point to CdnManager.
+     */
+    public static void profilesCreate(com.azure.resourcemanager.cdn.CdnManager manager) {
+        manager.serviceClient().getProfiles().create("RG", "profile1",
+            new ProfileInner().withLocation("global").withSku(new Sku().withName(SkuName.PREMIUM_AZURE_FRONT_DOOR)),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -7806,3 +7806,4 @@ id,name,language,tag,package,version,date_epoch,date
 7805,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.4.0,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.4.0,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.4.0,1793207144,10/28/2026
 7806,@azure/arm-deviceprovisioningservices@6.1.0,js,@azure/arm-deviceprovisioningservices_6.1.0,@azure/arm-deviceprovisioningservices,6.1.0,1793207101,10/28/2026
 7807,azure-mgmt-privatetrafficmanager@1.0.0b1,python,azure-mgmt-privatetrafficmanager_1.0.0b1,azure-mgmt-privatetrafficmanager,1.0.0b1,1793262847,10/29/2026
+7808,azure-mgmt-iothubprovisioningservices@2.1.0,python,azure-mgmt-iothubprovisioningservices_2.1.0,azure-mgmt-iothubprovisioningservices,2.1.0,1793211495,10/28/2026

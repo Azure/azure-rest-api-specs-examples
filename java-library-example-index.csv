@@ -7793,3 +7793,13 @@ id,name,language,tag,package,version,date_epoch,date
 7792,@azure/arm-privatetrafficmanager@1.0.0-beta.1,js,@azure/arm-privatetrafficmanager_1.0.0-beta.1,@azure/arm-privatetrafficmanager,1.0.0-beta.1,1793036996,10/26/2026
 7793,@azure/arm-aigateway@1.0.0-beta.1,js,@azure/arm-aigateway_1.0.0-beta.1,@azure/arm-aigateway,1.0.0-beta.1,1793034851,10/26/2026
 7794,com.azure.resourcemanager:azure-resourcemanager-netapp:2.5.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.5.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.5.0,1793068118,10/27/2026
+7795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/durabletask/armdurabletask@v1.2.0-beta.1,go,sdk/resourcemanager/durabletask/armdurabletask/v1.2.0-beta.1,sdk/resourcemanager/durabletask/armdurabletask,v1.2.0-beta.1,1793176236,10/28/2026
+7796,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datatransfer/armdatatransfer@v0.1.0,go,sdk/resourcemanager/datatransfer/armdatatransfer/v0.1.0,sdk/resourcemanager/datatransfer/armdatatransfer,v0.1.0,1793176199,10/28/2026
+7797,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v4@v4.3.0-beta.1,go,sdk/resourcemanager/dataprotection/armdataprotection/v4.3.0-beta.1,sdk/resourcemanager/dataprotection/armdataprotection,v4.3.0-beta.1,1793176189,10/28/2026
+7798,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/aigateway/armaigateway@v0.1.0,go,sdk/resourcemanager/aigateway/armaigateway/v0.1.0,sdk/resourcemanager/aigateway/armaigateway,v0.1.0,1793176186,10/28/2026
+7799,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v4@v4.0.0,go,sdk/resourcemanager/cdn/armcdn/v4.0.0,sdk/resourcemanager/cdn/armcdn,v4.0.0,1793156978,10/28/2026
+7800,@azure/arm-cdn@10.1.0,js,@azure/arm-cdn_10.1.0,@azure/arm-cdn,10.1.0,1793159517,10/28/2026
+7801,@azure/arm-azurestackhcivm@1.0.0-beta.2,js,@azure/arm-azurestackhcivm_1.0.0-beta.2,@azure/arm-azurestackhcivm,1.0.0-beta.2,1793131839,10/27/2026
+7802,@azure/arm-appinsights@5.0.0-beta.10,js,@azure/arm-appinsights_5.0.0-beta.10,@azure/arm-appinsights,5.0.0-beta.10,1793127233,10/27/2026
+7803,azure-mgmt-cdn@14.1.0,python,azure-mgmt-cdn_14.1.0,azure-mgmt-cdn,14.1.0,1793162018,10/28/2026
+7804,com.azure.resourcemanager:azure-resourcemanager-cdn:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-cdn_2.54.0,com.azure.resourcemanager+azure-resourcemanager-cdn,2.54.0,1793162840,10/28/2026

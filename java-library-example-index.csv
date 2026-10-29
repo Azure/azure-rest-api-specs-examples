@@ -7808,3 +7808,4 @@ id,name,language,tag,package,version,date_epoch,date
 7807,azure-mgmt-privatetrafficmanager@1.0.0b1,python,azure-mgmt-privatetrafficmanager_1.0.0b1,azure-mgmt-privatetrafficmanager,1.0.0b1,1793262847,10/29/2026
 7808,azure-mgmt-iothubprovisioningservices@2.1.0,python,azure-mgmt-iothubprovisioningservices_2.1.0,azure-mgmt-iothubprovisioningservices,2.1.0,1793211495,10/28/2026
 7809,"Azure.ResourceManager.Storage,1.9.0",dotnet,Azure.ResourceManager.Storage_1.9.0,Azure.ResourceManager.Storage,1.9.0,1793250431,10/29/2026
+7810,"Azure.ResourceManager.NetApp,1.19.0",dotnet,Azure.ResourceManager.NetApp_1.19.0,Azure.ResourceManager.NetApp,1.19.0,1793163041,10/28/2026

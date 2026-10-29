@@ -1,0 +1,16 @@
+const { AzureStackHCIVMManagementClient } = require("@azure/arm-azurestackhcivm");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to the operation to delete a virtual machine instance.
+ *
+ * @summary the operation to delete a virtual machine instance.
+ * x-ms-original-file: 2026-07-01-preview/VirtualMachineInstances_Delete.json
+ */
+async function deleteVirtualMachine() {
+  const credential = new DefaultAzureCredential();
+  const client = new AzureStackHCIVMManagementClient(credential);
+  await client.virtualMachineInstances.delete(
+    "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM",
+  );
+}

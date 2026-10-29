@@ -7805,3 +7805,4 @@ id,name,language,tag,package,version,date_epoch,date
 7804,com.azure.resourcemanager:azure-resourcemanager-cdn:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-cdn_2.54.0,com.azure.resourcemanager+azure-resourcemanager-cdn,2.54.0,1793162840,10/28/2026
 7805,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.4.0,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.4.0,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.4.0,1793207144,10/28/2026
 7806,@azure/arm-deviceprovisioningservices@6.1.0,js,@azure/arm-deviceprovisioningservices_6.1.0,@azure/arm-deviceprovisioningservices,6.1.0,1793207101,10/28/2026
+7807,azure-mgmt-privatetrafficmanager@1.0.0b1,python,azure-mgmt-privatetrafficmanager_1.0.0b1,azure-mgmt-privatetrafficmanager,1.0.0b1,1793262847,10/29/2026

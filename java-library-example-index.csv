@@ -7803,3 +7803,4 @@ id,name,language,tag,package,version,date_epoch,date
 7802,@azure/arm-appinsights@5.0.0-beta.10,js,@azure/arm-appinsights_5.0.0-beta.10,@azure/arm-appinsights,5.0.0-beta.10,1793127233,10/27/2026
 7803,azure-mgmt-cdn@14.1.0,python,azure-mgmt-cdn_14.1.0,azure-mgmt-cdn,14.1.0,1793162018,10/28/2026
 7804,com.azure.resourcemanager:azure-resourcemanager-cdn:2.54.0,java,com.azure.resourcemanager+azure-resourcemanager-cdn_2.54.0,com.azure.resourcemanager+azure-resourcemanager-cdn,2.54.0,1793162840,10/28/2026
+7805,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices@v1.4.0,go,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/v1.4.0,sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices,v1.4.0,1793207144,10/28/2026

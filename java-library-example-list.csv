@@ -454545,3 +454545,5 @@ id,file,release_id
 904668,specification/storagemover/resource-manager/Microsoft.StorageMover/StorageMover/stable/2026-05-01/examples-python/Projects_Delete.py,7815
 904669,specification/storagemover/resource-manager/Microsoft.StorageMover/StorageMover/stable/2026-05-01/examples-python/Connections_List.py,7815
 904670,specification/storagemover/resource-manager/Microsoft.StorageMover/StorageMover/stable/2026-05-01/examples-python/JobRuns_Get.py,7815
+904671,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-python/Recommendations_RecommendVmSku.py,7816
+904672,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-python/Operations_List.py,7816

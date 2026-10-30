@@ -454472,3 +454472,5 @@ id,file,release_id
 904595,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-js/Subvolumes_Metadata.js,7813
 904596,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-js/ElasticSnapshotPolicies_Get.js,7813
 904597,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-js/NetAppResourceQuotaLimitsAccount_List.js,7813
+904598,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-js/Recommendations_RecommendVmSku.js,7814
+904599,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-js/Operations_List.js,7814

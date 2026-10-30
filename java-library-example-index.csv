@@ -7813,3 +7813,4 @@ id,name,language,tag,package,version,date_epoch,date
 7812,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager@v0.1.0,go,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager/v0.1.0,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager,v0.1.0,1793346087,10/30/2026
 7813,@azure/arm-netapp@25.1.0-beta.1,js,@azure/arm-netapp_25.1.0-beta.1,@azure/arm-netapp,25.1.0-beta.1,1793336505,10/30/2026
 7814,@azure/arm-aiinfraoptimization@1.0.0-beta.1,js,@azure/arm-aiinfraoptimization_1.0.0-beta.1,@azure/arm-aiinfraoptimization,1.0.0-beta.1,1793336352,10/30/2026
+7815,azure-mgmt-storagemover@3.2.0,python,azure-mgmt-storagemover_3.2.0,azure-mgmt-storagemover,3.2.0,1793351107,10/30/2026

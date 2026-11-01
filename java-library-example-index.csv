@@ -7816,3 +7816,4 @@ id,name,language,tag,package,version,date_epoch,date
 7815,azure-mgmt-storagemover@3.2.0,python,azure-mgmt-storagemover_3.2.0,azure-mgmt-storagemover,3.2.0,1793351107,10/30/2026
 7816,azure-mgmt-aiinfraoptimization@1.0.0b1,python,azure-mgmt-aiinfraoptimization_1.0.0b1,azure-mgmt-aiinfraoptimization,1.0.0b1,1793339982,10/30/2026
 7817,com.azure.resourcemanager:azure-resourcemanager-privatetrafficmanager:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-privatetrafficmanager_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-privatetrafficmanager,1.0.0-beta.1,1793484860,10/31/2026
+7818,com.azure.resourcemanager:azure-resourcemanager-aiinfraoptimization:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization,1.0.0-beta.1,1793479557,10/31/2026

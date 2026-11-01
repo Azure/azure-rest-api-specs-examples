@@ -454581,3 +454581,5 @@ id,file,release_id
 904704,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Operations_List_MinimumSet_Gen.java,7817
 904705,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Operations_List_MaximumSet_Gen.java,7817
 904706,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Sites_Update_MaximumSet_Gen.java,7817
+904707,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Recommendations_RecommendVmSku.java,7818
+904708,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Operations_List.java,7818

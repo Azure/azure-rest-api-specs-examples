@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.netapp.models.ExternalCluster;
+import com.azure.resourcemanager.netapp.models.ExternalClusterUpdateProperties;
+
+/**
+ * Samples for ExternalClusters Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-15-preview/ExternalClusters_Update.json
+     */
+    /**
+     * Sample code: ExternalClusters_Update.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void externalClustersUpdate(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        ExternalCluster resource = manager.externalClusters().getByResourceGroupWithResponse("contosoNetAppRg",
+            "contoso-external-cluster", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withProperties(new ExternalClusterUpdateProperties()).apply();
+    }
+}

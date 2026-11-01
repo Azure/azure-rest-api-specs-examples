@@ -454800,3 +454800,5 @@ id,file,release_id
 904923,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/RansomwareReports_ClearSuspects.java,7819
 904924,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/BackupsUnderBackupVault_Get.java,7819
 904925,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/RansomwareReports_Get.java,7819
+904926,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-java/SystemReadinessOperations_Get.java,7820
+904927,specification/edgeoperator/resource-manager/Microsoft.EdgeOperator/SystemReadiness/preview/2026-06-01-preview/examples-java/Operations_List.java,7820

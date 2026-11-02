@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.privatetrafficmanager.models.AdministrativeStatus;
+import com.azure.resourcemanager.privatetrafficmanager.models.AlwaysServe;
+import com.azure.resourcemanager.privatetrafficmanager.models.EndpointProperties;
+import com.azure.resourcemanager.privatetrafficmanager.models.EndpointsKind;
+
+/**
+ * Samples for Endpoints CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-01-preview/Endpoints_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: Endpoints_CreateOrUpdate_MaximumSet.
+     * 
+     * @param manager Entry point to PrivateTrafficManagerManager.
+     */
+    public static void endpointsCreateOrUpdateMaximumSet(
+        com.azure.resourcemanager.privatetrafficmanager.PrivateTrafficManagerManager manager) {
+        manager.endpoints().define("myEndpoint")
+            .withExistingPrivateTrafficManagerProfile("rgprivateTrafficManager", "myProfile")
+            .withProperties(new EndpointProperties().withTarget("10.0.0.1").withMonitoringTarget("10.0.0.1")
+                .withEndpointStatus(AdministrativeStatus.ENABLED).withKind(EndpointsKind.ENDPOINT).withWeight(100L)
+                .withPriority(10L).withAlwaysServe(AlwaysServe.ENABLED).withHealthPolicyId(
+                    "/subscriptions/10B6D88D-ADF4-4281-B3D0-B5A6702DEEDA/resourceGroups/rgprivateTrafficManager/providers/Microsoft.Network/privateTrafficManagerProfiles/myProfile/healthPolicies/myHealthPolicy"))
+            .create();
+    }
+}

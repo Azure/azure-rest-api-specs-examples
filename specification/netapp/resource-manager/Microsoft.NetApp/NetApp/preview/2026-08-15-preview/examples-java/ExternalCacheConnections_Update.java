@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.netapp.models.ExternalCacheConnection;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for ExternalCacheConnections Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-08-15-preview/ExternalCacheConnections_Update.json
+     */
+    /**
+     * Sample code: ExternalCacheConnections_Update.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void externalCacheConnectionsUpdate(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        ExternalCacheConnection resource
+            = manager.externalCacheConnections().getByResourceGroupWithResponse("contosoNetAppRg",
+                "contosoCacheConnection", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("env", "prod")).apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

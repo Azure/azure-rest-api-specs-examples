@@ -455134,3 +455134,5 @@ id,file,release_id
 905415,specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2026-01-01/examples-go/UpdateMetricAlert.go,7825
 905416,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2021-05-01-preview/examples-go/getDiagnosticSettingsCategory.go,7825
 905417,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2021-05-01-preview/examples-go/listDiagnosticSettingsCategories.go,7825
+905418,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Recommendations_RecommendVmSku.go,7826
+905419,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Operations_List.go,7826

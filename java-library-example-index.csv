@@ -7830,3 +7830,4 @@ id,name,language,tag,package,version,date_epoch,date
 7829,azure-mgmt-recoveryservices@4.3.0,python,azure-mgmt-recoveryservices_4.3.0,azure-mgmt-recoveryservices,4.3.0,1793683911,11/03/2026
 7830,azure-mgmt-recoveryservicessiterecovery@3.0.0,python,azure-mgmt-recoveryservicessiterecovery_3.0.0,azure-mgmt-recoveryservicessiterecovery,3.0.0,1793683597,11/03/2026
 7831,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.4.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservicessiterecovery_1.4.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservicessiterecovery,1.4.0,1793681759,11/03/2026
+7832,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.9.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservices_1.9.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservices,1.9.0,1793681587,11/03/2026

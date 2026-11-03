@@ -35,7 +35,7 @@ func ExampleMetricAlertsClient_NewListByResourceGroupPager() {
 		// 		Value: []*armmonitor.MetricAlertResource{
 		// 			{
 		// 				Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-		// 				ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/highcpu"),
+		// 				ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/highcpu"),
 		// 				Location: to.Ptr("global"),
 		// 				Properties: &armmonitor.MetricAlertProperties{
 		// 					Description: to.Ptr("This is the description of the rule1"),
@@ -77,7 +77,7 @@ func ExampleMetricAlertsClient_NewListByResourceGroupPager() {
 		// 			},
 		// 			{
 		// 				Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-		// 				ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/mediumcpu"),
+		// 				ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/mediumcpu"),
 		// 				Location: to.Ptr("global"),
 		// 				Properties: &armmonitor.MetricAlertProperties{
 		// 					Description: to.Ptr("Med cpu alert"),

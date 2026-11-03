@@ -16,7 +16,7 @@ func ExamplePrivateLinkScopesClient_UpdateTags() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armmonitor.NewClientFactory("subid", cred, nil)
+	clientFactory, err := armmonitor.NewClientFactory("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -48,10 +48,10 @@ func ExamplePrivateLinkScopesClient_UpdateTags() {
 	// 			ProvisioningState: to.Ptr(armmonitor.PrivateLinkScopeProvisioningStateSucceeded),
 	// 		},
 	// 		SystemData: &armmonitor.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051056Z"); return t}()),
+	// 			CreatedAt: to.Ptr(time.Date(2021, time.June, 16, 12, 59, 57, 51056000, time.UTC)),
 	// 			CreatedBy: to.Ptr("bobby@contoso.com"),
 	// 			CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051056Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(time.Date(2021, time.June, 16, 12, 59, 57, 51056000, time.UTC)),
 	// 			LastModifiedBy: to.Ptr("bobby@contoso.com"),
 	// 			LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 		},

@@ -46,7 +46,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateADynamicAlertRuleFor
 							MinFailingPeriodsToAlert:  to.Ptr[float32](4),
 							NumberOfEvaluationPeriods: to.Ptr[float32](4),
 						},
-						IgnoreDataBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-04T21:00:00.000Z"); return t }()),
+						IgnoreDataBefore: to.Ptr(time.Date(2019, time.April, 4, 21, 0, 0, 0, time.UTC)),
 						MetricName:       to.Ptr("Percentage CPU"),
 						MetricNamespace:  to.Ptr("microsoft.compute/virtualmachines"),
 						Operator:         to.Ptr(armmonitor.DynamicThresholdOperatorGreaterOrLessThan),
@@ -74,7 +74,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateADynamicAlertRuleFor
 	// res = armmonitor.MetricAlertsClientCreateOrUpdateResponse{
 	// 	MetricAlertResource: armmonitor.MetricAlertResource{
 	// 		Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/chiricutin"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/chiricutin"),
 	// 		Location: to.Ptr("global"),
 	// 		Properties: &armmonitor.MetricAlertProperties{
 	// 			Description: to.Ptr("This is the description of the rule1"),
@@ -100,7 +100,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateADynamicAlertRuleFor
 	// 							MinFailingPeriodsToAlert: to.Ptr[float32](4),
 	// 							NumberOfEvaluationPeriods: to.Ptr[float32](4),
 	// 						},
-	// 						IgnoreDataBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-04T21:00:00.000Z"); return t}()),
+	// 						IgnoreDataBefore: to.Ptr(time.Date(2019, time.April, 4, 21, 0, 0, 0, time.UTC)),
 	// 						MetricName: to.Ptr("Percentage CPU"),
 	// 						MetricNamespace: to.Ptr("microsoft.compute/virtualmachines"),
 	// 						Operator: to.Ptr(armmonitor.DynamicThresholdOperatorGreaterOrLessThan),

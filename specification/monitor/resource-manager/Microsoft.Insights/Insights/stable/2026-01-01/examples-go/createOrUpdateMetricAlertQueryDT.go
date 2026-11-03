@@ -45,7 +45,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateAQueryBasedAlertRule
 						Name:             to.Ptr("Metric1"),
 						AlertSensitivity: to.Ptr(armmonitor.DynamicThresholdSensitivityMedium),
 						CriterionType:    to.Ptr(armmonitor.CriterionTypeDynamicThresholdCriterion),
-						IgnoreDataBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-04T21:00:00.000Z"); return t }()),
+						IgnoreDataBefore: to.Ptr(time.Date(2019, time.April, 4, 21, 0, 0, 0, time.UTC)),
 						Operator:         to.Ptr(armmonitor.DynamicThresholdOperatorLessThan),
 						Query:            to.Ptr("avg({\"system.cpu.utilization\"})"),
 					},
@@ -81,7 +81,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateAQueryBasedAlertRule
 	// res = armmonitor.MetricAlertsClientCreateOrUpdateResponse{
 	// 	MetricAlertResource: armmonitor.MetricAlertResource{
 	// 		Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-	// 		ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/chiricutin"),
+	// 		ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/chiricutin"),
 	// 		Identity: &armmonitor.Identity{
 	// 			Type: to.Ptr(armmonitor.IdentityTypeUserAssigned),
 	// 			TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
@@ -109,7 +109,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateAQueryBasedAlertRule
 	// 						Name: to.Ptr("Metric1"),
 	// 						AlertSensitivity: to.Ptr(armmonitor.DynamicThresholdSensitivityMedium),
 	// 						CriterionType: to.Ptr(armmonitor.CriterionTypeDynamicThresholdCriterion),
-	// 						IgnoreDataBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-04T21:00:00.000Z"); return t}()),
+	// 						IgnoreDataBefore: to.Ptr(time.Date(2019, time.April, 4, 21, 0, 0, 0, time.UTC)),
 	// 						Operator: to.Ptr(armmonitor.DynamicThresholdOperatorLessThan),
 	// 						Query: to.Ptr("avg({\"system.cpu.utilization\"})"),
 	// 					},

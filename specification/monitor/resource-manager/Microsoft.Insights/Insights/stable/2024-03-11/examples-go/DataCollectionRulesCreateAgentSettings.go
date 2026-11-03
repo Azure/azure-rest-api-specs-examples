@@ -79,10 +79,10 @@ func ExampleDataCollectionRulesClient_Create_createOrUpdateAnAgentSettingsConfig
 	// 			ProvisioningState: to.Ptr(armmonitor.KnownDataCollectionRuleProvisioningStateSucceeded),
 	// 		},
 	// 		SystemData: &armmonitor.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-26T05:41:40.7885407Z"); return t}()),
+	// 			CreatedAt: to.Ptr(time.Date(2024, time.March, 26, 5, 41, 40, 788540700, time.UTC)),
 	// 			CreatedBy: to.Ptr("user1"),
 	// 			CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-26T05:41:40.7885407Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(time.Date(2024, time.March, 26, 5, 41, 40, 788540700, time.UTC)),
 	// 			LastModifiedBy: to.Ptr("user1"),
 	// 			LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 		},

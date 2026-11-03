@@ -66,7 +66,7 @@ func ExampleMetricAlertsClient_Update() {
 	// res = armmonitor.MetricAlertsClientUpdateResponse{
 	// 	MetricAlertResource: armmonitor.MetricAlertResource{
 	// 		Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-	// 		ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/chiricutin"),
+	// 		ID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/chiricutin"),
 	// 		Location: to.Ptr("global"),
 	// 		Properties: &armmonitor.MetricAlertProperties{
 	// 			Description: to.Ptr("This is the description of the rule1"),

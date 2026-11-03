@@ -7828,3 +7828,4 @@ id,name,language,tag,package,version,date_epoch,date
 7827,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v11@v11.1.0-beta.1,go,sdk/resourcemanager/netapp/armnetapp/v11.1.0-beta.1,sdk/resourcemanager/netapp/armnetapp,v11.1.0-beta.1,1793645621,11/02/2026
 7828,@azure/arm-monitor@8.1.0-beta.1,js,@azure/arm-monitor_8.1.0-beta.1,@azure/arm-monitor,8.1.0-beta.1,1793662066,11/02/2026
 7829,azure-mgmt-recoveryservices@4.3.0,python,azure-mgmt-recoveryservices_4.3.0,azure-mgmt-recoveryservices,4.3.0,1793683911,11/03/2026
+7830,azure-mgmt-recoveryservicessiterecovery@3.0.0,python,azure-mgmt-recoveryservicessiterecovery_3.0.0,azure-mgmt-recoveryservicessiterecovery,3.0.0,1793683597,11/03/2026

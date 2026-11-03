@@ -7829,3 +7829,4 @@ id,name,language,tag,package,version,date_epoch,date
 7828,@azure/arm-monitor@8.1.0-beta.1,js,@azure/arm-monitor_8.1.0-beta.1,@azure/arm-monitor,8.1.0-beta.1,1793662066,11/02/2026
 7829,azure-mgmt-recoveryservices@4.3.0,python,azure-mgmt-recoveryservices_4.3.0,azure-mgmt-recoveryservices,4.3.0,1793683911,11/03/2026
 7830,azure-mgmt-recoveryservicessiterecovery@3.0.0,python,azure-mgmt-recoveryservicessiterecovery_3.0.0,azure-mgmt-recoveryservicessiterecovery,3.0.0,1793683597,11/03/2026
+7831,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.4.0,java,com.azure.resourcemanager+azure-resourcemanager-recoveryservicessiterecovery_1.4.0,com.azure.resourcemanager+azure-resourcemanager-recoveryservicessiterecovery,1.4.0,1793681759,11/03/2026

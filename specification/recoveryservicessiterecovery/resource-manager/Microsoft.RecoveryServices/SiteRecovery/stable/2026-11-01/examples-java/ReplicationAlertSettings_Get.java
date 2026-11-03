@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ReplicationAlertSettings Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationAlertSettings_Get.json
+     */
+    /**
+     * Sample code: Gets an email notification(alert) configuration.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void getsAnEmailNotificationAlertConfiguration(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationAlertSettings().getWithResponse("resourceGroupPS1", "vault1", "defaultAlertSetting",
+            com.azure.core.util.Context.NONE);
+    }
+}

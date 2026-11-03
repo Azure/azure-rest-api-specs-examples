@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.HyperVReplicaAzurePlannedFailoverProviderInput;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.PlannedFailoverInput;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.PlannedFailoverInputProperties;
+
+/**
+ * Samples for ReplicationProtectedItems PlannedFailover.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationProtectedItems_PlannedFailover.json
+     */
+    /**
+     * Sample code: Execute planned failover.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void
+        executePlannedFailover(com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationProtectedItems().plannedFailover("resourceGroupPS1", "vault1", "cloud1",
+            "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179", "f8491e4f-817a-40dd-a90c-af773978c75b",
+            new PlannedFailoverInput()
+                .withProperties(new PlannedFailoverInputProperties().withFailoverDirection("PrimaryToRecovery")
+                    .withProviderSpecificDetails(new HyperVReplicaAzurePlannedFailoverProviderInput())),
+            com.azure.core.util.Context.NONE);
+    }
+}

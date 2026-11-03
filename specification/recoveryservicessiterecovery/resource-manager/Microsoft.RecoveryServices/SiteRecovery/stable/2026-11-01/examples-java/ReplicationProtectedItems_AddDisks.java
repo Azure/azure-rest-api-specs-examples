@@ -1,0 +1,45 @@
+
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.A2AAddDisksInput;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.A2AVmManagedDiskInputDetails;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.AddDisksInput;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.AddDisksInputProperties;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.ConfidentialDiskEncryptionInfo;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.DiskNetworkAccessPolicy;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.DiskPublicNetworkAccess;
+import java.util.Arrays;
+
+/**
+ * Samples for ReplicationProtectedItems AddDisks.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationProtectedItems_AddDisks.json
+     */
+    /**
+     * Sample code: Adds a confidential data disk to an A2A protected confidential VM.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void addsAConfidentialDataDiskToAnA2AProtectedConfidentialVM(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationProtectedItems().addDisks("resourceGroupPS1", "vault1", "cloud1",
+            "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179", "f8491e4f-817a-40dd-a90c-af773978c75b",
+            new AddDisksInput().withProperties(new AddDisksInputProperties().withProviderSpecificDetails(
+                new A2AAddDisksInput().withVmManagedDisks(Arrays.asList(new A2AVmManagedDiskInputDetails().withDiskId(
+                    "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/primaryResource/providers/Microsoft.Compute/disks/datadisk2")
+                    .withPrimaryStagingAzureStorageAccountId(
+                        "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/primaryResource/providers/Microsoft.Storage/storageAccounts/vmcachestorage")
+                    .withRecoveryResourceGroupId(
+                        "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource")
+                    .withRecoveryNetworkAccessPolicy(DiskNetworkAccessPolicy.ALLOW_PRIVATE)
+                    .withRecoveryDiskAccessId(
+                        "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource/providers/Microsoft.Compute/diskAccesses/recoveryDiskAccess")
+                    .withRecoveryPublicNetworkAccess(DiskPublicNetworkAccess.DISABLED)
+                    .withConfidentialDiskEncryptionInfo(new ConfidentialDiskEncryptionInfo()
+                        .withRecoveryReplicaConfidentialDiskEncryptionSetId(
+                            "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource/providers/Microsoft.Compute/diskEncryptionSets/cvm-replica-des")
+                        .withRecoveryTargetConfidentialDiskEncryptionSetId(
+                            "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourcegroups/recoveryResource/providers/Microsoft.Compute/diskEncryptionSets/cvm-target-des")))))),
+            com.azure.core.util.Context.NONE);
+    }
+}

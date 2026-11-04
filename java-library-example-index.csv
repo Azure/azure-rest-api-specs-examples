@@ -7837,3 +7837,4 @@ id,name,language,tag,package,version,date_epoch,date
 7836,@azure/arm-hybridcompute@5.1.0,js,@azure/arm-hybridcompute_5.1.0,@azure/arm-hybridcompute,5.1.0,1793738363,11/03/2026
 7837,azure-mgmt-netapp@18.1.0b1,python,azure-mgmt-netapp_18.1.0b1,azure-mgmt-netapp,18.1.0b1,1793750457,11/04/2026
 7838,azure-mgmt-hybridcompute@10.1.0,python,azure-mgmt-hybridcompute_10.1.0,azure-mgmt-hybridcompute,10.1.0,1793740754,11/03/2026
+7839,azure-mgmt-monitor@8.0.0b4,python,azure-mgmt-monitor_8.0.0b4,azure-mgmt-monitor,8.0.0b4,1793688554,11/03/2026

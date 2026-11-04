@@ -7840,3 +7840,4 @@ id,name,language,tag,package,version,date_epoch,date
 7839,azure-mgmt-monitor@8.0.0b4,python,azure-mgmt-monitor_8.0.0b4,azure-mgmt-monitor,8.0.0b4,1793688554,11/03/2026
 7840,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.2.0,java,com.azure.resourcemanager+azure-resourcemanager-redisenterprise_2.2.0,com.azure.resourcemanager+azure-resourcemanager-redisenterprise,2.2.0,1793788815,11/04/2026
 7841,com.azure.resourcemanager:azure-resourcemanager-koreaiartemis:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-koreaiartemis_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-koreaiartemis,1.0.0-beta.1,1793750327,11/03/2026
+7842,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-hybridcompute_1.2.0,com.azure.resourcemanager+azure-resourcemanager-hybridcompute,1.2.0,1793740367,11/03/2026

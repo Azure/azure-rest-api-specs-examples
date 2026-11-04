@@ -75,7 +75,7 @@ func ExampleMetricAlertsClient_CreateOrUpdate_createOrUpdateADynamicAlertRuleFor
 	// res = armmonitor.MetricAlertsClientCreateOrUpdateResponse{
 	// 	MetricAlertResource: armmonitor.MetricAlertResource{
 	// 		Type: to.Ptr("Microsoft.Insights/metricAlerts"),
-	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/providers/microsoft.insights/metricalerts/MetricAlertOnMultipleResources"),
+	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/microsoft.insights/metricalerts/MetricAlertOnMultipleResources"),
 	// 		Location: to.Ptr("global"),
 	// 		Properties: &armmonitor.MetricAlertProperties{
 	// 			Description: to.Ptr("This is the description of the rule1"),

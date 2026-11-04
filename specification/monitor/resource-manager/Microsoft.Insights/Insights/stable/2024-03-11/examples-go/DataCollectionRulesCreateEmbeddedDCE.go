@@ -143,10 +143,10 @@ func ExampleDataCollectionRulesClient_Create_createOrUpdateDataCollectionRuleWit
 	// 			},
 	// 		},
 	// 		SystemData: &armmonitor.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-01-30T17:50:40.5383301Z"); return t}()),
+	// 			CreatedAt: to.Ptr(time.Date(2024, time.January, 30, 17, 50, 40, 538330100, time.UTC)),
 	// 			CreatedBy: to.Ptr("user1"),
 	// 			CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-01-30T17:50:40.5383301Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(time.Date(2024, time.January, 30, 17, 50, 40, 538330100, time.UTC)),
 	// 			LastModifiedBy: to.Ptr("user1"),
 	// 			LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 		},

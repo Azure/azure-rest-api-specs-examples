@@ -59,10 +59,10 @@ func ExampleDataCollectionEndpointsClient_Create_updateADataCollectionEndpoint()
 	// 			ProvisioningState: to.Ptr(armmonitor.KnownDataCollectionEndpointProvisioningStateSucceeded),
 	// 		},
 	// 		SystemData: &armmonitor.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-22T08:40:59.2431682Z"); return t}()),
+	// 			CreatedAt: to.Ptr(time.Date(2024, time.March, 22, 8, 40, 59, 243168200, time.UTC)),
 	// 			CreatedBy: to.Ptr("user1"),
 	// 			CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-22T08:51:04.551992Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(time.Date(2024, time.March, 22, 8, 51, 4, 551992000, time.UTC)),
 	// 			LastModifiedBy: to.Ptr("user1"),
 	// 			LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 		},

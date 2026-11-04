@@ -36,10 +36,10 @@ func ExampleDataCollectionRuleAssociationsClient_Get() {
 	// 			DataCollectionRuleID: to.Ptr("/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule"),
 	// 		},
 	// 		SystemData: &armmonitor.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-22T19:15:08.2155156Z"); return t}()),
+	// 			CreatedAt: to.Ptr(time.Date(2024, time.March, 22, 19, 15, 8, 215515600, time.UTC)),
 	// 			CreatedBy: to.Ptr("user1"),
 	// 			CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-03-22T19:15:08.2155156Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(time.Date(2024, time.March, 22, 19, 15, 8, 215515600, time.UTC)),
 	// 			LastModifiedBy: to.Ptr("user1"),
 	// 			LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 		},

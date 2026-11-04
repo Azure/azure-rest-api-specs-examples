@@ -1,0 +1,20 @@
+
+/**
+ * Samples for MigrationRecoveryPoints Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/MigrationRecoveryPoints_Get.json
+     */
+    /**
+     * Sample code: Gets a recovery point for a migration item.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void getsARecoveryPointForAMigrationItem(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.migrationRecoveryPoints().getWithResponse("resourcegroup1", "migrationvault", "vmwarefabric1",
+            "vmwareContainer1", "virtualmachine1", "b22134ea-620c-474b-9fa5-3c1cb47708e3",
+            com.azure.core.util.Context.NONE);
+    }
+}

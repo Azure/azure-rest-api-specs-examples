@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ReplicationProtectionContainers Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationProtectionContainers_Delete.json
+     */
+    /**
+     * Sample code: Removes a protection container.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void removesAProtectionContainer(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationProtectionContainers().delete("resourceGroupPS1", "vault1", "cloud1",
+            "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Operations ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/Operations_List.json
+     */
+    /**
+     * Sample code: Returns the list of available operations.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void returnsTheListOfAvailableOperations(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.operations().listByResourceGroup("resourceGroupPS1", com.azure.core.util.Context.NONE);
+    }
+}

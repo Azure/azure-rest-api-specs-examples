@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.MigrateInput;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.MigrateInputProperties;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.VMwareCbtMigrateInput;
+
+/**
+ * Samples for ReplicationMigrationItems Migrate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationMigrationItems_Migrate.json
+     */
+    /**
+     * Sample code: Migrate item.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void migrateItem(com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationMigrationItems().migrate("resourcegroup1", "migrationvault", "vmwarefabric1",
+            "vmwareContainer1", "virtualmachine1",
+            new MigrateInput().withProperties(new MigrateInputProperties()
+                .withProviderSpecificDetails(new VMwareCbtMigrateInput().withPerformShutdown("true"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ReplicationJobs Restart.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationJobs_Restart.json
+     */
+    /**
+     * Sample code: Restarts the specified job.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void
+        restartsTheSpecifiedJob(com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationJobs().restart("resourceGroupPS1", "vault1", "0664564c-353e-401a-ab0c-722257c10e25",
+            com.azure.core.util.Context.NONE);
+    }
+}

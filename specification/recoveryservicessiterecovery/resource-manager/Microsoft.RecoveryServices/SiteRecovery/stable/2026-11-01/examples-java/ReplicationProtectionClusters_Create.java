@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.A2AReplicationProtectionClusterDetails;
+import com.azure.resourcemanager.recoveryservicessiterecovery.models.ReplicationProtectionClusterProperties;
+
+/**
+ * Samples for ReplicationProtectionClusters Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-01/ReplicationProtectionClusters_Create.json
+     */
+    /**
+     * Sample code: Create Replication protection Cluster.
+     * 
+     * @param manager Entry point to SiteRecoveryManager.
+     */
+    public static void createReplicationProtectionCluster(
+        com.azure.resourcemanager.recoveryservicessiterecovery.SiteRecoveryManager manager) {
+        manager.replicationProtectionClusters().define("cluster12")
+            .withExistingReplicationProtectionContainer("resourceGroupPS1", "vault1", "eastus", "eastus-container")
+            .withProperties(new ReplicationProtectionClusterProperties().withRecoveryContainerId(
+                "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/centraluseuap/replicationProtectionContainers/centraluseuap-container")
+                .withProviderSpecificDetails(new A2AReplicationProtectionClusterDetails()).withPolicyId(
+                    "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationPolicies/24-hour-retention-policy"))
+            .create();
+    }
+}

@@ -7843,3 +7843,4 @@ id,name,language,tag,package,version,date_epoch,date
 7842,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.2.0,java,com.azure.resourcemanager+azure-resourcemanager-hybridcompute_1.2.0,com.azure.resourcemanager+azure-resourcemanager-hybridcompute,1.2.0,1793740367,11/03/2026
 7843,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.56.1,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.56.1,1793654639,11/02/2026
 7844,@azure/arm-sql@12.0.0-beta.2,js,@azure/arm-sql_12.0.0-beta.2,@azure/arm-sql,12.0.0-beta.2,1793868838,11/05/2026
+7845,@azure/arm-redisenterprisecache@5.0.0-beta.4,js,@azure/arm-redisenterprisecache_5.0.0-beta.4,@azure/arm-redisenterprisecache,5.0.0-beta.4,1793806085,11/04/2026

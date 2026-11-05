@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Migrations Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-09-01/RedisEnterpriseMigrationGet.json
+     */
+    /**
+     * Sample code: RedisEnterpriseMigrationGet.
+     * 
+     * @param manager Entry point to RedisEnterpriseManager.
+     */
+    public static void
+        redisEnterpriseMigrationGet(com.azure.resourcemanager.redisenterprise.RedisEnterpriseManager manager) {
+        manager.migrations().getWithResponse("rg1", "cache1", com.azure.core.util.Context.NONE);
+    }
+}

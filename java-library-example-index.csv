@@ -7854,3 +7854,4 @@ id,name,language,tag,package,version,date_epoch,date
 7853,azure-mgmt-networksecurity@1.0.0b1,python,azure-mgmt-networksecurity_1.0.0b1,azure-mgmt-networksecurity,1.0.0b1,1793922956,11/05/2026
 7854,com.azure.resourcemanager:azure-resourcemanager-commvaultcontentstore:1.1.0,java,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore_1.1.0,com.azure.resourcemanager+azure-resourcemanager-commvaultcontentstore,1.1.0,1793956684,11/06/2026
 7855,com.azure.resourcemanager:azure-resourcemanager-networksecurity:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-networksecurity_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-networksecurity,1.0.0-beta.1,1793939566,11/06/2026
+7856,com.azure.resourcemanager:azure-resourcemanager-monitor:2.55.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-monitor_2.55.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-monitor,2.55.0-beta.1,1793935828,11/06/2026

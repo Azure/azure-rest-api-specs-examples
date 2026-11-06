@@ -7851,3 +7851,4 @@ id,name,language,tag,package,version,date_epoch,date
 7850,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager@v0.1.1,go,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager/v0.1.1,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager,v0.1.1,1793922173,11/05/2026
 7851,@azure/arm-networksecurity@1.0.0-beta.1,js,@azure/arm-networksecurity_1.0.0-beta.1,@azure/arm-networksecurity,1.0.0-beta.1,1793944209,11/06/2026
 7852,azure-mgmt-commvaultcontentstore@2.0.0,python,azure-mgmt-commvaultcontentstore_2.0.0,azure-mgmt-commvaultcontentstore,2.0.0,1793956412,11/06/2026
+7853,azure-mgmt-networksecurity@1.0.0b1,python,azure-mgmt-networksecurity_1.0.0b1,azure-mgmt-networksecurity,1.0.0b1,1793922956,11/05/2026

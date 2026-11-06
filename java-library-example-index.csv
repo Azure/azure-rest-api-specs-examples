@@ -7849,3 +7849,4 @@ id,name,language,tag,package,version,date_epoch,date
 7848,com.azure.resourcemanager:azure-resourcemanager-cosmos:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-cosmos_2.56.1,com.azure.resourcemanager+azure-resourcemanager-cosmos,2.56.1,1793654583,11/02/2026
 7849,com.azure.resourcemanager:azure-resourcemanager-appservice:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-appservice_2.57.1,com.azure.resourcemanager+azure-resourcemanager-appservice,2.57.1,1793654568,11/02/2026
 7850,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager@v0.1.1,go,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager/v0.1.1,sdk/resourcemanager/privatetrafficmanager/armprivatetrafficmanager,v0.1.1,1793922173,11/05/2026
+7851,@azure/arm-networksecurity@1.0.0-beta.1,js,@azure/arm-networksecurity_1.0.0-beta.1,@azure/arm-networksecurity,1.0.0-beta.1,1793944209,11/06/2026

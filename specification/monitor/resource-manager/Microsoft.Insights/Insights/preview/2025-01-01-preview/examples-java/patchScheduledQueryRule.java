@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.monitor.models.ScheduledQueryRuleResourcePatch;
+
+/**
+ * Samples for ScheduledQueryRules Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2025-01-01-preview/patchScheduledQueryRule.json
+     */
+    /**
+     * Sample code: Create or update a scheduled query rule.
+     * 
+     * @param manager Entry point to MonitorManager.
+     */
+    public static void createOrUpdateAScheduledQueryRule(com.azure.resourcemanager.monitor.MonitorManager manager) {
+        manager.serviceClient().getScheduledQueryRules().updateWithResponse("QueryResourceGroupName", "heartbeat",
+            new ScheduledQueryRuleResourcePatch().withEnabled(false), com.azure.core.util.Context.NONE);
+    }
+}

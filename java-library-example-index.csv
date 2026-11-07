@@ -7859,3 +7859,4 @@ id,name,language,tag,package,version,date_epoch,date
 7858,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networksecurity/armnetworksecurity@v0.1.0,go,sdk/resourcemanager/networksecurity/armnetworksecurity/v0.1.0,sdk/resourcemanager/networksecurity/armnetworksecurity,v0.1.0,1793970594,11/06/2026
 7859,azure-mgmt-computerecommender@1.0.0b4,python,azure-mgmt-computerecommender_1.0.0b4,azure-mgmt-computerecommender,1.0.0b4,1793986906,11/06/2026
 7860,com.azure.resourcemanager:azure-resourcemanager-sql:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.55.1,com.azure.resourcemanager+azure-resourcemanager-sql,2.55.1,1793654539,11/02/2026
+7861,com.azure.resourcemanager:azure-resourcemanager-compute:2.63.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.63.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.63.1,1793654524,11/02/2026

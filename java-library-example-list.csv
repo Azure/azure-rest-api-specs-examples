@@ -457549,3 +457549,13 @@ id,file,release_id
 909054,specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2024-03-11/examples-java/DataCollectionEndpointsListByResourceGroup.java,7856
 909055,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2023-06-01-preview/examples-java/PrivateEndpointConnectionGet.java,7856
 909056,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2023-01-01-preview/examples-java/ActivityLogAlertRule_Update.java,7856
+909057,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GetComputePlacementScores.go,7857
+909058,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GenerateComputePlacementScores.go,7857
+909059,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GenerateComputePlacementScoresWithoutDesiredLocation.go,7857
+909060,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GetSpotPlacementScores.go,7857
+909061,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GenerateSpotPlacementScores.go,7857
+909062,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GenerateSpotPlacementScoresWithoutDesiredLocation.go,7857
+909063,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/Operations_List_MaximumSet_Gen.go,7857
+909064,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/Operations_List_MinimumSet_Gen.go,7857
+909065,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GetSkuMixPlacementScores.go,7857
+909066,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-go/GenerateSkuMixPlacementScores.go,7857

@@ -457594,3 +457594,13 @@ id,file,release_id
 909099,specification/networksecurity/resource-manager/Microsoft.NetworkSecurity/neuroShield/preview/2026-10-01-preview/examples-go/NeuroShieldFindings_ListByNeuroShield.go,7858
 909100,specification/networksecurity/resource-manager/Microsoft.NetworkSecurity/neuroShield/preview/2026-10-01-preview/examples-go/NeuroShieldFindings_List.go,7858
 909101,specification/networksecurity/resource-manager/Microsoft.NetworkSecurity/neuroShield/preview/2026-10-01-preview/examples-go/NeuroShieldFindings_Rollback.go,7858
+909102,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GenerateSpotPlacementScoresWithoutDesiredLocation.py,7859
+909103,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/Operations_List_MaximumSet_Gen.py,7859
+909104,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GetComputePlacementScores.py,7859
+909105,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GenerateComputePlacementScoresWithoutDesiredLocation.py,7859
+909106,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/Operations_List_MinimumSet_Gen.py,7859
+909107,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GetSkuMixPlacementScores.py,7859
+909108,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GenerateSkuMixPlacementScores.py,7859
+909109,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GenerateSpotPlacementScores.py,7859
+909110,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GetSpotPlacementScores.py,7859
+909111,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-python/GenerateComputePlacementScores.py,7859

@@ -7861,3 +7861,4 @@ id,name,language,tag,package,version,date_epoch,date
 7860,com.azure.resourcemanager:azure-resourcemanager-sql:2.55.1,java,com.azure.resourcemanager+azure-resourcemanager-sql_2.55.1,com.azure.resourcemanager+azure-resourcemanager-sql,2.55.1,1793654539,11/02/2026
 7861,com.azure.resourcemanager:azure-resourcemanager-compute:2.63.1,java,com.azure.resourcemanager+azure-resourcemanager-compute_2.63.1,com.azure.resourcemanager+azure-resourcemanager-compute,2.63.1,1793654524,11/02/2026
 7862,com.azure.resourcemanager:azure-resourcemanager-network:2.63.1,java,com.azure.resourcemanager+azure-resourcemanager-network_2.63.1,com.azure.resourcemanager+azure-resourcemanager-network,2.63.1,1793654509,11/02/2026
+7863,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.57.1,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.57.1,1793654480,11/02/2026

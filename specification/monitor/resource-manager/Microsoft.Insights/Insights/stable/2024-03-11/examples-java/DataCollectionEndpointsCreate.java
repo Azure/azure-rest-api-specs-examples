@@ -1,0 +1,40 @@
+
+import com.azure.resourcemanager.monitor.fluent.models.DataCollectionEndpointResourceInner;
+import com.azure.resourcemanager.monitor.models.DataCollectionEndpointNetworkAcls;
+import com.azure.resourcemanager.monitor.models.KnownPublicNetworkAccessOptions;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for DataCollectionEndpoints Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2024-03-11/DataCollectionEndpointsCreate.json
+     */
+    /**
+     * Sample code: Create a data collection endpoint.
+     * 
+     * @param manager Entry point to MonitorManager.
+     */
+    public static void createADataCollectionEndpoint(com.azure.resourcemanager.monitor.MonitorManager manager) {
+        manager.serviceClient().getDataCollectionEndpoints().createWithResponse("myResourceGroup",
+            "myDataCollectionEndpoint",
+            new DataCollectionEndpointResourceInner().withLocation("eastus")
+                .withNetworkAcls(new DataCollectionEndpointNetworkAcls()
+                    .withPublicNetworkAccess(KnownPublicNetworkAccessOptions.ENABLED)),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

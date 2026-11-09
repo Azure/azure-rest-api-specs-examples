@@ -7864,3 +7864,4 @@ id,name,language,tag,package,version,date_epoch,date
 7863,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.57.1,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.57.1,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.57.1,1793654480,11/02/2026
 7864,com.azure.resourcemanager:azure-resourcemanager-storage:2.60.1,java,com.azure.resourcemanager+azure-resourcemanager-storage_2.60.1,com.azure.resourcemanager+azure-resourcemanager-storage,2.60.1,1793654449,11/02/2026
 7865,com.azure.resourcemanager:azure-resourcemanager-resources:2.56.1,java,com.azure.resourcemanager+azure-resourcemanager-resources_2.56.1,com.azure.resourcemanager+azure-resourcemanager-resources,2.56.1,1793654434,11/02/2026
+7866,@azure/arm-redisenterprisecache@5.0.0,js,@azure/arm-redisenterprisecache_5.0.0,@azure/arm-redisenterprisecache,5.0.0,1794215087,11/09/2026

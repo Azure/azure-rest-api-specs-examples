@@ -450537,8 +450537,6 @@ id,file,release_id
 904704,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Operations_List_MinimumSet_Gen.java,7817
 904705,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Operations_List_MaximumSet_Gen.java,7817
 904706,specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/examples-java/Sites_Update_MaximumSet_Gen.java,7817
-904707,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Recommendations_RecommendVmSku.java,7818
-904708,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Operations_List.java,7818
 904709,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/Pools_List.java,7819
 904710,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/ElasticSnapshots_CreateOrUpdate.java,7819
 904711,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-java/Buckets_List.java,7819
@@ -457950,3 +457948,5 @@ id,file,release_id
 912162,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-java/RedisEnterpriseDatabasesImport.java,7874
 912163,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-java/RedisEnterpriseGetPrivateEndpointConnection.java,7874
 912164,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-java/RedisEnterpriseDatabasesRegenerateKey.java,7874
+912165,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Recommendations_RecommendVmSku.java,7875
+912166,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-java/Operations_List.java,7875

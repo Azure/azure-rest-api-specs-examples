@@ -7873,3 +7873,4 @@ id,name,language,tag,package,version,date_epoch,date
 7872,@azure/arm-sovereign@1.0.0-beta.1,js,@azure/arm-sovereign_1.0.0-beta.1,@azure/arm-sovereign,1.0.0-beta.1,1794246402,11/09/2026
 7873,azure-mgmt-chaos@3.0.0,python,azure-mgmt-chaos_3.0.0,azure-mgmt-chaos,3.0.0,1794248991,11/09/2026
 7874,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.3.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-redisenterprise_2.3.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-redisenterprise,2.3.0-beta.1,1794305905,11/10/2026
+7875,com.azure.resourcemanager:azure-resourcemanager-aiinfraoptimization:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization,1.0.0-beta.2,1794299500,11/10/2026

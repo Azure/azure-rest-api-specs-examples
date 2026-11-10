@@ -451248,8 +451248,6 @@ id,file,release_id
 905415,specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2026-01-01/examples-go/UpdateMetricAlert.go,7825
 905416,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2021-05-01-preview/examples-go/getDiagnosticSettingsCategory.go,7825
 905417,specification/monitor/resource-manager/Microsoft.Insights/Insights/preview/2021-05-01-preview/examples-go/listDiagnosticSettingsCategories.go,7825
-905418,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Recommendations_RecommendVmSku.go,7826
-905419,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Operations_List.go,7826
 905420,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-go/Usages_Get.go,7827
 905421,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-go/Usages_List.go,7827
 905422,specification/netapp/resource-manager/Microsoft.NetApp/NetApp/preview/2026-08-15-preview/examples-go/NetAppResourceQuotaLimits_Get.go,7827
@@ -457739,3 +457737,5 @@ id,file,release_id
 911906,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-go/RedisEnterpriseMigrationList.go,7868
 911907,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-go/RedisEnterpriseMigrationValidate.go,7868
 911908,specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/examples-go/RedisEnterpriseMigrationValidateWithDataMigration.go,7868
+911909,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Operations_List.go,7869
+911910,specification/aiinfraoptimization/resource-manager/Microsoft.AIInfraOptimization/AIInfraOptimization/preview/2026-06-01-preview/examples-go/Recommendations_RecommendVmSku.go,7869

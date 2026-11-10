@@ -7871,3 +7871,4 @@ id,name,language,tag,package,version,date_epoch,date
 7870,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore/v2@v2.0.0,go,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore/v2.0.0,sdk/resourcemanager/commvaultcontentstore/armcommvaultcontentstore,v2.0.0,1794292376,11/10/2026
 7871,@azure/arm-redisenterprisecache@6.0.0-beta.1,js,@azure/arm-redisenterprisecache_6.0.0-beta.1,@azure/arm-redisenterprisecache,6.0.0-beta.1,1794310622,11/10/2026
 7872,@azure/arm-sovereign@1.0.0-beta.1,js,@azure/arm-sovereign_1.0.0-beta.1,@azure/arm-sovereign,1.0.0-beta.1,1794246402,11/09/2026
+7873,azure-mgmt-chaos@3.0.0,python,azure-mgmt-chaos_3.0.0,azure-mgmt-chaos,3.0.0,1794248991,11/09/2026

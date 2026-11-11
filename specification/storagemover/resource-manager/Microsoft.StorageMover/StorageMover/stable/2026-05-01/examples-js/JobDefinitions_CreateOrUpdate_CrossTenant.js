@@ -1,0 +1,38 @@
+const { StorageMoverClient } = require("@azure/arm-storagemover");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+ *
+ * @summary creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+ * x-ms-original-file: 2026-05-01/JobDefinitions_CreateOrUpdate_CrossTenant.json
+ */
+async function jobDefinitionsCreateOrUpdateCrossTenant() {
+  const credential = new DefaultAzureCredential();
+  const subscriptionId = "60bcfc77-6589-4da2-b7fd-f9ec9322cf95";
+  const client = new StorageMoverClient(credential, subscriptionId);
+  const result = await client.jobDefinitions.createOrUpdate(
+    "examples-rg",
+    "examples-storageMoverName",
+    "examples-projectName",
+    "examples-jobDefinitionName",
+    {
+      properties: {
+        description:
+          "Cross-tenant Blob-to-Blob copy job. JobDefinition lives in the source (host) tenant alongside the local source endpoint; the target endpoint lives in a partner (guest) tenant.",
+        agentName: "migration-agent",
+        copyMode: "Additive",
+        jobType: "CloudToCloud",
+        sourceName: "examples-sourceEndpointName",
+        sourceSubpath: "/",
+        targetName: "partner-targetEndpoint",
+        targetSubpath: "/",
+        isCrossTenantJob: true,
+        crossTenantEndpointTenantId: "11111111-2222-3333-4444-555555555555",
+        crossTenantEndpointResourceId:
+          "/subscriptions/0a2b3c4d-5e6f-7081-92a3-b4c5d6e7f809/resourceGroups/partner-rg/providers/Microsoft.StorageMover/storageMovers/partner-storageMover/endpoints/partner-targetEndpoint",
+      },
+    },
+  );
+  console.log(result);
+}

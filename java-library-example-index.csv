@@ -7876,3 +7876,4 @@ id,name,language,tag,package,version,date_epoch,date
 7875,com.azure.resourcemanager:azure-resourcemanager-aiinfraoptimization:1.0.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization_1.0.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-aiinfraoptimization,1.0.0-beta.2,1794299500,11/10/2026
 7876,com.azure.resourcemanager:azure-resourcemanager-chaos:1.4.0,java,com.azure.resourcemanager+azure-resourcemanager-chaos_1.4.0,com.azure.resourcemanager+azure-resourcemanager-chaos,1.4.0,1794247488,11/09/2026
 7877,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sovereign/armsovereign@v0.1.0,go,sdk/resourcemanager/sovereign/armsovereign/v0.1.0,sdk/resourcemanager/sovereign/armsovereign,v0.1.0,1794364555,11/11/2026
+7878,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb@v0.4.0,go,sdk/resourcemanager/horizondb/armhorizondb/v0.4.0,sdk/resourcemanager/horizondb/armhorizondb,v0.4.0,1794333741,11/10/2026

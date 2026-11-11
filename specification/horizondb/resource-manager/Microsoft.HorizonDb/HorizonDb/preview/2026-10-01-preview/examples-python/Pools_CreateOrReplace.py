@@ -31,10 +31,6 @@ def main():
                 "computeModel": {"computeGeneration": 3, "computeProcessor": "AMD", "type": "Provisioned", "vCores": 2},
                 "highAvailability": {"mode": "Disabled"},
                 "nodeCount": 1,
-                "parameterGroup": {
-                    "applyMethod": "Immediate",
-                    "parameterGroupResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.HorizonDb/locations/eastus2/parameterGroups/default-postgresql-17-provisioned",
-                },
                 "scheduledMaintenance": {"maintenanceManagementType": "System"},
             }
         },

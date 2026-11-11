@@ -7878,3 +7878,4 @@ id,name,language,tag,package,version,date_epoch,date
 7877,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sovereign/armsovereign@v0.1.0,go,sdk/resourcemanager/sovereign/armsovereign/v0.1.0,sdk/resourcemanager/sovereign/armsovereign,v0.1.0,1794364555,11/11/2026
 7878,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/horizondb/armhorizondb@v0.4.0,go,sdk/resourcemanager/horizondb/armhorizondb/v0.4.0,sdk/resourcemanager/horizondb/armhorizondb,v0.4.0,1794333741,11/10/2026
 7879,@azure/arm-horizondb@1.0.0-beta.4,js,@azure/arm-horizondb_1.0.0-beta.4,@azure/arm-horizondb,1.0.0-beta.4,1794387579,11/11/2026
+7880,@azure/arm-storagemover@3.2.0,js,@azure/arm-storagemover_3.2.0,@azure/arm-storagemover,3.2.0,1794372350,11/11/2026

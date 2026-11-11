@@ -7882,3 +7882,4 @@ id,name,language,tag,package,version,date_epoch,date
 7881,azure-mgmt-datatransfer@1.0.0b2,python,azure-mgmt-datatransfer_1.0.0b2,azure-mgmt-datatransfer,1.0.0b2,1794377744,11/11/2026
 7882,azure-mgmt-redisenterprise@4.1.0b1,python,azure-mgmt-redisenterprise_4.1.0b1,azure-mgmt-redisenterprise,4.1.0b1,1794337853,11/10/2026
 7883,azure-mgmt-horizondb@1.0.0b4,python,azure-mgmt-horizondb_1.0.0b4,azure-mgmt-horizondb,1.0.0b4,1794337487,11/10/2026
+7884,com.azure.resourcemanager:azure-resourcemanager-sovereign:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-sovereign_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-sovereign,1.0.0-beta.1,1794366182,11/11/2026

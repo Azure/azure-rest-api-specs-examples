@@ -7881,3 +7881,4 @@ id,name,language,tag,package,version,date_epoch,date
 7880,@azure/arm-storagemover@3.2.0,js,@azure/arm-storagemover_3.2.0,@azure/arm-storagemover,3.2.0,1794372350,11/11/2026
 7881,azure-mgmt-datatransfer@1.0.0b2,python,azure-mgmt-datatransfer_1.0.0b2,azure-mgmt-datatransfer,1.0.0b2,1794377744,11/11/2026
 7882,azure-mgmt-redisenterprise@4.1.0b1,python,azure-mgmt-redisenterprise_4.1.0b1,azure-mgmt-redisenterprise,4.1.0b1,1794337853,11/10/2026
+7883,azure-mgmt-horizondb@1.0.0b4,python,azure-mgmt-horizondb_1.0.0b4,azure-mgmt-horizondb,1.0.0b4,1794337487,11/10/2026

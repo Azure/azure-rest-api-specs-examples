@@ -7883,3 +7883,4 @@ id,name,language,tag,package,version,date_epoch,date
 7882,azure-mgmt-redisenterprise@4.1.0b1,python,azure-mgmt-redisenterprise_4.1.0b1,azure-mgmt-redisenterprise,4.1.0b1,1794337853,11/10/2026
 7883,azure-mgmt-horizondb@1.0.0b4,python,azure-mgmt-horizondb_1.0.0b4,azure-mgmt-horizondb,1.0.0b4,1794337487,11/10/2026
 7884,com.azure.resourcemanager:azure-resourcemanager-sovereign:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-sovereign_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-sovereign,1.0.0-beta.1,1794366182,11/11/2026
+7885,com.azure.resourcemanager:azure-resourcemanager-horizondb:1.0.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-horizondb_1.0.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-horizondb,1.0.0-beta.4,1794335772,11/10/2026

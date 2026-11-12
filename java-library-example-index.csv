@@ -7899,3 +7899,4 @@ id,name,language,tag,package,version,date_epoch,date
 7898,@azure/arm-containerservicefleet@2.2.0,js,@azure/arm-containerservicefleet_2.2.0,@azure/arm-containerservicefleet,2.2.0,1794442824,11/12/2026
 7899,azure-mgmt-koreaiartemis@1.0.0b1,python,azure-mgmt-koreaiartemis_1.0.0b1,azure-mgmt-koreaiartemis,1.0.0b1,1794479366,11/12/2026
 7900,azure-mgmt-containerinstance@11.0.0,python,azure-mgmt-containerinstance_11.0.0,azure-mgmt-containerinstance,11.0.0,1794475674,11/12/2026
+7901,azure-mgmt-containerservicefleet@4.1.0,python,azure-mgmt-containerservicefleet_4.1.0,azure-mgmt-containerservicefleet,4.1.0,1794447376,11/12/2026

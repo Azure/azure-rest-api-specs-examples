@@ -7890,3 +7890,4 @@ id,name,language,tag,package,version,date_epoch,date
 7889,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.1.0,go,sdk/resourcemanager/cosmos/armcosmos/v4.1.0,sdk/resourcemanager/cosmos/armcosmos,v4.1.0,1794457959,11/12/2026
 7890,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v2@v2.1.0,go,sdk/resourcemanager/chaos/armchaos/v2.1.0,sdk/resourcemanager/chaos/armchaos,v2.1.0,1794442826,11/12/2026
 7891,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v4@v4.0.0-beta.1,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v4.0.0-beta.1,sdk/resourcemanager/containerregistry/armcontainerregistry,v4.0.0-beta.1,1794440502,11/11/2026
+7892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3@v3.1.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v3.1.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v3.1.0,1794429566,11/11/2026

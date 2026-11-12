@@ -459254,3 +459254,13 @@ id,file,release_id
 913868,specification/chaos/resource-manager/Microsoft.Chaos/Chaos/stable/2026-11-01/examples-js/ScenarioConfigurations_CreateOrUpdate_CreateOnly.js,7896
 913869,specification/chaos/resource-manager/Microsoft.Chaos/Chaos/stable/2026-11-01/examples-js/ScenarioConfigurations_CreateOrUpdate_UpdateOnly.js,7896
 913870,specification/chaos/resource-manager/Microsoft.Chaos/Chaos/stable/2026-11-01/examples-js/ScenarioConfigurations_CreateOrUpdate_With_Physical_Zones.js,7896
+913871,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GenerateComputePlacementScores.js,7897
+913872,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GenerateComputePlacementScoresWithoutDesiredLocation.js,7897
+913873,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GetSpotPlacementScores.js,7897
+913874,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GetComputePlacementScores.js,7897
+913875,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GetSkuMixPlacementScores.js,7897
+913876,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GenerateSpotPlacementScores.js,7897
+913877,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GenerateSpotPlacementScoresWithoutDesiredLocation.js,7897
+913878,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/GenerateSkuMixPlacementScores.js,7897
+913879,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/Operations_List_MaximumSet_Gen.js,7897
+913880,specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/examples-js/Operations_List_MinimumSet_Gen.js,7897

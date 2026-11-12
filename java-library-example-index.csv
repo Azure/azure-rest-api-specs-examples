@@ -7888,3 +7888,4 @@ id,name,language,tag,package,version,date_epoch,date
 7887,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/koreaiartemis/armkoreaiartemis@v0.1.0,go,sdk/resourcemanager/koreaiartemis/armkoreaiartemis/v0.1.0,sdk/resourcemanager/koreaiartemis/armkoreaiartemis,v0.1.0,1794473432,11/12/2026
 7888,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance/v3@v3.0.0,go,sdk/resourcemanager/containerinstance/armcontainerinstance/v3.0.0,sdk/resourcemanager/containerinstance/armcontainerinstance,v3.0.0,1794469973,11/12/2026
 7889,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.1.0,go,sdk/resourcemanager/cosmos/armcosmos/v4.1.0,sdk/resourcemanager/cosmos/armcosmos,v4.1.0,1794457959,11/12/2026
+7890,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos/v2@v2.1.0,go,sdk/resourcemanager/chaos/armchaos/v2.1.0,sdk/resourcemanager/chaos/armchaos,v2.1.0,1794442826,11/12/2026

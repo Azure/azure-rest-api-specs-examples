@@ -7897,3 +7897,4 @@ id,name,language,tag,package,version,date_epoch,date
 7896,@azure/arm-chaos@2.1.0,js,@azure/arm-chaos_2.1.0,@azure/arm-chaos,2.1.0,1794449299,11/12/2026
 7897,@azure/arm-computerecommender@2.0.0-beta.1,js,@azure/arm-computerecommender_2.0.0-beta.1,@azure/arm-computerecommender,2.0.0-beta.1,1794444316,11/12/2026
 7898,@azure/arm-containerservicefleet@2.2.0,js,@azure/arm-containerservicefleet_2.2.0,@azure/arm-containerservicefleet,2.2.0,1794442824,11/12/2026
+7899,azure-mgmt-koreaiartemis@1.0.0b1,python,azure-mgmt-koreaiartemis_1.0.0b1,azure-mgmt-koreaiartemis,1.0.0b1,1794479366,11/12/2026

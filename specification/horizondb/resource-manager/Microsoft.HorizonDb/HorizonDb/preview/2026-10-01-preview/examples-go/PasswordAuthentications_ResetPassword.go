@@ -42,6 +42,7 @@ func ExamplePasswordAuthenticationsClient_BeginUpdate_resetTheSolePostgreSqlAdmi
 	// 		Type: to.Ptr("Microsoft.HorizonDb/clusters/authentications"),
 	// 		Properties: &armhorizondb.PasswordAuthenticationProperties{
 	// 			State: to.Ptr(armhorizondb.AuthenticationStateEnabled),
+	// 			AdministratorLogin: to.Ptr("adminlogin1"),
 	// 			ProvisioningState: to.Ptr(armhorizondb.ProvisioningStateSucceeded),
 	// 		},
 	// 	},

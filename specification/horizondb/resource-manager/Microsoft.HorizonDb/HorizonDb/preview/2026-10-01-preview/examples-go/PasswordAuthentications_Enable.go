@@ -43,6 +43,7 @@ func ExamplePasswordAuthenticationsClient_BeginUpdate_enablePasswordAuthenticati
 	// 		Type: to.Ptr("Microsoft.HorizonDb/clusters/authentications"),
 	// 		Properties: &armhorizondb.PasswordAuthenticationProperties{
 	// 			State: to.Ptr(armhorizondb.AuthenticationStateEnabled),
+	// 			AdministratorLogin: to.Ptr("adminlogin1"),
 	// 			ProvisioningState: to.Ptr(armhorizondb.ProvisioningStateSucceeded),
 	// 		},
 	// 	},

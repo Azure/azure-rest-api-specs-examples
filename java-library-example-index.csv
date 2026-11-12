@@ -7894,3 +7894,4 @@ id,name,language,tag,package,version,date_epoch,date
 7893,@azure/arm-containerinstance@10.0.0,js,@azure/arm-containerinstance_10.0.0,@azure/arm-containerinstance,10.0.0,1794478871,11/12/2026
 7894,@azure/arm-recoveryservices@7.3.0,js,@azure/arm-recoveryservices_7.3.0,@azure/arm-recoveryservices,7.3.0,1794462641,11/12/2026
 7895,@azure/arm-recoveryservices-siterecovery@7.0.0,js,@azure/arm-recoveryservices-siterecovery_7.0.0,@azure/arm-recoveryservices-siterecovery,7.0.0,1794457740,11/12/2026
+7896,@azure/arm-chaos@2.1.0,js,@azure/arm-chaos_2.1.0,@azure/arm-chaos,2.1.0,1794449299,11/12/2026

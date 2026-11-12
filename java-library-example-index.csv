@@ -7884,3 +7884,4 @@ id,name,language,tag,package,version,date_epoch,date
 7883,azure-mgmt-horizondb@1.0.0b4,python,azure-mgmt-horizondb_1.0.0b4,azure-mgmt-horizondb,1.0.0b4,1794337487,11/10/2026
 7884,com.azure.resourcemanager:azure-resourcemanager-sovereign:1.0.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-sovereign_1.0.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-sovereign,1.0.0-beta.1,1794366182,11/11/2026
 7885,com.azure.resourcemanager:azure-resourcemanager-horizondb:1.0.0-beta.4,java,com.azure.resourcemanager+azure-resourcemanager-horizondb_1.0.0-beta.4,com.azure.resourcemanager+azure-resourcemanager-horizondb,1.0.0-beta.4,1794335772,11/10/2026
+7886,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3@v3.1.0,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v3.1.0,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v3.1.0,1794474785,11/12/2026

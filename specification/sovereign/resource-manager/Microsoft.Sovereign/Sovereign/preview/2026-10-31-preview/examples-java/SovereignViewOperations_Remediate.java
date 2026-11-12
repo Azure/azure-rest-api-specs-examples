@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.sovereign.models.ComplianceDimension;
+import com.azure.resourcemanager.sovereign.models.SovereignViewRemediateContent;
+import com.azure.resourcemanager.sovereign.models.SovereignViewResidencyRemediationConfiguration;
+import com.azure.resourcemanager.sovereign.models.SovereignViewResidencyRemediationContent;
+import com.azure.resourcemanager.sovereign.models.SovereignViewResidencyRemediationResource;
+import com.azure.resourcemanager.sovereign.models.SovereignViewResidencyRemediationResourceConfiguration;
+import java.util.Arrays;
+
+/**
+ * Samples for SovereignViewOperations Remediate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-31-preview/SovereignViewOperations_Remediate.json
+     */
+    /**
+     * Sample code: SovereignViewOperations_Remediate.
+     * 
+     * @param manager Entry point to SovereignManager.
+     */
+    public static void sovereignViewOperationsRemediate(com.azure.resourcemanager.sovereign.SovereignManager manager) {
+        manager.sovereignViewOperations().remediate("ExampleResourceGroup", "ExampleSV",
+            new SovereignViewRemediateContent().withDimensionType(ComplianceDimension.DATA_RESIDENCY)
+                .withResidencyRemediationRequest(new SovereignViewResidencyRemediationContent()
+                    .withConfiguration(new SovereignViewResidencyRemediationConfiguration()
+                        .withTargetRegion("swedencentral").withTargetResourceGroupName("RemediatedResourceGroup"))
+                    .withResources(Arrays.asList(new SovereignViewResidencyRemediationResource().withId(
+                        "/subscriptions/22b62f96-c8d5-4131-97f8-f820a5a3c55f/resourceGroups/ExampleResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage")
+                        .withConfiguration(
+                            new SovereignViewResidencyRemediationResourceConfiguration().withSourceRegion("northeurope")
+                                .withTargetResourceGroupName("RemediatedStorageResourceGroup"))))),
+            com.azure.core.util.Context.NONE);
+    }
+}

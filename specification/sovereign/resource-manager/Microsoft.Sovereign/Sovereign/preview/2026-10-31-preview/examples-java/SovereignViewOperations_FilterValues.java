@@ -1,0 +1,37 @@
+
+import com.azure.resourcemanager.sovereign.models.SovereignViewComplianceDetailsFilterOperators;
+import com.azure.resourcemanager.sovereign.models.SovereignViewComplianceDetailsFilters;
+import com.azure.resourcemanager.sovereign.models.SovereignViewFilterField;
+import com.azure.resourcemanager.sovereign.models.SovereignViewFilterValuesContent;
+import java.util.Arrays;
+
+/**
+ * Samples for SovereignViewOperations FilterValues.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-10-31-preview/SovereignViewOperations_FilterValues.json
+     */
+    /**
+     * Sample code: SovereignViewOperations_FilterValues.
+     * 
+     * @param manager Entry point to SovereignManager.
+     */
+    public static void
+        sovereignViewOperationsFilterValues(com.azure.resourcemanager.sovereign.SovereignManager manager) {
+        manager.sovereignViewOperations().filterValuesWithResponse("ExampleResourceGroup", "ExampleSV",
+            new SovereignViewFilterValuesContent().withRequestedFilter(SovereignViewFilterField.RESOURCE_TYPE)
+                .withFilters(Arrays.asList(
+                    new SovereignViewComplianceDetailsFilters().withField(SovereignViewFilterField.REGION)
+                        .withOperator(SovereignViewComplianceDetailsFilterOperators.IN)
+                        .withValue(Arrays.asList("northeurope")),
+                    new SovereignViewComplianceDetailsFilters().withField(SovereignViewFilterField.PARENT_RESOURCE_NAME)
+                        .withOperator(SovereignViewComplianceDetailsFilterOperators.IN)
+                        .withValue(Arrays.asList("exampleParentVm")),
+                    new SovereignViewComplianceDetailsFilters().withField(SovereignViewFilterField.BUSINESS_CONTINUITY)
+                        .withOperator(SovereignViewComplianceDetailsFilterOperators.IN)
+                        .withValue(Arrays.asList("Constrained"))))
+                .withSearchTerm("Microsoft.Compute"),
+            com.azure.core.util.Context.NONE);
+    }
+}

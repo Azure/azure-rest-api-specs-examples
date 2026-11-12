@@ -7892,3 +7892,4 @@ id,name,language,tag,package,version,date_epoch,date
 7891,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v4@v4.0.0-beta.1,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v4.0.0-beta.1,sdk/resourcemanager/containerregistry/armcontainerregistry,v4.0.0-beta.1,1794440502,11/11/2026
 7892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v3@v3.1.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v3.1.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v3.1.0,1794429566,11/11/2026
 7893,@azure/arm-containerinstance@10.0.0,js,@azure/arm-containerinstance_10.0.0,@azure/arm-containerinstance,10.0.0,1794478871,11/12/2026
+7894,@azure/arm-recoveryservices@7.3.0,js,@azure/arm-recoveryservices_7.3.0,@azure/arm-recoveryservices,7.3.0,1794462641,11/12/2026

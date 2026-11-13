@@ -1,0 +1,25 @@
+
+import com.azure.core.management.SubResource;
+import com.azure.resourcemanager.privatedns.models.PrivateDnsResourceReferenceRequest;
+import java.util.Arrays;
+
+/**
+ * Samples for PrivateDnsResourceReference GetByTargetResources.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-01-preview/GetPrivateDnsResourceReference.json
+     */
+    /**
+     * Sample code: Get Private DNS resource reference.
+     * 
+     * @param manager Entry point to PrivateDnsZoneManager.
+     */
+    public static void
+        getPrivateDNSResourceReference(com.azure.resourcemanager.privatedns.PrivateDnsZoneManager manager) {
+        manager.serviceClient().getPrivateDnsResourceReferences().getByTargetResourcesWithResponse(
+            new PrivateDnsResourceReferenceRequest().withTargetResources(Arrays.asList(new SubResource().withId(
+                "/subscriptions/subscriptionId/resourceGroups/resourceGroup1/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile1"))),
+            com.azure.core.util.Context.NONE);
+    }
+}

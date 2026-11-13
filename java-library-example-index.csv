@@ -7902,3 +7902,4 @@ id,name,language,tag,package,version,date_epoch,date
 7901,azure-mgmt-containerservicefleet@4.1.0,python,azure-mgmt-containerservicefleet_4.1.0,azure-mgmt-containerservicefleet,4.1.0,1794447376,11/12/2026
 7902,azure-mgmt-containerregistry@15.1.0b4,python,azure-mgmt-containerregistry_15.1.0b4,azure-mgmt-containerregistry,15.1.0b4,1794444688,11/12/2026
 7903,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v9@v9.8.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v9.8.0,sdk/resourcemanager/containerservice/armcontainerservice,v9.8.0,1794545356,11/13/2026
+7904,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.0.0,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.0.0,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.0.0,1794542212,11/13/2026

@@ -1,0 +1,33 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.sovereign import SovereignMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sovereign
+# USAGE
+    python sovereign_view_operations_delete.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SovereignMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="SUBSCRIPTION_ID",
+    )
+
+    client.sovereign_view_operations.begin_delete(
+        resource_group_name="ExampleResourceGroup",
+        sovereign_view_name="ExampleSV",
+    ).result()
+
+
+# x-ms-original-file: 2026-10-31-preview/SovereignViewOperations_Delete.json
+if __name__ == "__main__":
+    main()

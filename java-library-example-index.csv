@@ -7909,3 +7909,4 @@ id,name,language,tag,package,version,date_epoch,date
 7908,@azure/arm-cognitiveservices@9.0.0,js,@azure/arm-cognitiveservices_9.0.0,@azure/arm-cognitiveservices,9.0.0,1794542018,11/13/2026
 7909,@azure/arm-iothub@7.0.0,js,@azure/arm-iothub_7.0.0,@azure/arm-iothub,7.0.0,1794539930,11/13/2026
 7910,azure-mgmt-containerservice@41.9.0,python,azure-mgmt-containerservice_41.9.0,azure-mgmt-containerservice,41.9.0,1794486146,11/12/2026
+7911,azure-mgmt-sovereign@1.0.0b1,python,azure-mgmt-sovereign_1.0.0b1,azure-mgmt-sovereign,1.0.0b1,1794424342,11/11/2026

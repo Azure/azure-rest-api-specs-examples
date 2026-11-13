@@ -1,0 +1,17 @@
+
+/**
+ * Samples for ContainerGroups Restart.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/ContainerGroupsRestart.json
+     */
+    /**
+     * Sample code: ContainerRestart.
+     * 
+     * @param manager Entry point to ContainerInstanceManager.
+     */
+    public static void containerRestart(com.azure.resourcemanager.containerinstance.ContainerInstanceManager manager) {
+        manager.serviceClient().getContainerGroups().restart("demo", "demo1", com.azure.core.util.Context.NONE);
+    }
+}

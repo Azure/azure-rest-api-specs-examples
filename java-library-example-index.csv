@@ -7907,3 +7907,4 @@ id,name,language,tag,package,version,date_epoch,date
 7906,@azure/arm-containerservice@25.8.0,js,@azure/arm-containerservice_25.8.0,@azure/arm-containerservice,25.8.0,1794545289,11/13/2026
 7907,@azure/arm-aiinfraoptimization@1.0.0-beta.2,js,@azure/arm-aiinfraoptimization_1.0.0-beta.2,@azure/arm-aiinfraoptimization,1.0.0-beta.2,1794544365,11/13/2026
 7908,@azure/arm-cognitiveservices@9.0.0,js,@azure/arm-cognitiveservices_9.0.0,@azure/arm-cognitiveservices,9.0.0,1794542018,11/13/2026
+7909,@azure/arm-iothub@7.0.0,js,@azure/arm-iothub_7.0.0,@azure/arm-iothub,7.0.0,1794539930,11/13/2026

@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.containerinstance.fluent.models.NGroupInner;
+import com.azure.resourcemanager.containerinstance.models.ElasticProfile;
+import com.azure.resourcemanager.containerinstance.models.NGroupUpdateMode;
+import com.azure.resourcemanager.containerinstance.models.UpdateProfile;
+import java.util.Arrays;
+
+/**
+ * Samples for NGroups CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/NGroupsCreateOrUpdate.json
+     */
+    /**
+     * Sample code: NGroupsCreateOrUpdate.
+     * 
+     * @param manager Entry point to ContainerInstanceManager.
+     */
+    public static void
+        nGroupsCreateOrUpdate(com.azure.resourcemanager.containerinstance.ContainerInstanceManager manager) {
+        manager.serviceClient().getNGroups().createOrUpdate("demo", "demo-ngroup",
+            new NGroupInner().withLocation("eastus")
+                .withElasticProfile(new ElasticProfile().withDesiredCount(1).withMaintainDesiredCount(true))
+                .withContainerGroupProfiles(Arrays.asList()).withUpdateProfile(
+                    new UpdateProfile().withUpdateMode(NGroupUpdateMode.MANUAL)),
+            com.azure.core.util.Context.NONE);
+    }
+}

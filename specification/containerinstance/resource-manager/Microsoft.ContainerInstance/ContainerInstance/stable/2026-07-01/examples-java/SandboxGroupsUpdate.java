@@ -1,0 +1,36 @@
+
+import com.azure.resourcemanager.containerinstance.models.SandboxGroupTagsUpdate;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for SandboxGroups Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/SandboxGroupsUpdate.json
+     */
+    /**
+     * Sample code: Update a SandboxGroup.
+     * 
+     * @param manager Entry point to ContainerInstanceManager.
+     */
+    public static void
+        updateASandboxGroup(com.azure.resourcemanager.containerinstance.ContainerInstanceManager manager) {
+        manager.serviceClient().getSandboxGroups().update("myResourceGroup", "mySandboxGroup",
+            new SandboxGroupTagsUpdate().withTags(mapOf("environment", "production")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

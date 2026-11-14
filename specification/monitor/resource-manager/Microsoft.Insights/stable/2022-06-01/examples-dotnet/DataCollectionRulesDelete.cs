@@ -1,6 +1,7 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -24,6 +25,6 @@ ResourceIdentifier dataCollectionRuleResourceId = DataCollectionRuleResource.Cre
 DataCollectionRuleResource dataCollectionRule = client.GetDataCollectionRuleResource(dataCollectionRuleResourceId);
 
 // invoke the operation
-await dataCollectionRule.DeleteAsync(WaitUntil.Completed);
+await dataCollectionRule.DeleteAsync(WaitUntil.Completed, (CancellationToken)default);
 
 Console.WriteLine("Succeeded");

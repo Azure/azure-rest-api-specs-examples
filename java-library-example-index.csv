@@ -7923,3 +7923,4 @@ id,name,language,tag,package,version,date_epoch,date
 7922,azure-mgmt-cognitiveservices@15.0.0,python,azure-mgmt-cognitiveservices_15.0.0,azure-mgmt-cognitiveservices,15.0.0,1794593551,11/13/2026
 7923,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.5.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet_1.5.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservicefleet,1.5.0-beta.1,1794636244,11/14/2026
 7924,"Azure.ResourceManager.RedisEnterprise,1.5.0-beta.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.5.0-beta.1,Azure.ResourceManager.RedisEnterprise,1.5.0-beta.1,1794458397,11/12/2026
+7925,"Azure.ResourceManager.Monitor,1.4.0-beta.6",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.6,Azure.ResourceManager.Monitor,1.4.0-beta.6,1794393537,11/11/2026

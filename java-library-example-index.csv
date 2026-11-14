@@ -7920,3 +7920,4 @@ id,name,language,tag,package,version,date_epoch,date
 7919,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatedns/armprivatedns/v2@v2.1.0-beta.1,go,sdk/resourcemanager/privatedns/armprivatedns/v2.1.0-beta.1,sdk/resourcemanager/privatedns/armprivatedns,v2.1.0-beta.1,1794616717,11/14/2026
 7920,@azure/arm-privatedns@4.1.0-beta.1,js,@azure/arm-privatedns_4.1.0-beta.1,@azure/arm-privatedns,4.1.0-beta.1,1794616636,11/14/2026
 7921,azure-mgmt-privatedns@2.1.0b1,python,azure-mgmt-privatedns_2.1.0b1,azure-mgmt-privatedns,2.1.0b1,1794620960,11/14/2026
+7922,azure-mgmt-cognitiveservices@15.0.0,python,azure-mgmt-cognitiveservices_15.0.0,azure-mgmt-cognitiveservices,15.0.0,1794593551,11/13/2026

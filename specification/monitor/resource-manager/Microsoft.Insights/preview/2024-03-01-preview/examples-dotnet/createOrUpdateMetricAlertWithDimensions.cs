@@ -46,7 +46,7 @@ MetricAlertData data = new MetricAlertData(
     })
 {
     Description = "This is the description of the rule1",
-    MonitorWindowSize = XmlConvert.ToTimeSpan("P1D"),
+    WindowSize = XmlConvert.ToTimeSpan("P1D"),
     IsAutoMitigateEnabled = true,
     Actions = {new MetricAlertAction
     {

@@ -43,7 +43,7 @@ MetricAlertData data = new MetricAlertData(
     })
 {
     Description = "This is the description of the rule1",
-    ResolveConfiguration = new ResolveConfiguration(true)
+    ResolveConfiguration = new MetricAlertResolveConfiguration(true)
     {
         TimeToResolve = XmlConvert.ToTimeSpan("PT10M"),
     },
@@ -60,7 +60,7 @@ MetricAlertData data = new MetricAlertData(
     {
     ["Email.Sujbect"] = "my custom email subject"
     },
-    Identity = new ManagedServiceIdentity("UserAssigned")
+    Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
     {
         UserAssignedIdentities =
         {

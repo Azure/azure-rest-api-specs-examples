@@ -39,7 +39,7 @@ MetricAlertData data = new MetricAlertData(
     new WebtestLocationAvailabilityCriteria(new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"), new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"), 2))
 {
     Description = "Automatically created alert rule for availability test \"component-example\" a",
-    MonitorWindowSize = XmlConvert.ToTimeSpan("PT15M"),
+    WindowSize = XmlConvert.ToTimeSpan("PT15M"),
     Actions = { },
     Tags =
     {

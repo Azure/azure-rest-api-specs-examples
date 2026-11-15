@@ -40,7 +40,7 @@ new AutoscaleRule(new MetricTrigger(
     MetricStatisticType.Average,
     XmlConvert.ToTimeSpan("PT5M"),
     MetricTriggerTimeAggregationType.Average,
-    MetricTriggerComparisonOperation.GreaterThan,
+    MetricTriggerComparisonOperator.GreaterThan,
     10)
 {
 IsDividedPerInstance = false,
@@ -55,7 +55,7 @@ new AutoscaleRule(new MetricTrigger(
     MetricStatisticType.Average,
     XmlConvert.ToTimeSpan("PT5M"),
     MetricTriggerTimeAggregationType.Average,
-    MetricTriggerComparisonOperation.GreaterThan,
+    MetricTriggerComparisonOperator.GreaterThan,
     15)
 {
 IsDividedPerInstance = false,
@@ -79,7 +79,7 @@ new AutoscaleRule(new MetricTrigger(
     MetricStatisticType.Average,
     XmlConvert.ToTimeSpan("PT5M"),
     MetricTriggerTimeAggregationType.Average,
-    MetricTriggerComparisonOperation.GreaterThan,
+    MetricTriggerComparisonOperator.GreaterThan,
     10)
 {
 IsDividedPerInstance = false,
@@ -94,7 +94,7 @@ new AutoscaleRule(new MetricTrigger(
     MetricStatisticType.Average,
     XmlConvert.ToTimeSpan("PT5M"),
     MetricTriggerTimeAggregationType.Average,
-    MetricTriggerComparisonOperation.GreaterThan,
+    MetricTriggerComparisonOperator.GreaterThan,
     15)
 {
 IsDividedPerInstance = false,

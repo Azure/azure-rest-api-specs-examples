@@ -7925,3 +7925,4 @@ id,name,language,tag,package,version,date_epoch,date
 7924,"Azure.ResourceManager.RedisEnterprise,1.5.0-beta.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.5.0-beta.1,Azure.ResourceManager.RedisEnterprise,1.5.0-beta.1,1794458397,11/12/2026
 7925,"Azure.ResourceManager.Monitor,1.4.0-beta.6",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.6,Azure.ResourceManager.Monitor,1.4.0-beta.6,1794393537,11/11/2026
 7926,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub/v2@v2.0.0-beta.2,go,sdk/resourcemanager/eventhub/armeventhub/v2.0.0-beta.2,sdk/resourcemanager/eventhub/armeventhub,v2.0.0-beta.2,1794822171,11/16/2026
+7927,@azure/arm-eventhub@7.0.0-beta.1,js,@azure/arm-eventhub_7.0.0-beta.1,@azure/arm-eventhub,7.0.0-beta.1,1794825242,11/16/2026

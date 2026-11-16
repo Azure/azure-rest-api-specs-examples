@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.eventhubs.fluent.models.ApplicationGroupInner;
+import com.azure.resourcemanager.eventhubs.models.MetricId;
+import com.azure.resourcemanager.eventhubs.models.ThrottlingPolicy;
+import java.util.Arrays;
+
+/**
+ * Samples for ApplicationGroup CreateOrUpdateApplicationGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/ApplicationGroup/ApplicationGroupCreate.json
+     */
+    /**
+     * Sample code: ApplicationGroupCreate.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void applicationGroupCreate(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getApplicationGroups().createOrUpdateApplicationGroupWithResponse("contosotest",
+            "contoso-ua-test-eh-system-1", "appGroup1",
+            new ApplicationGroupInner().withIsEnabled(true).withClientAppGroupIdentifier("SASKeyName=KeyName")
+                .withPolicies(Arrays.asList(
+                    new ThrottlingPolicy().withName("ThrottlingPolicy1").withRateLimitThreshold(7912L)
+                        .withMetricId(MetricId.INCOMING_MESSAGES),
+                    new ThrottlingPolicy().withName("ThrottlingPolicy2").withRateLimitThreshold(3951729L)
+                        .withMetricId(MetricId.INCOMING_BYTES),
+                    new ThrottlingPolicy().withName("ThrottlingPolicy3").withRateLimitThreshold(245175L)
+                        .withMetricId(MetricId.OUTGOING_BYTES))),
+            com.azure.core.util.Context.NONE);
+    }
+}

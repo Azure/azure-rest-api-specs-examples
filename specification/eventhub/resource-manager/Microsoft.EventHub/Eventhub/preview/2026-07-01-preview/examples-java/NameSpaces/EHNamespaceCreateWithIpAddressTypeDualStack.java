@@ -1,0 +1,74 @@
+
+import com.azure.resourcemanager.eventhubs.fluent.models.EHNamespaceInner;
+import com.azure.resourcemanager.eventhubs.models.Encryption;
+import com.azure.resourcemanager.eventhubs.models.GeoDRRoleType;
+import com.azure.resourcemanager.eventhubs.models.GeoDataReplicationProperties;
+import com.azure.resourcemanager.eventhubs.models.Identity;
+import com.azure.resourcemanager.eventhubs.models.IpAddressType;
+import com.azure.resourcemanager.eventhubs.models.KeySource;
+import com.azure.resourcemanager.eventhubs.models.KeyVaultProperties;
+import com.azure.resourcemanager.eventhubs.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.eventhubs.models.NamespaceReplicaLocation;
+import com.azure.resourcemanager.eventhubs.models.PublicNetworkAccess;
+import com.azure.resourcemanager.eventhubs.models.Sku;
+import com.azure.resourcemanager.eventhubs.models.SkuName;
+import com.azure.resourcemanager.eventhubs.models.SkuTier;
+import com.azure.resourcemanager.eventhubs.models.UserAssignedIdentity;
+import com.azure.resourcemanager.eventhubs.models.UserAssignedIdentityProperties;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Namespaces CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/NameSpaces/EHNamespaceCreateWithIpAddressTypeDualStack.json
+     */
+    /**
+     * Sample code: NamespaceCreateWithIpAddressTypeDualStack.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void
+        namespaceCreateWithIpAddressTypeDualStack(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getNamespaces().createOrUpdate("ResurceGroupSample", "NamespaceSample",
+            new EHNamespaceInner()
+                .withSku(new Sku().withName(SkuName.STANDARD).withTier(SkuTier.STANDARD).withCapacity(1))
+                .withIdentity(new Identity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED_USER_ASSIGNED)
+                    .withUserAssignedIdentities(mapOf(
+                        "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1",
+                        new UserAssignedIdentity(),
+                        "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2",
+                        new UserAssignedIdentity())))
+                .withLocation("East US").withTags(mapOf())
+                .withClusterArmId(
+                    "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.EventHub/clusters/enc-test")
+                .withPublicNetworkAccess(PublicNetworkAccess.ENABLED)
+                .withEncryption(new Encryption().withKeyVaultProperties(Arrays.asList(new KeyVaultProperties()
+                    .withKeyName("fakeTokenPlaceholder").withKeyVaultUri("fakeTokenPlaceholder")
+                    .withIdentity(new UserAssignedIdentityProperties().withUserAssignedIdentity(
+                        "/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1"))))
+                    .withKeySource(KeySource.MICROSOFT_KEY_VAULT))
+                .withGeoDataReplication(new GeoDataReplicationProperties().withMaxReplicationLagDurationInSeconds(300)
+                    .withLocations(Arrays.asList(
+                        new NamespaceReplicaLocation().withLocationName("eastus").withRoleType(GeoDRRoleType.PRIMARY),
+                        new NamespaceReplicaLocation().withLocationName("southcentralus")
+                            .withRoleType(GeoDRRoleType.SECONDARY))))
+                .withIpAddressType(IpAddressType.DUAL_STACK),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

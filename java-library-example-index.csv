@@ -7933,3 +7933,4 @@ id,name,language,tag,package,version,date_epoch,date
 7932,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v12@v12.0.0,go,sdk/resourcemanager/netapp/armnetapp/v12.0.0,sdk/resourcemanager/netapp/armnetapp,v12.0.0,1794884554,11/17/2026
 7933,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault/v2@v2.2.0-beta.1,go,sdk/resourcemanager/keyvault/armkeyvault/v2.2.0-beta.1,sdk/resourcemanager/keyvault/armkeyvault,v2.2.0-beta.1,1794851173,11/16/2026
 7934,@azure/arm-containerservice@25.9.0-beta.1,js,@azure/arm-containerservice_25.9.0-beta.1,@azure/arm-containerservice,25.9.0-beta.1,1794897423,11/17/2026
+7935,@azure/arm-containerservicefleet@2.3.0-beta.1,js,@azure/arm-containerservicefleet_2.3.0-beta.1,@azure/arm-containerservicefleet,2.3.0-beta.1,1794886337,11/17/2026

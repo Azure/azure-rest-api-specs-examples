@@ -7942,3 +7942,4 @@ id,name,language,tag,package,version,date_epoch,date
 7941,azure-mgmt-keyvault@14.2.0b1,python,azure-mgmt-keyvault_14.2.0b1,azure-mgmt-keyvault,14.2.0b1,1794855471,11/16/2026
 7942,com.azure.resourcemanager:azure-resourcemanager-containerservice:2.68.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-containerservice_2.68.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-containerservice,2.68.0-beta.1,1794904047,11/17/2026
 7943,com.azure.resourcemanager:azure-resourcemanager-netapp:2.6.0,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.6.0,com.azure.resourcemanager+azure-resourcemanager-netapp,2.6.0,1794890278,11/17/2026
+7944,com.azure.resourcemanager:azure-resourcemanager-keyvault:2.58.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-keyvault_2.58.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-keyvault,2.58.0-beta.1,1794854081,11/16/2026

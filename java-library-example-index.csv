@@ -7939,3 +7939,4 @@ id,name,language,tag,package,version,date_epoch,date
 7938,azure-mgmt-containerservicefleet@4.2.0b1,python,azure-mgmt-containerservicefleet_4.2.0b1,azure-mgmt-containerservicefleet,4.2.0b1,1794911898,11/17/2026
 7939,azure-mgmt-eventhub@12.1.0b1,python,azure-mgmt-eventhub_12.1.0b1,azure-mgmt-eventhub,12.1.0b1,1794908606,11/17/2026
 7940,azure-mgmt-netapp@19.0.0,python,azure-mgmt-netapp_19.0.0,azure-mgmt-netapp,19.0.0,1794891978,11/17/2026
+7941,azure-mgmt-keyvault@14.2.0b1,python,azure-mgmt-keyvault_14.2.0b1,azure-mgmt-keyvault,14.2.0b1,1794855471,11/16/2026

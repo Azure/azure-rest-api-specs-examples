@@ -1,0 +1,18 @@
+
+/**
+ * Samples for EventHubs ListByNamespace.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/EventHubs/EHEventHubListByNameSpace.json
+     */
+    /**
+     * Sample code: EventHubsListAll.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void eventHubsListAll(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getEventHubs().listByNamespace("Default-NotificationHubs-AustraliaEast",
+            "sdk-Namespace-5357", null, null, com.azure.core.util.Context.NONE);
+    }
+}

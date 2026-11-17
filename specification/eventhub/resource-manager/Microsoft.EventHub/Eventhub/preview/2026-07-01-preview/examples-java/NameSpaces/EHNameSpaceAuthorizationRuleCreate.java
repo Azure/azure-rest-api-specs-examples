@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.eventhubs.fluent.models.AuthorizationRuleInner;
+import com.azure.resourcemanager.eventhubs.models.AccessRights;
+import java.util.Arrays;
+
+/**
+ * Samples for Namespaces CreateOrUpdateAuthorizationRule.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/NameSpaces/EHNameSpaceAuthorizationRuleCreate.json
+     */
+    /**
+     * Sample code: NameSpaceAuthorizationRuleCreate.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void nameSpaceAuthorizationRuleCreate(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getNamespaces().createOrUpdateAuthorizationRuleWithResponse("ArunMonocle",
+            "sdk-Namespace-2702", "sdk-Authrules-1746",
+            new AuthorizationRuleInner().withRights(Arrays.asList(AccessRights.LISTEN, AccessRights.SEND)),
+            com.azure.core.util.Context.NONE);
+    }
+}

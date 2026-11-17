@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.eventhubs.models.CheckNameAvailabilityParameter;
+
+/**
+ * Samples for DisasterRecoveryConfigs CheckNameAvailability.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/disasterRecoveryConfigs/EHAliasCheckNameAvailability.json
+     */
+    /**
+     * Sample code: NamespacesCheckNameAvailability.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void namespacesCheckNameAvailability(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getDisasterRecoveryConfigs().checkNameAvailabilityWithResponse("exampleResourceGroup",
+            "sdk-Namespace-9080", new CheckNameAvailabilityParameter().withName("sdk-DisasterRecovery-9474"),
+            com.azure.core.util.Context.NONE);
+    }
+}

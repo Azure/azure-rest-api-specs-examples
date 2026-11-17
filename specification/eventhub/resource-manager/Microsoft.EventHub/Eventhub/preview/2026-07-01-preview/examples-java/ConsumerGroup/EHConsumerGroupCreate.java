@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.eventhubs.fluent.models.ConsumerGroupInner;
+
+/**
+ * Samples for ConsumerGroups CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/ConsumerGroup/EHConsumerGroupCreate.json
+     */
+    /**
+     * Sample code: ConsumerGroupCreate.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void consumerGroupCreate(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getConsumerGroups().createOrUpdateWithResponse("ArunMonocle", "sdk-Namespace-2661",
+            "sdk-EventHub-6681", "sdk-ConsumerGroup-5563",
+            new ConsumerGroupInner().withUserMetadata("New consumergroup"), com.azure.core.util.Context.NONE);
+    }
+}

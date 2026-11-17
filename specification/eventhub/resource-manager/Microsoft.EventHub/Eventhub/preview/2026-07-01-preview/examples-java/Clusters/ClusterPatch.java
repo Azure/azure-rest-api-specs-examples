@@ -1,0 +1,35 @@
+
+import com.azure.resourcemanager.eventhubs.fluent.models.ClusterInner;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Clusters Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/Clusters/ClusterPatch.json
+     */
+    /**
+     * Sample code: ClusterPatch.
+     * 
+     * @param manager Entry point to EventHubsManager.
+     */
+    public static void clusterPatch(com.azure.resourcemanager.eventhubs.EventHubsManager manager) {
+        manager.serviceClient().getClusters().update("myResourceGroup", "testCluster",
+            new ClusterInner().withLocation("South Central US").withTags(mapOf("tag3", "value3", "tag4", "value4")),
+            com.azure.core.util.Context.NONE);
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.confluent.models.AccessPointProperties;
+import com.azure.resourcemanager.confluent.models.KeyValuePair;
+import com.azure.resourcemanager.confluent.models.VnetInjectionDetails;
+import java.util.Arrays;
+
+/**
+ * Samples for AccessPointResources CreateOrReplace.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-06-02-preview/AccessPointResources_CreateOrReplace_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: AccessPointResources_CreateOrReplace_MaximumSet.
+     * 
+     * @param manager Entry point to ConfluentManager.
+     */
+    public static void
+        accessPointResourcesCreateOrReplaceMaximumSet(com.azure.resourcemanager.confluent.ConfluentManager manager) {
+        manager.accessPointResources().define("ap-xyz789")
+            .withExistingNetworkGateway("rgconfluent", "myOrganization", "env-abc123", "gw-def456")
+            .withProperties(new AccessPointProperties().withAccessPointName("my-access-point").withRegion("eastus")
+                .withVnetInjection(new VnetInjectionDetails().withVirtualNetworkResourceId(
+                    "/subscriptions/DC34558A-05D3-4370-AED8-75E60B381F94/resourceGroups/rgconfluent/providers/Microsoft.Network/virtualNetworks/myVnet")
+                    .withSubnetResourceId(
+                        "/subscriptions/DC34558A-05D3-4370-AED8-75E60B381F94/resourceGroups/rgconfluent/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"))
+                .withEgressRoutes(Arrays.asList("10.0.0.0/8", "172.16.0.0/12")).withDictionary(
+                    Arrays.asList(new KeyValuePair().withKey("fakeTokenPlaceholder").withValue("EgressPrivateLink"))))
+            .create();
+    }
+}

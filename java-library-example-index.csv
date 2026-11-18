@@ -7950,3 +7950,4 @@ id,name,language,tag,package,version,date_epoch,date
 7949,@azure/arm-netapp@26.0.0,js,@azure/arm-netapp_26.0.0,@azure/arm-netapp,26.0.0,1794942893,11/17/2026
 7950,@azure/arm-cognitiveservices@9.1.0-beta.1,js,@azure/arm-cognitiveservices_9.1.0-beta.1,@azure/arm-cognitiveservices,9.1.0-beta.1,1794932096,11/17/2026
 7951,azure-mgmt-cognitiveservices@15.1.0b1,python,azure-mgmt-cognitiveservices_15.1.0b1,azure-mgmt-cognitiveservices,15.1.0b1,1794936158,11/17/2026
+7952,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.3.0,java,com.azure.resourcemanager+azure-resourcemanager-mongocluster_1.3.0,com.azure.resourcemanager+azure-resourcemanager-mongocluster,1.3.0,1794974163,11/18/2026

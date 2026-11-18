@@ -1,0 +1,32 @@
+
+import com.azure.resourcemanager.cognitiveservices.models.AttachedAksClusterCapability;
+import com.azure.resourcemanager.cognitiveservices.models.AttachedAksClusterExtensionConfiguration;
+import com.azure.resourcemanager.cognitiveservices.models.AttachedAksClusterExtensionProfile;
+import com.azure.resourcemanager.cognitiveservices.models.AttachedAksClusterProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for AttachedAksClusters CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-15-preview/CreateOrUpdateAttachedAksCluster.json
+     */
+    /**
+     * Sample code: CreateOrUpdateAttachedAksCluster.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        createOrUpdateAttachedAksCluster(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.attachedAksClusters().define("myAttachment").withExistingAccount("rgcognitiveservices", "myAccount")
+            .withProperties(new AttachedAksClusterProperties().withClusterResourceId(
+                "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/rgaks/providers/Microsoft.ContainerService/managedClusters/myAks")
+                .withCapabilities(
+                    Arrays.asList(AttachedAksClusterCapability.FOUNDRY_NATIVE, AttachedAksClusterCapability.KUBERAY))
+                .withExtensionProfile(
+                    new AttachedAksClusterExtensionProfile().withVersion("1.0.0").withReleaseTrain("stable")
+                        .withConfiguration(new AttachedAksClusterExtensionConfiguration().withRayVersion("2.52.0"))))
+            .create();
+    }
+}

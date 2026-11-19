@@ -1,0 +1,34 @@
+
+import com.azure.resourcemanager.network.fluent.models.InboundSecurityRuleInner;
+import com.azure.resourcemanager.network.models.InboundSecurityRuleType;
+import com.azure.resourcemanager.network.models.InboundSecurityRules;
+import com.azure.resourcemanager.network.models.InboundSecurityRulesProtocol;
+import com.azure.resourcemanager.network.models.NetworkVirtualApplianceLoadBalancerConfiguration;
+import com.azure.resourcemanager.network.models.NetworkVirtualApplianceLoadDistribution;
+import java.util.Arrays;
+
+/**
+ * Samples for InboundSecurityRuleOperation CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-05-01/InboundSecurityRuleSourceIPProtocolPut.json
+     */
+    /**
+     * Sample code: Create or update a Permanent Internet Ingress rule with SourceIPProtocol load distribution.
+     * 
+     * @param manager Entry point to NetworkManager.
+     */
+    public static void createOrUpdateAPermanentInternetIngressRuleWithSourceIPProtocolLoadDistribution(
+        com.azure.resourcemanager.network.NetworkManager manager) {
+        manager.serviceClient().getInboundSecurityRuleOperations().createOrUpdate("rg1", "nva", "rule1",
+            new InboundSecurityRuleInner().withRuleType(InboundSecurityRuleType.PERMANENT)
+                .withRules(Arrays.asList(new InboundSecurityRules().withName("inboundRule1")
+                    .withProtocol(InboundSecurityRulesProtocol.TCP).withSourceAddressPrefix("50.20.121.5/32")
+                    .withDestinationPortRange(443).withAppliesOn(Arrays.asList("slbip1"))
+                    .withLoadBalancerConfiguration(new NetworkVirtualApplianceLoadBalancerConfiguration()
+                        .withLoadDistribution(NetworkVirtualApplianceLoadDistribution.SOURCE_IPPROTOCOL)
+                        .withIdleTimeoutInMinutes(15)))),
+            com.azure.core.util.Context.NONE);
+    }
+}

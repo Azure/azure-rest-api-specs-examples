@@ -7955,3 +7955,4 @@ id,name,language,tag,package,version,date_epoch,date
 7954,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.6.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices_1.6.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-cognitiveservices,1.6.0-beta.1,1794934526,11/17/2026
 7955,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4@v4.1.0-beta.1,go,sdk/resourcemanager/cognitiveservices/armcognitiveservices/v4.1.0-beta.1,sdk/resourcemanager/cognitiveservices/armcognitiveservices,v4.1.0-beta.1,1795015819,11/18/2026
 7956,@azure/arm-networksecurity@1.0.0-beta.2,js,@azure/arm-networksecurity_1.0.0-beta.2,@azure/arm-networksecurity,1.0.0-beta.2,1795029884,11/18/2026
+7957,azure-mgmt-iothub@5.0.0,python,azure-mgmt-iothub_5.0.0,azure-mgmt-iothub,5.0.0,1795046286,11/18/2026

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ProjectCostControls Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-11-15-preview/ProjectCostControl/delete.json
+     */
+    /**
+     * Sample code: Delete a budget conditionally.
+     * 
+     * @param manager Entry point to CognitiveServicesManager.
+     */
+    public static void
+        deleteABudgetConditionally(com.azure.resourcemanager.cognitiveservices.CognitiveServicesManager manager) {
+        manager.projectCostControls().deleteWithResponse("foundry-resource-group", "foundry-account", "production",
+            "project-token-budget", "\"00000000-0000-0000-0000-000000000001\"", com.azure.core.util.Context.NONE);
+    }
+}

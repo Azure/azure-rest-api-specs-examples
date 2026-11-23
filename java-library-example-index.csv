@@ -7962,3 +7962,4 @@ id,name,language,tag,package,version,date_epoch,date
 7961,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v12@v12.2.0,go,sdk/resourcemanager/network/armnetwork/v12.2.0,sdk/resourcemanager/network/armnetwork,v12.2.0,1795421609,11/23/2026
 7962,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicebus/armservicebus/v2@v2.0.0-beta.5,go,sdk/resourcemanager/servicebus/armservicebus/v2.0.0-beta.5,sdk/resourcemanager/servicebus/armservicebus,v2.0.0-beta.5,1795416128,11/23/2026
 7963,@azure/arm-network@39.2.0,js,@azure/arm-network_39.2.0,@azure/arm-network,39.2.0,1795420979,11/23/2026
+7964,@azure/arm-servicebus@8.0.0-beta.1,js,@azure/arm-servicebus_8.0.0-beta.1,@azure/arm-servicebus,8.0.0-beta.1,1795414770,11/23/2026

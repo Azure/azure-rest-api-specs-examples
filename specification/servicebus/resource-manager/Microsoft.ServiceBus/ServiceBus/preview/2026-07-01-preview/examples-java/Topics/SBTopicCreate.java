@@ -1,0 +1,20 @@
+
+import com.azure.resourcemanager.servicebus.fluent.models.SBTopicInner;
+
+/**
+ * Samples for Topics CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/Topics/SBTopicCreate.json
+     */
+    /**
+     * Sample code: TopicCreate.
+     * 
+     * @param manager Entry point to ServiceBusManager.
+     */
+    public static void topicCreate(com.azure.resourcemanager.servicebus.ServiceBusManager manager) {
+        manager.serviceClient().getTopics().createOrUpdateWithResponse("ArunMonocle", "sdk-Namespace-1617",
+            "sdk-Topics-5488", new SBTopicInner().withEnableExpress(true), com.azure.core.util.Context.NONE);
+    }
+}

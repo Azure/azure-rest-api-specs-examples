@@ -1,0 +1,21 @@
+
+import com.azure.resourcemanager.servicebus.models.CheckNameAvailability;
+
+/**
+ * Samples for DisasterRecoveryConfigs CheckNameAvailability.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/disasterRecoveryConfigs/SBAliasCheckNameAvailability.json
+     */
+    /**
+     * Sample code: AliasNameAvailability.
+     * 
+     * @param manager Entry point to ServiceBusManager.
+     */
+    public static void aliasNameAvailability(com.azure.resourcemanager.servicebus.ServiceBusManager manager) {
+        manager.serviceClient().getDisasterRecoveryConfigs().checkNameAvailabilityWithResponse("exampleResourceGroup",
+            "sdk-Namespace-9080", new CheckNameAvailability().withName("sdk-DisasterRecovery-9474"),
+            com.azure.core.util.Context.NONE);
+    }
+}

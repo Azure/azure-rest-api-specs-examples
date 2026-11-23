@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.servicebus.fluent.models.MigrationConfigPropertiesInner;
+import com.azure.resourcemanager.servicebus.models.MigrationConfigurationName;
+
+/**
+ * Samples for MigrationConfigs CreateAndStartMigration.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * 2026-07-01-preview/Migrationconfigurations/SBMigrationconfigurationCreateAndStartMigration.json
+     */
+    /**
+     * Sample code: MigrationConfigurationsStartMigration.
+     * 
+     * @param manager Entry point to ServiceBusManager.
+     */
+    public static void
+        migrationConfigurationsStartMigration(com.azure.resourcemanager.servicebus.ServiceBusManager manager) {
+        manager.serviceClient().getMigrationConfigs().createAndStartMigration("ResourceGroup", "sdk-Namespace-41",
+            MigrationConfigurationName.DEFAULT,
+            new MigrationConfigPropertiesInner().withTargetNamespace(
+                "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
+                .withPostMigrationName("sdk-PostMigration-5919"),
+            com.azure.core.util.Context.NONE);
+    }
+}

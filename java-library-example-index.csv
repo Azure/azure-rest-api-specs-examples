@@ -7960,3 +7960,4 @@ id,name,language,tag,package,version,date_epoch,date
 7959,com.azure.resourcemanager:azure-resourcemanager-network:2.64.0,java,com.azure.resourcemanager+azure-resourcemanager-network_2.64.0,com.azure.resourcemanager+azure-resourcemanager-network,2.64.0,1795010594,11/18/2026
 7960,com.azure.resourcemanager:azure-resourcemanager-confluent:1.3.0-beta.2,java,com.azure.resourcemanager+azure-resourcemanager-confluent_1.3.0-beta.2,com.azure.resourcemanager+azure-resourcemanager-confluent,1.3.0-beta.2,1794988569,11/18/2026
 7961,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v12@v12.2.0,go,sdk/resourcemanager/network/armnetwork/v12.2.0,sdk/resourcemanager/network/armnetwork,v12.2.0,1795421609,11/23/2026
+7962,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicebus/armservicebus/v2@v2.0.0-beta.5,go,sdk/resourcemanager/servicebus/armservicebus/v2.0.0-beta.5,sdk/resourcemanager/servicebus/armservicebus,v2.0.0-beta.5,1795416128,11/23/2026

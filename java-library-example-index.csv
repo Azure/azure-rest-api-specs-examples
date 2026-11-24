@@ -7965,3 +7965,4 @@ id,name,language,tag,package,version,date_epoch,date
 7964,@azure/arm-servicebus@8.0.0-beta.1,js,@azure/arm-servicebus_8.0.0-beta.1,@azure/arm-servicebus,8.0.0-beta.1,1795414770,11/23/2026
 7965,com.azure.resourcemanager:azure-resourcemanager-servicebus:2.55.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-servicebus_2.55.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-servicebus,2.55.0-beta.1,1795416990,11/23/2026
 7966,"Azure.ResourceManager.MongoCluster,1.2.0",dotnet,Azure.ResourceManager.MongoCluster_1.2.0,Azure.ResourceManager.MongoCluster,1.2.0,1795426044,11/23/2026
+7967,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2@v2.0.0-beta.10,go,sdk/resourcemanager/sql/armsql/v2.0.0-beta.10,sdk/resourcemanager/sql/armsql,v2.0.0-beta.10,1795516223,11/24/2026

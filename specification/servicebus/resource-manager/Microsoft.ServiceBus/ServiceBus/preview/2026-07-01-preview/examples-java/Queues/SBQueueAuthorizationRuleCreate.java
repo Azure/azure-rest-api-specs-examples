@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.servicebus.fluent.models.SBAuthorizationRuleInner;
+import com.azure.resourcemanager.servicebus.models.AccessRights;
+import java.util.Arrays;
+
+/**
+ * Samples for Queues CreateOrUpdateAuthorizationRule.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01-preview/Queues/SBQueueAuthorizationRuleCreate.json
+     */
+    /**
+     * Sample code: QueueAuthorizationRuleCreate.
+     * 
+     * @param manager Entry point to ServiceBusManager.
+     */
+    public static void queueAuthorizationRuleCreate(com.azure.resourcemanager.servicebus.ServiceBusManager manager) {
+        manager.serviceClient().getQueues().createOrUpdateAuthorizationRuleWithResponse("ArunMonocle",
+            "sdk-Namespace-7982", "sdk-Queues-2317", "sdk-AuthRules-5800",
+            new SBAuthorizationRuleInner().withRights(Arrays.asList(AccessRights.LISTEN, AccessRights.SEND)),
+            com.azure.core.util.Context.NONE);
+    }
+}

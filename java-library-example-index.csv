@@ -7969,3 +7969,4 @@ id,name,language,tag,package,version,date_epoch,date
 7968,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/relay/armrelay/v2@v2.2.0-beta.1,go,sdk/resourcemanager/relay/armrelay/v2.2.0-beta.1,sdk/resourcemanager/relay/armrelay,v2.2.0-beta.1,1795513853,11/24/2026
 7969,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0,go,sdk/resourcemanager/search/armsearch/v2.0.0,sdk/resourcemanager/search/armsearch,v2.0.0,1795466691,11/23/2026
 7970,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0,1795464607,11/23/2026
+7971,@azure/arm-cosmosdb@17.1.0,js,@azure/arm-cosmosdb_17.1.0,@azure/arm-cosmosdb,17.1.0,1795514418,11/24/2026

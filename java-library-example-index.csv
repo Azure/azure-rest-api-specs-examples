@@ -7971,3 +7971,4 @@ id,name,language,tag,package,version,date_epoch,date
 7970,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0,1795464607,11/23/2026
 7971,@azure/arm-cosmosdb@17.1.0,js,@azure/arm-cosmosdb_17.1.0,@azure/arm-cosmosdb,17.1.0,1795514418,11/24/2026
 7972,@azure/arm-containerregistry@13.0.0,js,@azure/arm-containerregistry_13.0.0,@azure/arm-containerregistry,13.0.0,1795500568,11/24/2026
+7973,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.57.0,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.57.0,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.57.0,1795505195,11/24/2026

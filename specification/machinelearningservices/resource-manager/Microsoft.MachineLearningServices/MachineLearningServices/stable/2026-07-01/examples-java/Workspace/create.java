@@ -1,0 +1,69 @@
+
+import com.azure.resourcemanager.machinelearning.models.EncryptionProperty;
+import com.azure.resourcemanager.machinelearning.models.EncryptionStatus;
+import com.azure.resourcemanager.machinelearning.models.IdentityForCmk;
+import com.azure.resourcemanager.machinelearning.models.KeyVaultProperties;
+import com.azure.resourcemanager.machinelearning.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.machinelearning.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.machinelearning.models.PrivateEndpointServiceConnectionStatus;
+import com.azure.resourcemanager.machinelearning.models.SharedPrivateLinkResource;
+import com.azure.resourcemanager.machinelearning.models.UserAssignedIdentity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for Workspaces CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/create.json
+     */
+    /**
+     * Sample code: Create Workspace.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void createWorkspace(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.workspaces().define("testworkspace").withExistingResourceGroup("workspace-1234")
+            .withRegion("eastus2euap")
+            .withIdentity(new ManagedServiceIdentity()
+                .withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED_USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai",
+                    new UserAssignedIdentity())))
+            .withApplicationInsights(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/microsoft.insights/components/testinsights")
+            .withContainerRegistry(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ContainerRegistry/registries/testRegistry")
+            .withDescription("test description")
+            .withEncryption(new EncryptionProperty().withIdentity(new IdentityForCmk().withUserAssignedIdentity(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai"))
+                .withKeyVaultProperties(new KeyVaultProperties().withIdentityClientId("")
+                    .withKeyIdentifier("fakeTokenPlaceholder").withKeyVaultArmId("fakeTokenPlaceholder"))
+                .withStatus(EncryptionStatus.ENABLED))
+            .withFriendlyName("HelloName").withHbiWorkspace(false)
+            .withKeyVault(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.KeyVault/vaults/testkv")
+            .withSharedPrivateLinkResources(Arrays.asList(new SharedPrivateLinkResource().withName("testdbresource")
+                .withGroupId("Sql")
+                .withPrivateLinkResourceId(
+                    "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.DocumentDB/databaseAccounts/testdbresource/privateLinkResources/Sql")
+                .withRequestMessage("Please approve").withStatus(PrivateEndpointServiceConnectionStatus.APPROVED)))
+            .withStorageAccount(
+                "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/accountcrud-1234/providers/Microsoft.Storage/storageAccounts/testStorageAccount")
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ServerlessEndpoints ListKeys.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/ServerlessEndpoint/listKeys.json
+     */
+    /**
+     * Sample code: ListKeys Workspace Serverless Endpoint.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void
+        listKeysWorkspaceServerlessEndpoint(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.serverlessEndpoints().listKeysWithResponse("test-rg", "my-aml-workspace", "string",
+            com.azure.core.util.Context.NONE);
+    }
+}

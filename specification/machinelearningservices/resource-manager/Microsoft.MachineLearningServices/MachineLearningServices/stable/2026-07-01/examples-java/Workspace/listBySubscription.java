@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Workspaces List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/listBySubscription.json
+     */
+    /**
+     * Sample code: Get Workspaces by subscription.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void
+        getWorkspacesBySubscription(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.workspaces().list(null, null, null, com.azure.core.util.Context.NONE);
+    }
+}

@@ -7965,3 +7965,12 @@ id,name,language,tag,package,version,date_epoch,date
 7964,@azure/arm-servicebus@8.0.0-beta.1,js,@azure/arm-servicebus_8.0.0-beta.1,@azure/arm-servicebus,8.0.0-beta.1,1795414770,11/23/2026
 7965,com.azure.resourcemanager:azure-resourcemanager-servicebus:2.55.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-servicebus_2.55.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-servicebus,2.55.0-beta.1,1795416990,11/23/2026
 7966,"Azure.ResourceManager.MongoCluster,1.2.0",dotnet,Azure.ResourceManager.MongoCluster_1.2.0,Azure.ResourceManager.MongoCluster,1.2.0,1795426044,11/23/2026
+7967,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql/v2@v2.0.0-beta.10,go,sdk/resourcemanager/sql/armsql/v2.0.0-beta.10,sdk/resourcemanager/sql/armsql,v2.0.0-beta.10,1795516223,11/24/2026
+7968,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/relay/armrelay/v2@v2.2.0-beta.1,go,sdk/resourcemanager/relay/armrelay/v2.2.0-beta.1,sdk/resourcemanager/relay/armrelay,v2.2.0-beta.1,1795513853,11/24/2026
+7969,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch/v2@v2.0.0,go,sdk/resourcemanager/search/armsearch/v2.0.0,sdk/resourcemanager/search/armsearch,v2.0.0,1795466691,11/23/2026
+7970,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry/v3@v3.1.0,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v3.1.0,sdk/resourcemanager/containerregistry/armcontainerregistry,v3.1.0,1795464607,11/23/2026
+7971,@azure/arm-cosmosdb@17.1.0,js,@azure/arm-cosmosdb_17.1.0,@azure/arm-cosmosdb,17.1.0,1795514418,11/24/2026
+7972,@azure/arm-containerregistry@13.0.0,js,@azure/arm-containerregistry_13.0.0,@azure/arm-containerregistry,13.0.0,1795500568,11/24/2026
+7973,com.azure.resourcemanager:azure-resourcemanager-containerregistry:2.57.0,java,com.azure.resourcemanager+azure-resourcemanager-containerregistry_2.57.0,com.azure.resourcemanager+azure-resourcemanager-containerregistry,2.57.0,1795505195,11/24/2026
+7974,com.azure.resourcemanager:azure-resourcemanager-search:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-search_2.56.0,com.azure.resourcemanager+azure-resourcemanager-search,2.56.0,1795491222,11/24/2026
+7975,"Azure.ResourceManager.EventHubs,1.4.0-beta.2",dotnet,Azure.ResourceManager.EventHubs_1.4.0-beta.2,Azure.ResourceManager.EventHubs,1.4.0-beta.2,1795503277,11/24/2026

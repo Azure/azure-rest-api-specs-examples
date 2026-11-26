@@ -7981,3 +7981,4 @@ id,name,language,tag,package,version,date_epoch,date
 7980,azure-mgmt-network@33.2.0,python,azure-mgmt-network_33.2.0,azure-mgmt-network,33.2.0,1795673252,11/26/2026
 7981,azure-mgmt-search@10.0.0,python,azure-mgmt-search_10.0.0,azure-mgmt-search,10.0.0,1795673246,11/26/2026
 7982,com.azure.resourcemanager:azure-resourcemanager-netapp:2.7.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.7.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.7.0-beta.1,1795690369,11/26/2026
+7983,"Azure.ResourceManager.ContainerServiceFleet,1.4.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.4.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.4.0-beta.1,1795663316,11/26/2026

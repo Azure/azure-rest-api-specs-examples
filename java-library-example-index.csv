@@ -7977,3 +7977,4 @@ id,name,language,tag,package,version,date_epoch,date
 7976,com.azure.resourcemanager:azure-resourcemanager-machinelearning:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-machinelearning_2.0.0,com.azure.resourcemanager+azure-resourcemanager-machinelearning,2.0.0,1795410450,11/23/2026
 7977,azure-mgmt-cosmosdb@10.1.0,python,azure-mgmt-cosmosdb_10.1.0,azure-mgmt-cosmosdb,10.1.0,1795685924,11/26/2026
 7978,azure-mgmt-containerregistry@16.0.0,python,azure-mgmt-containerregistry_16.0.0,azure-mgmt-containerregistry,16.0.0,1795673344,11/26/2026
+7979,azure-mgmt-applicationinsights@5.0.0b3,python,azure-mgmt-applicationinsights_5.0.0b3,azure-mgmt-applicationinsights,5.0.0b3,1795673271,11/26/2026

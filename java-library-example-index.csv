@@ -7975,3 +7975,4 @@ id,name,language,tag,package,version,date_epoch,date
 7974,com.azure.resourcemanager:azure-resourcemanager-search:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-search_2.56.0,com.azure.resourcemanager+azure-resourcemanager-search,2.56.0,1795491222,11/24/2026
 7975,"Azure.ResourceManager.EventHubs,1.4.0-beta.2",dotnet,Azure.ResourceManager.EventHubs_1.4.0-beta.2,Azure.ResourceManager.EventHubs,1.4.0-beta.2,1795503277,11/24/2026
 7976,com.azure.resourcemanager:azure-resourcemanager-machinelearning:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-machinelearning_2.0.0,com.azure.resourcemanager+azure-resourcemanager-machinelearning,2.0.0,1795410450,11/23/2026
+7977,azure-mgmt-cosmosdb@10.1.0,python,azure-mgmt-cosmosdb_10.1.0,azure-mgmt-cosmosdb,10.1.0,1795685924,11/26/2026

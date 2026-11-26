@@ -1,0 +1,64 @@
+
+import com.azure.resourcemanager.machinelearning.models.EmailNotificationEnableType;
+import com.azure.resourcemanager.machinelearning.models.FeaturesetSpecification;
+import com.azure.resourcemanager.machinelearning.models.FeaturesetVersionProperties;
+import com.azure.resourcemanager.machinelearning.models.MaterializationComputeResource;
+import com.azure.resourcemanager.machinelearning.models.MaterializationSettings;
+import com.azure.resourcemanager.machinelearning.models.MaterializationStoreType;
+import com.azure.resourcemanager.machinelearning.models.NotificationSetting;
+import com.azure.resourcemanager.machinelearning.models.RecurrenceFrequency;
+import com.azure.resourcemanager.machinelearning.models.RecurrenceSchedule;
+import com.azure.resourcemanager.machinelearning.models.RecurrenceTrigger;
+import com.azure.resourcemanager.machinelearning.models.WeekDay;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for FeaturesetVersions CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/FeaturesetVersion/createOrUpdate.json
+     */
+    /**
+     * Sample code: CreateOrUpdate Workspace Featureset Version.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void createOrUpdateWorkspaceFeaturesetVersion(
+        com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager
+            .featuresetVersions().define(
+                "string")
+            .withExistingFeatureset("test-rg", "my-aml-workspace",
+                "string")
+            .withProperties(new FeaturesetVersionProperties().withDescription("string")
+                .withProperties(mapOf("string", "string")).withTags(mapOf("string", "string")).withIsAnonymous(false)
+                .withIsArchived(false).withEntities(Arrays.asList("string"))
+                .withMaterializationSettings(new MaterializationSettings()
+                    .withNotification(
+                        new NotificationSetting().withEmailOn(Arrays.asList(EmailNotificationEnableType.JOB_FAILED))
+                            .withEmails(Arrays.asList("string")))
+                    .withResource(new MaterializationComputeResource().withInstanceType("string"))
+                    .withSchedule(new RecurrenceTrigger().withEndTime("string").withStartTime("string")
+                        .withTimeZone("string").withFrequency(RecurrenceFrequency.DAY).withInterval(1)
+                        .withSchedule(new RecurrenceSchedule().withHours(Arrays.asList(1)).withMinutes(Arrays.asList(1))
+                            .withMonthDays(Arrays.asList(1)).withWeekDays(Arrays.asList(WeekDay.MONDAY))))
+                    .withSparkConfiguration(mapOf("string", "string")).withStoreType(MaterializationStoreType.ONLINE))
+                .withSpecification(new FeaturesetSpecification().withPath("string")).withStage("string"))
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

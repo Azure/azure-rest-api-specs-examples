@@ -1,0 +1,18 @@
+
+/**
+ * Samples for PrivateLinkResources List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/PrivateLinkResource/list.json
+     */
+    /**
+     * Sample code: WorkspaceListPrivateLinkResources.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void
+        workspaceListPrivateLinkResources(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.privateLinkResources().list("rg-1234", "testworkspace", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for EnvironmentVersions List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/EnvironmentVersion/list.json
+     */
+    /**
+     * Sample code: List Workspace Environment Version.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void
+        listWorkspaceEnvironmentVersion(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.environmentVersions().list("test-rg", "my-aml-workspace", "string", "string", 1, null, null,
+            com.azure.core.util.Context.NONE);
+    }
+}

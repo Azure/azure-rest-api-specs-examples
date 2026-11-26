@@ -1,0 +1,19 @@
+
+/**
+ * Samples for EnvironmentVersions Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2026-07-01/Workspace/EnvironmentVersion/delete.json
+     */
+    /**
+     * Sample code: Delete Workspace Environment Version.
+     * 
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void
+        deleteWorkspaceEnvironmentVersion(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.environmentVersions().deleteWithResponse("test-rg", "my-aml-workspace", "string", "string",
+            com.azure.core.util.Context.NONE);
+    }
+}

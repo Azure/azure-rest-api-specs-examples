@@ -7975,3 +7975,12 @@ id,name,language,tag,package,version,date_epoch,date
 7974,com.azure.resourcemanager:azure-resourcemanager-search:2.56.0,java,com.azure.resourcemanager+azure-resourcemanager-search_2.56.0,com.azure.resourcemanager+azure-resourcemanager-search,2.56.0,1795491222,11/24/2026
 7975,"Azure.ResourceManager.EventHubs,1.4.0-beta.2",dotnet,Azure.ResourceManager.EventHubs_1.4.0-beta.2,Azure.ResourceManager.EventHubs,1.4.0-beta.2,1795503277,11/24/2026
 7976,com.azure.resourcemanager:azure-resourcemanager-machinelearning:2.0.0,java,com.azure.resourcemanager+azure-resourcemanager-machinelearning_2.0.0,com.azure.resourcemanager+azure-resourcemanager-machinelearning,2.0.0,1795410450,11/23/2026
+7977,azure-mgmt-cosmosdb@10.1.0,python,azure-mgmt-cosmosdb_10.1.0,azure-mgmt-cosmosdb,10.1.0,1795685924,11/26/2026
+7978,azure-mgmt-containerregistry@16.0.0,python,azure-mgmt-containerregistry_16.0.0,azure-mgmt-containerregistry,16.0.0,1795673344,11/26/2026
+7979,azure-mgmt-applicationinsights@5.0.0b3,python,azure-mgmt-applicationinsights_5.0.0b3,azure-mgmt-applicationinsights,5.0.0b3,1795673271,11/26/2026
+7980,azure-mgmt-network@33.2.0,python,azure-mgmt-network_33.2.0,azure-mgmt-network,33.2.0,1795673252,11/26/2026
+7981,azure-mgmt-search@10.0.0,python,azure-mgmt-search_10.0.0,azure-mgmt-search,10.0.0,1795673246,11/26/2026
+7982,com.azure.resourcemanager:azure-resourcemanager-netapp:2.7.0-beta.1,java,com.azure.resourcemanager+azure-resourcemanager-netapp_2.7.0-beta.1,com.azure.resourcemanager+azure-resourcemanager-netapp,2.7.0-beta.1,1795690369,11/26/2026
+7983,"Azure.ResourceManager.ContainerServiceFleet,1.4.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.4.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.4.0-beta.1,1795663316,11/26/2026
+7984,"Azure.ResourceManager.RecoveryServices,1.5.0",dotnet,Azure.ResourceManager.RecoveryServices_1.5.0,Azure.ResourceManager.RecoveryServices,1.5.0,1795649333,11/25/2026
+7985,"Azure.ResourceManager.RecoveryServicesSiteRecovery,1.4.0",dotnet,Azure.ResourceManager.RecoveryServicesSiteRecovery_1.4.0,Azure.ResourceManager.RecoveryServicesSiteRecovery,1.4.0,1795649224,11/25/2026

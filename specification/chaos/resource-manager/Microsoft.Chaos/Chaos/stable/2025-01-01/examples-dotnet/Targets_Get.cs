@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Chaos;
 
 // Generated from example definition: 2025-01-01/Targets_Get.json
@@ -16,33 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ChaosTargetResource created on azure
+// for more information of creating ChaosTargetResource, please refer to the document of ChaosTargetResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string resourceGroupName = "exampleRG";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ChaosTargetResource
 string parentProviderNamespace = "Microsoft.Compute";
 string parentResourceType = "virtualMachines";
 string parentResourceName = "exampleVM";
-ChaosTargetCollection collection = resourceGroupResource.GetChaosTargets(parentProviderNamespace, parentResourceType, parentResourceName);
+string targetName = "Microsoft-Agent";
+ResourceIdentifier chaosTargetResourceId = ChaosTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentProviderNamespace, parentResourceType, parentResourceName, targetName);
+ChaosTargetResource chaosTarget = client.GetChaosTargetResource(chaosTargetResourceId);
 
 // invoke the operation
-string targetName = "Microsoft-Agent";
-NullableResponse<ChaosTargetResource> response = await collection.GetIfExistsAsync(targetName);
-ChaosTargetResource result = response.HasValue ? response.Value : null;
+ChaosTargetResource result = await chaosTarget.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ChaosTargetData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ChaosTargetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -7985,3 +7985,4 @@ id,name,language,tag,package,version,date_epoch,date
 7984,"Azure.ResourceManager.RecoveryServices,1.5.0",dotnet,Azure.ResourceManager.RecoveryServices_1.5.0,Azure.ResourceManager.RecoveryServices,1.5.0,1795649333,11/25/2026
 7985,"Azure.ResourceManager.RecoveryServicesSiteRecovery,1.4.0",dotnet,Azure.ResourceManager.RecoveryServicesSiteRecovery_1.4.0,Azure.ResourceManager.RecoveryServicesSiteRecovery,1.4.0,1795649224,11/25/2026
 7986,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:3.1.0,java,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver_3.1.0,com.azure.resourcemanager+azure-resourcemanager-postgresqlflexibleserver,3.1.0,1795746641,11/27/2026
+7987,"Azure.ResourceManager.Chaos,1.2.0-beta.4",dotnet,Azure.ResourceManager.Chaos_1.2.0-beta.4,Azure.ResourceManager.Chaos,1.2.0-beta.4,1795752444,11/27/2026

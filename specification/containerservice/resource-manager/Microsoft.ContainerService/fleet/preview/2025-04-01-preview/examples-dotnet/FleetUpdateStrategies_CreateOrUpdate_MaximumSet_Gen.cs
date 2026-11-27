@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetResource created on azure
-// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
+// this example assumes you already have this FleetUpdateStrategyResource created on azure
+// for more information of creating FleetUpdateStrategyResource, please refer to the document of FleetUpdateStrategyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rgfleets";
 string fleetName = "fleet1";
-ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
-ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
-
-// get the collection of this FleetUpdateStrategyResource
-FleetUpdateStrategyCollection collection = containerServiceFleet.GetFleetUpdateStrategies();
+string updateStrategyName = "fleet1";
+ResourceIdentifier fleetUpdateStrategyResourceId = FleetUpdateStrategyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateStrategyName);
+FleetUpdateStrategyResource fleetUpdateStrategy = client.GetFleetUpdateStrategyResource(fleetUpdateStrategyResourceId);
 
 // invoke the operation
-string updateStrategyName = "fleet1";
 FleetUpdateStrategyData data = new FleetUpdateStrategyData
 {
     StrategyStages = {new ContainerServiceFleetUpdateStage("stage1")
@@ -41,7 +38,7 @@ MatchConditions matchConditions = new MatchConditions
     IfMatch = new ETag("bttptpmhheves"),
     IfNoneMatch = new ETag("tlx")
 };
-ArmOperation<FleetUpdateStrategyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateStrategyName, data, matchConditions: matchConditions);
+ArmOperation<FleetUpdateStrategyResource> lro = await fleetUpdateStrategy.UpdateAsync(WaitUntil.Completed, data, matchConditions: matchConditions);
 FleetUpdateStrategyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

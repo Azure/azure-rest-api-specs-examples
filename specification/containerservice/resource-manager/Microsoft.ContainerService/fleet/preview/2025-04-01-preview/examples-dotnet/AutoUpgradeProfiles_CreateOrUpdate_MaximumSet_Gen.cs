@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutoUpgradeProfileResource created on azure
-// for more information of creating AutoUpgradeProfileResource, please refer to the document of AutoUpgradeProfileResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rgfleets";
 string fleetName = "fleet1";
-string autoUpgradeProfileName = "autoupgradeprofile1";
-ResourceIdentifier autoUpgradeProfileResourceId = AutoUpgradeProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, autoUpgradeProfileName);
-AutoUpgradeProfileResource autoUpgradeProfile = client.GetAutoUpgradeProfileResource(autoUpgradeProfileResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this AutoUpgradeProfileResource
+AutoUpgradeProfileCollection collection = containerServiceFleet.GetAutoUpgradeProfiles();
 
 // invoke the operation
+string autoUpgradeProfileName = "autoupgradeprofile1";
 AutoUpgradeProfileData data = new AutoUpgradeProfileData
 {
     UpdateStrategyId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgfleets/providers/Microsoft.ContainerService/fleets/fleet1/updateStrategies/strategy1"),
@@ -37,7 +40,7 @@ MatchConditions matchConditions = new MatchConditions
     IfMatch = new ETag("uktvayathbu"),
     IfNoneMatch = new ETag("vdjolwxnefqamimybcvxxva")
 };
-ArmOperation<AutoUpgradeProfileResource> lro = await autoUpgradeProfile.UpdateAsync(WaitUntil.Completed, data, matchConditions: matchConditions);
+ArmOperation<AutoUpgradeProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, autoUpgradeProfileName, data, matchConditions: matchConditions);
 AutoUpgradeProfileResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
